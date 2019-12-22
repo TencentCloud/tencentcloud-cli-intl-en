@@ -1,0 +1,11 @@
+*.pyc
+
+.venv
+
+# twine
+dist/
+
+# tox
+.tox/
+*.egg-info/
+.idea/
