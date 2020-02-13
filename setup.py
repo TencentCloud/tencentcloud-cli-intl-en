@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+i#! /usr/bin/env python
 
 """
 distutils/setuptools install script.
@@ -44,7 +44,7 @@ def main():
         description='Universal Command Line Environment for Tencent Cloud',
         long_description=open('README.rst').read(),
         author='Tencent Cloud',
-        url='https://github.com/TencentCloud/tencentcloud-cli.git',
+        url='https://github.com/TencentCloud/tencentcloud-cli-intl-en.git',
         maintainer_email="TencentCloudApi@tencent.com",
         packages=find_packages(),
         include_package_data=True,

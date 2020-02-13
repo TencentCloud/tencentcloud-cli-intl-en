@@ -185,11 +185,15 @@ INFO = {
       },
       {
         "name": "RealServerCertificateId",
-        "desc": "Origin server CA certificate ID, which is obtained from the certificate management page."
+        "desc": "CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter."
       },
       {
         "name": "RealServerCertificateDomain",
         "desc": "Domain name of the origin server certificate."
+      },
+      {
+        "name": "PolyRealServerCertificateIds",
+        "desc": "CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter."
       }
     ],
     "desc": "This API (SetAuthentication) is used for the advanced authentication configuration of connections, including authentication methods and their certificates. If only supports connections of version 3.0."
@@ -916,7 +920,7 @@ INFO = {
         "desc": "Domain name"
       }
     ],
-    "desc": "This API is used to query the custom error response to the current domain name."
+    "desc": "This API is used to query the custom error response to a domain name."
   },
   "DescribeRealServers": {
     "params": [

@@ -12,19 +12,422 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.cdn.v20180606 import cdn_client as cdn_client_v20180606
-from tencentcloud.cdn.v20180606 import models as models_v20180606
-from tccli.services.cdn import v20180606
-from tccli.services.cdn.v20180606 import help as v20180606_help
+from tencentcloud.organization.v20181225 import organization_client as organization_client_v20181225
+from tencentcloud.organization.v20181225 import models as models_v20181225
+from tccli.services.organization import v20181225
+from tccli.services.organization.v20181225 import help as v20181225_help
 
 
-def doDescribeMapInfo(argv, arglist):
+def doDenyOrganizationInvitation(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeMapInfo", g_param[OptionsDefine.Version])
+        show_help("DenyOrganizationInvitation", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "Id": Utils.try_to_json(argv, "--Id"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DenyOrganizationInvitationRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DenyOrganizationInvitation(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doListOrganizationInvitations(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ListOrganizationInvitations", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Invited": Utils.try_to_json(argv, "--Invited"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ListOrganizationInvitationsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ListOrganizationInvitations(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doUpdateOrganizationNode(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("UpdateOrganizationNode", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "NodeId": Utils.try_to_json(argv, "--NodeId"),
+        "Name": argv.get("--Name"),
+        "ParentNodeId": Utils.try_to_json(argv, "--ParentNodeId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UpdateOrganizationNodeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.UpdateOrganizationNode(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doAcceptOrganizationInvitation(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("AcceptOrganizationInvitation", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Id": Utils.try_to_json(argv, "--Id"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AcceptOrganizationInvitationRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.AcceptOrganizationInvitation(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetOrganizationMember(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetOrganizationMember", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "MemberUin": Utils.try_to_json(argv, "--MemberUin"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetOrganizationMemberRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetOrganizationMember(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetOrganization(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetOrganization", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetOrganizationRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetOrganization(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doListOrganizationNodes(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ListOrganizationNodes", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ListOrganizationNodesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ListOrganizationNodes(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doUpdateOrganizationMember(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("UpdateOrganizationMember", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "MemberUin": Utils.try_to_json(argv, "--MemberUin"),
+        "Name": argv.get("--Name"),
+        "Remark": argv.get("--Remark"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UpdateOrganizationMemberRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.UpdateOrganizationMember(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doQuitOrganization(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("QuitOrganization", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "OrgId": Utils.try_to_json(argv, "--OrgId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.QuitOrganizationRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.QuitOrganization(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteOrganizationNodes(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteOrganizationNodes", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "NodeIds": Utils.try_to_json(argv, "--NodeIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteOrganizationNodesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteOrganizationNodes(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doListOrganizationMembers(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ListOrganizationMembers", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ListOrganizationMembersRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ListOrganizationMembers(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteOrganizationMemberFromNode(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteOrganizationMemberFromNode", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "MemberUin": Utils.try_to_json(argv, "--MemberUin"),
+        "NodeId": Utils.try_to_json(argv, "--NodeId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteOrganizationMemberFromNodeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteOrganizationMemberFromNode(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doAddOrganizationNode(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("AddOrganizationNode", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ParentNodeId": Utils.try_to_json(argv, "--ParentNodeId"),
         "Name": argv.get("--Name"),
 
     }
@@ -36,12 +439,12 @@ def doDescribeMapInfo(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMapInfoRequest()
+    model = models.AddOrganizationNodeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeMapInfo(model)
+    rsp = client.AddOrganizationNode(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -51,14 +454,16 @@ def doDescribeMapInfo(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteCdnDomain(argv, arglist):
+def doSendOrganizationInvitation(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteCdnDomain", g_param[OptionsDefine.Version])
+        show_help("SendOrganizationInvitation", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Domain": argv.get("--Domain"),
+        "InviteUin": Utils.try_to_json(argv, "--InviteUin"),
+        "Name": argv.get("--Name"),
+        "Remark": argv.get("--Remark"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -69,12 +474,12 @@ def doDeleteCdnDomain(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteCdnDomainRequest()
+    model = models.SendOrganizationInvitationRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteCdnDomain(model)
+    rsp = client.SendOrganizationInvitation(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -84,22 +489,14 @@ def doDeleteCdnDomain(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribePurgeTasks(argv, arglist):
+def doCancelOrganizationInvitation(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribePurgeTasks", g_param[OptionsDefine.Version])
+        show_help("CancelOrganizationInvitation", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PurgeType": argv.get("--PurgeType"),
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "TaskId": argv.get("--TaskId"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Keyword": argv.get("--Keyword"),
-        "Status": argv.get("--Status"),
-        "Area": argv.get("--Area"),
+        "Id": Utils.try_to_json(argv, "--Id"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -110,12 +507,12 @@ def doDescribePurgeTasks(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePurgeTasksRequest()
+    model = models.CancelOrganizationInvitationRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribePurgeTasks(model)
+    rsp = client.CancelOrganizationInvitation(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -125,14 +522,13 @@ def doDescribePurgeTasks(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribePayType(argv, arglist):
+def doDeleteOrganization(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribePayType", g_param[OptionsDefine.Version])
+        show_help("DeleteOrganization", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Area": argv.get("--Area"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -143,12 +539,12 @@ def doDescribePayType(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePayTypeRequest()
+    model = models.DeleteOrganizationRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribePayType(model)
+    rsp = client.DeleteOrganization(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -158,17 +554,14 @@ def doDescribePayType(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDomainsConfig(argv, arglist):
+def doDeleteOrganizationMembers(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeDomainsConfig", g_param[OptionsDefine.Version])
+        show_help("DeleteOrganizationMembers", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
-        "Sort": Utils.try_to_json(argv, "--Sort"),
+        "Uins": Utils.try_to_json(argv, "--Uins"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -179,12 +572,12 @@ def doDescribeDomainsConfig(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDomainsConfigRequest()
+    model = models.DeleteOrganizationMembersRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeDomainsConfig(model)
+    rsp = client.DeleteOrganizationMembers(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -194,685 +587,14 @@ def doDescribeDomainsConfig(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAddCdnDomain(argv, arglist):
+def doListOrganizationNodeMembers(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("AddCdnDomain", g_param[OptionsDefine.Version])
+        show_help("ListOrganizationNodeMembers", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Domain": argv.get("--Domain"),
-        "ServiceType": argv.get("--ServiceType"),
-        "Origin": Utils.try_to_json(argv, "--Origin"),
-        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
-        "IpFilter": Utils.try_to_json(argv, "--IpFilter"),
-        "IpFreqLimit": Utils.try_to_json(argv, "--IpFreqLimit"),
-        "StatusCodeCache": Utils.try_to_json(argv, "--StatusCodeCache"),
-        "Compression": Utils.try_to_json(argv, "--Compression"),
-        "BandwidthAlert": Utils.try_to_json(argv, "--BandwidthAlert"),
-        "RangeOriginPull": Utils.try_to_json(argv, "--RangeOriginPull"),
-        "FollowRedirect": Utils.try_to_json(argv, "--FollowRedirect"),
-        "ErrorPage": Utils.try_to_json(argv, "--ErrorPage"),
-        "RequestHeader": Utils.try_to_json(argv, "--RequestHeader"),
-        "ResponseHeader": Utils.try_to_json(argv, "--ResponseHeader"),
-        "DownstreamCapping": Utils.try_to_json(argv, "--DownstreamCapping"),
-        "CacheKey": Utils.try_to_json(argv, "--CacheKey"),
-        "ResponseHeaderCache": Utils.try_to_json(argv, "--ResponseHeaderCache"),
-        "VideoSeek": Utils.try_to_json(argv, "--VideoSeek"),
-        "Cache": Utils.try_to_json(argv, "--Cache"),
-        "OriginPullOptimization": Utils.try_to_json(argv, "--OriginPullOptimization"),
-        "Https": Utils.try_to_json(argv, "--Https"),
-        "Authentication": Utils.try_to_json(argv, "--Authentication"),
-        "Seo": Utils.try_to_json(argv, "--Seo"),
-        "ForceRedirect": Utils.try_to_json(argv, "--ForceRedirect"),
-        "Referer": Utils.try_to_json(argv, "--Referer"),
-        "MaxAge": Utils.try_to_json(argv, "--MaxAge"),
-        "Ipv6": Utils.try_to_json(argv, "--Ipv6"),
-        "SpecificConfig": Utils.try_to_json(argv, "--SpecificConfig"),
-        "Area": argv.get("--Area"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddCdnDomainRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.AddCdnDomain(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeIpVisit(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeIpVisit", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "Domains": Utils.try_to_json(argv, "--Domains"),
-        "Project": Utils.try_to_json(argv, "--Project"),
-        "Interval": argv.get("--Interval"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeIpVisitRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeIpVisit(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeCdnData(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeCdnData", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "Metric": argv.get("--Metric"),
-        "Domains": Utils.try_to_json(argv, "--Domains"),
-        "Project": Utils.try_to_json(argv, "--Project"),
-        "Interval": argv.get("--Interval"),
-        "Detail": Utils.try_to_json(argv, "--Detail"),
-        "Isp": Utils.try_to_json(argv, "--Isp"),
-        "District": Utils.try_to_json(argv, "--District"),
-        "Protocol": argv.get("--Protocol"),
-        "DataSource": argv.get("--DataSource"),
-        "IpProtocol": argv.get("--IpProtocol"),
-        "Area": argv.get("--Area"),
-        "AreaType": argv.get("--AreaType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeCdnDataRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeCdnData(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDisableCaches(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DisableCaches", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Urls": Utils.try_to_json(argv, "--Urls"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DisableCachesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DisableCaches(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeDomains(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeDomains", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDomainsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeDomains(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doStartCdnDomain(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("StartCdnDomain", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Domain": argv.get("--Domain"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartCdnDomainRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.StartCdnDomain(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doStopCdnDomain(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("StopCdnDomain", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Domain": argv.get("--Domain"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StopCdnDomainRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.StopCdnDomain(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListTopData(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListTopData", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "Metric": argv.get("--Metric"),
-        "Filter": argv.get("--Filter"),
-        "Domains": Utils.try_to_json(argv, "--Domains"),
-        "Project": Utils.try_to_json(argv, "--Project"),
-        "Detail": Utils.try_to_json(argv, "--Detail"),
-        "Code": argv.get("--Code"),
-        "Area": argv.get("--Area"),
-        "AreaType": argv.get("--AreaType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListTopDataRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListTopData(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeOriginData(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeOriginData", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "Metric": argv.get("--Metric"),
-        "Domains": Utils.try_to_json(argv, "--Domains"),
-        "Project": Utils.try_to_json(argv, "--Project"),
-        "Interval": argv.get("--Interval"),
-        "Detail": Utils.try_to_json(argv, "--Detail"),
-        "Area": argv.get("--Area"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeOriginDataRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeOriginData(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeCdnIp(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeCdnIp", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Ips": Utils.try_to_json(argv, "--Ips"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeCdnIpRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeCdnIp(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doPurgePathCache(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("PurgePathCache", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Paths": Utils.try_to_json(argv, "--Paths"),
-        "FlushType": argv.get("--FlushType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.PurgePathCacheRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.PurgePathCache(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeUrlViolations(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeUrlViolations", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Domains": Utils.try_to_json(argv, "--Domains"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeUrlViolationsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeUrlViolations(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doPurgeUrlsCache(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("PurgeUrlsCache", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Urls": Utils.try_to_json(argv, "--Urls"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.PurgeUrlsCacheRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.PurgeUrlsCache(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doUpdateDomainConfig(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("UpdateDomainConfig", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Domain": argv.get("--Domain"),
-        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
-        "Origin": Utils.try_to_json(argv, "--Origin"),
-        "IpFilter": Utils.try_to_json(argv, "--IpFilter"),
-        "IpFreqLimit": Utils.try_to_json(argv, "--IpFreqLimit"),
-        "StatusCodeCache": Utils.try_to_json(argv, "--StatusCodeCache"),
-        "Compression": Utils.try_to_json(argv, "--Compression"),
-        "BandwidthAlert": Utils.try_to_json(argv, "--BandwidthAlert"),
-        "RangeOriginPull": Utils.try_to_json(argv, "--RangeOriginPull"),
-        "FollowRedirect": Utils.try_to_json(argv, "--FollowRedirect"),
-        "ErrorPage": Utils.try_to_json(argv, "--ErrorPage"),
-        "RequestHeader": Utils.try_to_json(argv, "--RequestHeader"),
-        "ResponseHeader": Utils.try_to_json(argv, "--ResponseHeader"),
-        "DownstreamCapping": Utils.try_to_json(argv, "--DownstreamCapping"),
-        "CacheKey": Utils.try_to_json(argv, "--CacheKey"),
-        "ResponseHeaderCache": Utils.try_to_json(argv, "--ResponseHeaderCache"),
-        "VideoSeek": Utils.try_to_json(argv, "--VideoSeek"),
-        "Cache": Utils.try_to_json(argv, "--Cache"),
-        "OriginPullOptimization": Utils.try_to_json(argv, "--OriginPullOptimization"),
-        "Https": Utils.try_to_json(argv, "--Https"),
-        "Authentication": Utils.try_to_json(argv, "--Authentication"),
-        "Seo": Utils.try_to_json(argv, "--Seo"),
-        "ForceRedirect": Utils.try_to_json(argv, "--ForceRedirect"),
-        "Referer": Utils.try_to_json(argv, "--Referer"),
-        "MaxAge": Utils.try_to_json(argv, "--MaxAge"),
-        "ServiceType": argv.get("--ServiceType"),
-        "SpecificConfig": Utils.try_to_json(argv, "--SpecificConfig"),
-        "Area": argv.get("--Area"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateDomainConfigRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.UpdateDomainConfig(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeCdnDomainLogs(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeCdnDomainLogs", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Domain": argv.get("--Domain"),
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Area": argv.get("--Area"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeCdnDomainLogsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeCdnDomainLogs(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribePushTasks(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribePushTasks", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "TaskId": argv.get("--TaskId"),
-        "Keyword": argv.get("--Keyword"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Area": argv.get("--Area"),
-        "Status": argv.get("--Status"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePushTasksRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribePushTasks(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doPushUrlsCache(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("PushUrlsCache", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Urls": Utils.try_to_json(argv, "--Urls"),
-        "UserAgent": argv.get("--UserAgent"),
-        "Area": argv.get("--Area"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.PushUrlsCacheRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.PushUrlsCache(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetDisableRecords(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetDisableRecords", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "Url": argv.get("--Url"),
-        "Status": argv.get("--Status"),
+        "NodeId": Utils.try_to_json(argv, "--NodeId"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
 
@@ -885,12 +607,12 @@ def doGetDisableRecords(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetDisableRecordsRequest()
+    model = models.ListOrganizationNodeMembersRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.GetDisableRecords(model)
+    rsp = client.ListOrganizationNodeMembers(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -900,15 +622,14 @@ def doGetDisableRecords(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpdatePayType(argv, arglist):
+def doCreateOrganization(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpdatePayType", g_param[OptionsDefine.Version])
+        show_help("CreateOrganization", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Area": argv.get("--Area"),
-        "PayType": argv.get("--PayType"),
+        "OrgType": Utils.try_to_json(argv, "--OrgType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -919,12 +640,12 @@ def doUpdatePayType(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdatePayTypeRequest()
+    model = models.CreateOrganizationRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpdatePayType(model)
+    rsp = client.CreateOrganization(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -934,14 +655,15 @@ def doUpdatePayType(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doEnableCaches(argv, arglist):
+def doMoveOrganizationMembersToNode(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("EnableCaches", g_param[OptionsDefine.Version])
+        show_help("MoveOrganizationMembersToNode", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Urls": Utils.try_to_json(argv, "--Urls"),
+        "NodeId": Utils.try_to_json(argv, "--NodeId"),
+        "Uins": Utils.try_to_json(argv, "--Uins"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -952,12 +674,12 @@ def doEnableCaches(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdnClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.OrganizationClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.EnableCachesRequest()
+    model = models.MoveOrganizationMembersToNodeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.EnableCaches(model)
+    rsp = client.MoveOrganizationMembersToNode(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -968,55 +690,50 @@ def doEnableCaches(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20180606": cdn_client_v20180606,
+    "v20181225": organization_client_v20181225,
 
 }
 
 MODELS_MAP = {
-    "v20180606": models_v20180606,
+    "v20181225": models_v20181225,
 
 }
 
 ACTION_MAP = {
-    "DescribeMapInfo": doDescribeMapInfo,
-    "DeleteCdnDomain": doDeleteCdnDomain,
-    "DescribePurgeTasks": doDescribePurgeTasks,
-    "DescribePayType": doDescribePayType,
-    "DescribeDomainsConfig": doDescribeDomainsConfig,
-    "AddCdnDomain": doAddCdnDomain,
-    "DescribeIpVisit": doDescribeIpVisit,
-    "DescribeCdnData": doDescribeCdnData,
-    "DisableCaches": doDisableCaches,
-    "DescribeDomains": doDescribeDomains,
-    "StartCdnDomain": doStartCdnDomain,
-    "StopCdnDomain": doStopCdnDomain,
-    "ListTopData": doListTopData,
-    "DescribeOriginData": doDescribeOriginData,
-    "DescribeCdnIp": doDescribeCdnIp,
-    "PurgePathCache": doPurgePathCache,
-    "DescribeUrlViolations": doDescribeUrlViolations,
-    "PurgeUrlsCache": doPurgeUrlsCache,
-    "UpdateDomainConfig": doUpdateDomainConfig,
-    "DescribeCdnDomainLogs": doDescribeCdnDomainLogs,
-    "DescribePushTasks": doDescribePushTasks,
-    "PushUrlsCache": doPushUrlsCache,
-    "GetDisableRecords": doGetDisableRecords,
-    "UpdatePayType": doUpdatePayType,
-    "EnableCaches": doEnableCaches,
+    "DenyOrganizationInvitation": doDenyOrganizationInvitation,
+    "ListOrganizationInvitations": doListOrganizationInvitations,
+    "UpdateOrganizationNode": doUpdateOrganizationNode,
+    "AcceptOrganizationInvitation": doAcceptOrganizationInvitation,
+    "GetOrganizationMember": doGetOrganizationMember,
+    "GetOrganization": doGetOrganization,
+    "ListOrganizationNodes": doListOrganizationNodes,
+    "UpdateOrganizationMember": doUpdateOrganizationMember,
+    "QuitOrganization": doQuitOrganization,
+    "DeleteOrganizationNodes": doDeleteOrganizationNodes,
+    "ListOrganizationMembers": doListOrganizationMembers,
+    "DeleteOrganizationMemberFromNode": doDeleteOrganizationMemberFromNode,
+    "AddOrganizationNode": doAddOrganizationNode,
+    "SendOrganizationInvitation": doSendOrganizationInvitation,
+    "CancelOrganizationInvitation": doCancelOrganizationInvitation,
+    "DeleteOrganization": doDeleteOrganization,
+    "DeleteOrganizationMembers": doDeleteOrganizationMembers,
+    "ListOrganizationNodeMembers": doListOrganizationNodeMembers,
+    "CreateOrganization": doCreateOrganization,
+    "MoveOrganizationMembersToNode": doMoveOrganizationMembersToNode,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20180606.version,
+    v20181225.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20180606.version.replace('-', ''): {"help": v20180606_help.INFO,"desc": v20180606_help.DESC},
+     'v' + v20181225.version.replace('-', ''): {"help": v20181225_help.INFO,"desc": v20181225_help.DESC},
 
 }
 
 
-def cdn_action(argv, arglist):
+def organization_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -1032,7 +749,7 @@ def cdn_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "cdn", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "organization", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -1053,7 +770,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("cdn", cdn_action)
+    cmd = NiceCommand("organization", organization_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -1112,11 +829,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["cdn"][OptionsDefine.Version]
+            version = config["organization"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["cdn"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["organization"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -1133,7 +850,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "cdn", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "organization", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -1143,7 +860,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["cdn"]["version"]
+        version = profile["organization"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

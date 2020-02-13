@@ -378,18 +378,14 @@ INFO = {
     ],
     "desc": "This API (CreateVpnConnection) is used to create VPN tunnel."
   },
-  "CreateDirectConnectGatewayCcnRoutes": {
+  "DeleteRouteTable": {
     "params": [
       {
-        "name": "DirectConnectGatewayId",
-        "desc": "The ID of the Direct Connect gateway, such as `dcg-prpqlmg1`"
-      },
-      {
-        "name": "Routes",
-        "desc": "The list of IDC IP range that must be connected"
+        "name": "RouteTableId",
+        "desc": "The route table instance ID, such as `rtb-azd4dt1c`."
       }
     ],
-    "desc": "This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway."
+    "desc": "This API is used to delete a route table."
   },
   "DescribeNatGateways": {
     "params": [
@@ -1371,14 +1367,18 @@ INFO = {
     ],
     "desc": "This API (DescribeVpnGateways) is used to query the VPN gateway list."
   },
-  "DeleteRouteTable": {
+  "CreateDirectConnectGatewayCcnRoutes": {
     "params": [
       {
-        "name": "RouteTableId",
-        "desc": "The route table instance ID, such as `rtb-azd4dt1c`."
+        "name": "DirectConnectGatewayId",
+        "desc": "The ID of the Direct Connect gateway, such as `dcg-prpqlmg1`"
+      },
+      {
+        "name": "Routes",
+        "desc": "The list of IDC IP range that must be connected"
       }
     ],
-    "desc": "This API is used to delete a route table."
+    "desc": "This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway."
   },
   "ModifyIpv6AddressesAttribute": {
     "params": [

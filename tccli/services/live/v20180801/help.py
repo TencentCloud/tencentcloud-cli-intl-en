@@ -30,14 +30,14 @@ INFO = {
       },
       {
         "name": "StreamName",
-        "desc": "Stream name."
+        "desc": "Stream name. If only the domain name or path is bound, leave this parameter blank."
       },
       {
         "name": "TemplateId",
         "desc": "Designates an existing template ID."
       }
     ],
-    "desc": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](/document/product/267/32646) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Encapsulating and Transcoding](/document/product/267/32736)."
+    "desc": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](/document/product/267/32646) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736)."
   },
   "CreateLiveRecord": {
     "params": [
@@ -67,7 +67,7 @@ INFO = {
       },
       {
         "name": "FileFormat",
-        "desc": "Recording file format. Value range:\n\"flv\" **(default)**, \"hls\", \"mp4\", \"aac\", \"mp3\".\nIn both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive."
+        "desc": "Recording file format. Valid values:\n\"flv\" **(default)**, \"hls\", \"mp4\", \"aac\", \"mp3\".\nIn both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive."
       },
       {
         "name": "Highlight",
@@ -79,10 +79,10 @@ INFO = {
       },
       {
         "name": "StreamParam",
-        "desc": "Recording stream parameter. The following parameters are supported currently:\nrecord_interval: Recording interval in seconds. Value range: 1,800-7,200\nstorage_time: Recording file duration in seconds\neg. record_interval=3600&storage_time=2592000\nNote: The parameter needs url encode.\nIn both scheduled and real-time video recording modes, this parameter is valid."
+        "desc": "Recording stream parameter. The following parameters are supported currently:\nrecord_interval: Recording interval in seconds. Value range: 1,800–7,200\nstorage_time: Recording file duration in seconds\neg. record_interval=3600&storage_time=2592000\nNote: The parameter needs url encode.\nIn both scheduled and real-time video recording modes, this parameter is valid."
       }
     ],
-    "desc": "- Prerequisites\n  1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n  2. After the recording files are stored, fees (including storage fees and downstream playback traffic fees) are charged according to the VOD billing method. For details, see the [corresponding document](https://cloud.tencent.com/document/product/266/2838).\n\n- Mode description\n  This API supports two recording modes:\n  1. Scheduled recording mode **(default mode)**.\n    The start time and end time need to be passed in, and the recording task automatically starts and ends based on the time parameters.\n  2. Real-time video recording mode.\n    The start time passed in is ignored, and recording is started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and it is recommended to keep the duration within 5 minutes.\n\n- Precautions\n  1. The API call timeout should be set to more than 3 seconds; otherwise, retries and frequent calls may result in repeated recording tasks.\n  2. Subject to the audio and video file formats (FLV/MP4/HLS), the video encoding format of H.264 and audio encoding format of ACC are supported."
+    "desc": "- Prerequisites\n  1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n  2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://cloud.tencent.com/document/product/266/2838).\n\n- Mode description\n  This API supports two recording modes:\n  1. Scheduled recording mode **(default mode)**.\n    The start time and end time need to be passed in, and the recording task will automatically start and end based on the time parameters.\n  2. Real-time video recording mode.\n    The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.\n\n- Precautions\n  1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and frequent calls may result in repeated recording tasks.\n  2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of ACC are supported."
   },
   "StopLiveRecord": {
     "params": [
@@ -95,7 +95,7 @@ INFO = {
         "desc": "Task ID, which uniquely identifies the recording task globally."
       }
     ],
-    "desc": "Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, see the corresponding document."
+    "desc": "Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document."
   },
   "ModifyLivePlayAuthKey": {
     "params": [
@@ -134,7 +134,7 @@ INFO = {
       },
       {
         "name": "Description",
-        "desc": "Description."
+        "desc": "Message description"
       },
       {
         "name": "FlvParam",
@@ -146,7 +146,7 @@ INFO = {
       },
       {
         "name": "Mp4Param",
-        "desc": "MP4 recording parameter, which is set when MP4 recording is enabled."
+        "desc": "Mp4 recording parameter, which is set when Mp4 recording is enabled."
       },
       {
         "name": "AacParam",
@@ -158,7 +158,7 @@ INFO = {
       },
       {
         "name": "Mp3Param",
-        "desc": "MP3 recording parameter, which is set when MP3 recording is enabled."
+        "desc": "Mp3 recording parameter, which is set when Mp3 recording is enabled."
       }
     ],
     "desc": "This API is used to modify the recording template configuration."
@@ -228,7 +228,7 @@ INFO = {
         "desc": "Task ID, which uniquely identifies the recording task globally."
       }
     ],
-    "desc": "This API is used to delete a recording task."
+    "desc": "Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](/document/product/267/30146) API."
   },
   "AddDelayLiveStream": {
     "params": [
@@ -288,15 +288,15 @@ INFO = {
       },
       {
         "name": "Vcodec",
-        "desc": "Video encoding format:\nH.264/H.265."
+        "desc": "Video encoding format:\nh264/h265."
       },
       {
         "name": "Acodec",
-        "desc": "Audio encoding format:\nAAC/MP3."
+        "desc": "Audio encoding format:\naac/mp3."
       },
       {
         "name": "AudioBitrate",
-        "desc": "Audio bitrate. Value range: 0-500. Default value: 0."
+        "desc": "Audio bitrate. Value range: 0–500. Default value: 0."
       },
       {
         "name": "Description",
@@ -304,11 +304,11 @@ INFO = {
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100-8,000"
+        "desc": "Video bitrate. Value range: 100–8,000"
       },
       {
         "name": "Width",
-        "desc": "Width. Value range: 0-3,000"
+        "desc": "Width. Value range: 0–3,000"
       },
       {
         "name": "NeedVideo",
@@ -320,19 +320,19 @@ INFO = {
       },
       {
         "name": "Height",
-        "desc": "Height. Value range: 0-3,000"
+        "desc": "Height. Value range: 0–3,000"
       },
       {
         "name": "Fps",
-        "desc": "Frame rate. Value range: 0-200"
+        "desc": "Frame rate. Value range: 0–200"
       },
       {
         "name": "Gop",
-        "desc": "Keyframe interval in seconds. Value range: 0-50"
+        "desc": "Keyframe interval in seconds. Value range: 0–50"
       },
       {
         "name": "Rotate",
-        "desc": "Rotation angle. Value range: 0, 90, 180, 270"
+        "desc": "Rotation angle. Valid values: 0, 90, 180, 270"
       },
       {
         "name": "Profile",
@@ -352,7 +352,7 @@ INFO = {
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "VideoBitrate minus Ultra-fast HD bitrate. Value range: 0.1-0.5."
+        "desc": "VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5."
       }
     ],
     "desc": "This API is used to modify the transcoding template configuration."
@@ -377,27 +377,6 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a transcoding rule."
-  },
-  "DescribeLiveStreamOnlineInfo": {
-    "params": [
-      {
-        "name": "PageNum",
-        "desc": "Page number to get.\nDefault value: 1."
-      },
-      {
-        "name": "PageSize",
-        "desc": "Number of entries per page.\nMaximum value: 100.\nValue range: any integer between 1 and 100.\nDefault value: 10."
-      },
-      {
-        "name": "Status",
-        "desc": "0: push not started; 1: pushing."
-      },
-      {
-        "name": "StreamName",
-        "desc": "Stream name."
-      }
-    ],
-    "desc": "This API is used to query the active push information list."
   },
   "DescribeLiveRecordRules": {
     "params": [],
@@ -548,11 +527,11 @@ INFO = {
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100-8,000."
+        "desc": "Video bitrate. Value range: 100–8,000.\nNote: The bitrate must be a multiple of 100."
       },
       {
         "name": "Vcodec",
-        "desc": "Video encoding format. Value range: h264, h265. Default value: h264.\nNote: This parameter will take effect later."
+        "desc": "Video encoding format. Valid values: h264, h265. Default value: h264."
       },
       {
         "name": "Acodec",
@@ -560,7 +539,7 @@ INFO = {
       },
       {
         "name": "AudioBitrate",
-        "desc": "Audio bitrate. Value range: 0-500. Default value: 0."
+        "desc": "Audio bitrate. Value range: 0–500. Default value: 0."
       },
       {
         "name": "Description",
@@ -612,14 +591,14 @@ INFO = {
       },
       {
         "name": "AiTransCode",
-        "desc": "Whether it is an Ultra-fast HD template. 0: no; 1: yes. Default value: 0."
+        "desc": "Whether it is a TESHD template. 0: no; 1: yes. Default value: 0."
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "VideoBitrate minus Ultra-fast HD bitrate. Value range: 0.1-0.5."
+        "desc": "VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5."
       }
     ],
-    "desc": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](/document/product/267/32647) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Encapsulating and Transcoding](/document/product/267/32736)."
+    "desc": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](/document/product/267/32647) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736)."
   },
   "ForbidLiveStream": {
     "params": [
@@ -734,7 +713,7 @@ INFO = {
       },
       {
         "name": "Description",
-        "desc": "Description."
+        "desc": "Message description"
       },
       {
         "name": "FlvParam",
@@ -746,7 +725,7 @@ INFO = {
       },
       {
         "name": "Mp4Param",
-        "desc": "MP4 recording parameter, which is set when MP4 recording is enabled."
+        "desc": "Mp4 recording parameter, which is set when Mp4 recording is enabled."
       },
       {
         "name": "AacParam",
@@ -762,7 +741,7 @@ INFO = {
       },
       {
         "name": "Mp3Param",
-        "desc": "MP3 recording parameter, which is set when MP3 recording is enabled."
+        "desc": "Mp3 recording parameter, which is set when Mp3 recording is enabled."
       }
     ],
     "desc": "After a recording template is created and a template ID is successfully returned, you need to call the [CreateLiveRecordRule](/document/product/267/32615) API and bind the template ID to the stream.\n<br>Recording-related document: [LVB Recording](/document/product/267/32739)."

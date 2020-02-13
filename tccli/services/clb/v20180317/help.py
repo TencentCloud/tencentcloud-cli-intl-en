@@ -111,18 +111,9 @@ INFO = {
     ],
     "desc": "This API is used to unbind layer-4/layer-7 real servers in batches."
   },
-  "ReplaceCertForLoadBalancers": {
-    "params": [
-      {
-        "name": "OldCertificateId",
-        "desc": "ID of the certificate to be replaced, which can be a server certificate or a client certificate."
-      },
-      {
-        "name": "Certificate",
-        "desc": "Information such as the content of the new certificate"
-      }
-    ],
-    "desc": "This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.\nThis API supports replacing server certificates and client certificates.\nThe new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.\nNote: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems."
+  "RegisterTargetGroupInstances": {
+    "params": [],
+    "desc": "注册服务器到目标组。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
   },
   "CreateRule": {
     "params": [
@@ -179,14 +170,13 @@ INFO = {
     ],
     "desc": "This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
-  "DescribeClassicalLBTargets": {
-    "params": [
-      {
-        "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
-      }
-    ],
-    "desc": "This API (DescribeClassicalLBTargets) is used to get the real servers bound to a classic CLB."
+  "ModifyTargetGroupInstancesWeight": {
+    "params": [],
+    "desc": "批量修改目标组的服务器权重。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+  },
+  "DeleteTargetGroups": {
+    "params": [],
+    "desc": "删除目标组"
   },
   "DeregisterTargetsFromClassicalLB": {
     "params": [
@@ -293,30 +283,21 @@ INFO = {
     ],
     "desc": "This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
   },
-  "DeleteRule": {
-    "params": [
-      {
-        "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
-      },
-      {
-        "name": "ListenerId",
-        "desc": "CLB listener ID"
-      },
-      {
-        "name": "LocationIds",
-        "desc": "Array of IDs of the forwarding rules to be deleted"
-      },
-      {
-        "name": "Domain",
-        "desc": "Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified"
-      },
-      {
-        "name": "Url",
-        "desc": "Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified"
-      }
-    ],
-    "desc": "This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
+  "DisassociateTargetGroups": {
+    "params": [],
+    "desc": "解除规则的目标组关联关系。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+  },
+  "DescribeTargetGroupInstances": {
+    "params": [],
+    "desc": "获取目标组绑定的服务器信息"
+  },
+  "AssociateTargetGroups": {
+    "params": [],
+    "desc": "监听器或转发规则绑定目标组。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+  },
+  "DeregisterTargetGroupInstances": {
+    "params": [],
+    "desc": "将服务器从目标组中解绑。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
   },
   "DescribeLoadBalancers": {
     "params": [
@@ -416,6 +397,15 @@ INFO = {
     ],
     "desc": "This API (DescribeListeners) is used to get the list of listeners by CLB IDs, listener protocol, or port. If no filter is specified, the default number (20) of listeners for the instance will be returned."
   },
+  "DescribeClassicalLBTargets": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      }
+    ],
+    "desc": "This API (DescribeClassicalLBTargets) is used to get the real servers bound to a classic CLB."
+  },
   "CreateListener": {
     "params": [
       {
@@ -469,6 +459,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and only layer-4 (TCP/UDP) protocols."
+  },
+  "DeleteRewrite": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "SourceListenerId",
+        "desc": "Source listener ID"
+      },
+      {
+        "name": "TargetListenerId",
+        "desc": "Target listener ID"
+      },
+      {
+        "name": "RewriteInfos",
+        "desc": "Redirection relationship between forwarding rules"
+      }
+    ],
+    "desc": "This API (DeleteRewrite) is used to delete the redirection relationship between the specified forwarding rules."
   },
   "ModifyTargetWeight": {
     "params": [
@@ -549,14 +560,38 @@ INFO = {
     ],
     "desc": "This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
-  "DescribeTargetHealth": {
+  "DeleteRule": {
     "params": [
       {
-        "name": "LoadBalancerIds",
-        "desc": "List of IDs of CLB instances to be queried"
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "ListenerId",
+        "desc": "CLB listener ID"
+      },
+      {
+        "name": "LocationIds",
+        "desc": "Array of IDs of the forwarding rules to be deleted"
+      },
+      {
+        "name": "Domain",
+        "desc": "Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified"
+      },
+      {
+        "name": "Url",
+        "desc": "Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified"
       }
     ],
-    "desc": "This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance."
+    "desc": "This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
+  },
+  "DescribeTargetGroupList": {
+    "params": [],
+    "desc": "获取目标组列表"
+  },
+  "CreateTargetGroup": {
+    "params": [],
+    "desc": "创建目标组。（目标组功能正在灰度中，需要开通白名单支持）"
   },
   "DescribeTargets": {
     "params": [
@@ -609,38 +644,17 @@ INFO = {
     ],
     "desc": "This API (RegisterTargetsWithClassicalLB) is used to bind real servers to a classic CLB.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
   },
-  "ModifyTargetPort": {
-    "params": [
-      {
-        "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
-      },
-      {
-        "name": "ListenerId",
-        "desc": "CLB listener ID"
-      },
-      {
-        "name": "Targets",
-        "desc": "List of real servers for which to modify the ports"
-      },
-      {
-        "name": "NewPort",
-        "desc": "New port of the real server bound to a listener or forwarding rule"
-      },
-      {
-        "name": "LocationId",
-        "desc": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url"
-      },
-      {
-        "name": "Domain",
-        "desc": "Target rule domain name. This parameter does not take effect if LocationId is specified"
-      },
-      {
-        "name": "Url",
-        "desc": "Target rule URL. This parameter does not take effect if LocationId is specified"
-      }
-    ],
-    "desc": "This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
+  "DescribeTargetGroups": {
+    "params": [],
+    "desc": "查询目标组信息"
+  },
+  "ModifyTargetGroupAttribute": {
+    "params": [],
+    "desc": "修改目标组的名称或者默认端口属性"
+  },
+  "DescribeLoadBalancerListByCertId": {
+    "params": [],
+    "desc": "根据证书ID查询其在一个地域中所关联到负载均衡实例列表"
   },
   "DeregisterTargets": {
     "params": [
@@ -692,6 +706,39 @@ INFO = {
     ],
     "desc": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes."
   },
+  "ModifyTargetPort": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "ListenerId",
+        "desc": "CLB listener ID"
+      },
+      {
+        "name": "Targets",
+        "desc": "List of real servers for which to modify the ports"
+      },
+      {
+        "name": "NewPort",
+        "desc": "New port of the real server bound to a listener or forwarding rule"
+      },
+      {
+        "name": "LocationId",
+        "desc": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url"
+      },
+      {
+        "name": "Domain",
+        "desc": "Target rule domain name. This parameter does not take effect if LocationId is specified"
+      },
+      {
+        "name": "Url",
+        "desc": "Target rule URL. This parameter does not take effect if LocationId is specified"
+      }
+    ],
+    "desc": "This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
+  },
   "DescribeClassicalLBByInstanceId": {
     "params": [
       {
@@ -700,6 +747,23 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeClassicalLBByInstanceId) is used to get the list of classic CLB IDs through the real server instance ID."
+  },
+  "ReplaceCertForLoadBalancers": {
+    "params": [
+      {
+        "name": "OldCertificateId",
+        "desc": "ID of the certificate to be replaced, which can be a server certificate or a client certificate."
+      },
+      {
+        "name": "Certificate",
+        "desc": "Information such as the content of the new certificate"
+      }
+    ],
+    "desc": "This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.\nThis API supports replacing server certificates and client certificates.\nThe new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.\nNote: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems."
+  },
+  "ModifyTargetGroupInstancesPort": {
+    "params": [],
+    "desc": "批量修改目标组服务器端口。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
   },
   "BatchModifyTargetWeight": {
     "params": [
@@ -714,26 +778,14 @@ INFO = {
     ],
     "desc": "This API (BatchModifyTargetWeight) is used to batch modify the forwarding weights of real servers bound to a listener. Currently, it only supports HTTP/HTTPS listeners.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
-  "DeleteRewrite": {
+  "DescribeTargetHealth": {
     "params": [
       {
-        "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
-      },
-      {
-        "name": "SourceListenerId",
-        "desc": "Source listener ID"
-      },
-      {
-        "name": "TargetListenerId",
-        "desc": "Target listener ID"
-      },
-      {
-        "name": "RewriteInfos",
-        "desc": "Redirection relationship between forwarding rules"
+        "name": "LoadBalancerIds",
+        "desc": "List of IDs of CLB instances to be queried"
       }
     ],
-    "desc": "This API (DeleteRewrite) is used to delete the redirection relationship between the specified forwarding rules."
+    "desc": "This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance."
   },
   "CreateLoadBalancer": {
     "params": [
