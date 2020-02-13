@@ -1,4 +1,4 @@
-i#! /usr/bin/env python
+#! /usr/bin/env python
 
 """
 distutils/setuptools install script.
