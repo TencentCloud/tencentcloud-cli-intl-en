@@ -58,6 +58,10 @@ INFO = {
     ],
     "desc": "This API is used to view the information of available CVM model configurations."
   },
+  "AttachInstances": {
+    "params": [],
+    "desc": "此接口可将已存在实例添加到计算环境中。\n实例需要满足如下条件：<br/>\n1.实例不在批量计算系统中。<br/>\n2.实例状态要求处于运行中。<br/>\n3.支持预付费实例，按小时后付费实例，专享子机实例。不支持竞价实例。<br/>\n\n此接口会将加入到计算环境中的实例重设UserData和重装操作系统。"
+  },
   "CreateComputeEnv": {
     "params": [
       {
@@ -95,6 +99,10 @@ INFO = {
       }
     ],
     "desc": "This API is used to view the list of compute environments."
+  },
+  "DetachInstances": {
+    "params": [],
+    "desc": "将添加到计算环境中的实例从计算环境中移出。若是由批量计算自动创建的计算节点实例则不允许移出。"
   },
   "DescribeTaskLogs": {
     "params": [

@@ -197,14 +197,9 @@ INFO = {
     ],
     "desc": "This API (DescribeNetDetects) is used to query the list of network detection instances."
   },
-  "DescribeSecurityGroupPolicies": {
-    "params": [
-      {
-        "name": "SecurityGroupId",
-        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups."
-      }
-    ],
-    "desc": "This API (DescribeSecurityGroupPolicies) is used to query security group policies."
+  "ModifyCcnRegionBandwidthLimitsType": {
+    "params": [],
+    "desc": "This API (ModifyCcnRegionBandwidthlimitsType) is used to modify the bandwidth limits policy of the postpaid Ccn instances."
   },
   "DescribeGatewayFlowMonitorDetail": {
     "params": [
@@ -310,6 +305,15 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned."
+  },
+  "DescribeSecurityGroupPolicies": {
+    "params": [
+      {
+        "name": "SecurityGroupId",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups."
+      }
+    ],
+    "desc": "This API (DescribeSecurityGroupPolicies) is used to query security group policies."
   },
   "ModifyServiceTemplateAttribute": {
     "params": [

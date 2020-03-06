@@ -12,20 +12,20 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.batch.v20170312 import batch_client as batch_client_v20170312
-from tencentcloud.batch.v20170312 import models as models_v20170312
-from tccli.services.batch import v20170312
-from tccli.services.batch.v20170312 import help as v20170312_help
+from tencentcloud.postgres.v20170312 import postgres_client as postgres_client_v20170312
+from tencentcloud.postgres.v20170312 import models as models_v20170312
+from tccli.services.postgres import v20170312
+from tccli.services.postgres.v20170312 import help as v20170312_help
 
 
-def doDescribeComputeEnv(argv, arglist):
+def doRestartDBInstance(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeComputeEnv", g_param[OptionsDefine.Version])
+        show_help("RestartDBInstance", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "EnvId": argv.get("--EnvId"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -36,12 +36,12 @@ def doDescribeComputeEnv(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeComputeEnvRequest()
+    model = models.RestartDBInstanceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeComputeEnv(model)
+    rsp = client.RestartDBInstance(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -51,16 +51,13 @@ def doDescribeComputeEnv(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateTaskTemplate(argv, arglist):
+def doDescribeRegions(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreateTaskTemplate", g_param[OptionsDefine.Version])
+        show_help("DescribeRegions", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TaskTemplateName": argv.get("--TaskTemplateName"),
-        "TaskTemplateInfo": Utils.try_to_json(argv, "--TaskTemplateInfo"),
-        "TaskTemplateDescription": argv.get("--TaskTemplateDescription"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -71,12 +68,12 @@ def doCreateTaskTemplate(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateTaskTemplateRequest()
+    model = models.DescribeRegionsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CreateTaskTemplate(model)
+    rsp = client.DescribeRegions(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -86,15 +83,15 @@ def doCreateTaskTemplate(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doTerminateComputeNode(argv, arglist):
+def doModifyDBInstancesProject(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("TerminateComputeNode", g_param[OptionsDefine.Version])
+        show_help("ModifyDBInstancesProject", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "EnvId": argv.get("--EnvId"),
-        "ComputeNodeId": argv.get("--ComputeNodeId"),
+        "DBInstanceIdSet": Utils.try_to_json(argv, "--DBInstanceIdSet"),
+        "ProjectId": argv.get("--ProjectId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -105,12 +102,12 @@ def doTerminateComputeNode(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateComputeNodeRequest()
+    model = models.ModifyDBInstancesProjectRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.TerminateComputeNode(model)
+    rsp = client.ModifyDBInstancesProject(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -120,15 +117,221 @@ def doTerminateComputeNode(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeJobs(argv, arglist):
+def doDescribeOrders(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeJobs", g_param[OptionsDefine.Version])
+        show_help("DescribeOrders", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "JobIds": Utils.try_to_json(argv, "--JobIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "DealNames": Utils.try_to_json(argv, "--DealNames"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeOrdersRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeOrders(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doInitDBInstances(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("InitDBInstances", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceIdSet": Utils.try_to_json(argv, "--DBInstanceIdSet"),
+        "AdminName": argv.get("--AdminName"),
+        "AdminPassword": argv.get("--AdminPassword"),
+        "Charset": argv.get("--Charset"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.InitDBInstancesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.InitDBInstances(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doInquiryPriceUpgradeDBInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("InquiryPriceUpgradeDBInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Storage": Utils.try_to_json(argv, "--Storage"),
+        "Memory": Utils.try_to_json(argv, "--Memory"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "InstanceChargeType": argv.get("--InstanceChargeType"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.InquiryPriceUpgradeDBInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.InquiryPriceUpgradeDBInstance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeZones(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeZones", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeZonesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeZones(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeProductConfig(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeProductConfig", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Zone": argv.get("--Zone"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeProductConfigRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeProductConfig(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAccountRemark(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyAccountRemark", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Remark": argv.get("--Remark"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAccountRemarkRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyAccountRemark(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBXlogs(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBXlogs", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
 
@@ -141,12 +344,12 @@ def doDescribeJobs(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeJobsRequest()
+    model = models.DescribeDBXlogsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeJobs(model)
+    rsp = client.DescribeDBXlogs(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -156,14 +359,14 @@ def doDescribeJobs(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAvailableCvmInstanceTypes(argv, arglist):
+def doDescribeDBInstanceAttribute(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeAvailableCvmInstanceTypes", g_param[OptionsDefine.Version])
+        show_help("DescribeDBInstanceAttribute", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -174,12 +377,12 @@ def doDescribeAvailableCvmInstanceTypes(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAvailableCvmInstanceTypesRequest()
+    model = models.DescribeDBInstanceAttributeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeAvailableCvmInstanceTypes(model)
+    rsp = client.DescribeDBInstanceAttribute(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -189,13 +392,15 @@ def doDescribeAvailableCvmInstanceTypes(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAttachInstances(argv, arglist):
+def doModifyDBInstanceName(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("AttachInstances", g_param[OptionsDefine.Version])
+        show_help("ModifyDBInstanceName", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "InstanceName": argv.get("--InstanceName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -206,12 +411,12 @@ def doAttachInstances(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AttachInstancesRequest()
+    model = models.ModifyDBInstanceNameRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.AttachInstances(model)
+    rsp = client.ModifyDBInstanceName(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -221,16 +426,14 @@ def doAttachInstances(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateComputeEnv(argv, arglist):
+def doCloseDBExtranetAccess(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreateComputeEnv", g_param[OptionsDefine.Version])
+        show_help("CloseDBExtranetAccess", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ComputeEnv": Utils.try_to_json(argv, "--ComputeEnv"),
-        "Placement": Utils.try_to_json(argv, "--Placement"),
-        "ClientToken": argv.get("--ClientToken"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -241,12 +444,12 @@ def doCreateComputeEnv(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateComputeEnvRequest()
+    model = models.CloseDBExtranetAccessRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CreateComputeEnv(model)
+    rsp = client.CloseDBExtranetAccess(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -256,563 +459,130 @@ def doCreateComputeEnv(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteComputeEnv(argv, arglist):
+def doDescribeDBBackups(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteComputeEnv", g_param[OptionsDefine.Version])
+        show_help("DescribeDBBackups", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "EnvId": argv.get("--EnvId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteComputeEnvRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteComputeEnv(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDetachInstances(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DetachInstances", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DetachInstancesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DetachInstances(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTaskLogs(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTaskLogs", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobId": argv.get("--JobId"),
-        "TaskName": argv.get("--TaskName"),
-        "TaskInstanceIndexes": Utils.try_to_json(argv, "--TaskInstanceIndexes"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "Type": Utils.try_to_json(argv, "--Type"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTaskLogsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTaskLogs(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doTerminateJob(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("TerminateJob", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobId": argv.get("--JobId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateJobRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.TerminateJob(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTask(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTask", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobId": argv.get("--JobId"),
-        "TaskName": argv.get("--TaskName"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBBackupsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDBBackups(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doResetAccountPassword(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ResetAccountPassword", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Password": argv.get("--Password"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ResetAccountPasswordRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ResetAccountPassword(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBErrlogs(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBErrlogs", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "DatabaseName": argv.get("--DatabaseName"),
+        "SearchKeys": Utils.try_to_json(argv, "--SearchKeys"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTaskRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTask(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeCvmZoneInstanceConfigInfos(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeCvmZoneInstanceConfigInfos", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Filters": Utils.try_to_json(argv, "--Filters"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeCvmZoneInstanceConfigInfosRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeCvmZoneInstanceConfigInfos(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeJob(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeJob", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobId": argv.get("--JobId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeJobRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeJob(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSubmitJob(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("SubmitJob", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Placement": Utils.try_to_json(argv, "--Placement"),
-        "Job": Utils.try_to_json(argv, "--Job"),
-        "ClientToken": argv.get("--ClientToken"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SubmitJobRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.SubmitJob(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doTerminateComputeNodes(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("TerminateComputeNodes", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "EnvId": argv.get("--EnvId"),
-        "ComputeNodeIds": Utils.try_to_json(argv, "--ComputeNodeIds"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateComputeNodesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.TerminateComputeNodes(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTaskTemplates(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTaskTemplates", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TaskTemplateIds": Utils.try_to_json(argv, "--TaskTemplateIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBErrlogsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDBErrlogs(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeAccounts(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeAccounts", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTaskTemplatesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTaskTemplates(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeInstanceCategories(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeInstanceCategories", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceCategoriesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeInstanceCategories(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteTaskTemplates(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteTaskTemplates", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TaskTemplateIds": Utils.try_to_json(argv, "--TaskTemplateIds"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTaskTemplatesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteTaskTemplates(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doTerminateTaskInstance(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("TerminateTaskInstance", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobId": argv.get("--JobId"),
-        "TaskName": argv.get("--TaskName"),
-        "TaskInstanceIndex": Utils.try_to_json(argv, "--TaskInstanceIndex"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateTaskInstanceRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.TerminateTaskInstance(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyComputeEnv(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyComputeEnv", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "EnvId": argv.get("--EnvId"),
-        "DesiredComputeNodeCount": Utils.try_to_json(argv, "--DesiredComputeNodeCount"),
-        "EnvName": argv.get("--EnvName"),
-        "EnvDescription": argv.get("--EnvDescription"),
-        "EnvData": Utils.try_to_json(argv, "--EnvData"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyComputeEnvRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyComputeEnv(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeJobSubmitInfo(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeJobSubmitInfo", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobId": argv.get("--JobId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeJobSubmitInfoRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeJobSubmitInfo(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeComputeEnvCreateInfo(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeComputeEnvCreateInfo", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "EnvId": argv.get("--EnvId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeComputeEnvCreateInfoRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeComputeEnvCreateInfo(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeComputeEnvActivities(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeComputeEnvActivities", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "EnvId": argv.get("--EnvId"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "OrderBy": argv.get("--OrderBy"),
+        "OrderByType": argv.get("--OrderByType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -823,12 +593,12 @@ def doDescribeComputeEnvActivities(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeComputeEnvActivitiesRequest()
+    model = models.DescribeAccountsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeComputeEnvActivities(model)
+    rsp = client.DescribeAccounts(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -838,17 +608,21 @@ def doDescribeComputeEnvActivities(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeComputeEnvCreateInfos(argv, arglist):
+def doDescribeDBSlowlogs(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeComputeEnvCreateInfos", g_param[OptionsDefine.Version])
+        show_help("DescribeDBSlowlogs", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "EnvIds": Utils.try_to_json(argv, "--EnvIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "DatabaseName": argv.get("--DatabaseName"),
+        "OrderBy": argv.get("--OrderBy"),
+        "OrderByType": argv.get("--OrderByType"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -859,12 +633,12 @@ def doDescribeComputeEnvCreateInfos(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeComputeEnvCreateInfosRequest()
+    model = models.DescribeDBSlowlogsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeComputeEnvCreateInfos(model)
+    rsp = client.DescribeDBSlowlogs(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -874,14 +648,14 @@ def doDescribeComputeEnvCreateInfos(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteJob(argv, arglist):
+def doOpenDBExtranetAccess(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteJob", g_param[OptionsDefine.Version])
+        show_help("OpenDBExtranetAccess", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "JobId": argv.get("--JobId"),
+        "DBInstanceId": argv.get("--DBInstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -892,117 +666,12 @@ def doDeleteJob(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteJobRequest()
+    model = models.OpenDBExtranetAccessRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteJob(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeComputeEnvs(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeComputeEnvs", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "EnvIds": Utils.try_to_json(argv, "--EnvIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeComputeEnvsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeComputeEnvs(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyTaskTemplate(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyTaskTemplate", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TaskTemplateId": argv.get("--TaskTemplateId"),
-        "TaskTemplateName": argv.get("--TaskTemplateName"),
-        "TaskTemplateDescription": argv.get("--TaskTemplateDescription"),
-        "TaskTemplateInfo": Utils.try_to_json(argv, "--TaskTemplateInfo"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTaskTemplateRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTaskTemplate(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doRetryJobs(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("RetryJobs", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "JobIds": Utils.try_to_json(argv, "--JobIds"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.BatchClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RetryJobsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.RetryJobs(model)
+    rsp = client.OpenDBExtranetAccess(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1013,7 +682,7 @@ def doRetryJobs(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20170312": batch_client_v20170312,
+    "v20170312": postgres_client_v20170312,
 
 }
 
@@ -1023,35 +692,25 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "DescribeComputeEnv": doDescribeComputeEnv,
-    "CreateTaskTemplate": doCreateTaskTemplate,
-    "TerminateComputeNode": doTerminateComputeNode,
-    "DescribeJobs": doDescribeJobs,
-    "DescribeAvailableCvmInstanceTypes": doDescribeAvailableCvmInstanceTypes,
-    "AttachInstances": doAttachInstances,
-    "CreateComputeEnv": doCreateComputeEnv,
-    "DeleteComputeEnv": doDeleteComputeEnv,
-    "DetachInstances": doDetachInstances,
-    "DescribeTaskLogs": doDescribeTaskLogs,
-    "TerminateJob": doTerminateJob,
-    "DescribeTask": doDescribeTask,
-    "DescribeCvmZoneInstanceConfigInfos": doDescribeCvmZoneInstanceConfigInfos,
-    "DescribeJob": doDescribeJob,
-    "SubmitJob": doSubmitJob,
-    "TerminateComputeNodes": doTerminateComputeNodes,
-    "DescribeTaskTemplates": doDescribeTaskTemplates,
-    "DescribeInstanceCategories": doDescribeInstanceCategories,
-    "DeleteTaskTemplates": doDeleteTaskTemplates,
-    "TerminateTaskInstance": doTerminateTaskInstance,
-    "ModifyComputeEnv": doModifyComputeEnv,
-    "DescribeJobSubmitInfo": doDescribeJobSubmitInfo,
-    "DescribeComputeEnvCreateInfo": doDescribeComputeEnvCreateInfo,
-    "DescribeComputeEnvActivities": doDescribeComputeEnvActivities,
-    "DescribeComputeEnvCreateInfos": doDescribeComputeEnvCreateInfos,
-    "DeleteJob": doDeleteJob,
-    "DescribeComputeEnvs": doDescribeComputeEnvs,
-    "ModifyTaskTemplate": doModifyTaskTemplate,
-    "RetryJobs": doRetryJobs,
+    "RestartDBInstance": doRestartDBInstance,
+    "DescribeRegions": doDescribeRegions,
+    "ModifyDBInstancesProject": doModifyDBInstancesProject,
+    "DescribeOrders": doDescribeOrders,
+    "InitDBInstances": doInitDBInstances,
+    "InquiryPriceUpgradeDBInstance": doInquiryPriceUpgradeDBInstance,
+    "DescribeZones": doDescribeZones,
+    "DescribeProductConfig": doDescribeProductConfig,
+    "ModifyAccountRemark": doModifyAccountRemark,
+    "DescribeDBXlogs": doDescribeDBXlogs,
+    "DescribeDBInstanceAttribute": doDescribeDBInstanceAttribute,
+    "ModifyDBInstanceName": doModifyDBInstanceName,
+    "CloseDBExtranetAccess": doCloseDBExtranetAccess,
+    "DescribeDBBackups": doDescribeDBBackups,
+    "ResetAccountPassword": doResetAccountPassword,
+    "DescribeDBErrlogs": doDescribeDBErrlogs,
+    "DescribeAccounts": doDescribeAccounts,
+    "DescribeDBSlowlogs": doDescribeDBSlowlogs,
+    "OpenDBExtranetAccess": doOpenDBExtranetAccess,
 
 }
 
@@ -1065,7 +724,7 @@ AVAILABLE_VERSIONS = {
 }
 
 
-def batch_action(argv, arglist):
+def postgres_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -1081,7 +740,7 @@ def batch_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "batch", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "postgres", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -1102,7 +761,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("batch", batch_action)
+    cmd = NiceCommand("postgres", postgres_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -1161,11 +820,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["batch"][OptionsDefine.Version]
+            version = config["postgres"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["batch"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["postgres"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -1182,7 +841,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "batch", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "postgres", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -1192,7 +851,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["batch"]["version"]
+        version = profile["postgres"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass
