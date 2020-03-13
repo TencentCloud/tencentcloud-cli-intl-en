@@ -40,7 +40,7 @@ INFO = {
   },
   "DeleteClusterEndpoint": {
     "params": [],
-    "desc": "删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)"
+    "desc": "删除集群访问端口(独立集群开启内网/外网访问,托管集群支持开启内网访问)"
   },
   "CreateClusterInstances": {
     "params": [
@@ -182,11 +182,11 @@ INFO = {
   },
   "DescribeClusterEndpointStatus": {
     "params": [],
-    "desc": "查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)"
+    "desc": "查询集群访问端口状态(独立集群开启内网/外网访问,托管集群支持开启内网访问)"
   },
   "CreateClusterEndpoint": {
     "params": [],
-    "desc": "创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)"
+    "desc": "创建集群访问端口(独立集群开启内网/外网访问,托管集群支持开启内网访问)"
   },
   "AddExistedInstances": {
     "params": [
@@ -270,7 +270,7 @@ INFO = {
   },
   "DeleteClusterEndpointVip": {
     "params": [],
-    "desc": "删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）"
+    "desc": "删除托管集群外网访问端口(老的方式,仅支持托管集群外网端口)"
   },
   "DeleteClusterInstances": {
     "params": [
@@ -295,11 +295,11 @@ INFO = {
   },
   "ModifyClusterEndpointSP": {
     "params": [],
-    "desc": "修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）"
+    "desc": "修改托管集群外网端口的安全策略(老的方式,仅支持托管集群外网端口)"
   },
   "CreateClusterEndpointVip": {
     "params": [],
-    "desc": "创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）"
+    "desc": "创建托管集群外网访问端口(老的方式,仅支持托管集群外网端口)"
   },
   "DeleteClusterRouteTable": {
     "params": [

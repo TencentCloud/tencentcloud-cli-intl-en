@@ -38,6 +38,10 @@ INFO = {
       {
         "name": "FsName",
         "desc": "Custom file system name"
+      },
+      {
+        "name": "ResourceTags",
+        "desc": "File system tag"
       }
     ],
     "desc": "This API is used to create a file system."
@@ -89,6 +93,19 @@ INFO = {
   "DescribeAvailableZoneInfo": {
     "params": [],
     "desc": "This API is used to query the availability of a region."
+  },
+  "UpdateCfsFileSystemName": {
+    "params": [
+      {
+        "name": "FileSystemId",
+        "desc": "File system ID"
+      },
+      {
+        "name": "FsName",
+        "desc": "Custom file system name"
+      }
+    ],
+    "desc": "This API is used to update a file system name."
   },
   "DescribeCfsPGroups": {
     "params": [],

@@ -207,7 +207,7 @@ INFO = {
   },
   "DescribeSmsTemplateList": {
     "params": [],
-    "desc": ">⚠️注意：个人认证用户不支持使用 API 查询短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。"
+    "desc": ">⚠️注意:个人认证用户不支持使用 API 查询短信正文模版,请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)."
   },
   "PullSmsReplyStatus": {
     "params": [
@@ -224,7 +224,7 @@ INFO = {
   },
   "DescribeSmsSignList": {
     "params": [],
-    "desc": ">⚠️注意：个人认证用户不支持使用 API 查询短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。"
+    "desc": ">⚠️注意:个人认证用户不支持使用 API 查询短信签名,请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)."
   },
   "PullSmsSendStatusByPhoneNumber": {
     "params": [

@@ -3,7 +3,7 @@ DESC = "kms-2019-01-18"
 INFO = {
   "Encrypt": {
     "params": [],
-    "desc": "本接口用于加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作"
+    "desc": "本接口用于加密最多为4KB任意数据,可用于加密数据库密码,RSA Key,或其它较小的敏感信息.对于应用的数据加密,使用GenerateDataKey生成的DataKey进行本地数据的加解密操作"
   },
   "DeleteImportedKeyMaterial": {
     "params": [
@@ -41,7 +41,7 @@ INFO = {
   },
   "DisableKey": {
     "params": [],
-    "desc": "本接口用于禁用一个主密钥，处于禁用状态的Key无法用于加密、解密操作。"
+    "desc": "本接口用于禁用一个主密钥,处于禁用状态的Key无法用于加密、解密操作."
   },
   "GenerateDataKey": {
     "params": [
@@ -62,7 +62,7 @@ INFO = {
         "desc": ""
       }
     ],
-    "desc": "本接口生成一个数据密钥，您可以用这个密钥进行本地数据的加密。"
+    "desc": "本接口生成一个数据密钥,您可以用这个密钥进行本地数据的加密."
   },
   "CancelKeyDeletion": {
     "params": [],
@@ -70,15 +70,15 @@ INFO = {
   },
   "GetKeyRotationStatus": {
     "params": [],
-    "desc": "查询指定的CMK是否开启了密钥轮换功能。"
+    "desc": "查询指定的CMK是否开启了密钥轮换功能."
   },
   "DisableKeys": {
     "params": [],
-    "desc": "该接口用于批量禁止CMK的使用。"
+    "desc": "该接口用于批量禁止CMK的使用."
   },
   "ReEncrypt": {
     "params": [],
-    "desc": "使用指定CMK对密文重新加密。"
+    "desc": "使用指定CMK对密文重新加密."
   },
   "ListKeys": {
     "params": [],
@@ -112,7 +112,7 @@ INFO = {
         "desc": "Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents."
       }
     ],
-    "desc": "创建用户管理数据密钥的主密钥CMK（Custom Master Key）。"
+    "desc": "创建用户管理数据密钥的主密钥CMK(Custom Master Key)."
   },
   "GetParametersForImport": {
     "params": [
@@ -162,27 +162,27 @@ INFO = {
         "desc": "Filters by CMK type. \"TENCENT_KMS\" indicates to filter CMKs whose key materials are created by KMS; \"EXTERNAL\" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; \"ALL\" or empty indicates to filter CMKs of both types. This value is case-sensitive."
       }
     ],
-    "desc": "根据指定Offset和Limit获取主密钥列表详情。"
+    "desc": "根据指定Offset和Limit获取主密钥列表详情."
   },
   "DisableKeyRotation": {
     "params": [],
-    "desc": "对指定的CMK禁止密钥轮换功能。"
+    "desc": "对指定的CMK禁止密钥轮换功能."
   },
   "EnableKeys": {
     "params": [],
-    "desc": "该接口用于批量启用CMK。"
+    "desc": "该接口用于批量启用CMK."
   },
   "ScheduleKeyDeletion": {
     "params": [],
-    "desc": "CMK计划删除接口，用于指定CMK删除的时间，可选时间区间为[7,30]天"
+    "desc": "CMK计划删除接口,用于指定CMK删除的时间,可选时间区间为[7,30]天"
   },
   "EnableKeyRotation": {
     "params": [],
-    "desc": "对指定的CMK开启密钥轮换功能。"
+    "desc": "对指定的CMK开启密钥轮换功能."
   },
   "EnableKey": {
     "params": [],
-    "desc": "用于启用一个指定的CMK。"
+    "desc": "用于启用一个指定的CMK."
   },
   "Decrypt": {
     "params": [
@@ -195,7 +195,7 @@ INFO = {
         "desc": ""
       }
     ],
-    "desc": "本接口用于解密密文，得到明文数据。"
+    "desc": "本接口用于解密密文,得到明文数据."
   },
   "UpdateKeyDescription": {
     "params": [],

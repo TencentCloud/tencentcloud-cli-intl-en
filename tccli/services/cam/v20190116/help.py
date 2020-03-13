@@ -21,7 +21,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Sub-user’s console login password. If no password rules have been set, the default rules require the password to have at least 8 characters, at least one lowercase letter, one uppercase letter, one number, and one special character. This value is valid only when the sub-user is allowed to log in to the console. If no value is specified, and console login is allowed, the system will automatically generate a password. The automatically generated passwords are 32 characters long and contain letters (both upper and lower cases), numbers, and special characters. "
+        "desc": "Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters."
       },
       {
         "name": "NeedResetPassword",
@@ -67,7 +67,11 @@ INFO = {
       },
       {
         "name": "ConsoleLogin",
-        "desc": "If login is allowed"
+        "desc": "Whether login is allowed. 1: yes, 0: no"
+      },
+      {
+        "name": "SessionDuration",
+        "desc": ""
       }
     ],
     "desc": "This API (CreateRole) is used to create a role."
@@ -153,7 +157,7 @@ INFO = {
     "params": [
       {
         "name": "TargetGroupId",
-        "desc": "User Group ID"
+        "desc": "User group ID"
       },
       {
         "name": "Page",
@@ -191,7 +195,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Sub-user’s console login password. If no password rules have been set, the default rules require the password to have at least 8 characters, at least one lowercase letter, one uppercase letter, one number, and one special character. This value is valid only when the sub-user is allowed to log in to the console. If no value is specified, and console login is allowed, the system will automatically generate a password. The automatically generated passwords are 32 characters long and contain letters (both upper and lower cases), numbers, and special characters."
+        "desc": "Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters."
       },
       {
         "name": "NeedResetPassword",
@@ -388,7 +392,7 @@ INFO = {
         "desc": "If MFA requires top-up"
       }
     ],
-    "desc": "This API is used to set user login, sensitive operations and async login."
+    "desc": "This API is used to set account verification for login and sensitive operation protection."
   },
   "UpdatePolicy": {
     "params": [
@@ -406,7 +410,7 @@ INFO = {
       },
       {
         "name": "PolicyDocument",
-        "desc": "Policy document"
+        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API"
       }
     ],
     "desc": "This API (UpdatePolicy) is used to update a policy."
@@ -598,7 +602,7 @@ INFO = {
       },
       {
         "name": "PolicyDocument",
-        "desc": "Policy document"
+        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API"
       },
       {
         "name": "Description",

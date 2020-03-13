@@ -237,6 +237,8 @@ def doRegisterTargetGroupInstances(argv, arglist):
         return
 
     param = {
+        "TargetGroupId": argv.get("--TargetGroupId"),
+        "TargetGroupInstances": Utils.try_to_json(argv, "--TargetGroupInstances"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -339,6 +341,7 @@ def doDisassociateTargetGroups(argv, arglist):
         return
 
     param = {
+        "Associations": Utils.try_to_json(argv, "--Associations"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -407,6 +410,7 @@ def doDeleteTargetGroups(argv, arglist):
         return
 
     param = {
+        "TargetGroupIds": Utils.try_to_json(argv, "--TargetGroupIds"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -690,6 +694,7 @@ def doAssociateTargetGroups(argv, arglist):
         return
 
     param = {
+        "Associations": Utils.try_to_json(argv, "--Associations"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -722,6 +727,8 @@ def doDeregisterTargetGroupInstances(argv, arglist):
         return
 
     param = {
+        "TargetGroupId": argv.get("--TargetGroupId"),
+        "TargetGroupInstances": Utils.try_to_json(argv, "--TargetGroupInstances"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1093,6 +1100,10 @@ def doDescribeTargetGroupList(argv, arglist):
         return
 
     param = {
+        "TargetGroupIds": Utils.try_to_json(argv, "--TargetGroupIds"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1125,6 +1136,10 @@ def doCreateTargetGroup(argv, arglist):
         return
 
     param = {
+        "TargetGroupName": argv.get("--TargetGroupName"),
+        "VpcId": argv.get("--VpcId"),
+        "Port": Utils.try_to_json(argv, "--Port"),
+        "TargetGroupInstances": Utils.try_to_json(argv, "--TargetGroupInstances"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1262,6 +1277,10 @@ def doDescribeTargetGroups(argv, arglist):
         return
 
     param = {
+        "TargetGroupIds": Utils.try_to_json(argv, "--TargetGroupIds"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1294,6 +1313,9 @@ def doModifyTargetGroupAttribute(argv, arglist):
         return
 
     param = {
+        "TargetGroupId": argv.get("--TargetGroupId"),
+        "TargetGroupName": argv.get("--TargetGroupName"),
+        "Port": Utils.try_to_json(argv, "--Port"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1326,6 +1348,7 @@ def doDescribeLoadBalancerListByCertId(argv, arglist):
         return
 
     param = {
+        "CertIds": Utils.try_to_json(argv, "--CertIds"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1400,6 +1423,8 @@ def doModifyLoadBalancerAttributes(argv, arglist):
         "LoadBalancerName": argv.get("--LoadBalancerName"),
         "TargetRegionInfo": Utils.try_to_json(argv, "--TargetRegionInfo"),
         "InternetChargeInfo": Utils.try_to_json(argv, "--InternetChargeInfo"),
+        "LoadBalancerPassToTarget": Utils.try_to_json(argv, "--LoadBalancerPassToTarget"),
+        "SnatPro": Utils.try_to_json(argv, "--SnatPro"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1432,6 +1457,8 @@ def doModifyTargetGroupInstancesWeight(argv, arglist):
         return
 
     param = {
+        "TargetGroupId": argv.get("--TargetGroupId"),
+        "TargetGroupInstances": Utils.try_to_json(argv, "--TargetGroupInstances"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1536,6 +1563,9 @@ def doDescribeTargetGroupInstances(argv, arglist):
         return
 
     param = {
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1568,6 +1598,8 @@ def doModifyTargetGroupInstancesPort(argv, arglist):
         return
 
     param = {
+        "TargetGroupId": argv.get("--TargetGroupId"),
+        "TargetGroupInstances": Utils.try_to_json(argv, "--TargetGroupInstances"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1681,6 +1713,7 @@ def doCreateLoadBalancer(argv, arglist):
         "MasterZoneId": argv.get("--MasterZoneId"),
         "ZoneId": argv.get("--ZoneId"),
         "InternetAccessible": Utils.try_to_json(argv, "--InternetAccessible"),
+        "VipIsp": argv.get("--VipIsp"),
         "Tags": Utils.try_to_json(argv, "--Tags"),
 
     }

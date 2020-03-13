@@ -718,6 +718,10 @@ INFO = {
       {
         "name": "NotificationTarget",
         "desc": "Notification target"
+      },
+      {
+        "name": "LifecycleTransitionType",
+        "desc": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. "
       }
     ],
     "desc": "This API (CreateLifeCycleHook) is used to create a lifecycle hook.\n\n* You can configure message notifications in the following format for lifecycle hooks, which will be sent to your CMQ queue by AS:\n\n```\n{\n\t\"Service\": \"Tencent Cloud Auto Scaling\",\n\t\"Time\": \"2019-03-14T10:15:11Z\",\n\t\"AppId\": \"1251783334\",\n\t\"ActivityId\": \"asa-fznnvrja\",\n\t\"AutoScalingGroupId\": \"asg-rrrrtttt\",\n\t\"LifecycleHookId\": \"ash-xxxxyyyy\",\n\t\"LifecycleHookName\": \"my-hook\",\n\t\"LifecycleActionToken\": \"3080e1c9-0efe-4dd7-ad3b-90cd6618298f\",\n\t\"InstanceId\": \"ins-aaaabbbb\",\n\t\"LifecycleTransition\": \"INSTANCE_LAUNCHING\",\n\t\"NotificationMetadata\": \"\"\n}\n```"
@@ -751,6 +755,10 @@ INFO = {
       {
         "name": "NotificationTarget",
         "desc": "Notification target"
+      },
+      {
+        "name": "LifecycleTransitionType",
+        "desc": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. "
       }
     ],
     "desc": "This API (UpgradeLifecycleHook) is used to upgrade a lifecycle hook.\n\n* This API is used to upgrade a lifecycle hook in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n"

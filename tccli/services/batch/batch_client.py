@@ -196,6 +196,8 @@ def doAttachInstances(argv, arglist):
         return
 
     param = {
+        "EnvId": argv.get("--EnvId"),
+        "Instances": Utils.try_to_json(argv, "--Instances"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -296,6 +298,8 @@ def doDetachInstances(argv, arglist):
         return
 
     param = {
+        "EnvId": argv.get("--EnvId"),
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

@@ -230,6 +230,7 @@ def doAddCdnDomain(argv, arglist):
         "Ipv6": Utils.try_to_json(argv, "--Ipv6"),
         "SpecificConfig": Utils.try_to_json(argv, "--SpecificConfig"),
         "Area": argv.get("--Area"),
+        "OriginPullTimeout": Utils.try_to_json(argv, "--OriginPullTimeout"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -724,6 +725,8 @@ def doUpdateDomainConfig(argv, arglist):
         "ServiceType": argv.get("--ServiceType"),
         "SpecificConfig": Utils.try_to_json(argv, "--SpecificConfig"),
         "Area": argv.get("--Area"),
+        "OriginPullTimeout": Utils.try_to_json(argv, "--OriginPullTimeout"),
+        "AwsPrivateAccess": Utils.try_to_json(argv, "--AwsPrivateAccess"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

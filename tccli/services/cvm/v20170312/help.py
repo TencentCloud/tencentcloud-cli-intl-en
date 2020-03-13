@@ -252,7 +252,7 @@ INFO = {
         "desc": "ID list of security groups of the instance. The instance will be associated with the specified security groups and will be disassociated from the original security groups."
       }
     ],
-    "desc": "This API is used to modify the attributes of an instance. Currently you can only use the API to modify the name and the associated security groups of the instance.\n\n* Instance names are used only for users’ convenience. Tencent Cloud does not use the name for ticket submission or instance management.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* When you change the security groups associated with an instance, the original security groups will be disassociated."
+    "desc": "This API is used to modify the attributes of an instance. Currently you can only use the API to modify the name and the associated security groups of the instance.\n\n* Instance names are used only for users' convenience. Tencent Cloud does not use the name for ticket submission or instance management.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* When you change the security groups associated with an instance, the original security groups will be disassociated."
   },
   "DescribeRegions": {
     "params": [],
@@ -307,7 +307,7 @@ INFO = {
         "desc": "The ID of the project to which the new key pair belongs.\nYou can query the project IDs in two ways:\n<li>Query the project IDs in the project list.\n<li>Call `DescribeProject` and look for `projectId` in the response."
       }
     ],
-    "desc": "This API is used to create an `OpenSSH RSA` key pair, which you can use to log in to a `Linux` instance.\n\n* You only need to specify a name, and the system will automatically create a key pair and return its `ID` and the public and private keys.\n* The name of the key pair must be unique.\n* You can save the private key to a file and use it as an authentication method for `SSH`.\n* Tencent Cloud does not save users’ private keys. Be sure to save it yourself."
+    "desc": "This API is used to create an `OpenSSH RSA` key pair, which you can use to log in to a `Linux` instance.\n\n* You only need to specify a name, and the system will automatically create a key pair and return its `ID` and the public and private keys.\n* The name of the key pair must be unique.\n* You can save the private key to a file and use it as an authentication method for `SSH`.\n* Tencent Cloud does not save users' private keys. Be sure to save it yourself."
   },
   "DeleteKeyPairs": {
     "params": [

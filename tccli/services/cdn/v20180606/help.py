@@ -14,7 +14,7 @@ INFO = {
     "params": [
       {
         "name": "Domain",
-        "desc": "Domain name\nThe domain name status should be **Disabled**"
+        "desc": "Domain name\nThe domain name status should be `Disabled`"
       }
     ],
     "desc": "This API is used to delete a specified acceleration domain name."
@@ -73,11 +73,11 @@ INFO = {
     "params": [
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)."
+        "desc": "Offset for paginated queries. Default value: 0 (the first page)."
       },
       {
         "name": "Limit",
-        "desc": "Limit on paged queries. Default value: 100. Maximum value: 1000."
+        "desc": "Limit on paginated queries. Default value: 100. Maximum value: 1000."
       },
       {
         "name": "Filters",
@@ -88,7 +88,7 @@ INFO = {
         "desc": "Sorting rules"
       }
     ],
-    "desc": "This API is used to query all the configuration information of CDN acceleration domain names (inside and outside mainland China)."
+    "desc": "This API is used to query the complete configuration information of CDN acceleration domain names (inside and outside mainland China)."
   },
   "AddCdnDomain": {
     "params": [
@@ -98,7 +98,7 @@ INFO = {
       },
       {
         "name": "ServiceType",
-        "desc": "Business type of acceleration domain name\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming media VOD acceleration"
+        "desc": "Acceleration domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming media VOD acceleration"
       },
       {
         "name": "Origin",
@@ -106,7 +106,7 @@ INFO = {
       },
       {
         "name": "ProjectId",
-        "desc": "Project ID, which is 0 by default, indicating **Default Project**"
+        "desc": "Project ID. Default value: 0, indicating `Default Project`"
       },
       {
         "name": "IpFilter",
@@ -130,7 +130,7 @@ INFO = {
       },
       {
         "name": "RangeOriginPull",
-        "desc": "Range origin-pull configuration"
+        "desc": "Range GETs configuration"
       },
       {
         "name": "FollowRedirect",
@@ -138,7 +138,7 @@ INFO = {
       },
       {
         "name": "ErrorPage",
-        "desc": "Error code redirect configuration (This feature is in beta test and not fully available yet.)"
+        "desc": "Error code redirect configuration (This feature is in beta and not generally available yet.)"
       },
       {
         "name": "RequestHeader",
@@ -174,7 +174,7 @@ INFO = {
       },
       {
         "name": "Https",
-        "desc": "Https acceleration configuration"
+        "desc": "HTTPS acceleration configuration"
       },
       {
         "name": "Authentication",
@@ -194,19 +194,23 @@ INFO = {
       },
       {
         "name": "MaxAge",
-        "desc": "Browser cache configuration (This feature is in beta test and not fully available yet.)"
+        "desc": "Browser cache configuration (This feature is in beta and not generally available yet.)"
       },
       {
         "name": "Ipv6",
-        "desc": "Ipv6 configuration (This feature is in beta test and not fully available yet.)"
+        "desc": "IPv6 configuration (This feature is in beta and not generally available yet.)"
       },
       {
         "name": "SpecificConfig",
-        "desc": "Specific configuration for region attributes\nApplicable to use cases where the configuration of accelerating domain names inside mainland China is inconsistent with the configuration outside mainland China."
+        "desc": "Specific region configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China."
       },
       {
         "name": "Area",
-        "desc": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration\nTo use overseas acceleration and global acceleration, you need to enable the overseas acceleration service first"
+        "desc": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration\nOverseas acceleration service must be enabled to use overseas acceleration and global acceleration."
+      },
+      {
+        "name": "OriginPullTimeout",
+        "desc": ""
       }
     ],
     "desc": "This API is used to add a CDN acceleration domain name."
@@ -268,11 +272,11 @@ INFO = {
       },
       {
         "name": "Isp",
-        "desc": "Specifies an ISP when you query the CDN data within Mainland China. If it is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified an ISP, you cannot specify a province or an IP protocol for the same query."
+        "desc": "Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified an ISP, you cannot specify a province or an IP protocol for the same query."
       },
       {
         "name": "District",
-        "desc": "Specifies a province when you query the CDN data within Mainland China. If it is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside Mainland China. If it is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query."
+        "desc": "Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query."
       },
       {
         "name": "Protocol",
@@ -310,24 +314,24 @@ INFO = {
     "params": [
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)."
+        "desc": "Offset for paginated queries. Default value: 0 (the first page)."
       },
       {
         "name": "Limit",
-        "desc": "Limit on paged queries. Default value: 100. Maximum value: 1000."
+        "desc": "Limit on paginated queries. Default value: 100. Maximum value: 1000."
       },
       {
         "name": "Filters",
         "desc": "Query condition filter, complex type."
       }
     ],
-    "desc": "This API is used to query the basic configuration information of CDN acceleration domain names (inside and outside mainland China), including the project ID, service status, business type, creation time, and update time, etc."
+    "desc": "This API is used to query the basic configuration information of CDN acceleration domain names (inside and outside mainland China), including the project ID, service status, service type, creation time, and update time, etc."
   },
   "StartCdnDomain": {
     "params": [
       {
         "name": "Domain",
-        "desc": "Domain name\nThe domain name status should be **Disabled**"
+        "desc": "Domain name\nThe domain name status should be `Disabled`"
       }
     ],
     "desc": "This API is used to enable the acceleration service for a disabled domain name."
@@ -339,17 +343,17 @@ INFO = {
         "desc": "Domain name\nThe domain name status should be **Enabled**"
       }
     ],
-    "desc": "This API is used to suspend the acceleration service for a domain name.\nNote: after the acceleration service has been suspended, the requests to the cache node will directly return 404. In order to avoid impact to your business, please release it before suspending the acceleration service."
+    "desc": "This API is used to suspend the acceleration service for a domain name.\nNote: after the acceleration service has been suspended, requests to the cache node will return a 404 error. In order to avoid impact to your business, please move the domain name to another service before suspending the acceleration service."
   },
   "ListTopData": {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Query start date. Example: 2018-09-09.\nIt only supports data query at daily granularity. The date information in the input parameter is the start date.\nReturns data generated at or after 00:00:00 on the start date.\nIt only supports querying of data within 90 days."
+        "desc": "Query start date. Example: 2018-09-09.\nOnly supports data query at daily granularity. The date in the input parameter is used as the start date.\nData generated at or after 00:00:00 on the start date will be returned.\nOnly data from the last 90 days will be queried."
       },
       {
         "name": "EndTime",
-        "desc": "Query end date. Example: 2018-09-10\nIt only supports data query at daily granularity. The date information in the input parameter is the end date.\nReturns data generated before or at 23:59:59 on the end date.\nEndTime must be greater than or equal to StartTime"
+        "desc": "Query end date. Example: 2018-09-10\nOnly supports data query at daily granularity. The date in the input parameter is used as the end date.\nData generated before or at 23:59:59 on the end date will be returned.\nEndTime must be greater than or equal to StartTime"
       },
       {
         "name": "Metric",
@@ -384,7 +388,7 @@ INFO = {
         "desc": "Specifies a region type for the query. If it is left blank, data on the service region will be queried. This parameter is only valid when `Area` is `overseas` and `Metric` is `District` or `Host`.\n`server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;\n`client`: specifies to query data on the client region where the request devices are located; if `Metric` is `Host`, supported filters are `flux`, `request`, and `bandwidth`."
       }
     ],
-    "desc": "This API is used to query the following sorting data by using different combinations of the Metric and Filter input parameters:\n\n+ It sorts access URLs by total traffic and total requests, and returns the top 1,000 URLs in descending order.\n+ It sorts client districts by total traffic and total requests, and returns the list of districts in descending order.\n+ It sorts client ISPs by total traffic and total requests, and returns the list of ISPs in descending order.\n+ It sorts domain names by total traffic, peak bandwidth, total requests, average hit rate, and 2XX/3XX/4XX/5XX status codes, and returns the list of domain names in descending order.\n+ It sorts domain names by total origin-pull traffic, peak origin-pull bandwidth, total origin-pull requests, average origin-pull failure rate, and 2XX/3XX/4XX/5XX origin-pull status codes, and returns the list of domain names in descending order.\n\nNote: only querying of data within the past 90 days is supported."
+    "desc": "This API is used to list data sorted the following ways by using different combinations of the Metric and Filter input parameters:\n\n+ It sorts access URLs by total traffic and total requests, and returns the top 1,000 URLs in descending order.\n+ It sorts client districts by total traffic and total requests, and returns the list of districts in descending order.\n+ It sorts client ISPs by total traffic and total requests, and returns the list of ISPs in descending order.\n+ It sorts domain names by total traffic, peak bandwidth, total requests, average hit rate, and 2XX/3XX/4XX/5XX status codes, and returns the list of domain names in descending order.\n+ It sorts domain names by total origin-pull traffic, peak origin-pull bandwidth, total origin-pull requests, average origin-pull failure rate, and 2XX/3XX/4XX/5XX origin-pull status codes, and returns the list of domain names in descending order.\n\nNote: only data from the last 90 days will be queried."
   },
   "DescribeOriginData": {
     "params": [
@@ -449,18 +453,18 @@ INFO = {
     "params": [
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)."
+        "desc": "Offset for paginated queries. Default value: 0 (the first page)."
       },
       {
         "name": "Limit",
-        "desc": "Limit on paged queries. Default value: 100."
+        "desc": "Limit on paginated queries. Default value: 100."
       },
       {
         "name": "Domains",
         "desc": "Specified domain name query"
       }
     ],
-    "desc": "This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.\nIt corresponds to the **Pornography Detection** page of the CDN Console."
+    "desc": "This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.\nIt corresponds to the **Pornography Detection** page on the CDN Console."
   },
   "PurgeUrlsCache": {
     "params": [
@@ -507,7 +511,7 @@ INFO = {
       },
       {
         "name": "RangeOriginPull",
-        "desc": "Range origin-pull configuration"
+        "desc": "Range GETs configuration"
       },
       {
         "name": "FollowRedirect",
@@ -515,7 +519,7 @@ INFO = {
       },
       {
         "name": "ErrorPage",
-        "desc": "Error code redirect configuration (This feature is in beta test and not fully available yet.)"
+        "desc": "Error code redirect configuration (This feature is in beta and not generally available yet.)"
       },
       {
         "name": "RequestHeader",
@@ -571,7 +575,7 @@ INFO = {
       },
       {
         "name": "MaxAge",
-        "desc": "Browser cache configuration (This feature is in beta test and not fully available yet.)"
+        "desc": "Browser cache configuration (This feature is in beta and not generally available yet.)"
       },
       {
         "name": "ServiceType",
@@ -579,14 +583,22 @@ INFO = {
       },
       {
         "name": "SpecificConfig",
-        "desc": "Specific configuration for region attributes\nApplicable to use cases where the configuration of accelerating domain names inside mainland China is inconsistent with the configuration outside mainland China."
+        "desc": "Specific region configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China."
       },
       {
         "name": "Area",
         "desc": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration"
+      },
+      {
+        "name": "OriginPullTimeout",
+        "desc": ""
+      },
+      {
+        "name": "AwsPrivateAccess",
+        "desc": ""
       }
     ],
-    "desc": "This API is used to modify the configuration information of the CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. Attributes that are not passed will use the default value. It is recommended that you call the querying API to obtain the configuration attributes first, and then you directly modify them and pass them to this API. Due to the special nature of the certificate, for HTTPS configuration, the certificate and key fields do not need to be passed."
+    "desc": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration."
   },
   "DescribeCdnDomainLogs": {
     "params": [
@@ -698,7 +710,7 @@ INFO = {
         "desc": "Limit on paged queries. Default value: 20"
       }
     ],
-    "desc": "This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not fully available yet.)"
+    "desc": "This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not generally available yet.)"
   },
   "UpdatePayType": {
     "params": [
@@ -711,7 +723,7 @@ INFO = {
         "desc": "Billing mode, which can be flux or bandwidth."
       }
     ],
-    "desc": "This API is used to modify the billing mode of an account. At present, the billing mode of monthly-billed accounts and sub-accounts cannot be modified."
+    "desc": "This API is used to modify the billing mode of an account. At present, the billing mode of accounts on a monthly billing cycle and sub-accounts cannot be modified."
   },
   "EnableCaches": {
     "params": [

@@ -111,7 +111,7 @@ INFO = {
       },
       {
         "name": "SrcAccessType",
-        "desc": "Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instances)"
+        "desc": "Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instance)"
       },
       {
         "name": "SrcInfo",
@@ -250,7 +250,7 @@ INFO = {
       },
       {
         "name": "SrcAccessType",
-        "desc": "Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), vpnselfbuild (self-built VPN-enabled instance), cdb (TencentDB instance)"
+        "desc": "Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance)"
       },
       {
         "name": "SrcInfo",
@@ -258,7 +258,7 @@ INFO = {
       },
       {
         "name": "DstAccessType",
-        "desc": "Target instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), vpnselfbuild (self-built VPN-enabled instance), cdb (TencentDB instance). Currently, only \"cdb\" is supported."
+        "desc": "Target instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance). Currently, only `cdb` is supported"
       },
       {
         "name": "DstInfo",

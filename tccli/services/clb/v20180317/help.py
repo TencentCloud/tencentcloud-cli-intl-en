@@ -112,8 +112,17 @@ INFO = {
     "desc": "This API is used to unbind layer-4/layer-7 real servers in batches."
   },
   "RegisterTargetGroupInstances": {
-    "params": [],
-    "desc": "注册服务器到目标组。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+    "params": [
+      {
+        "name": "TargetGroupId",
+        "desc": "Target group ID"
+      },
+      {
+        "name": "TargetGroupInstances",
+        "desc": "Server instance array"
+      }
+    ],
+    "desc": "This API is used to register servers to a target group.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "CreateRule": {
     "params": [
@@ -171,12 +180,26 @@ INFO = {
     "desc": "This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
   "ModifyTargetGroupInstancesWeight": {
-    "params": [],
-    "desc": "批量修改目标组的服务器权重。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+    "params": [
+      {
+        "name": "TargetGroupId",
+        "desc": "Target group ID"
+      },
+      {
+        "name": "TargetGroupInstances",
+        "desc": "Array of servers for which to modify weight"
+      }
+    ],
+    "desc": "This API is used to modify server weights of a target group in batches.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "DeleteTargetGroups": {
-    "params": [],
-    "desc": "删除目标组"
+    "params": [
+      {
+        "name": "TargetGroupIds",
+        "desc": "Target group ID array"
+      }
+    ],
+    "desc": "This API is used to delete a target group."
   },
   "DeregisterTargetsFromClassicalLB": {
     "params": [
@@ -284,20 +307,52 @@ INFO = {
     "desc": "This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
   },
   "DisassociateTargetGroups": {
-    "params": [],
-    "desc": "解除规则的目标组关联关系。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+    "params": [
+      {
+        "name": "Associations",
+        "desc": "Array of rules to be unbound"
+      }
+    ],
+    "desc": "This API is used to unbind target groups from a rule.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "DescribeTargetGroupInstances": {
-    "params": [],
-    "desc": "获取目标组绑定的服务器信息"
+    "params": [
+      {
+        "name": "Filters",
+        "desc": "Filter. Currently, only filtering by `TargetGroupId`, `BindIP`, or `InstanceId` is supported."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of displayed results. Default value: 20"
+      },
+      {
+        "name": "Offset",
+        "desc": "Display offset. Default value: 0"
+      }
+    ],
+    "desc": "This API is used to get the information of servers bound to a target group."
   },
   "AssociateTargetGroups": {
-    "params": [],
-    "desc": "监听器或转发规则绑定目标组。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+    "params": [
+      {
+        "name": "Associations",
+        "desc": "Association array"
+      }
+    ],
+    "desc": "This API is used to bind target groups to CLB listeners (layer-4 protocol) or forwarding rules (layer-7 protocol).\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "DeregisterTargetGroupInstances": {
-    "params": [],
-    "desc": "将服务器从目标组中解绑。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+    "params": [
+      {
+        "name": "TargetGroupId",
+        "desc": "Target group ID"
+      },
+      {
+        "name": "TargetGroupInstances",
+        "desc": "Information of server to be unbound"
+      }
+    ],
+    "desc": "This API is used to unbind a server from a target group.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "DescribeLoadBalancers": {
     "params": [
@@ -339,7 +394,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of CLB instances to be returned. Default value: 20."
+        "desc": "Number of returned CLB instances. Default value: 20. Maximum value: 100."
       },
       {
         "name": "OrderBy",
@@ -374,7 +429,7 @@ INFO = {
         "desc": "Master AZ, such as \"100001\" (Guangzhou Zone 1)"
       }
     ],
-    "desc": "This API is used to query the list of CLB instances.\n"
+    "desc": "This API is used to query the list of CLB instances in a region.\n"
   },
   "DescribeListeners": {
     "params": [
@@ -395,7 +450,7 @@ INFO = {
         "desc": "Port of the listener to be queried"
       }
     ],
-    "desc": "This API (DescribeListeners) is used to get the list of listeners by CLB IDs, listener protocol, or port. If no filter is specified, the default number (20) of listeners for the instance will be returned."
+    "desc": "This API is used to get the list of listeners by CLB instance ID, listener protocol, or port. If no filter is specified, all listeners under the CLB instance will be returned."
   },
   "DescribeClassicalLBTargets": {
     "params": [
@@ -430,7 +485,7 @@ INFO = {
       },
       {
         "name": "Certificate",
-        "desc": "Certificate information. This parameter is applicable only to HTTPS/TCP_SSL listeners."
+        "desc": "Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled."
       },
       {
         "name": "SessionExpireTime",
@@ -458,7 +513,7 @@ INFO = {
         "desc": "Binding target"
       }
     ],
-    "desc": "This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and only layer-4 (TCP/UDP) protocols."
+    "desc": "This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and layer-4 and layer-7 (TCP, UDP, HTTP, HTTPS) protocols."
   },
   "DeleteRewrite": {
     "params": [
@@ -586,12 +641,46 @@ INFO = {
     "desc": "This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
   "DescribeTargetGroupList": {
-    "params": [],
-    "desc": "获取目标组列表"
+    "params": [
+      {
+        "name": "TargetGroupIds",
+        "desc": "Target group ID array"
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName. Target group ID will be used first."
+      },
+      {
+        "name": "Offset",
+        "desc": "Starting display offset"
+      },
+      {
+        "name": "Limit",
+        "desc": "Limit of the number of displayed results. Default value: 20"
+      }
+    ],
+    "desc": "This API is used to get the target group list."
   },
   "CreateTargetGroup": {
-    "params": [],
-    "desc": "创建目标组。（目标组功能正在灰度中，需要开通白名单支持）"
+    "params": [
+      {
+        "name": "TargetGroupName",
+        "desc": "Target group name (up to 50 characters)"
+      },
+      {
+        "name": "VpcId",
+        "desc": "`vpcid` attribute of a target group. If this parameter is left empty, the default VPC will be used."
+      },
+      {
+        "name": "Port",
+        "desc": "Default port of a target group, which can be used for subsequently added servers."
+      },
+      {
+        "name": "TargetGroupInstances",
+        "desc": "Real server bound to a target group"
+      }
+    ],
+    "desc": "This API is used to create a target group. (The target group feature is currently in beta test. To try it out, submit a ticket for application.)"
   },
   "DescribeTargets": {
     "params": [
@@ -645,16 +734,51 @@ INFO = {
     "desc": "This API (RegisterTargetsWithClassicalLB) is used to bind real servers to a classic CLB.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
   },
   "DescribeTargetGroups": {
-    "params": [],
-    "desc": "查询目标组信息"
+    "params": [
+      {
+        "name": "TargetGroupIds",
+        "desc": "Target group ID, which is exclusive of `Filters`."
+      },
+      {
+        "name": "Limit",
+        "desc": "Limit of the number of displayed results. Default value: 20"
+      },
+      {
+        "name": "Offset",
+        "desc": "Starting display offset"
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName"
+      }
+    ],
+    "desc": "This API is used to query the target group information."
   },
   "ModifyTargetGroupAttribute": {
-    "params": [],
-    "desc": "修改目标组的名称或者默认端口属性"
+    "params": [
+      {
+        "name": "TargetGroupId",
+        "desc": "Target group ID"
+      },
+      {
+        "name": "TargetGroupName",
+        "desc": "New name of target group"
+      },
+      {
+        "name": "Port",
+        "desc": "New default port of target group"
+      }
+    ],
+    "desc": "This API is used to rename a target group or modify its default port attribute."
   },
   "DescribeLoadBalancerListByCertId": {
-    "params": [],
-    "desc": "根据证书ID查询其在一个地域中所关联到负载均衡实例列表"
+    "params": [
+      {
+        "name": "CertIds",
+        "desc": "Server or client certificate ID"
+      }
+    ],
+    "desc": "This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID."
   },
   "DeregisterTargets": {
     "params": [
@@ -701,7 +825,15 @@ INFO = {
       },
       {
         "name": "InternetChargeInfo",
-        "desc": "Network billing parameter. Note: The maximum outbound bandwidth can be modified, but the network billing method cannot be modified."
+        "desc": "Network billing parameter"
+      },
+      {
+        "name": "LoadBalancerPassToTarget",
+        "desc": "Whether the target opens traffic from CLB to the internet. If yes (true), only security groups on CLB will be verified; if no (false), security groups on both CLB and backend instance need to be verified."
+      },
+      {
+        "name": "SnatPro",
+        "desc": "Whether to enable SnatPro"
       }
     ],
     "desc": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes."
@@ -762,8 +894,17 @@ INFO = {
     "desc": "This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.\nThis API supports replacing server certificates and client certificates.\nThe new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.\nNote: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems."
   },
   "ModifyTargetGroupInstancesPort": {
-    "params": [],
-    "desc": "批量修改目标组服务器端口。\n本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。"
+    "params": [
+      {
+        "name": "TargetGroupId",
+        "desc": "Target group ID"
+      },
+      {
+        "name": "TargetGroupInstances",
+        "desc": "Array of servers for which to modify port"
+      }
+    ],
+    "desc": "This API is used to modify server ports of a target group in batches.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "BatchModifyTargetWeight": {
     "params": [
@@ -776,7 +917,7 @@ INFO = {
         "desc": "List of weights to be modified in batches"
       }
     ],
-    "desc": "This API (BatchModifyTargetWeight) is used to batch modify the forwarding weights of real servers bound to a listener. Currently, it only supports HTTP/HTTPS listeners.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
+    "desc": "This API is used to modify the forwarding weights of real servers bound to a CLB listener in batches. It supports layer-4 and layer-7 CLB listeners but not Classic CLB.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "DescribeTargetHealth": {
     "params": [
@@ -807,7 +948,7 @@ INFO = {
       },
       {
         "name": "SubnetId",
-        "desc": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is not supported in other cases."
+        "desc": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet."
       },
       {
         "name": "ProjectId",
@@ -815,7 +956,7 @@ INFO = {
       },
       {
         "name": "AddressIPVersion",
-        "desc": "IP version. Value range: IPv4, IPv6. Default value: IPv4. This parameter is applicable only to public network CLB."
+        "desc": "IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances."
       },
       {
         "name": "Number",
@@ -831,7 +972,11 @@ INFO = {
       },
       {
         "name": "InternetAccessible",
-        "desc": "CLB network billing method. This parameter is applicable only to public network CLB, and takes effect only for users whose bandwidth is managed in IP and CLB."
+        "desc": "CLB network billing mode. This parameter is applicable only to public network CLB instances."
+      },
+      {
+        "name": "VipIsp",
+        "desc": "This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode."
       },
       {
         "name": "Tags",

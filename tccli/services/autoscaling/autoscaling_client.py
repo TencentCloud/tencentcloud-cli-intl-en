@@ -939,6 +939,7 @@ def doCreateLifecycleHook(argv, arglist):
         "HeartbeatTimeout": Utils.try_to_json(argv, "--HeartbeatTimeout"),
         "NotificationMetadata": argv.get("--NotificationMetadata"),
         "NotificationTarget": Utils.try_to_json(argv, "--NotificationTarget"),
+        "LifecycleTransitionType": argv.get("--LifecycleTransitionType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -978,6 +979,7 @@ def doUpgradeLifecycleHook(argv, arglist):
         "HeartbeatTimeout": Utils.try_to_json(argv, "--HeartbeatTimeout"),
         "NotificationMetadata": argv.get("--NotificationMetadata"),
         "NotificationTarget": Utils.try_to_json(argv, "--NotificationTarget"),
+        "LifecycleTransitionType": argv.get("--LifecycleTransitionType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

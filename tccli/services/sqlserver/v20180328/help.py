@@ -17,7 +17,7 @@ INFO = {
       },
       {
         "name": "SourceType",
-        "desc": "Type of migration source. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database, 4: SQL Server backup restoration, 5: SQL Server backup restoration (through COS). If this parameter is left empty, no modification will be made"
+        "desc": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made"
       },
       {
         "name": "Source",
@@ -55,11 +55,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page"
+        "desc": "Number of results per page. Value range: 1–100. Default value: 100"
       },
       {
         "name": "Offset",
-        "desc": "Specifies to query the results on which page"
+        "desc": "Page number. Default value: 0"
       },
       {
         "name": "OrderBy",
@@ -164,11 +164,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Default value: 20. Maximum value: 100"
+        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
       },
       {
         "name": "Offset",
-        "desc": "Page number start value, which starts at 0. Default value: 0"
+        "desc": "Page number. Default value: 0"
       }
     ],
     "desc": "This API is used to get file information of slow query logs."
@@ -189,11 +189,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Default value: 20. Maximum value: 100"
+        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0"
+        "desc": "Page number. Default value: 0"
       }
     ],
     "desc": "This API is used to query the list of backups."
@@ -363,11 +363,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Maximum value: 100. Default value: 20"
+        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
       },
       {
         "name": "Offset",
-        "desc": "Page number, starting at 0"
+        "desc": "Page number. Default value: 0"
       }
     ],
     "desc": "This API is used to query the list of databases"
@@ -384,11 +384,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Number of pages. Default value: 0"
+        "desc": "Page number. Default value: 0"
       },
       {
         "name": "Limit",
-        "desc": "Number of entries per page. Default value: 50"
+        "desc": "Number of results per page. Value range: 1–100. Default value: 100"
       },
       {
         "name": "InstanceIdSet",
@@ -460,7 +460,7 @@ INFO = {
       },
       {
         "name": "SourceType",
-        "desc": "Type of migration source. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database, 4: SQL Server backup restoration, 5: SQL Server backup restoration (through COS)"
+        "desc": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)"
       },
       {
         "name": "Source",
@@ -502,7 +502,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Page number start value, which starts at 0. Default value: 0"
+        "desc": "Page number. Default value: 0"
       }
     ],
     "desc": "This API is used to pull the list of instance accounts."
