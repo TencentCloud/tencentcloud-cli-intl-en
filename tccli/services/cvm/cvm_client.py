@@ -379,6 +379,38 @@ def doModifyInstancesAttribute(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeRegions(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeRegions", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRegionsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeRegions(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doInquiryPriceResetInstancesInternetMaxBandwidth(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1027,15 +1059,13 @@ def doResizeInstanceDisks(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDisasterRecoverGroupAttribute(argv, arglist):
+def doDescribeZones(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyDisasterRecoverGroupAttribute", g_param[OptionsDefine.Version])
+        show_help("DescribeZones", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "DisasterRecoverGroupId": argv.get("--DisasterRecoverGroupId"),
-        "Name": argv.get("--Name"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1049,9 +1079,9 @@ def doModifyDisasterRecoverGroupAttribute(argv, arglist):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDisasterRecoverGroupAttributeRequest()
+    model = models.DescribeZonesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyDisasterRecoverGroupAttribute(model)
+    rsp = client.DescribeZones(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1273,13 +1303,14 @@ def doInquiryPriceResetInstancesType(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRegions(argv, arglist):
+def doDescribeInstanceVncUrl(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeRegions", g_param[OptionsDefine.Version])
+        show_help("DescribeInstanceVncUrl", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "InstanceId": argv.get("--InstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1293,9 +1324,9 @@ def doDescribeRegions(argv, arglist):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRegionsRequest()
+    model = models.DescribeInstanceVncUrlRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRegions(model)
+    rsp = client.DescribeInstanceVncUrl(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1515,14 +1546,15 @@ def doImportImage(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceVncUrl(argv, arglist):
+def doModifyDisasterRecoverGroupAttribute(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeInstanceVncUrl", g_param[OptionsDefine.Version])
+        show_help("ModifyDisasterRecoverGroupAttribute", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "InstanceId": argv.get("--InstanceId"),
+        "DisasterRecoverGroupId": argv.get("--DisasterRecoverGroupId"),
+        "Name": argv.get("--Name"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1536,9 +1568,41 @@ def doDescribeInstanceVncUrl(argv, arglist):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceVncUrlRequest()
+    model = models.ModifyDisasterRecoverGroupAttributeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeInstanceVncUrl(model)
+    rsp = client.ModifyDisasterRecoverGroupAttribute(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeInstanceFamilyConfigs(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeInstanceFamilyConfigs", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInstanceFamilyConfigsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeInstanceFamilyConfigs(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1916,6 +1980,7 @@ ACTION_MAP = {
     "DescribeImages": doDescribeImages,
     "DescribeZoneInstanceConfigInfos": doDescribeZoneInstanceConfigInfos,
     "ModifyInstancesAttribute": doModifyInstancesAttribute,
+    "DescribeRegions": doDescribeRegions,
     "InquiryPriceResetInstancesInternetMaxBandwidth": doInquiryPriceResetInstancesInternetMaxBandwidth,
     "DisassociateInstancesKeyPairs": doDisassociateInstancesKeyPairs,
     "CreateKeyPair": doCreateKeyPair,
@@ -1934,21 +1999,22 @@ ACTION_MAP = {
     "ResetInstancesPassword": doResetInstancesPassword,
     "ResetInstance": doResetInstance,
     "ResizeInstanceDisks": doResizeInstanceDisks,
-    "ModifyDisasterRecoverGroupAttribute": doModifyDisasterRecoverGroupAttribute,
+    "DescribeZones": doDescribeZones,
     "CreateImage": doCreateImage,
     "AssociateSecurityGroups": doAssociateSecurityGroups,
     "ResetInstancesType": doResetInstancesType,
     "ModifyImageAttribute": doModifyImageAttribute,
     "DescribeInstancesOperationLimit": doDescribeInstancesOperationLimit,
     "InquiryPriceResetInstancesType": doInquiryPriceResetInstancesType,
-    "DescribeRegions": doDescribeRegions,
+    "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
     "DeleteDisasterRecoverGroups": doDeleteDisasterRecoverGroups,
     "DescribeImportImageOs": doDescribeImportImageOs,
     "ResetInstancesInternetMaxBandwidth": doResetInstancesInternetMaxBandwidth,
     "SyncImages": doSyncImages,
     "ModifyKeyPairAttribute": doModifyKeyPairAttribute,
     "ImportImage": doImportImage,
-    "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
+    "ModifyDisasterRecoverGroupAttribute": doModifyDisasterRecoverGroupAttribute,
+    "DescribeInstanceFamilyConfigs": doDescribeInstanceFamilyConfigs,
     "ModifyInstancesProject": doModifyInstancesProject,
     "StartInstances": doStartInstances,
     "DescribeDisasterRecoverGroups": doDescribeDisasterRecoverGroups,

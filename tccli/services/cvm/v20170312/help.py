@@ -309,6 +309,10 @@ INFO = {
     ],
     "desc": "This API is used to create an `OpenSSH RSA` key pair, which you can use to log in to a `Linux` instance.\n\n* You only need to specify a name, and the system will automatically create a key pair and return its `ID` and the public and private keys.\n* The name of the key pair must be unique.\n* You can save the private key to a file and use it as an authentication method for `SSH`.\n* Tencent Cloud does not save users' private keys. Be sure to save it yourself."
   },
+  "DescribeInstanceFamilyConfigs": {
+    "params": [],
+    "desc": "This API is used to query the list of model families that are available for the current user and in the current region."
+  },
   "DeleteKeyPairs": {
     "params": [
       {
@@ -446,7 +450,7 @@ INFO = {
       },
       {
         "name": "EnhancedService",
-        "desc": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default."
+        "desc": "Specifies whether to enable services Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. But for custom images and images from market place, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained."
       },
       {
         "name": "ClientToken",
@@ -626,18 +630,9 @@ INFO = {
     ],
     "desc": "This API (ResizeInstanceDisks) is used to expand the data disks of an instance.\n\n* Currently, you can only use the API to expand non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.\n* Currently, this API does not support [CDH](https://cloud.tencent.com/document/product/416) instances.\n* Currently, only one data disk can be expanded at a time."
   },
-  "ModifyDisasterRecoverGroupAttribute": {
-    "params": [
-      {
-        "name": "DisasterRecoverGroupId",
-        "desc": "Spread placement group ID, which can be obtained by calling the [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810) API."
-      },
-      {
-        "name": "Name",
-        "desc": "Name of a spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters."
-      }
-    ],
-    "desc": "This API is used to modify the attributes of [spread placement groups](https://cloud.tencent.com/document/product/213/15486)."
+  "DescribeZones": {
+    "params": [],
+    "desc": "This API is used to query availability zones."
   },
   "DescribeImageQuota": {
     "params": [],
@@ -896,38 +891,18 @@ INFO = {
     ],
     "desc": "This API is used to query the details of CDH instances."
   },
-  "AllocateHosts": {
+  "ModifyDisasterRecoverGroupAttribute": {
     "params": [
       {
-        "name": "Placement",
-        "desc": "Instance location. This parameter is used to specify the attributes of an instance, such as its availability zone and project."
+        "name": "DisasterRecoverGroupId",
+        "desc": "Spread placement group ID, which can be obtained by calling the [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810) API."
       },
       {
-        "name": "ClientToken",
-        "desc": "A string used to ensure the idempotency of the request."
-      },
-      {
-        "name": "HostChargePrepaid",
-        "desc": "Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances."
-      },
-      {
-        "name": "HostChargeType",
-        "desc": "The billing method of an instance. Currently only `PREPAID` is supported."
-      },
-      {
-        "name": "HostType",
-        "desc": "CDH instance model. Default value: `HS1`."
-      },
-      {
-        "name": "HostCount",
-        "desc": "The quantity of CDH instances you want to purchase."
-      },
-      {
-        "name": "TagSpecification",
-        "desc": "Tag description. You can specify the parameter to associate a tag with an instance."
+        "name": "Name",
+        "desc": "Name of a spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters."
       }
     ],
-    "desc": "This API is used to create CDH instances with specified configuration.\n* When HostChargeType is PREPAID, the HostChargePrepaid parameter must be specified."
+    "desc": "This API is used to modify the attributes of [spread placement groups](https://cloud.tencent.com/document/product/213/15486)."
   },
   "DescribeInternetChargeTypeConfigs": {
     "params": [],
@@ -984,5 +959,38 @@ INFO = {
       }
     ],
     "desc": "This API is used to disassociate security groups from instances."
+  },
+  "AllocateHosts": {
+    "params": [
+      {
+        "name": "Placement",
+        "desc": "Instance location. This parameter is used to specify the attributes of an instance, such as its availability zone and project."
+      },
+      {
+        "name": "ClientToken",
+        "desc": "A string used to ensure the idempotency of the request."
+      },
+      {
+        "name": "HostChargePrepaid",
+        "desc": "Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances."
+      },
+      {
+        "name": "HostChargeType",
+        "desc": "The billing method of an instance. Currently only `PREPAID` is supported."
+      },
+      {
+        "name": "HostType",
+        "desc": "CDH instance model. Default value: `HS1`."
+      },
+      {
+        "name": "HostCount",
+        "desc": "The quantity of CDH instances you want to purchase."
+      },
+      {
+        "name": "TagSpecification",
+        "desc": "Tag description. You can specify the parameter to associate a tag with an instance."
+      }
+    ],
+    "desc": "This API is used to create CDH instances with specified configuration.\n* When HostChargeType is PREPAID, the HostChargePrepaid parameter must be specified."
   }
 }
