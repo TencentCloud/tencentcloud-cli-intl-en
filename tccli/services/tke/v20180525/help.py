@@ -40,7 +40,7 @@ INFO = {
   },
   "DeleteClusterEndpoint": {
     "params": [],
-    "desc": "删除集群访问端口(独立集群开启内网/外网访问,托管集群支持开启内网访问)"
+    "desc": "Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
   "CreateClusterInstances": {
     "params": [
@@ -61,7 +61,7 @@ INFO = {
   },
   "DeleteClusterAsGroups": {
     "params": [],
-    "desc": "删除集群伸缩组"
+    "desc": "Delete a cluster scaling group"
   },
   "DeleteClusterRoute": {
     "params": [
@@ -82,7 +82,7 @@ INFO = {
   },
   "DescribeClusterEndpointVipStatus": {
     "params": [],
-    "desc": "查询集群开启端口流程状态(仅支持托管集群外网端口)"
+    "desc": "Query cluster open port process status (only supports external ports of the managed cluster)"
   },
   "DeleteCluster": {
     "params": [
@@ -99,7 +99,7 @@ INFO = {
   },
   "CreateClusterAsGroup": {
     "params": [],
-    "desc": "为已经存在的集群创建伸缩组"
+    "desc": "Create a scaling group for an existing cluster"
   },
   "DescribeExistedInstances": {
     "params": [
@@ -182,11 +182,11 @@ INFO = {
   },
   "DescribeClusterEndpointStatus": {
     "params": [],
-    "desc": "查询集群访问端口状态(独立集群开启内网/外网访问,托管集群支持开启内网访问)"
+    "desc": "Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
   "CreateClusterEndpoint": {
     "params": [],
-    "desc": "创建集群访问端口(独立集群开启内网/外网访问,托管集群支持开启内网访问)"
+    "desc": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
   "AddExistedInstances": {
     "params": [
@@ -270,7 +270,7 @@ INFO = {
   },
   "DeleteClusterEndpointVip": {
     "params": [],
-    "desc": "删除托管集群外网访问端口(老的方式,仅支持托管集群外网端口)"
+    "desc": "Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)"
   },
   "DeleteClusterInstances": {
     "params": [
@@ -295,11 +295,11 @@ INFO = {
   },
   "ModifyClusterEndpointSP": {
     "params": [],
-    "desc": "修改托管集群外网端口的安全策略(老的方式,仅支持托管集群外网端口)"
+    "desc": "Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)"
   },
   "CreateClusterEndpointVip": {
     "params": [],
-    "desc": "创建托管集群外网访问端口(老的方式,仅支持托管集群外网端口)"
+    "desc": "Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)"
   },
   "DeleteClusterRouteTable": {
     "params": [
