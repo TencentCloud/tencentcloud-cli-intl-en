@@ -50,15 +50,14 @@ def doEncrypt(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDecrypt(argv, arglist):
+def doDeleteImportedKeyMaterial(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("Decrypt", g_param[OptionsDefine.Version])
+        show_help("DeleteImportedKeyMaterial", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "CiphertextBlob": argv.get("--CiphertextBlob"),
-        "EncryptionContext": argv.get("--EncryptionContext"),
+        "KeyId": argv.get("--KeyId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -72,9 +71,9 @@ def doDecrypt(argv, arglist):
     client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DecryptRequest()
+    model = models.DeleteImportedKeyMaterialRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.Decrypt(model)
+    rsp = client.DeleteImportedKeyMaterial(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -152,6 +151,39 @@ def doImportKeyMaterial(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doGetPublicKey(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetPublicKey", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "KeyId": argv.get("--KeyId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetPublicKeyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetPublicKey(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDisableKey(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -211,6 +243,40 @@ def doGenerateDataKey(argv, arglist):
     model = models.GenerateDataKeyRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.GenerateDataKey(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doAsymmetricSm2Decrypt(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("AsymmetricSm2Decrypt", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "KeyId": argv.get("--KeyId"),
+        "Ciphertext": argv.get("--Ciphertext"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AsymmetricSm2DecryptRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.AsymmetricSm2Decrypt(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -316,10 +382,10 @@ def doGetServiceStatus(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doReEncrypt(argv, arglist):
+def doListAlgorithms(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ReEncrypt", g_param[OptionsDefine.Version])
+        show_help("ListAlgorithms", g_param[OptionsDefine.Version])
         return
 
     param = {
@@ -336,9 +402,42 @@ def doReEncrypt(argv, arglist):
     client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ReEncryptRequest()
+    model = models.ListAlgorithmsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ReEncrypt(model)
+    rsp = client.ListAlgorithms(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeKey(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeKey", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "KeyId": argv.get("--KeyId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeKeyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeKey(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -449,6 +548,38 @@ def doCreateKey(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doReEncrypt(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ReEncrypt", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ReEncryptRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ReEncrypt(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doGetParametersForImport(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -498,6 +629,7 @@ def doListKeyDetail(argv, arglist):
         "KeyState": Utils.try_to_json(argv, "--KeyState"),
         "SearchKeyAlias": argv.get("--SearchKeyAlias"),
         "Origin": argv.get("--Origin"),
+        "KeyUsage": argv.get("--KeyUsage"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -619,6 +751,41 @@ def doScheduleKeyDeletion(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doAsymmetricRsaDecrypt(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("AsymmetricRsaDecrypt", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "KeyId": argv.get("--KeyId"),
+        "Ciphertext": argv.get("--Ciphertext"),
+        "Algorithm": argv.get("--Algorithm"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AsymmetricRsaDecryptRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.AsymmetricRsaDecrypt(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doEnableKeyRotation(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -683,14 +850,15 @@ def doEnableKey(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteImportedKeyMaterial(argv, arglist):
+def doDecrypt(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteImportedKeyMaterial", g_param[OptionsDefine.Version])
+        show_help("Decrypt", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "KeyId": argv.get("--KeyId"),
+        "CiphertextBlob": argv.get("--CiphertextBlob"),
+        "EncryptionContext": argv.get("--EncryptionContext"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -704,9 +872,42 @@ def doDeleteImportedKeyMaterial(argv, arglist):
     client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteImportedKeyMaterialRequest()
+    model = models.DecryptRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteImportedKeyMaterial(model)
+    rsp = client.Decrypt(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeKeys(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeKeys", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "KeyIds": Utils.try_to_json(argv, "--KeyIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeKeysRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeKeys(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -723,6 +924,8 @@ def doUpdateKeyDescription(argv, arglist):
         return
 
     param = {
+        "Description": argv.get("--Description"),
+        "KeyId": argv.get("--KeyId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -792,26 +995,32 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "Encrypt": doEncrypt,
-    "Decrypt": doDecrypt,
+    "DeleteImportedKeyMaterial": doDeleteImportedKeyMaterial,
     "UpdateAlias": doUpdateAlias,
     "ImportKeyMaterial": doImportKeyMaterial,
+    "GetPublicKey": doGetPublicKey,
     "DisableKey": doDisableKey,
     "GenerateDataKey": doGenerateDataKey,
+    "AsymmetricSm2Decrypt": doAsymmetricSm2Decrypt,
     "CancelKeyDeletion": doCancelKeyDeletion,
     "GetKeyRotationStatus": doGetKeyRotationStatus,
     "GetServiceStatus": doGetServiceStatus,
-    "ReEncrypt": doReEncrypt,
+    "ListAlgorithms": doListAlgorithms,
+    "DescribeKey": doDescribeKey,
     "ListKeys": doListKeys,
     "GenerateRandom": doGenerateRandom,
     "CreateKey": doCreateKey,
+    "ReEncrypt": doReEncrypt,
     "GetParametersForImport": doGetParametersForImport,
     "ListKeyDetail": doListKeyDetail,
     "DisableKeyRotation": doDisableKeyRotation,
     "EnableKeys": doEnableKeys,
     "ScheduleKeyDeletion": doScheduleKeyDeletion,
+    "AsymmetricRsaDecrypt": doAsymmetricRsaDecrypt,
     "EnableKeyRotation": doEnableKeyRotation,
     "EnableKey": doEnableKey,
-    "DeleteImportedKeyMaterial": doDeleteImportedKeyMaterial,
+    "Decrypt": doDecrypt,
+    "DescribeKeys": doDescribeKeys,
     "UpdateKeyDescription": doUpdateKeyDescription,
     "DisableKeys": doDisableKeys,
 

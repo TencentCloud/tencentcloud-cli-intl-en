@@ -296,11 +296,15 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Instance type. 1: legacy Redis cluster edition; 2: Redis 2.8 master-slave edition; 3: CKV master-slave edition; 4: CKV cluster edition; 5: Redis 2.8 standalone edition; 6: Redis 4.0 master-slave edition; 7: Redis 4.0 cluster edition"
+        "desc": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,"
       },
       {
         "name": "SearchKeys",
         "desc": "Search keywords, which can be instance ID, instance name, or complete IP"
+      },
+      {
+        "name": "TypeList",
+        "desc": "Internal parameter, which can be ignored"
       }
     ],
     "desc": "This API is used to query the list of Redis instances."
@@ -645,11 +649,11 @@ INFO = {
     "params": [
       {
         "name": "ZoneId",
-        "desc": "ID of the AZ where the instance resides"
+        "desc": "AZ ID of instance"
       },
       {
         "name": "TypeId",
-        "desc": "Instance type. 2: Redis 2.8 master-slave edition; 3: Redis 3.2 master-slave edition (CKV master-slave edition); 4: Redis 3.2 cluster edition (CKV cluster edition); 5: Redis 2.8 standalone edition; 6: Redis 4.0 master-slave edition; 7: Redis 4.0 cluster edition"
+        "desc": "Instance type. 2: Redis 2.8 Master-Slave Edition, 3: Redis 3.2 Master-Slave Edition (CKV Master-Slave Edition), 4: Redis 3.2 Cluster Edition (CKV Cluster Edition), 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,"
       },
       {
         "name": "MemSize",
@@ -693,7 +697,7 @@ INFO = {
       },
       {
         "name": "VPort",
-        "desc": "User-defined port. If this parameter is left blank, 6379 will be used by default"
+        "desc": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535]"
       },
       {
         "name": "RedisShardNum",
@@ -726,7 +730,7 @@ INFO = {
       },
       {
         "name": "BackupId",
-        "desc": "Backup ID, which can be queried through the DescribeInstanceBackups API"
+        "desc": "Backup ID, which can be queried through the `DescribeInstanceBackups` API"
       }
     ],
     "desc": "This API is used to query the download address of a backup RDB (it is during beta test and can be used only after you apply for the eligibility)."
@@ -785,23 +789,35 @@ INFO = {
         "desc": "Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance"
       },
       {
-        "name": "InstanceId",
+        "name": "InstanceIds",
         "desc": "Instance ID"
       },
       {
-        "name": "InstanceName",
-        "desc": "New name of an instance"
+        "name": "InstanceNames",
+        "desc": "New name of instance"
       },
       {
         "name": "ProjectId",
         "desc": "Project ID"
       },
       {
+        "name": "AutoRenews",
+        "desc": "Auto-renewal flag. 0: default status (manual renewal), 1: auto-renewal enabled, 2: auto-renewal disabled"
+      },
+      {
+        "name": "InstanceId",
+        "desc": "Disused"
+      },
+      {
+        "name": "InstanceName",
+        "desc": "Disused"
+      },
+      {
         "name": "AutoRenew",
-        "desc": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled"
+        "desc": "Disused"
       }
     ],
-    "desc": "This API is used to modify instance information (renaming an instance is supported currently)."
+    "desc": "This API is used to modify instance information."
   },
   "DescribeInstanceMonitorTookDist": {
     "params": [

@@ -18,6 +18,38 @@ from tccli.services.live import v20180801
 from tccli.services.live.v20180801 import help as v20180801_help
 
 
+def doDescribeLiveCallbackTemplates(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveCallbackTemplates", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveCallbackTemplatesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveCallbackTemplates(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDropLiveStream(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -44,6 +76,39 @@ def doDropLiveStream(argv, arglist):
     model = models.DropLiveStreamRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DropLiveStream(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doForbidLiveDomain(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ForbidLiveDomain", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ForbidLiveDomainRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ForbidLiveDomain(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -80,6 +145,38 @@ def doCreateLiveTranscodeRule(argv, arglist):
     model = models.CreateLiveTranscodeRuleRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.CreateLiveTranscodeRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveSnapshotTemplates(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveSnapshotTemplates", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveSnapshotTemplatesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveSnapshotTemplates(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -131,15 +228,20 @@ def doCreateLiveRecord(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStopLiveRecord(argv, arglist):
+def doUpdateLiveWatermark(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("StopLiveRecord", g_param[OptionsDefine.Version])
+        show_help("UpdateLiveWatermark", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "StreamName": argv.get("--StreamName"),
-        "TaskId": Utils.try_to_json(argv, "--TaskId"),
+        "WatermarkId": Utils.try_to_json(argv, "--WatermarkId"),
+        "PictureUrl": argv.get("--PictureUrl"),
+        "XPosition": Utils.try_to_json(argv, "--XPosition"),
+        "YPosition": Utils.try_to_json(argv, "--YPosition"),
+        "WatermarkName": argv.get("--WatermarkName"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -153,9 +255,9 @@ def doStopLiveRecord(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StopLiveRecordRequest()
+    model = models.UpdateLiveWatermarkRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.StopLiveRecord(model)
+    rsp = client.UpdateLiveWatermark(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -165,18 +267,21 @@ def doStopLiveRecord(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyLivePlayAuthKey(argv, arglist):
+def doCreateLiveCallbackTemplate(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyLivePlayAuthKey", g_param[OptionsDefine.Version])
+        show_help("CreateLiveCallbackTemplate", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "DomainName": argv.get("--DomainName"),
-        "Enable": Utils.try_to_json(argv, "--Enable"),
-        "AuthKey": argv.get("--AuthKey"),
-        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
-        "AuthBackKey": argv.get("--AuthBackKey"),
+        "TemplateName": argv.get("--TemplateName"),
+        "Description": argv.get("--Description"),
+        "StreamBeginNotifyUrl": argv.get("--StreamBeginNotifyUrl"),
+        "StreamEndNotifyUrl": argv.get("--StreamEndNotifyUrl"),
+        "RecordNotifyUrl": argv.get("--RecordNotifyUrl"),
+        "SnapshotNotifyUrl": argv.get("--SnapshotNotifyUrl"),
+        "PornCensorshipNotifyUrl": argv.get("--PornCensorshipNotifyUrl"),
+        "CallbackKey": argv.get("--CallbackKey"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -190,9 +295,42 @@ def doModifyLivePlayAuthKey(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyLivePlayAuthKeyRequest()
+    model = models.CreateLiveCallbackTemplateRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyLivePlayAuthKey(model)
+    rsp = client.CreateLiveCallbackTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveWatermark(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveWatermark", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "WatermarkId": Utils.try_to_json(argv, "--WatermarkId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveWatermarkRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveWatermark(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -234,6 +372,79 @@ def doModifyLiveRecordTemplate(argv, arglist):
     model = models.ModifyLiveRecordTemplateRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.ModifyLiveRecordTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateLiveWatermarkRule(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateLiveWatermarkRule", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "AppName": argv.get("--AppName"),
+        "StreamName": argv.get("--StreamName"),
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateLiveWatermarkRuleRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateLiveWatermarkRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyLivePushAuthKey(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLivePushAuthKey", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "Enable": Utils.try_to_json(argv, "--Enable"),
+        "MasterAuthKey": argv.get("--MasterAuthKey"),
+        "BackupAuthKey": argv.get("--BackupAuthKey"),
+        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLivePushAuthKeyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLivePushAuthKey(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -285,14 +496,15 @@ def doDescribeLiveStreamEventList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLiveTranscodeTemplate(argv, arglist):
+def doDescribeLiveForbidStreamList(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeLiveTranscodeTemplate", g_param[OptionsDefine.Version])
+        show_help("DescribeLiveForbidStreamList", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+        "PageNum": Utils.try_to_json(argv, "--PageNum"),
+        "PageSize": Utils.try_to_json(argv, "--PageSize"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -306,9 +518,46 @@ def doDescribeLiveTranscodeTemplate(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLiveTranscodeTemplateRequest()
+    model = models.DescribeLiveForbidStreamListRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeLiveTranscodeTemplate(model)
+    rsp = client.DescribeLiveForbidStreamList(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyLivePlayAuthKey(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLivePlayAuthKey", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "Enable": Utils.try_to_json(argv, "--Enable"),
+        "AuthKey": argv.get("--AuthKey"),
+        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
+        "AuthBackKey": argv.get("--AuthBackKey"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLivePlayAuthKeyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLivePlayAuthKey(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -343,6 +592,44 @@ def doDeleteLiveRecord(argv, arglist):
     model = models.DeleteLiveRecordRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DeleteLiveRecord(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyLiveCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLiveCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "CertId": argv.get("--CertId"),
+        "CertType": Utils.try_to_json(argv, "--CertType"),
+        "CertName": argv.get("--CertName"),
+        "HttpsCrt": argv.get("--HttpsCrt"),
+        "HttpsKey": argv.get("--HttpsKey"),
+        "Description": argv.get("--Description"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLiveCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLiveCert(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -389,18 +676,17 @@ def doAddDelayLiveStream(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyLivePushAuthKey(argv, arglist):
+def doCreateLiveSnapshotRule(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyLivePushAuthKey", g_param[OptionsDefine.Version])
+        show_help("CreateLiveSnapshotRule", g_param[OptionsDefine.Version])
         return
 
     param = {
         "DomainName": argv.get("--DomainName"),
-        "Enable": Utils.try_to_json(argv, "--Enable"),
-        "MasterAuthKey": argv.get("--MasterAuthKey"),
-        "BackupAuthKey": argv.get("--BackupAuthKey"),
-        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+        "AppName": argv.get("--AppName"),
+        "StreamName": argv.get("--StreamName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -414,9 +700,83 @@ def doModifyLivePushAuthKey(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyLivePushAuthKeyRequest()
+    model = models.CreateLiveSnapshotRuleRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyLivePushAuthKey(model)
+    rsp = client.CreateLiveSnapshotRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyLiveSnapshotTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLiveSnapshotTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+        "TemplateName": argv.get("--TemplateName"),
+        "Description": argv.get("--Description"),
+        "SnapshotInterval": Utils.try_to_json(argv, "--SnapshotInterval"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
+        "PornFlag": Utils.try_to_json(argv, "--PornFlag"),
+        "CosAppId": Utils.try_to_json(argv, "--CosAppId"),
+        "CosBucket": argv.get("--CosBucket"),
+        "CosRegion": argv.get("--CosRegion"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLiveSnapshotTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLiveSnapshotTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveSnapshotRules(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveSnapshotRules", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveSnapshotRulesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveSnapshotRules(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -503,6 +863,142 @@ def doDeleteLiveTranscodeRule(argv, arglist):
     model = models.DeleteLiveTranscodeRuleRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DeleteLiveTranscodeRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveSnapshotRule(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveSnapshotRule", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "AppName": argv.get("--AppName"),
+        "StreamName": argv.get("--StreamName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveSnapshotRuleRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveSnapshotRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveWatermarks(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveWatermarks", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveWatermarksRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveWatermarks(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyLivePlayDomain(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLivePlayDomain", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "PlayType": Utils.try_to_json(argv, "--PlayType"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLivePlayDomainRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLivePlayDomain(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doResumeLiveStream(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ResumeLiveStream", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AppName": argv.get("--AppName"),
+        "DomainName": argv.get("--DomainName"),
+        "StreamName": argv.get("--StreamName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ResumeLiveStreamRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ResumeLiveStream(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -610,15 +1106,13 @@ def doDescribeLivePlayAuthKey(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLiveForbidStreamList(argv, arglist):
+def doDescribeLiveDelayInfoList(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeLiveForbidStreamList", g_param[OptionsDefine.Version])
+        show_help("DescribeLiveDelayInfoList", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PageNum": Utils.try_to_json(argv, "--PageNum"),
-        "PageSize": Utils.try_to_json(argv, "--PageSize"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -632,9 +1126,312 @@ def doDescribeLiveForbidStreamList(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLiveForbidStreamListRequest()
+    model = models.DescribeLiveDelayInfoListRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeLiveForbidStreamList(model)
+    rsp = client.DescribeLiveDelayInfoList(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveTranscodeTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveTranscodeTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveTranscodeTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveTranscodeTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveRecordRule(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveRecordRule", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "AppName": argv.get("--AppName"),
+        "StreamName": argv.get("--StreamName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveRecordRuleRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveRecordRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveDomain(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveDomain", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveDomainRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveDomain(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateLiveCallbackRule(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateLiveCallbackRule", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "AppName": argv.get("--AppName"),
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateLiveCallbackRuleRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateLiveCallbackRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveRecordTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveRecordTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveRecordTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveRecordTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doBindLiveDomainCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("BindLiveDomainCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "CertId": Utils.try_to_json(argv, "--CertId"),
+        "DomainName": argv.get("--DomainName"),
+        "Status": Utils.try_to_json(argv, "--Status"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.BindLiveDomainCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.BindLiveDomainCert(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveCallbackRules(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveCallbackRules", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveCallbackRulesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveCallbackRules(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doStopLiveRecord(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("StopLiveRecord", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "StreamName": argv.get("--StreamName"),
+        "TaskId": Utils.try_to_json(argv, "--TaskId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StopLiveRecordRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.StopLiveRecord(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveRecordTemplates(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveRecordTemplates", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "IsDelayLive": Utils.try_to_json(argv, "--IsDelayLive"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveRecordTemplatesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveRecordTemplates(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -683,38 +1480,6 @@ def doDescribeLiveStreamPublishedList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLiveDelayInfoList(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeLiveDelayInfoList", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLiveDelayInfoListRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeLiveDelayInfoList(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeLiveStreamState(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -750,14 +1515,16 @@ def doDescribeLiveStreamState(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteLiveRecordTemplate(argv, arglist):
+def doModifyLiveDomainCert(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteLiveRecordTemplate", g_param[OptionsDefine.Version])
+        show_help("ModifyLiveDomainCert", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+        "DomainName": argv.get("--DomainName"),
+        "CertId": Utils.try_to_json(argv, "--CertId"),
+        "Status": Utils.try_to_json(argv, "--Status"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -771,9 +1538,9 @@ def doDeleteLiveRecordTemplate(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteLiveRecordTemplateRequest()
+    model = models.ModifyLiveDomainCertRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteLiveRecordTemplate(model)
+    rsp = client.ModifyLiveDomainCert(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -783,49 +1550,15 @@ def doDeleteLiveRecordTemplate(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLiveRecordTemplates(argv, arglist):
+def doDeleteLiveCallbackRule(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeLiveRecordTemplates", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "IsDelayLive": Utils.try_to_json(argv, "--IsDelayLive"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLiveRecordTemplatesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeLiveRecordTemplates(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteLiveRecordRule(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteLiveRecordRule", g_param[OptionsDefine.Version])
+        show_help("DeleteLiveCallbackRule", g_param[OptionsDefine.Version])
         return
 
     param = {
         "DomainName": argv.get("--DomainName"),
         "AppName": argv.get("--AppName"),
-        "StreamName": argv.get("--StreamName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -839,9 +1572,9 @@ def doDeleteLiveRecordRule(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteLiveRecordRuleRequest()
+    model = models.DeleteLiveCallbackRuleRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteLiveRecordRule(model)
+    rsp = client.DeleteLiveCallbackRule(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -877,6 +1610,77 @@ def doResumeDelayLiveStream(argv, arglist):
     model = models.ResumeDelayLiveStreamRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.ResumeDelayLiveStream(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveDomains(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveDomains", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainStatus": Utils.try_to_json(argv, "--DomainStatus"),
+        "DomainType": Utils.try_to_json(argv, "--DomainType"),
+        "PageSize": Utils.try_to_json(argv, "--PageSize"),
+        "PageNum": Utils.try_to_json(argv, "--PageNum"),
+        "IsDelayLive": Utils.try_to_json(argv, "--IsDelayLive"),
+        "DomainPrefix": argv.get("--DomainPrefix"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveDomainsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveDomains(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveDomainCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveDomainCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveDomainCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveDomainCert(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -937,6 +1741,275 @@ def doCreateLiveTranscodeTemplate(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteLiveCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "CertId": Utils.try_to_json(argv, "--CertId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveCert(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveCerts(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveCerts", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveCertsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveCerts(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doAddLiveWatermark(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("AddLiveWatermark", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "PictureUrl": argv.get("--PictureUrl"),
+        "WatermarkName": argv.get("--WatermarkName"),
+        "XPosition": Utils.try_to_json(argv, "--XPosition"),
+        "YPosition": Utils.try_to_json(argv, "--YPosition"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AddLiveWatermarkRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.AddLiveWatermark(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doUnBindLiveDomainCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("UnBindLiveDomainCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UnBindLiveDomainCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.UnBindLiveDomainCert(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveWatermarkRules(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveWatermarkRules", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveWatermarkRulesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveWatermarkRules(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doEnableLiveDomain(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("EnableLiveDomain", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.EnableLiveDomainRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.EnableLiveDomain(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveWatermarkRule(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveWatermarkRule", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "AppName": argv.get("--AppName"),
+        "StreamName": argv.get("--StreamName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveWatermarkRuleRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveWatermarkRule(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveSnapshotTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveSnapshotTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveSnapshotTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveSnapshotTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doForbidLiveStream(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -974,16 +2047,17 @@ def doForbidLiveStream(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResumeLiveStream(argv, arglist):
+def doAddLiveDomain(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ResumeLiveStream", g_param[OptionsDefine.Version])
+        show_help("AddLiveDomain", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "AppName": argv.get("--AppName"),
         "DomainName": argv.get("--DomainName"),
-        "StreamName": argv.get("--StreamName"),
+        "DomainType": Utils.try_to_json(argv, "--DomainType"),
+        "PlayType": Utils.try_to_json(argv, "--PlayType"),
+        "IsDelayLive": Utils.try_to_json(argv, "--IsDelayLive"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -997,9 +2071,150 @@ def doResumeLiveStream(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResumeLiveStreamRequest()
+    model = models.AddLiveDomainRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ResumeLiveStream(model)
+    rsp = client.AddLiveDomain(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "CertId": Utils.try_to_json(argv, "--CertId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveCert(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLiveCallbackTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveCallbackTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveCallbackTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveCallbackTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateLiveSnapshotTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateLiveSnapshotTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateName": argv.get("--TemplateName"),
+        "CosAppId": Utils.try_to_json(argv, "--CosAppId"),
+        "CosBucket": argv.get("--CosBucket"),
+        "CosRegion": argv.get("--CosRegion"),
+        "Description": argv.get("--Description"),
+        "SnapshotInterval": Utils.try_to_json(argv, "--SnapshotInterval"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
+        "PornFlag": Utils.try_to_json(argv, "--PornFlag"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateLiveSnapshotTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateLiveSnapshotTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveDomain(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveDomain", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "DomainType": Utils.try_to_json(argv, "--DomainType"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveDomainRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveDomain(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1046,6 +2261,80 @@ def doDescribeLiveStreamOnlineList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyLiveCallbackTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLiveCallbackTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+        "TemplateName": argv.get("--TemplateName"),
+        "Description": argv.get("--Description"),
+        "StreamBeginNotifyUrl": argv.get("--StreamBeginNotifyUrl"),
+        "StreamEndNotifyUrl": argv.get("--StreamEndNotifyUrl"),
+        "RecordNotifyUrl": argv.get("--RecordNotifyUrl"),
+        "SnapshotNotifyUrl": argv.get("--SnapshotNotifyUrl"),
+        "PornCensorshipNotifyUrl": argv.get("--PornCensorshipNotifyUrl"),
+        "CallbackKey": argv.get("--CallbackKey"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLiveCallbackTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLiveCallbackTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLiveCallbackTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveCallbackTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveCallbackTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveCallbackTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateLiveRecordRule(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1082,6 +2371,39 @@ def doCreateLiveRecordRule(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeLiveWatermark(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLiveWatermark", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "WatermarkId": Utils.try_to_json(argv, "--WatermarkId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLiveWatermarkRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLiveWatermark(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeLiveTranscodeTemplates(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1105,6 +2427,44 @@ def doDescribeLiveTranscodeTemplates(argv, arglist):
     model = models.DescribeLiveTranscodeTemplatesRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeLiveTranscodeTemplates(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateLiveCert(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateLiveCert", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "CertType": Utils.try_to_json(argv, "--CertType"),
+        "CertName": argv.get("--CertName"),
+        "HttpsCrt": argv.get("--HttpsCrt"),
+        "HttpsKey": argv.get("--HttpsKey"),
+        "Description": argv.get("--Description"),
+        "CloudCertId": argv.get("--CloudCertId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateLiveCertRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateLiveCert(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1253,6 +2613,39 @@ def doDescribeLiveRecordTemplate(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteLiveSnapshotTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteLiveSnapshotTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TemplateId": Utils.try_to_json(argv, "--TemplateId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLiveSnapshotTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteLiveSnapshotTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 CLIENT_MAP = {
     "v20180801": live_client_v20180801,
 
@@ -1264,40 +2657,80 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
+    "DescribeLiveCallbackTemplates": doDescribeLiveCallbackTemplates,
     "DropLiveStream": doDropLiveStream,
+    "ForbidLiveDomain": doForbidLiveDomain,
     "CreateLiveTranscodeRule": doCreateLiveTranscodeRule,
+    "DescribeLiveSnapshotTemplates": doDescribeLiveSnapshotTemplates,
     "CreateLiveRecord": doCreateLiveRecord,
-    "StopLiveRecord": doStopLiveRecord,
-    "ModifyLivePlayAuthKey": doModifyLivePlayAuthKey,
+    "UpdateLiveWatermark": doUpdateLiveWatermark,
+    "CreateLiveCallbackTemplate": doCreateLiveCallbackTemplate,
+    "DeleteLiveWatermark": doDeleteLiveWatermark,
     "ModifyLiveRecordTemplate": doModifyLiveRecordTemplate,
-    "DescribeLiveStreamEventList": doDescribeLiveStreamEventList,
-    "DescribeLiveTranscodeTemplate": doDescribeLiveTranscodeTemplate,
-    "DeleteLiveRecord": doDeleteLiveRecord,
-    "AddDelayLiveStream": doAddDelayLiveStream,
+    "CreateLiveWatermarkRule": doCreateLiveWatermarkRule,
     "ModifyLivePushAuthKey": doModifyLivePushAuthKey,
+    "DescribeLiveStreamEventList": doDescribeLiveStreamEventList,
+    "DescribeLiveForbidStreamList": doDescribeLiveForbidStreamList,
+    "ModifyLivePlayAuthKey": doModifyLivePlayAuthKey,
+    "DeleteLiveRecord": doDeleteLiveRecord,
+    "ModifyLiveCert": doModifyLiveCert,
+    "AddDelayLiveStream": doAddDelayLiveStream,
+    "CreateLiveSnapshotRule": doCreateLiveSnapshotRule,
+    "ModifyLiveSnapshotTemplate": doModifyLiveSnapshotTemplate,
+    "DescribeLiveSnapshotRules": doDescribeLiveSnapshotRules,
     "ModifyLiveTranscodeTemplate": doModifyLiveTranscodeTemplate,
     "DeleteLiveTranscodeRule": doDeleteLiveTranscodeRule,
+    "DeleteLiveSnapshotRule": doDeleteLiveSnapshotRule,
+    "DescribeLiveWatermarks": doDescribeLiveWatermarks,
+    "ModifyLivePlayDomain": doModifyLivePlayDomain,
+    "ResumeLiveStream": doResumeLiveStream,
     "DescribeLiveRecordRules": doDescribeLiveRecordRules,
     "DeleteLiveTranscodeTemplate": doDeleteLiveTranscodeTemplate,
     "DescribeLivePlayAuthKey": doDescribeLivePlayAuthKey,
-    "DescribeLiveForbidStreamList": doDescribeLiveForbidStreamList,
-    "DescribeLiveStreamPublishedList": doDescribeLiveStreamPublishedList,
     "DescribeLiveDelayInfoList": doDescribeLiveDelayInfoList,
-    "DescribeLiveStreamState": doDescribeLiveStreamState,
-    "DeleteLiveRecordTemplate": doDeleteLiveRecordTemplate,
-    "DescribeLiveRecordTemplates": doDescribeLiveRecordTemplates,
+    "DescribeLiveTranscodeTemplate": doDescribeLiveTranscodeTemplate,
     "DeleteLiveRecordRule": doDeleteLiveRecordRule,
+    "DescribeLiveDomain": doDescribeLiveDomain,
+    "CreateLiveCallbackRule": doCreateLiveCallbackRule,
+    "DeleteLiveRecordTemplate": doDeleteLiveRecordTemplate,
+    "BindLiveDomainCert": doBindLiveDomainCert,
+    "DescribeLiveCallbackRules": doDescribeLiveCallbackRules,
+    "StopLiveRecord": doStopLiveRecord,
+    "DescribeLiveRecordTemplates": doDescribeLiveRecordTemplates,
+    "DescribeLiveStreamPublishedList": doDescribeLiveStreamPublishedList,
+    "DescribeLiveStreamState": doDescribeLiveStreamState,
+    "ModifyLiveDomainCert": doModifyLiveDomainCert,
+    "DeleteLiveCallbackRule": doDeleteLiveCallbackRule,
     "ResumeDelayLiveStream": doResumeDelayLiveStream,
+    "DescribeLiveDomains": doDescribeLiveDomains,
+    "DescribeLiveDomainCert": doDescribeLiveDomainCert,
     "CreateLiveTranscodeTemplate": doCreateLiveTranscodeTemplate,
+    "DeleteLiveCert": doDeleteLiveCert,
+    "DescribeLiveCerts": doDescribeLiveCerts,
+    "AddLiveWatermark": doAddLiveWatermark,
+    "UnBindLiveDomainCert": doUnBindLiveDomainCert,
+    "DescribeLiveWatermarkRules": doDescribeLiveWatermarkRules,
+    "EnableLiveDomain": doEnableLiveDomain,
+    "DeleteLiveWatermarkRule": doDeleteLiveWatermarkRule,
+    "DescribeLiveSnapshotTemplate": doDescribeLiveSnapshotTemplate,
     "ForbidLiveStream": doForbidLiveStream,
-    "ResumeLiveStream": doResumeLiveStream,
+    "AddLiveDomain": doAddLiveDomain,
+    "DescribeLiveCert": doDescribeLiveCert,
+    "DescribeLiveCallbackTemplate": doDescribeLiveCallbackTemplate,
+    "CreateLiveSnapshotTemplate": doCreateLiveSnapshotTemplate,
+    "DeleteLiveDomain": doDeleteLiveDomain,
     "DescribeLiveStreamOnlineList": doDescribeLiveStreamOnlineList,
+    "ModifyLiveCallbackTemplate": doModifyLiveCallbackTemplate,
+    "DeleteLiveCallbackTemplate": doDeleteLiveCallbackTemplate,
     "CreateLiveRecordRule": doCreateLiveRecordRule,
+    "DescribeLiveWatermark": doDescribeLiveWatermark,
     "DescribeLiveTranscodeTemplates": doDescribeLiveTranscodeTemplates,
+    "CreateLiveCert": doCreateLiveCert,
     "DescribeLivePushAuthKey": doDescribeLivePushAuthKey,
     "DescribeLiveTranscodeRules": doDescribeLiveTranscodeRules,
     "CreateLiveRecordTemplate": doCreateLiveRecordTemplate,
     "DescribeLiveRecordTemplate": doDescribeLiveRecordTemplate,
+    "DeleteLiveSnapshotTemplate": doDeleteLiveSnapshotTemplate,
 
 }
 

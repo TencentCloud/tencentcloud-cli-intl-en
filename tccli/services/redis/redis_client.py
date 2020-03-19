@@ -442,6 +442,7 @@ def doDescribeInstances(argv, arglist):
         "BillingMode": argv.get("--BillingMode"),
         "Type": Utils.try_to_json(argv, "--Type"),
         "SearchKeys": Utils.try_to_json(argv, "--SearchKeys"),
+        "TypeList": Utils.try_to_json(argv, "--TypeList"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1512,9 +1513,12 @@ def doModifyInstance(argv, arglist):
 
     param = {
         "Operation": argv.get("--Operation"),
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+        "InstanceNames": Utils.try_to_json(argv, "--InstanceNames"),
+        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
+        "AutoRenews": Utils.try_to_json(argv, "--AutoRenews"),
         "InstanceId": argv.get("--InstanceId"),
         "InstanceName": argv.get("--InstanceName"),
-        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
         "AutoRenew": Utils.try_to_json(argv, "--AutoRenew"),
 
     }

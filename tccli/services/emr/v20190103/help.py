@@ -95,19 +95,6 @@ INFO = {
     ],
     "desc": "This API is used to query EMR instances."
   },
-  "TerminateInstance": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Instance ID."
-      },
-      {
-        "name": "ResourceIds",
-        "desc": "ID of terminated node. This parameter is reserved and does not need to be configured."
-      }
-    ],
-    "desc": "This API is used to terminate EMR instance."
-  },
   "InquiryPriceUpdateInstance": {
     "params": [
       {
@@ -136,6 +123,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to query price of scaling."
+  },
+  "DescribeClusterNodes": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Cluster instance ID in the format of emr-xxxxxxxx"
+      },
+      {
+        "name": "NodeFlag",
+        "desc": "Node flag. Valid values:\n<li>all: gets the information of nodes in all types except TencentDB information.</li>\n<li>master: gets master node information.</li>\n<li>core: gets core node information.</li>\n<li>task: gets task node information.</li>\n<li>common: gets common node information.</li>\n<li>router: gets router node information.</li>\n<li>db: gets TencentDB information in normal status.</li>\nNote: only the above values are supported for the time being. Entering other values will cause errors."
+      },
+      {
+        "name": "Offset",
+        "desc": "Page number. Default value: 0, indicating the first page."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results per page. Default value: 100. Maximum value: 100"
+      }
+    ],
+    "desc": "This API is used to query the information of a hardware node."
   },
   "InquiryPriceRenewInstance": {
     "params": [
@@ -226,7 +234,7 @@ INFO = {
       },
       {
         "name": "AutoRenew",
-        "desc": "Auto-renewal flag. Valid values:\n<li>0: auto-renewal not enabled.</li>\n<li>1: auto-renewal enabled.</li>"
+        "desc": "Whether auto-renewal is enabled. Valid values:\n<li>0: auto-renewal not enabled.</li>\n<li>1: auto-renewal enabled.</li>"
       },
       {
         "name": "ClientToken",
@@ -255,6 +263,22 @@ INFO = {
       {
         "name": "DisasterRecoverGroupIds",
         "desc": "List of spread placement group IDs. Only one can be specified currently."
+      },
+      {
+        "name": "CbsEncrypt",
+        "desc": "CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted"
+      },
+      {
+        "name": "MetaType",
+        "desc": "Hive-shared metadatabase type. Valid values:\n<li>EMR_DEFAULT_META: the cluster creates one by default.</li>\n<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>\n<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>"
+      },
+      {
+        "name": "UnifyMetaInstanceId",
+        "desc": "EMR-MetaDB instance"
+      },
+      {
+        "name": "MetaDBInfo",
+        "desc": "Custom MetaDB instance information"
       }
     ],
     "desc": "This API is used to create EMR instance."
@@ -296,6 +320,22 @@ INFO = {
       {
         "name": "VPCSettings",
         "desc": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc."
+      },
+      {
+        "name": "MetaType",
+        "desc": "Hive-shared metadatabase type. Valid values:\n<li>EMR_DEFAULT_META: the cluster creates one by default.</li>\n<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>\n<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>"
+      },
+      {
+        "name": "UnifyMetaInstanceId",
+        "desc": "EMR-MetaDB instance"
+      },
+      {
+        "name": "MetaDBInfo",
+        "desc": "Custom MetaDB instance information"
+      },
+      {
+        "name": "ProductId",
+        "desc": "Product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>1: EMR v1.3.1.</li>\n<li>2: EMR v2.0.1.</li>\n<li>4: EMR v2.1.0.</li>\n<li>7: EMR v3.0.0.</li>"
       }
     ],
     "desc": "This API is used to query price of instance creation."
@@ -353,5 +393,18 @@ INFO = {
       }
     ],
     "desc": "This API is used to terminate a task node."
+  },
+  "TerminateInstance": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID."
+      },
+      {
+        "name": "ResourceIds",
+        "desc": "ID of terminated node. This parameter is reserved and does not need to be configured."
+      }
+    ],
+    "desc": "This API is used to terminate an EMR instance. It is only supported in the official paid edition of EMR."
   }
 }

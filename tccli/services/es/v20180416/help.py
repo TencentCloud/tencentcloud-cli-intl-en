@@ -75,7 +75,7 @@ INFO = {
       },
       {
         "name": "EsVersion",
-        "desc": "Instance version (\"5.6.4\" or \"6.4.3\")"
+        "desc": "Instance version (\"5.6.4\", \"6.4.3\", \"6.8.2\", or \"7.5.1\")"
       },
       {
         "name": "VpcId",

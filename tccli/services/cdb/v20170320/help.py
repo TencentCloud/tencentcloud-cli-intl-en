@@ -127,6 +127,24 @@ INFO = {
     ],
     "desc": "This API (CreateAccounts) is used to create TencentDB accounts. The new account names, domain names, and passwords need to be specified, and account remarks can also be added."
   },
+  "DescribeDataBackupOverview": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "TencentDB product type to be queried. Currently, only `mysql` is supported."
+      }
+    ],
+    "desc": "This API is used to query the data backup overview of a user in the current region."
+  },
+  "BalanceRoGroupLoad": {
+    "params": [
+      {
+        "name": "RoGroupId",
+        "desc": "RO group ID in the format of `cdbrg-c1nl9rpv`."
+      }
+    ],
+    "desc": "This API is used to rebalance the loads of instances in an RO group. Please note that the database connections to those instances will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution."
+  },
   "AddTimeWindow": {
     "params": [
       {
@@ -594,6 +612,27 @@ INFO = {
     ],
     "desc": "This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be master, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status."
   },
+  "ModifyRoGroupInfo": {
+    "params": [
+      {
+        "name": "RoGroupId",
+        "desc": "RO group ID."
+      },
+      {
+        "name": "RoGroupInfo",
+        "desc": "RO group details."
+      },
+      {
+        "name": "RoWeightValues",
+        "desc": "Weights of instances in RO group. If the weighting mode of an RO group is changed to custom mode, this parameter must be set, and a weight value needs to be set for each RO instance."
+      },
+      {
+        "name": "IsBalanceRoLoad",
+        "desc": "Whether to rebalance the loads of RO instances in the RO group. Supported values include `1` (yes) and `0` (no). The default value is `0`. Please note that if this value is set to `1`, connections to the RO instances in the RO group will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases."
+      }
+    ],
+    "desc": "This API is used to update the information of a TencentDB RO group, such as configuring an instance removal policy in case of excessive delay and setting read weights of RO instances."
+  },
   "DescribeDefaultParams": {
     "params": [
       {
@@ -938,6 +977,27 @@ INFO = {
     ],
     "desc": "This API (ModifyAccountPassword) is used to modify the password of a TencentDB instance account."
   },
+  "CreateDeployGroup": {
+    "params": [
+      {
+        "name": "DeployGroupName",
+        "desc": "Name of a placement group, which can contain up to 60 characters."
+      },
+      {
+        "name": "Description",
+        "desc": "Description of a placement group, which can contain up to 200 characters."
+      },
+      {
+        "name": "Affinity",
+        "desc": "Affinity policy of placement group. Currently, the value of this parameter can only be 1. Policy 1 indicates the upper limit of instances on one physical machine."
+      },
+      {
+        "name": "LimitNum",
+        "desc": "Upper limit of instances on one physical machine as defined in affinity policy 1 of placement group."
+      }
+    ],
+    "desc": "This API is used to create a placement group for placing instances."
+  },
   "DescribeBinlogs": {
     "params": [
       {
@@ -1029,6 +1089,15 @@ INFO = {
     ],
     "desc": "This API (DescribeInstanceParams) is used to query the list of parameters for an instance."
   },
+  "DescribeBackupOverview": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "TencentDB product type to be queried. Currently, only `mysql` is supported."
+      }
+    ],
+    "desc": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes)."
+  },
   "ModifyNameOrDescByDpId": {
     "params": [
       {
@@ -1072,6 +1141,31 @@ INFO = {
     ],
     "desc": "This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance."
   },
+  "DescribeBackupSummaries": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "TencentDB product type to be queried. Currently, only `mysql` is supported."
+      },
+      {
+        "name": "Offset",
+        "desc": "Pagination offset."
+      },
+      {
+        "name": "Limit",
+        "desc": "Paginated query limit. Default value: 20."
+      },
+      {
+        "name": "OrderBy",
+        "desc": "Sorting criterion. Valid values: BackupVolume (backup capacity), DataBackupVolume (data backup capacity), BinlogBackupVolume (log backup capacity), AutoBackupVolume (automatic backup capacity), ManualBackupVolume (manual backup capacity)."
+      },
+      {
+        "name": "OrderDirection",
+        "desc": "Sorting order. Valid values: ASC (ascending), DESC (descending)."
+      }
+    ],
+    "desc": "This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes)."
+  },
   "DescribeParamTemplateInfo": {
     "params": [
       {
@@ -1094,35 +1188,39 @@ INFO = {
     ],
     "desc": "This API (DisassociateSecurityGroups) is used to unbind security groups from instances in batches."
   },
-  "CreateDeployGroup": {
+  "DescribeBinlogBackupOverview": {
     "params": [
       {
-        "name": "DeployGroupName",
-        "desc": "Name of a placement group, which can contain up to 60 characters."
-      },
-      {
-        "name": "Description",
-        "desc": "Description of a placement group, which can contain up to 200 characters."
-      },
-      {
-        "name": "Affinity",
-        "desc": "Affinity policy of placement group. Currently, the value of this parameter can only be 1. Policy 1 indicates the upper limit of instances on one physical machine."
-      },
-      {
-        "name": "LimitNum",
-        "desc": "Upper limit of instances on one physical machine as defined in affinity policy 1 of placement group."
+        "name": "Product",
+        "desc": "TencentDB product type to be queried. Currently, only `mysql` is supported."
       }
     ],
-    "desc": "This API is used to create a placement group for placing instances."
+    "desc": "This API is used to query the log backup overview of a user in the current region."
   },
-  "DeleteTimeWindow": {
+  "DescribeBackupDatabases": {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-07-12 10:29:20."
+      },
+      {
+        "name": "SearchDatabase",
+        "desc": "Prefix of the database to be queried."
+      },
+      {
+        "name": "Offset",
+        "desc": "Pagination offset."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Value range: 1-2,000."
       }
     ],
-    "desc": "This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default."
+    "desc": "This API is used to query the databases contained in a backup file. It has been disused.\nAfter the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.\nThe new API (CreateBackup) can specify the table to be backed up when a logical backup file is created, which can be downloaded directly."
   },
   "DescribeTables": {
     "params": [
@@ -1149,29 +1247,13 @@ INFO = {
     ],
     "desc": "This API (DescribeTables) is used to query the database tables of a TencentDB instance."
   },
-  "DescribeBackupDatabases": {
+  "DeleteTimeWindow": {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
-      },
-      {
-        "name": "StartTime",
-        "desc": "Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-07-12 10:29:20."
-      },
-      {
-        "name": "SearchDatabase",
-        "desc": "Prefix of the database to be queried."
-      },
-      {
-        "name": "Offset",
-        "desc": "Pagination offset."
-      },
-      {
-        "name": "Limit",
-        "desc": "Number of entries per page. Value range: 1-2,000."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
       }
     ],
-    "desc": "This API is used to query the databases contained in a backup file. It has been disused.\nAfter the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.\nThe new API (CreateBackup) can specify the table to be backed up when a logical backup file is created, which can be downloaded directly."
+    "desc": "This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default."
   }
 }

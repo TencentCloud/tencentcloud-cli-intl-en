@@ -322,6 +322,8 @@ def doDescribeSmsTemplateList(argv, arglist):
         return
 
     param = {
+        "TemplateIdSet": Utils.try_to_json(argv, "--TemplateIdSet"),
+        "International": Utils.try_to_json(argv, "--International"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -388,6 +390,8 @@ def doDescribeSmsSignList(argv, arglist):
         return
 
     param = {
+        "SignIdSet": Utils.try_to_json(argv, "--SignIdSet"),
+        "International": Utils.try_to_json(argv, "--International"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

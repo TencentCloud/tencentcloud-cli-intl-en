@@ -210,7 +210,7 @@ INFO = {
       },
       {
         "name": "OriginPullTimeout",
-        "desc": ""
+        "desc": "Origin-pull timeout configuration"
       }
     ],
     "desc": "This API is used to add a CDN acceleration domain name."
@@ -591,7 +591,7 @@ INFO = {
       },
       {
         "name": "OriginPullTimeout",
-        "desc": ""
+        "desc": "Origin-pull timeout configuration"
       },
       {
         "name": "AwsPrivateAccess",

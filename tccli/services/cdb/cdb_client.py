@@ -425,6 +425,72 @@ def doModifyAccountDescription(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeDataBackupOverview(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDataBackupOverview", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Product": argv.get("--Product"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDataBackupOverviewRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDataBackupOverview(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doBalanceRoGroupLoad(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("BalanceRoGroupLoad", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "RoGroupId": argv.get("--RoGroupId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.BalanceRoGroupLoadRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.BalanceRoGroupLoad(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doIsolateDBInstance(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1213,6 +1279,42 @@ def doDescribeDBInstances(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyRoGroupInfo(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyRoGroupInfo", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "RoGroupId": argv.get("--RoGroupId"),
+        "RoGroupInfo": Utils.try_to_json(argv, "--RoGroupInfo"),
+        "RoWeightValues": Utils.try_to_json(argv, "--RoWeightValues"),
+        "IsBalanceRoLoad": Utils.try_to_json(argv, "--IsBalanceRoLoad"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyRoGroupInfoRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyRoGroupInfo(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doStopDBImportJob(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1908,16 +2010,18 @@ def doDescribeTagsOfInstanceIds(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyAccountPassword(argv, arglist):
+def doDescribeBackupDatabases(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyAccountPassword", g_param[OptionsDefine.Version])
+        show_help("DescribeBackupDatabases", g_param[OptionsDefine.Version])
         return
 
     param = {
         "InstanceId": argv.get("--InstanceId"),
-        "NewPassword": argv.get("--NewPassword"),
-        "Accounts": Utils.try_to_json(argv, "--Accounts"),
+        "StartTime": argv.get("--StartTime"),
+        "SearchDatabase": argv.get("--SearchDatabase"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1931,9 +2035,42 @@ def doModifyAccountPassword(argv, arglist):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyAccountPasswordRequest()
+    model = models.DescribeBackupDatabasesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyAccountPassword(model)
+    rsp = client.DescribeBackupDatabases(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBinlogBackupOverview(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeBinlogBackupOverview", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Product": argv.get("--Product"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBinlogBackupOverviewRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeBinlogBackupOverview(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2041,6 +2178,41 @@ def doCreateAccounts(argv, arglist):
     model = models.CreateAccountsRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.CreateAccounts(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAccountPassword(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyAccountPassword", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "NewPassword": argv.get("--NewPassword"),
+        "Accounts": Utils.try_to_json(argv, "--Accounts"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAccountPasswordRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyAccountPassword(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2285,6 +2457,43 @@ def doUpgradeDBInstanceEngineVersion(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeBackupSummaries(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeBackupSummaries", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Product": argv.get("--Product"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "OrderBy": argv.get("--OrderBy"),
+        "OrderDirection": argv.get("--OrderDirection"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBackupSummariesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeBackupSummaries(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeParamTemplateInfo(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -2388,14 +2597,14 @@ def doCreateDeployGroup(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteTimeWindow(argv, arglist):
+def doDescribeBackupOverview(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteTimeWindow", g_param[OptionsDefine.Version])
+        show_help("DescribeBackupOverview", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "InstanceId": argv.get("--InstanceId"),
+        "Product": argv.get("--Product"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2409,9 +2618,9 @@ def doDeleteTimeWindow(argv, arglist):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTimeWindowRequest()
+    model = models.DescribeBackupOverviewRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteTimeWindow(model)
+    rsp = client.DescribeBackupOverview(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2458,18 +2667,14 @@ def doDescribeTables(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBackupDatabases(argv, arglist):
+def doDeleteTimeWindow(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeBackupDatabases", g_param[OptionsDefine.Version])
+        show_help("DeleteTimeWindow", g_param[OptionsDefine.Version])
         return
 
     param = {
         "InstanceId": argv.get("--InstanceId"),
-        "StartTime": argv.get("--StartTime"),
-        "SearchDatabase": argv.get("--SearchDatabase"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2483,9 +2688,9 @@ def doDescribeBackupDatabases(argv, arglist):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBackupDatabasesRequest()
+    model = models.DeleteTimeWindowRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeBackupDatabases(model)
+    rsp = client.DeleteTimeWindow(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2518,6 +2723,8 @@ ACTION_MAP = {
     "ModifyTimeWindow": doModifyTimeWindow,
     "OpenDBInstanceGTID": doOpenDBInstanceGTID,
     "ModifyAccountDescription": doModifyAccountDescription,
+    "DescribeDataBackupOverview": doDescribeDataBackupOverview,
+    "BalanceRoGroupLoad": doBalanceRoGroupLoad,
     "IsolateDBInstance": doIsolateDBInstance,
     "ModifyBackupConfig": doModifyBackupConfig,
     "ModifyInstanceParam": doModifyInstanceParam,
@@ -2540,6 +2747,7 @@ ACTION_MAP = {
     "DescribeBackupTables": doDescribeBackupTables,
     "RestartDBInstances": doRestartDBInstances,
     "DescribeDBInstances": doDescribeDBInstances,
+    "ModifyRoGroupInfo": doModifyRoGroupInfo,
     "StopDBImportJob": doStopDBImportJob,
     "DescribeDBInstanceCharset": doDescribeDBInstanceCharset,
     "StartBatchRollback": doStartBatchRollback,
@@ -2560,10 +2768,12 @@ ACTION_MAP = {
     "CloseWanService": doCloseWanService,
     "DescribeDefaultParams": doDescribeDefaultParams,
     "DescribeTagsOfInstanceIds": doDescribeTagsOfInstanceIds,
-    "ModifyAccountPassword": doModifyAccountPassword,
+    "DescribeBackupDatabases": doDescribeBackupDatabases,
+    "DescribeBinlogBackupOverview": doDescribeBinlogBackupOverview,
     "DescribeBinlogs": doDescribeBinlogs,
     "DescribeDatabases": doDescribeDatabases,
     "CreateAccounts": doCreateAccounts,
+    "ModifyAccountPassword": doModifyAccountPassword,
     "OfflineIsolatedInstances": doOfflineIsolatedInstances,
     "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
     "DescribeSupportedPrivileges": doDescribeSupportedPrivileges,
@@ -2571,12 +2781,13 @@ ACTION_MAP = {
     "DescribeInstanceParamRecords": doDescribeInstanceParamRecords,
     "OpenWanService": doOpenWanService,
     "UpgradeDBInstanceEngineVersion": doUpgradeDBInstanceEngineVersion,
+    "DescribeBackupSummaries": doDescribeBackupSummaries,
     "DescribeParamTemplateInfo": doDescribeParamTemplateInfo,
     "DisassociateSecurityGroups": doDisassociateSecurityGroups,
     "CreateDeployGroup": doCreateDeployGroup,
-    "DeleteTimeWindow": doDeleteTimeWindow,
+    "DescribeBackupOverview": doDescribeBackupOverview,
     "DescribeTables": doDescribeTables,
-    "DescribeBackupDatabases": doDescribeBackupDatabases,
+    "DeleteTimeWindow": doDeleteTimeWindow,
 
 }
 
