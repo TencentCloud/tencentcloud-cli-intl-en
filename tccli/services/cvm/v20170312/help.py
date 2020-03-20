@@ -646,7 +646,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "ID(s) of the instance(s) to be associated，such as `ins-lesecurk`. You can specify multiple instances."
+        "desc": "ID(s) of the instance(s) to be associated, such as `ins-lesecurk`. You can specify multiple instances."
       }
     ],
     "desc": "This API is used to associate security groups with specified instances."
@@ -955,7 +955,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "ID(s) of the instance(s) to be disassociated，such as `ins-lesecurk`. You can specify multiple instances."
+        "desc": "ID(s) of the instance(s) to be disassociated, such as `ins-lesecurk`. You can specify multiple instances."
       }
     ],
     "desc": "This API is used to disassociate security groups from instances."
