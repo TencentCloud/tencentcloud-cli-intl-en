@@ -12,20 +12,33 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.cloudaudit.v20190319 import cloudaudit_client as cloudaudit_client_v20190319
-from tencentcloud.cloudaudit.v20190319 import models as models_v20190319
-from tccli.services.cloudaudit import v20190319
-from tccli.services.cloudaudit.v20190319 import help as v20190319_help
+from tencentcloud.dc.v20180410 import dc_client as dc_client_v20180410
+from tencentcloud.dc.v20180410 import models as models_v20180410
+from tccli.services.dc import v20180410
+from tccli.services.dc.v20180410 import help as v20180410_help
 
 
-def doStartLogging(argv, arglist):
+def doCreateDirectConnectTunnel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("StartLogging", g_param[OptionsDefine.Version])
+        show_help("CreateDirectConnectTunnel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "AuditName": argv.get("--AuditName"),
+        "DirectConnectId": argv.get("--DirectConnectId"),
+        "DirectConnectTunnelName": argv.get("--DirectConnectTunnelName"),
+        "DirectConnectOwnerAccount": argv.get("--DirectConnectOwnerAccount"),
+        "NetworkType": argv.get("--NetworkType"),
+        "NetworkRegion": argv.get("--NetworkRegion"),
+        "VpcId": argv.get("--VpcId"),
+        "DirectConnectGatewayId": argv.get("--DirectConnectGatewayId"),
+        "Bandwidth": Utils.try_to_json(argv, "--Bandwidth"),
+        "RouteType": argv.get("--RouteType"),
+        "BgpPeer": Utils.try_to_json(argv, "--BgpPeer"),
+        "RouteFilterPrefixes": Utils.try_to_json(argv, "--RouteFilterPrefixes"),
+        "Vlan": Utils.try_to_json(argv, "--Vlan"),
+        "TencentAddress": argv.get("--TencentAddress"),
+        "CustomerAddress": argv.get("--CustomerAddress"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -36,12 +49,12 @@ def doStartLogging(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartLoggingRequest()
+    model = models.CreateDirectConnectTunnelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.StartLogging(model)
+    rsp = client.CreateDirectConnectTunnel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -51,14 +64,14 @@ def doStartLogging(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetAttributeKey(argv, arglist):
+def doRejectDirectConnectTunnel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("GetAttributeKey", g_param[OptionsDefine.Version])
+        show_help("RejectDirectConnectTunnel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "WebsiteType": argv.get("--WebsiteType"),
+        "DirectConnectTunnelId": argv.get("--DirectConnectTunnelId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -69,12 +82,12 @@ def doGetAttributeKey(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetAttributeKeyRequest()
+    model = models.RejectDirectConnectTunnelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.GetAttributeKey(model)
+    rsp = client.RejectDirectConnectTunnel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -84,14 +97,14 @@ def doGetAttributeKey(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListCmqEnableRegion(argv, arglist):
+def doAcceptDirectConnectTunnel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ListCmqEnableRegion", g_param[OptionsDefine.Version])
+        show_help("AcceptDirectConnectTunnel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "WebsiteType": argv.get("--WebsiteType"),
+        "DirectConnectTunnelId": argv.get("--DirectConnectTunnelId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -102,12 +115,12 @@ def doListCmqEnableRegion(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListCmqEnableRegionRequest()
+    model = models.AcceptDirectConnectTunnelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListCmqEnableRegion(model)
+    rsp = client.AcceptDirectConnectTunnel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -117,14 +130,14 @@ def doListCmqEnableRegion(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteAudit(argv, arglist):
+def doDeleteDirectConnectTunnel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteAudit", g_param[OptionsDefine.Version])
+        show_help("DeleteDirectConnectTunnel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "AuditName": argv.get("--AuditName"),
+        "DirectConnectTunnelId": argv.get("--DirectConnectTunnelId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -135,12 +148,12 @@ def doDeleteAudit(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteAuditRequest()
+    model = models.DeleteDirectConnectTunnelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteAudit(model)
+    rsp = client.DeleteDirectConnectTunnel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -150,14 +163,17 @@ def doDeleteAudit(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStopLogging(argv, arglist):
+def doDescribeDirectConnectTunnels(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("StopLogging", g_param[OptionsDefine.Version])
+        show_help("DescribeDirectConnectTunnels", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "AuditName": argv.get("--AuditName"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "DirectConnectTunnelIds": Utils.try_to_json(argv, "--DirectConnectTunnelIds"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -168,12 +184,12 @@ def doStopLogging(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StopLoggingRequest()
+    model = models.DescribeDirectConnectTunnelsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.StopLogging(model)
+    rsp = client.DescribeDirectConnectTunnels(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -183,13 +199,17 @@ def doStopLogging(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquireAuditCredit(argv, arglist):
+def doDescribeDirectConnects(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("InquireAuditCredit", g_param[OptionsDefine.Version])
+        show_help("DescribeDirectConnects", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "DirectConnectIds": Utils.try_to_json(argv, "--DirectConnectIds"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -200,12 +220,12 @@ def doInquireAuditCredit(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquireAuditCreditRequest()
+    model = models.DescribeDirectConnectsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.InquireAuditCredit(model)
+    rsp = client.DescribeDirectConnects(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -215,23 +235,20 @@ def doInquireAuditCredit(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpdateAudit(argv, arglist):
+def doModifyDirectConnectTunnelAttribute(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpdateAudit", g_param[OptionsDefine.Version])
+        show_help("ModifyDirectConnectTunnelAttribute", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "AuditName": argv.get("--AuditName"),
-        "CmqQueueName": argv.get("--CmqQueueName"),
-        "CmqRegion": argv.get("--CmqRegion"),
-        "CosBucketName": argv.get("--CosBucketName"),
-        "CosRegion": argv.get("--CosRegion"),
-        "IsCreateNewBucket": Utils.try_to_json(argv, "--IsCreateNewBucket"),
-        "IsCreateNewQueue": Utils.try_to_json(argv, "--IsCreateNewQueue"),
-        "IsEnableCmqNotify": Utils.try_to_json(argv, "--IsEnableCmqNotify"),
-        "LogFilePrefix": argv.get("--LogFilePrefix"),
-        "ReadWriteAttribute": Utils.try_to_json(argv, "--ReadWriteAttribute"),
+        "DirectConnectTunnelId": argv.get("--DirectConnectTunnelId"),
+        "DirectConnectTunnelName": argv.get("--DirectConnectTunnelName"),
+        "BgpPeer": Utils.try_to_json(argv, "--BgpPeer"),
+        "RouteFilterPrefixes": Utils.try_to_json(argv, "--RouteFilterPrefixes"),
+        "TencentAddress": argv.get("--TencentAddress"),
+        "CustomerAddress": argv.get("--CustomerAddress"),
+        "Bandwidth": Utils.try_to_json(argv, "--Bandwidth"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -242,189 +259,12 @@ def doUpdateAudit(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateAuditRequest()
+    model = models.ModifyDirectConnectTunnelAttributeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpdateAudit(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeAudit(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeAudit", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "AuditName": argv.get("--AuditName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAuditRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeAudit(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateAudit(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateAudit", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "AuditName": argv.get("--AuditName"),
-        "CosBucketName": argv.get("--CosBucketName"),
-        "CosRegion": argv.get("--CosRegion"),
-        "IsCreateNewBucket": Utils.try_to_json(argv, "--IsCreateNewBucket"),
-        "IsEnableCmqNotify": Utils.try_to_json(argv, "--IsEnableCmqNotify"),
-        "ReadWriteAttribute": Utils.try_to_json(argv, "--ReadWriteAttribute"),
-        "CmqQueueName": argv.get("--CmqQueueName"),
-        "CmqRegion": argv.get("--CmqRegion"),
-        "IsCreateNewQueue": Utils.try_to_json(argv, "--IsCreateNewQueue"),
-        "LogFilePrefix": argv.get("--LogFilePrefix"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateAuditRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateAudit(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListCosEnableRegion(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListCosEnableRegion", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "WebsiteType": argv.get("--WebsiteType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListCosEnableRegionRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListCosEnableRegion(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doLookUpEvents(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("LookUpEvents", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "LookupAttributes": Utils.try_to_json(argv, "--LookupAttributes"),
-        "MaxResults": Utils.try_to_json(argv, "--MaxResults"),
-        "NextToken": argv.get("--NextToken"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.LookUpEventsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.LookUpEvents(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListAudits(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListAudits", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CloudauditClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListAuditsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListAudits(model)
+    rsp = client.ModifyDirectConnectTunnelAttribute(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -435,42 +275,37 @@ def doListAudits(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20190319": cloudaudit_client_v20190319,
+    "v20180410": dc_client_v20180410,
 
 }
 
 MODELS_MAP = {
-    "v20190319": models_v20190319,
+    "v20180410": models_v20180410,
 
 }
 
 ACTION_MAP = {
-    "StartLogging": doStartLogging,
-    "GetAttributeKey": doGetAttributeKey,
-    "ListCmqEnableRegion": doListCmqEnableRegion,
-    "DeleteAudit": doDeleteAudit,
-    "StopLogging": doStopLogging,
-    "InquireAuditCredit": doInquireAuditCredit,
-    "UpdateAudit": doUpdateAudit,
-    "DescribeAudit": doDescribeAudit,
-    "CreateAudit": doCreateAudit,
-    "ListCosEnableRegion": doListCosEnableRegion,
-    "LookUpEvents": doLookUpEvents,
-    "ListAudits": doListAudits,
+    "CreateDirectConnectTunnel": doCreateDirectConnectTunnel,
+    "RejectDirectConnectTunnel": doRejectDirectConnectTunnel,
+    "AcceptDirectConnectTunnel": doAcceptDirectConnectTunnel,
+    "DeleteDirectConnectTunnel": doDeleteDirectConnectTunnel,
+    "DescribeDirectConnectTunnels": doDescribeDirectConnectTunnels,
+    "DescribeDirectConnects": doDescribeDirectConnects,
+    "ModifyDirectConnectTunnelAttribute": doModifyDirectConnectTunnelAttribute,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20190319.version,
+    v20180410.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20190319.version.replace('-', ''): {"help": v20190319_help.INFO,"desc": v20190319_help.DESC},
+     'v' + v20180410.version.replace('-', ''): {"help": v20180410_help.INFO,"desc": v20180410_help.DESC},
 
 }
 
 
-def cloudaudit_action(argv, arglist):
+def dc_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -486,7 +321,7 @@ def cloudaudit_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "cloudaudit", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "dc", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -507,7 +342,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("cloudaudit", cloudaudit_action)
+    cmd = NiceCommand("dc", dc_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -572,11 +407,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["cloudaudit"][OptionsDefine.Version]
+            version = config["dc"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["cloudaudit"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["dc"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -593,7 +428,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "cloudaudit", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "dc", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -603,7 +438,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["cloudaudit"]["version"]
+        version = profile["dc"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

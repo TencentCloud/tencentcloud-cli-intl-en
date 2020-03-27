@@ -152,6 +152,10 @@ INFO = {
         "desc": "Identifies the source context which is used to pass through the user request information. The `EditMediaComplete` callback and task flow status change callback will return the value of this field. It can contain up to 1,000 characters."
       },
       {
+        "name": "TasksPriority",
+        "desc": "Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used."
+      },
+      {
         "name": "SessionId",
         "desc": "ID used for task deduplication. If there was a request with the same ID in the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed."
       },
@@ -202,13 +206,13 @@ INFO = {
   },
   "DescribeSubAppIds": {
     "params": [],
-    "desc": "This API is used to get the list of subapplications to which the current account has permissions, including primary applications. If the subapplication feature has not been enabled, this API will return \n `FailedOperation`."
+    "desc": "This API is used to get the list of subapplications to which the current account has permissions, including primary applications. If the subapplication feature has not been enabled, this API will return. \n `FailedOperation`."
   },
   "PullUpload": {
     "params": [
       {
         "name": "MediaUrl",
-        "desc": "URL of the media to be pulled. HLS and Dash formats are not supported for pull currently.\nFor the supported extensions, please see [File Types](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)."
+        "desc": "URL of the media to be pulled. Media files in HLS and Dash formats cannot be pulled currently.\nFor the supported extensions, please see [Media Types](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)."
       },
       {
         "name": "MediaName",
@@ -224,7 +228,7 @@ INFO = {
       },
       {
         "name": "ExpireTime",
-        "desc": "Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I)."
       },
       {
         "name": "StorageRegion",
@@ -343,26 +347,42 @@ INFO = {
     ],
     "desc": "This API is used to modify a custom transcoding template."
   },
-  "DescribeAIRecognitionTemplates": {
+  "CreateSnapshotByTimeOffsetTemplate": {
     "params": [
       {
-        "name": "Definitions",
-        "desc": "Unique ID filter of video content recognition templates. Array length limit: 100."
+        "name": "Name",
+        "desc": "Name of a time point screencapturing template. Length limit: 64 characters."
       },
       {
-        "name": "Offset",
-        "desc": "Paged offset. Default value: 0."
+        "name": "Width",
+        "desc": "Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
       },
       {
-        "name": "Limit",
-        "desc": "Number of returned entries. Default value: 10. Maximum value: 100."
+        "name": "Height",
+        "desc": "Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
+      },
+      {
+        "name": "ResolutionAdaptive",
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
+      },
+      {
+        "name": "Format",
+        "desc": "Image format. Valid values: jpg, png. Default value: jpg."
+      },
+      {
+        "name": "Comment",
+        "desc": "Template description. Length limit: 256 characters."
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      },
+      {
+        "name": "FillType",
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black."
       }
     ],
-    "desc": "This API is used to get the list of video content recognition templates based on unique template ID. The return result includes all eligible custom and [preset video content recognition templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)."
+    "desc": "This API is used to create a custom time point screencapturing template. Up to 16 templates can be created."
   },
   "CommitUpload": {
     "params": [
@@ -402,7 +422,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Paged offset. Default value: 0."
+        "desc": "Pagination offset. Default value: 0."
       },
       {
         "name": "Limit",
@@ -461,11 +481,11 @@ INFO = {
       },
       {
         "name": "StartTime",
-        "desc": "Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
       },
       {
         "name": "EndTime",
-        "desc": "End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
       },
       {
         "name": "IsPersistence",
@@ -473,7 +493,7 @@ INFO = {
       },
       {
         "name": "ExpireTime",
-        "desc": "Storage expiration time of video generated by persistent clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire."
+        "desc": "Storage expiration time of video generated by persistent clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire."
       },
       {
         "name": "Procedure",
@@ -485,18 +505,18 @@ INFO = {
       },
       {
         "name": "Host",
-        "desc": ""
+        "desc": "Domain name used for live clipping. Time shifting must be enabled in LVB."
       },
       {
         "name": "ExtInfo",
-        "desc": ""
+        "desc": "Reserved field. Do not enter a value for it."
       },
       {
         "name": "SubAppId",
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "Live clipping means that during a live broadcast (before it ends), you can select a segment of previous live broadcast content to generate a new video (in HLS format) in real time and share it immediately or store it persistently.\n\nVOD supports two live clipping modes:\n- Persistent clipping: in this mode, the clipped video is saved as an independent video file with a `FileId`, which is suitable for **persistently storing** highlights;\n- Temporary clipping: in this mode, the clipped video is part of the LVB recording file with no `FileId`, which is suitable for **temporarily sharing** highlights;\n\nNote:\n- The live clipping feature can be used only when [time shifting](https://cloud.tencent.com/document/product/267/32742) has been enabled for the target live stream.\n- Live clipping is performed based on the m3u8 file generated by LVB recording, so its minimum clipping granularity is one ts segment rather than at or below the second level.\n\n\n### Persistent clipping\nIn persistent clipping mode, the clipped video is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the source LVB recording video (even if the source video is deleted, the clipped video will not be affected in any way). It can be further processed (transcoded, published on WeChat, etc.).\n\nAn example is as follows: for a complete football match, the source LVB recording video may be up to 2 hours in length. You want to store this video for only 2 months for the purpose of cost savings. However, you want to specify a longer retention period for the \"highlights\" video created by live clipping, and perform additional VOD operations on it such as transcoding and release on WeChat. In this case, you need to choose the persistent clipping mode of live clipping.\n\nThe advantage of persistent clipping is that the clipped video has a lifecycle independent of the source recording video and can be managed independently and stored persistently.\n\n### Temporary clipping\nIn temporary clipping mode, the clipped video (m3u8 file) shares the same ts segments with the LVB recording video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the LVB recording video; therefore, if the LVB recording video is deleted, it cannot be played back.\n\nFor temporary clipping, as the clipping result is not an independent video, it will not be included in VOD's media asset management (for example, it will not be counted in the total videos in the console), and no video processing operations can be separately performed on it, such as transcoding and release on WeChat.\n\nThe advantage of temporary clipping is that the clipping operation is very \"lightweight\" and does not incur additional storage fees. However, the clipped video has the same lifecycle as the source recording video and cannot be further transcoded or processed."
+    "desc": "Live clipping means that during a live broadcast (before it ends), you can select a segment of previous live broadcast content to generate a new video (in HLS format) in real time and share it immediately or store it persistently.\n\nVOD supports two live clipping modes:\n- Persistent clipping: in this mode, the clipped video is saved as an independent video file with a `FileId`, which is suitable for **persistently storing** highlights;\n- Temporary clipping: in this mode, the clipped video is part of the LVB recording file with no `FileId`, which is suitable for **temporarily sharing** highlights;\n\nNote:\n- The live clipping feature can be used only when [time shifting](https://cloud.tencent.com/document/product/267/32742) has been enabled for the target live stream.\n- Live clipping is performed based on the m3u8 file generated by LVB recording, so its minimum clipping granularity is one ts segment rather than at or below the second level.\n\n\n### Persistent clipping\nIn persistent clipping mode, the clipped video is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the source LVB recording video (even if the source video is deleted, the clipped video will not be affected in any way). It can be further processed (transcoded, published on WeChat, etc.).\n\nAn example is as follows: for a complete football match, the source LVB recording video may be up to 2 hours in length. You want to store this video for only 2 months for the purpose of cost savings. However, you want to specify a longer retention period for the \"highlights\" video created by live clipping and perform additional VOD operations on it such as transcoding and release on WeChat. In this case, you need to choose the persistent clipping mode of live clipping.\n\nThe advantage of persistent clipping is that the clipped video has a lifecycle independent of the source recording video and can be managed independently and stored persistently.\n\n### Temporary clipping\nIn temporary clipping mode, the clipped video (m3u8 file) shares the same ts segments with the LVB recording video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the LVB recording video; therefore, if the LVB recording video is deleted, it cannot be played back.\n\nFor temporary clipping, as the clipping result is not an independent video, it will not be included in VOD's media asset management (for example, it will not be counted in the total videos in the console), and no video processing operations can be separately performed on it, such as transcoding and release on WeChat.\n\nThe advantage of temporary clipping is that the clipping operation is very \"lightweight\" and does not incur additional storage fees. However, the clipped video has the same lifecycle as the source recording video and cannot be further transcoded or processed."
   },
   "ProcessMediaByUrl": {
     "params": [
@@ -608,11 +628,11 @@ INFO = {
       },
       {
         "name": "StartTime",
-        "desc": "Start time in the creation time range.\n<li>After or at the start time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).</li>"
+        "desc": "Start time in the creation time range.\n<li>After or at the start time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>"
       },
       {
         "name": "EndTime",
-        "desc": "End time in the creation time range.\n<li>Before the end time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).</li>"
+        "desc": "End time in the creation time range.\n<li>Before the end time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>"
       },
       {
         "name": "SourceType",
@@ -675,11 +695,11 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
       },
       {
         "name": "EndTime",
-        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be after the start date."
+        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date."
       },
       {
         "name": "SubAppId",
@@ -688,50 +708,39 @@ INFO = {
     ],
     "desc": "This API is used to query the length of audited video content in seconds per day within the specified time range.\n\n1. Statistics on the length of audited video content for the last 365 days can be queried.\n2. The query time range cannot be more than 90 days."
   },
-  "ModifyWatermarkTemplate": {
+  "DescribeStorageData": {
     "params": [
-      {
-        "name": "Definition",
-        "desc": "Unique ID of watermarking template."
-      },
-      {
-        "name": "Name",
-        "desc": "Watermarking template name. Length limit: 64 characters."
-      },
-      {
-        "name": "Comment",
-        "desc": "Template description. Length limit: 256 characters."
-      },
-      {
-        "name": "CoordinateOrigin",
-        "desc": "Origin position. Valid values:\n<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>\n<li>TopRight: the origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>\n<li>BottomLeft: the origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>\n<li>BottomRight: the origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>"
-      },
-      {
-        "name": "XPos",
-        "desc": "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>"
-      },
-      {
-        "name": "YPos",
-        "desc": "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>"
-      },
-      {
-        "name": "ImageTemplate",
-        "desc": "Image watermarking template. This field is valid only for image watermarking templates."
-      },
-      {
-        "name": "TextTemplate",
-        "desc": "Text watermarking template. This field is valid only for text watermarking templates."
-      },
-      {
-        "name": "SvgTemplate",
-        "desc": "SVG watermarking template. This field is only valid for SVG watermarking templates."
-      },
       {
         "name": "SubAppId",
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to modify a custom watermarking template. The watermark type cannot be modified."
+    "desc": "This API is used to query the storage capacity usage and number of files."
+  },
+  "DescribeStorageDetails": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+      },
+      {
+        "name": "Interval",
+        "desc": "Query time interval. Valid values:\n<li>Minute: once per minute.</li>\n<li>Hour: once per hour.</li>\n<li>Day: once per day.</li>\nThe default value is determined by the time span. `Minute` will be used if the time span is less than 1 hour, `Hour` if less than or equal to 7 days, and `Day` if more than 7 days."
+      },
+      {
+        "name": "StorageType",
+        "desc": "Storage class to be queried. Valid values:\n<li>TotalStorage: total storage capacity.</li>\n<li>StandardStorage: Standard storage.</li>\n<li>InfrequentStorage: Standard_IA storage.</li>\nDefault value: TotalStorage."
+      },
+      {
+        "name": "SubAppId",
+        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin."
+      }
+    ],
+    "desc": "This API is used to query the used VOD storage capacity in bytes within the specified time range.\n   1. Only storage capacity usage data for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days;\n   3. The query time range at the minute granularity cannot be more than 5 days;\n   4. The query time range at the hour granularity cannot be more than 10 days."
   },
   "ForbidMediaDistribution": {
     "params": [
@@ -833,7 +842,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Paged offset. Default value: 0."
+        "desc": "Pagination offset. Default value: 0."
       },
       {
         "name": "Limit",
@@ -889,7 +898,7 @@ INFO = {
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to create a custom watermarking template. Up to 1,000 ones can be created."
+    "desc": "This API is used to create a custom watermarking template. Up to 1,000 templates can be created."
   },
   "DeleteSampleSnapshotTemplate": {
     "params": [
@@ -919,7 +928,7 @@ INFO = {
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to publish a VOD video in WeChat Mini Program for playback in the WeChat Mini Program player."
+    "desc": "This API is used to publish a VOD video on WeChat Mini Program for playback in the WeChat Mini Program player."
   },
   "ModifyAnimatedGraphicsTemplate": {
     "params": [
@@ -995,7 +1004,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": ""
+        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to clip an HLS video by time period.\n\nNote: the clipped video shares the same ts segments with the source video, and only a new m3u8 file will be generated. Deleting the source video will also delete the clipped video."
@@ -1090,7 +1099,7 @@ INFO = {
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to create a custom task flow template. Up to 50 ones can be created."
+    "desc": "This API is used to create a custom task flow template. Up to 50 templates can be created."
   },
   "PushUrlCache": {
     "params": [
@@ -1104,43 +1113,6 @@ INFO = {
       }
     ],
     "desc": "1. This API is used to prefetch a list of specified URLs.\n2. The URL domain names must have already been registered with VOD.\n3. Up to 20 URLs can be specified in one request."
-  },
-  "CreateSnapshotByTimeOffsetTemplate": {
-    "params": [
-      {
-        "name": "Name",
-        "desc": "Name of a time point screencapturing template. Length limit: 64 characters."
-      },
-      {
-        "name": "Width",
-        "desc": "Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
-      },
-      {
-        "name": "Height",
-        "desc": "Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
-      },
-      {
-        "name": "ResolutionAdaptive",
-        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
-      },
-      {
-        "name": "Format",
-        "desc": "Image format. Valid values: jpg, png. Default value: jpg."
-      },
-      {
-        "name": "Comment",
-        "desc": "Template description. Length limit: 256 characters."
-      },
-      {
-        "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
-      },
-      {
-        "name": "FillType",
-        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black."
-      }
-    ],
-    "desc": "This API is used to create a custom time point screencapturing template. Up to 16 templates can be created."
   },
   "DescribeVideoTrackTemplates": {
     "params": [
@@ -1249,7 +1221,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Paged offset. Default value: 0."
+        "desc": "Pagination offset. Default value: 0."
       },
       {
         "name": "Limit",
@@ -1261,6 +1233,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to query custom watermarking templates and supports paged queries by filters."
+  },
+  "CreateClass": {
+    "params": [
+      {
+        "name": "ParentId",
+        "desc": "Parent category ID. For a first-level category, enter `-1`."
+      },
+      {
+        "name": "ClassName",
+        "desc": "Category name. Length limit: 1–64 characters."
+      },
+      {
+        "name": "SubAppId",
+        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      }
+    ],
+    "desc": "* This API is used to categorize media assets for management;\n* It does not affect the categories of existing media assets. If you want to modify the category of a media asset, call the [ModifyMediaInfo](/document/product/266/31762) API.\n* There can be up to 4 levels of categories.\n* One category can have up to 500 subcategories under it."
   },
   "ModifySubAppIdStatus": {
     "params": [
@@ -1279,11 +1268,11 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
       },
       {
         "name": "EndTime",
-        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be after the start date."
+        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date."
       },
       {
         "name": "DataType",
@@ -1324,7 +1313,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Paged offset. Default value: 0."
+        "desc": "Pagination offset. Default value: 0."
       },
       {
         "name": "Limit",
@@ -1393,7 +1382,65 @@ INFO = {
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to create a custom transcoding template. Up to 100 ones can be created."
+    "desc": "This API is used to create a custom transcoding template. Up to 100 templates can be created."
+  },
+  "ModifyWatermarkTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of watermarking template."
+      },
+      {
+        "name": "Name",
+        "desc": "Watermarking template name. Length limit: 64 characters."
+      },
+      {
+        "name": "Comment",
+        "desc": "Template description. Length limit: 256 characters."
+      },
+      {
+        "name": "CoordinateOrigin",
+        "desc": "Origin position. Valid values:\n<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>\n<li>TopRight: the origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>\n<li>BottomLeft: the origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>\n<li>BottomRight: the origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>"
+      },
+      {
+        "name": "XPos",
+        "desc": "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>"
+      },
+      {
+        "name": "YPos",
+        "desc": "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>"
+      },
+      {
+        "name": "ImageTemplate",
+        "desc": "Image watermarking template. This field is valid only for image watermarking templates."
+      },
+      {
+        "name": "TextTemplate",
+        "desc": "Text watermarking template. This field is valid only for text watermarking templates."
+      },
+      {
+        "name": "SvgTemplate",
+        "desc": "SVG watermarking template. This field is only valid for SVG watermarking templates."
+      },
+      {
+        "name": "SubAppId",
+        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      }
+    ],
+    "desc": "This API is used to modify a custom watermarking template. The watermark type cannot be modified."
+  },
+  "DeleteImageSpriteTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of an image sprite generating template."
+      },
+      {
+        "name": "SubAppId",
+        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      }
+    ],
+    "desc": "This API is used to delete an image sprite generating template."
   },
   "DescribeAdaptiveDynamicStreamingTemplates": {
     "params": [
@@ -1578,7 +1625,28 @@ INFO = {
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to create a custom video content analysis template. Up to 50 ones can be created."
+    "desc": "This API is used to create a custom video content analysis template. Up to 50 templates can be created."
+  },
+  "DescribeAIRecognitionTemplates": {
+    "params": [
+      {
+        "name": "Definitions",
+        "desc": "Unique ID filter of video content recognition templates. Array length limit: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Pagination offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned entries. Default value: 10. Maximum value: 100."
+      },
+      {
+        "name": "SubAppId",
+        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      }
+    ],
+    "desc": "This API is used to get the list of video content recognition templates based on unique template ID. The return result includes all eligible custom and [preset video content recognition templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)."
   },
   "ExecuteFunction": {
     "params": [
@@ -1654,18 +1722,26 @@ INFO = {
     ],
     "desc": "This API is used to create a custom image sprite generating template. Up to 16 templates can be created."
   },
-  "DeleteImageSpriteTemplate": {
+  "DescribeMediaProcessUsageData": {
     "params": [
       {
-        "name": "Definition",
-        "desc": "Unique ID of an image sprite generating template."
+        "name": "StartTime",
+        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date."
+      },
+      {
+        "name": "Type",
+        "desc": "Type of video processing task to be queried. Valid value: Transcode. Default value: Transcode.\n<li>Transcode: transcoding</li>"
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to delete an image sprite generating template."
+    "desc": "This API is used to query the information of video processing usage within the specified time range.\n   1. Statistics on video processing for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days."
   },
   "ProcessMediaByProcedure": {
     "params": [
@@ -1712,7 +1788,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Paged offset. Default value: 0."
+        "desc": "Pagination offset. Default value: 0."
       },
       {
         "name": "Limit",
