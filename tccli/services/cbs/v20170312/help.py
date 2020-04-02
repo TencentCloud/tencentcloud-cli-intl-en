@@ -73,19 +73,6 @@ INFO = {
     ],
     "desc": "This API (AttachDisks) is used to mount cloud disks.\n \n* Batch operations are supported. Multiple cloud disks can be mounted to a CVM. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.\n* This API is an asynchronous API. If the request for mounting the cloud disk successfully returns results, the operation of mounting cloud disk has been initiated at the background. You can use the API [DescribeDisks](/document/product/362/16315) to query the cloud disk status. If the status changes from \"ATTACHING\" to \"ATTACHED\", the cloud disk is mounted."
   },
-  "ModifyDisksRenewFlag": {
-    "params": [
-      {
-        "name": "DiskIds",
-        "desc": "IDs of one or more cloud disks to be operated."
-      },
-      {
-        "name": "RenewFlag",
-        "desc": "Cloud disk renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically. <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but do not renew automatically. <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically."
-      }
-    ],
-    "desc": "This API (ModifyDisksRenewFlag) is used to modify the renewal flag of the cloud disk, which supports batch modification."
-  },
   "ModifyAutoSnapshotPolicyAttribute": {
     "params": [
       {
@@ -400,19 +387,6 @@ INFO = {
     ],
     "desc": "This API (CreateAutoSnapshotPolicy) is used to create a scheduled snapshot policy.\n\n* For the limits on the number of scheduled snapshot policies that can be created in each region, see [Scheduled Snapshots](/document/product/362/8191).\n* The quantity and capacity of the snapshots that can be created in each region are limited. For more information, see the **Snapshots** page on the Tencent Cloud Console. If the number of snapshots exceeds the quota, the creation of the scheduled snapshots will fail."
   },
-  "ModifyDisksChargeType": {
-    "params": [
-      {
-        "name": "DiskIds",
-        "desc": "The ID(s) of one or multiple cloud disks to be operated. The maximum number of cloud disks per request is 100."
-      },
-      {
-        "name": "DiskChargePrepaid",
-        "desc": ""
-      }
-    ],
-    "desc": "API domain name: cbs.tencentcloudapi.com.\n\nThis API is used to change the billing mode of cloud disks.\n\nYou can only use this API to change the billing method from `POSTPAID_BY_HOUR` to `PREPAID`.\nThis API does not support non-elastic cloud disks. Please use `modifyinstanceschargetype` API to convert CVM instances and the bound non-elastic cloud disks. \nDefault API request frequency limit: 10 times/second.\n"
-  },
   "TerminateDisks": {
     "params": [
       {
@@ -532,6 +506,10 @@ INFO = {
     ],
     "desc": "This API (DetachDisks) is used to unmount cloud disks.\n\n* Batch operations are supported. Multiple cloud disks mounted to the same CVM can be unmounted in batch. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.\n* This API is an asynchronous API. When the request successfully returns results, the cloud disk is not unmounted from the CVM immediately. You can use the API [DescribeDisks](/document/product/362/16315) to query the cloud disk status. If the status changes from \"ATTACHED\" to \"UNATTACHED\", the cloud disk is unmounted."
   },
+  "GetSnapOverview": {
+    "params": [],
+    "desc": "This API is used to get snapshot overview information."
+  },
   "ResizeDisk": {
     "params": [
       {
@@ -557,26 +535,5 @@ INFO = {
       }
     ],
     "desc": "This API (CreateSnapshot) is used to create a snapshot of a specified cloud disk.\n\n* Snapshots can only be created for cloud disks with the snapshot capability. To check whether a cloud disk has the snapshot capability, see the SnapshotAbility field returned by the API [DescribeDisks](/document/product/362/16315).\n* For the number of snapshots that can be created, please see [Product Usage Restriction](https://cloud.tencent.com/doc/product/362/5145)."
-  },
-  "InquiryPriceRenewDisks": {
-    "params": [
-      {
-        "name": "DiskIds",
-        "desc": "ID of the cloud disk, which can be queried via the API [DescribeDisks](/document/product/362/16315)."
-      },
-      {
-        "name": "DiskChargePrepaids",
-        "desc": "Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase usage period can be specified using this parameter. If this parameter is specified as CurInstanceDeadline, then it will be renewed according to the aligned CVM expiration time. If it is a batch renewal price query, then this parameter will correspond to the Disks parameter, and the element quantity needs to be kept the same."
-      },
-      {
-        "name": "NewDeadline",
-        "desc": "Specify the new expiration time of the cloud disk, in such format as 2017-12-17 00:00:00. The parameters `NewDeadline` and `DiskChargePrepaids` are two options to specify the inquiry length, and you must specify at least one."
-      },
-      {
-        "name": "ProjectId",
-        "desc": "ID of project the cloud disk belongs to. If selected, it can only be used for authentication."
-      }
-    ],
-    "desc": "This API is used to query the price of renewing one or more cloud disks.\n\n* You can query the price for renewing cloud disks together with their bound instances. To do so, you need to specify `CurInstanceDeadline` in the [DiskChargePrepaid](/document/product/362/15669#DiskChargePrepaid) parameter, In this case, the API will query the price for renewing the cloud disk to the expiration time of the bound instance.\n* You can specify different renewal lengths for multiple cloud disks in a single request. In such cases, the price returned will be the total price of renewing multiple cloud disks."
   }
 }

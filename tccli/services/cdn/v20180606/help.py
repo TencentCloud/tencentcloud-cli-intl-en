@@ -595,7 +595,7 @@ INFO = {
       },
       {
         "name": "AwsPrivateAccess",
-        "desc": ""
+        "desc": "Origin access authentication for S3 bucket"
       }
     ],
     "desc": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration."

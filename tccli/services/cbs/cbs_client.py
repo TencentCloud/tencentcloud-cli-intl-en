@@ -159,40 +159,6 @@ def doAttachDisks(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDisksRenewFlag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyDisksRenewFlag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "DiskIds": Utils.try_to_json(argv, "--DiskIds"),
-        "RenewFlag": argv.get("--RenewFlag"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CbsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDisksRenewFlagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyDisksRenewFlag(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doModifyAutoSnapshotPolicyAttribute(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -702,40 +668,6 @@ def doCreateAutoSnapshotPolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDisksChargeType(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyDisksChargeType", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "DiskIds": Utils.try_to_json(argv, "--DiskIds"),
-        "DiskChargePrepaid": Utils.try_to_json(argv, "--DiskChargePrepaid"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CbsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDisksChargeTypeRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyDisksChargeType(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doTerminateDisks(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -981,6 +913,38 @@ def doCreateSnapshot(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doGetSnapOverview(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetSnapOverview", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CbsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetSnapOverviewRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetSnapOverview(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doResizeDisk(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1049,42 +1013,6 @@ def doDetachDisks(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquiryPriceRenewDisks(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("InquiryPriceRenewDisks", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "DiskIds": Utils.try_to_json(argv, "--DiskIds"),
-        "DiskChargePrepaids": Utils.try_to_json(argv, "--DiskChargePrepaids"),
-        "NewDeadline": argv.get("--NewDeadline"),
-        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CbsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceRenewDisksRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.InquiryPriceRenewDisks(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 CLIENT_MAP = {
     "v20170312": cbs_client_v20170312,
 
@@ -1100,7 +1028,6 @@ ACTION_MAP = {
     "InquiryPriceResizeDisk": doInquiryPriceResizeDisk,
     "DescribeAutoSnapshotPolicies": doDescribeAutoSnapshotPolicies,
     "AttachDisks": doAttachDisks,
-    "ModifyDisksRenewFlag": doModifyDisksRenewFlag,
     "ModifyAutoSnapshotPolicyAttribute": doModifyAutoSnapshotPolicyAttribute,
     "InquiryPriceCreateDisks": doInquiryPriceCreateDisks,
     "DescribeDiskOperationLogs": doDescribeDiskOperationLogs,
@@ -1115,7 +1042,6 @@ ACTION_MAP = {
     "DescribeSnapshots": doDescribeSnapshots,
     "DescribeSnapshotSharePermission": doDescribeSnapshotSharePermission,
     "CreateAutoSnapshotPolicy": doCreateAutoSnapshotPolicy,
-    "ModifyDisksChargeType": doModifyDisksChargeType,
     "TerminateDisks": doTerminateDisks,
     "DescribeDiskConfigQuota": doDescribeDiskConfigQuota,
     "UnbindAutoSnapshotPolicy": doUnbindAutoSnapshotPolicy,
@@ -1123,9 +1049,9 @@ ACTION_MAP = {
     "DescribeSnapshotOperationLogs": doDescribeSnapshotOperationLogs,
     "ModifySnapshotsSharePermission": doModifySnapshotsSharePermission,
     "CreateSnapshot": doCreateSnapshot,
+    "GetSnapOverview": doGetSnapOverview,
     "ResizeDisk": doResizeDisk,
     "DetachDisks": doDetachDisks,
-    "InquiryPriceRenewDisks": doInquiryPriceRenewDisks,
 
 }
 

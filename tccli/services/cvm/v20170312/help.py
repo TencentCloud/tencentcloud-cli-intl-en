@@ -311,7 +311,7 @@ INFO = {
   },
   "DescribeInstanceFamilyConfigs": {
     "params": [],
-    "desc": "This API is used to query the list of model families that are available for the current user and in the current region."
+    "desc": "This API is used to query a list of model families available to the current user in the current region."
   },
   "DeleteKeyPairs": {
     "params": [
@@ -450,7 +450,7 @@ INFO = {
       },
       {
         "name": "EnhancedService",
-        "desc": "Specifies whether to enable services Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. But for custom images and images from market place, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained."
+        "desc": "Specifies whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained."
       },
       {
         "name": "ClientToken",
@@ -621,7 +621,7 @@ INFO = {
       },
       {
         "name": "DataDisks",
-        "desc": "Configuration of data disks to be expanded. Currently you can only use the API to expand non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is not elastic. Data disk capacity unit: GB; minimum increment: 10 GB. For more information on selecting the data disk type, see the product overview on cloud disks. Available data disk types are subject to the instance type (`InstanceType`). In addition, the maximum capacity allowed for expansion varies by data disk type."
+        "desc": "Configuration of data disks to be expanded. Currently you can only use the API to expand non-elastic data disks whose [disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is not elastic. Data disk capacity unit: GB; minimum increment: 10 GB. For more information on selecting the data disk type, see the [product overview on cloud disks](https://cloud.tencent.com/document/product/362/2353). Available data disk types are subject to the instance type (`InstanceType`). In addition, the maximum capacity allowed for expansion varies by data disk type."
       },
       {
         "name": "ForceStop",
@@ -646,7 +646,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "ID(s) of the instance(s) to be associated, such as `ins-lesecurk`. You can specify multiple instances."
+        "desc": "ID(s) of the instance(s) to be associated，such as `ins-lesecurk`. You can specify multiple instances."
       }
     ],
     "desc": "This API is used to associate security groups with specified instances."
@@ -955,7 +955,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "ID(s) of the instance(s) to be disassociated, such as `ins-lesecurk`. You can specify multiple instances."
+        "desc": "ID(s) of the instance(s) to be disassociated，such as `ins-lesecurk`. You can specify multiple instances."
       }
     ],
     "desc": "This API is used to disassociate security groups from instances."

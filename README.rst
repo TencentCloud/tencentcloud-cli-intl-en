@@ -17,6 +17,9 @@ Configure
     region: ap-guangzhou
     output[json]:
 
+SecretId: Cloud API key SecretId. SecretIKey: Cloud API key SecretKey. Region: Tencent Cloud services region. Please move to the corresponding product page to get the available region. Output: optional parameter, request return packet output format, support [ Json table text] three formats, default is json. For more information, please perform tccli configure help view.
+
+Note: if the environment variable defines the relevant configuration, it takes precedence over the configuration file. They are TENCENTCLOUD. \_ SECRET \_ ID,TENCENTCLOUD \_ SECRET \_ KEY,TENCENTCLOUD \_ REGION .
 
 Usage
 =====

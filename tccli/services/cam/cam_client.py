@@ -1099,6 +1099,7 @@ def doDeleteUser(argv, arglist):
 
     param = {
         "Name": argv.get("--Name"),
+        "Force": Utils.try_to_json(argv, "--Force"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

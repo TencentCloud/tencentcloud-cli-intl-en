@@ -25,7 +25,7 @@ INFO = {
       },
       {
         "name": "Object",
-        "desc": "Type name. For example, if `Type` = table, it indicates a specific table name; if both `DbName` and `Type` are specific names, `Object` indicates a specific object name and cannot be `\\*` or empty"
+        "desc": "Type name. For example, if `Type` is table, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\\*` or empty"
       },
       {
         "name": "ColName",
@@ -217,7 +217,7 @@ INFO = {
       },
       {
         "name": "Object",
-        "desc": "Type name. For example, if `Type` = table, it indicates a specific table name; if both `DbName` and `Type` are specific names, `Object` indicates a specific object name and cannot be `\\*` or empty"
+        "desc": "Type name. For example, if `Type` is table, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\\*` or empty"
       },
       {
         "name": "ColName",
@@ -408,7 +408,7 @@ INFO = {
       },
       {
         "name": "ShardInstanceIds",
-        "desc": "List of shard IDs."
+        "desc": "Shard ID list."
       },
       {
         "name": "Offset",
@@ -459,7 +459,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "List of IDs of instances to be initialized. The ID is in the format of dcdbt-ow728lmc and can be obtained through the `DescribeDCDBInstances` API."
+        "desc": "List of IDs of instances to be initialized. The ID is in the format of `dcdbt-ow728lmc` and can be obtained through the `DescribeDCDBInstances` API."
       },
       {
         "name": "Params",

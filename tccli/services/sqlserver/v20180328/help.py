@@ -330,6 +330,10 @@ INFO = {
       {
         "name": "DBVersion",
         "desc": "SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default."
+      },
+      {
+        "name": "AutoRenewFlag",
+        "desc": "Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1."
       }
     ],
     "desc": "This API is used to create an instance."
@@ -397,6 +401,14 @@ INFO = {
       {
         "name": "PayMode",
         "desc": "Retrieves billing type. 0: pay-as-you-go"
+      },
+      {
+        "name": "VpcId",
+        "desc": "Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string (\"\") is passed in, filtering will be made by basic network."
+      },
+      {
+        "name": "SubnetId",
+        "desc": "Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string (\"\") is passed in, filtering will be made by basic network."
       }
     ],
     "desc": "This API is used to query the list of instances."

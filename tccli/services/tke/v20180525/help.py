@@ -33,7 +33,7 @@ INFO = {
       },
       {
         "name": "InstanceDataDiskMountSettings",
-        "desc": ""
+        "desc": "CVM type and the corresponding data disk mounting configuration information."
       }
     ],
     "desc": "This API is used to create a cluster."

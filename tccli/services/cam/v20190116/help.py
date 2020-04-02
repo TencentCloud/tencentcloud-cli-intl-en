@@ -71,7 +71,7 @@ INFO = {
       },
       {
         "name": "SessionDuration",
-        "desc": ""
+        "desc": "The maximum validity period of the temporary key for creating a role (range: 0-43200)"
       }
     ],
     "desc": "This API (CreateRole) is used to create a role."
@@ -356,6 +356,10 @@ INFO = {
       {
         "name": "Name",
         "desc": "Sub-user username"
+      },
+      {
+        "name": "Force",
+        "desc": "Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user."
       }
     ],
     "desc": "This API is used to delete a sub-user."
