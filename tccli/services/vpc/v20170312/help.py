@@ -61,6 +61,27 @@ INFO = {
     ],
     "desc": "This API (DescribeServiceTemplateGroups) is used to query a protocol port template group."
   },
+  "DescribeRouteTables": {
+    "params": [
+      {
+        "name": "RouteTableIds",
+        "desc": "The route table instance ID, such as `rtb-azd4dt1c`."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition. `RouteTableIds` and `Filters` cannot be speified at the same time.\n<li>route-table-id - String - (Filter condition) Route table instance ID.</li>\n<li>route-table-name - String - (Filter condition) Route table name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>association.main - String - (Filter condition) Whether it is the main route table.</li>\n<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset."
+      },
+      {
+        "name": "Limit",
+        "desc": "The number of request objects."
+      }
+    ],
+    "desc": " This API (DescribeRouteTables) is used to query route tables."
+  },
   "CreateRouteTable": {
     "params": [
       {
@@ -197,9 +218,14 @@ INFO = {
     ],
     "desc": "This API (DescribeNetDetects) is used to query the list of network detection instances."
   },
-  "ModifyCcnRegionBandwidthLimitsType": {
-    "params": [],
-    "desc": "This API (ModifyCcnRegionBandwidthlimitsType) is used to modify the bandwidth limits policy of the postpaid Ccn instances."
+  "DescribeSecurityGroupPolicies": {
+    "params": [
+      {
+        "name": "SecurityGroupId",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups."
+      }
+    ],
+    "desc": "This API (DescribeSecurityGroupPolicies) is used to query security group policies."
   },
   "DescribeGatewayFlowMonitorDetail": {
     "params": [
@@ -306,15 +332,6 @@ INFO = {
     ],
     "desc": "This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned."
   },
-  "DescribeSecurityGroupPolicies": {
-    "params": [
-      {
-        "name": "SecurityGroupId",
-        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups."
-      }
-    ],
-    "desc": "This API (DescribeSecurityGroupPolicies) is used to query security group policies."
-  },
   "ModifyServiceTemplateAttribute": {
     "params": [
       {
@@ -390,6 +407,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a route table."
+  },
+  "AssignPrivateIpAddresses": {
+    "params": [
+      {
+        "name": "NetworkInterfaceId",
+        "desc": "The ID of the ENI instance, such as `eni-m6dyj72l`."
+      },
+      {
+        "name": "PrivateIpAddresses",
+        "desc": "The information of the specified private IPs. You can specify a maximum of 10 each time."
+      },
+      {
+        "name": "SecondaryPrivateIpAddressCount",
+        "desc": "The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota."
+      }
+    ],
+    "desc": "This API (AssignPrivateIpAddresses) is used for the ENI to apply for private IPs.\n* An ENI can only be bound with a limited number of IPs. For more information about resource limits, see<a href=\"/document/product/576/18527\">ENI use limits</a>.\n* You can specify the private IP you want to apply for. It cannot be the primary IP, which already exists and cannot be modified. The private IP must be in the same subnet as the ENI, and cannot be occupied.\n* You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range of the ENI."
   },
   "DescribeNatGateways": {
     "params": [
@@ -1255,6 +1289,27 @@ INFO = {
       }
     ],
     "desc": "This API (ModifySubnetAttribute) is used to modify subnet attributes."
+  },
+  "DescribeNetworkInterfaces": {
+    "params": [
+      {
+        "name": "NetworkInterfaceIds",
+        "desc": "Queries the ID of the ENI instance, such as `eni-pxir56ns`. Each request can have a maximum of 100 instances. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. The default value is 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of values to be returned. The default value is 20. Maximum is 100."
+      }
+    ],
+    "desc": "This API (DescribeNetworkInterfaces) is used to query the ENI list."
   },
   "DisableCcnRoutes": {
     "params": [

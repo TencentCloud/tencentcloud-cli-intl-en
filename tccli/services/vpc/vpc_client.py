@@ -156,6 +156,42 @@ def doDescribeServiceTemplateGroups(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeRouteTables(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeRouteTables", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "RouteTableIds": Utils.try_to_json(argv, "--RouteTableIds"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "Offset": argv.get("--Offset"),
+        "Limit": argv.get("--Limit"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRouteTablesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeRouteTables(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateRouteTable(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -436,13 +472,15 @@ def doDescribeNetDetects(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyCcnRegionBandwidthLimitsType(argv, arglist):
+def doModifyPrivateIpAddressesAttribute(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyCcnRegionBandwidthLimitsType", g_param[OptionsDefine.Version])
+        show_help("ModifyPrivateIpAddressesAttribute", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "NetworkInterfaceId": argv.get("--NetworkInterfaceId"),
+        "PrivateIpAddresses": Utils.try_to_json(argv, "--PrivateIpAddresses"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -456,9 +494,9 @@ def doModifyCcnRegionBandwidthLimitsType(argv, arglist):
     client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyCcnRegionBandwidthLimitsTypeRequest()
+    model = models.ModifyPrivateIpAddressesAttributeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyCcnRegionBandwidthLimitsType(model)
+    rsp = client.ModifyPrivateIpAddressesAttribute(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -718,40 +756,6 @@ def doDescribeClassicLinkInstances(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyPrivateIpAddressesAttribute(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyPrivateIpAddressesAttribute", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "NetworkInterfaceId": argv.get("--NetworkInterfaceId"),
-        "PrivateIpAddresses": Utils.try_to_json(argv, "--PrivateIpAddresses"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyPrivateIpAddressesAttributeRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyPrivateIpAddressesAttribute(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doCreateDirectConnectGatewayCcnRoutes(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -777,6 +781,41 @@ def doCreateDirectConnectGatewayCcnRoutes(argv, arglist):
     model = models.CreateDirectConnectGatewayCcnRoutesRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.CreateDirectConnectGatewayCcnRoutes(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doAssignPrivateIpAddresses(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("AssignPrivateIpAddresses", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "NetworkInterfaceId": argv.get("--NetworkInterfaceId"),
+        "PrivateIpAddresses": Utils.try_to_json(argv, "--PrivateIpAddresses"),
+        "SecondaryPrivateIpAddressCount": Utils.try_to_json(argv, "--SecondaryPrivateIpAddressCount"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AssignPrivateIpAddressesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.AssignPrivateIpAddresses(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2660,6 +2699,42 @@ def doModifySubnetAttribute(argv, arglist):
     model = models.ModifySubnetAttributeRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.ModifySubnetAttribute(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeNetworkInterfaces(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeNetworkInterfaces", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "NetworkInterfaceIds": Utils.try_to_json(argv, "--NetworkInterfaceIds"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeNetworkInterfacesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeNetworkInterfaces(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -4594,6 +4669,7 @@ ACTION_MAP = {
     "ModifyNatGatewayAttribute": doModifyNatGatewayAttribute,
     "DescribeTaskResult": doDescribeTaskResult,
     "DescribeServiceTemplateGroups": doDescribeServiceTemplateGroups,
+    "DescribeRouteTables": doDescribeRouteTables,
     "CreateRouteTable": doCreateRouteTable,
     "AssignIpv6CidrBlock": doAssignIpv6CidrBlock,
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": doDescribeNatGatewayDestinationIpPortTranslationNatRules,
@@ -4602,7 +4678,7 @@ ACTION_MAP = {
     "ResetRoutes": doResetRoutes,
     "DescribeNetworkInterfaceLimit": doDescribeNetworkInterfaceLimit,
     "DescribeNetDetects": doDescribeNetDetects,
-    "ModifyCcnRegionBandwidthLimitsType": doModifyCcnRegionBandwidthLimitsType,
+    "ModifyPrivateIpAddressesAttribute": doModifyPrivateIpAddressesAttribute,
     "DescribeGatewayFlowMonitorDetail": doDescribeGatewayFlowMonitorDetail,
     "UnassignIpv6Addresses": doUnassignIpv6Addresses,
     "DeleteVpnConnection": doDeleteVpnConnection,
@@ -4610,8 +4686,8 @@ ACTION_MAP = {
     "DescribeAddresses": doDescribeAddresses,
     "ModifyServiceTemplateAttribute": doModifyServiceTemplateAttribute,
     "DescribeClassicLinkInstances": doDescribeClassicLinkInstances,
-    "ModifyPrivateIpAddressesAttribute": doModifyPrivateIpAddressesAttribute,
     "CreateDirectConnectGatewayCcnRoutes": doCreateDirectConnectGatewayCcnRoutes,
+    "AssignPrivateIpAddresses": doAssignPrivateIpAddresses,
     "DescribeNatGateways": doDescribeNatGateways,
     "CreateSubnets": doCreateSubnets,
     "ReplaceRouteTableAssociation": doReplaceRouteTableAssociation,
@@ -4666,6 +4742,7 @@ ACTION_MAP = {
     "DeleteRoutes": doDeleteRoutes,
     "ModifySecurityGroupPolicies": doModifySecurityGroupPolicies,
     "ModifySubnetAttribute": doModifySubnetAttribute,
+    "DescribeNetworkInterfaces": doDescribeNetworkInterfaces,
     "DisableCcnRoutes": doDisableCcnRoutes,
     "InquiryPriceCreateVpnGateway": doInquiryPriceCreateVpnGateway,
     "ResetVpnConnection": doResetVpnConnection,
