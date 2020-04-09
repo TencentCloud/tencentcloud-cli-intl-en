@@ -14,6 +14,27 @@ INFO = {
     ],
     "desc": "This API (ReplaceSecurityGroupPolicy) is used to replace a single security group policy (SecurityGroupPolicy).\nOnly one policy in a single direction can be replaced in each request, and the PolicyIndex parameter must be specified."
   },
+  "DescribeNetworkAcls": {
+    "params": [
+      {
+        "name": "NetworkAclIds",
+        "desc": "Array of network ACL instance IDs, such as [acl-12345678]. Up to 100 instances are allowed for each request. This parameter does not support specifying `NetworkAclIds` and `Filters` at the same time."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition. `NetworkAclIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as vpc-12345678.</li>\n<li>network-acl-id - String - (Filter condition) Network ACL instance ID, such as acl-12345678.</li>\n<li>network-acl-name - String - (Filter condition) Network ACL instance name.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Returned quantity. Default: 20. Value range: 1-100."
+      }
+    ],
+    "desc": "This API is used to query a list of network ACLs."
+  },
   "ModifyNatGatewayAttribute": {
     "params": [
       {
@@ -43,6 +64,19 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the EIP async job execution results."
+  },
+  "CreateNetworkAcl": {
+    "params": [
+      {
+        "name": "VpcId",
+        "desc": "ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of the DescribeVpcs API."
+      },
+      {
+        "name": "NetworkAclName",
+        "desc": "Name of the network ACL. The maximum length is 60 bytes."
+      }
+    ],
+    "desc": "This API is used to create a <a href=\"https://cloud.tencent.com/document/product/215/20088\">network ACL</a>.\n* The inbound and outbound rules for a new network ACL are \"Deny All\" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed."
   },
   "DescribeServiceTemplateGroups": {
     "params": [
@@ -91,9 +125,13 @@ INFO = {
       {
         "name": "RouteTableName",
         "desc": "The route table name. The maximum length is 60 characters."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (CreateRouteTable) is used to create a route table.\n* After the VPC has been created, the system will create a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route table to create more route tables to manage your routing policies."
+    "desc": "This API is used to create a route table.\n* After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.\n* You can bind a tag when creating a route table. The tag list in the response indicates the tags that have been successfully added."
   },
   "AssignIpv6CidrBlock": {
     "params": [
@@ -103,6 +141,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to assign IPv6 ranges.\n* To use this API, you must already have a VPC instance. If you do not have a VPC instance yet, use the <a href=\"https://cloud.tencent.com/document/api/215/15774\" title=\"CreateVpc\" target=\"_blank\">CreateVpc</a> API to create one.\n* Each VPC can apply for only one IPv6 range."
+  },
+  "DeleteNetworkAcl": {
+    "params": [
+      {
+        "name": "NetworkAclId",
+        "desc": "Network ACL instance ID. Example: acl-12345678."
+      }
+    ],
+    "desc": "This API is used to delete a network ACL."
   },
   "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
     "params": [
@@ -195,7 +242,7 @@ INFO = {
         "desc": "The ID of the CVM instance to be queried."
       }
     ],
-    "desc": "This API (DescribeNetworkInterfaceLimit) is used to query the ENI quota based on the CVM instance ID. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to each ENI."
+    "desc": "This API is used to query the ENI quota based on the CVM instance ID. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to each ENI."
   },
   "DescribeNetDetects": {
     "params": [
@@ -218,14 +265,18 @@ INFO = {
     ],
     "desc": "This API (DescribeNetDetects) is used to query the list of network detection instances."
   },
-  "DescribeSecurityGroupPolicies": {
+  "ModifyCcnRegionBandwidthLimitsType": {
     "params": [
       {
-        "name": "SecurityGroupId",
-        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups."
+        "name": "CcnId",
+        "desc": "CCN instance ID."
+      },
+      {
+        "name": "BandwidthLimitType",
+        "desc": "CCN bandwidth limit type. INTER_REGION_LIMIT: limit between regions. OUTER_REGION_LIMIT: region egress limit."
       }
     ],
-    "desc": "This API (DescribeSecurityGroupPolicies) is used to query security group policies."
+    "desc": "This API is used to modify the bandwidth limit policy of a postpaid CCN instance."
   },
   "DescribeGatewayFlowMonitorDetail": {
     "params": [
@@ -294,22 +345,14 @@ INFO = {
     ],
     "desc": "This API (DeleteVpnConnection) is used to delete VPN tunnels."
   },
-  "ModifyAddressTemplateGroupAttribute": {
+  "DeleteAddressTemplateGroup": {
     "params": [
       {
         "name": "AddressTemplateGroupId",
-        "desc": "IP address template group instance ID, such as `ipmg-2uw6ujo6`."
-      },
-      {
-        "name": "AddressTemplateGroupName",
-        "desc": "IP address template group name."
-      },
-      {
-        "name": "AddressTemplateIds",
-        "desc": "IP address template instance ID, such as `ipm-mdunqeb6`."
+        "desc": "The IP address template group instance ID, such as `ipmg-90cex8mq`."
       }
     ],
-    "desc": "This API (ModifyAddressTemplateGroupAttribute) is used to modify an IP address template group."
+    "desc": "This API (DeleteAddressTemplateGroup) is used to delete an IP address template group."
   },
   "DescribeAddresses": {
     "params": [
@@ -332,6 +375,15 @@ INFO = {
     ],
     "desc": "This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned."
   },
+  "DescribeSecurityGroupPolicies": {
+    "params": [
+      {
+        "name": "SecurityGroupId",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups."
+      }
+    ],
+    "desc": "This API (DescribeSecurityGroupPolicies) is used to query security group policies."
+  },
   "ModifyServiceTemplateAttribute": {
     "params": [
       {
@@ -349,18 +401,22 @@ INFO = {
     ],
     "desc": "This API (ModifyServiceTemplateAttribute) is used to modify a protocol port template."
   },
-  "DetachCcnInstances": {
+  "DescribeClassicLinkInstances": {
     "params": [
       {
-        "name": "CcnId",
-        "desc": "The CCN instance ID, such as `ccn-f49l6u0z`."
+        "name": "Filters",
+        "desc": "Filter conditions.\n<li>vpc-id - String - (Filter condition) The VPC instance ID.</li>\n<li>vm-ip - String - (Filter condition) The IP address of the CVM on the basic network.</li>"
       },
       {
-        "name": "Instances",
-        "desc": "The list of network instances to be unbound"
+        "name": "Offset",
+        "desc": "Offset"
+      },
+      {
+        "name": "Limit",
+        "desc": "The returned quantity"
       }
     ],
-    "desc": "This API (DetachCcnInstances) is used to unbind a specified network instance from a CCN instance.<br />\nAfter unbinding the network instance, the corresponding routing policy will also be deleted."
+    "desc": "This API (DescribeClassicLinkInstances) is used to query the Classiclink instances list."
   },
   "CreateVpnConnection": {
     "params": [
@@ -455,9 +511,13 @@ INFO = {
       {
         "name": "Subnets",
         "desc": "The subnet object list."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags. Note that the collection of tags here is shared by all subnet objects in the list. You cannot specify tags for each subnet. Example: [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (CreateSubnets) is used to create subnets in batches.\n* You must create a VPC before creating a subnet.\n* After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).\n* IP address ranges of different subnets cannot overlap with each other within the same VPC.\n* A subnet is automatically associated with the default route table once created."
+    "desc": "This API is used to create subnets in batches.\n* You must create a VPC instance before creating a subnet.\n* After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).\n* IP address ranges of different subnets cannot overlap with each other within the same VPC instance.\n* A subnet is automatically associated with the default route table once created.\n* You can bind a tag when creating a subnet. The tag list in the response indicates the tags that have been successfully added."
   },
   "ReplaceRouteTableAssociation": {
     "params": [
@@ -612,9 +672,13 @@ INFO = {
       {
         "name": "Zone",
         "desc": "The ID of the availability zone in which the subnet resides. You can set up disaster recovery across availability zones by choosing different availability zones for different subnets."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (CreateSubnet) is used to create subnets.\n* You must create a VPC before creating a subnet.\n* After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).\n* IP address ranges of different subnets cannot overlap with each other within the same VPC.\n* A subnet is automatically associated with the default route table once created."
+    "desc": "This API is used to create a subnet.\n* You must create a VPC instance before creating a subnet.\n* After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC instance has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).\n* IP address ranges of different subnets cannot overlap with each other within the same VPC instance.\n* A subnet is automatically associated with the default route table once created.\n* You can bind a tag when creating a subnet. The tag list in the response indicates the tags that have been successfully added."
   },
   "ModifyAddressTemplateAttribute": {
     "params": [
@@ -702,9 +766,13 @@ INFO = {
       {
         "name": "DomainName",
         "desc": "Domain name"
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (CreateVpc) is used to create a VPC.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information, please see corresponding documents about VPC IP address ranges.\n* The number of VPCs that can be created in a region is limited. For more information, please see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537\" title=\"VPC use limits\">VPC use limits</a>. To request more resources, please contact the online customer service."
+    "desc": "This API is used to create a VPC instance.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information, see the corresponding documents about VPC IP address ranges.\n* The number of VPC instances that can be created in a region is limited. For more information, see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537\" title=\"VPC Use Limits\">VPC Use Limits</a>. To request more resources, contact the online customer service.\n* You can bind a tag when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added."
   },
   "AssignIpv6SubnetCidrBlock": {
     "params": [
@@ -743,11 +811,19 @@ INFO = {
       },
       {
         "name": "AnycastZone",
-        "desc": "The Anycast publishing region.\n<ul style=\"margin:0\"><li>For a user who has activated the AIA whitelist, possible values are:<ul><li>ANYCAST_ZONE_GLOBAL: the global publishing region (the global AIA whitelist must be activated additionally.) </li><li>ANYCAST_ZONE_OVERSEAS: the publishing regions outside Mainland China </li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>"
+        "desc": "Anycast publishing region\n<ul style=\"margin:0\"><li>Valid for users who have activated AIA. Values:<ul><li>ANYCAST_ZONE_GLOBAL: global publishing region </li><li>ANYCAST_ZONE_OVERSEAS: overseas publishing region</li><li><b>**[Disused]**</b> ANYCAST_ZONE_A: publishing region A (updated to ANYCAST_ZONE_GLOBAL)</li><li><b>**[Disused]**</b> ANYCAST_ZONE_B: publishing region B (updated to ANYCAST_ZONE_GLOBAL)</li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>"
       },
       {
         "name": "ApplicableForCLB",
-        "desc": "Whether the Anycast EIP can be bound to Cloud Load Balancer (CLB) instances.\n<ul style=\"margin:0\"><li>For a user who has activated the AIA whitelist, possible values are:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>\n<li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HA virtual IP addresses.</li></ul>Default: FALSE.</li></ul>"
+        "desc": "<b>**[Disused]**</b>\nWhether the Anycast EIP can be bound to CLB instances.\n<ul style=\"margin:0\"><li>Valid for users who have activated the AIA. Values:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>\n<li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HAVIPs.</li></ul>Default: FALSE.</li></ul>"
+      },
+      {
+        "name": "Tags",
+        "desc": ""
+      },
+      {
+        "name": "BandwidthPackageId",
+        "desc": ""
       }
     ],
     "desc": "This API is used to apply for one or more [Elastic IP Addresses](https://cloud.tencent.com/document/product/213/1941) (EIPs for short).\n* An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.\n* Your EIP is associated with your Tencent Cloud account rather than an instance. It remains associated with your Tencent Cloud account until you choose to explicitly release it or your account is in arrears for more than 24 hours.\n* The maximum number of EIPs that can be applied for a Tencent Cloud account in each region is restricted. For more information, see [EIP Product Introduction](https://cloud.tencent.com/document/product/213/5733). You can get the quota information through the DescribeAddressQuota API."
@@ -831,7 +907,7 @@ INFO = {
         "desc": "CVM Instance ID"
       }
     ],
-    "desc": "This API (AttachClassicLinkVpc) is used to create a Classiclink between a VPC and a basic network device.\n* The VPC and the basic network device must be in the same region.\n* For the difference between VPCs and basic networks, see VPC product documentation-<a href=\"https://cloud.tencent.com/document/product/215/535#2.-.E7.A7.81.E6.9C.89.E7.BD.91.E7.BB.9C.E4.B8.8E.E5.9F.BA.E7.A1.80.E7.BD.91.E7.BB.9C\">VPCs and basic networks</a>."
+    "desc": "This API is used to create a Classiclink between a VPC instance and a basic network device.\n* The VPC instance and the basic network device must be in the same region.\n* For differences between VPC and basic networks, see <a href=\"https://cloud.tencent.com/document/product/215/30720\">VPC and Basic Networks</a>."
   },
   "DisassociateNatGatewayAddress": {
     "params": [
@@ -963,6 +1039,19 @@ INFO = {
     ],
     "desc": "This API (DeleteCcn) is used to delete CCNs.\n* After deletion, the routes between all instances associated with the CCN will be deleted, and the network will be interrupted. Please confirm this operation in advance.\n* CCN deletion is an irreversible operation. Please proceed with caution.\n"
   },
+  "ModifyNetworkAclEntries": {
+    "params": [
+      {
+        "name": "NetworkAclId",
+        "desc": "Network ACL instance ID. Example: acl-12345678."
+      },
+      {
+        "name": "NetworkAclEntrySet",
+        "desc": "Network ACL rule set."
+      }
+    ],
+    "desc": "This API is used to modify (add or delete) the inbound and outbound rules of a network ACL."
+  },
   "HaVipDisassociateAddressIp": {
     "params": [
       {
@@ -1002,7 +1091,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "The filter condition. For details, see the Instance Filter Conditions Table. The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - The VPC instance ID, such as `vpc-0a36uwkr`.</li>\n<li>vpn-gateway-id - String - The VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>\n<li>customer-gateway-id - String - The customer gateway instance ID, such as `cgw-l4rblw63`.</li>\n<li>vpn-connection-name - String - The connection name, such as `test-vpn`.</li>\n<li>vpn-connection-id - String - The connection instance ID, such as `vpnx-5p7vkch8\"`.</li>"
+        "desc": "Filter condition. In each request, the upper limit for `Filters` is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - VPC instance ID, such as `vpc-0a36uwkr`.</li>\n<li>vpn-gateway-id - String - VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>\n<li>customer-gateway-id - String - Customer gateway instance ID, such as `cgw-l4rblw63`.</li>\n<li>vpn-connection-name - String - Connection name, such as `test-vpn`.</li>\n<li>vpn-connection-id - String - Connection instance ID, such as `vpnx-5p7vkch8\"`.</li>"
       },
       {
         "name": "Offset",
@@ -1080,14 +1169,22 @@ INFO = {
     ],
     "desc": "This API (UnassignPrivateIpAddresses) is used to return the private IPs of ENI.\n* To return the secondary private IPs of an ENI, the API will automatically unbind the IPs of an ENI. The primary private IP of the ENI cannot be returned."
   },
-  "DeleteAddressTemplateGroup": {
+  "ModifyAddressTemplateGroupAttribute": {
     "params": [
       {
         "name": "AddressTemplateGroupId",
-        "desc": "The IP address template group instance ID, such as `ipmg-90cex8mq`."
+        "desc": "IP address template group instance ID, such as `ipmg-2uw6ujo6`."
+      },
+      {
+        "name": "AddressTemplateGroupName",
+        "desc": "IP address template group name."
+      },
+      {
+        "name": "AddressTemplateIds",
+        "desc": "IP address template instance ID, such as `ipm-mdunqeb6`."
       }
     ],
-    "desc": "This API (DeleteAddressTemplateGroup) is used to delete an IP address template group."
+    "desc": "This API (ModifyAddressTemplateGroupAttribute) is used to modify an IP address template group."
   },
   "DescribeCcnRoutes": {
     "params": [
@@ -1138,7 +1235,7 @@ INFO = {
         "desc": "The ID of the CVM instance, such as `ins-r8hr2upy`."
       }
     ],
-    "desc": "This API (AttachNetworkInterface) is used to bind an ENI to a CVM.\n* One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href=\"https://cloud.tencent.com/document/product/215/6513\">ENI use limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only CVMs in running or shutdown status can be bound to an ENI. For more information about CVM status, see <a href=\"https://cloud.tencent.com/document/api/213/9452#instance_state\">Tencent CVM information</a>.\n* An ENI can only be bound to a CVM in VPC, and the CVM must reside in the same availability zone as the subnet of the ENI."
+    "desc": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href=\"https://cloud.tencent.com/document/product/576/18527\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only CVMs in the running or shutdown state can be bound to an ENI. For more information on CVM states, see <a href=\"https://cloud.tencent.com/document/api/213/9452#InstanceStatus\">Tencent CVM Information</a>.\n* An ENI can only be bound to a CVM in a VPC instance, and the CVM must reside in the same availability zone as the subnet of the ENI."
   },
   "ReplaceDirectConnectGatewayCcnRoutes": {
     "params": [
@@ -1182,6 +1279,10 @@ INFO = {
       {
         "name": "Zone",
         "desc": "The availability zone, such as `ap-guangzhou-1`."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
     "desc": "This API (CreateNatGateway) is used to create a NAT gateway."
@@ -1379,31 +1480,27 @@ INFO = {
       },
       {
         "name": "ProjectId",
-        "desc": "The project id is 0 by default. You can query this in the project management page of the Qcloud console."
+        "desc": "Project ID. The default is 0. You can query it on the project management page of the Qcloud console."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (CreateSecurityGroup) is used to create security groups (SecurityGroup).\n* <a href=\"https://cloud.tencent.com/document/product/213/500#2.-.E5.AE.89.E5.85.A8.E7.BB.84.E7.9A.84.E9.99.90.E5.88.B6\">Security group limits</a> for each project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set the security group rules according to your needs."
+    "desc": "This API is used to create a security group (SecurityGroup).\n* Note the <a href=\"https://cloud.tencent.com/document/product/213/12453\">maximum number of security groups</a> per project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are \"Deny All\" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.\n* You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added."
   },
-  "ModifyNetworkInterfaceAttribute": {
+  "AssociateNetworkAclSubnets": {
     "params": [
       {
-        "name": "NetworkInterfaceId",
-        "desc": "The ID of the ENI instance, such as `eni-pxir56ns`."
+        "name": "NetworkAclId",
+        "desc": "Network ACL instance ID. Example: acl-12345678."
       },
       {
-        "name": "NetworkInterfaceName",
-        "desc": "The name of the ENI. The maximum length is 60 characters."
-      },
-      {
-        "name": "NetworkInterfaceDescription",
-        "desc": "ENI description can be named freely, but the maximum length is 60 characters."
-      },
-      {
-        "name": "SecurityGroupIds",
-        "desc": "The specified security groups to be bound with, such as ['sg-1dd51d']."
+        "name": "SubnetIds",
+        "desc": "Array of subnet instance IDs. Example: [subnet-12345678]"
       }
     ],
-    "desc": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes."
+    "desc": "This API is used to associate a network ACL with subnets in a VPC instance."
   },
   "DescribeVpnGateways": {
     "params": [
@@ -1425,6 +1522,27 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeVpnGateways) is used to query the VPN gateway list."
+  },
+  "ModifyNetworkInterfaceAttribute": {
+    "params": [
+      {
+        "name": "NetworkInterfaceId",
+        "desc": "The ID of the ENI instance, such as `eni-pxir56ns`."
+      },
+      {
+        "name": "NetworkInterfaceName",
+        "desc": "The name of the ENI. The maximum length is 60 characters."
+      },
+      {
+        "name": "NetworkInterfaceDescription",
+        "desc": "ENI description can be named freely, but the maximum length is 60 characters."
+      },
+      {
+        "name": "SecurityGroupIds",
+        "desc": "The specified security groups to be bound with, such as ['sg-1dd51d']."
+      }
+    ],
+    "desc": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes."
   },
   "CreateDirectConnectGatewayCcnRoutes": {
     "params": [
@@ -1665,9 +1783,13 @@ INFO = {
       {
         "name": "BandwidthLimitType",
         "desc": "The bandwidth limit type. OUTER_REGION_LIMIT: regional outbound limit. INTER_REGION_LIMIT: inter-regional limit. Default: OUTER_REGION_LIMIT."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (CreateCcn) is used to create a Cloud Connect Network (CCN).<br />\nEach account can only create a limited number of CCN instances. For more information, see the product documentation. If you need to create more instances, please contact the online customer service."
+    "desc": "This API is used to create a Cloud Connect Network (CCN).<br />\n* You can bind a tag when creating a CCN instance. The tag list in the response indicates the tags that have been successfully added.\nEach account can only create a limited number of CCN instances. For more information, see product documentation. To create more instances, contact the online customer service."
   },
   "ModifyVpnConnectionAttribute": {
     "params": [
@@ -1761,22 +1883,18 @@ INFO = {
     ],
     "desc": "This API (ModifyPrivateIpAddressesAttribute) is used to modify the private IP attributes of an ENI."
   },
-  "DescribeClassicLinkInstances": {
+  "DetachCcnInstances": {
     "params": [
       {
-        "name": "Filters",
-        "desc": "Filter conditions.\n<li>vpc-id - String - (Filter condition) The VPC instance ID.</li>\n<li>vm-ip - String - (Filter condition) The IP address of the CVM on the basic network.</li>"
+        "name": "CcnId",
+        "desc": "The CCN instance ID, such as `ccn-f49l6u0z`."
       },
       {
-        "name": "Offset",
-        "desc": "Offset"
-      },
-      {
-        "name": "Limit",
-        "desc": "The returned quantity"
+        "name": "Instances",
+        "desc": "The list of network instances to be unbound"
       }
     ],
-    "desc": "This API (DescribeClassicLinkInstances) is used to query the Classiclink instances list."
+    "desc": "This API (DetachCcnInstances) is used to unbind a specified network instance from a CCN instance.<br />\nAfter unbinding the network instance, the corresponding routing policy will also be deleted."
   },
   "DetachClassicLinkVpc": {
     "params": [
@@ -1850,6 +1968,19 @@ INFO = {
       }
     ],
     "desc": "This API (ReleaseAddresses) is used to release one or multiple [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* This operation is irreversible. Once you release an EIP, the IP address associated with the EIP no longer belongs to you.\n* Only EIPs in UNBIND status can be released."
+  },
+  "DisassociateNetworkAclSubnets": {
+    "params": [
+      {
+        "name": "NetworkAclId",
+        "desc": "Network ACL instance ID. Example: acl-12345678."
+      },
+      {
+        "name": "SubnetIds",
+        "desc": "Array of subnet instance IDs. Example: [subnet-12345678]."
+      }
+    ],
+    "desc": "This API is used to disassociate a network ACL from subnets in a VPC instance."
   },
   "EnableCcnRoutes": {
     "params": [
@@ -2145,6 +2276,19 @@ INFO = {
       }
     ],
     "desc": "This API is used to create security group policies (SecurityGroupPolicy).\n\n* The `Version` field indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated routing policies. If this field is left empty, any conflicts will be ignored.\n* The value of the `Protocol` field can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* The `CidrBlock` field allows you to enter any string that conforms to the CIDR format. (More details) In a basic network, if a CidrBlock contains private IP addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* The `Ipv6CidrBlock` field allows you to enter any string that conforms to the IPv6 CIDR format. (More details) In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* The SecurityGroupId field allows you to enter the IDs of security groups that are in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* The Port field allows you to enter a single port number, or two port numbers separated by a minus sign to represent a port range, such as 80 or 8000-8010. The Port field is accepted only if the value of the Protocol field is TCP or UDP. In other words, if the value of the Protocol field is not TCP or UDP, Protocol and Port are exclusive and cannot be entered at the same time, otherwise an error will occur with the API.\n* The Action field only allows you to enter ACCEPT or DROP.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. Protocol + Port and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the PolicyIndex parameter, the indexes of policies must be consistent."
+  },
+  "ModifyNetworkAclAttribute": {
+    "params": [
+      {
+        "name": "NetworkAclId",
+        "desc": "Network ACL instance ID. Example: acl-12345678."
+      },
+      {
+        "name": "NetworkAclName",
+        "desc": "Name of the network ACL. The maximum length is 60 bytes."
+      }
+    ],
+    "desc": "This API is used to modify the attributes of a network ACL."
   },
   "ResetNatGatewayConnection": {
     "params": [

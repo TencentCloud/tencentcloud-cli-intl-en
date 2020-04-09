@@ -427,6 +427,10 @@ INFO = {
       {
         "name": "MasterZone",
         "desc": "Master AZ, such as \"100001\" (Guangzhou Zone 1)"
+      },
+      {
+        "name": "Filters",
+        "desc": "Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:\n<li> internet-charge-type - Type: String - Required: No - Filter by CLB network billing mode, including `TRAFFIC_POSTPAID_BY_HOUR`</li>"
       }
     ],
     "desc": "This API is used to query the list of CLB instances in a region.\n"
@@ -610,7 +614,15 @@ INFO = {
       },
       {
         "name": "ForwardType",
-        "desc": "Forwarding protocol between CLB instance and real server. Value range: HTTP, HTTPS. Default value: HTTP"
+        "desc": "Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, TRPC."
+      },
+      {
+        "name": "TrpcCallee",
+        "desc": "TRPC callee server route, which is required when `ForwardType` is `TRPC`."
+      },
+      {
+        "name": "TrpcFunc",
+        "desc": "TRPC calling service API, which is required when `ForwardType` is `TRPC`."
       }
     ],
     "desc": "This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."

@@ -38,6 +38,10 @@ INFO = {
     ],
     "desc": "This API is used to create a cluster."
   },
+  "DescribeImages": {
+    "params": [],
+    "desc": "This API is used to get image information."
+  },
   "DeleteClusterEndpoint": {
     "params": [],
     "desc": "Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
@@ -58,6 +62,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to create one or more nodes in a cluster."
+  },
+  "ModifyClusterAttribute": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "ProjectId",
+        "desc": "Project of the Cluster"
+      },
+      {
+        "name": "ClusterName",
+        "desc": "Cluster name"
+      },
+      {
+        "name": "ClusterDesc",
+        "desc": "Cluster description"
+      }
+    ],
+    "desc": "This API is used to modify cluster attributes."
   },
   "DeleteClusterAsGroups": {
     "params": [],
@@ -187,6 +212,10 @@ INFO = {
   "CreateClusterEndpoint": {
     "params": [],
     "desc": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
+  },
+  "DescribeRegions": {
+    "params": [],
+    "desc": "This API is used to obtain all regions supported by TKE."
   },
   "AddExistedInstances": {
     "params": [
