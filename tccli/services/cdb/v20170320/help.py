@@ -91,7 +91,52 @@ INFO = {
         "desc": "Backup task ID, which is the task ID returned by the [TencentDB instance backup creating API](https://cloud.tencent.com/document/api/236/15844)."
       }
     ],
-    "desc": "This API (DeleteBackup) is used to delete a TencentDB instance backup."
+    "desc": "This API is used to delete a database backup. It can only delete manually initiated backups."
+  },
+  "DescribeSlowLogData": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start timestamp."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End timestamp."
+      },
+      {
+        "name": "UserHosts",
+        "desc": "Client Host list."
+      },
+      {
+        "name": "UserNames",
+        "desc": "Client username list."
+      },
+      {
+        "name": "DataBases",
+        "desc": "Accessed database list."
+      },
+      {
+        "name": "SortBy",
+        "desc": "Sort by field. Valid values: Timestamp, QueryTime, LockTime, RowsExamined, RowsSent."
+      },
+      {
+        "name": "OrderBy",
+        "desc": "Sorting order. Valid values: ASC (ascending), DESC (descending)."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned at a time. Maximum value: 400."
+      }
+    ],
+    "desc": "This API is used to query the details of instance slow logs by search criteria. You can only query slow logs within a month."
   },
   "AssociateSecurityGroups": {
     "params": [
@@ -357,6 +402,111 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeInstanceParamRecords) is used to query the parameter modification records of an instance."
+  },
+  "CreateDBInstanceHour": {
+    "params": [
+      {
+        "name": "GoodsNum",
+        "desc": "Number of instances. Value range: 1-100. Default value: 1."
+      },
+      {
+        "name": "Memory",
+        "desc": "Instance memory size in MB. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported memory specifications."
+      },
+      {
+        "name": "Volume",
+        "desc": "Instance disk size in GB. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported disk specifications."
+      },
+      {
+        "name": "EngineVersion",
+        "desc": "MySQL version. Value range: 5.5, 5.6, 5.7. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported instance versions."
+      },
+      {
+        "name": "UniqVpcId",
+        "desc": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [VPC list querying API](/document/api/215/15778) to query the VPCs."
+      },
+      {
+        "name": "UniqSubnetId",
+        "desc": "VPC subnet ID. If UniqVpcId is set, then UniqSubnetId will be required. Please use the [subnet list querying API](/document/api/215/15784) to query the subnet lists."
+      },
+      {
+        "name": "ProjectId",
+        "desc": "Project ID. If this is left empty, the default project will be used. Please use the [project list querying API](https://cloud.tencent.com/document/product/378/4400) to get the project ID."
+      },
+      {
+        "name": "Zone",
+        "desc": "AZ information. By default, the system will automatically select an AZ. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported AZs."
+      },
+      {
+        "name": "MasterInstanceId",
+        "desc": "Instance ID, which is required and the same as the master instance ID when purchasing a read-only or disaster recovery instance. Please use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the instance IDs."
+      },
+      {
+        "name": "InstanceRole",
+        "desc": "Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master."
+      },
+      {
+        "name": "MasterRegion",
+        "desc": "AZ information of the master instance, which is required for purchasing disaster recovery instances."
+      },
+      {
+        "name": "Port",
+        "desc": "Custom port. Value range: [1024-65535]."
+      },
+      {
+        "name": "Password",
+        "desc": "Sets the root account password. Rule: The password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special characters (_+-&=!@#$%^*()). This parameter can be specified when purchasing the master instance and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "ParamList",
+        "desc": "List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [default configurable parameter list querying API](https://cloud.tencent.com/document/api/236/32662) to query the parameters that can be configured."
+      },
+      {
+        "name": "ProtectMode",
+        "desc": "Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "DeployMode",
+        "desc": "Multi-AZ. Value range: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "SlaveZone",
+        "desc": "AZ information of slave database 1, which is the `Zone` value by default. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "BackupZone",
+        "desc": "AZ information of slave database 2, which is empty by default. This parameter can be specified when purchasing strong sync master instances and is meaningless for other types of instances."
+      },
+      {
+        "name": "SecurityGroup",
+        "desc": "Security group parameter. You can use the [project security group querying API](https://cloud.tencent.com/document/api/236/15850) to query the security group details of a project."
+      },
+      {
+        "name": "RoGroup",
+        "desc": "Read-only instance information. This parameter must be passed in when purchasing read-only instances."
+      },
+      {
+        "name": "AutoRenewFlag",
+        "desc": "This field is meaningless when purchasing pay-as-you-go instances."
+      },
+      {
+        "name": "InstanceName",
+        "desc": "Instance name."
+      },
+      {
+        "name": "ResourceTags",
+        "desc": "Instance tag information."
+      },
+      {
+        "name": "DeployGroupId",
+        "desc": ""
+      },
+      {
+        "name": "ClientToken",
+        "desc": ""
+      }
+    ],
+    "desc": "This API (CreateDBInstanceHour) is used to create a pay-as-you-go TencentDB instance (which can be a master, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an asynchronous API. You can also use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/api/236/17229) to query the supported instance specifications first and then use the [instance prices querying API](https://cloud.tencent.com/document/api/236/18566) to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. Master instances, read-only instances, and disaster recovery instances can be created;\n5. If Port, ParamList, or Password is set in the input parameters, the instance will be initialized."
   },
   "ModifyTimeWindow": {
     "params": [
@@ -668,6 +818,15 @@ INFO = {
       }
     ],
     "desc": "This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported."
+  },
+  "DescribeBackupOverview": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "TencentDB product type to be queried. Currently, only `mysql` is supported."
+      }
+    ],
+    "desc": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes)."
   },
   "DescribeSlowLogs": {
     "params": [
@@ -994,6 +1153,10 @@ INFO = {
       {
         "name": "LimitNum",
         "desc": "Upper limit of instances on one physical machine as defined in affinity policy 1 of placement group."
+      },
+      {
+        "name": "DevClass",
+        "desc": "Model attribute of placement group. Valid values: SH12+SH02, TS85."
       }
     ],
     "desc": "This API is used to create a placement group for placing instances."
@@ -1053,6 +1216,35 @@ INFO = {
     ],
     "desc": "This API (DescribeDatabases) is used to query the information of databases of a TencentDB instance."
   },
+  "DescribeErrorLogData": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start timestamp."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End timestamp."
+      },
+      {
+        "name": "KeyWords",
+        "desc": "List of keywords to match. Up to 15 keywords are supported."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned per page. Maximum value: 400."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      }
+    ],
+    "desc": "This API is used to query the details of instance error logs by search criteria. You can only query error logs within a month."
+  },
   "OfflineIsolatedInstances": {
     "params": [
       {
@@ -1089,14 +1281,31 @@ INFO = {
     ],
     "desc": "This API (DescribeInstanceParams) is used to query the list of parameters for an instance."
   },
-  "DescribeBackupOverview": {
+  "DescribeUploadedFiles": {
     "params": [
       {
-        "name": "Product",
-        "desc": "TencentDB product type to be queried. Currently, only `mysql` is supported."
+        "name": "Path",
+        "desc": "File path. `OwnerUin` information of the root account should be entered in this field."
+      },
+      {
+        "name": "Offset",
+        "desc": "Record offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned for a single request. Default value: 20."
       }
     ],
-    "desc": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes)."
+    "desc": "This API (DescribeUploadedFiles) is used to query the list of user-imported SQL files."
+  },
+  "OpenWanService": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+      }
+    ],
+    "desc": "This API (OpenWanService) is used to enable public network access for an instance.\n\nNote that before enabling public network access, you need to first [initialize the instance](https://cloud.tencent.com/document/api/236/15873)."
   },
   "ModifyNameOrDescByDpId": {
     "params": [
@@ -1115,14 +1324,50 @@ INFO = {
     ],
     "desc": "This API is used to modify the name or description of a placement group."
   },
-  "OpenWanService": {
+  "UpgradeDBInstance": {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+      },
+      {
+        "name": "Memory",
+        "desc": "Memory size (MB) after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the specifications of the memory that can be upgraded to."
+      },
+      {
+        "name": "Volume",
+        "desc": "Disk size (GB) after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the specifications of the disk that can be upgraded to."
+      },
+      {
+        "name": "ProtectMode",
+        "desc": "Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "DeployMode",
+        "desc": "Deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "SlaveZone",
+        "desc": "AZ information of slave database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading master instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [purchasable instance specification querying API](https://cloud.tencent.com/document/product/236/17229) to query the supported AZs."
+      },
+      {
+        "name": "EngineVersion",
+        "desc": "Version of master instance database engine. Value range: 5.5, 5.6, 5.7."
+      },
+      {
+        "name": "WaitSwitch",
+        "desc": "Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process."
+      },
+      {
+        "name": "BackupZone",
+        "desc": "AZ information of slave database 2, which is empty by default. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances."
+      },
+      {
+        "name": "InstanceRole",
+        "desc": "Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master."
       }
     ],
-    "desc": "This API (OpenWanService) is used to enable public network access for an instance.\n\nNote that before enabling public network access, you need to first [initialize the instance](https://cloud.tencent.com/document/api/236/15873)."
+    "desc": "This API (UpgradeDBInstance) is used to upgrade a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance."
   },
   "UpgradeDBInstanceEngineVersion": {
     "params": [
