@@ -228,6 +228,39 @@ def doDescribeProjectSecurityGroups(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doReleaseIsolatedDBInstances(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ReleaseIsolatedDBInstances", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ReleaseIsolatedDBInstancesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ReleaseIsolatedDBInstances(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateDBImportJob(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -988,6 +1021,7 @@ def doCreateDBInstanceHour(argv, arglist):
         "ResourceTags": Utils.try_to_json(argv, "--ResourceTags"),
         "DeployGroupId": argv.get("--DeployGroupId"),
         "ClientToken": argv.get("--ClientToken"),
+        "DeviceType": argv.get("--DeviceType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2223,6 +2257,41 @@ def doDescribeBackupDatabases(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeUploadedFiles(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeUploadedFiles", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Path": argv.get("--Path"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeUploadedFilesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeUploadedFiles(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeBinlogBackupOverview(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -2533,16 +2602,14 @@ def doDescribeInstanceParams(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeUploadedFiles(argv, arglist):
+def doDescribeRoGroups(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeUploadedFiles", g_param[OptionsDefine.Version])
+        show_help("DescribeRoGroups", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Path": argv.get("--Path"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "InstanceId": argv.get("--InstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2556,9 +2623,9 @@ def doDescribeUploadedFiles(argv, arglist):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeUploadedFilesRequest()
+    model = models.DescribeRoGroupsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeUploadedFiles(model)
+    rsp = client.DescribeRoGroups(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2932,6 +2999,7 @@ ACTION_MAP = {
     "UpgradeDBInstance": doUpgradeDBInstance,
     "DescribeTimeWindow": doDescribeTimeWindow,
     "DescribeProjectSecurityGroups": doDescribeProjectSecurityGroups,
+    "ReleaseIsolatedDBInstances": doReleaseIsolatedDBInstances,
     "CreateDBImportJob": doCreateDBImportJob,
     "DescribeRollbackRangeTime": doDescribeRollbackRangeTime,
     "DescribeParamTemplates": doDescribeParamTemplates,
@@ -2988,6 +3056,7 @@ ACTION_MAP = {
     "DescribeDefaultParams": doDescribeDefaultParams,
     "DescribeTagsOfInstanceIds": doDescribeTagsOfInstanceIds,
     "DescribeBackupDatabases": doDescribeBackupDatabases,
+    "DescribeUploadedFiles": doDescribeUploadedFiles,
     "DescribeBinlogBackupOverview": doDescribeBinlogBackupOverview,
     "DescribeBinlogs": doDescribeBinlogs,
     "DescribeDatabases": doDescribeDatabases,
@@ -2997,7 +3066,7 @@ ACTION_MAP = {
     "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
     "DescribeSupportedPrivileges": doDescribeSupportedPrivileges,
     "DescribeInstanceParams": doDescribeInstanceParams,
-    "DescribeUploadedFiles": doDescribeUploadedFiles,
+    "DescribeRoGroups": doDescribeRoGroups,
     "DescribeInstanceParamRecords": doDescribeInstanceParamRecords,
     "OpenWanService": doOpenWanService,
     "UpgradeDBInstanceEngineVersion": doUpgradeDBInstanceEngineVersion,

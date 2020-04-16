@@ -243,7 +243,7 @@ INFO = {
       },
       {
         "name": "TriggerDesc",
-        "desc": "Parameter corresponding to the trigger. For a timer trigger, it should be a Linux cron expression; for a COS trigger, it should be a JSON string ({\"event\":\"cos:ObjectCreated:*\",\"filter\":{\"Prefix\":\"\",\"Suffix\":\"\"}}), where `event` is the triggered COS event, `Prefix` in the `filter` is the corresponding file prefix filter, and `Suffix` is the corresponding suffix filter, and the `filter` can be left blank if not needed; for other triggers, please see the description of the specific trigger."
+        "desc": "For parameters of triggers, see [Trigger Description](https://cloud.tencent.com/document/product/583/39901)"
       },
       {
         "name": "Namespace",
@@ -366,7 +366,7 @@ INFO = {
       },
       {
         "name": "Layers",
-        "desc": "List of layer versions with which a function will be associated. Layers will be overwritten sequentially in the order in the list."
+        "desc": "List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. "
       },
       {
         "name": "DeadLetterConfig",
@@ -374,7 +374,7 @@ INFO = {
       },
       {
         "name": "OnsEnable",
-        "desc": ""
+        "desc": "Whether to enable Ons access. TRUE: enable; FALSE: not enable"
       }
     ],
     "desc": "This API is used to update the function configuration based on the input parameters."

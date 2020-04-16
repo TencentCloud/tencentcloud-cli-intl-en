@@ -131,7 +131,7 @@ INFO = {
     "params": [
       {
         "name": "PolicyId",
-        "desc": "Policy ID"
+        "desc": "Policy ID. Either `PolicyId` or `PolicyName` must be entered"
       },
       {
         "name": "DetachRoleId",
@@ -140,6 +140,10 @@ INFO = {
       {
         "name": "DetachRoleName",
         "desc": "Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`"
+      },
+      {
+        "name": "PolicyName",
+        "desc": "Policy name. Either `PolicyId` or `PolicyName` must be entered"
       }
     ],
     "desc": "This API (DetachRolePolicy) is used to unassociate a policy and a role."
@@ -329,6 +333,10 @@ INFO = {
       {
         "name": "Page",
         "desc": "Page number; default is 1"
+      },
+      {
+        "name": "SubUin",
+        "desc": "Sub-account UIN"
       }
     ],
     "desc": "This API is used to list user groups associated with a user."
@@ -393,44 +401,10 @@ INFO = {
       },
       {
         "name": "NeedResetMfa",
-        "desc": "If MFA requires top-up"
+        "desc": "Whether or not to reset MFA"
       }
     ],
     "desc": "This API is used to set account verification for login and sensitive operation protection."
-  },
-  "UpdatePolicy": {
-    "params": [
-      {
-        "name": "PolicyId",
-        "desc": "Policy ID"
-      },
-      {
-        "name": "PolicyName",
-        "desc": "Policy name"
-      },
-      {
-        "name": "Description",
-        "desc": "Policy description"
-      },
-      {
-        "name": "PolicyDocument",
-        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API"
-      }
-    ],
-    "desc": "This API (UpdatePolicy) is used to update a policy."
-  },
-  "GetRole": {
-    "params": [
-      {
-        "name": "RoleId",
-        "desc": "Role ID, used to specify role. Input either `RoleId` or `RoleName`"
-      },
-      {
-        "name": "RoleName",
-        "desc": "Role name, used to specify role. Input either `RoleId` or `RoleName`"
-      }
-    ],
-    "desc": "This API (GetRole) is used to get the details of a specified role."
   },
   "UpdateRoleDescription": {
     "params": [
@@ -448,6 +422,19 @@ INFO = {
       }
     ],
     "desc": "This API (UpdateRoleDescription) is used to modify the description of a role."
+  },
+  "GetRole": {
+    "params": [
+      {
+        "name": "RoleId",
+        "desc": "Role ID, used to specify role. Input either `RoleId` or `RoleName`"
+      },
+      {
+        "name": "RoleName",
+        "desc": "Role name, used to specify role. Input either `RoleId` or `RoleName`"
+      }
+    ],
+    "desc": "This API (GetRole) is used to get the details of a specified role."
   },
   "ListAttachedUserPolicies": {
     "params": [
@@ -487,7 +474,7 @@ INFO = {
     "params": [
       {
         "name": "PolicyId",
-        "desc": "Policy ID"
+        "desc": "Policy ID. Either `PolicyId` or `PolicyName` must be entered"
       },
       {
         "name": "AttachRoleId",
@@ -496,6 +483,10 @@ INFO = {
       {
         "name": "AttachRoleName",
         "desc": "Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`"
+      },
+      {
+        "name": "PolicyName",
+        "desc": "Policy name. Either `PolicyId` or `PolicyName` must be entered"
       }
     ],
     "desc": "This API (AttachRolePolicy) is used to associate a policy with a role."

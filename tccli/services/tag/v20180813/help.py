@@ -1,6 +1,39 @@
 # -*- coding: utf-8 -*-
 DESC = "tag-2018-08-13"
 INFO = {
+  "DescribeResourceTagsByTagKeys": {
+    "params": [
+      {
+        "name": "ServiceType",
+        "desc": "Service type"
+      },
+      {
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix"
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "Resource region"
+      },
+      {
+        "name": "ResourceIds",
+        "desc": "Unique resource ID"
+      },
+      {
+        "name": "TagKeys",
+        "desc": "Resource tag key"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 400"
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter"
+      }
+    ],
+    "desc": "This API is used to get resource tags based on tag keys."
+  },
   "UpdateResourceTagValue": {
     "params": [
       {
@@ -132,6 +165,14 @@ INFO = {
       {
         "name": "CreateUin",
         "desc": "Creator `Uin`. If not specified, `Uin` is only used as the query condition."
+      },
+      {
+        "name": "TagKeys",
+        "desc": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored"
+      },
+      {
+        "name": "ShowProject",
+        "desc": "Whether to show project tag"
       }
     ],
     "desc": "This API is used to query existing tag lists.\n"
@@ -203,6 +244,10 @@ INFO = {
       {
         "name": "Limit",
         "desc": "Page size. The default value is 0."
+      },
+      {
+        "name": "ShowProject",
+        "desc": "Whether to show project"
       }
     ],
     "desc": "This API is used to query tag keys in an existing tag list.\n"

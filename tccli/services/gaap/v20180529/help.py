@@ -1266,11 +1266,11 @@ INFO = {
       },
       {
         "name": "MetricNames",
-        "desc": "Statistical metric name list. It supports: [\"InBandwidth\", \"OutBandwidth\", \"Concurrent\", \"InPackets\", \"OutPackets\"]"
+        "desc": "Statistical metric name list. It supports:[\"InBandwidth\", \"OutBandwidth\", \"Concurrent\", \"InPackets\", \"OutPackets\"]"
       },
       {
         "name": "Granularity",
-        "desc": "Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.\nTime range: ≤ 1 day, supported minimum granularity: 300 seconds;\nTime range: ≤ 7 days, supported minimum granularity: 3,600 seconds;\nTime range: > 7 days, supported minimum granularity: 86,400 seconds;"
+        "desc": "Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.\nTime range: ≤ 1 day, supported minimum granularity: 300 seconds;\nTime range：≤ 7 days, supported minimum granularity:3,600 seconds;\nTime range: ＞7 days, supported minimum granularity:86,400 seconds;"
       }
     ],
     "desc": "This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range."
