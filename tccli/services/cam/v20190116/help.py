@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
 DESC = "cam-2019-01-16"
 INFO = {
+  "ListUsersForGroup": {
+    "params": [
+      {
+        "name": "GroupId",
+        "desc": "User group ID"
+      },
+      {
+        "name": "Page",
+        "desc": "Page number; default is 1"
+      },
+      {
+        "name": "Rp",
+        "desc": "Number of entries per page; default is 20"
+      }
+    ],
+    "desc": "This API is used to query the list of users associated with a user group."
+  },
   "AddUser": {
     "params": [
       {
@@ -174,14 +191,14 @@ INFO = {
     ],
     "desc": "This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group."
   },
-  "ConsumeCustomMFAToken": {
+  "DeleteSAMLProvider": {
     "params": [
       {
-        "name": "MFAToken",
-        "desc": "Custom multi-factor verification Token"
+        "name": "Name",
+        "desc": "SAML identity provider name"
       }
     ],
-    "desc": "This API is used to verify a custom multi-factor Token."
+    "desc": "This API is used to delete a SAML identity provider."
   },
   "UpdateUser": {
     "params": [
@@ -232,23 +249,6 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeRoleList) is used to get the role list under the account."
-  },
-  "UpdateSAMLProvider": {
-    "params": [
-      {
-        "name": "Name",
-        "desc": "SAML identity provider name"
-      },
-      {
-        "name": "Description",
-        "desc": "SAML identity provider description"
-      },
-      {
-        "name": "SAMLMetadataDocument",
-        "desc": "SAML identity provider metadata document (Base64)"
-      }
-    ],
-    "desc": "This API is used to update SAML identity provider information."
   },
   "GetCustomMFATokenInfo": {
     "params": [
@@ -341,14 +341,14 @@ INFO = {
     ],
     "desc": "This API is used to list user groups associated with a user."
   },
-  "DeleteSAMLProvider": {
+  "ConsumeCustomMFAToken": {
     "params": [
       {
-        "name": "Name",
-        "desc": "SAML identity provider name"
+        "name": "MFAToken",
+        "desc": "Custom multi-factor verification Token"
       }
     ],
-    "desc": "This API is used to delete a SAML identity provider."
+    "desc": "This API is used to verify a custom multi-factor Token."
   },
   "GetGroup": {
     "params": [
@@ -381,30 +381,22 @@ INFO = {
     ],
     "desc": "This API is used to add users to a user group."
   },
-  "SetFlag": {
+  "UpdateSAMLProvider": {
     "params": [
       {
-        "name": "OpUin",
-        "desc": "Set user UIN"
+        "name": "Name",
+        "desc": "SAML identity provider name"
       },
       {
-        "name": "LoginFlag",
-        "desc": "Login settings"
+        "name": "Description",
+        "desc": "SAML identity provider description"
       },
       {
-        "name": "ActionFlag",
-        "desc": "Sensitive operation settings"
-      },
-      {
-        "name": "OffsiteFlag",
-        "desc": "Remote login settings"
-      },
-      {
-        "name": "NeedResetMfa",
-        "desc": "Whether or not to reset MFA"
+        "name": "SAMLMetadataDocument",
+        "desc": "SAML identity provider metadata document (Base64)"
       }
     ],
-    "desc": "This API is used to set account verification for login and sensitive operation protection."
+    "desc": "This API is used to update SAML identity provider information."
   },
   "UpdateRoleDescription": {
     "params": [
@@ -470,6 +462,19 @@ INFO = {
     ],
     "desc": "This API is used to query the list of user groups."
   },
+  "ListCollaborators": {
+    "params": [
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 20"
+      },
+      {
+        "name": "Offset",
+        "desc": "Pagination start value. Default value: 0"
+      }
+    ],
+    "desc": "This API is used to get the collaborator list."
+  },
   "AttachRolePolicy": {
     "params": [
       {
@@ -504,22 +509,22 @@ INFO = {
     "params": [],
     "desc": "This API is used to query the list of SAML identity providers."
   },
-  "ListUsersForGroup": {
+  "UpdateRoleConsoleLogin": {
     "params": [
       {
-        "name": "GroupId",
-        "desc": "User group ID"
+        "name": "ConsoleLogin",
+        "desc": "Whether login is allowed. 1: yes, 0: no"
       },
       {
-        "name": "Page",
-        "desc": "Page number; default is 1"
+        "name": "RoleId",
+        "desc": "Role ID"
       },
       {
-        "name": "Rp",
-        "desc": "Number of entries per page; default is 20"
+        "name": "RoleName",
+        "desc": "Role name"
       }
     ],
-    "desc": "This API is used to query the list of users associated with a user group."
+    "desc": "This API is used to modify a role's login permissions."
   },
   "AttachUserPolicy": {
     "params": [

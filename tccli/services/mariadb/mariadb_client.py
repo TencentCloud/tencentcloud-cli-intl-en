@@ -12,22 +12,26 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.cam.v20190116 import cam_client as cam_client_v20190116
-from tencentcloud.cam.v20190116 import models as models_v20190116
-from tccli.services.cam import v20190116
-from tccli.services.cam.v20190116 import help as v20190116_help
+from tencentcloud.mariadb.v20170312 import mariadb_client as mariadb_client_v20170312
+from tencentcloud.mariadb.v20170312 import models as models_v20170312
+from tccli.services.mariadb import v20170312
+from tccli.services.mariadb.v20170312 import help as v20170312_help
 
 
-def doUpdateRoleConsoleLogin(argv, arglist):
+def doDescribeAccountPrivileges(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpdateRoleConsoleLogin", g_param[OptionsDefine.Version])
+        show_help("DescribeAccountPrivileges", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ConsoleLogin": Utils.try_to_json(argv, "--ConsoleLogin"),
-        "RoleId": Utils.try_to_json(argv, "--RoleId"),
-        "RoleName": argv.get("--RoleName"),
+        "InstanceId": argv.get("--InstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Host": argv.get("--Host"),
+        "DbName": argv.get("--DbName"),
+        "Type": argv.get("--Type"),
+        "Object": argv.get("--Object"),
+        "ColName": argv.get("--ColName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -38,12 +42,12 @@ def doUpdateRoleConsoleLogin(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateRoleConsoleLoginRequest()
+    model = models.DescribeAccountPrivilegesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpdateRoleConsoleLogin(model)
+    rsp = client.DescribeAccountPrivileges(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -53,22 +57,122 @@ def doUpdateRoleConsoleLogin(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAddUser(argv, arglist):
+def doModifyAccountDescription(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("AddUser", g_param[OptionsDefine.Version])
+        show_help("ModifyAccountDescription", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Name": argv.get("--Name"),
-        "Remark": argv.get("--Remark"),
-        "ConsoleLogin": Utils.try_to_json(argv, "--ConsoleLogin"),
-        "UseApi": Utils.try_to_json(argv, "--UseApi"),
+        "InstanceId": argv.get("--InstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Host": argv.get("--Host"),
+        "Description": argv.get("--Description"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAccountDescriptionRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyAccountDescription(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBackupTime(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeBackupTime", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBackupTimeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeBackupTime(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBResourceUsageDetails(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBResourceUsageDetails", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "MetricName": argv.get("--MetricName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBResourceUsageDetailsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDBResourceUsageDetails(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doResetAccountPassword(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ResetAccountPassword", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Host": argv.get("--Host"),
         "Password": argv.get("--Password"),
-        "NeedResetPassword": Utils.try_to_json(argv, "--NeedResetPassword"),
-        "PhoneNum": argv.get("--PhoneNum"),
-        "CountryCode": argv.get("--CountryCode"),
-        "Email": argv.get("--Email"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -79,12 +183,12 @@ def doAddUser(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddUserRequest()
+    model = models.ResetAccountPasswordRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.AddUser(model)
+    rsp = client.ResetAccountPassword(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -94,14 +198,15 @@ def doAddUser(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetSAMLProvider(argv, arglist):
+def doModifyDBParameters(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("GetSAMLProvider", g_param[OptionsDefine.Version])
+        show_help("ModifyDBParameters", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Name": argv.get("--Name"),
+        "InstanceId": argv.get("--InstanceId"),
+        "Params": Utils.try_to_json(argv, "--Params"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -112,12 +217,12 @@ def doGetSAMLProvider(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetSAMLProviderRequest()
+    model = models.ModifyDBParametersRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.GetSAMLProvider(model)
+    rsp = client.ModifyDBParameters(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -127,13 +232,15 @@ def doGetSAMLProvider(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListSAMLProviders(argv, arglist):
+def doModifyLogFileRetentionPeriod(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ListSAMLProviders", g_param[OptionsDefine.Version])
+        show_help("ModifyLogFileRetentionPeriod", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "Days": Utils.try_to_json(argv, "--Days"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -144,12 +251,12 @@ def doListSAMLProviders(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListSAMLProvidersRequest()
+    model = models.ModifyLogFileRetentionPeriodRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListSAMLProviders(model)
+    rsp = client.ModifyLogFileRetentionPeriod(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -159,945 +266,22 @@ def doListSAMLProviders(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateRole(argv, arglist):
+def doDescribeDBSlowLogs(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreateRole", g_param[OptionsDefine.Version])
+        show_help("DescribeDBSlowLogs", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "RoleName": argv.get("--RoleName"),
-        "PolicyDocument": argv.get("--PolicyDocument"),
-        "Description": argv.get("--Description"),
-        "ConsoleLogin": Utils.try_to_json(argv, "--ConsoleLogin"),
-        "SessionDuration": Utils.try_to_json(argv, "--SessionDuration"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateRoleRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateRole(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListUsers(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListUsers", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListUsersRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListUsers(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListAttachedRolePolicies(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListAttachedRolePolicies", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-        "RoleId": argv.get("--RoleId"),
-        "RoleName": argv.get("--RoleName"),
-        "PolicyType": argv.get("--PolicyType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListAttachedRolePoliciesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListAttachedRolePolicies(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeletePolicy(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeletePolicy", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePolicyRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeletePolicy(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "GroupName": argv.get("--GroupName"),
-        "Remark": argv.get("--Remark"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDetachRolePolicy(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DetachRolePolicy", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "DetachRoleId": argv.get("--DetachRoleId"),
-        "DetachRoleName": argv.get("--DetachRoleName"),
-        "PolicyName": argv.get("--PolicyName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DetachRolePolicyRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DetachRolePolicy(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeRoleList(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeRoleList", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRoleListRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRoleList(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateSAMLProvider(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateSAMLProvider", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Name": argv.get("--Name"),
-        "Description": argv.get("--Description"),
-        "SAMLMetadataDocument": argv.get("--SAMLMetadataDocument"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateSAMLProviderRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateSAMLProvider(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteSAMLProvider(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteSAMLProvider", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Name": argv.get("--Name"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteSAMLProviderRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteSAMLProvider(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doUpdateUser(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("UpdateUser", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Name": argv.get("--Name"),
-        "Remark": argv.get("--Remark"),
-        "ConsoleLogin": Utils.try_to_json(argv, "--ConsoleLogin"),
-        "Password": argv.get("--Password"),
-        "NeedResetPassword": Utils.try_to_json(argv, "--NeedResetPassword"),
-        "PhoneNum": argv.get("--PhoneNum"),
-        "CountryCode": argv.get("--CountryCode"),
-        "Email": argv.get("--Email"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateUserRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.UpdateUser(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetPolicy(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetPolicy", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetPolicyRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.GetPolicy(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doUpdateSAMLProvider(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("UpdateSAMLProvider", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Name": argv.get("--Name"),
-        "Description": argv.get("--Description"),
-        "SAMLMetadataDocument": argv.get("--SAMLMetadataDocument"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateSAMLProviderRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.UpdateSAMLProvider(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetCustomMFATokenInfo(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetCustomMFATokenInfo", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "MFAToken": argv.get("--MFAToken"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetCustomMFATokenInfoRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.GetCustomMFATokenInfo(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteRole(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteRole", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "RoleId": argv.get("--RoleId"),
-        "RoleName": argv.get("--RoleName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteRoleRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteRole(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetUser(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetUser", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Name": argv.get("--Name"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetUserRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.GetUser(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doUpdateGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("UpdateGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-        "GroupName": argv.get("--GroupName"),
-        "Remark": argv.get("--Remark"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.UpdateGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListAttachedGroupPolicies(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListAttachedGroupPolicies", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TargetGroupId": Utils.try_to_json(argv, "--TargetGroupId"),
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListAttachedGroupPoliciesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListAttachedGroupPolicies(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doConsumeCustomMFAToken(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ConsumeCustomMFAToken", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "MFAToken": argv.get("--MFAToken"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ConsumeCustomMFATokenRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ConsumeCustomMFAToken(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.GetGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListGroups(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListGroups", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-        "Keyword": argv.get("--Keyword"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListGroupsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListGroups(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAddUserToGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("AddUserToGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Info": Utils.try_to_json(argv, "--Info"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddUserToGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.AddUserToGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAttachRolePolicy(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("AttachRolePolicy", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "AttachRoleId": argv.get("--AttachRoleId"),
-        "AttachRoleName": argv.get("--AttachRoleName"),
-        "PolicyName": argv.get("--PolicyName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AttachRolePolicyRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.AttachRolePolicy(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doUpdateRoleDescription(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("UpdateRoleDescription", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Description": argv.get("--Description"),
-        "RoleId": argv.get("--RoleId"),
-        "RoleName": argv.get("--RoleName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateRoleDescriptionRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.UpdateRoleDescription(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetRole(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetRole", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "RoleId": argv.get("--RoleId"),
-        "RoleName": argv.get("--RoleName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetRoleRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.GetRole(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListAttachedUserPolicies(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListAttachedUserPolicies", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TargetUin": Utils.try_to_json(argv, "--TargetUin"),
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListAttachedUserPoliciesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ListAttachedUserPolicies(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteUser(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteUser", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Name": argv.get("--Name"),
-        "Force": Utils.try_to_json(argv, "--Force"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteUserRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteUser(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doListCollaborators(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ListCollaborators", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "InstanceId": argv.get("--InstanceId"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "Db": argv.get("--Db"),
+        "OrderBy": argv.get("--OrderBy"),
+        "OrderByType": argv.get("--OrderByType"),
+        "Slave": Utils.try_to_json(argv, "--Slave"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1108,12 +292,12 @@ def doListCollaborators(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListCollaboratorsRequest()
+    model = models.DescribeDBSlowLogsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListCollaborators(model)
+    rsp = client.DescribeDBSlowLogs(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1123,15 +307,14 @@ def doListCollaborators(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDetachGroupPolicy(argv, arglist):
+def doDescribeFlow(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DetachGroupPolicy", g_param[OptionsDefine.Version])
+        show_help("DescribeFlow", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "DetachGroupId": Utils.try_to_json(argv, "--DetachGroupId"),
+        "FlowId": Utils.try_to_json(argv, "--FlowId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1142,12 +325,12 @@ def doDetachGroupPolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DetachGroupPolicyRequest()
+    model = models.DescribeFlowRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DetachGroupPolicy(model)
+    rsp = client.DescribeFlow(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1157,14 +340,15 @@ def doDetachGroupPolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRemoveUserFromGroup(argv, arglist):
+def doModifyDBInstanceName(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("RemoveUserFromGroup", g_param[OptionsDefine.Version])
+        show_help("ModifyDBInstanceName", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Info": Utils.try_to_json(argv, "--Info"),
+        "InstanceId": argv.get("--InstanceId"),
+        "InstanceName": argv.get("--InstanceName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1175,12 +359,12 @@ def doRemoveUserFromGroup(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RemoveUserFromGroupRequest()
+    model = models.ModifyDBInstanceNameRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.RemoveUserFromGroup(model)
+    rsp = client.ModifyDBInstanceName(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1190,17 +374,21 @@ def doRemoveUserFromGroup(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListPolicies(argv, arglist):
+def doGrantAccountPrivileges(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ListPolicies", g_param[OptionsDefine.Version])
+        show_help("GrantAccountPrivileges", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Scope": argv.get("--Scope"),
-        "Keyword": argv.get("--Keyword"),
+        "InstanceId": argv.get("--InstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Host": argv.get("--Host"),
+        "DbName": argv.get("--DbName"),
+        "Privileges": Utils.try_to_json(argv, "--Privileges"),
+        "Type": argv.get("--Type"),
+        "Object": argv.get("--Object"),
+        "ColName": argv.get("--ColName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1211,12 +399,12 @@ def doListPolicies(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListPoliciesRequest()
+    model = models.GrantAccountPrivilegesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListPolicies(model)
+    rsp = client.GrantAccountPrivileges(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1226,16 +414,16 @@ def doListPolicies(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListUsersForGroup(argv, arglist):
+def doDeleteAccount(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ListUsersForGroup", g_param[OptionsDefine.Version])
+        show_help("DeleteAccount", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
+        "InstanceId": argv.get("--InstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Host": argv.get("--Host"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1246,12 +434,12 @@ def doListUsersForGroup(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListUsersForGroupRequest()
+    model = models.DeleteAccountRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListUsersForGroup(model)
+    rsp = client.DeleteAccount(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1261,15 +449,14 @@ def doListUsersForGroup(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAttachUserPolicy(argv, arglist):
+def doDescribeDBParameters(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("AttachUserPolicy", g_param[OptionsDefine.Version])
+        show_help("DescribeDBParameters", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "AttachUin": Utils.try_to_json(argv, "--AttachUin"),
+        "InstanceId": argv.get("--InstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1280,12 +467,12 @@ def doAttachUserPolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AttachUserPolicyRequest()
+    model = models.DescribeDBParametersRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.AttachUserPolicy(model)
+    rsp = client.DescribeDBParameters(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1295,17 +482,15 @@ def doAttachUserPolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListEntitiesForPolicy(argv, arglist):
+def doModifyDBInstancesProject(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ListEntitiesForPolicy", g_param[OptionsDefine.Version])
+        show_help("ModifyDBInstancesProject", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-        "EntityFilter": argv.get("--EntityFilter"),
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1316,12 +501,12 @@ def doListEntitiesForPolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListEntitiesForPolicyRequest()
+    model = models.ModifyDBInstancesProjectRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListEntitiesForPolicy(model)
+    rsp = client.ModifyDBInstancesProject(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1331,15 +516,17 @@ def doListEntitiesForPolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAttachGroupPolicy(argv, arglist):
+def doDescribeDBPerformanceDetails(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("AttachGroupPolicy", g_param[OptionsDefine.Version])
+        show_help("DescribeDBPerformanceDetails", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "AttachGroupId": Utils.try_to_json(argv, "--AttachGroupId"),
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "MetricName": argv.get("--MetricName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1350,12 +537,12 @@ def doAttachGroupPolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AttachGroupPolicyRequest()
+    model = models.DescribeDBPerformanceDetailsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.AttachGroupPolicy(model)
+    rsp = client.DescribeDBPerformanceDetails(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1365,16 +552,15 @@ def doAttachGroupPolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpdateAssumeRolePolicy(argv, arglist):
+def doDescribeDBLogFiles(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpdateAssumeRolePolicy", g_param[OptionsDefine.Version])
+        show_help("DescribeDBLogFiles", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyDocument": argv.get("--PolicyDocument"),
-        "RoleId": argv.get("--RoleId"),
-        "RoleName": argv.get("--RoleName"),
+        "InstanceId": argv.get("--InstanceId"),
+        "Type": Utils.try_to_json(argv, "--Type"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1385,12 +571,12 @@ def doUpdateAssumeRolePolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateAssumeRolePolicyRequest()
+    model = models.DescribeDBLogFilesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpdateAssumeRolePolicy(model)
+    rsp = client.DescribeDBLogFiles(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1400,16 +586,100 @@ def doUpdateAssumeRolePolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreatePolicy(argv, arglist):
+def doOpenDBExtranetAccess(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreatePolicy", g_param[OptionsDefine.Version])
+        show_help("OpenDBExtranetAccess", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyName": argv.get("--PolicyName"),
-        "PolicyDocument": argv.get("--PolicyDocument"),
+        "InstanceId": argv.get("--InstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.OpenDBExtranetAccessRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.OpenDBExtranetAccess(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBInstances(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBInstances", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+        "SearchName": argv.get("--SearchName"),
+        "SearchKey": argv.get("--SearchKey"),
+        "ProjectIds": Utils.try_to_json(argv, "--ProjectIds"),
+        "IsFilterVpc": Utils.try_to_json(argv, "--IsFilterVpc"),
+        "VpcId": argv.get("--VpcId"),
+        "SubnetId": argv.get("--SubnetId"),
+        "OrderBy": argv.get("--OrderBy"),
+        "OrderByType": argv.get("--OrderByType"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "OriginSerialIds": Utils.try_to_json(argv, "--OriginSerialIds"),
+        "IsFilterExcluster": Utils.try_to_json(argv, "--IsFilterExcluster"),
+        "ExclusterType": Utils.try_to_json(argv, "--ExclusterType"),
+        "ExclusterIds": Utils.try_to_json(argv, "--ExclusterIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBInstancesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDBInstances(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateAccount(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateAccount", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "UserName": argv.get("--UserName"),
+        "Host": argv.get("--Host"),
+        "Password": argv.get("--Password"),
+        "ReadOnly": Utils.try_to_json(argv, "--ReadOnly"),
         "Description": argv.get("--Description"),
+        "DelayThresh": Utils.try_to_json(argv, "--DelayThresh"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1420,12 +690,12 @@ def doCreatePolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreatePolicyRequest()
+    model = models.CreateAccountRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CreatePolicy(model)
+    rsp = client.CreateAccount(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1435,15 +705,15 @@ def doCreatePolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDetachUserPolicy(argv, arglist):
+def doInitDBInstances(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DetachUserPolicy", g_param[OptionsDefine.Version])
+        show_help("InitDBInstances", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PolicyId": Utils.try_to_json(argv, "--PolicyId"),
-        "DetachUin": Utils.try_to_json(argv, "--DetachUin"),
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+        "Params": Utils.try_to_json(argv, "--Params"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1454,12 +724,12 @@ def doDetachUserPolicy(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DetachUserPolicyRequest()
+    model = models.InitDBInstancesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DetachUserPolicy(model)
+    rsp = client.InitDBInstances(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1469,17 +739,16 @@ def doDetachUserPolicy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListGroupsForUser(argv, arglist):
+def doModifyBackupTime(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ListGroupsForUser", g_param[OptionsDefine.Version])
+        show_help("ModifyBackupTime", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Uid": Utils.try_to_json(argv, "--Uid"),
-        "Rp": Utils.try_to_json(argv, "--Rp"),
-        "Page": Utils.try_to_json(argv, "--Page"),
-        "SubUin": Utils.try_to_json(argv, "--SubUin"),
+        "InstanceId": argv.get("--InstanceId"),
+        "StartBackupTime": argv.get("--StartBackupTime"),
+        "EndBackupTime": argv.get("--EndBackupTime"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1490,12 +759,293 @@ def doListGroupsForUser(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListGroupsForUserRequest()
+    model = models.ModifyBackupTimeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ListGroupsForUser(model)
+    rsp = client.ModifyBackupTime(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCloseDBExtranetAccess(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CloseDBExtranetAccess", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CloseDBExtranetAccessRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CloseDBExtranetAccess(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeAccounts(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeAccounts", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeAccountsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeAccounts(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCopyAccountPrivileges(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CopyAccountPrivileges", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "SrcUserName": argv.get("--SrcUserName"),
+        "SrcHost": argv.get("--SrcHost"),
+        "DstUserName": argv.get("--DstUserName"),
+        "DstHost": argv.get("--DstHost"),
+        "SrcReadOnly": argv.get("--SrcReadOnly"),
+        "DstReadOnly": argv.get("--DstReadOnly"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CopyAccountPrivilegesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CopyAccountPrivileges(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDatabases(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDatabases", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDatabasesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDatabases(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCloneAccount(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CloneAccount", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "SrcUser": argv.get("--SrcUser"),
+        "SrcHost": argv.get("--SrcHost"),
+        "DstUser": argv.get("--DstUser"),
+        "DstHost": argv.get("--DstHost"),
+        "DstDesc": argv.get("--DstDesc"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CloneAccountRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CloneAccount(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBPerformance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBPerformance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "MetricName": argv.get("--MetricName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBPerformanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDBPerformance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLogFileRetentionPeriod(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeLogFileRetentionPeriod", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLogFileRetentionPeriodRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeLogFileRetentionPeriod(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBResourceUsage(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBResourceUsage", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "MetricName": argv.get("--MetricName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MariadbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBResourceUsageRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDBResourceUsage(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1506,73 +1056,59 @@ def doListGroupsForUser(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20190116": cam_client_v20190116,
+    "v20170312": mariadb_client_v20170312,
 
 }
 
 MODELS_MAP = {
-    "v20190116": models_v20190116,
+    "v20170312": models_v20170312,
 
 }
 
 ACTION_MAP = {
-    "UpdateRoleConsoleLogin": doUpdateRoleConsoleLogin,
-    "AddUser": doAddUser,
-    "GetSAMLProvider": doGetSAMLProvider,
-    "ListSAMLProviders": doListSAMLProviders,
-    "CreateRole": doCreateRole,
-    "ListUsers": doListUsers,
-    "ListAttachedRolePolicies": doListAttachedRolePolicies,
-    "DeletePolicy": doDeletePolicy,
-    "CreateGroup": doCreateGroup,
-    "DetachRolePolicy": doDetachRolePolicy,
-    "DescribeRoleList": doDescribeRoleList,
-    "CreateSAMLProvider": doCreateSAMLProvider,
-    "DeleteSAMLProvider": doDeleteSAMLProvider,
-    "UpdateUser": doUpdateUser,
-    "GetPolicy": doGetPolicy,
-    "UpdateSAMLProvider": doUpdateSAMLProvider,
-    "GetCustomMFATokenInfo": doGetCustomMFATokenInfo,
-    "DeleteGroup": doDeleteGroup,
-    "DeleteRole": doDeleteRole,
-    "GetUser": doGetUser,
-    "UpdateGroup": doUpdateGroup,
-    "ListAttachedGroupPolicies": doListAttachedGroupPolicies,
-    "ConsumeCustomMFAToken": doConsumeCustomMFAToken,
-    "GetGroup": doGetGroup,
-    "ListGroups": doListGroups,
-    "AddUserToGroup": doAddUserToGroup,
-    "AttachRolePolicy": doAttachRolePolicy,
-    "UpdateRoleDescription": doUpdateRoleDescription,
-    "GetRole": doGetRole,
-    "ListAttachedUserPolicies": doListAttachedUserPolicies,
-    "DeleteUser": doDeleteUser,
-    "ListCollaborators": doListCollaborators,
-    "DetachGroupPolicy": doDetachGroupPolicy,
-    "RemoveUserFromGroup": doRemoveUserFromGroup,
-    "ListPolicies": doListPolicies,
-    "ListUsersForGroup": doListUsersForGroup,
-    "AttachUserPolicy": doAttachUserPolicy,
-    "ListEntitiesForPolicy": doListEntitiesForPolicy,
-    "AttachGroupPolicy": doAttachGroupPolicy,
-    "UpdateAssumeRolePolicy": doUpdateAssumeRolePolicy,
-    "CreatePolicy": doCreatePolicy,
-    "DetachUserPolicy": doDetachUserPolicy,
-    "ListGroupsForUser": doListGroupsForUser,
+    "DescribeAccountPrivileges": doDescribeAccountPrivileges,
+    "ModifyAccountDescription": doModifyAccountDescription,
+    "DescribeBackupTime": doDescribeBackupTime,
+    "DescribeDBResourceUsageDetails": doDescribeDBResourceUsageDetails,
+    "ResetAccountPassword": doResetAccountPassword,
+    "ModifyDBParameters": doModifyDBParameters,
+    "ModifyLogFileRetentionPeriod": doModifyLogFileRetentionPeriod,
+    "DescribeDBSlowLogs": doDescribeDBSlowLogs,
+    "DescribeFlow": doDescribeFlow,
+    "ModifyDBInstanceName": doModifyDBInstanceName,
+    "GrantAccountPrivileges": doGrantAccountPrivileges,
+    "DeleteAccount": doDeleteAccount,
+    "DescribeDBParameters": doDescribeDBParameters,
+    "ModifyDBInstancesProject": doModifyDBInstancesProject,
+    "DescribeDBPerformanceDetails": doDescribeDBPerformanceDetails,
+    "DescribeDBLogFiles": doDescribeDBLogFiles,
+    "OpenDBExtranetAccess": doOpenDBExtranetAccess,
+    "DescribeDBInstances": doDescribeDBInstances,
+    "CreateAccount": doCreateAccount,
+    "InitDBInstances": doInitDBInstances,
+    "ModifyBackupTime": doModifyBackupTime,
+    "CloseDBExtranetAccess": doCloseDBExtranetAccess,
+    "DescribeAccounts": doDescribeAccounts,
+    "CopyAccountPrivileges": doCopyAccountPrivileges,
+    "DescribeDatabases": doDescribeDatabases,
+    "CloneAccount": doCloneAccount,
+    "DescribeDBPerformance": doDescribeDBPerformance,
+    "DescribeLogFileRetentionPeriod": doDescribeLogFileRetentionPeriod,
+    "DescribeDBResourceUsage": doDescribeDBResourceUsage,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20190116.version,
+    v20170312.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20190116.version.replace('-', ''): {"help": v20190116_help.INFO,"desc": v20190116_help.DESC},
+     'v' + v20170312.version.replace('-', ''): {"help": v20170312_help.INFO,"desc": v20170312_help.DESC},
 
 }
 
 
-def cam_action(argv, arglist):
+def mariadb_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -1588,7 +1124,7 @@ def cam_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "cam", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "mariadb", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -1609,7 +1145,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("cam", cam_action)
+    cmd = NiceCommand("mariadb", mariadb_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -1674,11 +1210,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["cam"][OptionsDefine.Version]
+            version = config["mariadb"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["cam"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["mariadb"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -1695,7 +1231,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "cam", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "mariadb", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -1705,7 +1241,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["cam"]["version"]
+        version = profile["mariadb"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

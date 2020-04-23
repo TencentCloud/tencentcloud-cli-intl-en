@@ -1200,6 +1200,7 @@ def doModifyDBInstanceVipVport(argv, arglist):
         "DstPort": Utils.try_to_json(argv, "--DstPort"),
         "UniqVpcId": argv.get("--UniqVpcId"),
         "UniqSubnetId": argv.get("--UniqSubnetId"),
+        "ReleaseDuration": Utils.try_to_json(argv, "--ReleaseDuration"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2094,6 +2095,7 @@ def doDescribeAccounts(argv, arglist):
         "InstanceId": argv.get("--InstanceId"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
+        "AccountRegexp": argv.get("--AccountRegexp"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

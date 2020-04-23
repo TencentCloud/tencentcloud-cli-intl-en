@@ -118,7 +118,7 @@ INFO = {
       },
       {
         "name": "UserHosts",
-        "desc": "Client Host list."
+        "desc": "Client `Host` list."
       },
       {
         "name": "UserNames",
@@ -525,7 +525,7 @@ INFO = {
       },
       {
         "name": "DeviceType",
-        "desc": ""
+        "desc": "Instance type. Valid values: HA (High-Availability Edition), BASIC (Basic Edition). If this parameter is not specified, High-Availability Edition will be used by default."
       }
     ],
     "desc": "This API is used to create a pay-as-you-go TencentDB instance (which can be a master, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566) API to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. Master instances, read-only instances, and disaster recovery instances can be created;\n5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized."
@@ -602,6 +602,10 @@ INFO = {
       {
         "name": "UniqSubnetId",
         "desc": "Unified subnet ID."
+      },
+      {
+        "name": "ReleaseDuration",
+        "desc": "Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0–168 hours. Default value: 24 hours."
       }
     ],
     "desc": "This API (ModifyDBInstanceVipVport) is used to modify the IP and port number of a TencentDB instance, switch from the basic network to VPC, or change VPC subnets."
@@ -943,6 +947,10 @@ INFO = {
       {
         "name": "Limit",
         "desc": "Number of results to be returned for a single request. Value range: 1-100. Default value: 20."
+      },
+      {
+        "name": "AccountRegexp",
+        "desc": "Regular expression for matching account names, which complies with the rules at MySQL official website."
       }
     ],
     "desc": "This API (DescribeAccounts) is used to query information of all TencentDB accounts."
@@ -1233,7 +1241,7 @@ INFO = {
       },
       {
         "name": "DatabaseRegexp",
-        "desc": "Regular expression for matching database names, which complies with the rules at MySQL's official website"
+        "desc": "Regular expression for matching database names."
       }
     ],
     "desc": "This API (DescribeDatabases) is used to query the information of databases of a TencentDB instance."

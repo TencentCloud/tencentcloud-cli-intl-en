@@ -652,6 +652,23 @@ INFO = {
     ],
     "desc": "This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
+  "SetLoadBalancerClsLog": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "LogSetId",
+        "desc": "CLS logset ID"
+      },
+      {
+        "name": "LogTopicId",
+        "desc": "CLS log topic ID"
+      }
+    ],
+    "desc": "This API is used to add, delete, and update the CLS topic of a CLB instance."
+  },
   "DescribeTargetGroupList": {
     "params": [
       {

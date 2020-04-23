@@ -327,6 +327,47 @@ INFO = {
     ],
     "desc": "This API is used to query the basic configuration information of CDN acceleration domain names (inside and outside mainland China), including the project ID, service status, service type, creation time, and update time, etc."
   },
+  "SearchClsLog": {
+    "params": [
+      {
+        "name": "LogsetId",
+        "desc": "ID of logset to be queried"
+      },
+      {
+        "name": "TopicIds",
+        "desc": "List of IDs of log topics to be queried, separated by commas"
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`"
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time of log to be queried in the format of `YYYY-mm-dd HH:MM:SS`"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of logs to be returned at a time. Maximum value: 100"
+      },
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      },
+      {
+        "name": "Query",
+        "desc": "Content to be queried. For more information, please visit https://cloud.tencent.com/document/product/614/16982"
+      },
+      {
+        "name": "Context",
+        "desc": "This field is used when loading more results. Pass through the last `context` value returned to get more log content. Up to 10,000 logs can be obtained through the cursor. Please narrow down the time range as much as possible."
+      },
+      {
+        "name": "Sort",
+        "desc": "Sorting by log time. Valid values: asc (ascending), desc (descending). Default value: desc"
+      }
+    ],
+    "desc": "This API is used to search for CLS logs. Search filters can be set to today, 24 hours (one of the last 7 days), and the last 7 days."
+  },
   "StartCdnDomain": {
     "params": [
       {
@@ -629,6 +670,163 @@ INFO = {
     ],
     "desc": "This API is used to query the download link of an access log. You can use this API for access logs in the last 30 days either within or outside Mainland China."
   },
+  "ManageClsTopicDomains": {
+    "params": [
+      {
+        "name": "LogsetId",
+        "desc": "Logset ID"
+      },
+      {
+        "name": "TopicId",
+        "desc": "Log topic ID"
+      },
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      },
+      {
+        "name": "DomainAreaConfigs",
+        "desc": "Domain name region configuration. Note: if this field is empty, it means to unbind all domain names from the corresponding topic"
+      }
+    ],
+    "desc": "This API is used to manage the list of domain names bound to a log topic."
+  },
+  "DescribeCertDomains": {
+    "params": [
+      {
+        "name": "Cert",
+        "desc": "Base64-encoded string of certificate in PEM format"
+      }
+    ],
+    "desc": "This API is used to verify an SSL certificate and extract the domain names. It will then return the list of domain names connected to CDN and the list of domain names with the certificate configured."
+  },
+  "CreateClsLogTopic": {
+    "params": [
+      {
+        "name": "TopicName",
+        "desc": "Log topic name"
+      },
+      {
+        "name": "LogsetId",
+        "desc": "Logset ID"
+      },
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      },
+      {
+        "name": "DomainAreaConfigs",
+        "desc": "Domain name region information"
+      }
+    ],
+    "desc": "This API is used to create a log topic. Note: up to 10 log topics can be created under one logset."
+  },
+  "DisableClsLogTopic": {
+    "params": [
+      {
+        "name": "LogsetId",
+        "desc": "Logset ID"
+      },
+      {
+        "name": "TopicId",
+        "desc": "Log topic ID"
+      },
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      }
+    ],
+    "desc": "This API is used to stop publishing to a log topic. Note: after a log topic is disabled, all logs of the domain names bound to it will no longer be published to the topic, and the logs that have already been published will be retained. This action will take effect within 5–15 minutes.\n"
+  },
+  "PushUrlsCache": {
+    "params": [
+      {
+        "name": "Urls",
+        "desc": "List of URLs. The protocol header such as \"http://\" or \"https://\" needs to be included."
+      },
+      {
+        "name": "UserAgent",
+        "desc": "Specifies the User-Agent header of an HTTP prefetch request when it is forwarded to the origin server\nDefault value: `TencentCdn`"
+      },
+      {
+        "name": "Area",
+        "desc": "Destination region for the prefetch\n`mainland`: prefetches resources to nodes within Mainland China\n`overseas`: prefetches resources to nodes outside Mainland China\n`global`: prefetches resources to global nodes\nDefault value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region."
+      }
+    ],
+    "desc": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1,000 URLs can be prefetched per day either within or outside Mainland China, and up to 20 tasks can be submitted at a time.\nThis API is in beta test and not fully available yet. Please stay tuned."
+  },
+  "ListClsTopicDomains": {
+    "params": [
+      {
+        "name": "LogsetId",
+        "desc": "Logset ID"
+      },
+      {
+        "name": "TopicId",
+        "desc": "Log topic ID"
+      },
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      }
+    ],
+    "desc": "This API is used to get the list of domain names bound to a log topic."
+  },
+  "ListClsLogTopics": {
+    "params": [
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      }
+    ],
+    "desc": "This API is used to display the list of log topics. Note: a logset can contain up to 10 log topics."
+  },
+  "GetDisableRecords": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Starting time, such as `2018-12-12 10:24:00`"
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time, such as 2018-12-14 10:24:00"
+      },
+      {
+        "name": "Url",
+        "desc": "Specifies the URL to be queried"
+      },
+      {
+        "name": "Status",
+        "desc": "Current URL status\ndisable: The URL remains disabled, and accessing it will return an error 403\nenable: The URL is enabled (unblocked) and can be normally accessed"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset for paged queries. Default value: 0 (the first page)"
+      },
+      {
+        "name": "Limit",
+        "desc": "Limit on paged queries. Default value: 20"
+      }
+    ],
+    "desc": "This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not generally available yet.)"
+  },
+  "DeleteClsLogTopic": {
+    "params": [
+      {
+        "name": "TopicId",
+        "desc": "Log topic ID"
+      },
+      {
+        "name": "LogsetId",
+        "desc": "Logset ID"
+      },
+      {
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
+      }
+    ],
+    "desc": "This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5–15 minutes."
+  },
   "DescribePushTasks": {
     "params": [
       {
@@ -666,51 +864,22 @@ INFO = {
     ],
     "desc": "This API is used to query the submission record and progress of prefetch tasks.\nThis API is in beta test and not fully available yet. Please stay tuned."
   },
-  "PushUrlsCache": {
+  "EnableClsLogTopic": {
     "params": [
       {
-        "name": "Urls",
-        "desc": "List of URLs. The protocol header such as \"http://\" or \"https://\" needs to be included."
+        "name": "LogsetId",
+        "desc": "Logset ID"
       },
       {
-        "name": "UserAgent",
-        "desc": "Specifies the User-Agent header of an HTTP prefetch request when it is forwarded to the origin server\nDefault value: `TencentCdn`"
+        "name": "TopicId",
+        "desc": "Log topic ID"
       },
       {
-        "name": "Area",
-        "desc": "Destination region for the prefetch\n`mainland`: prefetches resources to nodes within Mainland China\n`overseas`: prefetches resources to nodes outside Mainland China\n`global`: prefetches resources to global nodes\nDefault value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region."
+        "name": "Channel",
+        "desc": "Connection channel. Default value: cdn"
       }
     ],
-    "desc": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1,000 URLs can be prefetched per day either within or outside Mainland China, and up to 20 tasks can be submitted at a time.\nThis API is in beta test and not fully available yet. Please stay tuned."
-  },
-  "GetDisableRecords": {
-    "params": [
-      {
-        "name": "StartTime",
-        "desc": "Starting time, such as `2018-12-12 10:24:00`"
-      },
-      {
-        "name": "EndTime",
-        "desc": "End time, such as 2018-12-14 10:24:00"
-      },
-      {
-        "name": "Url",
-        "desc": "Specifies the URL to be queried"
-      },
-      {
-        "name": "Status",
-        "desc": "Current URL status\ndisable: The URL remains disabled, and accessing it will return an error 403\nenable: The URL is enabled (unblocked) and can be normally accessed"
-      },
-      {
-        "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)"
-      },
-      {
-        "name": "Limit",
-        "desc": "Limit on paged queries. Default value: 20"
-      }
-    ],
-    "desc": "This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not generally available yet.)"
+    "desc": "This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5–15 minutes."
   },
   "UpdatePayType": {
     "params": [
