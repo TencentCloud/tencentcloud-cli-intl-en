@@ -18,18 +18,18 @@ from tccli.services.es import v20180416
 from tccli.services.es.v20180416 import help as v20180416_help
 
 
-def doUpgradeInstance(argv, arglist):
+def doDescribeInstanceOperations(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpgradeInstance", g_param[OptionsDefine.Version])
+        show_help("DescribeInstanceOperations", g_param[OptionsDefine.Version])
         return
 
     param = {
         "InstanceId": argv.get("--InstanceId"),
-        "EsVersion": argv.get("--EsVersion"),
-        "CheckOnly": Utils.try_to_json(argv, "--CheckOnly"),
-        "LicenseType": argv.get("--LicenseType"),
-        "BasicSecurityType": Utils.try_to_json(argv, "--BasicSecurityType"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -43,9 +43,9 @@ def doUpgradeInstance(argv, arglist):
     client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpgradeInstanceRequest()
+    model = models.DescribeInstanceOperationsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpgradeInstance(model)
+    rsp = client.DescribeInstanceOperations(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -155,6 +155,43 @@ def doCreateInstance(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doUpgradeInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("UpgradeInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "EsVersion": argv.get("--EsVersion"),
+        "CheckOnly": Utils.try_to_json(argv, "--CheckOnly"),
+        "LicenseType": argv.get("--LicenseType"),
+        "BasicSecurityType": Utils.try_to_json(argv, "--BasicSecurityType"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UpgradeInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.UpgradeInstance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doUpgradeLicense(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -218,6 +255,7 @@ def doUpdateInstance(argv, arglist):
         "EsPublicAcl": Utils.try_to_json(argv, "--EsPublicAcl"),
         "KibanaPublicAccess": argv.get("--KibanaPublicAccess"),
         "KibanaPrivateAccess": argv.get("--KibanaPrivateAccess"),
+        "BasicSecurityType": Utils.try_to_json(argv, "--BasicSecurityType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -310,6 +348,46 @@ def doRestartInstance(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeInstanceLogs(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeInstanceLogs", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "LogType": Utils.try_to_json(argv, "--LogType"),
+        "SearchKey": argv.get("--SearchKey"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "OrderByType": Utils.try_to_json(argv, "--OrderByType"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInstanceLogsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeInstanceLogs(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 CLIENT_MAP = {
     "v20180416": es_client_v20180416,
 
@@ -321,13 +399,15 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "UpgradeInstance": doUpgradeInstance,
+    "DescribeInstanceOperations": doDescribeInstanceOperations,
     "DescribeInstances": doDescribeInstances,
     "CreateInstance": doCreateInstance,
+    "UpgradeInstance": doUpgradeInstance,
     "UpgradeLicense": doUpgradeLicense,
     "UpdateInstance": doUpdateInstance,
     "DeleteInstance": doDeleteInstance,
     "RestartInstance": doRestartInstance,
+    "DescribeInstanceLogs": doDescribeInstanceLogs,
 
 }
 

@@ -105,7 +105,7 @@ INFO = {
     "params": [
       {
         "name": "WatermarkId",
-        "desc": "Watermark ID."
+        "desc": "Watermark ID.\nGet the watermark ID in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call."
       },
       {
         "name": "PictureUrl",
@@ -113,11 +113,11 @@ INFO = {
       },
       {
         "name": "XPosition",
-        "desc": "Display position: X-axis offset."
+        "desc": "Display position: X-axis offset. Default value: 0."
       },
       {
         "name": "YPosition",
-        "desc": "Display position: Y-axis offset."
+        "desc": "Display position: Y-axis offset. Default value: 0."
       },
       {
         "name": "WatermarkName",
@@ -125,11 +125,11 @@ INFO = {
       },
       {
         "name": "Width",
-        "desc": "Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions."
+        "desc": "Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default."
       },
       {
         "name": "Height",
-        "desc": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions."
+        "desc": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default."
       }
     ],
     "desc": "This API is used to update a watermark."
@@ -147,14 +147,30 @@ INFO = {
     ],
     "desc": "Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document."
   },
-  "DeleteLiveWatermark": {
+  "ModifyLivePlayAuthKey": {
     "params": [
       {
-        "name": "WatermarkId",
-        "desc": "Watermark ID."
+        "name": "DomainName",
+        "desc": "Domain name."
+      },
+      {
+        "name": "Enable",
+        "desc": "Whether to enable. 0: disabled; 1: enabled."
+      },
+      {
+        "name": "AuthKey",
+        "desc": "Authentication key."
+      },
+      {
+        "name": "AuthDelta",
+        "desc": "Validity period in seconds."
+      },
+      {
+        "name": "AuthBackKey",
+        "desc": "Authentication backkey."
       }
     ],
-    "desc": "This API is used to delete a watermark."
+    "desc": "This API is used to modify the playback authentication key."
   },
   "ModifyLiveRecordTemplate": {
     "params": [
@@ -180,7 +196,7 @@ INFO = {
       },
       {
         "name": "Mp4Param",
-        "desc": "Mp4 recording parameter, which is set when Mp4 recording is enabled."
+        "desc": "MP4 recording parameter, which is set when MP4 recording is enabled."
       },
       {
         "name": "AacParam",
@@ -192,51 +208,35 @@ INFO = {
       },
       {
         "name": "Mp3Param",
-        "desc": "Mp3 recording parameter, which is set when Mp3 recording is enabled."
+        "desc": "MP3 recording parameter, which is set when MP3 recording is enabled."
       }
     ],
     "desc": "This API is used to modify the recording template configuration."
   },
-  "ModifyLiveCallbackTemplate": {
+  "AddDelayLiveStream": {
     "params": [
       {
-        "name": "TemplateId",
-        "desc": "Template ID."
+        "name": "AppName",
+        "desc": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default."
       },
       {
-        "name": "TemplateName",
-        "desc": "Template name."
+        "name": "DomainName",
+        "desc": "Push domain name."
       },
       {
-        "name": "Description",
-        "desc": "Description."
+        "name": "StreamName",
+        "desc": "Stream name."
       },
       {
-        "name": "StreamBeginNotifyUrl",
-        "desc": "Stream starting callback URL."
+        "name": "DelayTime",
+        "desc": "Delay time in seconds, up to 600s."
       },
       {
-        "name": "StreamEndNotifyUrl",
-        "desc": "Stream ending callback URL."
-      },
-      {
-        "name": "RecordNotifyUrl",
-        "desc": "Recording callback URL."
-      },
-      {
-        "name": "SnapshotNotifyUrl",
-        "desc": "Screencapturing callback URL."
-      },
-      {
-        "name": "PornCensorshipNotifyUrl",
-        "desc": "Porn detection callback URL."
-      },
-      {
-        "name": "CallbackKey",
-        "desc": "Callback key, which is shared by callback URLs. For more information on authentication callback, please see the callback format document."
+        "name": "ExpireTime",
+        "desc": "Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The configuration will expire after 7 days by default and can last up to 7 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       }
     ],
-    "desc": "This API is used to modify a callback template."
+    "desc": "This API is used to set the delay time for the stream.\nNote: If you want to set delayed playback before pushing, you need to set 5 minutes in advance.\nCurrently, this API only supports stream granularity, and the feature supporting domain name and application granularities will be available in the future.\n"
   },
   "CreateLiveWatermarkRule": {
     "params": [
@@ -263,7 +263,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API."
       }
     ],
     "desc": "This API deletes a callback template."
@@ -317,35 +317,35 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID.\nNote: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call."
       }
     ],
     "desc": "This API is used to get a single transcoding template."
   },
-  "AddDelayLiveStream": {
+  "CreateCommonMixStream": {
     "params": [
       {
-        "name": "AppName",
-        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default."
+        "name": "MixStreamSessionId",
+        "desc": "ID of stream mix session (from applying for stream mix to canceling stream mix)."
       },
       {
-        "name": "DomainName",
-        "desc": "Push domain name."
+        "name": "InputStreamList",
+        "desc": "Input stream list for stream mix."
       },
       {
-        "name": "StreamName",
-        "desc": "Stream name."
+        "name": "OutputParams",
+        "desc": "Output stream parameter for stream mix."
       },
       {
-        "name": "DelayTime",
-        "desc": "Delay time in seconds, up to 600s."
+        "name": "MixStreamTemplateId",
+        "desc": "Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.\nIf this parameter is left empty, 0 will be used by default.\nFor two input sources, 10, 20, 30, 40, and 50 are supported.\nFor three input sources, 310, 390, and 391 are supported.\nFor four input sources, 410 is supported.\nFor five input sources, 510 and 590 are supported.\nFor six input sources, 610 is supported."
       },
       {
-        "name": "ExpireTime",
-        "desc": "Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The configuration will expire after 7 days by default and can last up to 7 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "name": "ControlParams",
+        "desc": "Special control parameter for stream mix. If there are no special needs, leave it empty."
       }
     ],
-    "desc": "This API is used to set the delay time for the stream.\nNote: If you want to set delayed playback before pushing, you need to set 5 minutes in advance.\nCurrently, this API only supports stream granularity, and the feature supporting domain name and application granularities will be available in the future.\n"
+    "desc": "This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.cancel_mix_stream` API.\nNote: currently, up to 16 streams can be mixed."
   },
   "DeleteLiveRecord": {
     "params": [
@@ -355,7 +355,7 @@ INFO = {
       },
       {
         "name": "TaskId",
-        "desc": "Task ID, which uniquely identifies the recording task globally."
+        "desc": "Task ID, which uniquely identifies a recording task globally.\nGet the `TaskId` from the returned value of the [CreateLiveRecord](/document/product/267/30148) API."
       }
     ],
     "desc": "Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](/document/product/267/30146) API."
@@ -364,10 +364,10 @@ INFO = {
     "params": [
       {
         "name": "IsDelayLive",
-        "desc": "Whether it is an LCB template"
+        "desc": "Whether it is an LCB template. Default value: 0.\n0: LVB.\n1: LCB."
       }
     ],
-    "desc": "This API is used to get the list of recording templates."
+    "desc": "This API is used to get the recording template list."
   },
   "CreateLiveSnapshotRule": {
     "params": [
@@ -388,7 +388,7 @@ INFO = {
         "desc": "Stream name.\nNote: if this parameter is a non-empty string, the rule will take effect only for the particular stream."
       }
     ],
-    "desc": "To create a screencapturing rule, you need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template and bind the returned template ID to the stream.\n<br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737)."
+    "desc": "This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template to bind the returned template ID to the stream.\n<br>Screencapturing document: [LVB Screencapturing](/document/product/267/32737).\nNote: only one screencapturing template can be associated with one domain name."
   },
   "ModifyLivePushAuthKey": {
     "params": [
@@ -443,11 +443,11 @@ INFO = {
       },
       {
         "name": "PornFlag",
-        "desc": "Whether to enable porn detection. 0: no, 1: yes."
+        "desc": "Whether to enable porn detection. Default value: 0.\n0: do not enable.\n1: enable."
       },
       {
         "name": "CosAppId",
-        "desc": "COS `AppId`."
+        "desc": "COS application ID."
       },
       {
         "name": "CosBucket",
@@ -456,6 +456,14 @@ INFO = {
       {
         "name": "CosRegion",
         "desc": "COS region."
+      },
+      {
+        "name": "CosPrefix",
+        "desc": "COS bucket folder prefix."
+      },
+      {
+        "name": "CosFileName",
+        "desc": "COS filename."
       }
     ],
     "desc": "This API is used to modify the screencapturing template configuration."
@@ -480,7 +488,7 @@ INFO = {
       },
       {
         "name": "AudioBitrate",
-        "desc": "Audio bitrate. Value range: 0–500. Default value: 0."
+        "desc": "Audio bitrate. Default value: 0.\nValue range: 0–500."
       },
       {
         "name": "Description",
@@ -488,11 +496,11 @@ INFO = {
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100–8,000"
+        "desc": "Video bitrate. Value range: 100–8000 Kbps.\nNote: the bitrate value must be a multiple of 100."
       },
       {
         "name": "Width",
-        "desc": "Width. Value range: 0–3,000"
+        "desc": "Width. Value range: 0-3000."
       },
       {
         "name": "NeedVideo",
@@ -504,19 +512,19 @@ INFO = {
       },
       {
         "name": "Height",
-        "desc": "Height. Value range: 0–3,000"
+        "desc": "Height. Value range: 0-3000."
       },
       {
         "name": "Fps",
-        "desc": "Frame rate. Value range: 0–200"
+        "desc": "Frame rate. Value range: 0–200."
       },
       {
         "name": "Gop",
-        "desc": "Keyframe interval in seconds. Value range: 0–50"
+        "desc": "Keyframe interval in seconds. Value range: 0–50."
       },
       {
         "name": "Rotate",
-        "desc": "Rotation angle. Valid values: 0, 90, 180, 270"
+        "desc": "Rotation angle.\n0, 90, 180, 270."
       },
       {
         "name": "Profile",
@@ -536,7 +544,7 @@ INFO = {
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "VideoBitrate minus TESHD bitrate. Value range: 0.1–0.5."
+        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5."
       }
     ],
     "desc": "This API is used to modify the transcoding template configuration."
@@ -591,7 +599,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call.\n2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](/document/product/267/32641) API."
       }
     ],
     "desc": "This API is used to delete a transcoding template."
@@ -600,7 +608,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID.\n1. Get from the returned value of the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call.\n2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](/document/product/267/32619) API."
       }
     ],
     "desc": "This API is used to delete a screencapturing template."
@@ -614,6 +622,15 @@ INFO = {
     ],
     "desc": "This API is used to query the playback authentication key."
   },
+  "DescribeLiveRecordTemplate": {
+    "params": [
+      {
+        "name": "TemplateId",
+        "desc": "Template ID."
+      }
+    ],
+    "desc": "This API is used to get a single recording template."
+  },
   "DescribeLiveForbidStreamList": {
     "params": [
       {
@@ -625,7 +642,7 @@ INFO = {
         "desc": "Number of entries per page. Maximum value: 100. \nValue: any integer between 1 and 100.\nDefault value: 10."
       }
     ],
-    "desc": "This API is used to get the list of forbidden streams."
+    "desc": "This API is used to get the forbidden stream list."
   },
   "DeleteLiveWatermarkRule": {
     "params": [
@@ -635,7 +652,7 @@ INFO = {
       },
       {
         "name": "AppName",
-        "desc": "Push path."
+        "desc": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default."
       },
       {
         "name": "StreamName",
@@ -734,15 +751,6 @@ INFO = {
     "params": [],
     "desc": "This API is used to get the list of transcoding rules."
   },
-  "UnBindLiveDomainCert": {
-    "params": [
-      {
-        "name": "DomainName",
-        "desc": "Playback domain name."
-      }
-    ],
-    "desc": "This API is used to unbind a domain name certificate."
-  },
   "ModifyLiveCert": {
     "params": [
       {
@@ -788,7 +796,7 @@ INFO = {
       },
       {
         "name": "AppName",
-        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default. Fuzzy match is not supported."
+        "desc": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported."
       },
       {
         "name": "PageNum",
@@ -805,30 +813,14 @@ INFO = {
     ],
     "desc": "This API is used to return the list of pushed streams. <br>\nNote: Up to 10,000 entries can be queried per page. More data can be obtained by adjusting the query time range."
   },
-  "ModifyLivePlayAuthKey": {
+  "DeleteLiveWatermark": {
     "params": [
       {
-        "name": "DomainName",
-        "desc": "Domain name."
-      },
-      {
-        "name": "Enable",
-        "desc": "Whether to enable. 0: disabled; 1: enabled."
-      },
-      {
-        "name": "AuthKey",
-        "desc": "Authentication key."
-      },
-      {
-        "name": "AuthDelta",
-        "desc": "Validity period in seconds."
-      },
-      {
-        "name": "AuthBackKey",
-        "desc": "Authentication backkey."
+        "name": "WatermarkId",
+        "desc": "Watermark ID.\nGet the watermark ID in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call."
       }
     ],
-    "desc": "This API is used to modify the playback authentication key."
+    "desc": "This API is used to delete a watermark."
   },
   "ModifyLiveDomainCert": {
     "params": [
@@ -980,42 +972,34 @@ INFO = {
     "params": [],
     "desc": "This API is used to get the certificate information list."
   },
-  "CreateLiveCallbackTemplate": {
+  "AddLiveWatermark": {
     "params": [
       {
-        "name": "TemplateName",
-        "desc": "Template name, which is a non-empty string.\nMaximum length: 255 bytes."
+        "name": "PictureUrl",
+        "desc": "Watermark image URL."
       },
       {
-        "name": "Description",
-        "desc": "Description.\nMaximum length: 1,024 bytes."
+        "name": "WatermarkName",
+        "desc": "Watermark name."
       },
       {
-        "name": "StreamBeginNotifyUrl",
-        "desc": "Stream starting callback URL,\nProtocol-related document: [Event Message Notification](/document/product/267/32744)."
+        "name": "XPosition",
+        "desc": "Display position: X-axis offset. Default value: 0."
       },
       {
-        "name": "StreamEndNotifyUrl",
-        "desc": "Stream ending callback URL,\nProtocol-related document: [Event Message Notification](/document/product/267/32744)."
+        "name": "YPosition",
+        "desc": "Display position: Y-axis offset. Default value: 0."
       },
       {
-        "name": "RecordNotifyUrl",
-        "desc": "Recording callback URL,\nProtocol-related document: [Event Message Notification](/document/product/267/32744)."
+        "name": "Width",
+        "desc": "Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default."
       },
       {
-        "name": "SnapshotNotifyUrl",
-        "desc": "Screencapturing callback URL,\nProtocol-related document: [Event Message Notification](/document/product/267/32744)."
-      },
-      {
-        "name": "PornCensorshipNotifyUrl",
-        "desc": "Porn detection callback URL,\nProtocol-related document: [Event Message Notification](/document/product/267/32741)."
-      },
-      {
-        "name": "CallbackKey",
-        "desc": "Callback key, which is shared by callback URLs. For more information on authentication callback, please see the callback format document"
+        "name": "Height",
+        "desc": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default."
       }
     ],
-    "desc": "After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API and bind the template ID to the domain name/path.\n<br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744)."
+    "desc": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](/document/product/267/32629) API and bind the watermark ID to the stream."
   },
   "DescribeLiveDomains": {
     "params": [
@@ -1046,34 +1030,23 @@ INFO = {
     ],
     "desc": "This API is used to query domain names by domain name status and type."
   },
-  "AddLiveWatermark": {
+  "CancelCommonMixStream": {
     "params": [
       {
-        "name": "PictureUrl",
-        "desc": "Watermark image URL."
-      },
-      {
-        "name": "WatermarkName",
-        "desc": "Watermark name."
-      },
-      {
-        "name": "XPosition",
-        "desc": "Display position: X-axis offset."
-      },
-      {
-        "name": "YPosition",
-        "desc": "Display position: Y-axis offset."
-      },
-      {
-        "name": "Width",
-        "desc": "Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions."
-      },
-      {
-        "name": "Height",
-        "desc": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions."
+        "name": "MixStreamSessionId",
+        "desc": "ID of stream mix session (from applying for stream mix to canceling stream mix)."
       }
     ],
-    "desc": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](/document/product/267/32629) API and bind the watermark ID to the stream."
+    "desc": "This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`."
+  },
+  "UnBindLiveDomainCert": {
+    "params": [
+      {
+        "name": "DomainName",
+        "desc": "Playback domain name."
+      }
+    ],
+    "desc": "This API is used to unbind a domain name certificate."
   },
   "ForbidLiveStream": {
     "params": [
@@ -1134,11 +1107,11 @@ INFO = {
     "params": [
       {
         "name": "TemplateName",
-        "desc": "Template name, which is a non-empty string.\nMaximum length: 255 bytes."
+        "desc": "Template name.\nMaximum length: 255 bytes.\nOnly letters, digits, underscores, and hyphens can be contained."
       },
       {
         "name": "CosAppId",
-        "desc": "COS `AppId`."
+        "desc": "COS application ID."
       },
       {
         "name": "CosBucket",
@@ -1150,7 +1123,7 @@ INFO = {
       },
       {
         "name": "Description",
-        "desc": "Description.\nMaximum length: 1,024 bytes."
+        "desc": "Description.\nMaximum length: 1,024 bytes.\nOnly letters, digits, underscores, and hyphens can be contained."
       },
       {
         "name": "SnapshotInterval",
@@ -1167,6 +1140,14 @@ INFO = {
       {
         "name": "PornFlag",
         "desc": "Whether to enable porn detection. 0: no, 1: yes. Default value: 0"
+      },
+      {
+        "name": "CosPrefix",
+        "desc": "COS bucket folder prefix."
+      },
+      {
+        "name": "CosFileName",
+        "desc": "COS filename."
       }
     ],
     "desc": "After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](/document/product/267/32625) API and bind the template ID to the stream.\n<br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737)."
@@ -1175,7 +1156,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API."
       }
     ],
     "desc": "This API is used to get a single callback template."
@@ -1216,7 +1197,48 @@ INFO = {
         "desc": "Stream name, which is used for exact query."
       }
     ],
-    "desc": "This API is used to return the list of live streams."
+    "desc": "This API is used to return the live stream list."
+  },
+  "ModifyLiveCallbackTemplate": {
+    "params": [
+      {
+        "name": "TemplateId",
+        "desc": "Template ID."
+      },
+      {
+        "name": "TemplateName",
+        "desc": "Template name."
+      },
+      {
+        "name": "Description",
+        "desc": "Description."
+      },
+      {
+        "name": "StreamBeginNotifyUrl",
+        "desc": "Stream starting callback URL."
+      },
+      {
+        "name": "StreamEndNotifyUrl",
+        "desc": "Interruption callback URL."
+      },
+      {
+        "name": "RecordNotifyUrl",
+        "desc": "Recording callback URL."
+      },
+      {
+        "name": "SnapshotNotifyUrl",
+        "desc": "Screencapturing callback URL."
+      },
+      {
+        "name": "PornCensorshipNotifyUrl",
+        "desc": "Porn detection callback URL."
+      },
+      {
+        "name": "CallbackKey",
+        "desc": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](/document/product/267/32744)."
+      }
+    ],
+    "desc": "This API is used to modify a callback template."
   },
   "AddLiveDomain": {
     "params": [
@@ -1235,6 +1257,10 @@ INFO = {
       {
         "name": "IsDelayLive",
         "desc": "Whether it is LCB:\n0: LVB,\n1: LCB.\nDefault value: 0."
+      },
+      {
+        "name": "IsMiniProgramLive",
+        "desc": "Whether it is LVB on Mini Program.\n0: LVB.\n1: LVB on Mini Program.\nDefault value: 0."
       }
     ],
     "desc": "This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing."
@@ -1288,7 +1314,7 @@ INFO = {
   },
   "DescribeLiveTranscodeTemplates": {
     "params": [],
-    "desc": "This API is used to get the list of transcoding templates."
+    "desc": "This API is used to get the transcoding template list."
   },
   "CreateLiveCert": {
     "params": [
@@ -1336,7 +1362,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateName",
-        "desc": "Template name, which is a non-empty string."
+        "desc": "Template name. Only letters, digits, underscores, and hyphens can be contained."
       },
       {
         "name": "Description",
@@ -1360,7 +1386,7 @@ INFO = {
       },
       {
         "name": "IsDelayLive",
-        "desc": "0: LVB,\n1: LCB."
+        "desc": "LVB type. Default value: 0.\n0: LVB.\n1: LCB."
       },
       {
         "name": "HlsSpecialParam",
@@ -1382,20 +1408,48 @@ INFO = {
     ],
     "desc": "This API is used to get certificate information."
   },
-  "DescribeLiveRecordTemplate": {
+  "CreateLiveCallbackTemplate": {
     "params": [
       {
-        "name": "TemplateId",
-        "desc": "Template ID."
+        "name": "TemplateName",
+        "desc": "Template name.\nMaximum length: 255 bytes.\nOnly letters, digits, underscores, and hyphens can be contained."
+      },
+      {
+        "name": "Description",
+        "desc": "Description.\nMaximum length: 1,024 bytes.\nOnly letters, digits, underscores, and hyphens can be contained."
+      },
+      {
+        "name": "StreamBeginNotifyUrl",
+        "desc": "Stream starting callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+      },
+      {
+        "name": "StreamEndNotifyUrl",
+        "desc": "Interruption callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+      },
+      {
+        "name": "RecordNotifyUrl",
+        "desc": "Recording callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+      },
+      {
+        "name": "SnapshotNotifyUrl",
+        "desc": "Screencapturing callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+      },
+      {
+        "name": "PornCensorshipNotifyUrl",
+        "desc": "Porn detection callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32741)."
+      },
+      {
+        "name": "CallbackKey",
+        "desc": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](/document/product/267/32744)."
       }
     ],
-    "desc": "This API is used to get a single recording template."
+    "desc": "This API is used to create a callback template. After a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API to bind the template ID to the domain name/path.\n<br>Callback protocol document: [Event Message Notification](/document/product/267/32744)."
   },
   "DescribeLiveSnapshotTemplate": {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID.\nTemplate ID returned by the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call."
       }
     ],
     "desc": "This API is used to get a single screencapturing template."

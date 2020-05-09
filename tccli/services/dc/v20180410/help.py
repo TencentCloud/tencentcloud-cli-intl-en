@@ -58,6 +58,10 @@ INFO = {
       {
         "name": "CustomerAddress",
         "desc": "CustomerAddress: User-side IP address."
+      },
+      {
+        "name": "TencentBackupAddress",
+        "desc": "TencentBackupAddress, i.e., Tencent-side standby IP address"
       }
     ],
     "desc": "This API is used to create a dedicated tunnel."
@@ -160,6 +164,10 @@ INFO = {
       {
         "name": "Bandwidth",
         "desc": "Bandwidth value of a dedicated tunnel in Mbps."
+      },
+      {
+        "name": "TencentBackupAddress",
+        "desc": "Tencent-side standby IP address"
       }
     ],
     "desc": "This API is used to modify the dedicated tunnel attributes."

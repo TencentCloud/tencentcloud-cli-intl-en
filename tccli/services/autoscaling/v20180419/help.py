@@ -119,7 +119,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404).\nIf you want to clear the user group, you need to pass in the specific string \"NULL\" to the list."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API.\nIf you want to clear the user group, you need to pass in the specific string \"NULL\" to the list."
       }
     ],
     "desc": "This API (ModifyScalingPolicy) is used to modify an alarm trigger policy."
@@ -500,7 +500,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404)."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
       }
     ],
     "desc": "This API (ModifyNotificationConfiguration) is used to modify a notification."
@@ -663,7 +663,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404)."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
       }
     ],
     "desc": "This API (CreateNotificationConfiguration) is used to create a notification."
@@ -830,7 +830,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Array of String | Notification group ID, which is the set of user group IDs and can be queried through the [DescribeUserGroup API](https://cloud.tencent.com/document/api/378/4404)."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
       }
     ],
     "desc": "This API (CreateScalingPolicy) is used to create an alarm trigger policy."

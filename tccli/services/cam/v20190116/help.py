@@ -398,6 +398,40 @@ INFO = {
     ],
     "desc": "This API is used to update SAML identity provider information."
   },
+  "UpdatePolicy": {
+    "params": [
+      {
+        "name": "PolicyId",
+        "desc": "Policy ID"
+      },
+      {
+        "name": "PolicyName",
+        "desc": "Policy name"
+      },
+      {
+        "name": "Description",
+        "desc": "Policy description"
+      },
+      {
+        "name": "PolicyDocument",
+        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API"
+      }
+    ],
+    "desc": "This API (UpdatePolicy) is used to update a policy."
+  },
+  "GetRole": {
+    "params": [
+      {
+        "name": "RoleId",
+        "desc": "Role ID, used to specify role. Input either `RoleId` or `RoleName`"
+      },
+      {
+        "name": "RoleName",
+        "desc": "Role name, used to specify role. Input either `RoleId` or `RoleName`"
+      }
+    ],
+    "desc": "This API (GetRole) is used to get the details of a specified role."
+  },
   "UpdateRoleDescription": {
     "params": [
       {
@@ -414,19 +448,6 @@ INFO = {
       }
     ],
     "desc": "This API (UpdateRoleDescription) is used to modify the description of a role."
-  },
-  "GetRole": {
-    "params": [
-      {
-        "name": "RoleId",
-        "desc": "Role ID, used to specify role. Input either `RoleId` or `RoleName`"
-      },
-      {
-        "name": "RoleName",
-        "desc": "Role name, used to specify role. Input either `RoleId` or `RoleName`"
-      }
-    ],
-    "desc": "This API (GetRole) is used to get the details of a specified role."
   },
   "ListAttachedUserPolicies": {
     "params": [

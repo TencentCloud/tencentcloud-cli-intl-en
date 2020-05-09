@@ -78,11 +78,27 @@ INFO = {
     "params": [
       {
         "name": "FunctionName",
-        "desc": "Function ID"
+        "desc": "Function Name"
       },
       {
         "name": "Namespace",
-        "desc": "Namespace"
+        "desc": "The namespace where the function locates"
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. The default value is `0`."
+      },
+      {
+        "name": "Limit",
+        "desc": "Return data length. The default value is `20`."
+      },
+      {
+        "name": "Order",
+        "desc": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`."
+      },
+      {
+        "name": "OrderBy",
+        "desc": "It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`."
       }
     ],
     "desc": "This API is used to query the function version based on the input parameters."
@@ -125,6 +141,10 @@ INFO = {
       {
         "name": "Namespace",
         "desc": "Namespace"
+      },
+      {
+        "name": "RoutingKey",
+        "desc": "Traffic routing config in json format, e.g., {\"k\":\"v\"}. Please note that both \"k\" and \"v\" must be strings. Up to 1024 bytes allowed."
       }
     ],
     "desc": "This API is used to run a function."

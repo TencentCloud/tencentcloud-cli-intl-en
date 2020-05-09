@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 DESC = "es-2018-04-16"
 INFO = {
-  "UpgradeInstance": {
+  "DescribeInstanceOperations": {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID"
+        "desc": "Cluster instance ID"
       },
       {
-        "name": "EsVersion",
-        "desc": "Target ES version"
+        "name": "StartTime",
+        "desc": "Start time, such as \"2019-03-07 16:30:39\""
       },
       {
-        "name": "CheckOnly",
-        "desc": "Whether to check for upgrade only. Default value: false"
+        "name": "EndTime",
+        "desc": "End time, such as \"2019-03-30 20:18:03\""
       },
       {
-        "name": "LicenseType",
-        "desc": "Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic"
+        "name": "Offset",
+        "desc": "Pagination start value"
       },
       {
-        "name": "BasicSecurityType",
-        "desc": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>"
+        "name": "Limit",
+        "desc": "Number of entries per page"
       }
     ],
-    "desc": "This API is used to upgrade ES cluster version"
+    "desc": "This API is used to query the operation history of an instance by specified criteria."
   },
   "DescribeInstances": {
     "params": [
@@ -180,6 +180,31 @@ INFO = {
     ],
     "desc": "This API is used to create an ES cluster instance with the specified specification."
   },
+  "UpgradeInstance": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "EsVersion",
+        "desc": "Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1"
+      },
+      {
+        "name": "CheckOnly",
+        "desc": "Whether to check for upgrade only. Default value: false"
+      },
+      {
+        "name": "LicenseType",
+        "desc": "Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic"
+      },
+      {
+        "name": "BasicSecurityType",
+        "desc": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>"
+      }
+    ],
+    "desc": "This API is used to upgrade ES cluster version"
+  },
   "UpgradeLicense": {
     "params": [
       {
@@ -282,6 +307,10 @@ INFO = {
       {
         "name": "KibanaPrivateAccess",
         "desc": "Private network access status of Kibana"
+      },
+      {
+        "name": "BasicSecurityType",
+        "desc": "Enables or disables user authentication for ES Basic Edition v6.8 and above"
       }
     ],
     "desc": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blacklist/whitelist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding master nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail."
@@ -307,5 +336,42 @@ INFO = {
       }
     ],
     "desc": "This API is used to restart an ES cluster instance (for operations such as system update). "
+  },
+  "DescribeInstanceLogs": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Cluster instance ID"
+      },
+      {
+        "name": "LogType",
+        "desc": "Log type. Default value: 1\n<li>1: master log</li>\n<li>2: search slow log</li>\n<li>3: index slow log</li>\n<li>4: GC log</li>"
+      },
+      {
+        "name": "SearchKey",
+        "desc": "Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`"
+      },
+      {
+        "name": "StartTime",
+        "desc": "Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53"
+      },
+      {
+        "name": "EndTime",
+        "desc": "Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53"
+      },
+      {
+        "name": "Offset",
+        "desc": "Pagination start value. Default value: 0"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 100. Maximum value: 100"
+      },
+      {
+        "name": "OrderByType",
+        "desc": "Time sorting order. Default value: 0\n<li>0: descending</li>\n<li>1: ascending</li>"
+      }
+    ],
+    "desc": "This API is used to query the eligible ES cluster logs in the current region."
   }
 }

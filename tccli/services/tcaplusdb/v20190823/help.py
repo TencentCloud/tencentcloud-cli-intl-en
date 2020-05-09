@@ -375,7 +375,7 @@ INFO = {
         "desc": "List of information of tables to be dropped"
       }
     ],
-    "desc": "This API is used to drop a table based on the specified table information."
+    "desc": "This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin."
   },
   "ModifyTableMemos": {
     "params": [

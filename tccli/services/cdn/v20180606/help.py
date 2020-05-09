@@ -881,6 +881,39 @@ INFO = {
     ],
     "desc": "This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5–15 minutes."
   },
+  "DescribeReportData": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Query start time"
+      },
+      {
+        "name": "EndTime",
+        "desc": "Query end time"
+      },
+      {
+        "name": "ReportType",
+        "desc": "Report type\ndaily: daily report\nweekly: weekly report\nmonthly: monthly report"
+      },
+      {
+        "name": "Area",
+        "desc": "Domain name acceleration region\nmainland: in Mainland China\noverseas: outside Mainland China"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of data entries. Default value: 1000."
+      },
+      {
+        "name": "Project",
+        "desc": "Filters by project ID"
+      }
+    ],
+    "desc": "This API is used to query the daily/weekly/monthly report data at domain name/project levels."
+  },
   "UpdatePayType": {
     "params": [
       {

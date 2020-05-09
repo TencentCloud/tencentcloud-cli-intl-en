@@ -186,6 +186,43 @@ def doDescribeLiveSnapshotTemplates(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyLivePlayAuthKey(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyLivePlayAuthKey", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "Enable": Utils.try_to_json(argv, "--Enable"),
+        "AuthKey": argv.get("--AuthKey"),
+        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
+        "AuthBackKey": argv.get("--AuthBackKey"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLivePlayAuthKeyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyLivePlayAuthKey(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateLiveRecord(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -267,21 +304,19 @@ def doUpdateLiveWatermark(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateLiveCallbackTemplate(argv, arglist):
+def doAddLiveWatermark(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreateLiveCallbackTemplate", g_param[OptionsDefine.Version])
+        show_help("AddLiveWatermark", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TemplateName": argv.get("--TemplateName"),
-        "Description": argv.get("--Description"),
-        "StreamBeginNotifyUrl": argv.get("--StreamBeginNotifyUrl"),
-        "StreamEndNotifyUrl": argv.get("--StreamEndNotifyUrl"),
-        "RecordNotifyUrl": argv.get("--RecordNotifyUrl"),
-        "SnapshotNotifyUrl": argv.get("--SnapshotNotifyUrl"),
-        "PornCensorshipNotifyUrl": argv.get("--PornCensorshipNotifyUrl"),
-        "CallbackKey": argv.get("--CallbackKey"),
+        "PictureUrl": argv.get("--PictureUrl"),
+        "WatermarkName": argv.get("--WatermarkName"),
+        "XPosition": Utils.try_to_json(argv, "--XPosition"),
+        "YPosition": Utils.try_to_json(argv, "--YPosition"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -295,9 +330,9 @@ def doCreateLiveCallbackTemplate(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateLiveCallbackTemplateRequest()
+    model = models.AddLiveWatermarkRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CreateLiveCallbackTemplate(model)
+    rsp = client.AddLiveWatermark(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -530,18 +565,18 @@ def doDescribeLiveForbidStreamList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyLivePlayAuthKey(argv, arglist):
+def doCreateCommonMixStream(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyLivePlayAuthKey", g_param[OptionsDefine.Version])
+        show_help("CreateCommonMixStream", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "DomainName": argv.get("--DomainName"),
-        "Enable": Utils.try_to_json(argv, "--Enable"),
-        "AuthKey": argv.get("--AuthKey"),
-        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
-        "AuthBackKey": argv.get("--AuthBackKey"),
+        "MixStreamSessionId": argv.get("--MixStreamSessionId"),
+        "InputStreamList": Utils.try_to_json(argv, "--InputStreamList"),
+        "OutputParams": Utils.try_to_json(argv, "--OutputParams"),
+        "MixStreamTemplateId": Utils.try_to_json(argv, "--MixStreamTemplateId"),
+        "ControlParams": Utils.try_to_json(argv, "--ControlParams"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -555,9 +590,9 @@ def doModifyLivePlayAuthKey(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyLivePlayAuthKeyRequest()
+    model = models.CreateCommonMixStreamRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyLivePlayAuthKey(model)
+    rsp = client.CreateCommonMixStream(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -729,6 +764,8 @@ def doModifyLiveSnapshotTemplate(argv, arglist):
         "CosAppId": Utils.try_to_json(argv, "--CosAppId"),
         "CosBucket": argv.get("--CosBucket"),
         "CosRegion": argv.get("--CosRegion"),
+        "CosPrefix": argv.get("--CosPrefix"),
+        "CosFileName": argv.get("--CosFileName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1806,19 +1843,21 @@ def doDescribeLiveCerts(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAddLiveWatermark(argv, arglist):
+def doCreateLiveCallbackTemplate(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("AddLiveWatermark", g_param[OptionsDefine.Version])
+        show_help("CreateLiveCallbackTemplate", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "PictureUrl": argv.get("--PictureUrl"),
-        "WatermarkName": argv.get("--WatermarkName"),
-        "XPosition": Utils.try_to_json(argv, "--XPosition"),
-        "YPosition": Utils.try_to_json(argv, "--YPosition"),
-        "Width": Utils.try_to_json(argv, "--Width"),
-        "Height": Utils.try_to_json(argv, "--Height"),
+        "TemplateName": argv.get("--TemplateName"),
+        "Description": argv.get("--Description"),
+        "StreamBeginNotifyUrl": argv.get("--StreamBeginNotifyUrl"),
+        "StreamEndNotifyUrl": argv.get("--StreamEndNotifyUrl"),
+        "RecordNotifyUrl": argv.get("--RecordNotifyUrl"),
+        "SnapshotNotifyUrl": argv.get("--SnapshotNotifyUrl"),
+        "PornCensorshipNotifyUrl": argv.get("--PornCensorshipNotifyUrl"),
+        "CallbackKey": argv.get("--CallbackKey"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1832,9 +1871,9 @@ def doAddLiveWatermark(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddLiveWatermarkRequest()
+    model = models.CreateLiveCallbackTemplateRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.AddLiveWatermark(model)
+    rsp = client.CreateLiveCallbackTemplate(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1933,6 +1972,39 @@ def doEnableLiveDomain(argv, arglist):
     model = models.EnableLiveDomainRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.EnableLiveDomain(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCancelCommonMixStream(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CancelCommonMixStream", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "MixStreamSessionId": argv.get("--MixStreamSessionId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CancelCommonMixStreamRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CancelCommonMixStream(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2058,6 +2130,7 @@ def doAddLiveDomain(argv, arglist):
         "DomainType": Utils.try_to_json(argv, "--DomainType"),
         "PlayType": Utils.try_to_json(argv, "--PlayType"),
         "IsDelayLive": Utils.try_to_json(argv, "--IsDelayLive"),
+        "IsMiniProgramLive": Utils.try_to_json(argv, "--IsMiniProgramLive"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2165,6 +2238,8 @@ def doCreateLiveSnapshotTemplate(argv, arglist):
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
         "PornFlag": Utils.try_to_json(argv, "--PornFlag"),
+        "CosPrefix": argv.get("--CosPrefix"),
+        "CosFileName": argv.get("--CosFileName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2662,16 +2737,17 @@ ACTION_MAP = {
     "ForbidLiveDomain": doForbidLiveDomain,
     "CreateLiveTranscodeRule": doCreateLiveTranscodeRule,
     "DescribeLiveSnapshotTemplates": doDescribeLiveSnapshotTemplates,
+    "ModifyLivePlayAuthKey": doModifyLivePlayAuthKey,
     "CreateLiveRecord": doCreateLiveRecord,
     "UpdateLiveWatermark": doUpdateLiveWatermark,
-    "CreateLiveCallbackTemplate": doCreateLiveCallbackTemplate,
+    "AddLiveWatermark": doAddLiveWatermark,
     "DeleteLiveWatermark": doDeleteLiveWatermark,
     "ModifyLiveRecordTemplate": doModifyLiveRecordTemplate,
     "CreateLiveWatermarkRule": doCreateLiveWatermarkRule,
     "ModifyLivePushAuthKey": doModifyLivePushAuthKey,
     "DescribeLiveStreamEventList": doDescribeLiveStreamEventList,
     "DescribeLiveForbidStreamList": doDescribeLiveForbidStreamList,
-    "ModifyLivePlayAuthKey": doModifyLivePlayAuthKey,
+    "CreateCommonMixStream": doCreateCommonMixStream,
     "DeleteLiveRecord": doDeleteLiveRecord,
     "ModifyLiveCert": doModifyLiveCert,
     "AddDelayLiveStream": doAddDelayLiveStream,
@@ -2707,10 +2783,11 @@ ACTION_MAP = {
     "CreateLiveTranscodeTemplate": doCreateLiveTranscodeTemplate,
     "DeleteLiveCert": doDeleteLiveCert,
     "DescribeLiveCerts": doDescribeLiveCerts,
-    "AddLiveWatermark": doAddLiveWatermark,
+    "CreateLiveCallbackTemplate": doCreateLiveCallbackTemplate,
     "UnBindLiveDomainCert": doUnBindLiveDomainCert,
     "DescribeLiveWatermarkRules": doDescribeLiveWatermarkRules,
     "EnableLiveDomain": doEnableLiveDomain,
+    "CancelCommonMixStream": doCancelCommonMixStream,
     "DeleteLiveWatermarkRule": doDeleteLiveWatermarkRule,
     "DescribeLiveSnapshotTemplate": doDescribeLiveSnapshotTemplate,
     "ForbidLiveStream": doForbidLiveStream,

@@ -12,34 +12,324 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.monitor.v20180724 import monitor_client as monitor_client_v20180724
-from tencentcloud.monitor.v20180724 import models as models_v20180724
-from tccli.services.monitor import v20180724
-from tccli.services.monitor.v20180724 import help as v20180724_help
+from tencentcloud.cmq.v20190304 import cmq_client as cmq_client_v20190304
+from tencentcloud.cmq.v20190304 import models as models_v20190304
+from tccli.services.cmq import v20190304
+from tccli.services.cmq.v20190304 import help as v20190304_help
 
 
-def doDescribeProductEventList(argv, arglist):
+def doCreateTopic(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeProductEventList", g_param[OptionsDefine.Version])
+        show_help("CreateTopic", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Module": argv.get("--Module"),
-        "ProductName": Utils.try_to_json(argv, "--ProductName"),
-        "EventName": Utils.try_to_json(argv, "--EventName"),
-        "InstanceId": Utils.try_to_json(argv, "--InstanceId"),
-        "Dimensions": Utils.try_to_json(argv, "--Dimensions"),
-        "RegionList": Utils.try_to_json(argv, "--RegionList"),
-        "Type": Utils.try_to_json(argv, "--Type"),
-        "Status": Utils.try_to_json(argv, "--Status"),
-        "Project": Utils.try_to_json(argv, "--Project"),
-        "IsAlarmConfig": Utils.try_to_json(argv, "--IsAlarmConfig"),
-        "TimeOrder": argv.get("--TimeOrder"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
+        "TopicName": argv.get("--TopicName"),
+        "MaxMsgSize": Utils.try_to_json(argv, "--MaxMsgSize"),
+        "FilterType": Utils.try_to_json(argv, "--FilterType"),
+        "MsgRetentionSeconds": Utils.try_to_json(argv, "--MsgRetentionSeconds"),
+        "Trace": Utils.try_to_json(argv, "--Trace"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateTopicRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateTopic(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateSubscribe(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateSubscribe", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TopicName": argv.get("--TopicName"),
+        "SubscriptionName": argv.get("--SubscriptionName"),
+        "Protocol": argv.get("--Protocol"),
+        "Endpoint": argv.get("--Endpoint"),
+        "NotifyStrategy": argv.get("--NotifyStrategy"),
+        "FilterTag": Utils.try_to_json(argv, "--FilterTag"),
+        "BindingKey": Utils.try_to_json(argv, "--BindingKey"),
+        "NotifyContentFormat": argv.get("--NotifyContentFormat"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateSubscribeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateSubscribe(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyTopicAttribute(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyTopicAttribute", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TopicName": argv.get("--TopicName"),
+        "MaxMsgSize": Utils.try_to_json(argv, "--MaxMsgSize"),
+        "MsgRetentionSeconds": Utils.try_to_json(argv, "--MsgRetentionSeconds"),
+        "Trace": Utils.try_to_json(argv, "--Trace"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyTopicAttributeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyTopicAttribute(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doClearSubscriptionFilterTags(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ClearSubscriptionFilterTags", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TopicName": argv.get("--TopicName"),
+        "SubscriptionName": argv.get("--SubscriptionName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ClearSubscriptionFilterTagsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ClearSubscriptionFilterTags(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteSubscribe(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteSubscribe", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TopicName": argv.get("--TopicName"),
+        "SubscriptionName": argv.get("--SubscriptionName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteSubscribeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteSubscribe(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateQueue(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateQueue", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "QueueName": argv.get("--QueueName"),
+        "MaxMsgHeapNum": Utils.try_to_json(argv, "--MaxMsgHeapNum"),
+        "PollingWaitSeconds": Utils.try_to_json(argv, "--PollingWaitSeconds"),
+        "VisibilityTimeout": Utils.try_to_json(argv, "--VisibilityTimeout"),
+        "MaxMsgSize": Utils.try_to_json(argv, "--MaxMsgSize"),
+        "MsgRetentionSeconds": Utils.try_to_json(argv, "--MsgRetentionSeconds"),
+        "RewindSeconds": Utils.try_to_json(argv, "--RewindSeconds"),
+        "Transaction": Utils.try_to_json(argv, "--Transaction"),
+        "FirstQueryInterval": Utils.try_to_json(argv, "--FirstQueryInterval"),
+        "MaxQueryCount": Utils.try_to_json(argv, "--MaxQueryCount"),
+        "DeadLetterQueueName": argv.get("--DeadLetterQueueName"),
+        "Policy": Utils.try_to_json(argv, "--Policy"),
+        "MaxReceiveCount": Utils.try_to_json(argv, "--MaxReceiveCount"),
+        "MaxTimeToLive": Utils.try_to_json(argv, "--MaxTimeToLive"),
+        "Trace": Utils.try_to_json(argv, "--Trace"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateQueueRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateQueue(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doRewindQueue(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("RewindQueue", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "QueueName": argv.get("--QueueName"),
+        "StartConsumeTime": Utils.try_to_json(argv, "--StartConsumeTime"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.RewindQueueRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.RewindQueue(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifySubscriptionAttribute(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifySubscriptionAttribute", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TopicName": argv.get("--TopicName"),
+        "SubscriptionName": argv.get("--SubscriptionName"),
+        "NotifyStrategy": argv.get("--NotifyStrategy"),
+        "NotifyContentFormat": argv.get("--NotifyContentFormat"),
+        "FilterTags": Utils.try_to_json(argv, "--FilterTags"),
+        "BindingKey": Utils.try_to_json(argv, "--BindingKey"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifySubscriptionAttributeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifySubscriptionAttribute(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeTopicDetail(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeTopicDetail", g_param[OptionsDefine.Version])
+        return
+
+    param = {
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "TagKey": argv.get("--TagKey"),
+        "TopicName": argv.get("--TopicName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -50,12 +340,12 @@ def doDescribeProductEventList(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeProductEventListRequest()
+    model = models.DescribeTopicDetailRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeProductEventList(model)
+    rsp = client.DescribeTopicDetail(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -65,25 +355,123 @@ def doDescribeProductEventList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAccidentEventList(argv, arglist):
+def doDescribeQueueDetail(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeAccidentEventList", g_param[OptionsDefine.Version])
+        show_help("DescribeQueueDetail", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Module": argv.get("--Module"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "TagKey": argv.get("--TagKey"),
+        "QueueName": argv.get("--QueueName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeQueueDetailRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeQueueDetail(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteQueue(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteQueue", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "QueueName": argv.get("--QueueName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteQueueRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteQueue(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeSubscriptionDetail(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeSubscriptionDetail", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "TopicName": argv.get("--TopicName"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeSubscriptionDetailRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeSubscriptionDetail(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDeadLetterSourceQueues(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDeadLetterSourceQueues", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DeadLetterQueueName": argv.get("--DeadLetterQueueName"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
-        "UpdateTimeOrder": argv.get("--UpdateTimeOrder"),
-        "OccurTimeOrder": argv.get("--OccurTimeOrder"),
-        "AccidentType": Utils.try_to_json(argv, "--AccidentType"),
-        "AccidentEvent": Utils.try_to_json(argv, "--AccidentEvent"),
-        "AccidentStatus": Utils.try_to_json(argv, "--AccidentStatus"),
-        "AccidentRegion": Utils.try_to_json(argv, "--AccidentRegion"),
-        "AffectResource": argv.get("--AffectResource"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -94,12 +482,12 @@ def doDescribeAccidentEventList(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAccidentEventListRequest()
+    model = models.DescribeDeadLetterSourceQueuesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeAccidentEventList(model)
+    rsp = client.DescribeDeadLetterSourceQueues(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -109,17 +497,14 @@ def doDescribeAccidentEventList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUnBindingPolicyObject(argv, arglist):
+def doDeleteTopic(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UnBindingPolicyObject", g_param[OptionsDefine.Version])
+        show_help("DeleteTopic", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Module": argv.get("--Module"),
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-        "UniqueId": Utils.try_to_json(argv, "--UniqueId"),
-        "InstanceGroupId": Utils.try_to_json(argv, "--InstanceGroupId"),
+        "TopicName": argv.get("--TopicName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -130,12 +515,12 @@ def doUnBindingPolicyObject(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UnBindingPolicyObjectRequest()
+    model = models.DeleteTopicRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UnBindingPolicyObject(model)
+    rsp = client.DeleteTopic(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -145,17 +530,14 @@ def doUnBindingPolicyObject(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doBindingPolicyObject(argv, arglist):
+def doClearQueue(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("BindingPolicyObject", g_param[OptionsDefine.Version])
+        show_help("ClearQueue", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-        "Module": argv.get("--Module"),
-        "InstanceGroupId": Utils.try_to_json(argv, "--InstanceGroupId"),
-        "Dimensions": Utils.try_to_json(argv, "--Dimensions"),
+        "QueueName": argv.get("--QueueName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -166,12 +548,12 @@ def doBindingPolicyObject(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.BindingPolicyObjectRequest()
+    model = models.ClearQueueRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.BindingPolicyObject(model)
+    rsp = client.ClearQueue(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -181,16 +563,14 @@ def doBindingPolicyObject(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyAlarmReceivers(argv, arglist):
+def doUnbindDeadLetter(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyAlarmReceivers", g_param[OptionsDefine.Version])
+        show_help("UnbindDeadLetter", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-        "Module": argv.get("--Module"),
-        "ReceiverInfos": Utils.try_to_json(argv, "--ReceiverInfos"),
+        "QueueName": argv.get("--QueueName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -201,12 +581,12 @@ def doModifyAlarmReceivers(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyAlarmReceiversRequest()
+    model = models.UnbindDeadLetterRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyAlarmReceivers(model)
+    rsp = client.UnbindDeadLetter(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -216,18 +596,27 @@ def doModifyAlarmReceivers(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBindingPolicyObjectList(argv, arglist):
+def doModifyQueueAttribute(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeBindingPolicyObjectList", g_param[OptionsDefine.Version])
+        show_help("ModifyQueueAttribute", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Module": argv.get("--Module"),
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Dimensions": Utils.try_to_json(argv, "--Dimensions"),
+        "QueueName": argv.get("--QueueName"),
+        "MaxMsgHeapNum": Utils.try_to_json(argv, "--MaxMsgHeapNum"),
+        "PollingWaitSeconds": Utils.try_to_json(argv, "--PollingWaitSeconds"),
+        "VisibilityTimeout": Utils.try_to_json(argv, "--VisibilityTimeout"),
+        "MaxMsgSize": Utils.try_to_json(argv, "--MaxMsgSize"),
+        "MsgRetentionSeconds": Utils.try_to_json(argv, "--MsgRetentionSeconds"),
+        "RewindSeconds": Utils.try_to_json(argv, "--RewindSeconds"),
+        "FirstQueryInterval": Utils.try_to_json(argv, "--FirstQueryInterval"),
+        "MaxQueryCount": Utils.try_to_json(argv, "--MaxQueryCount"),
+        "DeadLetterQueueName": argv.get("--DeadLetterQueueName"),
+        "MaxTimeToLive": Utils.try_to_json(argv, "--MaxTimeToLive"),
+        "MaxReceiveCount": Utils.try_to_json(argv, "--MaxReceiveCount"),
+        "Policy": Utils.try_to_json(argv, "--Policy"),
+        "Trace": Utils.try_to_json(argv, "--Trace"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -238,424 +627,12 @@ def doDescribeBindingPolicyObjectList(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.CmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBindingPolicyObjectListRequest()
+    model = models.ModifyQueueAttributeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeBindingPolicyObjectList(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSendCustomAlarmMsg(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("SendCustomAlarmMsg", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-        "PolicyId": argv.get("--PolicyId"),
-        "Msg": argv.get("--Msg"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SendCustomAlarmMsgRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.SendCustomAlarmMsg(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeletePolicyGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeletePolicyGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePolicyGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeletePolicyGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeBaseMetrics(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeBaseMetrics", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Namespace": argv.get("--Namespace"),
-        "MetricName": argv.get("--MetricName"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBaseMetricsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeBaseMetrics(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribePolicyGroupInfo(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribePolicyGroupInfo", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePolicyGroupInfoRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribePolicyGroupInfo(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribePolicyGroupList(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribePolicyGroupList", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Like": argv.get("--Like"),
-        "InstanceGroupId": Utils.try_to_json(argv, "--InstanceGroupId"),
-        "UpdateTimeOrder": argv.get("--UpdateTimeOrder"),
-        "ProjectIds": Utils.try_to_json(argv, "--ProjectIds"),
-        "ViewNames": Utils.try_to_json(argv, "--ViewNames"),
-        "FilterUnuseReceiver": Utils.try_to_json(argv, "--FilterUnuseReceiver"),
-        "Receivers": Utils.try_to_json(argv, "--Receivers"),
-        "ReceiverUserList": Utils.try_to_json(argv, "--ReceiverUserList"),
-        "Dimensions": argv.get("--Dimensions"),
-        "ConditionTempGroupId": argv.get("--ConditionTempGroupId"),
-        "ReceiverType": argv.get("--ReceiverType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePolicyGroupListRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribePolicyGroupList(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeBasicAlarmList(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeBasicAlarmList", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "OccurTimeOrder": argv.get("--OccurTimeOrder"),
-        "ProjectIds": Utils.try_to_json(argv, "--ProjectIds"),
-        "ViewNames": Utils.try_to_json(argv, "--ViewNames"),
-        "AlarmStatus": Utils.try_to_json(argv, "--AlarmStatus"),
-        "ObjLike": argv.get("--ObjLike"),
-        "InstanceGroupIds": Utils.try_to_json(argv, "--InstanceGroupIds"),
-        "MetricNames": Utils.try_to_json(argv, "--MetricNames"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBasicAlarmListRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeBasicAlarmList(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetMonitorData(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("GetMonitorData", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Namespace": argv.get("--Namespace"),
-        "MetricName": argv.get("--MetricName"),
-        "Instances": Utils.try_to_json(argv, "--Instances"),
-        "Period": Utils.try_to_json(argv, "--Period"),
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetMonitorDataRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.GetMonitorData(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doPutMonitorData(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("PutMonitorData", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Metrics": Utils.try_to_json(argv, "--Metrics"),
-        "AnnounceIp": argv.get("--AnnounceIp"),
-        "AnnounceTimestamp": Utils.try_to_json(argv, "--AnnounceTimestamp"),
-        "AnnounceInstance": argv.get("--AnnounceInstance"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.PutMonitorDataRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.PutMonitorData(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreatePolicyGroup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreatePolicyGroup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "GroupName": argv.get("--GroupName"),
-        "Module": argv.get("--Module"),
-        "ViewName": argv.get("--ViewName"),
-        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
-        "ConditionTempGroupId": Utils.try_to_json(argv, "--ConditionTempGroupId"),
-        "IsShielded": Utils.try_to_json(argv, "--IsShielded"),
-        "Remark": argv.get("--Remark"),
-        "InsertTime": Utils.try_to_json(argv, "--InsertTime"),
-        "Conditions": Utils.try_to_json(argv, "--Conditions"),
-        "EventConditions": Utils.try_to_json(argv, "--EventConditions"),
-        "BackEndCall": Utils.try_to_json(argv, "--BackEndCall"),
-        "IsUnionRule": Utils.try_to_json(argv, "--IsUnionRule"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreatePolicyGroupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreatePolicyGroup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doUnBindingAllPolicyObject(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("UnBindingAllPolicyObject", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-        "GroupId": Utils.try_to_json(argv, "--GroupId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UnBindingAllPolicyObjectRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.UnBindingAllPolicyObject(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribePolicyConditionList(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribePolicyConditionList", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "Module": argv.get("--Module"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePolicyConditionListRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribePolicyConditionList(model)
+    rsp = client.ModifyQueueAttribute(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -666,47 +643,47 @@ def doDescribePolicyConditionList(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20180724": monitor_client_v20180724,
+    "v20190304": cmq_client_v20190304,
 
 }
 
 MODELS_MAP = {
-    "v20180724": models_v20180724,
+    "v20190304": models_v20190304,
 
 }
 
 ACTION_MAP = {
-    "DescribeProductEventList": doDescribeProductEventList,
-    "DescribeAccidentEventList": doDescribeAccidentEventList,
-    "UnBindingPolicyObject": doUnBindingPolicyObject,
-    "BindingPolicyObject": doBindingPolicyObject,
-    "ModifyAlarmReceivers": doModifyAlarmReceivers,
-    "DescribeBindingPolicyObjectList": doDescribeBindingPolicyObjectList,
-    "SendCustomAlarmMsg": doSendCustomAlarmMsg,
-    "DeletePolicyGroup": doDeletePolicyGroup,
-    "DescribeBaseMetrics": doDescribeBaseMetrics,
-    "DescribePolicyGroupInfo": doDescribePolicyGroupInfo,
-    "DescribePolicyGroupList": doDescribePolicyGroupList,
-    "DescribeBasicAlarmList": doDescribeBasicAlarmList,
-    "GetMonitorData": doGetMonitorData,
-    "PutMonitorData": doPutMonitorData,
-    "CreatePolicyGroup": doCreatePolicyGroup,
-    "UnBindingAllPolicyObject": doUnBindingAllPolicyObject,
-    "DescribePolicyConditionList": doDescribePolicyConditionList,
+    "CreateTopic": doCreateTopic,
+    "CreateSubscribe": doCreateSubscribe,
+    "ModifyTopicAttribute": doModifyTopicAttribute,
+    "ClearSubscriptionFilterTags": doClearSubscriptionFilterTags,
+    "DeleteSubscribe": doDeleteSubscribe,
+    "CreateQueue": doCreateQueue,
+    "RewindQueue": doRewindQueue,
+    "ModifySubscriptionAttribute": doModifySubscriptionAttribute,
+    "DescribeTopicDetail": doDescribeTopicDetail,
+    "DescribeQueueDetail": doDescribeQueueDetail,
+    "DeleteQueue": doDeleteQueue,
+    "DescribeSubscriptionDetail": doDescribeSubscriptionDetail,
+    "DescribeDeadLetterSourceQueues": doDescribeDeadLetterSourceQueues,
+    "DeleteTopic": doDeleteTopic,
+    "ClearQueue": doClearQueue,
+    "UnbindDeadLetter": doUnbindDeadLetter,
+    "ModifyQueueAttribute": doModifyQueueAttribute,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20180724.version,
+    v20190304.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20180724.version.replace('-', ''): {"help": v20180724_help.INFO,"desc": v20180724_help.DESC},
+     'v' + v20190304.version.replace('-', ''): {"help": v20190304_help.INFO,"desc": v20190304_help.DESC},
 
 }
 
 
-def monitor_action(argv, arglist):
+def cmq_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -722,7 +699,7 @@ def monitor_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "monitor", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "cmq", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -743,7 +720,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("monitor", monitor_action)
+    cmd = NiceCommand("cmq", cmq_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -808,11 +785,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["monitor"][OptionsDefine.Version]
+            version = config["cmq"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["monitor"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["cmq"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -829,7 +806,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "monitor", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "cmq", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -839,7 +816,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["monitor"]["version"]
+        version = profile["cmq"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass
