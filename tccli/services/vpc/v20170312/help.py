@@ -1,6 +1,36 @@
 # -*- coding: utf-8 -*-
 DESC = "vpc-2017-03-12"
 INFO = {
+  "DescribeVpcResourceDashboard": {
+    "params": [
+      {
+        "name": "VpcIds",
+        "desc": "Vpc instance ID, e.g. vpc-f1xjkw1b."
+      }
+    ],
+    "desc": "This API is used to query the VPC resource information."
+  },
+  "DescribeCustomerGateways": {
+    "params": [
+      {
+        "name": "CustomerGatewayIds",
+        "desc": "Customer gateway ID, such as `cgw-2wqq41m9`. Each request can have a maximum of 100 instances. `CustomerGatewayIds` and `Filters` cannot be specified at the same time."
+      },
+      {
+        "name": "Filters",
+        "desc": "The filter condition. For details, see the Instance Filter Conditions Table. The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.\n<li>customer-gateway-id - String - (Filter condition) The unique ID of the user gateway, such as `cgw-mgp33pll`.</li>\n<li>customer-gateway-name - String - (Filter condition) The name of the user gateway, such as `test-cgw`.</li>\n<li>ip-address - String - (Filter condition) The public IP address, such as `58.211.1.12`.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+      }
+    ],
+    "desc": "This API (DescribeCustomerGateways) is used to query the customer gateway list."
+  },
   "ReplaceSecurityGroupPolicy": {
     "params": [
       {
@@ -56,11 +86,11 @@ INFO = {
     "params": [
       {
         "name": "TaskId",
-        "desc": "The async job ID"
+        "desc": "Async task ID. Either TaskId or DealName must be entered."
       },
       {
         "name": "DealName",
-        "desc": "The billing order ID"
+        "desc": "Billing order No. Either TaskId or DealName must be entered."
       }
     ],
     "desc": "This API is used to query the EIP async job execution results."
@@ -172,22 +202,39 @@ INFO = {
     ],
     "desc": "This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway."
   },
-  "ModifyServiceTemplateGroupAttribute": {
+  "DisassociateNetworkInterfaceSecurityGroups": {
     "params": [
       {
-        "name": "ServiceTemplateGroupId",
-        "desc": "The protocol port template group instance ID, such as `ppmg-ei8hfd9a`."
+        "name": "NetworkInterfaceIds",
+        "desc": "ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request."
       },
       {
-        "name": "ServiceTemplateGroupName",
-        "desc": "Protocol port template group name."
-      },
-      {
-        "name": "ServiceTemplateIds",
-        "desc": "Instance ID of the protocol port template, such as `ppm-4dw6agho`."
+        "name": "SecurityGroupIds",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request."
       }
     ],
-    "desc": "This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group."
+    "desc": "This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI."
+  },
+  "ModifyAddressInternetChargeType": {
+    "params": [
+      {
+        "name": "AddressId",
+        "desc": "Unique EIP ID, such as \"eip-xxxx\""
+      },
+      {
+        "name": "InternetChargeType",
+        "desc": "The target billing method. It can be `BANDWIDTH_PREPAID_BY_MONTH` or `TRAFFIC_POSTPAID_BY_HOUR`"
+      },
+      {
+        "name": "InternetMaxBandwidthOut",
+        "desc": "The target bandwidth value"
+      },
+      {
+        "name": "AddressChargePrepaid",
+        "desc": "Billing details of monthly-subscribed network bandwidth. This parameter is required if the target billing method is `BANDWIDTH_PREPAID_BY_MONTH`."
+      }
+    ],
+    "desc": "This API is used to adjust the network billing mode of an EIP. Please note that it's available to users whose network fees are billed on IPs but not CVMs.\n* The network billing mode can be switched between `BANDWIDTH_PREPAID_BY_MONTH` and `TRAFFIC_POSTPAID_BY_HOUR`.\n* The network billing mode for each EIP be changed for up to twice."
   },
   "DescribeCcnAttachedInstances": {
     "params": [
@@ -239,10 +286,10 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "The ID of the CVM instance to be queried."
+        "desc": "ID of a CVM instance or ENI to query"
       }
     ],
-    "desc": "This API is used to query the ENI quota based on the CVM instance ID. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to each ENI."
+    "desc": "This API (DescribeNetworkInterfaceLimit) is used to query the ENI quota based on the ID of CVM instance or ENI. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to the ENI."
   },
   "DescribeNetDetects": {
     "params": [
@@ -319,6 +366,15 @@ INFO = {
     ],
     "desc": "This API (DescribeGatewayFlowMonitorDetail) is used to query the monitoring details of the gateway traffic.\n* Only querying of a single gateway instance is supported. That is, only one of the `VpnId`, `DirectConnectGatewayId`, `PeeringConnectionId`, or `NatId` input parameters is supported, and one must be used.\n* If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring has been enabled in the corresponding gateway details page in the console."
   },
+  "EnableGatewayFlowMonitor": {
+    "params": [
+      {
+        "name": "GatewayId",
+        "desc": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`."
+      }
+    ],
+    "desc": "This API (EnableGatewayFlowMonitor) is used to enable gateway flow monitor."
+  },
   "UnassignIpv6Addresses": {
     "params": [
       {
@@ -353,6 +409,10 @@ INFO = {
       }
     ],
     "desc": "This API (DeleteAddressTemplateGroup) is used to delete an IP address template group."
+  },
+  "DescribeCustomerGatewayVendors": {
+    "params": [],
+    "desc": "This API (DescribeCustomerGatewayVendors) is used to query the information of supported customer gateway vendors."
   },
   "DescribeAddresses": {
     "params": [
@@ -464,6 +524,19 @@ INFO = {
     ],
     "desc": "This API is used to delete a route table."
   },
+  "InquiryPriceRenewVpnGateway": {
+    "params": [
+      {
+        "name": "VpnGatewayId",
+        "desc": "The ID of the VPN gateway instance."
+      },
+      {
+        "name": "InstanceChargePrepaid",
+        "desc": "Specifies the purchased validity period, whether to enable auto-renewal. This parameter is required for monthly-subscription instances."
+      }
+    ],
+    "desc": "This API (InquiryPriceRenewVpnGateway) is used to query the price for VPN gateway renewal. Currently, only querying prices for IPSEC-type gateways is supported."
+  },
   "AssignPrivateIpAddresses": {
     "params": [
       {
@@ -472,14 +545,14 @@ INFO = {
       },
       {
         "name": "PrivateIpAddresses",
-        "desc": "The information of the specified private IPs. You can specify a maximum of 10 each time."
+        "desc": "The information on private IP addresses, of which you can specify a maximum of 10 at a time. You should provide either this parameter or SecondaryPrivateIpAddressCount, or both."
       },
       {
         "name": "SecondaryPrivateIpAddressCount",
-        "desc": "The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota."
+        "desc": "The number of newly-applied private IP addresses. You should provide either this parameter or PrivateIpAddresses, or both. The total number of private IP addresses cannot exceed the quota. For more information, see<a href=\"/document/product/576/18527\">ENI Use Limits</a>."
       }
     ],
-    "desc": "This API (AssignPrivateIpAddresses) is used for the ENI to apply for private IPs.\n* An ENI can only be bound with a limited number of IPs. For more information about resource limits, see<a href=\"/document/product/576/18527\">ENI use limits</a>.\n* You can specify the private IP you want to apply for. It cannot be the primary IP, which already exists and cannot be modified. The private IP must be in the same subnet as the ENI, and cannot be occupied.\n* You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range of the ENI."
+    "desc": "This API (AssignPrivateIpAddresses) is used for the ENI to apply for private IPs.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can specify the private IP you want to apply for. It cannot be the primary IP, which already exists and cannot be modified. The private IP must be in the same subnet as the ENI, and cannot be occupied.\n* You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range of the ENI."
   },
   "DescribeNatGateways": {
     "params": [
@@ -548,19 +621,19 @@ INFO = {
       },
       {
         "name": "NetDetectId",
-        "desc": "The ID of a network detection instance, such as netd-12345678."
+        "desc": "ID of a network inspector instance, e.g. netd-12345678. Enter at least one of this parameter, VpcId, SubnetId, and NetDetectName. Use NetDetectId if it is present."
       },
       {
         "name": "VpcId",
-        "desc": "The `ID` of a `VPC` instance, such as `vpc-12345678`."
+        "desc": "ID of a `VPC` instance, e.g. `vpc-12345678`, which is used together with SubnetId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present."
       },
       {
         "name": "SubnetId",
-        "desc": "The ID of a subnet instance, such as subnet-12345678."
+        "desc": "ID of a subnet instance, e.g. `subnet-12345678`, which is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present."
       },
       {
         "name": "NetDetectName",
-        "desc": "The name of a network detection instance. The maximum length is 60 characters."
+        "desc": "The name of a network inspector, up to 60 bytes in length. It is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present."
       }
     ],
     "desc": "This API is used to verify the network detection status."
@@ -577,14 +650,27 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset"
+        "desc": "Offset. Default value: 0."
       },
       {
         "name": "Limit",
-        "desc": "The returned quantity"
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
       }
     ],
     "desc": "This API (DescribeVpcs) is used to query the VPC list."
+  },
+  "InquiryPriceResetVpnGatewayInternetMaxBandwidth": {
+    "params": [
+      {
+        "name": "VpnGatewayId",
+        "desc": "The ID of the VPN gateway instance."
+      },
+      {
+        "name": "InternetMaxBandwidthOut",
+        "desc": "The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps."
+      }
+    ],
+    "desc": "This API (InquiryPriceResetVpnGatewayInternetMaxBandwidth) is used to query the price for adjusting the bandwidth cap of a VPN gateway."
   },
   "DeleteDirectConnectGatewayCcnRoutes": {
     "params": [
@@ -642,18 +728,26 @@ INFO = {
     ],
     "desc": "This API (ModifyAddressesBandwidth) is used to adjust [Elastic IP](https://cloud.tencent.com/document/product/213/1941) bandwidth, including the postpaid EIP, prepaid EIP and bandwidth package EIP."
   },
-  "CreateNatGatewayDestinationIpPortTranslationNatRule": {
+  "DescribeVpnConnections": {
     "params": [
       {
-        "name": "NatGatewayId",
-        "desc": "The ID of the NAT gateway, such as `nat-df45454`."
+        "name": "VpnConnectionIds",
+        "desc": "The instance ID of the VPN tunnel, such as `vpnx-f49l6u0z`. Each request can have a maximum of 100 instances. `VpnConnectionIds` and `Filters` cannot be specified at the same time."
       },
       {
-        "name": "DestinationIpPortTranslationNatRules",
-        "desc": "The port forwarding rules of the NAT gateway."
+        "name": "Filters",
+        "desc": "Filter condition. In each request, the upper limit for `Filters` is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - VPC instance ID, such as `vpc-0a36uwkr`.</li>\n<li>vpn-gateway-id - String - VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>\n<li>customer-gateway-id - String - Customer gateway instance ID, such as `cgw-l4rblw63`.</li>\n<li>vpn-connection-name - String - Connection name, such as `test-vpn`.</li>\n<li>vpn-connection-id - String - Connection instance ID, such as `vpnx-5p7vkch8\"`.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of values to be returned. The default value is 20. Maximum is 100."
       }
     ],
-    "desc": "This API (CreateNatGatewayDestinationIpPortTranslationNatRule) is used to create a port forwarding rule for a NAT gateway."
+    "desc": " This API (DescribeVpnConnections) is used to query the VPN tunnel list."
   },
   "CreateSubnet": {
     "params": [
@@ -719,6 +813,27 @@ INFO = {
     ],
     "desc": "This API (DeleteServiceTemplateGroup) is used to delete a protocol port template group."
   },
+  "DescribeGatewayFlowQos": {
+    "params": [
+      {
+        "name": "GatewayId",
+        "desc": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`."
+      },
+      {
+        "name": "IpAddresses",
+        "desc": "CVM private IP addresses with limited bandwidth."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+      }
+    ],
+    "desc": "This API (DescribeGatewayFlowQos) is used to query the QoS bandwidth limit of inbound IP flow in a gateway."
+  },
   "DisassociateAddress": {
     "params": [
       {
@@ -732,18 +847,22 @@ INFO = {
     ],
     "desc": "This API (DisassociateAddress) is used to unbind [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* The unbinding of EIPs from CVM instances and ENIs is supported.\n* The unbinding of EIPs from NATs is not supported. For information about how to unbind an EIP from a NAT, see [EipUnBindNatGateway](https://cloud.tencent.com/document/product/215/4092).\n* You can only unbind EIPs in BIND or BIND_ENI status.\n* Blocked EIPs cannot be unbound."
   },
-  "DeleteSecurityGroupPolicies": {
+  "ModifyServiceTemplateGroupAttribute": {
     "params": [
       {
-        "name": "SecurityGroupId",
-        "desc": "The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups."
+        "name": "ServiceTemplateGroupId",
+        "desc": "The protocol port template group instance ID, such as `ppmg-ei8hfd9a`."
       },
       {
-        "name": "SecurityGroupPolicySet",
-        "desc": "The policy set of the security group. One request can only delete one or more policies in one direction. Both PolicyIndex-matching deletion and security group policy-matching deletion methods are supported. Each request can use only one matching method."
+        "name": "ServiceTemplateGroupName",
+        "desc": "Protocol port template group name."
+      },
+      {
+        "name": "ServiceTemplateIds",
+        "desc": "Instance ID of the protocol port template, such as `ppm-4dw6agho`."
       }
     ],
-    "desc": "This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).\n* SecurityGroupPolicySet.Version is used to specify the version of the security group you are operating. If the specified Version number differs from the latest version of the current security group, a failure will be returned. If Version is not specified, the policy of the specified PolicyIndex will be deleted directly."
+    "desc": "This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group."
   },
   "CreateVpc": {
     "params": [
@@ -787,6 +906,23 @@ INFO = {
     ],
     "desc": "This API (AssignIpv6SubnetCidrBlock) is used to assign IPv6 subnet IP ranges.\n* To assign an `IPv6` IP range to a subnet, the `VPC` that the subnet belongs to should have obtained the `IPv6` IP range. If this has not been assigned, use the `AssignIpv6CidrBlock` API to assign an `IPv6` IP range to the `VPC` to which the subnet belongs. Otherwise, the `IPv6` subnet IP range cannot be assigned.\n* Each subnet can only be assigned one IPv6 IP range."
   },
+  "DescribeVpnGatewayCcnRoutes": {
+    "params": [
+      {
+        "name": "VpnGatewayId",
+        "desc": "The ID of the VPN gateway instance."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset."
+      },
+      {
+        "name": "Limit",
+        "desc": "The returned quantity"
+      }
+    ],
+    "desc": "This API (DescribeVpnGatewayCcnRoutes) is used to query VPN gateway-based CCN routes."
+  },
   "AllocateAddresses": {
     "params": [
       {
@@ -819,14 +955,31 @@ INFO = {
       },
       {
         "name": "Tags",
-        "desc": ""
+        "desc": "List of tags to be bound."
       },
       {
         "name": "BandwidthPackageId",
-        "desc": ""
+        "desc": "The unique ID of a BGP bandwidth package. If you configure this parameter and set InternetChargeType as BANDWIDTH_PACKAGE, the new EIP is added to this package and billed by the bandwidth package mode."
       }
     ],
     "desc": "This API is used to apply for one or more [Elastic IP Addresses](https://cloud.tencent.com/document/product/213/1941) (EIPs for short).\n* An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.\n* Your EIP is associated with your Tencent Cloud account rather than an instance. It remains associated with your Tencent Cloud account until you choose to explicitly release it or your account is in arrears for more than 24 hours.\n* The maximum number of EIPs that can be applied for a Tencent Cloud account in each region is restricted. For more information, see [EIP Product Introduction](https://cloud.tencent.com/document/product/213/5733). You can get the quota information through the DescribeAddressQuota API."
+  },
+  "CheckAssistantCidr": {
+    "params": [
+      {
+        "name": "VpcId",
+        "desc": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`."
+      },
+      {
+        "name": "NewCidrBlocks",
+        "desc": "Load CIDR blocks to add. CIDR block set; format: e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]"
+      },
+      {
+        "name": "OldCidrBlocks",
+        "desc": "Load CIDR blocks to delete. CIDR block set; Format: e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]"
+      }
+    ],
+    "desc": "This API (CheckAssistantCidr) is used to check overlapping of a secondary CIDR block with inventory routing, peering connection (opposite VPC CIDR block), and any other resources. If an overlap is present, the overlapped resources are returned. (To use this API that is in Beta, please submit a ticket.)\n* Check whether the secondary CIDR block overlaps with a primary or secondary CIDR block of the current VPC.\n* Check whether the secondary CIDR block overlaps with the routing destination of the current VPC.\n* Check whether the secondary CIDR block is peer-connected to the current VPC, and whether it overlaps with a main or secondary CIDR block of the opposite VPC."
   },
   "DescribeVpcIpv6Addresses": {
     "params": [
@@ -848,6 +1001,10 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeVpcIpv6Addresses) is used to query `VPC` `IPv6` information.\nThis API is used to query only the information of `IPv6` addresses that are already in use. When querying IPs that have not yet been used, this API will not report an error, but the IPs will not appear in the returned results."
+  },
+  "DescribeAccountAttributes": {
+    "params": [],
+    "desc": "This API (DescribeAccountAttributes) is used to query your account attributes."
   },
   "AttachCcnInstances": {
     "params": [
@@ -886,6 +1043,15 @@ INFO = {
       }
     ],
     "desc": "This API (AssociateAddress) is used to bind an [Elastic IP](https://cloud.tencent.com/document/product/213/1941) (EIP for short) to the specified private IP of an instance or ENI.\n* Essentially, binding an EIP to an instance (CVM) means binding an EIP to the primary private IP of the primary ENI on an instance.\n* When you bind an EIP to the primary private IP of the primary ENI, the previously bound public IP is automatically unbound and released.\n* To bind the EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must unbind the EIP before you can bind a new one.\n* To bind the EIP to a NAT gateway, use the API [EipBindNatGateway](https://cloud.tencent.com/document/product/215/4093)\n* EIP that is in arrears or blocked cannot be bound.\n* Only EIP in the UNBIND status can be bound."
+  },
+  "DeleteCustomerGateway": {
+    "params": [
+      {
+        "name": "CustomerGatewayId",
+        "desc": "The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API."
+      }
+    ],
+    "desc": "This API (DeleteCustomerGateway) is used to delete customer gateways."
   },
   "DeleteSubnet": {
     "params": [
@@ -1061,6 +1227,19 @@ INFO = {
     ],
     "desc": "This API (HaVipDisassociateAddressIp) is used to unbind an EIP which has been bound to an HAVIP.<br />\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API."
   },
+  "ModifyVpnGatewayCcnRoutes": {
+    "params": [
+      {
+        "name": "VpnGatewayId",
+        "desc": "The ID of the VPN gateway instance."
+      },
+      {
+        "name": "Routes",
+        "desc": "The CCN route (IDC IP range) list."
+      }
+    ],
+    "desc": "This API (ModifyVpnGatewayCcnRoutes) is used to modify VPN gateway-based CCN routes."
+  },
   "DetachNetworkInterface": {
     "params": [
       {
@@ -1074,6 +1253,19 @@ INFO = {
     ],
     "desc": "This API (DetachNetworkInterface) is used to unbind an ENI from a CVM."
   },
+  "DeleteAssistantCidr": {
+    "params": [
+      {
+        "name": "VpcId",
+        "desc": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`."
+      },
+      {
+        "name": "CidrBlocks",
+        "desc": "CIDR set, e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]"
+      }
+    ],
+    "desc": "This API (DeleteAssistantCidr) is used to delete secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)"
+  },
   "DeleteNetworkInterface": {
     "params": [
       {
@@ -1083,39 +1275,35 @@ INFO = {
     ],
     "desc": "This API (DeleteNetworkInterface) is used to delete ENIs.\n* An ENI that has been bound to a CVM cannot be deleted.\n* An ENI can be deleted only after being unbound from the server. After the deletion, all private IP addresses associated with the ENI will be released."
   },
-  "DescribeVpnConnections": {
+  "CreateNatGatewayDestinationIpPortTranslationNatRule": {
     "params": [
       {
-        "name": "VpnConnectionIds",
-        "desc": "The instance ID of the VPN tunnel, such as `vpnx-f49l6u0z`. Each request can have a maximum of 100 instances. `VpnConnectionIds` and `Filters` cannot be specified at the same time."
+        "name": "NatGatewayId",
+        "desc": "The ID of the NAT gateway, such as `nat-df45454`."
       },
       {
-        "name": "Filters",
-        "desc": "Filter condition. In each request, the upper limit for `Filters` is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - VPC instance ID, such as `vpc-0a36uwkr`.</li>\n<li>vpn-gateway-id - String - VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>\n<li>customer-gateway-id - String - Customer gateway instance ID, such as `cgw-l4rblw63`.</li>\n<li>vpn-connection-name - String - Connection name, such as `test-vpn`.</li>\n<li>vpn-connection-id - String - Connection instance ID, such as `vpnx-5p7vkch8\"`.</li>"
-      },
-      {
-        "name": "Offset",
-        "desc": "The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction."
-      },
-      {
-        "name": "Limit",
-        "desc": "Number of values to be returned. The default value is 20. Maximum is 100."
+        "name": "DestinationIpPortTranslationNatRules",
+        "desc": "The port forwarding rules of the NAT gateway."
       }
     ],
-    "desc": " This API (DescribeVpnConnections) is used to query the VPN tunnel list."
+    "desc": "This API (CreateNatGatewayDestinationIpPortTranslationNatRule) is used to create a port forwarding rule for a NAT gateway."
   },
-  "ReplaceRoutes": {
+  "ModifyGatewayFlowQos": {
     "params": [
       {
-        "name": "RouteTableId",
-        "desc": "The route table instance ID, such as `rtb-azd4dt1c`."
+        "name": "GatewayId",
+        "desc": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`."
       },
       {
-        "name": "Routes",
-        "desc": "Routing policy object. The routing policy ID (RouteId) must be specified."
+        "name": "Bandwidth",
+        "desc": "Bandwidth limit value."
+      },
+      {
+        "name": "IpAddresses",
+        "desc": "CVM private IP addresses with limited bandwidth."
       }
     ],
-    "desc": "This API (ReplaceRoutes) is used to modify a specified routing policy by its ID (RouteId). Batch modification is supported."
+    "desc": "This API (ModifyGatewayFlowQos) is used to adjust the QoS bandwidth limit in a gateway."
   },
   "DeleteNatGateway": {
     "params": [
@@ -1210,6 +1398,19 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeCcnRoutes) is used to query routes that have been added to a CCN."
+  },
+  "CreateAssistantCidr": {
+    "params": [
+      {
+        "name": "VpcId",
+        "desc": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`."
+      },
+      {
+        "name": "CidrBlocks",
+        "desc": "CIDR set, e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]"
+      }
+    ],
+    "desc": "This API (CreateAssistantCidr) is used to batch create secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)"
   },
   "CreateDefaultVpc": {
     "params": [
@@ -1322,6 +1523,23 @@ INFO = {
     ],
     "desc": "This API (DeleteAddressTemplate) is used to delete an IP address template."
   },
+  "ModifyAssistantCidr": {
+    "params": [
+      {
+        "name": "VpcId",
+        "desc": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`."
+      },
+      {
+        "name": "NewCidrBlocks",
+        "desc": "Load CIDR blocks to add. CIDR block set; format: e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]"
+      },
+      {
+        "name": "OldCidrBlocks",
+        "desc": "Load CIDR blocks to delete. CIDR block set; Format: e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]"
+      }
+    ],
+    "desc": "This API (ModifyAssistantCidr) is used to batch modify (e.g. add and delete) secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)"
+  },
   "DeleteVpnGateway": {
     "params": [
       {
@@ -1399,18 +1617,31 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address.</li>"
+        "desc": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>\n<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>\n<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>"
       },
       {
         "name": "Offset",
-        "desc": "Offset. The default value is 0."
+        "desc": "Offset. Default value: 0."
       },
       {
         "name": "Limit",
-        "desc": "Number of values to be returned. The default value is 20. Maximum is 100."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
       }
     ],
     "desc": "This API (DescribeNetworkInterfaces) is used to query the ENI list."
+  },
+  "AssociateNetworkAclSubnets": {
+    "params": [
+      {
+        "name": "NetworkAclId",
+        "desc": "Network ACL instance ID. Example: acl-12345678."
+      },
+      {
+        "name": "SubnetIds",
+        "desc": "Array of subnet instance IDs. Example: [subnet-12345678]"
+      }
+    ],
+    "desc": "This API is used to associate a network ACL with subnets in a VPC instance."
   },
   "DisableCcnRoutes": {
     "params": [
@@ -1455,6 +1686,19 @@ INFO = {
     ],
     "desc": "The API (ResetVpnConnection) is used to reset VPN tunnels."
   },
+  "CreateCustomerGateway": {
+    "params": [
+      {
+        "name": "CustomerGatewayName",
+        "desc": "Customer gateway can be named freely, but the maximum length is 60 characters."
+      },
+      {
+        "name": "IpAddress",
+        "desc": "Customer gateway public IP."
+      }
+    ],
+    "desc": "This API (CreateCustomerGateway) is used to create customer gateways."
+  },
   "CreateAddressTemplateGroup": {
     "params": [
       {
@@ -1489,18 +1733,26 @@ INFO = {
     ],
     "desc": "This API is used to create a security group (SecurityGroup).\n* Note the <a href=\"https://cloud.tencent.com/document/product/213/12453\">maximum number of security groups</a> per project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are \"Deny All\" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.\n* You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added."
   },
-  "AssociateNetworkAclSubnets": {
+  "ModifyNetworkInterfaceAttribute": {
     "params": [
       {
-        "name": "NetworkAclId",
-        "desc": "Network ACL instance ID. Example: acl-12345678."
+        "name": "NetworkInterfaceId",
+        "desc": "The ID of the ENI instance, such as `eni-pxir56ns`."
       },
       {
-        "name": "SubnetIds",
-        "desc": "Array of subnet instance IDs. Example: [subnet-12345678]"
+        "name": "NetworkInterfaceName",
+        "desc": "The name of the ENI. The maximum length is 60 characters."
+      },
+      {
+        "name": "NetworkInterfaceDescription",
+        "desc": "ENI description can be named freely, but the maximum length is 60 characters."
+      },
+      {
+        "name": "SecurityGroupIds",
+        "desc": "The specified security groups to be bound with, such as ['sg-1dd51d']."
       }
     ],
-    "desc": "This API is used to associate a network ACL with subnets in a VPC instance."
+    "desc": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes."
   },
   "DescribeVpnGateways": {
     "params": [
@@ -1523,26 +1775,22 @@ INFO = {
     ],
     "desc": "This API (DescribeVpnGateways) is used to query the VPN gateway list."
   },
-  "ModifyNetworkInterfaceAttribute": {
+  "DescribeVpcInstances": {
     "params": [
       {
-        "name": "NetworkInterfaceId",
-        "desc": "The ID of the ENI instance, such as `eni-pxir56ns`."
+        "name": "Filters",
+        "desc": "Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>instance-type - String - (Filter condition) CVM instance ID.</li>\n<li>instance-name - String - (Filter condition) CVM name.</li>"
       },
       {
-        "name": "NetworkInterfaceName",
-        "desc": "The name of the ENI. The maximum length is 60 characters."
+        "name": "Offset",
+        "desc": "Offset."
       },
       {
-        "name": "NetworkInterfaceDescription",
-        "desc": "ENI description can be named freely, but the maximum length is 60 characters."
-      },
-      {
-        "name": "SecurityGroupIds",
-        "desc": "The specified security groups to be bound with, such as ['sg-1dd51d']."
+        "name": "Limit",
+        "desc": "The number of requested objects."
       }
     ],
-    "desc": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes."
+    "desc": " This API (DescribeVpcInstances) is used to query a list of VCM instances on VPC."
   },
   "CreateDirectConnectGatewayCcnRoutes": {
     "params": [
@@ -1557,6 +1805,15 @@ INFO = {
     ],
     "desc": "This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway."
   },
+  "DescribeSecurityGroupReferences": {
+    "params": [
+      {
+        "name": "SecurityGroupIds",
+        "desc": "A set of security group instance IDs, e.g. ['sg-12345678']"
+      }
+    ],
+    "desc": "This API (DescribeSecurityGroupReferences) is used to query referred security groups."
+  },
   "ModifyIpv6AddressesAttribute": {
     "params": [
       {
@@ -1570,9 +1827,18 @@ INFO = {
     ],
     "desc": "This API (ModifyIpv6AddressesAttribute) is used to modify the private IPv6 address attributes of an ENI."
   },
-  "DescribeAccountAttributes": {
-    "params": [],
-    "desc": "This API (DescribeAccountAttributes) is used to query your account attributes."
+  "RenewVpnGateway": {
+    "params": [
+      {
+        "name": "VpnGatewayId",
+        "desc": "The ID of the VPN gateway instance."
+      },
+      {
+        "name": "InstanceChargePrepaid",
+        "desc": "Billing Methods"
+      }
+    ],
+    "desc": "This API (RenewVpnGateway) is used to renew prepaid (monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported."
   },
   "AssignIpv6Addresses": {
     "params": [
@@ -1582,11 +1848,11 @@ INFO = {
       },
       {
         "name": "Ipv6Addresses",
-        "desc": "The specified `IPv6` address list. You can specify a maximum of 10 at one time. The quota is calculated together with the `Ipv6AddressCount` input parameter."
+        "desc": "A list of `IPv6` addresses. You can specify a maximum of 10 at one time. The quota is calculated together with that of `Ipv6AddressCount`, a required input parameter alternative to this one."
       },
       {
         "name": "Ipv6AddressCount",
-        "desc": "The number of automatically assigned `IPv6` addresses. The total number of private IP addresses cannot exceed the quota. The quota is calculated together with the `Ipv6Addresses` input parameter."
+        "desc": "The number of automatically assigned `IPv6` addresses. The total number of private IP addresses cannot exceed the quota. The quota is calculated together with that of `Ipv6Addresses`, a required input parameter alternative to this one."
       }
     ],
     "desc": "This API (AssignIpv6Addresses) is used to apply for an IPv6 address for the ENI.<br />\nThis API is completed asynchronously. If you need to query the async execution results, use the `RequestId` returned by this API to query the `QueryTask` API.\n* An ENI can only be bound with a limited number of IPs. For more information about resource limits, see<a href=\"/document/product/576/18527\">ENI use limits</a>.\n* You can specify the `IPv6` address when applying. The address type cannot be the primary `IP`. Currently, `IPv6` can only be supported as the secondary `IP`.\n* The address must be unoccupied and is in the subnet to which the ENI belongs.\n* When applying for one to multiple secondary `IPv6` addresses on ENI, the API will return the specified number of secondary `IPv6` addresses in the subnet range where the ENI is located."
@@ -1689,6 +1955,19 @@ INFO = {
     ],
     "desc": "This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP)."
   },
+  "AssociateNetworkInterfaceSecurityGroups": {
+    "params": [
+      {
+        "name": "NetworkInterfaceIds",
+        "desc": "ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request."
+      },
+      {
+        "name": "SecurityGroupIds",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request."
+      }
+    ],
+    "desc": "This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI."
+  },
   "DeleteHaVip": {
     "params": [
       {
@@ -1753,11 +2032,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset"
+        "desc": "Offset. Default value: 0."
       },
       {
         "name": "Limit",
-        "desc": "The returned quantity"
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
       }
     ],
     "desc": "This API (DescribeSubnets) is used to query the list of subnets."
@@ -1790,6 +2069,19 @@ INFO = {
       }
     ],
     "desc": "This API is used to create a Cloud Connect Network (CCN).<br />\n* You can bind a tag when creating a CCN instance. The tag list in the response indicates the tags that have been successfully added.\nEach account can only create a limited number of CCN instances. For more information, see product documentation. To create more instances, contact the online customer service."
+  },
+  "ModifyCustomerGatewayAttribute": {
+    "params": [
+      {
+        "name": "CustomerGatewayId",
+        "desc": "The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API."
+      },
+      {
+        "name": "CustomerGatewayName",
+        "desc": "Customer gateway can be named freely, but the maximum length is 60 characters."
+      }
+    ],
+    "desc": "This API (ModifyCustomerGatewayAttribute) is used to modify the customer gateway information."
   },
   "ModifyVpnConnectionAttribute": {
     "params": [
@@ -1832,11 +2124,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset."
+        "desc": "Offset. Default value: 0."
       },
       {
         "name": "Limit",
-        "desc": "The returned quantity."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
       }
     ],
     "desc": "This API (DescribeSecurityGroups) is used to query security groups."
@@ -1866,6 +2158,10 @@ INFO = {
       {
         "name": "Zone",
         "desc": "The availability zone, such as `ap-guangzhou-2`."
+      },
+      {
+        "name": "Type",
+        "desc": "VPN gateway type. Value: `CCN`, indicates CCN-type VPN gateway"
       }
     ],
     "desc": "This API (CreateVpnGateway) is used to create a VPN gateway."
@@ -1882,6 +2178,27 @@ INFO = {
       }
     ],
     "desc": "This API (ModifyPrivateIpAddressesAttribute) is used to modify the private IP attributes of an ENI."
+  },
+  "DescribeAssistantCidr": {
+    "params": [
+      {
+        "name": "VpcIds",
+        "desc": "The ID of a VPC instance set, such as `vpc-6v2ht8q5`."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+      }
+    ],
+    "desc": "This API (DescribeAssistantCidr) is used to query a list of secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)"
   },
   "DetachCcnInstances": {
     "params": [
@@ -2008,6 +2325,19 @@ INFO = {
     ],
     "desc": "This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table."
   },
+  "DeleteSecurityGroupPolicies": {
+    "params": [
+      {
+        "name": "SecurityGroupId",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups."
+      },
+      {
+        "name": "SecurityGroupPolicySet",
+        "desc": "The policy set of the security group. One request can only delete one or more policies in one direction. Both PolicyIndex-matching deletion and security group policy-matching deletion methods are supported. Each request can use only one matching method."
+      }
+    ],
+    "desc": "This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).\n* SecurityGroupPolicySet.Version is used to specify the version of the security group you are operating. If the specified Version number differs from the latest version of the current security group, a failure will be returned. If Version is not specified, the policy of the specified PolicyIndex will be deleted directly."
+  },
   "ModifyNetDetect": {
     "params": [
       {
@@ -2036,6 +2366,15 @@ INFO = {
       }
     ],
     "desc": "This API (ModifyNetDetect) is used to modify network detection parameters."
+  },
+  "DisableGatewayFlowMonitor": {
+    "params": [
+      {
+        "name": "GatewayId",
+        "desc": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`."
+      }
+    ],
+    "desc": "This API (DisableGatewayFlowMonitor) is used to disable gateway flow monitor."
   },
   "DeleteNatGatewayDestinationIpPortTranslationNatRule": {
     "params": [
@@ -2138,6 +2477,19 @@ INFO = {
       }
     ],
     "desc": "This API (CreateServiceTemplateGroup) is used to create a protocol port template group."
+  },
+  "ReplaceRoutes": {
+    "params": [
+      {
+        "name": "RouteTableId",
+        "desc": "The route table instance ID, such as `rtb-azd4dt1c`."
+      },
+      {
+        "name": "Routes",
+        "desc": "Routing policy object. The routing policy ID (RouteId) must be specified."
+      }
+    ],
+    "desc": "This API (ReplaceRoutes) is used to modify a specified routing policy by its ID (RouteId). Batch modification is supported."
   },
   "ModifyCcnAttribute": {
     "params": [
@@ -2327,5 +2679,26 @@ INFO = {
       }
     ],
     "desc": "This API (ModifyVpcAttribute) is used to modify VPC attributes."
+  },
+  "CreateSecurityGroupWithPolicies": {
+    "params": [
+      {
+        "name": "GroupName",
+        "desc": "Security group can be named freely, but cannot exceed 60 characters."
+      },
+      {
+        "name": "GroupDescription",
+        "desc": "The remarks for the security group. The maximum length is 100 characters."
+      },
+      {
+        "name": "ProjectId",
+        "desc": "The project id is 0 by default. You can query this in the project management page of the Qcloud console."
+      },
+      {
+        "name": "SecurityGroupPolicySet",
+        "desc": "Security group policy set."
+      }
+    ],
+    "desc": "This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.\n* Note the<a href=\"https://cloud.tencent.com/document/product/213/12453\">maximum number of security groups</a>per project in each region under each account.\n* Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.\n\nDescription:\n* `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.\n* `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* `Port`: A single port number, or a port range in the format of \"8000-8010\". The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive. \n* `Action`: Values can be `ACCEPT` or `DROP`.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. \"Protocol + Port\" and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent."
   }
 }

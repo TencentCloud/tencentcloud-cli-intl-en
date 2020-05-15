@@ -5,22 +5,30 @@ INFO = {
     "params": [],
     "desc": "This API is used to get the callback template list."
   },
-  "DropLiveStream": {
+  "DescribeBillBandwidthAndFluxList": {
     "params": [
       {
-        "name": "StreamName",
-        "desc": "Stream name."
+        "name": "StartTime",
+        "desc": "Start time point in the format of yyyy-mm-dd HH:MM:SS."
       },
       {
-        "name": "DomainName",
-        "desc": "Your acceleration domain name."
+        "name": "EndTime",
+        "desc": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days."
       },
       {
-        "name": "AppName",
-        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default."
+        "name": "PlayDomains",
+        "desc": "LVB playback domain name. If it is left blank, the full data will be queried."
+      },
+      {
+        "name": "MainlandOrOversea",
+        "desc": "Value range:\nMainland: Query data for Mainland China,\nOversea: Query data for regions outside Mainland China.\nDefault: Query data for all regions."
+      },
+      {
+        "name": "Granularity",
+        "desc": "Data granularity. Supported granularity:\n5: 5-minute granularity (the query interval should be within 1 day),\n60: 1-hour granularity (the query interval should be within one month),\n1440: 1-day granularity (the query interval should be within one month).\nDefault value: 5."
       }
     ],
-    "desc": "This API is used to disconnect the push connection, which can be resumed."
+    "desc": "This API is used to query the data of billable LVB bandwidth and traffic."
   },
   "ForbidLiveDomain": {
     "params": [
@@ -268,6 +276,23 @@ INFO = {
     ],
     "desc": "This API deletes a callback template."
   },
+  "DropLiveStream": {
+    "params": [
+      {
+        "name": "StreamName",
+        "desc": "Stream name."
+      },
+      {
+        "name": "DomainName",
+        "desc": "Your acceleration domain name."
+      },
+      {
+        "name": "AppName",
+        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default."
+      }
+    ],
+    "desc": "This API is used to disconnect the push connection, which can be resumed."
+  },
   "DescribeLiveStreamEventList": {
     "params": [
       {
@@ -389,6 +414,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template to bind the returned template ID to the stream.\n<br>Screencapturing document: [LVB Screencapturing](/document/product/267/32737).\nNote: only one screencapturing template can be associated with one domain name."
+  },
+  "DescribeStreamDayPlayInfoList": {
+    "params": [
+      {
+        "name": "DayTime",
+        "desc": "Date,\nIn the format of YYYY-mm-dd."
+      },
+      {
+        "name": "PlayDomain",
+        "desc": "Playback domain name."
+      },
+      {
+        "name": "PageNum",
+        "desc": "Page number. Value range: [1,10]. Default value: 1."
+      },
+      {
+        "name": "PageSize",
+        "desc": "Number of entries per page. Value range: [100,1000]. Default value: 1,000."
+      }
+    ],
+    "desc": "This API is used to query the playback data of each stream at the day level, including the total traffic."
   },
   "ModifyLivePushAuthKey": {
     "params": [
@@ -553,22 +599,22 @@ INFO = {
     "params": [
       {
         "name": "DomainName",
-        "desc": "Playback domain name.\nFor transcoding at the domain name level, domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match."
+        "desc": "Playback domain name."
       },
       {
         "name": "AppName",
-        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.\nDomain name+AppName+StreamName+TemplateId uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match."
+        "desc": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default."
       },
       {
         "name": "StreamName",
-        "desc": "Stream name.\nDomain name+AppName+StreamName+TemplateId uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match."
+        "desc": "Stream name."
       },
       {
         "name": "TemplateId",
-        "desc": "Template ID.\nDomain name+AppName+StreamName+TemplateId uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match."
+        "desc": "Template ID."
       }
     ],
-    "desc": "This API is used to delete a transcoding rule."
+    "desc": "This API is used to delete a transcoding rule.\n`DomainName+AppName+StreamName+TemplateId` uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. `TemplateId` is required. Even if other parameters are empty, you still need to pass in an empty string to make a strong match."
   },
   "DeleteLiveSnapshotRule": {
     "params": [
@@ -612,6 +658,60 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a screencapturing template."
+  },
+  "DescribeGroupProIspPlayInfoList": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Start time point in the format of yyyy-mm-dd HH:MM:SS."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time point in the format of yyyy-mm-dd HH:MM:SS\nThe time interval is (0, 3 hours]. Data for the past month can be queried."
+      },
+      {
+        "name": "PlayDomains",
+        "desc": "Playback domain name. If it is blank by default, the full data will be queried."
+      },
+      {
+        "name": "ProvinceNames",
+        "desc": "List of districts. If it is blank by default, data of all districts will be returned."
+      },
+      {
+        "name": "IspNames",
+        "desc": "List of ISPs. If it is blank by default, data of all ISPs will be returned."
+      },
+      {
+        "name": "MainlandOrOversea",
+        "desc": "Within or outside Mainland China. Value range: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If it is blank, data for all regions will be queried."
+      }
+    ],
+    "desc": "This API is used to query the downstream playback data by district and ISP."
+  },
+  "DescribeStreamPushInfoList": {
+    "params": [
+      {
+        "name": "StreamName",
+        "desc": "Stream name."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time point in the format of yyyy-mm-dd HH:MM:SS."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time point in the format of yyyy-mm-dd HH:MM:SS. The maximum time interval is 6 hours. Data in the past 6 days can be queried."
+      },
+      {
+        "name": "PushDomain",
+        "desc": "Push domain name."
+      },
+      {
+        "name": "AppName",
+        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default."
+      }
+    ],
+    "desc": "This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and encoding format of audio and video files."
   },
   "DescribeLivePlayAuthKey": {
     "params": [
@@ -1281,6 +1381,43 @@ INFO = {
       }
     ],
     "desc": "This API is used to return the stream status such as active, inactive, or forbidden."
+  },
+  "DescribeProIspPlaySumInfoList": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Start time (Beijing time).\nIn the format of yyyy-mm-dd HH:MM:SS."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time (Beijing time).\nIn the format of yyyy-mm-dd HH:MM:SS.\nNote: EndTime and StartTime only support querying data on the past day."
+      },
+      {
+        "name": "StatType",
+        "desc": "Statistics type. Value range: \"Province\", \"Isp\"."
+      },
+      {
+        "name": "PlayDomains",
+        "desc": "If it is blank by default, the full data will be queried."
+      },
+      {
+        "name": "PageNum",
+        "desc": "Page number.\nValue range: [1,1000],\nDefault value: 1."
+      },
+      {
+        "name": "PageSize",
+        "desc": "Number of entries per page. Value range: [1,1000],\nDefault value: 20."
+      },
+      {
+        "name": "MainlandOrOversea",
+        "desc": ""
+      },
+      {
+        "name": "OutLanguage",
+        "desc": ""
+      }
+    ],
+    "desc": "This API is used to query the average traffic per second, total traffic, and number of total requests by ISP and district in a certain period of time."
   },
   "CreateLiveRecordRule": {
     "params": [

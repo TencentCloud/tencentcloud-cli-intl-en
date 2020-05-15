@@ -605,6 +605,10 @@ INFO = {
       {
         "name": "ClonedProxyId",
         "desc": "ID of the replicated connection. Only a running connection can be replicated.\nThe connection is to be replicated if this parameter is set."
+      },
+      {
+        "name": "BillingType",
+        "desc": "Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)"
       }
     ],
     "desc": "This API (CreateProxy) is used to create an acceleration connection with specified configuration."
@@ -1060,6 +1064,10 @@ INFO = {
       {
         "name": "ProxyId",
         "desc": "Connection instance ID; It’s a new parameter."
+      },
+      {
+        "name": "BillingType",
+        "desc": "Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)"
       }
     ],
     "desc": "This API (ModifyProxyConfiguration) is used to modify connection configurations. You can expand or reduce the capacity based on current business requirements. It only supports connections with a Scalarable of 1. Scalarable can be obtained via DescribeProxies API."
@@ -1546,6 +1554,10 @@ INFO = {
       {
         "name": "Concurrent",
         "desc": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It’s a new parameter."
+      },
+      {
+        "name": "BillingType",
+        "desc": "Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)"
       }
     ],
     "desc": "This API (InquiryPriceCreateProxy) is used to create the price inquiries of acceleration connections."

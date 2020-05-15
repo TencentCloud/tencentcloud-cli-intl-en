@@ -186,7 +186,7 @@ INFO = {
       },
       {
         "name": "Software",
-        "desc": "List of deployed components. Different `ProductIds` correspond to components on different versions. For example, when `ProductId` is 4, this parameter can be `Software.0=hadoop-2.8.4&Software.1=zookeeper-3.4.9`; when `ProductId` is 2, this parameter can be `Software.0=hadoop-2.7.3&Software.1=zookeeper-3.4.9`."
+        "desc": "List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):\n<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>"
       },
       {
         "name": "ResourceSpec",
@@ -210,7 +210,7 @@ INFO = {
       },
       {
         "name": "TimeSpan",
-        "desc": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>"
+        "desc": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>"
       },
       {
         "name": "TimeUnit",
@@ -291,7 +291,7 @@ INFO = {
       },
       {
         "name": "TimeSpan",
-        "desc": "Purchase duration of instance, which needs to be used together with `TimeUnit`."
+        "desc": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>"
       },
       {
         "name": "ResourceSpec",
@@ -311,7 +311,7 @@ INFO = {
       },
       {
         "name": "Software",
-        "desc": "List of deployed components."
+        "desc": "List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):\n<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>"
       },
       {
         "name": "Placement",
