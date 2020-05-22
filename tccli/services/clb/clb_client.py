@@ -626,6 +626,7 @@ def doModifyDomainAttributes(argv, arglist):
         "Certificate": Utils.try_to_json(argv, "--Certificate"),
         "Http2": Utils.try_to_json(argv, "--Http2"),
         "DefaultServer": Utils.try_to_json(argv, "--DefaultServer"),
+        "NewDefaultServerDomain": argv.get("--NewDefaultServerDomain"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -663,6 +664,7 @@ def doDeleteRule(argv, arglist):
         "LocationIds": Utils.try_to_json(argv, "--LocationIds"),
         "Domain": argv.get("--Domain"),
         "Url": argv.get("--Url"),
+        "NewDefaultServerDomain": argv.get("--NewDefaultServerDomain"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

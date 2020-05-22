@@ -149,11 +149,11 @@ INFO = {
       },
       {
         "name": "ListenerId",
-        "desc": "HTTPS:443 listener ID"
+        "desc": "`HTTPS:443` listener ID"
       },
       {
         "name": "Domains",
-        "desc": "Domain name to be redirected under an HTTPS:443 listener"
+        "desc": "The domain name to be redirected under the listener `HTTPS:443`. If it is left empty, all domain names under the listener `HTTPS:443` will be configured with redirects."
       }
     ],
     "desc": "An HTTPS:443 listener needs to be created first, along with a forwarding rule. When this API is called, an HTTP:80 listener will be created automatically if it did not exist and a forwarding rule corresponding to `Domains` (specified in the input parameter) under the HTTPS:443 listener will also be created. After successful creation, access requests to an HTTP:80 address will be redirected to an HTTPS:443 address automatically."
@@ -302,6 +302,10 @@ INFO = {
       {
         "name": "DefaultServer",
         "desc": "Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener."
+      },
+      {
+        "name": "NewDefaultServerDomain",
+        "desc": "A listener must be configured with a default domain name. If you need to disable the default domain name, you must specify another one as the new default domain name."
       }
     ],
     "desc": "This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
@@ -648,6 +652,10 @@ INFO = {
       {
         "name": "Url",
         "desc": "Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified"
+      },
+      {
+        "name": "NewDefaultServerDomain",
+        "desc": "A listener must be configured with a default domain name. If you need to delete the default domain name, you can specify another one as the new default domain name."
       }
     ],
     "desc": "This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
@@ -709,7 +717,7 @@ INFO = {
         "desc": "Real server bound to a target group"
       }
     ],
-    "desc": "This API is used to create a target group. (The target group feature is currently in beta test. To try it out, submit a ticket for application.)"
+    "desc": "This API is used to create a target group. This feature is in beta test, if you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)."
   },
   "DescribeTargets": {
     "params": [

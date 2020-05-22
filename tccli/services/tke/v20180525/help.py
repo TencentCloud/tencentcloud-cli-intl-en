@@ -118,6 +118,10 @@ INFO = {
       {
         "name": "InstanceDeleteMode",
         "desc": "Policy used to delete an instance in the cluster: terminate (terminates the instance. Only available for instances on pay-as-you-go CVMs); retain (only removes it from the cluster. The instance will be retained.)"
+      },
+      {
+        "name": "ResourceDeleteOptions",
+        "desc": "Specifies the policy to deal with resources in the cluster when the cluster is deleted. It only supports CBS now. The default policy is to retain CBS disks."
       }
     ],
     "desc": "This API is used to delete a cluster. (Cloud API v3)."

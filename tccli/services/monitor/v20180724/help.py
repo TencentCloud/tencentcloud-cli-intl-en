@@ -368,7 +368,7 @@ INFO = {
       },
       {
         "name": "MetricNames",
-        "desc": ""
+        "desc": "Filtering by metric names"
       }
     ],
     "desc": "This API is used to get the basic alarm list."

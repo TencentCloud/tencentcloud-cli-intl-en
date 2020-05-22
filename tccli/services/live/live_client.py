@@ -62,6 +62,7 @@ def doDescribeBillBandwidthAndFluxList(argv, arglist):
         "PlayDomains": Utils.try_to_json(argv, "--PlayDomains"),
         "MainlandOrOversea": argv.get("--MainlandOrOversea"),
         "Granularity": Utils.try_to_json(argv, "--Granularity"),
+        "ServiceName": argv.get("--ServiceName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -188,18 +189,18 @@ def doDescribeLiveSnapshotTemplates(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyLivePlayAuthKey(argv, arglist):
+def doDescribeConcurrentRecordStreamNum(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyLivePlayAuthKey", g_param[OptionsDefine.Version])
+        show_help("DescribeConcurrentRecordStreamNum", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "DomainName": argv.get("--DomainName"),
-        "Enable": Utils.try_to_json(argv, "--Enable"),
-        "AuthKey": argv.get("--AuthKey"),
-        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
-        "AuthBackKey": argv.get("--AuthBackKey"),
+        "LiveType": argv.get("--LiveType"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "MainlandOrOversea": argv.get("--MainlandOrOversea"),
+        "PushDomains": Utils.try_to_json(argv, "--PushDomains"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -213,9 +214,9 @@ def doModifyLivePlayAuthKey(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyLivePlayAuthKeyRequest()
+    model = models.DescribeConcurrentRecordStreamNumRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyLivePlayAuthKey(model)
+    rsp = client.DescribeConcurrentRecordStreamNum(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1083,16 +1084,18 @@ def doModifyLivePlayDomain(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResumeLiveStream(argv, arglist):
+def doModifyLivePlayAuthKey(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ResumeLiveStream", g_param[OptionsDefine.Version])
+        show_help("ModifyLivePlayAuthKey", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "AppName": argv.get("--AppName"),
         "DomainName": argv.get("--DomainName"),
-        "StreamName": argv.get("--StreamName"),
+        "Enable": Utils.try_to_json(argv, "--Enable"),
+        "AuthKey": argv.get("--AuthKey"),
+        "AuthDelta": Utils.try_to_json(argv, "--AuthDelta"),
+        "AuthBackKey": argv.get("--AuthBackKey"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1106,9 +1109,9 @@ def doResumeLiveStream(argv, arglist):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResumeLiveStreamRequest()
+    model = models.ModifyLivePlayAuthKeyRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ResumeLiveStream(model)
+    rsp = client.ModifyLivePlayAuthKey(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2486,6 +2489,41 @@ def doDescribeLiveStreamOnlineList(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doResumeLiveStream(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ResumeLiveStream", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AppName": argv.get("--AppName"),
+        "DomainName": argv.get("--DomainName"),
+        "StreamName": argv.get("--StreamName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ResumeLiveStreamRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ResumeLiveStream(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyLiveCallbackTemplate(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -2925,7 +2963,7 @@ ACTION_MAP = {
     "ForbidLiveDomain": doForbidLiveDomain,
     "CreateLiveTranscodeRule": doCreateLiveTranscodeRule,
     "DescribeLiveSnapshotTemplates": doDescribeLiveSnapshotTemplates,
-    "ModifyLivePlayAuthKey": doModifyLivePlayAuthKey,
+    "DescribeConcurrentRecordStreamNum": doDescribeConcurrentRecordStreamNum,
     "CreateLiveRecord": doCreateLiveRecord,
     "UpdateLiveWatermark": doUpdateLiveWatermark,
     "AddLiveWatermark": doAddLiveWatermark,
@@ -2949,7 +2987,7 @@ ACTION_MAP = {
     "DeleteLiveSnapshotRule": doDeleteLiveSnapshotRule,
     "DescribeLiveWatermarks": doDescribeLiveWatermarks,
     "ModifyLivePlayDomain": doModifyLivePlayDomain,
-    "ResumeLiveStream": doResumeLiveStream,
+    "ModifyLivePlayAuthKey": doModifyLivePlayAuthKey,
     "DescribeLiveRecordRules": doDescribeLiveRecordRules,
     "DeleteLiveTranscodeTemplate": doDeleteLiveTranscodeTemplate,
     "DescribeProIspPlaySumInfoList": doDescribeProIspPlaySumInfoList,
@@ -2989,6 +3027,7 @@ ACTION_MAP = {
     "CreateLiveSnapshotTemplate": doCreateLiveSnapshotTemplate,
     "DeleteLiveDomain": doDeleteLiveDomain,
     "DescribeLiveStreamOnlineList": doDescribeLiveStreamOnlineList,
+    "ResumeLiveStream": doResumeLiveStream,
     "ModifyLiveCallbackTemplate": doModifyLiveCallbackTemplate,
     "DeleteLiveCallbackTemplate": doDeleteLiveCallbackTemplate,
     "DescribeGroupProIspPlayInfoList": doDescribeGroupProIspPlayInfoList,
