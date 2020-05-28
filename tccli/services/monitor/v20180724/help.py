@@ -5,7 +5,7 @@ INFO = {
     "params": [
       {
         "name": "Module",
-        "desc": "API module name. It is fixed to monitor."
+        "desc": "API component name. It is fixed to monitor."
       },
       {
         "name": "ProductName",
@@ -29,7 +29,7 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Filter by event type. Valid values: [\"status_change\",\"abnormal\"], which indicate events whose statuses have changed and exceptional events respectively."
+        "desc": "Filter by event type. Valid values: [\"status_change\",\"abnormal\"], which indicate events whose statuses have changed and events with exceptions respectively."
       },
       {
         "name": "Status",
@@ -49,7 +49,7 @@ INFO = {
       },
       {
         "name": "StartTime",
-        "desc": "Start time, which is the timestamp one day ago by default."
+        "desc": "Start time, which is the timestamp one day prior by default."
       },
       {
         "name": "EndTime",
@@ -70,11 +70,11 @@ INFO = {
     "params": [
       {
         "name": "Module",
-        "desc": "API module name. The value for the current API is monitor."
+        "desc": "API component name. The value for the current API is monitor."
       },
       {
         "name": "StartTime",
-        "desc": "Start time, which is the timestamp one day earlier by default."
+        "desc": "Start time, which is the timestamp one day prior by default."
       },
       {
         "name": "EndTime",
@@ -94,7 +94,7 @@ INFO = {
       },
       {
         "name": "OccurTimeOrder",
-        "desc": "Sorting rule by OccurTime. Valid values: asc or desc. Sorting by UpdateTimeOrder takes a higher priority."
+        "desc": "Sorting rule by OccurTime. Valid values: asc or desc. Sorting by UpdateTimeOrder takes priority."
       },
       {
         "name": "AccidentType",
@@ -102,7 +102,7 @@ INFO = {
       },
       {
         "name": "AccidentEvent",
-        "desc": "Filter by event. The value 1 indicates CVM storage issues. The value 2 indicates CVM network connection issues. The value 3 indicates that the CVM runs exceptionally. The value 202 indicates that an ISP network jitter occurs."
+        "desc": "Filter by event. The value 1 indicates CVM storage issues. The value 2 indicates CVM network connection issues. The value 3 indicates that the CVM has an exception. The value 202 indicates that an ISP network jitter occurs."
       },
       {
         "name": "AccidentStatus",
@@ -148,7 +148,7 @@ INFO = {
       },
       {
         "name": "Module",
-        "desc": "Required. It is fixed to monitor."
+        "desc": "Required. The value is fixed to monitor."
       },
       {
         "name": "InstanceGroupId",
@@ -173,7 +173,7 @@ INFO = {
       },
       {
         "name": "ReceiverInfos",
-        "desc": "New recipient information. If this parameter is not set, all recipients will be deleted."
+        "desc": "New recipient information. If this parameter is not configured, all recipients will be deleted."
       }
     ],
     "desc": "This API is used to modify alarm recipients."
@@ -207,7 +207,7 @@ INFO = {
     "params": [
       {
         "name": "Module",
-        "desc": "API module name. The value for the current API is monitor."
+        "desc": "API component name. The value for the current API is monitor."
       },
       {
         "name": "PolicyId",
@@ -218,7 +218,7 @@ INFO = {
         "desc": "Custom message content that a user wants to send."
       }
     ],
-    "desc": "This API is used to send a custom alarm message."
+    "desc": "This API is used to send a custom alarm notification."
   },
   "DeletePolicyGroup": {
     "params": [
@@ -324,11 +324,11 @@ INFO = {
     "params": [
       {
         "name": "Module",
-        "desc": "API module name. The value for the current API is monitor."
+        "desc": "API component name. The value for the current API is monitor."
       },
       {
         "name": "StartTime",
-        "desc": "Start time, which is the timestamp one day ago by default."
+        "desc": "Start time, which is the timestamp one day prior by default."
       },
       {
         "name": "EndTime",
@@ -402,26 +402,42 @@ INFO = {
     ],
     "desc": "This API is used to get the monitoring data of a Tencent Cloud product by passing in the product's namespace, object dimension description, and monitoring metric.\nAPI call rate limit: 20 calls/sec, 1,200 calls/min.\nIf you need to call a lot of metrics and objects, there may be cases where the call fails due to the rate limit. It is recommended to spread the call requests as much as possible over time."
   },
-  "PutMonitorData": {
+  "ModifyPolicyGroup": {
     "params": [
       {
-        "name": "Metrics",
-        "desc": "A group of metrics and data."
+        "name": "Module",
+        "desc": "The value is fixed to monitor."
       },
       {
-        "name": "AnnounceIp",
-        "desc": "IP address that is automatically specified when monitoring data is reported."
+        "name": "GroupId",
+        "desc": "Policy group ID."
       },
       {
-        "name": "AnnounceTimestamp",
-        "desc": "Timestamp that is automatically specified when monitoring data is reported."
+        "name": "ViewName",
+        "desc": "Alarm type."
       },
       {
-        "name": "AnnounceInstance",
-        "desc": "IP address or product instance ID that is automatically specified when monitoring data is reported."
+        "name": "GroupName",
+        "desc": "Policy group name."
+      },
+      {
+        "name": "IsUnionRule",
+        "desc": "The “AND” and “OR” rules for metric alarms. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met."
+      },
+      {
+        "name": "Conditions",
+        "desc": "Metric alarm condition rules. No filling indicates that all existing metric alarm condition rules will be deleted."
+      },
+      {
+        "name": "EventConditions",
+        "desc": "Event alarm conditions. No filling indicates that all existing event alarm conditions will be deleted."
+      },
+      {
+        "name": "ConditionTempGroupId",
+        "desc": "Template-based policy group ID."
       }
     ],
-    "desc": "This API is used to customize monitoring data to be reported. The default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. It is recommended that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order."
+    "desc": "This API is used to update policy group."
   },
   "CreatePolicyGroup": {
     "params": [
@@ -435,7 +451,7 @@ INFO = {
       },
       {
         "name": "ViewName",
-        "desc": "Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter may not be set."
+        "desc": "Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter is optional."
       },
       {
         "name": "ProjectId",
@@ -455,11 +471,11 @@ INFO = {
       },
       {
         "name": "InsertTime",
-        "desc": "Insertion time in the format of Unix timestamp. If you do not set this parameter, the background processing time is used."
+        "desc": "Insertion time in the format of Unix timestamp. If this parameter is not configured, the backend processing time is used."
       },
       {
         "name": "Conditions",
-        "desc": "Alarm threshold rule in the policy group."
+        "desc": "Alarm threshold rules in the policy group."
       },
       {
         "name": "EventConditions",
@@ -467,11 +483,11 @@ INFO = {
       },
       {
         "name": "BackEndCall",
-        "desc": "Whether to invoke at the background. Only when the value is 1, the rules in the background pull policy template are filled into the Conditions and EventConditions fields."
+        "desc": "Whether it is a backend call. If the value is 1, rules from the policy template will be used to fill in the `Conditions` and `EventConditions` fields."
       },
       {
         "name": "IsUnionRule",
-        "desc": "The “AND” and “OR” rules for alarm metrics. The value 0 indicates “OR”, which means that an alarm will be reported when any rule is met. The value 1 indicates “AND”, which means that an alarm will be reported only when all rules are met."
+        "desc": "The “AND” and “OR” rules for alarm metrics. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met."
       }
     ],
     "desc": "This API is used to add a policy group."
@@ -488,6 +504,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete all bound objects."
+  },
+  "PutMonitorData": {
+    "params": [
+      {
+        "name": "Metrics",
+        "desc": "A group of metrics and data."
+      },
+      {
+        "name": "AnnounceIp",
+        "desc": "IP address that is automatically specified when monitoring data is reported."
+      },
+      {
+        "name": "AnnounceTimestamp",
+        "desc": "Timestamp that is automatically specified when monitoring data is reported."
+      },
+      {
+        "name": "AnnounceInstance",
+        "desc": "IP address or product instance ID that is automatically specified when monitoring data is reported."
+      }
+    ],
+    "desc": "The default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order."
   },
   "DescribePolicyConditionList": {
     "params": [

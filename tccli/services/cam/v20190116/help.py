@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
 DESC = "cam-2019-01-16"
 INFO = {
+  "SetMfaFlag": {
+    "params": [
+      {
+        "name": "OpUin",
+        "desc": "Sets user UIN"
+      },
+      {
+        "name": "LoginFlag",
+        "desc": "Sets login protection"
+      },
+      {
+        "name": "ActionFlag",
+        "desc": "Sets operation protection"
+      }
+    ],
+    "desc": "This API is used to set account verification for login and sensitive operations for sub-users."
+  },
   "ListUsersForGroup": {
     "params": [
       {
@@ -17,6 +34,28 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of users associated with a user group."
+  },
+  "CreateGroup": {
+    "params": [
+      {
+        "name": "GroupName",
+        "desc": "User Group name"
+      },
+      {
+        "name": "Remark",
+        "desc": "User Group description"
+      }
+    ],
+    "desc": "This API is used to create a user group."
+  },
+  "DeleteServiceLinkedRole": {
+    "params": [
+      {
+        "name": "RoleName",
+        "desc": "Name of the service-linked role to be deleted."
+      }
+    ],
+    "desc": "This API is used to delete a service-linked role."
   },
   "AddUser": {
     "params": [
@@ -58,6 +97,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to add sub-users."
+  },
+  "CreateServiceLinkedRole": {
+    "params": [
+      {
+        "name": "QCSServiceName",
+        "desc": "Authorized service, i.e., Tencent Cloud service entity with this role attached."
+      },
+      {
+        "name": "CustomSuffix",
+        "desc": "Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name."
+      },
+      {
+        "name": "Description",
+        "desc": "Role description."
+      }
+    ],
+    "desc": "This API is used to create a service-linked role."
   },
   "GetSAMLProvider": {
     "params": [
@@ -131,18 +187,18 @@ INFO = {
     ],
     "desc": "This API (DeletePolicy) is used to delete a policy."
   },
-  "CreateGroup": {
+  "DeletePolicyVersion": {
     "params": [
       {
-        "name": "GroupName",
-        "desc": "User Group name"
+        "name": "PolicyId",
+        "desc": "Policy ID"
       },
       {
-        "name": "Remark",
-        "desc": "User Group description"
+        "name": "VersionId",
+        "desc": "Policy version ID"
       }
     ],
-    "desc": "This API is used to create a user group."
+    "desc": "This API is used to delete a policy version of a policy."
   },
   "DetachRolePolicy": {
     "params": [
@@ -174,22 +230,22 @@ INFO = {
     ],
     "desc": "This API (GetPolicy) is used to query and view policy details."
   },
-  "ListAttachedGroupPolicies": {
+  "CreateSAMLProvider": {
     "params": [
       {
-        "name": "TargetGroupId",
-        "desc": "User group ID"
+        "name": "Name",
+        "desc": "SAML identity provider name"
       },
       {
-        "name": "Page",
-        "desc": "Page number, which starts from 1. Default is 1"
+        "name": "Description",
+        "desc": "SAML identity provider description"
       },
       {
-        "name": "Rp",
-        "desc": "Number of entries per page; 20 by default"
+        "name": "SAMLMetadataDocument",
+        "desc": "SAML identity provider metadata document (Base64)"
       }
     ],
-    "desc": "This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group."
+    "desc": "This API is used to create a SAML identity provider."
   },
   "DeleteSAMLProvider": {
     "params": [
@@ -303,22 +359,22 @@ INFO = {
     ],
     "desc": "This API (AttachGroupPolicy) is used to associate a policy with a user group."
   },
-  "CreateSAMLProvider": {
+  "ListAttachedGroupPolicies": {
     "params": [
       {
-        "name": "Name",
-        "desc": "SAML identity provider name"
+        "name": "TargetGroupId",
+        "desc": "User group ID"
       },
       {
-        "name": "Description",
-        "desc": "SAML identity provider description"
+        "name": "Page",
+        "desc": "Page number, which starts from 1. Default is 1"
       },
       {
-        "name": "SAMLMetadataDocument",
-        "desc": "SAML identity provider metadata document (Base64)"
+        "name": "Rp",
+        "desc": "Number of entries per page; 20 by default"
       }
     ],
-    "desc": "This API is used to create a SAML identity provider."
+    "desc": "This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group."
   },
   "ListGroupsForUser": {
     "params": [
@@ -341,6 +397,15 @@ INFO = {
     ],
     "desc": "This API is used to list user groups associated with a user."
   },
+  "GetServiceLinkedRoleDeletionStatus": {
+    "params": [
+      {
+        "name": "DeletionTaskId",
+        "desc": "Deletion task ID"
+      }
+    ],
+    "desc": "This API is used to get the status of the service-linked role deletion based on the `TaskId`"
+  },
   "ConsumeCustomMFAToken": {
     "params": [
       {
@@ -358,6 +423,32 @@ INFO = {
       }
     ],
     "desc": "This API is used to query user group details."
+  },
+  "GetPolicyVersion": {
+    "params": [
+      {
+        "name": "PolicyId",
+        "desc": "Policy ID"
+      },
+      {
+        "name": "VersionId",
+        "desc": "Policy version ID"
+      }
+    ],
+    "desc": "This API is used to query policy version details."
+  },
+  "SetDefaultPolicyVersion": {
+    "params": [
+      {
+        "name": "PolicyId",
+        "desc": "Policy ID"
+      },
+      {
+        "name": "VersionId",
+        "desc": "Policy version ID"
+      }
+    ],
+    "desc": "This API is used to set the operative policy version."
   },
   "DeleteUser": {
     "params": [
@@ -406,7 +497,7 @@ INFO = {
       },
       {
         "name": "PolicyName",
-        "desc": "Policy name"
+        "desc": "Policy Name"
       },
       {
         "name": "Description",
@@ -414,10 +505,35 @@ INFO = {
       },
       {
         "name": "PolicyDocument",
-        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API"
+        "desc": "Policy documentation, for example: `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://cloud.tencent.com/document/product/598/36221)."
+      },
+      {
+        "name": "Alias",
+        "desc": "Preset policy remark"
       }
     ],
-    "desc": "This API (UpdatePolicy) is used to update a policy."
+    "desc": "This API is used to update a policy.\nThis API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created."
+  },
+  "ListEntitiesForPolicy": {
+    "params": [
+      {
+        "name": "PolicyId",
+        "desc": "Policy ID"
+      },
+      {
+        "name": "Page",
+        "desc": "Page number, which starts from 1. Default is 1"
+      },
+      {
+        "name": "Rp",
+        "desc": "Number of entries per page; 20 by default"
+      },
+      {
+        "name": "EntityFilter",
+        "desc": "Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value."
+      }
+    ],
+    "desc": "This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy."
   },
   "GetRole": {
     "params": [
@@ -482,6 +598,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of user groups."
+  },
+  "CreatePolicyVersion": {
+    "params": [
+      {
+        "name": "PolicyId",
+        "desc": "Policy ID"
+      },
+      {
+        "name": "PolicyDocument",
+        "desc": "The policy document to use as the content for the new version"
+      },
+      {
+        "name": "SetAsDefault",
+        "desc": "Specifies whether to set this version as the default version"
+      }
+    ],
+    "desc": "This API is used to add a policy version. After creating a policy version, you can easily change the policy by changing the policy version."
   },
   "ListCollaborators": {
     "params": [
@@ -560,26 +693,14 @@ INFO = {
     ],
     "desc": "This API (AttachUserPolicy) is used to associates a policy with a user."
   },
-  "ListEntitiesForPolicy": {
+  "ListPolicyVersions": {
     "params": [
       {
         "name": "PolicyId",
         "desc": "Policy ID"
-      },
-      {
-        "name": "Page",
-        "desc": "Page number, which starts from 1. Default is 1"
-      },
-      {
-        "name": "Rp",
-        "desc": "Number of entries per page; 20 by default"
-      },
-      {
-        "name": "EntityFilter",
-        "desc": "Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value."
       }
     ],
-    "desc": "This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy."
+    "desc": "This API is used to get the list of policy versions."
   },
   "UpdateGroup": {
     "params": [
@@ -677,6 +798,6 @@ INFO = {
         "desc": "Filter by policy name"
       }
     ],
-    "desc": "This API (ListPolicies) is used to query the list of policies."
+    "desc": "This API is used to query the policy list."
   }
 }

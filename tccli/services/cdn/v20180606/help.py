@@ -39,7 +39,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)"
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
@@ -314,7 +314,7 @@ INFO = {
     "params": [
       {
         "name": "Offset",
-        "desc": "Offset for paginated queries. Default value: 0 (the first page)."
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
@@ -398,7 +398,7 @@ INFO = {
       },
       {
         "name": "Metric",
-        "desc": "Objects to be sorted. Valid values:\n`url`: sorts access URLs with query string parameters included. Supported filters are `flux` and `request`.\n`path`: sorts access URLs with query string parameters excluded. Supported filters are `flux` and `request`. You need to be whitelisted before using this feature.\n`district`: sorts provinces or countries/regions. Supported filters are `flux` and `request`.\n`isp`: sorts ISPs. Supported filters are `flux` and `request`.\n`host`: sorts domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, `2XX`, `3XX`, `4XX`, `5XX` and `statusCode`.\n`originHost`: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `oringin_4XX`, `origin_5XX` and `OriginStatusCode`"
+        "desc": "Object representing the sort criteria. The following objects are supported:\nurl: sorts by access URL (including the query string). Supported filters are `flux` and `request`\npath: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (whitelist-based feature)\ndistrict: sorts by district. Supported filters are `flux` and `request`\nisp: sorts by ISP. Supported filters are `flux` and `request`\nhost: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`\noriginHost: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `origin_4XX`, `origin_5XX`, and `OriginStatusCode`"
       },
       {
         "name": "Filter",
@@ -414,7 +414,7 @@ INFO = {
       },
       {
         "name": "Detail",
-        "desc": "Default value: `false`, indicating that results for all domain names are returned together when you query multiple domain names.\nIf `Metric` is `Url`, `Path`, `District`, or `Isp` and `Filter` is `flux` or `request`, you can set this parameter to `true`, indicating that results for each domain name are returned."
+        "desc": "Default is `false` for multi–domain name queries, which returns sorted results of all domain names. \nIf `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain."
       },
       {
         "name": "Code",
@@ -426,7 +426,7 @@ INFO = {
       },
       {
         "name": "AreaType",
-        "desc": "Specifies a region type for the query. If it is left blank, data on the service region will be queried. This parameter is only valid when `Area` is `overseas` and `Metric` is `District` or `Host`.\n`server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;\n`client`: specifies to query data on the client region where the request devices are located; if `Metric` is `Host`, supported filters are `flux`, `request`, and `bandwidth`."
+        "desc": "The region type can be specified only when you query CDN data outside Mainland China and `Metric` is `district` or `host`; if you leave it empty, data of the service region will be queried (only applicable when `Area` is `overseas` and `Metric` is `district` or `host`)\nserver: specifies to query data of service region (where a CDN node is located)\nclient: specifies to query data of the client region (where a user request device is located). If `Metric` is `host`, `Filter` can only be `flux`, `request`, or `bandwidth`"
       }
     ],
     "desc": "This API is used to list data sorted the following ways by using different combinations of the Metric and Filter input parameters:\n\n+ It sorts access URLs by total traffic and total requests, and returns the top 1,000 URLs in descending order.\n+ It sorts client districts by total traffic and total requests, and returns the list of districts in descending order.\n+ It sorts client ISPs by total traffic and total requests, and returns the list of ISPs in descending order.\n+ It sorts domain names by total traffic, peak bandwidth, total requests, average hit rate, and 2XX/3XX/4XX/5XX status codes, and returns the list of domain names in descending order.\n+ It sorts domain names by total origin-pull traffic, peak origin-pull bandwidth, total origin-pull requests, average origin-pull failure rate, and 2XX/3XX/4XX/5XX origin-pull status codes, and returns the list of domain names in descending order.\n\nNote: only data from the last 90 days will be queried."
@@ -494,7 +494,7 @@ INFO = {
     "params": [
       {
         "name": "Offset",
-        "desc": "Offset for paginated queries. Default value: 0 (the first page)."
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
@@ -657,7 +657,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)"
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
@@ -666,6 +666,10 @@ INFO = {
       {
         "name": "Area",
         "desc": "Specifies a region for the query.\n`mainland`: specifies to return the download link of logs on acceleration within Mainland China;\n`overseas`: specifies to return the download link of logs on acceleration outside Mainland China;\n`global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.\nDefault value: `mainland`."
+      },
+      {
+        "name": "LogType",
+        "desc": "The type of log to be downloaded.\naccess: access logs"
       }
     ],
     "desc": "This API is used to query the download link of an access log. You can use this API for access logs in the last 30 days either within or outside Mainland China."
@@ -801,7 +805,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)"
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
@@ -847,7 +851,7 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset for paged queries. Default value: 0 (the first page)"
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
