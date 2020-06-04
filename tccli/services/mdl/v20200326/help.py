@@ -14,6 +14,23 @@ INFO = {
     ],
     "desc": "This API is used to create an input security group. Up to 5 ones can be created."
   },
+  "DescribeMediaLiveChannelOutputStatistics": {
+    "params": [
+      {
+        "name": "ChannelId",
+        "desc": "Channel ID."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      },
+      {
+        "name": "EndTime",
+        "desc": "Statistics end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      }
+    ],
+    "desc": "This API is used to query the output statistics of a channel."
+  },
   "DeleteMediaLiveInput": {
     "params": [
       {
@@ -82,14 +99,14 @@ INFO = {
     ],
     "desc": "This API is used to create a media channel."
   },
-  "DescribeMediaLiveInput": {
+  "DescribeMediaLiveChannelAlerts": {
     "params": [
       {
-        "name": "Id",
-        "desc": "Media input ID."
+        "name": "ChannelId",
+        "desc": "Channel ID."
       }
     ],
-    "desc": "This API is used to query a media input."
+    "desc": "This API is used to query the channel alarm information."
   },
   "DescribeMediaLiveChannel": {
     "params": [
@@ -185,6 +202,23 @@ INFO = {
     ],
     "desc": "This API is used to delete a MediaLive channel."
   },
+  "DescribeMediaLiveChannelInputStatistics": {
+    "params": [
+      {
+        "name": "ChannelId",
+        "desc": "Channel ID."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      },
+      {
+        "name": "EndTime",
+        "desc": "Statistics end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      }
+    ],
+    "desc": "This API is used to query the input statistics."
+  },
   "DescribeMediaLiveChannels": {
     "params": [],
     "desc": "This API is used to query the information of MediaLive channels in batches."
@@ -197,6 +231,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to query an input security group."
+  },
+  "DescribeMediaLiveInput": {
+    "params": [
+      {
+        "name": "Id",
+        "desc": "Media input ID."
+      }
+    ],
+    "desc": "This API is used to query a media input."
   },
   "StopMediaLiveChannel": {
     "params": [

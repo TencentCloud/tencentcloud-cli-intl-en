@@ -52,6 +52,41 @@ def doCreateMediaLiveInputSecurityGroup(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeMediaLiveChannelOutputStatistics(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeMediaLiveChannelOutputStatistics", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ChannelId": argv.get("--ChannelId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeMediaLiveChannelOutputStatisticsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeMediaLiveChannelOutputStatistics(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteMediaLiveInput(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -222,14 +257,14 @@ def doCreateMediaLiveChannel(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveInput(argv, arglist):
+def doDescribeMediaLiveChannelAlerts(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeMediaLiveInput", g_param[OptionsDefine.Version])
+        show_help("DescribeMediaLiveChannelAlerts", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Id": argv.get("--Id"),
+        "ChannelId": argv.get("--ChannelId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -243,9 +278,9 @@ def doDescribeMediaLiveInput(argv, arglist):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveInputRequest()
+    model = models.DescribeMediaLiveChannelAlertsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeMediaLiveInput(model)
+    rsp = client.DescribeMediaLiveChannelAlerts(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -463,6 +498,41 @@ def doDeleteMediaLiveChannel(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeMediaLiveChannelInputStatistics(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeMediaLiveChannelInputStatistics", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ChannelId": argv.get("--ChannelId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeMediaLiveChannelInputStatisticsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeMediaLiveChannelInputStatistics(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeMediaLiveChannels(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -561,6 +631,39 @@ def doStopMediaLiveChannel(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeMediaLiveInput(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeMediaLiveInput", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Id": argv.get("--Id"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeMediaLiveInputRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeMediaLiveInput(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeMediaLiveInputSecurityGroups(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -605,21 +708,24 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "CreateMediaLiveInputSecurityGroup": doCreateMediaLiveInputSecurityGroup,
+    "DescribeMediaLiveChannelOutputStatistics": doDescribeMediaLiveChannelOutputStatistics,
     "DeleteMediaLiveInput": doDeleteMediaLiveInput,
     "ModifyMediaLiveInput": doModifyMediaLiveInput,
     "DescribeMediaLiveInputs": doDescribeMediaLiveInputs,
     "DescribeMediaLiveInputSecurityGroup": doDescribeMediaLiveInputSecurityGroup,
     "CreateMediaLiveChannel": doCreateMediaLiveChannel,
-    "DescribeMediaLiveInput": doDescribeMediaLiveInput,
+    "DescribeMediaLiveChannelAlerts": doDescribeMediaLiveChannelAlerts,
     "DescribeMediaLiveChannel": doDescribeMediaLiveChannel,
     "StartMediaLiveChannel": doStartMediaLiveChannel,
     "CreateMediaLiveInput": doCreateMediaLiveInput,
     "ModifyMediaLiveInputSecurityGroup": doModifyMediaLiveInputSecurityGroup,
     "ModifyMediaLiveChannel": doModifyMediaLiveChannel,
     "DeleteMediaLiveChannel": doDeleteMediaLiveChannel,
+    "DescribeMediaLiveChannelInputStatistics": doDescribeMediaLiveChannelInputStatistics,
     "DescribeMediaLiveChannels": doDescribeMediaLiveChannels,
     "DeleteMediaLiveInputSecurityGroup": doDeleteMediaLiveInputSecurityGroup,
     "StopMediaLiveChannel": doStopMediaLiveChannel,
+    "DescribeMediaLiveInput": doDescribeMediaLiveInput,
     "DescribeMediaLiveInputSecurityGroups": doDescribeMediaLiveInputSecurityGroups,
 
 }
