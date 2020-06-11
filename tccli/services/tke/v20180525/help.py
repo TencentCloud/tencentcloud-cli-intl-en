@@ -43,7 +43,16 @@ INFO = {
     "desc": "This API is used to get image information."
   },
   "DeleteClusterEndpoint": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "IsExtranet",
+        "desc": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE)."
+      }
+    ],
     "desc": "Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
   "CreateClusterInstances": {
@@ -85,7 +94,20 @@ INFO = {
     "desc": "This API is used to modify cluster attributes."
   },
   "DeleteClusterAsGroups": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "The cluster ID, obtained through the [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) API."
+      },
+      {
+        "name": "AutoScalingGroupIds",
+        "desc": "Cluster scaling group ID list"
+      },
+      {
+        "name": "KeepInstance",
+        "desc": "Whether to keep nodes in the scaling group. Default to **false** (not keep)"
+      }
+    ],
     "desc": "Delete a cluster scaling group"
   },
   "DeleteClusterRoute": {
@@ -106,7 +128,12 @@ INFO = {
     "desc": "This API is used to delete a cluster route."
   },
   "DescribeClusterEndpointVipStatus": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      }
+    ],
     "desc": "Query cluster open port process status (only supports external ports of the managed cluster)"
   },
   "DeleteCluster": {
@@ -127,7 +154,28 @@ INFO = {
     "desc": "This API is used to delete a cluster. (Cloud API v3)."
   },
   "CreateClusterAsGroup": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "AutoScalingGroupPara",
+        "desc": "The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry."
+      },
+      {
+        "name": "LaunchConfigurePara",
+        "desc": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it’s set through the **UserScript**."
+      },
+      {
+        "name": "InstanceAdvancedSettings",
+        "desc": "Advanced configuration information of the node"
+      },
+      {
+        "name": "Labels",
+        "desc": "Node label array"
+      }
+    ],
     "desc": "Create a scaling group for an existing cluster"
   },
   "DescribeExistedInstances": {
@@ -210,11 +258,33 @@ INFO = {
     "desc": "This API is used to query clusters list."
   },
   "DescribeClusterEndpointStatus": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "IsExtranet",
+        "desc": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE)."
+      }
+    ],
     "desc": "Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
   "CreateClusterEndpoint": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "SubnetId",
+        "desc": "The ID of the subnet where the cluster’s port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster’s VPC). "
+      },
+      {
+        "name": "IsExtranet",
+        "desc": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE)."
+      }
+    ],
     "desc": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
   "DescribeRegions": {
@@ -302,7 +372,12 @@ INFO = {
     "desc": " This API is used to query information of one or more instances in a cluster. "
   },
   "DeleteClusterEndpointVip": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      }
+    ],
     "desc": "Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)"
   },
   "DeleteClusterInstances": {
@@ -327,11 +402,29 @@ INFO = {
     "desc": "This API is used to delete one or more nodes from a cluster."
   },
   "ModifyClusterEndpointSP": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "SecurityPolicies",
+        "desc": "Security policy opens single IP or CIDR block to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default)."
+      }
+    ],
     "desc": "Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)"
   },
   "CreateClusterEndpointVip": {
-    "params": [],
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "SecurityPolicies",
+        "desc": "Security policy opens single IP or CIDR to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default)."
+      }
+    ],
     "desc": "Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)"
   },
   "DeleteClusterRouteTable": {

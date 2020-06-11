@@ -97,6 +97,8 @@ def doDeleteClusterEndpoint(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "IsExtranet": Utils.try_to_json(argv, "--IsExtranet"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -200,6 +202,9 @@ def doDeleteClusterAsGroups(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "AutoScalingGroupIds": Utils.try_to_json(argv, "--AutoScalingGroupIds"),
+        "KeepInstance": Utils.try_to_json(argv, "--KeepInstance"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -267,6 +272,7 @@ def doDescribeClusterEndpointVipStatus(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -334,6 +340,11 @@ def doCreateClusterAsGroup(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "AutoScalingGroupPara": argv.get("--AutoScalingGroupPara"),
+        "LaunchConfigurePara": argv.get("--LaunchConfigurePara"),
+        "InstanceAdvancedSettings": Utils.try_to_json(argv, "--InstanceAdvancedSettings"),
+        "Labels": Utils.try_to_json(argv, "--Labels"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -509,6 +520,8 @@ def doDescribeClusterEndpointStatus(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "IsExtranet": Utils.try_to_json(argv, "--IsExtranet"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -541,6 +554,9 @@ def doCreateClusterEndpoint(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "SubnetId": argv.get("--SubnetId"),
+        "IsExtranet": Utils.try_to_json(argv, "--IsExtranet"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -748,6 +764,7 @@ def doDeleteClusterEndpointVip(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -816,6 +833,8 @@ def doModifyClusterEndpointSP(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "SecurityPolicies": Utils.try_to_json(argv, "--SecurityPolicies"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -848,6 +867,8 @@ def doCreateClusterEndpointVip(argv, arglist):
         return
 
     param = {
+        "ClusterId": argv.get("--ClusterId"),
+        "SecurityPolicies": Utils.try_to_json(argv, "--SecurityPolicies"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

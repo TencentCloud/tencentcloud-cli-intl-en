@@ -9,7 +9,7 @@ INFO = {
       },
       {
         "name": "InstanceId",
-        "desc": "The ID of the instance used to create an image"
+        "desc": "Instance ID used to create an image."
       },
       {
         "name": "ImageDescription",
@@ -25,15 +25,15 @@ INFO = {
       },
       {
         "name": "DataDiskIds",
-        "desc": "The ID of the data disk used to create an image"
+        "desc": "Specified data disk ID included in the full image created from the instance."
       },
       {
         "name": "SnapshotIds",
-        "desc": "The ID of the snapshot used to create an image. A system disk snapshot must be included."
+        "desc": "Specified snapshot ID used to create an image. A system disk snapshot must be included. It cannot be passed together with `InstanceId`."
       },
       {
         "name": "DryRun",
-        "desc": "Verifies the validity of the request without affecting the resources involved."
+        "desc": "Success status of this request, without affecting the resources involved"
       }
     ],
     "desc": "This API is used to create a new image with the system disk of an instance. The image can be used to create new instances."
@@ -42,7 +42,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s) in the format of `ins-xxxxxxxx`. For more information on the format of this parameter, see the `id.N` section of [API Introduction](https://cloud.tencent.com/document/api/213/15688). The maximum number of instances in each request is 100."
+        "desc": "Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://cloud.tencent.com/document/api/213/15688). You can query up to 100 instances in each request."
       },
       {
         "name": "Offset",
@@ -162,7 +162,7 @@ INFO = {
       },
       {
         "name": "InstanceName",
-        "desc": "Instance name to be displayed. <br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`."
+        "desc": "Instance name to be displayed.<br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings)."
       },
       {
         "name": "LoginSettings",
@@ -343,7 +343,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s) in the format of `ins-xxxxxxxx`. For more information on the format of this parameter, see the `id.N` section of [API Introduction](https://cloud.tencent.com/document/api/213/15688). The maximum number of instances in each request is 100. You cannot specify `InstanceIds` and `Filters` at the same time."
+        "desc": "Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://cloud.tencent.com/document/api/213/15688). You can query up to 100 instances in each request. However, `InstanceIds` and `Filters` cannot be specified at the same time."
       },
       {
         "name": "Filters",
@@ -438,7 +438,7 @@ INFO = {
       },
       {
         "name": "InstanceName",
-        "desc": "Instance name to be displayed. <br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`."
+        "desc": "Instance name to be displayed.<br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings)."
       },
       {
         "name": "LoginSettings",
@@ -571,47 +571,39 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Login password of the instance(s). The password requirements vary among different operating systems:\nFor a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with \"/\", and must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/:\nFor a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with \"/\" or contain your username. It must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/:<br><li>If the specified instances include both `Linux` and `Windows` instances, you will need to follow the password requirements for `Windows` instances."
+        "desc": "Login password of the instance. The rule of password complexity varies with operating systems:\nFor a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with \"/\", and must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/\nFor a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with \"/\" or contain your username. It must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<li>If the specified instances include both `Linux` and `Windows` instances, you need to follow the password requirements for `Windows` instances."
       },
       {
         "name": "UserName",
-        "desc": "Operating system username of the instance for which you want to reset the password. The length of the username cannot exceed 64 characters."
+        "desc": "Username of the instance operating system for which the password needs to be reset. This parameter is limited to 64 characters."
       },
       {
         "name": "ForceStop",
         "desc": "Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally."
       }
     ],
-    "desc": "This API is used to reset the password of the instance OS to a user-specified password.\n\n* You can only use this API to modify the password of the administrator account. The name of the administrator account varies depending on the operating system. On Windows, it is `Administrator`; `Ubuntu`, `ubuntu`; `Linux`, `root`.)\n* To reset the password of a running instance, you need to explicitly specify the force shutdown parameter `ForceStop`. Otherwise, you can only reset passwords of instances that have been shut down.\n* Batch operations are supported. You can reset the passwords of multiple instances to the same one. The maximum number of instances in each request is 100."
+    "desc": "This API is used to reset the password of the operating system instances to a user-specified password.\n\n* To modify the password of the administrator account: the name of the administrator account varies with the operating system. In Windows, it is `Administrator`; in Ubuntu, it is `ubuntu`; in Linux, it is `root`.\n* To reset the password of a running instance, you need to set the parameter `ForceStop` to `True` for a forced shutdown. If not, only passwords of stopped instances can be reset.\n* Batch operations are supported. You can reset the passwords of up to 100 instances to the same value once.\n* You can call the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful."
   },
-  "ResetInstance": {
+  "PurchaseReservedInstancesOffering": {
     "params": [
       {
-        "name": "InstanceId",
-        "desc": "Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response."
+        "name": "InstanceCount",
+        "desc": "The number of the Reserved Instance you are purchasing."
       },
       {
-        "name": "ImageId",
-        "desc": "[Image](/document/product/213/4940) ID in the format of `img-xxx`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information; for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://cloud.tencent.com/document/api/213/15715) and look for `ImageId` in the response.</li>\n<br>The current image will be used by default."
+        "name": "ReservedInstancesOfferingId",
+        "desc": "The ID of the Reserved Instance."
       },
       {
-        "name": "SystemDisk",
-        "desc": "Configuration of the system disk of the instance. For instances with a cloud disk as the system disk, you can expand the system disk by using this parameter to specify the new capacity after reinstallation. If the parameter is not specified, the system disk capacity remains unchanged by default. You can only expand the capacity of the system disk; reducing its capacity is not supported. When reinstalling the system, you can only modify the capacity of the system disk, not the type."
+        "name": "DryRun",
+        "desc": "Dry run"
       },
       {
-        "name": "LoginSettings",
-        "desc": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center."
-      },
-      {
-        "name": "EnhancedService",
-        "desc": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default."
-      },
-      {
-        "name": "HostName",
-        "desc": "You can use this parameter to specify a new HostName for the instance when reinstalling the system."
+        "name": "ClientToken",
+        "desc": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency."
       }
     ],
-    "desc": "This API is used to reinstall the operating system of the specified instance.\n\n* If you specify an `ImageId`, the specified image is used. Otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* If the operating system switches between `Linux` and `Windows`, the system disk `ID` of the instance will change, and the snapshots that are associated with the system disk can no longer be used to roll back and restore data.\n* If no password is specified, you will get a random password via internal message.\n* You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://cloud.tencent.com/document/api/213/9452#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, this API only supports instances in Mainland China regions."
+    "desc": "This API is used to purchase one or more specific Reserved Instances."
   },
   "ResizeInstanceDisks": {
     "params": [
@@ -667,7 +659,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "ID(s) of the instance(s) to be associated，such as `ins-lesecurk`. You can specify multiple instances."
+        "desc": "ID of the instance bound in the format of ins-lesecurk. You can specify up to 100 instances in each request."
       }
     ],
     "desc": "This API is used to associate security groups with specified instances."
@@ -676,7 +668,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 1."
+        "desc": "Instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API. The maximum number of instances for each request is 1."
       },
       {
         "name": "InstanceType",
@@ -684,7 +676,7 @@ INFO = {
       },
       {
         "name": "ForceStop",
-        "desc": "Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally."
+        "desc": "Forced shutdown of a running instances. We recommend you firstly try to shut down a running instance manually. Valid values: <br><li>TRUE: forced shutdown of an instance after a normal shutdown fails.<br><li>FALSE: no forced shutdown of an instance after a normal shutdown fails.<br><br>Default value: FALSE.<br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force a CVM to shut off if the normal shutdown fails."
       }
     ],
     "desc": "This API is used to change the model of an instance.\n* You can only use this API to change the models of instances whose [system disk type](/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, you cannot use this API to change the models of [CDH](https://cloud.tencent.com/document/product/416) instances."
@@ -710,7 +702,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s). To obtain the instance IDs, you can call [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The instance ID format is `ins-xxxxxxxx`. For more information on the format of this parameter, see the `id.N` section of [API Introduction](https://cloud.tencent.com/document/api/213/15688)). The maximum number of instance IDs in each request is 100."
+        "desc": "Query by instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API. For example, instance ID: ins-xxxxxxxx. (For the specific format, refer to section `ids.N` of the API [Introduction](https://cloud.tencent.com/document/api/213/15688).) You can query up to 100 instances in each request."
       },
       {
         "name": "Operation",
@@ -723,11 +715,11 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 1."
+        "desc": "Instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API. The maximum number of instances in each request is 1."
       },
       {
         "name": "InstanceType",
-        "desc": "Instance model. Different resource specifications are specified for different models. For specific values, see the instance resource specification table. You can also obtain the latest specification list by calling the API for querying the list of instance resource specifications."
+        "desc": "Instance model. Resources vary with the instance model. Specific values can be found in the tables of [Instance Types] (https://cloud.tencent.com/document/product/213/11518) or in the latest specifications via the [DescribeInstanceTypeConfigs] (https://cloud.tencent.com/document/product/213/15749) API."
       }
     ],
     "desc": "This API is used to query the price for adjusting the instance model.\n\n* Currently, you can only use this API to query the prices of instances whose [system disk type](https://cloud.tencent.com/document/api/213/9452#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, you cannot use this API to query the prices of [CDH](https://cloud.tencent.com/document/product/416) instances."
@@ -766,6 +758,10 @@ INFO = {
       {
         "name": "RenewFlag",
         "desc": "Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient."
+      },
+      {
+        "name": "ProjectId",
+        "desc": "Project ID. You can create a project by using the [AddProject](https://cloud.tencent.com/doc/api/403/4398) API and obtain its ID from the response parameter `projectId` of the [`DescribeProject`](https://cloud.tencent.com/document/product/378/4400) API. Subsequently, the project ID can be used to filter results when you query instances by calling the [DescribeHosts](https://cloud.tencent.com/document/api/213/16474) API."
       }
     ],
     "desc": "This API is used to modify the attributes of a CDH instance, such as instance name and renewal flag. One of the two parameters, HostName and RenewFlag, must be set, but you cannot set both of them at the same time."
@@ -781,7 +777,36 @@ INFO = {
         "desc": "Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response."
       }
     ],
-    "desc": "This API is used to query the VNC URL of an instance.\n\n* It does not support `STOPPED` CVMs.\n* A VNC URL is only valid for 15 sec. If you do not access the URL within 15 seconds, it will become invalid and you will have to query another one.\n* Once you access a VNC URL, it will become invalid and you will have to query another one.\n* If the connection breaks up, you can make up to 30 requests per minute to reestablish the connection.\n* After you get the value of `InstanceVncUrl`, you need to append `InstanceVncUrl=xxxx` to the end of the link <https://img.qcloud.com/qcloud/app/active_vnc/index.html?>.\n  - Parameter `InstanceVncUrl`: the value of `InstanceVncUrl` returned after a successful API call.\n\n    The final URLs are in the following format:\n\n```\nhttps://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9\n```\n"
+    "desc": "This API is used to query the Virtual Network Console (VNC) URL of an instance for its login to the VNC.\n\n* It does not support `STOPPED` CVMs.\n* A VNC URL is only valid for 15 seconds. If you do not access the URL within 15 seconds, it will become invalid and you have to query a URL again.\n* Once the VNC URL is accessed, it will become invalid and you have to query a URL again if needed.\n* If the connection is interrupted, you can make up to 30 reconnection attempts per minute.\n* After getting the value `InstanceVncUrl`, you need to append `InstanceVncUrl=xxxx` to the end of the link <https://img.qcloud.com/qcloud/app/active_vnc/index.html?>.\n\n  - `InstanceVncUrl`: its value will be returned after the API is successfully called.\n\n    The final URL is in the following format:\n\n```\nhttps://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9\n```\n"
+  },
+  "ResetInstance": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response."
+      },
+      {
+        "name": "ImageId",
+        "desc": "Specified effective [image](https://cloud.tencent.com/document/product/213/4940) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways:<br/><li>for IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE); for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list).</li><li>Call the API [DescribeImages](https://cloud.tencent.com/document/api/213/15715) and look for `ImageId` in the response.</li>\n<br>Default value: current image."
+      },
+      {
+        "name": "SystemDisk",
+        "desc": "System disk configurations in the instance. For instances with a cloud disk as the system disk, you can expand the capacity of the system disk to the specified value after re-installation by using this parameter. If the parameter is not specified, lower system disk capacity will be automatically expanded to the image size, and extra disk costs are generated. You can only expand but cannot reduce the system disk capacity. By re-installing the system, you only modify the system disk capacity, but not the type."
+      },
+      {
+        "name": "LoginSettings",
+        "desc": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center."
+      },
+      {
+        "name": "EnhancedService",
+        "desc": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default."
+      },
+      {
+        "name": "HostName",
+        "desc": "Host name of the CVM, editable during the system reinstallation. <br><li>Periods (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name.<br><li>For Windows instances, the host name must consist of 2-15 characters , including uppercase and lowercase letters, numbers, or hyphens (-). It cannot contain periods (.) or contain only numbers.<br><li>For other instances, such as Linux instances, the host name must consist of 2-60 characters, including multiple periods (.), and allows uppercase and lowercase letters, numbers, or hyphens (-) between any two periods (.)."
+      }
+    ],
+    "desc": "This API is used to reinstall the operating system of the specified instance.\n\n* If you specify an `ImageId`, the specified image is used. Otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* If the operating system switches between `Linux` and `Windows`, the system disk `ID` of the instance will change, and the snapshots that are associated with the system disk can no longer be used to roll back and restore data.\n* If no password is specified, you will get a random password via internal message.\n* You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://cloud.tencent.com/document/api/213/9452#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, this API only supports instances in Mainland China regions."
   },
   "SyncImages": {
     "params": [
@@ -800,7 +825,7 @@ INFO = {
     "params": [
       {
         "name": "DisasterRecoverGroupIds",
-        "desc": "List of spread placement group IDs, which can be obtained by calling the [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810) API."
+        "desc": "ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810) API. You can operate up to 100 spread placement groups in each request."
       }
     ],
     "desc": "This API is used to delete a [spread placement group](https://cloud.tencent.com/document/product/213/15486). Only empty placement groups can be deleted. To delete a non-empty group, you need to terminate all the CVM instances in it first. Otherwise, the deletion will fail."
@@ -857,7 +882,7 @@ INFO = {
     "params": [
       {
         "name": "DisasterRecoverGroupIds",
-        "desc": "List of spread placement group IDs."
+        "desc": "ID list of spread placement groups. You can operate up to 100 spread placement groups in each request."
       },
       {
         "name": "Name",
@@ -895,11 +920,40 @@ INFO = {
     ],
     "desc": "This API is used to query key pairs.\n\n* A key pair is a pair of keys generated by an algorithm in which the public key is available to the public and the private key is available only to the user. You can use this API to query the public key but not the private key."
   },
+  "DescribeReservedInstancesOfferings": {
+    "params": [
+      {
+        "name": "DryRun",
+        "desc": "Dry run. Default value: false."
+      },
+      {
+        "name": "Offset",
+        "desc": "The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://cloud.tencent.com/document/api/213/15688)."
+      },
+      {
+        "name": "Limit",
+        "desc": "The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://cloud.tencent.com/document/api/213/15688)."
+      },
+      {
+        "name": "MaxDuration",
+        "desc": "The maximum duration as a filter, \nin seconds.\nDefault value: 94608000."
+      },
+      {
+        "name": "MinDuration",
+        "desc": "The minimum duration as a filter, \nin seconds.\nDefault value: 2592000."
+      },
+      {
+        "name": "Filters",
+        "desc": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the **<strong>availability zones</strong>** in which the Reserved Instances can be purchased, such as ap-guangzhou-1.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://cloud.tencent.com/document/product/213/6091\">Availability Zones</a></p>\n<li><strong>duration</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the **<strong>duration</strong>** of the Reserved Instance, in seconds. For example, 31536000.</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Unit: second</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>\n<li><strong>instance-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>type of the Reserved Instance</strong>**, such as S3.MEDIUM4..</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://cloud.tencent.com/document/product/213/11518\">Instance Types</a></p>\n<li><strong>offering-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>payment term</strong>**, such as All Upfront.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: All Upfront</p>\n<li><strong>product-description</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the **<strong>platform description </strong>** (operating system) of the Reserved Instance, such as linux.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: linux</p>\n<li><strong>reserved-instances-offering-id</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>Reserved Instance ID</strong>, in the form of 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style=\"padding-left: 30px;\">Type: StringString</p><p style=\"padding-left: 30px;\">Required: no</p>\nEach request can have up to 10 `Filters` and 5 `Filter.Values`."
+      }
+    ],
+    "desc": "This API is used to describe Reserved Instance offerings that are available for purchase."
+  },
   "DescribeHosts": {
     "params": [
       {
         "name": "Filters",
-        "desc": "Filters.\n<li> `zone` - String - Optional - Filter results by availability zone.</li>\n<li> `project-id` - Integer - Optional - Filter results by project ID. You can call `DescribeProject` or log in to the console to view the list of existing projects. You can also create a new project by calling `AddProject`.</li>\n<li> `host-id` - String - Optional - Filter results by CDH ID. CDH IDs are in the format of `host-11112222`.</li>\n<li> `host-name` - String - Optional - Filter results by CDH instance name.</li>\n<li> `host-state` - String - Optional - Filter results by CDH instance state. (PENDING: creating | LAUNCH_FAILURE: creation failed | RUNNING: running | EXPIRED: expired)</li>"
+        "desc": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>availability zones</strong>**. For example, availability zone: ap-guangzhou-1;</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://cloud.tencent.com/document/product/213/6091\">list of availability zones</a></p>\n<li><strong>project-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>project ID</strong>**. You can query the existing project list through the [DescribeProject](https://cloud.tencent.com/document/api/378/4400) API or [CVM console](https://console.cloud.tencent.com/cvm/index), or create a project by calling the [AddProject](https://cloud.tencent.com/document/api/378/4398) API. For example, project ID: 1002189;</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>host-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>[CDH](https://cloud.tencent.com/document/product/416) ID</strong>**. For example, [CDH](https://cloud.tencent.com/document/product/416) ID: host-xxxxxxxx;</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>CDH instance name</strong>**. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>CDH instance status </strong>**. (PENDING: creating | LAUNCH_FAILURE: creation failed | RUNNING: running | EXPIRED: expired)</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`."
       },
       {
         "name": "Offset",
@@ -933,7 +987,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 100."
+        "desc": "Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. You can operate up to 100 instances in each request."
       },
       {
         "name": "ForceReboot",
@@ -950,23 +1004,23 @@ INFO = {
     "params": [
       {
         "name": "Filters",
-        "desc": "Filters.\n<li> `zone` - String - Optional - Filter results by [availability zone](https://cloud.tencent.com/document/product/213/15753#ZoneInfo).</li>\n<li> `instance-family` - String - Optional - Filter results by instance model family, such as `S1`, `I1`, and `M1`.</li>\nEach request can have up to 10 `Filters` and 1 `Filters.Values`."
+        "desc": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>availability zones</strong>**. For example, availability zone: ap-guangzhou-1.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://cloud.tencent.com/document/product/213/6091\">list of availability zones</a></p>\n<li><strong>instance-family</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>instance models</strong>**. For example, instance models: S1, I1 and M1.</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Required: no</p>\nEach request can have up to 10 `Filters` and 1 `Filters.Values`."
       }
     ],
-    "desc": "This API is used to query the model configuration of an instance.\n\n* You can filter the query results with `zone` or `instance-family`. For more information on filtering conditions, see `Filter`.\n* If no parameter is defined, the model configuration of all the instances in the specified region will be returned."
+    "desc": "This API is used to query the model configuration of an instance.\n\n* You can filter the query results with `zone` or `instance-family`. For more information on filtering conditions, see [`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter).\n* If no parameter is defined, the model configuration of all the instances in the specified region will be returned."
   },
   "ModifyInstancesProject": {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. The maximum number of instances in each request is 100."
+        "desc": "Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) and look for `InstanceId` in the response. You can operate up to 100 instances in each request."
       },
       {
         "name": "ProjectId",
-        "desc": "Project ID. You can create a project by calling [AddProject](https://cloud.tencent.com/doc/api/403/4398). When calling [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) to query instances, the project IDs can be used to filter the results."
+        "desc": "Project ID. You can create a project by using the [AddProject](https://cloud.tencent.com/doc/api/403/4398) API and obtain its ID from the response parameter `projectId` of the [`DescribeProject`](https://cloud.tencent.com/document/product/378/4400) API. Subsequently, the project ID can be used to filter results when you query instances by calling the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API."
       }
     ],
-    "desc": "This API is used to change the project to which an instance belongs.\n\n* Project is a virtual concept. Users can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) to query instances and use the project ID to filter results.\n* You cannot modify the project of an instance which is bound to a load balancer. You need to unbind the load balancer from the instance with [`DeregisterInstancesFromLoadBalancer`](https://cloud.tencent.com/document/api/214/1258) before using this API.\n* If you modify the project of an instance, security groups associated with the instance will be automatically disassociated. You can use [`ModifySecurityGroupsOfInstance`](https://cloud.tencent.com/document/api/213/1367) to associate the instance with certian security groups again.\n* Batch operations are supported. The maximum number of instances in each request is 100."
+    "desc": "This API is used to change the project to which an instance belongs.\n\n* Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API to query instances and use the project ID to filter results.\n* You cannot modify the project of an instance that is bound to a load balancer. You need to firstly unbind the load balancer from the instance by using the [`DeregisterInstancesFromLoadBalancer`](https://cloud.tencent.com/document/api/214/1258) API.\n[^_^]: # (If you modify the project of an instance, security groups associated with the instance will be automatically disassociated. You can use the [`ModifyInstancesAttribute`](https://cloud.tencent.com/document/api/213/15739) API to associate the instance with the security groups again.\n* Batch operations are supported. You can operate up to 100 instances in each request.\n* You can call the [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful."
   },
   "DisassociateSecurityGroups": {
     "params": [
@@ -997,7 +1051,7 @@ INFO = {
       },
       {
         "name": "HostChargeType",
-        "desc": "The billing method of an instance. Currently only `PREPAID` is supported."
+        "desc": "Instance billing model, only monthly or yearly subscription supported. Default value: `PREPAID'."
       },
       {
         "name": "HostType",
@@ -1005,7 +1059,7 @@ INFO = {
       },
       {
         "name": "HostCount",
-        "desc": "The quantity of CDH instances you want to purchase."
+        "desc": "Quantity of CDH instances purchased. Default value: 1."
       },
       {
         "name": "TagSpecification",

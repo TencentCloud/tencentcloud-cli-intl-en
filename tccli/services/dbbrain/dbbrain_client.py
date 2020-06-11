@@ -12,23 +12,22 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.trtc.v20190722 import trtc_client as trtc_client_v20190722
-from tencentcloud.trtc.v20190722 import models as models_v20190722
-from tccli.services.trtc import v20190722
-from tccli.services.trtc.v20190722 import help as v20190722_help
+from tencentcloud.dbbrain.v20191016 import dbbrain_client as dbbrain_client_v20191016
+from tencentcloud.dbbrain.v20191016 import models as models_v20191016
+from tccli.services.dbbrain import v20191016
+from tccli.services.dbbrain.v20191016 import help as v20191016_help
 
 
-def doDescribeRealtimeQuality(argv, arglist):
+def doDescribeDBDiagHistory(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeRealtimeQuality", g_param[OptionsDefine.Version])
+        show_help("DescribeDBDiagHistory", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "SdkAppId": argv.get("--SdkAppId"),
-        "DataType": Utils.try_to_json(argv, "--DataType"),
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -39,12 +38,12 @@ def doDescribeRealtimeQuality(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRealtimeQualityRequest()
+    model = models.DescribeDBDiagHistoryRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRealtimeQuality(model)
+    rsp = client.DescribeDBDiagHistory(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -54,16 +53,16 @@ def doDescribeRealtimeQuality(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeHistoryScale(argv, arglist):
+def doDescribeSlowLogTimeSeriesStats(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeHistoryScale", g_param[OptionsDefine.Version])
+        show_help("DescribeSlowLogTimeSeriesStats", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "SdkAppId": argv.get("--SdkAppId"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -74,12 +73,12 @@ def doDescribeHistoryScale(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeHistoryScaleRequest()
+    model = models.DescribeSlowLogTimeSeriesStatsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeHistoryScale(model)
+    rsp = client.DescribeSlowLogTimeSeriesStats(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -89,17 +88,20 @@ def doDescribeHistoryScale(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRealtimeScale(argv, arglist):
+def doDescribeSlowLogTopSqls(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeRealtimeScale", g_param[OptionsDefine.Version])
+        show_help("DescribeSlowLogTopSqls", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "SdkAppId": argv.get("--SdkAppId"),
-        "DataType": Utils.try_to_json(argv, "--DataType"),
+        "InstanceId": argv.get("--InstanceId"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "SortBy": argv.get("--SortBy"),
+        "OrderBy": argv.get("--OrderBy"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -110,12 +112,12 @@ def doDescribeRealtimeScale(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRealtimeScaleRequest()
+    model = models.DescribeSlowLogTopSqlsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRealtimeScale(model)
+    rsp = client.DescribeSlowLogTopSqls(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -125,17 +127,15 @@ def doDescribeRealtimeScale(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRealtimeNetwork(argv, arglist):
+def doDescribeDBDiagEvent(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeRealtimeNetwork", g_param[OptionsDefine.Version])
+        show_help("DescribeDBDiagEvent", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "SdkAppId": argv.get("--SdkAppId"),
-        "DataType": Utils.try_to_json(argv, "--DataType"),
+        "InstanceId": argv.get("--InstanceId"),
+        "EventId": Utils.try_to_json(argv, "--EventId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -146,157 +146,12 @@ def doDescribeRealtimeNetwork(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRealtimeNetworkRequest()
+    model = models.DescribeDBDiagEventRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRealtimeNetwork(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeRoomInformation(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeRoomInformation", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "SdkAppId": argv.get("--SdkAppId"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "RoomId": argv.get("--RoomId"),
-        "PageNumber": argv.get("--PageNumber"),
-        "PageSize": argv.get("--PageSize"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRoomInformationRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRoomInformation(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doRemoveUser(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("RemoveUser", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "SdkAppId": Utils.try_to_json(argv, "--SdkAppId"),
-        "RoomId": Utils.try_to_json(argv, "--RoomId"),
-        "UserIds": Utils.try_to_json(argv, "--UserIds"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RemoveUserRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.RemoveUser(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeCallDetail(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeCallDetail", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "CommId": argv.get("--CommId"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "EndTime": Utils.try_to_json(argv, "--EndTime"),
-        "SdkAppId": argv.get("--SdkAppId"),
-        "UserIds": Utils.try_to_json(argv, "--UserIds"),
-        "DataType": Utils.try_to_json(argv, "--DataType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeCallDetailRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeCallDetail(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDismissRoom(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DismissRoom", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "SdkAppId": Utils.try_to_json(argv, "--SdkAppId"),
-        "RoomId": Utils.try_to_json(argv, "--RoomId"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TrtcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DismissRoomRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DismissRoom(model)
+    rsp = client.DescribeDBDiagEvent(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -307,38 +162,34 @@ def doDismissRoom(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20190722": trtc_client_v20190722,
+    "v20191016": dbbrain_client_v20191016,
 
 }
 
 MODELS_MAP = {
-    "v20190722": models_v20190722,
+    "v20191016": models_v20191016,
 
 }
 
 ACTION_MAP = {
-    "DescribeRealtimeQuality": doDescribeRealtimeQuality,
-    "DescribeHistoryScale": doDescribeHistoryScale,
-    "DescribeRealtimeScale": doDescribeRealtimeScale,
-    "DescribeRealtimeNetwork": doDescribeRealtimeNetwork,
-    "DescribeRoomInformation": doDescribeRoomInformation,
-    "RemoveUser": doRemoveUser,
-    "DescribeCallDetail": doDescribeCallDetail,
-    "DismissRoom": doDismissRoom,
+    "DescribeDBDiagHistory": doDescribeDBDiagHistory,
+    "DescribeSlowLogTimeSeriesStats": doDescribeSlowLogTimeSeriesStats,
+    "DescribeSlowLogTopSqls": doDescribeSlowLogTopSqls,
+    "DescribeDBDiagEvent": doDescribeDBDiagEvent,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20190722.version,
+    v20191016.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20190722.version.replace('-', ''): {"help": v20190722_help.INFO,"desc": v20190722_help.DESC},
+     'v' + v20191016.version.replace('-', ''): {"help": v20191016_help.INFO,"desc": v20191016_help.DESC},
 
 }
 
 
-def trtc_action(argv, arglist):
+def dbbrain_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -354,7 +205,7 @@ def trtc_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "trtc", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "dbbrain", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -375,7 +226,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("trtc", trtc_action)
+    cmd = NiceCommand("dbbrain", dbbrain_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -440,11 +291,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["trtc"][OptionsDefine.Version]
+            version = config["dbbrain"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["trtc"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["dbbrain"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -461,7 +312,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "trtc", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "dbbrain", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -471,7 +322,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["trtc"]["version"]
+        version = profile["dbbrain"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

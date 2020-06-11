@@ -249,6 +249,7 @@ def doModifyHostsAttribute(argv, arglist):
         "HostIds": Utils.try_to_json(argv, "--HostIds"),
         "HostName": argv.get("--HostName"),
         "RenewFlag": argv.get("--RenewFlag"),
+        "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -986,19 +987,17 @@ def doResetInstancesPassword(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResetInstance(argv, arglist):
+def doPurchaseReservedInstancesOffering(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ResetInstance", g_param[OptionsDefine.Version])
+        show_help("PurchaseReservedInstancesOffering", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "InstanceId": argv.get("--InstanceId"),
-        "ImageId": argv.get("--ImageId"),
-        "SystemDisk": Utils.try_to_json(argv, "--SystemDisk"),
-        "LoginSettings": Utils.try_to_json(argv, "--LoginSettings"),
-        "EnhancedService": Utils.try_to_json(argv, "--EnhancedService"),
-        "HostName": argv.get("--HostName"),
+        "InstanceCount": Utils.try_to_json(argv, "--InstanceCount"),
+        "ReservedInstancesOfferingId": argv.get("--ReservedInstancesOfferingId"),
+        "DryRun": Utils.try_to_json(argv, "--DryRun"),
+        "ClientToken": argv.get("--ClientToken"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1012,9 +1011,9 @@ def doResetInstance(argv, arglist):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResetInstanceRequest()
+    model = models.PurchaseReservedInstancesOfferingRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ResetInstance(model)
+    rsp = client.PurchaseReservedInstancesOffering(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1473,6 +1472,44 @@ def doResetInstancesInternetMaxBandwidth(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doResetInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ResetInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InstanceId": argv.get("--InstanceId"),
+        "ImageId": argv.get("--ImageId"),
+        "SystemDisk": Utils.try_to_json(argv, "--SystemDisk"),
+        "LoginSettings": Utils.try_to_json(argv, "--LoginSettings"),
+        "EnhancedService": Utils.try_to_json(argv, "--EnhancedService"),
+        "HostName": argv.get("--HostName"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ResetInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ResetInstance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doSyncImages(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1787,6 +1824,44 @@ def doDescribeKeyPairs(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeReservedInstancesOfferings(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeReservedInstancesOfferings", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DryRun": Utils.try_to_json(argv, "--DryRun"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "MaxDuration": Utils.try_to_json(argv, "--MaxDuration"),
+        "MinDuration": Utils.try_to_json(argv, "--MinDuration"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeReservedInstancesOfferingsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeReservedInstancesOfferings(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeHosts(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -2033,7 +2108,7 @@ ACTION_MAP = {
     "InquiryPriceResetInstance": doInquiryPriceResetInstance,
     "DescribeDisasterRecoverGroupQuota": doDescribeDisasterRecoverGroupQuota,
     "ResetInstancesPassword": doResetInstancesPassword,
-    "ResetInstance": doResetInstance,
+    "PurchaseReservedInstancesOffering": doPurchaseReservedInstancesOffering,
     "ResizeInstanceDisks": doResizeInstanceDisks,
     "DescribeReservedInstances": doDescribeReservedInstances,
     "DescribeZones": doDescribeZones,
@@ -2047,6 +2122,7 @@ ACTION_MAP = {
     "DeleteDisasterRecoverGroups": doDeleteDisasterRecoverGroups,
     "DescribeImportImageOs": doDescribeImportImageOs,
     "ResetInstancesInternetMaxBandwidth": doResetInstancesInternetMaxBandwidth,
+    "ResetInstance": doResetInstance,
     "SyncImages": doSyncImages,
     "ModifyKeyPairAttribute": doModifyKeyPairAttribute,
     "ImportImage": doImportImage,
@@ -2056,6 +2132,7 @@ ACTION_MAP = {
     "StartInstances": doStartInstances,
     "DescribeDisasterRecoverGroups": doDescribeDisasterRecoverGroups,
     "DescribeKeyPairs": doDescribeKeyPairs,
+    "DescribeReservedInstancesOfferings": doDescribeReservedInstancesOfferings,
     "DescribeHosts": doDescribeHosts,
     "AllocateHosts": doAllocateHosts,
     "DescribeInternetChargeTypeConfigs": doDescribeInternetChargeTypeConfigs,
