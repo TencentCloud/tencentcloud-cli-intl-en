@@ -1338,14 +1338,13 @@ def doInquiryPriceResetInstancesType(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceVncUrl(argv, arglist):
+def doDescribeInstanceFamilyConfigs(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeInstanceVncUrl", g_param[OptionsDefine.Version])
+        show_help("DescribeInstanceFamilyConfigs", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "InstanceId": argv.get("--InstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1359,9 +1358,9 @@ def doDescribeInstanceVncUrl(argv, arglist):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceVncUrlRequest()
+    model = models.DescribeInstanceFamilyConfigsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeInstanceVncUrl(model)
+    rsp = client.DescribeInstanceFamilyConfigs(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1653,13 +1652,14 @@ def doModifyDisasterRecoverGroupAttribute(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceFamilyConfigs(argv, arglist):
+def doDescribeInstanceVncUrl(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeInstanceFamilyConfigs", g_param[OptionsDefine.Version])
+        show_help("DescribeInstanceVncUrl", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "InstanceId": argv.get("--InstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1673,9 +1673,9 @@ def doDescribeInstanceFamilyConfigs(argv, arglist):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceFamilyConfigsRequest()
+    model = models.DescribeInstanceVncUrlRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeInstanceFamilyConfigs(model)
+    rsp = client.DescribeInstanceVncUrl(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -2118,7 +2118,7 @@ ACTION_MAP = {
     "ModifyImageAttribute": doModifyImageAttribute,
     "DescribeInstancesOperationLimit": doDescribeInstancesOperationLimit,
     "InquiryPriceResetInstancesType": doInquiryPriceResetInstancesType,
-    "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
+    "DescribeInstanceFamilyConfigs": doDescribeInstanceFamilyConfigs,
     "DeleteDisasterRecoverGroups": doDeleteDisasterRecoverGroups,
     "DescribeImportImageOs": doDescribeImportImageOs,
     "ResetInstancesInternetMaxBandwidth": doResetInstancesInternetMaxBandwidth,
@@ -2127,7 +2127,7 @@ ACTION_MAP = {
     "ModifyKeyPairAttribute": doModifyKeyPairAttribute,
     "ImportImage": doImportImage,
     "ModifyDisasterRecoverGroupAttribute": doModifyDisasterRecoverGroupAttribute,
-    "DescribeInstanceFamilyConfigs": doDescribeInstanceFamilyConfigs,
+    "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
     "ModifyInstancesProject": doModifyInstancesProject,
     "StartInstances": doStartInstances,
     "DescribeDisasterRecoverGroups": doDescribeDisasterRecoverGroups,

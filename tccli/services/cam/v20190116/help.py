@@ -678,7 +678,7 @@ INFO = {
         "desc": "Role name"
       }
     ],
-    "desc": "This API is used to modify a role's login permissions."
+    "desc": "This API is used to modify a role’s login permissions."
   },
   "AttachUserPolicy": {
     "params": [

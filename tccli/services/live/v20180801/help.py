@@ -293,6 +293,15 @@ INFO = {
     ],
     "desc": "To create a watermarking rule, you need to first call the [AddLiveWatermark](/document/product/267/30154) API to add a watermark and bind the returned watermark ID to the stream."
   },
+  "DeleteLiveCallbackTemplate": {
+    "params": [
+      {
+        "name": "TemplateId",
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API."
+      }
+    ],
+    "desc": "This API deletes a callback template."
+  },
   "DropLiveStream": {
     "params": [
       {
@@ -609,23 +618,6 @@ INFO = {
   "DescribeLiveWatermarks": {
     "params": [],
     "desc": "This API is used to query the watermark list."
-  },
-  "ResumeLiveStream": {
-    "params": [
-      {
-        "name": "AppName",
-        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default."
-      },
-      {
-        "name": "DomainName",
-        "desc": "Your push domain name."
-      },
-      {
-        "name": "StreamName",
-        "desc": "Stream name."
-      }
-    ],
-    "desc": "This API is used to resume the push of a specific stream."
   },
   "DescribeLiveRecordRules": {
     "params": [],
@@ -1223,7 +1215,7 @@ INFO = {
     ],
     "desc": "This API is used to modify a playback domain name."
   },
-  "DescribeLiveStreamState": {
+  "ResumeLiveStream": {
     "params": [
       {
         "name": "AppName",
@@ -1238,7 +1230,7 @@ INFO = {
         "desc": "Stream name."
       }
     ],
-    "desc": "This API is used to return the stream status such as active, inactive, or forbidden."
+    "desc": "This API is used to resume the push of a specific stream."
   },
   "CreateLiveSnapshotTemplate": {
     "params": [
@@ -1402,14 +1394,22 @@ INFO = {
     ],
     "desc": "This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing."
   },
-  "DeleteLiveCallbackTemplate": {
+  "DescribeLiveStreamState": {
     "params": [
       {
-        "name": "TemplateId",
-        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API."
+        "name": "AppName",
+        "desc": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default."
+      },
+      {
+        "name": "DomainName",
+        "desc": "Your push domain name."
+      },
+      {
+        "name": "StreamName",
+        "desc": "Stream name."
       }
     ],
-    "desc": "This API deletes a callback template."
+    "desc": "This API is used to return the stream status such as active, inactive, or forbidden."
   },
   "DescribeProIspPlaySumInfoList": {
     "params": [

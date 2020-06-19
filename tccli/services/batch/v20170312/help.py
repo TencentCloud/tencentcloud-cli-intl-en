@@ -69,7 +69,7 @@ INFO = {
         "desc": "List of instances that added to the compute environment"
       }
     ],
-    "desc": "This API is used to add existing instances to the compute environment.\nConsiderations: <br/>\n1. The instance should not be in the batch compute system.<br/>\n2. The instance status should be \"running\".<br/>\n3. It supports dedicated CVMs and pay-as-you-go instances that billed on an hourly basis. Spot instances are not supported.<b/>\n\nFor instances added to the compute environment, their UserData will be reset and the operating systems will be reinstalled."
+    "desc": "This API is used to add existing instances to the compute environment.\nConsiderations: <br/>\n1. The instance should not be in the batch compute system.<br/>\n2. The instance status should be “running”.<br/>\n3. It supports dedicated CVMs and pay-as-you-go instances that billed on an hourly basis. Spot instances are not supported.<b/>\n\nFor instances added to the compute environment, their UserData will be reset and the operating systems will be reinstalled."
   },
   "CreateComputeEnv": {
     "params": [
