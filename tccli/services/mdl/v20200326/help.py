@@ -27,6 +27,10 @@ INFO = {
       {
         "name": "EndTime",
         "desc": "Statistics end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      },
+      {
+        "name": "Period",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query the output statistics of a channel."
@@ -215,6 +219,10 @@ INFO = {
       {
         "name": "EndTime",
         "desc": "Statistics end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      },
+      {
+        "name": "Period",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query the input statistics."

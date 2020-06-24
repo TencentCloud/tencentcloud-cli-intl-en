@@ -62,6 +62,7 @@ def doDescribeMediaLiveChannelOutputStatistics(argv, arglist):
         "ChannelId": argv.get("--ChannelId"),
         "StartTime": argv.get("--StartTime"),
         "EndTime": argv.get("--EndTime"),
+        "Period": argv.get("--Period"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -508,6 +509,7 @@ def doDescribeMediaLiveChannelInputStatistics(argv, arglist):
         "ChannelId": argv.get("--ChannelId"),
         "StartTime": argv.get("--StartTime"),
         "EndTime": argv.get("--EndTime"),
+        "Period": argv.get("--Period"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

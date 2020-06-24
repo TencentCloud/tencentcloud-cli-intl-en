@@ -1,6 +1,44 @@
 # -*- coding: utf-8 -*-
 DESC = "tcaplusdb-2019-08-23"
 INFO = {
+  "DescribeTableTags": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "The ID of the cluster where a table resides"
+      },
+      {
+        "name": "SelectedTables",
+        "desc": "Table list"
+      }
+    ],
+    "desc": "This API is used to get table tags."
+  },
+  "DescribeTasks": {
+    "params": [
+      {
+        "name": "ClusterIds",
+        "desc": "List of IDs of clusters where the tasks to be queried reside"
+      },
+      {
+        "name": "TaskIds",
+        "desc": "List of IDs of tasks to be queried"
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter. Valid values: Content, TaskType, Operator, Time"
+      },
+      {
+        "name": "Offset",
+        "desc": "Query list offset"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results in query list"
+      }
+    ],
+    "desc": "This API is used to query the task list."
+  },
   "CreateCluster": {
     "params": [
       {
@@ -196,26 +234,22 @@ INFO = {
     ],
     "desc": "This API is used to scale a table."
   },
-  "DescribeClusters": {
+  "ModifyClusterTags": {
     "params": [
       {
-        "name": "ClusterIds",
-        "desc": "List of IDs of clusters to be queried"
+        "name": "ClusterId",
+        "desc": "The ID of the cluster whose tags need to be modified"
       },
       {
-        "name": "Filters",
-        "desc": "Query filter"
+        "name": "ReplaceTags",
+        "desc": "The list of tags to add or modify"
       },
       {
-        "name": "Offset",
-        "desc": "Query list offset"
-      },
-      {
-        "name": "Limit",
-        "desc": "Number of returned results in query list. Default value: 20"
+        "name": "DeleteTags",
+        "desc": "Tags to delete"
       }
     ],
-    "desc": "This API is used to query the TcaplusDB cluster list, including cluster details."
+    "desc": "This API is used to modify cluster tags."
   },
   "DeleteTableGroup": {
     "params": [
@@ -268,19 +302,36 @@ INFO = {
     "params": [],
     "desc": "This API is used to query the list of regions supported by the TcaplusDB service."
   },
-  "DescribeTasks": {
+  "ModifyTableTags": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "The ID of the cluster where table tags need to be modified"
+      },
+      {
+        "name": "SelectedTables",
+        "desc": "The list of tables whose tags need to be modified"
+      },
+      {
+        "name": "ReplaceTags",
+        "desc": "The list of tags to add or modify"
+      },
+      {
+        "name": "DeleteTags",
+        "desc": "The list of tags to delete"
+      }
+    ],
+    "desc": "This API is used to modify table tags."
+  },
+  "DescribeClusters": {
     "params": [
       {
         "name": "ClusterIds",
-        "desc": "List of IDs of clusters where the tasks to be queried reside"
-      },
-      {
-        "name": "TaskIds",
-        "desc": "List of IDs of tasks to be queried"
+        "desc": "List of IDs of clusters to be queried"
       },
       {
         "name": "Filters",
-        "desc": "Filter. Valid values: Content, TaskType, Operator, Time"
+        "desc": "Query filter"
       },
       {
         "name": "Offset",
@@ -288,10 +339,44 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results in query list"
+        "desc": "Number of returned results in query list. Default value: 20"
       }
     ],
-    "desc": "This API is used to query the task list."
+    "desc": "This API is used to query the TcaplusDB cluster list, including cluster details."
+  },
+  "ModifyTableGroupTags": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "The ID of the cluster where table group tags need to be modified"
+      },
+      {
+        "name": "TableGroupId",
+        "desc": "The ID of the table group whose tags need to be modified"
+      },
+      {
+        "name": "ReplaceTags",
+        "desc": "The list of tags to add or modify"
+      },
+      {
+        "name": "DeleteTags",
+        "desc": "Tags to delete"
+      }
+    ],
+    "desc": "This API is used to modify table group tags."
+  },
+  "DescribeTableGroupTags": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "The ID of the cluster where table group tags need to be queried"
+      },
+      {
+        "name": "TableGroupIds",
+        "desc": "The list of IDs of the table groups whose tags need to be queried"
+      }
+    ],
+    "desc": "This API is used to get the associated tag list of a table group."
   },
   "DescribeTableGroups": {
     "params": [
@@ -410,6 +495,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to upload and verify a table creation file and return the definition of tables that are verified to be valid."
+  },
+  "DescribeClusterTags": {
+    "params": [
+      {
+        "name": "ClusterIds",
+        "desc": "The list of cluster IDs"
+      }
+    ],
+    "desc": "This API is used to get the associated tag list of a cluster."
   },
   "ModifyTables": {
     "params": [

@@ -337,6 +337,10 @@ INFO = {
     ],
     "desc": "This API is used to modify the sync mode of a TencentDB instance."
   },
+  "DescribeProjects": {
+    "params": [],
+    "desc": "This API is used to query the project list."
+  },
   "CloseDBExtranetAccess": {
     "params": [
       {

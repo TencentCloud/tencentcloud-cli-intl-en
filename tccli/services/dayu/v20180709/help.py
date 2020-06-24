@@ -545,6 +545,23 @@ INFO = {
     "params": [],
     "desc": "This API is used to get the security statistics of the current month."
   },
+  "DescribeSchedulingDomainList": {
+    "params": [
+      {
+        "name": "Limit",
+        "desc": "Number of items in a page. Returned results are not paged if you enter “0”."
+      },
+      {
+        "name": "Offset",
+        "desc": "Starting offset of the page. Value: (number of pages - 1) * items per page"
+      },
+      {
+        "name": "Domain",
+        "desc": "(Optional) Filter by specific domain name"
+      }
+    ],
+    "desc": "Get scheduling domain name list"
+  },
   "DescribeCCFrequencyRules": {
     "params": [
       {
@@ -575,11 +592,11 @@ INFO = {
     ],
     "desc": "This API is used to delete a policy scenario."
   },
-  "DescribeL7HealthConfig": {
+  "DeleteL7Rules": {
     "params": [
       {
         "name": "Business",
-        "desc": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate"
+        "desc": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate"
       },
       {
         "name": "Id",
@@ -587,10 +604,10 @@ INFO = {
       },
       {
         "name": "RuleIdList",
-        "desc": "Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;"
+        "desc": "Rule ID list"
       }
     ],
-    "desc": "This API is used to export the layer-7 health check configuration."
+    "desc": "This API is used to delete one or more layer-7 forwarding rules."
   },
   "CreateL4Rules": {
     "params": [
@@ -2111,11 +2128,11 @@ INFO = {
     ],
     "desc": "This API is used to get the CC URL whitelist."
   },
-  "DeleteL7Rules": {
+  "DescribeL7HealthConfig": {
     "params": [
       {
         "name": "Business",
-        "desc": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate"
+        "desc": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate"
       },
       {
         "name": "Id",
@@ -2123,10 +2140,10 @@ INFO = {
       },
       {
         "name": "RuleIdList",
-        "desc": "Rule ID list"
+        "desc": "Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;"
       }
     ],
-    "desc": "This API is used to delete one or more layer-7 forwarding rules."
+    "desc": "This API is used to export the layer-7 health check configuration."
   },
   "DescribeCCTrend": {
     "params": [

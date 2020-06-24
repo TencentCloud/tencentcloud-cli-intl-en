@@ -835,5 +835,30 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the distribution of instance access duration."
+  },
+  "SwitchInstanceVip": {
+    "params": [
+      {
+        "name": "SrcInstanceId",
+        "desc": "Source instance ID"
+      },
+      {
+        "name": "DstInstanceId",
+        "desc": "Target instance ID"
+      },
+      {
+        "name": "TimeDelay",
+        "desc": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. It is recommended to set an acceptable value based on the actual business conditions."
+      },
+      {
+        "name": "ForceSwitch",
+        "desc": "Whether to force the switch when DTS is disconnected. 1: yes; 0: no"
+      },
+      {
+        "name": "SwitchTime",
+        "desc": "now: switch now; syncComplete: switch after sync is completed"
+      }
+    ],
+    "desc": "This API is used to swap the VIPs of instances for instance disaster recovery switch in scenarios where cross-AZ disaster recovery is supported through DTS. After the VIPs of the source and target instances are swapped, the target instance can be written into and the DTS sync task between them will be disconnected."
   }
 }

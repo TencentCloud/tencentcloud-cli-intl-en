@@ -12,21 +12,21 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.tcaplusdb.v20190823 import tcaplusdb_client as tcaplusdb_client_v20190823
-from tencentcloud.tcaplusdb.v20190823 import models as models_v20190823
-from tccli.services.tcaplusdb import v20190823
-from tccli.services.tcaplusdb.v20190823 import help as v20190823_help
+from tencentcloud.iai.v20200303 import iai_client as iai_client_v20200303
+from tencentcloud.iai.v20200303 import models as models_v20200303
+from tccli.services.iai import v20200303
+from tccli.services.iai.v20200303 import help as v20200303_help
 
 
-def doDescribeTableTags(argv, arglist):
+def doDeletePersonFromGroup(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTableTags", g_param[OptionsDefine.Version])
+        show_help("DeletePersonFromGroup", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
+        "PersonId": argv.get("--PersonId"),
+        "GroupId": argv.get("--GroupId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -37,12 +37,12 @@ def doDescribeTableTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTableTagsRequest()
+    model = models.DeletePersonFromGroupRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTableTags(model)
+    rsp = client.DeletePersonFromGroup(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -52,17 +52,23 @@ def doDescribeTableTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyTableTags(argv, arglist):
+def doSearchFacesReturnsByGroup(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyTableTags", g_param[OptionsDefine.Version])
+        show_help("SearchFacesReturnsByGroup", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-        "ReplaceTags": Utils.try_to_json(argv, "--ReplaceTags"),
-        "DeleteTags": Utils.try_to_json(argv, "--DeleteTags"),
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "MaxFaceNum": Utils.try_to_json(argv, "--MaxFaceNum"),
+        "MinFaceSize": Utils.try_to_json(argv, "--MinFaceSize"),
+        "MaxPersonNumPerGroup": Utils.try_to_json(argv, "--MaxPersonNumPerGroup"),
+        "NeedPersonInfo": Utils.try_to_json(argv, "--NeedPersonInfo"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "FaceMatchThreshold": Utils.try_to_json(argv, "--FaceMatchThreshold"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -73,12 +79,12 @@ def doModifyTableTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTableTagsRequest()
+    model = models.SearchFacesReturnsByGroupRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTableTags(model)
+    rsp = client.SearchFacesReturnsByGroup(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -88,18 +94,18 @@ def doModifyTableTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateCluster(argv, arglist):
+def doCreateGroup(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreateCluster", g_param[OptionsDefine.Version])
+        show_help("CreateGroup", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "IdlType": argv.get("--IdlType"),
-        "ClusterName": argv.get("--ClusterName"),
-        "VpcId": argv.get("--VpcId"),
-        "SubnetId": argv.get("--SubnetId"),
-        "Password": argv.get("--Password"),
+        "GroupName": argv.get("--GroupName"),
+        "GroupId": argv.get("--GroupId"),
+        "GroupExDescriptions": Utils.try_to_json(argv, "--GroupExDescriptions"),
+        "Tag": argv.get("--Tag"),
+        "FaceModelVersion": argv.get("--FaceModelVersion"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -110,12 +116,12 @@ def doCreateCluster(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateClusterRequest()
+    model = models.CreateGroupRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CreateCluster(model)
+    rsp = client.CreateGroup(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -125,48 +131,13 @@ def doCreateCluster(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeUinInWhitelist(argv, arglist):
+def doGetCheckSimilarPersonJobIdList(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeUinInWhitelist", g_param[OptionsDefine.Version])
+        show_help("GetCheckSimilarPersonJobIdList", g_param[OptionsDefine.Version])
         return
 
     param = {
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeUinInWhitelistRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeUinInWhitelist(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTablesInRecycle(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTablesInRecycle", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupIds": Utils.try_to_json(argv, "--TableGroupIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
 
@@ -179,12 +150,12 @@ def doDescribeTablesInRecycle(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTablesInRecycleRequest()
+    model = models.GetCheckSimilarPersonJobIdListRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTablesInRecycle(model)
+    rsp = client.GetCheckSimilarPersonJobIdList(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -194,17 +165,14 @@ def doDescribeTablesInRecycle(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRollbackTables(argv, arglist):
+def doGetPersonBaseInfo(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("RollbackTables", g_param[OptionsDefine.Version])
+        show_help("GetPersonBaseInfo", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-        "RollbackTime": argv.get("--RollbackTime"),
-        "Mode": argv.get("--Mode"),
+        "PersonId": argv.get("--PersonId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -215,12 +183,12 @@ def doRollbackTables(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RollbackTablesRequest()
+    model = models.GetPersonBaseInfoRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.RollbackTables(model)
+    rsp = client.GetPersonBaseInfo(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -230,15 +198,16 @@ def doRollbackTables(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyClusterName(argv, arglist):
+def doDetectLiveFace(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyClusterName", g_param[OptionsDefine.Version])
+        show_help("DetectLiveFace", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "ClusterName": argv.get("--ClusterName"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "FaceModelVersion": argv.get("--FaceModelVersion"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -249,12 +218,12 @@ def doModifyClusterName(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyClusterNameRequest()
+    model = models.DetectLiveFaceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyClusterName(model)
+    rsp = client.DetectLiveFace(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -264,14 +233,19 @@ def doModifyClusterName(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteCluster(argv, arglist):
+def doCreateFace(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteCluster", g_param[OptionsDefine.Version])
+        show_help("CreateFace", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
+        "PersonId": argv.get("--PersonId"),
+        "Images": Utils.try_to_json(argv, "--Images"),
+        "Urls": Utils.try_to_json(argv, "--Urls"),
+        "FaceMatchThreshold": Utils.try_to_json(argv, "--FaceMatchThreshold"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -282,12 +256,12 @@ def doDeleteCluster(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteClusterRequest()
+    model = models.CreateFaceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteCluster(model)
+    rsp = client.CreateFace(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -297,18 +271,14 @@ def doDeleteCluster(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyClusterPassword(argv, arglist):
+def doGetPersonListNum(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyClusterPassword", g_param[OptionsDefine.Version])
+        show_help("GetPersonListNum", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "OldPassword": argv.get("--OldPassword"),
-        "OldPasswordExpireTime": argv.get("--OldPasswordExpireTime"),
-        "NewPassword": argv.get("--NewPassword"),
-        "Mode": argv.get("--Mode"),
+        "GroupId": argv.get("--GroupId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -319,12 +289,12 @@ def doModifyClusterPassword(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyClusterPasswordRequest()
+    model = models.GetPersonListNumRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyClusterPassword(model)
+    rsp = client.GetPersonListNum(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -334,187 +304,14 @@ def doModifyClusterPassword(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteIdlFiles(argv, arglist):
+def doGetPersonGroupInfo(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteIdlFiles", g_param[OptionsDefine.Version])
+        show_help("GetPersonGroupInfo", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "IdlFiles": Utils.try_to_json(argv, "--IdlFiles"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteIdlFilesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteIdlFiles(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doRecoverRecycleTables(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("RecoverRecycleTables", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RecoverRecycleTablesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.RecoverRecycleTables(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateBackup(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateBackup", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-        "Remark": argv.get("--Remark"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateBackupRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateBackup(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateTables(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateTables", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "IdlFiles": Utils.try_to_json(argv, "--IdlFiles"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateTablesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateTables(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyTableQuotas(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyTableQuotas", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableQuotas": Utils.try_to_json(argv, "--TableQuotas"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTableQuotasRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTableQuotas(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeClusters(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeClusters", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterIds": Utils.try_to_json(argv, "--ClusterIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "PersonId": argv.get("--PersonId"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
 
@@ -527,12 +324,12 @@ def doDescribeClusters(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeClustersRequest()
+    model = models.GetPersonGroupInfoRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeClusters(model)
+    rsp = client.GetPersonGroupInfo(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -542,15 +339,18 @@ def doDescribeClusters(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteTableGroup(argv, arglist):
+def doAnalyzeFace(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteTableGroup", g_param[OptionsDefine.Version])
+        show_help("AnalyzeFace", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupId": argv.get("--TableGroupId"),
+        "Mode": Utils.try_to_json(argv, "--Mode"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "FaceModelVersion": argv.get("--FaceModelVersion"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -561,12 +361,12 @@ def doDeleteTableGroup(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTableGroupRequest()
+    model = models.AnalyzeFaceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteTableGroup(model)
+    rsp = client.AnalyzeFace(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -576,16 +376,16 @@ def doDeleteTableGroup(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyTableGroupName(argv, arglist):
+def doModifyPersonBaseInfo(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyTableGroupName", g_param[OptionsDefine.Version])
+        show_help("ModifyPersonBaseInfo", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupId": argv.get("--TableGroupId"),
-        "TableGroupName": argv.get("--TableGroupName"),
+        "PersonId": argv.get("--PersonId"),
+        "PersonName": argv.get("--PersonName"),
+        "Gender": Utils.try_to_json(argv, "--Gender"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -596,12 +396,12 @@ def doModifyTableGroupName(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTableGroupNameRequest()
+    model = models.ModifyPersonBaseInfoRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTableGroupName(model)
+    rsp = client.ModifyPersonBaseInfo(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -611,16 +411,23 @@ def doModifyTableGroupName(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateTableGroup(argv, arglist):
+def doSearchFaces(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CreateTableGroup", g_param[OptionsDefine.Version])
+        show_help("SearchFaces", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupName": argv.get("--TableGroupName"),
-        "TableGroupId": argv.get("--TableGroupId"),
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "MaxFaceNum": Utils.try_to_json(argv, "--MaxFaceNum"),
+        "MinFaceSize": Utils.try_to_json(argv, "--MinFaceSize"),
+        "MaxPersonNum": Utils.try_to_json(argv, "--MaxPersonNum"),
+        "NeedPersonInfo": Utils.try_to_json(argv, "--NeedPersonInfo"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "FaceMatchThreshold": Utils.try_to_json(argv, "--FaceMatchThreshold"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -631,12 +438,12 @@ def doCreateTableGroup(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateTableGroupRequest()
+    model = models.SearchFacesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CreateTableGroup(model)
+    rsp = client.SearchFaces(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -646,13 +453,15 @@ def doCreateTableGroup(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRegions(argv, arglist):
+def doCopyPerson(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeRegions", g_param[OptionsDefine.Version])
+        show_help("CopyPerson", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "PersonId": argv.get("--PersonId"),
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -663,12 +472,12 @@ def doDescribeRegions(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRegionsRequest()
+    model = models.CopyPersonRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeRegions(model)
+    rsp = client.CopyPerson(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -678,16 +487,298 @@ def doDescribeRegions(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTasks(argv, arglist):
+def doCheckSimilarPerson(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTasks", g_param[OptionsDefine.Version])
+        show_help("CheckSimilarPerson", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterIds": Utils.try_to_json(argv, "--ClusterIds"),
-        "TaskIds": Utils.try_to_json(argv, "--TaskIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
+        "UniquePersonControl": Utils.try_to_json(argv, "--UniquePersonControl"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CheckSimilarPersonRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CheckSimilarPerson(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteGroup(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteGroup", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GroupId": argv.get("--GroupId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteGroupRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteGroup(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeletePerson(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeletePerson", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "PersonId": argv.get("--PersonId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeletePersonRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeletePerson(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyGroup(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyGroup", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GroupId": argv.get("--GroupId"),
+        "GroupName": argv.get("--GroupName"),
+        "GroupExDescriptionInfos": Utils.try_to_json(argv, "--GroupExDescriptionInfos"),
+        "Tag": argv.get("--Tag"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyGroupRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyGroup(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetSimilarPersonResult(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetSimilarPersonResult", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "JobId": argv.get("--JobId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetSimilarPersonResultRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetSimilarPersonResult(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreatePerson(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreatePerson", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GroupId": argv.get("--GroupId"),
+        "PersonName": argv.get("--PersonName"),
+        "PersonId": argv.get("--PersonId"),
+        "Gender": Utils.try_to_json(argv, "--Gender"),
+        "PersonExDescriptionInfos": Utils.try_to_json(argv, "--PersonExDescriptionInfos"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "UniquePersonControl": Utils.try_to_json(argv, "--UniquePersonControl"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreatePersonRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreatePerson(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetGroupInfo(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetGroupInfo", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GroupId": argv.get("--GroupId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetGroupInfoRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetGroupInfo(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDetectFace(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DetectFace", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "MaxFaceNum": Utils.try_to_json(argv, "--MaxFaceNum"),
+        "MinFaceSize": Utils.try_to_json(argv, "--MinFaceSize"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "NeedFaceAttributes": Utils.try_to_json(argv, "--NeedFaceAttributes"),
+        "NeedQualityDetection": Utils.try_to_json(argv, "--NeedQualityDetection"),
+        "FaceModelVersion": argv.get("--FaceModelVersion"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DetectFaceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DetectFace(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetPersonList(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetPersonList", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GroupId": argv.get("--GroupId"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
 
@@ -700,12 +791,12 @@ def doDescribeTasks(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTasksRequest()
+    model = models.GetPersonListRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTasks(model)
+    rsp = client.GetPersonList(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -715,16 +806,18 @@ def doDescribeTasks(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyClusterTags(argv, arglist):
+def doVerifyPerson(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyClusterTags", g_param[OptionsDefine.Version])
+        show_help("VerifyPerson", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "ReplaceTags": Utils.try_to_json(argv, "--ReplaceTags"),
-        "DeleteTags": Utils.try_to_json(argv, "--DeleteTags"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "PersonId": argv.get("--PersonId"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -735,12 +828,12 @@ def doModifyClusterTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyClusterTagsRequest()
+    model = models.VerifyPersonRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyClusterTags(model)
+    rsp = client.VerifyPerson(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -750,17 +843,16 @@ def doModifyClusterTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyTableGroupTags(argv, arglist):
+def doModifyPersonGroupInfo(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyTableGroupTags", g_param[OptionsDefine.Version])
+        show_help("ModifyPersonGroupInfo", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupId": argv.get("--TableGroupId"),
-        "ReplaceTags": Utils.try_to_json(argv, "--ReplaceTags"),
-        "DeleteTags": Utils.try_to_json(argv, "--DeleteTags"),
+        "GroupId": argv.get("--GroupId"),
+        "PersonId": argv.get("--PersonId"),
+        "PersonExDescriptionInfos": Utils.try_to_json(argv, "--PersonExDescriptionInfos"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -771,12 +863,12 @@ def doModifyTableGroupTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTableGroupTagsRequest()
+    model = models.ModifyPersonGroupInfoRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTableGroupTags(model)
+    rsp = client.ModifyPersonGroupInfo(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -786,15 +878,18 @@ def doModifyTableGroupTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTableGroupTags(argv, arglist):
+def doVerifyFace(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTableGroupTags", g_param[OptionsDefine.Version])
+        show_help("VerifyFace", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupIds": Utils.try_to_json(argv, "--TableGroupIds"),
+        "PersonId": argv.get("--PersonId"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -805,12 +900,12 @@ def doDescribeTableGroupTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTableGroupTagsRequest()
+    model = models.VerifyFaceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTableGroupTags(model)
+    rsp = client.VerifyFace(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -820,16 +915,136 @@ def doDescribeTableGroupTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTableGroups(argv, arglist):
+def doSearchPersons(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTableGroups", g_param[OptionsDefine.Version])
+        show_help("SearchPersons", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupIds": Utils.try_to_json(argv, "--TableGroupIds"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "MaxFaceNum": Utils.try_to_json(argv, "--MaxFaceNum"),
+        "MinFaceSize": Utils.try_to_json(argv, "--MinFaceSize"),
+        "MaxPersonNum": Utils.try_to_json(argv, "--MaxPersonNum"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "FaceMatchThreshold": Utils.try_to_json(argv, "--FaceMatchThreshold"),
+        "NeedPersonInfo": Utils.try_to_json(argv, "--NeedPersonInfo"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.SearchPersonsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.SearchPersons(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCompareFace(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CompareFace", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ImageA": argv.get("--ImageA"),
+        "ImageB": argv.get("--ImageB"),
+        "UrlA": argv.get("--UrlA"),
+        "UrlB": argv.get("--UrlB"),
+        "FaceModelVersion": argv.get("--FaceModelVersion"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CompareFaceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CompareFace(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doSearchPersonsReturnsByGroup(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("SearchPersonsReturnsByGroup", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
+        "Image": argv.get("--Image"),
+        "Url": argv.get("--Url"),
+        "MaxFaceNum": Utils.try_to_json(argv, "--MaxFaceNum"),
+        "MinFaceSize": Utils.try_to_json(argv, "--MinFaceSize"),
+        "MaxPersonNumPerGroup": Utils.try_to_json(argv, "--MaxPersonNumPerGroup"),
+        "QualityControl": Utils.try_to_json(argv, "--QualityControl"),
+        "FaceMatchThreshold": Utils.try_to_json(argv, "--FaceMatchThreshold"),
+        "NeedPersonInfo": Utils.try_to_json(argv, "--NeedPersonInfo"),
+        "NeedRotateDetection": Utils.try_to_json(argv, "--NeedRotateDetection"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.SearchPersonsReturnsByGroupRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.SearchPersonsReturnsByGroup(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetGroupList(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetGroupList", g_param[OptionsDefine.Version])
+        return
+
+    param = {
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
 
@@ -842,12 +1057,12 @@ def doDescribeTableGroups(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTableGroupsRequest()
+    model = models.GetGroupListRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTableGroups(model)
+    rsp = client.GetGroupList(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -857,17 +1072,14 @@ def doDescribeTableGroups(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCompareIdlFiles(argv, arglist):
+def doEstimateCheckSimilarPersonCostTime(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("CompareIdlFiles", g_param[OptionsDefine.Version])
+        show_help("EstimateCheckSimilarPersonCostTime", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-        "ExistingIdlFiles": Utils.try_to_json(argv, "--ExistingIdlFiles"),
-        "NewIdlFiles": Utils.try_to_json(argv, "--NewIdlFiles"),
+        "GroupIds": Utils.try_to_json(argv, "--GroupIds"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -878,12 +1090,12 @@ def doCompareIdlFiles(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CompareIdlFilesRequest()
+    model = models.EstimateCheckSimilarPersonCostTimeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.CompareIdlFiles(model)
+    rsp = client.EstimateCheckSimilarPersonCostTime(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -893,18 +1105,15 @@ def doCompareIdlFiles(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeIdlFileInfos(argv, arglist):
+def doDeleteFace(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeIdlFileInfos", g_param[OptionsDefine.Version])
+        show_help("DeleteFace", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupIds": Utils.try_to_json(argv, "--TableGroupIds"),
-        "IdlFileIds": Utils.try_to_json(argv, "--IdlFileIds"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "PersonId": argv.get("--PersonId"),
+        "FaceIds": Utils.try_to_json(argv, "--FaceIds"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -915,256 +1124,12 @@ def doDescribeIdlFileInfos(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeIdlFileInfosRequest()
+    model = models.DeleteFaceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeIdlFileInfos(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteTables(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteTables", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTablesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteTables(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyTableMemos(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyTableMemos", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableMemos": Utils.try_to_json(argv, "--TableMemos"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTableMemosRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTableMemos(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doVerifyIdlFiles(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("VerifyIdlFiles", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupId": argv.get("--TableGroupId"),
-        "ExistingIdlFiles": Utils.try_to_json(argv, "--ExistingIdlFiles"),
-        "NewIdlFiles": Utils.try_to_json(argv, "--NewIdlFiles"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.VerifyIdlFilesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.VerifyIdlFiles(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doClearTables(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ClearTables", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ClearTablesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ClearTables(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyTables(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("ModifyTables", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "IdlFiles": Utils.try_to_json(argv, "--IdlFiles"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyTablesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.ModifyTables(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTables(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTables", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterId": argv.get("--ClusterId"),
-        "TableGroupIds": Utils.try_to_json(argv, "--TableGroupIds"),
-        "SelectedTables": Utils.try_to_json(argv, "--SelectedTables"),
-        "Filters": Utils.try_to_json(argv, "--Filters"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTablesRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTables(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeClusterTags(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeClusterTags", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ClusterIds": Utils.try_to_json(argv, "--ClusterIds"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeClusterTagsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeClusterTags(model)
+    rsp = client.DeleteFace(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1175,63 +1140,61 @@ def doDescribeClusterTags(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20190823": tcaplusdb_client_v20190823,
+    "v20200303": iai_client_v20200303,
 
 }
 
 MODELS_MAP = {
-    "v20190823": models_v20190823,
+    "v20200303": models_v20200303,
 
 }
 
 ACTION_MAP = {
-    "DescribeTableTags": doDescribeTableTags,
-    "ModifyTableTags": doModifyTableTags,
-    "CreateCluster": doCreateCluster,
-    "DescribeUinInWhitelist": doDescribeUinInWhitelist,
-    "DescribeTablesInRecycle": doDescribeTablesInRecycle,
-    "RollbackTables": doRollbackTables,
-    "ModifyClusterName": doModifyClusterName,
-    "DeleteCluster": doDeleteCluster,
-    "ModifyClusterPassword": doModifyClusterPassword,
-    "DeleteIdlFiles": doDeleteIdlFiles,
-    "RecoverRecycleTables": doRecoverRecycleTables,
-    "CreateBackup": doCreateBackup,
-    "CreateTables": doCreateTables,
-    "ModifyTableQuotas": doModifyTableQuotas,
-    "DescribeClusters": doDescribeClusters,
-    "DeleteTableGroup": doDeleteTableGroup,
-    "ModifyTableGroupName": doModifyTableGroupName,
-    "CreateTableGroup": doCreateTableGroup,
-    "DescribeRegions": doDescribeRegions,
-    "DescribeTasks": doDescribeTasks,
-    "ModifyClusterTags": doModifyClusterTags,
-    "ModifyTableGroupTags": doModifyTableGroupTags,
-    "DescribeTableGroupTags": doDescribeTableGroupTags,
-    "DescribeTableGroups": doDescribeTableGroups,
-    "CompareIdlFiles": doCompareIdlFiles,
-    "DescribeIdlFileInfos": doDescribeIdlFileInfos,
-    "DeleteTables": doDeleteTables,
-    "ModifyTableMemos": doModifyTableMemos,
-    "VerifyIdlFiles": doVerifyIdlFiles,
-    "ClearTables": doClearTables,
-    "ModifyTables": doModifyTables,
-    "DescribeTables": doDescribeTables,
-    "DescribeClusterTags": doDescribeClusterTags,
+    "DeletePersonFromGroup": doDeletePersonFromGroup,
+    "SearchFacesReturnsByGroup": doSearchFacesReturnsByGroup,
+    "CreateGroup": doCreateGroup,
+    "GetCheckSimilarPersonJobIdList": doGetCheckSimilarPersonJobIdList,
+    "GetPersonBaseInfo": doGetPersonBaseInfo,
+    "DetectLiveFace": doDetectLiveFace,
+    "CreateFace": doCreateFace,
+    "GetPersonListNum": doGetPersonListNum,
+    "GetPersonGroupInfo": doGetPersonGroupInfo,
+    "AnalyzeFace": doAnalyzeFace,
+    "ModifyPersonBaseInfo": doModifyPersonBaseInfo,
+    "SearchFaces": doSearchFaces,
+    "CopyPerson": doCopyPerson,
+    "CheckSimilarPerson": doCheckSimilarPerson,
+    "DeleteGroup": doDeleteGroup,
+    "DeletePerson": doDeletePerson,
+    "ModifyGroup": doModifyGroup,
+    "GetSimilarPersonResult": doGetSimilarPersonResult,
+    "CreatePerson": doCreatePerson,
+    "GetGroupInfo": doGetGroupInfo,
+    "DetectFace": doDetectFace,
+    "GetPersonList": doGetPersonList,
+    "VerifyPerson": doVerifyPerson,
+    "ModifyPersonGroupInfo": doModifyPersonGroupInfo,
+    "VerifyFace": doVerifyFace,
+    "SearchPersons": doSearchPersons,
+    "CompareFace": doCompareFace,
+    "SearchPersonsReturnsByGroup": doSearchPersonsReturnsByGroup,
+    "GetGroupList": doGetGroupList,
+    "EstimateCheckSimilarPersonCostTime": doEstimateCheckSimilarPersonCostTime,
+    "DeleteFace": doDeleteFace,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20190823.version,
+    v20200303.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20190823.version.replace('-', ''): {"help": v20190823_help.INFO,"desc": v20190823_help.DESC},
+     'v' + v20200303.version.replace('-', ''): {"help": v20200303_help.INFO,"desc": v20200303_help.DESC},
 
 }
 
 
-def tcaplusdb_action(argv, arglist):
+def iai_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -1247,7 +1210,7 @@ def tcaplusdb_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "tcaplusdb", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "iai", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -1268,7 +1231,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("tcaplusdb", tcaplusdb_action)
+    cmd = NiceCommand("iai", iai_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -1333,11 +1296,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["tcaplusdb"][OptionsDefine.Version]
+            version = config["iai"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["tcaplusdb"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["iai"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -1354,7 +1317,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "tcaplusdb", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "iai", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -1364,7 +1327,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["tcaplusdb"]["version"]
+        version = profile["iai"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

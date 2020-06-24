@@ -1,6 +1,35 @@
 # -*- coding: utf-8 -*-
 DESC = "mongodb-2019-07-25"
 INFO = {
+  "DescribeSlowLogPatterns": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page"
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried."
+      },
+      {
+        "name": "SlowMS",
+        "desc": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20."
+      }
+    ],
+    "desc": "This API is used to get the slow log statistics of a database instance."
+  },
   "AssignProject": {
     "params": [
       {
@@ -13,6 +42,35 @@ INFO = {
       }
     ],
     "desc": "This API is used to specify the project to which a TencentDB instance belongs.\n"
+  },
+  "DescribeSlowLogs": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page"
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried."
+      },
+      {
+        "name": "SlowMS",
+        "desc": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20."
+      }
+    ],
+    "desc": "This API is used to get the slow log information of a TencentDB instance. Only slow logs for the last 7 days can be queried."
   },
   "ModifyDBInstanceSpec": {
     "params": [
@@ -126,6 +184,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to rename a TencentDB instance."
+  },
+  "FlushInstanceRouterConfig": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      }
+    ],
+    "desc": "This API is used to run the `FlushRouterConfig` command on all mongos instances."
   },
   "DescribeSpecInfo": {
     "params": [

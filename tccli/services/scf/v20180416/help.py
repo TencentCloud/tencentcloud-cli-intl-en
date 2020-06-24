@@ -551,7 +551,7 @@ INFO = {
       },
       {
         "name": "Runtime",
-        "desc": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, PHP5, PHP7, Golang1, Java8"
+        "desc": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8"
       },
       {
         "name": "Environment",
@@ -691,7 +691,7 @@ INFO = {
       },
       {
         "name": "Runtime",
-        "desc": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, PHP5, PHP7, Golang1, Java8. Default value: Python2.7"
+        "desc": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8. Default value: Python2.7"
       },
       {
         "name": "VpcConfig",

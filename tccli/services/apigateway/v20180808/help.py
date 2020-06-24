@@ -21,11 +21,11 @@ INFO = {
       },
       {
         "name": "NetTypes",
-        "desc": "Network type list, which is used to specify the supported network types. `INNER` indicates access over private network, and `OUTER` indicates access over public network. The default value is `OUTER`."
+        "desc": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER."
       },
       {
         "name": "IpVersion",
-        "desc": "IP version number. Valid values: IPv4 (default value), IPv6"
+        "desc": "IP version number. Valid values: IPv4, IPv6. Default value: IPv4."
       },
       {
         "name": "SetServerName",
@@ -72,7 +72,7 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of API's service."
+        "desc": "Unique service ID of API."
       },
       {
         "name": "ServiceType",
@@ -96,15 +96,15 @@ INFO = {
       },
       {
         "name": "ApiType",
-        "desc": "API type. Valid values: NORMAL (default value), TSF."
+        "desc": "API type. Valid values: NORMAL, TSF. Default value: NORMAL."
       },
       {
         "name": "AuthType",
-        "desc": "API authentication type. Valid values: SECRET, NONE (default), OAUTH."
+        "desc": "API authentication type. Valid values: SECRET, NONE, OAUTH. Default value: NONE."
       },
       {
         "name": "AuthRequired",
-        "desc": "Whether signature authentication is required. `True` indicates yes while `False` indicates no. This parameter is to be disused."
+        "desc": "Whether signature authentication is required. True: yes; False: no. This parameter is to be disused."
       },
       {
         "name": "ServiceTimeout",
@@ -116,23 +116,23 @@ INFO = {
       },
       {
         "name": "EnableCORS",
-        "desc": "Whether to enable CORS. `True` indicates yes while `False` indicates no."
+        "desc": "Whether to enable CORS. True: yes; False: no."
       },
       {
         "name": "ConstantParameters",
-        "desc": "Constant parameters."
+        "desc": "Constant parameter."
       },
       {
         "name": "RequestParameters",
-        "desc": "Frontend request parameters."
+        "desc": "Frontend request parameter."
       },
       {
         "name": "ApiBusinessType",
-        "desc": "This field takes effect when `AuthType` is `OAUTH`. NORMAL: business API. OAUTH: authorization API."
+        "desc": "This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API."
       },
       {
         "name": "ServiceMockReturnMessage",
-        "desc": "Returned information of API backend mocking. This parameter is required when `ServiceType` is `Mock`."
+        "desc": "Returned message of API backend Mock, which is required if `ServiceType` is `Mock`."
       },
       {
         "name": "MicroServices",
@@ -140,11 +140,11 @@ INFO = {
       },
       {
         "name": "ServiceTsfLoadBalanceConf",
-        "desc": "Microservice load balancing configuration."
+        "desc": "Load balancing configuration of microservice."
       },
       {
         "name": "ServiceTsfHealthCheckConf",
-        "desc": "Microservice health check configuration."
+        "desc": "Health check configuration of microservice."
       },
       {
         "name": "TargetServicesLoadBalanceConf",
@@ -156,59 +156,59 @@ INFO = {
       },
       {
         "name": "ServiceScfFunctionName",
-        "desc": "SCF function name. This parameter takes effect when the backend type is `SCF`."
+        "desc": "SCF function name, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketRegisterFunctionName",
-        "desc": "SCF WebSocket registration function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketCleanupFunctionName",
-        "desc": "SCF WebSocket cleanup function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketTransportFunctionName",
-        "desc": "SCF WebSocket transfer function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceScfFunctionNamespace",
-        "desc": "SCF function namespace. This parameter takes effect when the backend type is `SCF`."
+        "desc": "SCF function namespace, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "ServiceScfFunctionQualifier",
-        "desc": "SCF function version. This parameter takes effect when the backend type is `SCF`."
+        "desc": "SCF function version, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketRegisterFunctionNamespace",
-        "desc": "SCF WebSocket registration function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketRegisterFunctionQualifier",
-        "desc": "SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketTransportFunctionNamespace",
-        "desc": "SCF WebSocket transfer function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketTransportFunctionQualifier",
-        "desc": "SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketCleanupFunctionNamespace",
-        "desc": "SCF WebSocket cleanup function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketCleanupFunctionQualifier",
-        "desc": "SCF WebSocket cleanup function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceScfIsIntegratedResponse",
-        "desc": "Whether to enable response integration. This parameter takes effect when the backend type is `SCF`."
+        "desc": "Whether to enable response integration, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "IsDebugAfterCharge",
-        "desc": "Billing after debugging starts (reserved for marketplace)."
+        "desc": "Billing after debugging starts (reserved field for marketplace)."
       },
       {
         "name": "TagSpecifications",
@@ -216,7 +216,7 @@ INFO = {
       },
       {
         "name": "IsDeleteResponseErrorCodes",
-        "desc": "Whether to delete the custom response configuration error codes. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted."
+        "desc": "Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted."
       },
       {
         "name": "ResponseType",
@@ -224,11 +224,11 @@ INFO = {
       },
       {
         "name": "ResponseSuccessExample",
-        "desc": "Successful response sample of custom response configuration."
+        "desc": "Sample response for successful custom response configuration."
       },
       {
         "name": "ResponseFailExample",
-        "desc": "Response failure sample of custom response configuration."
+        "desc": "Sample response for failed custom response configuration."
       },
       {
         "name": "ServiceConfig",
@@ -236,15 +236,15 @@ INFO = {
       },
       {
         "name": "AuthRelationApiId",
-        "desc": "Unique ID of associated authorization API. This parameter takes effect only when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API."
+        "desc": "Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API."
       },
       {
         "name": "ServiceParameters",
-        "desc": "API backend service parameters."
+        "desc": "API backend service parameter."
       },
       {
         "name": "OauthConfig",
-        "desc": "OAuth configuration. This parameter takes effect when `AuthType` is `OAUTH`."
+        "desc": "OAuth configuration, which takes effect if `AuthType` is `OAUTH`."
       },
       {
         "name": "ResponseErrorCodes",
@@ -268,7 +268,7 @@ INFO = {
         "desc": "Environment name."
       }
     ],
-    "desc": "This API is used to demote a usage plan of a service in an environment to the API level.\nTo make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to the service.\nThis operation will be denied if there are no APIs under a service.\nThis operation will also be denied if the current environment has not been published."
+    "desc": "This API is used to demote a usage plan of a service in an environment to the API level.\n \nThis operation will be denied if there are no APIs under the service.\nThis operation will also be denied if the current environment has not been published."
   },
   "DescribeLogSearch": {
     "params": [
@@ -290,7 +290,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of logs returned at a time. Up to 100 logs can be returned at a time"
+        "desc": "Number of logs to be returned at a time. Maximum value: 100"
       },
       {
         "name": "ConText",
@@ -298,11 +298,15 @@ INFO = {
       },
       {
         "name": "Sort",
-        "desc": "Log sorting by time in ascending order (asc) or descending order (desc). The default value is `desc`"
+        "desc": "Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc"
       },
       {
         "name": "Query",
-        "desc": "Fuzzy search of logs by keyword"
+        "desc": "Fuzzy search for log by keyword"
+      },
+      {
+        "name": "LogQuerys",
+        "desc": ""
       }
     ],
     "desc": "This API is used to search for logs."
@@ -315,7 +319,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
@@ -332,7 +336,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
@@ -345,7 +349,7 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of the service of the policy to be modified."
+        "desc": "Unique service ID of the policy to be modified."
       },
       {
         "name": "StrategyId",
@@ -371,11 +375,11 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of the service to be switch to."
+        "desc": "Unique ID of the service to be switch."
       },
       {
         "name": "EnvironmentName",
-        "desc": "Name of the environment to be switched to. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment)."
+        "desc": "Name of the environment to be switched to. Valid values: test (test environment), prepub (pre-release environment), release (release environment)."
       },
       {
         "name": "VersionName",
@@ -386,7 +390,7 @@ INFO = {
         "desc": "Switch description."
       }
     ],
-    "desc": "This API is used to switch the running version published in an environment of a service to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions."
+    "desc": "This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions."
   },
   "UnReleaseService": {
     "params": [
@@ -396,14 +400,14 @@ INFO = {
       },
       {
         "name": "EnvironmentName",
-        "desc": "Name of the environment to be deactivated. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment)."
+        "desc": "Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment)."
       },
       {
         "name": "ApiIds",
         "desc": "List of APIs to be deactivated, which is a reserved field."
       }
     ],
-    "desc": "This API is used to deactivate a service.\nOnly when a service is published to an environment can its APIs be called by callers. You can call this API to deactivate a service from the release environment. Once deactivated, the service cannot be called."
+    "desc": "This API is used to deactivate a service.\nOnly after a service is published to an environment can its APIs be called. You can call this API to deactivate a service in the release environment. Once deactivated, the service cannot be called."
   },
   "ModifyApiIncrement": {
     "params": [
@@ -421,14 +425,14 @@ INFO = {
       },
       {
         "name": "PublicKey",
-        "desc": "Public key value to be modified of OAuth API"
+        "desc": "Public key value to be modified by OAuth API"
       },
       {
         "name": "LoginRedirectUrl",
         "desc": "OAuth API redirect address"
       }
     ],
-    "desc": "This API is used to incrementally update an API and mainly called by programs (different from `ModifyApi`, which requires full API parameters be passed in and is suitable for being used with the console)."
+    "desc": "This API is used to incrementally update an API and mainly called by programs (different from `ModifyApi`, which requires that full API parameters be passed in and is suitable for use in the console)."
   },
   "DescribeServiceEnvironmentReleaseHistory": {
     "params": [
@@ -442,14 +446,14 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
         "desc": "Offset. Default value: 0."
       }
     ],
-    "desc": "This API is used to query the release history of a service environment.\nA service can only be used when it is published to an environment after creation. This API is used to query the release history of an environment under a service."
+    "desc": "This API is used to query the release history in a service environment.\nA service can only be used when it is published to an environment after creation. This API is used to query the release history in an environment under a service."
   },
   "DescribeApiUsagePlan": {
     "params": [
@@ -459,20 +463,20 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
         "desc": "Offset. Default value: 0."
       }
     ],
-    "desc": "This API is used to query the details of API usage plans in a service.\nTo make authentication and throttling for a service takes effect, you need to bind usage plans to it. This API is used to query all usage plans bound to a service and APIs under it."
+    "desc": "This API is used to query the details of API usage plans in a service.\nTo make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to a service and APIs under it."
   },
   "DeleteApi": {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of API's service."
+        "desc": "Unique service ID of API."
       },
       {
         "name": "ApiId",
@@ -489,22 +493,22 @@ INFO = {
       },
       {
         "name": "ServiceName",
-        "desc": "Modified service name."
+        "desc": "Service name after modification."
       },
       {
         "name": "ServiceDesc",
-        "desc": "Modified service description."
+        "desc": "Service description after modification."
       },
       {
         "name": "Protocol",
-        "desc": "Modified service frontend request type, such as `http`, `https`, and `http&https`."
+        "desc": "Service frontend request type after modification, such as `http`, `https`, and `http&https`."
       },
       {
         "name": "NetTypes",
-        "desc": "Network type list, which is used to specify the supported network types. `INNER` indicates access over private network, and `OUTER` indicates access over public network. The default value is `OUTER`."
+        "desc": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER."
       }
     ],
-    "desc": "This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type all can be modified."
+    "desc": "This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type can be modified."
   },
   "DescribeServiceUsagePlan": {
     "params": [
@@ -514,14 +518,14 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
         "desc": "Offset. Default value: 0."
       }
     ],
-    "desc": "This API is used to query the details of usage plans in a service.\nTo make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to the service."
+    "desc": "This API is used to query the details of usage plans in a service.\nTo make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to a service."
   },
   "ModifyServiceEnvironmentStrategy": {
     "params": [
@@ -574,11 +578,11 @@ INFO = {
     "params": [
       {
         "name": "AccessKeyId",
-        "desc": "ID of the key to be updated."
+        "desc": "ID of the key to be changed."
       },
       {
         "name": "AccessKeySecret",
-        "desc": "Key to be updated, which is required when a custom key is updated. It can contain 10 to 50 letters, digits, and underscores."
+        "desc": "Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores."
       }
     ],
     "desc": "This API is used to update a created API key pair."
@@ -591,11 +595,11 @@ INFO = {
       },
       {
         "name": "UsagePlanName",
-        "desc": "Modified custom usage plan name."
+        "desc": "Custom usage plan name after modification."
       },
       {
         "name": "UsagePlanDesc",
-        "desc": "Modified custom usage plan description."
+        "desc": "Custom usage plan description after modification."
       },
       {
         "name": "MaxRequestNum",
@@ -616,7 +620,7 @@ INFO = {
       },
       {
         "name": "BindType",
-        "desc": "Binding type. Valid values: API, SERVICE (default value)."
+        "desc": "Binding type. Valid values: API, SERVICE. Default value: SERVICE."
       },
       {
         "name": "Environment",
@@ -628,7 +632,7 @@ INFO = {
       },
       {
         "name": "ApiIds",
-        "desc": "Unique API ID array. This parameter will be required when `bindType` is `API`."
+        "desc": "Unique API ID array, which is required if `bindType` is `API`."
       }
     ],
     "desc": "This API is used to bind a usage plan to a service environment.\nAfter you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.\nCurrently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to demote it."
@@ -650,7 +654,7 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of the service of the IP policy to be bound."
+        "desc": "Unique service ID of the IP policy to be bound."
       },
       {
         "name": "StrategyId",
@@ -658,7 +662,7 @@ INFO = {
       },
       {
         "name": "EnvironmentName",
-        "desc": "Environment to be bound to IP policy"
+        "desc": "Environment to be bound to IP policy."
       },
       {
         "name": "BindApiIds",
@@ -696,11 +700,11 @@ INFO = {
       },
       {
         "name": "BindType",
-        "desc": "Binding type. Valid values: API, SERVICE (default value)."
+        "desc": "Binding type. Valid values: API, SERVICE. Default value: SERVICE."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
@@ -716,7 +720,7 @@ INFO = {
         "desc": "ID of the key to be enabled."
       }
     ],
-    "desc": "This API is used to enable a disabled API key pair."
+    "desc": "This API is used to enable a disabled API key."
   },
   "CreateIPStrategy": {
     "params": [
@@ -747,7 +751,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
@@ -768,11 +772,11 @@ INFO = {
       },
       {
         "name": "AccessKeyId",
-        "desc": "Custom key ID, which is required when `AccessKeyType` is `manual`. It can contain 5 to 50 letters, digits, and underscores."
+        "desc": "Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores."
       },
       {
         "name": "AccessKeySecret",
-        "desc": "Custom key, which is required when `AccessKeyType` is `manual`. It can contain 10 to 50 letters, digits, and underscores."
+        "desc": "Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores."
       }
     ],
     "desc": "This API is used to create an API key pair."
@@ -785,30 +789,30 @@ INFO = {
       },
       {
         "name": "SubDomain",
-        "desc": "Custom domain name for which the path mapping is to be modified."
+        "desc": "Custom domain name whose path mapping is to be modified."
       },
       {
         "name": "IsDefaultMapping",
-        "desc": "Whether to change to the default path mapping. true: use the default path mapping. false: use the custom path mapping."
+        "desc": "Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping."
       },
       {
         "name": "CertificateId",
-        "desc": "Certificate ID, which is required when the HTTPS protocol is included."
+        "desc": "Certificate ID, which is required if the HTTPS protocol is included."
       },
       {
         "name": "Protocol",
-        "desc": "Modified custom domain name protocol type. Valid values: http, https, http&https."
+        "desc": "Custom domain name protocol type after modification. Valid values: http, https, http&https."
       },
       {
         "name": "PathMappingSet",
-        "desc": "Modified path mapping list."
+        "desc": "Path mapping list after modification."
       },
       {
         "name": "NetType",
         "desc": "Network type. Valid values: INNER, OUTER."
       }
     ],
-    "desc": "This API is used to modify the path mapping in the custom domain name settings of the service. The path mapping rule can be modified before it is bound to the custom domain name."
+    "desc": "This API is used to modify the path mapping in the custom domain name settings of a service. The path mapping rule can be modified before it is bound to the custom domain name."
   },
   "DescribeServiceEnvironmentList": {
     "params": [
@@ -818,7 +822,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
@@ -834,7 +838,7 @@ INFO = {
         "desc": "ID of the key to be disabled."
       }
     ],
-    "desc": "This API is used to disable an API key pair."
+    "desc": "This API is used to disable an API key."
   },
   "ReleaseService": {
     "params": [
@@ -844,7 +848,7 @@ INFO = {
       },
       {
         "name": "EnvironmentName",
-        "desc": "Name of the environment to be published. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment)."
+        "desc": "Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment)."
       },
       {
         "name": "ReleaseDesc",
@@ -861,7 +865,7 @@ INFO = {
     "params": [
       {
         "name": "BindType",
-        "desc": "Binding type. Valid values: API, SERVICE (default value)."
+        "desc": "Binding type. Valid values: API, SERVICE. Default value: SERVICE."
       },
       {
         "name": "UsagePlanIds",
@@ -877,7 +881,7 @@ INFO = {
       },
       {
         "name": "ApiIds",
-        "desc": "Unique API ID array. This parameter will be required when `BindType` is `API`."
+        "desc": "Unique API ID array, which is required if `BindType` is `API`."
       }
     ],
     "desc": "This API is used to unbind a usage plan from a specified environment."
@@ -886,7 +890,7 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of the service of API."
+        "desc": "Unique service ID of API."
       },
       {
         "name": "EnvironmentNames",
@@ -898,7 +902,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
@@ -918,7 +922,7 @@ INFO = {
         "desc": "Custom domain name to be unbound."
       }
     ],
-    "desc": "This API is used to unbind a custom domain name.\nAfter binding a custom domain name to a service using API Gateway, you can use this API to unbind it."
+    "desc": "This API is used to unbind a custom domain name.\nAfter binding a custom domain name to a service by using API Gateway, you can use this API to unbind it."
   },
   "DescribeServiceEnvironmentStrategy": {
     "params": [
@@ -928,14 +932,14 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
         "name": "Offset",
         "desc": "Offset. Default value: 0."
       }
     ],
-    "desc": "This API is used to display service throttling policies."
+    "desc": "This API is used to display a service throttling policy."
   },
   "DescribeService": {
     "params": [
@@ -958,7 +962,7 @@ INFO = {
       },
       {
         "name": "Environment",
-        "desc": "Name of the environment whose mapping is to be deleted. Valid values: test (testing environment), prepub (pre-publish environment), release (release environment)."
+        "desc": "Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment)."
       }
     ],
     "desc": "This API is used to delete a custom domain name mapping in a service environment.\nYou can use this API if you use a custom domain name and custom mapping. Please note that if you delete all mappings in all environments, a failure will be returned when this API is called."
@@ -970,7 +974,7 @@ INFO = {
         "desc": "API key ID."
       }
     ],
-    "desc": "This API is used to query key details.\nAfter creating an API key, you can query its details using this API which will display its key."
+    "desc": "This API is used to query the details of a key.\nAfter creating an API key, you can query its details by using this API."
   },
   "DescribeUsagePlan": {
     "params": [
@@ -985,14 +989,14 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of API's service."
+        "desc": "Unique service ID of API."
       },
       {
         "name": "ApiId",
         "desc": "Unique API ID."
       }
     ],
-    "desc": "This API is used to query the detailed information of an API deployed in API Gateway."
+    "desc": "This API is used to query the details of an API deployed in API Gateway."
   },
   "BindSubDomain": {
     "params": [
@@ -1006,15 +1010,15 @@ INFO = {
       },
       {
         "name": "Protocol",
-        "desc": "Protocols supported by service. Valid values: http, https, http&https."
+        "desc": "Protocol supported by service. Valid values: http, https, http&https."
       },
       {
         "name": "NetType",
-        "desc": "Network type. Valid values: INNER, OUTER."
+        "desc": "Network type. Valid values: OUTER, INNER."
       },
       {
         "name": "IsDefaultMapping",
-        "desc": "Whether to use the default path mapping. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` is required."
+        "desc": "Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case."
       },
       {
         "name": "NetSubDomain",
@@ -1022,11 +1026,11 @@ INFO = {
       },
       {
         "name": "CertificateId",
-        "desc": "Unique ID of the certificate of the custom domain name to be bound. The certificate can be uploaded only when `Protocol` is `https` or `http&https`."
+        "desc": "Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`."
       },
       {
         "name": "PathMappingSet",
-        "desc": "Custom domain name path mapping. It can contain up to 3 `Environment` parameters which can be set to only `test`, `prepub`, or `release`."
+        "desc": "Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively."
       }
     ],
     "desc": "This API is used to bind a custom domain name to a service.\nEach service in API Gateway provides a default domain name for users to call. If you want to use your own domain name, you can bind a custom domain name to the target service. After getting the ICP filing and configuring the CNAME record between the custom and default domain names, you can directly call the custom domain name."
@@ -1035,7 +1039,7 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of the service of the IP policy to be deleted."
+        "desc": "Unique service ID of the IP policy to be deleted."
       },
       {
         "name": "StrategyId",
@@ -1052,14 +1056,14 @@ INFO = {
       },
       {
         "name": "GenEnvironment",
-        "desc": "Environment of the service for which the SDK is to be created."
+        "desc": "Environment of the service for which to create an SDK."
       },
       {
         "name": "GenLanguage",
         "desc": "Programming language of the SDK to be created. Currently, only Python and JavaScript are supported."
       }
     ],
-    "desc": "This API is used to automatically generate API documentation and SDKs. A document and an SDK will be generated for each environment under each service, respectively."
+    "desc": "This API is used to automatically generate API documents and SDKs. One document and one SDK will be generated for each environment under each service, respectively."
   },
   "BindSecretIds": {
     "params": [
@@ -1078,7 +1082,7 @@ INFO = {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of API's service."
+        "desc": "Unique service ID of API."
       },
       {
         "name": "ServiceType",
@@ -1118,19 +1122,19 @@ INFO = {
       },
       {
         "name": "ConstantParameters",
-        "desc": "Constant parameters."
+        "desc": "Constant parameter."
       },
       {
         "name": "RequestParameters",
-        "desc": "Frontend request parameters."
+        "desc": "Frontend request parameter."
       },
       {
         "name": "ApiBusinessType",
-        "desc": "This field takes effect when `AuthType` is `OAUTH`. NORMAL: business API. OAUTH: authorization API."
+        "desc": "This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API."
       },
       {
         "name": "ServiceMockReturnMessage",
-        "desc": "Returned information of API backend mocking. This parameter is required when `ServiceType` is `Mock`."
+        "desc": "Returned message of API backend Mock, which is required if `ServiceType` is `Mock`."
       },
       {
         "name": "MicroServices",
@@ -1138,11 +1142,11 @@ INFO = {
       },
       {
         "name": "ServiceTsfLoadBalanceConf",
-        "desc": "Microservice load balancing configuration."
+        "desc": "Load balancing configuration of microservice."
       },
       {
         "name": "ServiceTsfHealthCheckConf",
-        "desc": "Microservice health check configuration."
+        "desc": "Health check configuration of microservice."
       },
       {
         "name": "TargetServices",
@@ -1158,63 +1162,63 @@ INFO = {
       },
       {
         "name": "ServiceScfFunctionName",
-        "desc": "SCF function name. This parameter takes effect when the backend type is `SCF`."
+        "desc": "SCF function name, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketRegisterFunctionName",
-        "desc": "SCF WebSocket registration function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketCleanupFunctionName",
-        "desc": "SCF WebSocket cleanup function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketTransportFunctionName",
-        "desc": "SCF WebSocket transfer function. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceScfFunctionNamespace",
-        "desc": "SCF function namespace. This parameter takes effect when the backend type is `SCF`."
+        "desc": "SCF function namespace, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "ServiceScfFunctionQualifier",
-        "desc": "SCF function version. This parameter takes effect when the backend type is `SCF`."
+        "desc": "SCF function version, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketRegisterFunctionNamespace",
-        "desc": "SCF WebSocket registration function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketRegisterFunctionQualifier",
-        "desc": "SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketTransportFunctionNamespace",
-        "desc": "SCF WebSocket transfer function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketTransportFunctionQualifier",
-        "desc": "SCF WebSocket transfer function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketCleanupFunctionNamespace",
-        "desc": "SCF WebSocket cleanup function namespace. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceWebsocketCleanupFunctionQualifier",
-        "desc": "SCF WebSocket cleanup function version. This parameter takes effect when the frontend type is `WEBSOCKET` and the backend type is `SCF`."
+        "desc": "SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`."
       },
       {
         "name": "ServiceScfIsIntegratedResponse",
-        "desc": "Whether to enable response integration. This parameter takes effect when the backend type is `SCF`."
+        "desc": "Whether to enable response integration, which takes effect if the backend type is `SCF`."
       },
       {
         "name": "IsDebugAfterCharge",
-        "desc": "Billing after debugging starts (reserved for marketplace)."
+        "desc": "Billing after debugging starts (reserved field for marketplace)."
       },
       {
         "name": "IsDeleteResponseErrorCodes",
-        "desc": "Whether to delete the custom response configuration error codes. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted."
+        "desc": "Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted."
       },
       {
         "name": "ResponseType",
@@ -1222,11 +1226,11 @@ INFO = {
       },
       {
         "name": "ResponseSuccessExample",
-        "desc": "Successful response sample of custom response configuration."
+        "desc": "Sample response for successful custom response configuration."
       },
       {
         "name": "ResponseFailExample",
-        "desc": "Response failure sample of custom response configuration."
+        "desc": "Sample response for failed custom response configuration."
       },
       {
         "name": "ServiceConfig",
@@ -1234,15 +1238,15 @@ INFO = {
       },
       {
         "name": "AuthRelationApiId",
-        "desc": "Unique ID of associated authorization API. This parameter takes effect only when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API."
+        "desc": "Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API."
       },
       {
         "name": "ServiceParameters",
-        "desc": "API backend service parameters."
+        "desc": "API backend service parameter."
       },
       {
         "name": "OauthConfig",
-        "desc": "OAuth configuration. This parameter takes effect when `AuthType` is `OAUTH`."
+        "desc": "OAuth configuration, which takes effect if `AuthType` is `OAUTH`."
       },
       {
         "name": "ResponseErrorCodes",
@@ -1270,6 +1274,6 @@ INFO = {
         "desc": "Custom domain name bound to service."
       }
     ],
-    "desc": "This API is used to query the path mappings of a custom domain name.\nIn API Gateway, you can bind a custom domain name to a service and map the paths for it. You can custom different path mappings to up to 3 environments under the service. This API is used to query the list of path mappings of a custom domain name bound to a service."
+    "desc": "This API is used to query the path mappings of a custom domain name.\nIn API Gateway, you can bind a custom domain name to a service and map its paths. You can customize different path mappings to up to 3 environments under the service. This API is used to query the list of path mappings of a custom domain name bound to a service."
   }
 }
