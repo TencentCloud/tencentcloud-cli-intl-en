@@ -101,6 +101,43 @@ INFO = {
     ],
     "desc": "This API is used to query tag key and value pairs for existing resources."
   },
+  "DescribeResourceTags": {
+    "params": [
+      {
+        "name": "CreateUin",
+        "desc": "Creator `uin`"
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "Resource region."
+      },
+      {
+        "name": "ServiceType",
+        "desc": "Service type."
+      },
+      {
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix"
+      },
+      {
+        "name": "ResourceId",
+        "desc": "Unique resource ID"
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 15"
+      },
+      {
+        "name": "CosResourceId",
+        "desc": "Whether it is a COS resource ID"
+      }
+    ],
+    "desc": "This API is used to query the tags associated with a resource."
+  },
   "AddResourceTag": {
     "params": [
       {

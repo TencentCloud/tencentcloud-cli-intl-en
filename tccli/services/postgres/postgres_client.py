@@ -51,6 +51,39 @@ def doDescribeOrders(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDestroyDBInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DestroyDBInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DestroyDBInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DestroyDBInstance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDBBackups(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -163,10 +196,10 @@ def doDescribeDBErrlogs(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstanceAttribute(argv, arglist):
+def doRestartDBInstance(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeDBInstanceAttribute", g_param[OptionsDefine.Version])
+        show_help("RestartDBInstance", g_param[OptionsDefine.Version])
         return
 
     param = {
@@ -184,9 +217,48 @@ def doDescribeDBInstanceAttribute(argv, arglist):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstanceAttributeRequest()
+    model = models.RestartDBInstanceRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeDBInstanceAttribute(model)
+    rsp = client.RestartDBInstance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doInquiryPriceCreateDBInstances(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("InquiryPriceCreateDBInstances", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Zone": argv.get("--Zone"),
+        "SpecCode": argv.get("--SpecCode"),
+        "Storage": Utils.try_to_json(argv, "--Storage"),
+        "InstanceCount": Utils.try_to_json(argv, "--InstanceCount"),
+        "Period": Utils.try_to_json(argv, "--Period"),
+        "Pid": Utils.try_to_json(argv, "--Pid"),
+        "InstanceChargeType": argv.get("--InstanceChargeType"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.InquiryPriceCreateDBInstancesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.InquiryPriceCreateDBInstances(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -335,10 +407,44 @@ def doDescribeDBXlogs(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRestartDBInstance(argv, arglist):
+def doSetAutoRenewFlag(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("RestartDBInstance", g_param[OptionsDefine.Version])
+        show_help("SetAutoRenewFlag", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceIdSet": Utils.try_to_json(argv, "--DBInstanceIdSet"),
+        "AutoRenewFlag": Utils.try_to_json(argv, "--AutoRenewFlag"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.SetAutoRenewFlagRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.SetAutoRenewFlag(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBInstanceAttribute(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDBInstanceAttribute", g_param[OptionsDefine.Version])
         return
 
     param = {
@@ -356,9 +462,9 @@ def doRestartDBInstance(argv, arglist):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RestartDBInstanceRequest()
+    model = models.DescribeDBInstanceAttributeRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.RestartDBInstance(model)
+    rsp = client.DescribeDBInstanceAttribute(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -424,6 +530,7 @@ def doCreateDBInstances(argv, arglist):
         "AutoRenewFlag": Utils.try_to_json(argv, "--AutoRenewFlag"),
         "ActivityId": Utils.try_to_json(argv, "--ActivityId"),
         "Name": argv.get("--Name"),
+        "NeedSupportIpv6": Utils.try_to_json(argv, "--NeedSupportIpv6"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -440,6 +547,42 @@ def doCreateDBInstances(argv, arglist):
     model = models.CreateDBInstancesRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.CreateDBInstances(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doRenewInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("RenewInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "Period": Utils.try_to_json(argv, "--Period"),
+        "AutoVoucher": Utils.try_to_json(argv, "--AutoVoucher"),
+        "VoucherIds": Utils.try_to_json(argv, "--VoucherIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.RenewInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.RenewInstance(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -622,6 +765,40 @@ def doDescribeRegions(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doInquiryPriceRenewDBInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("InquiryPriceRenewDBInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+        "Period": Utils.try_to_json(argv, "--Period"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.InquiryPriceRenewDBInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.InquiryPriceRenewDBInstance(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCloseDBExtranetAccess(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -683,6 +860,39 @@ def doDescribeAccounts(argv, arglist):
     model = models.DescribeAccountsRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeAccounts(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDatabases(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeDatabases", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DBInstanceId": argv.get("--DBInstanceId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDatabasesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeDatabases(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -815,24 +1025,30 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "DescribeOrders": doDescribeOrders,
+    "DestroyDBInstance": doDestroyDBInstance,
     "DescribeDBBackups": doDescribeDBBackups,
     "ResetAccountPassword": doResetAccountPassword,
     "DescribeDBErrlogs": doDescribeDBErrlogs,
-    "DescribeDBInstanceAttribute": doDescribeDBInstanceAttribute,
+    "RestartDBInstance": doRestartDBInstance,
+    "InquiryPriceCreateDBInstances": doInquiryPriceCreateDBInstances,
     "OpenDBExtranetAccess": doOpenDBExtranetAccess,
     "ModifyDBInstancesProject": doModifyDBInstancesProject,
     "ModifyAccountRemark": doModifyAccountRemark,
     "DescribeDBXlogs": doDescribeDBXlogs,
-    "RestartDBInstance": doRestartDBInstance,
+    "SetAutoRenewFlag": doSetAutoRenewFlag,
+    "DescribeDBInstanceAttribute": doDescribeDBInstanceAttribute,
     "ModifyDBInstanceName": doModifyDBInstanceName,
     "CreateDBInstances": doCreateDBInstances,
+    "RenewInstance": doRenewInstance,
     "DescribeDBInstances": doDescribeDBInstances,
     "DescribeZones": doDescribeZones,
     "InitDBInstances": doInitDBInstances,
     "InquiryPriceUpgradeDBInstance": doInquiryPriceUpgradeDBInstance,
     "DescribeRegions": doDescribeRegions,
+    "InquiryPriceRenewDBInstance": doInquiryPriceRenewDBInstance,
     "CloseDBExtranetAccess": doCloseDBExtranetAccess,
     "DescribeAccounts": doDescribeAccounts,
+    "DescribeDatabases": doDescribeDatabases,
     "UpgradeDBInstance": doUpgradeDBInstance,
     "DescribeProductConfig": doDescribeProductConfig,
     "DescribeDBSlowlogs": doDescribeDBSlowlogs,

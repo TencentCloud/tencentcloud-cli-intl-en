@@ -12,26 +12,95 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.tag.v20180813 import tag_client as tag_client_v20180813
-from tencentcloud.tag.v20180813 import models as models_v20180813
-from tccli.services.tag import v20180813
-from tccli.services.tag.v20180813 import help as v20180813_help
+from tencentcloud.gse.v20191112 import gse_client as gse_client_v20191112
+from tencentcloud.gse.v20191112 import models as models_v20191112
+from tccli.services.gse import v20191112
+from tccli.services.gse.v20191112 import help as v20191112_help
 
 
-def doDescribeResourceTagsByTagKeys(argv, arglist):
+def doUpdateGameServerSession(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeResourceTagsByTagKeys", g_param[OptionsDefine.Version])
+        show_help("UpdateGameServerSession", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ServiceType": argv.get("--ServiceType"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "ResourceIds": Utils.try_to_json(argv, "--ResourceIds"),
-        "TagKeys": Utils.try_to_json(argv, "--TagKeys"),
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
+        "MaximumPlayerSessionCount": Utils.try_to_json(argv, "--MaximumPlayerSessionCount"),
+        "Name": argv.get("--Name"),
+        "PlayerSessionCreationPolicy": argv.get("--PlayerSessionCreationPolicy"),
+        "ProtectionPolicy": argv.get("--ProtectionPolicy"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UpdateGameServerSessionRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.UpdateGameServerSession(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doStopGameServerSessionPlacement(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("StopGameServerSessionPlacement", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "PlacementId": argv.get("--PlacementId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StopGameServerSessionPlacementRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.StopGameServerSessionPlacement(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeGameServerSessions(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeGameServerSessions", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AliasId": argv.get("--AliasId"),
+        "FleetId": argv.get("--FleetId"),
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "NextToken": argv.get("--NextToken"),
+        "StatusFilter": argv.get("--StatusFilter"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -42,12 +111,12 @@ def doDescribeResourceTagsByTagKeys(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourceTagsByTagKeysRequest()
+    model = models.DescribeGameServerSessionsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourceTagsByTagKeys(model)
+    rsp = client.DescribeGameServerSessions(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -57,16 +126,15 @@ def doDescribeResourceTagsByTagKeys(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpdateResourceTagValue(argv, arglist):
+def doGetInstanceAccess(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpdateResourceTagValue", g_param[OptionsDefine.Version])
+        show_help("GetInstanceAccess", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-        "Resource": argv.get("--Resource"),
+        "FleetId": argv.get("--FleetId"),
+        "InstanceId": argv.get("--InstanceId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -77,12 +145,12 @@ def doUpdateResourceTagValue(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateResourceTagValueRequest()
+    model = models.GetInstanceAccessRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpdateResourceTagValue(model)
+    rsp = client.GetInstanceAccess(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -92,17 +160,87 @@ def doUpdateResourceTagValue(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTagValues(argv, arglist):
+def doJoinGameServerSession(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTagValues", g_param[OptionsDefine.Version])
+        show_help("JoinGameServerSession", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TagKeys": Utils.try_to_json(argv, "--TagKeys"),
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
+        "PlayerId": argv.get("--PlayerId"),
+        "PlayerData": argv.get("--PlayerData"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.JoinGameServerSessionRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.JoinGameServerSession(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeGameServerSessionPlacement(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeGameServerSessionPlacement", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "PlacementId": argv.get("--PlacementId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeGameServerSessionPlacementRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeGameServerSessionPlacement(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeGameServerSessionDetails(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeGameServerSessionDetails", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AliasId": argv.get("--AliasId"),
+        "FleetId": argv.get("--FleetId"),
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
+        "NextToken": argv.get("--NextToken"),
+        "StatusFilter": argv.get("--StatusFilter"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -113,12 +251,12 @@ def doDescribeTagValues(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTagValuesRequest()
+    model = models.DescribeGameServerSessionDetailsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTagValues(model)
+    rsp = client.DescribeGameServerSessionDetails(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -128,19 +266,59 @@ def doDescribeTagValues(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeResourceTagsByResourceIds(argv, arglist):
+def doStartGameServerSessionPlacement(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeResourceTagsByResourceIds", g_param[OptionsDefine.Version])
+        show_help("StartGameServerSessionPlacement", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ServiceType": argv.get("--ServiceType"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceIds": Utils.try_to_json(argv, "--ResourceIds"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "PlacementId": argv.get("--PlacementId"),
+        "GameServerSessionQueueName": argv.get("--GameServerSessionQueueName"),
+        "MaximumPlayerSessionCount": Utils.try_to_json(argv, "--MaximumPlayerSessionCount"),
+        "DesiredPlayerSessions": Utils.try_to_json(argv, "--DesiredPlayerSessions"),
+        "GameProperties": Utils.try_to_json(argv, "--GameProperties"),
+        "GameServerSessionData": argv.get("--GameServerSessionData"),
+        "GameServerSessionName": argv.get("--GameServerSessionName"),
+        "PlayerLatencies": Utils.try_to_json(argv, "--PlayerLatencies"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StartGameServerSessionPlacementRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.StartGameServerSessionPlacement(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribePlayerSessions(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribePlayerSessions", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
+        "NextToken": argv.get("--NextToken"),
+        "PlayerId": argv.get("--PlayerId"),
+        "PlayerSessionId": argv.get("--PlayerSessionId"),
+        "PlayerSessionStatusFilter": argv.get("--PlayerSessionStatusFilter"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -151,12 +329,12 @@ def doDescribeResourceTagsByResourceIds(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourceTagsByResourceIdsRequest()
+    model = models.DescribePlayerSessionsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourceTagsByResourceIds(model)
+    rsp = client.DescribePlayerSessions(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -166,21 +344,52 @@ def doDescribeResourceTagsByResourceIds(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeResourceTags(argv, arglist):
+def doGetGameServerSessionLogUrl(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeResourceTags", g_param[OptionsDefine.Version])
+        show_help("GetGameServerSessionLogUrl", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "ServiceType": argv.get("--ServiceType"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceId": argv.get("--ResourceId"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetGameServerSessionLogUrlRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetGameServerSessionLogUrl(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doSearchGameServerSessions(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("SearchGameServerSessions", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AliasId": argv.get("--AliasId"),
+        "FleetId": argv.get("--FleetId"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
-        "CosResourceId": Utils.try_to_json(argv, "--CosResourceId"),
+        "NextToken": argv.get("--NextToken"),
+        "FilterExpression": argv.get("--FilterExpression"),
+        "SortExpression": argv.get("--SortExpression"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -191,12 +400,12 @@ def doDescribeResourceTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourceTagsRequest()
+    model = models.SearchGameServerSessionsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourceTags(model)
+    rsp = client.SearchGameServerSessions(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -206,16 +415,22 @@ def doDescribeResourceTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyResourceTags(argv, arglist):
+def doCreateGameServerSession(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyResourceTags", g_param[OptionsDefine.Version])
+        show_help("CreateGameServerSession", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Resource": argv.get("--Resource"),
-        "ReplaceTags": Utils.try_to_json(argv, "--ReplaceTags"),
-        "DeleteTags": Utils.try_to_json(argv, "--DeleteTags"),
+        "MaximumPlayerSessionCount": Utils.try_to_json(argv, "--MaximumPlayerSessionCount"),
+        "AliasId": argv.get("--AliasId"),
+        "CreatorId": argv.get("--CreatorId"),
+        "FleetId": argv.get("--FleetId"),
+        "GameProperties": Utils.try_to_json(argv, "--GameProperties"),
+        "GameServerSessionData": argv.get("--GameServerSessionData"),
+        "GameServerSessionId": argv.get("--GameServerSessionId"),
+        "IdempotencyToken": argv.get("--IdempotencyToken"),
+        "Name": argv.get("--Name"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -226,264 +441,12 @@ def doModifyResourceTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyResourceTagsRequest()
+    model = models.CreateGameServerSessionRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyResourceTags(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTagKeys(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTagKeys", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "ShowProject": Utils.try_to_json(argv, "--ShowProject"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTagKeysRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTagKeys(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteResourceTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteResourceTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "Resource": argv.get("--Resource"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteResourceTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteResourceTag(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTags(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeTags", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "TagKeys": Utils.try_to_json(argv, "--TagKeys"),
-        "ShowProject": Utils.try_to_json(argv, "--ShowProject"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTagsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTags(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeResourcesByTags(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeResourcesByTags", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagFilters": Utils.try_to_json(argv, "--TagFilters"),
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceId": argv.get("--ResourceId"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "ServiceType": argv.get("--ServiceType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourcesByTagsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourcesByTags(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAddResourceTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("AddResourceTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-        "Resource": argv.get("--Resource"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddResourceTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.AddResourceTag(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteTag(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateTag(model)
+    rsp = client.CreateGameServerSession(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -494,43 +457,42 @@ def doCreateTag(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20180813": tag_client_v20180813,
+    "v20191112": gse_client_v20191112,
 
 }
 
 MODELS_MAP = {
-    "v20180813": models_v20180813,
+    "v20191112": models_v20191112,
 
 }
 
 ACTION_MAP = {
-    "DescribeResourceTagsByTagKeys": doDescribeResourceTagsByTagKeys,
-    "UpdateResourceTagValue": doUpdateResourceTagValue,
-    "DescribeTagValues": doDescribeTagValues,
-    "DescribeResourceTagsByResourceIds": doDescribeResourceTagsByResourceIds,
-    "DescribeResourceTags": doDescribeResourceTags,
-    "ModifyResourceTags": doModifyResourceTags,
-    "DescribeTagKeys": doDescribeTagKeys,
-    "DeleteResourceTag": doDeleteResourceTag,
-    "DescribeTags": doDescribeTags,
-    "DescribeResourcesByTags": doDescribeResourcesByTags,
-    "AddResourceTag": doAddResourceTag,
-    "DeleteTag": doDeleteTag,
-    "CreateTag": doCreateTag,
+    "UpdateGameServerSession": doUpdateGameServerSession,
+    "StopGameServerSessionPlacement": doStopGameServerSessionPlacement,
+    "DescribeGameServerSessions": doDescribeGameServerSessions,
+    "GetInstanceAccess": doGetInstanceAccess,
+    "JoinGameServerSession": doJoinGameServerSession,
+    "DescribeGameServerSessionPlacement": doDescribeGameServerSessionPlacement,
+    "DescribeGameServerSessionDetails": doDescribeGameServerSessionDetails,
+    "StartGameServerSessionPlacement": doStartGameServerSessionPlacement,
+    "DescribePlayerSessions": doDescribePlayerSessions,
+    "GetGameServerSessionLogUrl": doGetGameServerSessionLogUrl,
+    "SearchGameServerSessions": doSearchGameServerSessions,
+    "CreateGameServerSession": doCreateGameServerSession,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20180813.version,
+    v20191112.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20180813.version.replace('-', ''): {"help": v20180813_help.INFO,"desc": v20180813_help.DESC},
+     'v' + v20191112.version.replace('-', ''): {"help": v20191112_help.INFO,"desc": v20191112_help.DESC},
 
 }
 
 
-def tag_action(argv, arglist):
+def gse_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -546,7 +508,7 @@ def tag_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "tag", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "gse", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -567,7 +529,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("tag", tag_action)
+    cmd = NiceCommand("gse", gse_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -632,11 +594,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["tag"][OptionsDefine.Version]
+            version = config["gse"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["tag"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["gse"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -653,7 +615,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "tag", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "gse", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -663,7 +625,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["tag"]["version"]
+        version = profile["gse"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

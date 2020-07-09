@@ -10,6 +10,15 @@ INFO = {
     ],
     "desc": "This API is used to get order information."
   },
+  "DestroyDBInstance": {
+    "params": [
+      {
+        "name": "DBInstanceId",
+        "desc": "ID of the instance to be deleted"
+      }
+    ],
+    "desc": "This API is used to terminate the instance corresponding to a specified `DBInstanceId`."
+  },
   "DescribeDBBackups": {
     "params": [
       {
@@ -30,7 +39,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of entries returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100."
+        "desc": "Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)"
       },
       {
         "name": "Offset",
@@ -89,14 +98,47 @@ INFO = {
     ],
     "desc": "This API is used to get error logs."
   },
-  "RestartDBInstance": {
+  "DescribeDBInstanceAttribute": {
     "params": [
       {
         "name": "DBInstanceId",
-        "desc": "Instance ID in the format of postgres-6r233v55"
+        "desc": "Instance ID"
       }
     ],
-    "desc": "This API is used to restart an instance."
+    "desc": "This API is used to query the details of one instance."
+  },
+  "InquiryPriceCreateDBInstances": {
+    "params": [
+      {
+        "name": "Zone",
+        "desc": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API."
+      },
+      {
+        "name": "SpecCode",
+        "desc": "Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API."
+      },
+      {
+        "name": "Storage",
+        "desc": "Storage capacity size in GB."
+      },
+      {
+        "name": "InstanceCount",
+        "desc": "Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service."
+      },
+      {
+        "name": "Period",
+        "desc": "Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported."
+      },
+      {
+        "name": "Pid",
+        "desc": "Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API."
+      },
+      {
+        "name": "InstanceChargeType",
+        "desc": "Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)"
+      }
+    ],
+    "desc": "This API is used to query the purchase price of one or multiple instances."
   },
   "OpenDBExtranetAccess": {
     "params": [
@@ -162,14 +204,27 @@ INFO = {
     ],
     "desc": "This API is used to get the instance Xlog list."
   },
-  "DescribeDBInstanceAttribute": {
+  "SetAutoRenewFlag": {
+    "params": [
+      {
+        "name": "DBInstanceIdSet",
+        "desc": "Instance ID array"
+      },
+      {
+        "name": "AutoRenewFlag",
+        "desc": "Renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal upon expiration"
+      }
+    ],
+    "desc": "This API is used to set auto-renewal."
+  },
+  "RestartDBInstance": {
     "params": [
       {
         "name": "DBInstanceId",
-        "desc": "Instance ID"
+        "desc": "Instance ID in the format of postgres-6r233v55"
       }
     ],
-    "desc": "This API is used to query the details of one instance."
+    "desc": "This API is used to restart an instance."
   },
   "ModifyDBInstanceName": {
     "params": [
@@ -244,10 +299,35 @@ INFO = {
       },
       {
         "name": "Name",
+        "desc": "Instance name (which will be supported in the future)"
+      },
+      {
+        "name": "NeedSupportIpv6",
         "desc": ""
       }
     ],
     "desc": "This API is used to create one or more TencentDB for PostgreSQL instances."
+  },
+  "RenewInstance": {
+    "params": [
+      {
+        "name": "DBInstanceId",
+        "desc": "Instance ID in the format of `postgres-6fego161`"
+      },
+      {
+        "name": "Period",
+        "desc": "Renewal duration in months"
+      },
+      {
+        "name": "AutoVoucher",
+        "desc": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: 0"
+      },
+      {
+        "name": "VoucherIds",
+        "desc": "Voucher ID list (only one voucher can be specified currently)"
+      }
+    ],
+    "desc": "This API is used to renew an instance."
   },
   "DescribeDBInstances": {
     "params": [
@@ -324,6 +404,19 @@ INFO = {
     "params": [],
     "desc": "This API is used to query the purchasable regions."
   },
+  "InquiryPriceRenewDBInstance": {
+    "params": [
+      {
+        "name": "DBInstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "Period",
+        "desc": "Renewal duration in months. Maximum value: 48"
+      }
+    ],
+    "desc": "This API is used to query the renewal price of an instance."
+  },
   "CloseDBExtranetAccess": {
     "params": [
       {
@@ -357,6 +450,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to get the instance user list."
+  },
+  "DescribeDatabases": {
+    "params": [
+      {
+        "name": "DBInstanceId",
+        "desc": "Instance ID"
+      }
+    ],
+    "desc": "This API is used to pull the list of databases."
   },
   "UpgradeDBInstance": {
     "params": [

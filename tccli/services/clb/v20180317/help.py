@@ -68,6 +68,28 @@ INFO = {
     ],
     "desc": "This API (DescribeClassicalLBListeners) is used to get the listener information of a classic CLB."
   },
+  "DescribeBlockIPTask": {
+    "params": [
+      {
+        "name": "TaskId",
+        "desc": "Async task ID returned by the `ModifyBlockIPList` API"
+      }
+    ],
+    "desc": "This API is used to query the execution status of an async IP blocking (blacklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)"
+  },
+  "DeleteLoadBalancerSnatIps": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "Unique CLB instance ID, such as lb-12345678"
+      },
+      {
+        "name": "Ips",
+        "desc": "Array of the SNAT IP addresses to be deleted"
+      }
+    ],
+    "desc": "This API is used to delete a SNAT IP for a SnatPro CLB instance."
+  },
   "DeleteListener": {
     "params": [
       {
@@ -179,18 +201,18 @@ INFO = {
     ],
     "desc": "This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
-  "ModifyTargetGroupInstancesWeight": {
+  "DeleteLoadBalancerListeners": {
     "params": [
       {
-        "name": "TargetGroupId",
-        "desc": "Target group ID"
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
       },
       {
-        "name": "TargetGroupInstances",
-        "desc": "Array of servers for which to modify weight"
+        "name": "ListenerIds",
+        "desc": "Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted"
       }
     ],
-    "desc": "This API is used to modify server weights of a target group in batches.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
+    "desc": "This API is used to delete multiple listeners of a CLB instance.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "DeleteTargetGroups": {
     "params": [
@@ -214,18 +236,71 @@ INFO = {
     ],
     "desc": "This API (DeregisterTargetsFromClassicalLB) is used to unbind real servers from a classic load balancer.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
   },
-  "DescribeClassicalLBHealthStatus": {
+  "CreateLoadBalancer": {
     "params": [
       {
-        "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
+        "name": "LoadBalancerType",
+        "desc": "CLB instance network type:\nOPEN: public network; INTERNAL: private network."
       },
       {
-        "name": "ListenerId",
-        "desc": "CLB listener ID"
+        "name": "Forward",
+        "desc": "CLB instance type. 1: generic CLB instance. Currently, only 1 can be passed in"
+      },
+      {
+        "name": "LoadBalancerName",
+        "desc": "CLB instance name, which takes effect only when an instance is created. Rule: 1-50 letters, digits, dashes (-), or underscores (_).\nNote: If this name is the same as the name of an existing CLB instance in the system, the system will automatically generate a name for this newly created instance."
+      },
+      {
+        "name": "VpcId",
+        "desc": "Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network (\"0\")."
+      },
+      {
+        "name": "SubnetId",
+        "desc": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet."
+      },
+      {
+        "name": "ProjectId",
+        "desc": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used."
+      },
+      {
+        "name": "AddressIPVersion",
+        "desc": "IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances."
+      },
+      {
+        "name": "Number",
+        "desc": "Number of CLBs to be created. Default value: 1."
+      },
+      {
+        "name": "MasterZoneId",
+        "desc": "Sets the primary AZ ID for cross-AZ disaster recovery, such as 100001 or ap-guangzhou-1, which is applicable only to public network CLB.\nNote: A primary AZ carries traffic, while a secondary AZ does not carry traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. The list of primary AZs in a specific region can be queried through the DescribeMasterZones API."
+      },
+      {
+        "name": "ZoneId",
+        "desc": "Specifies an AZ ID for creating a CLB instance, such as ap-guangzhou-1, which is applicable only to public network CLB."
+      },
+      {
+        "name": "InternetAccessible",
+        "desc": "CLB network billing mode. This parameter is applicable only to public network CLB instances."
+      },
+      {
+        "name": "VipIsp",
+        "desc": "This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode."
+      },
+      {
+        "name": "Tags",
+        "desc": "Tags a CLB instance when purchasing it"
       }
     ],
-    "desc": "This API (DescribeClassicalLBHealthStatus) is used to get the real server health status of a classic CLB"
+    "desc": "This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.\nNote: (1) To apply for a CLB instance in the specified AZ and cross-AZ disaster recovery, please [submit a ticket](https://console.cloud.tencent.com/workorder/category); (2) Currently, IPv6 is supported only in Beijing, Shanghai, and Guangzhou regions.\nThis is an async API. After it is returned successfully, you can call the DescribeLoadBalancers API to query the status of the instance (such as creating and normal) to check whether it is successfully created."
+  },
+  "DescribeLoadBalancerListByCertId": {
+    "params": [
+      {
+        "name": "CertIds",
+        "desc": "Server or client certificate ID"
+      }
+    ],
+    "desc": "This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID."
   },
   "ModifyListener": {
     "params": [
@@ -439,6 +514,23 @@ INFO = {
     ],
     "desc": "This API is used to query the list of CLB instances in a region.\n"
   },
+  "DescribeBlockIPList": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID."
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Maximum number of IPs to be returned. Default value: 100000."
+      }
+    ],
+    "desc": "This API is used to query the list of blocked IPs (blacklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)"
+  },
   "DescribeListeners": {
     "params": [
       {
@@ -506,6 +598,10 @@ INFO = {
       {
         "name": "SniSwitch",
         "desc": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners"
+      },
+      {
+        "name": "TargetType",
+        "desc": "Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group."
       }
     ],
     "desc": "This API is used to create a listener for a CLB instance.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
@@ -585,6 +681,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the execution status of an async task. After non-query APIs (used to create/delete CLB instances, listeners, or rules or to bind/unbind real servers) are called successfully, this API needs to be used to query whether the task is successful."
+  },
+  "DescribeTargetGroups": {
+    "params": [
+      {
+        "name": "TargetGroupIds",
+        "desc": "Target group ID, which is exclusive of `Filters`."
+      },
+      {
+        "name": "Limit",
+        "desc": "Limit of the number of displayed results. Default value: 20"
+      },
+      {
+        "name": "Offset",
+        "desc": "Starting display offset"
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName"
+      }
+    ],
+    "desc": "This API is used to query the target group information."
   },
   "ModifyRule": {
     "params": [
@@ -698,6 +815,35 @@ INFO = {
     ],
     "desc": "This API is used to get the target group list."
   },
+  "ModifyBlockIPList": {
+    "params": [
+      {
+        "name": "LoadBalancerIds",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "Type",
+        "desc": "Operation type. Valid values:\n<li> add_customized_field (sets header initially to enable the blacklist feature)</li>\n<li> set_customized_field (modifies header)</li>\n<li> del_customized_field (deletes header)</li>\n<li> add_blocked (adds to blacklist)</li>\n<li> del_blocked (deletes from blacklist)</li>\n<li> flush_blocked (clears blacklist)</li>"
+      },
+      {
+        "name": "ClientIPField",
+        "desc": "Name of the header field that stores real client IPs"
+      },
+      {
+        "name": "BlockIPList",
+        "desc": "List of blocked IPs. The array can contain up to 200,000 entries in one operation"
+      },
+      {
+        "name": "ExpireTime",
+        "desc": "Expiration time in seconds. Default value: 3600"
+      },
+      {
+        "name": "AddStrategy",
+        "desc": "IP adding policy. Valid values: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)"
+      }
+    ],
+    "desc": "This API is used to modify the client IP blacklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blacklist can contain up to 2,000,000 entries.\n(This API is in beta test. To use it, please submit a ticket.)"
+  },
   "CreateTargetGroup": {
     "params": [
       {
@@ -770,26 +916,38 @@ INFO = {
     ],
     "desc": "This API (RegisterTargetsWithClassicalLB) is used to bind real servers to a classic CLB.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
   },
-  "DescribeTargetGroups": {
+  "ModifyTargetPort": {
     "params": [
       {
-        "name": "TargetGroupIds",
-        "desc": "Target group ID, which is exclusive of `Filters`."
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
       },
       {
-        "name": "Limit",
-        "desc": "Limit of the number of displayed results. Default value: 20"
+        "name": "ListenerId",
+        "desc": "CLB listener ID"
       },
       {
-        "name": "Offset",
-        "desc": "Starting display offset"
+        "name": "Targets",
+        "desc": "List of real servers for which to modify the ports"
       },
       {
-        "name": "Filters",
-        "desc": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName"
+        "name": "NewPort",
+        "desc": "New port of the real server bound to a listener or forwarding rule"
+      },
+      {
+        "name": "LocationId",
+        "desc": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url"
+      },
+      {
+        "name": "Domain",
+        "desc": "Target rule domain name. This parameter does not take effect if LocationId is specified"
+      },
+      {
+        "name": "Url",
+        "desc": "Target rule URL. This parameter does not take effect if LocationId is specified"
       }
     ],
-    "desc": "This API is used to query the target group information."
+    "desc": "This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
   },
   "ModifyTargetGroupAttribute": {
     "params": [
@@ -808,14 +966,18 @@ INFO = {
     ],
     "desc": "This API is used to rename a target group or modify its default port attribute."
   },
-  "DescribeLoadBalancerListByCertId": {
+  "DescribeClassicalLBHealthStatus": {
     "params": [
       {
-        "name": "CertIds",
-        "desc": "Server or client certificate ID"
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "ListenerId",
+        "desc": "CLB listener ID"
       }
     ],
-    "desc": "This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID."
+    "desc": "This API (DescribeClassicalLBHealthStatus) is used to get the real server health status of a classic CLB"
   },
   "DeregisterTargets": {
     "params": [
@@ -875,38 +1037,18 @@ INFO = {
     ],
     "desc": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes."
   },
-  "ModifyTargetPort": {
+  "CreateLoadBalancerSnatIps": {
     "params": [
       {
         "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
+        "desc": "Unique CLB instance ID, such as lb-12345678"
       },
       {
-        "name": "ListenerId",
-        "desc": "CLB listener ID"
-      },
-      {
-        "name": "Targets",
-        "desc": "List of real servers for which to modify the ports"
-      },
-      {
-        "name": "NewPort",
-        "desc": "New port of the real server bound to a listener or forwarding rule"
-      },
-      {
-        "name": "LocationId",
-        "desc": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url"
-      },
-      {
-        "name": "Domain",
-        "desc": "Target rule domain name. This parameter does not take effect if LocationId is specified"
-      },
-      {
-        "name": "Url",
-        "desc": "Target rule URL. This parameter does not take effect if LocationId is specified"
+        "name": "SnatIps",
+        "desc": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet"
       }
     ],
-    "desc": "This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful."
+    "desc": "This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added."
   },
   "DescribeClassicalLBByInstanceId": {
     "params": [
@@ -965,62 +1107,18 @@ INFO = {
     ],
     "desc": "This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance."
   },
-  "CreateLoadBalancer": {
+  "ModifyTargetGroupInstancesWeight": {
     "params": [
       {
-        "name": "LoadBalancerType",
-        "desc": "CLB instance network type:\nOPEN: public network; INTERNAL: private network."
+        "name": "TargetGroupId",
+        "desc": "Target group ID"
       },
       {
-        "name": "Forward",
-        "desc": "CLB instance type. 1: generic CLB instance. Currently, only 1 can be passed in"
-      },
-      {
-        "name": "LoadBalancerName",
-        "desc": "CLB instance name, which takes effect only when an instance is created. Rule: 1-50 letters, digits, dashes (-), or underscores (_).\nNote: If this name is the same as the name of an existing CLB instance in the system, the system will automatically generate a name for this newly created instance."
-      },
-      {
-        "name": "VpcId",
-        "desc": "Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network (\"0\")."
-      },
-      {
-        "name": "SubnetId",
-        "desc": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet."
-      },
-      {
-        "name": "ProjectId",
-        "desc": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used."
-      },
-      {
-        "name": "AddressIPVersion",
-        "desc": "IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances."
-      },
-      {
-        "name": "Number",
-        "desc": "Number of CLBs to be created. Default value: 1."
-      },
-      {
-        "name": "MasterZoneId",
-        "desc": "Sets the primary AZ ID for cross-AZ disaster recovery, such as 100001 or ap-guangzhou-1, which is applicable only to public network CLB.\nNote: A primary AZ carries traffic, while a secondary AZ does not carry traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. The list of primary AZs in a specific region can be queried through the DescribeMasterZones API."
-      },
-      {
-        "name": "ZoneId",
-        "desc": "Specifies an AZ ID for creating a CLB instance, such as ap-guangzhou-1, which is applicable only to public network CLB."
-      },
-      {
-        "name": "InternetAccessible",
-        "desc": "CLB network billing mode. This parameter is applicable only to public network CLB instances."
-      },
-      {
-        "name": "VipIsp",
-        "desc": "This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode."
-      },
-      {
-        "name": "Tags",
-        "desc": "Tags a CLB instance when purchasing it"
+        "name": "TargetGroupInstances",
+        "desc": "Array of servers for which to modify weight"
       }
     ],
-    "desc": "This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.\nNote: (1) To apply for a CLB instance in the specified AZ and cross-AZ disaster recovery, please [submit a ticket](https://console.cloud.tencent.com/workorder/category); (2) Currently, IPv6 is supported only in Beijing, Shanghai, and Guangzhou regions.\nThis is an async API. After it is returned successfully, you can call the DescribeLoadBalancers API to query the status of the instance (such as creating and normal) to check whether it is successfully created."
+    "desc": "This API is used to modify server weights of a target group in batches.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
   "ManualRewrite": {
     "params": [

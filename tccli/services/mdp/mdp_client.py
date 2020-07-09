@@ -12,26 +12,23 @@ from tccli.configure import Configure
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.tag.v20180813 import tag_client as tag_client_v20180813
-from tencentcloud.tag.v20180813 import models as models_v20180813
-from tccli.services.tag import v20180813
-from tccli.services.tag.v20180813 import help as v20180813_help
+from tencentcloud.mdp.v20200527 import mdp_client as mdp_client_v20200527
+from tencentcloud.mdp.v20200527 import models as models_v20200527
+from tccli.services.mdp import v20200527
+from tccli.services.mdp.v20200527 import help as v20200527_help
 
 
-def doDescribeResourceTagsByTagKeys(argv, arglist):
+def doModifyMediaPackageChannelEndpoint(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeResourceTagsByTagKeys", g_param[OptionsDefine.Version])
+        show_help("ModifyMediaPackageChannelEndpoint", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ServiceType": argv.get("--ServiceType"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "ResourceIds": Utils.try_to_json(argv, "--ResourceIds"),
-        "TagKeys": Utils.try_to_json(argv, "--TagKeys"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Id": argv.get("--Id"),
+        "Url": argv.get("--Url"),
+        "Name": argv.get("--Name"),
+        "AuthInfo": Utils.try_to_json(argv, "--AuthInfo"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -42,12 +39,12 @@ def doDescribeResourceTagsByTagKeys(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourceTagsByTagKeysRequest()
+    model = models.ModifyMediaPackageChannelEndpointRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourceTagsByTagKeys(model)
+    rsp = client.ModifyMediaPackageChannelEndpoint(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -57,16 +54,14 @@ def doDescribeResourceTagsByTagKeys(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpdateResourceTagValue(argv, arglist):
+def doDeleteMediaPackageChannels(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UpdateResourceTagValue", g_param[OptionsDefine.Version])
+        show_help("DeleteMediaPackageChannels", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-        "Resource": argv.get("--Resource"),
+        "Ids": Utils.try_to_json(argv, "--Ids"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -77,12 +72,12 @@ def doUpdateResourceTagValue(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateResourceTagValueRequest()
+    model = models.DeleteMediaPackageChannelsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UpdateResourceTagValue(model)
+    rsp = client.DeleteMediaPackageChannels(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -92,17 +87,16 @@ def doUpdateResourceTagValue(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTagValues(argv, arglist):
+def doModifyMediaPackageChannel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTagValues", g_param[OptionsDefine.Version])
+        show_help("ModifyMediaPackageChannel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TagKeys": Utils.try_to_json(argv, "--TagKeys"),
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Id": argv.get("--Id"),
+        "Name": argv.get("--Name"),
+        "Protocol": argv.get("--Protocol"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -113,12 +107,12 @@ def doDescribeTagValues(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTagValuesRequest()
+    model = models.ModifyMediaPackageChannelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTagValues(model)
+    rsp = client.ModifyMediaPackageChannel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -128,19 +122,16 @@ def doDescribeTagValues(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeResourceTagsByResourceIds(argv, arglist):
+def doModifyMediaPackageChannelInputAuthInfo(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeResourceTagsByResourceIds", g_param[OptionsDefine.Version])
+        show_help("ModifyMediaPackageChannelInputAuthInfo", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ServiceType": argv.get("--ServiceType"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceIds": Utils.try_to_json(argv, "--ResourceIds"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Id": argv.get("--Id"),
+        "Url": argv.get("--Url"),
+        "ActionType": argv.get("--ActionType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -151,12 +142,12 @@ def doDescribeResourceTagsByResourceIds(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourceTagsByResourceIdsRequest()
+    model = models.ModifyMediaPackageChannelInputAuthInfoRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourceTagsByResourceIds(model)
+    rsp = client.ModifyMediaPackageChannelInputAuthInfo(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -166,21 +157,15 @@ def doDescribeResourceTagsByResourceIds(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeResourceTags(argv, arglist):
+def doDeleteMediaPackageChannelEndpoints(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeResourceTags", g_param[OptionsDefine.Version])
+        show_help("DeleteMediaPackageChannelEndpoints", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "ServiceType": argv.get("--ServiceType"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceId": argv.get("--ResourceId"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "CosResourceId": Utils.try_to_json(argv, "--CosResourceId"),
+        "Id": argv.get("--Id"),
+        "Urls": Utils.try_to_json(argv, "--Urls"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -191,12 +176,12 @@ def doDescribeResourceTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourceTagsRequest()
+    model = models.DeleteMediaPackageChannelEndpointsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourceTags(model)
+    rsp = client.DeleteMediaPackageChannelEndpoints(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -206,16 +191,15 @@ def doDescribeResourceTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyResourceTags(argv, arglist):
+def doDescribeMediaPackageChannels(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyResourceTags", g_param[OptionsDefine.Version])
+        show_help("DescribeMediaPackageChannels", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Resource": argv.get("--Resource"),
-        "ReplaceTags": Utils.try_to_json(argv, "--ReplaceTags"),
-        "DeleteTags": Utils.try_to_json(argv, "--DeleteTags"),
+        "PageNum": Utils.try_to_json(argv, "--PageNum"),
+        "PageSize": Utils.try_to_json(argv, "--PageSize"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -226,12 +210,12 @@ def doModifyResourceTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyResourceTagsRequest()
+    model = models.DescribeMediaPackageChannelsRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyResourceTags(model)
+    rsp = client.DescribeMediaPackageChannels(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -241,17 +225,16 @@ def doModifyResourceTags(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTagKeys(argv, arglist):
+def doCreateMediaPackageChannelEndpoint(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTagKeys", g_param[OptionsDefine.Version])
+        show_help("CreateMediaPackageChannelEndpoint", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "ShowProject": Utils.try_to_json(argv, "--ShowProject"),
+        "Id": argv.get("--Id"),
+        "Name": argv.get("--Name"),
+        "AuthInfo": Utils.try_to_json(argv, "--AuthInfo"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -262,12 +245,12 @@ def doDescribeTagKeys(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTagKeysRequest()
+    model = models.CreateMediaPackageChannelEndpointRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTagKeys(model)
+    rsp = client.CreateMediaPackageChannelEndpoint(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -277,15 +260,15 @@ def doDescribeTagKeys(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteResourceTag(argv, arglist):
+def doCreateMediaPackageChannel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DeleteResourceTag", g_param[OptionsDefine.Version])
+        show_help("CreateMediaPackageChannel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TagKey": argv.get("--TagKey"),
-        "Resource": argv.get("--Resource"),
+        "Name": argv.get("--Name"),
+        "Protocol": argv.get("--Protocol"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -296,12 +279,12 @@ def doDeleteResourceTag(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteResourceTagRequest()
+    model = models.CreateMediaPackageChannelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DeleteResourceTag(model)
+    rsp = client.CreateMediaPackageChannel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -311,20 +294,14 @@ def doDeleteResourceTag(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTags(argv, arglist):
+def doDescribeMediaPackageChannel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("DescribeTags", g_param[OptionsDefine.Version])
+        show_help("DescribeMediaPackageChannel", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "TagKeys": Utils.try_to_json(argv, "--TagKeys"),
-        "ShowProject": Utils.try_to_json(argv, "--ShowProject"),
+        "Id": argv.get("--Id"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -335,155 +312,12 @@ def doDescribeTags(argv, arglist):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTagsRequest()
+    model = models.DescribeMediaPackageChannelRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.DescribeTags(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeResourcesByTags(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DescribeResourcesByTags", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagFilters": Utils.try_to_json(argv, "--TagFilters"),
-        "CreateUin": Utils.try_to_json(argv, "--CreateUin"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "Limit": Utils.try_to_json(argv, "--Limit"),
-        "ResourcePrefix": argv.get("--ResourcePrefix"),
-        "ResourceId": argv.get("--ResourceId"),
-        "ResourceRegion": argv.get("--ResourceRegion"),
-        "ServiceType": argv.get("--ServiceType"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeResourcesByTagsRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DescribeResourcesByTags(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAddResourceTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("AddResourceTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-        "Resource": argv.get("--Resource"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddResourceTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.AddResourceTag(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("DeleteTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.DeleteTag(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateTag(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("CreateTag", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "TagKey": argv.get("--TagKey"),
-        "TagValue": argv.get("--TagValue"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TagClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateTagRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.CreateTag(model)
+    rsp = client.DescribeMediaPackageChannel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -494,43 +328,39 @@ def doCreateTag(argv, arglist):
 
 
 CLIENT_MAP = {
-    "v20180813": tag_client_v20180813,
+    "v20200527": mdp_client_v20200527,
 
 }
 
 MODELS_MAP = {
-    "v20180813": models_v20180813,
+    "v20200527": models_v20200527,
 
 }
 
 ACTION_MAP = {
-    "DescribeResourceTagsByTagKeys": doDescribeResourceTagsByTagKeys,
-    "UpdateResourceTagValue": doUpdateResourceTagValue,
-    "DescribeTagValues": doDescribeTagValues,
-    "DescribeResourceTagsByResourceIds": doDescribeResourceTagsByResourceIds,
-    "DescribeResourceTags": doDescribeResourceTags,
-    "ModifyResourceTags": doModifyResourceTags,
-    "DescribeTagKeys": doDescribeTagKeys,
-    "DeleteResourceTag": doDeleteResourceTag,
-    "DescribeTags": doDescribeTags,
-    "DescribeResourcesByTags": doDescribeResourcesByTags,
-    "AddResourceTag": doAddResourceTag,
-    "DeleteTag": doDeleteTag,
-    "CreateTag": doCreateTag,
+    "ModifyMediaPackageChannelEndpoint": doModifyMediaPackageChannelEndpoint,
+    "DeleteMediaPackageChannels": doDeleteMediaPackageChannels,
+    "ModifyMediaPackageChannel": doModifyMediaPackageChannel,
+    "ModifyMediaPackageChannelInputAuthInfo": doModifyMediaPackageChannelInputAuthInfo,
+    "DeleteMediaPackageChannelEndpoints": doDeleteMediaPackageChannelEndpoints,
+    "DescribeMediaPackageChannels": doDescribeMediaPackageChannels,
+    "CreateMediaPackageChannelEndpoint": doCreateMediaPackageChannelEndpoint,
+    "CreateMediaPackageChannel": doCreateMediaPackageChannel,
+    "DescribeMediaPackageChannel": doDescribeMediaPackageChannel,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    v20180813.version,
+    v20200527.version,
 
 ]
 AVAILABLE_VERSIONS = {
-     'v' + v20180813.version.replace('-', ''): {"help": v20180813_help.INFO,"desc": v20180813_help.DESC},
+     'v' + v20200527.version.replace('-', ''): {"help": v20200527_help.INFO,"desc": v20200527_help.DESC},
 
 }
 
 
-def tag_action(argv, arglist):
+def mdp_action(argv, arglist):
     if "help" in argv:
         versions = sorted(AVAILABLE_VERSIONS.keys())
         opt_v = "--" + OptionsDefine.Version
@@ -546,7 +376,7 @@ def tag_action(argv, arglist):
         for action, info in docs.items():
             action_str += "        %s\n" % action
             action_str += Utils.split_str("        ", info["desc"], 120)
-        helpstr = HelpTemplate.SERVICE % {"name": "tag", "desc": desc, "actions": action_str}
+        helpstr = HelpTemplate.SERVICE % {"name": "mdp", "desc": desc, "actions": action_str}
         print(helpstr)
     else:
         print(ErrorMsg.FEW_ARG)
@@ -567,7 +397,7 @@ def version_merge():
 
 
 def register_arg(command):
-    cmd = NiceCommand("tag", tag_action)
+    cmd = NiceCommand("mdp", mdp_action)
     command.reg_cmd(cmd)
     cmd.reg_opt("help", "bool")
     cmd.reg_opt(OptionsDefine.Version, "string")
@@ -632,11 +462,11 @@ def parse_global_arg(argv):
                     raise Exception("%s is invalid" % OptionsDefine.Region)
     try:
         if params[OptionsDefine.Version] is None:
-            version = config["tag"][OptionsDefine.Version]
+            version = config["mdp"][OptionsDefine.Version]
             params[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if params[OptionsDefine.Endpoint] is None:
-            params[OptionsDefine.Endpoint] = config["tag"][OptionsDefine.Endpoint]
+            params[OptionsDefine.Endpoint] = config["mdp"][OptionsDefine.Endpoint]
     except Exception as err:
         raise Exception("config file:%s error, %s" % (conf_path, str(err)))
     versions = sorted(AVAILABLE_VERSIONS.keys())
@@ -653,7 +483,7 @@ def show_help(action, version):
         docstr += "        %s\n" % ("--" + param["name"])
         docstr += Utils.split_str("        ", param["desc"], 120)
 
-    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "tag", "desc": desc, "params": docstr}
+    helpmsg = HelpTemplate.ACTION % {"name": action, "service": "mdp", "desc": desc, "params": docstr}
     print(helpmsg)
 
 
@@ -663,7 +493,7 @@ def get_actions_info():
     version = new_version
     try:
         profile = config._load_json_msg(os.path.join(config.cli_path, "default.configure"))
-        version = profile["tag"]["version"]
+        version = profile["mdp"]["version"]
         version = "v" + version.replace('-', '')
     except Exception:
         pass

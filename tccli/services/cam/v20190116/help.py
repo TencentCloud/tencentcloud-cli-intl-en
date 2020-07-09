@@ -315,6 +315,15 @@ INFO = {
     ],
     "desc": "This API is used to get information associated with a custom multi-factor Token"
   },
+  "ListAccessKeys": {
+    "params": [
+      {
+        "name": "TargetUin",
+        "desc": "`UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default"
+      }
+    ],
+    "desc": "This API is used to list the access keys associated with a specified CAM user."
+  },
   "DeleteGroup": {
     "params": [
       {
