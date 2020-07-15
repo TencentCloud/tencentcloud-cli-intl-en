@@ -38,26 +38,22 @@ INFO = {
     ],
     "desc": "This API is used to create a service.\nThe maximum unit in API Gateway is service. Multiple APIs can be created in one service, and each service has a default domain name for users to call. You can also bind your own custom domain name to a service."
   },
-  "ModifyApiEnvironmentStrategy": {
+  "DescribeUsagePlansStatus": {
     "params": [
       {
-        "name": "ServiceId",
-        "desc": "Unique service ID."
+        "name": "Limit",
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
       },
       {
-        "name": "Strategy",
-        "desc": "Throttling value."
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
       },
       {
-        "name": "EnvironmentName",
-        "desc": "Environment name."
-      },
-      {
-        "name": "ApiIds",
-        "desc": "API list."
+        "name": "Filters",
+        "desc": "Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment."
       }
     ],
-    "desc": "This API is used to modify an API throttling policy."
+    "desc": "This API is used to query the list of usage plans."
   },
   "DeleteUsagePlan": {
     "params": [
@@ -268,7 +264,45 @@ INFO = {
         "desc": "Environment name."
       }
     ],
-    "desc": "This API is used to demote a usage plan of a service in an environment to the API level.\n \nThis operation will be denied if there are no APIs under the service.\nThis operation will also be denied if the current environment has not been published."
+    "desc": "This API is used to degrade a usage plan of a service in an environment to the API level.\nThis operation will be denied if there are no APIs under the service.\nThis operation will also be denied if the current environment has not been published."
+  },
+  "DescribeApiKeysStatus": {
+    "params": [
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`)."
+      }
+    ],
+    "desc": "This API is used to query the list of keys.\nIf you have created multiple API key pairs, you can use this API to query the information of one or more keys. This API does not display the `secretKey`."
+  },
+  "ModifyApiEnvironmentStrategy": {
+    "params": [
+      {
+        "name": "ServiceId",
+        "desc": "Unique service ID."
+      },
+      {
+        "name": "Strategy",
+        "desc": "Throttling value."
+      },
+      {
+        "name": "EnvironmentName",
+        "desc": "Environment name."
+      },
+      {
+        "name": "ApiIds",
+        "desc": "API list."
+      }
+    ],
+    "desc": "This API is used to modify an API throttling policy."
   },
   "DescribeLogSearch": {
     "params": [
@@ -286,7 +320,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Exact search by `apiid` or `reqid`"
+        "desc": "Reserved field"
       },
       {
         "name": "Limit",
@@ -302,11 +336,11 @@ INFO = {
       },
       {
         "name": "Query",
-        "desc": "Fuzzy search for log by keyword"
+        "desc": "Reserved field"
       },
       {
         "name": "LogQuerys",
-        "desc": ""
+        "desc": "Search criterion. Valid values:\nreq_id: \"=\"\napi_id: \"=\"\ncip: \"=\"\nuip: \":\"\nerr_msg: \":\"\nrsp_st: \"=\", \"!=\", \":\", \">\", \"<\"\nreq_t: \">=\", \"<=\"\n\nNote:\n\":\" indicates included, and \"!=\" indicates not equal to. For the meanings of fields, please see the `LogSet` description of the output parameter"
       }
     ],
     "desc": "This API is used to search for logs."
@@ -344,6 +378,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of custom domain names.\nIn API Gateway, you can bind custom domain names to a service for service call. This API is used to query the list of custom domain names bound to a service."
+  },
+  "DescribeService": {
+    "params": [
+      {
+        "name": "ServiceId",
+        "desc": "Unique ID of the service to be queried."
+      }
+    ],
+    "desc": "This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases."
   },
   "ModifyIPStrategy": {
     "params": [
@@ -391,6 +434,35 @@ INFO = {
       }
     ],
     "desc": "This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions."
+  },
+  "DescribeIPStrategyApisStatus": {
+    "params": [
+      {
+        "name": "ServiceId",
+        "desc": "Unique service ID."
+      },
+      {
+        "name": "StrategyId",
+        "desc": "Unique policy ID."
+      },
+      {
+        "name": "EnvironmentName",
+        "desc": "Policy environment."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`)."
+      }
+    ],
+    "desc": "This API is used to query the list of APIs to which an IP policy can be bound, i.e., the difference set between all APIs under the service and the APIs already bound to the policy."
   },
   "UnReleaseService": {
     "params": [
@@ -485,30 +557,18 @@ INFO = {
     ],
     "desc": "This API is used to delete a created API."
   },
-  "ModifyService": {
+  "DescribeIPStrategysStatus": {
     "params": [
       {
         "name": "ServiceId",
-        "desc": "Unique ID of the service to be modified."
+        "desc": "Unique service ID."
       },
       {
-        "name": "ServiceName",
-        "desc": "Service name after modification."
-      },
-      {
-        "name": "ServiceDesc",
-        "desc": "Service description after modification."
-      },
-      {
-        "name": "Protocol",
-        "desc": "Service frontend request type after modification, such as `http`, `https`, and `http&https`."
-      },
-      {
-        "name": "NetTypes",
-        "desc": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER."
+        "name": "Filters",
+        "desc": "Filter. Valid values: StrategyName."
       }
     ],
-    "desc": "This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type can be modified."
+    "desc": "This API is used to query the list of service IP policies."
   },
   "DescribeServiceUsagePlan": {
     "params": [
@@ -574,6 +634,31 @@ INFO = {
     ],
     "desc": "This API is used to delete an API key pair."
   },
+  "ModifyService": {
+    "params": [
+      {
+        "name": "ServiceId",
+        "desc": "Unique ID of the service to be modified."
+      },
+      {
+        "name": "ServiceName",
+        "desc": "Service name after modification."
+      },
+      {
+        "name": "ServiceDesc",
+        "desc": "Service description after modification."
+      },
+      {
+        "name": "Protocol",
+        "desc": "Service frontend request type after modification, such as `http`, `https`, and `http&https`."
+      },
+      {
+        "name": "NetTypes",
+        "desc": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER."
+      }
+    ],
+    "desc": "This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type can be modified."
+  },
   "UpdateApiKey": {
     "params": [
       {
@@ -635,7 +720,7 @@ INFO = {
         "desc": "Unique API ID array, which is required if `bindType` is `API`."
       }
     ],
-    "desc": "This API is used to bind a usage plan to a service environment.\nAfter you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.\nCurrently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to demote it."
+    "desc": "This API is used to bind a usage plan to a service or API.\nAfter you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.\nCurrently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to degrade it."
   },
   "UnBindSecretIds": {
     "params": [
@@ -691,6 +776,35 @@ INFO = {
       }
     ],
     "desc": "This API is used to unbind an IP policy from a service."
+  },
+  "DescribeIPStrategy": {
+    "params": [
+      {
+        "name": "ServiceId",
+        "desc": "Unique service ID."
+      },
+      {
+        "name": "StrategyId",
+        "desc": "Unique IP policy ID."
+      },
+      {
+        "name": "EnvironmentName",
+        "desc": "Environment associated with policy."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter, which is a reserved field. Filtering is not supported currently."
+      }
+    ],
+    "desc": "This API is used to query IP policy details."
   },
   "DescribeUsagePlanEnvironments": {
     "params": [
@@ -759,6 +873,27 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of all published versions under a service.\nA service is generally published on several versions. This API can be used to query the published versions."
+  },
+  "DescribeApisStatus": {
+    "params": [
+      {
+        "name": "ServiceId",
+        "desc": "Unique service ID of API."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100."
+      },
+      {
+        "name": "Filters",
+        "desc": "API filter. Valid values: ApiId, ApiName, ApiPath, ApiType, AuthRelationApiId, AuthType, ApiBuniessType, NotUsagePlanId, Environment, Tags (whose values are the list of `$tag_key:tag_value`), TagKeys (whose values are the list of tag keys)."
+      }
+    ],
+    "desc": "This API is used to view a certain API or the list of all APIs under a service and relevant information."
   },
   "CreateApiKey": {
     "params": [
@@ -941,14 +1076,22 @@ INFO = {
     ],
     "desc": "This API is used to display a service throttling policy."
   },
-  "DescribeService": {
+  "DescribeServicesStatus": {
     "params": [
       {
-        "name": "ServiceId",
-        "desc": "Unique ID of the service to be queried."
+        "name": "Limit",
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion."
       }
     ],
-    "desc": "This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases."
+    "desc": "This API is used to query the list of one or more services and return relevant domain name, time, and other information."
   },
   "DeleteServiceSubDomainMapping": {
     "params": [

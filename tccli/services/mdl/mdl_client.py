@@ -131,6 +131,7 @@ def doModifyMediaLiveInput(argv, arglist):
         "Id": argv.get("--Id"),
         "Name": argv.get("--Name"),
         "SecurityGroupIds": Utils.try_to_json(argv, "--SecurityGroupIds"),
+        "InputSettings": Utils.try_to_json(argv, "--InputSettings"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

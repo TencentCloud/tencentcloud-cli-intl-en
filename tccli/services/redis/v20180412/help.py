@@ -1,6 +1,19 @@
 # -*- coding: utf-8 -*-
 DESC = "redis-2018-04-12"
 INFO = {
+  "ClearInstance": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "Password",
+        "desc": "Redis instance password (this parameter is not required for password-free instances but for password-enabled instances)"
+      }
+    ],
+    "desc": "This API is used to clear the data of a Redis instance."
+  },
   "DescribeInstanceMonitorBigKeySizeDist": {
     "params": [
       {
@@ -34,7 +47,7 @@ INFO = {
       },
       {
         "name": "Privilege",
-        "desc": "Read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write"
+        "desc": "Read/write policy. Valid values: r (read-only), rw (read/write)."
       },
       {
         "name": "Remark",
@@ -42,23 +55,6 @@ INFO = {
       }
     ],
     "desc": "This API is used to create an instance sub-account."
-  },
-  "DescribeInstanceMonitorBigKey": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Instance ID"
-      },
-      {
-        "name": "ReqType",
-        "desc": "Request type. 1: string type; 2: all types"
-      },
-      {
-        "name": "Date",
-        "desc": "Time, such as \"20190219\""
-      }
-    ],
-    "desc": "This API is used to query the big key of an instance."
   },
   "ModifyInstanceAccount": {
     "params": [
@@ -143,6 +139,15 @@ INFO = {
     ],
     "desc": "This API is used to deactivate an instance in the recycle bin immediately."
   },
+  "StartupInstance": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      }
+    ],
+    "desc": "This API is used to deisolate an instance."
+  },
   "DescribeInstanceAccount": {
     "params": [
       {
@@ -159,6 +164,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to view instance sub-account information."
+  },
+  "DescribeInstanceDTSInfo": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      }
+    ],
+    "desc": "This API is used to query the DTS task details of an instance."
   },
   "DescribeInstanceMonitorTopNCmdTook": {
     "params": [
@@ -198,18 +212,22 @@ INFO = {
     ],
     "desc": "This API is used to modify the network configuration of an instance."
   },
-  "DescribeInstanceShards": {
+  "ResetPassword": {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID"
+        "desc": "Redis instance ID"
       },
       {
-        "name": "FilterSlave",
-        "desc": "Whether to filter out the slave node information"
+        "name": "Password",
+        "desc": "Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)"
+      },
+      {
+        "name": "NoAuth",
+        "desc": "Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false"
       }
     ],
-    "desc": "This API is used to get the information of cluster edition instance shards."
+    "desc": "This API is used to reset a password."
   },
   "DestroyPrepaidInstance": {
     "params": [
@@ -387,18 +405,14 @@ INFO = {
     ],
     "desc": "This API is used to query the access source information of an instance."
   },
-  "ClearInstance": {
+  "DescribeInstanceParams": {
     "params": [
       {
         "name": "InstanceId",
         "desc": "Instance ID"
-      },
-      {
-        "name": "Password",
-        "desc": "Redis instance password (this parameter is not required for password-free instances but for password-enabled instances)"
       }
     ],
-    "desc": "This API is used to clear the data of a Redis instance."
+    "desc": "This API is used to query the list of instance parameters."
   },
   "DescribeProjectSecurityGroup": {
     "params": [
@@ -413,18 +427,18 @@ INFO = {
     ],
     "desc": "This API is used to query the security group information of a project."
   },
-  "DescribeInstanceMonitorHotKey": {
+  "DescribeInstanceShards": {
     "params": [
       {
         "name": "InstanceId",
         "desc": "Instance ID"
       },
       {
-        "name": "SpanType",
-        "desc": "Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours"
+        "name": "FilterSlave",
+        "desc": "Whether to filter out the slave node information"
       }
     ],
-    "desc": "This API is used to query the hot key of an instance."
+    "desc": "This API is used to get the information of cluster edition instance shards."
   },
   "DescribeTaskInfo": {
     "params": [
@@ -457,22 +471,64 @@ INFO = {
     ],
     "desc": "This API is used to enable read/write separation."
   },
-  "ResetPassword": {
+  "DescribeProjectSecurityGroups": {
     "params": [
       {
-        "name": "InstanceId",
-        "desc": "Redis instance ID"
+        "name": "Product",
+        "desc": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb."
       },
       {
-        "name": "Password",
-        "desc": "Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)"
+        "name": "ProjectId",
+        "desc": "Project ID."
       },
       {
-        "name": "NoAuth",
-        "desc": "Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false"
+        "name": "Offset",
+        "desc": "Offset."
+      },
+      {
+        "name": "Limit",
+        "desc": "The number of security groups to be pulled."
+      },
+      {
+        "name": "SearchKey",
+        "desc": "Search criteria. You can enter a security group ID or name."
       }
     ],
-    "desc": "This API is used to reset a password."
+    "desc": "This API is used to query the security group details of a project."
+  },
+  "AssociateSecurityGroups": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc."
+      },
+      {
+        "name": "SecurityGroupId",
+        "desc": "ID of the security group to be associated in the format of sg-efil73jd."
+      },
+      {
+        "name": "InstanceIds",
+        "desc": "ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances."
+      }
+    ],
+    "desc": "This API is used to associate security groups with specified instances."
+  },
+  "ModifyDBInstanceSecurityGroups": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc."
+      },
+      {
+        "name": "SecurityGroupIds",
+        "desc": "The ID list of the security groups to be modified, which is an array of one or more security group IDs."
+      },
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console."
+      }
+    ],
+    "desc": "This API is used to modify the security groups associated with an instance."
   },
   "DeleteInstanceAccount": {
     "params": [
@@ -487,14 +543,22 @@ INFO = {
     ],
     "desc": "This API is used to delete an instance sub-account."
   },
-  "DescribeInstanceParams": {
+  "DescribeInstanceMonitorBigKey": {
     "params": [
       {
         "name": "InstanceId",
         "desc": "Instance ID"
+      },
+      {
+        "name": "ReqType",
+        "desc": "Request type. 1: string type; 2: all types"
+      },
+      {
+        "name": "Date",
+        "desc": "Time, such as \"20190219\""
       }
     ],
-    "desc": "This API is used to query the list of instance parameters."
+    "desc": "This API is used to query the big key of an instance."
   },
   "DescribeInstanceSecurityGroup": {
     "params": [
@@ -543,18 +607,18 @@ INFO = {
     ],
     "desc": "This API is used to upgrade an instance."
   },
-  "RenewInstance": {
+  "DescribeInstanceMonitorHotKey": {
     "params": [
-      {
-        "name": "Period",
-        "desc": "Length of purchase in months"
-      },
       {
         "name": "InstanceId",
         "desc": "Instance ID"
+      },
+      {
+        "name": "SpanType",
+        "desc": "Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours"
       }
     ],
-    "desc": "This API is used to renew an instance."
+    "desc": "This API is used to query the hot key of an instance."
   },
   "ManualBackupInstance": {
     "params": [
@@ -585,6 +649,19 @@ INFO = {
       }
     ],
     "desc": "This API is used to change the Redis password."
+  },
+  "DescribeDBSecurityGroups": {
+    "params": [
+      {
+        "name": "Product",
+        "desc": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc."
+      },
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console."
+      }
+    ],
+    "desc": "This API is used to query the security group details of an instance."
   },
   "DescribeSlowLog": {
     "params": [
@@ -653,7 +730,7 @@ INFO = {
       },
       {
         "name": "TypeId",
-        "desc": "Instance type. 2: Redis 2.8 Master-Slave Edition, 3: Redis 3.2 Master-Slave Edition (CKV Master-Slave Edition), 4: Redis 3.2 Cluster Edition (CKV Cluster Edition), 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,"
+        "desc": "Instance type. Valid values: 2 (Redis 2.8 memory edition in standard architecture), 3 (Redis 3.2 memory edition in standard architecture), 4 (CKV 3.2 memory edition in standard architecture), 6 (Redis 4.0 memory edition in standard architecture), 7 (Redis 4.0 memory edition in cluster architecture), 8 (Redis 5.0 memory edition in standard architecture), 9 (Redis 5.0 memory edition in cluster architecture)."
       },
       {
         "name": "MemSize",
@@ -673,7 +750,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Instance password. Rules: 1. It can contain 8-16 characters; 2. It must contain at least two of the following three types of characters: letters, digits, and special characters !@^*(). (When creating a password-free instance, you can leave this field along and it will be ignored.)"
+        "desc": "Instance password. It can contain 8-30 characters and must contain at least two of the following types of characters: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/). It cannot stat with the symbol (/)."
       },
       {
         "name": "VpcId",
@@ -701,23 +778,23 @@ INFO = {
       },
       {
         "name": "RedisShardNum",
-        "desc": "Number of instance shards. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, Redis 2.8 standalone edition, and Redis 4.0 master-slave edition"
+        "desc": "Number of shards in an instance. This parameter is required for cluster edition instances. Valid values: 3, 5, 8, 12, 16, 24, 32, 64, 96, 128."
       },
       {
         "name": "RedisReplicasNum",
-        "desc": "Number of instance replicas. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition"
+        "desc": "Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas."
       },
       {
         "name": "ReplicasReadonly",
-        "desc": "Whether to support read-only replicas. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition |"
+        "desc": "Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on slave nodes. To enable read-only replicas, we recommend you create 2 or more replicas."
       },
       {
         "name": "InstanceName",
-        "desc": "Instance name"
+        "desc": "Instance name. It contains only letters, digits, underscores, and dashes with a length of up to 60 characters."
       },
       {
         "name": "NoAuth",
-        "desc": "Whether to support the password-free feature. Value range: true (password-free instance); false (password-enabled instance). Default value: false"
+        "desc": "Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access."
       }
     ],
     "desc": "This API is used to create a Redis instance."
@@ -773,14 +850,35 @@ INFO = {
     ],
     "desc": "This API is used to query the list of Redis instance backups."
   },
-  "StartupInstance": {
+  "DisassociateSecurityGroups": {
     "params": [
+      {
+        "name": "Product",
+        "desc": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc."
+      },
+      {
+        "name": "SecurityGroupId",
+        "desc": "Security group ID."
+      },
+      {
+        "name": "InstanceIds",
+        "desc": "Instance ID list, which is an array of one or more instance IDs."
+      }
+    ],
+    "desc": "This API is used to unassociate security groups from instances in batches."
+  },
+  "RenewInstance": {
+    "params": [
+      {
+        "name": "Period",
+        "desc": "Length of purchase in months"
+      },
       {
         "name": "InstanceId",
         "desc": "Instance ID"
       }
     ],
-    "desc": "This API is used to deisolate an instance."
+    "desc": "This API is used to renew an instance."
   },
   "ModifyInstance": {
     "params": [
@@ -840,23 +938,23 @@ INFO = {
     "params": [
       {
         "name": "SrcInstanceId",
-        "desc": "Source instance ID"
+        "desc": "Source instance ID."
       },
       {
         "name": "DstInstanceId",
-        "desc": "Target instance ID"
+        "desc": "Target instance ID."
       },
       {
         "name": "TimeDelay",
-        "desc": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. It is recommended to set an acceptable value based on the actual business conditions."
+        "desc": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than `TimeDelay`, the VIP will not be switched. We recommend setting an acceptable value based on the actual business conditions."
       },
       {
         "name": "ForceSwitch",
-        "desc": "Whether to force the switch when DTS is disconnected. 1: yes; 0: no"
+        "desc": "Whether to force the switch when DTS is disconnected. Valid values: 1 (yes), 0 (no)."
       },
       {
         "name": "SwitchTime",
-        "desc": "now: switch now; syncComplete: switch after sync is completed"
+        "desc": "Valid values: now (switch now), syncComplete (switch after sync is completed)."
       }
     ],
     "desc": "This API is used to swap the VIPs of instances for instance disaster recovery switch in scenarios where cross-AZ disaster recovery is supported through DTS. After the VIPs of the source and target instances are swapped, the target instance can be written into and the DTS sync task between them will be disconnected."

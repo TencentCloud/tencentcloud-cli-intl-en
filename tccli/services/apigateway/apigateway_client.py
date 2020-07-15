@@ -58,17 +58,16 @@ def doCreateService(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyApiEnvironmentStrategy(argv, arglist):
+def doDescribeUsagePlansStatus(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyApiEnvironmentStrategy", g_param[OptionsDefine.Version])
+        show_help("DescribeUsagePlansStatus", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ServiceId": argv.get("--ServiceId"),
-        "Strategy": Utils.try_to_json(argv, "--Strategy"),
-        "EnvironmentName": argv.get("--EnvironmentName"),
-        "ApiIds": Utils.try_to_json(argv, "--ApiIds"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -82,9 +81,9 @@ def doModifyApiEnvironmentStrategy(argv, arglist):
     client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyApiEnvironmentStrategyRequest()
+    model = models.DescribeUsagePlansStatusRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyApiEnvironmentStrategy(model)
+    rsp = client.DescribeUsagePlansStatus(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -230,6 +229,77 @@ def doDemoteServiceUsagePlan(argv, arglist):
     model = models.DemoteServiceUsagePlanRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DemoteServiceUsagePlan(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeApiKeysStatus(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeApiKeysStatus", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeApiKeysStatusRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeApiKeysStatus(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyApiEnvironmentStrategy(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyApiEnvironmentStrategy", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ServiceId": argv.get("--ServiceId"),
+        "Strategy": Utils.try_to_json(argv, "--Strategy"),
+        "EnvironmentName": argv.get("--EnvironmentName"),
+        "ApiIds": Utils.try_to_json(argv, "--ApiIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyApiEnvironmentStrategyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyApiEnvironmentStrategy(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -455,6 +525,42 @@ def doDeleteService(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doUnBindIPStrategy(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("UnBindIPStrategy", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ServiceId": argv.get("--ServiceId"),
+        "StrategyId": argv.get("--StrategyId"),
+        "EnvironmentName": argv.get("--EnvironmentName"),
+        "UnBindApiIds": Utils.try_to_json(argv, "--UnBindApiIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UnBindIPStrategyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.UnBindIPStrategy(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doUpdateService(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -482,6 +588,44 @@ def doUpdateService(argv, arglist):
     model = models.UpdateServiceRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.UpdateService(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeIPStrategyApisStatus(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeIPStrategyApisStatus", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ServiceId": argv.get("--ServiceId"),
+        "StrategyId": argv.get("--StrategyId"),
+        "EnvironmentName": argv.get("--EnvironmentName"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIPStrategyApisStatusRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeIPStrategyApisStatus(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -659,6 +803,40 @@ def doDeleteApi(argv, arglist):
     model = models.DeleteApiRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DeleteApi(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeIPStrategysStatus(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeIPStrategysStatus", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ServiceId": argv.get("--ServiceId"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIPStrategysStatusRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeIPStrategysStatus(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -984,17 +1162,16 @@ def doBindIPStrategy(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUnBindIPStrategy(argv, arglist):
+def doDescribeServicesStatus(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("UnBindIPStrategy", g_param[OptionsDefine.Version])
+        show_help("DescribeServicesStatus", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "ServiceId": argv.get("--ServiceId"),
-        "StrategyId": argv.get("--StrategyId"),
-        "EnvironmentName": argv.get("--EnvironmentName"),
-        "UnBindApiIds": Utils.try_to_json(argv, "--UnBindApiIds"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1008,9 +1185,47 @@ def doUnBindIPStrategy(argv, arglist):
     client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UnBindIPStrategyRequest()
+    model = models.DescribeServicesStatusRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.UnBindIPStrategy(model)
+    rsp = client.DescribeServicesStatus(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeIPStrategy(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeIPStrategy", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ServiceId": argv.get("--ServiceId"),
+        "StrategyId": argv.get("--StrategyId"),
+        "EnvironmentName": argv.get("--EnvironmentName"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIPStrategyRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeIPStrategy(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1151,6 +1366,42 @@ def doDescribeServiceReleaseVersion(argv, arglist):
     model = models.DescribeServiceReleaseVersionRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeServiceReleaseVersion(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeApisStatus(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeApisStatus", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ServiceId": argv.get("--ServiceId"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ApigatewayClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeApisStatusRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeApisStatus(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1917,22 +2168,27 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "CreateService": doCreateService,
-    "ModifyApiEnvironmentStrategy": doModifyApiEnvironmentStrategy,
+    "DescribeUsagePlansStatus": doDescribeUsagePlansStatus,
     "DeleteUsagePlan": doDeleteUsagePlan,
     "ModifyApi": doModifyApi,
     "DemoteServiceUsagePlan": doDemoteServiceUsagePlan,
+    "DescribeApiKeysStatus": doDescribeApiKeysStatus,
+    "ModifyApiEnvironmentStrategy": doModifyApiEnvironmentStrategy,
     "ModifyUsagePlan": doModifyUsagePlan,
     "DescribeLogSearch": doDescribeLogSearch,
     "DescribeUsagePlanSecretIds": doDescribeUsagePlanSecretIds,
     "DescribeServiceSubDomains": doDescribeServiceSubDomains,
     "ModifyIPStrategy": doModifyIPStrategy,
     "DeleteService": doDeleteService,
+    "UnBindIPStrategy": doUnBindIPStrategy,
     "UpdateService": doUpdateService,
+    "DescribeIPStrategyApisStatus": doDescribeIPStrategyApisStatus,
     "UnReleaseService": doUnReleaseService,
     "ModifyApiIncrement": doModifyApiIncrement,
     "DescribeServiceEnvironmentReleaseHistory": doDescribeServiceEnvironmentReleaseHistory,
     "DescribeApiUsagePlan": doDescribeApiUsagePlan,
     "DeleteApi": doDeleteApi,
+    "DescribeIPStrategysStatus": doDescribeIPStrategysStatus,
     "DescribeServiceEnvironmentList": doDescribeServiceEnvironmentList,
     "DescribeServiceUsagePlan": doDescribeServiceUsagePlan,
     "ModifyServiceEnvironmentStrategy": doModifyServiceEnvironmentStrategy,
@@ -1942,11 +2198,13 @@ ACTION_MAP = {
     "BindEnvironment": doBindEnvironment,
     "UnBindSecretIds": doUnBindSecretIds,
     "BindIPStrategy": doBindIPStrategy,
-    "UnBindIPStrategy": doUnBindIPStrategy,
+    "DescribeServicesStatus": doDescribeServicesStatus,
+    "DescribeIPStrategy": doDescribeIPStrategy,
     "DescribeUsagePlanEnvironments": doDescribeUsagePlanEnvironments,
     "EnableApiKey": doEnableApiKey,
     "CreateIPStrategy": doCreateIPStrategy,
     "DescribeServiceReleaseVersion": doDescribeServiceReleaseVersion,
+    "DescribeApisStatus": doDescribeApisStatus,
     "CreateApiKey": doCreateApiKey,
     "ModifySubDomain": doModifySubDomain,
     "DeleteIPStrategy": doDeleteIPStrategy,

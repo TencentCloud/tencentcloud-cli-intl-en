@@ -48,34 +48,34 @@ INFO = {
     "params": [
       {
         "name": "VpcId",
-        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID"
+        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID."
       },
       {
         "name": "FlowLogName",
-        "desc": "The name of the flow log instance"
+        "desc": "The name of the flow log instance."
       },
       {
         "name": "ResourceType",
-        "desc": "The type of resources to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE"
+        "desc": "The type of resources to which the flow log belongs. Valid values: 'VPC', 'SUBNET' and 'NETWORKINTERFACE'."
       },
       {
         "name": "ResourceId",
-        "desc": "The unique ID of the resource"
+        "desc": "The unique ID of the resource."
       },
       {
         "name": "TrafficType",
-        "desc": "The collection type of the flow log. ACCEPT|REJECT|ALL"
+        "desc": "The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'."
       },
       {
         "name": "CloudLogId",
-        "desc": "The storage ID of the flow log"
+        "desc": "The storage ID of the flow log."
       },
       {
         "name": "FlowLogDescription",
         "desc": "The description of the flow log instance"
       }
     ],
-    "desc": "This API (CreateFlowLog) is used to create flow logs."
+    "desc": "This API is used to create a flow log."
   },
   "ModifyNatGatewayAttribute": {
     "params": [
@@ -162,47 +162,47 @@ INFO = {
     "params": [
       {
         "name": "NetworkType",
-        "desc": "The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'"
+        "desc": "The bandwidth package type. Valid values: 'BGP', 'SINGLEISP', and 'ANYCAST'."
       },
       {
         "name": "ChargeType",
-        "desc": "The bandwidth package billing type, including 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'"
+        "desc": "The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'."
       },
       {
         "name": "BandwidthPackageName",
-        "desc": "The name of the bandwidth package"
+        "desc": "The name of the bandwidth package."
       },
       {
         "name": "BandwidthPackageCount",
-        "desc": "The number of bandwidth packages (non-upward accounts can only enter 1)"
+        "desc": "The number of bandwidth packages (enter 1 for bill-by-CVM accounts)."
       },
       {
         "name": "InternetMaxBandwidth",
-        "desc": "The size limit of the bandwidth package. Unit: Mbps. -1 indicates there is no limit."
+        "desc": "The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit."
       },
       {
         "name": "Tags",
-        "desc": ""
+        "desc": "The list of tags to be bound."
       },
       {
         "name": "Protocol",
-        "desc": ""
+        "desc": "The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'. Default value: 'ipv4'."
       }
     ],
-    "desc": "This API is used to support the creation of [Device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)"
+    "desc": "This API is used to create [device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)"
   },
   "DeleteFlowLog": {
     "params": [
       {
         "name": "VpcId",
-        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID"
+        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID."
       },
       {
         "name": "FlowLogId",
-        "desc": "The unique ID of the flow log"
+        "desc": "The unique ID of the flow log."
       }
     ],
-    "desc": "This API (DeleteFlowLog) is used to delete flow logs."
+    "desc": "This API is used to delete a flow log."
   },
   "CreateRouteTable": {
     "params": [
@@ -264,35 +264,39 @@ INFO = {
     "params": [
       {
         "name": "VpcId",
-        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID"
+        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID."
       },
       {
         "name": "FlowLogId",
-        "desc": "The unique ID of the flow log"
+        "desc": "The unique ID of the flow log."
       },
       {
         "name": "FlowLogName",
-        "desc": "The name of the flow log instance"
+        "desc": "The name of the flow log instance."
       },
       {
         "name": "FlowLogDescription",
-        "desc": "The description of the flow log instance"
+        "desc": "The description of the flow log instance."
       }
     ],
-    "desc": "This API (ModifyFlowLogAttribute) is used to modify flow log attributes."
+    "desc": "This API is used to modify the attributes of a flow log."
   },
-  "DisassociateNetworkInterfaceSecurityGroups": {
+  "ModifyServiceTemplateGroupAttribute": {
     "params": [
       {
-        "name": "NetworkInterfaceIds",
-        "desc": "ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request."
+        "name": "ServiceTemplateGroupId",
+        "desc": "The protocol port template group instance ID, such as `ppmg-ei8hfd9a`."
       },
       {
-        "name": "SecurityGroupIds",
-        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request."
+        "name": "ServiceTemplateGroupName",
+        "desc": "Protocol port template group name."
+      },
+      {
+        "name": "ServiceTemplateIds",
+        "desc": "Instance ID of the protocol port template, such as `ppm-4dw6agho`."
       }
     ],
-    "desc": "This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI."
+    "desc": "This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group."
   },
   "ModifyAddressInternetChargeType": {
     "params": [
@@ -586,18 +590,18 @@ INFO = {
       },
       {
         "name": "AddressCount",
-        "desc": "The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in."
+        "desc": "The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in."
       },
       {
         "name": "PublicIpAddresses",
-        "desc": "The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in."
+        "desc": "The EIP array bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in."
       },
       {
         "name": "Zone",
         "desc": "The EIP zone. This is passed in when EIP is automatically assigned."
       }
     ],
-    "desc": "This API (AssociateNatGatewayAddress) is used to bind a NAT gateway to an Elastic IP (EIP)."
+    "desc": "This API is used to bind a NAT Gateway to an Elastic IP (EIP)."
   },
   "CreateVpnConnection": {
     "params": [
@@ -649,18 +653,18 @@ INFO = {
     "params": [
       {
         "name": "BandwidthPackageId",
-        "desc": "The unique ID of the bandwidth package, such as 'bwp-xxxx'"
+        "desc": "The unique ID of the bandwidth package, such as 'bwp-xxxx'."
       },
       {
         "name": "ResourceType",
-        "desc": "The resource type, including `Address`, `LoadBalance`"
+        "desc": "The resource type. Valid values: 'Address' and 'LoadBalance'."
       },
       {
         "name": "ResourceIds",
-        "desc": "ResourceId, such as 'eip-xxxx', 'lb-xxxx'"
+        "desc": "The resource IP, such as 'eip-xxxx' and 'lb-xxxx'."
       }
     ],
-    "desc": "This API is used to delete bandwidth package resources. This includes [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
+    "desc": "This API is used to delete a bandwidth package resource, including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
   },
   "InquiryPriceRenewVpnGateway": {
     "params": [
@@ -691,6 +695,47 @@ INFO = {
       }
     ],
     "desc": "This API (AssignPrivateIpAddresses) is used for the ENI to apply for private IPs.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can specify the private IP you want to apply for. It cannot be the primary IP, which already exists and cannot be modified. The private IP must be in the same subnet as the ENI, and cannot be occupied.\n* You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range of the ENI."
+  },
+  "CreateAndAttachNetworkInterface": {
+    "params": [
+      {
+        "name": "VpcId",
+        "desc": "The ID of the VPC instance. You can obtain the parameter value from the `VpcId` field in the returned result of the `DescribeVpcs` API."
+      },
+      {
+        "name": "NetworkInterfaceName",
+        "desc": "The name of the ENI. The maximum length is 60 bytes."
+      },
+      {
+        "name": "SubnetId",
+        "desc": "The subnet instance ID of the ENI, such as 'subnet-0ap8nwca'."
+      },
+      {
+        "name": "InstanceId",
+        "desc": "The CVM instance ID."
+      },
+      {
+        "name": "PrivateIpAddresses",
+        "desc": "The information of the specified private IPs. You can specify a maximum of 10 IPs each time."
+      },
+      {
+        "name": "SecondaryPrivateIpAddressCount",
+        "desc": "The number of private IP addresses you can apply for. The total number of private IP addresses cannot exceed the quota."
+      },
+      {
+        "name": "SecurityGroupIds",
+        "desc": "The security group to be bound with, such as ['sg-1dd51d']."
+      },
+      {
+        "name": "NetworkInterfaceDescription",
+        "desc": "The ENI description. You can enter any information within 60 characters."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
+      }
+    ],
+    "desc": "This API is used to create an ENI and bind it to a CVM.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be idle and in the same subnet as the ENI.\n* When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.\n* An ENI can only be bound to a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added."
   },
   "DescribeNatGateways": {
     "params": [
@@ -977,22 +1022,18 @@ INFO = {
     ],
     "desc": "This API (DisassociateAddress) is used to unbind [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* The unbinding of EIPs from CVM instances and ENIs is supported.\n* The unbinding of EIPs from NATs is not supported. For information about how to unbind an EIP from a NAT, see [EipUnBindNatGateway](https://cloud.tencent.com/document/product/215/4092).\n* You can only unbind EIPs in BIND or BIND_ENI status.\n* Blocked EIPs cannot be unbound."
   },
-  "ModifyServiceTemplateGroupAttribute": {
+  "DisassociateNetworkInterfaceSecurityGroups": {
     "params": [
       {
-        "name": "ServiceTemplateGroupId",
-        "desc": "The protocol port template group instance ID, such as `ppmg-ei8hfd9a`."
+        "name": "NetworkInterfaceIds",
+        "desc": "ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request."
       },
       {
-        "name": "ServiceTemplateGroupName",
-        "desc": "Protocol port template group name."
-      },
-      {
-        "name": "ServiceTemplateIds",
-        "desc": "Instance ID of the protocol port template, such as `ppm-4dw6agho`."
+        "name": "SecurityGroupIds",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request."
       }
     ],
-    "desc": "This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group."
+    "desc": "This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI."
   },
   "CreateVpc": {
     "params": [
@@ -1027,26 +1068,26 @@ INFO = {
     "params": [
       {
         "name": "ResourceIds",
-        "desc": "ResourceId, such as 'eip-xxxx', 'lb-xxxx'"
+        "desc": "The unique ID of the source, such as 'eip-xxxx' and 'lb-xxxx'. EIP and LB resources are currently supported."
       },
       {
         "name": "BandwidthPackageId",
-        "desc": "The unique ID of the bandwidth package, such as 'bwp-xxxx'"
+        "desc": "The unique ID of the bandwidth package, such as 'bwp-xxxx'."
       },
       {
         "name": "NetworkType",
-        "desc": "The bandwidth package type, including 'BGP', 'SINGLEISP', 'ANYCAST'"
+        "desc": "The type of the bandwidth package. Valid value: 'BGP'. Internal resources will be represented by 'BGP IP'."
       },
       {
         "name": "ResourceType",
-        "desc": "The resource type, including 'Address', 'LoadBalance'"
+        "desc": "The resource type, including 'Address' and 'LoadBalance'."
       },
       {
         "name": "Protocol",
-        "desc": ""
+        "desc": "The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'."
       }
     ],
-    "desc": "This API is used to add bandwidth package resources. This includes [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
+    "desc": "This API is used to add a bandwidth package resource including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
   },
   "AssignIpv6SubnetCidrBlock": {
     "params": [
@@ -1247,63 +1288,67 @@ INFO = {
     "params": [
       {
         "name": "VpcId",
-        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID"
+        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID."
       },
       {
         "name": "FlowLogId",
-        "desc": "The unique ID of the flow log"
+        "desc": "The unique ID of the flow log."
       },
       {
         "name": "FlowLogName",
-        "desc": "The name of the flow log instance"
+        "desc": "The name of the flow log instance."
       },
       {
         "name": "ResourceType",
-        "desc": "The type of resource to which the flow log belongs. VPC|SUBNET|NETWORKINTERFACE"
+        "desc": "The type of resource to which the flow log belongs. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'."
       },
       {
         "name": "ResourceId",
-        "desc": "The unique ID of the resource"
+        "desc": "The unique ID of the resource."
       },
       {
         "name": "TrafficType",
-        "desc": "The collection type of the flow log. ACCEPT|REJECT|ALL"
+        "desc": "The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'."
       },
       {
         "name": "CloudLogId",
-        "desc": "The storage ID of the flow log"
+        "desc": "The storage ID of the flow log."
       },
       {
         "name": "CloudLogState",
-        "desc": "Flow log storage ID status"
+        "desc": "The storage ID status of the flow log."
       },
       {
         "name": "OrderField",
-        "desc": "Order by field. Supported fields: flowLogName, createTime. The default value is createTime."
+        "desc": "Order by field. Valid values: 'flowLogName' and 'createTime'. Default value: 'createTime'."
       },
       {
         "name": "OrderDirection",
-        "desc": "Ascending (asc) and descending (desc). The default value is desc."
+        "desc": "In ascending (asc) or descending (desc) order. Default value: 'desc'."
       },
       {
         "name": "Offset",
-        "desc": "Offset. The default value is 0."
+        "desc": "The offset. Default value: 0."
       },
       {
         "name": "Limit",
-        "desc": "The number of rows per page. The default value is 10."
+        "desc": "The number of rows per page. Default vaue: 10."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition. `FlowLogIds` and `Filters` cannot be specified at the same time.\n<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key.</li>"
       }
     ],
-    "desc": "This API (DescribeFlowLogs) is used to query and obtain the flow log set."
+    "desc": "This API is used to query and obtain the flow log set."
   },
   "DeleteDirectConnectGateway": {
     "params": [
       {
         "name": "DirectConnectGatewayId",
-        "desc": "The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`."
+        "desc": "The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`."
       }
     ],
-    "desc": "This API (DeleteDirectConnectGateway) is used to delete Direct Connect gateways.\n<li>For a NAT gateway, NAT and ACL rules will be cleaned upon the deletion of a Direct Connect gateway.\n<li>After the deletion of a Direct Connect gateway, the routing policy associated with the gateway in the route table will also be deleted.\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API."
+    "desc": "This API is used to delete a direct connect gateway.\n<li>For a NAT gateway, NAT and ACL rules will be cleared upon the deletion of a direct connect gateway.\n<li>After the deletion of a direct connect gateway, the routing policy associated with the gateway in the route table will also be deleted.\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to poll the `QueryTask` API."
   },
   "DescribeDirectConnectGatewayCcnRoutes": {
     "params": [
@@ -1367,10 +1412,10 @@ INFO = {
     "params": [
       {
         "name": "BandwidthPackageId",
-        "desc": "The bwpID of the bandwidth package to be deleted"
+        "desc": "The unique ID of the bandwidth package to be deleted."
       }
     ],
-    "desc": "This API is used to support the deletion of shared bandwidth packages, including [Device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)."
+    "desc": "This API is used to delete bandwidth packages, including [device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)."
   },
   "DescribeNetDetectStates": {
     "params": [
@@ -1535,14 +1580,14 @@ INFO = {
     "params": [
       {
         "name": "VpcId",
-        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID"
+        "desc": "The VPC ID or the unified ID. We recommend you use the unified ID."
       },
       {
         "name": "FlowLogId",
-        "desc": "The unique ID of the flow log"
+        "desc": "The unique ID of the flow log."
       }
     ],
-    "desc": "This API (DescribeFlowLog) is used to query flow log instance information."
+    "desc": "This API is used to query flow log instance information."
   },
   "ModifyGatewayFlowQos": {
     "params": [
@@ -1657,7 +1702,7 @@ INFO = {
   },
   "DescribeBandwidthPackageQuota": {
     "params": [],
-    "desc": "This API is used to query the account’s maximum number of bandwidth packages and their usage in the current region."
+    "desc": "This API is used to query the maximum and used number of bandwidth packages under the account in the current region."
   },
   "CreateAssistantCidr": {
     "params": [
@@ -1711,42 +1756,47 @@ INFO = {
     ],
     "desc": "This API (ReplaceDirectConnectGatewayCcnRoutes) is used to modify the specified route according to the route ID. Batch modification is supported."
   },
-  "CreateNatGateway": {
+  "GetCcnRegionBandwidthLimits": {
     "params": [
       {
-        "name": "NatGatewayName",
-        "desc": "NAT gateway name"
+        "name": "CcnId",
+        "desc": "The CCN instance ID, such as `ccn-f49l6u0z`."
       },
       {
-        "name": "VpcId",
-        "desc": "The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API."
+        "name": "Filters",
+        "desc": "The filter condition.\n<li>sregion - String - (Filter condition) Filter by the source region, such as 'ap-guangzhou'.</li>\n<li>dregion - String - (Filter condition) Filter by the destination region, such as 'ap-shanghai-bm'.</li>"
       },
       {
-        "name": "InternetMaxBandwidthOut",
-        "desc": "The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100Mbps`."
+        "name": "SortedBy",
+        "desc": "The sorting condition. Valid values: 'BandwidthLimit' and 'ExpireTime'."
       },
       {
-        "name": "MaxConcurrentConnection",
-        "desc": "The concurrent connection cap of the NAT gateway. Supported parameter values: `1000000, 3000000, 10000000`. The default value is `100000`."
+        "name": "Offset",
+        "desc": "The offset."
       },
       {
-        "name": "AddressCount",
-        "desc": "The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in."
+        "name": "Limit",
+        "desc": "The returned quantity."
       },
       {
-        "name": "PublicIpAddresses",
-        "desc": "The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in."
-      },
-      {
-        "name": "Zone",
-        "desc": "The availability zone, such as `ap-guangzhou-1`."
-      },
-      {
-        "name": "Tags",
-        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
+        "name": "OrderBy",
+        "desc": "In ascending or descending order. Valid values: 'ASC' and 'DESC'."
       }
     ],
-    "desc": "This API (CreateNatGateway) is used to create a NAT gateway."
+    "desc": "This API is used to query the CCN bandwidth limits across regions. The monthly-subscribed CCN only supports the cross-region bandwidth limit, while the pay-as-you-go CCN supports both the cross-region and region egress bandwidth limit. Note: currently, this feature is in beta test. To use it, please [contact sales](https://intl.cloud.tencent.com/contact-sales)."
+  },
+  "DeleteSecurityGroupPolicies": {
+    "params": [
+      {
+        "name": "SecurityGroupId",
+        "desc": "The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups."
+      },
+      {
+        "name": "SecurityGroupPolicySet",
+        "desc": "The policy set of the security group. One request can only delete one or more policies in one direction. Both PolicyIndex-matching deletion and security group policy-matching deletion methods are supported. Each request can use only one matching method."
+      }
+    ],
+    "desc": "This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).\n* SecurityGroupPolicySet.Version is used to specify the version of the security group you are operating. If the specified Version number differs from the latest version of the current security group, a failure will be returned. If Version is not specified, the policy of the specified PolicyIndex will be deleted directly."
   },
   "DeleteNetDetect": {
     "params": [
@@ -1963,18 +2013,18 @@ INFO = {
     "params": [
       {
         "name": "DirectConnectGatewayId",
-        "desc": "The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`."
+        "desc": "The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`."
       },
       {
         "name": "DirectConnectGatewayName",
-        "desc": "Direct connect gateway can be named freely, but the maximum length is 60 characters."
+        "desc": "The direct connect gateway name. You can enter any name within 60 characters."
       },
       {
         "name": "CcnRouteType",
-        "desc": "CCN route learning type. Available values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). Modifying `CcnRouteType` is only possible if the Direct Connect is CCN-type and the BGP function is enabled."
+        "desc": "The CCN route-learning type. Valid values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). You can only modify `CcnRouteType` for a CCN direct connect gateway with BGP enabled."
       }
     ],
-    "desc": "This API (ModifyDirectConnectGatewayAttribute) is used to modify the Direct Connect gateway attributes.\n"
+    "desc": "This API is used to modify the attributes of a direct connect gateway.\n"
   },
   "CreateSecurityGroup": {
     "params": [
@@ -2099,22 +2149,22 @@ INFO = {
     "params": [
       {
         "name": "DirectConnectGatewayIds",
-        "desc": "The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`."
+        "desc": "The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`."
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time.\n<li>direct-connect-gateway-id - String - The unique `ID` of the Direct Connect gateway, such as `dcg-9o233uri`.</li>\n<li>direct-connect-gateway-name - String - The name of the Direct Connect gateway. The default is fuzzy query.</li>\n<li>direct-connect-gateway-ip - String - The `IP` of the Direct Connect gateway.</li>\n<li>gateway-type - String - The gateway type. Available values: `NORMAL` (Normal-type), `NAT` (NAT-type).</li>\n<li>network-type- String - The network type. Available values: `VPC` (VPC-type), `CCN` (CCN-type).</li>\n<li>ccn-id - String - The `ID` of the CCN where the Direct Connect gateway is located.</li>\n<li>vpc-id - String - The `ID` of the VPC where the Direct Connect gateway is located.</li>"
+        "desc": "Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time..\n<li>direct-connect-gateway-id - String - The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.</li>\n<li>direct-connect-gateway-name - String - The name of the direct connect gateway. The default is fuzzy query.</li>\n<li>direct-connect-gateway-ip - String - The `IP` of the direct connect gateway.</li>\n<li>gateway-type - String - The gateway type. Valid values: `NORMAL` (Standard type), `NAT` (NAT type).</li>\n<li>network-type- String - The network type. Valid values: `VPC` (VPC type), `CCN` (CCN type).</li>\n<li>ccn-id - String - The `ID` of the CCN where the direct connect gateway resides.</li>\n<li>vpc-id - String - The `ID` of the VPC where the direct connect gateway resides.</li>"
       },
       {
         "name": "Offset",
-        "desc": "Offset."
+        "desc": "The offset."
       },
       {
         "name": "Limit",
         "desc": "The returned quantity."
       }
     ],
-    "desc": "This API (DescribeDirectConnectGateways) is used to query Direct Connect gateways."
+    "desc": "This API is used to query direct connect gateways."
   },
   "RenewVpnGateway": {
     "params": [
@@ -2270,14 +2320,18 @@ INFO = {
     "params": [
       {
         "name": "BandwidthPackageId",
-        "desc": "The unique ID of the bandwidth package"
+        "desc": "The unique ID of the bandwidth package."
       },
       {
         "name": "BandwidthPackageName",
-        "desc": "The name of the bandwidth package"
+        "desc": "The name of the bandwidth package."
+      },
+      {
+        "name": "ChargeType",
+        "desc": "The billing mode of the bandwidth package."
       }
     ],
-    "desc": "This API is used to modify bandwidth package attributes, including the bandwidth package name, and so on."
+    "desc": "This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on."
   },
   "DescribeAddressQuota": {
     "params": [],
@@ -2506,11 +2560,11 @@ INFO = {
     "params": [
       {
         "name": "DirectConnectGatewayName",
-        "desc": "The name of the Direct Connect gateway"
+        "desc": "The name of the direct connect gateway."
       },
       {
         "name": "NetworkType",
-        "desc": "The type of the associated network. Available values are:\n<li>VPC - VPC</li>\n<li>CCN - CCN</li>"
+        "desc": "The type of the associated network. Valid values:\n<li>VPC</li>\n<li>CCN</li>"
       },
       {
         "name": "NetworkInstanceId",
@@ -2518,10 +2572,10 @@ INFO = {
       },
       {
         "name": "GatewayType",
-        "desc": "The type of the gateway. Available values are:\n<li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>\n<li>NAT - NAT-type</li>NAT-type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway"
+        "desc": "The type of the gateway. Valid values:\n<li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>\n<li>NAT - NAT type</li>NAT gateway supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway"
       }
     ],
-    "desc": "This API (CreateDirectConnectGateway) is used to create a Direct Connect gateway."
+    "desc": "This API is used to create a direct connect gateway."
   },
   "DetachCcnInstances": {
     "params": [
@@ -2648,18 +2702,42 @@ INFO = {
     ],
     "desc": "This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table."
   },
-  "DeleteSecurityGroupPolicies": {
+  "CreateNatGateway": {
     "params": [
       {
-        "name": "SecurityGroupId",
-        "desc": "The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups."
+        "name": "NatGatewayName",
+        "desc": "NAT gateway name"
       },
       {
-        "name": "SecurityGroupPolicySet",
-        "desc": "The policy set of the security group. One request can only delete one or more policies in one direction. Both PolicyIndex-matching deletion and security group policy-matching deletion methods are supported. Each request can use only one matching method."
+        "name": "VpcId",
+        "desc": "The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API."
+      },
+      {
+        "name": "InternetMaxBandwidthOut",
+        "desc": "The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100Mbps`."
+      },
+      {
+        "name": "MaxConcurrentConnection",
+        "desc": "The concurrent connection cap of the NAT gateway. Supported parameter values: `1000000, 3000000, 10000000`. The default value is `100000`."
+      },
+      {
+        "name": "AddressCount",
+        "desc": "The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in."
+      },
+      {
+        "name": "PublicIpAddresses",
+        "desc": "The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in."
+      },
+      {
+        "name": "Zone",
+        "desc": "The availability zone, such as `ap-guangzhou-1`."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).\n* SecurityGroupPolicySet.Version is used to specify the version of the security group you are operating. If the specified Version number differs from the latest version of the current security group, a failure will be returned. If Version is not specified, the policy of the specified PolicyIndex will be deleted directly."
+    "desc": "This API (CreateNatGateway) is used to create a NAT gateway."
   },
   "ModifyNetDetect": {
     "params": [
@@ -2792,19 +2870,19 @@ INFO = {
     "params": [
       {
         "name": "BandwidthPackageIds",
-        "desc": "The bandwidth package ID. Batch operation is supported."
+        "desc": "The unique ID list of bandwidth packages."
       },
       {
         "name": "Filters",
-        "desc": "The upper limit for `Filters` in each request is 10. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filtering conditions are as follows:\n<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>\n<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>\n<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Types include 'BGP', 'SINGLEISP', and 'ANYCAST'.</li>\n<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing type. Billing types include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'</li>\n<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'</li>\n<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx', 'lb-xxxx'</li>\n<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>"
+        "desc": "Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>\n<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>\n<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Types include 'BGP', 'SINGLEISP', and 'ANYCAST'.</li>\n<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Billing modes include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.</li>\n<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'.</li>\n<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx' and 'lb-xxxx'.</li>\n<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>"
       },
       {
         "name": "Offset",
-        "desc": "Queries bandwidth package offset"
+        "desc": "Queries the bandwidth package offset."
       },
       {
         "name": "Limit",
-        "desc": "Queries the limit on the number of bandwidth packages"
+        "desc": "Queries the limit on the number of bandwidth packages."
       }
     ],
     "desc": "This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information."

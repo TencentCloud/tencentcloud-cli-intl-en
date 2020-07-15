@@ -30,7 +30,7 @@ INFO = {
       },
       {
         "name": "Period",
-        "desc": ""
+        "desc": "Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min."
       }
     ],
     "desc": "This API is used to query the output statistics of a channel."
@@ -57,6 +57,10 @@ INFO = {
       {
         "name": "SecurityGroupIds",
         "desc": "List of IDs of bound security groups."
+      },
+      {
+        "name": "InputSettings",
+        "desc": "Input settings information.\nOne or two sets of settings need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.\nThis parameter can be left empty for RTP_PUSH and UDP_PUSH.\nNote: if it is left empty or the array is empty, the original `InputSettings` value will be used."
       }
     ],
     "desc": "This API is used to update a media input."
@@ -154,7 +158,7 @@ INFO = {
       },
       {
         "name": "InputSettings",
-        "desc": "Input settings information, two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL."
+        "desc": "Input settings information, one or two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL."
       }
     ],
     "desc": "This API is used to create a media input."
@@ -222,7 +226,7 @@ INFO = {
       },
       {
         "name": "Period",
-        "desc": ""
+        "desc": "Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min."
       }
     ],
     "desc": "This API is used to query the input statistics."

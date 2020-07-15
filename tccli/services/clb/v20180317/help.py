@@ -209,7 +209,7 @@ INFO = {
       },
       {
         "name": "ListenerIds",
-        "desc": "Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted"
+        "desc": "Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted."
       }
     ],
     "desc": "This API is used to delete multiple listeners of a CLB instance.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
@@ -526,7 +526,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Maximum number of IPs to be returned. Default value: 100000."
+        "desc": "Maximum number of IPs to be returned. Default value: 100,000."
       }
     ],
     "desc": "This API is used to query the list of blocked IPs (blacklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)"
@@ -823,15 +823,15 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Operation type. Valid values:\n<li> add_customized_field (sets header initially to enable the blacklist feature)</li>\n<li> set_customized_field (modifies header)</li>\n<li> del_customized_field (deletes header)</li>\n<li> add_blocked (adds to blacklist)</li>\n<li> del_blocked (deletes from blacklist)</li>\n<li> flush_blocked (clears blacklist)</li>"
+        "desc": "Operation type. Valid values:\n<li> add_customized_field (sets header initially to enable the blacklist feature)</li>\n<li> set_customized_field (modifies header)</li>\n<li> del_customized_field (deletes header)</li>\n<li> add_blocked (adds IPs to blacklist)</li>\n<li> del_blocked (deletes IPs from blacklist)</li>\n<li> flush_blocked (clears blacklist)</li>"
       },
       {
         "name": "ClientIPField",
-        "desc": "Name of the header field that stores real client IPs"
+        "desc": "Header field that stores real client IPs"
       },
       {
         "name": "BlockIPList",
-        "desc": "List of blocked IPs. The array can contain up to 200,000 entries in one operation"
+        "desc": "List of blocked IPs. The array can contain up to 200,000 entries in one operation."
       },
       {
         "name": "ExpireTime",
@@ -839,7 +839,7 @@ INFO = {
       },
       {
         "name": "AddStrategy",
-        "desc": "IP adding policy. Valid values: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)"
+        "desc": "IP adding policy. Valid value: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)"
       }
     ],
     "desc": "This API is used to modify the client IP blacklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blacklist can contain up to 2,000,000 entries.\n(This API is in beta test. To use it, please submit a ticket.)"
@@ -1045,7 +1045,7 @@ INFO = {
       },
       {
         "name": "SnatIps",
-        "desc": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet"
+        "desc": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet."
       }
     ],
     "desc": "This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added."

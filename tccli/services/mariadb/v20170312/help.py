@@ -145,6 +145,10 @@ INFO = {
       {
         "name": "InstanceId",
         "desc": "ID of instance for which to enable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API."
+      },
+      {
+        "name": "Ipv6Flag",
+        "desc": "Whether IPv6 is used. Default value: 0"
       }
     ],
     "desc": "This API is used to enable public network access for a TencentDB instance. After that, you can access the instance with the public domain name and port obtained through the `DescribeDCDBInstances` API."
@@ -447,6 +451,10 @@ INFO = {
       {
         "name": "InstanceId",
         "desc": "ID of instance for which to disable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API."
+      },
+      {
+        "name": "Ipv6Flag",
+        "desc": "Whether IPv6 is used. Default value: 0"
       }
     ],
     "desc": "This API is used to disable public network access for a TencentDB instance, which will make the public IP address inaccessible. The `DescribeDCDBInstances` API will not return the public domain name and port information of the corresponding instance."
