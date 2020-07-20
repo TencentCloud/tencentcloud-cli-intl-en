@@ -49,7 +49,7 @@ INFO = {
         "desc": "Application status. Valid values: open, close"
       }
     ],
-    "desc": "This API is used to change the status of an application's master switch."
+    "desc": "This API is used to change the status of an application's main switch."
   },
   "DescribeAppStatistics": {
     "params": [

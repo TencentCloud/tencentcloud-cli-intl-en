@@ -26,7 +26,7 @@ INFO = {
       },
       {
         "name": "FunctionVersion",
-        "desc": "Master version of alias"
+        "desc": "Main version of alias"
       },
       {
         "name": "Namespace",
@@ -414,7 +414,7 @@ INFO = {
       },
       {
         "name": "FunctionVersion",
-        "desc": "Master version of alias"
+        "desc": "Main version of alias"
       },
       {
         "name": "Namespace",
@@ -429,7 +429,7 @@ INFO = {
         "desc": "Alias description"
       }
     ],
-    "desc": "This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.\nAn alias must point to a master version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the master version and additional version during request sending."
+    "desc": "This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.\nAn alias must point to a main version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the main version and additional version during request sending."
   },
   "ListVersionByFunction": {
     "params": [

@@ -315,7 +315,7 @@ INFO = {
       },
       {
         "name": "ReadOnly",
-        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail; 3: only the slave will be read from."
+        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the subordinate will be used first, and if it is unavailable, the main will be used; 2: the subordinate will be used first, and if it is unavailable, the operation will fail; 3: only the subordinate will be read from."
       },
       {
         "name": "Description",
@@ -323,7 +323,7 @@ INFO = {
       },
       {
         "name": "DelayThresh",
-        "desc": "If the slave delay exceeds the set value of this parameter, the slave will be deemed to have failed.\nIt is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2."
+        "desc": "If the subordinate delay exceeds the set value of this parameter, the subordinate will be deemed to have failed.\nIt is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2."
       }
     ],
     "desc": "This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts."

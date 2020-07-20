@@ -38,13 +38,13 @@ class Lexer(object):
     )
 
     def __init__(self):
-        self.master_regex = re.compile(self.TOKENS)
+        self.main_regex = re.compile(self.TOKENS)
 
     def tokenize(self, expression):
         if not expression:
             raise EmptyExpressionError()
         previous_column = 0
-        for match in self.master_regex.finditer(expression):
+        for match in self.main_regex.finditer(expression):
             value = match.group()
             start = match.start()
             end = match.end()

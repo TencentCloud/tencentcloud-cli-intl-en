@@ -384,7 +384,7 @@ INFO = {
       },
       {
         "name": "Status",
-        "desc": "Instance status. Valid values:\n<li>1: applying</li>\n<li>2: running</li>\n<li>3: running restrictedly (master/slave switching)</li>\n<li>4: isolated</li>\n<li>5: repossessing</li>\n<li>6: repossessed</li>\n<li>7: executing task (e.g., backing up or rolling back instance)</li>\n<li>8: deactivated</li>\n<li>9: scaling out instance</li>\n<li>10: migrating instance</li>\n<li>11: read-only</li>\n<li>12: restarting</li>"
+        "desc": "Instance status. Valid values:\n<li>1: applying</li>\n<li>2: running</li>\n<li>3: running restrictedly (main/subordinate switching)</li>\n<li>4: isolated</li>\n<li>5: repossessing</li>\n<li>6: repossessed</li>\n<li>7: executing task (e.g., backing up or rolling back instance)</li>\n<li>8: deactivated</li>\n<li>9: scaling out instance</li>\n<li>10: migrating instance</li>\n<li>11: read-only</li>\n<li>12: restarting</li>"
       },
       {
         "name": "Offset",

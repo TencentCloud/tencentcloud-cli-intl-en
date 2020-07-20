@@ -95,7 +95,7 @@ INFO = {
         "desc": "Unique CMK ID"
       }
     ],
-    "desc": "This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations."
+    "desc": "This API is used to disable a main key. The disabled key cannot be used for encryption and decryption operations."
   },
   "GenerateDataKey": {
     "params": [
@@ -267,7 +267,7 @@ INFO = {
         "desc": "Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents."
       }
     ],
-    "desc": "Create a master key CMK (Custom Master Key) for user management data keys"
+    "desc": "Create a main key CMK (Custom Main Key) for user management data keys"
   },
   "DescribeWhiteBoxKey": {
     "params": [
@@ -339,7 +339,7 @@ INFO = {
         "desc": "Filter by `KeyUsage` of CMKs. Valid values: `ALL` (filter all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`."
       }
     ],
-    "desc": "Get the master key list details according to the specified Offset and Limit."
+    "desc": "Get the main key list details according to the specified Offset and Limit."
   },
   "AsymmetricRsaDecrypt": {
     "params": [

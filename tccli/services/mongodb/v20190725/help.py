@@ -120,7 +120,7 @@ INFO = {
     "params": [
       {
         "name": "NodeNum",
-        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
+        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of subordinate nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
       },
       {
         "name": "Memory",
@@ -288,7 +288,7 @@ INFO = {
       },
       {
         "name": "NodeNum",
-        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
+        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of subordinate nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
       },
       {
         "name": "Memory",
@@ -433,7 +433,7 @@ INFO = {
         "desc": "Search keyword, which can be instance ID, instance name, or complete IP"
       }
     ],
-    "desc": "This API is used to query the list of TencentDB instances (which can be master, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status."
+    "desc": "This API is used to query the list of TencentDB instances (which can be main, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status."
   },
   "IsolateDBInstance": {
     "params": [

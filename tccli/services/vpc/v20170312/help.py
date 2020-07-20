@@ -3093,7 +3093,7 @@ INFO = {
       },
       {
         "name": "DnsServers",
-        "desc": "DNS address. A maximum of 4 addresses is supported. The first one is master server by default, and the rest are slave servers."
+        "desc": "DNS address. A maximum of 4 addresses is supported. The first one is main server by default, and the rest are subordinate servers."
       },
       {
         "name": "DomainName",
