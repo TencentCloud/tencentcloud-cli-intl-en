@@ -88,6 +88,45 @@ def doParseNotification(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyContentReviewTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyContentReviewTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Definition": Utils.try_to_json(argv, "--Definition"),
+        "Name": argv.get("--Name"),
+        "Comment": argv.get("--Comment"),
+        "PornConfigure": Utils.try_to_json(argv, "--PornConfigure"),
+        "TerrorismConfigure": Utils.try_to_json(argv, "--TerrorismConfigure"),
+        "PoliticalConfigure": Utils.try_to_json(argv, "--PoliticalConfigure"),
+        "UserDefineConfigure": Utils.try_to_json(argv, "--UserDefineConfigure"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyContentReviewTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyContentReviewTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateContentReviewTemplate(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -156,6 +195,78 @@ def doCreateSampleSnapshotTemplate(argv, arglist):
     model = models.CreateSampleSnapshotTemplateRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.CreateSampleSnapshotTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doEditMedia(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("EditMedia", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "FileInfos": Utils.try_to_json(argv, "--FileInfos"),
+        "OutputStorage": Utils.try_to_json(argv, "--OutputStorage"),
+        "OutputObjectPath": argv.get("--OutputObjectPath"),
+        "TaskNotifyConfig": Utils.try_to_json(argv, "--TaskNotifyConfig"),
+        "TasksPriority": Utils.try_to_json(argv, "--TasksPriority"),
+        "SessionId": argv.get("--SessionId"),
+        "SessionContext": argv.get("--SessionContext"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.EditMediaRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.EditMedia(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteAIAnalysisTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteAIAnalysisTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Definition": Utils.try_to_json(argv, "--Definition"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteAIAnalysisTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteAIAnalysisTemplate(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -261,6 +372,39 @@ def doDescribeSnapshotByTimeOffsetTemplates(argv, arglist):
     model = models.DescribeSnapshotByTimeOffsetTemplatesRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeSnapshotByTimeOffsetTemplates(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeMediaMetaData(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeMediaMetaData", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "InputInfo": Utils.try_to_json(argv, "--InputInfo"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeMediaMetaDataRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeMediaMetaData(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -387,19 +531,16 @@ def doDeleteAnimatedGraphicsTemplate(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifySnapshotByTimeOffsetTemplate(argv, arglist):
+def doDescribeAIAnalysisTemplates(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifySnapshotByTimeOffsetTemplate", g_param[OptionsDefine.Version])
+        show_help("DescribeAIAnalysisTemplates", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Definition": Utils.try_to_json(argv, "--Definition"),
-        "Name": argv.get("--Name"),
-        "Width": Utils.try_to_json(argv, "--Width"),
-        "Height": Utils.try_to_json(argv, "--Height"),
-        "Format": argv.get("--Format"),
-        "Comment": argv.get("--Comment"),
+        "Definitions": Utils.try_to_json(argv, "--Definitions"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -413,9 +554,9 @@ def doModifySnapshotByTimeOffsetTemplate(argv, arglist):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifySnapshotByTimeOffsetTemplateRequest()
+    model = models.DescribeAIAnalysisTemplatesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifySnapshotByTimeOffsetTemplate(model)
+    rsp = client.DescribeAIAnalysisTemplates(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -489,6 +630,45 @@ def doModifyAIRecognitionTemplate(argv, arglist):
     model = models.ModifyAIRecognitionTemplateRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.ModifyAIRecognitionTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAdaptiveDynamicStreamingTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyAdaptiveDynamicStreamingTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Definition": Utils.try_to_json(argv, "--Definition"),
+        "Name": argv.get("--Name"),
+        "Format": argv.get("--Format"),
+        "DisableHigherVideoBitrate": Utils.try_to_json(argv, "--DisableHigherVideoBitrate"),
+        "DisableHigherVideoResolution": Utils.try_to_json(argv, "--DisableHigherVideoResolution"),
+        "StreamInfos": Utils.try_to_json(argv, "--StreamInfos"),
+        "Comment": argv.get("--Comment"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAdaptiveDynamicStreamingTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyAdaptiveDynamicStreamingTemplate(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -854,6 +1034,77 @@ def doDeleteWorkflow(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteAdaptiveDynamicStreamingTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DeleteAdaptiveDynamicStreamingTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Definition": Utils.try_to_json(argv, "--Definition"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteAdaptiveDynamicStreamingTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DeleteAdaptiveDynamicStreamingTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateAdaptiveDynamicStreamingTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateAdaptiveDynamicStreamingTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Format": argv.get("--Format"),
+        "StreamInfos": Utils.try_to_json(argv, "--StreamInfos"),
+        "Name": argv.get("--Name"),
+        "DisableHigherVideoBitrate": Utils.try_to_json(argv, "--DisableHigherVideoBitrate"),
+        "DisableHigherVideoResolution": Utils.try_to_json(argv, "--DisableHigherVideoResolution"),
+        "Comment": argv.get("--Comment"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateAdaptiveDynamicStreamingTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateAdaptiveDynamicStreamingTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDisableWorkflow(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1176,6 +1427,79 @@ def doEnableWorkflow(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doManageTask(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ManageTask", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "OperationType": argv.get("--OperationType"),
+        "TaskId": argv.get("--TaskId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ManageTaskRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ManageTask(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAIAnalysisTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyAIAnalysisTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Definition": Utils.try_to_json(argv, "--Definition"),
+        "Name": argv.get("--Name"),
+        "Comment": argv.get("--Comment"),
+        "ClassificationConfigure": Utils.try_to_json(argv, "--ClassificationConfigure"),
+        "TagConfigure": Utils.try_to_json(argv, "--TagConfigure"),
+        "CoverConfigure": Utils.try_to_json(argv, "--CoverConfigure"),
+        "FrameTagConfigure": Utils.try_to_json(argv, "--FrameTagConfigure"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAIAnalysisTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyAIAnalysisTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeTasks(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1202,6 +1526,44 @@ def doDescribeTasks(argv, arglist):
     model = models.DescribeTasksRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeTasks(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifySnapshotByTimeOffsetTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifySnapshotByTimeOffsetTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Definition": Utils.try_to_json(argv, "--Definition"),
+        "Name": argv.get("--Name"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
+        "Format": argv.get("--Format"),
+        "Comment": argv.get("--Comment"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifySnapshotByTimeOffsetTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifySnapshotByTimeOffsetTemplate(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1442,20 +1804,17 @@ def doProcessLiveStream(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyContentReviewTemplate(argv, arglist):
+def doDescribeAdaptiveDynamicStreamingTemplates(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("ModifyContentReviewTemplate", g_param[OptionsDefine.Version])
+        show_help("DescribeAdaptiveDynamicStreamingTemplates", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "Definition": Utils.try_to_json(argv, "--Definition"),
-        "Name": argv.get("--Name"),
-        "Comment": argv.get("--Comment"),
-        "PornConfigure": Utils.try_to_json(argv, "--PornConfigure"),
-        "TerrorismConfigure": Utils.try_to_json(argv, "--TerrorismConfigure"),
-        "PoliticalConfigure": Utils.try_to_json(argv, "--PoliticalConfigure"),
-        "UserDefineConfigure": Utils.try_to_json(argv, "--UserDefineConfigure"),
+        "Definitions": Utils.try_to_json(argv, "--Definitions"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Type": argv.get("--Type"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1469,9 +1828,9 @@ def doModifyContentReviewTemplate(argv, arglist):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyContentReviewTemplateRequest()
+    model = models.DescribeAdaptiveDynamicStreamingTemplatesRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.ModifyContentReviewTemplate(model)
+    rsp = client.DescribeAdaptiveDynamicStreamingTemplates(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1698,6 +2057,44 @@ def doDeleteContentReviewTemplate(argv, arglist):
     model = models.DeleteContentReviewTemplateRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DeleteContentReviewTemplate(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateAIAnalysisTemplate(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateAIAnalysisTemplate", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "Name": argv.get("--Name"),
+        "Comment": argv.get("--Comment"),
+        "ClassificationConfigure": Utils.try_to_json(argv, "--ClassificationConfigure"),
+        "TagConfigure": Utils.try_to_json(argv, "--TagConfigure"),
+        "CoverConfigure": Utils.try_to_json(argv, "--CoverConfigure"),
+        "FrameTagConfigure": Utils.try_to_json(argv, "--FrameTagConfigure"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateAIAnalysisTemplateRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateAIAnalysisTemplate(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1936,17 +2333,22 @@ MODELS_MAP = {
 ACTION_MAP = {
     "CreateSnapshotByTimeOffsetTemplate": doCreateSnapshotByTimeOffsetTemplate,
     "ParseNotification": doParseNotification,
+    "ModifyContentReviewTemplate": doModifyContentReviewTemplate,
     "CreateContentReviewTemplate": doCreateContentReviewTemplate,
     "CreateSampleSnapshotTemplate": doCreateSampleSnapshotTemplate,
+    "EditMedia": doEditMedia,
+    "DeleteAIAnalysisTemplate": doDeleteAIAnalysisTemplate,
     "ParseLiveStreamProcessNotification": doParseLiveStreamProcessNotification,
     "DescribeWorkflows": doDescribeWorkflows,
     "DescribeSnapshotByTimeOffsetTemplates": doDescribeSnapshotByTimeOffsetTemplates,
+    "DescribeMediaMetaData": doDescribeMediaMetaData,
     "ResetWorkflow": doResetWorkflow,
     "ModifyTranscodeTemplate": doModifyTranscodeTemplate,
     "DeleteAnimatedGraphicsTemplate": doDeleteAnimatedGraphicsTemplate,
-    "ModifySnapshotByTimeOffsetTemplate": doModifySnapshotByTimeOffsetTemplate,
+    "DescribeAIAnalysisTemplates": doDescribeAIAnalysisTemplates,
     "DescribeTaskDetail": doDescribeTaskDetail,
     "ModifyAIRecognitionTemplate": doModifyAIRecognitionTemplate,
+    "ModifyAdaptiveDynamicStreamingTemplate": doModifyAdaptiveDynamicStreamingTemplate,
     "ModifySampleSnapshotTemplate": doModifySampleSnapshotTemplate,
     "DeleteWatermarkTemplate": doDeleteWatermarkTemplate,
     "DeletePersonSample": doDeletePersonSample,
@@ -1957,6 +2359,8 @@ ACTION_MAP = {
     "ModifyWatermarkTemplate": doModifyWatermarkTemplate,
     "DeleteWordSamples": doDeleteWordSamples,
     "DeleteWorkflow": doDeleteWorkflow,
+    "DeleteAdaptiveDynamicStreamingTemplate": doDeleteAdaptiveDynamicStreamingTemplate,
+    "CreateAdaptiveDynamicStreamingTemplate": doCreateAdaptiveDynamicStreamingTemplate,
     "DisableWorkflow": doDisableWorkflow,
     "DescribeSampleSnapshotTemplates": doDescribeSampleSnapshotTemplates,
     "CreateWatermarkTemplate": doCreateWatermarkTemplate,
@@ -1966,20 +2370,24 @@ ACTION_MAP = {
     "CreateAnimatedGraphicsTemplate": doCreateAnimatedGraphicsTemplate,
     "DescribeAnimatedGraphicsTemplates": doDescribeAnimatedGraphicsTemplates,
     "EnableWorkflow": doEnableWorkflow,
+    "ManageTask": doManageTask,
+    "ModifyAIAnalysisTemplate": doModifyAIAnalysisTemplate,
     "DescribeTasks": doDescribeTasks,
+    "ModifySnapshotByTimeOffsetTemplate": doModifySnapshotByTimeOffsetTemplate,
     "CreateWordSamples": doCreateWordSamples,
     "CreatePersonSample": doCreatePersonSample,
     "ModifyPersonSample": doModifyPersonSample,
     "CreateTranscodeTemplate": doCreateTranscodeTemplate,
     "CreateWorkflow": doCreateWorkflow,
     "ProcessLiveStream": doProcessLiveStream,
-    "ModifyContentReviewTemplate": doModifyContentReviewTemplate,
+    "DescribeAdaptiveDynamicStreamingTemplates": doDescribeAdaptiveDynamicStreamingTemplates,
     "ProcessMedia": doProcessMedia,
     "CreateAIRecognitionTemplate": doCreateAIRecognitionTemplate,
     "ModifyImageSpriteTemplate": doModifyImageSpriteTemplate,
     "ModifyWordSample": doModifyWordSample,
     "DescribeImageSpriteTemplates": doDescribeImageSpriteTemplates,
     "DeleteContentReviewTemplate": doDeleteContentReviewTemplate,
+    "CreateAIAnalysisTemplate": doCreateAIAnalysisTemplate,
     "DescribeAIRecognitionTemplates": doDescribeAIRecognitionTemplates,
     "DescribeWatermarkTemplates": doDescribeWatermarkTemplates,
     "CreateImageSpriteTemplate": doCreateImageSpriteTemplate,

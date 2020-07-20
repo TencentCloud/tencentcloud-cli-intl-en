@@ -64,7 +64,7 @@ INFO = {
       },
       {
         "name": "TrafficType",
-        "desc": "The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'."
+        "desc": "Type of the flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`."
       },
       {
         "name": "CloudLogId",
@@ -75,7 +75,7 @@ INFO = {
         "desc": "The description of the flow log instance"
       }
     ],
-    "desc": "This API is used to create a flow log."
+    "desc": "This API is used to create a flow log collector."
   },
   "ModifyNatGatewayAttribute": {
     "params": [
@@ -202,7 +202,7 @@ INFO = {
         "desc": "The unique ID of the flow log."
       }
     ],
-    "desc": "This API is used to delete a flow log."
+    "desc": "This API is used to delete a flow log collector."
   },
   "CreateRouteTable": {
     "params": [
@@ -268,15 +268,15 @@ INFO = {
       },
       {
         "name": "FlowLogId",
-        "desc": "The unique ID of the flow log."
+        "desc": "The unique ID of the flow log collector."
       },
       {
         "name": "FlowLogName",
-        "desc": "The name of the flow log instance."
+        "desc": "The name of the flow log collector."
       },
       {
         "name": "FlowLogDescription",
-        "desc": "The description of the flow log instance."
+        "desc": "The description of the flow log collector."
       }
     ],
     "desc": "This API is used to modify the attributes of a flow log."
@@ -594,14 +594,14 @@ INFO = {
       },
       {
         "name": "PublicIpAddresses",
-        "desc": "The EIP array bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in."
+        "desc": "Array of the EIPs bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in."
       },
       {
         "name": "Zone",
-        "desc": "The EIP zone. This is passed in when EIP is automatically assigned."
+        "desc": "The availability zone of the EIP, which is passed in when the EIP is automatically assigned."
       }
     ],
-    "desc": "This API is used to bind a NAT Gateway to an Elastic IP (EIP)."
+    "desc": "This API is used to bind an EIP to NAT Gateway."
   },
   "CreateVpnConnection": {
     "params": [
@@ -653,15 +653,15 @@ INFO = {
     "params": [
       {
         "name": "BandwidthPackageId",
-        "desc": "The unique ID of the bandwidth package, such as 'bwp-xxxx'."
+        "desc": "The unique ID of the bandwidth package, such as `bwp-xxxx`."
       },
       {
         "name": "ResourceType",
-        "desc": "The resource type. Valid values: 'Address' and 'LoadBalance'."
+        "desc": "The resource type. Valid values: `Address` and `LoadBalance`."
       },
       {
         "name": "ResourceIds",
-        "desc": "The resource IP, such as 'eip-xxxx' and 'lb-xxxx'."
+        "desc": "The resource IP, such as `eip-xxxx` and `lb-xxxx`."
       }
     ],
     "desc": "This API is used to delete a bandwidth package resource, including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
@@ -1076,18 +1076,18 @@ INFO = {
       },
       {
         "name": "NetworkType",
-        "desc": "The type of the bandwidth package. Valid value: 'BGP'. Internal resources will be represented by 'BGP IP'."
+        "desc": "The network type of the bandwidth package. Valid value: `BGP`, indicating that the internal resource is a BGP IP."
       },
       {
         "name": "ResourceType",
-        "desc": "The resource type, including 'Address' and 'LoadBalance'."
+        "desc": "The resource type, including `Address` and `LoadBalance`."
       },
       {
         "name": "Protocol",
-        "desc": "The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'."
+        "desc": "The protocol type of the bandwidth package. Valid values: `ipv4` and `ipv6`."
       }
     ],
-    "desc": "This API is used to add a bandwidth package resource including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
+    "desc": "This API is used to add resources to a bandwidth package, including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
   },
   "AssignIpv6SubnetCidrBlock": {
     "params": [
@@ -1300,7 +1300,7 @@ INFO = {
       },
       {
         "name": "ResourceType",
-        "desc": "The type of resource to which the flow log belongs. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'."
+        "desc": "The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'."
       },
       {
         "name": "ResourceId",
@@ -1308,7 +1308,7 @@ INFO = {
       },
       {
         "name": "TrafficType",
-        "desc": "The collection type of the flow log. Valid values: 'ACCEPT', 'REJECT' and 'ALL'."
+        "desc": "Type of flow logs to be collected. Valid values: 'ACCEPT', 'REJECT' and 'ALL'."
       },
       {
         "name": "CloudLogId",
@@ -1324,7 +1324,7 @@ INFO = {
       },
       {
         "name": "OrderDirection",
-        "desc": "In ascending (asc) or descending (desc) order. Default value: 'desc'."
+        "desc": "In ascending (`asc`) or descending (`desc`) order. Default value: 'desc'."
       },
       {
         "name": "Offset",
@@ -1332,7 +1332,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "The number of rows per page. Default vaue: 10."
+        "desc": "The number of rows per page. Default value: 10."
       },
       {
         "name": "Filters",
@@ -1587,7 +1587,7 @@ INFO = {
         "desc": "The unique ID of the flow log."
       }
     ],
-    "desc": "This API is used to query flow log instance information."
+    "desc": "This API is used to query the information of a flow log collector."
   },
   "ModifyGatewayFlowQos": {
     "params": [
@@ -1597,7 +1597,7 @@ INFO = {
       },
       {
         "name": "Bandwidth",
-        "desc": "Bandwidth limit value. Valid values: >0, limited to a specified Mbps; 0, completely limited; -1, no bandwidth limit."
+        "desc": "Bandwidth limit value in Mbps. Valid values: >0: set the limit to the specified value. 0: block all traffic. -1: no bandwidth limit."
       },
       {
         "name": "IpAddresses",
@@ -1768,7 +1768,7 @@ INFO = {
       },
       {
         "name": "SortedBy",
-        "desc": "The sorting condition. Valid values: 'BandwidthLimit' and 'ExpireTime'."
+        "desc": "The sorting condition. Valid values: `BandwidthLimit` and `ExpireTime`."
       },
       {
         "name": "Offset",
@@ -1783,7 +1783,7 @@ INFO = {
         "desc": "In ascending or descending order. Valid values: 'ASC' and 'DESC'."
       }
     ],
-    "desc": "This API is used to query the CCN bandwidth limits across regions. The monthly-subscribed CCN only supports the cross-region bandwidth limit, while the pay-as-you-go CCN supports both the cross-region and region egress bandwidth limit. Note: currently, this feature is in beta test. To use it, please [contact sales](https://intl.cloud.tencent.com/contact-sales)."
+    "desc": "This API is used to query the bandwidth caps of a CCN instance. Monthly-subscribed CCNs only support Inter-region Bandwidth Cap, while the pay-as-you-go CCNs support both the Inter-region Bandwidth Cap and Region Outbound Bandwidth Cap. "
   },
   "DeleteSecurityGroupPolicies": {
     "params": [
@@ -1900,7 +1900,7 @@ INFO = {
         "desc": "Whether security group sorting is supported. True indicates that security group sorting is supported. If SortPolicys does not exist or is set to False, the security group policy can be modified."
       }
     ],
-    "desc": "This API is used to reset the egress and ingress policies (SecurityGroupPolicy) of a security group.\n\n</ul>\n<li>This API deletes all the existing egress and ingress policies, and then adds `Egress` and `Ingress policies`. It does not support custom indexes `PolicyIndex`.</li>\n<li>For parameters of SecurityGroupPolicySet,<ul>\n\t<li>If `SecurityGroupPolicySet.Version` is set to 0, all policies will be cleared, and `Egress` and `Ingress` will be ignored.</li>\n\t<li>If `SecurityGroupPolicySet.Version` is not set to 0, add `Egress` and `Ingress` policies:<ul>\n\t\t<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>\n\t\t<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n\t\t<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n\t\t<li>`SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IPs of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.</li>\n\t\t<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`.</li>\n\t\t<li>`Action`: only allows ACCEPT or DROP.</li>\n\t\t<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n</ul></li></ul></li>\n</ul>"
+    "desc": "This API is used to reset the egress and ingress policies (SecurityGroupPolicy) of a security group.\n\n<ul>\n<li>This API deletes all the existing egress and ingress policies, and then adds Egress and Ingress policies. It does not support custom indexes `PolicyIndex`.</li>\n<li>For parameters of SecurityGroupPolicySet,<ul>\n\t<li>If `SecurityGroupPolicySet.Version` is set to 0, all policies will be cleared, and `Egress` and `Ingress` will be ignored.</li>\n\t<li>If `SecurityGroupPolicySet.Version` is not set to 0, add `Egress` and `Ingress` policies:<ul>\n\t\t<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>\n\t\t<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n\t\t<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n\t\t<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n\t\t<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`.</li>\n\t\t<li>`Action`: only allows ACCEPT or DROP.</li>\n\t\t<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n</ul></li></ul></li>\n</ul>"
   },
   "ModifySubnetAttribute": {
     "params": [
@@ -2013,7 +2013,7 @@ INFO = {
     "params": [
       {
         "name": "DirectConnectGatewayId",
-        "desc": "The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`."
+        "desc": "The unique ID of the direct connect gateway, such as `dcg-9o233uri`."
       },
       {
         "name": "DirectConnectGatewayName",
@@ -2149,11 +2149,11 @@ INFO = {
     "params": [
       {
         "name": "DirectConnectGatewayIds",
-        "desc": "The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`."
+        "desc": "The unique ID of the direct connect gateway, such as `dcg-9o233uri`."
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time..\n<li>direct-connect-gateway-id - String - The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.</li>\n<li>direct-connect-gateway-name - String - The name of the direct connect gateway. The default is fuzzy query.</li>\n<li>direct-connect-gateway-ip - String - The `IP` of the direct connect gateway.</li>\n<li>gateway-type - String - The gateway type. Valid values: `NORMAL` (Standard type), `NAT` (NAT type).</li>\n<li>network-type- String - The network type. Valid values: `VPC` (VPC type), `CCN` (CCN type).</li>\n<li>ccn-id - String - The `ID` of the CCN where the direct connect gateway resides.</li>\n<li>vpc-id - String - The `ID` of the VPC where the direct connect gateway resides.</li>"
+        "desc": "Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time.\n<li>direct-connect-gateway-id - String - The unique ID of the direct connect gateway, such as `dcg-9o233uri`.</li>\n<li>direct-connect-gateway-name - String - The name of the direct connect gateway. The default is fuzzy query.</li>\n<li>direct-connect-gateway-ip - String - The IP of the direct connect gateway.</li>\n<li>gateway-type - String - The gateway type. Valid values: `NORMAL` (Standard type), `NAT` (NAT type).</li>\n<li>network-type- String - The network type. Valid values: `VPC` (VPC type), `CCN` (CCN type).</li>\n<li>ccn-id - String - The ID of the CCN where the direct connect gateway resides.</li>\n<li>vpc-id - String - The ID of the VPC where the direct connect gateway resides.</li>"
       },
       {
         "name": "Offset",
@@ -2161,7 +2161,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "The returned quantity."
+        "desc": "Max number of results returned"
       }
     ],
     "desc": "This API is used to query direct connect gateways."
@@ -2878,11 +2878,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Queries the bandwidth package offset."
+        "desc": "Offset of the query results"
       },
       {
         "name": "Limit",
-        "desc": "Queries the limit on the number of bandwidth packages."
+        "desc": "Max number of the bandwidth packages to be returned."
       }
     ],
     "desc": "This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information."
@@ -3049,7 +3049,7 @@ INFO = {
         "desc": "Security group policy set."
       }
     ],
-    "desc": "This API is used to create security group policies (SecurityGroupPolicy).\n\nFor parameters of SecurityGroupPolicySet,\n</ul>\n<li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>\n<li>*`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IPs of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the group ID while being used to match network messages.</li>\n<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: only allows `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port`and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>\n</ul></li></ul>"
+    "desc": "This API is used to create security group policies (SecurityGroupPolicy).\n\nFor parameters of SecurityGroupPolicySet,\n<ul>\n<li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>\n<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: only allows `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>\n</ul></li></ul>"
   },
   "ModifyNetworkAclAttribute": {
     "params": [

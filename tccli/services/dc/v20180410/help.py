@@ -1,6 +1,55 @@
 # -*- coding: utf-8 -*-
 DESC = "dc-2018-04-10"
 INFO = {
+  "ModifyDirectConnectAttribute": {
+    "params": [
+      {
+        "name": "DirectConnectId",
+        "desc": "Connection ID."
+      },
+      {
+        "name": "DirectConnectName",
+        "desc": "Connection name."
+      },
+      {
+        "name": "CircuitCode",
+        "desc": "Circuit code of connection, which is provided by the ISP or connection provider."
+      },
+      {
+        "name": "Vlan",
+        "desc": "VLAN for connection debugging."
+      },
+      {
+        "name": "TencentAddress",
+        "desc": "Tencent-side IP address for connection debugging."
+      },
+      {
+        "name": "CustomerAddress",
+        "desc": "User-side IP address for connection debugging."
+      },
+      {
+        "name": "CustomerName",
+        "desc": "Name of connection applicant, which is obtained from the account system by default."
+      },
+      {
+        "name": "CustomerContactMail",
+        "desc": "Email address of connection applicant, which is obtained from the account system by default."
+      },
+      {
+        "name": "CustomerContactNumber",
+        "desc": "Contact number of connection applicant, which is obtained from the account system by default."
+      },
+      {
+        "name": "FaultReportContactPerson",
+        "desc": "Fault reporting contact person."
+      },
+      {
+        "name": "FaultReportContactNumber",
+        "desc": "Fault reporting contact number."
+      }
+    ],
+    "desc": "This API is used to modify connection attributes."
+  },
   "CreateDirectConnectTunnel": {
     "params": [
       {
@@ -66,14 +115,14 @@ INFO = {
     ],
     "desc": "This API is used to create a dedicated tunnel."
   },
-  "RejectDirectConnectTunnel": {
+  "DeleteDirectConnect": {
     "params": [
       {
-        "name": "DirectConnectTunnelId",
-        "desc": "None."
+        "name": "DirectConnectId",
+        "desc": "Connection ID."
       }
     ],
-    "desc": "This API is used to reject an application for a dedicated tunnel."
+    "desc": "This API is used to delete a connection.\nOnly connected connections can be deleted."
   },
   "AcceptDirectConnectTunnel": {
     "params": [
@@ -92,6 +141,75 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a dedicated tunnel."
+  },
+  "CreateDirectConnect": {
+    "params": [
+      {
+        "name": "DirectConnectName",
+        "desc": "Connection name."
+      },
+      {
+        "name": "AccessPointId",
+        "desc": "Access point of connection.\nYou can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available."
+      },
+      {
+        "name": "LineOperator",
+        "desc": "ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs)."
+      },
+      {
+        "name": "Location",
+        "desc": "Local IDC location."
+      },
+      {
+        "name": "PortType",
+        "desc": "Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX."
+      },
+      {
+        "name": "CircuitCode",
+        "desc": "Circuit code of connection, which is provided by the ISP or connection provider."
+      },
+      {
+        "name": "Bandwidth",
+        "desc": "Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000."
+      },
+      {
+        "name": "RedundantDirectConnectId",
+        "desc": "ID of redundant connection."
+      },
+      {
+        "name": "Vlan",
+        "desc": "VLAN for connection debugging, which is enabled and automatically assigned by default."
+      },
+      {
+        "name": "TencentAddress",
+        "desc": "Tencent-side IP address for connection debugging, which is automatically assigned by default."
+      },
+      {
+        "name": "CustomerAddress",
+        "desc": "User-side IP address for connection debugging, which is automatically assigned by default."
+      },
+      {
+        "name": "CustomerName",
+        "desc": "Name of connection applicant, which is obtained from the account system by default."
+      },
+      {
+        "name": "CustomerContactMail",
+        "desc": "Email address of connection applicant, which is obtained from the account system by default."
+      },
+      {
+        "name": "CustomerContactNumber",
+        "desc": "Contact number of connection applicant, which is obtained from the account system by default."
+      },
+      {
+        "name": "FaultReportContactPerson",
+        "desc": "Fault reporting contact person."
+      },
+      {
+        "name": "FaultReportContactNumber",
+        "desc": "Fault reporting contact number."
+      }
+    ],
+    "desc": "This API is used to apply for a connection.\nWhen calling this API, please note that:\nYou need to complete identity verification for your account; otherwise, you cannot apply for a connection;\nIf there is any connection in arrears under your account, you cannot apply for more connections."
   },
   "DescribeDirectConnectTunnels": {
     "params": [
@@ -113,6 +231,32 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of dedicated tunnels."
+  },
+  "DescribeAccessPoints": {
+    "params": [
+      {
+        "name": "RegionId",
+        "desc": "Access point region, which can be queried through `DescribeRegions`.\n\nYou can call `DescribeRegions` to get the region ID."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of results to be returned. Default value: 20. Maximum value: 100."
+      }
+    ],
+    "desc": "This API is used to query connection access points.\n"
+  },
+  "RejectDirectConnectTunnel": {
+    "params": [
+      {
+        "name": "DirectConnectTunnelId",
+        "desc": "None."
+      }
+    ],
+    "desc": "This API is used to reject an application for a dedicated tunnel."
   },
   "DescribeDirectConnects": {
     "params": [

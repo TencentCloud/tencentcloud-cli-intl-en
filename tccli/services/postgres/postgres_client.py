@@ -276,6 +276,7 @@ def doOpenDBExtranetAccess(argv, arglist):
 
     param = {
         "DBInstanceId": argv.get("--DBInstanceId"),
+        "IsIpv6": Utils.try_to_json(argv, "--IsIpv6"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -807,6 +808,7 @@ def doCloseDBExtranetAccess(argv, arglist):
 
     param = {
         "DBInstanceId": argv.get("--DBInstanceId"),
+        "IsIpv6": Utils.try_to_json(argv, "--IsIpv6"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

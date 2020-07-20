@@ -42,6 +42,19 @@ INFO = {
     "params": [],
     "desc": "This API is used to get image information."
   },
+  "ModifyClusterAsGroupAttribute": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "ClusterAsGroupAttribute",
+        "desc": "Cluster-associated scaling group attributes"
+      }
+    ],
+    "desc": "Modify cluster scaling group attributes"
+  },
   "DeleteClusterEndpoint": {
     "params": [
       {
@@ -232,9 +245,14 @@ INFO = {
     ],
     "desc": "This API is used to create a cluster route table."
   },
-  "DescribeClusterRouteTables": {
-    "params": [],
-    "desc": "This API is used to query one or more cluster route tables."
+  "DescribeClusterAsGroupOption": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      }
+    ],
+    "desc": "Cluster auto scaling configuration"
   },
   "DescribeClusters": {
     "params": [
@@ -270,6 +288,27 @@ INFO = {
     ],
     "desc": "Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
   },
+  "DescribeClusterAsGroups": {
+    "params": [
+      {
+        "name": "ClusterId",
+        "desc": "Cluster ID"
+      },
+      {
+        "name": "AutoScalingGroupIds",
+        "desc": "Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled."
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688)."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688)."
+      }
+    ],
+    "desc": "Cluster-associated scaling group list"
+  },
   "CreateClusterEndpoint": {
     "params": [
       {
@@ -286,6 +325,10 @@ INFO = {
       }
     ],
     "desc": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)"
+  },
+  "DescribeClusterRouteTables": {
+    "params": [],
+    "desc": "This API is used to query one or more cluster route tables."
   },
   "DescribeRegions": {
     "params": [],

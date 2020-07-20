@@ -10,6 +10,10 @@ INFO = {
       {
         "name": "HonorCooldown",
         "desc": "Whether to check if the auto scaling group is in the cooldown period. Default value: false"
+      },
+      {
+        "name": "TriggerSource",
+        "desc": "Trigger source that executes a scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service."
       }
     ],
     "desc": "This API (ExecuteScalingPolicy) is used to execute a scaling policy.\n\n* The scaling policy can be executed based on the scaling policy ID.\n* When the auto scaling group to which the scaling policy belongs is performing a scaling activity, the scaling policy will be rejected."
@@ -78,7 +82,7 @@ INFO = {
       },
       {
         "name": "Tags",
-        "desc": "List of tag descriptions. This parameter is used to bind a tag to an auto scaling group as well as the corresponding resource instances."
+        "desc": "List of tag descriptions. This parameter is used to bind a tag to a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags."
       },
       {
         "name": "ServiceSettings",
@@ -86,6 +90,10 @@ INFO = {
       },
       {
         "name": "Ipv6AddressCount",
+        "desc": ""
+      },
+      {
+        "name": "MultiZoneSubnetPolicy",
         "desc": ""
       }
     ],
@@ -124,6 +132,43 @@ INFO = {
     ],
     "desc": "This API (ModifyScalingPolicy) is used to modify an alarm trigger policy."
   },
+  "ModifyScheduledAction": {
+    "params": [
+      {
+        "name": "ScheduledActionId",
+        "desc": "ID of the scheduled task to be edited"
+      },
+      {
+        "name": "ScheduledActionName",
+        "desc": "Scheduled task name, which can only contain letters, numbers, underscores, hyphens (\"-\"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group."
+      },
+      {
+        "name": "MaxSize",
+        "desc": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered."
+      },
+      {
+        "name": "MinSize",
+        "desc": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered."
+      },
+      {
+        "name": "DesiredCapacity",
+        "desc": "The desired number of instances set for the auto scaling group when the scheduled task is triggered."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect."
+      },
+      {
+        "name": "Recurrence",
+        "desc": "Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time."
+      }
+    ],
+    "desc": "This API (ModifyScheduledAction) is used to modify a scheduled task."
+  },
   "DescribeNotificationConfigurations": {
     "params": [
       {
@@ -153,6 +198,19 @@ INFO = {
       }
     ],
     "desc": "This API (DeleteAutoScalingGroup) is used to delete the specified auto scaling group that has no instances and remains inactive."
+  },
+  "StartAutoScalingInstances": {
+    "params": [
+      {
+        "name": "AutoScalingGroupId",
+        "desc": "The scaling group ID."
+      },
+      {
+        "name": "InstanceIds",
+        "desc": "The list of the CVM instances you want to launch."
+      }
+    ],
+    "desc": "This API is used to launch CVM instances in the scaling group.\n* After the instance is launched and in the `IN_SERVICE` status, the desired capacity increases, but the desired capacity cannot exceed the maximum value.\n* This API supports batch operation. Up to 100 instances can be launched in each request."
   },
   "CreatePaiInstance": {
     "params": [
@@ -344,18 +402,22 @@ INFO = {
     ],
     "desc": "This API (DeleteScheduledAction) is used to delete the specified scheduled task."
   },
-  "DetachInstances": {
+  "StopAutoScalingInstances": {
     "params": [
       {
         "name": "AutoScalingGroupId",
-        "desc": "Auto scaling group ID"
+        "desc": "The scaling group ID."
       },
       {
         "name": "InstanceIds",
-        "desc": "List of CVM instance IDs"
+        "desc": "The list of the CVM instances you want to shut down."
+      },
+      {
+        "name": "StoppedMode",
+        "desc": "Whether the shutdown instances will be charged. Valid values:  \nKEEP_CHARGING: keep charging after shutdown.  \nSTOP_CHARGING: stop charging after shutdown.\nDefault value: KEEP_CHARGING."
       }
     ],
-    "desc": "This API (DetachInstances) is used to remove CVM instances from an auto scaling group. Instances removed via this API will not be terminated."
+    "desc": "This API is used to shut down CVM instances in the scaling group.\n* Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.\n* Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.\n* To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://cloud.tencent.com/document/product/213/19918).\n* This API supports batch operation. Up to 100 instances can be shut down in each request."
   },
   "CreateScheduledAction": {
     "params": [
@@ -488,23 +550,6 @@ INFO = {
     ],
     "desc": "This API (SetInstancesProtection) is used to enable scale-in protection for an instance.\nWhen an instance has scale-in protection enabled, it will not be removed when scaling is triggered by replacement of unhealthy instances, alarm trigger policy, threshold change, etc."
   },
-  "ModifyNotificationConfiguration": {
-    "params": [
-      {
-        "name": "AutoScalingNotificationId",
-        "desc": "ID of the notification to be modified."
-      },
-      {
-        "name": "NotificationTypes",
-        "desc": "Notification type, i.e., the set of types of notifications to be subscribed to. Value range:\n<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>\n<li>SCALE_OUT_FAILED: scale-out failed</li>\n<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>\n<li>SCALE_IN_FAILED: scale-in failed</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>"
-      },
-      {
-        "name": "NotificationUserGroupIds",
-        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
-      }
-    ],
-    "desc": "This API (ModifyNotificationConfiguration) is used to modify a notification."
-  },
   "CreateLaunchConfiguration": {
     "params": [
       {
@@ -581,6 +626,23 @@ INFO = {
       }
     ],
     "desc": "This API (CreateLaunchConfiguration) is used to create a launch configuration.\n\n* A few fields of a launch configuration can be modified through `ModifyLaunchConfigurationAttributes`. To use a new launch configuration, it is recommended to create it from scratch.\n\n* You can create up to 20 launch configurations for each project. For more information, see [Usage Limits](https://cloud.tencent.com/document/product/377/3120).\n"
+  },
+  "ModifyNotificationConfiguration": {
+    "params": [
+      {
+        "name": "AutoScalingNotificationId",
+        "desc": "ID of the notification to be modified."
+      },
+      {
+        "name": "NotificationTypes",
+        "desc": "Notification type, i.e., the set of types of notifications to be subscribed to. Value range:\n<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>\n<li>SCALE_OUT_FAILED: scale-out failed</li>\n<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>\n<li>SCALE_IN_FAILED: scale-in failed</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>"
+      },
+      {
+        "name": "NotificationUserGroupIds",
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
+      }
+    ],
+    "desc": "This API (ModifyNotificationConfiguration) is used to modify a notification."
   },
   "ModifyAutoScalingGroup": {
     "params": [
@@ -688,6 +750,35 @@ INFO = {
       }
     ],
     "desc": "This API (DescribeAutoScalingInstances) is used to query the information of instances associated with AS.\n\n* You can query the details of instances based on information such as instance ID and auto scaling group ID. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of instances of the current user will be returned."
+  },
+  "CreateAutoScalingGroupFromInstance": {
+    "params": [
+      {
+        "name": "AutoScalingGroupName",
+        "desc": "The scaling group name. It must be unique under your account. The name can only contain Chinese characters, English letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes."
+      },
+      {
+        "name": "InstanceId",
+        "desc": "The instance ID."
+      },
+      {
+        "name": "MinSize",
+        "desc": "The maximum number of instances. Value range: 0-2000."
+      },
+      {
+        "name": "MaxSize",
+        "desc": "The minimum number of instances. Value range: 0-2000."
+      },
+      {
+        "name": "DesiredCapacity",
+        "desc": "The desired capacity. Its value must be greater than the minimum and smaller than the maximum."
+      },
+      {
+        "name": "InheritInstanceTag",
+        "desc": "Whether to inherit the instance tag. Default value: False"
+      }
+    ],
+    "desc": "This API is used to create launch configurations and scaling groups from an instance.\n\nNote: the pay-as-you-go instance in the scaling group that is created from a monthly-subscribed instance can be expanded."
   },
   "CreateLifecycleHook": {
     "params": [
@@ -917,42 +1008,18 @@ INFO = {
     ],
     "desc": "This API (DescribeAutoScalingGroups) is used to query the information of auto scaling groups.\n\n* You can query the details of auto scaling groups based on information such as auto scaling group ID, auto scaling group name, or launch configuration ID. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of auto scaling groups of the current user will be returned."
   },
-  "ModifyScheduledAction": {
+  "DetachInstances": {
     "params": [
       {
-        "name": "ScheduledActionId",
-        "desc": "ID of the scheduled task to be edited"
+        "name": "AutoScalingGroupId",
+        "desc": "Auto scaling group ID"
       },
       {
-        "name": "ScheduledActionName",
-        "desc": "Scheduled task name, which can only contain letters, numbers, underscores, hyphens (\"-\"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group."
-      },
-      {
-        "name": "MaxSize",
-        "desc": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered."
-      },
-      {
-        "name": "MinSize",
-        "desc": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered."
-      },
-      {
-        "name": "DesiredCapacity",
-        "desc": "The desired number of instances set for the auto scaling group when the scheduled task is triggered."
-      },
-      {
-        "name": "StartTime",
-        "desc": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard."
-      },
-      {
-        "name": "EndTime",
-        "desc": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect."
-      },
-      {
-        "name": "Recurrence",
-        "desc": "Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time."
+        "name": "InstanceIds",
+        "desc": "List of CVM instance IDs"
       }
     ],
-    "desc": "This API (ModifyScheduledAction) is used to modify a scheduled task."
+    "desc": "This API (DetachInstances) is used to remove CVM instances from an auto scaling group. Instances removed via this API will not be terminated."
   },
   "DescribeAutoScalingActivities": {
     "params": [

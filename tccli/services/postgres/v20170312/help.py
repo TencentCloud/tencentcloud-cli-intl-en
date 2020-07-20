@@ -145,6 +145,10 @@ INFO = {
       {
         "name": "DBInstanceId",
         "desc": "Instance ID in the format of postgres-hez4fh0v"
+      },
+      {
+        "name": "IsIpv6",
+        "desc": "Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)"
       }
     ],
     "desc": "This API is used to enable public network access."
@@ -303,7 +307,7 @@ INFO = {
       },
       {
         "name": "NeedSupportIpv6",
-        "desc": ""
+        "desc": "Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)"
       }
     ],
     "desc": "This API is used to create one or more TencentDB for PostgreSQL instances."
@@ -422,6 +426,10 @@ INFO = {
       {
         "name": "DBInstanceId",
         "desc": "Instance ID in the format of postgres-6r233v55"
+      },
+      {
+        "name": "IsIpv6",
+        "desc": "Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)"
       }
     ],
     "desc": "This API is used to disable the public network link to an instance."

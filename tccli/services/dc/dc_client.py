@@ -18,6 +18,49 @@ from tccli.services.dc import v20180410
 from tccli.services.dc.v20180410 import help as v20180410_help
 
 
+def doModifyDirectConnectAttribute(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("ModifyDirectConnectAttribute", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DirectConnectId": argv.get("--DirectConnectId"),
+        "DirectConnectName": argv.get("--DirectConnectName"),
+        "CircuitCode": argv.get("--CircuitCode"),
+        "Vlan": Utils.try_to_json(argv, "--Vlan"),
+        "TencentAddress": argv.get("--TencentAddress"),
+        "CustomerAddress": argv.get("--CustomerAddress"),
+        "CustomerName": argv.get("--CustomerName"),
+        "CustomerContactMail": argv.get("--CustomerContactMail"),
+        "CustomerContactNumber": argv.get("--CustomerContactNumber"),
+        "FaultReportContactPerson": argv.get("--FaultReportContactPerson"),
+        "FaultReportContactNumber": argv.get("--FaultReportContactNumber"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyDirectConnectAttributeRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.ModifyDirectConnectAttribute(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateDirectConnectTunnel(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -65,14 +108,14 @@ def doCreateDirectConnectTunnel(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRejectDirectConnectTunnel(argv, arglist):
+def doDeleteDirectConnect(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("RejectDirectConnectTunnel", g_param[OptionsDefine.Version])
+        show_help("DeleteDirectConnect", g_param[OptionsDefine.Version])
         return
 
     param = {
-        "DirectConnectTunnelId": argv.get("--DirectConnectTunnelId"),
+        "DirectConnectId": argv.get("--DirectConnectId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -86,9 +129,9 @@ def doRejectDirectConnectTunnel(argv, arglist):
     client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RejectDirectConnectTunnelRequest()
+    model = models.DeleteDirectConnectRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.RejectDirectConnectTunnel(model)
+    rsp = client.DeleteDirectConnect(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -164,6 +207,41 @@ def doDeleteDirectConnectTunnel(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeAccessPoints(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeAccessPoints", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "RegionId": argv.get("--RegionId"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeAccessPointsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeAccessPoints(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDirectConnectTunnels(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -191,6 +269,87 @@ def doDescribeDirectConnectTunnels(argv, arglist):
     model = models.DescribeDirectConnectTunnelsRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeDirectConnectTunnels(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateDirectConnect(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateDirectConnect", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DirectConnectName": argv.get("--DirectConnectName"),
+        "AccessPointId": argv.get("--AccessPointId"),
+        "LineOperator": argv.get("--LineOperator"),
+        "Location": argv.get("--Location"),
+        "PortType": argv.get("--PortType"),
+        "CircuitCode": argv.get("--CircuitCode"),
+        "Bandwidth": Utils.try_to_json(argv, "--Bandwidth"),
+        "RedundantDirectConnectId": argv.get("--RedundantDirectConnectId"),
+        "Vlan": Utils.try_to_json(argv, "--Vlan"),
+        "TencentAddress": argv.get("--TencentAddress"),
+        "CustomerAddress": argv.get("--CustomerAddress"),
+        "CustomerName": argv.get("--CustomerName"),
+        "CustomerContactMail": argv.get("--CustomerContactMail"),
+        "CustomerContactNumber": argv.get("--CustomerContactNumber"),
+        "FaultReportContactPerson": argv.get("--FaultReportContactPerson"),
+        "FaultReportContactNumber": argv.get("--FaultReportContactNumber"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateDirectConnectRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateDirectConnect(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doRejectDirectConnectTunnel(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("RejectDirectConnectTunnel", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DirectConnectTunnelId": argv.get("--DirectConnectTunnelId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.RejectDirectConnectTunnelRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.RejectDirectConnectTunnel(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -287,11 +446,15 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
+    "ModifyDirectConnectAttribute": doModifyDirectConnectAttribute,
     "CreateDirectConnectTunnel": doCreateDirectConnectTunnel,
-    "RejectDirectConnectTunnel": doRejectDirectConnectTunnel,
+    "DeleteDirectConnect": doDeleteDirectConnect,
     "AcceptDirectConnectTunnel": doAcceptDirectConnectTunnel,
     "DeleteDirectConnectTunnel": doDeleteDirectConnectTunnel,
+    "DescribeAccessPoints": doDescribeAccessPoints,
     "DescribeDirectConnectTunnels": doDescribeDirectConnectTunnels,
+    "CreateDirectConnect": doCreateDirectConnect,
+    "RejectDirectConnectTunnel": doRejectDirectConnectTunnel,
     "DescribeDirectConnects": doDescribeDirectConnects,
     "ModifyDirectConnectTunnelAttribute": doModifyDirectConnectTunnelAttribute,
 

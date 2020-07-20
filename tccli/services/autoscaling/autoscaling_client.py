@@ -27,6 +27,7 @@ def doExecuteScalingPolicy(argv, arglist):
     param = {
         "AutoScalingPolicyId": argv.get("--AutoScalingPolicyId"),
         "HonorCooldown": Utils.try_to_json(argv, "--HonorCooldown"),
+        "TriggerSource": argv.get("--TriggerSource"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -77,6 +78,7 @@ def doCreateAutoScalingGroup(argv, arglist):
         "Tags": Utils.try_to_json(argv, "--Tags"),
         "ServiceSettings": Utils.try_to_json(argv, "--ServiceSettings"),
         "Ipv6AddressCount": Utils.try_to_json(argv, "--Ipv6AddressCount"),
+        "MultiZoneSubnetPolicy": argv.get("--MultiZoneSubnetPolicy"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -234,6 +236,40 @@ def doDeleteAutoScalingGroup(argv, arglist):
     model = models.DeleteAutoScalingGroupRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DeleteAutoScalingGroup(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doStartAutoScalingInstances(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("StartAutoScalingInstances", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AutoScalingGroupId": argv.get("--AutoScalingGroupId"),
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StartAutoScalingInstancesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.StartAutoScalingInstances(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -756,6 +792,41 @@ def doModifyNotificationConfiguration(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doStopAutoScalingInstances(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("StopAutoScalingInstances", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AutoScalingGroupId": argv.get("--AutoScalingGroupId"),
+        "InstanceIds": Utils.try_to_json(argv, "--InstanceIds"),
+        "StoppedMode": argv.get("--StoppedMode"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StopAutoScalingInstancesRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.StopAutoScalingInstances(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateLaunchConfiguration(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -916,6 +987,44 @@ def doDescribeAutoScalingInstances(argv, arglist):
     model = models.DescribeAutoScalingInstancesRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeAutoScalingInstances(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateAutoScalingGroupFromInstance(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CreateAutoScalingGroupFromInstance", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "AutoScalingGroupName": argv.get("--AutoScalingGroupName"),
+        "InstanceId": argv.get("--InstanceId"),
+        "MinSize": Utils.try_to_json(argv, "--MinSize"),
+        "MaxSize": Utils.try_to_json(argv, "--MaxSize"),
+        "DesiredCapacity": Utils.try_to_json(argv, "--DesiredCapacity"),
+        "InheritInstanceTag": Utils.try_to_json(argv, "--InheritInstanceTag"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateAutoScalingGroupFromInstanceRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CreateAutoScalingGroupFromInstance(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -1587,6 +1696,7 @@ ACTION_MAP = {
     "ModifyScalingPolicy": doModifyScalingPolicy,
     "DescribeNotificationConfigurations": doDescribeNotificationConfigurations,
     "DeleteAutoScalingGroup": doDeleteAutoScalingGroup,
+    "StartAutoScalingInstances": doStartAutoScalingInstances,
     "CreatePaiInstance": doCreatePaiInstance,
     "UpgradeLaunchConfiguration": doUpgradeLaunchConfiguration,
     "AttachInstances": doAttachInstances,
@@ -1601,10 +1711,12 @@ ACTION_MAP = {
     "ModifyDesiredCapacity": doModifyDesiredCapacity,
     "SetInstancesProtection": doSetInstancesProtection,
     "ModifyNotificationConfiguration": doModifyNotificationConfiguration,
+    "StopAutoScalingInstances": doStopAutoScalingInstances,
     "CreateLaunchConfiguration": doCreateLaunchConfiguration,
     "ModifyAutoScalingGroup": doModifyAutoScalingGroup,
     "CreateNotificationConfiguration": doCreateNotificationConfiguration,
     "DescribeAutoScalingInstances": doDescribeAutoScalingInstances,
+    "CreateAutoScalingGroupFromInstance": doCreateAutoScalingGroupFromInstance,
     "CreateLifecycleHook": doCreateLifecycleHook,
     "UpgradeLifecycleHook": doUpgradeLifecycleHook,
     "DisableAutoScalingGroup": doDisableAutoScalingGroup,

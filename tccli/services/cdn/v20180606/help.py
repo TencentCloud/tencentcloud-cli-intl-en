@@ -1,6 +1,19 @@
 # -*- coding: utf-8 -*-
 DESC = "cdn-2018-06-06"
 INFO = {
+  "DescribeIpStatus": {
+    "params": [
+      {
+        "name": "Domain",
+        "desc": "Acceleration domain name"
+      },
+      {
+        "name": "Layer",
+        "desc": "Node type.\nedge: edge server\nlast: intermediate server\nIf this parameter is left empty, edge server information will be returned by default"
+      }
+    ],
+    "desc": "This API is used to query the status of the edge servers and intermediate nodes on the domain name acceleration platform. Note: edge servers are not generally available. This API can only be used by whitelisted accounts."
+  },
   "DescribeMapInfo": {
     "params": [
       {
@@ -288,7 +301,7 @@ INFO = {
       },
       {
         "name": "IpProtocol",
-        "desc": "Specifies an IP protocol; if it is left blank, all IP protocols will be queried.\n`all`: All protocols\n`ipv4`: IPv4\n`ipv6`: IPv6\nIf the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time"
+        "desc": "Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried\nall: all protocols\nipv4: specifies to query IPv4 metrics\nipv6: specifies to query IPv6 metrics\nIf the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time\nNote: non-IPv6 whitelisted users cannot specify `ipv4` and `ipv6` for query"
       },
       {
         "name": "Area",
@@ -386,15 +399,23 @@ INFO = {
     ],
     "desc": "This API is used to suspend the acceleration service for a domain name.\nNote: after the acceleration service has been suspended, requests to the cache node will return a 404 error. In order to avoid impact to your business, please move the domain name to another service before suspending the acceleration service."
   },
+  "DescribePurgeQuota": {
+    "params": [],
+    "desc": "This API is used to query the purge usage quota and daily available usage for an account."
+  },
+  "DescribePushQuota": {
+    "params": [],
+    "desc": "This API is used to query the prefetch quota and daily available usage."
+  },
   "ListTopData": {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Query start date. Example: 2018-09-09.\nOnly supports data query at daily granularity. The date in the input parameter is used as the start date.\nData generated at or after 00:00:00 on the start date will be returned.\nOnly data from the last 90 days will be queried."
+        "desc": "Query start time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly supports data query at daily granularity. The date in the input parameter is used as the start date.\nData generated after or at 00:00:00 on the start date will be returned\nOnly data for the last 90 days can be queried"
       },
       {
         "name": "EndTime",
-        "desc": "Query end date. Example: 2018-09-10\nOnly supports data query at daily granularity. The date in the input parameter is used as the end date.\nData generated before or at 23:59:59 on the end date will be returned.\nEndTime must be greater than or equal to StartTime"
+        "desc": "Query end time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly supports data query at daily granularity. The date in the input parameter is used as the end date.\nData generated before or at 23:59:59 on the end date will be returned\n`EndTime` must be later than or equal to `StartTime`"
       },
       {
         "name": "Metric",
@@ -451,7 +472,7 @@ INFO = {
       },
       {
         "name": "Project",
-        "desc": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nPlease note that if domain names are specified, this parameter will be ignored."
+        "desc": "Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf the domain name is not specified, the specified project will be queried. Up to 30 acceleration domain names can be queried at a time\nIf the domain name information is specified, the domain name will prevail"
       },
       {
         "name": "Interval",
@@ -524,7 +545,7 @@ INFO = {
       },
       {
         "name": "ProjectId",
-        "desc": "Project ID\b"
+        "desc": "Project ID"
       },
       {
         "name": "Origin",
@@ -637,6 +658,10 @@ INFO = {
       {
         "name": "AwsPrivateAccess",
         "desc": "Origin access authentication for S3 bucket"
+      },
+      {
+        "name": "UserAgentFilter",
+        "desc": "UA blacklist/whitelist Configuration"
       }
     ],
     "desc": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration."
@@ -831,6 +856,43 @@ INFO = {
     ],
     "desc": "This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5–15 minutes."
   },
+  "DescribeBillingData": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Query start time, e.g., 2018-09-04 10:40:00. The returned result will be later than or equal to the specified time\nThe time will be rounded forward based on the granularity parameter `Interval`. For example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the first returned entry will be 2018-09-04 10:00:00\nThe range between the start time and end time should be less than or equal to 90 days"
+      },
+      {
+        "name": "EndTime",
+        "desc": "Query end time, e.g. 2018-09-04 10:40:00. The returned result will be earlier than or equal to the specified time\nThe time will be rounded forward based on the granularity parameter `Interval`. For example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the last returned entry will be 2018-09-04 10:00:00\nThe range between the start time and end time should be less than or equal to 90 days"
+      },
+      {
+        "name": "Interval",
+        "desc": "Time granularity, which can be:\nmin: 1-minute. The query range should be less than or equal to 24 hours\n5min: 5-minute. The query range should be less than or equal to 31 days\nhour: 1-hour. The query range should be less than or equal to 31 days\nday: 1-day. The query period should be greater than 31 days\n\nCurrently, data query at 1-minute granularity is not supported if the `Area` field is `overseas`"
+      },
+      {
+        "name": "Domain",
+        "desc": "Domain name whose billing data is to be queried"
+      },
+      {
+        "name": "Project",
+        "desc": "Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf the `Domain` parameter is populated with specific domain name information, then the billing data of this domain name instead of the specified project will be returned"
+      },
+      {
+        "name": "Area",
+        "desc": "Acceleration region whose billing data is to be queried:\nmainland: in the mainland of China\noverseas: outside the mainland of China\nIf this parameter is left empty, `mainland` will be used by default"
+      },
+      {
+        "name": "District",
+        "desc": "Country/region to be queried if `Area` is `overseas`\nFor district or country/region codes, please see [District Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)\nIf this parameter is left empty, all countries/regions will be queried"
+      },
+      {
+        "name": "Metric",
+        "desc": "Billing statistics type\nflux: bill-by-traffic\nbandwidth: bill-by-bandwidth\nDefault value: `bandwidth`"
+      }
+    ],
+    "desc": "This API is used to query billing data details."
+  },
   "DescribePushTasks": {
     "params": [
       {
@@ -889,15 +951,15 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Query start time"
+        "desc": "Query start time in the format of `yyyy-MM-dd`"
       },
       {
         "name": "EndTime",
-        "desc": "Query end time"
+        "desc": "Query end time in the format of `yyyy-MM-dd`"
       },
       {
         "name": "ReportType",
-        "desc": "Report type\ndaily: daily report\nweekly: weekly report\nmonthly: monthly report"
+        "desc": "Report type\ndaily: daily report\nweekly: weekly report (Monday to Sunday)\nmonthly: monthly report (calendar month)"
       },
       {
         "name": "Area",

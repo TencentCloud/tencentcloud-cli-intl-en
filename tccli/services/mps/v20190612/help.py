@@ -68,6 +68,27 @@ INFO = {
     ],
     "desc": "This API is used to create a custom animated image generating template. Up to 16 templates can be created."
   },
+  "DescribeAdaptiveDynamicStreamingTemplates": {
+    "params": [
+      {
+        "name": "Definitions",
+        "desc": "Unique ID filter of adaptive bitrate streaming templates. Array length limit: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Pagination offset. Default value: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of returned entries. Default value: 10. Maximum value: 100."
+      },
+      {
+        "name": "Type",
+        "desc": "Template type filter. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>"
+      }
+    ],
+    "desc": "This API is used to query the list of adaptive bitrate streaming templates and supports paginated queries by filters."
+  },
   "CreateContentReviewTemplate": {
     "params": [
       {
@@ -130,6 +151,48 @@ INFO = {
     ],
     "desc": "This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created."
   },
+  "EditMedia": {
+    "params": [
+      {
+        "name": "FileInfos",
+        "desc": "Information of input video file."
+      },
+      {
+        "name": "OutputStorage",
+        "desc": "Target storage of video processing output file."
+      },
+      {
+        "name": "OutputObjectPath",
+        "desc": "Target path of video processing output file."
+      },
+      {
+        "name": "TaskNotifyConfig",
+        "desc": "Event notification information of task. If this parameter is left empty, no event notifications will be obtained."
+      },
+      {
+        "name": "TasksPriority",
+        "desc": "Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used."
+      },
+      {
+        "name": "SessionId",
+        "desc": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed."
+      },
+      {
+        "name": "SessionContext",
+        "desc": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters."
+      }
+    ],
+    "desc": "This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:\n\n1. Clipping a file to generate a new video;\n2. Splicing multiple files to generate a new video;\n3. Clipping multiple files and then splicing the clips to generate a new video."
+  },
+  "DeleteAIAnalysisTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of video content analysis template."
+      }
+    ],
+    "desc": "This API is used to delete a custom content analysis template.\n\nNote: templates with an ID below 10000 are preset and cannot be deleted."
+  },
   "DeletePersonSample": {
     "params": [
       {
@@ -139,42 +202,26 @@ INFO = {
     ],
     "desc": "This API is used to delete a figure sample based on figure ID."
   },
-  "ModifyAnimatedGraphicsTemplate": {
+  "DescribeSnapshotByTimeOffsetTemplates": {
     "params": [
       {
-        "name": "Definition",
-        "desc": "Unique ID of an animated image generating template."
+        "name": "Definitions",
+        "desc": "Unique ID filter of time point screencapturing templates. Array length limit: 100."
       },
       {
-        "name": "Name",
-        "desc": "Name of an animated image generating template. Length limit: 64 characters."
+        "name": "Offset",
+        "desc": "Paging offset. Default value: 0."
       },
       {
-        "name": "Width",
-        "desc": "Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
+        "name": "Limit",
+        "desc": "Number of returned entries. Default value: 10. Maximum value: 100."
       },
       {
-        "name": "Height",
-        "desc": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
-      },
-      {
-        "name": "Format",
-        "desc": "Animated image format. Valid values: gif, webp."
-      },
-      {
-        "name": "Fps",
-        "desc": "Video frame rate in Hz. Value range: [1, 30]."
-      },
-      {
-        "name": "Quality",
-        "desc": "Image quality. Value range: [1, 100]. Default value: 75."
-      },
-      {
-        "name": "Comment",
-        "desc": "Template description. Length limit: 256 characters."
+        "name": "Type",
+        "desc": "Template type filter. Valid values:\n<li>Preset: Preset template;</li>\n<li>Custom: Custom template.</li>"
       }
     ],
-    "desc": "This API is used to modify a custom animated image generating template."
+    "desc": "This API is used to query the list of time point screencapturing templates and supports paged queries by filters."
   },
   "DeleteTranscodeTemplate": {
     "params": [
@@ -235,60 +282,31 @@ INFO = {
     ],
     "desc": "This API is used to delete a custom animated image generating template."
   },
-  "DescribeSnapshotByTimeOffsetTemplates": {
+  "DescribeAIAnalysisTemplates": {
     "params": [
       {
         "name": "Definitions",
-        "desc": "Unique ID filter of time point screencapturing templates. Array length limit: 100."
+        "desc": "Unique ID filter of video content analysis templates. Array length limit: 10."
       },
       {
         "name": "Offset",
-        "desc": "Paging offset. Default value: 0."
+        "desc": "Pagination offset. Default value: 0."
       },
       {
         "name": "Limit",
         "desc": "Number of returned entries. Default value: 10. Maximum value: 100."
-      },
-      {
-        "name": "Type",
-        "desc": "Template type filter. Valid values:\n<li>Preset: Preset template;</li>\n<li>Custom: Custom template.</li>"
       }
     ],
-    "desc": "This API is used to query the list of time point screencapturing templates and supports paged queries by filters."
+    "desc": "This API is used to get the list of content analysis templates based on unique template ID. The returned result includes all eligible custom and preset video content analysis templates."
   },
-  "CreatePersonSample": {
+  "DescribeTaskDetail": {
     "params": [
       {
-        "name": "Name",
-        "desc": "Name of a figure. Length limit: 20 characters."
-      },
-      {
-        "name": "FaceContents",
-        "desc": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px."
-      },
-      {
-        "name": "Usages",
-        "desc": "Figure sample use case. Valid values:\n1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.\n2. Review: It is used for content audit, equivalent to `Review.Face`.\n3. All: It is used for content recognition and content audit, equivalent to 1+2 above."
-      },
-      {
-        "name": "Description",
-        "desc": "Figure description. Length limit: 1,024 characters."
-      },
-      {
-        "name": "Tags",
-        "desc": "Figure tag\n<li>Array length limit: 20 tags;</li>\n<li>Tag length limit: 128 characters.</li>"
+        "name": "TaskId",
+        "desc": "Video processing task ID."
       }
     ],
-    "desc": "This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology."
-  },
-  "ParseLiveStreamProcessNotification": {
-    "params": [
-      {
-        "name": "Content",
-        "desc": "Live stream event notification obtained from CMQ."
-      }
-    ],
-    "desc": "This API is used to parse the content of an MPS live stream processing event notification from the `msgBody` field in the message received from CMQ.\nInstead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs."
+    "desc": "This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID."
   },
   "ModifyAIRecognitionTemplate": {
     "params": [
@@ -326,6 +344,39 @@ INFO = {
       }
     ],
     "desc": "This API is used to modify a custom content recognition template."
+  },
+  "ModifyAdaptiveDynamicStreamingTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of an adaptive bitrate streaming template."
+      },
+      {
+        "name": "Name",
+        "desc": "Template name. Length limit: 64 characters."
+      },
+      {
+        "name": "Format",
+        "desc": "Adaptive bitrate streaming format. Valid values:\n<li>HLS,</li>\n<li>MPEG-DASH.</li>"
+      },
+      {
+        "name": "DisableHigherVideoBitrate",
+        "desc": "Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>"
+      },
+      {
+        "name": "DisableHigherVideoResolution",
+        "desc": "Whether to prohibit transcoding from low resolution to high resolution. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>"
+      },
+      {
+        "name": "StreamInfos",
+        "desc": "Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.\nNote: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate."
+      },
+      {
+        "name": "Comment",
+        "desc": "Template description. Length limit: 256 characters."
+      }
+    ],
+    "desc": "This API is used to modify an adaptive bitrate streaming template."
   },
   "ModifySampleSnapshotTemplate": {
     "params": [
@@ -443,14 +494,51 @@ INFO = {
     ],
     "desc": "This API is used to reset an existing workflow that is disabled."
   },
-  "DescribeTaskDetail": {
+  "ParseLiveStreamProcessNotification": {
     "params": [
       {
-        "name": "TaskId",
-        "desc": "Video processing task ID."
+        "name": "Content",
+        "desc": "Live stream event notification obtained from CMQ."
       }
     ],
-    "desc": "This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID."
+    "desc": "This API is used to parse the content of an MPS live stream processing event notification from the `msgBody` field in the message received from CMQ.\nInstead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs."
+  },
+  "ModifyAnimatedGraphicsTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of an animated image generating template."
+      },
+      {
+        "name": "Name",
+        "desc": "Name of an animated image generating template. Length limit: 64 characters."
+      },
+      {
+        "name": "Width",
+        "desc": "Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
+      },
+      {
+        "name": "Height",
+        "desc": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
+      },
+      {
+        "name": "Format",
+        "desc": "Animated image format. Valid values: gif, webp."
+      },
+      {
+        "name": "Fps",
+        "desc": "Video frame rate in Hz. Value range: [1, 30]."
+      },
+      {
+        "name": "Quality",
+        "desc": "Image quality. Value range: [1, 100]. Default value: 75."
+      },
+      {
+        "name": "Comment",
+        "desc": "Template description. Length limit: 256 characters."
+      }
+    ],
+    "desc": "This API is used to modify a custom animated image generating template."
   },
   "DescribeWordSamples": {
     "params": [
@@ -535,6 +623,44 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a workflow. An enabled workflow must be disabled before it can be deleted."
+  },
+  "DeleteAdaptiveDynamicStreamingTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of an adaptive bitrate streaming template."
+      }
+    ],
+    "desc": "This API is used to delete an adaptive bitrate streaming template."
+  },
+  "CreateAdaptiveDynamicStreamingTemplate": {
+    "params": [
+      {
+        "name": "Format",
+        "desc": "Adaptive bitrate streaming format. Valid values:\n<li>HLS,</li>\n<li>MPEG-DASH.</li>"
+      },
+      {
+        "name": "StreamInfos",
+        "desc": "Parameter information of output substreams for transcoding to adaptive bitrate streaming. Up to 10 substreams can be output.\nNote: the frame rate of each substream must be consistent; otherwise, the frame rate of the first substream is used as the output frame rate."
+      },
+      {
+        "name": "Name",
+        "desc": "Template name. Length limit: 64 characters."
+      },
+      {
+        "name": "DisableHigherVideoBitrate",
+        "desc": "Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>\nDefault value: 0."
+      },
+      {
+        "name": "DisableHigherVideoResolution",
+        "desc": "Whether to prohibit transcoding from low resolution to high resolution. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>\nDefault value: 0."
+      },
+      {
+        "name": "Comment",
+        "desc": "Template description. Length limit: 256 characters."
+      }
+    ],
+    "desc": "This API is used to create up to 100 adaptive bitrate streaming templates."
   },
   "DisableWorkflow": {
     "params": [
@@ -692,6 +818,90 @@ INFO = {
       }
     ],
     "desc": "This API is used to enable a workflow."
+  },
+  "CreateAIAnalysisTemplate": {
+    "params": [
+      {
+        "name": "Name",
+        "desc": "Video content analysis template name. Length limit: 64 characters."
+      },
+      {
+        "name": "Comment",
+        "desc": "Video content analysis template description. Length limit: 256 characters."
+      },
+      {
+        "name": "ClassificationConfigure",
+        "desc": "Control parameter of intelligent categorization task."
+      },
+      {
+        "name": "TagConfigure",
+        "desc": "Control parameter of intelligent tagging task."
+      },
+      {
+        "name": "CoverConfigure",
+        "desc": "Control parameter of intelligent cover generating task."
+      },
+      {
+        "name": "FrameTagConfigure",
+        "desc": "Control parameter of intelligent frame-specific tagging task."
+      }
+    ],
+    "desc": "This API is used to create a custom content analysis template. Up to 50 templates can be created."
+  },
+  "ManageTask": {
+    "params": [
+      {
+        "name": "OperationType",
+        "desc": "Operation type. Valid values:\n<li>Abort: terminates task.</li>"
+      },
+      {
+        "name": "TaskId",
+        "desc": "Video processing task ID."
+      }
+    ],
+    "desc": "This API is used to manage an initiated task.\n> Note: currently, you can only terminate an ongoing live stream processing task."
+  },
+  "ModifyAIAnalysisTemplate": {
+    "params": [
+      {
+        "name": "Definition",
+        "desc": "Unique ID of video content analysis template."
+      },
+      {
+        "name": "Name",
+        "desc": "Video content analysis template name. Length limit: 64 characters."
+      },
+      {
+        "name": "Comment",
+        "desc": "Video content analysis template description. Length limit: 256 characters."
+      },
+      {
+        "name": "ClassificationConfigure",
+        "desc": "Control parameter of intelligent categorization task."
+      },
+      {
+        "name": "TagConfigure",
+        "desc": "Control parameter of intelligent tagging task."
+      },
+      {
+        "name": "CoverConfigure",
+        "desc": "Control parameter of intelligent cover generating task."
+      },
+      {
+        "name": "FrameTagConfigure",
+        "desc": "Control parameter of intelligent frame-specific tagging task."
+      }
+    ],
+    "desc": "This API is used to modify a custom content analysis template.\n\nNote: templates with an ID below 10000 are preset and cannot be modified."
+  },
+  "DescribeMediaMetaData": {
+    "params": [
+      {
+        "name": "InputInfo",
+        "desc": "Input information of file for metadata getting."
+      }
+    ],
+    "desc": "This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate."
   },
   "DescribeTasks": {
     "params": [
@@ -1098,6 +1308,31 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a custom content audit template."
+  },
+  "CreatePersonSample": {
+    "params": [
+      {
+        "name": "Name",
+        "desc": "Name of a figure. Length limit: 20 characters."
+      },
+      {
+        "name": "FaceContents",
+        "desc": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px."
+      },
+      {
+        "name": "Usages",
+        "desc": "Figure sample use case. Valid values:\n1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.\n2. Review: It is used for content audit, equivalent to `Review.Face`.\n3. All: It is used for content recognition and content audit, equivalent to 1+2 above."
+      },
+      {
+        "name": "Description",
+        "desc": "Figure description. Length limit: 1,024 characters."
+      },
+      {
+        "name": "Tags",
+        "desc": "Figure tag\n<li>Array length limit: 20 tags;</li>\n<li>Tag length limit: 128 characters.</li>"
+      }
+    ],
+    "desc": "This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology."
   },
   "DescribeAIRecognitionTemplates": {
     "params": [
