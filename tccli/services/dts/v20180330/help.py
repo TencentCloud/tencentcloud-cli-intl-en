@@ -174,7 +174,7 @@ INFO = {
     ],
     "desc": "This API is used to query the execution result of a task."
   },
-  "SwitchDrToMaster": {
+  "SwitchDrToMain": {
     "params": [
       {
         "name": "DstInfo",
@@ -185,7 +185,7 @@ INFO = {
         "desc": "Database type (such as MySQL)"
       }
     ],
-    "desc": "This API is used to promote a disaster recovery instance to a master instance, which will stop sync from the original master instance and end the master/slave relationship."
+    "desc": "This API is used to promote a disaster recovery instance to a main instance, which will stop sync from the original main instance and end the main/subordinate relationship."
   },
   "StopMigrateJob": {
     "params": [

@@ -132,7 +132,7 @@ INFO = {
       },
       {
         "name": "NodeFlag",
-        "desc": "Node flag. Valid values:\n<li>all: gets the information of nodes in all types except TencentDB information.</li>\n<li>master: gets master node information.</li>\n<li>core: gets core node information.</li>\n<li>task: gets task node information.</li>\n<li>common: gets common node information.</li>\n<li>router: gets router node information.</li>\n<li>db: gets TencentDB information in normal status.</li>\nNote: only the above values are supported for the time being. Entering other values will cause errors."
+        "desc": "Node flag. Valid values:\n<li>all: gets the information of nodes in all types except TencentDB information.</li>\n<li>main: gets main node information.</li>\n<li>core: gets core node information.</li>\n<li>task: gets task node information.</li>\n<li>common: gets common node information.</li>\n<li>router: gets router node information.</li>\n<li>db: gets TencentDB information in normal status.</li>\nNote: only the above values are supported for the time being. Entering other values will cause errors."
       },
       {
         "name": "Offset",
@@ -241,8 +241,8 @@ INFO = {
         "desc": "Client token."
       },
       {
-        "name": "NeedMasterWan",
-        "desc": "Whether to enable public IP access for master node. Valid values:\n<li>NEED_MASTER_WAN: enables public IP for master node.</li>\n<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default."
+        "name": "NeedMainWan",
+        "desc": "Whether to enable public IP access for main node. Valid values:\n<li>NEED_MASTER_WAN: enables public IP for main node.</li>\n<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for main node by default."
       },
       {
         "name": "RemoteLoginAtCreate",

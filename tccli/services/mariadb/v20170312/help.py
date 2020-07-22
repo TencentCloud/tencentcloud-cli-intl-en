@@ -135,7 +135,7 @@ INFO = {
       },
       {
         "name": "MetricName",
-        "desc": "Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay"
+        "desc": "Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_main_switched, subordinate_delay"
       }
     ],
     "desc": "This API is used to view the instance performance data details."
@@ -362,7 +362,7 @@ INFO = {
       },
       {
         "name": "ReadOnly",
-        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail."
+        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the subordinate will be used first, and if it is unavailable, the main will be used; 2: the subordinate will be used first, and if it is unavailable, the operation will fail."
       },
       {
         "name": "Description",
@@ -370,7 +370,7 @@ INFO = {
       },
       {
         "name": "DelayThresh",
-        "desc": "Determines whether the slave is unavailable based on the passed-in time"
+        "desc": "Determines whether the subordinate is unavailable based on the passed-in time"
       }
     ],
     "desc": "This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts."
@@ -440,8 +440,8 @@ INFO = {
         "desc": "Sorting order. Valid values: desc, asc"
       },
       {
-        "name": "Slave",
-        "desc": "Whether to query slow queries of the slave. 0: master, 1: slave"
+        "name": "Subordinate",
+        "desc": "Whether to query slow queries of the subordinate. 0: main, 1: subordinate"
       }
     ],
     "desc": "This API is used to query the slow query log list."
@@ -555,7 +555,7 @@ INFO = {
       },
       {
         "name": "MetricName",
-        "desc": "Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_master_switched, slave_delay"
+        "desc": "Name of pulled metric. Valid values: long_query, select_total, update_total, insert_total, delete_total, mem_hit_rate, disk_iops, conn_active, is_main_switched, subordinate_delay"
       }
     ],
     "desc": "This API is used to view the current performance data of a database instance."

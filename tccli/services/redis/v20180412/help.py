@@ -43,7 +43,7 @@ INFO = {
       },
       {
         "name": "ReadonlyPolicy",
-        "desc": "Routing policy. Enter `master` for master node or `replication` for slave node"
+        "desc": "Routing policy. Enter `main` for main node or `replication` for subordinate node"
       },
       {
         "name": "Privilege",
@@ -76,7 +76,7 @@ INFO = {
       },
       {
         "name": "ReadonlyPolicy",
-        "desc": "Sub-account routing policy. Enter `master` to route to the master node or `slave` to route to the slave node"
+        "desc": "Sub-account routing policy. Enter `main` to route to the main node or `subordinate` to route to the subordinate node"
       },
       {
         "name": "Privilege",
@@ -298,7 +298,7 @@ INFO = {
       },
       {
         "name": "TypeVersion",
-        "desc": "Type edition. 1: standalone edition; 2: master-slave edition; 3: cluster edition"
+        "desc": "Type edition. 1: standalone edition; 2: main-subordinate edition; 3: cluster edition"
       },
       {
         "name": "EngineName",
@@ -314,7 +314,7 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,"
+        "desc": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Main-Subordinate Edition, 3: CKV Main-Subordinate Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Main-Subordinate Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Main-Subordinate Edition, 9: Redis 5.0 Cluster Edition,"
       },
       {
         "name": "SearchKeys",
@@ -434,8 +434,8 @@ INFO = {
         "desc": "Instance ID"
       },
       {
-        "name": "FilterSlave",
-        "desc": "Whether to filter out the slave node information"
+        "name": "FilterSubordinate",
+        "desc": "Whether to filter out the subordinate node information"
       }
     ],
     "desc": "This API is used to get the information of cluster edition instance shards."
@@ -466,7 +466,7 @@ INFO = {
       },
       {
         "name": "ReadonlyPolicy",
-        "desc": "Account routing policy. If `master` or `replication` is entered, it means to route to the master or slave node; if this is left blank, it means to write into the master node and read from the slave node by default"
+        "desc": "Account routing policy. If `main` or `replication` is entered, it means to route to the main or subordinate node; if this is left blank, it means to write into the main node and read from the subordinate node by default"
       }
     ],
     "desc": "This API is used to enable read/write separation."
@@ -598,11 +598,11 @@ INFO = {
       },
       {
         "name": "RedisShardNum",
-        "desc": "Number of shards. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition"
+        "desc": "Number of shards. This parameter can be left blank for Redis 2.8 main-subordinate edition, CKV main-subordinate edition, and Redis 2.8 standalone edition"
       },
       {
         "name": "RedisReplicasNum",
-        "desc": "Number of replicas. This parameter can be left blank for Redis 2.8 master-slave edition, CKV master-slave edition, and Redis 2.8 standalone edition"
+        "desc": "Number of replicas. This parameter can be left blank for Redis 2.8 main-subordinate edition, CKV main-subordinate edition, and Redis 2.8 standalone edition"
       }
     ],
     "desc": "This API is used to upgrade an instance."
@@ -786,7 +786,7 @@ INFO = {
       },
       {
         "name": "ReplicasReadonly",
-        "desc": "Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on slave nodes. To enable read-only replicas, we recommend you create 2 or more replicas."
+        "desc": "Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the main node and read requests will be distributed on subordinate nodes. To enable read-only replicas, we recommend you create 2 or more replicas."
       },
       {
         "name": "InstanceName",

@@ -170,7 +170,7 @@ INFO = {
       },
       {
         "name": "TaskTypes",
-        "desc": "Task type. If no value is passed in, all task types will be queried. Valid values:\n1 - rolling back a database;\n2 - performing an SQL operation;\n3 - importing data;\n5 - setting a parameter;\n6 - initializing a TencentDB instance;\n7 - restarting a TencentDB instance;\n8 - enabling GTID of a TencentDB instance;\n9 - upgrading a read-only instance;\n10 - rolling back databases in batches;\n11 - upgrading a master instance;\n12 - deleting a TencentDB table;\n13 - promoting a disaster recovery instance."
+        "desc": "Task type. If no value is passed in, all task types will be queried. Valid values:\n1 - rolling back a database;\n2 - performing an SQL operation;\n3 - importing data;\n5 - setting a parameter;\n6 - initializing a TencentDB instance;\n7 - restarting a TencentDB instance;\n8 - enabling GTID of a TencentDB instance;\n9 - upgrading a read-only instance;\n10 - rolling back databases in batches;\n11 - upgrading a main instance;\n12 - deleting a TencentDB table;\n13 - promoting a disaster recovery instance."
       },
       {
         "name": "TaskStatus",
@@ -386,7 +386,7 @@ INFO = {
         "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
       }
     ],
-    "desc": "This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the master instance being upgraded is pending switch."
+    "desc": "This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the main instance being upgraded is pending switch."
   },
   "DeleteParamTemplate": {
     "params": [
@@ -458,16 +458,16 @@ INFO = {
         "desc": "AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported AZs."
       },
       {
-        "name": "MasterInstanceId",
-        "desc": "Instance ID, which is required and the same as the master instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance IDs."
+        "name": "MainInstanceId",
+        "desc": "Instance ID, which is required and the same as the main instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance IDs."
       },
       {
         "name": "InstanceRole",
-        "desc": "Instance type. Valid values: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master."
+        "desc": "Instance type. Valid values: main (main instance), dr (disaster recovery instance), ro (read-only instance). Default value: main."
       },
       {
-        "name": "MasterRegion",
-        "desc": "AZ information of the master instance, which is required for purchasing disaster recovery instances."
+        "name": "MainRegion",
+        "desc": "AZ information of the main instance, which is required for purchasing disaster recovery instances."
       },
       {
         "name": "Port",
@@ -475,7 +475,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Sets the root account password. Rule: the password can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "Sets the root account password. Rule: the password can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
         "name": "ParamList",
@@ -483,19 +483,19 @@ INFO = {
       },
       {
         "name": "ProtectMode",
-        "desc": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
         "name": "DeployMode",
-        "desc": "Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
-        "name": "SlaveZone",
-        "desc": "AZ information of slave database 1, which is the `Zone` value by default. This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+        "name": "SubordinateZone",
+        "desc": "AZ information of subordinate database 1, which is the `Zone` value by default. This parameter can be specified when purchasing main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
         "name": "BackupZone",
-        "desc": "AZ information of slave database 2, which is empty by default. This parameter can be specified when purchasing strong sync master instances and is meaningless for other types of instances."
+        "desc": "AZ information of subordinate database 2, which is empty by default. This parameter can be specified when purchasing strong sync main instances and is meaningless for other types of instances."
       },
       {
         "name": "SecurityGroup",
@@ -530,7 +530,7 @@ INFO = {
         "desc": "Instance type. Valid values: HA (High-Availability Edition), BASIC (Basic Edition). If this parameter is not specified, High-Availability Edition will be used by default."
       }
     ],
-    "desc": "This API is used to create a pay-as-you-go TencentDB instance (which can be a master, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566) API to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. Master instances, read-only instances, and disaster recovery instances can be created;\n5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized."
+    "desc": "This API is used to create a pay-as-you-go TencentDB instance (which can be a main, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566) API to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. Main instances, read-only instances, and disaster recovery instances can be created;\n5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized."
   },
   "AddTimeWindow": {
     "params": [
@@ -768,14 +768,14 @@ INFO = {
       },
       {
         "name": "EngineVersion",
-        "desc": "Version of master instance database engine. Value range: 5.6, 5.7"
+        "desc": "Version of main instance database engine. Value range: 5.6, 5.7"
       },
       {
         "name": "WaitSwitch",
         "desc": "Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process."
       }
     ],
-    "desc": "This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance."
+    "desc": "This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a main instance, disaster recovery instance, or read-only instance."
   },
   "DescribeInstanceParamRecords": {
     "params": [
@@ -928,7 +928,7 @@ INFO = {
       },
       {
         "name": "InstanceTypes",
-        "desc": "Instance type. Value range: 1 (master), 2 (disaster recovery), 3 (read-only)."
+        "desc": "Instance type. Value range: 1 (main), 2 (disaster recovery), 3 (read-only)."
       },
       {
         "name": "Vips",
@@ -960,7 +960,7 @@ INFO = {
       },
       {
         "name": "TaskStatus",
-        "desc": "Instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating slave <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance <br>15 - pending upgrade and switch <br>16 - upgrade and switch in progress <br>17 - upgrade and switch completed"
+        "desc": "Instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating subordinate <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance <br>15 - pending upgrade and switch <br>16 - upgrade and switch in progress <br>17 - upgrade and switch completed"
       },
       {
         "name": "EngineVersions",
@@ -1012,22 +1012,22 @@ INFO = {
       },
       {
         "name": "WithDr",
-        "desc": "Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a master instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MasterInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it."
+        "desc": "Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a main instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MainInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it."
       },
       {
         "name": "WithRo",
         "desc": "Whether read-only instances are included. Valid values: 0 (not included), 1 (included). Default value: 1."
       },
       {
-        "name": "WithMaster",
-        "desc": "Whether master instances are included. Valid values: 0 (not included), 1 (included). Default value: 1."
+        "name": "WithMain",
+        "desc": "Whether main instances are included. Valid values: 0 (not included), 1 (included). Default value: 1."
       },
       {
         "name": "DeployGroupIds",
         "desc": "Placement group ID list."
       }
     ],
-    "desc": "This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be master, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status."
+    "desc": "This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be main, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status."
   },
   "ModifyRoGroupInfo": {
     "params": [
@@ -1196,7 +1196,7 @@ INFO = {
         "desc": "Array of instance IDs in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
       }
     ],
-    "desc": "This API (RestartDBInstances) is used to restart TencentDB instances.\n\nNote:\n1. This API only supports restarting master instances.\n2. The instance status must be normal, and no other async tasks are in progress."
+    "desc": "This API (RestartDBInstances) is used to restart TencentDB instances.\n\nNote:\n1. This API only supports restarting main instances.\n2. The instance status must be normal, and no other async tasks are in progress."
   },
   "ModifyAccountPassword": {
     "params": [
@@ -1482,19 +1482,19 @@ INFO = {
       },
       {
         "name": "ProtectMode",
-        "desc": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
         "name": "DeployMode",
-        "desc": "Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
-        "name": "SlaveZone",
-        "desc": "AZ information of slave database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading master instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the supported AZs."
+        "name": "SubordinateZone",
+        "desc": "AZ information of subordinate database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading main instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the supported AZs."
       },
       {
         "name": "EngineVersion",
-        "desc": "Version of master instance database engine. Valid values: 5.5, 5.6, 5.7."
+        "desc": "Version of main instance database engine. Valid values: 5.5, 5.6, 5.7."
       },
       {
         "name": "WaitSwitch",
@@ -1502,14 +1502,14 @@ INFO = {
       },
       {
         "name": "BackupZone",
-        "desc": "AZ information of slave database 2, which is empty by default. This parameter can be specified when upgrading master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "AZ information of subordinate database 2, which is empty by default. This parameter can be specified when upgrading main instances and is meaningless for read-only or disaster recovery instances."
       },
       {
         "name": "InstanceRole",
-        "desc": "Instance type. Valid values: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master."
+        "desc": "Instance type. Valid values: main (main instance), dr (disaster recovery instance), ro (read-only instance). Default value: main."
       }
     ],
-    "desc": "This API is used to upgrade or downgrade a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance."
+    "desc": "This API is used to upgrade or downgrade a TencentDB instance, which can be a main instance, disaster recovery instance, or read-only instance."
   },
   "CreateDeployGroup": {
     "params": [
