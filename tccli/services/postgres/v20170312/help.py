@@ -89,7 +89,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of entries returned per page. Value range: 1–100"
+        "desc": "Number of entries returned per page. Value range: 1-100"
       },
       {
         "name": "Offset",
@@ -203,7 +203,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of entries returned per page in paged query. Value range: 1–100."
+        "desc": "Number of entries returned per page in paged query. Value range: 1-100."
       }
     ],
     "desc": "This API is used to get the instance Xlog list."
@@ -259,7 +259,7 @@ INFO = {
       },
       {
         "name": "InstanceCount",
-        "desc": "Number of instances purchased at a time. Value range: 1–100."
+        "desc": "Number of instances purchased at a time. Value range: 1-100."
       },
       {
         "name": "Period",
@@ -442,7 +442,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of entries returned per page. Default value: 20. Value range: 1–100."
+        "desc": "Number of entries returned per page. Default value: 20. Value range: 1-100."
       },
       {
         "name": "Offset",
@@ -534,7 +534,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of entries returned per page. Value range: 1–100. Default value: 20."
+        "desc": "Number of entries returned per page. Value range: 1-100. Default value: 20."
       },
       {
         "name": "Offset",

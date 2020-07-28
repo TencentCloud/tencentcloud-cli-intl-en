@@ -59,7 +59,15 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Cluster access password, which must contain lowercase letters (a–z), uppercase letters (A–Z), and digits (0–9)."
+        "desc": "Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9)."
+      },
+      {
+        "name": "ResourceTags",
+        "desc": ""
+      },
+      {
+        "name": "Ipv6Enable",
+        "desc": "Whether to enable IPv6 address access for clusters"
       }
     ],
     "desc": "This API is used to create a TcaplusDB cluster."
@@ -152,7 +160,7 @@ INFO = {
       },
       {
         "name": "NewPassword",
-        "desc": "New cluster password, which must contain lowercase letters (a–z), uppercase letters (A–Z), and digits (0–9)."
+        "desc": "New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9)."
       },
       {
         "name": "Mode",
@@ -217,6 +225,10 @@ INFO = {
       {
         "name": "SelectedTables",
         "desc": "Information list of tables to be created"
+      },
+      {
+        "name": "ResourceTags",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create tables in batches based on the selected IDL file list."
@@ -294,6 +306,10 @@ INFO = {
       {
         "name": "TableGroupId",
         "desc": "Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used."
+      },
+      {
+        "name": "ResourceTags",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a table group in a TcaplusDB cluster."
@@ -340,6 +356,10 @@ INFO = {
       {
         "name": "Limit",
         "desc": "Number of returned results in query list. Default value: 20"
+      },
+      {
+        "name": "Ipv6Enable",
+        "desc": "Whether to enable IPv6 address access"
       }
     ],
     "desc": "This API is used to query the TcaplusDB cluster list, including cluster details."

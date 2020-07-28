@@ -427,7 +427,7 @@ INFO = {
     "params": [
       {
         "name": "GoodsNum",
-        "desc": "Number of instances. Value range: 1–100. Default value: 1."
+        "desc": "Number of instances. Value range: 1-100. Default value: 1."
       },
       {
         "name": "Memory",
@@ -475,7 +475,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Sets the root account password. Rule: the password can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
+        "desc": "Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing master instances and is meaningless for read-only or disaster recovery instances."
       },
       {
         "name": "ParamList",
@@ -610,7 +610,7 @@ INFO = {
       },
       {
         "name": "ReleaseDuration",
-        "desc": "Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0–168 hours. Default value: 24 hours."
+        "desc": "Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours."
       }
     ],
     "desc": "This API (ModifyDBInstanceVipVport) is used to modify the IP and port number of a TencentDB instance, switch from the basic network to VPC, or change VPC subnets."
@@ -773,6 +773,10 @@ INFO = {
       {
         "name": "WaitSwitch",
         "desc": "Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process."
+      },
+      {
+        "name": "UpgradeSubversion",
+        "desc": "Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine)."
       }
     ],
     "desc": "This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a master instance, disaster recovery instance, or read-only instance."
@@ -894,6 +898,14 @@ INFO = {
       {
         "name": "ParamList",
         "desc": "List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value)."
+      },
+      {
+        "name": "TemplateId",
+        "desc": ""
+      },
+      {
+        "name": "WaitSwitch",
+        "desc": ""
       }
     ],
     "desc": "This API (ModifyInstanceParam) is used to modify instance parameters."
@@ -1306,7 +1318,7 @@ INFO = {
       },
       {
         "name": "StartTime",
-        "desc": "(This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00–06:00, with the start time and end time on the hour. Valid values: 00:00–12:00, 02:00–06:00, 06:00–10:00, 10:00–14:00, 14:00–18:00, 18:00–22:00, 22:00–02:00."
+        "desc": "(This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00-06:00, with the start time and end time on the hour. Valid values: 00:00-12:00, 02:00-06:00, 06:00-10:00, 10:00-14:00, 14:00-18:00, 18:00-22:00, 22:00-02:00."
       },
       {
         "name": "BackupMethod",

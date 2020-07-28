@@ -13,7 +13,7 @@ INFO = {
       },
       {
         "name": "TriggerSource",
-        "desc": "Trigger source that executes a scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service."
+        "desc": "Source that triggers the scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service."
       }
     ],
     "desc": "This API (ExecuteScalingPolicy) is used to execute a scaling policy.\n\n* The scaling policy can be executed based on the scaling policy ID.\n* When the auto scaling group to which the scaling policy belongs is performing a scaling activity, the scaling policy will be rejected."
@@ -82,7 +82,7 @@ INFO = {
       },
       {
         "name": "Tags",
-        "desc": "List of tag descriptions. This parameter is used to bind a tag to a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags."
+        "desc": "List of tag descriptions. In this parameter, you can specify the tags to be bound with a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags."
       },
       {
         "name": "ServiceSettings",
@@ -207,10 +207,10 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "The list of the CVM instances you want to launch."
+        "desc": "The list of the CVM instances you want to start up."
       }
     ],
-    "desc": "This API is used to launch CVM instances in the scaling group.\n* After the instance is launched and in the `IN_SERVICE` status, the desired capacity increases, but the desired capacity cannot exceed the maximum value.\n* This API supports batch operation. Up to 100 instances can be launched in each request."
+    "desc": "This API is used to start up CVM instances in a scaling group.\n* After startup, the instance will be in the `IN_SERVICE` status, which will increase the desired capacity. Please note that the desired capacity cannot exceed the maximum value.\n* This API supports batch operation. Up to 100 instances can be started up in each request."
   },
   "CreatePaiInstance": {
     "params": [
@@ -334,6 +334,14 @@ INFO = {
       {
         "name": "HostNameSettings",
         "desc": "CVM HostName settings."
+      },
+      {
+        "name": "InstanceNameSettings",
+        "desc": ""
+      },
+      {
+        "name": "InstanceChargePrepaid",
+        "desc": ""
       }
     ],
     "desc": "This API (UpgradeLaunchConfiguration) is used to upgrade a launch configuration.\n\n* This API is used to upgrade a launch configuration in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n* After the launch configuration is upgraded, the existing instances that have been created by it will not be changed, but new instances will be created according to the new configuration."
@@ -417,7 +425,7 @@ INFO = {
         "desc": "Whether the shutdown instances will be charged. Valid values:  \nKEEP_CHARGING: keep charging after shutdown.  \nSTOP_CHARGING: stop charging after shutdown.\nDefault value: KEEP_CHARGING."
       }
     ],
-    "desc": "This API is used to shut down CVM instances in the scaling group.\n* Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.\n* Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.\n* To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://cloud.tencent.com/document/product/213/19918).\n* This API supports batch operation. Up to 100 instances can be shut down in each request."
+    "desc": "This API is used to shut down CVM instances in a scaling group.\n* Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.\n* Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.\n* To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://cloud.tencent.com/document/product/213/19918).\n* This API supports batch operation. Up to 100 instances can be shut down in each request."
   },
   "CreateScheduledAction": {
     "params": [
@@ -623,6 +631,14 @@ INFO = {
       {
         "name": "HostNameSettings",
         "desc": "CVM HostName settings."
+      },
+      {
+        "name": "InstanceNameSettings",
+        "desc": ""
+      },
+      {
+        "name": "InstanceChargePrepaid",
+        "desc": ""
       }
     ],
     "desc": "This API (CreateLaunchConfiguration) is used to create a launch configuration.\n\n* A few fields of a launch configuration can be modified through `ModifyLaunchConfigurationAttributes`. To use a new launch configuration, it is recommended to create it from scratch.\n\n* You can create up to 20 launch configurations for each project. For more information, see [Usage Limits](https://cloud.tencent.com/document/product/377/3120).\n"
@@ -709,6 +725,10 @@ INFO = {
       {
         "name": "Ipv6AddressCount",
         "desc": ""
+      },
+      {
+        "name": "MultiZoneSubnetPolicy",
+        "desc": ""
       }
     ],
     "desc": "This API (ModifyAutoScalingGroup) is used to modify an auto scaling group."
@@ -755,7 +775,7 @@ INFO = {
     "params": [
       {
         "name": "AutoScalingGroupName",
-        "desc": "The scaling group name. It must be unique under your account. The name can only contain Chinese characters, English letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes."
+        "desc": "The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes."
       },
       {
         "name": "InstanceId",
@@ -763,11 +783,11 @@ INFO = {
       },
       {
         "name": "MinSize",
-        "desc": "The maximum number of instances. Value range: 0-2000."
+        "desc": "The minimum number of instances. Value range: 0 - 2000."
       },
       {
         "name": "MaxSize",
-        "desc": "The minimum number of instances. Value range: 0-2000."
+        "desc": "The maximum number of instances. Value range: 0 - 2000."
       },
       {
         "name": "DesiredCapacity",
@@ -778,7 +798,7 @@ INFO = {
         "desc": "Whether to inherit the instance tag. Default value: False"
       }
     ],
-    "desc": "This API is used to create launch configurations and scaling groups from an instance.\n\nNote: the pay-as-you-go instance in the scaling group that is created from a monthly-subscribed instance can be expanded."
+    "desc": "This API is used to create launch configurations and scaling groups based on an instance.\n\nNote: for a scaling group that is created based on a monthly-subscribed instance, the instances added for scale-out are pay-as-you-go instance."
   },
   "CreateLifecycleHook": {
     "params": [
@@ -804,7 +824,7 @@ INFO = {
       },
       {
         "name": "NotificationMetadata",
-        "desc": "Additional information sent by Auto Scaling to the notification target. Default value is “”. Maximum length is 1024 characters."
+        "desc": "Additional information sent by Auto Scaling to the notification target. Default value is ''. Maximum length is 1024 characters."
       },
       {
         "name": "NotificationTarget",

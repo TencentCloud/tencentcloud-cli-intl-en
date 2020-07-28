@@ -25,11 +25,13 @@ def doCreateSnapshotByTimeOffsetTemplate(argv, arglist):
         return
 
     param = {
+        "Name": argv.get("--Name"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
-        "Name": argv.get("--Name"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "Format": argv.get("--Format"),
         "Comment": argv.get("--Comment"),
+        "FillType": argv.get("--FillType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -101,6 +103,7 @@ def doModifyContentReviewTemplate(argv, arglist):
         "PornConfigure": Utils.try_to_json(argv, "--PornConfigure"),
         "TerrorismConfigure": Utils.try_to_json(argv, "--TerrorismConfigure"),
         "PoliticalConfigure": Utils.try_to_json(argv, "--PoliticalConfigure"),
+        "ProhibitedConfigure": Utils.try_to_json(argv, "--ProhibitedConfigure"),
         "UserDefineConfigure": Utils.try_to_json(argv, "--UserDefineConfigure"),
 
     }
@@ -139,6 +142,7 @@ def doCreateContentReviewTemplate(argv, arglist):
         "PornConfigure": Utils.try_to_json(argv, "--PornConfigure"),
         "TerrorismConfigure": Utils.try_to_json(argv, "--TerrorismConfigure"),
         "PoliticalConfigure": Utils.try_to_json(argv, "--PoliticalConfigure"),
+        "ProhibitedConfigure": Utils.try_to_json(argv, "--ProhibitedConfigure"),
         "UserDefineConfigure": Utils.try_to_json(argv, "--UserDefineConfigure"),
 
     }
@@ -172,13 +176,15 @@ def doCreateSampleSnapshotTemplate(argv, arglist):
         return
 
     param = {
-        "Width": Utils.try_to_json(argv, "--Width"),
-        "Height": Utils.try_to_json(argv, "--Height"),
         "SampleType": argv.get("--SampleType"),
         "SampleInterval": Utils.try_to_json(argv, "--SampleInterval"),
         "Name": argv.get("--Name"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "Format": argv.get("--Format"),
         "Comment": argv.get("--Comment"),
+        "FillType": argv.get("--FillType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -689,10 +695,12 @@ def doModifySampleSnapshotTemplate(argv, arglist):
         "Name": argv.get("--Name"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "SampleType": argv.get("--SampleType"),
         "SampleInterval": Utils.try_to_json(argv, "--SampleInterval"),
         "Format": argv.get("--Format"),
         "Comment": argv.get("--Comment"),
+        "FillType": argv.get("--FillType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -861,6 +869,7 @@ def doModifyAnimatedGraphicsTemplate(argv, arglist):
         "Name": argv.get("--Name"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "Format": argv.get("--Format"),
         "Fps": Utils.try_to_json(argv, "--Fps"),
         "Quality": Utils.try_to_json(argv, "--Quality"),
@@ -1326,9 +1335,10 @@ def doCreateAnimatedGraphicsTemplate(argv, arglist):
         return
 
     param = {
+        "Fps": Utils.try_to_json(argv, "--Fps"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
-        "Fps": Utils.try_to_json(argv, "--Fps"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "Format": argv.get("--Format"),
         "Quality": Utils.try_to_json(argv, "--Quality"),
         "Name": argv.get("--Name"),
@@ -1546,8 +1556,10 @@ def doModifySnapshotByTimeOffsetTemplate(argv, arglist):
         "Name": argv.get("--Name"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "Format": argv.get("--Format"),
         "Comment": argv.get("--Comment"),
+        "FillType": argv.get("--FillType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1615,9 +1627,9 @@ def doCreatePersonSample(argv, arglist):
 
     param = {
         "Name": argv.get("--Name"),
-        "FaceContents": Utils.try_to_json(argv, "--FaceContents"),
         "Usages": Utils.try_to_json(argv, "--Usages"),
         "Description": argv.get("--Description"),
+        "FaceContents": Utils.try_to_json(argv, "--FaceContents"),
         "Tags": Utils.try_to_json(argv, "--Tags"),
 
     }
@@ -1933,10 +1945,13 @@ def doModifyImageSpriteTemplate(argv, arglist):
         "Name": argv.get("--Name"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "Height": Utils.try_to_json(argv, "--Height"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
         "SampleType": argv.get("--SampleType"),
         "SampleInterval": Utils.try_to_json(argv, "--SampleInterval"),
         "RowCount": Utils.try_to_json(argv, "--RowCount"),
         "ColumnCount": Utils.try_to_json(argv, "--ColumnCount"),
+        "FillType": argv.get("--FillType"),
+        "Comment": argv.get("--Comment"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2182,13 +2197,16 @@ def doCreateImageSpriteTemplate(argv, arglist):
         return
 
     param = {
-        "Width": Utils.try_to_json(argv, "--Width"),
-        "Height": Utils.try_to_json(argv, "--Height"),
         "SampleType": argv.get("--SampleType"),
         "SampleInterval": Utils.try_to_json(argv, "--SampleInterval"),
         "RowCount": Utils.try_to_json(argv, "--RowCount"),
         "ColumnCount": Utils.try_to_json(argv, "--ColumnCount"),
         "Name": argv.get("--Name"),
+        "Width": Utils.try_to_json(argv, "--Width"),
+        "Height": Utils.try_to_json(argv, "--Height"),
+        "ResolutionAdaptive": argv.get("--ResolutionAdaptive"),
+        "FillType": argv.get("--FillType"),
+        "Comment": argv.get("--Comment"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

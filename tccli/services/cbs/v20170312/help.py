@@ -85,7 +85,7 @@ INFO = {
       },
       {
         "name": "AutoSnapshotPolicyName",
-        "desc": "The name of the scheduled snapshot policy to be created. If it is left empty, the default is “Not named”. The maximum length cannot exceed 60 bytes."
+        "desc": "The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes."
       },
       {
         "name": "IsActivated",
@@ -139,11 +139,11 @@ INFO = {
       },
       {
         "name": "BeginTime",
-        "desc": "The start time of the operation logs to be queried, for example: “2019-11-22 00:00:00\""
+        "desc": "The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00\""
       },
       {
         "name": "EndTime",
-        "desc": "The end time of the operation logs to be queried, for example: “2019-11-22 23:59:59\""
+        "desc": "The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59\""
       }
     ],
     "desc": "This API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.\n\nThis can be filtered according to the cloud disk ID. The format of cloud disk IDs is as follows: disk-a1kmcp13.\n"
@@ -206,7 +206,7 @@ INFO = {
       },
       {
         "name": "DiskName",
-        "desc": "The displayed name of the cloud disk. If it is left empty, the default is “Not named”. The maximum length cannot exceed 60 bytes."
+        "desc": "The displayed name of the cloud disk. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes."
       },
       {
         "name": "DiskCount",
@@ -366,7 +366,7 @@ INFO = {
       },
       {
         "name": "AutoSnapshotPolicyName",
-        "desc": "The name of the scheduled snapshot policy to be created. If it is left empty, the default is “Not named”. The maximum length cannot exceed 60 bytes."
+        "desc": "The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes."
       },
       {
         "name": "IsActivated",
@@ -467,11 +467,11 @@ INFO = {
       },
       {
         "name": "BeginTime",
-        "desc": "The start time of the operation logs to be queried, for example: “2019-11-22 00:00:00\""
+        "desc": "The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00\""
       },
       {
         "name": "EndTime",
-        "desc": "The end time of the operation logs to be queried, for example: “2019-11-22 23:59:59\""
+        "desc": "The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59\""
       }
     ],
     "desc": "This API (DescribeSnapshotOperationLogs) is used to query a list of snapshot operation logs.\n\nYou can filter according to the snapshot ID. The snapshot ID format is as follows: snap-a1kmcp13.\n"

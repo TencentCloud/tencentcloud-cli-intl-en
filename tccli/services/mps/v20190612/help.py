@@ -4,6 +4,10 @@ INFO = {
   "CreateSnapshotByTimeOffsetTemplate": {
     "params": [
       {
+        "name": "Name",
+        "desc": "Name of a time point screencapturing template. Length limit: 64 characters."
+      },
+      {
         "name": "Width",
         "desc": "Image width in px. Value range: [128, 4,096]."
       },
@@ -12,8 +16,8 @@ INFO = {
         "desc": "Image height in px. Value range: [128, 4,096]."
       },
       {
-        "name": "Name",
-        "desc": "Name of a time point screencapturing template. Length limit: 64 characters."
+        "name": "ResolutionAdaptive",
+        "desc": ""
       },
       {
         "name": "Format",
@@ -22,6 +26,10 @@ INFO = {
       {
         "name": "Comment",
         "desc": "Template description. Length limit: 256 characters."
+      },
+      {
+        "name": "FillType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a custom time point screencapturing template. Up to 16 templates can be created."
@@ -38,6 +46,10 @@ INFO = {
   "CreateAnimatedGraphicsTemplate": {
     "params": [
       {
+        "name": "Fps",
+        "desc": "Video frame rate in Hz. Value range: [1, 30]."
+      },
+      {
         "name": "Width",
         "desc": "Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
       },
@@ -46,8 +58,8 @@ INFO = {
         "desc": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
       },
       {
-        "name": "Fps",
-        "desc": "Video frame rate in Hz. Value range: [1, 30]."
+        "name": "ResolutionAdaptive",
+        "desc": ""
       },
       {
         "name": "Format",
@@ -112,6 +124,10 @@ INFO = {
         "desc": "Politically sensitive information detection control parameter."
       },
       {
+        "name": "ProhibitedConfigure",
+        "desc": ""
+      },
+      {
         "name": "UserDefineConfigure",
         "desc": "Custom content audit control parameter."
       }
@@ -120,14 +136,6 @@ INFO = {
   },
   "CreateSampleSnapshotTemplate": {
     "params": [
-      {
-        "name": "Width",
-        "desc": "Image width in px. Value range: [128, 4,096]."
-      },
-      {
-        "name": "Height",
-        "desc": "Image height in px. Value range: [128, 4,096]."
-      },
       {
         "name": "SampleType",
         "desc": "Sampled screencapturing type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>"
@@ -141,12 +149,28 @@ INFO = {
         "desc": "Name of a sampled screencapturing template. Length limit: 64 characters."
       },
       {
+        "name": "Width",
+        "desc": "Image width in px. Value range: [128, 4,096]."
+      },
+      {
+        "name": "Height",
+        "desc": "Image height in px. Value range: [128, 4,096]."
+      },
+      {
+        "name": "ResolutionAdaptive",
+        "desc": ""
+      },
+      {
         "name": "Format",
         "desc": "Image format. Valid values: jpg; png. Default value: jpg."
       },
       {
         "name": "Comment",
         "desc": "Template description. Length limit: 256 characters."
+      },
+      {
+        "name": "FillType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created."
@@ -171,7 +195,7 @@ INFO = {
       },
       {
         "name": "TasksPriority",
-        "desc": "Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used."
+        "desc": "Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used."
       },
       {
         "name": "SessionId",
@@ -397,6 +421,10 @@ INFO = {
         "desc": "Image height in px. Value range: [128, 4,096]."
       },
       {
+        "name": "ResolutionAdaptive",
+        "desc": ""
+      },
+      {
         "name": "SampleType",
         "desc": "Sampled screencapturing type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>"
       },
@@ -411,6 +439,10 @@ INFO = {
       {
         "name": "Comment",
         "desc": "Template description. Length limit: 256 characters."
+      },
+      {
+        "name": "FillType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to modify a custom sampled screencapturing template."
@@ -520,6 +552,10 @@ INFO = {
       {
         "name": "Height",
         "desc": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0."
+      },
+      {
+        "name": "ResolutionAdaptive",
+        "desc": ""
       },
       {
         "name": "Format",
@@ -660,7 +696,7 @@ INFO = {
         "desc": "Template description. Length limit: 256 characters."
       }
     ],
-    "desc": "This API is used to create up to 100 adaptive bitrate streaming templates."
+    "desc": "This API is used to create an adaptive bitrate streaming template. Up up to 100 such templates can be created."
   },
   "DisableWorkflow": {
     "params": [
@@ -976,12 +1012,20 @@ INFO = {
         "desc": "Image height in px. Value range: [128, 4,096]."
       },
       {
+        "name": "ResolutionAdaptive",
+        "desc": ""
+      },
+      {
         "name": "Format",
         "desc": "Image format. Valid values: jpg, png."
       },
       {
         "name": "Comment",
         "desc": "Template description. Length limit: 256 characters."
+      },
+      {
+        "name": "FillType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to modify a custom time point screencapturing template."
@@ -1137,6 +1181,10 @@ INFO = {
         "desc": "Politically sensitive information detection control parameter."
       },
       {
+        "name": "ProhibitedConfigure",
+        "desc": ""
+      },
+      {
         "name": "UserDefineConfigure",
         "desc": "Custom content audit control parameter."
       }
@@ -1244,6 +1292,10 @@ INFO = {
         "desc": "Subimage height of an image sprite in px. Value range: [128, 4,096]."
       },
       {
+        "name": "ResolutionAdaptive",
+        "desc": ""
+      },
+      {
         "name": "SampleType",
         "desc": "Sampling type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>"
       },
@@ -1258,6 +1310,14 @@ INFO = {
       {
         "name": "ColumnCount",
         "desc": "Subimage column count of an image sprite."
+      },
+      {
+        "name": "FillType",
+        "desc": ""
+      },
+      {
+        "name": "Comment",
+        "desc": ""
       }
     ],
     "desc": "This API is used to modify a custom image sprite generating template."
@@ -1316,16 +1376,16 @@ INFO = {
         "desc": "Name of a figure. Length limit: 20 characters."
       },
       {
-        "name": "FaceContents",
-        "desc": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px."
-      },
-      {
         "name": "Usages",
         "desc": "Figure sample use case. Valid values:\n1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.\n2. Review: It is used for content audit, equivalent to `Review.Face`.\n3. All: It is used for content recognition and content audit, equivalent to 1+2 above."
       },
       {
         "name": "Description",
         "desc": "Figure description. Length limit: 1,024 characters."
+      },
+      {
+        "name": "FaceContents",
+        "desc": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px."
       },
       {
         "name": "Tags",
@@ -1375,14 +1435,6 @@ INFO = {
   "CreateImageSpriteTemplate": {
     "params": [
       {
-        "name": "Width",
-        "desc": "Subimage width of an image sprite in px. Value range: [128, 4,096]."
-      },
-      {
-        "name": "Height",
-        "desc": "Subimage height of an image sprite in px. Value range: [128, 4,096]."
-      },
-      {
         "name": "SampleType",
         "desc": "Sampling type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>"
       },
@@ -1401,6 +1453,26 @@ INFO = {
       {
         "name": "Name",
         "desc": "Name of an image sprite generating template. Length limit: 64 characters."
+      },
+      {
+        "name": "Width",
+        "desc": "Subimage width of an image sprite in px. Value range: [128, 4,096]."
+      },
+      {
+        "name": "Height",
+        "desc": "Subimage height of an image sprite in px. Value range: [128, 4,096]."
+      },
+      {
+        "name": "ResolutionAdaptive",
+        "desc": ""
+      },
+      {
+        "name": "FillType",
+        "desc": ""
+      },
+      {
+        "name": "Comment",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a custom image sprite generating template. Up to 16 templates can be created."

@@ -31,6 +31,10 @@ INFO = {
       {
         "name": "ProxyId",
         "desc": "ID of the connections requiring enabled security policies."
+      },
+      {
+        "name": "PolicyId",
+        "desc": "Security policy ID"
       }
     ],
     "desc": "This API is used to enable security policies."
@@ -103,6 +107,10 @@ INFO = {
       {
         "name": "SearchValue",
         "desc": "Filter condition. It supports fuzzy query by ports or listener names."
+      },
+      {
+        "name": "GroupId",
+        "desc": "Connection group ID as a filter"
       }
     ],
     "desc": "This API (DescribeHTTPSListeners) is used to query HTTPS listener information."
@@ -127,7 +135,7 @@ INFO = {
       },
       {
         "name": "ProxyId",
-        "desc": "Connection ID"
+        "desc": "Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection."
       },
       {
         "name": "AuthType",
@@ -140,6 +148,10 @@ INFO = {
       {
         "name": "PolyClientCertificateIds",
         "desc": "IDs of multiple new client CA certificates. This field or the `ClientCertificateId` field is required for mutual authentication only."
+      },
+      {
+        "name": "GroupId",
+        "desc": "Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group."
       }
     ],
     "desc": "This API (CreateHTTPListener) is used to create an HTTPS listener in the connection instance."
@@ -161,7 +173,7 @@ INFO = {
       },
       {
         "name": "Domain",
-        "desc": "The domain name requiring advanced configuration, i.e., the domain name of the listener’s forwarding rules."
+        "desc": "The domain name requiring advanced configuration, i.e., the domain name of the listener's forwarding rules."
       },
       {
         "name": "BasicAuth",
@@ -269,7 +281,7 @@ INFO = {
       },
       {
         "name": "Granularity",
-        "desc": "Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.\nTime range: ≤ 1 day, supported minimum granularity: 60 seconds;\nTime range: ≤ 7 days, supported minimum granularity: 3,600 seconds;\nTime range: ≤ 30 days, supported minimum granularity: 86,400 seconds;"
+        "desc": "Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.\nTime range: <= 1 day, supported minimum granularity: 60 seconds;\nTime range: <= 7 days, supported minimum granularity: 3,600 seconds;\nTime range: <= 30 days, supported minimum granularity: 86,400 seconds;"
       }
     ],
     "desc": "This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, concurrence, packet loss, and latency data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range."
@@ -372,7 +384,7 @@ INFO = {
       },
       {
         "name": "Granularity",
-        "desc": "Monitoring granularity. It currently supports: 60, 300, 3,600, 86,400. Unit: seconds.\nTime range: ≤ 1 day, supported minimum granularity: 60 seconds;\nTime range: ≤ 7 days, supported minimum granularity: 3,600 seconds;\nTime range: ≤ 30 days, supported minimum granularity: 86,400 seconds;"
+        "desc": "Monitoring granularity. It currently supports: 60, 300, 3,600, 86,400. Unit: seconds.\nTime range: <= 1 day, supported minimum granularity: 60 seconds;\nTime range: <= 7 days, supported minimum granularity: 3,600 seconds;\nTime range: <= 30 days, supported minimum granularity: 86,400 seconds;"
       }
     ],
     "desc": "This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range."
@@ -402,11 +414,11 @@ INFO = {
       },
       {
         "name": "CertificateId",
-        "desc": "Server SSL certificate ID. It’s only applicable to the connections of version 3.0:\nIf this field is not passed in, the original certificate will be used;\nIf this field is passed in, and CertificateId=default, the listener certificate will be used;\nFor other cases, the certificate specified by CertificateId will be used."
+        "desc": "Server SSL certificate ID. It's only applicable to the connections of version 3.0:\nIf this field is not passed in, the original certificate will be used;\nIf this field is passed in, and CertificateId=default, the listener certificate will be used;\nFor other cases, the certificate specified by CertificateId will be used."
       },
       {
         "name": "ClientCertificateId",
-        "desc": "Client CA certificate ID. It’s only applicable to the connections of version 3.0:\nIf this field is not passed in, the original certificate will be used;\nIf this field is passed in, and ClientCertificateId=default, the listener certificate will be used;\nFor other cases, the certificate specified by ClientCertificateId will be used."
+        "desc": "Client CA certificate ID. It's only applicable to the connections of version 3.0:\nIf this field is not passed in, the original certificate will be used;\nIf this field is passed in, and ClientCertificateId=default, the listener certificate will be used;\nFor other cases, the certificate specified by ClientCertificateId will be used."
       },
       {
         "name": "PolyClientCertificateIds",
@@ -432,7 +444,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Connection instance ID; It’s an old parameter, please switch to ProxyIds."
+        "desc": "Connection instance ID; It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "ClientToken",
@@ -440,7 +452,7 @@ INFO = {
       },
       {
         "name": "ProxyIds",
-        "desc": "Connection instance ID; It’s a new parameter."
+        "desc": "Connection instance ID; It's a new parameter."
       }
     ],
     "desc": "This API (CloseProxies) is used to disable connections. If disabled, no traffic will be generated, but the basic configuration fee will still be incurred."
@@ -449,7 +461,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "List of connection instance IDs; It’s an old parameter, please switch to ProxyIds."
+        "desc": "List of connection instance IDs; It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "ClientToken",
@@ -457,7 +469,7 @@ INFO = {
       },
       {
         "name": "ProxyIds",
-        "desc": "List of connection instance IDs; It’s a new parameter."
+        "desc": "List of connection instance IDs; It's a new parameter."
       }
     ],
     "desc": "This API (OpenProxies) is used to enable one or more connections."
@@ -504,6 +516,10 @@ INFO = {
       {
         "name": "SearchValue",
         "desc": "Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`."
+      },
+      {
+        "name": "GroupId",
+        "desc": "Connection group ID"
       }
     ],
     "desc": "This API (DescribeHTTPListeners) is used to query HTTP listener information."
@@ -525,18 +541,22 @@ INFO = {
       {
         "name": "Concurrent",
         "desc": "Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections."
+      },
+      {
+        "name": "GroupId",
+        "desc": "Connection group ID that needs to be entered when a connection is created in a connection group"
       }
     ],
     "desc": "This API (CheckProxyCreate) is used to query whether an acceleration connection with the specified configuration can be created."
   },
-  "DescribeRules": {
+  "OpenProxyGroup": {
     "params": [
       {
-        "name": "ListenerId",
-        "desc": "Layer-7 listener ID."
+        "name": "GroupId",
+        "desc": "Connection group instance ID"
       }
     ],
-    "desc": "This API (DescribeRules) is used to query all rule information of a listener, including the domain names, paths, and list of bound origin servers. For version 3.0 connections, this API returns the advanced authentication configuration information of the domain name."
+    "desc": "This API is used to enable all connections in a connection group."
   },
   "DescribeAccessRegions": {
     "params": [],
@@ -625,12 +645,16 @@ INFO = {
   "CreateSecurityPolicy": {
     "params": [
       {
+        "name": "DefaultAction",
+        "desc": "Default policy: ACCEPT or DROP"
+      },
+      {
         "name": "ProxyId",
         "desc": "Acceleration connection ID"
       },
       {
-        "name": "DefaultAction",
-        "desc": "Default policy: ACCEPT or DROP"
+        "name": "GroupId",
+        "desc": "Connection group ID"
       }
     ],
     "desc": "This API is used to create security policies."
@@ -639,7 +663,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s an old parameter, please switch to ProxyIds."
+        "desc": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "Offset",
@@ -655,7 +679,7 @@ INFO = {
       },
       {
         "name": "ProxyIds",
-        "desc": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s a new parameter, and replaces InstanceIds."
+        "desc": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds."
       },
       {
         "name": "TagSet",
@@ -693,7 +717,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "ID of one or multiple connections to be operated; It’s an old parameter, please switch to ProxyIds."
+        "desc": "ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "ClientToken",
@@ -701,7 +725,7 @@ INFO = {
       },
       {
         "name": "ProxyIds",
-        "desc": "ID of one or multiple connections to be operated; It’s a new parameter."
+        "desc": "ID of one or multiple connections to be operated; It's a new parameter."
       }
     ],
     "desc": "This API (ModifyProxiesProject) is used to modify the project to which a connection belongs."
@@ -733,6 +757,10 @@ INFO = {
       {
         "name": "GroupId",
         "desc": "ID of the connection group to be deleted."
+      },
+      {
+        "name": "Force",
+        "desc": "Whether to enable forced deletion. Valid values:\n0: no;\n1: yes.\nDefault value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure."
       }
     ],
     "desc": "This API (DeleteProxyGroup) is used to delete a connection group."
@@ -836,7 +864,7 @@ INFO = {
       },
       {
         "name": "ForwardHost",
-        "desc": "The ‘host’ carried in the request forwarded from the acceleration connection to the origin server.\nIf `ForwardHost=default`, the domain name of rule will be used. For other cases, the value set in this field will be used."
+        "desc": "The `host` carried in the request forwarded from the acceleration connection to the origin server.\nIf `ForwardHost=default`, the domain name of rule will be used. For other cases, the value set in this field will be used."
       }
     ],
     "desc": "This API (ModifyRuleAttribute) is used to modify forwarding rule information, including health check configuration and forwarding policies."
@@ -855,6 +883,10 @@ INFO = {
       {
         "name": "ProxyId",
         "desc": "Connection ID"
+      },
+      {
+        "name": "PolicyId",
+        "desc": "Security group policy ID"
       }
     ],
     "desc": "This API is used to disable security policies."
@@ -955,6 +987,15 @@ INFO = {
     ],
     "desc": "This API (DescribeRealServers) is used to query origin server information. It can query all origin server information by project names, and supports fuzzy query by specified IPs or domain names."
   },
+  "DescribeDomainErrorPageInfoByIds": {
+    "params": [
+      {
+        "name": "ErrorPageIds",
+        "desc": "List of custom error IDs. Up to 10 IDs are supported"
+      }
+    ],
+    "desc": "This API is used to query the corresponding error response by a custom error ID."
+  },
   "ModifyUDPListenerAttribute": {
     "params": [
       {
@@ -1001,7 +1042,11 @@ INFO = {
       },
       {
         "name": "ProxyId",
-        "desc": "Connection ID"
+        "desc": "Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection."
+      },
+      {
+        "name": "GroupId",
+        "desc": "Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group."
       }
     ],
     "desc": "This API (CreateHTTPListener) is used to create an HTTP listener in the connection instance."
@@ -1047,7 +1092,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Connection instance ID; It’s an old parameter, please switch to ProxyId."
+        "desc": "Connection instance ID; It's an old parameter, please switch to ProxyId."
       },
       {
         "name": "Bandwidth",
@@ -1063,7 +1108,7 @@ INFO = {
       },
       {
         "name": "ProxyId",
-        "desc": "Connection instance ID; It’s a new parameter."
+        "desc": "Connection instance ID; It's a new parameter."
       },
       {
         "name": "BillingType",
@@ -1071,6 +1116,15 @@ INFO = {
       }
     ],
     "desc": "This API (ModifyProxyConfiguration) is used to modify connection configurations. You can expand or reduce the capacity based on current business requirements. It only supports connections with a Scalarable of 1. Scalarable can be obtained via DescribeProxies API."
+  },
+  "CloseProxyGroup": {
+    "params": [
+      {
+        "name": "GroupId",
+        "desc": "Connection group instance ID."
+      }
+    ],
+    "desc": "This API is used to disable a connection group. Once disabled, the connection group will no longer generate traffic, but the basic connection configuration fees will still be incurred every day."
   },
   "ModifyTCPListenerAttribute": {
     "params": [
@@ -1118,6 +1172,10 @@ INFO = {
       {
         "name": "GroupName",
         "desc": "New connection group name. Up to 30 characters. The extra characters will be truncated."
+      },
+      {
+        "name": "ProjectId",
+        "desc": "Project ID"
       }
     ],
     "desc": "This API (ModifyProxyGroupAttribute) is used to modify connection group attributes. It currently only supports modifying connection group name."
@@ -1150,7 +1208,7 @@ INFO = {
         "desc": "Rule ID"
       }
     ],
-    "desc": "This API (DescribeRealServerStatistics) is used to query the statistics of an origin server’s health check results. Origin server status displayed as 1: normal, or 0: exceptional. The queried origin server must be bound to a listener or rule. The bound listener or rule ID must be specified when querying. This API supports displaying origin server status statistics for the past 1, 3, 6, 12, and 24 hours, with a granularity of 1 minute."
+    "desc": "This API (DescribeRealServerStatistics) is used to query the statistics of an origin server's health check results. Origin server status displayed as 1: normal, or 0: exceptional. The queried origin server must be bound to a listener or rule. The bound listener or rule ID must be specified when querying. This API supports displaying origin server status statistics for the past 1, 3, 6, 12, and 24 hours, with a granularity of 1 minute."
   },
   "BindListenerRealServers": {
     "params": [
@@ -1191,6 +1249,10 @@ INFO = {
       {
         "name": "TagSet",
         "desc": "Tag list"
+      },
+      {
+        "name": "AccessRegionSet",
+        "desc": "List of acceleration regions, including their names, bandwidth, and concurrence configuration."
       }
     ],
     "desc": "This API (CreateProxyGroup) is used to create a connection group."
@@ -1278,7 +1340,7 @@ INFO = {
       },
       {
         "name": "Granularity",
-        "desc": "Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.\nTime range: ≤ 1 day, supported minimum granularity: 300 seconds;\nTime range：≤ 7 days, supported minimum granularity:3,600 seconds;\nTime range: ＞7 days, supported minimum granularity:86,400 seconds;"
+        "desc": "Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.\nTime range: <= 1 day, supported minimum granularity: 300 seconds;\nTime range: <= 7 days, supported minimum granularity:3,600 seconds;\nTime range: > 7 days, supported minimum granularity:86,400 seconds;"
       }
     ],
     "desc": "This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range."
@@ -1317,11 +1379,11 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Connection ID list; It’s an old parameter, please switch to ProxyIds."
+        "desc": "Connection ID list; It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "ProxyIds",
-        "desc": "Connection ID list; It’s a new parameter."
+        "desc": "Connection ID list; It's a new parameter."
       }
     ],
     "desc": "This API (DescribeProxiesStatus) is used to query the connection status list."
@@ -1360,7 +1422,7 @@ INFO = {
       },
       {
         "name": "CertificateContent",
-        "desc": "Certificate content. URL encoding. Where:\nIf the certificate type is basic authentication, enter username/password pair for this parameter. Format: “username:password”, for example, root:FSGdT. The password is `htpasswd` or `openssl`, for example, openssl passwd -crypt 123456.\nWhen the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of ‘pem’."
+        "desc": "Certificate content. URL encoding. Where:\nIf the certificate type is basic authentication, enter username/password pair for this parameter. Format: 'username:password', for example, root:FSGdT. The password is `htpasswd` or `openssl`, for example, openssl passwd -crypt 123456.\nWhen the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of `pem`."
       },
       {
         "name": "CertificateAlias",
@@ -1368,7 +1430,7 @@ INFO = {
       },
       {
         "name": "CertificateKey",
-        "desc": "Key content. URL encoding. This parameter is required only when the certificate type is SSL certificate. The format is ‘pem’."
+        "desc": "Key content. URL encoding. This parameter is required only when the certificate type is SSL certificate. The format is `pem`."
       }
     ],
     "desc": "This API (CreateCertificate) is used to create the GAAP certificates and configuration files, including basic authentication configuration files, client CA certificates, server SSL certificates, GAAP SSL certificates, and origin server CA certificates."
@@ -1418,11 +1480,20 @@ INFO = {
     ],
     "desc": "This API (CreateTCPListeners) is used to batch create TCP listeners of single connections or connection groups."
   },
+  "DescribeRules": {
+    "params": [
+      {
+        "name": "ListenerId",
+        "desc": "Layer-7 listener ID."
+      }
+    ],
+    "desc": "This API (DescribeRules) is used to query all rule information of a listener, including the domain names, paths, and list of bound origin servers. For version 3.0 connections, this API returns the advanced authentication configuration information of the domain name."
+  },
   "ModifyProxiesAttribute": {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "ID of one or multiple connections to be operated; It’s an old parameter, please switch to ProxyIds."
+        "desc": "ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "ProxyName",
@@ -1434,7 +1505,7 @@ INFO = {
       },
       {
         "name": "ProxyIds",
-        "desc": "ID of one or multiple connections to be operated; It’s a new parameter."
+        "desc": "ID of one or multiple connections to be operated; It's a new parameter."
       }
     ],
     "desc": "This API (ModifyProxiesAttribute) is used to modify instance attributes (currently only supports modifying connection name)."
@@ -1447,7 +1518,7 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "List of connection instance IDs; It’s an old parameter, please switch to ProxyIds."
+        "desc": "List of connection instance IDs; It's an old parameter, please switch to ProxyIds."
       },
       {
         "name": "ClientToken",
@@ -1455,7 +1526,7 @@ INFO = {
       },
       {
         "name": "ProxyIds",
-        "desc": "List of connection instance IDs; It’s a new parameter."
+        "desc": "List of connection instance IDs; It's a new parameter."
       }
     ],
     "desc": "This API (DestroyProxies) is used to terminate a connection. If terminated, no fees will be incurred."
@@ -1541,23 +1612,23 @@ INFO = {
       },
       {
         "name": "DestRegion",
-        "desc": "Origin server region name. It’s an old parameter, please switch to RealServerRegion."
+        "desc": "Origin server region name. It's an old parameter, please switch to RealServerRegion."
       },
       {
         "name": "Concurrency",
-        "desc": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It’s an old parameter, please switch to Concurrent."
+        "desc": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's an old parameter, please switch to Concurrent."
       },
       {
         "name": "RealServerRegion",
-        "desc": "Origin server region name; It’s a new parameter."
+        "desc": "Origin server region name; It's a new parameter."
       },
       {
         "name": "Concurrent",
-        "desc": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It’s a new parameter."
+        "desc": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's a new parameter."
       },
       {
         "name": "BillingType",
-        "desc": "Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)"
+        "desc": "Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic."
       }
     ],
     "desc": "This API (InquiryPriceCreateProxy) is used to create the price inquiries of acceleration connections."
