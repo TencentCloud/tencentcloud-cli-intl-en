@@ -178,7 +178,7 @@ INFO = {
       },
       {
         "name": "LaunchConfigurePara",
-        "desc": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it’s set through the **UserScript**."
+        "desc": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**."
       },
       {
         "name": "InstanceAdvancedSettings",
@@ -199,11 +199,11 @@ INFO = {
       },
       {
         "name": "InstanceIds",
-        "desc": "Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter’s specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time."
+        "desc": "Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time."
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. For fields and other information, see [the DescribeInstances API](https://cloud.tencent.com/document/api/213/15728). If a ClusterId has been set, then the cluster’s VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster’s VPC ID."
+        "desc": "Filter condition. For fields and other information, see [the DescribeInstances API](https://cloud.tencent.com/document/api/213/15728). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID."
       },
       {
         "name": "VagueIpAddress",
@@ -317,7 +317,7 @@ INFO = {
       },
       {
         "name": "SubnetId",
-        "desc": "The ID of the subnet where the cluster’s port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster’s VPC). "
+        "desc": "The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). "
       },
       {
         "name": "IsExtranet",
@@ -452,7 +452,7 @@ INFO = {
       },
       {
         "name": "SecurityPolicies",
-        "desc": "Security policy opens single IP or CIDR block to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default)."
+        "desc": "Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default)."
       }
     ],
     "desc": "Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)"
@@ -465,7 +465,7 @@ INFO = {
       },
       {
         "name": "SecurityPolicies",
-        "desc": "Security policy opens single IP or CIDR to the Internet (for example: “192.168.1.0/24”, with “reject all” as the default)."
+        "desc": "Security policy opens single IP or CIDR to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default)."
       }
     ],
     "desc": "Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)"

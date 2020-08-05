@@ -21,7 +21,7 @@ INFO = {
       },
       {
         "name": "IpFilter",
-        "desc": "IP blacklist/whitelist configuration."
+        "desc": "IP block/allowlist configuration."
       },
       {
         "name": "IpFreqLimit",
@@ -226,7 +226,7 @@ INFO = {
       },
       {
         "name": "IpFilter",
-        "desc": "IP blacklist/whitelist configuration."
+        "desc": "IP blocklist/allowlist configuration."
       },
       {
         "name": "IpFreqLimit",
@@ -292,7 +292,7 @@ INFO = {
       },
       {
         "name": "Interval",
-        "desc": "Time granularity, which can be:\n1 day\t 1, 5, 15, 30, 60, 120, 240, 1440 \n2–3 days 15, 30, 60, 120, 240, 1440\n4–7 days 30, 60, 120, 240, 1440\n8–90 days\t 60, 120, 240, 1440"
+        "desc": "Time granularity, which can be:\n1 day\t 1, 5, 15, 30, 60, 120, 240, 1440 \n2-3 days 15, 30, 60, 120, 240, 1440\n4-7 days 30, 60, 120, 240, 1440\n8-90 days\t 60, 120, 240, 1440"
       },
       {
         "name": "Domains",

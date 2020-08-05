@@ -141,7 +141,7 @@ INFO = {
       },
       {
         "name": "SnapshotInterval",
-        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5–600s."
+        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-600s."
       },
       {
         "name": "Width",
@@ -615,7 +615,7 @@ INFO = {
       },
       {
         "name": "SnapshotInterval",
-        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5–600s."
+        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-600s."
       },
       {
         "name": "Width",
@@ -813,7 +813,7 @@ INFO = {
       },
       {
         "name": "AudioBitrate",
-        "desc": "Audio bitrate. Default value: 0.\nValue range: 0–500."
+        "desc": "Audio bitrate. Default value: 0.\nValue range: 0-500."
       },
       {
         "name": "Description",
@@ -821,7 +821,7 @@ INFO = {
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100–8000 Kbps.\nNote: the bitrate value must be a multiple of 100."
+        "desc": "Video bitrate. Value range: 100-8000 Kbps.\nNote: the bitrate value must be a multiple of 100."
       },
       {
         "name": "Width",
@@ -841,11 +841,11 @@ INFO = {
       },
       {
         "name": "Fps",
-        "desc": "Frame rate. Value range: 0–200."
+        "desc": "Frame rate. Value range: 0-200."
       },
       {
         "name": "Gop",
-        "desc": "Keyframe interval in seconds. Value range: 0–50."
+        "desc": "Keyframe interval in seconds. Value range: 0-50."
       },
       {
         "name": "Rotate",
@@ -869,7 +869,7 @@ INFO = {
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5."
+        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5."
       }
     ],
     "desc": "This API is used to modify the transcoding template configuration."
@@ -975,11 +975,11 @@ INFO = {
       },
       {
         "name": "PageSize",
-        "desc": "Number of entries per page. Value range: 10–100. Default value: 10."
+        "desc": "Number of entries per page. Value range: 10-100. Default value: 10."
       },
       {
         "name": "PageNum",
-        "desc": "Page number to get. Value range: 1–100000. Default value: 1."
+        "desc": "Page number to get. Value range: 1-100000. Default value: 1."
       },
       {
         "name": "IsDelayLive",
@@ -1862,7 +1862,7 @@ INFO = {
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100–8,000.\nNote: The bitrate must be a multiple of 100."
+        "desc": "Video bitrate. Value range: 100-8,000.\nNote: The bitrate must be a multiple of 100."
       },
       {
         "name": "Vcodec",
@@ -1874,7 +1874,7 @@ INFO = {
       },
       {
         "name": "AudioBitrate",
-        "desc": "Audio bitrate. Value range: 0–500. Default value: 0."
+        "desc": "Audio bitrate. Value range: 0-500. Default value: 0."
       },
       {
         "name": "Description",
@@ -1930,7 +1930,7 @@ INFO = {
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1–0.5."
+        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5."
       }
     ],
     "desc": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](/document/product/267/32647) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736)."

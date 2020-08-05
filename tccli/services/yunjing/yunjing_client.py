@@ -1509,6 +1509,8 @@ def doDescribeTags(argv, arglist):
         return
 
     param = {
+        "MachineType": argv.get("--MachineType"),
+        "MachineRegion": argv.get("--MachineRegion"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

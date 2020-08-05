@@ -244,6 +244,9 @@ def doInquiryPriceCreateDBInstances(argv, arglist):
         "Period": Utils.try_to_json(argv, "--Period"),
         "GoodsNum": Utils.try_to_json(argv, "--GoodsNum"),
         "DBVersion": argv.get("--DBVersion"),
+        "Cpu": Utils.try_to_json(argv, "--Cpu"),
+        "InstanceType": argv.get("--InstanceType"),
+        "MachineType": argv.get("--MachineType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -634,6 +637,12 @@ def doCreateDBInstances(argv, arglist):
         "VoucherIds": Utils.try_to_json(argv, "--VoucherIds"),
         "DBVersion": argv.get("--DBVersion"),
         "AutoRenewFlag": Utils.try_to_json(argv, "--AutoRenewFlag"),
+        "SecurityGroupList": Utils.try_to_json(argv, "--SecurityGroupList"),
+        "Weekly": Utils.try_to_json(argv, "--Weekly"),
+        "StartTime": argv.get("--StartTime"),
+        "Span": Utils.try_to_json(argv, "--Span"),
+        "HAType": argv.get("--HAType"),
+        "MultiZones": Utils.try_to_json(argv, "--MultiZones"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -880,6 +889,7 @@ def doInquiryPriceUpgradeDBInstance(argv, arglist):
         "InstanceId": argv.get("--InstanceId"),
         "Memory": Utils.try_to_json(argv, "--Memory"),
         "Storage": Utils.try_to_json(argv, "--Storage"),
+        "Cpu": Utils.try_to_json(argv, "--Cpu"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1224,6 +1234,7 @@ def doUpgradeDBInstance(argv, arglist):
         "Storage": Utils.try_to_json(argv, "--Storage"),
         "AutoVoucher": Utils.try_to_json(argv, "--AutoVoucher"),
         "VoucherIds": Utils.try_to_json(argv, "--VoucherIds"),
+        "Cpu": Utils.try_to_json(argv, "--Cpu"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

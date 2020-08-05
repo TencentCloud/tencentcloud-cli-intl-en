@@ -322,6 +322,10 @@ def doCreateDBInstance(argv, arglist):
         "Password": argv.get("--Password"),
         "Tags": Utils.try_to_json(argv, "--Tags"),
         "AutoRenewFlag": Utils.try_to_json(argv, "--AutoRenewFlag"),
+        "AutoVoucher": Utils.try_to_json(argv, "--AutoVoucher"),
+        "Clone": Utils.try_to_json(argv, "--Clone"),
+        "Father": argv.get("--Father"),
+        "SecurityGroup": Utils.try_to_json(argv, "--SecurityGroup"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -355,6 +359,8 @@ def doDescribeClientConnections(argv, arglist):
 
     param = {
         "InstanceId": argv.get("--InstanceId"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -401,6 +407,9 @@ def doCreateDBInstanceHour(argv, arglist):
         "Password": argv.get("--Password"),
         "ProjectId": Utils.try_to_json(argv, "--ProjectId"),
         "Tags": Utils.try_to_json(argv, "--Tags"),
+        "Clone": Utils.try_to_json(argv, "--Clone"),
+        "Father": argv.get("--Father"),
+        "SecurityGroup": Utils.try_to_json(argv, "--SecurityGroup"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

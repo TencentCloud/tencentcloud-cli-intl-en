@@ -74,7 +74,7 @@ INFO = {
   },
   "DescribeUinInWhitelist": {
     "params": [],
-    "desc": "This API is used to query whether the current user is in the whitelist and control whether the user can create TDR-type apps or tables."
+    "desc": "This API is used to query whether the current user is in the allowlist and control whether the user can create TDR-type apps or tables."
   },
   "DescribeTablesInRecycle": {
     "params": [

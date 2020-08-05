@@ -704,6 +704,7 @@ def doCreateKey(argv, arglist):
         "Description": argv.get("--Description"),
         "KeyUsage": argv.get("--KeyUsage"),
         "Type": Utils.try_to_json(argv, "--Type"),
+        "Tags": Utils.try_to_json(argv, "--Tags"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1149,6 +1150,7 @@ def doCreateWhiteBoxKey(argv, arglist):
         "Alias": argv.get("--Alias"),
         "Algorithm": argv.get("--Algorithm"),
         "Description": argv.get("--Description"),
+        "Tags": Utils.try_to_json(argv, "--Tags"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

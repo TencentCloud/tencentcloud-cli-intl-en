@@ -58,6 +58,14 @@ INFO = {
       {
         "name": "Tags",
         "desc": "List of tags bound to added nodes."
+      },
+      {
+        "name": "HardwareResourceType",
+        "desc": ""
+      },
+      {
+        "name": "PodSpec",
+        "desc": ""
       }
     ],
     "desc": "This API is used to scale out instance."
@@ -141,6 +149,14 @@ INFO = {
       {
         "name": "Limit",
         "desc": "Number of returned results per page. Default value: 100. Maximum value: 100"
+      },
+      {
+        "name": "HardwareResourceType",
+        "desc": ""
+      },
+      {
+        "name": "SearchFields",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query the information of a hardware node."
@@ -198,7 +214,7 @@ INFO = {
       },
       {
         "name": "InstanceName",
-        "desc": "Instance name.\n<li>Length limit: 6–36 characters.</li>\n<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>"
+        "desc": "Instance name.\n<li>Length limit: 6-36 characters.</li>\n<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>"
       },
       {
         "name": "PayMode",

@@ -9,10 +9,27 @@ INFO = {
       },
       {
         "name": "Whitelist",
-        "desc": "List of whitelist entries. Quantity limit: [1,10]."
+        "desc": "List of allowlist entries. Quantity limit: [1,10]."
       }
     ],
     "desc": "This API is used to create an input security group. Up to 5 ones can be created."
+  },
+  "DescribeMediaLiveChannelLogs": {
+    "params": [
+      {
+        "name": "ChannelId",
+        "desc": "Channel ID."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Log start time, which is one hour ago by default. Maximum value: the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      },
+      {
+        "name": "EndTime",
+        "desc": "Log end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`."
+      }
+    ],
+    "desc": "This API is used to query MediaLive channel logs, such as push event logs."
   },
   "DescribeMediaLiveChannelOutputStatistics": {
     "params": [
@@ -52,7 +69,7 @@ INFO = {
       },
       {
         "name": "Name",
-        "desc": "Media input name, which can contain 1–32 letters, digits, and underscores and must be unique at the region level."
+        "desc": "Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level."
       },
       {
         "name": "SecurityGroupIds",
@@ -86,7 +103,7 @@ INFO = {
     "params": [
       {
         "name": "Name",
-        "desc": "Channel name, which can contain 1–32 letters, digits, and underscores and must be unique at the region level."
+        "desc": "Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level."
       },
       {
         "name": "AttachedInputs",
@@ -133,11 +150,11 @@ INFO = {
       },
       {
         "name": "Name",
-        "desc": "Input security group name, which can contain 1–32 letters, digits, and underscores and must be unique at the region level."
+        "desc": "Input security group name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level."
       },
       {
         "name": "Whitelist",
-        "desc": "List of whitelist entries. Up to 10 entries are allowed."
+        "desc": "List of allowlist entries. Up to 10 entries are allowed."
       }
     ],
     "desc": "This API is used to update an input security group."
@@ -146,7 +163,7 @@ INFO = {
     "params": [
       {
         "name": "Name",
-        "desc": "Media input name, which can contain 1–32 letters, digits, and underscores and must be unique at the region level."
+        "desc": "Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level."
       },
       {
         "name": "Type",
@@ -180,7 +197,7 @@ INFO = {
       },
       {
         "name": "Name",
-        "desc": "Channel name, which can contain 1–32 letters, digits, and underscores and must be unique at the region level."
+        "desc": "Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level."
       },
       {
         "name": "AttachedInputs",

@@ -40,7 +40,7 @@ INFO = {
     "params": [
       {
         "name": "Alias",
-        "desc": "New alias containing 1–60 characters or digits"
+        "desc": "New alias containing 1-60 characters or digits"
       },
       {
         "name": "KeyId",
@@ -74,7 +74,7 @@ INFO = {
       },
       {
         "name": "ValidTo",
-        "desc": "Unix timestamp of the key material’s expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200."
+        "desc": "Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200."
       }
     ],
     "desc": "This API is used to import key material into an EXTERNAL CMK. The key obtained through the `GetParametersForImport` API is used to encrypt the key material. You can only reimport the same key material into the specified CMK and set a new expiration time. After the CMK key material is imported, it cannot be replaced. After the key material is expired or deleted, the CMK will remain unavailable until the same key material is reimported. CMKs are independent, which means that the same key material can be imported into different CMKs, but data encrypted by one CMK cannot be decrypted by another one.\nKey material can only be imported into CMKs in `Enabled` and `PendingImport` status."
@@ -252,7 +252,7 @@ INFO = {
     "params": [
       {
         "name": "Alias",
-        "desc": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1–60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products."
+        "desc": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products."
       },
       {
         "name": "Description",
@@ -265,6 +265,10 @@ INFO = {
       {
         "name": "Type",
         "desc": "Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents."
+      },
+      {
+        "name": "Tags",
+        "desc": ""
       }
     ],
     "desc": "Create a master key CMK (Custom Master Key) for user management data keys"
@@ -438,6 +442,10 @@ INFO = {
       {
         "name": "Description",
         "desc": "Key description of up to 1024 bytes"
+      },
+      {
+        "name": "Tags",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a white-box key. Up to 50 ones can be created."

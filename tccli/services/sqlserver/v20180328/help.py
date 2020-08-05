@@ -55,7 +55,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Value range: 1–100. Default value: 100"
+        "desc": "Number of results per page. Value range: 1-100. Default value: 100"
       },
       {
         "name": "Offset",
@@ -122,15 +122,27 @@ INFO = {
       },
       {
         "name": "Period",
-        "desc": "Length of purchase in months. Value range: 1–48. Default value: 1"
+        "desc": "Length of purchase in months. Value range: 1-48. Default value: 1"
       },
       {
         "name": "GoodsNum",
-        "desc": "Number of instances purchased at a time. Value range: 1–100. Default value: 1"
+        "desc": "Number of instances purchased at a time. Value range: 1-100. Default value: 1"
       },
       {
         "name": "DBVersion",
         "desc": "SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2."
+      },
+      {
+        "name": "Cpu",
+        "desc": ""
+      },
+      {
+        "name": "InstanceType",
+        "desc": ""
+      },
+      {
+        "name": "MachineType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query the price of requested instances."
@@ -164,7 +176,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
+        "desc": "Number of results per page. Value range: 1-100. Default value: 20"
       },
       {
         "name": "Offset",
@@ -189,7 +201,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
+        "desc": "Number of results per page. Value range: 1-100. Default value: 20"
       },
       {
         "name": "Offset",
@@ -334,6 +346,30 @@ INFO = {
       {
         "name": "AutoRenewFlag",
         "desc": "Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1."
+      },
+      {
+        "name": "SecurityGroupList",
+        "desc": ""
+      },
+      {
+        "name": "Weekly",
+        "desc": ""
+      },
+      {
+        "name": "StartTime",
+        "desc": ""
+      },
+      {
+        "name": "Span",
+        "desc": ""
+      },
+      {
+        "name": "HAType",
+        "desc": ""
+      },
+      {
+        "name": "MultiZones",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create an instance."
@@ -367,7 +403,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
+        "desc": "Number of results per page. Value range: 1-100. Default value: 20"
       },
       {
         "name": "Offset",
@@ -384,7 +420,7 @@ INFO = {
       },
       {
         "name": "Status",
-        "desc": "Instance status. Valid values:\n<li>1: applying</li>\n<li>2: running</li>\n<li>3: running restrictedly (master/slave switching)</li>\n<li>4: isolated</li>\n<li>5: repossessing</li>\n<li>6: repossessed</li>\n<li>7: executing task (e.g., backing up or rolling back instance)</li>\n<li>8: deactivated</li>\n<li>9: scaling out instance</li>\n<li>10: migrating instance</li>\n<li>11: read-only</li>\n<li>12: restarting</li>"
+        "desc": "Instance status. Valid values:\n<li>1: applying</li>\n<li>2: running</li>\n<li>3: running restrictedly (primary/secondary switching)</li>\n<li>4: isolated</li>\n<li>5: repossessing</li>\n<li>6: repossessed</li>\n<li>7: executing task (e.g., backing up or rolling back instance)</li>\n<li>8: deactivated</li>\n<li>9: scaling out instance</li>\n<li>10: migrating instance</li>\n<li>11: read-only</li>\n<li>12: restarting</li>"
       },
       {
         "name": "Offset",
@@ -392,7 +428,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Value range: 1–100. Default value: 100"
+        "desc": "Number of results per page. Value range: 1-100. Default value: 100"
       },
       {
         "name": "InstanceIdSet",
@@ -456,6 +492,10 @@ INFO = {
       {
         "name": "Storage",
         "desc": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity"
+      },
+      {
+        "name": "Cpu",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query the upgrade price of an instance."
@@ -510,7 +550,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results per page. Value range: 1–100. Default value: 20"
+        "desc": "Number of results per page. Value range: 1-100. Default value: 20"
       },
       {
         "name": "Offset",
@@ -614,6 +654,10 @@ INFO = {
       {
         "name": "VoucherIds",
         "desc": "Voucher ID (currently, only one voucher can be used per order)"
+      },
+      {
+        "name": "Cpu",
+        "desc": ""
       }
     ],
     "desc": "This API is used to upgrade an instance."

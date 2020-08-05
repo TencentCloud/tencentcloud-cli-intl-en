@@ -364,7 +364,7 @@ INFO = {
         "desc": "Whitelist rule"
       }
     ],
-    "desc": "This API is used to add a whitelist rule."
+    "desc": "This API is used to add a allowlist rule."
   },
   "DescribeNonlocalLoginPlaces": {
     "params": [
@@ -504,7 +504,7 @@ INFO = {
         "desc": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>"
       }
     ],
-    "desc": "This API is used to get the list of login whitelist entries."
+    "desc": "This API is used to get the list of login allowlist entries."
   },
   "DescribeImpactedHosts": {
     "params": [
@@ -528,7 +528,16 @@ INFO = {
     "desc": "This API is used to get the list of servers affected by a vulnerability."
   },
   "DescribeTags": {
-    "params": [],
+    "params": [
+      {
+        "name": "MachineType",
+        "desc": ""
+      },
+      {
+        "name": "MachineRegion",
+        "desc": ""
+      }
+    ],
     "desc": "This API is used to get all server tags."
   },
   "DescribeSecurityTrends": {
@@ -645,7 +654,7 @@ INFO = {
         "desc": "Whitelist ID"
       }
     ],
-    "desc": "This API is used to delete a whitelist rule."
+    "desc": "This API is used to delete a allowlist rule."
   },
   "CreateOpenPortTask": {
     "params": [
@@ -663,7 +672,7 @@ INFO = {
         "desc": "Whitelist rule"
       }
     ],
-    "desc": "This API is used to edit a whitelist rule."
+    "desc": "This API is used to edit a allowlist rule."
   },
   "DescribeProVersionInfo": {
     "params": [],

@@ -75,7 +75,7 @@ INFO = {
         "desc": "Async task ID returned by the `ModifyBlockIPList` API"
       }
     ],
-    "desc": "This API is used to query the execution status of an async IP blocking (blacklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)"
+    "desc": "This API is used to query the execution status of an async IP blocking (blocklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)"
   },
   "DeleteLoadBalancerSnatIps": {
     "params": [
@@ -529,7 +529,7 @@ INFO = {
         "desc": "Maximum number of IPs to be returned. Default value: 100,000."
       }
     ],
-    "desc": "This API is used to query the list of blocked IPs (blacklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)"
+    "desc": "This API is used to query the list of blocked IPs (blocklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)"
   },
   "DescribeListeners": {
     "params": [
@@ -823,7 +823,7 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Operation type. Valid values:\n<li> add_customized_field (sets header initially to enable the blacklist feature)</li>\n<li> set_customized_field (modifies header)</li>\n<li> del_customized_field (deletes header)</li>\n<li> add_blocked (adds IPs to blacklist)</li>\n<li> del_blocked (deletes IPs from blacklist)</li>\n<li> flush_blocked (clears blacklist)</li>"
+        "desc": "Operation type. Valid values:\n<li> add_customized_field (sets header initially to enable the blocklist feature)</li>\n<li> set_customized_field (modifies header)</li>\n<li> del_customized_field (deletes header)</li>\n<li> add_blocked (adds IPs to blocklist)</li>\n<li> del_blocked (deletes IPs from blocklist)</li>\n<li> flush_blocked (clears blocklist)</li>"
       },
       {
         "name": "ClientIPField",
@@ -839,10 +839,10 @@ INFO = {
       },
       {
         "name": "AddStrategy",
-        "desc": "IP adding policy. Valid value: fifo (if a blacklist is full, new IPs added to the blacklist will adopt the first-in first-out policy)"
+        "desc": "IP adding policy. Valid value: fifo (if a blocklist is full, new IPs added to the blocklist will adopt the first-in first-out policy)"
       }
     ],
-    "desc": "This API is used to modify the client IP blacklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blacklist can contain up to 2,000,000 entries.\n(This API is in beta test. To use it, please submit a ticket.)"
+    "desc": "This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.\n(This API is in beta test. To use it, please submit a ticket.)"
   },
   "CreateTargetGroup": {
     "params": [

@@ -95,7 +95,7 @@ INFO = {
       },
       {
         "name": "NodeNum",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2–50)"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)"
       },
       {
         "name": "ChargeType",
@@ -135,19 +135,19 @@ INFO = {
       },
       {
         "name": "EnableDedicatedMaster",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nWhether to create a dedicated master node <li>true: yes </li><li>false: no </li>Default value: false"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nWhether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false"
       },
       {
         "name": "MasterNodeNum",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated master nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)"
       },
       {
         "name": "MasterNodeType",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated master node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>"
       },
       {
         "name": "MasterNodeDiskSize",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated master node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently"
       },
       {
         "name": "ClusterNameInConf",
@@ -246,7 +246,7 @@ INFO = {
       },
       {
         "name": "NodeNum",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2–50)"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)"
       },
       {
         "name": "EsConfig",
@@ -254,7 +254,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Password of the default user “elastic“, which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]"
+        "desc": "Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]"
       },
       {
         "name": "EsAcl",
@@ -270,15 +270,15 @@ INFO = {
       },
       {
         "name": "MasterNodeNum",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated master nodes (only 3 and 5 are supported)"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported)"
       },
       {
         "name": "MasterNodeType",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated master node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>"
       },
       {
         "name": "MasterNodeDiskSize",
-        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated master node disk size in GB. This is 50 GB by default and currently cannot be customized"
+        "desc": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized"
       },
       {
         "name": "ForceRestart",
@@ -315,9 +315,13 @@ INFO = {
       {
         "name": "KibanaPrivatePort",
         "desc": "Kibana private port"
+      },
+      {
+        "name": "ScaleType",
+        "desc": ""
       }
     ],
-    "desc": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blacklist/whitelist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding master nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail."
+    "desc": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail."
   },
   "DeleteInstance": {
     "params": [
@@ -349,7 +353,7 @@ INFO = {
       },
       {
         "name": "LogType",
-        "desc": "Log type. Default value: 1\n<li>1: master log</li>\n<li>2: search slow log</li>\n<li>3: index slow log</li>\n<li>4: GC log</li>"
+        "desc": "Log type. Default value: 1\n<li>1: primary log</li>\n<li>2: search slow log</li>\n<li>3: index slow log</li>\n<li>4: GC log</li>"
       },
       {
         "name": "SearchKey",

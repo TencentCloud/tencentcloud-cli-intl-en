@@ -12,7 +12,7 @@ INFO = {
         "desc": "Node type.\nedge: edge server\nlast: intermediate server\nIf this parameter is left empty, edge server information will be returned by default"
       }
     ],
-    "desc": "This API is used to query the status of the edge servers and intermediate nodes on the domain name acceleration platform. Note: edge servers are not generally available. This API can only be used by whitelisted accounts."
+    "desc": "This API is used to query the status of the edge servers and intermediate nodes on the domain name acceleration platform. Note: edge servers are not generally available. This API can only be used by allowlisted accounts."
   },
   "DescribeMapInfo": {
     "params": [
@@ -123,7 +123,7 @@ INFO = {
       },
       {
         "name": "IpFilter",
-        "desc": "IP blacklist/whitelist configuration"
+        "desc": "IP blocklist/allowlist configuration"
       },
       {
         "name": "IpFreqLimit",
@@ -297,11 +297,11 @@ INFO = {
       },
       {
         "name": "DataSource",
-        "desc": "Specifies the data source to be queried, which can be seen as the whitelist function."
+        "desc": "Specifies the data source to be queried, which can be seen as the allowlist function."
       },
       {
         "name": "IpProtocol",
-        "desc": "Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried\nall: all protocols\nipv4: specifies to query IPv4 metrics\nipv6: specifies to query IPv6 metrics\nIf the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time\nNote: non-IPv6 whitelisted users cannot specify `ipv4` and `ipv6` for query"
+        "desc": "Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried\nall: all protocols\nipv4: specifies to query IPv4 metrics\nipv6: specifies to query IPv6 metrics\nIf the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time\nNote: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query"
       },
       {
         "name": "Area",
@@ -419,7 +419,7 @@ INFO = {
       },
       {
         "name": "Metric",
-        "desc": "Object representing the sort criteria. The following objects are supported:\nurl: sorts by access URL (including the query string). Supported filters are `flux` and `request`\npath: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (whitelist-based feature)\ndistrict: sorts by district. Supported filters are `flux` and `request`\nisp: sorts by ISP. Supported filters are `flux` and `request`\nhost: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`\noriginHost: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `origin_4XX`, `origin_5XX`, and `OriginStatusCode`"
+        "desc": "Object representing the sort criteria. The following objects are supported:\nurl: sorts by access URL (including the query string). Supported filters are `flux` and `request`\npath: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (allowlist-based feature)\ndistrict: sorts by district. Supported filters are `flux` and `request`\nisp: sorts by ISP. Supported filters are `flux` and `request`\nhost: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`\noriginHost: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `origin_4XX`, `origin_5XX`, and `OriginStatusCode`"
       },
       {
         "name": "Filter",
@@ -435,7 +435,7 @@ INFO = {
       },
       {
         "name": "Detail",
-        "desc": "Default is `false` for multi–domain name queries, which returns sorted results of all domain names. \nIf `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain."
+        "desc": "Default is `false` for multi-domain name queries, which returns sorted results of all domain names. \nIf `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain."
       },
       {
         "name": "Code",
@@ -533,6 +533,10 @@ INFO = {
       {
         "name": "Urls",
         "desc": "List of URLs. The protocol header such as \"http://\" or \"https://\" needs to be included."
+      },
+      {
+        "name": "Area",
+        "desc": "Purging region\nThe acceleration region of the acceleration domain name will be purged if this parameter is not passed in\nIf `mainland` is passed in, only the content cached on nodes in the Chinese mainland will be purged\nIf `overseas` is passed in, only the content cached on nodes outside the Chinese mainland will be purged\nThe specified purging region should match the domain name acceleration region"
       }
     ],
     "desc": "This API is used to submit multiple URL purge tasks, which are carried out according to the current acceleration region of the domain names in the URLs.\nBy default, a maximum of 10,000 URLs can be purged per day for acceleration regions either within or outside Mainland China, and up to 1,000 tasks can be submitted at a time."
@@ -553,7 +557,7 @@ INFO = {
       },
       {
         "name": "IpFilter",
-        "desc": "IP blacklist/whitelist configuration"
+        "desc": "IP blocklist/allowlist configuration"
       },
       {
         "name": "IpFreqLimit",
@@ -661,7 +665,7 @@ INFO = {
       },
       {
         "name": "UserAgentFilter",
-        "desc": "UA blacklist/whitelist Configuration"
+        "desc": "UA blocklist/allowlist Configuration"
       }
     ],
     "desc": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration."
@@ -765,7 +769,7 @@ INFO = {
         "desc": "Connection channel. Default value: cdn"
       }
     ],
-    "desc": "This API is used to stop publishing to a log topic. Note: after a log topic is disabled, all logs of the domain names bound to it will no longer be published to the topic, and the logs that have already been published will be retained. This action will take effect within 5–15 minutes.\n"
+    "desc": "This API is used to stop publishing to a log topic. Note: after a log topic is disabled, all logs of the domain names bound to it will no longer be published to the topic, and the logs that have already been published will be retained. This action will take effect within 5-15 minutes.\n"
   },
   "PushUrlsCache": {
     "params": [
@@ -854,7 +858,7 @@ INFO = {
         "desc": "Connection channel. Default value: cdn"
       }
     ],
-    "desc": "This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5–15 minutes."
+    "desc": "This API is used to delete a log topic. Note: when a log topic is deleted, all logs of the domain names bound to it will no longer be published to the topic, and the logs previously published to the topic will be deleted. This action will take effect within 5-15 minutes."
   },
   "DescribeBillingData": {
     "params": [
@@ -945,7 +949,7 @@ INFO = {
         "desc": "Connection channel. Default value: cdn"
       }
     ],
-    "desc": "This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5–15 minutes."
+    "desc": "This API is used to start publishing to a log topic. Note: after a log topic is enabled, all logs of the domain names bound to the topic will be published to it. This action will take effect within 5-15 minutes."
   },
   "DescribeReportData": {
     "params": [

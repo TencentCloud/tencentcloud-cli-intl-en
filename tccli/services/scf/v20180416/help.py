@@ -26,7 +26,7 @@ INFO = {
       },
       {
         "name": "FunctionVersion",
-        "desc": "Master version of alias"
+        "desc": "Master version pointed to by the alias"
       },
       {
         "name": "Namespace",
@@ -71,7 +71,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "* Qualifier:\nFunction version, i.e., alias"
+        "desc": "* Qualifier:\nFunction version, alias"
       }
     ],
     "desc": "This API is used to get the function trigger list."
@@ -213,7 +213,7 @@ INFO = {
       },
       {
         "name": "FunctionVersion",
-        "desc": "If this parameter is provided, only aliases associated with this function version will be returned"
+        "desc": "If this parameter is provided, only aliases associated with this function version will be returned."
       },
       {
         "name": "Offset",
@@ -406,7 +406,7 @@ INFO = {
     "params": [
       {
         "name": "Name",
-        "desc": "Alias name, which must be unique in the function, can contain 1–64 letters, digits, `_`, and `-`, and must begin with a letter"
+        "desc": "Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter"
       },
       {
         "name": "FunctionName",
@@ -414,7 +414,7 @@ INFO = {
       },
       {
         "name": "FunctionVersion",
-        "desc": "Master version of alias"
+        "desc": "Master version pointed to by the alias"
       },
       {
         "name": "Namespace",
@@ -543,11 +543,11 @@ INFO = {
       },
       {
         "name": "MemorySize",
-        "desc": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128–3,072 MB in increments of 128 MB."
+        "desc": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB."
       },
       {
         "name": "Timeout",
-        "desc": "Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds"
+        "desc": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds"
       },
       {
         "name": "Runtime",
@@ -596,6 +596,10 @@ INFO = {
       {
         "name": "PublicNetConfig",
         "desc": "Public network access configuration"
+      },
+      {
+        "name": "CfsConfig",
+        "desc": "File system configuration input parameter, which is used for the function to bind the file system"
       }
     ],
     "desc": "This API is used to update the function configuration based on the input parameters."
@@ -604,7 +608,7 @@ INFO = {
     "params": [
       {
         "name": "LayerName",
-        "desc": "Layer name, which can contain 1–64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore"
+        "desc": "Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore"
       },
       {
         "name": "CompatibleRuntimes",
@@ -671,7 +675,7 @@ INFO = {
       },
       {
         "name": "Handler",
-        "desc": "Name of the handler, which is in the “file name.handler name” form. Use periods (.) to separate a file name and function name. The file name and function name must start and end with a letter and can contain 2 to 60 characters, including letters, digits, hyphens (-), and underscores (_)."
+        "desc": "Name of the handler, which is in the 'file name.handler name' form. Use periods (.) to separate a file name and function name. The file name and function name must start and end with a letter and can contain 2 to 60 characters, including letters, digits, hyphens (-), and underscores (_)."
       },
       {
         "name": "Description",
@@ -679,11 +683,11 @@ INFO = {
       },
       {
         "name": "MemorySize",
-        "desc": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128–3,072 MB in increments of 128 MB"
+        "desc": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB"
       },
       {
         "name": "Timeout",
-        "desc": "Maximum execution duration of function in seconds. Value range: 1–900 seconds. Default value: 3 seconds"
+        "desc": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds"
       },
       {
         "name": "Environment",
@@ -732,6 +736,10 @@ INFO = {
       {
         "name": "PublicNetConfig",
         "desc": "Public network access configuration"
+      },
+      {
+        "name": "CfsConfig",
+        "desc": "File system configuration parameter, which is used for the function to mount the file system"
       }
     ],
     "desc": "This API is used to create a function based on the input parameters."

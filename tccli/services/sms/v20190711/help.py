@@ -8,7 +8,7 @@ INFO = {
         "desc": "ID of template to be deleted."
       }
     ],
-    "desc": ">⚠️ Note: individual users cannot use this API to delete SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). You can log in to the console to delete SMS body templates. For detailed directions, please see the notes on deleting SMS body templates in [SMS Body Template Operations](https://cloud.tencent.com/document/product/382/36136#Template)."
+    "desc": "> Note: individual users cannot use this API to delete SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). You can log in to the console to delete SMS body templates. For detailed directions, please see the notes on deleting SMS body templates in [SMS Body Template Operations](https://cloud.tencent.com/document/product/382/36136#Template)."
   },
   "AddSmsSign": {
     "params": [
@@ -45,7 +45,7 @@ INFO = {
         "desc": "Signature application remarks."
       }
     ],
-    "desc": "This API is used to add an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://cloud.tencent.com/document/product/382/39022) before starting an application.\n>⚠️ Note: individual users cannot use this API to apply for SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, please log in to the console to apply for SMS signatures. For detailed directions, please see [Creating SMS Signatures](https://cloud.tencent.com/document/product/382/36136#Sign)."
+    "desc": "This API is used to add an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://cloud.tencent.com/document/product/382/39022) before starting an application.\n> Note: individual users cannot use this API to apply for SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, please log in to the console to apply for SMS signatures. For detailed directions, please see [Creating SMS Signatures](https://cloud.tencent.com/document/product/382/36136#Sign)."
   },
   "PullSmsSendStatus": {
     "params": [
@@ -136,7 +136,7 @@ INFO = {
         "desc": "Signature application remarks."
       }
     ],
-    "desc": "This API is used to modify an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://cloud.tencent.com/document/product/382/39022) before making a modification.\n>- ⚠️ Note: individual users cannot use this API to modify SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, you can log in to the console to modify SMS signatures.\n>- Modifications can be made only if the signature status is **pending review** or **rejected**. **Approved** signatures cannot be modified."
+    "desc": "This API is used to modify an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://cloud.tencent.com/document/product/382/39022) before making a modification.\n>-  Note: individual users cannot use this API to modify SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, you can log in to the console to modify SMS signatures.\n>- Modifications can be made only if the signature status is **pending review** or **rejected**. **Approved** signatures cannot be modified."
   },
   "SmsPackagesStatistics": {
     "params": [
@@ -216,7 +216,7 @@ INFO = {
         "desc": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS."
       }
     ],
-    "desc": ">⚠️ Note: individual users cannot use this API to query SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629)."
+    "desc": "> Note: individual users cannot use this API to query SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629)."
   },
   "PullSmsReplyStatus": {
     "params": [
@@ -242,7 +242,7 @@ INFO = {
         "desc": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS."
       }
     ],
-    "desc": ">⚠️ Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629)."
+    "desc": "> Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629)."
   },
   "PullSmsSendStatusByPhoneNumber": {
     "params": [
@@ -265,6 +265,10 @@ INFO = {
       {
         "name": "SmsSdkAppid",
         "desc": "SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666."
+      },
+      {
+        "name": "EndDateTime",
+        "desc": ""
       }
     ],
     "desc": "This API is used to pull SMS delivery status for one single number."
@@ -296,7 +300,7 @@ INFO = {
         "desc": "Template remarks, such as reason for application and use case."
       }
     ],
-    "desc": "This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://cloud.tencent.com/document/product/382/39023) before making a modification.\n>- ⚠️ Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, you can log in to the console to modify SMS body templates.\n>- Modifications can be made only if the body template status is **pending review** or **rejected**. **Approved** body templates cannot be modified."
+    "desc": "This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://cloud.tencent.com/document/product/382/39023) before making a modification.\n>-  Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, you can log in to the console to modify SMS body templates.\n>- Modifications can be made only if the body template status is **pending review** or **rejected**. **Approved** body templates cannot be modified."
   },
   "PullSmsReplyStatusByPhoneNumber": {
     "params": [
@@ -319,6 +323,10 @@ INFO = {
       {
         "name": "SmsSdkAppid",
         "desc": "SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666."
+      },
+      {
+        "name": "EndDateTime",
+        "desc": ""
       }
     ],
     "desc": "This API is used to pull SMS reply status for one single number."
@@ -330,7 +338,7 @@ INFO = {
         "desc": "ID of signature to be deleted."
       }
     ],
-    "desc": ">⚠️ Note: individual users cannot use this API to delete SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). You can log in to the console to delete SMS signatures. For detailed directions, please see the notes on deleting SMS signatures in [SMS Signature Operations](https://cloud.tencent.com/document/product/382/36136#Sign)."
+    "desc": "> Note: individual users cannot use this API to delete SMS signatures. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). You can log in to the console to delete SMS signatures. For detailed directions, please see the notes on deleting SMS signatures in [SMS Signature Operations](https://cloud.tencent.com/document/product/382/36136#Sign)."
   },
   "AddSmsTemplate": {
     "params": [
@@ -355,6 +363,6 @@ INFO = {
         "desc": "Template remarks, such as reason for application and use case."
       }
     ],
-    "desc": "This API is used to add an SMS template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://cloud.tencent.com/document/product/382/39023) before starting an application.\n>⚠️ Note: individual users cannot use this API to apply for SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, please log in to the console to apply for SMS body templates. For detailed directions, please see [Creating SMS Body Templates](https://cloud.tencent.com/document/product/382/36136#Template)."
+    "desc": "This API is used to add an SMS template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://cloud.tencent.com/document/product/382/39023) before starting an application.\n> Note: individual users cannot use this API to apply for SMS body templates. For more information, please see [Identity Verification Overview](https://cloud.tencent.com/document/product/378/3629). If your account identity is individual, please log in to the console to apply for SMS body templates. For detailed directions, please see [Creating SMS Body Templates](https://cloud.tencent.com/document/product/382/36136#Template)."
   }
 }

@@ -50,7 +50,7 @@ INFO = {
       },
       {
         "name": "Description",
-        "desc": "New account remarks, which can contain 0–256 characters."
+        "desc": "New account remarks, which can contain 0-256 characters."
       }
     ],
     "desc": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts."
@@ -101,7 +101,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "New password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
+        "desc": "New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
       }
     ],
     "desc": "This API is used to reset the password of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts."
@@ -350,7 +350,7 @@ INFO = {
       },
       {
         "name": "UserName",
-        "desc": "Login username, which can contain 1–32 letters, digits, underscores, and hyphens."
+        "desc": "Login username, which can contain 1-32 letters, digits, underscores, and hyphens."
       },
       {
         "name": "Host",
@@ -358,19 +358,19 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Account password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
+        "desc": "Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
       },
       {
         "name": "ReadOnly",
-        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail."
+        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail."
       },
       {
         "name": "Description",
-        "desc": "Account remarks, which can contain 0–256 letters, digits, and common symbols."
+        "desc": "Account remarks, which can contain 0-256 letters, digits, and common symbols."
       },
       {
         "name": "DelayThresh",
-        "desc": "Determines whether the slave is unavailable based on the passed-in time"
+        "desc": "Determines whether the secondary is unavailable based on the passed-in time"
       }
     ],
     "desc": "This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts."
@@ -441,7 +441,7 @@ INFO = {
       },
       {
         "name": "Slave",
-        "desc": "Whether to query slow queries of the slave. 0: master, 1: slave"
+        "desc": "Whether to query slow queries of the secondary. 0: primary, 1: secondary"
       }
     ],
     "desc": "This API is used to query the slow query log list."

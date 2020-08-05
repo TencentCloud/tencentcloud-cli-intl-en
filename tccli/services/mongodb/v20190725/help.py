@@ -103,6 +103,14 @@ INFO = {
       {
         "name": "InstanceId",
         "desc": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page"
+      },
+      {
+        "name": "Limit",
+        "desc": ""
+      },
+      {
+        "name": "Offset",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query the client connection information of an instance, including the IP and number of connections. Currently, only instances of MongoDB 3.2 are supported."
@@ -120,7 +128,7 @@ INFO = {
     "params": [
       {
         "name": "NodeNum",
-        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
+        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
       },
       {
         "name": "Memory",
@@ -172,7 +180,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8–16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`."
+        "desc": "Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`."
       },
       {
         "name": "Tags",
@@ -181,6 +189,22 @@ INFO = {
       {
         "name": "AutoRenewFlag",
         "desc": "Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0."
+      },
+      {
+        "name": "AutoVoucher",
+        "desc": ""
+      },
+      {
+        "name": "Clone",
+        "desc": ""
+      },
+      {
+        "name": "Father",
+        "desc": ""
+      },
+      {
+        "name": "SecurityGroup",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API."
@@ -254,7 +278,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8–16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |"
+        "desc": "Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |"
       },
       {
         "name": "ProjectId",
@@ -263,6 +287,18 @@ INFO = {
       {
         "name": "Tags",
         "desc": "Instance tag information"
+      },
+      {
+        "name": "Clone",
+        "desc": ""
+      },
+      {
+        "name": "Father",
+        "desc": ""
+      },
+      {
+        "name": "SecurityGroup",
+        "desc": ""
       }
     ],
     "desc": "This API is used to create a pay-as-you-go TencentDB for MongoDB instance."
@@ -288,7 +324,7 @@ INFO = {
       },
       {
         "name": "NodeNum",
-        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of slave nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
+        "desc": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API."
       },
       {
         "name": "Memory",
@@ -410,7 +446,7 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of results to be returned for a single request. Valid values: 1–100. Default value: 20"
+        "desc": "Number of results to be returned for a single request. Valid values: 1-100. Default value: 20"
       },
       {
         "name": "Offset",
@@ -433,7 +469,7 @@ INFO = {
         "desc": "Search keyword, which can be instance ID, instance name, or complete IP"
       }
     ],
-    "desc": "This API is used to query the list of TencentDB instances (which can be master, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status."
+    "desc": "This API is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status."
   },
   "IsolateDBInstance": {
     "params": [

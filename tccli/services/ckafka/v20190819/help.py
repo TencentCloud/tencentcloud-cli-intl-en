@@ -43,7 +43,7 @@ INFO = {
       },
       {
         "name": "PermissionType",
-        "desc": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to whitelist), and other fields will be used for future ACLs compatible with open-source Kafka"
+        "desc": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka"
       },
       {
         "name": "Host",
@@ -72,7 +72,7 @@ INFO = {
       },
       {
         "name": "EnableWhiteList",
-        "desc": "IP whitelist switch. 1: enabled, 0: disabled."
+        "desc": "IP allowlist switch. 1: enabled, 0: disabled."
       },
       {
         "name": "MinInsyncReplicas",
@@ -113,10 +113,10 @@ INFO = {
       },
       {
         "name": "IpWhiteList",
-        "desc": "IP whitelist list"
+        "desc": "IP allowlist list"
       }
     ],
-    "desc": "This API is used to create a topic IP whitelist."
+    "desc": "This API is used to create a topic IP allowlist."
   },
   "DescribeGroup": {
     "params": [
@@ -305,10 +305,10 @@ INFO = {
       },
       {
         "name": "IpWhiteList",
-        "desc": "IP whitelist list"
+        "desc": "IP allowlist list"
       }
     ],
-    "desc": "This API is used to delete a topic IP whitelist."
+    "desc": "This API is used to delete a topic IP allowlist."
   },
   "ModifyPassword": {
     "params": [
@@ -376,11 +376,11 @@ INFO = {
       },
       {
         "name": "EnableWhiteList",
-        "desc": "IP whitelist switch. 1: enabled, 0: disabled. Default value: 0"
+        "desc": "IP allowlist switch. 1: enabled, 0: disabled. Default value: 0"
       },
       {
         "name": "IpWhiteList",
-        "desc": "IP whitelist list for quota limit, which is required if `enableWhileList` is 1"
+        "desc": "IP allowlist list for quota limit, which is required if `enableWhileList` is 1"
       },
       {
         "name": "CleanUpPolicy",
@@ -446,7 +446,7 @@ INFO = {
       },
       {
         "name": "PermissionType",
-        "desc": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to whitelist), and other fields will be used for future ACLs compatible with open-source Kafka"
+        "desc": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka"
       },
       {
         "name": "Host",

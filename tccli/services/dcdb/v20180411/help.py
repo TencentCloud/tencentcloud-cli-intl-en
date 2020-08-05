@@ -124,7 +124,7 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "New password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
+        "desc": "New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
       }
     ],
     "desc": "This API is used to reset the password of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts."
@@ -311,19 +311,19 @@ INFO = {
       },
       {
         "name": "Password",
-        "desc": "Account password, which can contain 6–32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
+        "desc": "Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks."
       },
       {
         "name": "ReadOnly",
-        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the slave will be used first, and if it is unavailable, the master will be used; 2: the slave will be used first, and if it is unavailable, the operation will fail; 3: only the slave will be read from."
+        "desc": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail; 3: only the secondary will be read from."
       },
       {
         "name": "Description",
-        "desc": "Account remarks, which can contain 0–256 letters, digits, and common symbols."
+        "desc": "Account remarks, which can contain 0-256 letters, digits, and common symbols."
       },
       {
         "name": "DelayThresh",
-        "desc": "If the slave delay exceeds the set value of this parameter, the slave will be deemed to have failed.\nIt is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2."
+        "desc": "If the secondary delay exceeds the set value of this parameter, the secondary will be deemed to have failed.\nIt is recommended that this parameter be set to a value greater than 10. This parameter takes effect when `ReadOnly` is 1 or 2."
       }
     ],
     "desc": "This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts."
@@ -374,7 +374,7 @@ INFO = {
       },
       {
         "name": "Description",
-        "desc": "New account remarks, which can contain 0–256 characters."
+        "desc": "New account remarks, which can contain 0-256 characters."
       }
     ],
     "desc": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts."

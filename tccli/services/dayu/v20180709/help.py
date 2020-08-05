@@ -17,11 +17,11 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Blacklist/whitelist type. Valid values: [white (whitelist), black (blacklist)]"
+        "desc": "Blocklist/allowlist type. Valid values: [white (allowlist), black (blocklist)]"
       },
       {
         "name": "IpList",
-        "desc": "Blacklisted/whitelisted IP array"
+        "desc": "Blocklisted/whitelisted IP array"
       },
       {
         "name": "Protocol",
@@ -36,7 +36,7 @@ INFO = {
         "desc": "HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API),\nIf `Method` is `delete`, this field can be left empty;"
       }
     ],
-    "desc": "This API is used to add/remove a CC IP to/from the blacklist/whitelist."
+    "desc": "This API is used to add/remove a CC IP to/from the blocklist/allowlist."
   },
   "DescribeDDoSCount": {
     "params": [
@@ -549,7 +549,7 @@ INFO = {
     "params": [
       {
         "name": "Limit",
-        "desc": "Number of items in a page. Returned results are not paged if you enter “0”."
+        "desc": "Number of items in a page. Returned results are not paged if you enter '0'."
       },
       {
         "name": "Offset",
@@ -687,7 +687,7 @@ INFO = {
       },
       {
         "name": "ReqNumber",
-        "desc": "Number of access requests. Value range: [1–10000]"
+        "desc": "Number of access requests. Value range: [1-10000]"
       },
       {
         "name": "Act",
@@ -732,7 +732,7 @@ INFO = {
       },
       {
         "name": "IpAllowDenys",
-        "desc": "IP blacklist/whitelist. Enter an empty array if there is no IP blacklist/whitelist"
+        "desc": "IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist"
       },
       {
         "name": "PacketFilters",
@@ -816,7 +816,7 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Blacklist/whitelist type. Valid value: [white (whitelist)]"
+        "desc": "Blocklist/allowlist type. Valid value: [white (allowlist)]"
       },
       {
         "name": "UrlList",
@@ -835,7 +835,7 @@ INFO = {
         "desc": "HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only when adding a rule and `Protocol` is `https`;\nIf `Method` is `delete`, this field can be left empty;"
       }
     ],
-    "desc": "This API is used to add/remove a CC URL to/from the whitelist."
+    "desc": "This API is used to add/remove a CC URL to/from the allowlist."
   },
   "DescribeBasicDeviceThreshold": {
     "params": [
@@ -882,6 +882,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to unblock an IP."
+  },
+  "ModifyNewL4Rule": {
+    "params": [
+      {
+        "name": "Business",
+        "desc": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)."
+      },
+      {
+        "name": "Id",
+        "desc": "Anti-DDoS instance ID."
+      },
+      {
+        "name": "Rule",
+        "desc": "Forwarding rule."
+      }
+    ],
+    "desc": "This API is used to modify layer-4 forwarding rules."
   },
   "DeleteDDoSPolicy": {
     "params": [
@@ -1090,7 +1107,7 @@ INFO = {
       },
       {
         "name": "Id",
-        "desc": "Anti-DDoS instance ID"
+        "desc": "The resource instance ID, such as the ID of an Anti-DDoS Advanced instance or the ID of an Anti-DDoS Ultimate instance."
       },
       {
         "name": "RuleId",
@@ -1148,7 +1165,7 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Blacklist or whitelist. Valid values: [white (whitelist), black (blacklist)]\nNote: this array can only have one value. It cannot get the blacklist and whitelist at the same time"
+        "desc": "Blocklist or allowlist. Valid values: [white (allowlist), black (blocklist)]\nNote: this array can only have one value. It cannot get the blocklist and allowlist at the same time"
       },
       {
         "name": "Limit",
@@ -1163,7 +1180,7 @@ INFO = {
         "desc": "HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];"
       }
     ],
-    "desc": "This API is used to get the CC IP blacklist/whitelist."
+    "desc": "This API is used to get the CC IP blocklist/allowlist."
   },
   "CreateL4HealthConfig": {
     "params": [
@@ -1284,7 +1301,7 @@ INFO = {
       },
       {
         "name": "IpAllowDenys",
-        "desc": "IP blacklist/whitelist. Enter an empty array if there is no IP blacklist/whitelist"
+        "desc": "IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist"
       },
       {
         "name": "PacketFilters",
@@ -2099,6 +2116,23 @@ INFO = {
     ],
     "desc": "This API is used to get a layer-4 forwarding rule."
   },
+  "ModifyNewDomainRules": {
+    "params": [
+      {
+        "name": "Business",
+        "desc": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)."
+      },
+      {
+        "name": "Id",
+        "desc": "Anti-DDoS instance ID."
+      },
+      {
+        "name": "Rule",
+        "desc": "Domain name forwarding rule."
+      }
+    ],
+    "desc": "This API is used to modify layer-7 forwarding rules."
+  },
   "DescribeCCUrlAllow": {
     "params": [
       {
@@ -2111,7 +2145,7 @@ INFO = {
       },
       {
         "name": "Type",
-        "desc": "Blacklist or whitelist. Valid value: [white (whitelist)]. Currently, only whitelist is supported.\nNote: this array can only have one value which can only be `white`"
+        "desc": "Blocklist or allowlist. Valid value: [white (allowlist)]. Currently, only allowlist is supported.\nNote: this array can only have one value which can only be `white`"
       },
       {
         "name": "Limit",
@@ -2126,7 +2160,7 @@ INFO = {
         "desc": "HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];"
       }
     ],
-    "desc": "This API is used to get the CC URL whitelist."
+    "desc": "This API is used to get the CC URL allowlist."
   },
   "DescribeL7HealthConfig": {
     "params": [
@@ -2202,7 +2236,7 @@ INFO = {
       },
       {
         "name": "ReqNumber",
-        "desc": "Number of access requests. Value range: [1–10000]"
+        "desc": "Number of access requests. Value range: [1-10000]"
       },
       {
         "name": "Act",
