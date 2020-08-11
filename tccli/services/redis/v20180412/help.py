@@ -56,6 +56,23 @@ INFO = {
     ],
     "desc": "This API is used to create an instance sub-account."
   },
+  "ModifyMaintenanceWindow": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time of the maintenance window, such as 17:00"
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time of the maintenance window, such as 19:00"
+      }
+    ],
+    "desc": "This API is used to modify instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business. Note: if the compatible version upgrade or architecture upgrade task has been initiated for an instance, its maintenance window cannot be modified."
+  },
   "ModifyInstanceAccount": {
     "params": [
       {
@@ -327,6 +344,32 @@ INFO = {
     ],
     "desc": "This API is used to query the list of Redis instances."
   },
+  "ModifyInstanceParams": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "InstanceParams",
+        "desc": "List of instance parameters modified"
+      }
+    ],
+    "desc": "This API is used to modify instance parameters."
+  },
+  "DescribeInstanceMonitorTopNCmd": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "SpanType",
+        "desc": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours"
+      }
+    ],
+    "desc": "This API is used to query an instance access command."
+  },
   "DescribeInstanceParamRecords": {
     "params": [
       {
@@ -343,19 +386,6 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of parameter modifications."
-  },
-  "DescribeInstanceMonitorTopNCmd": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Instance ID"
-      },
-      {
-        "name": "SpanType",
-        "desc": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours"
-      }
-    ],
-    "desc": "This API is used to query an instance access command."
   },
   "DisableReplicaReadonly": {
     "params": [
@@ -413,6 +443,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to query the list of instance parameters."
+  },
+  "UpgradeInstanceVersion": {
+    "params": [
+      {
+        "name": "TargetInstanceType",
+        "desc": "Target instance type. Its value is the same as the `Type` parameter of the `CreateInstances` API."
+      },
+      {
+        "name": "SwitchOption",
+        "desc": "Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately)."
+      },
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      }
+    ],
+    "desc": "This API is used to upgrade compatible instance version (for example, from Redis 2.8 to 4.0), or upgrade instance architecture (for example, from standard architecture to cluster architecture)."
   },
   "DescribeProjectSecurityGroup": {
     "params": [
@@ -709,18 +756,14 @@ INFO = {
     ],
     "desc": "This API is used to restore a Redis instance."
   },
-  "ModifyInstanceParams": {
+  "DescribeMaintenanceWindow": {
     "params": [
       {
         "name": "InstanceId",
         "desc": "Instance ID"
-      },
-      {
-        "name": "InstanceParams",
-        "desc": "List of instance parameters modified"
       }
     ],
-    "desc": "This API is used to modify instance parameters."
+    "desc": "This API is used to query instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business."
   },
   "CreateInstances": {
     "params": [

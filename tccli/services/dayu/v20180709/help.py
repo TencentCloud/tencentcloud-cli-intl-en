@@ -80,6 +80,27 @@ INFO = {
     ],
     "desc": "This API is used to get the number of rules of a resource."
   },
+  "CreateNewL7RulesUpload": {
+    "params": [
+      {
+        "name": "Business",
+        "desc": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)."
+      },
+      {
+        "name": "IdList",
+        "desc": "Resource ID list."
+      },
+      {
+        "name": "VipList",
+        "desc": "Resource IP address list."
+      },
+      {
+        "name": "Rules",
+        "desc": "Rule list."
+      }
+    ],
+    "desc": "This API is used to batch upload Layer-7 forwarding rules."
+  },
   "CreateL7CCRule": {
     "params": [
       {

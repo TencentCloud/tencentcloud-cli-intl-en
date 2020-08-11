@@ -308,7 +308,7 @@ INFO = {
         "desc": "Special control parameter for stream mix. If there are no special needs, leave it empty."
       }
     ],
-    "desc": "This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.cancel_mix_stream` API.\nNote: currently, up to 16 streams can be mixed."
+    "desc": "This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.\nNote: currently, up to 16 streams can be mixed.\nBest practice: https://cloud.tencent.com/document/product/267/45566"
   },
   "DescribeHttpStatusInfoList": {
     "params": [
@@ -663,7 +663,7 @@ INFO = {
         "desc": "Stream name, which is used for exact query."
       }
     ],
-    "desc": "This API is used to return the live stream list."
+    "desc": "This API is used to return a list of live streams. It queries the information of live streams after they are pushed successfully.\nNote: this API can query up to 20,000 streams. If you want to query more than 20,000 streams, please contact after-sales service."
   },
   "DeleteLiveCallbackTemplate": {
     "params": [
@@ -1081,7 +1081,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID."
+        "desc": "Template ID returned by the `DescribeLiveCallbackTemplates` API."
       },
       {
         "name": "TemplateName",
@@ -1538,6 +1538,19 @@ INFO = {
     ],
     "desc": "This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing."
   },
+  "DescribeDeliverBandwidthList": {
+    "params": [
+      {
+        "name": "StartTime",
+        "desc": "Start time in the format of \"%Y-%m-%d %H:%M:%S\"."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time in the format of \"%Y-%m-%d %H:%M:%S\". Data in the last 3 months can be queried, and the query period is up to 1 month."
+      }
+    ],
+    "desc": "This API is used to query the billable bandwidth of live stream relaying in the last 3 months. The query period is up to 31 days."
+  },
   "DescribeLiveDomainPlayInfoList": {
     "params": [
       {
@@ -1882,7 +1895,7 @@ INFO = {
       },
       {
         "name": "Width",
-        "desc": "Width. Default value: 0."
+        "desc": "Width. Default value: 0.\nValue range: [0-3000]."
       },
       {
         "name": "NeedVideo",
@@ -1894,7 +1907,7 @@ INFO = {
       },
       {
         "name": "Height",
-        "desc": "Height. Default value: 0."
+        "desc": "Height. Default value: 0.\nValue range: [0-3000]."
       },
       {
         "name": "Fps",

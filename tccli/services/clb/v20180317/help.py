@@ -77,6 +77,51 @@ INFO = {
     ],
     "desc": "This API is used to query the execution status of an async IP blocking (blocklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)"
   },
+  "CreateListener": {
+    "params": [
+      {
+        "name": "LoadBalancerId",
+        "desc": "CLB instance ID"
+      },
+      {
+        "name": "Ports",
+        "desc": "Specifies for which ports to create listeners. Each port corresponds to a new listener"
+      },
+      {
+        "name": "Protocol",
+        "desc": "Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application)"
+      },
+      {
+        "name": "ListenerNames",
+        "desc": "List of names of the listeners to be created. The array of names and array of ports are in one-to-one correspondence. If you do not want to name them now, you do not need to provide this parameter."
+      },
+      {
+        "name": "HealthCheck",
+        "desc": "Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners"
+      },
+      {
+        "name": "Certificate",
+        "desc": "Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled."
+      },
+      {
+        "name": "SessionExpireTime",
+        "desc": "Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners."
+      },
+      {
+        "name": "Scheduler",
+        "desc": "Forwarding method of a listener. Value range: WRR, LEAST_CONN.\nThey represent weighted round robin and least connections, respectively. Default value: WRR. This parameter is applicable only to TCP/UDP/TCP_SSL listeners."
+      },
+      {
+        "name": "SniSwitch",
+        "desc": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners"
+      },
+      {
+        "name": "TargetType",
+        "desc": "Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group."
+      }
+    ],
+    "desc": "This API is used to create a listener for a CLB instance.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
+  },
   "DeleteLoadBalancerSnatIps": {
     "params": [
       {
@@ -394,22 +439,18 @@ INFO = {
     ],
     "desc": "This API is used to unbind target groups from a rule.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
   },
-  "DescribeTargetGroupInstances": {
+  "CreateLoadBalancerSnatIps": {
     "params": [
       {
-        "name": "Filters",
-        "desc": "Filter. Currently, only filtering by `TargetGroupId`, `BindIP`, or `InstanceId` is supported."
+        "name": "LoadBalancerId",
+        "desc": "Unique CLB instance ID, such as lb-12345678"
       },
       {
-        "name": "Limit",
-        "desc": "Number of displayed results. Default value: 20"
-      },
-      {
-        "name": "Offset",
-        "desc": "Display offset. Default value: 0"
+        "name": "SnatIps",
+        "desc": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet."
       }
     ],
-    "desc": "This API is used to get the information of servers bound to a target group."
+    "desc": "This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added."
   },
   "AssociateTargetGroups": {
     "params": [
@@ -561,50 +602,18 @@ INFO = {
     ],
     "desc": "This API (DescribeClassicalLBTargets) is used to get the real servers bound to a classic CLB."
   },
-  "CreateListener": {
+  "CreateTopic": {
     "params": [
       {
-        "name": "LoadBalancerId",
-        "desc": "CLB instance ID"
+        "name": "TopicName",
+        "desc": "Log topic name"
       },
       {
-        "name": "Ports",
-        "desc": "Specifies for which ports to create listeners. Each port corresponds to a new listener"
-      },
-      {
-        "name": "Protocol",
-        "desc": "Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application)"
-      },
-      {
-        "name": "ListenerNames",
-        "desc": "List of names of the listeners to be created. The array of names and array of ports are in one-to-one correspondence. If you do not want to name them now, you do not need to provide this parameter."
-      },
-      {
-        "name": "HealthCheck",
-        "desc": "Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners"
-      },
-      {
-        "name": "Certificate",
-        "desc": "Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled."
-      },
-      {
-        "name": "SessionExpireTime",
-        "desc": "Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners."
-      },
-      {
-        "name": "Scheduler",
-        "desc": "Forwarding method of a listener. Value range: WRR, LEAST_CONN.\nThey represent weighted round robin and least connections, respectively. Default value: WRR. This parameter is applicable only to TCP/UDP/TCP_SSL listeners."
-      },
-      {
-        "name": "SniSwitch",
-        "desc": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners"
-      },
-      {
-        "name": "TargetType",
-        "desc": "Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group."
+        "name": "PartitionCount",
+        "desc": "The number of topic partitions, which changes as partitions are split or merged. Each log topic can have up to 50 partitions. If this parameter is not passed in, 1 partition will be created by default and up to 10 partitions are allowed to be created."
       }
     ],
-    "desc": "This API is used to create a listener for a CLB instance.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
+    "desc": "This API is used to create a topic with the full-text index and key-value index enabled by default. The creation will fail if there is no CLB exclusive logset."
   },
   "BatchRegisterTargets": {
     "params": [
@@ -618,6 +627,10 @@ INFO = {
       }
     ],
     "desc": "This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and layer-4 and layer-7 (TCP, UDP, HTTP, HTTPS) protocols."
+  },
+  "DescribeClsLogSet": {
+    "params": [],
+    "desc": "This API is used to obtain the CLB exclusive logset of a user."
   },
   "DeleteRewrite": {
     "params": [
@@ -865,6 +878,23 @@ INFO = {
     ],
     "desc": "This API is used to create a target group. This feature is in beta test, if you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)."
   },
+  "DescribeTargetGroupInstances": {
+    "params": [
+      {
+        "name": "Filters",
+        "desc": "Filter. Currently, only filtering by `TargetGroupId`, `BindIP`, or `InstanceId` is supported."
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of displayed results. Default value: 20"
+      },
+      {
+        "name": "Offset",
+        "desc": "Display offset. Default value: 0"
+      }
+    ],
+    "desc": "This API is used to get the information of servers bound to a target group."
+  },
   "DescribeTargets": {
     "params": [
       {
@@ -1037,18 +1067,18 @@ INFO = {
     ],
     "desc": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes."
   },
-  "CreateLoadBalancerSnatIps": {
+  "CreateClsLogSet": {
     "params": [
       {
-        "name": "LoadBalancerId",
-        "desc": "Unique CLB instance ID, such as lb-12345678"
+        "name": "Period",
+        "desc": "Logset retention period in days; max value: 90"
       },
       {
-        "name": "SnatIps",
-        "desc": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet."
+        "name": "LogsetName",
+        "desc": "Logset name, which must be unique among all CLS logsets; default value: clb_logset"
       }
     ],
-    "desc": "This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added."
+    "desc": "This API is used to create a CLB exclusive logset for storing CLB logs."
   },
   "DescribeClassicalLBByInstanceId": {
     "params": [

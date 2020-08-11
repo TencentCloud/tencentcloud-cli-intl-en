@@ -34,22 +34,59 @@ INFO = {
     ],
     "desc": "This API is used to get resource tags based on tag keys."
   },
-  "UpdateResourceTagValue": {
+  "DescribeResourceTagsByResourceIdsSeq": {
     "params": [
       {
-        "name": "TagKey",
-        "desc": "Tag key associated with the resource."
+        "name": "ServiceType",
+        "desc": "Service type"
       },
       {
-        "name": "TagValue",
-        "desc": "Modified tag value."
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix"
       },
       {
-        "name": "Resource",
-        "desc": "Resource description in six-piece format."
+        "name": "ResourceIds",
+        "desc": "Unique resource ID"
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "Resource region"
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 15"
       }
     ],
-    "desc": "This API is used to modify the values of tags associated with a resource (the tag key does not change)."
+    "desc": "This API is used to view the tags associated with a resource in sequence."
+  },
+  "DetachResourcesTag": {
+    "params": [
+      {
+        "name": "ServiceType",
+        "desc": "Resource service name"
+      },
+      {
+        "name": "ResourceIds",
+        "desc": "Resource ID array, which can contain up to 50 resources"
+      },
+      {
+        "name": "TagKey",
+        "desc": "Tag key to be unbound"
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "Resource region. This field is not required for resources that do not have the region attribute"
+      },
+      {
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix, which is not required for COS buckets"
+      }
+    ],
+    "desc": "This API is used to unbind a tag from multiple resources."
   },
   "DescribeTagValues": {
     "params": [
@@ -88,7 +125,7 @@ INFO = {
       },
       {
         "name": "ResourceRegion",
-        "desc": "The resource’s region."
+        "desc": "The resource's region."
       },
       {
         "name": "Offset",
@@ -150,10 +187,27 @@ INFO = {
       },
       {
         "name": "Resource",
-        "desc": "Resource description in six-piece format."
+        "desc": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)"
       }
     ],
     "desc": "This API is used to associate resources with tags."
+  },
+  "UpdateResourceTagValue": {
+    "params": [
+      {
+        "name": "TagKey",
+        "desc": "Tag key associated with the resource."
+      },
+      {
+        "name": "TagValue",
+        "desc": "Modified tag value."
+      },
+      {
+        "name": "Resource",
+        "desc": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)"
+      }
+    ],
+    "desc": "This API is used to modify the values of tags associated with a resource (the tag key does not change)."
   },
   "DeleteResourceTag": {
     "params": [
@@ -163,33 +217,78 @@ INFO = {
       },
       {
         "name": "Resource",
-        "desc": "Resource description in six-piece format."
+        "desc": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)"
       }
     ],
     "desc": "This API is used to unassociate tags and resources."
   },
-  "CreateTag": {
+  "DescribeResourcesByTagsUnion": {
     "params": [
       {
-        "name": "TagKey",
-        "desc": "Tag key."
+        "name": "TagFilters",
+        "desc": "Tag filtering arrays."
       },
       {
-        "name": "TagValue",
-        "desc": "Tag value."
+        "name": "CreateUin",
+        "desc": "Tag creator uin."
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter."
+      },
+      {
+        "name": "Limit",
+        "desc": "Page size. The default value is 15."
+      },
+      {
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix."
+      },
+      {
+        "name": "ResourceId",
+        "desc": "Unique resource ID."
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "The resource’s region."
+      },
+      {
+        "name": "ServiceType",
+        "desc": "Service type"
       }
     ],
-    "desc": "This API is used to create a tag key and tag value pair."
+    "desc": "This API is used to query resource list by tags."
+  },
+  "DescribeTagValuesSeq": {
+    "params": [
+      {
+        "name": "TagKeys",
+        "desc": "Tag key list"
+      },
+      {
+        "name": "CreateUin",
+        "desc": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query"
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 15"
+      }
+    ],
+    "desc": "This API is used to query tag values in a created tag list."
   },
   "DescribeTags": {
     "params": [
       {
         "name": "TagKey",
-        "desc": "Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user’s tags will be queried."
+        "desc": "Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user's tags will be queried."
       },
       {
         "name": "TagValue",
-        "desc": "Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user’s tags will be queried."
+        "desc": "Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user's tags will be queried."
       },
       {
         "name": "Offset",
@@ -205,7 +304,7 @@ INFO = {
       },
       {
         "name": "TagKeys",
-        "desc": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored"
+        "desc": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored."
       },
       {
         "name": "ShowProject",
@@ -214,11 +313,44 @@ INFO = {
     ],
     "desc": "This API is used to query existing tag lists.\n"
   },
+  "DescribeTagsSeq": {
+    "params": [
+      {
+        "name": "TagKey",
+        "desc": "Tag key, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried"
+      },
+      {
+        "name": "TagValue",
+        "desc": "Tag value, which either exists or does not exist with the tag key. If it does not exist, all tags of the user will be queried"
+      },
+      {
+        "name": "Offset",
+        "desc": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter"
+      },
+      {
+        "name": "Limit",
+        "desc": "Number of entries per page. Default value: 15"
+      },
+      {
+        "name": "CreateUin",
+        "desc": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query"
+      },
+      {
+        "name": "TagKeys",
+        "desc": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored."
+      },
+      {
+        "name": "ShowProject",
+        "desc": "Whether to show project tag"
+      }
+    ],
+    "desc": "This API is used to query the created tag lists.\n"
+  },
   "ModifyResourceTags": {
     "params": [
       {
         "name": "Resource",
-        "desc": "Resource description in six-piece format."
+        "desc": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)"
       },
       {
         "name": "ReplaceTags",
@@ -259,7 +391,7 @@ INFO = {
       },
       {
         "name": "ResourceRegion",
-        "desc": "The resource’s region."
+        "desc": "The resource's region."
       },
       {
         "name": "ServiceType",
@@ -289,6 +421,35 @@ INFO = {
     ],
     "desc": "This API is used to query tag keys in an existing tag list.\n"
   },
+  "AttachResourcesTag": {
+    "params": [
+      {
+        "name": "ServiceType",
+        "desc": "Resource service name"
+      },
+      {
+        "name": "ResourceIds",
+        "desc": "Resource ID array, which can contain up to 50 resources"
+      },
+      {
+        "name": "TagKey",
+        "desc": "Tag key"
+      },
+      {
+        "name": "TagValue",
+        "desc": "Tag value"
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "Resource region. This field is not required for resources that do not have the region attribute"
+      },
+      {
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix, which is not required for COS buckets"
+      }
+    ],
+    "desc": "This API is used to associate a tag with multiple resources."
+  },
   "DeleteTag": {
     "params": [
       {
@@ -301,5 +462,47 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a tag key and tag value pair."
+  },
+  "CreateTag": {
+    "params": [
+      {
+        "name": "TagKey",
+        "desc": "Tag key."
+      },
+      {
+        "name": "TagValue",
+        "desc": "Tag value."
+      }
+    ],
+    "desc": "This API is used to create a tag key and tag value pair."
+  },
+  "ModifyResourcesTagValue": {
+    "params": [
+      {
+        "name": "ServiceType",
+        "desc": "Resource service name"
+      },
+      {
+        "name": "ResourceIds",
+        "desc": "Resource ID array, which can contain up to 50 resources"
+      },
+      {
+        "name": "TagKey",
+        "desc": "Tag key"
+      },
+      {
+        "name": "TagValue",
+        "desc": "Tag value"
+      },
+      {
+        "name": "ResourceRegion",
+        "desc": "Resource region. This field is not required for resources that do not have the region attribute"
+      },
+      {
+        "name": "ResourcePrefix",
+        "desc": "Resource prefix, which is not required for COS buckets"
+      }
+    ],
+    "desc": "This API is used to modify the tag value corresponding to a tag key associated with multiple resources."
   }
 }

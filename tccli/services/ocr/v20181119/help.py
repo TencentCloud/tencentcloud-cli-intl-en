@@ -52,6 +52,27 @@ INFO = {
     ],
     "desc": "This API is used to recognize a Malaysian identity card. Recognizable fields include identity card number, name, gender, and address. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect).\n"
   },
+  "HKIDCardOCR": {
+    "params": [
+      {
+        "name": "DetectFake",
+        "desc": "Whether to check for authenticity."
+      },
+      {
+        "name": "ReturnHeadImage",
+        "desc": "Whether to return identity photo."
+      },
+      {
+        "name": "ImageBase64",
+        "desc": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds."
+      },
+      {
+        "name": "ImageUrl",
+        "desc": "URL of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low."
+      }
+    ],
+    "desc": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect).\n"
+  },
   "MLIDPassportOCR": {
     "params": [
       {

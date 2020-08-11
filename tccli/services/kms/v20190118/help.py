@@ -158,6 +158,23 @@ INFO = {
     ],
     "desc": "This API is used to get the white-box key list."
   },
+  "BindCloudResource": {
+    "params": [
+      {
+        "name": "KeyId",
+        "desc": "CMK ID"
+      },
+      {
+        "name": "ProductId",
+        "desc": "Unique ID of a Tencent Cloud service"
+      },
+      {
+        "name": "ResourceId",
+        "desc": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features."
+      }
+    ],
+    "desc": "This API is used to bind a key with a Tencent Cloud resource. If the key has been set to be expired automatically, the setting will be canceled to ensure that the key will not be invalid automatically. If the key and the resource has already been bound, the call will still be successful."
+  },
   "DisableKeys": {
     "params": [
       {
@@ -419,6 +436,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to get the attribute details of the CMK with a specified `KeyId`."
+  },
+  "UnbindCloudResource": {
+    "params": [
+      {
+        "name": "KeyId",
+        "desc": "CMK ID"
+      },
+      {
+        "name": "ProductId",
+        "desc": "Unique ID of a Tencent Cloud service"
+      },
+      {
+        "name": "ResourceId",
+        "desc": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features."
+      }
+    ],
+    "desc": "This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer."
   },
   "EnableKeyRotation": {
     "params": [

@@ -971,7 +971,7 @@ INFO = {
     "params": [
       {
         "name": "MediaUrl",
-        "desc": "URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.\nFor more information about supported extensions, please see [Media Types](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)."
+        "desc": "URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.\nFor more information about supported extensions, please see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B?from_cn_redirect=1)."
       },
       {
         "name": "MediaName",
@@ -991,7 +991,7 @@ INFO = {
       },
       {
         "name": "StorageRegion",
-        "desc": "Specifies upload region. This is only applicable to users that have special requirements for the upload region (currently, only Beijing, Shanghai, and Chongqing regions are supported)."
+        "desc": "Specifies upload region. This is only applicable to users that have special requirements for the upload region:\n<li>If it is left empty, the upload region is your [default region](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4);</li>\n<li>If it is specified, please make sure that the upload region has been [enabled for storage](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li>"
       },
       {
         "name": "ClassId",
@@ -1015,7 +1015,7 @@ INFO = {
       },
       {
         "name": "SourceContext",
-        "desc": "Source context, which is used to pass through the user request information. The [upload callback](/document/product/266/7830) API will return the value of this field. It can contain up to 250 characters."
+        "desc": "Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters."
       }
     ],
     "desc": "This API is used to pull a video on the internet to the VOD platform."
@@ -1244,11 +1244,11 @@ INFO = {
       },
       {
         "name": "Domain",
-        "desc": ""
+        "desc": "Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used."
       },
       {
         "name": "Scheme",
-        "desc": ""
+        "desc": "Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. Other valid values:\n<li>HTTP;</li>\n<li>HTTPS.</li>"
       },
       {
         "name": "Comment",
@@ -1412,7 +1412,7 @@ INFO = {
         "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to initiate a processing task for an audio/video media file from a URL, including:\n\n1. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n2. Intelligent content analysis (tag, category, cover, and frame-specific tag);\n3. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).\n\nIf the event notification is used, its type is [Task Flow Status Change](https://cloud.tencent.com/document/product/266/9636)."
+    "desc": "This API is used to initiate a processing task for an audio/video media file from a URL, including:\n\n1. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n2. Intelligent content analysis (tag, category, cover, and frame-specific tag);\n3. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).\n\nIf the event notification is used, its type is [Task Flow Status Change](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1)."
   },
   "ModifyTranscodeTemplate": {
     "params": [
@@ -1795,11 +1795,11 @@ INFO = {
       },
       {
         "name": "Domain",
-        "desc": ""
+        "desc": "Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used."
       },
       {
         "name": "Scheme",
-        "desc": ""
+        "desc": "Scheme used for playback. Valid values:\n<li>Default: the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used;</li>\n<li>HTTP;</li>\n<li>HTTPS.</li>"
       },
       {
         "name": "Comment",

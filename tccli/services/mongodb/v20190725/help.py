@@ -140,7 +140,7 @@ INFO = {
       },
       {
         "name": "MongoVersion",
-        "desc": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition."
+        "desc": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition."
       },
       {
         "name": "GoodsNum",
@@ -156,15 +156,15 @@ INFO = {
       },
       {
         "name": "MachineCode",
-        "desc": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO)."
+        "desc": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard)."
       },
       {
         "name": "ClusterType",
-        "desc": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster)."
+        "desc": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node)."
       },
       {
         "name": "ReplicateSetNum",
-        "desc": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API."
+        "desc": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0."
       },
       {
         "name": "ProjectId",
@@ -192,19 +192,19 @@ INFO = {
       },
       {
         "name": "AutoVoucher",
-        "desc": ""
+        "desc": "Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0."
       },
       {
         "name": "Clone",
-        "desc": ""
+        "desc": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)."
       },
       {
         "name": "Father",
-        "desc": ""
+        "desc": "Primary instance ID. It is required for read-only and disaster recovery instances."
       },
       {
         "name": "SecurityGroup",
-        "desc": ""
+        "desc": "Security group."
       }
     ],
     "desc": "This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API."
@@ -290,15 +290,15 @@ INFO = {
       },
       {
         "name": "Clone",
-        "desc": ""
+        "desc": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)."
       },
       {
         "name": "Father",
-        "desc": ""
+        "desc": "Parent instance ID. It is required if the `Clone` is 3 or 4."
       },
       {
         "name": "SecurityGroup",
-        "desc": ""
+        "desc": "Security group."
       }
     ],
     "desc": "This API is used to create a pay-as-you-go TencentDB for MongoDB instance."

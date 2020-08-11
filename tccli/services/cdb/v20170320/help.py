@@ -10,6 +10,23 @@ INFO = {
     ],
     "desc": "This API (DescribeDBInstanceGTID) is used to query whether GTID is activated for a TencentDB instance. Instances on or below version 5.5 are not supported."
   },
+  "CreateRoInstanceIp": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Read-only instance ID in the format of \"cdbro-3i70uj0k\". Its value is the same as the read-only instance ID in the TencentDB Console."
+      },
+      {
+        "name": "UniqSubnetId",
+        "desc": "Subnet descriptor, such as \"subnet-1typ0s7d\"."
+      },
+      {
+        "name": "UniqVpcId",
+        "desc": "VPC descriptor, such as \"vpc-xxx\". If this field is passed in, `UniqSubnetId` will be required."
+      }
+    ],
+    "desc": "This API is used to create a VIP exclusive to a TencentDB read-only instance."
+  },
   "DescribeTimeWindow": {
     "params": [
       {
