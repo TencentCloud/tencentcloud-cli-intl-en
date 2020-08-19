@@ -61,11 +61,11 @@ INFO = {
       },
       {
         "name": "HardwareResourceType",
-        "desc": ""
+        "desc": "Resource type selected for expansion. Valid values: host (general CVM resource), pod (resource provided by TKE cluster)"
       },
       {
         "name": "PodSpec",
-        "desc": ""
+        "desc": "Specified information such as pod specification and source for expansion with pod resources"
       }
     ],
     "desc": "This API is used to scale out instance."
@@ -152,11 +152,11 @@ INFO = {
       },
       {
         "name": "HardwareResourceType",
-        "desc": ""
+        "desc": "Resource type. Valid values: all, host, pod. Default value: all"
       },
       {
         "name": "SearchFields",
-        "desc": ""
+        "desc": "Searchable field"
       }
     ],
     "desc": "This API is used to query the information of a hardware node."

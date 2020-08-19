@@ -214,6 +214,7 @@ def doInquiryPriceRunInstances(argv, arglist):
         "HostName": argv.get("--HostName"),
         "TagSpecification": Utils.try_to_json(argv, "--TagSpecification"),
         "InstanceMarketOptions": Utils.try_to_json(argv, "--InstanceMarketOptions"),
+        "HpcClusterId": argv.get("--HpcClusterId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -720,6 +721,7 @@ def doRunInstances(argv, arglist):
         "InstanceMarketOptions": Utils.try_to_json(argv, "--InstanceMarketOptions"),
         "UserData": argv.get("--UserData"),
         "DryRun": Utils.try_to_json(argv, "--DryRun"),
+        "HpcClusterId": argv.get("--HpcClusterId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

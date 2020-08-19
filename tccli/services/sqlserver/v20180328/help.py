@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
 DESC = "sqlserver-2018-03-28"
 INFO = {
+  "DescribeFlowStatus": {
+    "params": [
+      {
+        "name": "FlowId",
+        "desc": "Flow ID"
+      }
+    ],
+    "desc": "This API is used to query flow status."
+  },
   "ModifyMigration": {
     "params": [
       {
@@ -72,6 +81,19 @@ INFO = {
     ],
     "desc": "This API is used to query the list of eligible migration tasks based on the entered criteria."
   },
+  "ResetAccountPassword": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Database instance ID in the format of mssql-njj2mtpl"
+      },
+      {
+        "name": "Accounts",
+        "desc": "Updated account password information array"
+      }
+    ],
+    "desc": "This API is used to reset the account password of an instance."
+  },
   "ModifyDBName": {
     "params": [
       {
@@ -88,19 +110,6 @@ INFO = {
       }
     ],
     "desc": "This API is used to rename a database."
-  },
-  "ResetAccountPassword": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Database instance ID in the format of mssql-njj2mtpl"
-      },
-      {
-        "name": "Accounts",
-        "desc": "Updated account password information array"
-      }
-    ],
-    "desc": "This API is used to reset the account password of an instance."
   },
   "InquiryPriceCreateDBInstances": {
     "params": [
@@ -134,15 +143,15 @@ INFO = {
       },
       {
         "name": "Cpu",
-        "desc": ""
+        "desc": "The number of CPU cores of the instance you want to purchase."
       },
       {
         "name": "InstanceType",
-        "desc": ""
+        "desc": "The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA."
       },
       {
         "name": "MachineType",
-        "desc": ""
+        "desc": "The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM."
       }
     ],
     "desc": "This API is used to query the price of requested instances."
@@ -210,14 +219,26 @@ INFO = {
     ],
     "desc": "This API is used to query the list of backups."
   },
-  "DescribeFlowStatus": {
+  "ModifyBackupStrategy": {
     "params": [
       {
-        "name": "FlowId",
-        "desc": "Flow ID"
+        "name": "InstanceId",
+        "desc": "Instance ID."
+      },
+      {
+        "name": "BackupType",
+        "desc": "Backup mode, which supports daily backup only. Valid value: daily."
+      },
+      {
+        "name": "BackupTime",
+        "desc": "Backup time. Value range: an integer from 0 to 23."
+      },
+      {
+        "name": "BackupDay",
+        "desc": "Backup interval in days when the `BackupType` is `daily`. Valid value: 1."
       }
     ],
-    "desc": "This API is used to query flow status."
+    "desc": "This API is used to modify the backup policy."
   },
   "ModifyAccountRemark": {
     "params": [
@@ -349,27 +370,27 @@ INFO = {
       },
       {
         "name": "SecurityGroupList",
-        "desc": ""
+        "desc": "Security group list, which contains security group IDs in the format of sg-xxx."
       },
       {
         "name": "Weekly",
-        "desc": ""
+        "desc": "Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday)."
       },
       {
         "name": "StartTime",
-        "desc": ""
+        "desc": "Configuration of the maintenance window, which specifies the start time of daily maintenance."
       },
       {
         "name": "Span",
-        "desc": ""
+        "desc": "Configuration of the maintenance window, which specifies the maintenance duration in hours."
       },
       {
         "name": "HAType",
-        "desc": ""
+        "desc": "The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL."
       },
       {
         "name": "MultiZones",
-        "desc": ""
+        "desc": "Whether to deploy across availability zones. Default value: false."
       }
     ],
     "desc": "This API is used to create an instance."
@@ -495,7 +516,7 @@ INFO = {
       },
       {
         "name": "Cpu",
-        "desc": ""
+        "desc": "The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores."
       }
     ],
     "desc": "This API is used to query the upgrade price of an instance."
@@ -657,7 +678,7 @@ INFO = {
       },
       {
         "name": "Cpu",
-        "desc": ""
+        "desc": "The number of CUP cores after the instance is upgraded."
       }
     ],
     "desc": "This API is used to upgrade an instance."

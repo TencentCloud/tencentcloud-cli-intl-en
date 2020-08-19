@@ -118,7 +118,7 @@ INFO = {
         "desc": "Name of the network ACL. The maximum length is 60 bytes."
       }
     ],
-    "desc": "This API is used to create a <a href=\"https://cloud.tencent.com/document/product/215/20088\">network ACL</a>.\n* The inbound and outbound rules for a new network ACL are \"Deny All\" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed."
+    "desc": "This API is used to create a <a href=\"https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1\">network ACL</a>.\n* The inbound and outbound rules for a new network ACL are \"Deny All\" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed."
   },
   "DescribeServiceTemplateGroups": {
     "params": [
@@ -189,7 +189,7 @@ INFO = {
         "desc": "The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'. Default value: 'ipv4'."
       }
     ],
-    "desc": "This API is used to create [device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)"
+    "desc": "This API is used to create [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)"
   },
   "DeleteFlowLog": {
     "params": [
@@ -228,7 +228,7 @@ INFO = {
         "desc": "The `ID` of the `VPC`, such as `vpc-f49l6u0z`."
       }
     ],
-    "desc": "This API is used to assign IPv6 ranges.\n* To use this API, you must already have a VPC instance. If you do not have a VPC instance yet, use the <a href=\"https://cloud.tencent.com/document/api/215/15774\" title=\"CreateVpc\" target=\"_blank\">CreateVpc</a> API to create one.\n* Each VPC can apply for only one IPv6 range."
+    "desc": "This API is used to assign IPv6 ranges.\n* To use this API, you must already have a VPC instance. If you do not have a VPC instance yet, use the <a href=\"https://intl.cloud.tencent.com/document/api/215/15774?from_cn_redirect=1\" title=\"CreateVpc\" target=\"_blank\">CreateVpc</a> API to create one.\n* Each VPC can apply for only one IPv6 range."
   },
   "DeleteNetworkAcl": {
     "params": [
@@ -537,7 +537,7 @@ INFO = {
         "desc": "Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646)."
       }
     ],
-    "desc": "This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned."
+    "desc": "This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).\n* If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned."
   },
   "DescribeClassicLinkInstances": {
     "params": [
@@ -664,7 +664,7 @@ INFO = {
         "desc": "The resource IP, such as `eip-xxxx` and `lb-xxxx`."
       }
     ],
-    "desc": "This API is used to delete a bandwidth package resource, including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
+    "desc": "This API is used to delete a bandwidth package resource, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on."
   },
   "InquiryPriceRenewVpnGateway": {
     "params": [
@@ -909,7 +909,7 @@ INFO = {
         "desc": "The monthly bandwidth end time"
       }
     ],
-    "desc": "This API (ModifyAddressesBandwidth) is used to adjust [Elastic IP](https://cloud.tencent.com/document/product/213/1941) bandwidth, including the postpaid EIP, prepaid EIP and bandwidth package EIP."
+    "desc": "This API (ModifyAddressesBandwidth) is used to adjust [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) bandwidth, including the postpaid EIP, prepaid EIP and bandwidth package EIP."
   },
   "CreateNatGatewayDestinationIpPortTranslationNatRule": {
     "params": [
@@ -1017,10 +1017,10 @@ INFO = {
       },
       {
         "name": "ReallocateNormalPublicIp",
-        "desc": "Whether a common public IP is assigned after the EIP is unbound. Value range:<br><li>TRUE: Indicates that after the EIP is unbound, a common public IP is assigned.<br><li>FALSE: Indicates that after the EIP is unbound, a common public IP is not assigned.<br>Default value: FALSE.<br><br>The parameter can be specified only under the following conditions:<br><li>It can only be specified when you unbind an EIP from the primary private IP of the primary ENI.<br><li>After an EIP is unbound, you can assign public IPs to an account up to 10 times per day. For more information, use the [DescribeAddressQuota] (https://cloud.tencent.com/document/api/213/1378) API."
+        "desc": "Whether a common public IP is assigned after the EIP is unbound. Value range:<br><li>TRUE: Indicates that after the EIP is unbound, a common public IP is assigned.<br><li>FALSE: Indicates that after the EIP is unbound, a common public IP is not assigned.<br>Default value: FALSE.<br><br>The parameter can be specified only under the following conditions:<br><li>It can only be specified when you unbind an EIP from the primary private IP of the primary ENI.<br><li>After an EIP is unbound, you can assign public IPs to an account up to 10 times per day. For more information, use the [DescribeAddressQuota] (https://intl.cloud.tencent.com/document/api/213/1378?from_cn_redirect=1) API."
       }
     ],
-    "desc": "This API (DisassociateAddress) is used to unbind [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* The unbinding of EIPs from CVM instances and ENIs is supported.\n* The unbinding of EIPs from NATs is not supported. For information about how to unbind an EIP from a NAT, see [EipUnBindNatGateway](https://cloud.tencent.com/document/product/215/4092).\n* You can only unbind EIPs in BIND or BIND_ENI status.\n* Blocked EIPs cannot be unbound."
+    "desc": "This API (DisassociateAddress) is used to unbind [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).\n* The unbinding of EIPs from CVM instances and ENIs is supported.\n* The unbinding of EIPs from NATs is not supported. For information about how to unbind an EIP from a NAT, see [EipUnBindNatGateway](https://intl.cloud.tencent.com/document/product/215/4092?from_cn_redirect=1).\n* You can only unbind EIPs in BIND or BIND_ENI status.\n* Blocked EIPs cannot be unbound."
   },
   "DisassociateNetworkInterfaceSecurityGroups": {
     "params": [
@@ -1087,7 +1087,7 @@ INFO = {
         "desc": "The protocol type of the bandwidth package. Valid values: `ipv4` and `ipv6`."
       }
     ],
-    "desc": "This API is used to add resources to a bandwidth package, including [Elastic IP](https://cloud.tencent.com/document/product/213/1941), [Cloud Load Balancer](https://cloud.tencent.com/document/product/214/517), and so on."
+    "desc": "This API is used to add resources to a bandwidth package, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on."
   },
   "AssignIpv6SubnetCidrBlock": {
     "params": [
@@ -1131,7 +1131,7 @@ INFO = {
       },
       {
         "name": "InternetChargeType",
-        "desc": "The EIP billing method.\n<ul style=\"margin:0\"><li>For a user who has activated bandwidth billing by IP allowlist, possible values are:<ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://cloud.tencent.com/document/product/684/15255) (The bandwidth sharing allowlist must be activated additionally.)</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: bandwidth postpaid by hour</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: traffic postpaid by hour</li></ul>Default: TRAFFIC_POSTPAID_BY_HOUR</li>.\n<li>For users who do not use bill-by-bandwidth billing mode, InternetChargeType is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>"
+        "desc": "The EIP billing method.\n<ul style=\"margin:0\"><li>For a user who has activated bandwidth billing by IP allowlist, possible values are:<ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1) (The bandwidth sharing allowlist must be activated additionally.)</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: bandwidth postpaid by hour</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: traffic postpaid by hour</li></ul>Default: TRAFFIC_POSTPAID_BY_HOUR</li>.\n<li>For users who do not use bill-by-bandwidth billing mode, InternetChargeType is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>"
       },
       {
         "name": "InternetMaxBandwidthOut",
@@ -1139,7 +1139,7 @@ INFO = {
       },
       {
         "name": "AddressType",
-        "desc": "The EIP type. Default: EIP.\n<ul style=\"margin:0\"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://cloud.tencent.com/document/product/644).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>"
+        "desc": "The EIP type. Default: EIP.\n<ul style=\"margin:0\"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>"
       },
       {
         "name": "AnycastZone",
@@ -1158,7 +1158,7 @@ INFO = {
         "desc": "The unique ID of a BGP bandwidth package. If you configure this parameter and set InternetChargeType as BANDWIDTH_PACKAGE, the new EIP is added to this package and billed by the bandwidth package mode."
       }
     ],
-    "desc": "This API is used to apply for one or more [Elastic IP Addresses](https://cloud.tencent.com/document/product/213/1941) (EIPs for short).\n* An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.\n* Your EIP is associated with your Tencent Cloud account rather than an instance. It remains associated with your Tencent Cloud account until you choose to explicitly release it or your account is in arrears for more than 24 hours.\n* The maximum number of EIPs that can be applied for a Tencent Cloud account in each region is restricted. For more information, see [EIP Product Introduction](https://cloud.tencent.com/document/product/213/5733). You can get the quota information through the DescribeAddressQuota API."
+    "desc": "This API is used to apply for one or more [Elastic IP Addresses](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIPs for short).\n* An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.\n* Your EIP is associated with your Tencent Cloud account rather than an instance. It remains associated with your Tencent Cloud account until you choose to explicitly release it or your account is in arrears for more than 24 hours.\n* The maximum number of EIPs that can be applied for a Tencent Cloud account in each region is restricted. For more information, see [EIP Product Introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). You can get the quota information through the DescribeAddressQuota API."
   },
   "CheckAssistantCidr": {
     "params": [
@@ -1227,18 +1227,18 @@ INFO = {
       },
       {
         "name": "InstanceId",
-        "desc": "The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API."
+        "desc": "The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API."
       },
       {
         "name": "NetworkInterfaceId",
-        "desc": "The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817) API."
+        "desc": "The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API."
       },
       {
         "name": "PrivateIpAddress",
-        "desc": "The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817) API."
+        "desc": "The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API."
       }
     ],
-    "desc": "This API (AssociateAddress) is used to bind an [Elastic IP](https://cloud.tencent.com/document/product/213/1941) (EIP for short) to the specified private IP of an instance or ENI.\n* Essentially, binding an EIP to an instance (CVM) means binding an EIP to the primary private IP of the primary ENI on an instance.\n* When you bind an EIP to the primary private IP of the primary ENI, the previously bound public IP is automatically unbound and released.\n* To bind the EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must unbind the EIP before you can bind a new one.\n* To bind the EIP to a NAT gateway, use the API [EipBindNatGateway](https://cloud.tencent.com/document/product/215/4093)\n* EIP that is in arrears or blocked cannot be bound.\n* Only EIP in the UNBIND status can be bound."
+    "desc": "This API (AssociateAddress) is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.\n* Essentially, binding an EIP to an instance (CVM) means binding an EIP to the primary private IP of the primary ENI on an instance.\n* When you bind an EIP to the primary private IP of the primary ENI, the previously bound public IP is automatically unbound and released.\n* To bind the EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must unbind the EIP before you can bind a new one.\n* To bind the EIP to a NAT gateway, use the API [EipBindNatGateway](https://intl.cloud.tencent.com/document/product/215/4093?from_cn_redirect=1)\n* EIP that is in arrears or blocked cannot be bound.\n* Only EIP in the UNBIND status can be bound."
   },
   "DeleteCustomerGateway": {
     "params": [
@@ -1269,7 +1269,7 @@ INFO = {
         "desc": "CVM Instance ID"
       }
     ],
-    "desc": "This API is used to create a Classiclink between a VPC instance and a basic network device.\n* The VPC instance and the basic network device must be in the same region.\n* For differences between VPC and basic networks, see <a href=\"https://cloud.tencent.com/document/product/215/30720\">VPC and Basic Networks</a>."
+    "desc": "This API is used to create a Classiclink between a VPC instance and a basic network device.\n* The VPC instance and the basic network device must be in the same region.\n* For differences between VPC and basic networks, see <a href=\"https://intl.cloud.tencent.com/document/product/215/30720?from_cn_redirect=1\">VPC and Basic Networks</a>."
   },
   "DisassociateNatGatewayAddress": {
     "params": [
@@ -1415,7 +1415,7 @@ INFO = {
         "desc": "The unique ID of the bandwidth package to be deleted."
       }
     ],
-    "desc": "This API is used to delete bandwidth packages, including [device bandwidth packages](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)."
+    "desc": "This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)."
   },
   "DescribeNetDetectStates": {
     "params": [
@@ -1741,7 +1741,7 @@ INFO = {
         "desc": "The ID of the CVM instance, such as `ins-r8hr2upy`."
       }
     ],
-    "desc": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href=\"https://cloud.tencent.com/document/product/576/18527\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only CVMs in the running or shutdown state can be bound to an ENI. For more information on CVM states, see <a href=\"https://cloud.tencent.com/document/api/213/9452#InstanceStatus\">Tencent CVM Information</a>.\n* An ENI can only be bound to a CVM in a VPC instance, and the CVM must reside in the same availability zone as the subnet of the ENI."
+    "desc": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only CVMs in the running or shutdown state can be bound to an ENI. For more information on CVM states, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">Tencent CVM Information</a>.\n* An ENI can only be bound to a CVM in a VPC instance, and the CVM must reside in the same availability zone as the subnet of the ENI."
   },
   "ReplaceDirectConnectGatewayCcnRoutes": {
     "params": [
@@ -1927,7 +1927,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>\n<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>\n<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is 'true', filter only the primary ENI. If the value is 'false', filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>"
+        "desc": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) ID of the bound security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>\n<li>ip-exact-match - Boolean - (Filter condition) Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filter by tag key. See Example 2 for the detailed usage.</li>\n<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>\n<li>is-primary - Boolean - Required: no - (Filter condition) Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>"
       },
       {
         "name": "Offset",
@@ -2045,7 +2045,7 @@ INFO = {
         "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
-    "desc": "This API is used to create a security group (SecurityGroup).\n* Note the <a href=\"https://cloud.tencent.com/document/product/213/12453\">maximum number of security groups</a> per project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are \"Deny All\" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.\n* You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added."
+    "desc": "This API is used to create a security group (SecurityGroup).\n* Note the <a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a> per project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are \"Deny All\" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.\n* You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added."
   },
   "ModifyNetworkInterfaceAttribute": {
     "params": [
@@ -2281,7 +2281,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.\n<li>havip-id - String - The unique `ID` of the `HAVIP`, such as `havip-9o233uri`.</li>\n<li>havip-name - String - `HAVIP` name.</li>\n<li>vpc-id - String - The `ID` of the VPC where `HAVIP` is located.</li>\n<li>subnet-id - String - The `ID` of the subnet where `HAVIP` is located.</li>\n<li>address-ip - String - The `EIP` to which `HAVIP` is bound.</li>"
+        "desc": "Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.\nli>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li>\n<li>havip-name - String - HAVIP name.</li>\n<li>vpc-id - String - VPC ID of the HAVIP.</li>\n<li>subnet-id - String - Subnet ID of the HAVIP.</li>\n<li>vip - String - Virtual IP address of the HAVIP.</li>\n<li>address-ip - String - Bound EIP.</li>"
       },
       {
         "name": "Offset",
@@ -2335,7 +2335,7 @@ INFO = {
   },
   "DescribeAddressQuota": {
     "params": [],
-    "desc": "This API (DescribeAddressQuota) is used to query the quota information of your [Elastic IP](https://cloud.tencent.com/document/product/213/1941) (EIP) in the current region. For more information, see [EIP product introduction](https://cloud.tencent.com/document/product/213/5733)."
+    "desc": "This API (DescribeAddressQuota) is used to query the quota information of your [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP) in the current region. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1)."
   },
   "ModifyVpnGatewayAttribute": {
     "params": [
@@ -2661,7 +2661,7 @@ INFO = {
         "desc": "The unique ID list of the EIP. The unique ID of an EIP is as follows: `eip-11112222`."
       }
     ],
-    "desc": "This API (ReleaseAddresses) is used to release one or multiple [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* This operation is irreversible. Once you release an EIP, the IP address associated with the EIP no longer belongs to you.\n* Only EIPs in UNBIND status can be released."
+    "desc": "This API (ReleaseAddresses) is used to release one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).\n* This operation is irreversible. Once you release an EIP, the IP address associated with the EIP no longer belongs to you.\n* Only EIPs in UNBIND status can be released."
   },
   "DisassociateNetworkAclSubnets": {
     "params": [
@@ -2735,6 +2735,10 @@ INFO = {
       {
         "name": "Tags",
         "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
+      },
+      {
+        "name": "SubnetId",
+        "desc": "Subnet of the NAT gateway"
       }
     ],
     "desc": "This API (CreateNatGateway) is used to create a NAT gateway."
@@ -3010,7 +3014,7 @@ INFO = {
         "desc": "Whether the set EIP is a direct connection EIP. TRUE: yes. FALSE: no. Note that this parameter is available only to users who have activated the EIP direct connection function."
       }
     ],
-    "desc": "This API (ModifyAddressAttribute) is used to modify the name of an [Elastic IP](https://cloud.tencent.com/document/product/213/1941)."
+    "desc": "This API (ModifyAddressAttribute) is used to modify the name of an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1)."
   },
   "DescribeAddressTemplateGroups": {
     "params": [
@@ -3033,10 +3037,10 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://cloud.tencent.com/document/api/213/9389) API."
+        "desc": "The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9389?from_cn_redirect=1) API."
       }
     ],
-    "desc": "This API (TransformAddress) is used to switch common public IPs into [Elastic IPs](https://cloud.tencent.com/document/product/213/1941).\n* The platform limits the number of times that a user can unbind an EIP and reassign public IPs in each region per day. For more information, see [EIP product introduction](/document/product/213/1941)). The preceding quota can be obtained through the [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) API."
+    "desc": "This API (TransformAddress) is used to switch common public IPs into [Elastic IPs](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1?from_cn_redirect=1).\n* The platform limits the number of times that a user can unbind an EIP and reassign public IPs in each region per day. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1)). The preceding quota can be obtained through the [DescribeAddressQuota](https://intl.cloud.tencent.com/document/api/213/1378?from_cn_redirect=1) API."
   },
   "CreateSecurityGroupPolicies": {
     "params": [
@@ -3121,6 +3125,6 @@ INFO = {
         "desc": "Security group policy set."
       }
     ],
-    "desc": "This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.\n* Note the<a href=\"https://cloud.tencent.com/document/product/213/12453\">maximum number of security groups</a>per project in each region under each account.\n* Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.\n\nDescription:\n* `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.\n* `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* `Port`: A single port number, or a port range in the format of '8000-8010'. The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive. \n* `Action`: Values can be `ACCEPT` or `DROP`.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. 'Protocol + Port' and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent."
+    "desc": "This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.\n* Note the<a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a>per project in each region under each account.\n* Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.\n\nDescription:\n* `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.\n* `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* `Port`: A single port number, or a port range in the format of '8000-8010'. The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive. \n* `Action`: Values can be `ACCEPT` or `DROP`.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. 'Protocol + Port' and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent."
   }
 }

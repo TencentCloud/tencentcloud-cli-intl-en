@@ -9,7 +9,7 @@ INFO = {
       },
       {
         "name": "ProductName",
-        "desc": "Filter by product type. For example, “cvm” indicates Cloud Virtual Machine."
+        "desc": "Filter by product type. For example, 'cvm' indicates Cloud Virtual Machine."
       },
       {
         "name": "EventName",
@@ -237,11 +237,11 @@ INFO = {
     "params": [
       {
         "name": "Namespace",
-        "desc": "Service namespace. Different Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring API documentation of each product. For example, you can see [CVM Monitoring APIs](https://cloud.tencent.com/document/api/248/30385) for the namespace of CVM."
+        "desc": "Service namespace. Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the namespace of CVM"
       },
       {
         "name": "MetricName",
-        "desc": "Metric name. Different Tencent Cloud services have different metric names. For more information on service metric names, see the monitoring API documentation of each product. For example, you can see the [CVM Monitoring APIs](https://cloud.tencent.com/document/api/248/30385) for the metric names of CVM."
+        "desc": "Metric name. Tencent Cloud services have different metric names. For more information on metric names, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the metric names of CVM"
       }
     ],
     "desc": "This API is used to get the details of basic metrics."
@@ -315,7 +315,11 @@ INFO = {
       },
       {
         "name": "ReceiverType",
-        "desc": "Filter by recipient or recipient group. The value “user” indicates by recipient. The value “group” indicates by recipient group."
+        "desc": "Filter by recipient or recipient group. The value 'user' indicates by recipient. The value 'group' indicates by recipient group."
+      },
+      {
+        "name": "IsOpen",
+        "desc": "Filter conditions. Whether the alarm policy has been enabled or disabled"
       }
     ],
     "desc": "This API is used to get the list of basic policy alarm groups."
@@ -377,11 +381,11 @@ INFO = {
     "params": [
       {
         "name": "Namespace",
-        "desc": "Namespace. Each Tencent Cloud product has a namespace"
+        "desc": "Namespace. For detailed namespace descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation"
       },
       {
         "name": "MetricName",
-        "desc": "Metric name. For detailed metric descriptions of each Tencent Cloud product, see the corresponding [Monitoring API](https://cloud.tencent.com/document/product/248/30384) document"
+        "desc": "Metric name. For detailed metric descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation"
       },
       {
         "name": "Instances",
@@ -400,7 +404,7 @@ INFO = {
         "desc": "End time. Uses the current time by default and cannot be earlier than StartTime"
       }
     ],
-    "desc": "This API is used to get the monitoring data of a Tencent Cloud product by passing in the product's namespace, object dimension description, and monitoring metric.\nAPI call rate limit: 20 calls/sec, 1,200 calls/min.\nIf you need to call a lot of metrics and objects, there may be cases where the call fails due to the rate limit. It is recommended to spread the call requests as much as possible over time."
+    "desc": "This API is used to get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can obtain the data of up to 10 instances and up to 1,440 data points.\nThis API may fail due to the rate limit if you need to call a lot of metrics and objects. We recommended that you spread the call requests over time."
   },
   "ModifyPolicyGroup": {
     "params": [
@@ -422,7 +426,7 @@ INFO = {
       },
       {
         "name": "IsUnionRule",
-        "desc": "The “AND” and “OR” rules for metric alarms. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met."
+        "desc": "The 'AND' and 'OR' rules for metric alarms. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met."
       },
       {
         "name": "Conditions",
@@ -487,7 +491,7 @@ INFO = {
       },
       {
         "name": "IsUnionRule",
-        "desc": "The “AND” and “OR” rules for alarm metrics. The value 0 indicates “OR”, which means that an alarm will be triggered when any rule is met. The value 1 indicates “AND”, which means that an alarm will be triggered only when all rules are met."
+        "desc": "The 'AND' and 'OR' rules for alarm metrics. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met."
       }
     ],
     "desc": "This API is used to add a policy group."

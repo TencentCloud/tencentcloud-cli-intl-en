@@ -3655,6 +3655,7 @@ def doCreateNatGateway(argv, arglist):
         "PublicIpAddresses": Utils.try_to_json(argv, "--PublicIpAddresses"),
         "Zone": argv.get("--Zone"),
         "Tags": Utils.try_to_json(argv, "--Tags"),
+        "SubnetId": argv.get("--SubnetId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

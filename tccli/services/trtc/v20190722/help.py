@@ -99,7 +99,7 @@ INFO = {
         "desc": "On-Cloud MixTranscoding output layout parameters."
       }
     ],
-    "desc": "This API is used to enable On-Cloud MixTranscoding and specify the layout position of each channel of video image in the mixed video image.\n\nThere may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images into one channel, specify the position of each channel, and mix the multiple channels of audio so as to output one channel of audio/video stream for easier recording and live streaming.\n\nYou can use this API to perform the following operations:\n- Set the image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.\n- Set the image layout, i.e., positions of all channels of images. You only need to set the layout once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange the video images in the configured layout in subsequent operations.\n- Set the recording file name for future playback.\n- Set the CDN live stream ID for live streaming over CDN.\n\nCurrently, the following layout templates are supported:\n- Floating template: the entire screen will be covered by the video image of the first user who enters the room, and the video images of other users will be displayed as small images in horizontal rows from the bottom-left corner in room entry sequence. The screen can contain up to 4 lines with 4 small images each row, which float over the big image. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot.\n- 9-grid template: the screen is divided into user video images with the same dimensions. The more the users, the smaller the image dimensions. Up to 16 images are supported. If a user sends audio only, the user will still use an image spot.\n- Screen sharing template: it is suitable for video conferencing and online education. The shared screen (or camera of the anchor) is always displayed in the big image on the left of the screen, and the video images of other users are vertically displayed on the right in up to 2 columns with up to 8 small images in each column. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot."
+    "desc": "This API is used to enable on-cloud stream mix and specify the layout position of each channel of video image in the mixed video image.\n\nThere may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images into one channel, specify the position of each channel, and mix the multiple channels of audio so as to output one channel of audio/video stream for easier recording and live streaming.\n\nYou can use this API to perform the following operations:\n- Set the image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.\n- Set the image layout, i.e., positions of all channels of images. You only need to set the layout once when enabling on-cloud stream mix, and the layout engine will automatically arrange the video images in the configured layout in subsequent operations.\n- Set the recording file name for future playback.\n- Set the CDN live stream ID for live streaming over CDN.\n\nCurrently, the following layout templates are supported:\n- Floating template: the entire screen will be covered by the video image of the first user who enters the room, and the video images of other users will be displayed as small images in horizontal rows from the bottom-left corner in room entry sequence. The screen can contain up to 4 lines with 4 small images each row, which float over the big image. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot.\n- Grid template: the screen is divided into user video images with the same dimensions. The more the users, the smaller the image dimensions. Up to 16 images are supported. If a user sends audio only, the user will still use an image spot.\n- Screen sharing template: it is suitable for video conferencing and online education. The shared screen (or camera of the anchor) is always displayed in the big image on the left of the screen, and the video images of other users are vertically displayed on the right in up to 2 columns with up to 8 small images in each column. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot.\n- Picture-in-picture template: it is suitable for mixing a pair of big/small images or a big image with the audio of other users. The small image floats over the big image, and the users in the big/small images and the display position of the small image can be specified."
   },
   "DescribeRealtimeScale": {
     "params": [
@@ -163,11 +163,11 @@ INFO = {
       },
       {
         "name": "PageNumber",
-        "desc": "Page index. If it is left empty, 10 entries will be returned by default."
+        "desc": "Page index starting from 0 (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default)"
       },
       {
         "name": "PageSize",
-        "desc": "Page size. Maximum value: 100. If it is left empty, 10 entries will be returned by default."
+        "desc": "Number of entries per page (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default. Maximum value: 100)"
       }
     ],
     "desc": "This API is used to query the room list for the last 5 days according to `sdkappid`. It returns 10 calls by default and up to 100 calls at a time."
@@ -193,7 +193,7 @@ INFO = {
     "params": [
       {
         "name": "CommId",
-        "desc": "Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://cloud.tencent.com/document/product/647/44050)."
+        "desc": "Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1)."
       },
       {
         "name": "StartTime",
@@ -222,7 +222,7 @@ INFO = {
     "params": [
       {
         "name": "CommId",
-        "desc": "Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://cloud.tencent.com/document/product/647/44050)."
+        "desc": "Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1)."
       },
       {
         "name": "StartTime",

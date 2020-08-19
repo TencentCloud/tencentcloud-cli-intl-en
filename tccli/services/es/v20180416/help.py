@@ -67,6 +67,27 @@ INFO = {
     ],
     "desc": "This API is used to query all eligible instances in the current region under the current account."
   },
+  "UpdatePlugins": {
+    "params": [
+      {
+        "name": "InstanceId",
+        "desc": "Instance ID"
+      },
+      {
+        "name": "InstallPluginList",
+        "desc": "List of names of the plugins to be installed"
+      },
+      {
+        "name": "RemovePluginList",
+        "desc": "List of names of the plugins to be uninstalled"
+      },
+      {
+        "name": "ForceRestart",
+        "desc": "Whether to force restart"
+      }
+    ],
+    "desc": "This API is used to change the list of plugins."
+  },
   "CreateInstance": {
     "params": [
       {
@@ -318,7 +339,7 @@ INFO = {
       },
       {
         "name": "ScaleType",
-        "desc": ""
+        "desc": "0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart"
       }
     ],
     "desc": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail."

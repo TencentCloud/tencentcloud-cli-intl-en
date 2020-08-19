@@ -17,7 +17,7 @@ INFO = {
       },
       {
         "name": "ExclusiveSetName",
-        "desc": "Self-deployed cluster name, which is used to specify the self-deployed cluster where the service is to be created."
+        "desc": "Dedicated cluster name, which is used to specify the dedicated cluster where the service is to be created."
       },
       {
         "name": "NetTypes",
@@ -848,7 +848,7 @@ INFO = {
       },
       {
         "name": "StrategyType",
-        "desc": "Policy type. Valid values: WHITE (whitelist), BLACK (blacklist)."
+        "desc": "Policy type. Valid values: WHITE (allowlist), BLACK (blocklist)."
       },
       {
         "name": "StrategyData",

@@ -29,7 +29,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       },
       {
         "name": "FillType",
@@ -58,7 +58,7 @@ INFO = {
       },
       {
         "name": "ProcedureName",
-        "desc": "[Task flow template](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name, which should be entered if you want to perform a task flow on the generated new video."
+        "desc": "[Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name, which should be entered if you want to perform a task flow on the generated new video."
       },
       {
         "name": "OutputConfig",
@@ -78,7 +78,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:\n\n1. Clipping a file in VOD to generate a new video;\n2. Splicing multiple files in VOD to generate a new video;\n3. Clipping multiple files in VOD and then splicing the clips to generate a new video;\n4. Directly generating a new video from a stream in VOD;\n5. Clipping a stream in VOD to generate a new video;\n6. Splicing multiple streams in VOD to generate a new video;\n7. Clipping multiple streams in VOD and then splicing the clips to generate a new video.\n\nYou can also specify whether to perform a task flow for the generated new video."
@@ -87,7 +87,7 @@ INFO = {
     "params": [
       {
         "name": "MediaType",
-        "desc": "Media type. For the detailed valid values, please see [Upload Overview](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)."
+        "desc": "Media type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)."
       },
       {
         "name": "MediaName",
@@ -95,15 +95,15 @@ INFO = {
       },
       {
         "name": "CoverType",
-        "desc": "Cover type. For the detailed valid values, please see [Upload Overview](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)."
+        "desc": "Cover type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)."
       },
       {
         "name": "Procedure",
-        "desc": "Subsequent task operation on a media file, i.e., after a media file is uploaded, task flow operations will be initiated automatically. This parameter value is a task flow template name. VOD supports [creating task flow templates](/document/product/266/33819) and naming the templates."
+        "desc": "Subsequent task operation on a media file, i.e., after a media file is uploaded, task flow operations will be initiated automatically. This parameter value is a task flow template name. VOD supports [creating task flow templates](https://intl.cloud.tencent.com/document/product/266/33819?from_cn_redirect=1) and naming the templates."
       },
       {
         "name": "ExpireTime",
-        "desc": "Expiration time of a media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Expiration time of a media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       },
       {
         "name": "StorageRegion",
@@ -111,15 +111,15 @@ INFO = {
       },
       {
         "name": "ClassId",
-        "desc": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](/document/product/266/7812) API.\n<li>Default value: 0, which means \"Other\".</li>"
+        "desc": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.\n<li>Default value: 0, which means \"Other\".</li>"
       },
       {
         "name": "SourceContext",
-        "desc": "Source context, which is used to pass through the user request information. The [upload callback](/document/product/266/7830) API will return the value of this field. It can contain up to 250 characters."
+        "desc": "Source context, which is used to pass through the user request information. The [upload callback](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) API will return the value of this field. It can contain up to 250 characters."
       },
       {
         "name": "SessionContext",
-        "desc": "Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](/document/product/266/9636) API will return the value of this field. It can contain up to 1,000 characters."
+        "desc": "Session context, which is used to pass through the user request information. If the `Procedure` parameter is specified, the [task flow status change callback](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) API will return the value of this field. It can contain up to 1,000 characters."
       },
       {
         "name": "ExtInfo",
@@ -127,10 +127,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "* This API is used to apply for uploading a media file (and cover file) to VOD and obtain the metadata of file storage (including upload path and upload signature) for subsequent use by the uploading API.\n* For the detailed upload process, please see [Overview of Upload from Client](/document/product/266/9759)."
+    "desc": "* This API is used to apply for uploading a media file (and cover file) to VOD and obtain the metadata of file storage (including upload path and upload signature) for subsequent use by the uploading API.\n* For the detailed upload process, please see [Overview of Upload from Client](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1)."
   },
   "DeleteAnimatedGraphicsTemplate": {
     "params": [
@@ -140,7 +140,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom animated image generating template."
@@ -161,10 +161,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to get the list of video content analysis templates based on unique template ID. The returned result includes all eligible custom and [preset video content analysis templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF)."
+    "desc": "This API is used to get the list of video content analysis templates based on unique template ID. The returned result includes all eligible custom and [preset video content analysis templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF)."
   },
   "PullEvents": {
     "params": [
@@ -174,10 +174,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "* This API is used to get event notifications from the business server through [reliable callback](https://cloud.tencent.com/document/product/266/33779#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83);\n* The API is in long polling mode, i.e., if there is an unconsumed event on the server, it will be immediately returned to the requester; otherwise, the backend will suspend the request until a new event is generated;\n* The request can be suspended for 5 seconds at most. It is recommended that the requester set the timeout period to 10 seconds.\n* If the API returns an event, the caller must call the [ConfirmEvents](https://cloud.tencent.com/document/product/266/33434) API within <font color=\"red\">30 seconds</font> to confirm that the event notification has been processed; otherwise, the event notification will be pulled again after <font color=\"red\">30 seconds</font>."
+    "desc": "* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83);\n* The API is in long polling mode, i.e., if there is an unconsumed event on the server, it will be immediately returned to the requester; otherwise, the backend will suspend the request until a new event is generated;\n* The request can be suspended for 5 seconds at most. It is recommended that the requester set the timeout period to 10 seconds.\n* If the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/33434?from_cn_redirect=1) API within <font color=\"red\">30 seconds</font> to confirm that the event notification has been processed; otherwise, the event notification will be pulled again after <font color=\"red\">30 seconds</font>."
   },
   "ProcessMediaByProcedure": {
     "params": [
@@ -187,7 +187,7 @@ INFO = {
       },
       {
         "name": "ProcedureName",
-        "desc": "[Task flow template](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name."
+        "desc": "[Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name."
       },
       {
         "name": "TasksPriority",
@@ -211,7 +211,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to initiate a processing task for a VOD video with a task flow template.\nThere are two ways to create a task flow template:\n1. Create and modify a task flow template in the console;\n2. Create a task flow template through the task flow template API."
@@ -224,7 +224,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom transcoding template."
@@ -237,7 +237,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID."
@@ -246,15 +246,15 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
+        "desc": "Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)."
       },
       {
         "name": "EndTime",
-        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date."
+        "desc": "End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The end date must be after the start date."
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the length of audited video content in seconds per day within the specified time range.\n\n1. Statistics on the length of audited video content for the last 365 days can be queried.\n2. The query time range cannot be more than 90 days."
@@ -283,7 +283,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to perform paginated queries of keyword sample information by use case, keyword, and tag."
@@ -292,7 +292,7 @@ INFO = {
     "params": [
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the storage capacity usage and number of files."
@@ -333,7 +333,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom video content analysis template.\n\nNote: templates with an ID below 10000 are preset and cannot be modified."
@@ -346,7 +346,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom task flow template.  "
@@ -359,7 +359,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete an adaptive bitrate streaming template."
@@ -396,7 +396,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create an adaptive bitrate streaming template. Up to 100 templates can be created."
@@ -421,7 +421,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the list of sampled screencapturing templates and supports paged queries by filters."
@@ -462,7 +462,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom animated image generating template. Up to 16 templates can be created."
@@ -479,7 +479,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify the category of a media file."
@@ -504,7 +504,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "* This API is used to query the task list;\n* If there are many data entries in the list, one single call of the API may not be able to pull the entire list. The `ScrollToken` parameter can be used to pull the list in batches;\n* Only tasks in the last three days (72 hours) can be queried."
@@ -537,7 +537,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to reset a custom task flow template.  "
@@ -546,11 +546,11 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
+        "desc": "Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)."
       },
       {
         "name": "EndTime",
-        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The end date must be after the start date."
+        "desc": "End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The end date must be after the start date."
       },
       {
         "name": "DataType",
@@ -566,7 +566,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin. In this case, only 1-day granularity is supported."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin. In this case, only 1-day granularity is supported."
       }
     ],
     "desc": "This API is used to query the CDN statistics of VOD such as traffic and bandwidth.\n   1. Only CDN usage data for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days.\n   3. The time granularity of usage data can be specified, including 5-minute, 1-hour, and 1-day.\n   4. Traffic refers to the total traffic within the query time granularity, while bandwidth the peak bandwidth."
@@ -607,7 +607,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom transcoding template. Up to 100 templates can be created."
@@ -660,7 +660,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom image sprite generating template."
@@ -673,10 +673,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "* A category can be deleted only if it has no subcategories and associated media files;\n* Otherwise, [delete the media files](/document/product/266/31764) and subcategories first before deleting the category."
+    "desc": "* A category can be deleted only if it has no subcategories and associated media files;\n* Otherwise, [delete the media files](https://intl.cloud.tencent.com/document/product/266/31764?from_cn_redirect=1) and subcategories first before deleting the category."
   },
   "ExecuteFunction": {
     "params": [
@@ -702,7 +702,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it."
@@ -711,11 +711,11 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       },
       {
         "name": "EndTime",
-        "desc": "End date in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date."
+        "desc": "End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date."
       },
       {
         "name": "Type",
@@ -723,7 +723,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the information of video processing usage within the specified time range.\n   1. Statistics on video processing for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days."
@@ -768,7 +768,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom animated image generating template."
@@ -797,7 +797,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to compose a media file, including:\n\n1. Clipping a media file to generate a new media file;\n2. Clipping and splicing multiple media files to generate a new media file;\n3. Clipping and splicing the media streams of multiple media files to generate a new media file;"
@@ -842,7 +842,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom video content audit template. Up to 50 templates can be created."
@@ -883,7 +883,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       },
       {
         "name": "FillType",
@@ -900,7 +900,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom video content analysis template.\n\nNote: templates with an ID below 10000 are preset and cannot be deleted."
@@ -917,7 +917,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "1. This API can get multiple types of information of multiple media files, including:\n    1. Basic information (basicInfo): media name, category, playback address, cover image, etc.\n    2. Metadata (metaData): size, duration, video stream information, audio stream information, etc.\n    3. Information of the transcoding result (transcodeInfo): addresses, video stream parameters, and audio stream parameters of the media files with various specifications generated by transcoding a media file.\n    4. Information of the animated image generating result (animatedGraphicsInfo): information of an animated image (such as .gif) generated from a video.\n    5. Information of a sampled screenshot (sampleSnapshotInfo): information of a sampled screenshot of a video.\n    6. Information of an image sprite (imageSpriteInfo): information of an image sprite generated from a video.\n    7. Information of a time point screenshot (snapshotByTimeOffsetInfo): information of a time point screenshot of a video.\n    8. Information of a timestamp (keyFrameDescInfo): information of a timestamp set for a video.\n    9. Information of transcoding to adaptive bitrate streaming (adaptiveDynamicStreamingInfo): specification, encryption type, container format, etc.\n2. The return packet can be configured to only contain certain information."
@@ -926,15 +926,15 @@ INFO = {
     "params": [
       {
         "name": "StreamId",
-        "desc": "[LVB code](https://cloud.tencent.com/document/product/267/5959) of a stream."
+        "desc": "[LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream."
       },
       {
         "name": "StartTime",
-        "desc": "Start time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
+        "desc": "Start time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)."
       },
       {
         "name": "EndTime",
-        "desc": "End time of stream clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I)."
+        "desc": "End time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)."
       },
       {
         "name": "IsPersistence",
@@ -942,11 +942,11 @@ INFO = {
       },
       {
         "name": "ExpireTime",
-        "desc": "Storage expiration time of video generated by persistent clipping in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire."
+        "desc": "Storage expiration time of video generated by persistent clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). `9999-12-31T23:59:59Z` means `never expire`. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter will be valid only when `IsPersistence` is 1. By default, the video will never expire."
       },
       {
         "name": "Procedure",
-        "desc": "VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://cloud.tencent.com/document/product/266/9759). This parameter will be valid only when `IsPersistence` is 1."
+        "desc": "VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1). This parameter will be valid only when `IsPersistence` is 1."
       },
       {
         "name": "MetaDataRequired",
@@ -962,16 +962,16 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "Live clipping means that during a live broadcast (before it ends), you can select a segment of previous live broadcast content to generate a new video (in HLS format) in real time and share it immediately or store it persistently.\n\nVOD supports two live clipping modes:\n- Persistent clipping: in this mode, the clipped video is saved as an independent video file with a `FileId`, which is suitable for **persistently storing** highlights;\n- Temporary clipping: in this mode, the clipped video is part of the LVB recording file with no `FileId`, which is suitable for **temporarily sharing** highlights;\n\nNote:\n- The live clipping feature can be used only when [time shifting](https://cloud.tencent.com/document/product/267/32742) has been enabled for the target live stream.\n- Live clipping is performed based on the m3u8 file generated by LVB recording, so its minimum clipping granularity is one ts segment rather than at or below the second level.\n\n\n### Persistent clipping\nIn persistent clipping mode, the clipped video is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the source LVB recording video (even if the source video is deleted, the clipped video will not be affected in any way). It can be further processed (transcoded, published on WeChat, etc.).\n\nAn example is as follows: for a complete football match, the source LVB recording video may be up to 2 hours in length. You want to store this video for only 2 months for the purpose of cost savings. However, you want to specify a longer retention period for the \"highlights\" video created by live clipping and perform additional VOD operations on it such as transcoding and release on WeChat. In this case, you need to choose the persistent clipping mode of live clipping.\n\nThe advantage of persistent clipping is that the clipped video has a lifecycle independent of the source recording video and can be managed independently and stored persistently.\n\n### Temporary clipping\nIn temporary clipping mode, the clipped video (m3u8 file) shares the same ts segments with the LVB recording video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the LVB recording video; therefore, if the LVB recording video is deleted, it cannot be played back.\n\nFor temporary clipping, as the clipping result is not an independent video, it will not be included in VOD's media asset management (for example, it will not be counted in the total videos in the console), and no video processing operations can be separately performed on it, such as transcoding and release on WeChat.\n\nThe advantage of temporary clipping is that the clipping operation is very \"lightweight\" and does not incur additional storage fees. However, the clipped video has the same lifecycle as the source recording video and cannot be further transcoded or processed."
+    "desc": "Live clipping means that during a live broadcast (before it ends), you can select a segment of previous live broadcast content to generate a new video (in HLS format) in real time and share it immediately or store it persistently.\n\nVOD supports two live clipping modes:\n- Persistent clipping: in this mode, the clipped video is saved as an independent video file with a `FileId`, which is suitable for **persistently storing** highlights;\n- Temporary clipping: in this mode, the clipped video is part of the LVB recording file with no `FileId`, which is suitable for **temporarily sharing** highlights;\n\nNote:\n- The live clipping feature can be used only when [time shifting](https://intl.cloud.tencent.com/document/product/267/32742?from_cn_redirect=1) has been enabled for the target live stream.\n- Live clipping is performed based on the m3u8 file generated by LVB recording, so its minimum clipping granularity is one ts segment rather than at or below the second level.\n\n\n### Persistent clipping\nIn persistent clipping mode, the clipped video is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the source LVB recording video (even if the source video is deleted, the clipped video will not be affected in any way). It can be further processed (transcoded, published on WeChat, etc.).\n\nAn example is as follows: for a complete football match, the source LVB recording video may be up to 2 hours in length. You want to store this video for only 2 months for the purpose of cost savings. However, you want to specify a longer retention period for the \"highlights\" video created by live clipping and perform additional VOD operations on it such as transcoding and release on WeChat. In this case, you need to choose the persistent clipping mode of live clipping.\n\nThe advantage of persistent clipping is that the clipped video has a lifecycle independent of the source recording video and can be managed independently and stored persistently.\n\n### Temporary clipping\nIn temporary clipping mode, the clipped video (m3u8 file) shares the same ts segments with the LVB recording video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the LVB recording video; therefore, if the LVB recording video is deleted, it cannot be played back.\n\nFor temporary clipping, as the clipping result is not an independent video, it will not be included in VOD's media asset management (for example, it will not be counted in the total videos in the console), and no video processing operations can be separately performed on it, such as transcoding and release on WeChat.\n\nThe advantage of temporary clipping is that the clipping operation is very \"lightweight\" and does not incur additional storage fees. However, the clipped video has the same lifecycle as the source recording video and cannot be further transcoded or processed."
   },
   "PullUpload": {
     "params": [
       {
         "name": "MediaUrl",
-        "desc": "URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.\nFor more information about supported extensions, please see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B?from_cn_redirect=1)."
+        "desc": "URL of the media to be pulled. Supported media format: HLS; unsupported media format: DASH.\nFor more information about supported extensions, please see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)."
       },
       {
         "name": "MediaName",
@@ -983,19 +983,19 @@ INFO = {
       },
       {
         "name": "Procedure",
-        "desc": "Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://cloud.tencent.com/document/product/266/9759)."
+        "desc": "Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1)."
       },
       {
         "name": "ExpireTime",
-        "desc": "Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I)."
+        "desc": "Expiration time of media file in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)."
       },
       {
         "name": "StorageRegion",
-        "desc": "Specifies upload region. This is only applicable to users that have special requirements for the upload region:\n<li>If it is left empty, the upload region is your [default region](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4);</li>\n<li>If it is specified, please make sure that the upload region has been [enabled for storage](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li>"
+        "desc": "Specifies upload region. This is only applicable to users that have special requirements for the upload region:\n<li>If it is left empty, the upload region is your [default region](https://intl.cloud.tencent.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4);</li>\n<li>If it is specified, please make sure that the upload region has been [enabled for storage](https://intl.cloud.tencent.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li>"
       },
       {
         "name": "ClassId",
-        "desc": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [CreateClass](https://cloud.tencent.com/document/product/266/7812) API."
+        "desc": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API."
       },
       {
         "name": "SessionContext",
@@ -1011,7 +1011,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       },
       {
         "name": "SourceContext",
@@ -1060,7 +1060,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       },
       {
         "name": "FillType",
@@ -1077,7 +1077,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a superplayer configuration.  \n*Note: preset player configurations cannot be deleted.*"
@@ -1102,7 +1102,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to get the list of task flow template details by task flow template name."
@@ -1135,10 +1135,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)."
+    "desc": "This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)."
   },
   "ParseStreamingManifest": {
     "params": [
@@ -1181,7 +1181,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom task flow template. Up to 50 templates can be created."
@@ -1194,7 +1194,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "1. This API is used to prefetch a list of specified URLs.\n2. The URL domain names must have already been registered with VOD.\n3. Up to 20 URLs can be specified in one request."
@@ -1211,7 +1211,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "* This API is used to delete a media file and its corresponding files generated by video processing (such as transcoded videos, image sprites, screenshots, and videos published on WeChat);\n* The transcoded video files or video files published on WeChat can be deleted separately for a specified video ID."
@@ -1244,11 +1244,11 @@ INFO = {
       },
       {
         "name": "Domain",
-        "desc": "Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used."
+        "desc": "Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used."
       },
       {
         "name": "Scheme",
-        "desc": "Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used. Other valid values:\n<li>HTTP;</li>\n<li>HTTPS.</li>"
+        "desc": "Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used. Other valid values:\n<li>HTTP;</li>\n<li>HTTPS.</li>"
       },
       {
         "name": "Comment",
@@ -1256,7 +1256,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a superplayer configuration. Up to 100 configurations can be created."
@@ -1289,7 +1289,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify figure sample information based on figure ID, such as modifying the name and description and adding/deleting/resetting a face or tag. There should be at least one image left after the face deletion operation; otherwise, please use the reset operation."
@@ -1302,7 +1302,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom video content audit template."
@@ -1339,7 +1339,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom video content analysis template. Up to 50 templates can be created."
@@ -1364,7 +1364,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the list of time point screencapturing templates and supports paged queries by filters."
@@ -1409,7 +1409,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to initiate a processing task for an audio/video media file from a URL, including:\n\n1. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n2. Intelligent content analysis (tag, category, cover, and frame-specific tag);\n3. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).\n\nIf the event notification is used, its type is [Task Flow Status Change](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1)."
@@ -1454,7 +1454,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom transcoding template."
@@ -1475,10 +1475,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to get the list of video content audit templates based on unique template ID. The return result includes all eligible custom and [preset video content audit templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)."
+    "desc": "This API is used to get the list of video content audit templates based on unique template ID. The return result includes all eligible custom and [preset video content audit templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)."
   },
   "ModifyWatermarkTemplate": {
     "params": [
@@ -1520,7 +1520,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom watermarking template. The watermark type cannot be modified."
@@ -1529,11 +1529,11 @@ INFO = {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       },
       {
         "name": "EndTime",
-        "desc": "End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       },
       {
         "name": "Interval",
@@ -1545,7 +1545,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin."
       }
     ],
     "desc": "This API is used to query the used VOD storage capacity in bytes within the specified time range.\n   1. Only storage capacity usage data for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days;\n   3. The query time range at the minute granularity cannot be more than 5 days;\n   4. The query time range at the hour granularity cannot be more than 10 days."
@@ -1558,7 +1558,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete keyword samples in batches."
@@ -1620,7 +1620,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom watermarking template. Up to 1,000 templates can be created."
@@ -1653,7 +1653,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the information of figure samples and supports paginated queries by figure ID, name, and tag."
@@ -1666,7 +1666,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom video content recognition template."
@@ -1704,7 +1704,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the list of animated image generating templates and supports paged queries by filters."
@@ -1721,7 +1721,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.\n  It takes about 5-10 minutes for a forbidding/unblocking operation to take effect across the entire network."
@@ -1758,7 +1758,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       },
       {
         "name": "FillType",
@@ -1795,11 +1795,11 @@ INFO = {
       },
       {
         "name": "Domain",
-        "desc": "Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used."
+        "desc": "Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used."
       },
       {
         "name": "Scheme",
-        "desc": "Scheme used for playback. Valid values:\n<li>Default: the scheme configured in [Default Distribution Configuration](https://cloud.tencent.com/document/product/266/33373) will be used;</li>\n<li>HTTP;</li>\n<li>HTTPS.</li>"
+        "desc": "Scheme used for playback. Valid values:\n<li>Default: the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used;</li>\n<li>HTTP;</li>\n<li>HTTPS.</li>"
       },
       {
         "name": "Comment",
@@ -1807,7 +1807,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a superplayer configuration."
@@ -1824,10 +1824,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "* This API is used to categorize media assets for management;\n* It does not affect the categories of existing media assets. If you want to modify the category of a media asset, call the [ModifyMediaInfo](/document/product/266/31762) API.\n* There can be up to 4 levels of categories.\n* One category can have up to 500 subcategories under it."
+    "desc": "* This API is used to categorize media assets for management;\n* It does not affect the categories of existing media assets. If you want to modify the category of a media asset, call the [ModifyMediaInfo](https://intl.cloud.tencent.com/document/product/266/31762?from_cn_redirect=1) API.\n* There can be up to 4 levels of categories.\n* One category can have up to 500 subcategories under it."
   },
   "CreateWordSamples": {
     "params": [
@@ -1841,7 +1841,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create keyword samples in batches for video processing operations such as content recognition and audit by using the OCR and ASR technologies."
@@ -1866,7 +1866,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the list of transcoding to adaptive bitrate streaming templates and supports paged queries by filters."
@@ -1887,7 +1887,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed."
@@ -1912,7 +1912,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the list of image sprite generating templates and supports paged queries by filters."
@@ -1921,7 +1921,7 @@ INFO = {
     "params": [
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "* This API is used to get the information of all categories."
@@ -1946,7 +1946,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query custom watermarking templates and supports paged queries by filters."
@@ -1995,7 +1995,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom image sprite generating template. Up to 16 templates can be created."
@@ -2016,10 +2016,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "This API is used to get the list of video content recognition templates based on unique template ID. The return result includes all eligible custom and [preset video content recognition templates](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)."
+    "desc": "This API is used to get the list of video content recognition templates based on unique template ID. The return result includes all eligible custom and [preset video content recognition templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)."
   },
   "DescribeSuperPlayerConfigs": {
     "params": [
@@ -2041,7 +2041,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to query the list of superplayer configurations and supports paginated queries by filters."
@@ -2058,7 +2058,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file."
@@ -2067,7 +2067,7 @@ INFO = {
     "params": [
       {
         "name": "EventHandles",
-        "desc": "Event handler, i.e., the `EventSet. EventHandle` field in the output parameters of the [event notification pulling](/document/product/266/33433) API.\nArray length limit: 16."
+        "desc": "Event handler, i.e., the `EventSet. EventHandle` field in the output parameters of the [event notification pulling](https://intl.cloud.tencent.com/document/product/266/33433?from_cn_redirect=1) API.\nArray length limit: 16."
       },
       {
         "name": "ExtInfo",
@@ -2075,10 +2075,10 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
-    "desc": "* After the `PullEvents` API is called to get an event, this API must be called to confirm that the message has been received;\n* After the event handler is obtained, the validity period of waiting for confirmation is 30 seconds. If the wait exceeds 30 seconds, a parameter error will be reported (4000);\n* For more information, please see the [reliable callback](https://cloud.tencent.com/document/product/266/33779#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) of event notification."
+    "desc": "* After the `PullEvents` API is called to get an event, this API must be called to confirm that the message has been received;\n* After the event handler is obtained, the validity period of waiting for confirmation is 30 seconds. If the wait exceeds 30 seconds, a parameter error will be reported (4000);\n* For more information, please see the [reliable callback](https://intl.cloud.tencent.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) of event notification."
   },
   "ModifyAIRecognitionTemplate": {
     "params": [
@@ -2132,7 +2132,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom video content recognition template."
@@ -2169,7 +2169,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify an adaptive bitrate streaming template."
@@ -2190,19 +2190,19 @@ INFO = {
       },
       {
         "name": "StartTime",
-        "desc": "Start time in the creation time range.\n<li>After or at the start time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>"
+        "desc": "Start time in the creation time range.\n<li>After or at the start time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>"
       },
       {
         "name": "EndTime",
-        "desc": "End time in the creation time range.\n<li>Before the end time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://cloud.tencent.com/document/product/266/11732#I).</li>"
+        "desc": "End time in the creation time range.\n<li>Before the end time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>"
       },
       {
         "name": "SourceType",
-        "desc": "Media file source. For valid values, please see [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)."
+        "desc": "Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData)."
       },
       {
         "name": "StreamId",
-        "desc": "[LVB code](https://cloud.tencent.com/document/product/267/5959) of a stream."
+        "desc": "[LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream."
       },
       {
         "name": "Vid",
@@ -2226,7 +2226,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to search for media information and supports filtering and sorting the returned results in many ways. It can:\n- Fuzzily search by media file name or description.\n- Retrieve media files by category and tag.\n    - Specify the `ClassIds` category set (please see the input parameters) and return the media files in any category in the set. For example, assuming that there are categories of Movies, TV Series, and Variety Shows, and there are subcategories of History, Action, and Romance in the category of Movies, if Movies and TV Series are specified in `ClassIds`, then all the subcategories under Movies and TV Series will be returned; however, if History and Action are specified in `ClassIds`, only the media files in those two subcategories will be returned.\n    - Specify the `Tags` tag set (please see the input parameters) and return the media files with any tag in the set. For example, assuming that there are tags of ACG, Drama, and YTPMV, if ACG and YTPMV are specified in Tags, then any media files with either tag will be retrieved.\n- Filter media files from a specified source (`Source`) (please see the input parameters).\n- Filter LVB recording media files by LVB push code and `Vid` (please see the input parameters).\n- Filter media files by the creation time range.\n- Mix and match any filters above to retrieve the media files that meet all the specified criteria. For example, you can filter the media files with the tag of \"Drama\" in the category of \"Movies\" created between December 1, 2018 and December 8, 2018.\n- Sort the results and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).\n\n<div id=\"maxResultsDesc\">Upper limit of returned results:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of search results on one single page. Note: if both of them use the default value, this API will return up to 10 results.</b>\n- <b>Up to 5,000 search results can be returned, and excessive ones will not be displayed. If there are too many search results, you are recommended to use more specified filters to narrow down the search results.</b>"
@@ -2239,7 +2239,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom watermarking template."
@@ -2252,7 +2252,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a figure sample based on figure ID."
@@ -2265,7 +2265,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom time point screencapturing template."
@@ -2278,7 +2278,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete a custom sampled screencapturing template."
@@ -2295,7 +2295,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to publish a VOD video on WeChat Mini Program for playback in the WeChat Mini Program player."
@@ -2316,7 +2316,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to clip an HLS video by time period.\n\nNote: the clipped video shares the same ts segments with the source video, and only a new m3u8 file will be generated. Deleting the source video will also delete the clipped video."
@@ -2345,7 +2345,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology."
@@ -2407,7 +2407,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify a custom video content audit template."
@@ -2416,7 +2416,7 @@ INFO = {
     "params": [
       {
         "name": "FileId",
-        "desc": "Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](/document/product/266/7830) or [VOD Console](https://console.cloud.tencent.com/vod/media)."
+        "desc": "Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media)."
       },
       {
         "name": "MediaProcessTask",
@@ -2456,7 +2456,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to initiate a processing task for an audio/video media file in VOD, including:\n1. Video transcoding (with watermark);\n2. Animated image generating;\n3. Time point screencapturing;\n4. Sampled screencapturing;\n5. Image sprite generating;\n6. Cover generating by screencapturing;\n7. Adaptive bitrate streaming (with encryption);\n8. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n9. Intelligent content analysis (tag, category, cover, and frame-specific tag);\n10. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object)."
@@ -2509,7 +2509,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to create a custom video content recognition template. Up to 50 templates can be created."
@@ -2534,7 +2534,7 @@ INFO = {
       },
       {
         "name": "ExpireTime",
-        "desc": "Media file expiration time in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I). The value `9999-12-31T23:59:59Z` indicates that the media file never expires. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted."
+        "desc": "Media file expiration time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The value `9999-12-31T23:59:59Z` indicates that the media file never expires. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted."
       },
       {
         "name": "CoverData",
@@ -2566,7 +2566,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "[Subapplication](/document/product/266/14574) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, and video cover."
@@ -2579,7 +2579,7 @@ INFO = {
       },
       {
         "name": "SubAppId",
-        "desc": "ID of a [subapplication](/document/product/266/14574) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+        "desc": "ID of a [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
       }
     ],
     "desc": "This API is used to delete an image sprite generating template."

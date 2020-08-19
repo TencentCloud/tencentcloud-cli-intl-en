@@ -35,18 +35,22 @@ INFO = {
     ],
     "desc": "This API is used to query the list of users associated with a user group."
   },
-  "CreateGroup": {
+  "PutRolePermissionsBoundary": {
     "params": [
       {
-        "name": "GroupName",
-        "desc": "User Group name"
+        "name": "PolicyId",
+        "desc": "Policy ID"
       },
       {
-        "name": "Remark",
-        "desc": "User Group description"
+        "name": "RoleId",
+        "desc": "Role ID (either it or the role name must be entered)"
+      },
+      {
+        "name": "RoleName",
+        "desc": "Role name (either it or the role ID must be entered)"
       }
     ],
-    "desc": "This API is used to create a user group."
+    "desc": "This API is used to set a role permission boundary."
   },
   "DeleteServiceLinkedRole": {
     "params": [
@@ -186,6 +190,19 @@ INFO = {
       }
     ],
     "desc": "This API (DeletePolicy) is used to delete a policy."
+  },
+  "DeleteRolePermissionsBoundary": {
+    "params": [
+      {
+        "name": "RoleId",
+        "desc": "Role ID (either it or the role name must be entered)"
+      },
+      {
+        "name": "RoleName",
+        "desc": "Role name (either it or the role ID must be entered)"
+      }
+    ],
+    "desc": "This API is used to delete a role permission boundary."
   },
   "DeletePolicyVersion": {
     "params": [
@@ -355,18 +372,14 @@ INFO = {
     ],
     "desc": "This API is used to query sub-users."
   },
-  "AttachGroupPolicy": {
+  "DeleteUserPermissionsBoundary": {
     "params": [
       {
-        "name": "PolicyId",
-        "desc": "Policy ID"
-      },
-      {
-        "name": "AttachGroupId",
-        "desc": "User Group ID"
+        "name": "TargetUin",
+        "desc": "Sub-account `Uin`"
       }
     ],
-    "desc": "This API (AttachGroupPolicy) is used to associate a policy with a user group."
+    "desc": "This API is used to delete a user permission boundary."
   },
   "ListAttachedGroupPolicies": {
     "params": [
@@ -385,26 +398,18 @@ INFO = {
     ],
     "desc": "This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group."
   },
-  "ListGroupsForUser": {
+  "PutUserPermissionsBoundary": {
     "params": [
       {
-        "name": "Uid",
-        "desc": "Sub-user UID"
+        "name": "TargetUin",
+        "desc": "Sub-account `Uin`"
       },
       {
-        "name": "Rp",
-        "desc": "Number of entries per page; default is 20"
-      },
-      {
-        "name": "Page",
-        "desc": "Page number; default is 1"
-      },
-      {
-        "name": "SubUin",
-        "desc": "Sub-account UIN"
+        "name": "PolicyId",
+        "desc": "Policy ID"
       }
     ],
-    "desc": "This API is used to list user groups associated with a user."
+    "desc": "This API is used to set a user permission boundary."
   },
   "GetServiceLinkedRoleDeletionStatus": {
     "params": [
@@ -433,18 +438,35 @@ INFO = {
     ],
     "desc": "This API is used to query user group details."
   },
-  "GetPolicyVersion": {
+  "CreateGroup": {
     "params": [
       {
-        "name": "PolicyId",
-        "desc": "Policy ID"
+        "name": "GroupName",
+        "desc": "User Group name"
       },
       {
-        "name": "VersionId",
-        "desc": "Policy version ID"
+        "name": "Remark",
+        "desc": "User Group description"
       }
     ],
-    "desc": "This API is used to query policy version details."
+    "desc": "This API is used to create a user group."
+  },
+  "UpdateAssumeRolePolicy": {
+    "params": [
+      {
+        "name": "PolicyDocument",
+        "desc": "Policy document"
+      },
+      {
+        "name": "RoleId",
+        "desc": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`"
+      },
+      {
+        "name": "RoleName",
+        "desc": "Role name, used to specify a role. Input either `RoleId` or `RoleName`"
+      }
+    ],
+    "desc": "This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role."
   },
   "SetDefaultPolicyVersion": {
     "params": [
@@ -502,11 +524,11 @@ INFO = {
     "params": [
       {
         "name": "PolicyId",
-        "desc": "Policy ID"
+        "desc": "Policy ID. Either `PolicyId` or `PolicyName` must be entered"
       },
       {
         "name": "PolicyName",
-        "desc": "Policy Name"
+        "desc": "Policy name. Either `PolicyName` or `PolicyId` must be entered"
       },
       {
         "name": "Description",
@@ -514,7 +536,7 @@ INFO = {
       },
       {
         "name": "PolicyDocument",
-        "desc": "Policy documentation, for example: `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://cloud.tencent.com/document/product/598/36221)."
+        "desc": "Policy documentation, for example: `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1)."
       },
       {
         "name": "Alias",
@@ -687,7 +709,7 @@ INFO = {
         "desc": "Role name"
       }
     ],
-    "desc": "This API is used to modify a role’s login permissions."
+    "desc": "This API is used to modify a role's login permissions."
   },
   "AttachUserPolicy": {
     "params": [
@@ -711,6 +733,40 @@ INFO = {
     ],
     "desc": "This API is used to get the list of policy versions."
   },
+  "ListGroupsForUser": {
+    "params": [
+      {
+        "name": "Uid",
+        "desc": "Sub-user UID"
+      },
+      {
+        "name": "Rp",
+        "desc": "Number of entries per page; default is 20"
+      },
+      {
+        "name": "Page",
+        "desc": "Page number; default is 1"
+      },
+      {
+        "name": "SubUin",
+        "desc": "Sub-account UIN"
+      }
+    ],
+    "desc": "This API is used to list user groups associated with a user."
+  },
+  "AttachGroupPolicy": {
+    "params": [
+      {
+        "name": "PolicyId",
+        "desc": "Policy ID"
+      },
+      {
+        "name": "AttachGroupId",
+        "desc": "User Group ID"
+      }
+    ],
+    "desc": "This API (AttachGroupPolicy) is used to associate a policy with a user group."
+  },
   "UpdateGroup": {
     "params": [
       {
@@ -728,22 +784,18 @@ INFO = {
     ],
     "desc": "This API is used to update a user group."
   },
-  "UpdateAssumeRolePolicy": {
+  "GetPolicyVersion": {
     "params": [
       {
-        "name": "PolicyDocument",
-        "desc": "Policy document"
+        "name": "PolicyId",
+        "desc": "Policy ID"
       },
       {
-        "name": "RoleId",
-        "desc": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`"
-      },
-      {
-        "name": "RoleName",
-        "desc": "Role name, used to specify a role. Input either `RoleId` or `RoleName`"
+        "name": "VersionId",
+        "desc": "Policy version ID"
       }
     ],
-    "desc": "This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role."
+    "desc": "This API is used to query policy version details."
   },
   "CreatePolicy": {
     "params": [
@@ -753,7 +805,7 @@ INFO = {
       },
       {
         "name": "PolicyDocument",
-        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://cloud.tencent.com/document/product/598/36221) API"
+        "desc": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API"
       },
       {
         "name": "Description",

@@ -46,6 +46,10 @@ INFO = {
       {
         "name": "FaultReportContactNumber",
         "desc": "Fault reporting contact number."
+      },
+      {
+        "name": "SignLaw",
+        "desc": "Whether the connection applicant has signed the service agreement."
       }
     ],
     "desc": "This API is used to modify connection attributes."
@@ -157,16 +161,16 @@ INFO = {
         "desc": "ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs)."
       },
       {
-        "name": "Location",
-        "desc": "Local IDC location."
-      },
-      {
         "name": "PortType",
         "desc": "Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX."
       },
       {
         "name": "CircuitCode",
         "desc": "Circuit code of connection, which is provided by the ISP or connection provider."
+      },
+      {
+        "name": "Location",
+        "desc": "Local IDC location."
       },
       {
         "name": "Bandwidth",
@@ -207,6 +211,10 @@ INFO = {
       {
         "name": "FaultReportContactNumber",
         "desc": "Fault reporting contact number."
+      },
+      {
+        "name": "SignLaw",
+        "desc": "Whether the connection applicant has signed the service agreement. Default value: true."
       }
     ],
     "desc": "This API is used to apply for a connection.\nWhen calling this API, please note that:\nYou need to complete identity verification for your account; otherwise, you cannot apply for a connection;\nIf there is any connection in arrears under your account, you cannot apply for more connections."
