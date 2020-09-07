@@ -90,13 +90,13 @@ INFO = {
         "desc": "Recording stream parameter. The following parameters are supported currently:\nrecord_interval: recording interval in seconds. Value range: 1800-7200.\nstorage_time: recording file storage duration in seconds.\nExample: record_interval=3600&storage_time=2592000.\nNote: the parameter needs to be URL-encoded.\nIn both scheduled and real-time video recording modes, this parameter is valid."
       }
     ],
-    "desc": "- Prerequisites\n  1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n  2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://cloud.tencent.com/document/product/266/2838).\n\n- Mode description\n  This API supports two recording modes:\n  1. Scheduled recording mode **(default mode)**.\n    The start time and end time need to be passed in, according to which the recording task will start and end automatically. Before the set end time expires (provided that `StopLiveRecord` is not called to terminate the task prematurely), the recording task is valid and will be started even after the push is interrupted and restarted multiple times.\n  2. Real-time video recording mode.\n    The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.\n\n- Precautions\n  1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and calls by different start/end time values may result in repeated recording tasks and thus incur additional recording fees.\n  2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of AAC are supported.\n  3. In order to avoid malicious or unintended frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.\n  4. This calling method does not support recording streams outside Mainland China for the time being."
+    "desc": "- Prerequisites\n  1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n  2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2838?from_cn_redirect=1).\n\n- Mode description\n  This API supports two recording modes:\n  1. Scheduled recording mode **(default mode)**.\n    The start time and end time need to be passed in, according to which the recording task will start and end automatically. Before the set end time expires (provided that `StopLiveRecord` is not called to terminate the task prematurely), the recording task is valid and will be started even after the push is interrupted and restarted multiple times.\n  2. Real-time video recording mode.\n    The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.\n\n- Precautions\n  1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and calls by different start/end time values may result in repeated recording tasks and thus incur additional recording fees.\n  2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of AAC are supported.\n  3. In order to avoid malicious or unintended frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.\n  4. This calling method does not support recording streams outside Mainland China for the time being."
   },
   "UpdateLiveWatermark": {
     "params": [
       {
         "name": "WatermarkId",
-        "desc": "Watermark ID.\nGet the watermark ID in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call."
+        "desc": "Watermark ID.\nGet the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call."
       },
       {
         "name": "PictureUrl",
@@ -141,7 +141,7 @@ INFO = {
       },
       {
         "name": "SnapshotInterval",
-        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-600s."
+        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-300s."
       },
       {
         "name": "Width",
@@ -161,7 +161,7 @@ INFO = {
       },
       {
         "name": "CosBucket",
-        "desc": "COS bucket name."
+        "desc": "COS bucket name.\nNote: the value of `CosBucket` cannot contain `-[appid]`."
       },
       {
         "name": "CosRegion",
@@ -235,10 +235,10 @@ INFO = {
       },
       {
         "name": "TemplateId",
-        "desc": "Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](/document/product/267/30154) API."
+        "desc": "Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API."
       }
     ],
-    "desc": "To create a watermarking rule, you need to first call the [AddLiveWatermark](/document/product/267/30154) API to add a watermark and bind the returned watermark ID to the stream."
+    "desc": "To create a watermarking rule, you need to first call the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API to add a watermark and bind the returned watermark ID to the stream."
   },
   "DescribeLiveStreamEventList": {
     "params": [
@@ -308,17 +308,17 @@ INFO = {
         "desc": "Special control parameter for stream mix. If there are no special needs, leave it empty."
       }
     ],
-    "desc": "This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.\nNote: currently, up to 16 streams can be mixed.\nBest practice: https://cloud.tencent.com/document/product/267/45566"
+    "desc": "This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.\nNote: currently, up to 16 streams can be mixed.\nBest practice: https://intl.cloud.tencent.com/document/product/267/45566?from_cn_redirect=1"
   },
   "DescribeHttpStatusInfoList": {
     "params": [
       {
         "name": "StartTime",
-        "desc": "Start time (Beijing time),\nIn the format of `yyyy-mm-dd HH:MM:SS`.\n`StartTime` cannot be more than 3 months ago."
+        "desc": "Start time (Beijing time).\nFormat: yyyy-mm-dd HH:MM:SS."
       },
       {
         "name": "EndTime",
-        "desc": "End time (Beijing time),\nIn the format of `yyyy-mm-dd HH:MM:SS`.\nNote: `EndTime` and `StartTime` only support querying data for the last day."
+        "desc": "End time (Beijing time).\nFormat: yyyy-mm-dd HH:MM:SS.\nNote: data in the last 3 months can be queried and the query period is up to 1 day."
       },
       {
         "name": "PlayDomains",
@@ -422,7 +422,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call.\n2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](/document/product/267/32641) API."
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.\n2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API is used to delete a transcoding template."
@@ -559,7 +559,7 @@ INFO = {
         "desc": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default."
       }
     ],
-    "desc": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](/document/product/267/32629) API and bind the watermark ID to the stream."
+    "desc": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API and bind the watermark ID to the stream."
   },
   "DeleteLiveWatermarkRule": {
     "params": [
@@ -603,7 +603,7 @@ INFO = {
       },
       {
         "name": "CosBucket",
-        "desc": "COS bucket name."
+        "desc": "COS bucket name.\nNote: the value of `CosBucket` cannot contain `-[appid]`."
       },
       {
         "name": "CosRegion",
@@ -615,7 +615,7 @@ INFO = {
       },
       {
         "name": "SnapshotInterval",
-        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-600s."
+        "desc": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-300s."
       },
       {
         "name": "Width",
@@ -631,14 +631,14 @@ INFO = {
       },
       {
         "name": "CosPrefix",
-        "desc": "COS bucket folder prefix."
+        "desc": "COS Bucket folder prefix.\nIf no value is entered, the default value\n`/{Year}-{Month}-{Day}`\nwill be used."
       },
       {
         "name": "CosFileName",
-        "desc": "COS filename."
+        "desc": "COS filename.\nIf no value is entered, the default value \n`{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}`\nwill be used."
       }
     ],
-    "desc": "After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](/document/product/267/32625) API and bind the template ID to the stream.\n<br>Screencapturing-related document: [LVB Screencapturing](/document/product/267/32737)."
+    "desc": "After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API and bind the template ID to the stream.\n<br>Screencapturing-related document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1)."
   },
   "DescribeLiveStreamOnlineList": {
     "params": [
@@ -669,7 +669,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API."
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API deletes a callback template."
@@ -696,7 +696,7 @@ INFO = {
     "params": [
       {
         "name": "WatermarkId",
-        "desc": "Watermark ID.\nWatermark ID obtained in the returned value of the [AddLiveWatermark](/document/product/267/30154) API call.\nWatermark ID returned by the `DescribeLiveWatermarks` API."
+        "desc": "Watermark ID.\nWatermark ID obtained in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.\nWatermark ID returned by the `DescribeLiveWatermarks` API."
       }
     ],
     "desc": "This API is used to delete a watermark."
@@ -758,7 +758,7 @@ INFO = {
       },
       {
         "name": "ExpireTime",
-        "desc": "Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The configuration will expire after 7 days by default and can last up to 7 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The configuration will expire after 7 days by default and can last up to 7 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       }
     ],
     "desc": "This API is used to set the delay time for a stream.\nNote: if you want to set delayed playback before pushing, you need to do so 5 minutes in advance.\nCurrently, this API only supports stream granularity, and the feature supporting domain name and application granularities will be available in the future.\nUse case: for important live streams, you can set delayed playback in advance to avoid contingency issues.\n"
@@ -869,7 +869,7 @@ INFO = {
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5."
+        "desc": "Bitrate compression ratio of top speed codec video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5."
       }
     ],
     "desc": "This API is used to modify the transcoding template configuration."
@@ -1013,30 +1013,34 @@ INFO = {
       },
       {
         "name": "StreamBeginNotifyUrl",
-        "desc": "Stream starting callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+        "desc": "Stream starting callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
       },
       {
         "name": "StreamEndNotifyUrl",
-        "desc": "Interruption callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+        "desc": "Interruption callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
       },
       {
         "name": "RecordNotifyUrl",
-        "desc": "Recording callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+        "desc": "Recording callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
       },
       {
         "name": "SnapshotNotifyUrl",
-        "desc": "Screencapturing callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32744)."
+        "desc": "Screencapturing callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
       },
       {
         "name": "PornCensorshipNotifyUrl",
-        "desc": "Porn detection callback URL,\nProtocol document: [Event Message Notification](/document/product/267/32741)."
+        "desc": "Porn detection callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1)."
       },
       {
         "name": "CallbackKey",
-        "desc": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](/document/product/267/32744)."
+        "desc": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
+      },
+      {
+        "name": "StreamMixNotifyUrl",
+        "desc": "Stream mixing callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
       }
     ],
-    "desc": "This API is used to create a callback template. After a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](/document/product/267/32638) API to bind the template ID to the domain name/path.\n<br>Callback protocol document: [Event Message Notification](/document/product/267/32744)."
+    "desc": "After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API and bind the template ID to the domain name/path.\n<br>Callback protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\nNote: at least enter one callback URL."
   },
   "ResumeLiveStream": {
     "params": [
@@ -1059,7 +1063,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](/document/product/267/32637) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](/document/product/267/32632) API."
+        "desc": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API is used to get a single callback template."
@@ -1113,7 +1117,7 @@ INFO = {
       },
       {
         "name": "CallbackKey",
-        "desc": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](/document/product/267/32744)."
+        "desc": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
       }
     ],
     "desc": "This API is used to modify a callback template."
@@ -1167,10 +1171,10 @@ INFO = {
       },
       {
         "name": "AppName",
-        "desc": "Push path, which is the same as the `AppName` in the playback address, subject to exact match, and valid if `StreamName` is passed in.\nIf this parameter is left empty, full playback data will be queried.\nNote: to query by `AppName`, you need to submit a ticket for application."
+        "desc": "Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.\nIf it is left empty, the full playback data will be queried.\nNote: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect."
       }
     ],
-    "desc": "This API is used to query the playback data and supports querying playback details by stream name and aggregated data by playback domain name. The data has a delay of about 4 minutes.\nNote: to query by `AppName`, you need to submit a ticket for application."
+    "desc": "This API is used to query the playback data. It supports querying the playback details by stream name and aggregated data by playback domain name. Data in the last 4 minutes or so cannot be queried due to delay.\nNote: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect."
   },
   "CreateLiveCert": {
     "params": [
@@ -1209,7 +1213,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID.\nTemplate ID returned by the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call."
+        "desc": "Template ID.\nTemplate ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call."
       }
     ],
     "desc": "This API is used to get a single screencapturing template."
@@ -1273,7 +1277,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID.\nNote: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](/document/product/267/32646) API call."
+        "desc": "Template ID.\nNote: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call."
       }
     ],
     "desc": "This API is used to get a single transcoding template."
@@ -1419,7 +1423,7 @@ INFO = {
         "desc": "Template ID."
       }
     ],
-    "desc": "To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](/document/product/267/32637) API to create a callback template and bind the returned template ID to the domain name/path.\n<br>Callback protocol-related document: [Event Message Notification](/document/product/267/32744)."
+    "desc": "To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API to create a callback template and bind the returned template ID to the domain name/path.\n<br>Callback protocol-related document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1)."
   },
   "BindLiveDomainCert": {
     "params": [
@@ -1504,7 +1508,7 @@ INFO = {
       },
       {
         "name": "ResumeTime",
-        "desc": "Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The duration of forbidding is 7 days by default and can be up to 90 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+        "desc": "Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The duration of forbidding is 7 days by default and can be up to 90 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
       },
       {
         "name": "Reason",
@@ -1579,7 +1583,7 @@ INFO = {
         "desc": "Stream name.\nNote: If the parameter is a non-empty string, the rule will be only applicable to the particular stream."
       }
     ],
-    "desc": "To create a recording rule, you need to first call the [CreateLiveRecordTemplate](/document/product/267/32614) API to create a recording template and bind the returned template ID to the stream.\n<br>Recording-related document: [LVB Recording](/document/product/267/32739)."
+    "desc": "To create a recording rule, you need to first call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/32614?from_cn_redirect=1) API to create a recording template and bind the returned template ID to the stream.\n<br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1)."
   },
   "DescribeLiveWatermark": {
     "params": [
@@ -1633,7 +1637,7 @@ INFO = {
         "desc": "Mp3 recording parameter, which is set when Mp3 recording is enabled."
       }
     ],
-    "desc": "After a recording template is created and a template ID is successfully returned, you need to call the [CreateLiveRecordRule](/document/product/267/32615) API and bind the template ID to the stream.\n<br>Recording-related document: [LVB Recording](/document/product/267/32739)."
+    "desc": "After a recording template is created and a template ID is successfully returned, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API and bind the template ID to the stream.\n<br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1)."
   },
   "DescribeBillBandwidthAndFluxList": {
     "params": [
@@ -1692,7 +1696,7 @@ INFO = {
         "desc": "Designates an existing template ID."
       }
     ],
-    "desc": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](/document/product/267/32646) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736)."
+    "desc": "To create a transcoding rule, you need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API to create a transcoding template and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1)."
   },
   "DescribeLiveWatermarkRules": {
     "params": [],
@@ -1709,7 +1713,7 @@ INFO = {
         "desc": "Task ID returned by the `CreateLiveRecord` API."
       }
     ],
-    "desc": "Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](/document/product/267/30146) API."
+    "desc": "Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](https://intl.cloud.tencent.com/document/product/267/30146?from_cn_redirect=1) API."
   },
   "CreateLiveSnapshotRule": {
     "params": [
@@ -1730,7 +1734,7 @@ INFO = {
         "desc": "Stream name.\nNote: if this parameter is a non-empty string, the rule will take effect only for the particular stream."
       }
     ],
-    "desc": "This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](/document/product/267/32624) API to create a screencapturing template to bind the returned template ID to the stream.\n<br>Screencapturing document: [LVB Screencapturing](/document/product/267/32737).\nNote: only one screencapturing template can be associated with one domain name."
+    "desc": "This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API to create a screencapturing template to bind the returned template ID to the stream.\n<br>Screencapturing document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).\nNote: only one screencapturing template can be associated with one domain name."
   },
   "DescribeProIspPlaySumInfoList": {
     "params": [
@@ -1744,11 +1748,11 @@ INFO = {
       },
       {
         "name": "StatType",
-        "desc": "Statistics type. Valid values: Province, Isp, CountryOrArea."
+        "desc": "Statistics type. Valid values: Province (district), Isp (ISP), CountryOrArea (country or region)."
       },
       {
         "name": "PlayDomains",
-        "desc": "If this parameter is left empty, full data will be queried."
+        "desc": "Playback domain name list. If it is left empty, it refers to all playback domain names."
       },
       {
         "name": "PageNum",
@@ -1943,10 +1947,10 @@ INFO = {
       },
       {
         "name": "AdaptBitratePercent",
-        "desc": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5."
+        "desc": "Bitrate compression ratio of top speed codec video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5."
       }
     ],
-    "desc": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](/document/product/267/32647) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](/document/product/267/32736)."
+    "desc": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1)."
   },
   "DescribeLiveCerts": {
     "params": [],
@@ -1995,7 +1999,7 @@ INFO = {
     "params": [
       {
         "name": "TemplateId",
-        "desc": "Template ID.\n1. Get from the returned value of the [CreateLiveSnapshotTemplate](/document/product/267/32624) API call.\n2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](/document/product/267/32619) API."
+        "desc": "Template ID.\n1. Get from the returned value of the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.\n2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API is used to delete a screencapturing template."

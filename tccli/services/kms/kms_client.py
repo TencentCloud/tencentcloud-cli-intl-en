@@ -292,6 +292,38 @@ def doGenerateDataKey(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doGetServiceStatus(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetServiceStatus", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetServiceStatusRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetServiceStatus(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doAsymmetricSm2Decrypt(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -400,6 +432,9 @@ def doDescribeWhiteBoxKeyDetails(argv, arglist):
 
     param = {
         "KeyStatus": Utils.try_to_json(argv, "--KeyStatus"),
+        "Offset": Utils.try_to_json(argv, "--Offset"),
+        "Limit": Utils.try_to_json(argv, "--Limit"),
+        "TagFilters": Utils.try_to_json(argv, "--TagFilters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -460,13 +495,14 @@ def doBindCloudResource(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetServiceStatus(argv, arglist):
+def doArchiveKey(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("GetServiceStatus", g_param[OptionsDefine.Version])
+        show_help("ArchiveKey", g_param[OptionsDefine.Version])
         return
 
     param = {
+        "KeyId": argv.get("--KeyId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -480,9 +516,42 @@ def doGetServiceStatus(argv, arglist):
     client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetServiceStatusRequest()
+    model = models.ArchiveKeyRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.GetServiceStatus(model)
+    rsp = client.ArchiveKey(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCancelKeyArchive(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("CancelKeyArchive", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "KeyId": argv.get("--KeyId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CancelKeyArchiveRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.CancelKeyArchive(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -916,6 +985,7 @@ def doListKeyDetail(argv, arglist):
         "SearchKeyAlias": argv.get("--SearchKeyAlias"),
         "Origin": argv.get("--Origin"),
         "KeyUsage": argv.get("--KeyUsage"),
+        "TagFilters": Utils.try_to_json(argv, "--TagFilters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1510,6 +1580,38 @@ def doDescribeWhiteBoxDecryptKey(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doGetRegions(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GetRegions", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.KmsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetRegionsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GetRegions(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 CLIENT_MAP = {
     "v20190118": kms_client_v20190118,
 
@@ -1529,12 +1631,14 @@ ACTION_MAP = {
     "GetPublicKey": doGetPublicKey,
     "DisableKey": doDisableKey,
     "GenerateDataKey": doGenerateDataKey,
+    "GetServiceStatus": doGetServiceStatus,
     "AsymmetricSm2Decrypt": doAsymmetricSm2Decrypt,
     "CancelKeyDeletion": doCancelKeyDeletion,
     "GetKeyRotationStatus": doGetKeyRotationStatus,
     "DescribeWhiteBoxKeyDetails": doDescribeWhiteBoxKeyDetails,
     "BindCloudResource": doBindCloudResource,
-    "GetServiceStatus": doGetServiceStatus,
+    "ArchiveKey": doArchiveKey,
+    "CancelKeyArchive": doCancelKeyArchive,
     "ReEncrypt": doReEncrypt,
     "EnableWhiteBoxKeys": doEnableWhiteBoxKeys,
     "ListAlgorithms": doListAlgorithms,
@@ -1565,6 +1669,7 @@ ACTION_MAP = {
     "UpdateKeyDescription": doUpdateKeyDescription,
     "DisableKeys": doDisableKeys,
     "DescribeWhiteBoxDecryptKey": doDescribeWhiteBoxDecryptKey,
+    "GetRegions": doGetRegions,
 
 }
 

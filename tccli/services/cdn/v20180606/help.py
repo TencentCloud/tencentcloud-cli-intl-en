@@ -86,7 +86,7 @@ INFO = {
     "params": [
       {
         "name": "Offset",
-        "desc": "Offset for paginated queries. Default value: 0 (the first page)."
+        "desc": "Offset for paginated queries. Default value: 0"
       },
       {
         "name": "Limit",
@@ -285,11 +285,11 @@ INFO = {
       },
       {
         "name": "Isp",
-        "desc": "Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified an ISP, you cannot specify a province or an IP protocol for the same query."
+        "desc": "Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified an ISP, you cannot specify a province or an IP protocol for the same query."
       },
       {
         "name": "District",
-        "desc": "Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query."
+        "desc": "Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query."
       },
       {
         "name": "Protocol",
@@ -368,7 +368,7 @@ INFO = {
       },
       {
         "name": "Query",
-        "desc": "Content to be queried. For more information, please visit https://cloud.tencent.com/document/product/614/16982"
+        "desc": "Content to be queried. For more information, please visit https://intl.cloud.tencent.com/document/product/614/16982?from_cn_redirect=1"
       },
       {
         "name": "Context",
@@ -496,7 +496,7 @@ INFO = {
         "desc": "List of IPs to be queried"
       }
     ],
-    "desc": "This API is used to query CDN IP ownership."
+    "desc": "This API is used to query the CDN IP ownership.\n(Note: the request rate limit of this API is subject to the limit in CDN, which is 200 calls/10 minutes)."
   },
   "PurgePathCache": {
     "params": [
@@ -666,6 +666,18 @@ INFO = {
       {
         "name": "UserAgentFilter",
         "desc": "UA blocklist/allowlist Configuration"
+      },
+      {
+        "name": "AccessControl",
+        "desc": "Access control"
+      },
+      {
+        "name": "UrlRedirect",
+        "desc": "URL redirect configuration"
+      },
+      {
+        "name": "AccessPort",
+        "desc": "Access port configuration"
       }
     ],
     "desc": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration."
@@ -784,6 +796,10 @@ INFO = {
       {
         "name": "Area",
         "desc": "Destination region for the prefetch\n`mainland`: prefetches resources to nodes within Mainland China\n`overseas`: prefetches resources to nodes outside Mainland China\n`global`: prefetches resources to global nodes\nDefault value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region."
+      },
+      {
+        "name": "Layer",
+        "desc": "If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node"
       }
     ],
     "desc": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1,000 URLs can be prefetched per day either within or outside Mainland China, and up to 20 tasks can be submitted at a time.\nThis API is in beta test and not fully available yet. Please stay tuned."
@@ -888,7 +904,7 @@ INFO = {
       },
       {
         "name": "District",
-        "desc": "Country/region to be queried if `Area` is `overseas`\nFor district or country/region codes, please see [District Code Mappings](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)\nIf this parameter is left empty, all countries/regions will be queried"
+        "desc": "Country/region to be queried if `Area` is `overseas`\nFor district or country/region codes, please see [District Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)\nIf this parameter is left empty, all countries/regions will be queried"
       },
       {
         "name": "Metric",

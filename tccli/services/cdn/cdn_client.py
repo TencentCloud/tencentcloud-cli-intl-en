@@ -872,6 +872,9 @@ def doUpdateDomainConfig(argv, arglist):
         "OriginPullTimeout": Utils.try_to_json(argv, "--OriginPullTimeout"),
         "AwsPrivateAccess": Utils.try_to_json(argv, "--AwsPrivateAccess"),
         "UserAgentFilter": Utils.try_to_json(argv, "--UserAgentFilter"),
+        "AccessControl": Utils.try_to_json(argv, "--AccessControl"),
+        "UrlRedirect": Utils.try_to_json(argv, "--UrlRedirect"),
+        "AccessPort": Utils.try_to_json(argv, "--AccessPort"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1055,6 +1058,7 @@ def doPushUrlsCache(argv, arglist):
         "Urls": Utils.try_to_json(argv, "--Urls"),
         "UserAgent": argv.get("--UserAgent"),
         "Area": argv.get("--Area"),
+        "Layer": argv.get("--Layer"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

@@ -13,7 +13,7 @@ INFO = {
       },
       {
         "name": "RunInstancesForNode",
-        "desc": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://cloud.tencent.com/document/product/213/15730)."
+        "desc": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1)."
       },
       {
         "name": "ClusterBasicSettings",
@@ -76,7 +76,7 @@ INFO = {
       },
       {
         "name": "RunInstancePara",
-        "desc": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://cloud.tencent.com/document/product/213/15730) API."
+        "desc": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API."
       },
       {
         "name": "InstanceAdvancedSettings",
@@ -110,7 +110,7 @@ INFO = {
     "params": [
       {
         "name": "ClusterId",
-        "desc": "The cluster ID, obtained through the [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) API."
+        "desc": "The cluster ID, obtained through the [DescribeClusters](https://intl.cloud.tencent.com/document/api/457/31862?from_cn_redirect=1) API."
       },
       {
         "name": "AutoScalingGroupIds",
@@ -174,11 +174,11 @@ INFO = {
       },
       {
         "name": "AutoScalingGroupPara",
-        "desc": "The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry."
+        "desc": "The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry."
       },
       {
         "name": "LaunchConfigurePara",
-        "desc": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**."
+        "desc": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**."
       },
       {
         "name": "InstanceAdvancedSettings",
@@ -203,7 +203,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. For fields and other information, see [the DescribeInstances API](https://cloud.tencent.com/document/api/213/15728). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID."
+        "desc": "Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID."
       },
       {
         "name": "VagueIpAddress",
@@ -215,11 +215,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API is used to query one or more existing node and determine whether they can be added to a cluster."
@@ -300,11 +300,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "Cluster-associated scaling group list"
@@ -484,6 +484,10 @@ INFO = {
       {
         "name": "RouteTableName",
         "desc": "Route table name."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filtering conditions, which are optional. Currently, only filtering by GatewayIP is supported."
       }
     ],
     "desc": "This API is used to query cluster routes."

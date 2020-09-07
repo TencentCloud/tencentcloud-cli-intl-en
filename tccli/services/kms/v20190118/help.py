@@ -154,6 +154,18 @@ INFO = {
       {
         "name": "KeyStatus",
         "desc": "Filter: key status. 0: disabled, 1: enabled"
+      },
+      {
+        "name": "Offset",
+        "desc": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate."
+      },
+      {
+        "name": "TagFilters",
+        "desc": "Tag filter condition"
       }
     ],
     "desc": "This API is used to get the white-box key list."
@@ -183,6 +195,19 @@ INFO = {
       }
     ],
     "desc": "This API is used to batch prohibit the use of CMK."
+  },
+  "ArchiveKey": {
+    "params": [
+      {
+        "name": "KeyId",
+        "desc": "Unique CMK ID"
+      }
+    ],
+    "desc": "This API is used to archive keys. The archived keys can only be used for decryption but not encryption."
+  },
+  "GetServiceStatus": {
+    "params": [],
+    "desc": "Used to query whether the user has activated the KMS service."
   },
   "EncryptByWhiteBox": {
     "params": [
@@ -345,7 +370,7 @@ INFO = {
       },
       {
         "name": "KeyState",
-        "desc": "Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only."
+        "desc": "Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only."
       },
       {
         "name": "SearchKeyAlias",
@@ -358,6 +383,10 @@ INFO = {
       {
         "name": "KeyUsage",
         "desc": "Filter by `KeyUsage` of CMKs. Valid values: `ALL` (filter all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`."
+      },
+      {
+        "name": "TagFilters",
+        "desc": "Tag filter condition"
       }
     ],
     "desc": "Get the master key list details according to the specified Offset and Limit."
@@ -541,9 +570,14 @@ INFO = {
     ],
     "desc": "This API is used to modify the description of the specified CMK. CMKs in `PendingDelete` status cannot be modified."
   },
-  "GetServiceStatus": {
-    "params": [],
-    "desc": "Used to query whether the user has activated the KMS service."
+  "CancelKeyArchive": {
+    "params": [
+      {
+        "name": "KeyId",
+        "desc": "Unique CMK ID"
+      }
+    ],
+    "desc": "This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`."
   },
   "DescribeWhiteBoxDecryptKey": {
     "params": [
@@ -553,5 +587,9 @@ INFO = {
       }
     ],
     "desc": "This API is used to get a white-box decryption key."
+  },
+  "GetRegions": {
+    "params": [],
+    "desc": "This API is used to obtain the list of supported regions."
   }
 }

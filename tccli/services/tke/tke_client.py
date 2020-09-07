@@ -1038,6 +1038,7 @@ def doDescribeClusterRoutes(argv, arglist):
 
     param = {
         "RouteTableName": argv.get("--RouteTableName"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

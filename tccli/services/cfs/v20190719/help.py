@@ -5,7 +5,7 @@ INFO = {
     "params": [
       {
         "name": "Zone",
-        "desc": "AZ name, such as \"ap-beijing-1\". For the list of regions and AZs, please see [Overview](https://cloud.tencent.com/document/product/582/13225)"
+        "desc": "AZ name, such as \"ap-beijing-1\". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)"
       },
       {
         "name": "NetInterface",
@@ -115,11 +115,11 @@ INFO = {
     "params": [
       {
         "name": "Name",
-        "desc": "Permission group name, which can contain 1–64 Chinese characters, letters, numbers, underscores, or dashes"
+        "desc": "Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes"
       },
       {
         "name": "DescInfo",
-        "desc": "Permission group description, which can contain 1–255 characters"
+        "desc": "Permission group description, which can contain 1-255 characters"
       }
     ],
     "desc": "This API is used to create a permission group."
@@ -137,7 +137,7 @@ INFO = {
     "params": [
       {
         "name": "FsLimit",
-        "desc": "File system capacity limit in GB. Value range: 0–1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity."
+        "desc": "File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity."
       },
       {
         "name": "FileSystemId",
@@ -179,7 +179,7 @@ INFO = {
       },
       {
         "name": "Priority",
-        "desc": "Rule priority. Value range: 1–100. 1 represents the highest priority, while 100 the lowest"
+        "desc": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest"
       },
       {
         "name": "RWPermission",
@@ -225,7 +225,7 @@ INFO = {
       },
       {
         "name": "Priority",
-        "desc": "Rule priority. Value range: 1–100. 1 represents the highest priority, while 100 the lowest"
+        "desc": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest"
       }
     ],
     "desc": "This API is used to update a permission rule."
@@ -238,11 +238,11 @@ INFO = {
       },
       {
         "name": "Name",
-        "desc": "Permission group name, which can contain 1–64 Chinese characters, letters, numbers, underscores, or dashes"
+        "desc": "Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes"
       },
       {
         "name": "DescInfo",
-        "desc": "Permission group description, which can contain 1–255 characters"
+        "desc": "Permission group description, which can contain 1-255 characters"
       }
     ],
     "desc": "This API is used to update the information of a permission group."
@@ -259,6 +259,15 @@ INFO = {
       }
     ],
     "desc": "This API is used to delete a permission group rule."
+  },
+  "DescribeCfsFileSystemClients": {
+    "params": [
+      {
+        "name": "FileSystemId",
+        "desc": "File system ID"
+      }
+    ],
+    "desc": "This API is used to query clients on which this file system is mounted. To do so, the client needs to have the CFS monitoring plugin installed."
   },
   "DescribeCfsServiceStatus": {
     "params": [],

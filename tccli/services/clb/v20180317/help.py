@@ -118,6 +118,10 @@ INFO = {
       {
         "name": "TargetType",
         "desc": "Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group."
+      },
+      {
+        "name": "SessionType",
+        "desc": "Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners. If this field is not specified, the default session persistence type will be used."
       }
     ],
     "desc": "This API is used to create a listener for a CLB instance.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful."
@@ -334,6 +338,10 @@ INFO = {
       {
         "name": "Tags",
         "desc": "Tags a CLB instance when purchasing it"
+      },
+      {
+        "name": "ClientToken",
+        "desc": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed."
       }
     ],
     "desc": "This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.\nNote: (1) To apply for a CLB instance in the specified AZ and cross-AZ disaster recovery, please [submit a ticket](https://console.cloud.tencent.com/workorder/category); (2) Currently, IPv6 is supported only in Beijing, Shanghai, and Guangzhou regions.\nThis is an async API. After it is returned successfully, you can call the DescribeLoadBalancers API to query the status of the instance (such as creating and normal) to check whether it is successfully created."
@@ -460,6 +468,31 @@ INFO = {
       }
     ],
     "desc": "This API is used to bind target groups to CLB listeners (layer-4 protocol) or forwarding rules (layer-7 protocol).\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
+  },
+  "DescribeLoadBalancersDetail": {
+    "params": [
+      {
+        "name": "Limit",
+        "desc": "Number of CLB instance lists returned. Default value: 20; maximum value: 100."
+      },
+      {
+        "name": "Offset",
+        "desc": "Starting offset of the CLB instance list returned. Default value: 0"
+      },
+      {
+        "name": "Fields",
+        "desc": "List of fields to be returned. The `LoadBalancerId` and `LoadBalancerName` are returned by default."
+      },
+      {
+        "name": "TargetType",
+        "desc": "Target type. Valid values: NODE and GROUP. If the list of fields contains `TargetId`, `TargetAddress`, `TargetPort`, `TargetWeight` and other fields, `Target` of the target group or non-target group must be exported."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition of querying lists describing CLB instance details:\n<li> loadbalancer-id - String - Required: no - (Filter condition) CLB instance ID, such as \"lb-12345678\". </li>\n<li> project-id - String - Required: no - (Filter condition) Project ID, such as \"0\" and \"123\".</li>\n<li> network - String - Required: no - (Filter condition) Network type of the CLB instance, such as \"Public\" and \"Private\".</li>\n<li> vip - String - Required: no - (Filter condition) CLB instance VIP, such as \"1.1.1.1\" and \"2204::22:3\". </li>\n<li> target-ip - String - Required: no - (Filter condition) Private IP of the target real servers, such as\"1.1.1.1\" and \"2203::214:4\".</li>\n<li> vpcid - String - Required: no - (Filter condition) Identifier of the VPC instance to which the CLB instance belongs, such as \"vpc-12345678\".</li>\n<li> zone - String - Required: no - (Filter condition) Availability zone where the CLB instance resides, such as \"ap-guangzhou-1\".</li>\n<li> tag-key - String - Required: no - (Filter condition) Tag key of the CLB instance, such as \"name\".</li>\n<li> tag:* - String - Required: no - (Filter condition) CLB instance tag, followed by tag key after the colon ':'. For example, use {\"Name\": \"tag:name\",\"Values\": [\"zhangsan\", \"lisi\"]} to filter the tag key “name” with the tag value “zhangsan” and “lisi”.</li>\n<li> fuzzy-search - String - Required: no - (Filter condition) Fuzzy search for CLB instance VIP and CLB instance name, such as \"1.1\".</li>"
+      }
+    ],
+    "desc": "This API is used to query CLB instance details, including listener, rules, and target real servers."
   },
   "DeregisterTargetGroupInstances": {
     "params": [
@@ -630,7 +663,7 @@ INFO = {
   },
   "DescribeClsLogSet": {
     "params": [],
-    "desc": "This API is used to obtain the CLB exclusive logset of a user."
+    "desc": "This API is used to get the CLB dedicated logset."
   },
   "DeleteRewrite": {
     "params": [
@@ -1127,6 +1160,10 @@ INFO = {
       }
     ],
     "desc": "This API is used to modify the forwarding weights of real servers bound to a CLB listener in batches. It supports layer-4 and layer-7 CLB listeners but not Classic CLB.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful."
+  },
+  "DescribeQuota": {
+    "params": [],
+    "desc": "This API is used to query various quotas in the current region."
   },
   "DescribeTargetHealth": {
     "params": [

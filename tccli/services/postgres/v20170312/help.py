@@ -308,6 +308,10 @@ INFO = {
       {
         "name": "NeedSupportIpv6",
         "desc": "Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)"
+      },
+      {
+        "name": "TagList",
+        "desc": "The information of tags to be associated with instances. This parameter is left empty by default."
       }
     ],
     "desc": "This API is used to create one or more TencentDB for PostgreSQL instances."
@@ -337,7 +341,7 @@ INFO = {
     "params": [
       {
         "name": "Filters",
-        "desc": "Filter. Valid values: db-instance-id, db-instance-name"
+        "desc": "Filter condition. Valid values: db-instance-id, db-instance-name, db-project-id, db-pay-mode, db-tag-key."
       },
       {
         "name": "Limit",

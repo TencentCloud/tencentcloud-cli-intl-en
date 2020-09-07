@@ -9,10 +9,10 @@ INFO = {
       },
       {
         "name": "Callback",
-        "desc": "Callback address of the real-time recording task result. If it is specified as null, the set callback address is deleted. The callback address only supports the HTTP or HTTPS protocol, and therefore the callback address must start with http:// or https://."
+        "desc": "Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1)."
       }
     ],
-    "desc": "This API is used to set the real-time recording callback address."
+    "desc": "This API is used to set the real-time recording callback address. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1)."
   },
   "SetTranscodeCallbackKey": {
     "params": [
@@ -22,10 +22,10 @@ INFO = {
       },
       {
         "name": "CallbackKey",
-        "desc": "Authentication key of the document transcoding callback. It is a string of up to 64 characters. If it is specified as null, the existing callback authentication key is deleted."
+        "desc": "Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1)."
       }
     ],
-    "desc": "This API is used to set the authentication key for the document transcoding callback."
+    "desc": "This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1)."
   },
   "DescribeTranscode": {
     "params": [
@@ -89,7 +89,7 @@ INFO = {
       },
       {
         "name": "GroupId",
-        "desc": "IM group ID of the whiteboard. By default, it is the same as the room ID."
+        "desc": "(Disused) IM group ID of the whiteboard. By default, it is the same as the room ID."
       },
       {
         "name": "Concat",
@@ -110,6 +110,10 @@ INFO = {
       {
         "name": "AudioFileNeeded",
         "desc": "Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3."
+      },
+      {
+        "name": "RecordControl",
+        "desc": "A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc."
       }
     ],
     "desc": "This API is used to start a real-time recording task."
@@ -148,10 +152,10 @@ INFO = {
       },
       {
         "name": "Callback",
-        "desc": "Callback address for the document transcoding progress. If it is specified as null, the set callback address is deleted. The callback address only supports the HTTP or HTTPS protocol, and therefore the callback address must start with http:// or https://."
+        "desc": "Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.\nFor more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1)."
       }
     ],
-    "desc": "This API is used to set the document transcoding callback address."
+    "desc": "This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1)."
   },
   "SetOnlineRecordCallbackKey": {
     "params": [
@@ -161,10 +165,10 @@ INFO = {
       },
       {
         "name": "CallbackKey",
-        "desc": "Authentication key of the real-time recording callback. It is a string of up to 64 characters. If it is specified as null, the existing callback authentication key is deleted."
+        "desc": "Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1)."
       }
     ],
-    "desc": "This API is used to set the authentication key for the real-time recording callback."
+    "desc": "This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1)."
   },
   "ResumeOnlineRecord": {
     "params": [

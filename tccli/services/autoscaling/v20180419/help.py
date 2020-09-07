@@ -90,11 +90,11 @@ INFO = {
       },
       {
         "name": "Ipv6AddressCount",
-        "desc": ""
+        "desc": "The number of IPv6 addresses that an instance has. Valid values: 0 and 1. Default value: 0."
       },
       {
         "name": "MultiZoneSubnetPolicy",
-        "desc": ""
+        "desc": "Multi-availability zone/subnet policy. Valid values: PRIORITY and EQUALITY. Default value: PRIORITY.\n<br><li> PRIORITY: creates instances based on the priority determined by the order in the availability zone/subnet list. If an instance can be successfully created in the availability zone/subnet of the highest priority, all instances will be created in the availability zone/subnet.\n<br><li> EQUALITY: scales out the availability zone/subnet with the least instances each time. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.\n\nNotes about this policy:\n<br><li> When the scaling group is based on basic network, this policy applies to multiple availability zones. When the scaling group is based on VPC, this policy applies to multiple subnets, and you do not need to consider availability zones. For example, if you have four subnets (A, B, C, and D) and A, B, and C are in availability zone 1 and D is in availability zone 2, you only need to decide the order of the four subnets, without worrying about the issue of availability zones.\n<br><li> This policy is applicable to multiple availability zones/subnets, but is not applicable to multiple models with launch configurations. When there are multiple models, the PRIORITY policy is applied.\n<br><li> During instance creation, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3 (based on the PRIORITY policy), creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.\n<br><li> No matter what policy is used, a single scaling event always uses a specific configuration at priority (model * availability zone/subnet)."
       }
     ],
     "desc": "This API (CreateAutoScalingGroup) is used to create an auto scaling group."
@@ -127,7 +127,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API.\nIf you want to clear the user group, you need to pass in the specific string \"NULL\" to the list."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.\nIf you want to clear the user group, you need to pass in the specific string \"NULL\" to the list."
       }
     ],
     "desc": "This API (ModifyScalingPolicy) is used to modify an alarm trigger policy."
@@ -181,11 +181,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeNotificationConfigurations) is used to query the information of one or more notifications.\n\nYou can query the details of notifications based on information such as notification ID and auto scaling group ID. For more information on filters, see `Filter`.\nIf the parameter is empty, a certain number (specified by `Limit` and 20 by default) of notifications of the current user will be returned."
@@ -232,7 +232,7 @@ INFO = {
       },
       {
         "name": "VpcId",
-        "desc": "VpcId."
+        "desc": "VPC ID."
       },
       {
         "name": "SubnetIds",
@@ -269,7 +269,7 @@ INFO = {
       },
       {
         "name": "ImageId",
-        "desc": "Valid [image](https://cloud.tencent.com/document/product/213/4940) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://cloud.tencent.com/document/api/213/15715).</li>"
+        "desc": "Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>"
       },
       {
         "name": "InstanceTypes",
@@ -309,11 +309,11 @@ INFO = {
       },
       {
         "name": "ProjectId",
-        "desc": "Project ID of the instance. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://cloud.tencent.com/document/api/378/4400). If this is left empty, default project is used."
+        "desc": "Project ID of the instance. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used."
       },
       {
         "name": "SecurityGroupIds",
-        "desc": "The security group of instance. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808). If this parameter is not specified, no security group will be bound by default."
+        "desc": "The security group of instance. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default."
       },
       {
         "name": "SystemDisk",
@@ -337,11 +337,11 @@ INFO = {
       },
       {
         "name": "InstanceNameSettings",
-        "desc": ""
+        "desc": "Settings of CVM instance names."
       },
       {
         "name": "InstanceChargePrepaid",
-        "desc": ""
+        "desc": "Advance payment mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances."
       }
     ],
     "desc": "This API (UpgradeLaunchConfiguration) is used to upgrade a launch configuration.\n\n* This API is used to upgrade a launch configuration in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n* After the launch configuration is upgraded, the existing instances that have been created by it will not be changed, but new instances will be created according to the new configuration."
@@ -354,15 +354,15 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter.\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> launch-configuration-name - String - Required: No - (Filter) Filter by launch configuration name.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time."
+        "desc": "Filters.\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> launch-configuration-name - String - Required: No - (Filter) Filter by launch configuration name.</li>\n<li> launch-configuration-name - String - Required: No - (Filter) Fuzzy search by launch configuration name.</li>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchConfigurationIds` and `Filters` at the same time."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeLaunchConfigurations) is used to query the information of launch configurations.\n\n* You can query the launch configuration details based on information such as launch configuration ID and name. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of launch configurations of the current user will be returned."
@@ -392,11 +392,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeScalingPolicies) is used to query alarm trigger policies."
@@ -425,7 +425,7 @@ INFO = {
         "desc": "Whether the shutdown instances will be charged. Valid values:  \nKEEP_CHARGING: keep charging after shutdown.  \nSTOP_CHARGING: stop charging after shutdown.\nDefault value: KEEP_CHARGING."
       }
     ],
-    "desc": "This API is used to shut down CVM instances in a scaling group.\n* Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.\n* Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.\n* To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://cloud.tencent.com/document/product/213/19918).\n* This API supports batch operation. Up to 100 instances can be shut down in each request."
+    "desc": "This API is used to shut down CVM instances in a scaling group.\n* Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.\n* Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.\n* To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://intl.cloud.tencent.com/document/product/213/19918?from_cn_redirect=1).\n* This API supports batch operation. Up to 100 instances can be shut down in each request."
   },
   "CreateScheduledAction": {
     "params": [
@@ -566,15 +566,15 @@ INFO = {
       },
       {
         "name": "ImageId",
-        "desc": "Valid [image](https://cloud.tencent.com/document/product/213/4940) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://cloud.tencent.com/document/api/213/15715).</li>"
+        "desc": "Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>"
       },
       {
         "name": "ProjectId",
-        "desc": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://cloud.tencent.com/document/api/378/4400). If this is left empty, default project is used."
+        "desc": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used."
       },
       {
         "name": "InstanceType",
-        "desc": "Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749) API to get the latest specification table or referring to the descriptions in [Instance Types](https://cloud.tencent.com/document/product/213/11518).\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered."
+        "desc": "Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered."
       },
       {
         "name": "SystemDisk",
@@ -594,7 +594,7 @@ INFO = {
       },
       {
         "name": "SecurityGroupIds",
-        "desc": "The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808). If this parameter is not specified, no security group will be bound by default."
+        "desc": "The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default."
       },
       {
         "name": "EnhancedService",
@@ -634,14 +634,14 @@ INFO = {
       },
       {
         "name": "InstanceNameSettings",
-        "desc": ""
+        "desc": "Settings of CVM instance names."
       },
       {
         "name": "InstanceChargePrepaid",
-        "desc": ""
+        "desc": "Sets prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances."
       }
     ],
-    "desc": "This API (CreateLaunchConfiguration) is used to create a launch configuration.\n\n* A few fields of a launch configuration can be modified through `ModifyLaunchConfigurationAttributes`. To use a new launch configuration, it is recommended to create it from scratch.\n\n* You can create up to 20 launch configurations for each project. For more information, see [Usage Limits](https://cloud.tencent.com/document/product/377/3120).\n"
+    "desc": "This API (CreateLaunchConfiguration) is used to create a launch configuration.\n\n* A few fields of a launch configuration can be modified through `ModifyLaunchConfigurationAttributes`. To use a new launch configuration, it is recommended to create it from scratch.\n\n* You can create up to 20 launch configurations for each project. For more information, see [Usage Limits](https://intl.cloud.tencent.com/document/product/377/3120?from_cn_redirect=1).\n"
   },
   "ModifyNotificationConfiguration": {
     "params": [
@@ -655,7 +655,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API (ModifyNotificationConfiguration) is used to modify a notification."
@@ -724,11 +724,11 @@ INFO = {
       },
       {
         "name": "Ipv6AddressCount",
-        "desc": ""
+        "desc": "The number of IPv6 addresses that an instance has. Valid values: 0 and 1."
       },
       {
         "name": "MultiZoneSubnetPolicy",
-        "desc": ""
+        "desc": "Multi-availability zone/subnet policy. Valid values: PRIORITY and EQUALITY.\n<br><li> PRIORITY: creates instances based on the priority determined by the order in the availability zone/subnet list. If an instance can be successfully created in the availability zone/subnet of the highest priority, all instances will be created in the availability zone/subnet.\n<br><li> EQUALITY: scales out the availability zone/subnet with the least instances each time. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.\n\nNotes about this policy:\n<br><li> When the scaling group is a basic network, this policy applies to multiple availability zones. When the scaling group is a VPC, this policy applies to multiple subnets, and you do not need to consider availability zones. For example, if you have four subnets (A, B, C, and D) and A, B, and C are in availability zone 1 and D is in availability zone 2, you do not need to consider the availability zones when determining the order of the subnets.\n<br><li> This policy is applicable to multiple availability zones/subnets, but is not applicable to multiple models with launch configurations. When there are multiple models, the PRIORITY policy is applied.\n<br><li> During instance creation, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3 (based on the PRIORITY policy), creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.\n<br><li> No matter what policy is used, a single scaling event always uses a specific configuration at priority (model * availability zone/subnet)."
       }
     ],
     "desc": "This API (ModifyAutoScalingGroup) is used to modify an auto scaling group."
@@ -745,7 +745,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API (CreateNotificationConfiguration) is used to create a notification."
@@ -762,11 +762,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeAutoScalingInstances) is used to query the information of instances associated with AS.\n\n* You can query the details of instances based on information such as instance ID and auto scaling group ID. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of instances of the current user will be returned."
@@ -783,11 +783,11 @@ INFO = {
       },
       {
         "name": "MinSize",
-        "desc": "The minimum number of instances. Value range: 0 - 2000."
+        "desc": "The maximum number of instances. Value range: 0 - 2000."
       },
       {
         "name": "MaxSize",
-        "desc": "The maximum number of instances. Value range: 0 - 2000."
+        "desc": "The minimum number of instances. Value range: 0 - 2000."
       },
       {
         "name": "DesiredCapacity",
@@ -941,7 +941,7 @@ INFO = {
       },
       {
         "name": "NotificationUserGroupIds",
-        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://cloud.tencent.com/document/product/598/34589) API."
+        "desc": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API."
       }
     ],
     "desc": "This API (CreateScalingPolicy) is used to create an alarm trigger policy."
@@ -985,11 +985,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeLifecycleHooks) is used to query the information of lifecycle hooks.\n\n* You can query the details of lifecycle hooks based on information such as auto scaling group ID, lifecycle hook ID, or lifecycle hook name. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of lifecycle hooks of the current user will be returned."
@@ -1015,15 +1015,15 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For detailed usage, see sample 2</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingGroupIds` and `Filters` at the same time."
+        "desc": "Filters.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>\n<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeAutoScalingGroups) is used to query the information of auto scaling groups.\n\n* You can query the details of auto scaling groups based on information such as auto scaling group ID, auto scaling group name, or launch configuration ID. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of auto scaling groups of the current user will be returned."
@@ -1053,11 +1053,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "StartTime",
@@ -1091,11 +1091,11 @@ INFO = {
       },
       {
         "name": "Offset",
-        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       },
       {
         "name": "Limit",
-        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://cloud.tencent.com/document/api/213/15688)."
+        "desc": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1)."
       }
     ],
     "desc": "This API (DescribeScheduledActions) is used to query the details of one or more scheduled tasks.\n\n* You can query the details of scheduled tasks based on information such as scheduled task ID, scheduled task name, or auto scaling group ID. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of scheduled tasks of the current user will be returned."
@@ -1108,7 +1108,7 @@ INFO = {
       },
       {
         "name": "ImageId",
-        "desc": "Valid [image](https://cloud.tencent.com/document/product/213/4940) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://cloud.tencent.com/document/api/213/15715).</li>"
+        "desc": "Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>"
       },
       {
         "name": "InstanceTypes",

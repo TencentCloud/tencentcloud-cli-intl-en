@@ -365,6 +365,15 @@ INFO = {
     ],
     "desc": "This API (ResetRoutes) is used to reset the name of a route table and all its routing policies.<br />\nNote: When this API is called, all routing policies in the current route table are deleted before new routing policies are saved, which may incur network interruption."
   },
+  "DeleteServiceTemplate": {
+    "params": [
+      {
+        "name": "ServiceTemplateId",
+        "desc": "Protocol port template instance ID, such as `ppm-e6dy460g`."
+      }
+    ],
+    "desc": "This API (DeleteServiceTemplate) is used to delete a protocol port template."
+  },
   "DescribeNetworkInterfaceLimit": {
     "params": [
       {
@@ -471,26 +480,22 @@ INFO = {
     ],
     "desc": "This API (UnassignIpv6Addresses) is used to release ENI `IPv6` addresses.<br />\nThis API is completed asynchronously. If you need to query the async execution results, use the `RequestId` returned by this API to query the `QueryTask` API."
   },
-  "DescribeNetworkAcls": {
+  "AssociateDirectConnectGatewayNatGateway": {
     "params": [
       {
-        "name": "NetworkAclIds",
-        "desc": "Array of network ACL instance IDs, such as [acl-12345678]. Up to 100 instances are allowed for each request. This parameter does not support specifying `NetworkAclIds` and `Filters` at the same time."
+        "name": "VpcId",
+        "desc": "The direct connect gateway ID."
       },
       {
-        "name": "Filters",
-        "desc": "Filter condition. `NetworkAclIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as vpc-12345678.</li>\n<li>network-acl-id - String - (Filter condition) Network ACL instance ID, such as acl-12345678.</li>\n<li>network-acl-name - String - (Filter condition) Network ACL instance name.</li>"
+        "name": "NatGatewayId",
+        "desc": "The NAT Gateway ID."
       },
       {
-        "name": "Offset",
-        "desc": "Offset. Default: 0."
-      },
-      {
-        "name": "Limit",
-        "desc": "Returned quantity. Default: 20. Value range: 1-100."
+        "name": "DirectConnectGatewayId",
+        "desc": "The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API."
       }
     ],
-    "desc": "This API is used to query a list of network ACLs."
+    "desc": "This API is used to bind a direct connect gateway with a NAT gateway,  and direct its default route to the NAT Gateway."
   },
   "DeleteVpnConnection": {
     "params": [
@@ -636,6 +641,10 @@ INFO = {
       {
         "name": "IPSECOptionsSpecification",
         "desc": "IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
     "desc": "This API (CreateVpnConnection) is used to create VPN tunnel."
@@ -745,7 +754,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>\n<li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>\n<li>nat-gateway-name - String - (Filter condition) The ID of the protocol port template instance, such as `test_nat`.</li>"
+        "desc": "Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>\n<li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>\n<li>nat-gateway-name - String - (Filter condition) The name of the protocol port template instance, such as `test_nat`.</li>\n<li>tag-key - String - (Filter condition) The tag key, such as `test-key`.</li>"
       },
       {
         "name": "Offset",
@@ -1279,7 +1288,7 @@ INFO = {
       },
       {
         "name": "PublicIpAddresses",
-        "desc": "The array of EIPs bound to the NAT gateway."
+        "desc": "Array of the EIPs to be unbound from the NAT gateway."
       }
     ],
     "desc": "This API (DisassociateNatGatewayAddress) is used to unbind an EIP from a NAT gateway."
@@ -1636,14 +1645,22 @@ INFO = {
     ],
     "desc": "This API (DownloadCustomerGatewayConfiguration) is used to download a VPN tunnel configuration."
   },
-  "DeleteServiceTemplate": {
+  "DisassociateDirectConnectGatewayNatGateway": {
     "params": [
       {
-        "name": "ServiceTemplateId",
-        "desc": "Protocol port template instance ID, such as `ppm-e6dy460g`."
+        "name": "VpcId",
+        "desc": "The direct connect gateway ID."
+      },
+      {
+        "name": "NatGatewayId",
+        "desc": "The NAT Gateway ID."
+      },
+      {
+        "name": "DirectConnectGatewayId",
+        "desc": "The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API."
       }
     ],
-    "desc": "This API (DeleteServiceTemplate) is used to delete a protocol port template."
+    "desc": "This API is used to unbind a direct connect gateway from a NAT Gateway. After unbinding, the direct connect gateway cannot access internet through the NAT Gateway."
   },
   "UnassignPrivateIpAddresses": {
     "params": [
@@ -2005,6 +2022,10 @@ INFO = {
       {
         "name": "IpAddress",
         "desc": "Customer gateway public IP."
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
     "desc": "This API (CreateCustomerGateway) is used to create customer gateways."
@@ -2439,6 +2460,27 @@ INFO = {
     ],
     "desc": "This API (ModifyCustomerGatewayAttribute) is used to modify the customer gateway information."
   },
+  "DescribeNetworkAcls": {
+    "params": [
+      {
+        "name": "NetworkAclIds",
+        "desc": "Array of network ACL instance IDs, such as [acl-12345678]. Up to 100 instances are allowed for each request. This parameter does not support specifying `NetworkAclIds` and `Filters` at the same time."
+      },
+      {
+        "name": "Filters",
+        "desc": "Filter condition. `NetworkAclIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as vpc-12345678.</li>\n<li>network-acl-id - String - (Filter condition) Network ACL instance ID, such as acl-12345678.</li>\n<li>network-acl-name - String - (Filter condition) Network ACL instance name.</li>"
+      },
+      {
+        "name": "Offset",
+        "desc": "Offset. Default: 0."
+      },
+      {
+        "name": "Limit",
+        "desc": "Returned quantity. Default: 20. Value range: 1-100."
+      }
+    ],
+    "desc": "This API is used to query a list of network ACLs."
+  },
   "ModifyVpnConnectionAttribute": {
     "params": [
       {
@@ -2518,6 +2560,10 @@ INFO = {
       {
         "name": "Type",
         "desc": "VPN gateway type. Value: `CCN`, indicates CCN-type VPN gateway"
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]."
       }
     ],
     "desc": "This API (CreateVpnGateway) is used to create a VPN gateway."

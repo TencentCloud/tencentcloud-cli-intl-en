@@ -532,6 +532,7 @@ def doCreateDBInstances(argv, arglist):
         "ActivityId": Utils.try_to_json(argv, "--ActivityId"),
         "Name": argv.get("--Name"),
         "NeedSupportIpv6": Utils.try_to_json(argv, "--NeedSupportIpv6"),
+        "TagList": Utils.try_to_json(argv, "--TagList"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
