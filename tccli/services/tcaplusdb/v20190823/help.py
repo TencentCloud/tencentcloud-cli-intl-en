@@ -63,7 +63,7 @@ INFO = {
       },
       {
         "name": "ResourceTags",
-        "desc": ""
+        "desc": "Cluster tag list"
       },
       {
         "name": "Ipv6Enable",
@@ -228,7 +228,7 @@ INFO = {
       },
       {
         "name": "ResourceTags",
-        "desc": ""
+        "desc": "Table tag list"
       }
     ],
     "desc": "This API is used to create tables in batches based on the selected IDL file list."
@@ -309,7 +309,7 @@ INFO = {
       },
       {
         "name": "ResourceTags",
-        "desc": ""
+        "desc": "Table group tag list"
       }
     ],
     "desc": "This API is used to create a table group in a TcaplusDB cluster."

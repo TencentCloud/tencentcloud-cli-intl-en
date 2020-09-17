@@ -5,7 +5,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       }
     ],
     "desc": "This API (DescribeDBInstanceGTID) is used to query whether GTID is activated for a TencentDB instance. Instances on or below version 5.5 are not supported."
@@ -58,7 +58,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       }
     ],
     "desc": "This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible."
@@ -114,7 +114,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "InstanceName",
@@ -130,7 +130,7 @@ INFO = {
         "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page."
       }
     ],
-    "desc": "This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://cloud.tencent.com/document/api/236/15872).\n\nThis is an asynchronous API. There may be a delay in repossessing some resources. You can query the details by using the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) and specifying the InstanceId and the `Status` value as [5, 6, 7]. If the returned instance is empty, then all its resources have been released.\n\nNote that once an instance is deactivated, its resources and data will not be recoverable. Please do so with caution."
+    "desc": "This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1).\n\nThis is an asynchronous API. There may be a delay in repossessing some resources. You can query the details by using the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) and specifying the InstanceId and the `Status` value as [5, 6, 7]. If the returned instance is empty, then all its resources have been released.\n\nNote that once an instance is deactivated, its resources and data will not be recoverable. Please do so with caution."
   },
   "OpenDBInstanceGTID": {
     "params": [
@@ -145,7 +145,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID, which is the same as the instance ID displayed in the TencentDB Console. You can use the [DescribeDBInstances API](https://cloud.tencent.com/document/api/236/15872) to query the ID."
+        "desc": "Instance ID, which is the same as the instance ID displayed in the TencentDB Console. You can use the [DescribeDBInstances API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID."
       },
       {
         "name": "AsyncRequestId",
@@ -179,7 +179,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "AsyncRequestId",
@@ -225,7 +225,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       }
     ],
     "desc": "This API (CloseWanService) is used to disable public network access for TencentDB instance, which will make public IP addresses inaccessible."
@@ -365,7 +365,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Array of instance IDs in the format of `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the ID, whose value is the `InstanceId` value in the output parameters."
+        "desc": "Array of instance IDs in the format of `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in the output parameters."
       }
     ],
     "desc": "This API is used to deisolate an isolated TencentDB instance."
@@ -464,35 +464,35 @@ INFO = {
       },
       {
         "name": "Memory",
-        "desc": "Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported memory specifications."
+        "desc": "Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications."
       },
       {
         "name": "Volume",
-        "desc": "Instance disk size in GB. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported disk specifications."
+        "desc": "Instance disk size in GB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications."
       },
       {
         "name": "EngineVersion",
-        "desc": "MySQL version. Valid values: 5.5, 5.6, 5.7. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance versions."
+        "desc": "MySQL version. Valid values: 5.5, 5.6, 5.7. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions."
       },
       {
         "name": "UniqVpcId",
-        "desc": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [DescribeVpcs](/document/api/215/15778) API to query the VPCs."
+        "desc": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs."
       },
       {
         "name": "UniqSubnetId",
-        "desc": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](/document/api/215/15784) API to query the subnet lists."
+        "desc": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists."
       },
       {
         "name": "ProjectId",
-        "desc": "Project ID. If this is left empty, the default project will be used. Please use the [DescribeProject](https://cloud.tencent.com/document/product/378/4400) API to get the project ID."
+        "desc": "Project ID. If this is left empty, the default project will be used. Please use the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API to get the project ID."
       },
       {
         "name": "Zone",
-        "desc": "AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported AZs."
+        "desc": "AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs."
       },
       {
         "name": "MasterInstanceId",
-        "desc": "Instance ID, which is required and the same as the primary instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance IDs."
+        "desc": "Instance ID, which is required and the same as the primary instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance IDs."
       },
       {
         "name": "InstanceRole",
@@ -512,7 +512,7 @@ INFO = {
       },
       {
         "name": "ParamList",
-        "desc": "List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://cloud.tencent.com/document/api/236/32662) API to query the configurable parameters."
+        "desc": "List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters."
       },
       {
         "name": "ProtectMode",
@@ -532,7 +532,7 @@ INFO = {
       },
       {
         "name": "SecurityGroup",
-        "desc": "Security group parameter. You can use the [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850) API to query the security group details of a project."
+        "desc": "Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project."
       },
       {
         "name": "RoGroup",
@@ -563,7 +563,7 @@ INFO = {
         "desc": "Instance type. Valid values: HA (High-Availability Edition), BASIC (Basic Edition). If this parameter is not specified, High-Availability Edition will be used by default."
       }
     ],
-    "desc": "This API is used to create a pay-as-you-go TencentDB instance (which can be a primary, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/api/236/17229) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566) API to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. primary instances, read-only instances, and disaster recovery instances can be created;\n5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized."
+    "desc": "This API is used to create a pay-as-you-go TencentDB instance (which can be a primary, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. primary instances, read-only instances, and disaster recovery instances can be created;\n5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized."
   },
   "AddTimeWindow": {
     "params": [
@@ -623,7 +623,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "DstIp",
@@ -737,7 +737,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       }
     ],
     "desc": "This API (DescribeInstanceParams) is used to query the list of parameters for an instance."
@@ -797,7 +797,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "EngineVersion",
@@ -805,7 +805,7 @@ INFO = {
       },
       {
         "name": "WaitSwitch",
-        "desc": "Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://cloud.tencent.com/document/product/236/15864) to trigger the process."
+        "desc": "Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) to trigger the process."
       },
       {
         "name": "UpgradeSubversion",
@@ -818,7 +818,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "Offset",
@@ -917,7 +917,7 @@ INFO = {
       },
       {
         "name": "BackupId",
-        "desc": "Backup task ID, which is the task ID returned by the [TencentDB instance backup creating API](https://cloud.tencent.com/document/api/236/15844)."
+        "desc": "Backup task ID, which is the task ID returned by the [TencentDB instance backup creating API](https://intl.cloud.tencent.com/document/api/236/15844?from_cn_redirect=1)."
       }
     ],
     "desc": "This API is used to delete a database backup. It can only delete manually initiated backups."
@@ -982,7 +982,7 @@ INFO = {
     "params": [
       {
         "name": "ProjectId",
-        "desc": "Project ID. You can use the [project list querying API](https://cloud.tencent.com/document/product/378/4400) to query the project ID."
+        "desc": "Project ID. You can use the [project list querying API](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) to query the project ID."
       },
       {
         "name": "InstanceTypes",
@@ -1112,7 +1112,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       }
     ],
     "desc": "This API (DescribeDBInstanceCharset) is used to query the character set and its name of a TencentDB instance."
@@ -1134,7 +1134,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "NewPassword",
@@ -1178,7 +1178,7 @@ INFO = {
         "desc": "Column permission in table. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"REFERENCES\".\nNote: if this parameter is not passed in, it means to clear the permission."
       }
     ],
-    "desc": "This API is used to modify the permissions of a TencentDB instance account.\n\nNote that when modifying account permissions, you need to pass in the full permission information of the account. You can [query the account permission information\n](https://cloud.tencent.com/document/api/236/17500) first before modifying permissions."
+    "desc": "This API is used to modify the permissions of a TencentDB instance account.\n\nNote that when modifying account permissions, you need to pass in the full permission information of the account. You can [query the account permission information\n](https://intl.cloud.tencent.com/document/api/236/17500?from_cn_redirect=1) first before modifying permissions."
   },
   "DescribeDBImportRecords": {
     "params": [
@@ -1385,7 +1385,7 @@ INFO = {
     "params": [
       {
         "name": "InstanceIds",
-        "desc": "Array of instance IDs in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Array of instance IDs in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "NewProjectId",
@@ -1458,10 +1458,10 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://cloud.tencent.com/document/api/236/15872) to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters."
       }
     ],
-    "desc": "This API (OpenWanService) is used to enable public network access for an instance.\n\nNote that before enabling public network access, you need to first [initialize the instance](https://cloud.tencent.com/document/api/236/15873)."
+    "desc": "This API (OpenWanService) is used to enable public network access for an instance.\n\nNote that before enabling public network access, you need to first [initialize the instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1)."
   },
   "DescribeSupportedPrivileges": {
     "params": [
@@ -1528,15 +1528,15 @@ INFO = {
     "params": [
       {
         "name": "InstanceId",
-        "desc": "Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) API to query the ID, whose value is the `InstanceId` value in output parameters."
+        "desc": "Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in output parameters."
       },
       {
         "name": "Memory",
-        "desc": "Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the specifications of the memory that can be upgraded to."
+        "desc": "Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the memory that can be upgraded to."
       },
       {
         "name": "Volume",
-        "desc": "Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the specifications of the disk that can be upgraded to."
+        "desc": "Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the disk that can be upgraded to."
       },
       {
         "name": "ProtectMode",
@@ -1548,7 +1548,7 @@ INFO = {
       },
       {
         "name": "SlaveZone",
-        "desc": "AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://cloud.tencent.com/document/product/236/17229) API to query the supported AZs."
+        "desc": "AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the supported AZs."
       },
       {
         "name": "EngineVersion",
@@ -1556,7 +1556,7 @@ INFO = {
       },
       {
         "name": "WaitSwitch",
-        "desc": "Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://cloud.tencent.com/document/product/236/15864) API to trigger the process."
+        "desc": "Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process."
       },
       {
         "name": "BackupZone",

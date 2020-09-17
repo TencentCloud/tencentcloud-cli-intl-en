@@ -175,7 +175,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Agent status (OFFLINE: offline, ONLINE: online)</li>\n<li>Version - String  Required: No - Current CWP edition (PRO_VERSION: Pro, BASIC_VERSION: Basic)</li>\nEach filter supports only one value. Query with multiple values in \"OR\" relationship is not supported for the time being"
+        "desc": "Filter.\n<li>Keywords - String - Required: no - Query keywords </li>\n<li>Status - String - Required: no - CWP client status (valid values: OFFLINE, ONLINE, UNINSTALLED)</li>\n<li>Version - String - Required: no - Current CWP version (valid values: PRO_VERSION, BASIC_VERSION)</li>\nEach filter can have only one value but does not support \"OR\" queries with multiple values"
       }
     ],
     "desc": "This API is used to get the list of servers in a specified region."
@@ -531,11 +531,11 @@ INFO = {
     "params": [
       {
         "name": "MachineType",
-        "desc": ""
+        "desc": "CVM instance type.\n<li>CVM: CVM</li>\n<li>BM: CPM</li>"
       },
       {
         "name": "MachineRegion",
-        "desc": ""
+        "desc": "Server region, such as `ap-guangzhou` and `ap-shanghai`"
       }
     ],
     "desc": "This API is used to get all server tags."

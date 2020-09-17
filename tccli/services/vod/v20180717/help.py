@@ -467,6 +467,27 @@ INFO = {
     ],
     "desc": "This API is used to create a custom animated image generating template. Up to 16 templates can be created."
   },
+  "DescribeCdnLogs": {
+    "params": [
+      {
+        "name": "DomainName",
+        "desc": "Domain name."
+      },
+      {
+        "name": "StartTime",
+        "desc": "Start time for log acquisition in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)."
+      },
+      {
+        "name": "EndTime",
+        "desc": "End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F), which must be after the start time."
+      },
+      {
+        "name": "SubAppId",
+        "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      }
+    ],
+    "desc": "This API is used to query the download links of CDN access logs of a VOD domain name.\n    1. Only download links of CDN logs for the last 30 days can be queried.\n    2. By default, CDN generates a log file every hour. If there is no CDN access for a certain hour, no log file will be generated for the hour.    \n    3. A CDN log download link is valid for 24 hours."
+  },
   "ModifyClass": {
     "params": [
       {
@@ -1430,7 +1451,7 @@ INFO = {
       },
       {
         "name": "Comment",
-        "desc": "Template description. Length limit: 256 bytes."
+        "desc": "Template description. Length limit: 256 characters."
       },
       {
         "name": "RemoveVideo",
@@ -2177,40 +2198,52 @@ INFO = {
   "SearchMedia": {
     "params": [
       {
-        "name": "Text",
-        "desc": "Search text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters."
-      },
-      {
         "name": "Tags",
         "desc": "Tag set, which matches any element in the set.\n<li>Tag length limit: 8 characters.</li>\n<li>Array length limit: 10.</li>"
       },
       {
         "name": "ClassIds",
-        "desc": "Category ID set, which matches the categories of the specified IDs and all subcategories. Array length limit: 10."
+        "desc": "Category ID set. The categories of the specified IDs and all subcategories in the set are matched.\n<li>Array length limit: 10.</li>"
       },
       {
-        "name": "StartTime",
-        "desc": "Start time in the creation time range.\n<li>After or at the start time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>"
+        "name": "StreamIds",
+        "desc": "[Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) set. Any element in the set can be matched.\n<li>Array length limit: 10.</li>"
       },
       {
-        "name": "EndTime",
-        "desc": "End time in the creation time range.\n<li>Before the end time.</li>\n<li>In ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>"
+        "name": "Vids",
+        "desc": "Unique ID of LVB recording file. Any element in the set can be matched.\n<li>Array length limit: 10.</li>"
       },
       {
-        "name": "SourceType",
-        "desc": "Media file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData)."
+        "name": "SourceTypes",
+        "desc": "Media file source set. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData).\n<li>Array length limit: 10.</li>"
       },
       {
-        "name": "StreamId",
-        "desc": "[LVB code](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) of a stream."
+        "name": "Categories",
+        "desc": "File type. Any element in the set can be matched.\n<li>Video: video file</li>\n<li>Audio: audio file</li>\n<li>Image: image file</li>"
       },
       {
-        "name": "Vid",
-        "desc": "Unique ID of LVB recording file."
+        "name": "CreateTime",
+        "desc": "Matches files created within the time period.\n<li>Includes specified start and end points in time.</li>"
+      },
+      {
+        "name": "FileIds",
+        "desc": "File ID set. Any element in the set can be matched.\n<li>Array length limit: 10.</li>\n<li>ID length limit: 40 characters.</li>"
+      },
+      {
+        "name": "Names",
+        "desc": "Filename set. Filenames of media files are fuzzily matched. The higher the match rate, the higher-ranked the result.\n<li>Filename length limit: 40 characters.</li>\n<li>Array length limit: 10.</li>"
+      },
+      {
+        "name": "NamePrefixes",
+        "desc": "Filename prefix, which matches the filenames of media files.\n<li>Filename prefix length limit: 20 characters.</li>\n<li>Array length limit: 10.</li>"
+      },
+      {
+        "name": "Descriptions",
+        "desc": "File description set. Any element in the set can be matched.\n<li>Description length limit: 100 characters.</li>\n<li>Array length limit: 10.</li>"
       },
       {
         "name": "Sort",
-        "desc": "Sorting order.\n<li>Valid value of `Sort.Field`: CreateTime</li>\n<li>If `Text` is specified for the search, the results will be sorted by the match rate, and this field will not take effect</li>"
+        "desc": "Sorting order.\n<li>Valid value of `Sort.Field`: CreateTime.</li>\n<li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>"
       },
       {
         "name": "Offset",
@@ -2221,15 +2254,39 @@ INFO = {
         "desc": "<div id=\"p_limit\">Number of entries returned by a paged query. Default value: 10. Entries from No. \"Offset\" to No. \"Offset + Limit - 1\" will be returned.\n<li>Value range: \"Offset + Limit\" cannot be more than 5,000. (For more information, please see <a href=\"#maxResultsDesc\">Limit on the Number of Results Returned by API</a>)</li></div>"
       },
       {
-        "name": "Categories",
-        "desc": "File type:\n<li>Video: video file</li>\n<li>Audio: audio file</li>\n<li>Image: image file</li>"
+        "name": "Filters",
+        "desc": "Specifies information entry that needs to be returned for all media files. Multiple entries can be specified simultaneously. N starts from 0. If this field is left empty, all information entries will be returned by default. Valid values:\n<li>basicInfo (basic video information).</li>\n<li>metaData (video metadata).</li>\n<li>transcodeInfo (result information of video transcoding).</li>\n<li>animatedGraphicsInfo (result information of animated image generating task).</li>\n<li>imageSpriteInfo (image sprite information).</li>\n<li>snapshotByTimeOffsetInfo (point-in-time screenshot information).</li>\n<li>sampleSnapshotInfo (sampled screenshot information).</li>\n<li>keyFrameDescInfo (timestamp information).</li>\n<li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>\n<li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>"
       },
       {
         "name": "SubAppId",
         "desc": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty."
+      },
+      {
+        "name": "StreamId",
+        "desc": "(This is not recommended. `StreamIds` should be used instead)\n[Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1)."
+      },
+      {
+        "name": "Vid",
+        "desc": "(This is not recommended. `Vids` should be used instead)\nUnique ID of LVB recording file."
+      },
+      {
+        "name": "Text",
+        "desc": "(This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)\nSearch text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters."
+      },
+      {
+        "name": "StartTime",
+        "desc": "(This is not recommended. `CreateTime` should be used instead)\nStart time in the creation time range.\n<li>After or at the start time.</li>\n<li>If `CreateTime.After` also exists, it will be used first.</li>\n<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>"
+      },
+      {
+        "name": "EndTime",
+        "desc": "(This is not recommended. `CreateTime` should be used instead)\nEnd time in the creation time range.\n<li>Before the end time.</li>\n<li>If `CreateTime.Before` also exists, it will be used first.</li>\n<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>"
+      },
+      {
+        "name": "SourceType",
+        "desc": "(This is not recommended. `SourceTypes` should be used instead)\nMedia file source. For valid values, please see [SourceType](https://intl.cloud.tencent.com/document/product/266/31773?from_cn_redirect=1#MediaSourceData)."
       }
     ],
-    "desc": "This API is used to search for media information and supports filtering and sorting the returned results in many ways. It can:\n- Fuzzily search by media file name or description.\n- Retrieve media files by category and tag.\n    - Specify the `ClassIds` category set (please see the input parameters) and return the media files in any category in the set. For example, assuming that there are categories of Movies, TV Series, and Variety Shows, and there are subcategories of History, Action, and Romance in the category of Movies, if Movies and TV Series are specified in `ClassIds`, then all the subcategories under Movies and TV Series will be returned; however, if History and Action are specified in `ClassIds`, only the media files in those two subcategories will be returned.\n    - Specify the `Tags` tag set (please see the input parameters) and return the media files with any tag in the set. For example, assuming that there are tags of ACG, Drama, and YTPMV, if ACG and YTPMV are specified in Tags, then any media files with either tag will be retrieved.\n- Filter media files from a specified source (`Source`) (please see the input parameters).\n- Filter LVB recording media files by LVB push code and `Vid` (please see the input parameters).\n- Filter media files by the creation time range.\n- Mix and match any filters above to retrieve the media files that meet all the specified criteria. For example, you can filter the media files with the tag of \"Drama\" in the category of \"Movies\" created between December 1, 2018 and December 8, 2018.\n- Sort the results and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).\n\n<div id=\"maxResultsDesc\">Upper limit of returned results:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of search results on one single page. Note: if both of them use the default value, this API will return up to 10 results.</b>\n- <b>Up to 5,000 search results can be returned, and excessive ones will not be displayed. If there are too many search results, you are recommended to use more specified filters to narrow down the search results.</b>"
+    "desc": "This API is used to search for media information and supports filtering and sorting the returned results in many ways. It can:\n- Fuzzily search by multiple media filenames `Names` or multiple descriptions `Descriptions`.\n- Search by multiple filename prefixes (`NamePrefixes`).\n- Specify the category set `ClassIds` (please see the input parameters) and return the media files in any category in the set. For example, assuming that there are categories of Movies, TV Series, and Variety Shows, and there are subcategories of History, Action, and Romance in the category of Movies, if Movies and TV Series are specified in `ClassIds`, then all the subcategories under Movies and TV Series will be returned; however, if History and Action are specified in `ClassIds`, only the media files in those two subcategories will be returned.\n- Specify the tag set `Tags` (please see the input parameters) and return the media files with any tag in the set. For example, assuming that there are tags of ACG, Drama, and YTPMV, if ACG and YTPMV are specified in `Tags`, then any media files with either tag will be retrieved.\n- Specify the source set `SourceTypes` (please see the input parameters) and return the media files from any source in the set. For example, assuming that there are `Record` (LVB recording) and `Upload` (upload) sources, if `Record` and `Upload` are specified in `SourceTypes`, then any media files from those sources will be retrieved.\n- Specify the creation time range to filter media files.\n- Specify the file type set `Categories` (please see the input parameters) and return the media files in any type in the set. For example, assuming that there are `Video`, `Audio`, and `Image` file types, if `Video` and `Audio` are specified in `Categories`, then any media files in those types will be retrieved.\n- Specify the file ID set `FileIds` and return the media files with any ID in the set.\n- Specify the stream ID set `StreamIds` (please see the input parameters) to filter LVB recording media files.\n- Specify the video ID set `Vids` (please see the input parameters) to filter LVB recording media files.\n- Specify a single text string `Text` to fuzzily search for media filenames or descriptions (this is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead).\n- Specify a single stream ID `StreamId` for search (this is not recommended. `StreamIds` should be used instead).\n- Specify a single video ID `Vid` for search (this is not recommended. `Vids` should be used instead).\n- Specify a single creation start time `StartTime` for search (this is not recommended. `CreateTime` should be used instead).\n- Specify a single creation end time `EndTime` for search (this is not recommended. `CreateTime` should be used instead).\n- Specify a single media file source `SourceType` for search (this is not recommended. `SourceTypes` should be used instead).\n\n- Mix and match any parameters above for search. For example, you can filter the media files with the tags of \"Drama\" and \"Suspense\" in the category of \"Movies\" or \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Please note that for any parameter that supports array input, the search logic between its elements is \"OR\", while the logical relationship between all parameters is \"AND\".\n- Sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).\n- Control the returned types of media information through `Filters` (all types will be returned by default). Valid values include:\n    1. Basic information (basicInfo): media name, category, playback address, cover image, etc.\n    2. Metadata (metaData): size, duration, video stream information, audio stream information, etc.\n    3. Information of the transcoding result (transcodeInfo): addresses, video stream parameters, and audio stream parameters of the media files with various specifications generated by transcoding a media file.\n    4. Information of the animated image generating result (animatedGraphicsInfo): information of an animated image (such as .gif) generated from a video.\n    5. Information of a sampled screenshot (sampleSnapshotInfo): information of a sampled screenshot of a video.\n    6. Information of an image sprite (imageSpriteInfo): information of an image sprite generated from a video.\n    7. Information of a point-in-time screenshot (snapshotByTimeOffsetInfo): information of a point-in-time screenshot of a video.\n    8. Information of a timestamp (keyFrameDescInfo): information of a timestamp set for a video.\n    9. Information of adaptive bitrate streaming (adaptiveDynamicStreamingInfo): specification, encryption type, muxing format, etc.\n\n<div id=\"maxResultsDesc\">Upper limit of returned results:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of search results on one single page. Note: if both of them use the default value, this API will return up to 10 results.</b>\n- <b>Up to 5,000 search results can be returned, and excessive ones will not be displayed. If there are too many search results, you are recommended to use more specified filters to narrow down the search results.</b>"
   },
   "DeleteWatermarkTemplate": {
     "params": [

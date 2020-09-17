@@ -681,6 +681,42 @@ def doDeleteSnapshotByTimeOffsetTemplate(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCdnLogs(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("DescribeCdnLogs", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "DomainName": argv.get("--DomainName"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "SubAppId": Utils.try_to_json(argv, "--SubAppId"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VodClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCdnLogsRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.DescribeCdnLogs(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyClass(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -2925,19 +2961,28 @@ def doSearchMedia(argv, arglist):
         return
 
     param = {
-        "Text": argv.get("--Text"),
         "Tags": Utils.try_to_json(argv, "--Tags"),
         "ClassIds": Utils.try_to_json(argv, "--ClassIds"),
-        "StartTime": argv.get("--StartTime"),
-        "EndTime": argv.get("--EndTime"),
-        "SourceType": argv.get("--SourceType"),
-        "StreamId": argv.get("--StreamId"),
-        "Vid": argv.get("--Vid"),
+        "StreamIds": Utils.try_to_json(argv, "--StreamIds"),
+        "Vids": Utils.try_to_json(argv, "--Vids"),
+        "SourceTypes": Utils.try_to_json(argv, "--SourceTypes"),
+        "Categories": Utils.try_to_json(argv, "--Categories"),
+        "CreateTime": Utils.try_to_json(argv, "--CreateTime"),
+        "FileIds": Utils.try_to_json(argv, "--FileIds"),
+        "Names": Utils.try_to_json(argv, "--Names"),
+        "NamePrefixes": Utils.try_to_json(argv, "--NamePrefixes"),
+        "Descriptions": Utils.try_to_json(argv, "--Descriptions"),
         "Sort": Utils.try_to_json(argv, "--Sort"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
-        "Categories": Utils.try_to_json(argv, "--Categories"),
+        "Filters": Utils.try_to_json(argv, "--Filters"),
         "SubAppId": Utils.try_to_json(argv, "--SubAppId"),
+        "StreamId": argv.get("--StreamId"),
+        "Vid": argv.get("--Vid"),
+        "Text": argv.get("--Text"),
+        "StartTime": argv.get("--StartTime"),
+        "EndTime": argv.get("--EndTime"),
+        "SourceType": argv.get("--SourceType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -3522,6 +3567,7 @@ ACTION_MAP = {
     "CreateAdaptiveDynamicStreamingTemplate": doCreateAdaptiveDynamicStreamingTemplate,
     "DescribeSampleSnapshotTemplates": doDescribeSampleSnapshotTemplates,
     "DeleteSnapshotByTimeOffsetTemplate": doDeleteSnapshotByTimeOffsetTemplate,
+    "DescribeCdnLogs": doDescribeCdnLogs,
     "ModifyClass": doModifyClass,
     "DescribeTasks": doDescribeTasks,
     "ResetProcedureTemplate": doResetProcedureTemplate,

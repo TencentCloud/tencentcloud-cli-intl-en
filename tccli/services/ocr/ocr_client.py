@@ -18,6 +18,74 @@ from tccli.services.ocr import v20181119
 from tccli.services.ocr.v20181119 import help as v20181119_help
 
 
+def doBankCardOCR(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("BankCardOCR", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ImageBase64": argv.get("--ImageBase64"),
+        "ImageUrl": argv.get("--ImageUrl"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.BankCardOCRRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.BankCardOCR(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doTableOCR(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("TableOCR", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ImageBase64": argv.get("--ImageBase64"),
+        "ImageUrl": argv.get("--ImageUrl"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.TableOCRRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.TableOCR(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doMLIDCardOCR(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -53,40 +121,6 @@ def doMLIDCardOCR(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doMLIDPassportOCR(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("MLIDPassportOCR", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "ImageBase64": argv.get("--ImageBase64"),
-        "RetImage": Utils.try_to_json(argv, "--RetImage"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile)
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.OcrClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.MLIDPassportOCRRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.MLIDPassportOCR(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doGeneralBasicOCR(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -98,6 +132,8 @@ def doGeneralBasicOCR(argv, arglist):
         "ImageUrl": argv.get("--ImageUrl"),
         "Scene": argv.get("--Scene"),
         "LanguageType": argv.get("--LanguageType"),
+        "IsPdf": Utils.try_to_json(argv, "--IsPdf"),
+        "PdfPageNumber": Utils.try_to_json(argv, "--PdfPageNumber"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -114,6 +150,40 @@ def doGeneralBasicOCR(argv, arglist):
     model = models.GeneralBasicOCRRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.GeneralBasicOCR(model)
+    result = rsp.to_json_string()
+    jsonobj = None
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8')) # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGeneralAccurateOCR(argv, arglist):
+    g_param = parse_global_arg(argv)
+    if "help" in argv:
+        show_help("GeneralAccurateOCR", g_param[OptionsDefine.Version])
+        return
+
+    param = {
+        "ImageBase64": argv.get("--ImageBase64"),
+        "ImageUrl": argv.get("--ImageUrl"),
+
+    }
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile)
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.OcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GeneralAccurateOCRRequest()
+    model.from_json_string(json.dumps(param))
+    rsp = client.GeneralAccurateOCR(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -159,15 +229,15 @@ def doHKIDCardOCR(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doBankCardOCR(argv, arglist):
+def doMLIDPassportOCR(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
-        show_help("BankCardOCR", g_param[OptionsDefine.Version])
+        show_help("MLIDPassportOCR", g_param[OptionsDefine.Version])
         return
 
     param = {
         "ImageBase64": argv.get("--ImageBase64"),
-        "ImageUrl": argv.get("--ImageUrl"),
+        "RetImage": Utils.try_to_json(argv, "--RetImage"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -181,9 +251,9 @@ def doBankCardOCR(argv, arglist):
     client = mod.OcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.BankCardOCRRequest()
+    model = models.MLIDPassportOCRRequest()
     model.from_json_string(json.dumps(param))
-    rsp = client.BankCardOCR(model)
+    rsp = client.MLIDPassportOCR(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -204,11 +274,13 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "MLIDCardOCR": doMLIDCardOCR,
-    "MLIDPassportOCR": doMLIDPassportOCR,
-    "GeneralBasicOCR": doGeneralBasicOCR,
-    "HKIDCardOCR": doHKIDCardOCR,
     "BankCardOCR": doBankCardOCR,
+    "TableOCR": doTableOCR,
+    "MLIDCardOCR": doMLIDCardOCR,
+    "GeneralBasicOCR": doGeneralBasicOCR,
+    "GeneralAccurateOCR": doGeneralAccurateOCR,
+    "HKIDCardOCR": doHKIDCardOCR,
+    "MLIDPassportOCR": doMLIDPassportOCR,
 
 }
 

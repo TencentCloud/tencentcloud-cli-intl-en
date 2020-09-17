@@ -340,6 +340,10 @@ INFO = {
       {
         "name": "TypeList",
         "desc": "Internal parameter, which can be ignored"
+      },
+      {
+        "name": "MonitorVersion",
+        "desc": "Internal parameter, which can be ignored"
       }
     ],
     "desc": "This API is used to query the list of Redis instances."

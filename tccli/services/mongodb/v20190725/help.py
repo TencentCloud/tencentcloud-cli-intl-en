@@ -27,11 +27,11 @@ INFO = {
       },
       {
         "name": "Limit",
-        "desc": ""
+        "desc": "The number of records that will be returned. Default value: 10,000."
       },
       {
         "name": "Offset",
-        "desc": ""
+        "desc": "Offset. Default value: 0."
       }
     ],
     "desc": "This API is used to query the client connection information of an instance, including the IP and number of connections. Currently, only instances of MongoDB 3.2 are supported."

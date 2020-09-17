@@ -73,6 +73,10 @@ INFO = {
       {
         "name": "FlowLogDescription",
         "desc": "The description of the flow log instance"
+      },
+      {
+        "name": "Tags",
+        "desc": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]"
       }
     ],
     "desc": "This API is used to create a flow log."
@@ -2030,6 +2034,75 @@ INFO = {
     ],
     "desc": "This API (CreateCustomerGateway) is used to create customer gateways."
   },
+  "DescribeCrossBorderCompliance": {
+    "params": [
+      {
+        "name": "ServiceProvider",
+        "desc": "(Exact match) Service provider. Valid values: `UNICOM`."
+      },
+      {
+        "name": "ComplianceId",
+        "desc": "(Exact match) ID of compliance review form."
+      },
+      {
+        "name": "Company",
+        "desc": "(Fuzzy match) Company name."
+      },
+      {
+        "name": "UniformSocialCreditCode",
+        "desc": "(Fuzzy match) Unified Social Credit Code."
+      },
+      {
+        "name": "LegalPerson",
+        "desc": "(Fuzzy match) Legal person."
+      },
+      {
+        "name": "IssuingAuthority",
+        "desc": "(Fuzzy match) Issuing authority."
+      },
+      {
+        "name": "BusinessAddress",
+        "desc": "(Fuzzy match) Business address."
+      },
+      {
+        "name": "PostCode",
+        "desc": "(Exact match) Zip code."
+      },
+      {
+        "name": "Manager",
+        "desc": "(Fuzzy match) Operator."
+      },
+      {
+        "name": "ManagerId",
+        "desc": "(Exact match) Operator ID card number."
+      },
+      {
+        "name": "ManagerAddress",
+        "desc": "(Fuzzy match) Operator address."
+      },
+      {
+        "name": "ManagerTelephone",
+        "desc": "(Exact match) Operator phone number."
+      },
+      {
+        "name": "Email",
+        "desc": "(Exact match) Email."
+      },
+      {
+        "name": "ServiceStartDate",
+        "desc": "(Exact match) Service start date, such as `2020-07-28`."
+      },
+      {
+        "name": "ServiceEndDate",
+        "desc": "(Exact match) Service end date, such as `2020-07-28`."
+      },
+      {
+        "name": "State",
+        "desc": "(Exact match) Status. Valid values: `PENDING`, `APPROVED`, and `DENY`."
+      }
+    ],
+    "desc": "This API is used to query the compliance review form created.\nThe service provider can query all review forms created by any `APPID` under the service. Other users can only query their own review forms."
+  },
   "ModifyDirectConnectGatewayAttribute": {
     "params": [
       {
@@ -2067,6 +2140,23 @@ INFO = {
       }
     ],
     "desc": "This API is used to create a security group (SecurityGroup).\n* Note the <a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a> per project in each region under each account.\n* Both the inbound and outbound rules for a newly created security group are \"Deny All\" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.\n* You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added."
+  },
+  "AuditCrossBorderCompliance": {
+    "params": [
+      {
+        "name": "ServiceProvider",
+        "desc": "Service provider. Valid values: `UNICOM`."
+      },
+      {
+        "name": "ComplianceId",
+        "desc": "Unique ID of compliance review form."
+      },
+      {
+        "name": "AuditBehavior",
+        "desc": "Audit behavior. Valid values: `APPROVED` and `DENY`."
+      }
+    ],
+    "desc": "This API is used by the service provider to perform a compliance audit.\n* To call this API, the service provider needs to prove identity and provide `APPID` to audit the compliance review forms received.\n* The review form can be changed between the `APPROVED` and `DENY` status."
   },
   "ModifyNetworkInterfaceAttribute": {
     "params": [

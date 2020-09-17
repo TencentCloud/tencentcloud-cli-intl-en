@@ -1,27 +1,6 @@
 # -*- coding: utf-8 -*-
 DESC = "ocr-2018-11-19"
 INFO = {
-  "GeneralBasicOCR": {
-    "params": [
-      {
-        "name": "ImageBase64",
-        "desc": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used."
-      },
-      {
-        "name": "ImageUrl",
-        "desc": "URL address of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nYou are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low."
-      },
-      {
-        "name": "Scene",
-        "desc": "Reserved field."
-      },
-      {
-        "name": "LanguageType",
-        "desc": "Language to be recognized.\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\nzh\\auto\\jap\\kor\\nspa\\fre\\ger\\por\\nvie\\may\\rus\\ita\\nhol\\swe\\fin\\dan\\nnor\\hun\\tha\\lat\nValue meanings:\nChinese-English mix, automatic recognition, Japanese, Korean,\nSpanish, French, German, Portuguese,\nVietnamese, Malay, Russian, Italian,\nDutch, Swedish, Finnish, Danish,\nNorwegian, Hungarian, Thai, Latin."
-      }
-    ],
-    "desc": "This API is used to detect and recognize characters in an image in the following 19 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, and Thai. Mixed characters in English and each supported language can be recognized together.\n\nIt can recognize printed text in paper documents, online images, ads, signboards, menus, video titles, profile photos, etc.\n\nProduct strengths: it can automatically recognize the text language, return the text box coordinate information, and automatically rotate tilted text to the upright direction.\n\nThe differences between different editions of general print recognition are as detailed below:\n<table style=\"width:715px\">\n      <thead>\n        <tr>\n          <th style=\"width:150px\"></th>\n          <th style=\"width:200px\">**(Recommended)** General Print Recognition</th>\n          <th ><a href=\"https://cloud.tencent.com/document/product/866/34937\">**(Recommended)** General Print Recognition (High-Precision)</a></th>\n          <th><a href=\"https://cloud.tencent.com/document/product/866/37831\">General Print Recognition (Simplified)</a></th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Use case</td>\n          <td>It is suitable for recognition of printed text in all general scenarios</td>\n          <td>It is suitable for content with high recognition difficulty such as a large number of characters, long strings of digits, small characters, blurry characters, and tilted text</td>\n          <td>It is suitable for fast text recognition, which compromises the accuracy and recall rate but is more cost-effective</td>\n        </tr>\n        <tr>\n          <td>Recognition accuracy rate</td>\n          <td>96%</td>\n          <td>99%</td>\n          <td>91%</td>\n        </tr>\n        <tr>\n          <td>Price</td>\n          <td>Medium</td>\n          <td>High</td>\n          <td>Low</td>\n        </tr>\n        <tr>\n          <td>Supported languages</td>\n          <td>Chinese, English, Chinese-English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, and Thai</td>\n          <td>Chinese, English, and Chinese-English</td>\n          <td>Chinese, English, and Chinese-English</td>\n        </tr>\n        <tr>\n          <td>Automatic language detection</td>\n          <td>Supported</td>\n          <td>Supported</td>\n          <td>Supported</td>\n        </tr>\n        <tr>\n          <td>Return of text line coordinates</td>\n          <td>Supported</td>\n          <td>Supported</td>\n          <td>Supported</td>\n        </tr>\n        <tr>\n          <td>Automatic rotation correction</td>\n          <td>Rotation recognition is supported, and the angle information can be returned</td>\n          <td>Rotation recognition is supported, but no angle information can be returned</td>\n          <td>Rotation recognition is supported, and the angle information can be returned</td>\n        </tr>\n      </tbody>\n    </table>"
-  },
   "BankCardOCR": {
     "params": [
       {
@@ -33,7 +12,20 @@ INFO = {
         "desc": "URL address of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nIt is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low."
       }
     ],
-    "desc": "This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China."
+    "desc": "This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales)."
+  },
+  "TableOCR": {
+    "params": [
+      {
+        "name": "ImageBase64",
+        "desc": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used."
+      },
+      {
+        "name": "ImageUrl",
+        "desc": "URL address of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nYou are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low."
+      }
+    ],
+    "desc": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales)."
   },
   "MLIDCardOCR": {
     "params": [
@@ -50,7 +42,33 @@ INFO = {
         "desc": "Whether to return an image"
       }
     ],
-    "desc": "This API is used to recognize a Malaysian identity card. Recognizable fields include identity card number, name, gender, and address. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect).\n"
+    "desc": "This API is used to recognize a Malaysian identity card. Recognizable fields include identity card number, name, gender, and address. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales)."
+  },
+  "MLIDPassportOCR": {
+    "params": [
+      {
+        "name": "ImageBase64",
+        "desc": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image."
+      },
+      {
+        "name": "RetImage",
+        "desc": "Whether to return an image. Default value: false"
+      }
+    ],
+    "desc": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales)."
+  },
+  "GeneralAccurateOCR": {
+    "params": [
+      {
+        "name": "ImageBase64",
+        "desc": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used."
+      },
+      {
+        "name": "ImageUrl",
+        "desc": "URL address of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low."
+      }
+    ],
+    "desc": "This API is used to detect and recognize characters in an image. It can recognize Chinese, English, Chinese-English, digits, and special symbols and return the text box positions and characters.\n\nIt is suitable for scenarios with a lot of characters in complex layouts and requiring high recognition accuracy, such as examination papers, online images, signboards, and legal documents.\n\nStrengths: compared with general print recognition, it provides higher-precision character recognition services. Its accuracy and recall rate are higher in difficult scenarios such as a large number of characters, long strings of digits, small characters, blurry characters, and tilted text.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales)."
   },
   "HKIDCardOCR": {
     "params": [
@@ -71,19 +89,35 @@ INFO = {
         "desc": "URL of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low."
       }
     ],
-    "desc": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect).\n"
+    "desc": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).\n"
   },
-  "MLIDPassportOCR": {
+  "GeneralBasicOCR": {
     "params": [
       {
         "name": "ImageBase64",
-        "desc": "Base64-encoded value of the image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution of 500x800 or above is recommended. Supported formats include PNG, JPG, JPEG, and BMP. It is recommended that the card part occupies more than 2/3 of the image.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used."
+        "desc": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used."
       },
       {
-        "name": "RetImage",
-        "desc": "Whether to return an image"
+        "name": "ImageUrl",
+        "desc": "URL address of image/PDF.\nThe image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low."
+      },
+      {
+        "name": "Scene",
+        "desc": "Reserved field."
+      },
+      {
+        "name": "LanguageType",
+        "desc": "Language to be recognized.\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\nzh\\auto\\jap\\kor\\\nspa\\fre\\ger\\por\\\nvie\\may\\rus\\ita\\\nhol\\swe\\fin\\dan\\\nnor\\hun\\tha\\lat\\ara\nValue meanings:\nChinese-English mix, automatic recognition, Japanese, Korean,\nSpanish, French, German, Portuguese,\nVietnamese, Malay, Russian, Italian,\nDutch, Swedish, Finnish, Danish,\nNorwegian, Hungarian, Thai, Latin,\nArabic."
+      },
+      {
+        "name": "IsPdf",
+        "desc": "Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time."
+      },
+      {
+        "name": "PdfPageNumber",
+        "desc": "Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1."
       }
     ],
-    "desc": "This API is used to recognize a passport issued outside Mainland China. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for spoofed or photocopied documents.\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://cloud.tencent.com/about/connect)."
+    "desc": "This API is used to detect and recognize characters in an image in the following 20 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, and Arabic. Mixed characters in English and each supported language can be recognized together.\n\nIt can recognize printed text in paper documents, online images, ads, signboards, menus, video titles, profile photos, etc.\n\nStrengths: it can automatically recognize the text language, return the text box coordinate information, and automatically rotate tilted text to the upright direction.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales)."
   }
 }

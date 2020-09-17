@@ -2107,7 +2107,7 @@ INFO = {
       },
       {
         "name": "Domain",
-        "desc": ""
+        "desc": "This optional field must be specified when HTTPS protocol is used."
       }
     ],
     "desc": "This API is used to modify the CC protection threshold."
@@ -2229,6 +2229,10 @@ INFO = {
       {
         "name": "Id",
         "desc": "Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)"
+      },
+      {
+        "name": "Domain",
+        "desc": "(Optional) Domain name"
       }
     ],
     "desc": "This API is used to get CC attack metric data, including total requests peak (QPS) and attack requests (QPS)."
