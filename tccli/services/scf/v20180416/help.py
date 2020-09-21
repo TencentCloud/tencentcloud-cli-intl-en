@@ -105,7 +105,7 @@ INFO = {
       },
       {
         "name": "TriggerDesc",
-        "desc": "For parameters of triggers, see [Trigger Description](https://cloud.tencent.com/document/product/583/39901)"
+        "desc": "For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)"
       },
       {
         "name": "Namespace",
@@ -600,6 +600,10 @@ INFO = {
       {
         "name": "CfsConfig",
         "desc": "File system configuration input parameter, which is used for the function to bind the file system"
+      },
+      {
+        "name": "InitTimeout",
+        "desc": "Timeout period for function initialization. Default value: 15 seconds"
       }
     ],
     "desc": "This API is used to update the function configuration based on the input parameters."
@@ -740,6 +744,10 @@ INFO = {
       {
         "name": "CfsConfig",
         "desc": "File system configuration parameter, which is used for the function to mount the file system"
+      },
+      {
+        "name": "InitTimeout",
+        "desc": "Timeout period for function initialization"
       }
     ],
     "desc": "This API is used to create a function based on the input parameters."

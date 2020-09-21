@@ -299,7 +299,7 @@ INFO = {
       },
       {
         "name": "ActivityId",
-        "desc": ""
+        "desc": "Activity ID"
       },
       {
         "name": "Name",
@@ -353,11 +353,11 @@ INFO = {
       },
       {
         "name": "OrderBy",
-        "desc": ""
+        "desc": "Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime"
       },
       {
         "name": "OrderByType",
-        "desc": ""
+        "desc": "In ascending or descending order"
       }
     ],
     "desc": "This API is used to query the details of one or more instances."
@@ -496,7 +496,7 @@ INFO = {
       },
       {
         "name": "ActivityId",
-        "desc": ""
+        "desc": "Activity ID"
       }
     ],
     "desc": "This API is used to upgrade an instance."

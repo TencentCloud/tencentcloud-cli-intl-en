@@ -545,6 +545,10 @@ INFO = {
     ],
     "desc": "This API is used to update a policy.\nThis API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created."
   },
+  "DescribeSafeAuthFlag": {
+    "params": [],
+    "desc": "This API is used to query the security settings."
+  },
   "ListEntitiesForPolicy": {
     "params": [
       {

@@ -123,7 +123,7 @@ INFO = {
       },
       {
         "name": "ExtInfo",
-        "desc": ""
+        "desc": "Reserved field for special purposes."
       },
       {
         "name": "SubAppId",
@@ -538,7 +538,7 @@ INFO = {
       },
       {
         "name": "Comment",
-        "desc": ""
+        "desc": "Template description. Length limit: 256 characters."
       },
       {
         "name": "MediaProcessTask",
@@ -677,7 +677,7 @@ INFO = {
       },
       {
         "name": "Comment",
-        "desc": ""
+        "desc": "Template description. Length limit: 256 characters."
       },
       {
         "name": "SubAppId",
@@ -810,11 +810,11 @@ INFO = {
       },
       {
         "name": "SessionContext",
-        "desc": ""
+        "desc": "This parameter is used to pass through user request information. `ComposeMediaComplete` callback will return the value of this field. It contains up to 1,000 characters."
       },
       {
         "name": "SessionId",
-        "desc": ""
+        "desc": "This parameter is used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is null or an empty string, the above operation will not be performed."
       },
       {
         "name": "SubAppId",
@@ -1182,7 +1182,7 @@ INFO = {
       },
       {
         "name": "Comment",
-        "desc": ""
+        "desc": "Template description. Length limit: 256 characters."
       },
       {
         "name": "MediaProcessTask",
@@ -1996,7 +1996,7 @@ INFO = {
       },
       {
         "name": "Comment",
-        "desc": ""
+        "desc": "Template description. Length limit: 256 characters."
       },
       {
         "name": "FillType",

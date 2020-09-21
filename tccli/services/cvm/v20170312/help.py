@@ -72,6 +72,19 @@ INFO = {
     ],
     "desc": "This API is used to modify image sharing information.\n\n* The accounts with which an image is shared can use the shared image to create instances.\n* Each custom image can be shared with up to 50 accounts.\n* You can use a shared image to create instances, but you cannot change its name and description.\n* If an image is shared with another account, the shared image will be in the same region as the original image.\n"
   },
+  "DescribeInstancesOperationLimit": {
+    "params": [
+      {
+        "name": "InstanceIds",
+        "desc": "Query by instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API. For example, instance ID: ins-xxxxxxxx. (For the specific format, refer to section `ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).) You can query up to 100 instances in each request."
+      },
+      {
+        "name": "Operation",
+        "desc": "Operation on the instance(s).\n<li> INSTANCE_DEGRADE: downgrade the instance configurations</li>"
+      }
+    ],
+    "desc": "This API is used to query limitations on operations on an instance.\n\n* Currently you can use this API to query the maximum number of times you can modify the configuration of an instance."
+  },
   "DescribeImageSharePermission": {
     "params": [
       {
@@ -430,7 +443,7 @@ INFO = {
       },
       {
         "name": "VirtualPrivateCloud",
-        "desc": "VPC configurations. You can use this parameter to specify the VPC ID, subnet ID, etc. If this parameter is not specified, the basic network will be used by default. If a VPC IP is specified in this parameter, it will represent the primary ENI IP of each instance. The value of `InstanceCount` must be the same as the number of VPC IPs."
+        "desc": "Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20."
       },
       {
         "name": "InternetAccessible",
@@ -609,6 +622,10 @@ INFO = {
       {
         "name": "ClientToken",
         "desc": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency."
+      },
+      {
+        "name": "ReservedInstanceName",
+        "desc": "Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>"
       }
     ],
     "desc": "This API is used to purchase one or more specific Reserved Instances."
@@ -646,7 +663,7 @@ INFO = {
       },
       {
         "name": "Filters",
-        "desc": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the **<strong>availability zones</strong>** in which reserved instances can be purchased. For example, \"ap-guangzhou-1\".</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">list of availability zones</a></p>\n<li><strong>duration</strong></li>\n<p style=\"padding-left: 30px;\">Filters by reserved instance **<strong>validity</strong>** (in seconds). For example, 31536000.</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Unit: second</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>\n<li><strong>instance-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>specifications of reserved instances</strong>**. For example, \"S3.MEDIUM4\".</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">list of reserved instance specifiations</a></p>\n<li><strong>offering-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>payment method</strong>**. For example, \"All Upfront\".</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: All Upfront</p>\n<li><strong>product-description</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the **<strong>operating system</strong>** of the reserved instance. For example, \"linux\".</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: linux</p>\n<li><strong>reserved-instances-id</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>reserved instance ID</strong>. Reserved instance IDs take the form \"650c138f-ae7e-4750-952a-96841d6e9fc1\".</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filters by **<strong>reserved instance status</strong>. For example, \"active\".</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required</p><p style=\"padding-left: 30px;\">Valid values: \"active\" (created) | \"pending\" (waiting to be created) | \"retired\" (expired)</p>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`."
+        "desc": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>availability zone</strong> in which the reserved instances can be purchased, such as ap-guangzhou-1.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Availability Zones</a></p>\n<li><strong>duration</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the <strong>validity</strong> of the reserved instance, in seconds. For example, `31536000`.</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Unit: second</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>\n<li><strong>instance-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>reserved instance specification</strong>, such as `S3.MEDIUM4`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">Reserved Instance Specifications</a></p>\n<li><strong>instance-family</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>type of the reserved instance</strong>, such as `S3`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">Reserved Instance Types</a></p>\n<li><strong>offering-type</strong></li>\n<li><strong>offering-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>payment method</strong>, such as `All Upfront`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: All Upfront</p>\n<li><strong>product-description</strong></li>\n<p style=\"padding-left: 30px;\">Filters by the <strong>platform description</strong> (operating system) of the reserved instance, such as `linux`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: linux</p>\n<li><strong>reserved-instances-id</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>reserved instance ID</strong> in the form of 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>reserved instance status</strong>. For example, “active”.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required</p><p style=\"padding-left: 30px;\">Valid values: active (created) | pending (waiting to be created) | retired (expired)</p>\nEach request can have up to 10 `Filters` and 5 `Filter.Values`."
       }
     ],
     "desc": "This API is used to list reserved instances the user has purchased."
@@ -706,18 +723,14 @@ INFO = {
     ],
     "desc": "This API is used to modify image attributes.\n\n* Attributes of shared images cannot be modified."
   },
-  "DescribeInstancesOperationLimit": {
+  "DescribeReservedInstancesConfigInfos": {
     "params": [
       {
-        "name": "InstanceIds",
-        "desc": "Query by instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API. For example, instance ID: ins-xxxxxxxx. (For the specific format, refer to section `ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).) You can query up to 100 instances in each request."
-      },
-      {
-        "name": "Operation",
-        "desc": "Operation on the instance(s).\n<li> INSTANCE_DEGRADE: downgrade the instance configurations</li>"
+        "name": "Filters",
+        "desc": "zone\nFilters by the availability zones in which the reserved instance can be purchased, such as `ap-guangzhou-1`.\nType: String\nRequired: no\nValid values: list of regions/availability zones\n\nproduct-description\nFilters by the platform description (operating system) of the reserved instance, such as `linux`.\nType: String\nRequired: no\nValid value: linux\n\nduration\nFilters by the **validity** of the reserved instance, which is the purchased usage period. For example, `31536000`.\nType: Integer\nUnit: second\nRequired: no\nValid values: 31536000 (1 year), 94608000 (3 years)"
       }
     ],
-    "desc": "This API is used to query limitations on operations on an instance.\n\n* Currently you can use this API to query the maximum number of times you can modify the configuration of an instance."
+    "desc": "This API is used to describe reserved instance (RI) offerings. Currently, RIs are only offered to beta users."
   },
   "InquiryPriceResetInstancesType": {
     "params": [
@@ -777,6 +790,31 @@ INFO = {
   "DescribeImportImageOs": {
     "params": [],
     "desc": "This API is used to query the list of supported operating systems of imported images."
+  },
+  "InquirePricePurchaseReservedInstancesOffering": {
+    "params": [
+      {
+        "name": "InstanceCount",
+        "desc": "The number of the reserved instances you are purchasing."
+      },
+      {
+        "name": "ReservedInstancesOfferingId",
+        "desc": "The ID of the reserved instance offering."
+      },
+      {
+        "name": "DryRun",
+        "desc": "Dry run."
+      },
+      {
+        "name": "ClientToken",
+        "desc": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency."
+      },
+      {
+        "name": "ReservedInstanceName",
+        "desc": "Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>"
+      }
+    ],
+    "desc": "This API is used to query the price of reserved instances. It only supports querying purchasable reserved instance offerings. Currently, RIs are only offered to beta users."
   },
   "DescribeInstanceVncUrl": {
     "params": [
@@ -1075,5 +1113,9 @@ INFO = {
       }
     ],
     "desc": "This API is used to create CDH instances with specified configuration.\n* When HostChargeType is PREPAID, the HostChargePrepaid parameter must be specified."
+  },
+  "DescribeSpotTypeConfig": {
+    "params": [],
+    "desc": "This API is used to query spot instances that are available for purchase."
   }
 }

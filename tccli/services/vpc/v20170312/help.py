@@ -2042,7 +2042,7 @@ INFO = {
       },
       {
         "name": "ComplianceId",
-        "desc": "(Exact match) ID of compliance review form."
+        "desc": "(Exact match) ID of compliance review request."
       },
       {
         "name": "Company",
@@ -2101,7 +2101,7 @@ INFO = {
         "desc": "(Exact match) Status. Valid values: `PENDING`, `APPROVED`, and `DENY`."
       }
     ],
-    "desc": "This API is used to query the compliance review form created.\nThe service provider can query all review forms created by any `APPID` under the service. Other users can only query their own review forms."
+    "desc": "This API is used to query the compliance review requests created by the user. \nA service provider can query all review requests created by any `APPID` under its account. Other users can only query their own review requests."
   },
   "ModifyDirectConnectGatewayAttribute": {
     "params": [
@@ -2149,14 +2149,14 @@ INFO = {
       },
       {
         "name": "ComplianceId",
-        "desc": "Unique ID of compliance review form."
+        "desc": "Unique ID of compliance review request."
       },
       {
         "name": "AuditBehavior",
         "desc": "Audit behavior. Valid values: `APPROVED` and `DENY`."
       }
     ],
-    "desc": "This API is used by the service provider to perform a compliance audit.\n* To call this API, the service provider needs to prove identity and provide `APPID` to audit the compliance review forms received.\n* The review form can be changed between the `APPROVED` and `DENY` status."
+    "desc": "This API is used by the service provider to perform a compliance audit.\n* This API is only provided for service providers to audit compliance review requests received. Tencent Cloud will verify the identity of the service provider by the `APPID`. \n* The status of the review request can be changed between `APPROVED` and `DENY`."
   },
   "ModifyNetworkInterfaceAttribute": {
     "params": [
