@@ -13,7 +13,7 @@ INFO = {
       },
       {
         "name": "CircuitCode",
-        "desc": "Circuit code of connection, which is provided by the ISP or connection provider."
+        "desc": "Circuit code of a connection, which is provided by the ISP or connection provider."
       },
       {
         "name": "Vlan",
@@ -166,7 +166,7 @@ INFO = {
       },
       {
         "name": "CircuitCode",
-        "desc": "Circuit code of connection, which is provided by the ISP or connection provider."
+        "desc": "Circuit code of a connection, which is provided by the ISP or connection provider."
       },
       {
         "name": "Location",

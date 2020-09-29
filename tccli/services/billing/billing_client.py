@@ -35,6 +35,7 @@ def doDescribeBillDetail(argv, arglist):
         "ProductCode": argv.get("--ProductCode"),
         "PayMode": argv.get("--PayMode"),
         "ResourceId": argv.get("--ResourceId"),
+        "ActionType": argv.get("--ActionType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -107,6 +108,7 @@ def doDescribeBillResourceSummary(argv, arglist):
         "PeriodType": argv.get("--PeriodType"),
         "Month": argv.get("--Month"),
         "NeedRecordNum": Utils.try_to_json(argv, "--NeedRecordNum"),
+        "ActionType": argv.get("--ActionType"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

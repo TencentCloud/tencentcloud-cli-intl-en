@@ -384,43 +384,6 @@ def doDescribeUser(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doFetchMessageListByOffset(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("FetchMessageListByOffset", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "InstanceId": argv.get("--InstanceId"),
-        "Topic": argv.get("--Topic"),
-        "Partition": Utils.try_to_json(argv, "--Partition"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-        "SinglePartitionRecordNumber": Utils.try_to_json(argv, "--SinglePartitionRecordNumber"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile)
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CkafkaClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.FetchMessageListByOffsetRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.FetchMessageListByOffset(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeACL(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -486,42 +449,6 @@ def doDescribeTopicDetail(argv, arglist):
     model = models.DescribeTopicDetailRequest()
     model.from_json_string(json.dumps(param))
     rsp = client.DescribeTopicDetail(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doFetchMessageByOffset(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("FetchMessageByOffset", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "InstanceId": argv.get("--InstanceId"),
-        "Topic": argv.get("--Topic"),
-        "Partition": Utils.try_to_json(argv, "--Partition"),
-        "Offset": Utils.try_to_json(argv, "--Offset"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile)
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CkafkaClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.FetchMessageByOffsetRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.FetchMessageByOffset(model)
     result = rsp.to_json_string()
     jsonobj = None
     try:
@@ -971,43 +898,6 @@ def doDescribeGroupOffsets(argv, arglist):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doFetchMessageListByTimestamp(argv, arglist):
-    g_param = parse_global_arg(argv)
-    if "help" in argv:
-        show_help("FetchMessageListByTimestamp", g_param[OptionsDefine.Version])
-        return
-
-    param = {
-        "InstanceId": argv.get("--InstanceId"),
-        "Topic": argv.get("--Topic"),
-        "Partition": Utils.try_to_json(argv, "--Partition"),
-        "StartTime": Utils.try_to_json(argv, "--StartTime"),
-        "SinglePartitionRecordNumber": Utils.try_to_json(argv, "--SinglePartitionRecordNumber"),
-
-    }
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile)
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CkafkaClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.FetchMessageListByTimestampRequest()
-    model.from_json_string(json.dumps(param))
-    rsp = client.FetchMessageListByTimestamp(model)
-    result = rsp.to_json_string()
-    jsonobj = None
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8')) # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeTopic(argv, arglist):
     g_param = parse_global_arg(argv)
     if "help" in argv:
@@ -1134,10 +1024,8 @@ ACTION_MAP = {
     "DescribeInstances": doDescribeInstances,
     "ModifyInstanceAttributes": doModifyInstanceAttributes,
     "DescribeUser": doDescribeUser,
-    "FetchMessageListByOffset": doFetchMessageListByOffset,
     "DescribeACL": doDescribeACL,
     "DescribeTopicDetail": doDescribeTopicDetail,
-    "FetchMessageByOffset": doFetchMessageByOffset,
     "DeleteTopicIpWhiteList": doDeleteTopicIpWhiteList,
     "ModifyPassword": doModifyPassword,
     "CreateAcl": doCreateAcl,
@@ -1150,7 +1038,6 @@ ACTION_MAP = {
     "DescribeInstancesDetail": doDescribeInstancesDetail,
     "DeleteUser": doDeleteUser,
     "DescribeGroupOffsets": doDescribeGroupOffsets,
-    "FetchMessageListByTimestamp": doFetchMessageListByTimestamp,
     "DescribeTopic": doDescribeTopic,
     "CreateUser": doCreateUser,
     "DeleteTopic": doDeleteTopic,

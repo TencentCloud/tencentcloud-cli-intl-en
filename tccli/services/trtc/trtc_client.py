@@ -325,6 +325,8 @@ def doDescribeCallDetail(argv, arglist):
         "SdkAppId": argv.get("--SdkAppId"),
         "UserIds": Utils.try_to_json(argv, "--UserIds"),
         "DataType": Utils.try_to_json(argv, "--DataType"),
+        "PageNumber": argv.get("--PageNumber"),
+        "PageSize": argv.get("--PageSize"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

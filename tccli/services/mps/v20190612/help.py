@@ -17,7 +17,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "Format",
@@ -29,7 +29,7 @@ INFO = {
       },
       {
         "name": "FillType",
-        "desc": ""
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black."
       }
     ],
     "desc": "This API is used to create a custom time point screencapturing template. Up to 16 templates can be created."
@@ -59,7 +59,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "Format",
@@ -125,7 +125,7 @@ INFO = {
       },
       {
         "name": "ProhibitedConfigure",
-        "desc": ""
+        "desc": "Control parameter of prohibited information detection. Prohibited information includes:\n<li>Abusive;</li>\n<li>Drug-related.</li>\nNote: this parameter is not supported yet."
       },
       {
         "name": "UserDefineConfigure",
@@ -158,7 +158,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "Format",
@@ -170,7 +170,7 @@ INFO = {
       },
       {
         "name": "FillType",
-        "desc": ""
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black."
       }
     ],
     "desc": "This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created."
@@ -422,7 +422,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "SampleType",
@@ -442,7 +442,7 @@ INFO = {
       },
       {
         "name": "FillType",
-        "desc": ""
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black."
       }
     ],
     "desc": "This API is used to modify a custom sampled screencapturing template."
@@ -509,7 +509,7 @@ INFO = {
       },
       {
         "name": "AiAnalysisTask",
-        "desc": ""
+        "desc": "Video content analysis task parameter."
       },
       {
         "name": "AiRecognitionTask",
@@ -555,7 +555,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "Format",
@@ -1013,7 +1013,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "Format",
@@ -1025,7 +1025,7 @@ INFO = {
       },
       {
         "name": "FillType",
-        "desc": ""
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black."
       }
     ],
     "desc": "This API is used to modify a custom time point screencapturing template."
@@ -1100,7 +1100,7 @@ INFO = {
       },
       {
         "name": "AiAnalysisTask",
-        "desc": ""
+        "desc": "Video content analysis task parameter."
       },
       {
         "name": "AiRecognitionTask",
@@ -1141,7 +1141,7 @@ INFO = {
       },
       {
         "name": "AiRecognitionTask",
-        "desc": ""
+        "desc": "Type parameter of video content recognition task."
       },
       {
         "name": "SessionId",
@@ -1182,7 +1182,7 @@ INFO = {
       },
       {
         "name": "ProhibitedConfigure",
-        "desc": ""
+        "desc": "Control parameter of prohibited information detection. Prohibited information includes:\n<li>Abusive;</li>\n<li>Drug-related.</li>\nNote: this parameter is not supported yet."
       },
       {
         "name": "UserDefineConfigure",
@@ -1215,7 +1215,7 @@ INFO = {
       },
       {
         "name": "AiAnalysisTask",
-        "desc": ""
+        "desc": "Video content analysis task parameter."
       },
       {
         "name": "AiRecognitionTask",
@@ -1293,7 +1293,7 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "SampleType",
@@ -1313,11 +1313,11 @@ INFO = {
       },
       {
         "name": "FillType",
-        "desc": ""
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black."
       },
       {
         "name": "Comment",
-        "desc": ""
+        "desc": "Template description. Length limit: 256 characters."
       }
     ],
     "desc": "This API is used to modify a custom image sprite generating template."
@@ -1464,15 +1464,15 @@ INFO = {
       },
       {
         "name": "ResolutionAdaptive",
-        "desc": ""
+        "desc": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open."
       },
       {
         "name": "FillType",
-        "desc": ""
+        "desc": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black."
       },
       {
         "name": "Comment",
-        "desc": ""
+        "desc": "Template description. Length limit: 256 characters."
       }
     ],
     "desc": "This API is used to create a custom image sprite generating template. Up to 16 templates can be created."

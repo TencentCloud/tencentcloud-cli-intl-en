@@ -1288,6 +1288,7 @@ def doModifyLiveTranscodeTemplate(argv, arglist):
         "HeightToOrig": Utils.try_to_json(argv, "--HeightToOrig"),
         "FpsToOrig": Utils.try_to_json(argv, "--FpsToOrig"),
         "AdaptBitratePercent": Utils.try_to_json(argv, "--AdaptBitratePercent"),
+        "ShortEdgeAsHeight": Utils.try_to_json(argv, "--ShortEdgeAsHeight"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1866,6 +1867,8 @@ def doDescribeLiveTranscodeRules(argv, arglist):
         return
 
     param = {
+        "TemplateIds": Utils.try_to_json(argv, "--TemplateIds"),
+        "DomainNames": Utils.try_to_json(argv, "--DomainNames"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -3326,9 +3329,9 @@ def doCreateLiveTranscodeTemplate(argv, arglist):
     param = {
         "TemplateName": argv.get("--TemplateName"),
         "VideoBitrate": Utils.try_to_json(argv, "--VideoBitrate"),
-        "Vcodec": argv.get("--Vcodec"),
         "Acodec": argv.get("--Acodec"),
         "AudioBitrate": Utils.try_to_json(argv, "--AudioBitrate"),
+        "Vcodec": argv.get("--Vcodec"),
         "Description": argv.get("--Description"),
         "Width": Utils.try_to_json(argv, "--Width"),
         "NeedVideo": Utils.try_to_json(argv, "--NeedVideo"),
@@ -3343,6 +3346,7 @@ def doCreateLiveTranscodeTemplate(argv, arglist):
         "FpsToOrig": Utils.try_to_json(argv, "--FpsToOrig"),
         "AiTransCode": Utils.try_to_json(argv, "--AiTransCode"),
         "AdaptBitratePercent": Utils.try_to_json(argv, "--AdaptBitratePercent"),
+        "ShortEdgeAsHeight": Utils.try_to_json(argv, "--ShortEdgeAsHeight"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

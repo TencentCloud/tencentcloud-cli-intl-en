@@ -805,11 +805,11 @@ INFO = {
       },
       {
         "name": "Vcodec",
-        "desc": "Video encoding format:\nh264/h265."
+        "desc": "Video codec: `h264/h265/origin`. Default value: `h264`.\n\norigin: original codec as the output codec"
       },
       {
         "name": "Acodec",
-        "desc": "Audio encoding format:\naac/mp3."
+        "desc": "Audio codec: acc by default.\nNote: this parameter is unsupported now."
       },
       {
         "name": "AudioBitrate",
@@ -821,11 +821,11 @@ INFO = {
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100-8000 Kbps.\nNote: the bitrate value must be a multiple of 100."
+        "desc": "Video bitrate in Kbps. Value range: 100-8,000.\nNote: the transcoding template requires that the bitrate should be unique, yet the final saved bitrate may be different from the input bitrate."
       },
       {
         "name": "Width",
-        "desc": "Width. Value range: 0-3000."
+        "desc": "Width in pixels. Value range: 0-3,000.\nIt must be a multiple of 2. The original width is 0"
       },
       {
         "name": "NeedVideo",
@@ -837,19 +837,19 @@ INFO = {
       },
       {
         "name": "Height",
-        "desc": "Height. Value range: 0-3000."
+        "desc": "Height in pixels. Value range: 0-3,000.\nIt must be a multiple of 2. The original height is 0"
       },
       {
         "name": "Fps",
-        "desc": "Frame rate. Value range: 0-200."
+        "desc": "Frame rate in fps. Default value: 0.\nValue range: 0-60"
       },
       {
         "name": "Gop",
-        "desc": "Keyframe interval in seconds. Value range: 0-50."
+        "desc": "Keyframe interval in seconds.\nValue range: 2-6"
       },
       {
         "name": "Rotate",
-        "desc": "Rotation angle.\n0, 90, 180, 270."
+        "desc": "Rotation angle. Default value: 0.\nValid values: 0, 90, 180, 270"
       },
       {
         "name": "Profile",
@@ -870,6 +870,10 @@ INFO = {
       {
         "name": "AdaptBitratePercent",
         "desc": "Bitrate compression ratio of top speed codec video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5."
+      },
+      {
+        "name": "ShortEdgeAsHeight",
+        "desc": "This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0."
       }
     ],
     "desc": "This API is used to modify the transcoding template configuration."
@@ -1206,7 +1210,16 @@ INFO = {
     "desc": "This API is used to add a certificate."
   },
   "DescribeLiveTranscodeRules": {
-    "params": [],
+    "params": [
+      {
+        "name": "TemplateIds",
+        "desc": ""
+      },
+      {
+        "name": "DomainNames",
+        "desc": ""
+      }
+    ],
     "desc": "This API is used to get the list of transcoding rules."
   },
   "DescribeLiveSnapshotTemplate": {
@@ -1850,11 +1863,11 @@ INFO = {
       },
       {
         "name": "EndTime",
-        "desc": "Recording task end time in UNIX timestamp, which must be after `StartTime` and within 24 hours from the current time."
+        "desc": "The recording end time in UNIX timestamp format. The “EndTime” should be later than “StartTime”. Normally the duration between “EndTime” and “StartTime” is up to 24 hours."
       },
       {
         "name": "StartTime",
-        "desc": "Recording task start time in UNIX timestamp. If this parameter is left empty, it indicates to start recording immediately. It must be within 24 hours from the current time."
+        "desc": "The recording start time in UNIX timestamp format. If the “StartTime” is not entered, recording will start immediately after the API is successfully called. Normally the “StartTime” should be within 6 days from current time."
       },
       {
         "name": "StreamType",
@@ -1866,7 +1879,7 @@ INFO = {
       },
       {
         "name": "Extension",
-        "desc": "Extended field, which is empty by default."
+        "desc": "Extension field which is not defined now. It is empty by default."
       }
     ],
     "desc": "This API is used to create a recording task that starts and ends at specified times and records by using the configuration corresponding to a specified recording template ID.\n- Prerequisites\n1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the corresponding document.\n- Precautions\n1. An interruption will end the current recording and generate a recording file. The task will still be valid before the end time expires, and as long as the stream is pushed normally during the period, it will record normally, regardless of whether the push is interrupted or restarted multiple times.\n2. Creating recording tasks with overlapping time periods must be avoided. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.\n3. The record of a created recording task will be retained for 3 months on the platform.\n4. The current recording task management APIs (CreateRecordTask/StopRecordTask/DeleteRecordTask) are not compatible with the legacy APIs (CreateLiveRecord/StopLiveRecord/DeleteLiveRecord), and they cannot be mixed."
@@ -1875,23 +1888,23 @@ INFO = {
     "params": [
       {
         "name": "TemplateName",
-        "desc": "Template name, such as 900 900p. This can be only a combination of letters and digits."
+        "desc": "Template name, such as “900p”. This can be only a combination of letters and digits.\nLength limit:\n  Standard transcoding: 1-10 characters\n  Top speed codec transcoding: 3-10 characters"
       },
       {
         "name": "VideoBitrate",
-        "desc": "Video bitrate. Value range: 100-8,000.\nNote: The bitrate must be a multiple of 100."
-      },
-      {
-        "name": "Vcodec",
-        "desc": "Video encoding format. Valid values: h264, h265. Default value: h264."
+        "desc": "Video bitrate in Kbps. Value range: 100-8,000.\nNote: the transcoding template requires that bitrate should be unique, yet the final saved bitrate may be different from the input bitrate."
       },
       {
         "name": "Acodec",
-        "desc": "Audio encoding in ACC format. Default value: original audio format.\nNote: This parameter will take effect later."
+        "desc": "Audio codec: acc by default.\nNote: this parameter is unsupported now."
       },
       {
         "name": "AudioBitrate",
-        "desc": "Audio bitrate. Value range: 0-500. Default value: 0."
+        "desc": "Audio bitrate. Default value: 0.\nValue range: 0-500."
+      },
+      {
+        "name": "Vcodec",
+        "desc": "Video codec: `h264/h265/origin`. Default value: `h264`.\n\norigin: original codec as the output codec"
       },
       {
         "name": "Description",
@@ -1899,7 +1912,7 @@ INFO = {
       },
       {
         "name": "Width",
-        "desc": "Width. Default value: 0.\nValue range: [0-3000]."
+        "desc": "Width. Default value: 0.\nValue range: 0-3,000\nIt must be a multiple of 2. The original width is 0"
       },
       {
         "name": "NeedVideo",
@@ -1911,19 +1924,19 @@ INFO = {
       },
       {
         "name": "Height",
-        "desc": "Height. Default value: 0.\nValue range: [0-3000]."
+        "desc": "Height. Default value: 0.\nValue range: 0-3,000\nIt must be a multiple of 2. The original height is 0"
       },
       {
         "name": "Fps",
-        "desc": "Frame rate. Default value: 0."
+        "desc": "Frame rate. Default value: 0.\nValue range: 0-60"
       },
       {
         "name": "Gop",
-        "desc": "Keyframe interval in seconds. Original interval by default"
+        "desc": "Keyframe interval in seconds. Default value: original interval\nValue range: 2-6"
       },
       {
         "name": "Rotate",
-        "desc": "Whether to rotate. 0: no; 1: yes. Default value: 0."
+        "desc": "Rotation angle. Default value: 0.\nValid values: 0, 90, 180, 270"
       },
       {
         "name": "Profile",
@@ -1948,6 +1961,10 @@ INFO = {
       {
         "name": "AdaptBitratePercent",
         "desc": "Bitrate compression ratio of top speed codec video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5."
+      },
+      {
+        "name": "ShortEdgeAsHeight",
+        "desc": "This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0."
       }
     ],
     "desc": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1)."

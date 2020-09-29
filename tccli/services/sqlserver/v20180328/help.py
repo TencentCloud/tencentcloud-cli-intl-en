@@ -215,6 +215,22 @@ INFO = {
       {
         "name": "Offset",
         "desc": "Page number. Default value: 0"
+      },
+      {
+        "name": "BackupName",
+        "desc": "Filter by backup name. If this parameter is left empty, backup name will not be used in filtering."
+      },
+      {
+        "name": "Strategy",
+        "desc": "Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering."
+      },
+      {
+        "name": "BackupWay",
+        "desc": "Filter by backup mode. Valid values: 0 (automatic backup on a regular basis), 1 (manual backup performed by the user at any time). If this parameter is left empty, backup mode will not be used in filtering."
+      },
+      {
+        "name": "BackupId",
+        "desc": "Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering."
       }
     ],
     "desc": "This API is used to query the list of backups."
@@ -310,6 +326,10 @@ INFO = {
       {
         "name": "InstanceId",
         "desc": "Instance ID in the format of mssql-i1z41iwd"
+      },
+      {
+        "name": "BackupName",
+        "desc": "Backup name. If this parameter is left empty, a backup name in the format of \"Instance ID_Backup start timestamp\" will be automatically generated."
       }
     ],
     "desc": "This API is used to create a backup."
@@ -412,6 +432,14 @@ INFO = {
       {
         "name": "Time",
         "desc": "Target time point for rollback"
+      },
+      {
+        "name": "TargetInstanceId",
+        "desc": "ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used."
+      },
+      {
+        "name": "RenameRestore",
+        "desc": "Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored."
       }
     ],
     "desc": "This API is used to roll back an instance."
@@ -546,6 +574,10 @@ INFO = {
       {
         "name": "MigrateDBSet",
         "desc": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)"
+      },
+      {
+        "name": "RenameRestore",
+        "desc": "Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format. This parameter takes effect only when `SourceType=5`."
       }
     ],
     "desc": "This API is used to create a migration task."
@@ -650,6 +682,14 @@ INFO = {
       {
         "name": "BackupId",
         "desc": "Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API"
+      },
+      {
+        "name": "TargetInstanceId",
+        "desc": "ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used."
+      },
+      {
+        "name": "RenameRestore",
+        "desc": "Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format."
       }
     ],
     "desc": "This API is used to restore an instance from a backup file."

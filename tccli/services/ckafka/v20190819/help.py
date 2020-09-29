@@ -243,31 +243,6 @@ INFO = {
     ],
     "desc": "This API is used to query user information."
   },
-  "FetchMessageListByOffset": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Instance ID."
-      },
-      {
-        "name": "Topic",
-        "desc": "Topic name."
-      },
-      {
-        "name": "Partition",
-        "desc": "Partition ID."
-      },
-      {
-        "name": "Offset",
-        "desc": "Offset information."
-      },
-      {
-        "name": "SinglePartitionRecordNumber",
-        "desc": "Maximum number of records that can be queried. Default value: 20."
-      }
-    ],
-    "desc": "This API is used to query the message list based on an offset."
-  },
   "DescribeACL": {
     "params": [
       {
@@ -317,27 +292,6 @@ INFO = {
       }
     ],
     "desc": "This API is used to get topic list details (only for call in the console)."
-  },
-  "FetchMessageByOffset": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Instance ID."
-      },
-      {
-        "name": "Topic",
-        "desc": "Topic name."
-      },
-      {
-        "name": "Partition",
-        "desc": "Partition ID."
-      },
-      {
-        "name": "Offset",
-        "desc": "Offset information."
-      }
-    ],
-    "desc": "This API is used to query messages based on a specified offset position."
   },
   "DeleteTopicIpWhiteList": {
     "params": [
@@ -614,31 +568,6 @@ INFO = {
       }
     ],
     "desc": "This API is used to get topic attributes.\n"
-  },
-  "FetchMessageListByTimestamp": {
-    "params": [
-      {
-        "name": "InstanceId",
-        "desc": "Instance ID."
-      },
-      {
-        "name": "Topic",
-        "desc": "Topic name."
-      },
-      {
-        "name": "Partition",
-        "desc": "Partition ID."
-      },
-      {
-        "name": "StartTime",
-        "desc": "Query start time. It is a 13-digit timestamp."
-      },
-      {
-        "name": "SinglePartitionRecordNumber",
-        "desc": "Maximum number of records that can be queried. Default value: 20."
-      }
-    ],
-    "desc": "This API is used to query the message list based on a timestamp."
   },
   "DescribeTopic": {
     "params": [

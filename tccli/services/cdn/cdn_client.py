@@ -265,6 +265,7 @@ def doAddCdnDomain(argv, arglist):
         "SpecificConfig": Utils.try_to_json(argv, "--SpecificConfig"),
         "Area": argv.get("--Area"),
         "OriginPullTimeout": Utils.try_to_json(argv, "--OriginPullTimeout"),
+        "Tag": Utils.try_to_json(argv, "--Tag"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

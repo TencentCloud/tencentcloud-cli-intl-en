@@ -520,6 +520,15 @@ INFO = {
     ],
     "desc": "This API is used to update SAML identity provider information."
   },
+  "DescribeSafeAuthFlagColl": {
+    "params": [
+      {
+        "name": "SubUin",
+        "desc": "Sub-account"
+      }
+    ],
+    "desc": "This API is used to query security settings."
+  },
   "UpdatePolicy": {
     "params": [
       {
@@ -547,7 +556,7 @@ INFO = {
   },
   "DescribeSafeAuthFlag": {
     "params": [],
-    "desc": "This API is used to query the security settings."
+    "desc": "This API is used to query security settings."
   },
   "ListEntitiesForPolicy": {
     "params": [

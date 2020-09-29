@@ -1200,15 +1200,27 @@ INFO = {
         "desc": "Listener ID"
       },
       {
+        "name": "RuleId",
+        "desc": "Layer-7 rule ID"
+      },
+      {
         "name": "WithinTime",
         "desc": "Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours."
       },
       {
-        "name": "RuleId",
-        "desc": "Rule ID"
+        "name": "StartTime",
+        "desc": "Statistics start time, such as 2020-08-19 00:00:00"
+      },
+      {
+        "name": "EndTime",
+        "desc": "Statistics end time, such as 2020-08-19 23:59:59"
+      },
+      {
+        "name": "Granularity",
+        "desc": "Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported"
       }
     ],
-    "desc": "This API (DescribeRealServerStatistics) is used to query the statistics of an origin server's health check results. Origin server status displayed as 1: normal, or 0: exceptional. The queried origin server must be bound to a listener or rule. The bound listener or rule ID must be specified when querying. This API supports displaying origin server status statistics for the past 1, 3, 6, 12, and 24 hours, with a granularity of 1 minute."
+    "desc": "This API is used to query the statistics of an origin server's health check results. Origin server status is displayed as 1 (normal) or 0 (exceptional). The queried origin server must be bound to a listener or rule, and the ID of the bound listener or rule must be specified for the query. This API supports displaying origin server status statistics at a 1-minute granularity."
   },
   "BindListenerRealServers": {
     "params": [

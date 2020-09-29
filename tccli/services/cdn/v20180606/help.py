@@ -224,6 +224,10 @@ INFO = {
       {
         "name": "OriginPullTimeout",
         "desc": "Origin-pull timeout configuration"
+      },
+      {
+        "name": "Tag",
+        "desc": "Tag configuration"
       }
     ],
     "desc": "This API is used to add a CDN acceleration domain name."

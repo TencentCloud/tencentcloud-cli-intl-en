@@ -138,6 +138,10 @@ def doDescribeBackups(argv, arglist):
         "InstanceId": argv.get("--InstanceId"),
         "Limit": Utils.try_to_json(argv, "--Limit"),
         "Offset": Utils.try_to_json(argv, "--Offset"),
+        "BackupName": argv.get("--BackupName"),
+        "Strategy": Utils.try_to_json(argv, "--Strategy"),
+        "BackupWay": Utils.try_to_json(argv, "--BackupWay"),
+        "BackupId": Utils.try_to_json(argv, "--BackupId"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -628,6 +632,7 @@ def doCreateBackup(argv, arglist):
         "Strategy": Utils.try_to_json(argv, "--Strategy"),
         "DBNames": Utils.try_to_json(argv, "--DBNames"),
         "InstanceId": argv.get("--InstanceId"),
+        "BackupName": argv.get("--BackupName"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -715,6 +720,8 @@ def doRollbackInstance(argv, arglist):
         "Type": Utils.try_to_json(argv, "--Type"),
         "DBs": Utils.try_to_json(argv, "--DBs"),
         "Time": argv.get("--Time"),
+        "TargetInstanceId": argv.get("--TargetInstanceId"),
+        "RenameRestore": Utils.try_to_json(argv, "--RenameRestore"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -964,6 +971,7 @@ def doCreateMigration(argv, arglist):
         "Source": Utils.try_to_json(argv, "--Source"),
         "Target": Utils.try_to_json(argv, "--Target"),
         "MigrateDBSet": Utils.try_to_json(argv, "--MigrateDBSet"),
+        "RenameRestore": Utils.try_to_json(argv, "--RenameRestore"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1233,6 +1241,8 @@ def doRestoreInstance(argv, arglist):
     param = {
         "InstanceId": argv.get("--InstanceId"),
         "BackupId": Utils.try_to_json(argv, "--BackupId"),
+        "TargetInstanceId": argv.get("--TargetInstanceId"),
+        "RenameRestore": Utils.try_to_json(argv, "--RenameRestore"),
 
     }
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])

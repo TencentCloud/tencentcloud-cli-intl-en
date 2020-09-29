@@ -42,6 +42,10 @@ INFO = {
       {
         "name": "ResourceId",
         "desc": "Queries information on a specified resource"
+      },
+      {
+        "name": "ActionType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query bill details."
@@ -50,7 +54,7 @@ INFO = {
     "params": [
       {
         "name": "PayerUin",
-        "desc": "Query bill data user’s UIN"
+        "desc": "Query bill data user's UIN"
       },
       {
         "name": "BeginTime",
@@ -84,6 +88,10 @@ INFO = {
       {
         "name": "NeedRecordNum",
         "desc": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no"
+      },
+      {
+        "name": "ActionType",
+        "desc": ""
       }
     ],
     "desc": "This API is used to query bill resources summary. "
@@ -92,7 +100,7 @@ INFO = {
     "params": [
       {
         "name": "PayerUin",
-        "desc": "Queries bill data user’s UIN"
+        "desc": "Queries bill data user's UIN"
       },
       {
         "name": "BeginTime",
@@ -109,7 +117,7 @@ INFO = {
     "params": [
       {
         "name": "PayerUin",
-        "desc": "Queries bill data user’s UIN"
+        "desc": "Queries bill data user's UIN"
       },
       {
         "name": "BeginTime",
@@ -126,7 +134,7 @@ INFO = {
     "params": [
       {
         "name": "PayerUin",
-        "desc": "Queries bill data user’s UIN"
+        "desc": "Queries bill data user's UIN"
       },
       {
         "name": "BeginTime",

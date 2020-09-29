@@ -53,7 +53,7 @@ INFO = {
         "desc": "Query end time in the format of local UNIX timestamp, such as 1588031999s."
       }
     ],
-    "desc": "This API is used to query the daily numbers of rooms and users under a specified `sdkqppid`. It can query data once per minute for the last 5 days. If a day has not ended, the numbers of rooms and users on the day cannot be queried."
+    "desc": "This API is used to query the daily numbers of rooms and users under a specified `SDKAppID`. It can query data once per minute for the last 14 days. If a day has not ended, the numbers of rooms and users on the day cannot be queried."
   },
   "DescribeRealtimeQuality": {
     "params": [
@@ -170,7 +170,7 @@ INFO = {
         "desc": "Number of entries per page (if either `PageNumber` or `PageSize` is left empty, 10 data entries will be returned by default. Maximum value: 100)"
       }
     ],
-    "desc": "This API is used to query the room list for the last 5 days according to `sdkappid`. It returns 10 calls by default and up to 100 calls at a time."
+    "desc": "This API is used to query the room list under a specified `SDKAppID`. It returns 10 calls by default and up to 100 calls at a time. It can query data for the last 14 days."
   },
   "RemoveUser": {
     "params": [
@@ -214,9 +214,17 @@ INFO = {
       {
         "name": "DataType",
         "desc": "Metric to query. The user list will be returned if it is left empty; all metrics will be returned if its value is `all`.\nappCpu: CPU utilization of the application;\nsysCpu: CPU utilization of the system;\naBit: upstream/downstream audio bitrate;\naBlock: audio lag duration;\nbigvBit: upstream/downstream video bitrate;\nbigvCapFps: frame rate for capturing videos;\nbigvEncFps: frame rate for sending videos;\nbigvDecFps: rendering frame rate;\nbigvBlock: video lag duration;\naLoss: upstream/downstream audio packet loss;\nbigvLoss: upstream/downstream video packet loss;\nbigvWidth: upstream/downstream resolution in width;\nbigvHeight: upstream/downstream resolution in height."
+      },
+      {
+        "name": "PageNumber",
+        "desc": "Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default."
+      },
+      {
+        "name": "PageSize",
+        "desc": "Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When `DataType` and all `UserId`s are not null, `PageSize` is up to 6. When `DataType` and all `UserId`s are null, `PageSize` is up to 100."
       }
     ],
-    "desc": "This API is used to query the user list and user call quality data in a specified time period. It queries data of up to 6 users in the last 5 days. The query period is up to 1 hour, which must start and end on the same day."
+    "desc": "This API is used to query user list and call quality data within a specified time. It queries data in last 14 days. When `DataType` is not null, real-time data of up to 1 hour and up to 6 users can be queried. The query period can start and end on different days. When `DataType` and all `UserId`s are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100)."
   },
   "DescribeDetailEvent": {
     "params": [
@@ -241,7 +249,7 @@ INFO = {
         "desc": "Room ID"
       }
     ],
-    "desc": "This API is used to query detailed events of a user such as room entry/exit and video enablement/disablement during a call. It can query data for the last 5 days."
+    "desc": "This API is used to query a user’s activity details such as room entry/exit and video enablement/disablement during a call. It can query data for the last 14 days."
   },
   "DescribeAbnormalEvent": {
     "params": [
@@ -262,7 +270,7 @@ INFO = {
         "desc": "Room ID, which can be used to query up to 20 exceptional experience events in a specific room"
       }
     ],
-    "desc": "This API is used to query users’ exceptional experience events according to `SDKAppID` and return the exceptional experience ID and possible causes. It queries data in last 24 hours, and the query period is up to 1 hour which can start and end on different days. For more information about exceptional experience ID mapping, please see here."
+    "desc": "This API is used to query exception occurrences under a specified `SDKAppID` and return the exception ID and possible causes. It queries data in last 5 days, and the query period is up to 1 hour which can start and end on different days. For more information about exceptions, please see the exception ID mapping table: https://intl.cloud.tencent.com/document/product/647/37906"
   },
   "StopMCUMixTranscode": {
     "params": [
