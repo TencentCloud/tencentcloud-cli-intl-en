@@ -1,0 +1,653 @@
+{
+  "actions": {
+    "CreateMediaPackageChannel": {
+      "document": "This API is used to create a media package channel.",
+      "input": "CreateMediaPackageChannelRequest",
+      "name": "Creates a channel",
+      "output": "CreateMediaPackageChannelResponse"
+    },
+    "CreateMediaPackageChannelEndpoint": {
+      "document": "This API is used to create an endpoint of a media package channel.",
+      "input": "CreateMediaPackageChannelEndpointRequest",
+      "name": "Creates a channel endpoint",
+      "output": "CreateMediaPackageChannelEndpointResponse"
+    },
+    "DeleteMediaPackageChannelEndpoints": {
+      "document": "This API is used to delete endpoints from a media package channel in batches.",
+      "input": "DeleteMediaPackageChannelEndpointsRequest",
+      "name": "Deletes channel endpoints in batches",
+      "output": "DeleteMediaPackageChannelEndpointsResponse"
+    },
+    "DeleteMediaPackageChannels": {
+      "document": "This API is used to delete media package channels in batches.",
+      "input": "DeleteMediaPackageChannelsRequest",
+      "name": "Deletes channels in batches",
+      "output": "DeleteMediaPackageChannelsResponse"
+    },
+    "DescribeMediaPackageChannel": {
+      "document": "This API is used to query the information of a media package channel.",
+      "input": "DescribeMediaPackageChannelRequest",
+      "name": "Queries a channel",
+      "output": "DescribeMediaPackageChannelResponse"
+    },
+    "DescribeMediaPackageChannels": {
+      "document": "This API is used to query the information list of media package channels.",
+      "input": "DescribeMediaPackageChannelsRequest",
+      "name": "Queries the channel list",
+      "output": "DescribeMediaPackageChannelsResponse"
+    },
+    "ModifyMediaPackageChannel": {
+      "document": "This API is used to modify the information of a media package channel.",
+      "input": "ModifyMediaPackageChannelRequest",
+      "name": "Modifies a channel",
+      "output": "ModifyMediaPackageChannelResponse"
+    },
+    "ModifyMediaPackageChannelEndpoint": {
+      "document": "This API is used to modify an endpoint of a media package channel.",
+      "input": "ModifyMediaPackageChannelEndpointRequest",
+      "name": "Modifies a channel endpoint",
+      "output": "ModifyMediaPackageChannelEndpointResponse"
+    },
+    "ModifyMediaPackageChannelInputAuthInfo": {
+      "document": "This API is used to modify the input authentication information of a media package channel.",
+      "input": "ModifyMediaPackageChannelInputAuthInfoRequest",
+      "name": "Modifies the channel input authentication information",
+      "output": "ModifyMediaPackageChannelInputAuthInfoResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-05-27",
+    "serviceNameCN": "媒体包装",
+    "serviceShortName": "mdp"
+  },
+  "objects": {
+    "ChannelInfo": {
+      "document": "Channel information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel protocol.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel input and output.",
+          "member": "PointInfo",
+          "name": "Points",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateMediaPackageChannelEndpointRequest": {
+      "document": "CreateMediaPackageChannelEndpoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Channel name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authentication information.",
+          "member": "EndpointAuthInfo",
+          "name": "AuthInfo",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMediaPackageChannelEndpointResponse": {
+      "document": "CreateMediaPackageChannelEndpoint response structure.",
+      "members": [
+        {
+          "document": "The information of the created channel endpoint.",
+          "member": "EndpointInfo",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMediaPackageChannelRequest": {
+      "document": "CreateMediaPackageChannel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Channel protocol. Valid values: HLS, DASH.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMediaPackageChannelResponse": {
+      "document": "CreateMediaPackageChannel response structure.",
+      "members": [
+        {
+          "document": "Channel information.",
+          "member": "ChannelInfo",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaPackageChannelEndpointsRequest": {
+      "document": "DeleteMediaPackageChannelEndpoints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of endpoint URLs.",
+          "member": "string",
+          "name": "Urls",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaPackageChannelEndpointsResponse": {
+      "document": "DeleteMediaPackageChannelEndpoints response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaPackageChannelsRequest": {
+      "document": "DeleteMediaPackageChannels request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID list of channels to be deleted.",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaPackageChannelsResponse": {
+      "document": "DeleteMediaPackageChannels response structure.",
+      "members": [
+        {
+          "document": "The information list of channels that have been deleted.",
+          "member": "ChannelInfo",
+          "name": "SuccessInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information list of channels that failed to be deleted.",
+          "member": "ChannelInfo",
+          "name": "FailInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaPackageChannelRequest": {
+      "document": "DescribeMediaPackageChannel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaPackageChannelResponse": {
+      "document": "DescribeMediaPackageChannel response structure.",
+      "members": [
+        {
+          "document": "Channel information.",
+          "member": "ChannelInfo",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaPackageChannelsRequest": {
+      "document": "DescribeMediaPackageChannels request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Page number. Value range: [1, 1000].",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The size of each page. Value range: [1, 1000].",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaPackageChannelsResponse": {
+      "document": "DescribeMediaPackageChannels response structure.",
+      "members": [
+        {
+          "document": "The list of channel outputs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ChannelInfo",
+          "name": "Infos",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Page number.",
+          "member": "uint64",
+          "name": "PageNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The size of each page.",
+          "member": "uint64",
+          "name": "PageSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number.",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of pages.",
+          "member": "uint64",
+          "name": "TotalPage",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EndpointAuthInfo": {
+      "document": "The authentication information of channel endpoints.",
+      "members": [
+        {
+          "default": "",
+          "document": "The security group allowlist in CIDR format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "WhiteIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The security group blocklist in CIDR format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "BlackIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AuthKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EndpointInfo": {
+      "document": "Channel endpoint information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint URL.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint authentication information.",
+          "member": "EndpointAuthInfo",
+          "name": "AuthInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InputAuthInfo": {
+      "document": "Channel input authentication information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Password.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InputInfo": {
+      "document": "Channel input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel input URL.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Channel input authentication information.",
+          "member": "InputAuthInfo",
+          "name": "AuthInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyMediaPackageChannelEndpointRequest": {
+      "document": "ModifyMediaPackageChannelEndpoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Channel endpoint URL.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The channel name after modification.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The channel authentication after modification.",
+          "member": "EndpointAuthInfo",
+          "name": "AuthInfo",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaPackageChannelEndpointResponse": {
+      "document": "ModifyMediaPackageChannelEndpoint response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaPackageChannelInputAuthInfoRequest": {
+      "document": "ModifyMediaPackageChannelInputAuthInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Channel input URL.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authentication configuration type. Valid values: CLOSE, UPDATE.\nCLOSE: disable authentication.\nUPDATE: update authentication.",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaPackageChannelInputAuthInfoResponse": {
+      "document": "ModifyMediaPackageChannelInputAuthInfo response structure.",
+      "members": [
+        {
+          "document": "Channel input authentication information.",
+          "member": "InputAuthInfo",
+          "name": "AuthInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaPackageChannelRequest": {
+      "document": "ModifyMediaPackageChannel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The channel name after modification.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The channel protocol after modification. Valid values: HLS, DASH.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaPackageChannelResponse": {
+      "document": "ModifyMediaPackageChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PointInfo": {
+      "document": "Channel input and output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel input list.",
+          "member": "InputInfo",
+          "name": "Inputs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel output list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "EndpointInfo",
+          "name": "Endpoints",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

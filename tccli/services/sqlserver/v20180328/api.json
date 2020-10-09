@@ -1,0 +1,4040 @@
+{
+  "actions": {
+    "CreateAccount": {
+      "document": "This API is used to create an instance account.",
+      "input": "CreateAccountRequest",
+      "name": "Creates instance account",
+      "output": "CreateAccountResponse"
+    },
+    "CreateBackup": {
+      "document": "This API is used to create a backup.",
+      "input": "CreateBackupRequest",
+      "name": "Creates backup",
+      "output": "CreateBackupResponse"
+    },
+    "CreateDB": {
+      "document": "This API is used to create a database.",
+      "input": "CreateDBRequest",
+      "name": "Creates database",
+      "output": "CreateDBResponse"
+    },
+    "CreateDBInstances": {
+      "document": "This API is used to create an instance.",
+      "input": "CreateDBInstancesRequest",
+      "name": "Creates instance",
+      "output": "CreateDBInstancesResponse"
+    },
+    "CreateMigration": {
+      "document": "This API is used to create a migration task.",
+      "input": "CreateMigrationRequest",
+      "name": "Creates migration task",
+      "output": "CreateMigrationResponse"
+    },
+    "DeleteAccount": {
+      "document": "This API is used to delete an instance account.",
+      "input": "DeleteAccountRequest",
+      "name": "Deletes instance account",
+      "output": "DeleteAccountResponse"
+    },
+    "DeleteDB": {
+      "document": "This API is used to drop a database.",
+      "input": "DeleteDBRequest",
+      "name": "Drops database",
+      "output": "DeleteDBResponse"
+    },
+    "DeleteMigration": {
+      "document": "This API is used to delete a migration task.",
+      "input": "DeleteMigrationRequest",
+      "name": "Deletes migration task",
+      "output": "DeleteMigrationResponse"
+    },
+    "DescribeAccounts": {
+      "document": "This API is used to pull the list of instance accounts.",
+      "input": "DescribeAccountsRequest",
+      "name": "Pulls list of instance accounts",
+      "output": "DescribeAccountsResponse"
+    },
+    "DescribeBackups": {
+      "document": "This API is used to query the list of backups.",
+      "input": "DescribeBackupsRequest",
+      "name": "Queries list of backups",
+      "output": "DescribeBackupsResponse"
+    },
+    "DescribeDBInstances": {
+      "document": "This API is used to query the list of instances.",
+      "input": "DescribeDBInstancesRequest",
+      "name": "Queries the list of instances",
+      "output": "DescribeDBInstancesResponse"
+    },
+    "DescribeDBs": {
+      "document": "This API is used to query the list of databases",
+      "input": "DescribeDBsRequest",
+      "name": "Queries the list of databases",
+      "output": "DescribeDBsResponse"
+    },
+    "DescribeFlowStatus": {
+      "document": "This API is used to query flow status.",
+      "input": "DescribeFlowStatusRequest",
+      "name": "Queries flow status",
+      "output": "DescribeFlowStatusResponse"
+    },
+    "DescribeMigrationDetail": {
+      "document": "This API is used to query migration task details.",
+      "input": "DescribeMigrationDetailRequest",
+      "name": "Queries migration task details",
+      "output": "DescribeMigrationDetailResponse"
+    },
+    "DescribeMigrations": {
+      "document": "This API is used to query the list of eligible migration tasks based on the entered criteria.",
+      "input": "DescribeMigrationsRequest",
+      "name": "Queries the list of migration tasks",
+      "output": "DescribeMigrationsResponse"
+    },
+    "DescribeOrders": {
+      "document": "This API is used to query order information.",
+      "input": "DescribeOrdersRequest",
+      "name": "Queries order information",
+      "output": "DescribeOrdersResponse"
+    },
+    "DescribeProductConfig": {
+      "document": "This API is used to query purchasable specification configuration.",
+      "input": "DescribeProductConfigRequest",
+      "name": "Queries purchasable specification configuration",
+      "output": "DescribeProductConfigResponse"
+    },
+    "DescribeRegions": {
+      "document": "This API is used to query purchasable regions.",
+      "input": "DescribeRegionsRequest",
+      "name": "Queries purchasable regions",
+      "output": "DescribeRegionsResponse"
+    },
+    "DescribeRollbackTime": {
+      "document": "This API is used to query the time range available for instance rollback.",
+      "input": "DescribeRollbackTimeRequest",
+      "name": "Queries time range available for instance rollback",
+      "output": "DescribeRollbackTimeResponse"
+    },
+    "DescribeSlowlogs": {
+      "document": "This API is used to get file information of slow query logs.",
+      "input": "DescribeSlowlogsRequest",
+      "name": "Gets file information of slow query logs",
+      "output": "DescribeSlowlogsResponse"
+    },
+    "DescribeZones": {
+      "document": "This API is used to query currently purchasable AZs.",
+      "input": "DescribeZonesRequest",
+      "name": "Queries purchasable AZs",
+      "output": "DescribeZonesResponse"
+    },
+    "InquiryPriceCreateDBInstances": {
+      "document": "This API is used to query the price of requested instances.",
+      "input": "InquiryPriceCreateDBInstancesRequest",
+      "name": "Queries the price of requested instances",
+      "output": "InquiryPriceCreateDBInstancesResponse"
+    },
+    "InquiryPriceUpgradeDBInstance": {
+      "document": "This API is used to query the upgrade price of an instance.",
+      "input": "InquiryPriceUpgradeDBInstanceRequest",
+      "name": "Queries upgrade price of instance",
+      "output": "InquiryPriceUpgradeDBInstanceResponse"
+    },
+    "ModifyAccountPrivilege": {
+      "document": "This API is used to modify instance account permissions.",
+      "input": "ModifyAccountPrivilegeRequest",
+      "name": "Modifies instance account permissions",
+      "output": "ModifyAccountPrivilegeResponse"
+    },
+    "ModifyAccountRemark": {
+      "document": "This API is used to modify account remarks.",
+      "input": "ModifyAccountRemarkRequest",
+      "name": "Modifies account remarks",
+      "output": "ModifyAccountRemarkResponse"
+    },
+    "ModifyBackupStrategy": {
+      "document": "This API is used to modify the backup policy.",
+      "input": "ModifyBackupStrategyRequest",
+      "name": "Modifies backup policy",
+      "output": "ModifyBackupStrategyResponse"
+    },
+    "ModifyDBInstanceName": {
+      "document": "This API is used to rename an instance.",
+      "input": "ModifyDBInstanceNameRequest",
+      "name": "Renames instance",
+      "output": "ModifyDBInstanceNameResponse"
+    },
+    "ModifyDBInstanceProject": {
+      "document": "This API is used to modify the project to which a database instance belongs.",
+      "input": "ModifyDBInstanceProjectRequest",
+      "name": "Modifies project to which database instance belongs",
+      "output": "ModifyDBInstanceProjectResponse"
+    },
+    "ModifyDBName": {
+      "document": "This API is used to rename a database.",
+      "input": "ModifyDBNameRequest",
+      "name": "Rename database",
+      "output": "ModifyDBNameResponse"
+    },
+    "ModifyDBRemark": {
+      "document": "This API is used to modify database remarks.",
+      "input": "ModifyDBRemarkRequest",
+      "name": "Modifies database remarks",
+      "output": "ModifyDBRemarkResponse"
+    },
+    "ModifyMigration": {
+      "document": "This API is used to modify an existing migration task.",
+      "input": "ModifyMigrationRequest",
+      "name": "Modifies migration task",
+      "output": "ModifyMigrationResponse"
+    },
+    "ResetAccountPassword": {
+      "document": "This API is used to reset the account password of an instance.",
+      "input": "ResetAccountPasswordRequest",
+      "name": "Resets account password",
+      "output": "ResetAccountPasswordResponse"
+    },
+    "RestartDBInstance": {
+      "document": "This API is used to restart a database instance.",
+      "input": "RestartDBInstanceRequest",
+      "name": "Restarts instance",
+      "output": "RestartDBInstanceResponse"
+    },
+    "RestoreInstance": {
+      "document": "This API is used to restore an instance from a backup file.",
+      "input": "RestoreInstanceRequest",
+      "name": "Restores instance from backup file",
+      "output": "RestoreInstanceResponse"
+    },
+    "RollbackInstance": {
+      "document": "This API is used to roll back an instance.",
+      "input": "RollbackInstanceRequest",
+      "name": "Rolls back instance",
+      "output": "RollbackInstanceResponse"
+    },
+    "RunMigration": {
+      "document": "This API is used to start running a migration task.",
+      "input": "RunMigrationRequest",
+      "name": "Runs migration task",
+      "output": "RunMigrationResponse"
+    },
+    "TerminateDBInstance": {
+      "document": "This API is used to manually terminate a pay-as-you-go instance.",
+      "input": "TerminateDBInstanceRequest",
+      "name": "Manually terminates pay-as-you-go instance",
+      "output": "TerminateDBInstanceResponse"
+    },
+    "UpgradeDBInstance": {
+      "document": "This API is used to upgrade an instance.",
+      "input": "UpgradeDBInstanceRequest",
+      "name": "Upgrades instance",
+      "output": "UpgradeDBInstanceResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-03-28",
+    "serviceNameCN": "云数据库 SQL Server",
+    "serviceShortName": "sqlserver"
+  },
+  "objects": {
+    "AccountCreateInfo": {
+      "document": "Account creation information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance username",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of database permissions",
+          "member": "DBPrivilege",
+          "name": "DBPrivileges",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an admin account. Default value: no",
+          "member": "bool",
+          "name": "IsAdmin",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AccountDetail": {
+      "document": "Account details",
+      "members": [
+        {
+          "default": "",
+          "document": "Account name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account update time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password update time",
+          "member": "datetime",
+          "name": "PassTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Internal account status, which should be `enable` normally",
+          "member": "string",
+          "name": "InternalStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of read and write permissions of this account on relevant databases",
+          "member": "DBPrivilege",
+          "name": "Dbs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccountPassword": {
+      "document": "Instance account password information",
+      "members": [
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AccountPrivilege": {
+      "document": "Database account permission information, which is set when the database is created",
+      "members": [
+        {
+          "default": "",
+          "document": "Database username",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database permissions. ReadWrite: read/write, ReadOnly: read-only",
+          "member": "string",
+          "name": "Privilege",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AccountPrivilegeModifyInfo": {
+      "document": "Database account permission change information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database username",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account permission change information",
+          "member": "DBPrivilegeModifyInfo",
+          "name": "DBPrivileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AccountRemark": {
+      "document": "Account remarks",
+      "members": [
+        {
+          "default": "",
+          "document": "Account name",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "New remarks of account",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Backup": {
+      "document": "Backup file details",
+      "members": [
+        {
+          "default": "",
+          "document": "Filename",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size in KB",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Download address for private network",
+          "member": "string",
+          "name": "InternalAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Download address for public network",
+          "member": "string",
+          "name": "ExternalAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of backup file, which will be used by the `RestoreInstance` API",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file status (0: creating, 1: succeeded, 2: failed)",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of databases for multi-database backup",
+          "member": "string",
+          "name": "DBs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup policy (0: instance backup, 1: multi-database backup)",
+          "member": "int64",
+          "name": "Strategy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup mode. 0: scheduled, 1: manual",
+          "member": "int64",
+          "name": "BackupWay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup name, which can be customized.",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateAccountRequest": {
+      "document": "CreateAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database instance account information",
+          "member": "AccountCreateInfo",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccountResponse": {
+      "document": "CreateAccount response structure.",
+      "members": [
+        {
+          "document": "Task flow ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupRequest": {
+      "document": "CreateBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup policy (0: instance backup, 1: multi-database backup)",
+          "member": "int64",
+          "name": "Strategy",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of names of databases to be backed up (required only for multi-database backup)",
+          "member": "string",
+          "name": "DBNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-i1z41iwd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup name. If this parameter is left empty, a backup name in the format of \"Instance ID_Backup start timestamp\" will be automatically generated.",
+          "member": "string",
+          "name": "BackupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupResponse": {
+      "document": "CreateBackup response structure.",
+      "members": [
+        {
+          "document": "The async job ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstancesRequest": {
+      "document": "CreateDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GB",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing mode. Valid value: POSTPAID (pay-as-you-go).",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances purchased this time. Default value: 1. Maximum value: 10",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use voucher. 0: no, 1: yes. Default value: no",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of voucher IDs (currently, only one voucher can be used per order)",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default.",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Security group list, which contains security group IDs in the format of sg-xxx.",
+          "member": "string",
+          "name": "SecurityGroupList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).",
+          "member": "int64",
+          "name": "Weekly",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the maintenance window, which specifies the start time of daily maintenance.",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the maintenance window, which specifies the maintenance duration in hours.",
+          "member": "int64",
+          "name": "Span",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.",
+          "member": "string",
+          "name": "HAType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to deploy across availability zones. Default value: false.",
+          "member": "bool",
+          "name": "MultiZones",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstancesResponse": {
+      "document": "CreateDBInstances response structure.",
+      "members": [
+        {
+          "document": "Order name",
+          "member": "string",
+          "name": "DealName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Order name array",
+          "member": "string",
+          "name": "DealNames",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBRequest": {
+      "document": "CreateDB request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database creation information",
+          "member": "DBCreateInfo",
+          "name": "DBs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBResponse": {
+      "document": "CreateDB response structure.",
+      "members": [
+        {
+          "document": "Task flow ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMigrationRequest": {
+      "document": "CreateMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration task name",
+          "member": "string",
+          "name": "MigrateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration type (1: structure migration, 2: data migration, 3: incremental sync)",
+          "member": "uint64",
+          "name": "MigrateType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
+          "member": "uint64",
+          "name": "SourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Migration source",
+          "member": "MigrateSource",
+          "name": "Source",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Migration target",
+          "member": "MigrateTarget",
+          "name": "Target",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)",
+          "member": "MigrateDB",
+          "name": "MigrateDBSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format. This parameter takes effect only when `SourceType=5`.",
+          "member": "RenameRestoreDatabase",
+          "name": "RenameRestore",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMigrationResponse": {
+      "document": "CreateMigration response structure.",
+      "members": [
+        {
+          "document": "Migration task ID",
+          "member": "int64",
+          "name": "MigrateId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DBCreateInfo": {
+      "document": "Database creation information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "DBName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Character set. Valid values: Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, Chinese_PRC_BIN, Chinese_Taiwan_Stroke_CI_AS, SQL_Latin1_General_CP1_CI_AS, and SQL_Latin1_General_CP1_CS_AS. If this parameter is left empty, `Chinese_PRC_CI_AS` will be used by default",
+          "member": "string",
+          "name": "Charset",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database account permission information",
+          "member": "AccountPrivilege",
+          "name": "Accounts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DBDetail": {
+      "document": "Database information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Character set",
+          "member": "string",
+          "name": "Charset",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database status. 1: creating, 2: running, 3: modifying, -1: dropping",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database account permission information",
+          "member": "AccountPrivilege",
+          "name": "Accounts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Internal status. ONLINE: running",
+          "member": "string",
+          "name": "InternalStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DBInstance": {
+      "document": "Instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID of instance",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance region ID",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance AZ ID",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance VPC ID, which will be 0 if the basic network is used",
+          "member": "int64",
+          "name": "VpcId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance VPC subnet ID, which will be 0 if the basic network is used",
+          "member": "int64",
+          "name": "SubnetId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: <li>1: applying </li> <li>2: running </li> <li>3: restrictedly running (primary/secondary switching) </li> <li>4: isolated </li> <li>5: repossessing </li> <li>6: repossessed </li> <li>7: task running (e.g., backing up or rolling back the instance) </li> <li>8: decommissioned </li> <li>9: scaling </li> <li>10: migrating </li> <li>11: read-only </li> <li>12: restarting </li>",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance access IP",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance access port",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance update time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance isolation time",
+          "member": "datetime",
+          "name": "IsolateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GB",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used storage capacity of instance in GB",
+          "member": "int64",
+          "name": "UsedStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version",
+          "member": "string",
+          "name": "VersionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance renewal flag",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance high availability status. 1: dual-server high-availability, 2: single-server",
+          "member": "int64",
+          "name": "Model",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance region name, such as ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance AZ name, such as ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup time point",
+          "member": "string",
+          "name": "BackupTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. 0: pay-as-you-go",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance UID",
+          "member": "string",
+          "name": "Uid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores of instance",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version code",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Physical server code",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing ID",
+          "member": "int64",
+          "name": "Pid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance isolation.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "IsolateOperator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Pub/sub flag. Valid values: SUB (subscribe instance), PUB (publish instance). If it is left empty, it refers to a regular instance without a pub/sub design.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Read-only flag. Valid values: RO (read-only instance), MASTER (primary instance with read-only instances). If it is left empty, it refers to an instance which is not read-only and has no RO group.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ROFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disaster recovery type. Valid values: MIRROR (image), ALWAYSON (AlwaysOn), SINGLE (singleton).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HAFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DBPrivilege": {
+      "document": "Database permission information of account",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "DBName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database permissions. ReadWrite: read/write, ReadOnly: read-only",
+          "member": "string",
+          "name": "Privilege",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DBPrivilegeModifyInfo": {
+      "document": "Database permission change information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "DBName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission change information. ReadWrite: read/write, ReadOnly: read-only, Delete: the account has the permission to delete this database",
+          "member": "string",
+          "name": "Privilege",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DBRemark": {
+      "document": "Database remarks",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DbRollbackTimeInfo": {
+      "document": "Information of time range available for database rollback",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "DBName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time of time range available for rollback",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time of time range available for rollback",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DealInfo": {
+      "document": "Order information",
+      "members": [
+        {
+          "default": "",
+          "document": "Order name",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of items",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of associated flow, which can be used to query the flow execution status",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is required only for an order that creates an instance, indicating the ID of the instance created by the order",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account",
+          "member": "string",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing type",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteAccountRequest": {
+      "document": "DeleteAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of instance usernames",
+          "member": "string",
+          "name": "UserNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccountResponse": {
+      "document": "DeleteAccount response structure.",
+      "members": [
+        {
+          "document": "Task flow ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBRequest": {
+      "document": "DeleteDB request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-rljoi3bf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of database names",
+          "member": "string",
+          "name": "Names",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBResponse": {
+      "document": "DeleteDB response structure.",
+      "members": [
+        {
+          "document": "Task flow ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMigrationRequest": {
+      "document": "DeleteMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMigrationResponse": {
+      "document": "DeleteMigration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsRequest": {
+      "document": "DescribeAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsResponse": {
+      "document": "DescribeAccounts response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Account information list",
+          "member": "AccountDetail",
+          "name": "Accounts",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupsRequest": {
+      "document": "DescribeBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start name (yyyy-MM-dd HH:mm:ss)",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time (yyyy-MM-dd HH:mm:ss)",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by backup name. If this parameter is left empty, backup name will not be used in filtering.",
+          "member": "string",
+          "name": "BackupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.",
+          "member": "int64",
+          "name": "Strategy",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by backup mode. Valid values: 0 (automatic backup on a regular basis), 1 (manual backup performed by the user at any time). If this parameter is left empty, backup mode will not be used in filtering.",
+          "member": "int64",
+          "name": "BackupWay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.",
+          "member": "uint64",
+          "name": "BackupId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupsResponse": {
+      "document": "DescribeBackups response structure.",
+      "members": [
+        {
+          "document": "Total number of backups",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Backup list details",
+          "member": "Backup",
+          "name": "Backups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstancesRequest": {
+      "document": "DescribeDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values:\n<li>1: applying</li>\n<li>2: running</li>\n<li>3: running restrictedly (primary/secondary switching)</li>\n<li>4: isolated</li>\n<li>5: repossessing</li>\n<li>6: repossessed</li>\n<li>7: executing task (e.g., backing up or rolling back instance)</li>\n<li>8: deactivated</li>\n<li>9: scaling out instance</li>\n<li>10: migrating instance</li>\n<li>11: read-only</li>\n<li>12: restarting</li>",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Value range: 1-100. Default value: 100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "One or more instance IDs in the format of mssql-si2823jyl",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Retrieves billing type. 0: pay-as-you-go",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string (\"\") is passed in, filtering will be made by basic network.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string (\"\") is passed in, filtering will be made by basic network.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstancesResponse": {
+      "document": "DescribeDBInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of eligible instances. If the results are returned in multiple pages, this value will be the number of all eligible instances but not the number of instances returned according to the current values of `Limit` and `Offset`",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance list",
+          "member": "DBInstance",
+          "name": "DBInstances",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBsRequest": {
+      "document": "DescribeDBs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBsResponse": {
+      "document": "DescribeDBs response structure.",
+      "members": [
+        {
+          "document": "Number of databases",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance databases",
+          "member": "InstanceDBDetail",
+          "name": "DBInstances",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFlowStatusRequest": {
+      "document": "DescribeFlowStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFlowStatusResponse": {
+      "document": "DescribeFlowStatus response structure.",
+      "members": [
+        {
+          "document": "Flow status. 0: succeeded, 1: failed, 2: running",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrationDetailRequest": {
+      "document": "DescribeMigrationDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrationDetailResponse": {
+      "document": "DescribeMigrationDetail response structure.",
+      "members": [
+        {
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task name",
+          "member": "string",
+          "name": "MigrateName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User ID of migration task",
+          "member": "uint64",
+          "name": "AppId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task region",
+          "member": "string",
+          "name": "Region",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
+          "member": "int64",
+          "name": "SourceType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)",
+          "member": "uint64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task progress",
+          "member": "int64",
+          "name": "Progress",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration type (1: structure migration, 2: data migration, 3: incremental sync)",
+          "member": "int64",
+          "name": "MigrateType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration source",
+          "member": "MigrateSource",
+          "name": "Source",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration target",
+          "member": "MigrateTarget",
+          "name": "Target",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)",
+          "member": "MigrateDB",
+          "name": "MigrateDBSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrationsRequest": {
+      "document": "DescribeMigrations request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Status set. As long as a migration task is in a status therein, it will be listed",
+          "member": "int64",
+          "name": "StatusSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Migration task name (fuzzy match)",
+          "member": "string",
+          "name": "MigrateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Value range: 1-100. Default value: 100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: desc, asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrationsResponse": {
+      "document": "DescribeMigrations response structure.",
+      "members": [
+        {
+          "document": "Total number of query results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of query results",
+          "member": "MigrateTask",
+          "name": "MigrateTaskSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrdersRequest": {
+      "document": "DescribeOrders request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Order array. The order name will be returned upon shipping, which can be used to call the `DescribeOrders` API to query shipment status",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrdersResponse": {
+      "document": "DescribeOrders response structure.",
+      "members": [
+        {
+          "document": "Order information array",
+          "member": "DealInfo",
+          "name": "Deals",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of orders returned",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductConfigRequest": {
+      "document": "DescribeProductConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID in the format of ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductConfigResponse": {
+      "document": "DescribeProductConfig response structure.",
+      "members": [
+        {
+          "document": "Specification information array",
+          "member": "SpecInfo",
+          "name": "SpecInfoList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of date entries returned",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionsRequest": {
+      "document": "DescribeRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRegionsResponse": {
+      "document": "DescribeRegions response structure.",
+      "members": [
+        {
+          "document": "Total number of regions returned",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Region information array",
+          "member": "RegionInfo",
+          "name": "RegionSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRollbackTimeRequest": {
+      "document": "DescribeRollbackTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of databases to be queried",
+          "member": "string",
+          "name": "DBs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRollbackTimeResponse": {
+      "document": "DescribeRollbackTime response structure.",
+      "members": [
+        {
+          "document": "Information of time range available for database rollback",
+          "member": "DbRollbackTimeInfo",
+          "name": "Details",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowlogsRequest": {
+      "document": "DescribeSlowlogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-k8voqdlz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowlogsResponse": {
+      "document": "DescribeSlowlogs response structure.",
+      "members": [
+        {
+          "document": "Total number of queries",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information list of slow query logs",
+          "member": "SlowlogInfo",
+          "name": "Slowlogs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZonesRequest": {
+      "document": "DescribeZones request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeZonesResponse": {
+      "document": "DescribeZones response structure.",
+      "members": [
+        {
+          "document": "Number of AZs returned",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of AZs",
+          "member": "ZoneInfo",
+          "name": "ZoneSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceCreateDBInstancesRequest": {
+      "document": "InquiryPriceCreateDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance capacity in GB",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing type. Valid value: POSTPAID.",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Length of purchase in months. Value range: 1-48. Default value: 1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances purchased at a time. Value range: 1-100. Default value: 1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of CPU cores of the instance you want to purchase.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM.",
+          "member": "string",
+          "name": "MachineType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceCreateDBInstancesResponse": {
+      "document": "InquiryPriceCreateDBInstances response structure.",
+      "members": [
+        {
+          "document": "Price before discount. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD",
+          "member": "int64",
+          "name": "OriginalPrice",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The actual price to be paid. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD",
+          "member": "int64",
+          "name": "Price",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceUpgradeDBInstanceRequest": {
+      "document": "InquiryPriceUpgradeDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceUpgradeDBInstanceResponse": {
+      "document": "InquiryPriceUpgradeDBInstance response structure.",
+      "members": [
+        {
+          "document": "Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD",
+          "member": "int64",
+          "name": "OriginalPrice",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD",
+          "member": "int64",
+          "name": "Price",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstanceDBDetail": {
+      "document": "Instance database information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database information list",
+          "member": "DBDetail",
+          "name": "DBDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrateDB": {
+      "document": "List of databases to be migrated",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of migrated database",
+          "member": "string",
+          "name": "DBName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MigrateDetail": {
+      "document": "Migration progress details",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of current step",
+          "member": "string",
+          "name": "StepName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Progress of current step in %",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrateSource": {
+      "document": "Source type of migration task",
+      "members": [
+        {
+          "default": "",
+          "document": "Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "member": "string",
+          "name": "CvmId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username, which is used when `MigrateType` is 1 or 2",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password, which is used when `MigrateType` is 1 or 2",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "member": "uint64",
+          "name": "Port",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source backup address for offline migration, which is used when `MigrateType` is 4 or 5",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source backup password for offline migration, which is used when `MigrateType` is 4 or 5",
+          "member": "string",
+          "name": "UrlPassword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MigrateTarget": {
+      "document": "Target type of migration task",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of target instance in the format of mssql-si2823jyl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username of migration target instance",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password of migration target instance",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MigrateTask": {
+      "document": "Migration task type",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task name",
+          "member": "string",
+          "name": "MigrateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User ID of migration task",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
+          "member": "int64",
+          "name": "SourceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)",
+          "member": "uint64",
+          "name": "CheckFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task progress in %",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task progress details",
+          "member": "MigrateDetail",
+          "name": "MigrateDetail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyAccountPrivilegeRequest": {
+      "document": "ModifyAccountPrivilege request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account permission change information",
+          "member": "AccountPrivilegeModifyInfo",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountPrivilegeResponse": {
+      "document": "ModifyAccountPrivilege response structure.",
+      "members": [
+        {
+          "document": "Async task flow ID",
+          "member": "uint64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountRemarkRequest": {
+      "document": "ModifyAccountRemark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Information of account for which to modify remarks",
+          "member": "AccountRemark",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountRemarkResponse": {
+      "document": "ModifyAccountRemark response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupStrategyRequest": {
+      "document": "ModifyBackupStrategy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup mode, which supports daily backup only. Valid value: daily.",
+          "member": "string",
+          "name": "BackupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup time. Value range: an integer from 0 to 23.",
+          "member": "uint64",
+          "name": "BackupTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Backup interval in days when the `BackupType` is `daily`. Valid value: 1.",
+          "member": "uint64",
+          "name": "BackupDay",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupStrategyResponse": {
+      "document": "ModifyBackupStrategy response structure.",
+      "members": [
+        {
+          "document": "Returned error code.",
+          "member": "int64",
+          "name": "Errno",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Returned error message.",
+          "member": "string",
+          "name": "Msg",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNameRequest": {
+      "document": "ModifyDBInstanceName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New name of database instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNameResponse": {
+      "document": "ModifyDBInstanceName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceProjectRequest": {
+      "document": "ModifyDBInstanceProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of instance IDs in the format of mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Project ID. If this parameter is 0, the default project will be used",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceProjectResponse": {
+      "document": "ModifyDBInstanceProject response structure.",
+      "members": [
+        {
+          "document": "Number of successfully modified instances",
+          "member": "int64",
+          "name": "Count",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBNameRequest": {
+      "document": "ModifyDBName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Old database name",
+          "member": "string",
+          "name": "OldDBName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New name of database",
+          "member": "string",
+          "name": "NewDBName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBNameResponse": {
+      "document": "ModifyDBName response structure.",
+      "members": [
+        {
+          "document": "Task flow ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBRemarkRequest": {
+      "document": "ModifyDBRemark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-rljoi3bf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of database names and remarks, where each element contains a database name and the corresponding remarks",
+          "member": "DBRemark",
+          "name": "DBRemarks",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBRemarkResponse": {
+      "document": "ModifyDBRemark response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrationRequest": {
+      "document": "ModifyMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "New name of migration task. If this parameter is left empty, no modification will be made",
+          "member": "string",
+          "name": "MigrateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made",
+          "member": "uint64",
+          "name": "MigrateType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made",
+          "member": "uint64",
+          "name": "SourceType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Migration source. If this parameter is left empty, no modification will be made",
+          "member": "MigrateSource",
+          "name": "Source",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Migration target. If this parameter is left empty, no modification will be made",
+          "member": "MigrateTarget",
+          "name": "Target",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5). If it left empty, no modification will be made",
+          "member": "MigrateDB",
+          "name": "MigrateDBSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrationResponse": {
+      "document": "ModifyMigration response structure.",
+      "members": [
+        {
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegionInfo": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID in the format of ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Numeric ID of region",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable",
+          "member": "string",
+          "name": "RegionState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RenameRestoreDatabase": {
+      "document": "It is used in the `RestoreInstance`, `RollbackInstance`, and `CreateMigration` APIs, and used to specify the databases to be restored and rename them after restoration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name. If the `OldName` database does not exist, a failure will be returned.\nIt can be left empty in offline migration tasks.",
+          "member": "string",
+          "name": "OldName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "New database name. If this parameter is left empty, the restored database will be renamed in the default format. If this parameter is left empty in offline migration tasks, the restored database will be named `OldName`. `OldName` and `NewName` cannot be both empty.",
+          "member": "string",
+          "name": "NewName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ResetAccountPasswordRequest": {
+      "document": "ResetAccountPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Updated account password information array",
+          "member": "AccountPassword",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetAccountPasswordResponse": {
+      "document": "ResetAccountPassword response structure.",
+      "members": [
+        {
+          "document": "ID of async task flow for account password change",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartDBInstanceRequest": {
+      "document": "RestartDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartDBInstanceResponse": {
+      "document": "RestartDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task flow ID",
+          "member": "uint64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreInstanceRequest": {
+      "document": "RestoreInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API",
+          "member": "int64",
+          "name": "BackupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.",
+          "member": "string",
+          "name": "TargetInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.",
+          "member": "RenameRestoreDatabase",
+          "name": "RenameRestore",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreInstanceResponse": {
+      "document": "RestoreInstance response structure.",
+      "members": [
+        {
+          "document": "Async flow task ID, which can be used to call the `DescribeFlowStatus` API to get the task execution status",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackInstanceRequest": {
+      "document": "RollbackInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rollback type. 0: the database rolled back overwrites the original database; 1: the database rolled back is renamed and does not overwrite the original database",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database to be rolled back",
+          "member": "string",
+          "name": "DBs",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Target time point for rollback",
+          "member": "datetime",
+          "name": "Time",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.",
+          "member": "string",
+          "name": "TargetInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.",
+          "member": "RenameRestoreDatabase",
+          "name": "RenameRestore",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackInstanceResponse": {
+      "document": "RollbackInstance response structure.",
+      "members": [
+        {
+          "document": "The async job ID",
+          "member": "uint64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RunMigrationRequest": {
+      "document": "RunMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration task ID",
+          "member": "uint64",
+          "name": "MigrateId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RunMigrationResponse": {
+      "document": "RunMigration response structure.",
+      "members": [
+        {
+          "document": "After the migration task starts, the flow ID will be returned",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SlowlogInfo": {
+      "document": "Slow query log file information",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of slow query log file",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File generation start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File generation end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size in KB",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of logs in file",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Download address for private network",
+          "member": "string",
+          "name": "InternalAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Download address for public network",
+          "member": "string",
+          "name": "ExternalAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status (1: success, 2: failure)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SpecInfo": {
+      "document": "Information of purchasable specification for an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ",
+          "member": "int64",
+          "name": "SpecId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Model ID",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Model name",
+          "member": "string",
+          "name": "MachineTypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version name corresponding to the `Version` field",
+          "member": "string",
+          "name": "VersionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores",
+          "member": "int64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum disk size under this specification in GB",
+          "member": "int64",
+          "name": "MinStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum disk size under this specification in GB",
+          "member": "int64",
+          "name": "MaxStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "QPS of this specification",
+          "member": "int64",
+          "name": "QPS",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of this specification",
+          "member": "string",
+          "name": "SuitInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pid of this specification",
+          "member": "int64",
+          "name": "Pid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pay-as-you-go Pid list corresponding to this specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PostPid",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing mode under this specification. POST: pay-as-you-go",
+          "member": "string",
+          "name": "PayModeStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TerminateDBInstanceRequest": {
+      "document": "TerminateDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs manually terminated in the format of [mssql-3l3fgqn7], which are the same as the instance IDs displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateDBInstanceResponse": {
+      "document": "TerminateDBInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeDBInstanceRequest": {
+      "document": "UpgradeDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers. 0: no, 1: yes. Default value: 0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID (currently, only one voucher can be used per order)",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of CUP cores after the instance is upgraded.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeDBInstanceResponse": {
+      "document": "UpgradeDBInstance response structure.",
+      "members": [
+        {
+          "document": "Order name",
+          "member": "string",
+          "name": "DealName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ZoneInfo": {
+      "document": "AZ information",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Numeric ID of AZ",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ",
+          "member": "int64",
+          "name": "SpecId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

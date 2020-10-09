@@ -1,0 +1,4139 @@
+{
+  "actions": {
+    "AddUser": {
+      "document": "This API is used to add sub-users.",
+      "input": "AddUserRequest",
+      "name": "Adds sub-Users",
+      "output": "AddUserResponse"
+    },
+    "AddUserToGroup": {
+      "document": "This API is used to add users to a user group.",
+      "input": "AddUserToGroupRequest",
+      "name": "Adds users to a user group",
+      "output": "AddUserToGroupResponse"
+    },
+    "AttachGroupPolicy": {
+      "document": "This API (AttachGroupPolicy) is used to associate a policy with a user group.",
+      "input": "AttachGroupPolicyRequest",
+      "name": "Associates a policy with a user group",
+      "output": "AttachGroupPolicyResponse"
+    },
+    "AttachRolePolicy": {
+      "document": "This API (AttachRolePolicy) is used to associate a policy with a role.",
+      "input": "AttachRolePolicyRequest",
+      "name": "Associates a permission policy with a role",
+      "output": "AttachRolePolicyResponse"
+    },
+    "AttachUserPolicy": {
+      "document": "This API (AttachUserPolicy) is used to associates a policy with a user.",
+      "input": "AttachUserPolicyRequest",
+      "name": "Associates a policy with a user",
+      "output": "AttachUserPolicyResponse"
+    },
+    "ConsumeCustomMFAToken": {
+      "document": "This API is used to verify a custom multi-factor Token.",
+      "input": "ConsumeCustomMFATokenRequest",
+      "name": "Verifies a custom multi-factor Token",
+      "output": "ConsumeCustomMFATokenResponse"
+    },
+    "CreateGroup": {
+      "document": "This API is used to create a user group.",
+      "input": "CreateGroupRequest",
+      "name": "Creates a user group",
+      "output": "CreateGroupResponse"
+    },
+    "CreatePolicy": {
+      "document": "This API (CreatePolicy) is used to create a policy.",
+      "input": "CreatePolicyRequest",
+      "name": "Creates a policy",
+      "output": "CreatePolicyResponse"
+    },
+    "CreatePolicyVersion": {
+      "document": "This API is used to add a policy version. After creating a policy version, you can easily change the policy by changing the policy version.",
+      "input": "CreatePolicyVersionRequest",
+      "name": "Creates a policy version",
+      "output": "CreatePolicyVersionResponse"
+    },
+    "CreateRole": {
+      "document": "This API (CreateRole) is used to create a role.",
+      "input": "CreateRoleRequest",
+      "name": "Creates a role",
+      "output": "CreateRoleResponse"
+    },
+    "CreateSAMLProvider": {
+      "document": "This API is used to create a SAML identity provider.",
+      "input": "CreateSAMLProviderRequest",
+      "name": "Creates a SAML identity provider",
+      "output": "CreateSAMLProviderResponse"
+    },
+    "CreateServiceLinkedRole": {
+      "document": "This API is used to create a service-linked role.",
+      "input": "CreateServiceLinkedRoleRequest",
+      "name": "Creates a service-linked role",
+      "output": "CreateServiceLinkedRoleResponse"
+    },
+    "DeleteGroup": {
+      "document": "This API is used to delete a user group.",
+      "input": "DeleteGroupRequest",
+      "name": "Deletes a user group",
+      "output": "DeleteGroupResponse"
+    },
+    "DeletePolicy": {
+      "document": "This API (DeletePolicy) is used to delete a policy.",
+      "input": "DeletePolicyRequest",
+      "name": "Deletes a policy",
+      "output": "DeletePolicyResponse"
+    },
+    "DeletePolicyVersion": {
+      "document": "This API is used to delete a policy version of a policy.",
+      "input": "DeletePolicyVersionRequest",
+      "name": "Deletes a policy version",
+      "output": "DeletePolicyVersionResponse"
+    },
+    "DeleteRole": {
+      "document": "This API (DeleteRole) is used to delete a specified role.",
+      "input": "DeleteRoleRequest",
+      "name": "Deletes a role",
+      "output": "DeleteRoleResponse"
+    },
+    "DeleteRolePermissionsBoundary": {
+      "document": "This API is used to delete a role permission boundary.",
+      "input": "DeleteRolePermissionsBoundaryRequest",
+      "name": "Deletes role permission boundary",
+      "output": "DeleteRolePermissionsBoundaryResponse"
+    },
+    "DeleteSAMLProvider": {
+      "document": "This API is used to delete a SAML identity provider.",
+      "input": "DeleteSAMLProviderRequest",
+      "name": "Deletes a SAML identity provider",
+      "output": "DeleteSAMLProviderResponse"
+    },
+    "DeleteServiceLinkedRole": {
+      "document": "This API is used to delete a service-linked role.",
+      "input": "DeleteServiceLinkedRoleRequest",
+      "name": "Deletes a service-linked role",
+      "output": "DeleteServiceLinkedRoleResponse"
+    },
+    "DeleteUser": {
+      "document": "This API is used to delete a sub-user.",
+      "input": "DeleteUserRequest",
+      "name": "Deletes a sub-user",
+      "output": "DeleteUserResponse"
+    },
+    "DeleteUserPermissionsBoundary": {
+      "document": "This API is used to delete a user permission boundary.",
+      "input": "DeleteUserPermissionsBoundaryRequest",
+      "name": "Deletes user permission boundary",
+      "output": "DeleteUserPermissionsBoundaryResponse"
+    },
+    "DescribeRoleList": {
+      "document": "This API (DescribeRoleList) is used to get the role list under the account.",
+      "input": "DescribeRoleListRequest",
+      "name": "Gets a role list",
+      "output": "DescribeRoleListResponse"
+    },
+    "DescribeSafeAuthFlag": {
+      "document": "This API is used to query security settings.",
+      "input": "DescribeSafeAuthFlagRequest",
+      "name": "Queries security settings.",
+      "output": "DescribeSafeAuthFlagResponse"
+    },
+    "DescribeSafeAuthFlagColl": {
+      "document": "This API is used to query security settings.",
+      "input": "DescribeSafeAuthFlagCollRequest",
+      "name": "Queries security settings",
+      "output": "DescribeSafeAuthFlagCollResponse"
+    },
+    "DetachGroupPolicy": {
+      "document": "This API (DetachGroupPolicy) is used to unassociate a policy and a user group.",
+      "input": "DetachGroupPolicyRequest",
+      "name": "Unassociate a policy and a user group",
+      "output": "DetachGroupPolicyResponse"
+    },
+    "DetachRolePolicy": {
+      "document": "This API (DetachRolePolicy) is used to unassociate a policy and a role.",
+      "input": "DetachRolePolicyRequest",
+      "name": "Unassociates a policy and a role",
+      "output": "DetachRolePolicyResponse"
+    },
+    "DetachUserPolicy": {
+      "document": "This API (DetachUserPolicy) is used to unassociate a policy and a user.",
+      "input": "DetachUserPolicyRequest",
+      "name": "Unassociates a policy and a user",
+      "output": "DetachUserPolicyResponse"
+    },
+    "GetCustomMFATokenInfo": {
+      "document": "This API is used to get information associated with a custom multi-factor Token",
+      "input": "GetCustomMFATokenInfoRequest",
+      "name": "Gets information associated with a custom multi-factor Token",
+      "output": "GetCustomMFATokenInfoResponse"
+    },
+    "GetGroup": {
+      "document": "This API is used to query user group details.",
+      "input": "GetGroupRequest",
+      "name": "Queries user group details",
+      "output": "GetGroupResponse"
+    },
+    "GetPolicy": {
+      "document": "This API (GetPolicy) is used to query and view policy details.",
+      "input": "GetPolicyRequest",
+      "name": "Views policy details",
+      "output": "GetPolicyResponse"
+    },
+    "GetPolicyVersion": {
+      "document": "This API is used to query policy version details.",
+      "input": "GetPolicyVersionRequest",
+      "name": "Queries policy version details",
+      "output": "GetPolicyVersionResponse"
+    },
+    "GetRole": {
+      "document": "This API (GetRole) is used to get the details of a specified role.",
+      "input": "GetRoleRequest",
+      "name": "Gets role details",
+      "output": "GetRoleResponse"
+    },
+    "GetSAMLProvider": {
+      "document": "This API is used to query SAML identity provider details.",
+      "input": "GetSAMLProviderRequest",
+      "name": "Queries SAML Identity provider details",
+      "output": "GetSAMLProviderResponse"
+    },
+    "GetServiceLinkedRoleDeletionStatus": {
+      "document": "This API is used to get the status of the service-linked role deletion based on the `TaskId`",
+      "input": "GetServiceLinkedRoleDeletionStatusRequest",
+      "name": "Gets the status of the service-linked role deletion",
+      "output": "GetServiceLinkedRoleDeletionStatusResponse"
+    },
+    "GetUser": {
+      "document": "This API is used to query sub-users.",
+      "input": "GetUserRequest",
+      "name": "Queries sub-users",
+      "output": "GetUserResponse"
+    },
+    "ListAccessKeys": {
+      "document": "This API is used to list the access keys associated with a specified CAM user.",
+      "input": "ListAccessKeysRequest",
+      "name": "Lists access keys",
+      "output": "ListAccessKeysResponse"
+    },
+    "ListAttachedGroupPolicies": {
+      "document": "This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group.",
+      "input": "ListAttachedGroupPoliciesRequest",
+      "name": "Queries policy list associated with a user group",
+      "output": "ListAttachedGroupPoliciesResponse"
+    },
+    "ListAttachedRolePolicies": {
+      "document": "This API (ListAttachedRolePolicies) is used to obtain the list of the policies associated with a role.",
+      "input": "ListAttachedRolePoliciesRequest",
+      "name": "Gets the list of policies associated with a role",
+      "output": "ListAttachedRolePoliciesResponse"
+    },
+    "ListAttachedUserPolicies": {
+      "document": "This API (ListAttachedUserPolicies) is used to query the list of policies associated with a sub-account.",
+      "input": "ListAttachedUserPoliciesRequest",
+      "name": "Queries policy list associated with a sub-account",
+      "output": "ListAttachedUserPoliciesResponse"
+    },
+    "ListCollaborators": {
+      "document": "This API is used to get the collaborator list.",
+      "input": "ListCollaboratorsRequest",
+      "name": "Gets collaborator list",
+      "output": "ListCollaboratorsResponse"
+    },
+    "ListEntitiesForPolicy": {
+      "document": "This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy.",
+      "input": "ListEntitiesForPolicyRequest",
+      "name": "Queries entity list associated with a policy",
+      "output": "ListEntitiesForPolicyResponse"
+    },
+    "ListGroups": {
+      "document": "This API is used to query the list of user groups.",
+      "input": "ListGroupsRequest",
+      "name": "This API is used to query the list of user groups.",
+      "output": "ListGroupsResponse"
+    },
+    "ListGroupsForUser": {
+      "document": "This API is used to list user groups associated with a user.",
+      "input": "ListGroupsForUserRequest",
+      "name": "Lists user groups associated with a user",
+      "output": "ListGroupsForUserResponse"
+    },
+    "ListPolicies": {
+      "document": "This API is used to query the policy list.",
+      "input": "ListPoliciesRequest",
+      "name": "Queries the list of policies",
+      "output": "ListPoliciesResponse"
+    },
+    "ListPolicyVersions": {
+      "document": "This API is used to get the list of policy versions.",
+      "input": "ListPolicyVersionsRequest",
+      "name": "Gets a list of policy versions",
+      "output": "ListPolicyVersionsResponse"
+    },
+    "ListSAMLProviders": {
+      "document": "This API is used to query the list of SAML identity providers.",
+      "input": "ListSAMLProvidersRequest",
+      "name": "Queries the list of SAML identity providers",
+      "output": "ListSAMLProvidersResponse"
+    },
+    "ListUsers": {
+      "document": "This API is used to pull sub-users.",
+      "input": "ListUsersRequest",
+      "name": "Pulls sub-users",
+      "output": "ListUsersResponse"
+    },
+    "ListUsersForGroup": {
+      "document": "This API is used to query the list of users associated with a user group.",
+      "input": "ListUsersForGroupRequest",
+      "name": "Queries the list of users associated with a user group",
+      "output": "ListUsersForGroupResponse"
+    },
+    "PutRolePermissionsBoundary": {
+      "document": "This API is used to set a role permission boundary.",
+      "input": "PutRolePermissionsBoundaryRequest",
+      "name": "Sets role permission boundary",
+      "output": "PutRolePermissionsBoundaryResponse"
+    },
+    "PutUserPermissionsBoundary": {
+      "document": "This API is used to set a user permission boundary.",
+      "input": "PutUserPermissionsBoundaryRequest",
+      "name": "Sets user permission boundary",
+      "output": "PutUserPermissionsBoundaryResponse"
+    },
+    "RemoveUserFromGroup": {
+      "document": "This API is used to delete users from a user group.",
+      "input": "RemoveUserFromGroupRequest",
+      "name": "Deletes users from a user group",
+      "output": "RemoveUserFromGroupResponse"
+    },
+    "SetDefaultPolicyVersion": {
+      "document": "This API is used to set the operative policy version.",
+      "input": "SetDefaultPolicyVersionRequest",
+      "name": "Sets operative policy version",
+      "output": "SetDefaultPolicyVersionResponse"
+    },
+    "SetMfaFlag": {
+      "document": "This API is used to set account verification for login and sensitive operations for sub-users.",
+      "input": "SetMfaFlagRequest",
+      "name": "Sets account verification for login and sensitive operations for sub-users.",
+      "output": "SetMfaFlagResponse"
+    },
+    "UpdateAssumeRolePolicy": {
+      "document": "This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.",
+      "input": "UpdateAssumeRolePolicyRequest",
+      "name": "Modifies the trust policy of a role",
+      "output": "UpdateAssumeRolePolicyResponse"
+    },
+    "UpdateGroup": {
+      "document": "This API is used to update a user group.",
+      "input": "UpdateGroupRequest",
+      "name": "Updates a user group",
+      "output": "UpdateGroupResponse"
+    },
+    "UpdatePolicy": {
+      "document": "This API is used to update a policy.\nThis API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created.",
+      "input": "UpdatePolicyRequest",
+      "name": "Updates policy",
+      "output": "UpdatePolicyResponse"
+    },
+    "UpdateRoleConsoleLogin": {
+      "document": "This API is used to modify a role's login permissions.",
+      "input": "UpdateRoleConsoleLoginRequest",
+      "name": "Modifies a role's login permissions",
+      "output": "UpdateRoleConsoleLoginResponse"
+    },
+    "UpdateRoleDescription": {
+      "document": "This API (UpdateRoleDescription) is used to modify the description of a role.",
+      "input": "UpdateRoleDescriptionRequest",
+      "name": "Modifies the description of a role",
+      "output": "UpdateRoleDescriptionResponse"
+    },
+    "UpdateSAMLProvider": {
+      "document": "This API is used to update SAML identity provider information.",
+      "input": "UpdateSAMLProviderRequest",
+      "name": "Updates SAML identity provider information",
+      "output": "UpdateSAMLProviderResponse"
+    },
+    "UpdateUser": {
+      "document": "This API is used to update a sub-user.",
+      "input": "UpdateUserRequest",
+      "name": "Updates a sub-user",
+      "output": "UpdateUserResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-01-16",
+    "serviceNameCN": "访问管理",
+    "serviceShortName": "cam"
+  },
+  "objects": {
+    "AccessKey": {
+      "document": "Access key list",
+      "members": [
+        {
+          "default": "",
+          "document": "Access key ID",
+          "member": "string",
+          "name": "AccessKeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key status. Valid values: Active (activated), Inactive (not activated)",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AddUserRequest": {
+      "document": "AddUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-user remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.",
+          "member": "uint64",
+          "name": "ConsoleLogin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether or not to generate keys for sub-users. 0: No; 1: Yes.",
+          "member": "uint64",
+          "name": "UseApi",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.",
+          "member": "uint64",
+          "name": "NeedResetPassword",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "member": "string",
+          "name": "PhoneNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Country/Area Code",
+          "member": "string",
+          "name": "CountryCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddUserResponse": {
+      "document": "AddUser response structure.",
+      "members": [
+        {
+          "document": "Sub-user UIN",
+          "member": "uint64",
+          "name": "Uin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "If the combination of input parameters indicates that a random password should be generated, the generated password is returned",
+          "member": "string",
+          "name": "Password",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user's key ID",
+          "member": "string",
+          "name": "SecretId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user's secret key",
+          "member": "string",
+          "name": "SecretKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user UID",
+          "member": "uint64",
+          "name": "Uid",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddUserToGroupRequest": {
+      "document": "AddUserToGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "How sub-user UIDs are associated with the ID of the user group they are added to.",
+          "member": "GroupIdOfUidInfo",
+          "name": "Info",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddUserToGroupResponse": {
+      "document": "AddUserToGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachEntityOfPolicy": {
+      "document": "The entity associated with the policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Entity ID",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Entity Name\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Entity UIN\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Type of entity association. 1: Associate by users; 2: Associate by User Groups",
+          "member": "uint64",
+          "name": "RelatedType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy association time\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "AttachmentTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachGroupPolicyRequest": {
+      "document": "AttachGroupPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "AttachGroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachGroupPolicyResponse": {
+      "document": "AttachGroupPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachPolicyInfo": {
+      "document": "Associated policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy name\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time created\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "How the policy was created: 1: Via console; 2: Via syntax\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "CreateMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Valid values: `user` and `QCS`\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "PolicyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Root account of the operator associating the policy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OperateOwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The ID of the account associating the policy. If `UinType` is 0, this indicates that this is a sub-account `UIN`. If `UinType` is 1, this indicates this is a role ID",
+          "member": "string",
+          "name": "OperateUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "If `UinType` is 0, `OperateUin` indicates that this is a sub-account `UIN`. If `UinType` is 1, `OperateUin` indicates that this is a role ID",
+          "member": "uint64",
+          "name": "OperateUinType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Queries if the policy has been deactivated\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Deactived",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of deprecated products\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeactivedDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachRolePolicyRequest": {
+      "document": "AttachRolePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID. Either `PolicyId` or `PolicyName` must be entered",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`",
+          "member": "string",
+          "name": "AttachRoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`",
+          "member": "string",
+          "name": "AttachRoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy name. Either `PolicyId` or `PolicyName` must be entered",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachRolePolicyResponse": {
+      "document": "AttachRolePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachUserPolicyRequest": {
+      "document": "AttachUserPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sub-account UIN",
+          "member": "uint64",
+          "name": "AttachUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachUserPolicyResponse": {
+      "document": "AttachUserPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachedPolicyOfRole": {
+      "document": "Policy associated with the role",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time of association",
+          "member": "string",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy type. `User` indicates custom policy; `QCS` indicates preset policy\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "PolicyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax",
+          "member": "uint64",
+          "name": "CreateMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the product has been deprecated (0: no; 1: yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Deactived",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of deprecated products\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeactivedDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumeCustomMFATokenRequest": {
+      "document": "ConsumeCustomMFAToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom multi-factor verification Token",
+          "member": "string",
+          "name": "MFAToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ConsumeCustomMFATokenResponse": {
+      "document": "ConsumeCustomMFAToken response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGroupRequest": {
+      "document": "CreateGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User Group name",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User Group description",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGroupResponse": {
+      "document": "CreateGroup response structure.",
+      "members": [
+        {
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePolicyRequest": {
+      "document": "CreatePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy document, such as `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API",
+          "member": "string",
+          "name": "PolicyDocument",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePolicyResponse": {
+      "document": "CreatePolicy response structure.",
+      "members": [
+        {
+          "document": "ID of newly added policy",
+          "member": "uint64",
+          "name": "PolicyId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePolicyVersionRequest": {
+      "document": "CreatePolicyVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The policy document to use as the content for the new version",
+          "member": "string",
+          "name": "PolicyDocument",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to set this version as the default version",
+          "member": "bool",
+          "name": "SetAsDefault",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePolicyVersionResponse": {
+      "document": "CreatePolicyVersion response structure.",
+      "members": [
+        {
+          "document": "Policy version ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "VersionId",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoleRequest": {
+      "document": "CreateRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Role name",
+          "member": "string",
+          "name": "RoleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy document",
+          "member": "string",
+          "name": "PolicyDocument",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether login is allowed. 1: yes, 0: no",
+          "member": "uint64",
+          "name": "ConsoleLogin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum validity period of the temporary key for creating a role (range: 0-43200)",
+          "member": "uint64",
+          "name": "SessionDuration",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoleResponse": {
+      "document": "CreateRole response structure.",
+      "members": [
+        {
+          "document": "Role ID\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "RoleId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSAMLProviderRequest": {
+      "document": "CreateSAMLProvider request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SAML identity provider name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SAML identity provider description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SAML identity provider metadata document (Base64)",
+          "member": "string",
+          "name": "SAMLMetadataDocument",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSAMLProviderResponse": {
+      "document": "CreateSAMLProvider response structure.",
+      "members": [
+        {
+          "document": "SAML identity provider resource descriptor",
+          "member": "string",
+          "name": "ProviderArn",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceLinkedRoleRequest": {
+      "document": "CreateServiceLinkedRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Authorized service, i.e., Tencent Cloud service entity with this role attached.",
+          "member": "string",
+          "name": "QCSServiceName",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.",
+          "member": "string",
+          "name": "CustomSuffix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role description.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceLinkedRoleResponse": {
+      "document": "CreateServiceLinkedRole response structure.",
+      "members": [
+        {
+          "document": "Role ID",
+          "member": "string",
+          "name": "RoleId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupRequest": {
+      "document": "DeleteGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupResponse": {
+      "document": "DeleteGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePolicyRequest": {
+      "document": "DeletePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array. Array elements are policy IDs. Policies can be deleted in a batch",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePolicyResponse": {
+      "document": "DeletePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePolicyVersionRequest": {
+      "document": "DeletePolicyVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy version ID",
+          "member": "uint64",
+          "name": "VersionId",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePolicyVersionResponse": {
+      "document": "DeletePolicyVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRolePermissionsBoundaryRequest": {
+      "document": "DeleteRolePermissionsBoundary request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Role ID (either it or the role name must be entered)",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name (either it or the role ID must be entered)",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRolePermissionsBoundaryResponse": {
+      "document": "DeleteRolePermissionsBoundary response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoleRequest": {
+      "document": "DeleteRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoleResponse": {
+      "document": "DeleteRole response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSAMLProviderRequest": {
+      "document": "DeleteSAMLProvider request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SAML identity provider name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSAMLProviderResponse": {
+      "document": "DeleteSAMLProvider response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteServiceLinkedRoleRequest": {
+      "document": "DeleteServiceLinkedRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the service-linked role to be deleted.",
+          "member": "string",
+          "name": "RoleName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteServiceLinkedRoleResponse": {
+      "document": "DeleteServiceLinkedRole response structure.",
+      "members": [
+        {
+          "document": "Deletion task identifier, which can be used to check the status of a service-linked role deletion.",
+          "member": "string",
+          "name": "DeletionTaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserPermissionsBoundaryRequest": {
+      "document": "DeleteUserPermissionsBoundary request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-account `Uin`",
+          "member": "int64",
+          "name": "TargetUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserPermissionsBoundaryResponse": {
+      "document": "DeleteUserPermissionsBoundary response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRequest": {
+      "document": "DeleteUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user.",
+          "member": "uint64",
+          "name": "Force",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserResponse": {
+      "document": "DeleteUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoleListRequest": {
+      "document": "DescribeRoleList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Page number, beginning from 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of lines per page, no greater than 200",
+          "member": "uint64",
+          "name": "Rp",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoleListResponse": {
+      "document": "DescribeRoleList response structure.",
+      "members": [
+        {
+          "document": "Role details list\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "RoleInfo",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of roles",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSafeAuthFlagCollRequest": {
+      "document": "DescribeSafeAuthFlagColl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-account",
+          "member": "uint64",
+          "name": "SubUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSafeAuthFlagCollResponse": {
+      "document": "DescribeSafeAuthFlagColl response structure.",
+      "members": [
+        {
+          "document": "Login protection settings",
+          "member": "LoginActionFlag",
+          "name": "LoginFlag",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sensitive operation protection settings",
+          "member": "LoginActionFlag",
+          "name": "ActionFlag",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Suspicious login location protection settings",
+          "member": "OffsiteFlag",
+          "name": "OffsiteFlag",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSafeAuthFlagRequest": {
+      "document": "DescribeSafeAuthFlag request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeSafeAuthFlagResponse": {
+      "document": "DescribeSafeAuthFlag response structure.",
+      "members": [
+        {
+          "document": "Login protection settings",
+          "member": "LoginActionFlag",
+          "name": "LoginFlag",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sensitive operation protection settings",
+          "member": "LoginActionFlag",
+          "name": "ActionFlag",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Suspicious login location protection settings",
+          "member": "OffsiteFlag",
+          "name": "OffsiteFlag",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachGroupPolicyRequest": {
+      "document": "DetachGroupPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "DetachGroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachGroupPolicyResponse": {
+      "document": "DetachGroupPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachRolePolicyRequest": {
+      "document": "DetachRolePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID. Either `PolicyId` or `PolicyName` must be entered",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`",
+          "member": "string",
+          "name": "DetachRoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`",
+          "member": "string",
+          "name": "DetachRoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy name. Either `PolicyId` or `PolicyName` must be entered",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachRolePolicyResponse": {
+      "document": "DetachRolePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachUserPolicyRequest": {
+      "document": "DetachUserPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sub-account UIN",
+          "member": "uint64",
+          "name": "DetachUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachUserPolicyResponse": {
+      "document": "DetachUserPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCustomMFATokenInfoRequest": {
+      "document": "GetCustomMFATokenInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom multi-factor verification Token",
+          "member": "string",
+          "name": "MFAToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCustomMFATokenInfoResponse": {
+      "document": "GetCustomMFATokenInfo response structure.",
+      "members": [
+        {
+          "document": "Account ID corresponding to the custom multi-factor verification Token",
+          "member": "uint64",
+          "name": "Uin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupRequest": {
+      "document": "GetGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupResponse": {
+      "document": "GetGroup response structure.",
+      "members": [
+        {
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User Group name",
+          "member": "string",
+          "name": "GroupName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of members in the User Group",
+          "member": "uint64",
+          "name": "GroupNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User Group description",
+          "member": "string",
+          "name": "Remark",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time User Group created",
+          "member": "string",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User Group member information",
+          "member": "GroupMemberInfo",
+          "name": "UserInfo",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPolicyRequest": {
+      "document": "GetPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPolicyResponse": {
+      "document": "GetPolicy response structure.",
+      "members": [
+        {
+          "document": "Policy name\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "PolicyName",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Policy description\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "1: Custom policy; 2: Preset policy\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "Type",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time created\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "datetime",
+          "name": "AddTime",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time of latest update\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Policy document\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "PolicyDocument",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PresetAlias",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether it is a service-linked policy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "IsServiceLinkedRolePolicy",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPolicyVersionRequest": {
+      "document": "GetPolicyVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy version ID",
+          "member": "uint64",
+          "name": "VersionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPolicyVersionResponse": {
+      "document": "GetPolicyVersion response structure.",
+      "members": [
+        {
+          "document": "Policy version details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PolicyVersionDetail",
+          "name": "PolicyVersion",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRoleRequest": {
+      "document": "GetRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Role ID, used to specify role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRoleResponse": {
+      "document": "GetRole response structure.",
+      "members": [
+        {
+          "document": "Role details",
+          "member": "RoleInfo",
+          "name": "RoleInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSAMLProviderRequest": {
+      "document": "GetSAMLProvider request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SAML identity provider name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSAMLProviderResponse": {
+      "document": "GetSAMLProvider response structure.",
+      "members": [
+        {
+          "document": "SAML identity provider name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SAML identity provider description",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time SAML identity provider created",
+          "member": "datetime",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time SAML identity provider last modified",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SAML identity provider metadata document",
+          "member": "string",
+          "name": "SAMLMetadata",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetServiceLinkedRoleDeletionStatusRequest": {
+      "document": "GetServiceLinkedRoleDeletionStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Deletion task ID",
+          "member": "string",
+          "name": "DeletionTaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetServiceLinkedRoleDeletionStatusResponse": {
+      "document": "GetServiceLinkedRoleDeletionStatus response structure.",
+      "members": [
+        {
+          "document": "Status: NOT_STARTED, IN_PROGRESS, SUCCEEDED, FAILED",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reasons why the deletion failed.",
+          "member": "string",
+          "name": "Reason",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Service type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ServiceType",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Service name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ServiceName",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetUserRequest": {
+      "document": "GetUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetUserResponse": {
+      "document": "GetUser response structure.",
+      "members": [
+        {
+          "document": "Sub-user UIN",
+          "member": "uint64",
+          "name": "Uin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user UID",
+          "member": "uint64",
+          "name": "Uid",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user remarks",
+          "member": "string",
+          "name": "Remark",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "If sub-user can log in to the Console",
+          "member": "uint64",
+          "name": "ConsoleLogin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Mobile number",
+          "member": "string",
+          "name": "PhoneNum",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Country/Area code",
+          "member": "string",
+          "name": "CountryCode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Email",
+          "member": "string",
+          "name": "Email",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupIdOfUidInfo": {
+      "document": "Information on the association between a sub-user and a User Group",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user UID",
+          "member": "uint64",
+          "name": "Uid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "GroupInfo": {
+      "document": "User Group information",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User Group name",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time User Group created",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User Group description",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupMemberInfo": {
+      "document": "User Group user information",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user UID",
+          "member": "uint64",
+          "name": "Uid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user UIN",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "member": "string",
+          "name": "PhoneNum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number country/area code",
+          "member": "string",
+          "name": "CountryCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If mobile number has been verified",
+          "member": "uint64",
+          "name": "PhoneFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Email address",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If email has been verified",
+          "member": "uint64",
+          "name": "EmailFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User type",
+          "member": "uint64",
+          "name": "UserType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time policy created",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If the user is the main message recipient",
+          "member": "uint64",
+          "name": "IsReceiverOwner",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ListAccessKeysRequest": {
+      "document": "ListAccessKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAccessKeysResponse": {
+      "document": "ListAccessKeys response structure.",
+      "members": [
+        {
+          "document": "Access key list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AccessKey",
+          "name": "AccessKeys",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedGroupPoliciesRequest": {
+      "document": "ListAttachedGroupPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID",
+          "member": "uint64",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number, which starts from 1. Default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page; 20 by default",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedGroupPoliciesResponse": {
+      "document": "ListAttachedGroupPolicies response structure.",
+      "members": [
+        {
+          "document": "Total number of policies",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Policy list",
+          "member": "AttachPolicyInfo",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedRolePoliciesRequest": {
+      "document": "ListAttachedRolePolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Page number, beginning from 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of lines per page, no more than 200",
+          "member": "uint64",
+          "name": "Rp",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only",
+          "member": "string",
+          "name": "PolicyType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedRolePoliciesResponse": {
+      "document": "ListAttachedRolePolicies response structure.",
+      "members": [
+        {
+          "document": "List of policies associated with the role",
+          "member": "AttachedPolicyOfRole",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of policies associated with the role",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedUserPoliciesRequest": {
+      "document": "ListAttachedUserPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-account UIN",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number, which starts from 1. Default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page; 20 by default",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedUserPoliciesResponse": {
+      "document": "ListAttachedUserPolicies response structure.",
+      "members": [
+        {
+          "document": "Total number of policies",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Policy list",
+          "member": "AttachPolicyInfo",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListCollaboratorsRequest": {
+      "document": "ListCollaborators request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination start value. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListCollaboratorsResponse": {
+      "document": "ListCollaborators response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Collaborator information",
+          "member": "SubAccountInfo",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEntitiesForPolicyRequest": {
+      "document": "ListEntitiesForPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number, which starts from 1. Default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page; 20 by default",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value.",
+          "member": "string",
+          "name": "EntityFilter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEntitiesForPolicyResponse": {
+      "document": "ListEntitiesForPolicy response structure.",
+      "members": [
+        {
+          "document": "Number of entities\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Entity list\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "AttachEntityOfPolicy",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListGroupsForUserRequest": {
+      "document": "ListGroupsForUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user UID",
+          "member": "uint64",
+          "name": "Uid",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page; default is 20",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number; default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sub-account UIN",
+          "member": "uint64",
+          "name": "SubUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListGroupsForUserResponse": {
+      "document": "ListGroupsForUser response structure.",
+      "members": [
+        {
+          "document": "Total number of User Groups to which the sub-user has been added",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User Group information",
+          "member": "GroupInfo",
+          "name": "GroupInfo",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListGroupsRequest": {
+      "document": "ListGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Page number; default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page; default is 20",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by User Group name",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListGroupsResponse": {
+      "document": "ListGroups response structure.",
+      "members": [
+        {
+          "document": "Total number of User Groups",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User group information array",
+          "member": "GroupInfo",
+          "name": "GroupInfo",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListPoliciesRequest": {
+      "document": "ListPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of entries per page: must be greater than 0 and no greater than 200. Default is 20",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Starts from 1 and cannot be greater than 200. Default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `All`, `QCS`, and `Local`. `All` means all policies will be returned; `QCS` means only preset policies will be returned; `Local` means only custom policies will be returned. `All` is the default value",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by policy name",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListPoliciesResponse": {
+      "document": "ListPolicies response structure.",
+      "members": [
+        {
+          "document": "Total number of policies",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Policy array. Each array contains fields including `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode`. \npolicyId: policy ID \npolicyName: policy name\naddTime: policy creation time\ntype: 1: custom policy, 2: preset policy \ndescription: policy description \ncreateMode: 1 indicates a policy created based on business permissions, while other values indicate that the policy syntax can be viewed and the policy can be updated using the policy syntax\nAttachments: number of associated users\nServiceType: the product the policy is associated with\nIsAttached: this value should not be null when querying if a marked entity has been associated with a policy. 0 indicates that no policy has been associated, and 1 indicates that a policy has been associated",
+          "member": "StrategyInfo",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reserved field\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "ServiceTypeList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListPolicyVersionsRequest": {
+      "document": "ListPolicyVersions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListPolicyVersionsResponse": {
+      "document": "ListPolicyVersions response structure.",
+      "members": [
+        {
+          "document": "Policy version list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PolicyVersionItem",
+          "name": "Versions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSAMLProvidersRequest": {
+      "document": "ListSAMLProviders request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListSAMLProvidersResponse": {
+      "document": "ListSAMLProviders response structure.",
+      "members": [
+        {
+          "document": "Total number of SAML identity providers",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of SAML identity providers",
+          "member": "SAMLProviderInfo",
+          "name": "SAMLProviderSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersForGroupRequest": {
+      "document": "ListUsersForGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number; default is 1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page; default is 20",
+          "member": "uint64",
+          "name": "Rp",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersForGroupResponse": {
+      "document": "ListUsersForGroup response structure.",
+      "members": [
+        {
+          "document": "Total number of users associated with the User Group",
+          "member": "uint64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sub-user information",
+          "member": "GroupMemberInfo",
+          "name": "UserInfo",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersRequest": {
+      "document": "ListUsers request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListUsersResponse": {
+      "document": "ListUsers response structure.",
+      "members": [
+        {
+          "document": "Sub-user information",
+          "member": "SubAccountInfo",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LoginActionFlag": {
+      "document": "Login and sensitive operation flag",
+      "members": [
+        {
+          "default": "",
+          "document": "Phone",
+          "member": "uint64",
+          "name": "Phone",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Hard token",
+          "member": "uint64",
+          "name": "Token",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Soft token",
+          "member": "uint64",
+          "name": "Stoken",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "WeChat",
+          "member": "uint64",
+          "name": "Wechat",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom",
+          "member": "uint64",
+          "name": "Custom",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LoginActionMfaFlag": {
+      "document": "Login and sensitive operation flag",
+      "members": [
+        {
+          "default": "",
+          "document": "Mobile phone",
+          "member": "uint64",
+          "name": "Phone",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Soft token",
+          "member": "uint64",
+          "name": "Stoken",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "WeChat",
+          "member": "uint64",
+          "name": "Wechat",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OffsiteFlag": {
+      "document": "Suspicious login location settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Verification flag",
+          "member": "uint64",
+          "name": "VerifyFlag",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Phone notification",
+          "member": "uint64",
+          "name": "NotifyPhone",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Email notification",
+          "member": "int64",
+          "name": "NotifyEmail",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "WeChat notification",
+          "member": "uint64",
+          "name": "NotifyWechat",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alert",
+          "member": "uint64",
+          "name": "Tips",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PolicyVersionDetail": {
+      "document": "Policy version details",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy version ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "VersionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy version creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreateDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is the operative version. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "IsDefaultVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy syntax text\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Document",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PolicyVersionItem": {
+      "document": "Policy version list element structure",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy version ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "VersionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy version creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreateDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is the operative version. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsDefaultVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PutRolePermissionsBoundaryRequest": {
+      "document": "PutRolePermissionsBoundary request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Role ID (either it or the role name must be entered)",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name (either it or the role ID must be entered)",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutRolePermissionsBoundaryResponse": {
+      "document": "PutRolePermissionsBoundary response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutUserPermissionsBoundaryRequest": {
+      "document": "PutUserPermissionsBoundary request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-account `Uin`",
+          "member": "int64",
+          "name": "TargetUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PutUserPermissionsBoundaryResponse": {
+      "document": "PutUserPermissionsBoundary response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveUserFromGroupRequest": {
+      "document": "RemoveUserFromGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The UID of the user to be deleted and an array corresponding to the User Group IDs",
+          "member": "GroupIdOfUidInfo",
+          "name": "Info",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveUserFromGroupResponse": {
+      "document": "RemoveUserFromGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RoleInfo": {
+      "document": "Role details",
+      "members": [
+        {
+          "default": "",
+          "document": "Role ID",
+          "member": "string",
+          "name": "RoleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Role name",
+          "member": "string",
+          "name": "RoleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Role policy document",
+          "member": "string",
+          "name": "PolicyDocument",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Role description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time role created",
+          "member": "string",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time role last updated",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If login is allowed for the role",
+          "member": "uint64",
+          "name": "ConsoleLogin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User role. Valid values: `user`, `system`, `service_linked`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RoleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Valid period\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "SessionDuration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task identifier for deleting a service-linked role \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeletionTaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SAMLProviderInfo": {
+      "document": "SAML identity provider",
+      "members": [
+        {
+          "default": "",
+          "document": "SAML identity provider name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SAML identity provider description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time SAML identity provider created",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time SAML identity provider last modified",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SetDefaultPolicyVersionRequest": {
+      "document": "SetDefaultPolicyVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy version ID",
+          "member": "uint64",
+          "name": "VersionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetDefaultPolicyVersionResponse": {
+      "document": "SetDefaultPolicyVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetMfaFlagRequest": {
+      "document": "SetMfaFlag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sets user UIN",
+          "member": "uint64",
+          "name": "OpUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sets login protection",
+          "member": "LoginActionMfaFlag",
+          "name": "LoginFlag",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Sets operation protection",
+          "member": "LoginActionMfaFlag",
+          "name": "ActionFlag",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "SetMfaFlagResponse": {
+      "document": "SetMfaFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StrategyInfo": {
+      "document": "Policy information",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time policy created\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy type. 1: Custom policy; 2: Preset policy",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy description\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "How the policy was created: 1: Via console; 2: Via syntax",
+          "member": "uint64",
+          "name": "CreateMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of associated users",
+          "member": "uint64",
+          "name": "Attachments",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product associated with the policy\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated",
+          "member": "uint64",
+          "name": "IsAttached",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Queries if the policy has been deactivated\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Deactived",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of deprecated products\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeactivedDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The deletion task identifier used to check the deletion status of the service-linked role\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "IsServiceLinkedPolicy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SubAccountInfo": {
+      "document": "Sub-user information",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user user ID",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user UID",
+          "member": "uint64",
+          "name": "Uid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If sub-user can log in to the console",
+          "member": "uint64",
+          "name": "ConsoleLogin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "member": "string",
+          "name": "PhoneNum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Area code",
+          "member": "string",
+          "name": "CountryCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Email",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateAssumeRolePolicyRequest": {
+      "document": "UpdateAssumeRolePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy document",
+          "member": "string",
+          "name": "PolicyDocument",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAssumeRolePolicyResponse": {
+      "document": "UpdateAssumeRolePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateGroupRequest": {
+      "document": "UpdateGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User Group ID",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User Group name",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User Group description",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateGroupResponse": {
+      "document": "UpdateGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePolicyRequest": {
+      "document": "UpdatePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID. Either `PolicyId` or `PolicyName` must be entered",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy name. Either `PolicyName` or `PolicyId` must be entered",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy documentation, for example: `{\"version\":\"2.0\",\"statement\":[{\"action\":\"name/sts:AssumeRole\",\"effect\":\"allow\",\"principal\":{\"service\":[\"cloudaudit.cloud.tencent.com\",\"cls.cloud.tencent.com\"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1).",
+          "member": "string",
+          "name": "PolicyDocument",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Preset policy remark",
+          "member": "string",
+          "name": "Alias",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePolicyResponse": {
+      "document": "UpdatePolicy response structure.",
+      "members": [
+        {
+          "document": "Policy ID, which will be returned only if the input parameter is `PolicyName`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "PolicyId",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRoleConsoleLoginRequest": {
+      "document": "UpdateRoleConsoleLogin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether login is allowed. 1: yes, 0: no",
+          "member": "int64",
+          "name": "ConsoleLogin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Role ID",
+          "member": "int64",
+          "name": "RoleId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Role name",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRoleConsoleLoginResponse": {
+      "document": "UpdateRoleConsoleLogin response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRoleDescriptionRequest": {
+      "document": "UpdateRoleDescription request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Role description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role name, used to specify a role. Input either `RoleId` or `RoleName`",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRoleDescriptionResponse": {
+      "document": "UpdateRoleDescription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSAMLProviderRequest": {
+      "document": "UpdateSAMLProvider request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SAML identity provider name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SAML identity provider description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SAML identity provider metadata document (Base64)",
+          "member": "string",
+          "name": "SAMLMetadataDocument",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSAMLProviderResponse": {
+      "document": "UpdateSAMLProvider response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserRequest": {
+      "document": "UpdateUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-user remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.",
+          "member": "uint64",
+          "name": "ConsoleLogin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.",
+          "member": "uint64",
+          "name": "NeedResetPassword",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "member": "string",
+          "name": "PhoneNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Country/Area Code",
+          "member": "string",
+          "name": "CountryCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserResponse": {
+      "document": "UpdateUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

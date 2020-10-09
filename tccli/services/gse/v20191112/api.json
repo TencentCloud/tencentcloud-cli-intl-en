@@ -1,0 +1,1516 @@
+{
+  "actions": {
+    "CreateGameServerSession": {
+      "document": "This API is used to create a game server session.",
+      "input": "CreateGameServerSessionRequest",
+      "name": "Creates game server session",
+      "output": "CreateGameServerSessionResponse"
+    },
+    "DescribeGameServerSessionDetails": {
+      "document": "This API is used to query the list of game server session details.",
+      "input": "DescribeGameServerSessionDetailsRequest",
+      "name": "Queries the list of game server session details",
+      "output": "DescribeGameServerSessionDetailsResponse"
+    },
+    "DescribeGameServerSessionPlacement": {
+      "document": "This API is used to query the placement of a game server session.",
+      "input": "DescribeGameServerSessionPlacementRequest",
+      "name": "Queries game server session placement",
+      "output": "DescribeGameServerSessionPlacementResponse"
+    },
+    "DescribeGameServerSessions": {
+      "document": "This API is used to query the list of game server sessions.",
+      "input": "DescribeGameServerSessionsRequest",
+      "name": "Queries game server session list",
+      "output": "DescribeGameServerSessionsResponse"
+    },
+    "DescribePlayerSessions": {
+      "document": "This API is used to get the list of player sessions.",
+      "input": "DescribePlayerSessionsRequest",
+      "name": "Queries player session list",
+      "output": "DescribePlayerSessionsResponse"
+    },
+    "GetGameServerSessionLogUrl": {
+      "document": "This API is used to get the log URL of a game server session.",
+      "input": "GetGameServerSessionLogUrlRequest",
+      "name": "Gets the log URL of game server session",
+      "output": "GetGameServerSessionLogUrlResponse"
+    },
+    "GetInstanceAccess": {
+      "document": "This API is used to get the credentials required for instance login.",
+      "input": "GetInstanceAccessRequest",
+      "name": "Gets credentials required for instance login",
+      "output": "GetInstanceAccessResponse"
+    },
+    "JoinGameServerSession": {
+      "document": "This API is used to join a game server session.",
+      "input": "JoinGameServerSessionRequest",
+      "name": "Joins game server session",
+      "output": "JoinGameServerSessionResponse"
+    },
+    "SearchGameServerSessions": {
+      "document": "This API is used to search in the list of game server sessions.",
+      "input": "SearchGameServerSessionsRequest",
+      "name": "Searches in game server session list",
+      "output": "SearchGameServerSessionsResponse"
+    },
+    "StartGameServerSessionPlacement": {
+      "document": "This API is used to start placing a game server session.",
+      "input": "StartGameServerSessionPlacementRequest",
+      "name": "Starts placing game server session",
+      "output": "StartGameServerSessionPlacementResponse"
+    },
+    "StopGameServerSessionPlacement": {
+      "document": "This API is used to stop placing a game server session.",
+      "input": "StopGameServerSessionPlacementRequest",
+      "name": "Stops placing game server session",
+      "output": "StopGameServerSessionPlacementResponse"
+    },
+    "UpdateGameServerSession": {
+      "document": "This API is used to update a game server session.",
+      "input": "UpdateGameServerSessionRequest",
+      "name": "Updates game server session",
+      "output": "UpdateGameServerSessionResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-11-12",
+    "serviceNameCN": "游戏服务器引擎",
+    "serviceShortName": "gse"
+  },
+  "objects": {
+    "CreateGameServerSessionRequest": {
+      "document": "CreateGameServerSession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Maximum number of players",
+          "member": "uint64",
+          "name": "MaximumPlayerSessionCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Alias ID",
+          "member": "string",
+          "name": "AliasId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Creator ID",
+          "member": "string",
+          "name": "CreatorId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fleet ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game attributes",
+          "member": "GameProperty",
+          "name": "GameProperties",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Game server session attribute details",
+          "member": "string",
+          "name": "GameServerSessionData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom ID of game server session",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Idempotency token",
+          "member": "string",
+          "name": "IdempotencyToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGameServerSessionResponse": {
+      "document": "CreateGameServerSession response structure.",
+      "members": [
+        {
+          "document": "Game server session\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GameServerSession",
+          "name": "GameServerSession",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Credentials": {
+      "document": "Credentials required for instance access",
+      "members": [
+        {
+          "default": "",
+          "document": "SSH private key",
+          "member": "string",
+          "name": "Secret",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeGameServerSessionDetailsRequest": {
+      "document": "DescribeGameServerSessionDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Alias ID",
+          "member": "string",
+          "name": "AliasId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fleet ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of entries in a single query",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset, which is used for querying the next page",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR",
+          "member": "string",
+          "name": "StatusFilter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGameServerSessionDetailsResponse": {
+      "document": "DescribeGameServerSessionDetails response structure.",
+      "members": [
+        {
+          "document": "List of game server session details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GameServerSessionDetail",
+          "name": "GameServerSessionDetails",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination offset, which is used for querying the next page\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NextToken",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGameServerSessionPlacementRequest": {
+      "document": "DescribeGameServerSessionPlacement request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of game server session placement",
+          "member": "string",
+          "name": "PlacementId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGameServerSessionPlacementResponse": {
+      "document": "DescribeGameServerSessionPlacement response structure.",
+      "members": [
+        {
+          "document": "Game server session placement",
+          "member": "GameServerSessionPlacement",
+          "name": "GameServerSessionPlacement",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGameServerSessionsRequest": {
+      "document": "DescribeGameServerSessions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Alias ID",
+          "member": "string",
+          "name": "AliasId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fleet ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of entries in a single query",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset, which is used for querying the next page",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR",
+          "member": "string",
+          "name": "StatusFilter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGameServerSessionsResponse": {
+      "document": "DescribeGameServerSessions response structure.",
+      "members": [
+        {
+          "document": "Game server session list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GameServerSession",
+          "name": "GameServerSessions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination offset, which is used for querying the next page\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NextToken",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePlayerSessionsRequest": {
+      "document": "DescribePlayerSessions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of entries in a single query",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset, which is used for querying the next page",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player ID",
+          "member": "string",
+          "name": "PlayerId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player session ID",
+          "member": "string",
+          "name": "PlayerSessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player session status. Valid values: RESERVED, ACTIVE, COMPLETED, TIMEDOUT",
+          "member": "string",
+          "name": "PlayerSessionStatusFilter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePlayerSessionsResponse": {
+      "document": "DescribePlayerSessions response structure.",
+      "members": [
+        {
+          "document": "Player session list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PlayerSession",
+          "name": "PlayerSessions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination offset\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NextToken",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DesiredPlayerSession": {
+      "document": "Player game session information",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique player ID associated with player session",
+          "member": "string",
+          "name": "PlayerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Developer-defined player data",
+          "member": "string",
+          "name": "PlayerData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "GameProperty": {
+      "document": "Game attribute details",
+      "members": [
+        {
+          "default": "",
+          "document": "Attribute name",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attribute value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GameServerSession": {
+      "document": "Game session details",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session creation time",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreatorId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current number of players",
+          "member": "uint64",
+          "name": "CurrentPlayerSessionCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM DNS ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DnsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Fleet ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Game attributes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GameProperty",
+          "name": "GameProperties",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game server session attribute details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "GameServerSessionData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM IP address",
+          "member": "string",
+          "name": "IpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Battle progress details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MatchmakerData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of players",
+          "member": "uint64",
+          "name": "MaximumPlayerSessionCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Game server session name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Player session creation policy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PlayerSessionCreationPolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Port number",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Game server session status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Additional information of game server session status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StatusReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Termination time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TerminationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current custom count\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "CurrentCustomCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum custom count\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaxCustomCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Weight\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Session availability status, i.e., whether it is blocked\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AvailabilityStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GameServerSessionDetail": {
+      "document": "Game server session details (GameServerSessionDetail)",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session",
+          "member": "GameServerSession",
+          "name": "GameServerSession",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protection policy. Valid values: NoProtection, FullProtection\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ProtectionPolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GameServerSessionPlacement": {
+      "document": "Game session deployment object",
+      "members": [
+        {
+          "default": "",
+          "document": "Deployment ID",
+          "member": "string",
+          "name": "PlacementId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service deployment group name",
+          "member": "string",
+          "name": "GameServerSessionQueueName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player latency\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PlayerLatency",
+          "name": "PlayerLatencies",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service deployment status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DNS ID assigned to the instance where the game session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DnsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game session ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game session name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "GameServerSessionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service deployment region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "GameServerSessionRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game attributes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GameProperty",
+          "name": "GameProperties",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of players",
+          "member": "uint64",
+          "name": "MaximumPlayerSessionCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Game session data\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "GameServerSessionData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP address of the instance where the game session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "IpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Port number of the instance where the game session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game match data\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MatchmakerData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployed player game data\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PlacedPlayerSession",
+          "name": "PlacedPlayerSessions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GetGameServerSessionLogUrlRequest": {
+      "document": "GetGameServerSessionLogUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGameServerSessionLogUrlResponse": {
+      "document": "GetGameServerSessionLogUrl response structure.",
+      "members": [
+        {
+          "document": "Log download URL\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PreSignedUrl",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetInstanceAccessRequest": {
+      "document": "GetInstanceAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service deployment ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetInstanceAccessResponse": {
+      "document": "GetInstanceAccess response structure.",
+      "members": [
+        {
+          "document": "Credentials required for instance login",
+          "member": "InstanceAccess",
+          "name": "InstanceAccess",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstanceAccess": {
+      "document": "Identity credentials for instance access",
+      "members": [
+        {
+          "default": "",
+          "document": "Credentials required for instance access",
+          "member": "Credentials",
+          "name": "Credentials",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service deployment ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public IP of instance",
+          "member": "string",
+          "name": "IpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "member": "string",
+          "name": "OperatingSystem",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "JoinGameServerSessionRequest": {
+      "document": "JoinGameServerSession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player ID",
+          "member": "string",
+          "name": "PlayerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom player information",
+          "member": "string",
+          "name": "PlayerData",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "JoinGameServerSessionResponse": {
+      "document": "JoinGameServerSession response structure.",
+      "members": [
+        {
+          "document": "Player session\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PlayerSession",
+          "name": "PlayerSession",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PlacedPlayerSession": {
+      "document": "Deployed player game session",
+      "members": [
+        {
+          "default": "",
+          "document": "Player ID",
+          "member": "string",
+          "name": "PlayerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player session ID",
+          "member": "string",
+          "name": "PlayerSessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PlayerLatency": {
+      "document": "Player latency information",
+      "members": [
+        {
+          "default": "",
+          "document": "Player ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PlayerId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of region corresponding to latency\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RegionIdentifier",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Latency in milliseconds",
+          "member": "uint64",
+          "name": "LatencyInMilliseconds",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PlayerSession": {
+      "document": "Player session details",
+      "members": [
+        {
+          "default": "",
+          "document": "Player session creation time",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the DNS where the game server session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DnsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Fleet ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Address of the CVM instance where the game server session is running",
+          "member": "string",
+          "name": "IpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PlayerData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Player ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PlayerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Player session ID",
+          "member": "string",
+          "name": "PlayerSessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port number",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player session status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player session termination time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TerminationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SearchGameServerSessionsRequest": {
+      "document": "SearchGameServerSessions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Alias ID",
+          "member": "string",
+          "name": "AliasId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fleet ID",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of entries in a single query",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset, which is used for querying the next page",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search filter expression. Valid values:\ngameServerSessionName: game session name in `String` type\ngameServerSessionId: game session ID in `String` type\nmaximumSessions: maximum number of player sessions in `Number` type\ncreationTimeMillis: creation time in milliseconds in `Number` type\nplayerSessionCount: current number of player sessions in `Number` type\nhasAvailablePlayerSessions: whether there is available player session in `String` type. Valid values: true, false\ngameServerSessionProperties: game session attributes in `String` type\n\nExpressions in `String` type support = and <> for judgment\nExpressions in `Number` type support =, <>, >, >=, <, and <= for judgment",
+          "member": "string",
+          "name": "FilterExpression",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting keyword\nValid values:\ngameServerSessionName: game session name in `String` type\ngameServerSessionId: game session ID in `String` type\nmaximumSessions: maximum number of player sessions in `Number` type\ncreationTimeMillis: creation time in milliseconds in `Number` type\nplayerSessionCount: current number of player sessions in `Number` type",
+          "member": "string",
+          "name": "SortExpression",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchGameServerSessionsResponse": {
+      "document": "SearchGameServerSessions response structure.",
+      "members": [
+        {
+          "document": "Game server session list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GameServerSession",
+          "name": "GameServerSessions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination offset, which is used for querying the next page\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NextToken",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartGameServerSessionPlacementRequest": {
+      "document": "StartGameServerSessionPlacement request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of starting game server session placement",
+          "member": "string",
+          "name": "PlacementId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session queue name",
+          "member": "string",
+          "name": "GameServerSessionQueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of concurrent players allowed by the game server to connect to the game session",
+          "member": "uint64",
+          "name": "MaximumPlayerSessionCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Player game session information",
+          "member": "DesiredPlayerSession",
+          "name": "DesiredPlayerSessions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Player game session attributes",
+          "member": "GameProperty",
+          "name": "GameProperties",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Game server session data",
+          "member": "string",
+          "name": "GameServerSessionData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session name",
+          "member": "string",
+          "name": "GameServerSessionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player latency",
+          "member": "PlayerLatency",
+          "name": "PlayerLatencies",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "StartGameServerSessionPlacementResponse": {
+      "document": "StartGameServerSessionPlacement response structure.",
+      "members": [
+        {
+          "document": "Game server session placement",
+          "member": "GameServerSessionPlacement",
+          "name": "GameServerSessionPlacement",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopGameServerSessionPlacementRequest": {
+      "document": "StopGameServerSessionPlacement request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of game server session placement",
+          "member": "string",
+          "name": "PlacementId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopGameServerSessionPlacementResponse": {
+      "document": "StopGameServerSessionPlacement response structure.",
+      "members": [
+        {
+          "document": "Game server session placement",
+          "member": "GameServerSessionPlacement",
+          "name": "GameServerSessionPlacement",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateGameServerSessionRequest": {
+      "document": "UpdateGameServerSession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session ID",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of players",
+          "member": "uint64",
+          "name": "MaximumPlayerSessionCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Game server session name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player session creation policy. Valid values: ACCEPT_ALL, DENY_ALL",
+          "member": "string",
+          "name": "PlayerSessionCreationPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protection policy. Valid values: NoProtection, TimeLimitProtection, FullProtection",
+          "member": "string",
+          "name": "ProtectionPolicy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateGameServerSessionResponse": {
+      "document": "UpdateGameServerSession response structure.",
+      "members": [
+        {
+          "document": "Updated game session",
+          "member": "GameServerSession",
+          "name": "GameServerSession",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

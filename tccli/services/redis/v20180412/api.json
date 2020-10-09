@@ -1,0 +1,5725 @@
+{
+  "actions": {
+    "AssociateSecurityGroups": {
+      "document": "This API is used to associate security groups with specified instances.",
+      "input": "AssociateSecurityGroupsRequest",
+      "name": "Associates security groups with instances",
+      "output": "AssociateSecurityGroupsResponse"
+    },
+    "CleanUpInstance": {
+      "document": "This API is used to deactivate an instance in the recycle bin immediately.",
+      "input": "CleanUpInstanceRequest",
+      "name": "Deactivates an instance in the recycle bin immediately",
+      "output": "CleanUpInstanceResponse"
+    },
+    "ClearInstance": {
+      "document": "This API is used to clear the data of a Redis instance.",
+      "input": "ClearInstanceRequest",
+      "name": "Clears a Redis instance",
+      "output": "ClearInstanceResponse"
+    },
+    "CreateInstanceAccount": {
+      "document": "This API is used to create an instance sub-account.",
+      "input": "CreateInstanceAccountRequest",
+      "name": "Creates an instance sub-account",
+      "output": "CreateInstanceAccountResponse"
+    },
+    "CreateInstances": {
+      "document": "This API is used to create a Redis instance.",
+      "input": "CreateInstancesRequest",
+      "name": "Creates a Redis instance",
+      "output": "CreateInstancesResponse"
+    },
+    "DeleteInstanceAccount": {
+      "document": "This API is used to delete an instance sub-account.",
+      "input": "DeleteInstanceAccountRequest",
+      "name": "Deletes an instance sub-account",
+      "output": "DeleteInstanceAccountResponse"
+    },
+    "DescribeAutoBackupConfig": {
+      "document": "This API is used to get the backup configuration.",
+      "input": "DescribeAutoBackupConfigRequest",
+      "name": "Gets the backup configuration",
+      "output": "DescribeAutoBackupConfigResponse"
+    },
+    "DescribeBackupUrl": {
+      "document": "This API is used to query the download address of a backup RDB (it is during beta test and can be used only after you apply for the eligibility).",
+      "input": "DescribeBackupUrlRequest",
+      "name": "Queries the download address of a backup RDB",
+      "output": "DescribeBackupUrlResponse"
+    },
+    "DescribeDBSecurityGroups": {
+      "document": "This API is used to query the security group details of an instance.",
+      "input": "DescribeDBSecurityGroupsRequest",
+      "name": "Queries the security group details of an instance",
+      "output": "DescribeDBSecurityGroupsResponse"
+    },
+    "DescribeInstanceAccount": {
+      "document": "This API is used to view instance sub-account information.",
+      "input": "DescribeInstanceAccountRequest",
+      "name": "Views instance sub-account information",
+      "output": "DescribeInstanceAccountResponse"
+    },
+    "DescribeInstanceBackups": {
+      "document": "This API is used to query the list of Redis instance backups.",
+      "input": "DescribeInstanceBackupsRequest",
+      "name": "Queries the list of Redis instance backups",
+      "output": "DescribeInstanceBackupsResponse"
+    },
+    "DescribeInstanceDTSInfo": {
+      "document": "This API is used to query the DTS task details of an instance.",
+      "input": "DescribeInstanceDTSInfoRequest",
+      "name": "Queries the DTS task details of an instance",
+      "output": "DescribeInstanceDTSInfoResponse"
+    },
+    "DescribeInstanceDealDetail": {
+      "document": "This API is used to query the order information.",
+      "input": "DescribeInstanceDealDetailRequest",
+      "name": "Queries the order information",
+      "output": "DescribeInstanceDealDetailResponse"
+    },
+    "DescribeInstanceMonitorBigKey": {
+      "document": "This API is used to query the big key of an instance.",
+      "input": "DescribeInstanceMonitorBigKeyRequest",
+      "name": "Queries the big key of an instance",
+      "output": "DescribeInstanceMonitorBigKeyResponse"
+    },
+    "DescribeInstanceMonitorBigKeySizeDist": {
+      "document": "This API is used to query the big key size distribution of an instance.",
+      "input": "DescribeInstanceMonitorBigKeySizeDistRequest",
+      "name": "Queries the big key size distribution of an instance",
+      "output": "DescribeInstanceMonitorBigKeySizeDistResponse"
+    },
+    "DescribeInstanceMonitorBigKeyTypeDist": {
+      "document": "This API is used to query the big key type distribution of an instance",
+      "input": "DescribeInstanceMonitorBigKeyTypeDistRequest",
+      "name": "Queries the big key type distribution of an instance",
+      "output": "DescribeInstanceMonitorBigKeyTypeDistResponse"
+    },
+    "DescribeInstanceMonitorHotKey": {
+      "document": "This API is used to query the hot key of an instance.",
+      "input": "DescribeInstanceMonitorHotKeyRequest",
+      "name": "Queries the hot key of an instance",
+      "output": "DescribeInstanceMonitorHotKeyResponse"
+    },
+    "DescribeInstanceMonitorSIP": {
+      "document": "This API is used to query the access source information of an instance.",
+      "input": "DescribeInstanceMonitorSIPRequest",
+      "name": "Queries the access source information of an instance",
+      "output": "DescribeInstanceMonitorSIPResponse"
+    },
+    "DescribeInstanceMonitorTookDist": {
+      "document": "This API is used to query the distribution of instance access duration.",
+      "input": "DescribeInstanceMonitorTookDistRequest",
+      "name": "Queries the distribution of instance access time",
+      "output": "DescribeInstanceMonitorTookDistResponse"
+    },
+    "DescribeInstanceMonitorTopNCmd": {
+      "document": "This API is used to query an instance access command.",
+      "input": "DescribeInstanceMonitorTopNCmdRequest",
+      "name": "Queries an instance access command",
+      "output": "DescribeInstanceMonitorTopNCmdResponse"
+    },
+    "DescribeInstanceMonitorTopNCmdTook": {
+      "document": "This API is used to query the instance CPU time.",
+      "input": "DescribeInstanceMonitorTopNCmdTookRequest",
+      "name": "Queries the instance CPU time",
+      "output": "DescribeInstanceMonitorTopNCmdTookResponse"
+    },
+    "DescribeInstanceParamRecords": {
+      "document": "This API is used to query the list of parameter modifications.",
+      "input": "DescribeInstanceParamRecordsRequest",
+      "name": "Queries the list of parameter modifications",
+      "output": "DescribeInstanceParamRecordsResponse"
+    },
+    "DescribeInstanceParams": {
+      "document": "This API is used to query the list of instance parameters.",
+      "input": "DescribeInstanceParamsRequest",
+      "name": "Queries the list of instance parameters",
+      "output": "DescribeInstanceParamsResponse"
+    },
+    "DescribeInstanceSecurityGroup": {
+      "document": "This API is used to query the security group information of an instance.",
+      "input": "DescribeInstanceSecurityGroupRequest",
+      "name": "Queries the security group information of an instance",
+      "output": "DescribeInstanceSecurityGroupResponse"
+    },
+    "DescribeInstanceShards": {
+      "document": "This API is used to get the information of cluster edition instance shards.",
+      "input": "DescribeInstanceShardsRequest",
+      "name": "Gets the information of cluster edition instance shards",
+      "output": "DescribeInstanceShardsResponse"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to query the list of Redis instances.",
+      "input": "DescribeInstancesRequest",
+      "name": "Queries the list of Redis instances",
+      "output": "DescribeInstancesResponse"
+    },
+    "DescribeMaintenanceWindow": {
+      "document": "This API is used to query instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business.",
+      "input": "DescribeMaintenanceWindowRequest",
+      "name": "Queries instance maintenance window",
+      "output": "DescribeMaintenanceWindowResponse"
+    },
+    "DescribeProductInfo": {
+      "document": "This API is used to query the purchasable capacity specifications of Redis instances in the specified AZ and instance type. If you are not in the allowlist for the AZ or instance type, you cannot view the details of the capacity specifications. To apply for the eligibility, please submit a ticket.",
+      "input": "DescribeProductInfoRequest",
+      "name": "Queries the purchasable product specifications",
+      "output": "DescribeProductInfoResponse"
+    },
+    "DescribeProjectSecurityGroup": {
+      "document": "This API is used to query the security group information of a project.",
+      "input": "DescribeProjectSecurityGroupRequest",
+      "name": "Queries the security group information of a project",
+      "output": "DescribeProjectSecurityGroupResponse"
+    },
+    "DescribeProjectSecurityGroups": {
+      "document": "This API is used to query the security group details of a project.",
+      "input": "DescribeProjectSecurityGroupsRequest",
+      "name": "Queries the security group details of a project",
+      "output": "DescribeProjectSecurityGroupsResponse"
+    },
+    "DescribeSlowLog": {
+      "document": "This API is used to query the slow log.",
+      "input": "DescribeSlowLogRequest",
+      "name": "Queries the slow log",
+      "output": "DescribeSlowLogResponse"
+    },
+    "DescribeTaskInfo": {
+      "document": "This API is used to query a task result.",
+      "input": "DescribeTaskInfoRequest",
+      "name": "Queries a Redis task result",
+      "output": "DescribeTaskInfoResponse"
+    },
+    "DescribeTaskList": {
+      "document": "This API is used to query the list of tasks.",
+      "input": "DescribeTaskListRequest",
+      "name": "Queries the list of tasks",
+      "output": "DescribeTaskListResponse"
+    },
+    "DestroyPostpaidInstance": {
+      "document": "This API is used to terminate a pay-as-you-go instance.",
+      "input": "DestroyPostpaidInstanceRequest",
+      "name": "Terminates a pay-as-you-go instance",
+      "output": "DestroyPostpaidInstanceResponse"
+    },
+    "DestroyPrepaidInstance": {
+      "document": "This API is used to return a monthly subscribed instance.",
+      "input": "DestroyPrepaidInstanceRequest",
+      "name": "Returns a monthly subscribed instance",
+      "output": "DestroyPrepaidInstanceResponse"
+    },
+    "DisableReplicaReadonly": {
+      "document": "This API is used to disable read/write separation.",
+      "input": "DisableReplicaReadonlyRequest",
+      "name": "Disables read/write separation",
+      "output": "DisableReplicaReadonlyResponse"
+    },
+    "DisassociateSecurityGroups": {
+      "document": "This API is used to unassociate security groups from instances in batches.",
+      "input": "DisassociateSecurityGroupsRequest",
+      "name": "Unassociates security groups in batches",
+      "output": "DisassociateSecurityGroupsResponse"
+    },
+    "EnableReplicaReadonly": {
+      "document": "This API is used to enable read/write separation.",
+      "input": "EnableReplicaReadonlyRequest",
+      "name": "Enables read/write separation",
+      "output": "EnableReplicaReadonlyResponse"
+    },
+    "ManualBackupInstance": {
+      "document": "This API is used to manually back up a Redis instance.",
+      "input": "ManualBackupInstanceRequest",
+      "name": "Manually backs up a Redis instance",
+      "output": "ManualBackupInstanceResponse"
+    },
+    "ModfiyInstancePassword": {
+      "document": "This API is used to change the Redis password.",
+      "input": "ModfiyInstancePasswordRequest",
+      "name": "Changes the Redis password",
+      "output": "ModfiyInstancePasswordResponse"
+    },
+    "ModifyAutoBackupConfig": {
+      "document": "This API is used to set an auto-backup schedule.",
+      "input": "ModifyAutoBackupConfigRequest",
+      "name": "Sets an auto-backup schedule",
+      "output": "ModifyAutoBackupConfigResponse"
+    },
+    "ModifyDBInstanceSecurityGroups": {
+      "document": "This API is used to modify the security groups associated with an instance.",
+      "input": "ModifyDBInstanceSecurityGroupsRequest",
+      "name": "Modifies the security groups associated with TencentDB",
+      "output": "ModifyDBInstanceSecurityGroupsResponse"
+    },
+    "ModifyInstance": {
+      "document": "This API is used to modify instance information.",
+      "input": "ModifyInstanceRequest",
+      "name": "Modifies instance information",
+      "output": "ModifyInstanceResponse"
+    },
+    "ModifyInstanceAccount": {
+      "document": "This API is used to modify an instance sub-account.",
+      "input": "ModifyInstanceAccountRequest",
+      "name": "Modifies an instance sub-account",
+      "output": "ModifyInstanceAccountResponse"
+    },
+    "ModifyInstanceParams": {
+      "document": "This API is used to modify instance parameters.",
+      "input": "ModifyInstanceParamsRequest",
+      "name": "Modifies instance parameters",
+      "output": "ModifyInstanceParamsResponse"
+    },
+    "ModifyMaintenanceWindow": {
+      "document": "This API is used to modify instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business. Note: if the compatible version upgrade or architecture upgrade task has been initiated for an instance, its maintenance window cannot be modified.",
+      "input": "ModifyMaintenanceWindowRequest",
+      "name": "Modifies instance maintenance window",
+      "output": "ModifyMaintenanceWindowResponse"
+    },
+    "ModifyNetworkConfig": {
+      "document": "This API is used to modify the network configuration of an instance.",
+      "input": "ModifyNetworkConfigRequest",
+      "name": "Modifies the network configuration of an instance",
+      "output": "ModifyNetworkConfigResponse"
+    },
+    "RenewInstance": {
+      "document": "This API is used to renew an instance.",
+      "input": "RenewInstanceRequest",
+      "name": "Renews an instance",
+      "output": "RenewInstanceResponse"
+    },
+    "ResetPassword": {
+      "document": "This API is used to reset a password.",
+      "input": "ResetPasswordRequest",
+      "name": "Resets a password",
+      "output": "ResetPasswordResponse"
+    },
+    "RestoreInstance": {
+      "document": "This API is used to restore a Redis instance.",
+      "input": "RestoreInstanceRequest",
+      "name": "Restores a Redis instance",
+      "output": "RestoreInstanceResponse"
+    },
+    "StartupInstance": {
+      "document": "This API is used to deisolate an instance.",
+      "input": "StartupInstanceRequest",
+      "name": "Deisolates an instance",
+      "output": "StartupInstanceResponse"
+    },
+    "SwitchInstanceVip": {
+      "document": "This API is used to swap the VIPs of instances for instance disaster recovery switch in scenarios where cross-AZ disaster recovery is supported through DTS. After the VIPs of the source and target instances are swapped, the target instance can be written into and the DTS sync task between them will be disconnected.",
+      "input": "SwitchInstanceVipRequest",
+      "name": "Swaps the VIPs of instances",
+      "output": "SwitchInstanceVipResponse"
+    },
+    "UpgradeInstance": {
+      "document": "This API is used to upgrade an instance.",
+      "input": "UpgradeInstanceRequest",
+      "name": "Upgrades an instance",
+      "output": "UpgradeInstanceResponse"
+    },
+    "UpgradeInstanceVersion": {
+      "document": "This API is used to upgrade compatible instance version (for example, from Redis 2.8 to 4.0), or upgrade instance architecture (for example, from standard architecture to cluster architecture).",
+      "input": "UpgradeInstanceVersionRequest",
+      "name": "Upgrades instance version or architecture",
+      "output": "UpgradeInstanceVersionResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-04-12",
+    "serviceNameCN": "云数据库 Redis",
+    "serviceShortName": "redis"
+  },
+  "objects": {
+    "Account": {
+      "document": "Sub-account information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Account name (`root` for a root account)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Account description information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Read/write policy. r: read-only; w: write-only; rw: read/write\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Privilege",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Routing policy. master: master node; replication: secondary node\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ReadonlyPolicy",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sub-account status. 1: account is being changed; 2: account is valid; -4: account has been deleted\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AssociateSecurityGroupsRequest": {
+      "document": "AssociateSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the security group to be associated in the format of sg-efil73jd.",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateSecurityGroupsResponse": {
+      "document": "AssociateSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BigKeyInfo": {
+      "document": "Big key details",
+      "members": [
+        {
+          "default": "",
+          "document": "Database",
+          "member": "int64",
+          "name": "DB",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Big key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data timestamp",
+          "member": "int64",
+          "name": "Updatetime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BigKeyTypeInfo": {
+      "document": "Big key type distribution details",
+      "members": [
+        {
+          "default": "",
+          "document": "Type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Count",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp",
+          "member": "int64",
+          "name": "Updatetime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CleanUpInstanceRequest": {
+      "document": "CleanUpInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CleanUpInstanceResponse": {
+      "document": "CleanUpInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClearInstanceRequest": {
+      "document": "ClearInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Redis instance password (this parameter is not required for password-free instances but for password-enabled instances)",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClearInstanceResponse": {
+      "document": "ClearInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CommandTake": {
+      "document": "Command duration",
+      "members": [
+        {
+          "default": "",
+          "document": "Command",
+          "member": "string",
+          "name": "Cmd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration",
+          "member": "int64",
+          "name": "Took",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateInstanceAccountRequest": {
+      "document": "CreateInstanceAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account name",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account password",
+          "member": "string",
+          "name": "AccountPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Routing policy. Enter `master` for primary node or `replication` for secondary node",
+          "member": "string",
+          "name": "ReadonlyPolicy",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Read/write policy. Valid values: r (read-only), rw (read/write).",
+          "member": "string",
+          "name": "Privilege",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account description information",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceAccountResponse": {
+      "document": "CreateInstanceAccount response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancesRequest": {
+      "document": "CreateInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID of instance",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: 2 (Redis 2.8 memory edition in standard architecture), 3 (Redis 3.2 memory edition in standard architecture), 4 (CKV 3.2 memory edition in standard architecture), 6 (Redis 4.0 memory edition in standard architecture), 7 (Redis 4.0 memory edition in cluster architecture), 8 (Redis 5.0 memory edition in standard architecture), 9 (Redis 5.0 memory edition in cluster architecture).",
+          "member": "uint64",
+          "name": "TypeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance capacity in MB. The actual value is subject to the specifications returned by the purchasable specification querying API |",
+          "member": "uint64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the purchasable specification querying API",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Length of purchase in months, which is required when creating a monthly subscribed instances. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, enter 1",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing method. 0: pay as you go",
+          "member": "int64",
+          "name": "BillingMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance password. It can contain 8-30 characters and must contain at least two of the following types of characters: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/). It cannot stat with the symbol (/).",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the basic network will be selected by default. Please use the VPC list querying API to query.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "In a basic network, subnetId is invalid. In a VPC subnet, the value is the subnet ID, such as subnet-fdj24n34j2",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID. The value is subject to the projectId returned by user account > user account-related querying APIs > project list",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "member": "uint64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of security group IDs",
+          "member": "string",
+          "name": "SecurityGroupIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535]",
+          "member": "uint64",
+          "name": "VPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of shards in an instance. This parameter is required for cluster edition instances. Valid values: 3, 5, 8, 12, 16, 24, 32, 64, 96, 128.",
+          "member": "int64",
+          "name": "RedisShardNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.",
+          "member": "int64",
+          "name": "RedisReplicasNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the primary node and read requests will be distributed on secondary nodes. To enable read-only replicas, we recommend you create 2 or more replicas.",
+          "member": "bool",
+          "name": "ReplicasReadonly",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Instance name. It contains only letters, digits, underscores, and dashes with a length of up to 60 characters.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.",
+          "member": "bool",
+          "name": "NoAuth",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancesResponse": {
+      "document": "CreateInstances response structure.",
+      "members": [
+        {
+          "document": "Transaction ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID (this field is during beta test and is not displayed in some regions)",
+          "member": "string",
+          "name": "InstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DelayDistribution": {
+      "document": "Delay distribution details",
+      "members": [
+        {
+          "default": "",
+          "document": "Distribution ladder",
+          "member": "int64",
+          "name": "Ladder",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "member": "int64",
+          "name": "Updatetime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteInstanceAccountRequest": {
+      "document": "DeleteInstanceAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account name",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceAccountResponse": {
+      "document": "DeleteInstanceAccount response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoBackupConfigRequest": {
+      "document": "DescribeAutoBackupConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoBackupConfigResponse": {
+      "document": "DescribeAutoBackupConfig response structure.",
+      "members": [
+        {
+          "document": "Backup type. Auto backup type: 1 \"scheduled rollback\"",
+          "member": "int64",
+          "name": "AutoBackupType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.",
+          "member": "string",
+          "name": "WeekDays",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time period.",
+          "member": "string",
+          "name": "TimePeriod",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupUrlRequest": {
+      "document": "DescribeBackupUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup ID, which can be queried through the `DescribeInstanceBackups` API",
+          "member": "string",
+          "name": "BackupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupUrlResponse": {
+      "document": "DescribeBackupUrl response structure.",
+      "members": [
+        {
+          "document": "Download address on the public network (valid for 6 hours)",
+          "member": "string",
+          "name": "DownloadUrl",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Download address on the private network (valid for 6 hours)",
+          "member": "string",
+          "name": "InnerDownloadUrl",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsRequest": {
+      "document": "DescribeDBSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsResponse": {
+      "document": "DescribeDBSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "Security group rules.",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAccountRequest": {
+      "document": "DescribeInstanceAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAccountResponse": {
+      "document": "DescribeInstanceAccount response structure.",
+      "members": [
+        {
+          "document": "Account details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "Account",
+          "name": "Accounts",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of accounts\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceBackupsRequest": {
+      "document": "DescribeInstanceBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "20",
+          "document": "Instance list size. Default value: 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset, which is an integral multiple of `Limit`",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "1: backup in process; 2: backing up normally; 3: converting from backup to RDB file; 4: RDB conversion completed; -1: backup expired; -2: backup deleted.",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceBackupsResponse": {
+      "document": "DescribeInstanceBackups response structure.",
+      "members": [
+        {
+          "document": "Total number of backups",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of instance backups",
+          "member": "RedisBackupSet",
+          "name": "BackupSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceDTSInfoRequest": {
+      "document": "DescribeInstanceDTSInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceDTSInfoResponse": {
+      "document": "DescribeInstanceDTSInfo response structure.",
+      "members": [
+        {
+          "document": "DTS task ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "JobId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "DTS task name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "JobName",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Status description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StatusDesc",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Synchronization latency in bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Disconnection time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CutDownTime",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Source instance information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeInstanceDTSInstanceInfo",
+          "name": "SrcInfo",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Target instance information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeInstanceDTSInstanceInfo",
+          "name": "DstInfo",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceDTSInstanceInfo": {
+      "document": "Details of instances in a DTS task",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Repository ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SetId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance access address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeInstanceDealDetailRequest": {
+      "document": "DescribeInstanceDealDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of order IDs",
+          "member": "string",
+          "name": "DealIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceDealDetailResponse": {
+      "document": "DescribeInstanceDealDetail response structure.",
+      "members": [
+        {
+          "document": "Order details",
+          "member": "TradeDealDetail",
+          "name": "DealDetails",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorBigKeyRequest": {
+      "document": "DescribeInstanceMonitorBigKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Request type. 1: string type; 2: all types",
+          "member": "int64",
+          "name": "ReqType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Time, such as \"20190219\"",
+          "member": "string",
+          "name": "Date",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorBigKeyResponse": {
+      "document": "DescribeInstanceMonitorBigKey response structure.",
+      "members": [
+        {
+          "document": "Big key details",
+          "member": "BigKeyInfo",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorBigKeySizeDistRequest": {
+      "document": "DescribeInstanceMonitorBigKeySizeDist request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time, such as \"20190219\"",
+          "member": "string",
+          "name": "Date",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorBigKeySizeDistResponse": {
+      "document": "DescribeInstanceMonitorBigKeySizeDist response structure.",
+      "members": [
+        {
+          "document": "Big key size distribution details",
+          "member": "DelayDistribution",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorBigKeyTypeDistRequest": {
+      "document": "DescribeInstanceMonitorBigKeyTypeDist request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time, such as \"20190219\"",
+          "member": "string",
+          "name": "Date",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorBigKeyTypeDistResponse": {
+      "document": "DescribeInstanceMonitorBigKeyTypeDist response structure.",
+      "members": [
+        {
+          "document": "Big key type distribution details",
+          "member": "BigKeyTypeInfo",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorHotKeyRequest": {
+      "document": "DescribeInstanceMonitorHotKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours",
+          "member": "int64",
+          "name": "SpanType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorHotKeyResponse": {
+      "document": "DescribeInstanceMonitorHotKey response structure.",
+      "members": [
+        {
+          "document": "Hot key details",
+          "member": "HotKeyInfo",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorSIPRequest": {
+      "document": "DescribeInstanceMonitorSIP request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorSIPResponse": {
+      "document": "DescribeInstanceMonitorSIP response structure.",
+      "members": [
+        {
+          "document": "Access source information",
+          "member": "SourceInfo",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorTookDistRequest": {
+      "document": "DescribeInstanceMonitorTookDist request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time, such as \"20190219\"",
+          "member": "string",
+          "name": "Date",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
+          "member": "int64",
+          "name": "SpanType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorTookDistResponse": {
+      "document": "DescribeInstanceMonitorTookDist response structure.",
+      "members": [
+        {
+          "document": "Latency distribution information",
+          "member": "DelayDistribution",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorTopNCmdRequest": {
+      "document": "DescribeInstanceMonitorTopNCmd request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
+          "member": "int64",
+          "name": "SpanType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorTopNCmdResponse": {
+      "document": "DescribeInstanceMonitorTopNCmd response structure.",
+      "members": [
+        {
+          "document": "Access command information",
+          "member": "SourceCommand",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorTopNCmdTookRequest": {
+      "document": "DescribeInstanceMonitorTopNCmdTook request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
+          "member": "int64",
+          "name": "SpanType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceMonitorTopNCmdTookResponse": {
+      "document": "DescribeInstanceMonitorTopNCmdTook response structure.",
+      "members": [
+        {
+          "document": "Duration details",
+          "member": "CommandTake",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamRecordsRequest": {
+      "document": "DescribeInstanceParamRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit`",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamRecordsResponse": {
+      "document": "DescribeInstanceParamRecords response structure.",
+      "members": [
+        {
+          "document": "Total number of modifications.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of modifications.",
+          "member": "InstanceParamHistory",
+          "name": "InstanceParamHistory",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamsRequest": {
+      "document": "DescribeInstanceParams request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamsResponse": {
+      "document": "DescribeInstanceParams response structure.",
+      "members": [
+        {
+          "document": "Number of instance parameters",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance parameter in Enum type",
+          "member": "InstanceEnumParam",
+          "name": "InstanceEnumParam",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance parameter in Integer type",
+          "member": "InstanceIntegerParam",
+          "name": "InstanceIntegerParam",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance parameter in Char type",
+          "member": "InstanceTextParam",
+          "name": "InstanceTextParam",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance parameter in Multi type",
+          "member": "InstanceMultiParam",
+          "name": "InstanceMultiParam",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceSecurityGroupRequest": {
+      "document": "DescribeInstanceSecurityGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance list",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceSecurityGroupResponse": {
+      "document": "DescribeInstanceSecurityGroup response structure.",
+      "members": [
+        {
+          "document": "Security group information of an instance",
+          "member": "InstanceSecurityGroupDetail",
+          "name": "InstanceSecurityGroupsDetail",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceShardsRequest": {
+      "document": "DescribeInstanceShards request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "false",
+          "document": "Whether to filter out the secondary node information",
+          "member": "bool",
+          "name": "FilterSlave",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceShardsResponse": {
+      "document": "DescribeInstanceShards response structure.",
+      "members": [
+        {
+          "document": "Information list of instance shards",
+          "member": "InstanceClusterShard",
+          "name": "InstanceShards",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of instance shard nodes",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance list size. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit`",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID, such as crs-6ubhgouj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Enumerated values: projectId, createtime, instancename, type, curDeadline",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "1: reverse; 0: sequential; reverse by default",
+          "member": "int64",
+          "name": "OrderType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default",
+          "member": "string",
+          "name": "VpcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of subnet IDs such as 56854. The array subscript starts from 0",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of project IDs. The array subscript starts from 0",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance to be searched for.",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default",
+          "member": "string",
+          "name": "UniqVpcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0",
+          "member": "string",
+          "name": "UniqSubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`",
+          "member": "int64",
+          "name": "RegionIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Type edition. 1: standalone edition; 2: primary-secondary edition; 3: cluster edition",
+          "member": "int64",
+          "name": "TypeVersion",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Engine information: Redis-2.8, Redis-4.0, CKV",
+          "member": "string",
+          "name": "EngineName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Renewal mode. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Billing method. postpaid: pay-as-you-go; prepaid: monthly subscription",
+          "member": "string",
+          "name": "BillingMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,",
+          "member": "int64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search keywords, which can be instance ID, instance name, or complete IP",
+          "member": "string",
+          "name": "SearchKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Internal parameter, which can be ignored",
+          "member": "int64",
+          "name": "TypeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Internal parameter, which can be ignored",
+          "member": "string",
+          "name": "MonitorVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "document": "Number of instances",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance details",
+          "member": "InstanceSet",
+          "name": "InstanceSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaintenanceWindowRequest": {
+      "document": "DescribeMaintenanceWindow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaintenanceWindowResponse": {
+      "document": "DescribeMaintenanceWindow response structure.",
+      "members": [
+        {
+          "document": "Start time of the maintenance window, such as 17:00.",
+          "member": "string",
+          "name": "StartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "End time of the maintenance window, such as 19:00.",
+          "member": "string",
+          "name": "EndTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductInfoRequest": {
+      "document": "DescribeProductInfo request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeProductInfoResponse": {
+      "document": "DescribeProductInfo response structure.",
+      "members": [
+        {
+          "document": "Sale information of a region",
+          "member": "RegionConf",
+          "name": "RegionSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectSecurityGroupRequest": {
+      "document": "DescribeProjectSecurityGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "0: default project; -1: all projects; >0: specified project",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectSecurityGroupResponse": {
+      "document": "DescribeProjectSecurityGroup response structure.",
+      "members": [
+        {
+          "document": "Security group of a project",
+          "member": "SecurityGroupDetail",
+          "name": "SecurityGroupDetails",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectSecurityGroupsRequest": {
+      "document": "DescribeProjectSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID.",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of security groups to be pulled.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search criteria. You can enter a security group ID or name.",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectSecurityGroupsResponse": {
+      "document": "DescribeProjectSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "Security group rules.",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of the security groups meeting the condition.",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogRequest": {
+      "document": "DescribeSlowLog request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Slow log threshold in microseconds",
+          "member": "int64",
+          "name": "MinQueryTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit`",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogResponse": {
+      "document": "DescribeSlowLog response structure.",
+      "members": [
+        {
+          "document": "Total number of slow logs",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow log details",
+          "member": "InstanceSlowlogDetail",
+          "name": "InstanceSlowlogDetail",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskInfoRequest": {
+      "document": "DescribeTaskInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskInfoResponse": {
+      "document": "DescribeTaskInfo response structure.",
+      "members": [
+        {
+          "document": "Task status. preparing: to be run; running: running; succeed: succeeded; failed: failed; error: running error.",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task start time",
+          "member": "string",
+          "name": "StartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task type",
+          "member": "string",
+          "name": "TaskType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded",
+          "member": "string",
+          "name": "TaskMessage",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskListRequest": {
+      "document": "DescribeTaskList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit` (rounded down automatically)",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Task type",
+          "member": "string",
+          "name": "TaskTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task status",
+          "member": "int64",
+          "name": "TaskStatus",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskListResponse": {
+      "document": "DescribeTaskList response structure.",
+      "members": [
+        {
+          "document": "Total number of tasks",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task details",
+          "member": "TaskInfoDetail",
+          "name": "Tasks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPostpaidInstanceRequest": {
+      "document": "DestroyPostpaidInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPostpaidInstanceResponse": {
+      "document": "DestroyPostpaidInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPrepaidInstanceRequest": {
+      "document": "DestroyPrepaidInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPrepaidInstanceResponse": {
+      "document": "DestroyPrepaidInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableReplicaReadonlyRequest": {
+      "document": "DisableReplicaReadonly request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Serial ID of an instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableReplicaReadonlyResponse": {
+      "document": "DisableReplicaReadonly response structure.",
+      "members": [
+        {
+          "document": "ERROR: failure; OK: success",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateSecurityGroupsRequest": {
+      "document": "DisassociateSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group ID.",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID list, which is an array of one or more instance IDs.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateSecurityGroupsResponse": {
+      "document": "DisassociateSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableReplicaReadonlyRequest": {
+      "document": "EnableReplicaReadonly request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Serial ID of an instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account routing policy. If `master` or `replication` is entered, it means to route to the primary or secondary node; if this is left blank, it means to write into the primary node and read from the secondary node by default",
+          "member": "string",
+          "name": "ReadonlyPolicy",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableReplicaReadonlyResponse": {
+      "document": "EnableReplicaReadonly response structure.",
+      "members": [
+        {
+          "document": "ERROR: erroneous; OK: correct.",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "HotKeyInfo": {
+      "document": "Hot key details",
+      "members": [
+        {
+          "default": "",
+          "document": "Hot key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Count",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Inbound": {
+      "document": "Security group inbound rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy. Valid values: ACCEPT, DROP.",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All the addresses that the address group ID represents.",
+          "member": "string",
+          "name": "AddressModule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP or IP address range, such as 192.168.0.0/16.",
+          "member": "string",
+          "name": "CidrIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network protocol, such as UDP and TCP, etc.",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port.",
+          "member": "string",
+          "name": "PortRange",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All the protocols and ports that the service group ID represents.",
+          "member": "string",
+          "name": "ServiceModule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All the addresses that the security group ID represents.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceClusterNode": {
+      "document": "Instance node type",
+      "members": [
+        {
+          "default": "",
+          "document": "Node name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the runtime node of an instance",
+          "member": "string",
+          "name": "RunId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster role. 0: primary; 1: secondary",
+          "member": "int64",
+          "name": "Role",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node status. 0: readwrite; 1: read; 2: backup",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service status. 0: down; 1: on",
+          "member": "int64",
+          "name": "Connected",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node deactivation time",
+          "member": "string",
+          "name": "DownTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Distribution of node slots",
+          "member": "string",
+          "name": "Slots",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Distribution of node keys",
+          "member": "int64",
+          "name": "Keys",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node QPS",
+          "member": "int64",
+          "name": "Qps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "QPS slope of a node",
+          "member": "float",
+          "name": "QpsSlope",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node storage",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage slope of a node",
+          "member": "float",
+          "name": "StorageSlope",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceClusterShard": {
+      "document": "Information list of instance shards",
+      "members": [
+        {
+          "default": "",
+          "document": "Shard node name",
+          "member": "string",
+          "name": "ShardName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard node ID",
+          "member": "string",
+          "name": "ShardId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Role",
+          "member": "int64",
+          "name": "Role",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of keys",
+          "member": "int64",
+          "name": "Keys",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Slot information",
+          "member": "string",
+          "name": "Slots",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage capacity",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Capacity slope",
+          "member": "float",
+          "name": "StorageSlope",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the runtime node of an instance",
+          "member": "string",
+          "name": "Runid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service status. 0: down; 1: on",
+          "member": "int64",
+          "name": "Connected",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceEnumParam": {
+      "document": "Descriptions of enumeration parameters of the instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter type: Enum",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current value of a parameter",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value range of a parameter",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter status. 1: modifying; 2: modified",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceIntegerParam": {
+      "document": "Descriptions of integer parameters of the instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter type: Integer",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current value of a parameter",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum value of a parameter",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum value of a parameter",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter status. 1: modifying; 2: modified",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceMultiParam": {
+      "document": "Description of an instance parameter in Multi type",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter type: Multi",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current value of a parameter",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter status. 1: modifying; 2: modified",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceNode": {
+      "document": "Instance node",
+      "members": [
+        {
+          "default": "",
+          "document": "Id",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node details",
+          "member": "InstanceClusterNode",
+          "name": "InstanceClusterNode",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceParam": {
+      "document": "Instance parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Sets a parameter name",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sets a parameter value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "InstanceParamHistory": {
+      "document": "History of instance parameter modifications",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value before modification",
+          "member": "string",
+          "name": "PreValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value after modification",
+          "member": "string",
+          "name": "NewValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. 1: modifying parameter configuration; 2: parameter configuration modified successfully; 3: failed to modify parameter configuration",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceSecurityGroupDetail": {
+      "document": "Security group information of an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group information",
+          "member": "SecurityGroupDetail",
+          "name": "SecurityGroupDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceSet": {
+      "document": "List of instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's Appid",
+          "member": "int64",
+          "name": "Appid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong, China; 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID, such as 75101",
+          "member": "int64",
+          "name": "VpcId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID, such as 46315",
+          "member": "int64",
+          "name": "SubnetId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current instance status. 0: to be initialized; 1: instance in process; 2: instance running; -2: instance isolated; -3: instance to be deleted",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance VIP",
+          "member": "string",
+          "name": "WanIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port number of an instance",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "string",
+          "name": "Createtime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance capacity in MB",
+          "member": "float",
+          "name": "Size",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field has been disused",
+          "member": "float",
+          "name": "SizeUsed",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. 1: Redis 2.8 cluster edition; 2: Redis 2.8 primary-secondary edition; 3: CKV primary-secondary edition (Redis 3.2); 4: CKV cluster edition (Redis 3.2); 5: Redis 2.8 standalone edition; 6: Redis 4.0 primary-secondary edition; 7: Redis 4.0 cluster edition",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to set the auto-renewal flag for an instance. 1: auto-renewal set; 0: auto-renewal not set",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance expiration time",
+          "member": "string",
+          "name": "DeadlineTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Engine: Redis community edition, Tencent Cloud CKV",
+          "member": "string",
+          "name": "Engine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product type: Redis 2.8 cluster edition, Redis 2.8 primary-secondary edition, Redis 3.2 primary-secondary edition (CKV primary-secondary edition), Redis 3.2 cluster edition (CKV cluster edition), Redis 2.8 standalone edition, Redis 4.0 cluster edition",
+          "member": "string",
+          "name": "ProductType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID, such as vpc-fk33jsf43kgv",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID, such as subnet-fd3j6l35mm0",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing method. 0: pay-as-you-go; 1: monthly subscription",
+          "member": "int64",
+          "name": "BillingMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of an instance status, such as \"instance running\"",
+          "member": "string",
+          "name": "InstanceTitle",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scheduled deactivation time",
+          "member": "string",
+          "name": "OfflineTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-status returned for an instance in process",
+          "member": "int64",
+          "name": "SubStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-affinity tag",
+          "member": "string",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance node information",
+          "member": "InstanceNode",
+          "name": "InstanceNode",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard size",
+          "member": "int64",
+          "name": "RedisShardSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of shards",
+          "member": "int64",
+          "name": "RedisShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of replicas",
+          "member": "int64",
+          "name": "RedisReplicasNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing ID",
+          "member": "int64",
+          "name": "PriceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Isolation time",
+          "member": "string",
+          "name": "CloseTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Read weight of a secondary node",
+          "member": "int64",
+          "name": "SlaveReadWeight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "InstanceTagInfo",
+          "name": "InstanceTags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether an instance is password-free. true: yes; false: no\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "NoAuth",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of client connections\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ClientLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DTS status (internal parameter, which can be ignored)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DtsStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Upper shard bandwidth limit in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "NetLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Password-free instance flag (internal parameter, which can be ignored)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PasswordFree",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Read-only instance flag (internal parameter, which can be ignored)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReadOnly",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Internal parameter, which can be ignored\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Vip6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Internal parameter, which can be ignored\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RemainBandwidthDuration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk size of the Tendis instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MonitorVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceSlowlogDetail": {
+      "document": "Slow log details",
+      "members": [
+        {
+          "default": "",
+          "document": "Slow log duration",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Client address",
+          "member": "string",
+          "name": "Client",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command line details",
+          "member": "string",
+          "name": "CommandLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution duration",
+          "member": "string",
+          "name": "ExecuteTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceTagInfo": {
+      "document": "Instance tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceTextParam": {
+      "document": "Descriptions of text parameters of the instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter type: Text",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current value of a parameter",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value range of a parameter",
+          "member": "string",
+          "name": "TextValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter status. 1: modifying; 2: modified",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ManualBackupInstanceRequest": {
+      "document": "ManualBackupInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ManualBackupInstanceResponse": {
+      "document": "ManualBackupInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModfiyInstancePasswordRequest": {
+      "document": "ModfiyInstancePassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Old password of an instance",
+          "member": "string",
+          "name": "OldPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New password of an instance",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModfiyInstancePasswordResponse": {
+      "document": "ModfiyInstancePassword response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoBackupConfigRequest": {
+      "document": "ModifyAutoBackupConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday",
+          "member": "string",
+          "name": "WeekDays",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00",
+          "member": "string",
+          "name": "TimePeriod",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "1",
+          "document": "Auto backup type: 1 \"scheduled rollback\"",
+          "member": "int64",
+          "name": "AutoBackupType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoBackupConfigResponse": {
+      "document": "ModifyAutoBackupConfig response structure.",
+      "members": [
+        {
+          "document": "Auto backup type: 1 \"scheduled rollback\"",
+          "member": "int64",
+          "name": "AutoBackupType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.",
+          "member": "string",
+          "name": "WeekDays",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00",
+          "member": "string",
+          "name": "TimePeriod",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsRequest": {
+      "document": "ModifyDBInstanceSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID list of the security groups to be modified, which is an array of one or more security group IDs.",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsResponse": {
+      "document": "ModifyDBInstanceSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceAccountRequest": {
+      "document": "ModifyInstanceAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account name. If the root account is to be modified, enter `root`",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account password",
+          "member": "string",
+          "name": "AccountPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account description information",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account routing policy. Enter `master` to route to the primary node or `slave` to route to the secondary node",
+          "member": "string",
+          "name": "ReadonlyPolicy",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sub-account read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write",
+          "member": "string",
+          "name": "Privilege",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "true: make the root account password-free. This is applicable to root accounts only; sub-accounts cannot be made password-free",
+          "member": "bool",
+          "name": "NoAuth",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceAccountResponse": {
+      "document": "ModifyInstanceAccount response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceParamsRequest": {
+      "document": "ModifyInstanceParams request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance parameters modified",
+          "member": "InstanceParam",
+          "name": "InstanceParams",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceParamsResponse": {
+      "document": "ModifyInstanceParams response structure.",
+      "members": [
+        {
+          "document": "Whether a modification is successfully made.",
+          "member": "bool",
+          "name": "Changed",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceRequest": {
+      "document": "ModifyInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "New name of instance",
+          "member": "string",
+          "name": "InstanceNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "0",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. 0: default status (manual renewal), 1: auto-renewal enabled, 2: auto-renewal disabled",
+          "member": "int64",
+          "name": "AutoRenews",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Disused",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Disused",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "0",
+          "document": "Disused",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceResponse": {
+      "document": "ModifyInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintenanceWindowRequest": {
+      "document": "ModifyMaintenanceWindow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time of the maintenance window, such as 17:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of the maintenance window, such as 19:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintenanceWindowResponse": {
+      "document": "ModifyMaintenanceWindow response structure.",
+      "members": [
+        {
+          "document": "Modification status. Valid values: success, failed.",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkConfigRequest": {
+      "document": "ModifyNetworkConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Operation type. changeVip: modify the VIP of an instance; changeVpc: modify the subnet of an instance; changeBaseToVpc: change from basic network to VPC",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VIP address, which is required for the `changeVip` operation. If this parameter is left blank, a random one will be assigned by default",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID, which is required for `changeVpc` and `changeBaseToVpc` operations",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID, which is required for `changeVpc` and `changeBaseToVpc` operations",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkConfigResponse": {
+      "document": "ModifyNetworkConfig response structure.",
+      "members": [
+        {
+          "document": "Execution status: true or false",
+          "member": "bool",
+          "name": "Status",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VIP address",
+          "member": "string",
+          "name": "Vip",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Outbound": {
+      "document": "Security group outbound rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy. Valid values: ACCEPT, DROP.",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All the addresses that the address group ID represents.",
+          "member": "string",
+          "name": "AddressModule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP or IP address range, such as 192.168.0.0/16.",
+          "member": "string",
+          "name": "CidrIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network protocol, such as UDP and TCP, etc.",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port.",
+          "member": "string",
+          "name": "PortRange",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All the protocols and ports that the service group ID represents.",
+          "member": "string",
+          "name": "ServiceModule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All the addresses that the security group ID represents.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProductConf": {
+      "document": "Product information",
+      "members": [
+        {
+          "default": "",
+          "document": "Product type. 2: Redis primary-secondary edition; 3: CKV primary-secondary edition; 4: CKV cluster edition; 5: Redis standalone edition; 7: Redis cluster edition",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product name: Redis primary-secondary edition, CKV primary-secondary edition, CKV cluster edition, Redis standalone edition, or Redis cluster edition",
+          "member": "string",
+          "name": "TypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum purchasable quantity",
+          "member": "int64",
+          "name": "MinBuyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum purchasable quantity",
+          "member": "int64",
+          "name": "MaxBuyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a product is sold out",
+          "member": "bool",
+          "name": "Saleout",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product engine: Tencent Cloud CKV or Redis community edition",
+          "member": "string",
+          "name": "Engine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compatible version: Redis 2.8, Redis 3.2, or Redis 4.0",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total capacity in GB",
+          "member": "string",
+          "name": "TotalSize",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard size in GB",
+          "member": "string",
+          "name": "ShardSize",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of replicas",
+          "member": "string",
+          "name": "ReplicaNum",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of shards",
+          "member": "string",
+          "name": "ShardNum",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Supported billing method. 1: monthly subscription; 0: pay-as-you-go",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to support read-only replicas",
+          "member": "bool",
+          "name": "EnableRepicaReadOnly",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RedisBackupSet": {
+      "document": "Array of instance backups",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup ID",
+          "member": "string",
+          "name": "BackupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup type. manualBackupInstance: manual backup initiated by user; systemBackupInstance: midnight backup initiated by system",
+          "member": "string",
+          "name": "BackupType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup status. 1: backup is locked by another process; 2: backup is normal and not locked by any process; -1: backup has expired; 3: backup is being exported; 4: backup is exported successfully",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a backup is locked. 0: no; 1: yes",
+          "member": "int64",
+          "name": "Locked",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RegionConf": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region abbreviation",
+          "member": "string",
+          "name": "RegionShortName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the area where a region is located",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ information",
+          "member": "ZoneCapacityConf",
+          "name": "ZoneSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RenewInstanceRequest": {
+      "document": "RenewInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Length of purchase in months",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewInstanceResponse": {
+      "document": "RenewInstance response structure.",
+      "members": [
+        {
+          "document": "Transaction ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetPasswordRequest": {
+      "document": "ResetPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Redis instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false",
+          "member": "bool",
+          "name": "NoAuth",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetPasswordResponse": {
+      "document": "ResetPassword response structure.",
+      "members": [
+        {
+          "document": "Task ID (this parameter is the task ID when changing a password. If you are switching between password-free and password-enabled instance mode, you can leave this parameter alone)",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreInstanceRequest": {
+      "document": "RestoreInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be operated on, which can be obtained through the `redisId` field in the return value of the DescribeRedis API.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup ID, which can be obtained through the `backupId` field in the return value of the GetRedisBackupList API",
+          "member": "string",
+          "name": "BackupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance password, which needs to be validated during instance restoration (this parameter is not required for password-free instances)",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreInstanceResponse": {
+      "document": "RestoreInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID, which can be used to query the task execution status through the DescribeTaskInfo API",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SecurityGroup": {
+      "document": "Security group rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss.",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID.",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group ID.",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group name.",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group remarks.",
+          "member": "string",
+          "name": "SecurityGroupRemark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Outbound rule.",
+          "member": "Outbound",
+          "name": "Outbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Inbound rule.",
+          "member": "Inbound",
+          "name": "Inbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroupDetail": {
+      "document": "Security group details",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group name",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group remarks",
+          "member": "string",
+          "name": "SecurityGroupRemark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group inbound rule",
+          "member": "SecurityGroupsInboundAndOutbound",
+          "name": "InboundRule",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group outbound rule",
+          "member": "SecurityGroupsInboundAndOutbound",
+          "name": "OutboundRule",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroupsInboundAndOutbound": {
+      "document": "Inbound and outbound rules of the security group",
+      "members": [
+        {
+          "default": "",
+          "document": "Action to be executed",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port number",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol type",
+          "member": "string",
+          "name": "Proto",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SourceCommand": {
+      "document": "Access command",
+      "members": [
+        {
+          "default": "",
+          "document": "Command",
+          "member": "string",
+          "name": "Cmd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of executions",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SourceInfo": {
+      "document": "Access source information",
+      "members": [
+        {
+          "default": "",
+          "document": "Source IP",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of connections",
+          "member": "int64",
+          "name": "Conn",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command",
+          "member": "int64",
+          "name": "Cmd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StartupInstanceRequest": {
+      "document": "StartupInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartupInstanceResponse": {
+      "document": "StartupInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchInstanceVipRequest": {
+      "document": "SwitchInstanceVip request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Source instance ID.",
+          "member": "string",
+          "name": "SrcInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target instance ID.",
+          "member": "string",
+          "name": "DstInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than `TimeDelay`, the VIP will not be switched. We recommend setting an acceptable value based on the actual business conditions.",
+          "member": "int64",
+          "name": "TimeDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to force the switch when DTS is disconnected. Valid values: 1 (yes), 0 (no).",
+          "member": "int64",
+          "name": "ForceSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values: now (switch now), syncComplete (switch after sync is completed).",
+          "member": "string",
+          "name": "SwitchTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchInstanceVipResponse": {
+      "document": "SwitchInstanceVip response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TaskInfoDetail": {
+      "document": "Task details",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "Progress",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Result",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TradeDealDetail": {
+      "document": "Order deal information",
+      "members": [
+        {
+          "default": "",
+          "document": "Order ID, which is used when a TencentCloud API is called",
+          "member": "string",
+          "name": "DealId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Long order ID, which is used when an order issue is submitted for assistance",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of instances associated with an order",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creates a user uin",
+          "member": "string",
+          "name": "Creater",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order creation time",
+          "member": "string",
+          "name": "CreatTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order timeout period",
+          "member": "string",
+          "name": "OverdueTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order completion time",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order status. 1: unpaid; 2: paid but not delivered; 3: In delivery; 4: successfully delivered; 5: delivery failed; 6: refunded; 7: order closed; 8: order expired; 9: order invalidated; 10: product invalidated; 11: requested payment rejected; 12: paying",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order status description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual total price of an order in 0.01 CNY",
+          "member": "int64",
+          "name": "Price",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpgradeInstanceRequest": {
+      "document": "UpgradeInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shard size in MB",
+          "member": "uint64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of shards. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition",
+          "member": "uint64",
+          "name": "RedisShardNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of replicas. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition",
+          "member": "uint64",
+          "name": "RedisReplicasNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceResponse": {
+      "document": "UpgradeInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceVersionRequest": {
+      "document": "UpgradeInstanceVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Target instance type. Its value is the same as the `Type` parameter of the `CreateInstances` API.",
+          "member": "string",
+          "name": "TargetInstanceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately).",
+          "member": "int64",
+          "name": "SwitchOption",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceVersionResponse": {
+      "document": "UpgradeInstanceVersion response structure.",
+      "members": [
+        {
+          "document": "Order ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ZoneCapacityConf": {
+      "document": "Product information in the availability zone",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID, such as ap-guangzhou-3",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a product is sold out in an AZ",
+          "member": "bool",
+          "name": "IsSaleout",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a default AZ",
+          "member": "bool",
+          "name": "IsDefault",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network type. basenet: basic network; vpcnet: VPC",
+          "member": "string",
+          "name": "NetWorkType",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of an AZ, such as product specifications in it",
+          "member": "ProductConf",
+          "name": "ProductSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID, such as 100003",
+          "member": "int64",
+          "name": "OldZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

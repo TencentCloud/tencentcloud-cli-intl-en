@@ -1,0 +1,1743 @@
+{
+  "actions": {
+    "ClearQueue": {
+      "document": "This API is used to clear all messages in a queue.",
+      "input": "ClearQueueRequest",
+      "name": "Clears all messages in queue",
+      "output": "ClearQueueResponse"
+    },
+    "ClearSubscriptionFilterTags": {
+      "document": "This API is used to clear the message tags of a subscriber.",
+      "input": "ClearSubscriptionFilterTagsRequest",
+      "name": "Clears the message tags of subscriber",
+      "output": "ClearSubscriptionFilterTagsResponse"
+    },
+    "CreateQueue": {
+      "document": "This API is used to create a queue.\n",
+      "input": "CreateQueueRequest",
+      "name": "Creates queue",
+      "output": "CreateQueueResponse"
+    },
+    "CreateSubscribe": {
+      "document": "This API is used to create a subscription.",
+      "input": "CreateSubscribeRequest",
+      "name": "Creates subscription",
+      "output": "CreateSubscribeResponse"
+    },
+    "CreateTopic": {
+      "document": "This API is used to create a topic.",
+      "input": "CreateTopicRequest",
+      "name": "Creates topic",
+      "output": "CreateTopicResponse"
+    },
+    "DeleteQueue": {
+      "document": "This API is used to delete a queue.",
+      "input": "DeleteQueueRequest",
+      "name": "Deletes queue",
+      "output": "DeleteQueueResponse"
+    },
+    "DeleteSubscribe": {
+      "document": "This API is used to delete a subscription.",
+      "input": "DeleteSubscribeRequest",
+      "name": "Deletes subscription",
+      "output": "DeleteSubscribeResponse"
+    },
+    "DeleteTopic": {
+      "document": "This API is used to delete a topic.",
+      "input": "DeleteTopicRequest",
+      "name": "Deletes topic",
+      "output": "DeleteTopicResponse"
+    },
+    "DescribeDeadLetterSourceQueues": {
+      "document": "This API is used to enumerate the source queues of a dead letter queue.",
+      "input": "DescribeDeadLetterSourceQueuesRequest",
+      "name": "Enumerates the source queues of dead letter queue",
+      "output": "DescribeDeadLetterSourceQueuesResponse"
+    },
+    "DescribeQueueDetail": {
+      "document": "This API is used to enumerate queues.",
+      "input": "DescribeQueueDetailRequest",
+      "name": "Enumerates queues",
+      "output": "DescribeQueueDetailResponse"
+    },
+    "DescribeSubscriptionDetail": {
+      "document": "This API is used to query subscription details.",
+      "input": "DescribeSubscriptionDetailRequest",
+      "name": "Queries subscription details",
+      "output": "DescribeSubscriptionDetailResponse"
+    },
+    "DescribeTopicDetail": {
+      "document": "This API is used to query topic details.",
+      "input": "DescribeTopicDetailRequest",
+      "name": "Queries topic details",
+      "output": "DescribeTopicDetailResponse"
+    },
+    "ModifyQueueAttribute": {
+      "document": "This API is used to modify queue attributes.",
+      "input": "ModifyQueueAttributeRequest",
+      "name": "Modifies queue attributes",
+      "output": "ModifyQueueAttributeResponse"
+    },
+    "ModifySubscriptionAttribute": {
+      "document": "This API is used to modify subscription attributes.",
+      "input": "ModifySubscriptionAttributeRequest",
+      "name": "Modifies subscription attributes",
+      "output": "ModifySubscriptionAttributeResponse"
+    },
+    "ModifyTopicAttribute": {
+      "document": "This API is used to modify topic attributes.",
+      "input": "ModifyTopicAttributeRequest",
+      "name": "Modifies topic attributes",
+      "output": "ModifyTopicAttributeResponse"
+    },
+    "RewindQueue": {
+      "document": "This API is used to rewind a queue.",
+      "input": "RewindQueueRequest",
+      "name": "Rewinds queue",
+      "output": "RewindQueueResponse"
+    },
+    "UnbindDeadLetter": {
+      "document": "This API is used to unbind a dead letter queue.",
+      "input": "UnbindDeadLetterRequest",
+      "name": "Unbinds dead letter queue",
+      "output": "UnbindDeadLetterResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-03-04",
+    "serviceNameCN": "消息队列 CMQ",
+    "serviceShortName": "cmq"
+  },
+  "objects": {
+    "ClearQueueRequest": {
+      "document": "ClearQueue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClearQueueResponse": {
+      "document": "ClearQueue response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClearSubscriptionFilterTagsRequest": {
+      "document": "ClearSubscriptionFilterTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "SubscriptionName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClearSubscriptionFilterTagsResponse": {
+      "document": "ClearSubscriptionFilterTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateQueueRequest": {
+      "document": "CreateQueue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.",
+          "member": "uint64",
+          "name": "MaxMsgHeapNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.",
+          "member": "uint64",
+          "name": "PollingWaitSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.",
+          "member": "uint64",
+          "name": "VisibilityTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
+          "member": "uint64",
+          "name": "MaxMsgSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).",
+          "member": "uint64",
+          "name": "MsgRetentionSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the message rewinding feature for a queue. Value range: 0–msgRetentionSeconds, where 0 means not to enable this feature, while `msgRetentionSeconds` indicates that the maximum rewindable period is the message retention period of the queue.",
+          "member": "uint64",
+          "name": "RewindSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "1: transaction queue, 0: general queue",
+          "member": "uint64",
+          "name": "Transaction",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "First lookback interval",
+          "member": "uint64",
+          "name": "FirstQueryInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of lookbacks",
+          "member": "uint64",
+          "name": "MaxQueryCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Dead letter queue name",
+          "member": "string",
+          "name": "DeadLetterQueueName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Dead letter policy. 0: message has been consumed multiple times but not deleted, 1: `Time-To-Live` has elapsed",
+          "member": "uint64",
+          "name": "Policy",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum receipt times. Value range: 1–1000",
+          "member": "uint64",
+          "name": "MaxReceiveCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum period in seconds before an unconsumed message expires, which is required if `policy` is 1. Value range: 300–43200. This value should be smaller than `msgRetentionSeconds` (maximum message retention period)",
+          "member": "uint64",
+          "name": "MaxTimeToLive",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable message trace. true: yes, false: no. If this field is not set, the feature will not be enabled",
+          "member": "bool",
+          "name": "Trace",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateQueueResponse": {
+      "document": "CreateQueue response structure.",
+      "members": [
+        {
+          "document": "`queueId` of a successfully created queue",
+          "member": "string",
+          "name": "QueueId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSubscribeRequest": {
+      "document": "CreateSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "SubscriptionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscription protocol. Currently, two protocols are supported: http and queue. To use the `http` protocol, you need to build your own web server to receive messages. With the `queue` protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`Endpoint` for notification receipt, which is distinguished by `Protocol`. For `http`, `Endpoint` must begin with `http://` and `host` can be a domain name or IP. For `Queue`, enter `QueueName`. Please note that currently the push service cannot push messages to a VPC; therefore, if a VPC domain name or address is entered for `Endpoint`, pushed messages will not be received. Currently, messages can be pushed only to the public network and basic network.",
+          "member": "string",
+          "name": "Endpoint",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values: 1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message; 2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.",
+          "member": "string",
+          "name": "NotifyStrategy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.",
+          "member": "string",
+          "name": "FilterTag",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.",
+          "member": "string",
+          "name": "BindingKey",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `http`, both options are acceptable, and the default value is `JSON`.",
+          "member": "string",
+          "name": "NotifyContentFormat",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSubscribeResponse": {
+      "document": "CreateSubscribe response structure.",
+      "members": [
+        {
+          "document": "SubscriptionId",
+          "member": "string",
+          "name": "SubscriptionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTopicRequest": {
+      "document": "CreateTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
+          "member": "uint64",
+          "name": "MaxMsgSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message match policy for a specified topic.",
+          "member": "uint64",
+          "name": "FilterType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.",
+          "member": "uint64",
+          "name": "MsgRetentionSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.",
+          "member": "bool",
+          "name": "Trace",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTopicResponse": {
+      "document": "CreateTopic response structure.",
+      "members": [
+        {
+          "document": "TopicName",
+          "member": "string",
+          "name": "TopicId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeadLetterPolicy": {
+      "document": "DeadLetterPolicy",
+      "members": [
+        {
+          "default": "",
+          "document": "DeadLetterQueueName\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeadLetterQueueName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DeadLetterQueue\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeadLetterQueue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Policy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxTimeToLive\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxTimeToLive",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxReceiveCount\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxReceiveCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeadLetterSource": {
+      "document": "DeadLetterSource",
+      "members": [
+        {
+          "default": "",
+          "document": "QueueId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "QueueId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "QueueName\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteQueueRequest": {
+      "document": "DeleteQueue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteQueueResponse": {
+      "document": "DeleteQueue response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSubscribeRequest": {
+      "document": "DeleteSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "SubscriptionName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSubscribeResponse": {
+      "document": "DeleteSubscribe response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicRequest": {
+      "document": "DeleteTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicResponse": {
+      "document": "DeleteTopic response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeadLetterSourceQueuesRequest": {
+      "document": "DescribeDeadLetterSourceQueues request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Dead letter queue name",
+          "member": "string",
+          "name": "DeadLetterQueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters source queue name of dead letter queue. Currently, only filtering by `SourceQueueName` is supported",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeadLetterSourceQueuesResponse": {
+      "document": "DescribeDeadLetterSourceQueues response structure.",
+      "members": [
+        {
+          "document": "Number of eligible queues",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Source queues of dead letter queue",
+          "member": "DeadLetterSource",
+          "name": "QueueSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQueueDetailRequest": {
+      "document": "DescribeQueueDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter parameter. Currently, filtering by `QueueName` is supported, and only one keyword is allowed",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag search",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Exact match by `QueueName`",
+          "member": "string",
+          "name": "QueueName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQueueDetailResponse": {
+      "document": "DescribeQueueDetail response structure.",
+      "members": [
+        {
+          "document": "Total number of queues",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Queue list",
+          "member": "QueueSet",
+          "name": "QueueSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubscriptionDetailRequest": {
+      "document": "DescribeSubscriptionDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter parameter. Currently, only filtering by `SubscriptionName` is supported, and only one keyword is allowed.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubscriptionDetailResponse": {
+      "document": "DescribeSubscriptionDetail response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription attribute set\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Subscription",
+          "name": "SubscriptionSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicDetailRequest": {
+      "document": "DescribeTopicDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Currently, only filtering by `TopicName` is supported, and only one filter value can be entered",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag match",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Exact match by `TopicName`",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicDetailResponse": {
+      "document": "DescribeTopicDetail response structure.",
+      "members": [
+        {
+          "document": "TotalCount",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "TopicSet",
+          "member": "TopicSet",
+          "name": "TopicSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Filter parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter parameter name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyQueueAttributeRequest": {
+      "document": "ModifyQueueAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.",
+          "member": "uint64",
+          "name": "MaxMsgHeapNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.",
+          "member": "uint64",
+          "name": "PollingWaitSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.",
+          "member": "uint64",
+          "name": "VisibilityTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
+          "member": "uint64",
+          "name": "MaxMsgSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).",
+          "member": "uint64",
+          "name": "MsgRetentionSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum message rewindable period. Value range: 0–msgRetentionSeconds (maximum message retention period of a queue). 0 means not to enable message rewinding.",
+          "member": "uint64",
+          "name": "RewindSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "First query time",
+          "member": "uint64",
+          "name": "FirstQueryInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of queries",
+          "member": "uint64",
+          "name": "MaxQueryCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Dead letter queue name",
+          "member": "string",
+          "name": "DeadLetterQueueName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum period in seconds before an unconsumed message expires, which is required if `MaxTimeToLivepolicy` is 1. Value range: 300–43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period)",
+          "member": "uint64",
+          "name": "MaxTimeToLive",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of receipts",
+          "member": "uint64",
+          "name": "MaxReceiveCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Dead letter queue policy",
+          "member": "uint64",
+          "name": "Policy",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.",
+          "member": "bool",
+          "name": "Trace",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyQueueAttributeResponse": {
+      "document": "ModifyQueueAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscriptionAttributeRequest": {
+      "document": "ModifySubscriptionAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "SubscriptionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values:\n1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message.\n2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.",
+          "member": "string",
+          "name": "NotifyStrategy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `HTTP`, both options are acceptable, and the default value is `JSON`.",
+          "member": "string",
+          "name": "NotifyContentFormat",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.",
+          "member": "string",
+          "name": "FilterTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.",
+          "member": "string",
+          "name": "BindingKey",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscriptionAttributeResponse": {
+      "document": "ModifySubscriptionAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTopicAttributeRequest": {
+      "document": "ModifyTopicAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
+          "member": "uint64",
+          "name": "MaxMsgSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.",
+          "member": "uint64",
+          "name": "MsgRetentionSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.",
+          "member": "bool",
+          "name": "Trace",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTopicAttributeResponse": {
+      "document": "ModifyTopicAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueueSet": {
+      "document": "Batch queue attribute information",
+      "members": [
+        {
+          "default": "",
+          "document": "QueueId",
+          "member": "string",
+          "name": "QueueId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "QueueName",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Qps\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Qps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Bps\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Bps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxDelaySeconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxDelaySeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxMsgHeapNum\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxMsgHeapNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "PollingWaitSeconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "PollingWaitSeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MsgRetentionSeconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MsgRetentionSeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VisibilityTimeout\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "VisibilityTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxMsgSize\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxMsgSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RewindSeconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "RewindSeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CreateTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "LastModifyTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "LastModifyTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ActiveMsgNum\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ActiveMsgNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "InactiveMsgNum\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "InactiveMsgNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DelayMsgNum\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DelayMsgNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RewindMsgNum\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "RewindMsgNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MinMsgTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MinMsgTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Transaction\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Transaction",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DeadLetterSource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DeadLetterSource",
+          "name": "DeadLetterSource",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DeadLetterPolicy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DeadLetterPolicy",
+          "name": "DeadLetterPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TransactionPolicy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "TransactionPolicy",
+          "name": "TransactionPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creator `uin`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message trace flag. true: enabled, false: not enabled\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Trace",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RewindQueueRequest": {
+      "document": "RewindQueue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "After this time is set, the `(Batch)receiveMessage` API will consume the messages received after this timestamp in the order in which they are produced.",
+          "member": "uint64",
+          "name": "StartConsumeTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RewindQueueResponse": {
+      "document": "RewindQueue response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Subscription": {
+      "document": "Subscription response parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "SubscriptionName\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubscriptionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "SubscriptionId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubscriptionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TopicOwner\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TopicOwner",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MsgCount\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MsgCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "LastModifyTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "LastModifyTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CreateTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "BindingKey\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "BindingKey",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Endpoint\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Endpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "FilterTags\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FilterTags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Protocol\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "NotifyStrategy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NotifyStrategy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "NotifyContentFormat\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NotifyContentFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicSet": {
+      "document": "Field for displaying returned topic information",
+      "members": [
+        {
+          "default": "",
+          "document": "TopicId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TopicName\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MsgRetentionSeconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MsgRetentionSeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxMsgSize\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxMsgSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Qps\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Qps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "FilterType\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "FilterType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CreateTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "LastModifyTime\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "LastModifyTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MsgCount\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MsgCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CreateUin\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tags\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable message trace for a topic. true: yes, false: no\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Trace",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TransactionPolicy": {
+      "document": "TransactionPolicy",
+      "members": [
+        {
+          "default": "",
+          "document": "FirstQueryInterval\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "FirstQueryInterval",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxQueryCount\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "MaxQueryCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UnbindDeadLetterRequest": {
+      "document": "UnbindDeadLetter request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Source queue name of dead letter policy. Calling this API will clear the dead letter queue policy of this queue.",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindDeadLetterResponse": {
+      "document": "UnbindDeadLetter response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

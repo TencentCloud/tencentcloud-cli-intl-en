@@ -1,0 +1,3400 @@
+{
+  "actions": {
+    "ClearTables": {
+      "document": "This API is used to clear table data based on the specified table information.",
+      "input": "ClearTablesRequest",
+      "name": "Clears table data",
+      "output": "ClearTablesResponse"
+    },
+    "CompareIdlFiles": {
+      "document": "This API is used to select a target table, upload and verify the table modification file, and return the result of whether the table structure is allowed to be modified.",
+      "input": "CompareIdlFilesRequest",
+      "name": "Uploads and verifies table modification file",
+      "output": "CompareIdlFilesResponse"
+    },
+    "CreateBackup": {
+      "document": "This API is used to create a backup task.",
+      "input": "CreateBackupRequest",
+      "name": "Creates backup",
+      "output": "CreateBackupResponse"
+    },
+    "CreateCluster": {
+      "document": "This API is used to create a TcaplusDB cluster.",
+      "input": "CreateClusterRequest",
+      "name": "Creates cluster",
+      "output": "CreateClusterResponse"
+    },
+    "CreateTableGroup": {
+      "document": "This API is used to create a table group in a TcaplusDB cluster.",
+      "input": "CreateTableGroupRequest",
+      "name": "Creates table group",
+      "output": "CreateTableGroupResponse"
+    },
+    "CreateTables": {
+      "document": "This API is used to create tables in batches based on the selected IDL file list.",
+      "input": "CreateTablesRequest",
+      "name": "Creates tables in batches",
+      "output": "CreateTablesResponse"
+    },
+    "DeleteCluster": {
+      "document": "This API is used to delete a TcaplusDB cluster, which will succeed only after all resources (including table groups and tables) in the cluster are released.",
+      "input": "DeleteClusterRequest",
+      "name": "Deletes cluster",
+      "output": "DeleteClusterResponse"
+    },
+    "DeleteIdlFiles": {
+      "document": "This API is used to delete a target IDL file by specifying the cluster ID and information of the file to be deleted. If the file is associated with a table, deletion will fail.",
+      "input": "DeleteIdlFilesRequest",
+      "name": "Deletes IDL description file",
+      "output": "DeleteIdlFilesResponse"
+    },
+    "DeleteTableGroup": {
+      "document": "This API is used to delete a table group.",
+      "input": "DeleteTableGroupRequest",
+      "name": "Deletes table group",
+      "output": "DeleteTableGroupResponse"
+    },
+    "DeleteTables": {
+      "document": "This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin.",
+      "input": "DeleteTablesRequest",
+      "name": "Drops table",
+      "output": "DeleteTablesResponse"
+    },
+    "DescribeClusterTags": {
+      "document": "This API is used to get the associated tag list of a cluster.",
+      "input": "DescribeClusterTagsRequest",
+      "name": "Gets the associated tag list of a cluster",
+      "output": "DescribeClusterTagsResponse"
+    },
+    "DescribeClusters": {
+      "document": "This API is used to query the TcaplusDB cluster list, including cluster details.",
+      "input": "DescribeClustersRequest",
+      "name": "Queries cluster information list",
+      "output": "DescribeClustersResponse"
+    },
+    "DescribeIdlFileInfos": {
+      "document": "This API is used to query table description file details.",
+      "input": "DescribeIdlFileInfosRequest",
+      "name": "Queries table description file details",
+      "output": "DescribeIdlFileInfosResponse"
+    },
+    "DescribeRegions": {
+      "document": "This API is used to query the list of regions supported by the TcaplusDB service.",
+      "input": "DescribeRegionsRequest",
+      "name": "Queries region list",
+      "output": "DescribeRegionsResponse"
+    },
+    "DescribeTableGroupTags": {
+      "document": "This API is used to get the associated tag list of a table group.",
+      "input": "DescribeTableGroupTagsRequest",
+      "name": "Gets the associated tag list of a table group",
+      "output": "DescribeTableGroupTagsResponse"
+    },
+    "DescribeTableGroups": {
+      "document": "This API is used to query the table group list.",
+      "input": "DescribeTableGroupsRequest",
+      "name": "Queries table group list",
+      "output": "DescribeTableGroupsResponse"
+    },
+    "DescribeTableTags": {
+      "document": "This API is used to get table tags.",
+      "input": "DescribeTableTagsRequest",
+      "name": "Gets table tags",
+      "output": "DescribeTableTagsResponse"
+    },
+    "DescribeTables": {
+      "document": "This API is used to query table details.",
+      "input": "DescribeTablesRequest",
+      "name": "Queries table details",
+      "output": "DescribeTablesResponse"
+    },
+    "DescribeTablesInRecycle": {
+      "document": "This API is used to query the details of a table in recycle bin.",
+      "input": "DescribeTablesInRecycleRequest",
+      "name": "Queries the details of table in recycle bin",
+      "output": "DescribeTablesInRecycleResponse"
+    },
+    "DescribeTasks": {
+      "document": "This API is used to query the task list.",
+      "input": "DescribeTasksRequest",
+      "name": "Queries task list",
+      "output": "DescribeTasksResponse"
+    },
+    "DescribeUinInWhitelist": {
+      "document": "This API is used to query whether the current user is in the allowlist and control whether the user can create TDR-type apps or tables.",
+      "input": "DescribeUinInWhitelistRequest",
+      "name": "Queries whether the current user is in the allowlist",
+      "output": "DescribeUinInWhitelistResponse"
+    },
+    "ModifyClusterName": {
+      "document": "This API is used to rename a specified cluster.",
+      "input": "ModifyClusterNameRequest",
+      "name": "Renames cluster",
+      "output": "ModifyClusterNameResponse"
+    },
+    "ModifyClusterPassword": {
+      "document": "This API is used to change the password of a specified cluster. The backend will allow the TcaplusDB SDK to access databases with both old and new passwords before the old password expires. You cannot submit a new password change request before the old password expires or submit a request to modify the expiration time of the old password after the old password expires.",
+      "input": "ModifyClusterPasswordRequest",
+      "name": "Changes cluster password",
+      "output": "ModifyClusterPasswordResponse"
+    },
+    "ModifyClusterTags": {
+      "document": "This API is used to modify cluster tags.",
+      "input": "ModifyClusterTagsRequest",
+      "name": "Modifies cluster tags",
+      "output": "ModifyClusterTagsResponse"
+    },
+    "ModifyTableGroupName": {
+      "document": "This API is used to rename a TcaplusDB table group.",
+      "input": "ModifyTableGroupNameRequest",
+      "name": "Renames TcaplusDB table group",
+      "output": "ModifyTableGroupNameResponse"
+    },
+    "ModifyTableGroupTags": {
+      "document": "This API is used to modify table group tags.",
+      "input": "ModifyTableGroupTagsRequest",
+      "name": "Modifies table group tags",
+      "output": "ModifyTableGroupTagsResponse"
+    },
+    "ModifyTableMemos": {
+      "document": "This API is used to modify table remarks.",
+      "input": "ModifyTableMemosRequest",
+      "name": "Modifies table remarks",
+      "output": "ModifyTableMemosResponse"
+    },
+    "ModifyTableQuotas": {
+      "document": "This API is used to scale a table.",
+      "input": "ModifyTableQuotasRequest",
+      "name": "Scales table",
+      "output": "ModifyTableQuotasResponse"
+    },
+    "ModifyTableTags": {
+      "document": "This API is used to modify table tags.",
+      "input": "ModifyTableTagsRequest",
+      "name": "Modifies table tags",
+      "output": "ModifyTableTagsResponse"
+    },
+    "ModifyTables": {
+      "document": "This API is used to modify specified tables in batches based on the selected table definition IDL file.",
+      "input": "ModifyTablesRequest",
+      "name": "Modifies table structure in batches",
+      "output": "ModifyTablesResponse"
+    },
+    "RecoverRecycleTables": {
+      "document": "This API is used to recover a dropped table from the recycle bin. It will not work for tables to be released due to arrears.",
+      "input": "RecoverRecycleTablesRequest",
+      "name": "Recovers table from recycle bin",
+      "output": "RecoverRecycleTablesResponse"
+    },
+    "RollbackTables": {
+      "document": "This API is used to roll back table data.",
+      "input": "RollbackTablesRequest",
+      "name": "Rolls back table data",
+      "output": "RollbackTablesResponse"
+    },
+    "VerifyIdlFiles": {
+      "document": "This API is used to upload and verify a table creation file and return the definition of tables that are verified to be valid.",
+      "input": "VerifyIdlFilesRequest",
+      "name": "Uploads and verifies table creation file",
+      "output": "VerifyIdlFilesResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-08-23",
+    "serviceNameCN": "游戏数据库 TcaplusDB",
+    "serviceShortName": "tcaplusdb"
+  },
+  "objects": {
+    "ClearTablesRequest": {
+      "document": "ClearTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster instance where a table resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of information of tables to be cleared",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ClearTablesResponse": {
+      "document": "ClearTables response structure.",
+      "members": [
+        {
+          "document": "Number of cleared tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of table clearing results",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClusterInfo": {
+      "document": "Cluster details",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster name",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`",
+          "member": "string",
+          "name": "IdlType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "member": "string",
+          "name": "NetworkType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the VPC instance with which a cluster is associated",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the subnet instance with which a cluster is associated",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password status",
+          "member": "string",
+          "name": "PasswordStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TcaplusDB SDK connection parameter: access ID",
+          "member": "string",
+          "name": "ApiAccessId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TcaplusDB SDK connection parameter: access address",
+          "member": "string",
+          "name": "ApiAccessIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TcaplusDB SDK connection parameter: access port",
+          "member": "int64",
+          "name": "ApiAccessPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OldPasswordExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TcaplusDB SDK connection parameter for accessing IPv6 addresses\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAccessIpv6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CompareIdlFilesRequest": {
+      "document": "CompareIdlFiles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be modified resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tables to be modified",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Selected list of uploaded IDL files. Either this parameter or `NewIdlFiles` must be selected",
+          "member": "IdlFileInfo",
+          "name": "ExistingIdlFiles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be selected",
+          "member": "IdlFileInfo",
+          "name": "NewIdlFiles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CompareIdlFilesResponse": {
+      "document": "CompareIdlFiles response structure.",
+      "members": [
+        {
+          "document": "Information list of all IDL files uploaded and verified in this request",
+          "member": "IdlFileInfo",
+          "name": "IdlFiles",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of tables verified to be valid in this request",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Verification result parsed from the selected table after the IDL description file is read",
+          "member": "ParsedTableInfoNew",
+          "name": "TableInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupRequest": {
+      "document": "CreateBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be backed up resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Information list of tables to be backed up",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupResponse": {
+      "document": "CreateBackup response structure.",
+      "members": [
+        {
+          "document": "List of IDs of created backup tasks",
+          "member": "string",
+          "name": "TaskIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterRequest": {
+      "document": "CreateCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`",
+          "member": "string",
+          "name": "IdlType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster name, which can contain up to 32 letters and digits",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the VPC instance bound to a cluster in the format of `vpc-f49l6u0z`",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster tag list",
+          "member": "TagInfoUnit",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable IPv6 address access for clusters",
+          "member": "int64",
+          "name": "Ipv6Enable",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterResponse": {
+      "document": "CreateCluster response structure.",
+      "members": [
+        {
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTableGroupRequest": {
+      "document": "CreateTableGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where a table group resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table group name, which can contain up to 32 letters and digits",
+          "member": "string",
+          "name": "TableGroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table group tag list",
+          "member": "TagInfoUnit",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTableGroupResponse": {
+      "document": "CreateTableGroup response structure.",
+      "members": [
+        {
+          "document": "ID of table group successfully created",
+          "member": "string",
+          "name": "TableGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTablesRequest": {
+      "document": "CreateTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where to create a table",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table creation IDL file list selected by user",
+          "member": "IdlFileInfo",
+          "name": "IdlFiles",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information list of tables to be created",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Table tag list",
+          "member": "TagInfoUnit",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTablesResponse": {
+      "document": "CreateTables response structure.",
+      "members": [
+        {
+          "document": "Number of tables created in batches",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of tables created in batches",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterRequest": {
+      "document": "DeleteCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of cluster to be deleted",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterResponse": {
+      "document": "DeleteCluster response structure.",
+      "members": [
+        {
+          "document": "Task ID generated by cluster deletion",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIdlFilesRequest": {
+      "document": "DeleteIdlFiles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where IDL resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of information of IDL files to be deleted",
+          "member": "IdlFileInfo",
+          "name": "IdlFiles",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIdlFilesResponse": {
+      "document": "DeleteIdlFiles response structure.",
+      "members": [
+        {
+          "document": "Number of returned results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Deletion result",
+          "member": "IdlFileInfoWithoutContent",
+          "name": "IdlFileInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTableGroupRequest": {
+      "document": "DeleteTableGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where a table group resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table group ID",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTableGroupResponse": {
+      "document": "DeleteTableGroup response structure.",
+      "members": [
+        {
+          "document": "Task ID generated by table group deletion",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTablesRequest": {
+      "document": "DeleteTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be dropped resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of information of tables to be dropped",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTablesResponse": {
+      "document": "DeleteTables response structure.",
+      "members": [
+        {
+          "document": "Number of dropped tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of details of dropped tables",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterTagsRequest": {
+      "document": "DescribeClusterTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The list of cluster IDs",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterTagsResponse": {
+      "document": "DescribeClusterTags response structure.",
+      "members": [
+        {
+          "document": "The information list of cluster tags",
+          "member": "TagsInfoOfCluster",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of returned results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClustersRequest": {
+      "document": "DescribeClusters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of clusters to be queried",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query filter",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query list offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results in query list. Default value: 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable IPv6 address access",
+          "member": "int64",
+          "name": "Ipv6Enable",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClustersResponse": {
+      "document": "DescribeClusters response structure.",
+      "members": [
+        {
+          "document": "Number of cluster instances",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster instance list",
+          "member": "ClusterInfo",
+          "name": "Clusters",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIdlFileInfosRequest": {
+      "document": "DescribeIdlFileInfos request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where a file resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the table group where a file resides",
+          "member": "string",
+          "name": "TableGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "File ID list",
+          "member": "string",
+          "name": "IdlFileIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query list offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results in query list",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIdlFileInfosResponse": {
+      "document": "DescribeIdlFileInfos response structure.",
+      "members": [
+        {
+          "document": "Number of files",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of file details",
+          "member": "IdlFileInfo",
+          "name": "IdlFileInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionsRequest": {
+      "document": "DescribeRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRegionsResponse": {
+      "document": "DescribeRegions response structure.",
+      "members": [
+        {
+          "document": "Number of queried AZs",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of AZ query results",
+          "member": "RegionInfo",
+          "name": "RegionInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTableGroupTagsRequest": {
+      "document": "DescribeTableGroupTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where table group tags need to be queried",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of IDs of the table groups whose tags need to be queried",
+          "member": "string",
+          "name": "TableGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTableGroupTagsResponse": {
+      "document": "DescribeTableGroupTags response structure.",
+      "members": [
+        {
+          "document": "The information list of table group tags",
+          "member": "TagsInfoOfTableGroup",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of returned results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTableGroupsRequest": {
+      "document": "DescribeTableGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where a table group resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table group ID list",
+          "member": "string",
+          "name": "TableGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: TableGroupName, TableGroupId",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query list offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results in query list",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTableGroupsResponse": {
+      "document": "DescribeTableGroups response structure.",
+      "members": [
+        {
+          "document": "Number of table groups",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table group information list",
+          "member": "TableGroupInfo",
+          "name": "TableGroups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTableTagsRequest": {
+      "document": "DescribeTableTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where a table resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table list",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTableTagsResponse": {
+      "document": "DescribeTableTags response structure.",
+      "members": [
+        {
+          "document": "The total number of returned results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information list of table tags",
+          "member": "TagsInfoOfTable",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesInRecycleRequest": {
+      "document": "DescribeTablesInRecycle request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be queried resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the table groups where the table to be queried resides",
+          "member": "string",
+          "name": "TableGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: TableName, TableInstanceId",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query result offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned query results",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesInRecycleResponse": {
+      "document": "DescribeTablesInRecycle response structure.",
+      "members": [
+        {
+          "document": "Number of tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table details result list",
+          "member": "TableInfoNew",
+          "name": "TableInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesRequest": {
+      "document": "DescribeTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be queried resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the table groups where the table to be queried resides",
+          "member": "string",
+          "name": "TableGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information list of tables to be queried",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: TableName, TableInstanceId",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query result offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned query results",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesResponse": {
+      "document": "DescribeTables response structure.",
+      "members": [
+        {
+          "document": "Number of tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table details result list",
+          "member": "TableInfoNew",
+          "name": "TableInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTasksRequest": {
+      "document": "DescribeTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of clusters where the tasks to be queried reside",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of tasks to be queried",
+          "member": "string",
+          "name": "TaskIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: Content, TaskType, Operator, Time",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Query list offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results in query list",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTasksResponse": {
+      "document": "DescribeTasks response structure.",
+      "members": [
+        {
+          "document": "Number of tasks",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of details of queried tasks",
+          "member": "TaskInfoNew",
+          "name": "TaskInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUinInWhitelistRequest": {
+      "document": "DescribeUinInWhitelist request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeUinInWhitelistResponse": {
+      "document": "DescribeUinInWhitelist response structure.",
+      "members": [
+        {
+          "document": "Query result. FALSE: yes, TRUE: no",
+          "member": "string",
+          "name": "Result",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ErrorInfo": {
+      "document": "Describes the details of errors that may occur during the processing of each instance (application, region, or table).",
+      "members": [
+        {
+          "default": "",
+          "document": "Error code",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Filter": {
+      "document": "Filter",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter field name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter field value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "IdlFileInfo": {
+      "document": "Table definition file details, including file content",
+      "members": [
+        {
+          "default": "",
+          "document": "Filename excluding extension",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data interface description language (IDL) type",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File extension",
+          "member": "string",
+          "name": "FileExtType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size in bytes",
+          "member": "int64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File ID, which is meaningful for files already uploaded\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FileId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "File content, which is meaningful for files to be uploaded in this request\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FileContent",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IdlFileInfoWithoutContent": {
+      "document": "Table definition file details, excluding file content",
+      "members": [
+        {
+          "default": "",
+          "document": "Filename excluding extension\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data interface description language (IDL) type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "File extension\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FileExtType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "File size in bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "File ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FileId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyClusterNameRequest": {
+      "document": "ModifyClusterName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster to be renamed",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster name to be changed to, which can contain up to 32 letters and digits",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterNameResponse": {
+      "document": "ModifyClusterName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterPasswordRequest": {
+      "document": "ModifyClusterPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster for which to modify the password",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Old cluster password",
+          "member": "string",
+          "name": "OldPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Expected expiration time of old cluster password",
+          "member": "datetime",
+          "name": "OldPasswordExpireTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).",
+          "member": "string",
+          "name": "NewPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterPasswordResponse": {
+      "document": "ModifyClusterPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterTagsRequest": {
+      "document": "ModifyClusterTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster whose tags need to be modified",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of tags to add or modify",
+          "member": "TagInfoUnit",
+          "name": "ReplaceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tags to delete",
+          "member": "TagInfoUnit",
+          "name": "DeleteTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterTagsResponse": {
+      "document": "ModifyClusterTags response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableGroupNameRequest": {
+      "document": "ModifyTableGroupName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where a table group resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the table group to be renamed",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New table group name, which can contain letters and symbols",
+          "member": "string",
+          "name": "TableGroupName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableGroupNameResponse": {
+      "document": "ModifyTableGroupName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableGroupTagsRequest": {
+      "document": "ModifyTableGroupTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where table group tags need to be modified",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID of the table group whose tags need to be modified",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of tags to add or modify",
+          "member": "TagInfoUnit",
+          "name": "ReplaceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tags to delete",
+          "member": "TagInfoUnit",
+          "name": "DeleteTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableGroupTagsResponse": {
+      "document": "ModifyTableGroupTags response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableMemosRequest": {
+      "document": "ModifyTableMemos request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster instance where a table resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of details of selected tables",
+          "member": "SelectedTableInfoNew",
+          "name": "TableMemos",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableMemosResponse": {
+      "document": "ModifyTableMemos response structure.",
+      "members": [
+        {
+          "document": "Number of tables modified for remarks",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of table remarks modification results",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableQuotasRequest": {
+      "document": "ModifyTableQuotas request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be scaled resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of quotas of tables selected for modification",
+          "member": "SelectedTableInfoNew",
+          "name": "TableQuotas",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableQuotasResponse": {
+      "document": "ModifyTableQuotas response structure.",
+      "members": [
+        {
+          "document": "Number of scaled tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of table scaling results",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableTagsRequest": {
+      "document": "ModifyTableTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where table tags need to be modified",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of tables whose tags need to be modified",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of tags to add or modify",
+          "member": "TagInfoUnit",
+          "name": "ReplaceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of tags to delete",
+          "member": "TagInfoUnit",
+          "name": "DeleteTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTableTagsResponse": {
+      "document": "ModifyTableTags response structure.",
+      "members": [
+        {
+          "document": "The total number of returned results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Returned results",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTablesRequest": {
+      "document": "ModifyTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be modified resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Selected table modification IDL files",
+          "member": "IdlFileInfo",
+          "name": "IdlFiles",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of tables to be modified",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTablesResponse": {
+      "document": "ModifyTables response structure.",
+      "members": [
+        {
+          "document": "Number of modified tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of table modification results",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ParsedTableInfoNew": {
+      "document": "Table information parsed from IDL table description file",
+      "members": [
+        {
+          "default": "",
+          "document": "Table description language type. Valid values: PROTO, TDR\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableIdlType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data structure type. Valid values: GENERIC, LIST\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Primary key field information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KeyFields",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Old primary key field information, which is valid during verification of table modification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OldKeyFields",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Non-primary key field information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ValueFields",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Old non-primary key field information, which is valid during verification of table modification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OldValueFields",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total size of primary key field\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SumKeyFieldSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total size of non-primary key fields\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SumValueFieldSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index key set\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "IndexKeySet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Shardkey set\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ShardingKeySet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TDR version number\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TdrVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of LIST-type table elements\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ListElementNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of SORTLIST-type table sort fields\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SortFieldNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sort order of SORTLIST-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SortRule",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RecoverRecycleTablesRequest": {
+      "document": "RecoverRecycleTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where a table resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Information of tables to be recovered",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RecoverRecycleTablesResponse": {
+      "document": "RecoverRecycleTables response structure.",
+      "members": [
+        {
+          "document": "Number of recovered tables",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of information of recovered tables",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegionInfo": {
+      "document": "TcaplusDB service region details",
+      "members": [
+        {
+          "default": "",
+          "document": "Region `Ap-code`",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region abbreviation",
+          "member": "string",
+          "name": "RegionAbbr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)",
+          "member": "uint64",
+          "name": "Ipv6Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RollbackTablesRequest": {
+      "document": "RollbackTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where the table to be rolled back resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tables to be rolled back",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Time to roll back to",
+          "member": "datetime",
+          "name": "RollbackTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rollback mode. `KEYS` is supported",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackTablesResponse": {
+      "document": "RollbackTables response structure.",
+      "members": [
+        {
+          "document": "Number of table rollback task results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table rollback task result list",
+          "member": "TableRollbackResultNew",
+          "name": "TableResults",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SelectedTableInfoNew": {
+      "document": "Information of selected table",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the table group where a table resides",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table instance ID",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table description language type. Valid values: PROTO, TDR",
+          "member": "string",
+          "name": "TableIdlType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table data structure type. Valid values: GENERIC, LIST",
+          "member": "string",
+          "name": "TableType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of LIST-type table elements",
+          "member": "int64",
+          "name": "ListElementNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reserved table capacity in GB",
+          "member": "int64",
+          "name": "ReservedVolume",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reserved table read QPS",
+          "member": "int64",
+          "name": "ReservedReadQps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reserved table write QPS",
+          "member": "int64",
+          "name": "ReservedWriteQps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table remarks",
+          "member": "string",
+          "name": "Memo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key rollback filename, which is only used for rollback",
+          "member": "string",
+          "name": "FileName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key rollback file extension, which is only used for rollback",
+          "member": "string",
+          "name": "FileExtType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key rollback file size, which is only used for rollback",
+          "member": "int64",
+          "name": "FileSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key rollback file content, which is only used for rollback",
+          "member": "string",
+          "name": "FileContent",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TableGroupInfo": {
+      "document": "Table group details",
+      "members": [
+        {
+          "default": "",
+          "document": "Table group ID",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table group name",
+          "member": "string",
+          "name": "TableGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table group creation time",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of tables in table group",
+          "member": "uint64",
+          "name": "TableCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total table storage capacity in MB in table group",
+          "member": "uint64",
+          "name": "TotalSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TableInfoNew": {
+      "document": "Table details",
+      "members": [
+        {
+          "default": "",
+          "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data structure type, such as `GENERIC` or `LIST`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data interface description language (IDL) type, such as `PROTO` or `TDR`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableIdlType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the cluster where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of the cluster where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "JSON string of table's primary key field structure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KeyStruct",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "JSON string of table non-primary key field structure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ValueStruct",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table shardkey set, which is valid for PROTO-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ShardingKeySet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table index key field set, which is valid for PROTO-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "IndexStruct",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of LIST-type table elements\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ListElementNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information list of IDL files associated with table\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "IdlFileInfo",
+          "name": "IdlFiles",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reserved table capacity in GB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReservedVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reserved table read QPS\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReservedReadQps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reserved table write QPS\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReservedWriteQps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Actual table data size in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TableSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table's last modified time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UpdatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Memo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TcaplusDB SDK data access ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAccessId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of SORTLIST-type table sort fields\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SortFieldNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sort order of SORTLIST-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SortRule",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Distributed index information of table",
+          "member": "string",
+          "name": "DbClusterInfoStruct",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TableResultNew": {
+      "document": "Table processing result information",
+      "members": [
+        {
+          "default": "",
+          "document": "Table instance ID in the format of `tcaplus-3be64cbb`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID, which is valid for the API that creates one task\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data structure type, such as `GENERIC` or `LIST`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data interface description language (IDL) type, such as `PROTO` or `TDR`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableIdlType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID list, which is valid for the API that creates multiple tasks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TableRollbackResultNew": {
+      "document": "Table rollback result information",
+      "members": [
+        {
+          "default": "",
+          "document": "Table instance ID in the format of `tcaplus-3be64cbb`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID, which is valid for the API that creates one task\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data structure type, such as `GENERIC` or `LIST`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table data interface description language (IDL) type, such as `PROTO` or `TDR`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableIdlType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID list, which is valid for the API that creates multiple tasks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of uploaded key file\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of keys successfully verified\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "SuccKeyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of keys contained in key file\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalKeyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TagInfoUnit": {
+      "document": "Tag information unit",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TagsInfoOfCluster": {
+      "document": "Cluster tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag information",
+          "member": "TagInfoUnit",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TagsInfoOfTable": {
+      "document": "Table tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Table instance ID",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table group ID",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag information",
+          "member": "TagInfoUnit",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TagsInfoOfTableGroup": {
+      "document": "Table group tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table group ID",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag information",
+          "member": "TagInfoUnit",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskInfoNew": {
+      "document": "Task details",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task type",
+          "member": "string",
+          "name": "TaskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of TcaplusDB internal transaction associated with task",
+          "member": "string",
+          "name": "TransId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the cluster where a task resides",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the cluster where a task resides",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task progress",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task creation time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task last modified time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task details",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VerifyIdlFilesRequest": {
+      "document": "VerifyIdlFiles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster where to create a table",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the table group where to create a table",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of information of uploaded IDL files. Either this parameter or `NewIdlFiles` must be present",
+          "member": "IdlFileInfo",
+          "name": "ExistingIdlFiles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of information of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be present",
+          "member": "IdlFileInfo",
+          "name": "NewIdlFiles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyIdlFilesResponse": {
+      "document": "VerifyIdlFiles response structure.",
+      "members": [
+        {
+          "document": "Information list of all IDL files uploaded and verified in this request",
+          "member": "IdlFileInfo",
+          "name": "IdlFiles",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of valid tables parsed by reading IDL description file, excluding tables already created",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of valid tables parsed by reading IDL description file, excluding tables already created",
+          "member": "ParsedTableInfoNew",
+          "name": "TableInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

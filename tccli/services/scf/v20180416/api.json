@@ -1,0 +1,4025 @@
+{
+  "actions": {
+    "CopyFunction": {
+      "document": "This API is used to replicate a function. You can store the replicated function in a specified Region and Namespace.\nNote: This API **does not** replicate the following objects or attributes of the function:\n1. Function trigger\n2. Versions other than $LATEST\n3. CLS target of the logs configured in the function\n\nYou can manually configure the function after replication as required.",
+      "input": "CopyFunctionRequest",
+      "name": "Replicates a function",
+      "output": "CopyFunctionResponse"
+    },
+    "CreateAlias": {
+      "document": "This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.\nAn alias must point to a master version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the master version and additional version during request sending.",
+      "input": "CreateAliasRequest",
+      "name": "Creates alias for function version",
+      "output": "CreateAliasResponse"
+    },
+    "CreateFunction": {
+      "document": "This API is used to create a function based on the input parameters.",
+      "input": "CreateFunctionRequest",
+      "name": "Creates a function",
+      "output": "CreateFunctionResponse"
+    },
+    "CreateNamespace": {
+      "document": "This API is used to create a namespace based on the input parameters.",
+      "input": "CreateNamespaceRequest",
+      "name": "Creates a namespace",
+      "output": "CreateNamespaceResponse"
+    },
+    "CreateTrigger": {
+      "document": "This API is used to create a trigger based on the input parameters.",
+      "input": "CreateTriggerRequest",
+      "name": "Creates a function trigger",
+      "output": "CreateTriggerResponse"
+    },
+    "DeleteAlias": {
+      "document": "This API is used to delete an alias of a function version.",
+      "input": "DeleteAliasRequest",
+      "name": "Deletes alias",
+      "output": "DeleteAliasResponse"
+    },
+    "DeleteFunction": {
+      "document": "This API is used to delete a function based on the input parameters.",
+      "input": "DeleteFunctionRequest",
+      "name": "Deletes a function",
+      "output": "DeleteFunctionResponse"
+    },
+    "DeleteLayerVersion": {
+      "document": "This API is used to delete a specified version of a specified layer. The deleted version cannot be associated with a function, but the deletion does not affect functions that are referencing this layer.",
+      "input": "DeleteLayerVersionRequest",
+      "name": "Deletes layer version",
+      "output": "DeleteLayerVersionResponse"
+    },
+    "DeleteNamespace": {
+      "document": "This API is used to create a namespace based on the input parameters.",
+      "input": "DeleteNamespaceRequest",
+      "name": "Deletes a namespace",
+      "output": "DeleteNamespaceResponse"
+    },
+    "DeleteTrigger": {
+      "document": "This API is used to delete an existing trigger based on the input parameters.",
+      "input": "DeleteTriggerRequest",
+      "name": "Deletes a trigger",
+      "output": "DeleteTriggerResponse"
+    },
+    "GetAlias": {
+      "document": "This API is used to get the alias details such as the name, description, version, and routing information.",
+      "input": "GetAliasRequest",
+      "name": "Gets alias details",
+      "output": "GetAliasResponse"
+    },
+    "GetFunction": {
+      "document": "This API is used to obtain function details, such as name, code, handler, associated trigger, and timeout.",
+      "input": "GetFunctionRequest",
+      "name": "Obtains function details",
+      "output": "GetFunctionResponse"
+    },
+    "GetFunctionAddress": {
+      "document": "This API is used to obtain the download address of the function code package.",
+      "input": "GetFunctionAddressRequest",
+      "name": "Obtains download address of the function code",
+      "output": "GetFunctionAddressResponse"
+    },
+    "GetFunctionLogs": {
+      "document": "This API is used to return function running logs according to the specified log query criteria.",
+      "input": "GetFunctionLogsRequest",
+      "name": "Obtains a function running log",
+      "output": "GetFunctionLogsResponse"
+    },
+    "GetLayerVersion": {
+      "document": "This API is used to get the layer version details, including links used to download files in the layer.",
+      "input": "GetLayerVersionRequest",
+      "name": "Gets layer version details",
+      "output": "GetLayerVersionResponse"
+    },
+    "Invoke": {
+      "document": "This API is used to run a function.",
+      "input": "InvokeRequest",
+      "name": "Runs a function",
+      "output": "InvokeResponse"
+    },
+    "ListAliases": {
+      "document": "This API is used to return the list of all aliases under a function. You can filter them by the specific function version.",
+      "input": "ListAliasesRequest",
+      "name": "Gets alias list",
+      "output": "ListAliasesResponse"
+    },
+    "ListFunctions": {
+      "document": "This API is used to return relevant function information based on the input query parameters.",
+      "input": "ListFunctionsRequest",
+      "name": "Obtains a function list",
+      "output": "ListFunctionsResponse"
+    },
+    "ListLayerVersions": {
+      "document": "This API is used to get the information of all versions of a specified layer.",
+      "input": "ListLayerVersionsRequest",
+      "name": "Gets layer version list",
+      "output": "ListLayerVersionsResponse"
+    },
+    "ListLayers": {
+      "document": "This API is used to return the list of all layers, including the information of the latest version of each layer. You can filter them by the compatible runtime.",
+      "input": "ListLayersRequest",
+      "name": "Returns layer list",
+      "output": "ListLayersResponse"
+    },
+    "ListNamespaces": {
+      "document": "This API is used to display a namespace list.",
+      "input": "ListNamespacesRequest",
+      "name": "Displays a namespace list",
+      "output": "ListNamespacesResponse"
+    },
+    "ListTriggers": {
+      "document": "This API is used to get the function trigger list.",
+      "input": "ListTriggersRequest",
+      "name": "Gets function trigger list",
+      "output": "ListTriggersResponse"
+    },
+    "ListVersionByFunction": {
+      "document": "This API is used to query the function version based on the input parameters.",
+      "input": "ListVersionByFunctionRequest",
+      "name": "Queries a function version",
+      "output": "ListVersionByFunctionResponse"
+    },
+    "PublishLayerVersion": {
+      "document": "This API is used to create a version for a layer by using the given .zip file or COS object. Each time this API is called with the same layer name, a new version will be generated.",
+      "input": "PublishLayerVersionRequest",
+      "name": "Publishes layer version",
+      "output": "PublishLayerVersionResponse"
+    },
+    "PublishVersion": {
+      "document": "This API is used for users to release a new version of the function.",
+      "input": "PublishVersionRequest",
+      "name": "Releases a new version",
+      "output": "PublishVersionResponse"
+    },
+    "UpdateAlias": {
+      "document": "This API is used to update the configuration of an alias.",
+      "input": "UpdateAliasRequest",
+      "name": "Updates alias configuration",
+      "output": "UpdateAliasResponse"
+    },
+    "UpdateFunctionCode": {
+      "document": "This API is used to update the function code based on the input parameters.",
+      "input": "UpdateFunctionCodeRequest",
+      "name": "Updates the function code",
+      "output": "UpdateFunctionCodeResponse"
+    },
+    "UpdateFunctionConfiguration": {
+      "document": "This API is used to update the function configuration based on the input parameters.",
+      "input": "UpdateFunctionConfigurationRequest",
+      "name": "Updates the function configuration",
+      "output": "UpdateFunctionConfigurationResponse"
+    },
+    "UpdateNamespace": {
+      "document": "This API is used to update a namespace.",
+      "input": "UpdateNamespaceRequest",
+      "name": "Updates a namespace",
+      "output": "UpdateNamespaceResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-04-16",
+    "serviceNameCN": "云函数",
+    "serviceShortName": "scf"
+  },
+  "objects": {
+    "AccessInfo": {
+      "document": "HTTP domain name-related information",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VIP",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Alias": {
+      "document": "Version alias of function",
+      "members": [
+        {
+          "default": "",
+          "document": "Master version pointed to by the alias",
+          "member": "string",
+          "name": "FunctionVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alias name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Routing information of alias\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "RoutingConfig",
+          "name": "RoutingConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "ModTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CfsConfig": {
+      "document": "File system (CFS) configuration description",
+      "members": [
+        {
+          "default": "",
+          "document": "File system information list",
+          "member": "CfsInsInfo",
+          "name": "CfsInsList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CfsInsInfo": {
+      "document": "Configuration information of the CFS instance associated with function",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User group ID",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CFS instance ID",
+          "member": "string",
+          "name": "CfsId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system mount target ID",
+          "member": "string",
+          "name": "MountInsId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Local mount target",
+          "member": "string",
+          "name": "LocalMountDir",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remote mount target",
+          "member": "string",
+          "name": "RemoteMountDir",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system IP, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "IpAddress",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MountVpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MountSubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Code": {
+      "document": "Function code",
+      "members": [
+        {
+          "default": "",
+          "document": "COS bucket name",
+          "member": "string",
+          "name": "CosBucketName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS object path",
+          "member": "string",
+          "name": "CosObjectName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.",
+          "member": "string",
+          "name": "ZipFile",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.",
+          "member": "string",
+          "name": "CosBucketRegion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`DemoId` is required if Demo is used for the creation.",
+          "member": "string",
+          "name": "DemoId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`TempCosObjectName` is required if TempCos is used for the creation.",
+          "member": "string",
+          "name": "TempCosObjectName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Git address",
+          "member": "string",
+          "name": "GitUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Git user name",
+          "member": "string",
+          "name": "GitUserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Git password",
+          "member": "string",
+          "name": "GitPassword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Git password after encryption. In general, this value is not required.",
+          "member": "string",
+          "name": "GitPasswordSecret",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Git branch",
+          "member": "string",
+          "name": "GitBranch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Code path in Git repository",
+          "member": "string",
+          "name": "GitDirectory",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version to be pulled",
+          "member": "string",
+          "name": "GitCommitId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Git user name after encryption. In general, this value is not required.",
+          "member": "string",
+          "name": "GitUserNameSecret",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CopyFunctionRequest": {
+      "document": "CopyFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function to be replicated",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the new function",
+          "member": "string",
+          "name": "NewFunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace of the function to be replicated. The default value is `default`.",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace of the replicated function. The default value is default.",
+          "member": "string",
+          "name": "TargetNamespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of the new function",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the target of the function replication. If the value is not set, the current region is used by default.",
+          "member": "string",
+          "name": "TargetRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "FALSE",
+          "document": "It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.\n(Note: The `TRUE` option results in deletion of the function in the target namespace. Please operate with caution.)\nTRUE: Replaces the function.\nFALSE: Does not replace the function.",
+          "member": "bool",
+          "name": "Override",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "TRUE",
+          "document": "It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.\nTRUE: Replicates the function configuration.\nFALSE: Does not replicate the function configuration.",
+          "member": "bool",
+          "name": "CopyConfiguration",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CopyFunctionResponse": {
+      "document": "CopyFunction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAliasRequest": {
+      "document": "CreateAlias request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Master version pointed to by the alias",
+          "member": "string",
+          "name": "FunctionVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Request routing configuration of alias",
+          "member": "RoutingConfig",
+          "name": "RoutingConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Alias description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAliasResponse": {
+      "document": "CreateAlias response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionRequest": {
+      "document": "CreateFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function code. Note: You cannot specify `Cos` and `ZipFile` at the same time.",
+          "member": "Code",
+          "name": "Code",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Name of the handler, which is in the 'file name.handler name' form. Use periods (.) to separate a file name and function name. The file name and function name must start and end with a letter and can contain 2 to 60 characters, including letters, digits, hyphens (-), and underscores (_).",
+          "member": "string",
+          "name": "Handler",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB",
+          "member": "int64",
+          "name": "MemorySize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Function environment variable",
+          "member": "Environment",
+          "name": "Environment",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8. Default value: Python2.7",
+          "member": "string",
+          "name": "Runtime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function VPC configuration",
+          "member": "VpcConfig",
+          "name": "VpcConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role bound to the function",
+          "member": "string",
+          "name": "Role",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLS Logset ID to which the function logs are shipped",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLS Topic ID to which the function logs are shipped",
+          "member": "string",
+          "name": "ClsTopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Code source, including ZipFile, Cos, Demo, TempCos, and Git. This field is required if the source is Git.",
+          "member": "string",
+          "name": "CodeSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.",
+          "member": "LayerVersionSimple",
+          "name": "Layers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Dead letter queue parameter",
+          "member": "DeadLetterConfig",
+          "name": "DeadLetterConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Public network access configuration",
+          "member": "PublicNetConfigIn",
+          "name": "PublicNetConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "File system configuration parameter, which is used for the function to mount the file system",
+          "member": "CfsConfig",
+          "name": "CfsConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Timeout period for function initialization",
+          "member": "int64",
+          "name": "InitTimeout",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionResponse": {
+      "document": "CreateFunction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNamespaceRequest": {
+      "document": "CreateNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNamespaceResponse": {
+      "document": "CreateNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTriggerRequest": {
+      "document": "CreateTrigger request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function bound to the new trigger",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.",
+          "member": "string",
+          "name": "TriggerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)",
+          "member": "string",
+          "name": "TriggerDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.",
+          "member": "string",
+          "name": "Enable",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTriggerResponse": {
+      "document": "CreateTrigger response structure.",
+      "members": [
+        {
+          "document": "Trigger information",
+          "member": "Trigger",
+          "name": "TriggerInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeadLetterConfig": {
+      "document": "Dead letter queue parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Dead letter queue mode",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dead letter queue name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag form of a dead letter queue topic mode",
+          "member": "string",
+          "name": "FilterType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DeleteAliasRequest": {
+      "document": "DeleteAlias request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alias name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAliasResponse": {
+      "document": "DeleteAlias response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionRequest": {
+      "document": "DeleteFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function to be deleted",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionResponse": {
+      "document": "DeleteFunction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLayerVersionRequest": {
+      "document": "DeleteLayerVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Layer name",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version number",
+          "member": "int64",
+          "name": "LayerVersion",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLayerVersionResponse": {
+      "document": "DeleteLayerVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNamespaceRequest": {
+      "document": "DeleteNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNamespaceResponse": {
+      "document": "DeleteNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTriggerRequest": {
+      "document": "DeleteTrigger request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the trigger to be deleted",
+          "member": "string",
+          "name": "TriggerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is required if a COS trigger is to be deleted. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
+          "member": "string",
+          "name": "TriggerDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version information",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTriggerResponse": {
+      "document": "DeleteTrigger response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EipConfigIn": {
+      "document": "Fixed IP configuration for public network access",
+      "members": [
+        {
+          "default": "",
+          "document": "Status of the EIP. Values: ['ENABLE','DISABLE']",
+          "member": "string",
+          "name": "EipStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "EipConfigOut": {
+      "document": "Fixed IP configuration for public network access",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is a fixed IP. Valid values: [\"ENABLE\",\"DISABLE\"]",
+          "member": "string",
+          "name": "EipStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EipAddress",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EipOutConfig": {
+      "document": "EipOutConfig",
+      "members": [
+        {
+          "default": "",
+          "document": "It specifies whether the IP is fixed. The value is `TRUE` or `FALSE`.",
+          "member": "string",
+          "name": "EipFixed",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP list",
+          "member": "string",
+          "name": "Eips",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Environment": {
+      "document": "Environment variable parameter of the function",
+      "members": [
+        {
+          "default": "",
+          "document": "Environment variable array",
+          "member": "Variable",
+          "name": "Variables",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Filter": {
+      "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
+      "members": [
+        {
+          "default": "",
+          "document": "Fields to be filtered",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter values of the field",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Function": {
+      "document": "Function list",
+      "members": [
+        {
+          "default": "",
+          "document": "Modification time",
+          "member": "string",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Running",
+          "member": "string",
+          "name": "Runtime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function ID",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function status details",
+          "member": "string",
+          "name": "StatusDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function tag",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function type. The value is `HTTP` or `Event`.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FunctionLog": {
+      "document": "Log information",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Return value after the function is executed",
+          "member": "string",
+          "name": "RetMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RequestId corresponding to the executed function",
+          "member": "string",
+          "name": "RequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time of the function execution",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function execution result. `0` indicates successful execution and other values indicate failure.",
+          "member": "int64",
+          "name": "RetCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.",
+          "member": "int64",
+          "name": "InvokeFinished",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration of the function execution. The unit is millisecond (ms).",
+          "member": "float",
+          "name": "Duration",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.",
+          "member": "int64",
+          "name": "BillDuration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual memory size used during the function execution. The unit is byte.",
+          "member": "int64",
+          "name": "MemUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function execution logs",
+          "member": "string",
+          "name": "Log",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "member": "string",
+          "name": "Level",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log source",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of retries",
+          "member": "uint64",
+          "name": "RetryNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FunctionVersion": {
+      "document": "Function version information",
+      "members": [
+        {
+          "default": "",
+          "document": "Function version name",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version description\nNote: This field may return null, indicating that no valid values is found.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The creation time\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "datetime",
+          "name": "ModTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "GetAliasRequest": {
+      "document": "GetAlias request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alias name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAliasResponse": {
+      "document": "GetAlias response structure.",
+      "members": [
+        {
+          "document": "Master version pointed to by the alias",
+          "member": "string",
+          "name": "FunctionVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alias name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Routing information of alias",
+          "member": "RoutingConfig",
+          "name": "RoutingConfig",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alias description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "AddTime",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Update time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "ModTime",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionAddressRequest": {
+      "document": "GetFunctionAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionAddressResponse": {
+      "document": "GetFunctionAddress response structure.",
+      "members": [
+        {
+          "document": "Cos address of the function",
+          "member": "string",
+          "name": "Url",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SHA256 code of the function",
+          "member": "string",
+          "name": "CodeSha256",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionLogsRequest": {
+      "document": "GetFunctionLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. ",
+          "member": "LogFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "RequestId corresponding to the executed function",
+          "member": "string",
+          "name": "FunctionRequestId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service log related parameter. `Offset` on the first page is a null string. Enter other pages based on SearchContext in the response field.",
+          "member": "LogSearchContext",
+          "name": "SearchContext",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionLogsResponse": {
+      "document": "GetFunctionLogs response structure.",
+      "members": [
+        {
+          "document": "Total number of function logs",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function log information",
+          "member": "FunctionLog",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter on the log service page",
+          "member": "LogSearchContext",
+          "name": "SearchContext",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionRequest": {
+      "document": "GetFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function to obtain details",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version number",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It indicates whether to display the code. `TRUE` means displaying the code, and `FALSE` means hiding the code. The code will not be displayed for entry files exceeding 1 MB.",
+          "member": "string",
+          "name": "ShowCode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionResponse": {
+      "document": "GetFunction response structure.",
+      "members": [
+        {
+          "document": "Latest modification time of the function",
+          "member": "datetime",
+          "name": "ModTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function code",
+          "member": "string",
+          "name": "CodeInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function description",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function trigger list",
+          "member": "Trigger",
+          "name": "Triggers",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function entry",
+          "member": "string",
+          "name": "Handler",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function code size",
+          "member": "int64",
+          "name": "CodeSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function timeout",
+          "member": "int64",
+          "name": "Timeout",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function version",
+          "member": "string",
+          "name": "FunctionVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum available memory of the function",
+          "member": "int64",
+          "name": "MemorySize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function running environment",
+          "member": "string",
+          "name": "Runtime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function VPC",
+          "member": "VpcConfig",
+          "name": "VpcConfig",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to use GPU",
+          "member": "string",
+          "name": "UseGpu",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function environment variable",
+          "member": "Environment",
+          "name": "Environment",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the code is correct",
+          "member": "string",
+          "name": "CodeResult",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Code error information",
+          "member": "string",
+          "name": "CodeError",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Error code",
+          "member": "int64",
+          "name": "ErrNo",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Role bound to the function",
+          "member": "string",
+          "name": "Role",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to install dependencies automatically",
+          "member": "string",
+          "name": "InstallDependency",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status description",
+          "member": "string",
+          "name": "StatusDesc",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CLS logset to which logs are shipped",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CLS Topic to which logs are shipped",
+          "member": "string",
+          "name": "ClsTopicId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function ID",
+          "member": "string",
+          "name": "FunctionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function tag list",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "EipConfig configuration",
+          "member": "EipOutConfig",
+          "name": "EipConfig",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain name information",
+          "member": "AccessInfo",
+          "name": "AccessInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function type. The value is `HTTP` or `Event`.",
+          "member": "string",
+          "name": "Type",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable L5",
+          "member": "string",
+          "name": "L5Enable",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version information of a layer associated with a function",
+          "member": "LayerVersionInfo",
+          "name": "Layers",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of a dead letter queue associated with a function",
+          "member": "DeadLetterConfig",
+          "name": "DeadLetterConfig",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function creation time",
+          "member": "datetime",
+          "name": "AddTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public network access configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "PublicNetConfigOut",
+          "name": "PublicNetConfig",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether Ons is enabled\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "OnsEnable",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "File system configuration parameter, which is used for the function to mount the file system\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "CfsConfig",
+          "name": "CfsConfig",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AvailableStatus",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Function version\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Qualifier",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Timeout period for function initialization",
+          "member": "int64",
+          "name": "InitTimeout",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLayerVersionRequest": {
+      "document": "GetLayerVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Layer name",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version number",
+          "member": "int64",
+          "name": "LayerVersion",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLayerVersionResponse": {
+      "document": "GetLayerVersion response structure.",
+      "members": [
+        {
+          "document": "Compatible runtimes",
+          "member": "string",
+          "name": "CompatibleRuntimes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SHA256 encoding of version file on the layer",
+          "member": "string",
+          "name": "CodeSha256",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Download address of version file on the layer",
+          "member": "string",
+          "name": "Location",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version creation time",
+          "member": "string",
+          "name": "AddTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version description",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "License information",
+          "member": "string",
+          "name": "LicenseInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version number",
+          "member": "int64",
+          "name": "LayerVersion",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Layer name",
+          "member": "string",
+          "name": "LayerName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Current status of specific layer version. Valid values:\nActive: normal\nPublishing: publishing\nPublishFailed: publishing failed\nDeleted: deleted",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InvokeRequest": {
+      "document": "Invoke request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.",
+          "member": "string",
+          "name": "InvocationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version number of the triggered function",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.",
+          "member": "string",
+          "name": "ClientContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If this field is specified for a synchronous invocation, the return value will contain a 4-KB log. The value is `None` (default) or `Tail`. If the value is `Tail`, `logMsg` in the return parameter will contain the corresponding function execution log.",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Traffic routing config in json format, e.g., {\"k\":\"v\"}. Please note that both \"k\" and \"v\" must be strings. Up to 1024 bytes allowed.",
+          "member": "string",
+          "name": "RoutingKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InvokeResponse": {
+      "document": "Invoke response structure.",
+      "members": [
+        {
+          "document": "Function execution result",
+          "member": "Result",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LayerVersionInfo": {
+      "document": "Layer version information",
+      "members": [
+        {
+          "default": "",
+          "document": "Runtime applicable to a version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CompatibleRuntimes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "AddTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "License information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LicenseInfo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Version number",
+          "member": "int64",
+          "name": "LayerVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Layer name",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LayerVersionSimple": {
+      "document": "Specifies a layer version",
+      "members": [
+        {
+          "default": "",
+          "document": "Layer name",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version number",
+          "member": "int64",
+          "name": "LayerVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ListAliasesRequest": {
+      "document": "ListAliases request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If this parameter is provided, only aliases associated with this function version will be returned.",
+          "member": "string",
+          "name": "FunctionVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0",
+          "member": "string",
+          "name": "Offset",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 20",
+          "member": "string",
+          "name": "Limit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAliasesResponse": {
+      "document": "ListAliases response structure.",
+      "members": [
+        {
+          "document": "Alias list",
+          "member": "Alias",
+          "name": "Aliases",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of aliases\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListFunctionsRequest": {
+      "document": "ListFunctions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.",
+          "member": "string",
+          "name": "Orderby",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is `0`.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Return data length. The default value is `20`.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "It specifies whether to support fuzzy matching for the function name.",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function description. Fuzzy search is supported.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters\n- tag:tag-key - String - Required: No - Filtering criteria based on tag-key - value pairs. Replace `tag-key` with a specific tag-key.\n\nThe maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListFunctionsResponse": {
+      "document": "ListFunctions response structure.",
+      "members": [
+        {
+          "document": "Function list",
+          "member": "Function",
+          "name": "Functions",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListLayerVersionsRequest": {
+      "document": "ListLayerVersions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Layer name",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compatible runtimes",
+          "member": "string",
+          "name": "CompatibleRuntime",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListLayerVersionsResponse": {
+      "document": "ListLayerVersions response structure.",
+      "members": [
+        {
+          "document": "Layer version list",
+          "member": "LayerVersionInfo",
+          "name": "LayerVersions",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListLayersRequest": {
+      "document": "ListLayers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Compatible runtimes",
+          "member": "string",
+          "name": "CompatibleRuntime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query key, which fuzzily matches the name",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListLayersResponse": {
+      "document": "ListLayers response structure.",
+      "members": [
+        {
+          "document": "Layer list",
+          "member": "LayerVersionInfo",
+          "name": "Layers",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of layers",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListNamespacesRequest": {
+      "document": "ListNamespaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Return data length. The default value is `20`.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is `0`.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.",
+          "member": "string",
+          "name": "Orderby",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListNamespacesResponse": {
+      "document": "ListNamespaces response structure.",
+      "members": [
+        {
+          "document": "Namespace details",
+          "member": "Namespace",
+          "name": "Namespaces",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of return namespaces",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListTriggersRequest": {
+      "document": "ListTriggers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace. Default value: default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Indicates by which field to sort the returned results. Valid values: AddTime, ModTime. Default value: ModTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "* Qualifier:\nFunction version, alias",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListTriggersResponse": {
+      "document": "ListTriggers response structure.",
+      "members": [
+        {
+          "document": "Total number of triggers",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Trigger list",
+          "member": "TriggerInfo",
+          "name": "Triggers",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListVersionByFunctionRequest": {
+      "document": "ListVersionByFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function Name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The namespace where the function locates",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is `0`.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Return data length. The default value is `20`.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListVersionByFunctionResponse": {
+      "document": "ListVersionByFunction response structure.",
+      "members": [
+        {
+          "document": "Function version",
+          "member": "string",
+          "name": "FunctionVersion",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function version list\nNote: This field may return null, indicating that no valid values is found.",
+          "member": "FunctionVersion",
+          "name": "Versions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of function versions\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LogFilter": {
+      "document": "Log filtering criteria, which is for distinguishing between logs of successful and failed execution",
+      "members": [
+        {
+          "default": "",
+          "document": "Values of `filter.RetCode` include:\nnot0, indicating that only logs of failed execution will be returned.\nis0, indicating that only logs of successful execution will be returned.\nTimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.\nResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.\nUserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.\nBlank, indicating that all logs will be returned.",
+          "member": "string",
+          "name": "RetCode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "LogSearchContext": {
+      "document": "Log search context",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset.",
+          "member": "string",
+          "name": "Offset",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log record number",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log keyword",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log type. The value is `Application` (default) or `Platform`.",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Namespace": {
+      "document": "Namespace",
+      "members": [
+        {
+          "default": "",
+          "document": "Creation time of the namespace",
+          "member": "datetime",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time of the namespace",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PublicNetConfigIn": {
+      "document": "Public network access configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']",
+          "member": "string",
+          "name": "PublicNetStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EIP configuration",
+          "member": "EipConfigIn",
+          "name": "EipConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PublicNetConfigOut": {
+      "document": "Public network access configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']",
+          "member": "string",
+          "name": "PublicNetStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EIP configuration",
+          "member": "EipConfigOut",
+          "name": "EipConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PublishLayerVersionRequest": {
+      "document": "PublishLayerVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.",
+          "member": "string",
+          "name": "CompatibleRuntimes",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Layer file source or content",
+          "member": "Code",
+          "name": "Content",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Layer version description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Software license of layer",
+          "member": "string",
+          "name": "LicenseInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PublishLayerVersionResponse": {
+      "document": "PublishLayerVersion response structure.",
+      "members": [
+        {
+          "document": "Version number of the layer created in this request",
+          "member": "int64",
+          "name": "LayerVersion",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PublishVersionRequest": {
+      "document": "PublishVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the released function",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PublishVersionResponse": {
+      "document": "PublishVersion response structure.",
+      "members": [
+        {
+          "document": "Function version",
+          "member": "string",
+          "name": "FunctionVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Code size",
+          "member": "int64",
+          "name": "CodeSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum available memory",
+          "member": "int64",
+          "name": "MemorySize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function description",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function entry",
+          "member": "string",
+          "name": "Handler",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function timeout",
+          "member": "int64",
+          "name": "Timeout",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function running environment",
+          "member": "string",
+          "name": "Runtime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Result": {
+      "document": "Response of the executed function",
+      "members": [
+        {
+          "default": "",
+          "document": "It indicates the log output during the function execution. Null is returned for asynchronous invocations.",
+          "member": "string",
+          "name": "Log",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It indicates the response from the executed function. Null is returned for asynchronous invocations.",
+          "member": "string",
+          "name": "RetMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It indicates the error message of the executed function. Null is returned for asynchronous invocations.",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.",
+          "member": "int64",
+          "name": "MemUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.",
+          "member": "float",
+          "name": "Duration",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.",
+          "member": "int64",
+          "name": "BillDuration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the executed function",
+          "member": "string",
+          "name": "FunctionRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`0` indicates successful execution. Null is returned for asynchronous invocations.",
+          "member": "int64",
+          "name": "InvokeResult",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RoutingConfig": {
+      "document": "Version routing configuration of alias",
+      "members": [
+        {
+          "default": "",
+          "document": "Additional version with random weight-based routing",
+          "member": "VersionWeight",
+          "name": "AdditionalVersionWeights",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Additional version with rule-based routing",
+          "member": "VersionMatch",
+          "name": "AddtionVersionMatchs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Function tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Trigger": {
+      "document": "Trigger type",
+      "members": [
+        {
+          "default": "",
+          "document": "Latest modification time of the trigger",
+          "member": "datetime",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed trigger configuration",
+          "member": "string",
+          "name": "TriggerDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger name",
+          "member": "string",
+          "name": "TriggerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the trigger",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enabling switch",
+          "member": "int64",
+          "name": "Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameter",
+          "member": "string",
+          "name": "CustomArgument",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger status",
+          "member": "string",
+          "name": "AvailableStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TriggerInfo": {
+      "document": "Trigger information",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable",
+          "member": "uint64",
+          "name": "Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function version or alias",
+          "member": "string",
+          "name": "Qualifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger name",
+          "member": "string",
+          "name": "TriggerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed configuration of trigger",
+          "member": "string",
+          "name": "TriggerDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the trigger is available",
+          "member": "string",
+          "name": "AvailableStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CustomArgument",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Trigger creation time",
+          "member": "datetime",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger last modified time",
+          "member": "datetime",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateAliasRequest": {
+      "document": "UpdateAlias request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alias name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Master version pointed to by the alias",
+          "member": "string",
+          "name": "FunctionVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Routing information of alias, which is required if you need to specify an additional version for the alias.",
+          "member": "RoutingConfig",
+          "name": "RoutingConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Alias description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAliasResponse": {
+      "document": "UpdateAlias response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionCodeRequest": {
+      "document": "UpdateFunctionCode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).",
+          "member": "string",
+          "name": "Handler",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the function to be modified",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "COS bucket name",
+          "member": "string",
+          "name": "CosBucketName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "COS object path",
+          "member": "string",
+          "name": "CosObjectName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.",
+          "member": "string",
+          "name": "ZipFile",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "COS region. Note: Beijing includes ap-beijing and ap-beijing-1.",
+          "member": "string",
+          "name": "CosBucketRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function environment",
+          "member": "string",
+          "name": "EnvId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.",
+          "member": "string",
+          "name": "Publish",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function code",
+          "member": "Code",
+          "name": "Code",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source mode of code. Valid values: `ZipFile`, `Cos`, `Inline`, `TempCos` and `Git`. This field must be specified if the source is Git",
+          "member": "string",
+          "name": "CodeSource",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionCodeResponse": {
+      "document": "UpdateFunctionCode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionConfigurationRequest": {
+      "document": "UpdateFunctionConfiguration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function to be modified",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.",
+          "member": "int64",
+          "name": "MemorySize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Golang1 and Java8",
+          "member": "string",
+          "name": "Runtime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function environment variable",
+          "member": "Environment",
+          "name": "Environment",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Function namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function VPC configuration",
+          "member": "VpcConfig",
+          "name": "VpcConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Role bound to the function",
+          "member": "string",
+          "name": "Role",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLS logset ID to which logs are shipped",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLS Topic ID to which logs are shipped",
+          "member": "string",
+          "name": "ClsTopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.",
+          "member": "string",
+          "name": "Publish",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable L5 access. TRUE: enable; FALSE: not enable",
+          "member": "string",
+          "name": "L5Enable",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. ",
+          "member": "LayerVersionSimple",
+          "name": "Layers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information of a dead letter queue associated with a function",
+          "member": "DeadLetterConfig",
+          "name": "DeadLetterConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Public network access configuration",
+          "member": "PublicNetConfigIn",
+          "name": "PublicNetConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "File system configuration input parameter, which is used for the function to bind the file system",
+          "member": "CfsConfig",
+          "name": "CfsConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Timeout period for function initialization. Default value: 15 seconds",
+          "member": "int64",
+          "name": "InitTimeout",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionConfigurationResponse": {
+      "document": "UpdateFunctionConfiguration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateNamespaceRequest": {
+      "document": "UpdateNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateNamespaceResponse": {
+      "document": "UpdateNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Variable": {
+      "document": "Variable parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Variable name",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Variable value",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "VersionMatch": {
+      "document": "Function version with match rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Function version name",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule\nHeader method:\nEnter \"invoke.headers.User\" for `key` and pass in `RoutingKey:{\"User\":\"value\"}` when invoking a function through `invoke` for invocation based on rule matching",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Match method. Valid values:\nrange: range match\nexact: exact string match",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule requirements for range match:\nIt should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers\nRule requirements for exact match:\nExact string match",
+          "member": "string",
+          "name": "Expression",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VersionWeight": {
+      "document": "Function version with weight",
+      "members": [
+        {
+          "default": "",
+          "document": "Function version name",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version weight",
+          "member": "float",
+          "name": "Weight",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VpcConfig": {
+      "document": "VPC parameter configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

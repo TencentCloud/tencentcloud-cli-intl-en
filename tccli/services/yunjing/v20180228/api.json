@@ -1,0 +1,5989 @@
+{
+  "actions": {
+    "AddLoginWhiteList": {
+      "document": "This API is used to add a allowlist rule.",
+      "input": "AddLoginWhiteListRequest",
+      "name": "Adds allowlist rule",
+      "output": "AddLoginWhiteListResponse"
+    },
+    "AddMachineTag": {
+      "document": "This API is used to add a tag to a server.",
+      "input": "AddMachineTagRequest",
+      "name": "Adds tag to server.",
+      "output": "AddMachineTagResponse"
+    },
+    "CloseProVersion": {
+      "document": "This API is used to deactivate CWP Pro.",
+      "input": "CloseProVersionRequest",
+      "name": "Deactivates CWP Pro",
+      "output": "CloseProVersionResponse"
+    },
+    "CreateOpenPortTask": {
+      "document": "This API is used to create a real-time port acquisition task.",
+      "input": "CreateOpenPortTaskRequest",
+      "name": "Creates real-time port acquisition task",
+      "output": "CreateOpenPortTaskResponse"
+    },
+    "CreateProcessTask": {
+      "document": "This API is used to create a real-time process pulling task.",
+      "input": "CreateProcessTaskRequest",
+      "name": "Creates real-time process pulling task",
+      "output": "CreateProcessTaskResponse"
+    },
+    "CreateUsualLoginPlaces": {
+      "document": "This API is used to add one or more usual login locations.",
+      "input": "CreateUsualLoginPlacesRequest",
+      "name": "Adds usual login locations",
+      "output": "CreateUsualLoginPlacesResponse"
+    },
+    "DeleteBruteAttacks": {
+      "document": "This API is used to delete brute force attack records.",
+      "input": "DeleteBruteAttacksRequest",
+      "name": "Deletes brute force attack records",
+      "output": "DeleteBruteAttacksResponse"
+    },
+    "DeleteLoginWhiteList": {
+      "document": "This API is used to delete a allowlist rule.",
+      "input": "DeleteLoginWhiteListRequest",
+      "name": "Deletes allowlist rule",
+      "output": "DeleteLoginWhiteListResponse"
+    },
+    "DeleteMachine": {
+      "document": "This API is used to uninstall the CWP agent.",
+      "input": "DeleteMachineRequest",
+      "name": "Uninstalls CWP agent",
+      "output": "DeleteMachineResponse"
+    },
+    "DeleteMachineTag": {
+      "document": "This API is used to remove a tag from a server.",
+      "input": "DeleteMachineTagRequest",
+      "name": "Removes tag from server.",
+      "output": "DeleteMachineTagResponse"
+    },
+    "DeleteMaliciousRequests": {
+      "document": "This API is used to delete malicious request records.",
+      "input": "DeleteMaliciousRequestsRequest",
+      "name": "Deletes malicious request records",
+      "output": "DeleteMaliciousRequestsResponse"
+    },
+    "DeleteMalwares": {
+      "document": "This API is used to delete trojan records.",
+      "input": "DeleteMalwaresRequest",
+      "name": "Deletes trojan records",
+      "output": "DeleteMalwaresResponse"
+    },
+    "DeleteNonlocalLoginPlaces": {
+      "document": "This API is used to delete unusual login location records.",
+      "input": "DeleteNonlocalLoginPlacesRequest",
+      "name": "Deletes unusual login location records",
+      "output": "DeleteNonlocalLoginPlacesResponse"
+    },
+    "DeleteUsualLoginPlaces": {
+      "document": "This API is used to delete one or more usual login locations.",
+      "input": "DeleteUsualLoginPlacesRequest",
+      "name": "Deletes usual login locations",
+      "output": "DeleteUsualLoginPlacesResponse"
+    },
+    "DescribeAccountStatistics": {
+      "document": "This API is used to get the account statistics list.",
+      "input": "DescribeAccountStatisticsRequest",
+      "name": "Gets account statistics list",
+      "output": "DescribeAccountStatisticsResponse"
+    },
+    "DescribeAccounts": {
+      "document": "This API is used to get the account list.",
+      "input": "DescribeAccountsRequest",
+      "name": "Gets account list",
+      "output": "DescribeAccountsResponse"
+    },
+    "DescribeAgentVuls": {
+      "document": "This API is used to get the list of vulnerabilities on a single server.",
+      "input": "DescribeAgentVulsRequest",
+      "name": "Gets the list of vulnerabilities on a single server",
+      "output": "DescribeAgentVulsResponse"
+    },
+    "DescribeAlarmAttribute": {
+      "document": "This API is used to get the alarm settings.",
+      "input": "DescribeAlarmAttributeRequest",
+      "name": "Gets alarm settings",
+      "output": "DescribeAlarmAttributeResponse"
+    },
+    "DescribeBruteAttacks": {
+      "document": "This API is used to get the brute force attack event list.",
+      "input": "DescribeBruteAttacksRequest",
+      "name": "Gets brute force attack event list",
+      "output": "DescribeBruteAttacksResponse"
+    },
+    "DescribeComponentInfo": {
+      "document": "This API is used to get the component information.",
+      "input": "DescribeComponentInfoRequest",
+      "name": "Gets component information",
+      "output": "DescribeComponentInfoResponse"
+    },
+    "DescribeComponentStatistics": {
+      "document": "This API is used to get the component statistics list.",
+      "input": "DescribeComponentStatisticsRequest",
+      "name": "Gets component statistics list",
+      "output": "DescribeComponentStatisticsResponse"
+    },
+    "DescribeComponents": {
+      "document": "This API is used to get the component list.",
+      "input": "DescribeComponentsRequest",
+      "name": "Gets component list",
+      "output": "DescribeComponentsResponse"
+    },
+    "DescribeHistoryAccounts": {
+      "document": "This API is used to get the account change history list.",
+      "input": "DescribeHistoryAccountsRequest",
+      "name": "Gets account change history list",
+      "output": "DescribeHistoryAccountsResponse"
+    },
+    "DescribeImpactedHosts": {
+      "document": "This API is used to get the list of servers affected by a vulnerability.",
+      "input": "DescribeImpactedHostsRequest",
+      "name": "Gets the list of servers affected by the vulnerability",
+      "output": "DescribeImpactedHostsResponse"
+    },
+    "DescribeLoginWhiteList": {
+      "document": "This API is used to get the list of login allowlist entries.",
+      "input": "DescribeLoginWhiteListRequest",
+      "name": "Gets the list of login allowlist entries",
+      "output": "DescribeLoginWhiteListResponse"
+    },
+    "DescribeMachineInfo": {
+      "document": "This API is used to get server details.",
+      "input": "DescribeMachineInfoRequest",
+      "name": "Gets server details",
+      "output": "DescribeMachineInfoResponse"
+    },
+    "DescribeMachines": {
+      "document": "This API is used to get the list of servers in a specified region.",
+      "input": "DescribeMachinesRequest",
+      "name": "Gets the list of servers in region",
+      "output": "DescribeMachinesResponse"
+    },
+    "DescribeMaliciousRequests": {
+      "document": "This API is used to get malicious request data.",
+      "input": "DescribeMaliciousRequestsRequest",
+      "name": "Gets malicious request data",
+      "output": "DescribeMaliciousRequestsResponse"
+    },
+    "DescribeMalwares": {
+      "document": "This API is used to get the list of trojan events.",
+      "input": "DescribeMalwaresRequest",
+      "name": "Gets trojan information",
+      "output": "DescribeMalwaresResponse"
+    },
+    "DescribeNonlocalLoginPlaces": {
+      "document": "This API is used to get unusual login events.",
+      "input": "DescribeNonlocalLoginPlacesRequest",
+      "name": "Gets unusual login events",
+      "output": "DescribeNonlocalLoginPlacesResponse"
+    },
+    "DescribeOpenPortStatistics": {
+      "document": "This API is used to get the statistics on port usage",
+      "input": "DescribeOpenPortStatisticsRequest",
+      "name": "Gets port statistics",
+      "output": "DescribeOpenPortStatisticsResponse"
+    },
+    "DescribeOpenPortTaskStatus": {
+      "document": "This API is used to get the status of a real-time port pulling task.",
+      "input": "DescribeOpenPortTaskStatusRequest",
+      "name": "Gets the status of real-time port pulling task",
+      "output": "DescribeOpenPortTaskStatusResponse"
+    },
+    "DescribeOpenPorts": {
+      "document": "This API is used to get the port list.\n",
+      "input": "DescribeOpenPortsRequest",
+      "name": "Gets port list",
+      "output": "DescribeOpenPortsResponse"
+    },
+    "DescribeOverviewStatistics": {
+      "document": "This API is used to get the overview statistics of CWP under the current account.",
+      "input": "DescribeOverviewStatisticsRequest",
+      "name": "Gets overview statistics of the current account",
+      "output": "DescribeOverviewStatisticsResponse"
+    },
+    "DescribeProVersionInfo": {
+      "document": "This API is used to get the CWP Pro information.",
+      "input": "DescribeProVersionInfoRequest",
+      "name": "Gets CWP Pro information",
+      "output": "DescribeProVersionInfoResponse"
+    },
+    "DescribeProcessStatistics": {
+      "document": "This API is used to get the process statistics list.",
+      "input": "DescribeProcessStatisticsRequest",
+      "name": "Gets process statistics list",
+      "output": "DescribeProcessStatisticsResponse"
+    },
+    "DescribeProcessTaskStatus": {
+      "document": "This API is used to get the status of a real-time process pulling task.",
+      "input": "DescribeProcessTaskStatusRequest",
+      "name": "Gets the status of real-time process pulling task",
+      "output": "DescribeProcessTaskStatusResponse"
+    },
+    "DescribeProcesses": {
+      "document": "This API is used to get the process list.",
+      "input": "DescribeProcessesRequest",
+      "name": "Gets process list",
+      "output": "DescribeProcessesResponse"
+    },
+    "DescribeSecurityDynamics": {
+      "document": "This API is used to get the security event message data.",
+      "input": "DescribeSecurityDynamicsRequest",
+      "name": "Gets security event message",
+      "output": "DescribeSecurityDynamicsResponse"
+    },
+    "DescribeSecurityTrends": {
+      "document": "This API is used to get the security event statistics.",
+      "input": "DescribeSecurityTrendsRequest",
+      "name": "Gets security event statistics",
+      "output": "DescribeSecurityTrendsResponse"
+    },
+    "DescribeTagMachines": {
+      "document": "This API is used to get the information of servers associated with a specified tag.",
+      "input": "DescribeTagMachinesRequest",
+      "name": "Gets the information of servers associated with specified tag",
+      "output": "DescribeTagMachinesResponse"
+    },
+    "DescribeTags": {
+      "document": "This API is used to get all server tags.",
+      "input": "DescribeTagsRequest",
+      "name": "Gets all server tags",
+      "output": "DescribeTagsResponse"
+    },
+    "DescribeUsualLoginPlaces": {
+      "document": "This API is used to query usual login locations.",
+      "input": "DescribeUsualLoginPlacesRequest",
+      "name": "Queries usual login locations",
+      "output": "DescribeUsualLoginPlacesResponse"
+    },
+    "DescribeVulInfo": {
+      "document": "This API is used to get vulnerability details.",
+      "input": "DescribeVulInfoRequest",
+      "name": "Gets vulnerability details",
+      "output": "DescribeVulInfoResponse"
+    },
+    "DescribeVulScanResult": {
+      "document": "This API is used to get the vulnerability detection result.\n",
+      "input": "DescribeVulScanResultRequest",
+      "name": "Gets vulnerability detection result",
+      "output": "DescribeVulScanResultResponse"
+    },
+    "DescribeVuls": {
+      "document": "This API is used to get the vulnerability list.",
+      "input": "DescribeVulsRequest",
+      "name": "Gets vulnerability list",
+      "output": "DescribeVulsResponse"
+    },
+    "DescribeWeeklyReportBruteAttacks": {
+      "document": "This API is used to get the brute force attack data in the weekly CWP Pro report.",
+      "input": "DescribeWeeklyReportBruteAttacksRequest",
+      "name": "Gets brute force attack data in weekly CWP Pro report",
+      "output": "DescribeWeeklyReportBruteAttacksResponse"
+    },
+    "DescribeWeeklyReportInfo": {
+      "document": "This API is used to get the details in the weekly CWP Pro report.",
+      "input": "DescribeWeeklyReportInfoRequest",
+      "name": "Gets details in weekly CWP Pro report",
+      "output": "DescribeWeeklyReportInfoResponse"
+    },
+    "DescribeWeeklyReportMalwares": {
+      "document": "This API is used to get the trojan data in the weekly CWP Pro report.",
+      "input": "DescribeWeeklyReportMalwaresRequest",
+      "name": "Gets trojan data in weekly CWP Pro report",
+      "output": "DescribeWeeklyReportMalwaresResponse"
+    },
+    "DescribeWeeklyReportNonlocalLoginPlaces": {
+      "document": "This API is used to get the unusual login location data in the weekly CWP Pro report.",
+      "input": "DescribeWeeklyReportNonlocalLoginPlacesRequest",
+      "name": "Gets unusual login location data in weekly CWP Pro report",
+      "output": "DescribeWeeklyReportNonlocalLoginPlacesResponse"
+    },
+    "DescribeWeeklyReportVuls": {
+      "document": "This API is used to get the vulnerability data in the weekly CWP Pro report.\n",
+      "input": "DescribeWeeklyReportVulsRequest",
+      "name": "Gets vulnerability data in weekly CWP Pro report",
+      "output": "DescribeWeeklyReportVulsResponse"
+    },
+    "DescribeWeeklyReports": {
+      "document": "This API is used to get the weekly report list.",
+      "input": "DescribeWeeklyReportsRequest",
+      "name": "Gets weekly report list",
+      "output": "DescribeWeeklyReportsResponse"
+    },
+    "EditTags": {
+      "document": "This API is used to add or edit tags.",
+      "input": "EditTagsRequest",
+      "name": "Adds or edits tags.",
+      "output": "EditTagsResponse"
+    },
+    "ExportBruteAttacks": {
+      "document": "This API is used to export brute force attack records into a CSV file.",
+      "input": "ExportBruteAttacksRequest",
+      "name": "Exports brute force attack records",
+      "output": "ExportBruteAttacksResponse"
+    },
+    "ExportMaliciousRequests": {
+      "document": "This API is used to export the malicious request file into a CSV file for download.",
+      "input": "ExportMaliciousRequestsRequest",
+      "name": "Exports the malicious request file into a CSV file for download",
+      "output": "ExportMaliciousRequestsResponse"
+    },
+    "ExportMalwares": {
+      "document": "This API is used to export trojan records into a CSV file.",
+      "input": "ExportMalwaresRequest",
+      "name": "Exports trojan records",
+      "output": "ExportMalwaresResponse"
+    },
+    "ExportNonlocalLoginPlaces": {
+      "document": "This API is used to export unusual login location events into a CSV file.",
+      "input": "ExportNonlocalLoginPlacesRequest",
+      "name": "Exports unusual login location records",
+      "output": "ExportNonlocalLoginPlacesResponse"
+    },
+    "IgnoreImpactedHosts": {
+      "document": "This API is used to ignore one or more vulnerabilities.",
+      "input": "IgnoreImpactedHostsRequest",
+      "name": "Ignores vulnerability",
+      "output": "IgnoreImpactedHostsResponse"
+    },
+    "MisAlarmNonlocalLoginPlaces": {
+      "document": "This API is used to set the current location as the usual login location.",
+      "input": "MisAlarmNonlocalLoginPlacesRequest",
+      "name": "Sets usual login location",
+      "output": "MisAlarmNonlocalLoginPlacesResponse"
+    },
+    "ModifyAlarmAttribute": {
+      "document": "This API is used to modify alarm settings.",
+      "input": "ModifyAlarmAttributeRequest",
+      "name": "Modifies alarm settings",
+      "output": "ModifyAlarmAttributeResponse"
+    },
+    "ModifyAutoOpenProVersionConfig": {
+      "document": "This API is used to set whether to automatically activate CWP Pro for newly added servers.",
+      "input": "ModifyAutoOpenProVersionConfigRequest",
+      "name": "Sets whether to automatically activate CWP Pro for newly added servers",
+      "output": "ModifyAutoOpenProVersionConfigResponse"
+    },
+    "ModifyLoginWhiteList": {
+      "document": "This API is used to edit a allowlist rule.",
+      "input": "ModifyLoginWhiteListRequest",
+      "name": "Edits allowlist rule",
+      "output": "ModifyLoginWhiteListResponse"
+    },
+    "ModifyProVersionRenewFlag": {
+      "document": "This API is used to modify the renewal flag of CWP Pro.",
+      "input": "ModifyProVersionRenewFlagRequest",
+      "name": "Modifies the renewal flag of CWP Pro",
+      "output": "ModifyProVersionRenewFlagResponse"
+    },
+    "OpenProVersion": {
+      "document": "This API is used to activate CWP Pro.",
+      "input": "OpenProVersionRequest",
+      "name": "Activates CWP Pro",
+      "output": "OpenProVersionResponse"
+    },
+    "RecoverMalwares": {
+      "document": "This API is used to recover isolated trojan files in a batch.",
+      "input": "RecoverMalwaresRequest",
+      "name": "Recovers trojan files",
+      "output": "RecoverMalwaresResponse"
+    },
+    "RescanImpactedHost": {
+      "document": "This API is used to re-scan for vulnerabilities.",
+      "input": "RescanImpactedHostRequest",
+      "name": "Rescans for vulnerabilities",
+      "output": "RescanImpactedHostResponse"
+    },
+    "SeparateMalwares": {
+      "document": "This API is used to isolate trojans.",
+      "input": "SeparateMalwaresRequest",
+      "name": "Isolates trojans",
+      "output": "SeparateMalwaresResponse"
+    },
+    "TrustMaliciousRequest": {
+      "document": "This API is used to trust a malicious request.",
+      "input": "TrustMaliciousRequestRequest",
+      "name": "Trusts malicious request",
+      "output": "TrustMaliciousRequestResponse"
+    },
+    "TrustMalwares": {
+      "document": "This API is used to trust an identified trojan file.",
+      "input": "TrustMalwaresRequest",
+      "name": "Trusts trojan file",
+      "output": "TrustMalwaresResponse"
+    },
+    "UntrustMaliciousRequest": {
+      "document": "This API is used to untrust a malicious request.",
+      "input": "UntrustMaliciousRequestRequest",
+      "name": "Untrusts malicious request",
+      "output": "UntrustMaliciousRequestResponse"
+    },
+    "UntrustMalwares": {
+      "document": "This API is used to untrust a trojan file.",
+      "input": "UntrustMalwaresRequest",
+      "name": "Untrusts trojan file",
+      "output": "UntrustMalwaresResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-02-28",
+    "serviceNameCN": "主机安全",
+    "serviceShortName": "yunjing"
+  },
+  "objects": {
+    "Account": {
+      "document": "Account list information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of server.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account name.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account group.",
+          "member": "string",
+          "name": "Groups",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account type.\n<li>ORDINARY: ordinary account</li>\n<li>SUPPER: super admin account</li>",
+          "member": "string",
+          "name": "Privilege",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account creation time.",
+          "member": "datetime",
+          "name": "AccountCreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account last login time.",
+          "member": "datetime",
+          "name": "LastLoginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccountStatistics": {
+      "document": "Account statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of servers.",
+          "member": "uint64",
+          "name": "MachineNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AddLoginWhiteListRequest": {
+      "document": "AddLoginWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whitelist rule",
+          "member": "LoginWhiteListsRule",
+          "name": "Rules",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "AddLoginWhiteListResponse": {
+      "document": "AddLoginWhiteList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddMachineTagRequest": {
+      "document": "AddMachineTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server ID",
+          "member": "string",
+          "name": "Quuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag ID",
+          "member": "uint64",
+          "name": "TagId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Server region",
+          "member": "string",
+          "name": "MRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server type (`CVM` or `BM`)",
+          "member": "string",
+          "name": "MArea",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddMachineTagResponse": {
+      "document": "AddMachineTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AgentVul": {
+      "document": "Server vulnerability information",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability name.",
+          "member": "string",
+          "name": "VulName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability severity level.\n<li>HIGH: high</li>\n<li>MIDDLE: medium</li>\n<li>LOW: low</li>\n<li>NOTICE: notice</li>",
+          "member": "string",
+          "name": "VulLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last scanned time.",
+          "member": "datetime",
+          "name": "LastScanTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability category ID.",
+          "member": "uint64",
+          "name": "VulId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability status.\n<li>UN_OPERATED: to be processed</li>\n<li>FIXED: fixed</li>",
+          "member": "string",
+          "name": "VulStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BruteAttack": {
+      "document": "Brute force attack list",
+      "members": [
+        {
+          "default": "",
+          "document": "Event ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Brute force attack event status\n<li>BRUTEATTACK_FAIL_ACCOUNT: brute force attack event - failure (the account exists)</li>\n<li>BRUTEATTACK_FAIL_NOACCOUNT: brute force attack event - failure (the account does not exist)</li>\n<li>BRUTEATTACK_SUCCESS: brute force attack event - success </li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username.",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "City ID.",
+          "member": "uint64",
+          "name": "City",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region ID.",
+          "member": "uint64",
+          "name": "Country",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Province/State ID.",
+          "member": "uint64",
+          "name": "Province",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP.",
+          "member": "string",
+          "name": "SrcIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of attempts.",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Occurrence time.",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the server enables CWP Pro.",
+          "member": "bool",
+          "name": "IsProVersion",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the server is banned.",
+          "member": "string",
+          "name": "BanStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server `UUID`",
+          "member": "string",
+          "name": "Quuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CloseProVersionRequest": {
+      "document": "CloseProVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server `Uuid`.\n`InstanceId` for BM or `Uuid` for CVM",
+          "member": "string",
+          "name": "Quuid",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseProVersionResponse": {
+      "document": "CloseProVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Component": {
+      "document": "Component list data.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of server.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component version number.",
+          "member": "string",
+          "name": "ComponentVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component type.\n<li>SYSTEM: system component</li>\n<li>WEB: web component</li>",
+          "member": "string",
+          "name": "ComponentType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component name.",
+          "member": "string",
+          "name": "ComponentName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component detection update time.",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ComponentStatistics": {
+      "document": "Component statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "Component ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of servers.",
+          "member": "uint64",
+          "name": "MachineNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component name.",
+          "member": "string",
+          "name": "ComponentName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component type.\n<li>WEB: web component</li>\n<li>SYSTEM: system component</li>",
+          "member": "string",
+          "name": "ComponentType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateOpenPortTaskRequest": {
+      "document": "CreateOpenPortTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOpenPortTaskResponse": {
+      "document": "CreateOpenPortTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProcessTaskRequest": {
+      "document": "CreateProcessTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProcessTaskResponse": {
+      "document": "CreateProcessTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUsualLoginPlacesRequest": {
+      "document": "CreateUsualLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `UUID` array.",
+          "member": "string",
+          "name": "Uuids",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Login region information array.",
+          "member": "Place",
+          "name": "Places",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUsualLoginPlacesResponse": {
+      "document": "CreateUsualLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBruteAttacksRequest": {
+      "document": "DeleteBruteAttacks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Brute force attack event ID array.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBruteAttacksResponse": {
+      "document": "DeleteBruteAttacks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoginWhiteListRequest": {
+      "document": "DeleteLoginWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whitelist ID",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoginWhiteListResponse": {
+      "document": "DeleteLoginWhiteList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMachineRequest": {
+      "document": "DeleteMachine request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMachineResponse": {
+      "document": "DeleteMachine response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMachineTagRequest": {
+      "document": "DeleteMachineTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Associated tag ID",
+          "member": "uint64",
+          "name": "Rid",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMachineTagResponse": {
+      "document": "DeleteMachineTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMaliciousRequestsRequest": {
+      "document": "DeleteMaliciousRequests request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Malicious request record ID array. Maximum value: 100 entries.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMaliciousRequestsResponse": {
+      "document": "DeleteMaliciousRequests response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMalwaresRequest": {
+      "document": "DeleteMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Trojan record ID array",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMalwaresResponse": {
+      "document": "DeleteMalwares response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNonlocalLoginPlacesRequest": {
+      "document": "DeleteNonlocalLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unusual login location event ID array.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNonlocalLoginPlacesResponse": {
+      "document": "DeleteNonlocalLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsualLoginPlacesRequest": {
+      "document": "DeleteUsualLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Added usual login city ID array",
+          "member": "uint64",
+          "name": "CityIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsualLoginPlacesResponse": {
+      "document": "DeleteUsualLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountStatisticsRequest": {
+      "document": "DescribeAccountStatistics request structure.",
+      "members": [
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Username - String - Required: No - Account username</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountStatisticsResponse": {
+      "document": "DescribeAccountStatistics response structure.",
+      "members": [
+        {
+          "document": "Total number of records in account statistics list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Account statistics list.",
+          "member": "AccountStatistics",
+          "name": "AccountStatistics",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsRequest": {
+      "document": "DescribeAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Username` is specified, it indicates to query the information list under the specified username.",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Username - String - Required: No - Account name</li>\n<li>Privilege - String - Required: No - Account name (ORDINARY: ordinary account, SUPPER: super admin account)</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsResponse": {
+      "document": "DescribeAccounts response structure.",
+      "members": [
+        {
+          "document": "Total number of records in account list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Account data list.",
+          "member": "Account",
+          "name": "Accounts",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAgentVulsRequest": {
+      "document": "DescribeAgentVuls request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability type.\n<li>WEB: web application vulnerability</li>\n<li>SYSTEM: system component vulnerability</li>\n<li>BASELINE: security baseline</li>",
+          "member": "string",
+          "name": "VulType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAgentVulsResponse": {
+      "document": "DescribeAgentVuls response structure.",
+      "members": [
+        {
+          "document": "Total number of records",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Server vulnerability information",
+          "member": "AgentVul",
+          "name": "AgentVuls",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmAttributeRequest": {
+      "document": "DescribeAlarmAttribute request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAlarmAttributeResponse": {
+      "document": "DescribeAlarmAttribute response structure.",
+      "members": [
+        {
+          "document": "CWP deactivation alarm status:\n<li>OPEN: alarm enabled</li>\n<li>CLOSE: alarm disabled</li>",
+          "member": "string",
+          "name": "Offline",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Trojan discovery alarm status:\n<li>OPEN: alarm enabled</li>\n<li>CLOSE: alarm disabled</li>",
+          "member": "string",
+          "name": "Malware",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unusual login location discovery alarm status:\n<li>OPEN: alarm enabled</li>\n<li>CLOSE: alarm disabled</li>",
+          "member": "string",
+          "name": "NonlocalLogin",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Brute force attack success alarm status:\n<li>OPEN: alarm enabled</li>\n<li>CLOSE: alarm disabled</li>",
+          "member": "string",
+          "name": "CrackSuccess",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBruteAttacksRequest": {
+      "document": "DescribeBruteAttacks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Query status (FAILED: brute force attack failed, SUCCESS: brute force attack succeeded)</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBruteAttacksResponse": {
+      "document": "DescribeBruteAttacks response structure.",
+      "members": [
+        {
+          "document": "Number of events",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Brute force attack event list",
+          "member": "BruteAttack",
+          "name": "BruteAttacks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComponentInfoRequest": {
+      "document": "DescribeComponentInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Component ID.",
+          "member": "uint64",
+          "name": "ComponentId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComponentInfoResponse": {
+      "document": "DescribeComponentInfo response structure.",
+      "members": [
+        {
+          "document": "Component ID.",
+          "member": "uint64",
+          "name": "Id",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Component name.",
+          "member": "string",
+          "name": "ComponentName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Component type.\n<li>WEB: web component</li>\n<li>SYSTEM: system component</li>",
+          "member": "string",
+          "name": "ComponentType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Component's official website.",
+          "member": "string",
+          "name": "Homepage",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Component description.",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComponentStatisticsRequest": {
+      "document": "DescribeComponentStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\nComponentName - String - Required: No - Component name",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComponentStatisticsResponse": {
+      "document": "DescribeComponentStatistics response structure.",
+      "members": [
+        {
+          "document": "Total number of records in component statistics list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Component statistics list data array.",
+          "member": "ComponentStatistics",
+          "name": "ComponentStatistics",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComponentsRequest": {
+      "document": "DescribeComponents request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`. Either `Uuid` or `ComponentId` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Component ID. Either `Uuid` or `ComponentId` must be specified. If `ComponentId` is specified, it indicates to query the information list under the specified component.",
+          "member": "uint64",
+          "name": "ComponentId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>ComponentVersion - String - Required: No - Component version number</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeComponentsResponse": {
+      "document": "DescribeComponents response structure.",
+      "members": [
+        {
+          "document": "Total number of records in component list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Component list data.",
+          "member": "Component",
+          "name": "Components",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHistoryAccountsRequest": {
+      "document": "DescribeHistoryAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Username - String - Required: No - Account name</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHistoryAccountsResponse": {
+      "document": "DescribeHistoryAccounts response structure.",
+      "members": [
+        {
+          "document": "Total number of records in account change history list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Account change history data array.",
+          "member": "HistoryAccount",
+          "name": "HistoryAccounts",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImpactedHostsRequest": {
+      "document": "DescribeImpactedHosts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability category ID.",
+          "member": "uint64",
+          "name": "VulId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImpactedHostsResponse": {
+      "document": "DescribeImpactedHosts response structure.",
+      "members": [
+        {
+          "document": "Total number of records",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Affected server list array",
+          "member": "ImpactedHost",
+          "name": "ImpactedHosts",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoginWhiteListRequest": {
+      "document": "DescribeLoginWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoginWhiteListResponse": {
+      "document": "DescribeLoginWhiteList response structure.",
+      "members": [
+        {
+          "document": "Total number of records",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Login allowlist array",
+          "member": "LoginWhiteLists",
+          "name": "LoginWhiteLists",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMachineInfoRequest": {
+      "document": "DescribeMachineInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMachineInfoResponse": {
+      "document": "DescribeMachineInfo response structure.",
+      "members": [
+        {
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Days under protection by CWP",
+          "member": "uint64",
+          "name": "ProtectDays",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "OS.",
+          "member": "string",
+          "name": "MachineOs",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status.\n<li>ONLINE: online</li>\n<li>OFFLINE: offline</li>",
+          "member": "string",
+          "name": "MachineStatus",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unique ID of CVM or BM instance.",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public IP of server.",
+          "member": "string",
+          "name": "MachineWanIp",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CVM or BM instance `Uuid`.",
+          "member": "string",
+          "name": "Quuid",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether CWP Pro is activated.\n<li>true: yes</li>\n<li>false: no</li>",
+          "member": "bool",
+          "name": "IsProVersion",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CWP Pro activation time.",
+          "member": "string",
+          "name": "ProVersionOpenDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Server type.\n<li>CVM: CVM</li>\n<li>BM: BM</li>",
+          "member": "string",
+          "name": "MachineType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Server region, such as ap-guangzhou or ap-shanghai",
+          "member": "string",
+          "name": "MachineRegion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Server status.\n<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>",
+          "member": "string",
+          "name": "PayMode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of trojans left for free scan.",
+          "member": "uint64",
+          "name": "FreeMalwaresLeft",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of vulnerability left for free scan.",
+          "member": "uint64",
+          "name": "FreeVulsLeft",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMachinesRequest": {
+      "document": "DescribeMachines request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server type.\n<li>CVM: CVM</li>\n<li>BM: BM</li>",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server region, such as ap-guangzhou or ap-shanghai",
+          "member": "string",
+          "name": "MachineRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Keywords - String - Required: no - Query keywords </li>\n<li>Status - String - Required: no - CWP client status (valid values: OFFLINE, ONLINE, UNINSTALLED)</li>\n<li>Version - String - Required: no - Current CWP version (valid values: PRO_VERSION, BASIC_VERSION)</li>\nEach filter can have only one value but does not support \"OR\" queries with multiple values",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMachinesResponse": {
+      "document": "DescribeMachines response structure.",
+      "members": [
+        {
+          "document": "Server list",
+          "member": "Machine",
+          "name": "Machines",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of servers",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaliciousRequestsRequest": {
+      "document": "DescribeMaliciousRequests request structure.",
+      "members": [
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, TRUSTED: trusted, UN_TRUSTED: untrusted)</li>\n<li>Domain - String - Required: No - Malicious request domain name</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaliciousRequestsResponse": {
+      "document": "DescribeMaliciousRequests response structure.",
+      "members": [
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Malicious request record array.",
+          "member": "MaliciousRequest",
+          "name": "MaliciousRequests",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMalwaresRequest": {
+      "document": "DescribeMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Trojan status (UN_OPERATED: not processed, SEGREGATED: isolated, TRUSTED: trusted)</li>\nEach filter supports only one value. Query with multiple values in \"OR\" relationship is not supported for the time being.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMalwaresResponse": {
+      "document": "DescribeMalwares response structure.",
+      "members": [
+        {
+          "document": "Total number of trojans.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Malware array.",
+          "member": "Malware",
+          "name": "Malwares",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNonlocalLoginPlacesRequest": {
+      "document": "DescribeNonlocalLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Login status (NON_LOCAL_LOGIN: unusual login location, NORMAL_LOGIN: intended login)</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNonlocalLoginPlacesResponse": {
+      "document": "DescribeNonlocalLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unusual login location information array.",
+          "member": "NonLocalLoginPlace",
+          "name": "NonLocalLoginPlaces",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOpenPortStatisticsRequest": {
+      "document": "DescribeOpenPortStatistics request structure.",
+      "members": [
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Port - Uint64 - Required: No - Port number</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOpenPortStatisticsResponse": {
+      "document": "DescribeOpenPortStatistics response structure.",
+      "members": [
+        {
+          "document": "Total number of records in port statistics list",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Port statistics list",
+          "member": "OpenPortStatistics",
+          "name": "OpenPortStatistics",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOpenPortTaskStatusRequest": {
+      "document": "DescribeOpenPortTaskStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOpenPortTaskStatusResponse": {
+      "document": "DescribeOpenPortTaskStatus response structure.",
+      "members": [
+        {
+          "document": "Task status.\n<li>COMPLETE: completed (at this point, you can call the `DescribeOpenPorts` API to get the list of real-time processes) </li>\n<li>AGENT_OFFLINE: CWP agent is offline</li>\n<li>COLLECTING: getting port</li>\n<li>FAILED: failed to get processes</li>",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOpenPortsRequest": {
+      "document": "DescribeOpenPorts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`. Either `Port` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Open port number. Either `Port` or `Uuid` must be specified. If `Port` is specified, it indicates to query the information list under the specified port.",
+          "member": "uint64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Port - Uint64 - Required: No - Port number</li>\n<li>ProcessName - String - Required: No - Process name</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOpenPortsResponse": {
+      "document": "DescribeOpenPorts response structure.",
+      "members": [
+        {
+          "document": "Total number of records in port list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Port list.",
+          "member": "OpenPort",
+          "name": "OpenPorts",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOverviewStatisticsRequest": {
+      "document": "DescribeOverviewStatistics request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeOverviewStatisticsResponse": {
+      "document": "DescribeOverviewStatistics response structure.",
+      "members": [
+        {
+          "document": "Number of online servers.",
+          "member": "uint64",
+          "name": "OnlineMachineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of servers activated CWP Pro.",
+          "member": "uint64",
+          "name": "ProVersionMachineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of trojan files.",
+          "member": "uint64",
+          "name": "MalwareNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of unusual login locations.",
+          "member": "uint64",
+          "name": "NonlocalLoginNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of successful brute force attacks.",
+          "member": "uint64",
+          "name": "BruteAttackSuccessNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of vulnerabilities.",
+          "member": "uint64",
+          "name": "VulNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Security baseline number",
+          "member": "uint64",
+          "name": "BaseLineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProVersionInfoRequest": {
+      "document": "DescribeProVersionInfo request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeProVersionInfoResponse": {
+      "document": "DescribeProVersionInfo response structure.",
+      "members": [
+        {
+          "document": "Fee on yesterday (pay-as-you-go)",
+          "member": "uint64",
+          "name": "PostPayCost",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether CWP Pro is activated for new servers",
+          "member": "bool",
+          "name": "IsAutoOpenProVersion",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of servers on CWP Pro",
+          "member": "uint64",
+          "name": "ProVersionNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessStatisticsRequest": {
+      "document": "DescribeProcessStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>ProcessName - String - Required: No - Process name</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessStatisticsResponse": {
+      "document": "DescribeProcessStatistics response structure.",
+      "members": [
+        {
+          "document": "Total number of records in process statistics list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Process statistics list array.",
+          "member": "ProcessStatistics",
+          "name": "ProcessStatistics",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessTaskStatusRequest": {
+      "document": "DescribeProcessTaskStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessTaskStatusResponse": {
+      "document": "DescribeProcessTaskStatus response structure.",
+      "members": [
+        {
+          "document": "Task status.\n<li>COMPLETE: completed (at this point, you can call the `DescribeProcesses` API to get the list of real-time processes)</li>\n<li>AGENT_OFFLINE: CWP agent is offline</li>\n<li>COLLECTING: getting process</li>\n<li>FAILED: failed to get processes</li>",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessesRequest": {
+      "document": "DescribeProcesses request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`. Either `Uuid` or `ProcessName` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
+          "member": "string",
+          "name": "Uuid",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Process name. Either `Uuid` or `ProcessName` must be specified. If `ProcessName` is specified, it indicates to query the information list under the specified process.",
+          "member": "string",
+          "name": "ProcessName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>ProcessName - String - Required: No - Process name</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessesResponse": {
+      "document": "DescribeProcesses response structure.",
+      "members": [
+        {
+          "document": "Total number of records in process list.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Process list data array.",
+          "member": "Process",
+          "name": "Processes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityDynamicsRequest": {
+      "document": "DescribeSecurityDynamics request structure.",
+      "members": [
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityDynamicsResponse": {
+      "document": "DescribeSecurityDynamics response structure.",
+      "members": [
+        {
+          "document": "Security event message array.",
+          "member": "SecurityDynamic",
+          "name": "SecurityDynamics",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityTrendsRequest": {
+      "document": "DescribeSecurityTrends request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time.",
+          "member": "date",
+          "name": "EndDate",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityTrendsResponse": {
+      "document": "DescribeSecurityTrends response structure.",
+      "members": [
+        {
+          "document": "Trojan event statistics array.",
+          "member": "SecurityTrend",
+          "name": "Malwares",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unusual login location event statistics array.",
+          "member": "SecurityTrend",
+          "name": "NonLocalLoginPlaces",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Brute force attack event statistics array.",
+          "member": "SecurityTrend",
+          "name": "BruteAttacks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability statistics array.",
+          "member": "SecurityTrend",
+          "name": "Vuls",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Baseline statistics array.",
+          "member": "SecurityTrend",
+          "name": "BaseLines",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistics array of malicious requests.",
+          "member": "SecurityTrend",
+          "name": "MaliciousRequests",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistics array of high-risk commands.",
+          "member": "SecurityTrend",
+          "name": "HighRiskBashs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistics array of reverse shells.",
+          "member": "SecurityTrend",
+          "name": "ReverseShells",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistics array of local privilege escalations.",
+          "member": "SecurityTrend",
+          "name": "PrivilegeEscalations",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistics array of network attacks.",
+          "member": "SecurityTrend",
+          "name": "CyberAttacks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagMachinesRequest": {
+      "document": "DescribeTagMachines request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagMachinesResponse": {
+      "document": "DescribeTagMachines response structure.",
+      "members": [
+        {
+          "document": "List data",
+          "member": "TagMachine",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagsRequest": {
+      "document": "DescribeTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CVM instance type.\n<li>CVM: CVM</li>\n<li>BM: CPM</li>",
+          "member": "string",
+          "name": "MachineType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server region, such as `ap-guangzhou` and `ap-shanghai`",
+          "member": "string",
+          "name": "MachineRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagsResponse": {
+      "document": "DescribeTags response structure.",
+      "members": [
+        {
+          "document": "List information",
+          "member": "Tag",
+          "name": "List",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsualLoginPlacesRequest": {
+      "document": "DescribeUsualLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `UUID`",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsualLoginPlacesResponse": {
+      "document": "DescribeUsualLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "Usual login location array",
+          "member": "UsualPlace",
+          "name": "UsualLoginPlaces",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVulInfoRequest": {
+      "document": "DescribeVulInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability category ID.",
+          "member": "uint64",
+          "name": "VulId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVulInfoResponse": {
+      "document": "DescribeVulInfo response structure.",
+      "members": [
+        {
+          "document": "Vulnerability category ID.",
+          "member": "uint64",
+          "name": "VulId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability name.",
+          "member": "string",
+          "name": "VulName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability level.",
+          "member": "string",
+          "name": "VulLevel",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability type.",
+          "member": "string",
+          "name": "VulType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability description.",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Repair plan.",
+          "member": "string",
+          "name": "RepairPlan",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability CVE.",
+          "member": "string",
+          "name": "CveId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reference link.",
+          "member": "string",
+          "name": "Reference",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVulScanResultRequest": {
+      "document": "DescribeVulScanResult request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeVulScanResultResponse": {
+      "document": "DescribeVulScanResult response structure.",
+      "members": [
+        {
+          "document": "Number of vulnerabilities.",
+          "member": "uint64",
+          "name": "VulNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of servers activated CWP Pro",
+          "member": "uint64",
+          "name": "ProVersionNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of affected activated CWP Pro.",
+          "member": "uint64",
+          "name": "ImpactedHostNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of servers.",
+          "member": "uint64",
+          "name": "HostNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of servers on CWP Basic.",
+          "member": "uint64",
+          "name": "BasicVersionNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVulsRequest": {
+      "document": "DescribeVuls request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability type.\n<li>WEB: web application vulnerability</li>\n<li>SYSTEM: system component vulnerability</li>\n<li>BASELINE: security baseline</li>",
+          "member": "string",
+          "name": "VulType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)\n\nOnly one value is allowed for the `Status` filter, and \"OR\" logic is not supported.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVulsResponse": {
+      "document": "DescribeVuls response structure.",
+      "members": [
+        {
+          "document": "Number of vulnerabilities.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Vulnerability list array.",
+          "member": "Vul",
+          "name": "Vuls",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportBruteAttacksRequest": {
+      "document": "DescribeWeeklyReportBruteAttacks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Weekly CWP Pro report start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportBruteAttacksResponse": {
+      "document": "DescribeWeeklyReportBruteAttacks response structure.",
+      "members": [
+        {
+          "document": "Brute force attack array in weekly CWP Pro report.",
+          "member": "WeeklyReportBruteAttack",
+          "name": "WeeklyReportBruteAttacks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportInfoRequest": {
+      "document": "DescribeWeeklyReportInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Weekly CWP Pro report start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportInfoResponse": {
+      "document": "DescribeWeeklyReportInfo response structure.",
+      "members": [
+        {
+          "document": "Account owner name.",
+          "member": "string",
+          "name": "CompanyName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of servers.",
+          "member": "uint64",
+          "name": "MachineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of online CWP agents",
+          "member": "uint64",
+          "name": "OnlineMachineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of offline CWP agents.",
+          "member": "uint64",
+          "name": "OfflineMachineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of servers on CWP Pro.",
+          "member": "uint64",
+          "name": "ProVersionMachineNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Weekly report start time",
+          "member": "date",
+          "name": "BeginDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Weekly report end time",
+          "member": "date",
+          "name": "EndDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Security level\n<li>HIGH: high</li>\n<li>MIDDLE: medium</li>\n<li>LOW: low</li>",
+          "member": "string",
+          "name": "Level",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of trojan records.",
+          "member": "uint64",
+          "name": "MalwareNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of unusual login locations.",
+          "member": "uint64",
+          "name": "NonlocalLoginNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of successful brute force attacks.",
+          "member": "uint64",
+          "name": "BruteAttackSuccessNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of vulnerabilities.",
+          "member": "uint64",
+          "name": "VulNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Download address for exported file.",
+          "member": "string",
+          "name": "DownloadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportMalwaresRequest": {
+      "document": "DescribeWeeklyReportMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Weekly CWP Pro report start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportMalwaresResponse": {
+      "document": "DescribeWeeklyReportMalwares response structure.",
+      "members": [
+        {
+          "document": "Trojan data in weekly CWP Pro report.",
+          "member": "WeeklyReportMalware",
+          "name": "WeeklyReportMalwares",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportNonlocalLoginPlacesRequest": {
+      "document": "DescribeWeeklyReportNonlocalLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Weekly CWP Pro report start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportNonlocalLoginPlacesResponse": {
+      "document": "DescribeWeeklyReportNonlocalLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "Unusual login location data in weekly CWP Pro report",
+          "member": "WeeklyReportNonlocalLoginPlace",
+          "name": "WeeklyReportNonlocalLoginPlaces",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportVulsRequest": {
+      "document": "DescribeWeeklyReportVuls request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Weekly CWP Pro report start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportVulsResponse": {
+      "document": "DescribeWeeklyReportVuls response structure.",
+      "members": [
+        {
+          "document": "Vulnerability data array in weekly CWP Pro report.",
+          "member": "WeeklyReportVul",
+          "name": "WeeklyReportVuls",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportsRequest": {
+      "document": "DescribeWeeklyReports request structure.",
+      "members": [
+        {
+          "default": "10",
+          "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWeeklyReportsResponse": {
+      "document": "DescribeWeeklyReports response structure.",
+      "members": [
+        {
+          "document": "Weekly CWP Pro report list array.",
+          "member": "WeeklyReport",
+          "name": "WeeklyReports",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EditTagsRequest": {
+      "document": "EditTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CVM instance ID",
+          "member": "string",
+          "name": "Quuids",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EditTagsResponse": {
+      "document": "EditTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportBruteAttacksRequest": {
+      "document": "ExportBruteAttacks request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ExportBruteAttacksResponse": {
+      "document": "ExportBruteAttacks response structure.",
+      "members": [
+        {
+          "document": "Download address for exported file.",
+          "member": "string",
+          "name": "DownloadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportMaliciousRequestsRequest": {
+      "document": "ExportMaliciousRequests request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ExportMaliciousRequestsResponse": {
+      "document": "ExportMaliciousRequests response structure.",
+      "members": [
+        {
+          "document": "Download address for exported file.",
+          "member": "string",
+          "name": "DownloadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportMalwaresRequest": {
+      "document": "ExportMalwares request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ExportMalwaresResponse": {
+      "document": "ExportMalwares response structure.",
+      "members": [
+        {
+          "document": "Download address for exported file.",
+          "member": "string",
+          "name": "DownloadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportNonlocalLoginPlacesRequest": {
+      "document": "ExportNonlocalLoginPlaces request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ExportNonlocalLoginPlacesResponse": {
+      "document": "ExportNonlocalLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "Download address for exported file.",
+          "member": "string",
+          "name": "DownloadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Export task ID",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\n\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values is `OR`.\n\n* There can be up to 5 filters\n* There can be up to 5 `Values` in the same `Filter`.\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter key name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "One or more filter values.",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "HistoryAccount": {
+      "document": "Account change history data.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of server.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account name.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account change type.\n<li>CREATE: creates account</li>\n<li>MODIFY: modifies account</li>\n<li>DELETE: deletes account</li>",
+          "member": "string",
+          "name": "ModifyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Change time.",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IgnoreImpactedHostsRequest": {
+      "document": "IgnoreImpactedHosts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability ID array.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IgnoreImpactedHostsResponse": {
+      "document": "IgnoreImpactedHosts response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImpactedHost": {
+      "document": "Affected server information",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last detection time.",
+          "member": "datetime",
+          "name": "LastScanTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability status.\n<li>UN_OPERATED: to be processed</li>\n<li>SCANING: scanning</li>\n<li>FIXED: fixed</li>",
+          "member": "string",
+          "name": "VulStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability category ID.",
+          "member": "uint64",
+          "name": "VulId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is the CWP Pro.",
+          "member": "bool",
+          "name": "IsProVersion",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LoginWhiteLists": {
+      "document": "Login allowlist",
+      "members": [
+        {
+          "default": "",
+          "document": "Record ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent ID",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelisted location",
+          "member": "Place",
+          "name": "Places",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelisted users (separated by commas)",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelisted IPs (separated by commas)",
+          "member": "string",
+          "name": "SrcIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether this rule is applied to all servers under the current account",
+          "member": "bool",
+          "name": "IsGlobal",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelist creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelist modification time",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP",
+          "member": "string",
+          "name": "HostIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LoginWhiteListsRule": {
+      "document": "Whitelist rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Whitelisted location",
+          "member": "Place",
+          "name": "Places",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelisted IPs (separated by commas). This parameter can be an IP range.",
+          "member": "string",
+          "name": "SrcIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whitelisted usernames (separated by commas)",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether this rule is applied to all servers under the current account",
+          "member": "bool",
+          "name": "IsGlobal",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server for which the allowlist takes effect",
+          "member": "string",
+          "name": "HostIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID, used for rule updating",
+          "member": "uint64",
+          "name": "Id",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Machine": {
+      "document": "Server list",
+      "members": [
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server OS.",
+          "member": "string",
+          "name": "MachineOs",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server status.\n<li>OFFLINE: offline</li>\n<li>ONLINE: online</li>\n<li>MACHINE_STOPPED: shut down</li>",
+          "member": "string",
+          "name": "MachineStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`. If the agent is offline for a long time, a null character will be returned.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM or BM instance `Uuid`.",
+          "member": "string",
+          "name": "Quuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of vulnerabilities.",
+          "member": "int64",
+          "name": "VulNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the server has enabled CWP Pro.\n<li>true: yes</li>\n<li>false: no</li>",
+          "member": "bool",
+          "name": "IsProVersion",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public IP of server.",
+          "member": "string",
+          "name": "MachineWanIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server status.\n<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of trojans.",
+          "member": "int64",
+          "name": "MalwareNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag information",
+          "member": "MachineTag",
+          "name": "Tag",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of baseline risks.",
+          "member": "int64",
+          "name": "BaselineNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of network risks.",
+          "member": "int64",
+          "name": "CyberAttackNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Risk status.\n<li>SAFE: safe</li>\n<li>RISK: at risk</li>\n<li>UNKNOWN: unknown</li>",
+          "member": "string",
+          "name": "SecurityStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of intrusions",
+          "member": "int64",
+          "name": "InvasionNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region information",
+          "member": "RegionInfo",
+          "name": "RegionInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MachineTag": {
+      "document": "Server tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Associated tag ID",
+          "member": "int64",
+          "name": "Rid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag ID",
+          "member": "uint64",
+          "name": "TagId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MaliciousRequest": {
+      "document": "Malicious request data.",
+      "members": [
+        {
+          "default": "",
+          "document": "Record ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of server.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Malicious request domain name.",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of malicious requests.",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process name.",
+          "member": "string",
+          "name": "ProcessName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record status.\n<li>UN_OPERATED: to be processed</li>\n<li>TRUSTED: trusted</li>\n<li>UN_TRUSTED: untrusted</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Malicious request domain name description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reference address.",
+          "member": "string",
+          "name": "Reference",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discovery time.",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record merge time.",
+          "member": "datetime",
+          "name": "MergeTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process MD5\nValue.",
+          "member": "string",
+          "name": "ProcessMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Executed command line.",
+          "member": "string",
+          "name": "CmdLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process `PID`.",
+          "member": "uint64",
+          "name": "Pid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Malware": {
+      "document": "Trojan information",
+      "members": [
+        {
+          "default": "",
+          "document": "Event ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current trojan status.\n<li>UN_OPERATED: not processed</li><li>SEGREGATED: isolated</li><li>TRUSTED: trusted</li>\n<li>SEPARATING: isolating</li><li>RECOVERING: recovering</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan path.",
+          "member": "string",
+          "name": "FilePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan file creation time.",
+          "member": "datetime",
+          "name": "FileCreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan file modification time.",
+          "member": "datetime_iso",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MisAlarmNonlocalLoginPlacesRequest": {
+      "document": "MisAlarmNonlocalLoginPlaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unusual login location event ID array.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "MisAlarmNonlocalLoginPlacesResponse": {
+      "document": "MisAlarmNonlocalLoginPlaces response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmAttributeRequest": {
+      "document": "ModifyAlarmAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm item.\n<li>Offline: CWP is offline</li>\n<li>Malware: trojan event</li>\n<li>NonlocalLogin: unusual login location discovered</li>\n<li>CrackSuccess: brute force attack succeeded</li>",
+          "member": "string",
+          "name": "Attribute",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm item attributes.\n<li>CLOSE: disabled</li>\n<li>OPEN: enabled</li>",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmAttributeResponse": {
+      "document": "ModifyAlarmAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoOpenProVersionConfigRequest": {
+      "document": "ModifyAutoOpenProVersionConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Auto-Activation status.\n<li>CLOSE: disabled</li>\n<li>OPEN: enabled</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoOpenProVersionConfigResponse": {
+      "document": "ModifyAutoOpenProVersionConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoginWhiteListRequest": {
+      "document": "ModifyLoginWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whitelist rule",
+          "member": "LoginWhiteListsRule",
+          "name": "Rules",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoginWhiteListResponse": {
+      "document": "ModifyLoginWhiteList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProVersionRenewFlagRequest": {
+      "document": "ModifyProVersionRenewFlag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Auto-renewal flag. Valid values:\n<li>NOTIFY_AND_AUTO_RENEW: notifies of expiration and auto-renews</li>\n<li>NOTIFY_AND_MANUAL_RENEW: notifies of expiration but does not auto-renew</li>\n<li>DISABLE_NOTIFY_AND_MANUAL_RENEW: does not notify of expiration or auto-renew</li>",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique server ID, corresponding to `uuid` for CVM or `instanceId` for BM.",
+          "member": "string",
+          "name": "Quuid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProVersionRenewFlagResponse": {
+      "document": "ModifyProVersionRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NonLocalLoginPlace": {
+      "document": "Unusual login location",
+      "members": [
+        {
+          "default": "",
+          "document": "Event ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Login status\n<li>NON_LOCAL_LOGIN: unusual login location</li>\n<li>NORMAL_LOGIN: intended login</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username.",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "City ID.",
+          "member": "uint64",
+          "name": "City",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region ID.",
+          "member": "uint64",
+          "name": "Country",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Province/State ID.",
+          "member": "uint64",
+          "name": "Province",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Login IP.",
+          "member": "string",
+          "name": "SrcIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Login time.",
+          "member": "datetime",
+          "name": "LoginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `Uuid`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OpenPort": {
+      "document": "Port list",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Open port number.",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process name corresponding to port.",
+          "member": "string",
+          "name": "ProcessName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process `Pid` corresponding to port.",
+          "member": "uint64",
+          "name": "Pid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record creation time.",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record update time.",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OpenPortStatistics": {
+      "document": "Port statistics list",
+      "members": [
+        {
+          "default": "",
+          "document": "Port number",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of servers",
+          "member": "uint64",
+          "name": "MachineNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OpenProVersionRequest": {
+      "document": "OpenProVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server type.\n<li>CVM: CVM</li>\n<li>BM: BM</li>",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server region\nExamples: ap-guangzhou, ap-shanghai",
+          "member": "string",
+          "name": "MachineRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server `Uuid` array.\n`InstanceId` for BM or `Uuid` for CVM",
+          "member": "string",
+          "name": "Quuids",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Event ID.",
+          "member": "uint64",
+          "name": "ActivityId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenProVersionResponse": {
+      "document": "OpenProVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Place": {
+      "document": "Login location information",
+      "members": [
+        {
+          "default": "",
+          "document": "City ID.",
+          "member": "uint64",
+          "name": "CityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Province/State ID.",
+          "member": "uint64",
+          "name": "ProvinceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region ID. Currently, only `1` (Mainland China) is supported.",
+          "member": "uint64",
+          "name": "CountryId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Process": {
+      "document": "Process information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of server.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name.",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process `Pid`.",
+          "member": "uint64",
+          "name": "Pid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process `Ppid`.",
+          "member": "uint64",
+          "name": "Ppid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process name.",
+          "member": "string",
+          "name": "ProcessName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process username.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS.\n<li>WIN32: Windows 32-bit</li>\n<li>WIN64: Windows 64-bit</li>\n<li>LINUX32: Linux 32-bit</li>\n<li>LINUX64: Linux 64-bit</li>",
+          "member": "string",
+          "name": "Platform",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process path.",
+          "member": "string",
+          "name": "FullPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProcessStatistics": {
+      "document": "Process statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "Process name.",
+          "member": "string",
+          "name": "ProcessName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of servers.",
+          "member": "uint64",
+          "name": "MachineNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RecoverMalwaresRequest": {
+      "document": "RecoverMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Trojan ID array. Up to 200 IDs can be deleted at a time",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RecoverMalwaresResponse": {
+      "document": "RecoverMalwares response structure.",
+      "members": [
+        {
+          "document": "Array of IDs of successfully recovered trojans.",
+          "member": "uint64",
+          "name": "SuccessIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of IDs of trojans failed to be recovered.",
+          "member": "uint64",
+          "name": "FailedIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegionInfo": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region, such as `ap-guangzhou`, `ap-shanghai` and `ap-beijing`",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name, such as `South China (Guangzhou)`, `East China (Shanghai)`, and `North China (Beijing)`",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region code, such as `gz`, `sh`, and `bj`",
+          "member": "string",
+          "name": "RegionCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RescanImpactedHostRequest": {
+      "document": "RescanImpactedHost request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RescanImpactedHostResponse": {
+      "document": "RescanImpactedHost response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SecurityDynamic": {
+      "document": "Security event message data.",
+      "members": [
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security event occurrence time.",
+          "member": "datetime",
+          "name": "EventTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security event type.\n<li>MALWARE: trojan event</li>\n<li>NON_LOCAL_LOGIN: unusual login location</li>\n<li>BRUTEATTACK_SUCCESS: brute force attack succeeded</li>\n<li>VUL: vulnerability</li>\n<li>BASELINE: security baseline</li>",
+          "member": "string",
+          "name": "EventType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security event message.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security event level.\n<li>RISK: severe</li>\n<li>HIGH: high</li>\n<li>NORMAL: medium</li>\n<li>LOW: low</li>",
+          "member": "string",
+          "name": "SecurityLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityTrend": {
+      "document": "Security trend statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event time.",
+          "member": "date",
+          "name": "Date",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of events.",
+          "member": "uint64",
+          "name": "EventNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SeparateMalwaresRequest": {
+      "document": "SeparateMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Trojan event ID array.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SeparateMalwaresResponse": {
+      "document": "SeparateMalwares response structure.",
+      "members": [
+        {
+          "document": "Array of IDs of successfully isolated trojans.",
+          "member": "uint64",
+          "name": "SuccessIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of IDs of trojans failed to be isolated.",
+          "member": "uint64",
+          "name": "FailedIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Tag": {
+      "document": "Tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of servers",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TagMachine": {
+      "document": "Tagged server information",
+      "members": [
+        {
+          "default": "",
+          "document": "ID",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server ID",
+          "member": "string",
+          "name": "Quuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server name",
+          "member": "string",
+          "name": "MachineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of server",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public IP of server",
+          "member": "string",
+          "name": "MachineWanIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server region",
+          "member": "string",
+          "name": "MachineRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server region type",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TrustMaliciousRequestRequest": {
+      "document": "TrustMaliciousRequest request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Malicious request record ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "TrustMaliciousRequestResponse": {
+      "document": "TrustMaliciousRequest response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TrustMalwaresRequest": {
+      "document": "TrustMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Trojan ID array.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TrustMalwaresResponse": {
+      "document": "TrustMalwares response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UntrustMaliciousRequestRequest": {
+      "document": "UntrustMaliciousRequest request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Trusted record ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UntrustMaliciousRequestResponse": {
+      "document": "UntrustMaliciousRequest response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UntrustMalwaresRequest": {
+      "document": "UntrustMalwares request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Trojan event ID array. Up to 200 IDs can be processed at a time.",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UntrustMalwaresResponse": {
+      "document": "UntrustMalwares response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UsualPlace": {
+      "document": "Usual login location",
+      "members": [
+        {
+          "default": "",
+          "document": "ID.",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP agent `UUID`.",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region ID.",
+          "member": "uint64",
+          "name": "CountryId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Province/State ID.",
+          "member": "uint64",
+          "name": "ProvinceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "City ID.",
+          "member": "uint64",
+          "name": "CityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Vul": {
+      "document": "Vulnerability list data",
+      "members": [
+        {
+          "default": "",
+          "document": "Vulnerability category ID",
+          "member": "uint64",
+          "name": "VulId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability name",
+          "member": "string",
+          "name": "VulName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability severity level:\nHIGH: high\nMIDDLE: medium\nLOW: low\nNOTICE: notice",
+          "member": "string",
+          "name": "VulLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last scanned time",
+          "member": "datetime",
+          "name": "LastScanTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of affected servers",
+          "member": "uint64",
+          "name": "ImpactedHostNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability status\n* UN_OPERATED: to be processed\n* FIXED: fixed",
+          "member": "string",
+          "name": "VulStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WeeklyReport": {
+      "document": "Weekly report list.",
+      "members": [
+        {
+          "default": "",
+          "document": "Weekly report start time.",
+          "member": "date",
+          "name": "BeginDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Weekly report end time.",
+          "member": "date",
+          "name": "EndDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WeeklyReportBruteAttack": {
+      "document": "Brute force attack data in weekly CWP Pro report.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Hacked username.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP.",
+          "member": "string",
+          "name": "SrcIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of attempts.",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attack time.",
+          "member": "datetime",
+          "name": "AttackTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WeeklyReportMalware": {
+      "document": "Trojan data in weekly CWP Pro report.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan file path.",
+          "member": "string",
+          "name": "FilePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan file MD5 value.",
+          "member": "string",
+          "name": "Md5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trojan discovery time.",
+          "member": "datetime",
+          "name": "FindTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current trojan status.\n<li>UN_OPERATED: not processed</li>\n<li>SEGREGATED: isolated</li>\n<li>TRUSTED: trusted</li>\n<li>SEPARATING: isolating</li>\n<li>RECOVERING: recovering</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WeeklyReportNonlocalLoginPlace": {
+      "document": "Unusual login location data in weekly CWP Pro report",
+      "members": [
+        {
+          "default": "",
+          "document": "Server IP.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username.",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP.",
+          "member": "string",
+          "name": "SrcIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region ID.",
+          "member": "uint64",
+          "name": "Country",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Province/State ID.",
+          "member": "uint64",
+          "name": "Province",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "City ID.",
+          "member": "uint64",
+          "name": "City",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Login time.",
+          "member": "datetime",
+          "name": "LoginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WeeklyReportVul": {
+      "document": "Vulnerability data in weekly CWP Pro report.",
+      "members": [
+        {
+          "default": "",
+          "document": "Private IP of server.",
+          "member": "string",
+          "name": "MachineIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability name.",
+          "member": "string",
+          "name": "VulName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability type.\n<li> WEB: web vulnerability</li>\n<li> SYSTEM: system component vulnerability</li>\n<li> BASELINE: security baseline</li>",
+          "member": "string",
+          "name": "VulType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vulnerability status.\n<li> UN_OPERATED: to be processed</li>\n<li> SCANING: scanning</li>\n<li> FIXED: fixed</li>",
+          "member": "string",
+          "name": "VulStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last scanned time.",
+          "member": "datetime",
+          "name": "LastScanTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

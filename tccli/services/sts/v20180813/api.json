@@ -1,0 +1,276 @@
+{
+  "actions": {
+    "AssumeRole": {
+      "document": "This API is used to request for the temporary security credentials of a role.",
+      "input": "AssumeRoleRequest",
+      "name": "Requests for the temporary security credentials of a role.",
+      "output": "AssumeRoleResponse"
+    },
+    "AssumeRoleWithSAML": {
+      "document": "This API is used to request for the temporary credentials for a role that has been authenticated via a SAML assertion.",
+      "input": "AssumeRoleWithSAMLRequest",
+      "name": "Requests for the temporary credentials for a role that has been authenticated via a SAML assertion",
+      "output": "AssumeRoleWithSAMLResponse"
+    },
+    "GetFederationToken": {
+      "document": "This API is used to get temporary credentials for a federated user.",
+      "input": "GetFederationTokenRequest",
+      "name": "Gets temporary credentials for federated user",
+      "output": "GetFederationTokenResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-08-13",
+    "serviceNameCN": "安全凭证服务",
+    "serviceShortName": "sts"
+  },
+  "objects": {
+    "AssumeRoleRequest": {
+      "document": "AssumeRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Role resource description, such as qcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName",
+          "member": "string",
+          "name": "RoleArn",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User-defined temporary session name",
+          "member": "string",
+          "name": "RoleSessionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200",
+          "member": "uint64",
+          "name": "DurationSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy description\nNote:\n1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).\n2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).\n3. The policy cannot contain the `principal` element.",
+          "member": "string",
+          "name": "Policy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssumeRoleResponse": {
+      "document": "AssumeRole response structure.",
+      "members": [
+        {
+          "document": "Temporary security credentials",
+          "member": "Credentials",
+          "name": "Credentials",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Credentials expiration time. A Unix timestamp will be returned which is accurate to the second",
+          "member": "int64",
+          "name": "ExpiredTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Credentials expiration time in UTC time in ISO 8601 format.",
+          "member": "string",
+          "name": "Expiration",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssumeRoleWithSAMLRequest": {
+      "document": "AssumeRoleWithSAML request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded SAML assertion",
+          "member": "string",
+          "name": "SAMLAssertion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Principal access description name",
+          "member": "string",
+          "name": "PrincipalArn",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Role access description name",
+          "member": "string",
+          "name": "RoleArn",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Session name",
+          "member": "string",
+          "name": "RoleSessionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 7200",
+          "member": "uint64",
+          "name": "DurationSeconds",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AssumeRoleWithSAMLResponse": {
+      "document": "AssumeRoleWithSAML response structure.",
+      "members": [
+        {
+          "document": "An object consists of the `Token`, `TmpSecretId`, and `TmpSecretId`",
+          "member": "Credentials",
+          "name": "Credentials",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Credentials expiration time. A Unix timestamp will be returned which is accurate to the second",
+          "member": "uint64",
+          "name": "ExpiredTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Credentials expiration time in UTC time in ISO 8601 format.",
+          "member": "string",
+          "name": "Expiration",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Credentials": {
+      "document": "Temporary credentials",
+      "members": [
+        {
+          "default": "",
+          "document": "token",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Temporary credentials secret ID",
+          "member": "string",
+          "name": "TmpSecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Temporary credentials secret key",
+          "member": "string",
+          "name": "TmpSecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GetFederationTokenRequest": {
+      "document": "GetFederationToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The customizable name of the caller, consisting of letters",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy description\nNote:\n1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).\n2. For the policy syntax, please see CAM’s [Syntax Logic](https://cloud.tencent.com/document/product/598/10603).\n3. The policy cannot contain the `principal` element.",
+          "member": "string",
+          "name": "Policy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the validity period of credentials in seconds. Default value: 1800. Maximum value: 7200",
+          "member": "uint64",
+          "name": "DurationSeconds",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFederationTokenResponse": {
+      "document": "GetFederationToken response structure.",
+      "members": [
+        {
+          "document": "Temporary credentials",
+          "member": "Credentials",
+          "name": "Credentials",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second",
+          "member": "uint64",
+          "name": "ExpiredTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Credentials expiration time in UTC time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Expiration",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}
