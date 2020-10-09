@@ -1,0 +1,1287 @@
+{
+  "actions": {
+    "CreateTranscode": {
+      "document": "This API is used to create a document transcoding task.",
+      "input": "CreateTranscodeRequest",
+      "name": "Creates a document transcoding task",
+      "output": "CreateTranscodeResponse"
+    },
+    "DescribeOnlineRecord": {
+      "document": "This API is used to query the status and result of a real-time recording task.",
+      "input": "DescribeOnlineRecordRequest",
+      "name": "Querying a real-time recording task",
+      "output": "DescribeOnlineRecordResponse"
+    },
+    "DescribeOnlineRecordCallback": {
+      "document": "This API is used to query the real-time recording callback address.",
+      "input": "DescribeOnlineRecordCallbackRequest",
+      "name": "Queries the callback address",
+      "output": "DescribeOnlineRecordCallbackResponse"
+    },
+    "DescribeTranscode": {
+      "document": "This API is used to query the progress and result of a document transcoding task.",
+      "input": "DescribeTranscodeRequest",
+      "name": "Queries document transcoding tasks",
+      "output": "DescribeTranscodeResponse"
+    },
+    "DescribeTranscodeCallback": {
+      "document": "This API is used to query the document transcoding callback address.",
+      "input": "DescribeTranscodeCallbackRequest",
+      "name": "Queries the callback address",
+      "output": "DescribeTranscodeCallbackResponse"
+    },
+    "PauseOnlineRecord": {
+      "document": "This API is used to pause real-time recording.",
+      "input": "PauseOnlineRecordRequest",
+      "name": "Pauses real-time recording",
+      "output": "PauseOnlineRecordResponse"
+    },
+    "ResumeOnlineRecord": {
+      "document": "This API is used to resume real-time recording.",
+      "input": "ResumeOnlineRecordRequest",
+      "name": "Resumes real-time recording",
+      "output": "ResumeOnlineRecordResponse"
+    },
+    "SetOnlineRecordCallback": {
+      "document": "This API is used to set the real-time recording callback address. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
+      "input": "SetOnlineRecordCallbackRequest",
+      "name": "Sets the callback address",
+      "output": "SetOnlineRecordCallbackResponse"
+    },
+    "SetOnlineRecordCallbackKey": {
+      "document": "This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+      "input": "SetOnlineRecordCallbackKeyRequest",
+      "name": "Sets the key for the real-time recording callback",
+      "output": "SetOnlineRecordCallbackKeyResponse"
+    },
+    "SetTranscodeCallback": {
+      "document": "This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).",
+      "input": "SetTranscodeCallbackRequest",
+      "name": "Sets the callback address",
+      "output": "SetTranscodeCallbackResponse"
+    },
+    "SetTranscodeCallbackKey": {
+      "document": "This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+      "input": "SetTranscodeCallbackKeyRequest",
+      "name": "Sets the key for the document transcoding callback.",
+      "output": "SetTranscodeCallbackKeyResponse"
+    },
+    "StartOnlineRecord": {
+      "document": "This API is used to start a real-time recording task.",
+      "input": "StartOnlineRecordRequest",
+      "name": "Starts real-time recording",
+      "output": "StartOnlineRecordResponse"
+    },
+    "StopOnlineRecord": {
+      "document": "This API is used to stop real-time recording.",
+      "input": "StopOnlineRecordRequest",
+      "name": "Stops real-time recording",
+      "output": "StopOnlineRecordResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-09-19",
+    "serviceNameCN": "互动白板",
+    "serviceShortName": "tiw"
+  },
+  "objects": {
+    "Canvas": {
+      "document": "Mixed stream canvas parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Width and height of the mixed stream canvas",
+          "member": "LayoutParams",
+          "name": "LayoutParams",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Background color, which is black by default. Its format is RGB. for example, \"#FF0000\" for the red color.",
+          "member": "string",
+          "name": "BackgroundColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Concat": {
+      "document": "Real-time recording video splicing parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the video splicing feature\nIf the video splicing feature is enabled, the real-time recording service will splice multiple video clips resulting from the pause into one video.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Download address of the padding image used during video splicing. If it is not specified, a pure black image is used by default.",
+          "member": "string",
+          "name": "Image",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateTranscodeRequest": {
+      "document": "CreateTranscode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Address of the file for transcoding",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the PowerPoint file is static. The default value is False.\nIf IsStaticPPT is False, documents with the .ppt or .pptx extension will be dynamically transcoded to HTML5 pages, and documents with other extensions will be statically transcoded to images. If IsStaticPPT is True, documents with any extensions will be statically transcoded to images.",
+          "member": "bool",
+          "name": "IsStaticPPT",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Minimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.\n\n ",
+          "member": "string",
+          "name": "MinResolution",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resolution of the thumbnail generated for the dynamically transcoded PowerPoint file. If no value or null is specified for it or the resolution format is invalid, no thumbnail will be generated. The resolution format is the same as that of MinResolution.\n\nFor static transcoding, this parameter does not work.",
+          "member": "string",
+          "name": "ThumbnailResolution",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compression format of the transcoded file. If no value or null is specified for it or the specified format is invalid, no compression file will be generated. Currently, the following compression formats are supported:\n\n`zip`: generates a .zip compression package.\n`tar.gz: generates a .tar.gz compression package.",
+          "member": "string",
+          "name": "CompressFileType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTranscodeResponse": {
+      "document": "CreateTranscode response structure.",
+      "members": [
+        {
+          "document": "Unique ID of the document transcoding task, which is used to query the task progress and transcoding result",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CustomLayout": {
+      "document": "Custom mixed stream layout parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Mixed stream canvas parameter",
+          "member": "Canvas",
+          "name": "Canvas",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stream layout. The layout of each stream cannot exceed the canvas area.",
+          "member": "StreamLayout",
+          "name": "InputStreamList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DescribeOnlineRecordCallbackRequest": {
+      "document": "DescribeOnlineRecordCallback request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the application",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnlineRecordCallbackResponse": {
+      "document": "DescribeOnlineRecordCallback response structure.",
+      "members": [
+        {
+          "document": "Callback address of the real-time recording event. If no callback address is set, this field is null.",
+          "member": "string",
+          "name": "Callback",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authentication key of the real-time recording callback",
+          "member": "string",
+          "name": "CallbackKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnlineRecordRequest": {
+      "document": "DescribeOnlineRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the real-time recording task",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnlineRecordResponse": {
+      "document": "DescribeOnlineRecord response structure.",
+      "members": [
+        {
+          "document": "Recording stop reason\n- AUTO: recording automatically stops because no upstream audio/video or whiteboard operation occurs in the room for a long time.\n- USER_CALL: the API for stopping recording is called.\n- EXCEPTION: an exception occurred during recording.",
+          "member": "string",
+          "name": "FinishReason",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the recording task to be queried.",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Recording task status\n- PREPARED: preparing\n- RECORDING: recording\n- PAUSED: recording is paused.\n- STOPPED: recording is stopped, and the recorded video is being processed and uploaded.\n- FINISHED: the recorded video has been processed and uploaded, and the recording result is generated.",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Room ID",
+          "member": "int64",
+          "name": "RoomId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Group ID of the whiteboard",
+          "member": "string",
+          "name": "GroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the recording user",
+          "member": "string",
+          "name": "RecordUserId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Actual recording start time, which is a UNIX timestamp in seconds",
+          "member": "int64",
+          "name": "RecordStartTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Actual recording stop time, which is a UNIX timestamp in seconds",
+          "member": "int64",
+          "name": "RecordStopTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total video playback duration, in milliseconds",
+          "member": "int64",
+          "name": "TotalTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of exceptions during recording",
+          "member": "int64",
+          "name": "ExceptionCnt",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Duration to be deleted in the spliced video. This parameter is valid only when the video splicing feature is enabled.",
+          "member": "OmittedDuration",
+          "name": "OmittedDurations",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of recorded videos",
+          "member": "VideoInfo",
+          "name": "VideoInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTranscodeCallbackRequest": {
+      "document": "DescribeTranscodeCallback request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the application",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTranscodeCallbackResponse": {
+      "document": "DescribeTranscodeCallback response structure.",
+      "members": [
+        {
+          "document": "Document transcoding callback address",
+          "member": "string",
+          "name": "Callback",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authentication key of the document transcoding callback",
+          "member": "string",
+          "name": "CallbackKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTranscodeRequest": {
+      "document": "DescribeTranscode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the document transcoding task",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTranscodeResponse": {
+      "document": "DescribeTranscode response structure.",
+      "members": [
+        {
+          "document": "Total number of document pages",
+          "member": "int64",
+          "name": "Pages",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Transcoding progress. Value range: 0 to 100",
+          "member": "int64",
+          "name": "Progress",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Document resolution",
+          "member": "string",
+          "name": "Resolution",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "URL of the transcoding result\nDynamic transcoding: link of the HTML5 page transcoded from a PowerPoint file\nStatic transcoding: URL prefix of the image transcoded for each document page. For example, if the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/`, the image URL of the first page is\n`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.",
+          "member": "string",
+          "name": "ResultUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Current task state\n- QUEUED: queuing for transcoding\n- PROCESSING: transcoding is in progress\n- FINISHED: transcoded",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unique ID of the transcoding task",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Document name",
+          "member": "string",
+          "name": "Title",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/ `, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is\n`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.\n\nIf the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.",
+          "member": "string",
+          "name": "ThumbnailUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resolution of the thumbnail generated for dynamic transcoding",
+          "member": "string",
+          "name": "ThumbnailResolution",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.",
+          "member": "string",
+          "name": "CompressFileUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LayoutParams": {
+      "document": "Custom mixed stream layout parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Stream image width. Value range: [2,3000]",
+          "member": "int64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stream image height. Value range: [2,3000]",
+          "member": "int64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset of the top point in the upper-left corner of the current image to the X axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].",
+          "member": "int64",
+          "name": "X",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset of the top point in the upper-left corner of the current image to the Y axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].",
+          "member": "int64",
+          "name": "Y",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Z-axis position of the image. The default value is 0.\nThe Z axis determines the overlap sequence of images. The image with the largest z-axis value is at the top layer.",
+          "member": "int64",
+          "name": "ZOrder",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MixStream": {
+      "document": "Stream mixing configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether stream mixing is enabled",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether audio stream mixing is disabled",
+          "member": "bool",
+          "name": "DisableAudio",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the embedded mixed stream layout template. Valid values: 1 and 2. For more information on the differences of both values, see the sample embedded mixed stream layout template.\nIf the Custom field is not specified, ModelId is required.",
+          "member": "int64",
+          "name": "ModelId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of a teacher account\nThis field is valid only when ModelId is specified.\nIf you specify TeacherID for a user, the user's video stream will be displayed in the first image of the embedded template.",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom mixed stream layout parameter\nIf this parameter is available, the ModelId and TeacherId fields will be ignored.",
+          "member": "CustomLayout",
+          "name": "Custom",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "OmittedDuration": {
+      "document": "Duration to be ignored in the spliced video",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset of the paused time in the spliced video, in milliseconds",
+          "member": "int64",
+          "name": "VideoTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recording pause timestamp, in milliseconds",
+          "member": "int64",
+          "name": "PauseTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recording resumption timestamp, in milliseconds",
+          "member": "int64",
+          "name": "ResumeTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PauseOnlineRecordRequest": {
+      "document": "PauseOnlineRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the real-time recording task",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PauseOnlineRecordResponse": {
+      "document": "PauseOnlineRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecordControl": {
+      "document": "It specifies the global recording parameters and the recording parameters over a specific stream. For example, you can specify the streams you want to record and whether to record low-resolution videos only.",
+      "members": [
+        {
+          "default": "",
+          "document": "It specifies whether to enable RecordControl. Valid values: true (yes); false (no).",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:\n\ntrue: no stream is recorded.\nfalse: all streams are recorded. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
+          "member": "bool",
+          "name": "DisableRecord",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:\n\ntrue: no audio recording of any streams.\nfalse: audio recording of all streams. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
+          "member": "bool",
+          "name": "DisableAudio",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:\n\ntrue: only records low-resolution videos for all streams. Please ensure that the up-streaming end pushes the low-resolution videos. Otherwise, the recorded video may be black.\nfalse: high-resolution video recording of all streams. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
+          "member": "bool",
+          "name": "PullSmallVideo",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. ",
+          "member": "StreamControl",
+          "name": "StreamControls",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ResumeOnlineRecordRequest": {
+      "document": "ResumeOnlineRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the resumed real-time recording task",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeOnlineRecordResponse": {
+      "document": "ResumeOnlineRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetOnlineRecordCallbackKeyRequest": {
+      "document": "SetOnlineRecordCallbackKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the application",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "member": "string",
+          "name": "CallbackKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetOnlineRecordCallbackKeyResponse": {
+      "document": "SetOnlineRecordCallbackKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetOnlineRecordCallbackRequest": {
+      "document": "SetOnlineRecordCallback request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
+          "member": "string",
+          "name": "Callback",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetOnlineRecordCallbackResponse": {
+      "document": "SetOnlineRecordCallback response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetTranscodeCallbackKeyRequest": {
+      "document": "SetTranscodeCallbackKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the application",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "member": "string",
+          "name": "CallbackKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetTranscodeCallbackKeyResponse": {
+      "document": "SetTranscodeCallbackKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetTranscodeCallbackRequest": {
+      "document": "SetTranscodeCallback request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.\nFor more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).",
+          "member": "string",
+          "name": "Callback",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetTranscodeCallbackResponse": {
+      "document": "SetTranscodeCallback response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartOnlineRecordRequest": {
+      "document": "StartOnlineRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the room for recording. Value range: (1, 4294967295)",
+          "member": "int64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User ID used by the real-time recording service for entering a room. Its format is `tic_record_user_${RoomId}_${Random}`, where `${RoomId}` indicates the ID of the room for recording and `${Random}` is a random string.\nThe ID must be an unused ID in the SDK. The real-time recording service uses the user ID to enter the room for audio, video, and whiteboard recording. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the recording operation.",
+          "member": "string",
+          "name": "RecordUserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature corresponding to RecordUserId",
+          "member": "string",
+          "name": "RecordUserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Disused) IM group ID of the whiteboard. By default, it is the same as the room ID.",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Real-time recording video splicing parameter",
+          "member": "Concat",
+          "name": "Concat",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Real-time recording whiteboard parameter, such as the whiteboard width and height",
+          "member": "Whiteboard",
+          "name": "Whiteboard",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Real-time recording stream mixing parameter\nNotes:\n1. The stream mixing feature needs to be enabled separately. If you need the feature, contact TIW customer service.\n2. To use the stream mixing feature, the Extras parameter is required and must contain \"MIX_STREAM\".",
+          "member": "MixStream",
+          "name": "MixStream",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "List of advanced features used\nList of possible values:\nMIX_STREAM - Stream mixing feature",
+          "member": "string",
+          "name": "Extras",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3.",
+          "member": "bool",
+          "name": "AudioFileNeeded",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.",
+          "member": "RecordControl",
+          "name": "RecordControl",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "StartOnlineRecordResponse": {
+      "document": "StartOnlineRecord response structure.",
+      "members": [
+        {
+          "document": "ID of the real-time recording task",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopOnlineRecordRequest": {
+      "document": "StopOnlineRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SdkAppId of the customer",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the recording task to stop",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopOnlineRecordResponse": {
+      "document": "StopOnlineRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StreamControl": {
+      "document": "A group of parameters for recording over specified streams. It specifies whether to disable the audio recording and whether to record high-resolution or low-resolution videos.",
+      "members": [
+        {
+          "default": "",
+          "document": "Video stream ID\nDescription of the possible video stream ID values:\n1. `tic_record_user`: the whiteboard video stream\n2. `tic_substream`: the auxiliary video stream\n3. Specific user ID: the video stream of the specified user\n\nThe actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.",
+          "member": "string",
+          "name": "StreamId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to disable recording over the stream.\n\ntrue: does not record this stream. This stream will not be included in the final recording file.\nfalse: records this stream. This stream will be included in the final recording file.\n\nDefault value: false",
+          "member": "bool",
+          "name": "DisableRecord",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to disable the audio recording of the stream.\n\ntrue: does not record the audio of the stream. In the final recording file, this stream will be soundless.\nfalse: the stream has both video and audio recording.\n\nDefault value: false",
+          "member": "bool",
+          "name": "DisableAudio",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to only record low-resolution stream videos.\n\ntrue: records only low-resolution videos. In this case, please make sure that the client pushes low-resolution videos upstream. Otherwise, the recorded video may be black. \nfalse: records only high-resolution videos.\n\nDefault value: false",
+          "member": "bool",
+          "name": "PullSmallVideo",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "StreamLayout": {
+      "document": "Stream layout parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Stream layout configuration",
+          "member": "LayoutParams",
+          "name": "LayoutParams",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video stream ID\nDescription of the possible video stream ID values:\n1. tic_record_user: the current picture is used to display the whiteboard video stream.\n2. tic_substream: the current picture is used to display the auxiliary video stream.\n3. Specific user ID: the current picture is used to display the video stream of a specific user.\n4.Left empty: the current picture is vacant for new video stream.",
+          "member": "string",
+          "name": "InputStreamId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Background color in RGB format, such as \"#FF0000\" for red. The default color is black. ",
+          "member": "string",
+          "name": "BackgroundColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video filling mode.\n\n0: self-adaption mode. Scales the video proportionally to completely display it in the specified area. In this mode, there may be black bars.\n1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.",
+          "member": "int64",
+          "name": "FillMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "VideoInfo": {
+      "document": "Video information",
+      "members": [
+        {
+          "default": "",
+          "document": "Video playback start time, in milliseconds",
+          "member": "int64",
+          "name": "VideoPlayTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video size, in bytes",
+          "member": "int64",
+          "name": "VideoSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video format",
+          "member": "string",
+          "name": "VideoFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video playback duration, in milliseconds",
+          "member": "int64",
+          "name": "VideoDuration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video file URL",
+          "member": "string",
+          "name": "VideoUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video file ID",
+          "member": "string",
+          "name": "VideoId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)",
+          "member": "int64",
+          "name": "VideoType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Width of the video resolution.",
+          "member": "int64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Height of the video resolution.",
+          "member": "int64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Whiteboard": {
+      "document": "Real-time recording whiteboard parameter, such as the whiteboard width and height",
+      "members": [
+        {
+          "default": "",
+          "document": "Whiteboard video width in the real-time recording result. The default value is 1280.",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whiteboard video height in the real-time recording result. The default value is 960.",
+          "member": "int64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whiteboard initialization parameter, which is passed through to the whiteboard SDK",
+          "member": "string",
+          "name": "InitParam",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

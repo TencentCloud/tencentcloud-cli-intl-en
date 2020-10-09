@@ -1,0 +1,2564 @@
+{
+  "actions": {
+    "AssignProject": {
+      "document": "This API is used to specify the project to which a TencentDB instance belongs.\n",
+      "input": "AssignProjectRequest",
+      "name": "Specifies the project to which a TencentDB instance belongs",
+      "output": "AssignProjectResponse"
+    },
+    "CreateBackupDBInstance": {
+      "document": "This API is used to create instance backups.",
+      "input": "CreateBackupDBInstanceRequest",
+      "name": "Creates instance backups",
+      "output": "CreateBackupDBInstanceResponse"
+    },
+    "CreateDBInstance": {
+      "document": "This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.",
+      "input": "CreateDBInstanceRequest",
+      "name": "Creates a monthly subscription TencentDB instance",
+      "output": "CreateDBInstanceResponse"
+    },
+    "CreateDBInstanceHour": {
+      "document": "This API is used to create a pay-as-you-go TencentDB for MongoDB instance.",
+      "input": "CreateDBInstanceHourRequest",
+      "name": "Creates a pay-as-you-go TencentDB instance",
+      "output": "CreateDBInstanceHourResponse"
+    },
+    "DescribeAsyncRequestInfo": {
+      "document": "This API is used to query async task status.",
+      "input": "DescribeAsyncRequestInfoRequest",
+      "name": "Queries async task status",
+      "output": "DescribeAsyncRequestInfoResponse"
+    },
+    "DescribeBackupAccess": {
+      "document": "This API is used to get the permission to download a backup file. The specific backup file information can be obtained through the DescribeDBBackups API.",
+      "input": "DescribeBackupAccessRequest",
+      "name": "Gets the permission to download an instance backup",
+      "output": "DescribeBackupAccessResponse"
+    },
+    "DescribeClientConnections": {
+      "document": "This API is used to query the client connection information of an instance, including the IP and number of connections. Currently, only instances of MongoDB 3.2 are supported.",
+      "input": "DescribeClientConnectionsRequest",
+      "name": "Queries client connection information of an instance",
+      "output": "DescribeClientConnectionsResponse"
+    },
+    "DescribeDBBackups": {
+      "document": "This API is used to query the list of instance backups. Currently, only backups in the last 7 days can be queried.",
+      "input": "DescribeDBBackupsRequest",
+      "name": "Queries the list of instance backups",
+      "output": "DescribeDBBackupsResponse"
+    },
+    "DescribeDBInstanceDeal": {
+      "document": "This API is used to get details of purchase, renewal, and specification adjustment orders of a MongoDB instance.",
+      "input": "DescribeDBInstanceDealRequest",
+      "name": "Gets order details of an instance",
+      "output": "DescribeDBInstanceDealResponse"
+    },
+    "DescribeDBInstances": {
+      "document": "This API is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status.",
+      "input": "DescribeDBInstancesRequest",
+      "name": "Queries the list of TencentDB instances",
+      "output": "DescribeDBInstancesResponse"
+    },
+    "DescribeSlowLogPatterns": {
+      "document": "This API is used to get the slow log statistics of a database instance.",
+      "input": "DescribeSlowLogPatternsRequest",
+      "name": "Gets slow log statistics",
+      "output": "DescribeSlowLogPatternsResponse"
+    },
+    "DescribeSlowLogs": {
+      "document": "This API is used to get the slow log information of a TencentDB instance. Only slow logs for the last 7 days can be queried.",
+      "input": "DescribeSlowLogsRequest",
+      "name": "Gets slow log information",
+      "output": "DescribeSlowLogsResponse"
+    },
+    "DescribeSpecInfo": {
+      "document": "This API is used to query the purchasable instance specifications.",
+      "input": "DescribeSpecInfoRequest",
+      "name": "Queries the specifications of purchasable TencentDB instances",
+      "output": "DescribeSpecInfoResponse"
+    },
+    "FlushInstanceRouterConfig": {
+      "document": "This API is used to run the `FlushRouterConfig` command on all mongos instances.",
+      "input": "FlushInstanceRouterConfigRequest",
+      "name": "Flushes router configuration",
+      "output": "FlushInstanceRouterConfigResponse"
+    },
+    "InquirePriceCreateDBInstances": {
+      "document": "This API is used to query price of instance creation. The `region` parameter must be passed in this API, otherwise verification will fail. This API allows queries only for purchasable instance specifications.",
+      "input": "InquirePriceCreateDBInstancesRequest",
+      "name": "Queries price of instance creation",
+      "output": "InquirePriceCreateDBInstancesResponse"
+    },
+    "InquirePriceModifyDBInstanceSpec": {
+      "document": "This API is used to query price of instance specification adjustment.",
+      "input": "InquirePriceModifyDBInstanceSpecRequest",
+      "name": "Queries price of specification adjustment",
+      "output": "InquirePriceModifyDBInstanceSpecResponse"
+    },
+    "InquirePriceRenewDBInstances": {
+      "document": "This API is used to query the renewal price of a monthly subscription instance.",
+      "input": "InquirePriceRenewDBInstancesRequest",
+      "name": "Queries the renewal price of an instance",
+      "output": "InquirePriceRenewDBInstancesResponse"
+    },
+    "IsolateDBInstance": {
+      "document": "This API is used to isolate a pay-as-you-go TencentDB for MongoDB instance. An isolated instance is retained in the recycle bin and data can no longer be written to it. After it is isolated for a certain period of time, it will be completely deleted. For the retention period in the recycle bin, please see the terms of service for pay-as-you-go billing. Isolated pay-as-you-go instances cannot be recovered, so please proceed with caution.",
+      "input": "IsolateDBInstanceRequest",
+      "name": "Isolates a TencentDB Instance",
+      "output": "IsolateDBInstanceResponse"
+    },
+    "ModifyDBInstanceSpec": {
+      "document": "This API is used to adjust the specification configuration of a TencentDB for MongoDB. The purchasable specifications supported by the API can be obtained through the DescribeSpecInfo API.",
+      "input": "ModifyDBInstanceSpecRequest",
+      "name": "Adjusts the configurations of a TencentDB instance",
+      "output": "ModifyDBInstanceSpecResponse"
+    },
+    "OfflineIsolatedDBInstance": {
+      "document": "This API is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status.",
+      "input": "OfflineIsolatedDBInstanceRequest",
+      "name": "Deactivates isolated TencentDB instances",
+      "output": "OfflineIsolatedDBInstanceResponse"
+    },
+    "RenameInstance": {
+      "document": "This API is used to rename a TencentDB instance.",
+      "input": "RenameInstanceRequest",
+      "name": "Renames an instance",
+      "output": "RenameInstanceResponse"
+    },
+    "RenewDBInstances": {
+      "document": "This API is used to renew a monthly subscription TencentDB instance. Only monthly subscription instances are supported, while pay-as-you-go instances do not need to be renewed.",
+      "input": "RenewDBInstancesRequest",
+      "name": "Renews a TencentDB instance",
+      "output": "RenewDBInstancesResponse"
+    },
+    "ResetDBInstancePassword": {
+      "document": "This API is used to modify instance password.",
+      "input": "ResetDBInstancePasswordRequest",
+      "name": "Modifies instance password",
+      "output": "ResetDBInstancePasswordResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-07-25",
+    "serviceNameCN": "云数据库 MongoDB",
+    "serviceShortName": "mongodb"
+  },
+  "objects": {
+    "AssignProjectRequest": {
+      "document": "AssignProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AssignProjectResponse": {
+      "document": "AssignProject response structure.",
+      "members": [
+        {
+          "document": "List of the returned async task IDs",
+          "member": "uint64",
+          "name": "FlowIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BackupFile": {
+      "document": "Storage information of a backup file",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the replica set/shard to which a backup file belongs",
+          "member": "string",
+          "name": "ReplicateSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Path to a backup file",
+          "member": "string",
+          "name": "File",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BackupInfo": {
+      "document": "Backup information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup mode. 0: automatic backup; 1: manual backup",
+          "member": "uint64",
+          "name": "BackupType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup name",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "BackupDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup file size in KB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "BackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup end time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup status. 1: backing up; 2: backed up successful",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup method. 0: logical backup; 1: physical backup",
+          "member": "uint64",
+          "name": "BackupMethod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClientConnection": {
+      "document": "Client connection information, including client IP and number of connections",
+      "members": [
+        {
+          "default": "",
+          "document": "Client IP of a connection",
+          "member": "string",
+          "name": "IP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of connections corresponding to a client IP",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateBackupDBInstanceRequest": {
+      "document": "CreateBackupDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: 0 (logical backup), 1 (physical backup)",
+          "member": "int64",
+          "name": "BackupMethod",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Backup remarks",
+          "member": "string",
+          "name": "BackupRemark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupDBInstanceResponse": {
+      "document": "CreateBackupDBInstance response structure.",
+      "members": [
+        {
+          "document": "The status of the queried backup process.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceHourRequest": {
+      "document": "CreateDBInstanceHour request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance memory size in GB",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB",
+          "member": "uint64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of replica sets. When a replica set instance is created, this parameter must be set to 1. When a sharding instance is created, please see the parameters returned by the DescribeSpecInfo API",
+          "member": "uint64",
+          "name": "ReplicateSetNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes in each replica set. Currently, the number of nodes in a replica set is fixed at 3, while the number of shards is customizable. For more information, please see the parameter returned by the DescribeSpecInfo API",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Version number. For the specific purchasable versions supported, please see the return result of the DescribeSpecInfo API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition",
+          "member": "string",
+          "name": "MongoVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server type. HIO: high IO; HIO10G: 10-Gigabit high IO",
+          "member": "string",
+          "name": "MachineCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. Minimum value: 1. Maximum value: 10",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "AZ information in the format of ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance type. REPLSET: replica set; SHARD: sharding cluster",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is not set, the basic network will be selected by default",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID. If VpcId is set, then SubnetId will be required",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID. If this parameter is not set, the default project will be used",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance tag information",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).",
+          "member": "int64",
+          "name": "Clone",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parent instance ID. It is required if the `Clone` is 3 or 4.",
+          "member": "string",
+          "name": "Father",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group.",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceHourResponse": {
+      "document": "CreateDBInstanceHour response structure.",
+      "members": [
+        {
+          "document": "Order ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of IDs of created instances",
+          "member": "string",
+          "name": "InstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceRequest": {
+      "document": "CreateDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GB.",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB.",
+          "member": "uint64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.",
+          "member": "string",
+          "name": "MongoVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance region name in the format of ap-guangzhou-2.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).",
+          "member": "string",
+          "name": "MachineCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.",
+          "member": "uint64",
+          "name": "ReplicateSetNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID. If this parameter is not set, the default project will be used.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is not set, the classic network will be used. Please use the `DescribeVpcs` API to query the VPC list.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`.",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance tag information.",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0.",
+          "member": "uint64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).",
+          "member": "int64",
+          "name": "Clone",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Primary instance ID. It is required for read-only and disaster recovery instances.",
+          "member": "string",
+          "name": "Father",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group.",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceResponse": {
+      "document": "CreateDBInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID.",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of IDs of created instances.",
+          "member": "string",
+          "name": "InstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DBInstanceInfo": {
+      "document": "Instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region information",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DBInstancePrice": {
+      "document": "Instance price",
+      "members": [
+        {
+          "default": "",
+          "document": "Unit price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Original price.",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discounted price.",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DescribeAsyncRequestInfoRequest": {
+      "document": "DescribeAsyncRequestInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Async request ID",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAsyncRequestInfoResponse": {
+      "document": "DescribeAsyncRequestInfo response structure.",
+      "members": [
+        {
+          "document": "Status.",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupAccessRequest": {
+      "document": "DescribeBackupAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the backup file for which to get the download permission",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupAccessResponse": {
+      "document": "DescribeBackupAccess response structure.",
+      "members": [
+        {
+          "document": "Instance region",
+          "member": "string",
+          "name": "Region",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The bucket where a backup file is located",
+          "member": "string",
+          "name": "Bucket",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Storage information of a backup file",
+          "member": "BackupFile",
+          "name": "Files",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClientConnectionsRequest": {
+      "document": "DescribeClientConnections request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of records that will be returned. Default value: 10,000.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClientConnectionsResponse": {
+      "document": "DescribeClientConnections response structure.",
+      "members": [
+        {
+          "document": "Client connection information, including client IP and number of connections",
+          "member": "ClientConnection",
+          "name": "Clients",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records that meet the query condition, which can be used for paginated queries.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBBackupsRequest": {
+      "document": "DescribeDBBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBBackupsResponse": {
+      "document": "DescribeDBBackups response structure.",
+      "members": [
+        {
+          "document": "Backup list",
+          "member": "BackupInfo",
+          "name": "BackupList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of backups",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceDealRequest": {
+      "document": "DescribeDBInstanceDeal request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Order ID. It is returned by the `CreateDBInstance` and other APIs.",
+          "member": "string",
+          "name": "DealId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceDealResponse": {
+      "document": "DescribeDBInstanceDeal response structure.",
+      "members": [
+        {
+          "document": "Order status. Valid values: 1 (unpaid), 2 (paid), 3 (delivering), 4 (delivered), 5 (delivery failed), 6 (refunded), 7 (order closed), 8 (order closed because it failed to be paid within timeout period).",
+          "member": "int64",
+          "name": "Status",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Original price of the order.",
+          "member": "float",
+          "name": "OriginalPrice",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Discounted price of the order.",
+          "member": "float",
+          "name": "DiscountPrice",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Operation performed by the order. Valid values: purchase, renew, upgrade, downgrade, refund.",
+          "member": "string",
+          "name": "Action",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstancesRequest": {
+      "document": "DescribeDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: 0 (all instances), 1 (promoted), 2 (temp), 3 (read-only), -1 (promoted + read-only + disaster recovery)",
+          "member": "int64",
+          "name": "InstanceType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance), -1 (all instances)",
+          "member": "int64",
+          "name": "ClusterType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (valid), -2 (expired)",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. This parameter can be left empty for the basic network",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID of VPC. This parameter can be left empty for the basic network. If it is passed in as an input parameter, the corresponding VpcId must be set",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing type. Valid value: 0 (pay-as-you-go)",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned for a single request. Valid values: 1-100. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sort by field of the returned result set. Currently, supported values include \"ProjectId\", \"InstanceName\", and \"CreateTime\". The return results are sorted in ascending order by default.",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting method of the return result set. Currently, \"ASC\" or \"DESC\" is supported",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "uint64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Search keyword, which can be instance ID, instance name, or complete IP",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstancesResponse": {
+      "document": "DescribeDBInstances response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance details",
+          "member": "InstanceDetail",
+          "name": "InstanceDetails",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogPatternsRequest": {
+      "document": "DescribeSlowLogPatterns request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.",
+          "member": "uint64",
+          "name": "SlowMS",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogPatternsResponse": {
+      "document": "DescribeSlowLogPatterns response structure.",
+      "members": [
+        {
+          "document": "Total number of slow logs",
+          "member": "uint64",
+          "name": "Count",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow log statistics",
+          "member": "SlowLogPattern",
+          "name": "SlowLogPatterns",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogsRequest": {
+      "document": "DescribeSlowLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.",
+          "member": "uint64",
+          "name": "SlowMS",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogsResponse": {
+      "document": "DescribeSlowLogs response structure.",
+      "members": [
+        {
+          "document": "Total number of slow logs",
+          "member": "uint64",
+          "name": "Count",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow log details",
+          "member": "string",
+          "name": "SlowLogs",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSpecInfoRequest": {
+      "document": "DescribeSpecInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ to be queried",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSpecInfoResponse": {
+      "document": "DescribeSpecInfo response structure.",
+      "members": [
+        {
+          "document": "List of purchasable instance specifications",
+          "member": "SpecificationInfo",
+          "name": "SpecInfoList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FlushInstanceRouterConfigRequest": {
+      "document": "FlushInstanceRouterConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FlushInstanceRouterConfigResponse": {
+      "document": "FlushInstanceRouterConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateDBInstancesRequest": {
+      "document": "InquirePriceCreateDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance region name in the format of ap-guangzhou-2.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.",
+          "member": "int64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GB.",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB.",
+          "member": "int64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.",
+          "member": "string",
+          "name": "MongoVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).",
+          "member": "string",
+          "name": "MachineCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.",
+          "member": "int64",
+          "name": "ReplicateSetNum",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateDBInstancesResponse": {
+      "document": "InquirePriceCreateDBInstances response structure.",
+      "members": [
+        {
+          "document": "Price.",
+          "member": "DBInstancePrice",
+          "name": "Price",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceModifyDBInstanceSpecRequest": {
+      "document": "InquirePriceModifyDBInstanceSpec request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GB after specification adjustment.",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB after specification adjustment.",
+          "member": "int64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceModifyDBInstanceSpecResponse": {
+      "document": "InquirePriceModifyDBInstanceSpec response structure.",
+      "members": [
+        {
+          "document": "Price.",
+          "member": "DBInstancePrice",
+          "name": "Price",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewDBInstancesRequest": {
+      "document": "InquirePriceRenewDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console. This API supports operations on up to 5 instances at a time.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance.",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewDBInstancesResponse": {
+      "document": "InquirePriceRenewDBInstances response structure.",
+      "members": [
+        {
+          "document": "Price.",
+          "member": "DBInstancePrice",
+          "name": "Price",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstanceChargePrepaid": {
+      "document": "Description on the billing mode of an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Purchased usage period (in month). Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36. Default value: 1.",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. Valid values:\nNOTIFY_AND_AUTO_RENEW: notify expiration and renew automatically\nNOTIFY_AND_MANUAL_RENEW: notify expiration but not renew automatically\nDISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify expiration nor renew automatically\n\nDefault value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "InstanceDetail": {
+      "document": "Instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing type. Valid value: 0 (pay-as-you-go)",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance),",
+          "member": "uint64",
+          "name": "ClusterType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region information",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ information",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network type. Valid values: 0 (basic network), 1 (VPC)",
+          "member": "uint64",
+          "name": "NetType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID of VPC",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (running), -2 (expired)",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance IP",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port number",
+          "member": "uint64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance expiration time",
+          "member": "datetime",
+          "name": "DeadLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version information",
+          "member": "string",
+          "name": "MongoVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in MB",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in MB",
+          "member": "uint64",
+          "name": "Volume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores of an instance",
+          "member": "uint64",
+          "name": "CpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance machine type",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of secondary nodes of an instance",
+          "member": "uint64",
+          "name": "SecondaryNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of instance shards",
+          "member": "uint64",
+          "name": "ReplicationSetNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance auto-renewal flag. Valid values: 0 (manual renewal), 1 (auto-renewal), 2 (no renewal upon expiration)",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used capacity in MB",
+          "member": "uint64",
+          "name": "UsedVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time of the maintenance time window",
+          "member": "string",
+          "name": "MaintenanceStart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time of the maintenance time window",
+          "member": "string",
+          "name": "MaintenanceEnd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard information",
+          "member": "ShardInfo",
+          "name": "ReplicaSets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of read-only instances",
+          "member": "DBInstanceInfo",
+          "name": "ReadonlyInstances",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of disaster recovery instances",
+          "member": "DBInstanceInfo",
+          "name": "StandbyInstances",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of temp instances",
+          "member": "DBInstanceInfo",
+          "name": "CloneInstances",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its primary instance",
+          "member": "DBInstanceInfo",
+          "name": "RelatedInstance",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance tag information set",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version tag",
+          "member": "uint64",
+          "name": "InstanceVer",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version tag",
+          "member": "uint64",
+          "name": "ClusterVer",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol information. Valid values: 1 (mongodb), 2 (dynamodb)",
+          "member": "uint64",
+          "name": "Protocol",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: 1 (promoted instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)",
+          "member": "uint64",
+          "name": "InstanceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status description",
+          "member": "string",
+          "name": "InstanceStatusDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad",
+          "member": "string",
+          "name": "RealInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IsolateDBInstanceRequest": {
+      "document": "IsolateDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstanceResponse": {
+      "document": "IsolateDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task request ID, which can be used to query the execution result of an async task.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSpecRequest": {
+      "document": "ModifyDBInstanceSpec request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Disk size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously. For degradation, the new disk capacity must be greater than 1.2 times the used disk capacity",
+          "member": "uint64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default",
+          "member": "uint64",
+          "name": "OplogSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSpecResponse": {
+      "document": "ModifyDBInstanceSpec response structure.",
+      "members": [
+        {
+          "document": "Order ID",
+          "member": "string",
+          "name": "DealId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OfflineIsolatedDBInstanceRequest": {
+      "document": "OfflineIsolatedDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OfflineIsolatedDBInstanceResponse": {
+      "document": "OfflineIsolatedDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task request ID, which can be used to query the execution result of an async task.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenameInstanceRequest": {
+      "document": "RenameInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "NewName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenameInstanceResponse": {
+      "document": "RenameInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewDBInstancesRequest": {
+      "document": "RenewDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 100 instances can be requested at a time.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance. This parameter is mandatory in monthly subscription.",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewDBInstancesResponse": {
+      "document": "RenewDBInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetDBInstancePasswordRequest": {
+      "document": "ResetDBInstancePassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance account name",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetDBInstancePasswordResponse": {
+      "document": "ResetDBInstancePassword response structure.",
+      "members": [
+        {
+          "document": "Async request ID, which is used to query the running status of the process.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ShardInfo": {
+      "document": "Details of an instance shard",
+      "members": [
+        {
+          "default": "",
+          "document": "Used shard capacity",
+          "member": "float",
+          "name": "UsedVolume",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard ID",
+          "member": "string",
+          "name": "ReplicaSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard name",
+          "member": "string",
+          "name": "ReplicaSetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard memory size in MB",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard disk size in MB",
+          "member": "uint64",
+          "name": "Volume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard oplog size in MB",
+          "member": "uint64",
+          "name": "OplogSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of secondary nodes of a shard",
+          "member": "uint64",
+          "name": "SecondaryNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard physical ID",
+          "member": "string",
+          "name": "RealReplicaSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogPattern": {
+      "document": "Slow log statistics of MongoDB database",
+      "members": [
+        {
+          "default": "",
+          "document": "Slow log pattern",
+          "member": "string",
+          "name": "Pattern",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum execution time",
+          "member": "uint64",
+          "name": "MaxTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average execution time",
+          "member": "uint64",
+          "name": "AverageTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of slow logs in this pattern",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SpecItem": {
+      "document": "Specifications of purchasable MongoDB instances",
+      "members": [
+        {
+          "default": "",
+          "document": "Specification information identifier",
+          "member": "string",
+          "name": "SpecCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in MB",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default disk size in MB",
+          "member": "uint64",
+          "name": "DefaultStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum disk size in MB",
+          "member": "uint64",
+          "name": "MaxStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum disk size in MB",
+          "member": "uint64",
+          "name": "MinStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum QPS",
+          "member": "uint64",
+          "name": "Qps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of connections",
+          "member": "uint64",
+          "name": "Conns",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MongoDB version information of an instance",
+          "member": "string",
+          "name": "MongoVersionCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MongoDB version number of an instance",
+          "member": "uint64",
+          "name": "MongoVersionValue",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MongoDB version number of an instance (short)",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage engine",
+          "member": "string",
+          "name": "EngineName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)",
+          "member": "uint64",
+          "name": "ClusterType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum number of secondary nodes in a replica set",
+          "member": "uint64",
+          "name": "MinNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of secondary nodes in a replica set",
+          "member": "uint64",
+          "name": "MaxNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum number of shards",
+          "member": "uint64",
+          "name": "MinReplicateSetNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of shards",
+          "member": "uint64",
+          "name": "MaxReplicateSetNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum number of secondary nodes in a shard",
+          "member": "uint64",
+          "name": "MinReplicateSetNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of secondary nodes in a shard",
+          "member": "uint64",
+          "name": "MaxReplicateSetNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server type. Valid values: 0 (HIO), 4 (HIO10G)",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SpecificationInfo": {
+      "document": "Instance specification information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region information",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ information",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchasable specification information",
+          "member": "SpecItem",
+          "name": "SpecItems",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TagInfo": {
+      "document": "Instance tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

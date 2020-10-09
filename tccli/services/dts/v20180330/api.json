@@ -1,0 +1,3073 @@
+{
+  "actions": {
+    "ActivateSubscribe": {
+      "document": "This API is used to configure a data subscription, which can be called only for subscription instances in unconfigured status.",
+      "input": "ActivateSubscribeRequest",
+      "name": "Configures data subscription channel",
+      "output": "ActivateSubscribeResponse"
+    },
+    "CompleteMigrateJob": {
+      "document": "This API (CompleteMigrateJob) is used to complete a data migration task.\nFor tasks in incremental migration mode, you need to call this API before migration gets ready, so as to stop migrating incremental data.\nIf the task status queried through the (DescribeMigrateJobs) API is ready (status=8), you can call this API to complete the migration task.\n",
+      "input": "CompleteMigrateJobRequest",
+      "name": "Completes a data migration task",
+      "output": "CompleteMigrateJobResponse"
+    },
+    "CreateMigrateCheckJob": {
+      "document": "This API is used to create a migration check task.\nBefore migration, you should call this API to create a check. Migration will start only if the check succeeds. You can view the check result through the DescribeMigrateCheckJob API.\nAfter successful check, if the migration task needs to be modified, a new check task should be created and migration will begin only after the new check succeeds.",
+      "input": "CreateMigrateCheckJobRequest",
+      "name": "Creates a migration check task",
+      "output": "CreateMigrateCheckJobResponse"
+    },
+    "CreateMigrateJob": {
+      "document": "This API (CreateMigrateJob) is used to create a data migration task.\n\nFor a finance zone linkage, please use the domain name dts.ap-shenzhen-fsi.tencentcloudapi.com.",
+      "input": "CreateMigrateJobRequest",
+      "name": "Creates a data migration task",
+      "output": "CreateMigrateJobResponse"
+    },
+    "CreateSubscribe": {
+      "document": "This API is used to create a data subscription instance.",
+      "input": "CreateSubscribeRequest",
+      "name": "Creates subscription object",
+      "output": "CreateSubscribeResponse"
+    },
+    "CreateSyncCheckJob": {
+      "document": "Before the StartSyncJob API is called to start disaster recovery sync, this API should be called first to create a check. Data sync can start only if the check succeeds. You can view the check result through the DescribeSyncCheckJob API.\nSync can begin only if the check succeeds.",
+      "input": "CreateSyncCheckJobRequest",
+      "name": "Verifies a disaster recovery sync task",
+      "output": "CreateSyncCheckJobResponse"
+    },
+    "CreateSyncJob": {
+      "document": "This API (CreateSyncJob) is used to create a disaster recovery sync task.\nAfter successful creation, check can be initiated through the CreateSyncCheckJob API. The sync task can be started through the StartSyncJob API only if the check succeeds.",
+      "input": "CreateSyncJobRequest",
+      "name": "Creates a disaster recovery sync task",
+      "output": "CreateSyncJobResponse"
+    },
+    "DeleteMigrateJob": {
+      "document": "This API (DeleteMigrationJob) is used to delete a data migration task. If the task status queried through the DescribeMigrateJobs API is checking (status=3), running (status=7), ready (status=8), canceling (status=11), or completing (status=12), the task cannot be deleted.",
+      "input": "DeleteMigrateJobRequest",
+      "name": "Deletes a data migration task",
+      "output": "DeleteMigrateJobResponse"
+    },
+    "DeleteSyncJob": {
+      "document": "This API is used to delete a disaster recovery sync task. Sync tasks that are running cannot be deleted.",
+      "input": "DeleteSyncJobRequest",
+      "name": "Deletes a disaster recovery sync task",
+      "output": "DeleteSyncJobResponse"
+    },
+    "DescribeAsyncRequestInfo": {
+      "document": "This API is used to query the execution result of a task.",
+      "input": "DescribeAsyncRequestInfoRequest",
+      "name": "Queries task execution result",
+      "output": "DescribeAsyncRequestInfoResponse"
+    },
+    "DescribeMigrateCheckJob": {
+      "document": "This API is used to get the check result and query check status and progress after a check is created. \nIf the check succeeds, you can call the StartMigrateJob API to start migration.\nIf the check fails, the reason can be queried. Please modify the migration configuration or adjust relevant parameters of the source/target instances through the ModifyMigrateJob API based on the error message.",
+      "input": "DescribeMigrateCheckJobRequest",
+      "name": "Gets the migration check result",
+      "output": "DescribeMigrateCheckJobResponse"
+    },
+    "DescribeMigrateJobs": {
+      "document": "This API is used to query data migration tasks.\nFor a finance zone linkage, please use the domain name https://dts.ap-shenzhen-fsi.tencentcloudapi.com.",
+      "input": "DescribeMigrateJobsRequest",
+      "name": "Queries data migration tasks",
+      "output": "DescribeMigrateJobsResponse"
+    },
+    "DescribeRegionConf": {
+      "document": "This API is used to query the purchasable subscription instance regions.",
+      "input": "DescribeRegionConfRequest",
+      "name": "Queries purchasable subscription instance regions",
+      "output": "DescribeRegionConfResponse"
+    },
+    "DescribeSubscribeConf": {
+      "document": "This API is used to query the subscription instance configuration.",
+      "input": "DescribeSubscribeConfRequest",
+      "name": "Queries subscription instance configuration",
+      "output": "DescribeSubscribeConfResponse"
+    },
+    "DescribeSubscribes": {
+      "document": "This API is used to get the information list of data subscription instances. Pagination is enabled by default with 20 results returned each time.",
+      "input": "DescribeSubscribesRequest",
+      "name": "Gets data subscription instance list",
+      "output": "DescribeSubscribesResponse"
+    },
+    "DescribeSyncCheckJob": {
+      "document": "This API is used to get the check result after a disaster recovery sync check task is created through the CreateSyncCheckJob API. Check status and progress can be queried.\nIf the check succeeds, you can call the StartSyncJob API to start the sync task.\nIf the check fails, the reason will be returned. You can modify the configuration through the ModifySyncJob API and initiate check again.\nIt takes about 30 seconds to complete the check task. If the returned status is not \"finished\", the check has not been completed, and this API needs to be polled.\nIf Status=finished and CheckFlag=1, the check succeeds.\nIf Status=finished and CheckFlag !=1, the check fails.",
+      "input": "DescribeSyncCheckJobRequest",
+      "name": "Queries the check result of a disaster recovery sync task",
+      "output": "DescribeSyncCheckJobResponse"
+    },
+    "DescribeSyncJobs": {
+      "document": "This API is used to query disaster recovery sync tasks initiated on the DTS platform.",
+      "input": "DescribeSyncJobsRequest",
+      "name": "Queries disaster recovery sync tasks initiated on the DTS platform",
+      "output": "DescribeSyncJobsResponse"
+    },
+    "IsolateSubscribe": {
+      "document": "This API is used to isolate an hourly billed subscription instance. After this API is called, the instance will become unavailable and billing will stop for it.",
+      "input": "IsolateSubscribeRequest",
+      "name": "Isolates subscription instance",
+      "output": "IsolateSubscribeResponse"
+    },
+    "ModifyMigrateJob": {
+      "document": "This API (ModifyMigrateJob) is used to modify a data migration task.\nIf the status of a migration task is creating (status=1), check succeeded (status=4), check failed (status=5), or migration failed (status=10), this API can be called to modify the task, but the type of the source and target instances and the region of the target instance cannot be modified.\n\nFor a finance zone linkage, please use the domain name dts.ap-shenzhen-fsi.tencentcloudapi.com.",
+      "input": "ModifyMigrateJobRequest",
+      "name": "Modifies a data migration task",
+      "output": "ModifyMigrateJobResponse"
+    },
+    "ModifySubscribeConsumeTime": {
+      "document": "This API is used to modify the consumption time point of a data subscription channel.",
+      "input": "ModifySubscribeConsumeTimeRequest",
+      "name": "Modifies the consumption time point of data subscription instance channel",
+      "output": "ModifySubscribeConsumeTimeResponse"
+    },
+    "ModifySubscribeName": {
+      "document": "This API is used to rename a data subscription instance.",
+      "input": "ModifySubscribeNameRequest",
+      "name": "Renames data subscription instance",
+      "output": "ModifySubscribeNameResponse"
+    },
+    "ModifySubscribeObjects": {
+      "document": "This API is used to modify the subscription rule of a data subscription channel.",
+      "input": "ModifySubscribeObjectsRequest",
+      "name": "Modifies the subscription rule of data subscription channel",
+      "output": "ModifySubscribeObjectsResponse"
+    },
+    "ModifySubscribeVipVport": {
+      "document": "This API is used to modify the IP and port number of a data subscription instance.",
+      "input": "ModifySubscribeVipVportRequest",
+      "name": "Modifies the IP and port number of data subscription instance",
+      "output": "ModifySubscribeVipVportResponse"
+    },
+    "ModifySyncJob": {
+      "document": "This API is used to modify a disaster recovery sync task. \nIf the status of a sync task is creating, created, check succeeded, or check failed, this API can be called to modify the task. \nThe information of the source and target instances cannot be modified, but the task name and the tables to be synced can.",
+      "input": "ModifySyncJobRequest",
+      "name": "Modifies a disaster recovery sync task",
+      "output": "ModifySyncJobResponse"
+    },
+    "OfflineIsolatedSubscribe": {
+      "document": "This API is used to deactivate an isolated data subscription instance.",
+      "input": "OfflineIsolatedSubscribeRequest",
+      "name": "Deactivates isolated data subscription instance",
+      "output": "OfflineIsolatedSubscribeResponse"
+    },
+    "ResetSubscribe": {
+      "document": "This API is used to reset a data subscription instance. Once reset, an activated instance can be bound to other database instances through the `ActivateSubscribe` API.",
+      "input": "ResetSubscribeRequest",
+      "name": "Resets data subscription instance",
+      "output": "ResetSubscribeResponse"
+    },
+    "StartMigrateJob": {
+      "document": "This API (StartMigrationJob) is used to start a migration task. After the API is called, non-scheduled migration tasks will start the migration immediately, while scheduled tasks will start the countdown.\nBefore calling this API, be sure to use the CreateMigrateCheckJob API to check the data migration task, which can be started only if its status queried through the DescribeMigrateJobs API is check succeeded (status=4).",
+      "input": "StartMigrateJobRequest",
+      "name": "Starts a migration task",
+      "output": "StartMigrateJobResponse"
+    },
+    "StartSyncJob": {
+      "document": "This API is used to start a disaster recovery sync task after it is successfully checked through the CreateSyncCheckJob and DescribeSyncCheckJob APIs.",
+      "input": "StartSyncJobRequest",
+      "name": "Starts a disaster recovery sync task",
+      "output": "StartSyncJobResponse"
+    },
+    "StopMigrateJob": {
+      "document": "This API (StopMigrateJob) is used to cancel a data migration task.\nDuring migration, this API can be used to cancel migration if the task status queried through the DescribeMigrateJobs API is running (status=7) or ready (status=8), and the migration task will fail.",
+      "input": "StopMigrateJobRequest",
+      "name": "Cancels a data migration task",
+      "output": "StopMigrateJobResponse"
+    },
+    "SwitchDrToMaster": {
+      "document": "This API is used to promote a disaster recovery instance to a master instance, which will stop sync from the original master instance and end the master/slave relationship.",
+      "input": "SwitchDrToMasterRequest",
+      "name": "Promotes a disaster recovery instance to a master instance",
+      "output": "SwitchDrToMasterResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-03-30",
+    "serviceNameCN": "数据传输服务",
+    "serviceShortName": "dts"
+  },
+  "objects": {
+    "ActivateSubscribeRequest": {
+      "document": "ActivateSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscription instance ID.",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data subscription type. 0: full instance subscription, 1: data subscription, 2: structure subscription, 3: data subscription and structure subscription",
+          "member": "int64",
+          "name": "SubscribeObjectType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Subscription object",
+          "member": "SubscribeObject",
+          "name": "Objects",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Subnet of data subscription service, which is the subnet of the database instance by default.",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscription service port. Default value: 7507",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateSubscribeResponse": {
+      "document": "ActivateSubscribe response structure.",
+      "members": [
+        {
+          "document": "Data subscription configuration task ID.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CompleteMigrateJobRequest": {
+      "document": "CompleteMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CompleteMigrateJobResponse": {
+      "document": "CompleteMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ConsistencyParams": {
+      "document": "Sampling parameter for spot check",
+      "members": [
+        {
+          "default": "",
+          "document": "Data content check parameter, which refers to the proportion of the rows selected for data comparison in all the rows of the table. Value: an integer between 1 and 100.",
+          "member": "int64",
+          "name": "SelectRowsPerTable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data content check parameter, which refers to the proportion of the tables selected for data detection in all the tables. Value: an integer between 1 and 100.",
+          "member": "int64",
+          "name": "TablesSelectAll",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data quantity check parameter, which checks whether the numbers of rows are identical. It refers to the proportion of the tables selected for quantity check in all the tables. Value: an integer between 1 and 100.",
+          "member": "int64",
+          "name": "TablesSelectCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateMigrateCheckJobRequest": {
+      "document": "CreateMigrateCheckJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMigrateCheckJobResponse": {
+      "document": "CreateMigrateCheckJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMigrateJobRequest": {
+      "document": "CreateMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task name",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task configuration options",
+          "member": "MigrateOption",
+          "name": "MigrateOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source instance database type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona. For more information on the supported types in a specific region, see the migration task creation page in the console.",
+          "member": "string",
+          "name": "SrcDatabaseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instance)",
+          "member": "string",
+          "name": "SrcAccessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source instance information, which is correlated with the migration task type",
+          "member": "SrcInfo",
+          "name": "SrcInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Target instance access type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona. For more information on the supported types in a specific region, see the migration task creation page in the console.",
+          "member": "string",
+          "name": "DstDatabaseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target instance access type, which currently only supports cdb (TencentDB instance)",
+          "member": "string",
+          "name": "DstAccessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination instance information",
+          "member": "DstInfo",
+          "name": "DstInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Information of the source table to be migrated, which is described in JSON string format. It is required if MigrateOption.MigrateObject is 2 (migrating the specified table).\nFor databases with a database-table structure:\n[{Database:db1,Table:[table1,table2]},{Database:db2}]\nFor databases with a database-schema-table structure:\n[{Database:db1,Schema:s1\nTable:[table1,table2]},{Database:db1,Schema:s2\nTable:[table1,table2]},{Database:db2,Schema:s1\nTable:[table1,table2]},{Database:db3},{Database:db4\nSchema:s1}]",
+          "member": "string",
+          "name": "DatabaseInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMigrateJobResponse": {
+      "document": "CreateMigrateJob response structure.",
+      "members": [
+        {
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSubscribeRequest": {
+      "document": "CreateSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscribed database type. Currently, MySQL is supported",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode, which is always 1 (hourly billing),",
+          "member": "int64",
+          "name": "PayType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Purchase duration in months, which is required if `PayType` is 0. Maximum value: 120 (this field is not required of global site users and is better to be hidden)",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Quantity. Default value: 1. Maximum value: 10",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to auto-renew. Default value: 0. This flag does not take effect for hourly billed instances (this field should be hidden from global site users)",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSubscribeResponse": {
+      "document": "CreateSubscribe response structure.",
+      "members": [
+        {
+          "document": "Data subscription instance ID array\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubscribeIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSyncCheckJobRequest": {
+      "document": "CreateSyncCheckJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery sync task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSyncCheckJobResponse": {
+      "document": "CreateSyncCheckJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSyncJobRequest": {
+      "document": "CreateSyncJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery sync task name",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration options of a disaster recovery sync task",
+          "member": "SyncOption",
+          "name": "SyncOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source instance database type, which currently only supports mysql",
+          "member": "string",
+          "name": "SrcDatabaseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source instance access type, which currently only supports cdb (TencentDB instances)",
+          "member": "string",
+          "name": "SrcAccessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source instance information",
+          "member": "SyncInstanceInfo",
+          "name": "SrcInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Target instance access type, which currently only supports mysql",
+          "member": "string",
+          "name": "DstDatabaseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target instance access type, which currently only supports cdb (TencentDB instances)",
+          "member": "string",
+          "name": "DstAccessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target instance information",
+          "member": "SyncInstanceInfo",
+          "name": "DstInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Information of the source table to be synced, which is described in JSON string format.\nFor databases with a database-table structure:\n[{Database:db1,Table:[table1,table2]},{Database:db2}]",
+          "member": "string",
+          "name": "DatabaseInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSyncJobResponse": {
+      "document": "CreateSyncJob response structure.",
+      "members": [
+        {
+          "document": "Disaster recovery sync task ID",
+          "member": "string",
+          "name": "JobId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMigrateJobRequest": {
+      "document": "DeleteMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMigrateJobResponse": {
+      "document": "DeleteMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSyncJobRequest": {
+      "document": "DeleteSyncJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the disaster recovery sync task to be deleted",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSyncJobResponse": {
+      "document": "DeleteSyncJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAsyncRequestInfoRequest": {
+      "document": "DescribeAsyncRequestInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAsyncRequestInfoResponse": {
+      "document": "DescribeAsyncRequestInfo response structure.",
+      "members": [
+        {
+          "document": "Task execution result information",
+          "member": "string",
+          "name": "Info",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task execution status. Valid values: success, failed, running",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrateCheckJobRequest": {
+      "document": "DescribeMigrateCheckJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrateCheckJobResponse": {
+      "document": "DescribeMigrateCheckJob response structure.",
+      "members": [
+        {
+          "document": "Check task status: unavailable, starting, running, finished",
+          "member": "string",
+          "name": "Status",
+          "type": "string"
+        },
+        {
+          "document": "Task error code",
+          "member": "int64",
+          "name": "ErrorCode",
+          "type": "int"
+        },
+        {
+          "document": "Task error message",
+          "member": "string",
+          "name": "ErrorMessage",
+          "type": "string"
+        },
+        {
+          "document": "Check task progress. For example, \"30\" means 30% completed",
+          "member": "string",
+          "name": "Progress",
+          "type": "string"
+        },
+        {
+          "document": "Whether the check succeeds. 0: no; 1: yes; 3: not checked",
+          "member": "int64",
+          "name": "CheckFlag",
+          "type": "int"
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrateJobsRequest": {
+      "document": "DescribeMigrateJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data migration task name",
+          "member": "string",
+          "name": "JobName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "CreateTime",
+          "document": "Sort by field. Value range: JobId, Status, JobName, MigrateType, RunMode, CreateTime",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "DESC",
+          "document": "Sorting order. Value range: ASC (ascending), DESC (descending)",
+          "member": "string",
+          "name": "OrderSeq",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "20",
+          "document": "Number of the returned instances. Value range: [1, 100]. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrateJobsResponse": {
+      "document": "DescribeMigrateJobs response structure.",
+      "members": [
+        {
+          "document": "Number of tasks",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int"
+        },
+        {
+          "document": "Array of task details",
+          "member": "MigrateJobInfo",
+          "name": "JobList",
+          "type": "list"
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionConfRequest": {
+      "document": "DescribeRegionConf request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRegionConfResponse": {
+      "document": "DescribeRegionConf response structure.",
+      "members": [
+        {
+          "document": "Number of purchasable regions",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Purchasable region details",
+          "member": "SubscribeRegionConf",
+          "name": "Items",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubscribeConfRequest": {
+      "document": "DescribeSubscribeConf request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubscribeConfResponse": {
+      "document": "DescribeSubscribeConf response structure.",
+      "members": [
+        {
+          "document": "Subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance name",
+          "member": "string",
+          "name": "SubscribeName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription channel",
+          "member": "string",
+          "name": "ChannelId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscribed database type",
+          "member": "string",
+          "name": "Product",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscribed instance",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscribed instance status. Valid values: running, offline, isolate",
+          "member": "string",
+          "name": "InstanceStatus",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance status. Valid values: unconfigure, configuring, configured",
+          "member": "string",
+          "name": "SubsStatus",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance lifecycle status. Valid values: normal, isolating, isolated, offlining",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance isolation time",
+          "member": "string",
+          "name": "IsolateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance expiration time",
+          "member": "string",
+          "name": "ExpireTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance deactivation time",
+          "member": "string",
+          "name": "OfflineTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Consumption starting time point of subscription instance",
+          "member": "string",
+          "name": "ConsumeStartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription instance billing mode. 1: hourly billing",
+          "member": "int64",
+          "name": "PayType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription channel VIP",
+          "member": "string",
+          "name": "Vip",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription channel port",
+          "member": "int64",
+          "name": "Vport",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription channel `VpcId`",
+          "member": "string",
+          "name": "UniqVpcId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription channel `SubnetId`",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Current SDK consumption time point",
+          "member": "string",
+          "name": "SdkConsumedTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription SDK IP address",
+          "member": "string",
+          "name": "SdkHost",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription object type. 0: full instance subscription, 1: DDL data subscription, 2: DML structure subscription, 3: DDL data subscription + DML structure subscription",
+          "member": "int64",
+          "name": "SubscribeObjectType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subscription object, which is an empty array if `SubscribeObjectType` is 0",
+          "member": "SubscribeObject",
+          "name": "SubscribeObjects",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Modification time",
+          "member": "string",
+          "name": "ModifyTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Region",
+          "member": "string",
+          "name": "Region",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubscribesRequest": {
+      "document": "DescribeSubscribes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance name",
+          "member": "string",
+          "name": "SubscribeName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of bound database instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance channel ID",
+          "member": "string",
+          "name": "ChannelId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing mode filter. Default value: 1 (pay-as-you-go)",
+          "member": "string",
+          "name": "PayType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subscribed database product, such as MySQL",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance configuration status. Valid values: unconfigure, configuring, configured",
+          "member": "string",
+          "name": "SubsStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of returned results",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned at a time",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time",
+          "member": "string",
+          "name": "OrderDirection",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubscribesResponse": {
+      "document": "DescribeSubscribes response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information list of data subscription instances",
+          "member": "SubscribeInfo",
+          "name": "Items",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSyncCheckJobRequest": {
+      "document": "DescribeSyncCheckJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the disaster recovery sync task to be queried",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSyncCheckJobResponse": {
+      "document": "DescribeSyncCheckJob response structure.",
+      "members": [
+        {
+          "document": "Task check status: starting, running, finished",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Code of the task check result",
+          "member": "int64",
+          "name": "ErrorCode",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Prompt message",
+          "member": "string",
+          "name": "ErrorMessage",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Description of a task execution step",
+          "member": "SyncCheckStepInfo",
+          "name": "StepInfo",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Check flag. 0: checking; 1: successfully checked",
+          "member": "int64",
+          "name": "CheckFlag",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSyncJobsRequest": {
+      "document": "DescribeSyncJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery sync task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Disaster recovery sync task name",
+          "member": "string",
+          "name": "JobName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort by field. Value range: JobId, Status, JobName, CreateTime",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Value range: ASC (ascending), DESC (descending)",
+          "member": "string",
+          "name": "OrderSeq",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "0",
+          "document": "Offset. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "20",
+          "document": "Number of the returned instances. Value range: [1, 100]. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSyncJobsResponse": {
+      "document": "DescribeSyncJobs response structure.",
+      "members": [
+        {
+          "document": "Number of tasks",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of task details",
+          "member": "SyncJobInfo",
+          "name": "JobList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DstInfo": {
+      "document": "Target instance information, which is correlated with the migration task type",
+      "members": [
+        {
+          "default": "",
+          "document": "Target instance ID, such as cdb-jd92ijd8",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance region, such as ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance VIP, which has been disused and does not need to be entered",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance Vport, which has been disused and does not need to be entered",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Only valid for MySQL currently. For instance-level migration, the value range is: 1 (read-only), 0 (read/write)",
+          "member": "int64",
+          "name": "ReadOnly",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target database account",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target database password",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ErrorInfo": {
+      "document": "Message and prompt for migration task error",
+      "members": [
+        {
+          "default": "",
+          "document": "Specific error log, including error code and error message",
+          "member": "string",
+          "name": "ErrorLog",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Help document URL corresponding to error",
+          "member": "string",
+          "name": "HelpDoc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IsolateSubscribeRequest": {
+      "document": "IsolateSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateSubscribeResponse": {
+      "document": "IsolateSubscribe response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MigrateDetailInfo": {
+      "document": "Describes the specific migration process",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of steps",
+          "member": "int64",
+          "name": "StepAll",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current step",
+          "member": "int64",
+          "name": "StepNow",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Overall progress, such as \"10\"",
+          "member": "string",
+          "name": "Progress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Progress of current step, such as \"1\"",
+          "member": "string",
+          "name": "CurrentStepProgress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Master/slave lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL",
+          "member": "int64",
+          "name": "MasterSlaveDistance",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Master/slave lag in seconds, which is valid during incremental sync and currently supported by TencentDB for MySQL",
+          "member": "int64",
+          "name": "SecondsBehindMaster",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step information",
+          "member": "MigrateStepDetailInfo",
+          "name": "StepInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrateJobInfo": {
+      "document": "Migration task details",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data migration task name",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task configuration options",
+          "member": "MigrateOption",
+          "name": "MigrateOption",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source instance database type: MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona",
+          "member": "string",
+          "name": "SrcDatabaseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instances)",
+          "member": "string",
+          "name": "SrcAccessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source instance information, which is correlated with the migration task type",
+          "member": "SrcInfo",
+          "name": "SrcInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance access type: MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona",
+          "member": "string",
+          "name": "DstDatabaseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance access type, which currently only supports cdb (TencentDB instance)",
+          "member": "string",
+          "name": "DstAccessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance information",
+          "member": "DstInfo",
+          "name": "DstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the source table to be migrated. If the entire instance is to be migrated, this field should be []",
+          "member": "string",
+          "name": "DatabaseInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task creation/submission time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task end time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. Value range: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task details",
+          "member": "MigrateDetailInfo",
+          "name": "Detail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Prompt message for task error, which is not null or empty when an error occurs with the task",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrateOption": {
+      "document": "Migration task configuration options",
+      "members": [
+        {
+          "default": "",
+          "document": "Task operation mode. Value range: 1 (immediate execution), 2 (scheduled execution)",
+          "member": "int64",
+          "name": "RunMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expected execution time in the format of yyyy-mm-dd hh:mm:ss. If runMode=2, this field is required",
+          "member": "datetime",
+          "name": "ExpectTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data migration type. Value range: 1 (structural migration), 2 (full migration), 3 (full + incremental migration)",
+          "member": "int64",
+          "name": "MigrateType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration subject. 1: entire instance; 2: specified table",
+          "member": "int64",
+          "name": "MigrateObject",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter of spot data consistency check. 1: not configured; 2: full check; 3: spot check; 4: check inconsistent tables only; 5: no check",
+          "member": "int64",
+          "name": "ConsistencyType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to overwrite the target database with the root account of the source database. Value range: 0 (no), 1 (yes). This value should be 0 for table or structural migration",
+          "member": "int64",
+          "name": "IsOverrideRoot",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Additional parameters for different databases, which are described in JSON format. \nThe following parameters can be defined for Redis: \n{ \n\t\"ClientOutputBufferHardLimit\":512, \tHard capacity limit of slave buffer (MB) \n\t\"ClientOutputBufferSoftLimit\":512, \tSoft capacity limit of slave buffer (MB) \n\t\"ClientOutputBufferPersistTime\":60, Soft limit duration of slave buffer (s) \n\t\"ReplBacklogSize\":512, \tCircular buffer capacity limit (MB) \n\t\"ReplTimeout\":120, \t\tReplication timeout period (s) \n}\nThe following parameters can be defined for MongoDB: \n{\n\t'SrcAuthDatabase':'admin', \n\t'SrcAuthFlag': \"1\", \n\t'SrcAuthMechanism':\"SCRAM-SHA-1\"\n}\nMySQL currently does not support configuring additional parameters.",
+          "member": "string",
+          "name": "ExternParams",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Only used for \"spot data consistency check\". It is required if ConsistencyType is spot check",
+          "member": "ConsistencyParams",
+          "name": "ConsistencyParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MigrateStepDetailInfo": {
+      "document": "Information of steps in migration",
+      "members": [
+        {
+          "default": "",
+          "document": "Step number",
+          "member": "int64",
+          "name": "StepNo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step name",
+          "member": "string",
+          "name": "StepName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step ID",
+          "member": "string",
+          "name": "StepId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step status. Value range: 0 (default), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time of current step in the format of `yyyy-mm-dd hh:mm:ss`. This field is meaningless if it does not exist or is empty\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyMigrateJobRequest": {
+      "document": "ModifyMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the data migration task to be modified",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data migration task name",
+          "member": "string",
+          "name": "JobName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task configuration options",
+          "member": "MigrateOption",
+          "name": "MigrateOption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance)",
+          "member": "string",
+          "name": "SrcAccessType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source instance information, which is correlated with the migration task type",
+          "member": "SrcInfo",
+          "name": "SrcInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Target instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance). Currently, only `cdb` is supported",
+          "member": "string",
+          "name": "DstAccessType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target instance information. The region where the target instance is located cannot be modified.",
+          "member": "DstInfo",
+          "name": "DstInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "When migrating the specified table, you need to set the information of the source database table to be migrated, which should be described in JSON string format. Below are examples.\n\nFor databases with a database-table structure:\n[{\"Database\":\"db1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\"}]\nFor databases with a database-schema-table structure:\n[{\"Database\":\"db1\",\"Schema\":\"s1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db1\",\"Schema\":\"s2\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\",\"Schema\":\"s1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db3\"},{\"Database\":\"db4\",\"Schema\":\"s1\"}]\n\nThis field does not need to be set when the entire instance is to be migrated",
+          "member": "string",
+          "name": "DatabaseInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrateJobResponse": {
+      "document": "ModifyMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeConsumeTimeRequest": {
+      "document": "ModifySubscribeConsumeTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Consumption starting time point in the format of `Y-m-d h:m:s`, i.e., the starting time point for data subscription. Value range: within the last 24 hours",
+          "member": "string",
+          "name": "ConsumeStartTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeConsumeTimeResponse": {
+      "document": "ModifySubscribeConsumeTime response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeNameRequest": {
+      "document": "ModifySubscribeName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance name. Length limit: [1,60]",
+          "member": "string",
+          "name": "SubscribeName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeNameResponse": {
+      "document": "ModifySubscribeName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeObjectsRequest": {
+      "document": "ModifySubscribeObjects request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data subscription type. Valid values: 0 (full instance subscription), 1 (data subscription), 2 (structure subscription), 3 (data subscription + structure subscription)",
+          "member": "int64",
+          "name": "SubscribeObjectType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Information of subscribed table",
+          "member": "SubscribeObject",
+          "name": "Objects",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeObjectsResponse": {
+      "document": "ModifySubscribeObjects response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeVipVportRequest": {
+      "document": "ModifySubscribeVipVport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified destination subnet. If this parameter is passed in, `DstIp` must be in the destination subnet",
+          "member": "string",
+          "name": "DstUniqSubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target IP. Either this field or `DstPort` must be passed in",
+          "member": "string",
+          "name": "DstIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target port. Value range: [1025-65535]",
+          "member": "int64",
+          "name": "DstPort",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySubscribeVipVportResponse": {
+      "document": "ModifySubscribeVipVport response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySyncJobRequest": {
+      "document": "ModifySyncJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the disaster recovery sync task to be modified",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the disaster recovery sync task",
+          "member": "string",
+          "name": "JobName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration options of a disaster recovery sync task",
+          "member": "SyncOption",
+          "name": "SyncOption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "When syncing the specified table, you need to set the information of the source table to be synced, which should be described in JSON string format. Below are examples.\nFor databases with a database-table structure:\n[{\"Database\":\"db1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\"}]",
+          "member": "string",
+          "name": "DatabaseInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySyncJobResponse": {
+      "document": "ModifySyncJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OfflineIsolatedSubscribeRequest": {
+      "document": "OfflineIsolatedSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OfflineIsolatedSubscribeResponse": {
+      "document": "OfflineIsolatedSubscribe response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetSubscribeRequest": {
+      "document": "ResetSubscribe request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetSubscribeResponse": {
+      "document": "ResetSubscribe response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SrcInfo": {
+      "document": "Source instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "Alibaba Cloud AccessKey, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6 instance",
+          "member": "string",
+          "name": "AccessKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance IP address",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance port",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance username",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance password",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alibaba Cloud ApsaraDB for RDS instance ID, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6/5.7 instance",
+          "member": "string",
+          "name": "RdsInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Short CVM instance ID in the format of `ins-olgl39y8`. It is the same as the instance ID displayed on the CVM Console page. For CVM-based self-created instances, this field needs to be passed in",
+          "member": "string",
+          "name": "CvmInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Direct Connect gateway ID in the format of dcg-0rxtqqxb",
+          "member": "string",
+          "name": "UniqDcgId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID in the format of vpc-92jblxto",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC Subnet ID in the format of subnet-3paxmkdz",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPN gateway ID in the format of vpngw-9ghexg7q",
+          "member": "string",
+          "name": "UniqVpnGwId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database instance ID in the format of cdb-powiqx8q",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name, such as ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "For Alibaba Cloud ApsaraDB for RDS instances, enter \"aliyun\"; otherwise, enter \"others\"",
+          "member": "string",
+          "name": "Supplier",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CCN instance ID, such as ccn-afp6kltc\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CcnId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database version. This parameter is valid only when the instance is an RDS instance. Value: 5.6 or 5.7. Default value: 5.6",
+          "member": "string",
+          "name": "EngineVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StartMigrateJobRequest": {
+      "document": "StartMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartMigrateJobResponse": {
+      "document": "StartMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartSyncJobRequest": {
+      "document": "StartSyncJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery sync task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartSyncJobResponse": {
+      "document": "StartSyncJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopMigrateJobRequest": {
+      "document": "StopMigrateJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data migration task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopMigrateJobResponse": {
+      "document": "StopMigrateJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubscribeInfo": {
+      "document": "Subscription instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription instance ID",
+          "member": "string",
+          "name": "SubscribeId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance name",
+          "member": "string",
+          "name": "SubscribeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of channel bound to data subscription instance",
+          "member": "string",
+          "name": "ChannelId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of product bound to data subscription instance",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of database instance bound to data subscription instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of database instance bound to data subscription instance",
+          "member": "string",
+          "name": "InstanceStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance configuration status. Valid values: unconfigure, configuring, configured",
+          "member": "string",
+          "name": "SubsStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modified time",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Isolation time",
+          "member": "string",
+          "name": "IsolateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Deactivation time",
+          "member": "string",
+          "name": "OfflineTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modified consumption starting time point. If it has never been modified, this field is 0",
+          "member": "string",
+          "name": "ConsumeStartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance region",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode. 1: pay-as-you-go",
+          "member": "int64",
+          "name": "PayType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance VIP",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance Vport",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the VPC where the data subscription instance VIP resides",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the subnet where the data subscription instance VIP resides",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining, offline",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp of the last message confirmed by the SDK. If the SDK keeps consuming, this field can also be used as the current consumption time point of the SDK",
+          "member": "string",
+          "name": "SdkConsumedTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SubscribeObject": {
+      "document": "Data subscription object",
+      "members": [
+        {
+          "default": "",
+          "document": "Data subscription object type. 0: database, 1: database table\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ObjectsType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of subscribed database\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Array of table names in subscribed database\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TableNames",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SubscribeRegionConf": {
+      "document": "Sale information of data subscription region",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name, such as Guangzhou\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region ID, such as ap-guangzhou\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region name, such as South China\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is the default region. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsDefaultRegion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchasable status of current region. 1: normal, 2: beta test, 3: not purchasable\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SwitchDrToMasterRequest": {
+      "document": "SwitchDrToMaster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery instance information",
+          "member": "SyncInstanceInfo",
+          "name": "DstInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Database type (such as MySQL)",
+          "member": "string",
+          "name": "DatabaseType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDrToMasterResponse": {
+      "document": "SwitchDrToMaster response structure.",
+      "members": [
+        {
+          "document": "Backend async task request ID",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SyncCheckStepInfo": {
+      "document": "Check steps for a disaster recovery task",
+      "members": [
+        {
+          "default": "",
+          "document": "Step number",
+          "member": "uint64",
+          "name": "StepNo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step name",
+          "member": "string",
+          "name": "StepName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Code of the step execution result",
+          "member": "int64",
+          "name": "StepCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message about the step execution result",
+          "member": "string",
+          "name": "StepMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SyncDetailInfo": {
+      "document": "Describes the specific process of the sync task.",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of steps",
+          "member": "int64",
+          "name": "StepAll",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current step",
+          "member": "int64",
+          "name": "StepNow",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Overall progress",
+          "member": "string",
+          "name": "Progress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Progress of the current step",
+          "member": "string",
+          "name": "CurrentStepProgress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Master/slave delay in MB",
+          "member": "int64",
+          "name": "MasterSlaveDistance",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Master/slave delay in seconds",
+          "member": "int64",
+          "name": "SecondsBehindMaster",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step information",
+          "member": "SyncStepDetailInfo",
+          "name": "StepInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SyncInstanceInfo": {
+      "document": "Instance information of disaster recovery sync, which records the information of the master instance or disaster recovery instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name, such as ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Short instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SyncJobInfo": {
+      "document": "Disaster recovery sync task information",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disaster recovery task name",
+          "member": "string",
+          "name": "JobName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task sync",
+          "member": "SyncOption",
+          "name": "SyncOption",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source access type",
+          "member": "string",
+          "name": "SrcAccessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source data type",
+          "member": "string",
+          "name": "SrcDatabaseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source instance information",
+          "member": "SyncInstanceInfo",
+          "name": "SrcInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disaster recovery access type",
+          "member": "string",
+          "name": "DstAccessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disaster recovery data type",
+          "member": "string",
+          "name": "DstDatabaseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disaster recovery instance information",
+          "member": "SyncInstanceInfo",
+          "name": "DstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task information",
+          "member": "SyncDetailInfo",
+          "name": "Detail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table to be migrated",
+          "member": "string",
+          "name": "DatabaseInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SyncOption": {
+      "document": "Configuration options of a disaster recovery sync task",
+      "members": [
+        {
+          "default": "1",
+          "document": "Sync object. 1: entire instance; 2: specified table",
+          "member": "uint64",
+          "name": "SyncObject",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "1",
+          "document": "Sync start configuration. 1: start immediately",
+          "member": "uint64",
+          "name": "RunMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "3",
+          "document": "Sync mode. 3: full + incremental sync",
+          "member": "uint64",
+          "name": "SyncType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "1",
+          "document": "Data consistency check. 1: no configuration required",
+          "member": "uint64",
+          "name": "ConsistencyType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SyncStepDetailInfo": {
+      "document": "Sync task progress",
+      "members": [
+        {
+          "default": "",
+          "document": "Step number",
+          "member": "uint64",
+          "name": "StepNo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step name",
+          "member": "string",
+          "name": "StepName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it can be stopped",
+          "member": "int64",
+          "name": "CanStop",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step ID",
+          "member": "int64",
+          "name": "StepId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

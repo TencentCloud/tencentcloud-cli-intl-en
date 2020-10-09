@@ -1,0 +1,853 @@
+{
+  "actions": {
+    "BankCardOCR": {
+      "document": "This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "BankCardOCRRequest",
+      "name": "Recognizes a bank card",
+      "output": "BankCardOCRResponse"
+    },
+    "GeneralAccurateOCR": {
+      "document": "This API is used to detect and recognize characters in an image. It can recognize Chinese, English, Chinese-English, digits, and special symbols and return the text box positions and characters.\n\nIt is suitable for scenarios with a lot of characters in complex layouts and requiring high recognition accuracy, such as examination papers, online images, signboards, and legal documents.\n\nStrengths: compared with general print recognition, it provides higher-precision character recognition services. Its accuracy and recall rate are higher in difficult scenarios such as a large number of characters, long strings of digits, small characters, blurry characters, and tilted text.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "GeneralAccurateOCRRequest",
+      "name": "Recognizes general print (high-precision)",
+      "output": "GeneralAccurateOCRResponse"
+    },
+    "GeneralBasicOCR": {
+      "document": "This API is used to detect and recognize characters in an image in the following 20 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, and Arabic. Mixed characters in English and each supported language can be recognized together.\n\nIt can recognize printed text in paper documents, online images, ads, signboards, menus, video titles, profile photos, etc.\n\nStrengths: it can automatically recognize the text language, return the text box coordinate information, and automatically rotate tilted text to the upright direction.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "GeneralBasicOCRRequest",
+      "name": "Recognizes general print.",
+      "output": "GeneralBasicOCRResponse"
+    },
+    "HKIDCardOCR": {
+      "document": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).\n",
+      "input": "HKIDCardOCRRequest",
+      "name": "Recognizes Hong Kong (China) identity card",
+      "output": "HKIDCardOCRResponse"
+    },
+    "MLIDCardOCR": {
+      "document": "This API is used to recognize a Malaysian identity card. Recognizable fields include identity card number, name, gender, and address. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "MLIDCardOCRRequest",
+      "name": "Recognizes a Malaysian identity card",
+      "output": "MLIDCardOCRResponse"
+    },
+    "MLIDPassportOCR": {
+      "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "MLIDPassportOCRRequest",
+      "name": "Recognizes a non-Mainland China passport",
+      "output": "MLIDPassportOCRResponse"
+    },
+    "TableOCR": {
+      "document": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "TableOCRRequest",
+      "name": "Recognizes form",
+      "output": "TableOCRResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-11-19",
+    "serviceNameCN": "文字识别",
+    "serviceShortName": "ocr"
+  },
+  "objects": {
+    "BankCardOCRRequest": {
+      "document": "BankCardOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL address of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nIt is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BankCardOCRResponse": {
+      "document": "BankCardOCR response structure.",
+      "members": [
+        {
+          "document": "Card number",
+          "member": "string",
+          "name": "CardNo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bank information",
+          "member": "string",
+          "name": "BankInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Expiration date",
+          "member": "string",
+          "name": "ValidDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Coord": {
+      "document": "Coordinates",
+      "members": [
+        {
+          "default": "0",
+          "document": "Horizontal coordinate",
+          "member": "int64",
+          "name": "X",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "0",
+          "document": "Vertical coordinate",
+          "member": "int64",
+          "name": "Y",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GeneralAccurateOCRRequest": {
+      "document": "GeneralAccurateOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL address of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GeneralAccurateOCRResponse": {
+      "document": "GeneralAccurateOCR response structure.",
+      "members": [
+        {
+          "document": "Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.",
+          "member": "TextDetection",
+          "name": "TextDetections",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation.",
+          "member": "float",
+          "name": "Angel",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GeneralBasicOCRRequest": {
+      "document": "GeneralBasicOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL address of image/PDF.\nThe image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reserved field.",
+          "member": "string",
+          "name": "Scene",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Language to be recognized.\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\nzh\\auto\\jap\\kor\\\nspa\\fre\\ger\\por\\\nvie\\may\\rus\\ita\\\nhol\\swe\\fin\\dan\\\nnor\\hun\\tha\\lat\\ara\nValue meanings:\nChinese-English mix, automatic recognition, Japanese, Korean,\nSpanish, French, German, Portuguese,\nVietnamese, Malay, Russian, Italian,\nDutch, Swedish, Finnish, Danish,\nNorwegian, Hungarian, Thai, Latin,\nArabic.",
+          "member": "string",
+          "name": "LanguageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.",
+          "member": "bool",
+          "name": "IsPdf",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.",
+          "member": "uint64",
+          "name": "PdfPageNumber",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GeneralBasicOCRResponse": {
+      "document": "GeneralBasicOCR response structure.",
+      "members": [
+        {
+          "document": "Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.",
+          "member": "TextDetection",
+          "name": "TextDetections",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.",
+          "member": "string",
+          "name": "Language",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image rotation angle in degrees. 0° indicates horizontal text, a positive value indicates clockwise rotation, and a negative value indicates anticlockwise rotation. For more information, please see <a href=\"https://intl.cloud.tencent.com/document/product/866/45139?from_cn_redirect=1\">How to Correct Tilted Text</a>.",
+          "member": "float",
+          "name": "Angel",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of PDF pages to be returned if the image is a PDF. Default value: 0.",
+          "member": "int64",
+          "name": "PdfPageSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "HKIDCardOCRRequest": {
+      "document": "HKIDCardOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to check for authenticity.",
+          "member": "bool",
+          "name": "DetectFake",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to return identity photo.",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "HKIDCardOCRResponse": {
+      "document": "HKIDCardOCR response structure.",
+      "members": [
+        {
+          "document": "Name in Chinese",
+          "member": "string",
+          "name": "CnName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name in English",
+          "member": "string",
+          "name": "EnName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Telecode for the name in Chinese",
+          "member": "string",
+          "name": "TelexCode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Gender. Valid values: Male, Female",
+          "member": "string",
+          "name": "Sex",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Date of birth",
+          "member": "string",
+          "name": "Birthday",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permanent identity card.\n0: non-permanent;\n1: permanent;\n-1: unknown.",
+          "member": "int64",
+          "name": "Permanent",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Identity card number",
+          "member": "string",
+          "name": "IdNum",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Document symbol, i.e., the symbol under the date of birth, such as \"***AZ\"",
+          "member": "string",
+          "name": "Symbol",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "First issue date",
+          "member": "string",
+          "name": "FirstIssueDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Last receipt date",
+          "member": "string",
+          "name": "CurrentIssueDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authenticity check.\n0: unable to judge (because the image is blurred, incomplete, reflective, too dark, etc.);\n1: forged;\n2: authentic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FakeDetectResult",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Base64-encoded identity photo\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HeadImage",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Multiple alarm codes. If the ID card is spoofed, photocopied, or doctored, the corresponding alarm code will be returned.\n-9102: alarm for photocopied document\n-9103: alarm for spoofed document\n-9104: alarm for doctored document\n-9105: alarm for forged document",
+          "member": "int64",
+          "name": "WarningCode",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ItemCoord": {
+      "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
+      "members": [
+        {
+          "default": "",
+          "document": "X-coordinate of top-left point.",
+          "member": "int64",
+          "name": "X",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Y-coordinate of top-left point.",
+          "member": "int64",
+          "name": "Y",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Width",
+          "member": "int64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Height",
+          "member": "int64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MLIDCardOCRRequest": {
+      "document": "MLIDCardOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded value of an image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL address of an image. (This field is not supported outside Mainland China)\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nIt is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return an image",
+          "member": "bool",
+          "name": "RetImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "MLIDCardOCRResponse": {
+      "document": "MLIDCardOCR response structure.",
+      "members": [
+        {
+          "document": "Identity card number",
+          "member": "string",
+          "name": "ID",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Address",
+          "member": "string",
+          "name": "Address",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Gender",
+          "member": "string",
+          "name": "Sex",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm code\n-9103\tAlarm for photographed document\n-9102\tAlarm for photocopied document\n-9106       Alarm for covered card",
+          "member": "int64",
+          "name": "Warn",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Identity photo",
+          "member": "string",
+          "name": "Image",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Certificate types\nMyKad: Malaysian Identity Card\nMyPR: Malaysia Permanent Resident Identity Card\nMyTentera: Malaysian Armed Forces Identity Card\nMyKAS: Malaysian Temporary Resident Identity Card\nPOLIS: Royal Malaysia Police Identity Card\nIKAD: Malaysia Temporary Employment Visit Pass",
+          "member": "string",
+          "name": "Type",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Date of birth (currently, this field is only supported for IKAD).",
+          "member": "string",
+          "name": "Birthday",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MLIDPassportOCRRequest": {
+      "document": "MLIDPassportOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return an image. Default value: false.",
+          "member": "bool",
+          "name": "RetImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "MLIDPassportOCRResponse": {
+      "document": "MLIDPassportOCR response structure.",
+      "members": [
+        {
+          "document": "Passport ID",
+          "member": "string",
+          "name": "ID",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Date of birth",
+          "member": "string",
+          "name": "DateOfBirth",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Gender (F: female, M: male)",
+          "member": "string",
+          "name": "Sex",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Expiration date",
+          "member": "string",
+          "name": "DateOfExpiration",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Issuing country",
+          "member": "string",
+          "name": "IssuingCountry",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Nationality",
+          "member": "string",
+          "name": "Nationality",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm code\n-9103 Alarm for spoofed card\n-9102 Alarm for photocopied card\n-9106 Alarm for covered card",
+          "member": "int64",
+          "name": "Warn",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Identity photo",
+          "member": "string",
+          "name": "Image",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TableOCRRequest": {
+      "document": "TableOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL address of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TableOCRResponse": {
+      "document": "TableOCR response structure.",
+      "members": [
+        {
+          "document": "Recognized text. For more information, please click the link on the left.",
+          "member": "TextTable",
+          "name": "TextDetections",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded Excel data.",
+          "member": "string",
+          "name": "Data",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextDetection": {
+      "document": "OCR result.",
+      "members": [
+        {
+          "default": "",
+          "document": "Recognized text line content.",
+          "member": "string",
+          "name": "DetectedText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Confidence. Value range: 0–100.",
+          "member": "int64",
+          "name": "Confidence",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Text line coordinates, which are represented as 4 vertex coordinates.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Coord",
+          "name": "Polygon",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Extended field.\nThe paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
+          "member": "ItemCoord",
+          "name": "ItemPolygon",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TextTable": {
+      "document": "Form recognition result.",
+      "members": [
+        {
+          "default": "",
+          "document": "Column index of the top-left corner of the cell.",
+          "member": "int64",
+          "name": "ColTl",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Row index of the top-left corner of the cell.",
+          "member": "int64",
+          "name": "RowTl",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Column index of the bottom-right corner of the cell.",
+          "member": "int64",
+          "name": "ColBr",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Row index of the bottom-right corner of the cell.",
+          "member": "int64",
+          "name": "RowBr",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cell text",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cell type. Valid values: body, header, footer",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Confidence. Value range: 0–100",
+          "member": "int64",
+          "name": "Confidence",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Text line coordinates, which are represented as 4 vertex coordinates.",
+          "member": "Coord",
+          "name": "Polygon",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extended field",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

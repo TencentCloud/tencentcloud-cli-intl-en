@@ -1,0 +1,1802 @@
+{
+  "actions": {
+    "CreateCfsFileSystem": {
+      "document": "This API is used to create a file system.",
+      "input": "CreateCfsFileSystemRequest",
+      "name": "Creates a file system",
+      "output": "CreateCfsFileSystemResponse"
+    },
+    "CreateCfsPGroup": {
+      "document": "This API is used to create a permission group.",
+      "input": "CreateCfsPGroupRequest",
+      "name": "Creates a permission group",
+      "output": "CreateCfsPGroupResponse"
+    },
+    "CreateCfsRule": {
+      "document": "This API is used to create a permission group rule.",
+      "input": "CreateCfsRuleRequest",
+      "name": "Creates a permission group rule",
+      "output": "CreateCfsRuleResponse"
+    },
+    "DeleteCfsFileSystem": {
+      "document": "This API is used to delete a file system.",
+      "input": "DeleteCfsFileSystemRequest",
+      "name": "Deletes a file system",
+      "output": "DeleteCfsFileSystemResponse"
+    },
+    "DeleteCfsPGroup": {
+      "document": "This API is used to delete a permission group.",
+      "input": "DeleteCfsPGroupRequest",
+      "name": "Deletes a permission group",
+      "output": "DeleteCfsPGroupResponse"
+    },
+    "DeleteCfsRule": {
+      "document": "This API is used to delete a permission group rule.",
+      "input": "DeleteCfsRuleRequest",
+      "name": "Deletes a permission group rule",
+      "output": "DeleteCfsRuleResponse"
+    },
+    "DeleteMountTarget": {
+      "document": "This API is used to delete a mount target.",
+      "input": "DeleteMountTargetRequest",
+      "name": "Deletes a mount target",
+      "output": "DeleteMountTargetResponse"
+    },
+    "DescribeAvailableZoneInfo": {
+      "document": "This API is used to query the availability of a region.",
+      "input": "DescribeAvailableZoneInfoRequest",
+      "name": "Queries the availability of a region",
+      "output": "DescribeAvailableZoneInfoResponse"
+    },
+    "DescribeCfsFileSystemClients": {
+      "document": "This API is used to query clients on which this file system is mounted. To do so, the client needs to have the CFS monitoring plugin installed.",
+      "input": "DescribeCfsFileSystemClientsRequest",
+      "name": "Queries file system clients",
+      "output": "DescribeCfsFileSystemClientsResponse"
+    },
+    "DescribeCfsFileSystems": {
+      "document": "This API is used to query file systems.",
+      "input": "DescribeCfsFileSystemsRequest",
+      "name": "Queries file systems",
+      "output": "DescribeCfsFileSystemsResponse"
+    },
+    "DescribeCfsPGroups": {
+      "document": "This API is used to query the list of permission groups.",
+      "input": "DescribeCfsPGroupsRequest",
+      "name": "Queries the list of permission groups",
+      "output": "DescribeCfsPGroupsResponse"
+    },
+    "DescribeCfsRules": {
+      "document": "This API is used to query the list of permission group rules.",
+      "input": "DescribeCfsRulesRequest",
+      "name": "Queries permission group rules",
+      "output": "DescribeCfsRulesResponse"
+    },
+    "DescribeCfsServiceStatus": {
+      "document": "This API is used to query the status of the CFS service.",
+      "input": "DescribeCfsServiceStatusRequest",
+      "name": "Queries the status of the CFS service",
+      "output": "DescribeCfsServiceStatusResponse"
+    },
+    "DescribeMountTargets": {
+      "document": "This API is used to query the mount targets of a file system.",
+      "input": "DescribeMountTargetsRequest",
+      "name": "Queries the mount targets of a file system",
+      "output": "DescribeMountTargetsResponse"
+    },
+    "SignUpCfsService": {
+      "document": "This API is used to activate the CFS service.",
+      "input": "SignUpCfsServiceRequest",
+      "name": "Activates the CFS service",
+      "output": "SignUpCfsServiceResponse"
+    },
+    "UpdateCfsFileSystemName": {
+      "document": "This API is used to update a file system name.",
+      "input": "UpdateCfsFileSystemNameRequest",
+      "name": "Updates a file system name",
+      "output": "UpdateCfsFileSystemNameResponse"
+    },
+    "UpdateCfsFileSystemPGroup": {
+      "document": "This API is used to update the permission group used by a file system.",
+      "input": "UpdateCfsFileSystemPGroupRequest",
+      "name": "Updates the permission group for a file system",
+      "output": "UpdateCfsFileSystemPGroupResponse"
+    },
+    "UpdateCfsFileSystemSizeLimit": {
+      "document": "This API is used to update the capacity limit of a file system.",
+      "input": "UpdateCfsFileSystemSizeLimitRequest",
+      "name": "Updates the capacity limit of a file system",
+      "output": "UpdateCfsFileSystemSizeLimitResponse"
+    },
+    "UpdateCfsPGroup": {
+      "document": "This API is used to update the information of a permission group.",
+      "input": "UpdateCfsPGroupRequest",
+      "name": "Updates the information of a permission group",
+      "output": "UpdateCfsPGroupResponse"
+    },
+    "UpdateCfsRule": {
+      "document": "This API is used to update a permission rule.",
+      "input": "UpdateCfsRuleRequest",
+      "name": "Updates a permission group rule",
+      "output": "UpdateCfsRuleResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-07-19",
+    "serviceNameCN": "文件存储",
+    "serviceShortName": "cfs"
+  },
+  "objects": {
+    "AvailableProtoStatus": {
+      "document": "Versioning - protocol details\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Sale status. Valid values: sale_out (sold out), saling (purchasable), no_saling (non-purchasable)",
+          "member": "string",
+          "name": "SaleStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol type. Valid values: NFS, CIFS",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AvailableRegion": {
+      "document": "Versioning - array of regions",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name, such as \"ap-beijing\"",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name, such as \"bj\"",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region availability. If a region has at least one AZ where resources are purchasable, this value will be `AVAILABLE`; otherwise, it will be `UNAVAILABLE`",
+          "member": "string",
+          "name": "RegionStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of AZs",
+          "member": "AvailableZone",
+          "name": "Zones",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name, such as \"Guangzhou\"",
+          "member": "string",
+          "name": "RegionCnName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AvailableType": {
+      "document": "Versioning - array of classes",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol and sale details",
+          "member": "AvailableProtoStatus",
+          "name": "Protocols",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage class. Valid values: `SD` (standard storage) and `HP` (high-performance storage)",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Indicates whether prepaid is supported. `true`: yes; `false`: no",
+          "member": "bool",
+          "name": "Prepayment",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AvailableZone": {
+      "document": "Versioning - array of AZs",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ name",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Chinese name of an AZ",
+          "member": "string",
+          "name": "ZoneCnName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of classes",
+          "member": "AvailableType",
+          "name": "Types",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Chinese and English names of an AZ",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateCfsFileSystemRequest": {
+      "document": "CreateCfsFileSystem request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ name, such as \"ap-beijing-1\". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type. Valid values: VPC (VPC), BASIC (basic network)",
+          "member": "string",
+          "name": "NetInterface",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system protocol type. Valid values: NFS, CIFS. If this parameter is left empty, NFS will be used by default",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system storage class. Valid values: SD (standard), HP (high-performance)",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. This field is required if network type is VPC.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID. This field is required if network type is VPC.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies an IP address, which is supported only for VPC. If this parameter is left empty, a random IP will be assigned in the subnet",
+          "member": "string",
+          "name": "MountIP",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom file system name",
+          "member": "string",
+          "name": "FsName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system tag",
+          "member": "TagInfo",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCfsFileSystemResponse": {
+      "document": "CreateCfsFileSystem response structure.",
+      "members": [
+        {
+          "document": "File system creation time",
+          "member": "string",
+          "name": "CreationTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Custom file system name",
+          "member": "string",
+          "name": "CreationToken",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File system status",
+          "member": "string",
+          "name": "LifeCycleState",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Used file system capacity",
+          "member": "uint64",
+          "name": "SizeByte",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "AZ ID",
+          "member": "uint64",
+          "name": "ZoneId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Custom file system name",
+          "member": "string",
+          "name": "FsName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether a file system is encrypted",
+          "member": "bool",
+          "name": "Encrypted",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCfsPGroupRequest": {
+      "document": "CreateCfsPGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group description, which can contain 1-255 characters",
+          "member": "string",
+          "name": "DescInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCfsPGroupResponse": {
+      "document": "CreateCfsPGroup response structure.",
+      "members": [
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission group name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission group description",
+          "member": "string",
+          "name": "DescInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of file systems bound to this permission group",
+          "member": "int64",
+          "name": "BindCfsNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission group creation time",
+          "member": "string",
+          "name": "CDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCfsRuleRequest": {
+      "document": "CreateCfsRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.",
+          "member": "string",
+          "name": "AuthClientIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO",
+          "member": "string",
+          "name": "RWPermission",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.",
+          "member": "string",
+          "name": "UserPermission",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCfsRuleResponse": {
+      "document": "CreateCfsRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Client IP",
+          "member": "string",
+          "name": "AuthClientIp",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Read & write permissions",
+          "member": "string",
+          "name": "RWPermission",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User permission",
+          "member": "string",
+          "name": "UserPermission",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Priority",
+          "member": "int64",
+          "name": "Priority",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsFileSystemRequest": {
+      "document": "DeleteCfsFileSystem request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID. Note: please call the `DeleteMountTarget` API to delete the mount target first before deleting a file system; otherwise, the delete operation will fail.",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsFileSystemResponse": {
+      "document": "DeleteCfsFileSystem response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsPGroupRequest": {
+      "document": "DeleteCfsPGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsPGroupResponse": {
+      "document": "DeleteCfsPGroup response structure.",
+      "members": [
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User ID",
+          "member": "int64",
+          "name": "AppId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsRuleRequest": {
+      "document": "DeleteCfsRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsRuleResponse": {
+      "document": "DeleteCfsRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMountTargetRequest": {
+      "document": "DeleteMountTarget request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mount target ID",
+          "member": "string",
+          "name": "MountTargetId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMountTargetResponse": {
+      "document": "DeleteMountTarget response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableZoneInfoRequest": {
+      "document": "DescribeAvailableZoneInfo request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAvailableZoneInfoResponse": {
+      "document": "DescribeAvailableZoneInfo response structure.",
+      "members": [
+        {
+          "document": "Information such as resource availability in each AZ and the supported storage classes and protocols",
+          "member": "AvailableRegion",
+          "name": "RegionZones",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsFileSystemClientsRequest": {
+      "document": "DescribeCfsFileSystemClients request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsFileSystemClientsResponse": {
+      "document": "DescribeCfsFileSystemClients response structure.",
+      "members": [
+        {
+          "document": "Client list",
+          "member": "FileSystemClient",
+          "name": "ClientList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsFileSystemsRequest": {
+      "document": "DescribeCfsFileSystems request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsFileSystemsResponse": {
+      "document": "DescribeCfsFileSystems response structure.",
+      "members": [
+        {
+          "document": "File system information",
+          "member": "FileSystemInfo",
+          "name": "FileSystems",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of file systems",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsPGroupsRequest": {
+      "document": "DescribeCfsPGroups request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCfsPGroupsResponse": {
+      "document": "DescribeCfsPGroups response structure.",
+      "members": [
+        {
+          "document": "Permission group information list",
+          "member": "PGroupInfo",
+          "name": "PGroupList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsRulesRequest": {
+      "document": "DescribeCfsRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsRulesResponse": {
+      "document": "DescribeCfsRules response structure.",
+      "members": [
+        {
+          "document": "List of permission group rules",
+          "member": "PGroupRuleInfo",
+          "name": "RuleList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsServiceStatusRequest": {
+      "document": "DescribeCfsServiceStatus request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCfsServiceStatusResponse": {
+      "document": "DescribeCfsServiceStatus response structure.",
+      "members": [
+        {
+          "document": "Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)",
+          "member": "string",
+          "name": "CfsServiceStatus",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMountTargetsRequest": {
+      "document": "DescribeMountTargets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMountTargetsResponse": {
+      "document": "DescribeMountTargets response structure.",
+      "members": [
+        {
+          "document": "Mount target details",
+          "member": "MountInfo",
+          "name": "MountTargets",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of mount targets",
+          "member": "int64",
+          "name": "NumberOfMountTargets",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FileSystemClient": {
+      "document": "Information on the file system client",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address of the file system",
+          "member": "string",
+          "name": "CfsVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Client IP",
+          "member": "string",
+          "name": "ClientIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system VPCID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Path in which the file system is mounted to the client",
+          "member": "string",
+          "name": "MountDirectory",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FileSystemInfo": {
+      "document": "Basic information of a file system",
+      "members": [
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom name",
+          "member": "string",
+          "name": "CreationToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system status",
+          "member": "string",
+          "name": "LifeCycleState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used file system capacity",
+          "member": "uint64",
+          "name": "SizeByte",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum storage limit of a file system",
+          "member": "uint64",
+          "name": "SizeLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system protocol type",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system storage class",
+          "member": "string",
+          "name": "StorageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Prepaid storage pack bound with the file system",
+          "member": "string",
+          "name": "StorageResourcePkg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Prepaid bandwidth pack bound to a file system (not supported currently)",
+          "member": "string",
+          "name": "BandwidthResourcePkg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of permission groups bound to a file system",
+          "member": "PGroup",
+          "name": "PGroup",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom name",
+          "member": "string",
+          "name": "FsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a file system is encrypted",
+          "member": "bool",
+          "name": "Encrypted",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key used for encryption, which can be the key ID or ARN",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput",
+          "member": "float",
+          "name": "BandwidthLimit",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MountInfo": {
+      "document": "Mount target information",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount target ID",
+          "member": "string",
+          "name": "MountTargetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount target IP",
+          "member": "string",
+          "name": "IpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount root-directory",
+          "member": "string",
+          "name": "FSID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount target status",
+          "member": "string",
+          "name": "LifeCycleState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "member": "string",
+          "name": "NetworkInterface",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC name",
+          "member": "string",
+          "name": "VpcName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet name",
+          "member": "string",
+          "name": "SubnetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PGroup": {
+      "document": "Information of permission groups bound to a file system",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission group name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PGroupInfo": {
+      "document": "Array of permission groups",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission group name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "member": "string",
+          "name": "DescInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of bound file system",
+          "member": "int64",
+          "name": "BindCfsNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PGroupRuleInfo": {
+      "document": "List of permission group rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Client IP allowed for access",
+          "member": "string",
+          "name": "AuthClientIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Read/write permission. ro: read-only; rw: read & write",
+          "member": "string",
+          "name": "RWPermission",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User permission. all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions.",
+          "member": "string",
+          "name": "UserPermission",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SignUpCfsServiceRequest": {
+      "document": "SignUpCfsService request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "SignUpCfsServiceResponse": {
+      "document": "SignUpCfsService response structure.",
+      "members": [
+        {
+          "document": "Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)",
+          "member": "string",
+          "name": "CfsServiceStatus",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TagInfo": {
+      "document": "Tag information unit",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UpdateCfsFileSystemNameRequest": {
+      "document": "UpdateCfsFileSystemName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom file system name",
+          "member": "string",
+          "name": "FsName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsFileSystemNameResponse": {
+      "document": "UpdateCfsFileSystemName response structure.",
+      "members": [
+        {
+          "document": "Custom file system name",
+          "member": "string",
+          "name": "CreationToken",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Custom file system name",
+          "member": "string",
+          "name": "FsName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsFileSystemPGroupRequest": {
+      "document": "UpdateCfsFileSystemPGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsFileSystemPGroupResponse": {
+      "document": "UpdateCfsFileSystemPGroup response structure.",
+      "members": [
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsFileSystemSizeLimitRequest": {
+      "document": "UpdateCfsFileSystemSizeLimit request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.",
+          "member": "uint64",
+          "name": "FsLimit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsFileSystemSizeLimitResponse": {
+      "document": "UpdateCfsFileSystemSizeLimit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsPGroupRequest": {
+      "document": "UpdateCfsPGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group description, which can contain 1-255 characters",
+          "member": "string",
+          "name": "DescInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsPGroupResponse": {
+      "document": "UpdateCfsPGroup response structure.",
+      "members": [
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission group name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Description",
+          "member": "string",
+          "name": "DescInfo",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsRuleRequest": {
+      "document": "UpdateCfsRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.",
+          "member": "string",
+          "name": "AuthClientIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO",
+          "member": "string",
+          "name": "RWPermission",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.",
+          "member": "string",
+          "name": "UserPermission",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsRuleResponse": {
+      "document": "UpdateCfsRule response structure.",
+      "members": [
+        {
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Client IP or IP range allowed for access",
+          "member": "string",
+          "name": "AuthClientIp",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Read & write permission",
+          "member": "string",
+          "name": "RWPermission",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User permission",
+          "member": "string",
+          "name": "UserPermission",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Priority",
+          "member": "int64",
+          "name": "Priority",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

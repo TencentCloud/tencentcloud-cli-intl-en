@@ -1,0 +1,1099 @@
+{
+  "actions": {
+    "DescribeDBDiagEvent": {
+      "document": "This API is used to get the details of an instance exception diagnosis event.",
+      "input": "DescribeDBDiagEventRequest",
+      "name": "Gets diagnosis event details",
+      "output": "DescribeDBDiagEventResponse"
+    },
+    "DescribeDBDiagHistory": {
+      "document": "This API is used to get the list of instance diagnosis events.",
+      "input": "DescribeDBDiagHistoryRequest",
+      "name": "Gets instance diagnosis history",
+      "output": "DescribeDBDiagHistoryResponse"
+    },
+    "DescribeDBSpaceStatus": {
+      "document": "This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.",
+      "input": "DescribeDBSpaceStatusRequest",
+      "name": "Queries overview of instance space usage during a specified time period",
+      "output": "DescribeDBSpaceStatusResponse"
+    },
+    "DescribeSlowLogTimeSeriesStats": {
+      "document": "This API is used to get the slow log statistics histogram.",
+      "input": "DescribeSlowLogTimeSeriesStatsRequest",
+      "name": "Gets slow log statistics histogram",
+      "output": "DescribeSlowLogTimeSeriesStatsResponse"
+    },
+    "DescribeSlowLogTopSqls": {
+      "document": "This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.",
+      "input": "DescribeSlowLogTopSqlsRequest",
+      "name": "Queries slow log statistics in specified time period by SQL template",
+      "output": "DescribeSlowLogTopSqlsResponse"
+    },
+    "DescribeTopSpaceTableTimeSeries": {
+      "document": "This API is used to query the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.",
+      "input": "DescribeTopSpaceTableTimeSeriesRequest",
+      "name": "Queries daily space statistics of top tables during a specified time period",
+      "output": "DescribeTopSpaceTableTimeSeriesResponse"
+    },
+    "DescribeTopSpaceTables": {
+      "document": "This API is used to query real-time space statistics of top tables of an instance. The return results are sorted by size by default.",
+      "input": "DescribeTopSpaceTablesRequest",
+      "name": "Queries space statistics of top tables",
+      "output": "DescribeTopSpaceTablesResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-10-16",
+    "serviceNameCN": "数据库智能管家 DBbrain",
+    "serviceShortName": "dbbrain"
+  },
+  "objects": {
+    "DescribeDBDiagEventRequest": {
+      "document": "DescribeDBDiagEvent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event ID, which can be obtained through the `DescribeDBDiagHistory` API.",
+          "member": "int64",
+          "name": "EventId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagEventResponse": {
+      "document": "DescribeDBDiagEvent response structure.",
+      "members": [
+        {
+          "document": "Diagnosis item.",
+          "member": "string",
+          "name": "DiagItem",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Diagnosis type.",
+          "member": "string",
+          "name": "DiagType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event ID.",
+          "member": "int64",
+          "name": "EventId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event details.",
+          "member": "string",
+          "name": "Explanation",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Summary.",
+          "member": "string",
+          "name": "Outline",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Problem found.",
+          "member": "string",
+          "name": "Problem",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.",
+          "member": "int64",
+          "name": "Severity",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Suggestion.",
+          "member": "string",
+          "name": "Suggestions",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reserved field.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Metric",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "End time.",
+          "member": "datetime",
+          "name": "EndTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagHistoryRequest": {
+      "document": "DescribeDBDiagHistory request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time, such as \"2019-09-10 12:13:14\".",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time, such as \"2019-09-11 12:13:14\".",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagHistoryResponse": {
+      "document": "DescribeDBDiagHistory response structure.",
+      "members": [
+        {
+          "document": "Event description.",
+          "member": "DiagHistoryEventItem",
+          "name": "Events",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSpaceStatusRequest": {
+      "document": "DescribeDBSpaceStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query period in days. The end date is the current date and the query period is 7 days by default.",
+          "member": "int64",
+          "name": "RangeDays",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSpaceStatusResponse": {
+      "document": "DescribeDBSpaceStatus response structure.",
+      "members": [
+        {
+          "document": "Disk usage growth in MB.",
+          "member": "int64",
+          "name": "Growth",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available disk space in MB.",
+          "member": "int64",
+          "name": "Remain",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total disk space in MB.",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Estimated number of available days.",
+          "member": "int64",
+          "name": "AvailableDays",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogTimeSeriesStatsRequest": {
+      "document": "DescribeSlowLogTimeSeriesStats request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time.",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogTimeSeriesStatsResponse": {
+      "document": "DescribeSlowLogTimeSeriesStats response structure.",
+      "members": [
+        {
+          "document": "Time range in seconds in histogram.",
+          "member": "int64",
+          "name": "Period",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of slow logs in specified time range.",
+          "member": "TimeSlice",
+          "name": "TimeSeries",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance CPU utilization monitoring data in specified time range.",
+          "member": "MonitorMetricSeriesData",
+          "name": "SeriesData",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogTopSqlsRequest": {
+      "document": "DescribeSlowLogTopSqls request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time.",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting key. Valid values: QueryTime, ExecTimes, RowsSent, LockTime, RowsExamined.",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: ASC (ascending), DESC (descending).",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogTopSqlsResponse": {
+      "document": "DescribeSlowLogTopSqls response structure.",
+      "members": [
+        {
+          "document": "Number of eligible entries.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of top slow SQL statements",
+          "member": "SlowLogTopSqlItem",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceTableTimeSeriesRequest": {
+      "document": "DescribeTopSpaceTableTimeSeries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned top tables. Default value: 20. Maximum value: 20.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start date. It can be as early as 6 days before the current date, and defaults to 6 days before the end date.",
+          "member": "date",
+          "name": "StartDate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End date. It can be as early as 6 days before the current date, and defaults to the current date.",
+          "member": "date",
+          "name": "EndDate",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceTableTimeSeriesResponse": {
+      "document": "DescribeTopSpaceTableTimeSeries response structure.",
+      "members": [
+        {
+          "document": "Time series list of the returned space statistics of top tables.",
+          "member": "TableSpaceTimeSeries",
+          "name": "TopSpaceTableTimeSeries",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceTablesRequest": {
+      "document": "DescribeTopSpaceTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned top tables. Default value: 20. Maximum value: 20.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceTablesResponse": {
+      "document": "DescribeTopSpaceTables response structure.",
+      "members": [
+        {
+          "document": "List of the returned space statistics of top tables.",
+          "member": "TableSpaceData",
+          "name": "TopSpaceTables",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DiagHistoryEventItem": {
+      "document": "Instance diagnosis event",
+      "members": [
+        {
+          "default": "",
+          "document": "Diagnosis type.",
+          "member": "string",
+          "name": "DiagType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time.",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event ID.",
+          "member": "int64",
+          "name": "EventId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.",
+          "member": "int64",
+          "name": "Severity",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Summary.",
+          "member": "string",
+          "name": "Outline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Diagnosis item.",
+          "member": "string",
+          "name": "DiagItem",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reserved field\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Metric",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MonitorFloatMetric": {
+      "document": "Monitoring data in float type",
+      "members": [
+        {
+          "default": "",
+          "document": "Metric name.",
+          "member": "string",
+          "name": "Metric",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric unit.",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric value.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MonitorFloatMetricSeriesData": {
+      "document": "Monitoring metric value in float type in a unit of time interval",
+      "members": [
+        {
+          "default": "",
+          "document": "Monitoring metric.",
+          "member": "MonitorFloatMetric",
+          "name": "Series",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp corresponding to monitoring metric.",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MonitorMetric": {
+      "document": "Monitoring data",
+      "members": [
+        {
+          "default": "",
+          "document": "Metric name.",
+          "member": "string",
+          "name": "Metric",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric unit.",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric value.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MonitorMetricSeriesData": {
+      "document": "Monitoring metric data in specified time range",
+      "members": [
+        {
+          "default": "",
+          "document": "Monitoring metric.",
+          "member": "MonitorMetric",
+          "name": "Series",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp corresponding to monitoring metric.",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogTopSqlItem": {
+      "document": "Top slow SQL statements",
+      "members": [
+        {
+          "default": "",
+          "document": "Total SQL lock wait time",
+          "member": "float",
+          "name": "LockTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum lock wait time",
+          "member": "float",
+          "name": "LockTimeMax",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum lock wait time",
+          "member": "float",
+          "name": "LockTimeMin",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of scanned rows",
+          "member": "int64",
+          "name": "RowsExamined",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of scanned rows",
+          "member": "int64",
+          "name": "RowsExaminedMax",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum number of scanned rows",
+          "member": "int64",
+          "name": "RowsExaminedMin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total duration",
+          "member": "float",
+          "name": "QueryTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum execution time",
+          "member": "float",
+          "name": "QueryTimeMax",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum execution time",
+          "member": "float",
+          "name": "QueryTimeMin",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of returned rows",
+          "member": "int64",
+          "name": "RowsSent",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned rows",
+          "member": "int64",
+          "name": "RowsSentMax",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum number of returned rows",
+          "member": "int64",
+          "name": "RowsSentMin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of executions",
+          "member": "int64",
+          "name": "ExecTimes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SQL template",
+          "member": "string",
+          "name": "SqlTemplate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SQL with parameter (random)",
+          "member": "string",
+          "name": "SqlText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Schema",
+          "member": "string",
+          "name": "Schema",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ratio of total duration",
+          "member": "float",
+          "name": "QueryTimeRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ratio of total SQL lock wait time",
+          "member": "float",
+          "name": "LockTimeRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ratio of total number of scanned rows",
+          "member": "float",
+          "name": "RowsExaminedRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ratio of total number of returned rows",
+          "member": "float",
+          "name": "RowsSentRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TableSpaceData": {
+      "document": "Database table space statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "Table name.",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name.",
+          "member": "string",
+          "name": "TableSchema",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database table storage engine.",
+          "member": "string",
+          "name": "Engine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data space in MB.",
+          "member": "float",
+          "name": "DataLength",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index space in MB.",
+          "member": "float",
+          "name": "IndexLength",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Fragmented space in MB.",
+          "member": "float",
+          "name": "DataFree",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total space usage in MB.",
+          "member": "float",
+          "name": "TotalLength",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Fragmented rate (%).",
+          "member": "float",
+          "name": "FragRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of rows.",
+          "member": "int64",
+          "name": "TableRows",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size in MB of the physical file exclusive to a table.",
+          "member": "float",
+          "name": "PhysicalFileSize",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TableSpaceTimeSeries": {
+      "document": "Time series of database table space data",
+      "members": [
+        {
+          "default": "",
+          "document": "Table name.",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name.",
+          "member": "string",
+          "name": "TableSchema",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database table storage engine.",
+          "member": "string",
+          "name": "Engine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monitoring metric data in a unit of time interval.",
+          "member": "MonitorFloatMetricSeriesData",
+          "name": "SeriesData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TimeSlice": {
+      "document": "Slow log statistics in specified time range",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Statistics start time",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

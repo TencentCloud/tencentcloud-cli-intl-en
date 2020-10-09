@@ -33,7 +33,6 @@ def is_a_tty():
 def center_text(text, length=80, left_edge='|', right_edge='|',
                 text_length=None):
     """Center text with specified edge chars.
-
     You can pass in the length of the text as an arg, otherwise it is computed
     automatically for you.  This can allow you to center a string not based
     on it's literal length (useful if you're using ANSI codes).

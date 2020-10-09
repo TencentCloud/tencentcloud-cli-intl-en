@@ -1,0 +1,3441 @@
+{
+  "actions": {
+    "AddExistedInstances": {
+      "document": "This API is used to add one or more existing instances to a cluster.",
+      "input": "AddExistedInstancesRequest",
+      "name": "Adds one or more existing instances to a cluster.",
+      "output": "AddExistedInstancesResponse"
+    },
+    "CreateCluster": {
+      "document": "This API is used to create a cluster.",
+      "input": "CreateClusterRequest",
+      "name": "Creates a cluster",
+      "output": "CreateClusterResponse"
+    },
+    "CreateClusterAsGroup": {
+      "document": "Create a scaling group for an existing cluster",
+      "input": "CreateClusterAsGroupRequest",
+      "name": "Create a cluster scaling group",
+      "output": "CreateClusterAsGroupResponse"
+    },
+    "CreateClusterEndpoint": {
+      "document": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
+      "input": "CreateClusterEndpointRequest",
+      "name": "Create a cluster access port",
+      "output": "CreateClusterEndpointResponse"
+    },
+    "CreateClusterEndpointVip": {
+      "document": "Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)",
+      "input": "CreateClusterEndpointVipRequest",
+      "name": "Create an external network access port for the managed cluster",
+      "output": "CreateClusterEndpointVipResponse"
+    },
+    "CreateClusterInstances": {
+      "document": "This API is used to create one or more nodes in a cluster.",
+      "input": "CreateClusterInstancesRequest",
+      "name": "Creates one or more cluster nodes.",
+      "output": "CreateClusterInstancesResponse"
+    },
+    "CreateClusterRouteTable": {
+      "document": "This API is used to create a cluster route table.",
+      "input": "CreateClusterRouteTableRequest",
+      "name": "Creates a cluster route table.",
+      "output": "CreateClusterRouteTableResponse"
+    },
+    "DeleteCluster": {
+      "document": "This API is used to delete a cluster. (Cloud API v3).",
+      "input": "DeleteClusterRequest",
+      "name": "Deletes a cluster",
+      "output": "DeleteClusterResponse"
+    },
+    "DeleteClusterAsGroups": {
+      "document": "Delete a cluster scaling group",
+      "input": "DeleteClusterAsGroupsRequest",
+      "name": "Delete a cluster scaling group",
+      "output": "DeleteClusterAsGroupsResponse"
+    },
+    "DeleteClusterEndpoint": {
+      "document": "Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
+      "input": "DeleteClusterEndpointRequest",
+      "name": "Delete cluster access port",
+      "output": "DeleteClusterEndpointResponse"
+    },
+    "DeleteClusterEndpointVip": {
+      "document": "Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)",
+      "input": "DeleteClusterEndpointVipRequest",
+      "name": "Delete the external network access port of the managed cluster",
+      "output": "DeleteClusterEndpointVipResponse"
+    },
+    "DeleteClusterInstances": {
+      "document": "This API is used to delete one or more nodes from a cluster.",
+      "input": "DeleteClusterInstancesRequest",
+      "name": "Deletes one or more nodes from a cluster.",
+      "output": "DeleteClusterInstancesResponse"
+    },
+    "DeleteClusterRoute": {
+      "document": "This API is used to delete a cluster route.",
+      "input": "DeleteClusterRouteRequest",
+      "name": "Deletes a cluster route.",
+      "output": "DeleteClusterRouteResponse"
+    },
+    "DeleteClusterRouteTable": {
+      "document": "This API is used to delete cluster a route table.",
+      "input": "DeleteClusterRouteTableRequest",
+      "name": "Deletes a cluster route table.",
+      "output": "DeleteClusterRouteTableResponse"
+    },
+    "DescribeClusterAsGroupOption": {
+      "document": "Cluster auto scaling configuration",
+      "input": "DescribeClusterAsGroupOptionRequest",
+      "name": "Cluster auto scaling configuration",
+      "output": "DescribeClusterAsGroupOptionResponse"
+    },
+    "DescribeClusterAsGroups": {
+      "document": "Cluster-associated scaling group list",
+      "input": "DescribeClusterAsGroupsRequest",
+      "name": "Cluster-associated scaling group list",
+      "output": "DescribeClusterAsGroupsResponse"
+    },
+    "DescribeClusterEndpointStatus": {
+      "document": "Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
+      "input": "DescribeClusterEndpointStatusRequest",
+      "name": "Query cluster access port status",
+      "output": "DescribeClusterEndpointStatusResponse"
+    },
+    "DescribeClusterEndpointVipStatus": {
+      "document": "Query cluster open port process status (only supports external ports of the managed cluster)",
+      "input": "DescribeClusterEndpointVipStatusRequest",
+      "name": "Query the progress of enabling the public network port for a managed cluster",
+      "output": "DescribeClusterEndpointVipStatusResponse"
+    },
+    "DescribeClusterInstances": {
+      "document": " This API is used to query information of one or more instances in a cluster. ",
+      "input": "DescribeClusterInstancesRequest",
+      "name": "Queries the information of one or more nodes in a cluster.",
+      "output": "DescribeClusterInstancesResponse"
+    },
+    "DescribeClusterRouteTables": {
+      "document": "This API is used to query one or more cluster route tables.",
+      "input": "DescribeClusterRouteTablesRequest",
+      "name": "Queries one or more cluster route tables.",
+      "output": "DescribeClusterRouteTablesResponse"
+    },
+    "DescribeClusterRoutes": {
+      "document": "This API is used to query cluster routes.",
+      "input": "DescribeClusterRoutesRequest",
+      "name": "Queries cluster routes.",
+      "output": "DescribeClusterRoutesResponse"
+    },
+    "DescribeClusterSecurity": {
+      "document": "This API is used to query the key information of a cluster.",
+      "input": "DescribeClusterSecurityRequest",
+      "name": "Queries the key information of a cluster.",
+      "output": "DescribeClusterSecurityResponse"
+    },
+    "DescribeClusters": {
+      "document": "This API is used to query clusters list.",
+      "input": "DescribeClustersRequest",
+      "name": "Queries clusters list.",
+      "output": "DescribeClustersResponse"
+    },
+    "DescribeExistedInstances": {
+      "document": "This API is used to query one or more existing node and determine whether they can be added to a cluster.",
+      "input": "DescribeExistedInstancesRequest",
+      "name": "Queries one or more existing nodes.",
+      "output": "DescribeExistedInstancesResponse"
+    },
+    "DescribeImages": {
+      "document": "This API is used to get image information.",
+      "input": "DescribeImagesRequest",
+      "name": "Gets image information",
+      "output": "DescribeImagesResponse"
+    },
+    "DescribeRegions": {
+      "document": "This API is used to obtain all regions supported by TKE.",
+      "input": "DescribeRegionsRequest",
+      "name": "Queries the list of regions",
+      "output": "DescribeRegionsResponse"
+    },
+    "DescribeRouteTableConflicts": {
+      "document": "This API is used to query the list of route table conflicts.",
+      "input": "DescribeRouteTableConflictsRequest",
+      "name": "Queries the list of route table conflicts.",
+      "output": "DescribeRouteTableConflictsResponse"
+    },
+    "ModifyClusterAsGroupAttribute": {
+      "document": "Modify cluster scaling group attributes",
+      "input": "ModifyClusterAsGroupAttributeRequest",
+      "name": "Modify cluster scaling group attributes",
+      "output": "ModifyClusterAsGroupAttributeResponse"
+    },
+    "ModifyClusterAttribute": {
+      "document": "This API is used to modify cluster attributes.",
+      "input": "ModifyClusterAttributeRequest",
+      "name": "Modifies cluster attributes",
+      "output": "ModifyClusterAttributeResponse"
+    },
+    "ModifyClusterEndpointSP": {
+      "document": "Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)",
+      "input": "ModifyClusterEndpointSPRequest",
+      "name": "Modify the security policy of the external network port of the managed cluster",
+      "output": "ModifyClusterEndpointSPResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-05-25",
+    "serviceNameCN": "容器服务",
+    "serviceShortName": "tke"
+  },
+  "objects": {
+    "AddExistedInstancesRequest": {
+      "document": "AddExistedInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance list",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Additional parameter to be set for the instance",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Node login information (currently only supports using Password or single KeyIds)",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "HostName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddExistedInstancesResponse": {
+      "document": "AddExistedInstances response structure.",
+      "members": [
+        {
+          "document": "IDs of failed nodes\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IDs of successful nodes\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "SuccInstanceIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IDs of (successful or failed) nodes that timed out\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "TimeoutInstanceIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AutoScalingGroupRange": {
+      "document": "Maximum and minimum number of pods in cluster-associated scaling groups",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum number of pods in a scaling group",
+          "member": "int64",
+          "name": "MinSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of pods in a scaling group",
+          "member": "int64",
+          "name": "MaxSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Cluster": {
+      "document": "Cluster information struct",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster description",
+          "member": "string",
+          "name": "ClusterDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster version. The default value is 1.10.5.",
+          "member": "string",
+          "name": "ClusterVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster operating system. centOS 7.2x86_64 or ubuntu 16.04.1 LTSx86_64. Default value: ubuntu 16.04.1 LTSx86_64",
+          "member": "string",
+          "name": "ClusterOs",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster type. Managed cluster: MANAGED_CLUSTER; Self-deployed cluster: INDEPENDENT_CLUSTER.",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster network-related parameters",
+          "member": "ClusterNetworkSettings",
+          "name": "ClusterNetworkSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current number of nodes in the cluster",
+          "member": "uint64",
+          "name": "ClusterNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the project to which the cluster belongs",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ClusterStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Property",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of primary nodes currently in the cluster",
+          "member": "uint64",
+          "name": "ClusterMaterNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the image used by the cluster\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Container image tag\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "OsCustomizeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Runtime environment of the cluster. Values can be `docker` or `containerd`.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ContainerRuntime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether Deletion Protection is enabled\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterAdvancedSettings": {
+      "document": "Cluster advanced configurations",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether IPVS is enabled",
+          "member": "bool",
+          "name": "IPVS",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether auto-scaling is enabled for nodes in the cluster (Enabling this function is not supported when you create a cluster)",
+          "member": "bool",
+          "name": "AsEnabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type of runtime component used by the cluster. The types include \"docker\" and \"containerd\". Default value: docker",
+          "member": "string",
+          "name": "ContainerRuntime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "NodeNameType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster custom parameter",
+          "member": "ClusterExtraArgs",
+          "name": "ExtraArgs",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster network type, which can be GR (Global Router) or VPC-CNI. The default value is GR.",
+          "member": "string",
+          "name": "NetworkType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.",
+          "member": "bool",
+          "name": "IsNonStaticIpMode",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "KubeProxyMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Indicates whether to enable auditing",
+          "member": "bool",
+          "name": "AuditEnabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies the ID of logset to which the audit logs are uploaded.",
+          "member": "string",
+          "name": "AuditLogsetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies the ID of topic to which the audit logs are uploaded.",
+          "member": "string",
+          "name": "AuditLogTopicId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ClusterAsGroup": {
+      "document": "Cluster-associated scaling group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scaling group status (`enabled`, `enabling`, `disabled`, `disabling`, `updating`, `deleting`, `scaleDownEnabling`, `scaleDownDisabling`)",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the node is set to unschedulable\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "bool",
+          "name": "IsUnschedulable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scaling group label list\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "Label",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterAsGroupAttribute": {
+      "document": "Cluster scaling group attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "member": "bool",
+          "name": "AutoScalingGroupEnabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum and minimum number of pods in a scaling group",
+          "member": "AutoScalingGroupRange",
+          "name": "AutoScalingGroupRange",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ClusterAsGroupOption": {
+      "document": "Cluster auto scaling configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable scale-in\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "bool",
+          "name": "IsScaleDownEnabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The scale-out method when there are multiple scaling groups. `random`: select a random scaling group. `most-pods`: choose the scaling group that can schedule the most pods. `least-waste`: select the scaling group that can ensure the fewest remaining resources after Pod scheduling.. The default value is `random`.)\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Expander",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Max concurrent scale-in volume\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "MaxEmptyBulkDelete",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of minutes after cluster scale-out when the system starts judging whether to perform scale-in\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "ScaleDownDelay",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of consecutive minutes of idleness after which the node is subject to scale-in (default value: 10)\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "ScaleDownUnneededTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Percentage of node resource usage below which the node is considered to be idle (default value: 50)\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "ScaleDownUtilizationThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "During scale-in, ignore nodes with local storage pods (default value: False)\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "bool",
+          "name": "SkipNodesWithLocalStorage",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "During scale-in, ignore nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "bool",
+          "name": "SkipNodesWithSystemPods",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "bool",
+          "name": "IgnoreDaemonSetsUtilization",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number at which CA health detection is triggered (default value: 3). After the number specified in OkTotalUnreadyCount is exceeded, CA will perform health detection.\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "OkTotalUnreadyCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Max percentage of unready nodes. After the max percentage is exceeded, CA will stop operation.\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "MaxTotalUnreadyPercentage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Amount of time before unready nodes become eligible for scale-in\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "ScaleDownUnreadyTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Waiting time before CA deletes nodes that are not registered in Kubernetes\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "UnregisteredNodeRemovalTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterBasicSettings": {
+      "document": "Describes the basic configuration information of a cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster operating system. CentOS 7.2x86_64 or Ubuntu 16.04.1 LTSx86_64. Default value: Ubuntu 16.04.1 LTSx86_64",
+          "member": "string",
+          "name": "ClusterOs",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster version. The default value is 1.10.5.",
+          "member": "string",
+          "name": "ClusterVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster description",
+          "member": "string",
+          "name": "ClusterDescription",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID, in the format of vpc-xxx, which is required when you create an empty managed cluster.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the project to which the new resources in the cluster belong.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "OsCustomizeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "NeedWorkSecurityGroup",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ClusterCIDRSettings": {
+      "document": "Container networking parameters for the cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC",
+          "member": "string",
+          "name": "ClusterCIDR",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to ignore ClusterCIDR conflict errors, which are not ignored by default",
+          "member": "bool",
+          "name": "IgnoreClusterCIDRConflict",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of pods on each node in the cluster",
+          "member": "uint64",
+          "name": "MaxNodePodNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of cluster services",
+          "member": "uint64",
+          "name": "MaxClusterServiceNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.",
+          "member": "string",
+          "name": "ServiceCIDR",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID of the ENI in VPC-CNI network mode",
+          "member": "string",
+          "name": "EniSubnetIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)",
+          "member": "int64",
+          "name": "ClaimExpiredSeconds",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ClusterExtraArgs": {
+      "document": "Cluster master custom parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "kube-apiserver custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"max-requests-inflight=500\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"].\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "KubeAPIServer",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kube-controller-manager custom parameter\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "KubeControllerManager",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kube-scheduler custom parameter\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "KubeScheduler",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ClusterNetworkSettings": {
+      "document": "Cluster network-related parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC.",
+          "member": "string",
+          "name": "ClusterCIDR",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to ignore ClusterCIDR conflict errors. It defaults to not ignore.",
+          "member": "bool",
+          "name": "IgnoreClusterCIDRConflict",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of pods on each node in the cluster. Default value: 256",
+          "member": "uint64",
+          "name": "MaxNodePodNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of cluster services. Default value: 256",
+          "member": "uint64",
+          "name": "MaxClusterServiceNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether IPVS is enabled. Default value: disabled",
+          "member": "bool",
+          "name": "Ipvs",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster VPC ID, which is required when you create an empty cluster; otherwise, it is automatically set to be consistent with that of the nodes in the cluster",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether CNI is enabled for network plugin(s). Default value: enabled",
+          "member": "bool",
+          "name": "Cni",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateClusterAsGroupRequest": {
+      "document": "CreateClusterAsGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.",
+          "member": "string",
+          "name": "AutoScalingGroupPara",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.",
+          "member": "string",
+          "name": "LaunchConfigurePara",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Advanced configuration information of the node",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Node label array",
+          "member": "Label",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterAsGroupResponse": {
+      "document": "CreateClusterAsGroup response structure.",
+      "members": [
+        {
+          "document": "Launch configuration ID",
+          "member": "string",
+          "name": "LaunchConfigurationId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Scaling group ID",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterEndpointRequest": {
+      "document": "CreateClusterEndpoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). ",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
+          "member": "bool",
+          "name": "IsExtranet",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterEndpointResponse": {
+      "document": "CreateClusterEndpoint response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterEndpointVipRequest": {
+      "document": "CreateClusterEndpointVip request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security policy opens single IP or CIDR to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).",
+          "member": "string",
+          "name": "SecurityPolicies",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterEndpointVipResponse": {
+      "document": "CreateClusterEndpointVip response structure.",
+      "members": [
+        {
+          "document": "Request job's FlowId",
+          "member": "int64",
+          "name": "RequestFlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterInstancesRequest": {
+      "document": "CreateClusterInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID. Enter the ClusterId field returned by the DescribeClusters API",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "RunInstancePara",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Additional parameter to be set for the instance",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterInstancesResponse": {
+      "document": "CreateClusterInstances response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterRequest": {
+      "document": "CreateCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Container networking configuration information for the cluster",
+          "member": "ClusterCIDRSettings",
+          "name": "ClusterCIDRSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Cluster type. Managed cluster: MANAGED_CLUSTER; self-deployed cluster: INDEPENDENT_CLUSTER.",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1).",
+          "member": "RunInstancesForNode",
+          "name": "RunInstancesForNode",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Basic configuration information of the cluster",
+          "member": "ClusterBasicSettings",
+          "name": "ClusterBasicSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Advanced configuration information of the cluster",
+          "member": "ClusterAdvancedSettings",
+          "name": "ClusterAdvancedSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Advanced configuration information of the node",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration information of an existing instance",
+          "member": "ExistedInstancesForNode",
+          "name": "ExistedInstancesForNode",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CVM type and the corresponding data disk mounting configuration information.",
+          "member": "InstanceDataDiskMountSetting",
+          "name": "InstanceDataDiskMountSettings",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterResponse": {
+      "document": "CreateCluster response structure.",
+      "members": [
+        {
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterRouteTableRequest": {
+      "document": "CreateClusterRouteTable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table name",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Route table CIDR",
+          "member": "string",
+          "name": "RouteTableCidrBlock",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC bound to the route table",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to ignore CIDR conflicts",
+          "member": "int64",
+          "name": "IgnoreClusterCidrConflict",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterRouteTableResponse": {
+      "document": "CreateClusterRouteTable response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DataDisk": {
+      "document": "Described the configuration and information of k8s node data disk.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "File system (ext3/ext4/xfs)\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "FileSystem",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk size (G)\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the disk is auto-formatted and mounted\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "bool",
+          "name": "AutoFormatAndMount",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Mounting directory\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "MountTarget",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteClusterAsGroupsRequest": {
+      "document": "DeleteClusterAsGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The cluster ID, obtained through the [DescribeClusters](https://intl.cloud.tencent.com/document/api/457/31862?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster scaling group ID list",
+          "member": "string",
+          "name": "AutoScalingGroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to keep nodes in the scaling group. Default to **false** (not keep)",
+          "member": "bool",
+          "name": "KeepInstance",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterAsGroupsResponse": {
+      "document": "DeleteClusterAsGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterEndpointRequest": {
+      "document": "DeleteClusterEndpoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
+          "member": "bool",
+          "name": "IsExtranet",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterEndpointResponse": {
+      "document": "DeleteClusterEndpoint response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterEndpointVipRequest": {
+      "document": "DeleteClusterEndpointVip request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterEndpointVipResponse": {
+      "document": "DeleteClusterEndpointVip response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterInstancesRequest": {
+      "document": "DeleteClusterInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of Instance IDs",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Policy used to delete an instance in the cluster: `terminate` (terminates the instance. Only available for pay-as-you-go CVMs); `retain` (only removes it from the cluster. The instance will be retained.)",
+          "member": "string",
+          "name": "InstanceDeleteMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "ForceDelete",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterInstancesResponse": {
+      "document": "DeleteClusterInstances response structure.",
+      "members": [
+        {
+          "document": "IDs of deleted instances",
+          "member": "string",
+          "name": "SuccInstanceIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IDs of instances failed to be deleted",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IDs of instances that cannot be found",
+          "member": "string",
+          "name": "NotFoundInstanceIds",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterRequest": {
+      "document": "DeleteCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy used to delete an instance in the cluster: terminate (terminates the instance. Only available for instances on pay-as-you-go CVMs); retain (only removes it from the cluster. The instance will be retained.)",
+          "member": "string",
+          "name": "InstanceDeleteMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the policy to deal with resources in the cluster when the cluster is deleted. It only supports CBS now. The default policy is to retain CBS disks.",
+          "member": "ResourceDeleteOption",
+          "name": "ResourceDeleteOptions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterResponse": {
+      "document": "DeleteCluster response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterRouteRequest": {
+      "document": "DeleteClusterRoute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table name.",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Next hop address.",
+          "member": "string",
+          "name": "GatewayIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination CIDR.",
+          "member": "string",
+          "name": "DestinationCidrBlock",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterRouteResponse": {
+      "document": "DeleteClusterRoute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterRouteTableRequest": {
+      "document": "DeleteClusterRouteTable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table name",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterRouteTableResponse": {
+      "document": "DeleteClusterRouteTable response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAsGroupOptionRequest": {
+      "document": "DescribeClusterAsGroupOption request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAsGroupOptionResponse": {
+      "document": "DescribeClusterAsGroupOption response structure.",
+      "members": [
+        {
+          "document": "Cluster auto scaling attributes\nNote: this field may return null, indicating that no valid value was found.",
+          "member": "ClusterAsGroupOption",
+          "name": "ClusterAsGroupOption",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAsGroupsRequest": {
+      "document": "DescribeClusterAsGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled.",
+          "member": "string",
+          "name": "AutoScalingGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAsGroupsResponse": {
+      "document": "DescribeClusterAsGroups response structure.",
+      "members": [
+        {
+          "document": "Total number of scaling groups associated with the cluster",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster-associated scaling group list",
+          "member": "ClusterAsGroup",
+          "name": "ClusterAsGroupSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterEndpointStatusRequest": {
+      "document": "DescribeClusterEndpointStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
+          "member": "bool",
+          "name": "IsExtranet",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterEndpointStatusResponse": {
+      "document": "DescribeClusterEndpointStatus response structure.",
+      "members": [
+        {
+          "document": "Queries cluster access port status (Created = successfully enabled; Creating = in the process of being enabled; NotFound = not enabled).",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterEndpointVipStatusRequest": {
+      "document": "DescribeClusterEndpointVipStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterEndpointVipStatusResponse": {
+      "document": "DescribeClusterEndpointVipStatus response structure.",
+      "members": [
+        {
+          "document": "Port operation status (Creating = in the process of creation; CreateFailed = creation has failed; Created = creation completed; Deleting = in the process of deletion; DeletedFailed = deletion has failed; Deleted = deletion completed; NotFound = operation not found)",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reason for operation failure",
+          "member": "string",
+          "name": "ErrorMsg",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterInstancesRequest": {
+      "document": "DescribeClusterInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of instance IDs to be obtained. This parameter is empty by default, which indicates that all instances in the cluster will be pulled.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "InstanceRole",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterInstancesResponse": {
+      "document": "DescribeClusterInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of instances in the cluster",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instances in the cluster",
+          "member": "Instance",
+          "name": "InstanceSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterRouteTablesRequest": {
+      "document": "DescribeClusterRouteTables request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeClusterRouteTablesResponse": {
+      "document": "DescribeClusterRouteTables response structure.",
+      "members": [
+        {
+          "document": "Number of instances that match the filter condition(s).",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Object of cluster route table.",
+          "member": "RouteTableInfo",
+          "name": "RouteTableSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterRoutesRequest": {
+      "document": "DescribeClusterRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table name.",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filtering conditions, which are optional. Currently, only filtering by GatewayIP is supported.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterRoutesResponse": {
+      "document": "DescribeClusterRoutes response structure.",
+      "members": [
+        {
+          "document": "Number of instances that match the filter condition(s).",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Object of cluster route.",
+          "member": "RouteInfo",
+          "name": "RouteSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterSecurityRequest": {
+      "document": "DescribeClusterSecurity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID. Enter the ClusterId field returned by the DescribeClusters API",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterSecurityResponse": {
+      "document": "DescribeClusterSecurity response structure.",
+      "members": [
+        {
+          "document": "Cluster's account name",
+          "member": "string",
+          "name": "UserName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster's password",
+          "member": "string",
+          "name": "Password",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster's access CA certificate",
+          "member": "string",
+          "name": "CertificationAuthority",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster's access address",
+          "member": "string",
+          "name": "ClusterExternalEndpoint",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain name accessed by the cluster",
+          "member": "string",
+          "name": "Domain",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster's endpoint address",
+          "member": "string",
+          "name": "PgwEndpoint",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster's access policy group\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "SecurityPolicy",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster Kubeconfig file\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Kubeconfig",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access address of the cluster JnsGw\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "JnsGwEndpoint",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClustersRequest": {
+      "document": "DescribeClusters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID list (When it is empty,\nall clusters under the account will be obtained)",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter condition. Currently, only filtering by a single ClusterName is supported",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClustersResponse": {
+      "document": "DescribeClusters response structure.",
+      "members": [
+        {
+          "document": "Total number of clusters",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster information list",
+          "member": "Cluster",
+          "name": "Clusters",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeExistedInstancesRequest": {
+      "document": "DescribeExistedInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID. Enter the `ClusterId` field returned when you call the DescribeClusters API (Only VPC ID obtained through `ClusterId` need filtering conditions. When comparing statuses, the nodes on all clusters in this region will be used for comparison. You cannot specify `InstanceIds` and `ClusterId` at the same time.)",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance IP (Supports both private and public IPs)",
+          "member": "string",
+          "name": "VagueIpAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance name",
+          "member": "string",
+          "name": "VagueInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeExistedInstancesResponse": {
+      "document": "DescribeExistedInstances response structure.",
+      "members": [
+        {
+          "document": "Array of existing instance information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "ExistedInstance",
+          "name": "ExistedInstanceSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of instances that match the filter condition(s).",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImagesRequest": {
+      "document": "DescribeImages request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeImagesResponse": {
+      "document": "DescribeImages response structure.",
+      "members": [
+        {
+          "document": "Number of images\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Image information list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ImageInstance",
+          "name": "ImageInstanceSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionsRequest": {
+      "document": "DescribeRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRegionsResponse": {
+      "document": "DescribeRegions response structure.",
+      "members": [
+        {
+          "document": "Number of regions\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "## Region List\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "RegionInstance",
+          "name": "RegionInstanceSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRouteTableConflictsRequest": {
+      "document": "DescribeRouteTableConflicts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table CIDR",
+          "member": "string",
+          "name": "RouteTableCidrBlock",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC bound to the route table",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRouteTableConflictsResponse": {
+      "document": "DescribeRouteTableConflicts response structure.",
+      "members": [
+        {
+          "document": "Whether there is a conflict in the route table.",
+          "member": "bool",
+          "name": "HasConflict",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Route table conflict list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "RouteTableConflict",
+          "name": "RouteTableConflictSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnhancedService": {
+      "document": "Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.",
+      "members": [
+        {
+          "default": "",
+          "document": "Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.",
+          "member": "RunSecurityServiceEnabled",
+          "name": "SecurityService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.",
+          "member": "RunMonitorServiceEnabled",
+          "name": "MonitorService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ExistedInstance": {
+      "document": "Information of existing instances",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the instance supports being added to the cluster (TRUE: support; FALSE: not support).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Usable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reason that the instance does not support being added.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnusableReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the cluster in which the instance currently resides.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AlreadyInCluster",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance ID, in the format of ins-xxxxxxxx.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of private IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PrivateIpAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of public IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance's number of CPU cores. Unit: cores.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance's memory capacity. Unit: GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operating system name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance model.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Auto scaling group ID\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "AutoscalingGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ExistedInstancesForNode": {
+      "document": "Configuration parameters of existing nodes in different roles",
+      "members": [
+        {
+          "default": "",
+          "document": "Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reinstallation parameter of existing instances",
+          "member": "ExistedInstancesPara",
+          "name": "ExistedInstancesPara",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettingsOverride",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ExistedInstancesPara": {
+      "document": "Reinstallation parameter of existing instances",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Additional parameter to be set for the instance",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitor and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node login information (currently only supports using Password or single KeyIds)",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group to which the instance belongs. This parameter can be obtained from the sgId field in the returned values of DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "HostName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Filter": {
+      "document": "> Key-value pair filters used for conditional queries, such as filtering results by ID, name, and state.\n> * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.\n> * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.\n>\n> Take [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:\n```\nFilters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-1\n&Filters.1.Name=instance-charge-type\n&Filters.1.Values.0=POSTPAID_BY_HOUR\n```",
+      "members": [
+        {
+          "default": "无",
+          "document": "Filters.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "无",
+          "document": "Filter values.",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ImageInstance": {
+      "document": "Image details",
+      "members": [
+        {
+          "default": "",
+          "document": "Image alias\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operating system name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Image ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Container image tag, **DOCKER_CUSTOMIZE** (container customized tag), **GENERAL** (general tag, default value)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OsCustomizeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Instance": {
+      "document": "Cluster's instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role: MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER",
+          "member": "string",
+          "name": "InstanceRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reason for instance exception (or initialization)",
+          "member": "string",
+          "name": "FailedReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status (running, initializing, or failed)",
+          "member": "string",
+          "name": "InstanceState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the instance is drained\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "DrainStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node settings\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node private IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LanIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource pool ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the auto-scaling group\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "AutoscalingGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceAdvancedSettings": {
+      "document": "Describes K8s cluster configuration and related information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "MountTarget",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specified value of dockerd --graph. Default value: /var/lib/docker\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "DockerGraphPath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded user script, which will be executed after the K8s component starts running. You need to ensure the reentrant and retry logic of the script. The script and its log files can be viewed at the node path: /data/ccs_userscript/. If you want to initialize nodes before adding them to the scheduling list, you can use this parameter together with the unschedulable parameter. After the final initialization of userScript is completed, add the kubectl uncordon nodename --kubeconfig=/root/.kube/config command to enable the node for scheduling.\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "UserScript",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run kubectl uncordon nodename to enable this node for scheduling.",
+          "member": "int64",
+          "name": "Unschedulable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node label array\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "Label",
+          "name": "Labels",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data disk information\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information about node custom parameters\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "InstanceExtraArgs",
+          "name": "ExtraArgs",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceDataDiskMountSetting": {
+      "document": "Mounting configuration of the CVM instance data disk",
+      "members": [
+        {
+          "default": "",
+          "document": "CVM instance type",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data disk mounting information",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone where the CVM instance is located",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "InstanceExtraArgs": {
+      "document": "Node custom parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Kubelet custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"root-dir=/var/lib/kubelet\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"].\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Kubelet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Label": {
+      "document": "k8s tags, generally exist as an array",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LoginSettings": {
+      "document": "Describes login settings of an instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-30 characters long and contain at least two of the following types: [a-z], [A-Z], [0-9] and [( ) \\` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-30 characters long and contain at least three of the following categories: [a-z], [A-Z], [0-9] and [( ) \\` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "string",
+          "name": "KeepImageLogin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyClusterAsGroupAttributeRequest": {
+      "document": "ModifyClusterAsGroupAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster-associated scaling group attributes",
+          "member": "ClusterAsGroupAttribute",
+          "name": "ClusterAsGroupAttribute",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterAsGroupAttributeResponse": {
+      "document": "ModifyClusterAsGroupAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterAttributeRequest": {
+      "document": "ModifyClusterAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project of the Cluster",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster description",
+          "member": "string",
+          "name": "ClusterDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterAttributeResponse": {
+      "document": "ModifyClusterAttribute response structure.",
+      "members": [
+        {
+          "document": "Project of the Cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProjectId",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterName",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterDesc",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterEndpointSPRequest": {
+      "document": "ModifyClusterEndpointSP request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).",
+          "member": "string",
+          "name": "SecurityPolicies",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterEndpointSPResponse": {
+      "document": "ModifyClusterEndpointSP response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegionInstance": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status of region-related features (return all attributes in JSON format)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FeatureGates",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region abbreviation\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whitelisted location\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ResourceDeleteOption": {
+      "document": "The policy to deal with resources in the cluster when the cluster is deleted.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource type, for example `CBS`",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies the policy to deal with resources in the cluster when the cluster is deleted. It can be `terminate` or `retain`.",
+          "member": "string",
+          "name": "DeleteMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RouteInfo": {
+      "document": "Object of cluster route",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table name.",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination CIDR.",
+          "member": "string",
+          "name": "DestinationCidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Next hop address.",
+          "member": "string",
+          "name": "GatewayIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RouteTableConflict": {
+      "document": "Object of route table conflict",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table type.",
+          "member": "string",
+          "name": "RouteTableType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route table CIDR.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RouteTableCidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Route table name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Route table ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RouteTableId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RouteTableInfo": {
+      "document": "Object of cluster route table",
+      "members": [
+        {
+          "default": "",
+          "document": "Route table name.",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route table CIDR.",
+          "member": "string",
+          "name": "RouteTableCidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC instance ID.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RunInstancesForNode": {
+      "document": "Node configuration parameters of different roles",
+      "members": [
+        {
+          "default": "",
+          "document": "Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.",
+          "member": "string",
+          "name": "RunInstancesPara",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "An advanced node setting. This parameter overrides the InstanceAdvancedSettings item set at the cluster level and corresponds to RunInstancesPara in a one-to-one sequential manner (currently valid for the ExtraArgs node custom parameter only).",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettingsOverrides",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RunMonitorServiceEnabled": {
+      "document": "Describes information related to the Cloud Monitor service.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "both"
+    },
+    "RunSecurityServiceEnabled": {
+      "document": "Describes information related to the Cloud Security service.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "The type of resource the label is bound to. Type currently supported is **cluster**.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TagSpecification": {
+      "document": "List of tag descriptions. By specifying this parameter, you can bind tags to corresponding resource instances at the same time. Currently, only tags are bound to cloud host instances.",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ResourceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}

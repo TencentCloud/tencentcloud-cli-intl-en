@@ -1,0 +1,3731 @@
+{
+  "actions": {
+    "CreateAcl": {
+      "document": "This API is used to add an ACL policy.",
+      "input": "CreateAclRequest",
+      "name": "Adds ACL policy",
+      "output": "CreateAclResponse"
+    },
+    "CreatePartition": {
+      "document": "This API is used to add a partition in a topic.",
+      "input": "CreatePartitionRequest",
+      "name": "Adds partition in topic",
+      "output": "CreatePartitionResponse"
+    },
+    "CreateTopic": {
+      "document": "This API is used to create a CKafka topic.",
+      "input": "CreateTopicRequest",
+      "name": "Creates topic",
+      "output": "CreateTopicResponse"
+    },
+    "CreateTopicIpWhiteList": {
+      "document": "This API is used to create a topic IP allowlist.",
+      "input": "CreateTopicIpWhiteListRequest",
+      "name": "Creates topic IP allowlist",
+      "output": "CreateTopicIpWhiteListResponse"
+    },
+    "CreateUser": {
+      "document": "This API is used to add a user.",
+      "input": "CreateUserRequest",
+      "name": "Adds user",
+      "output": "CreateUserResponse"
+    },
+    "DeleteAcl": {
+      "document": "This API is used to delete an ACL.",
+      "input": "DeleteAclRequest",
+      "name": "Deletes ACL",
+      "output": "DeleteAclResponse"
+    },
+    "DeleteTopic": {
+      "document": "This API is used to delete a CKafka topic.",
+      "input": "DeleteTopicRequest",
+      "name": "Deletes topic",
+      "output": "DeleteTopicResponse"
+    },
+    "DeleteTopicIpWhiteList": {
+      "document": "This API is used to delete a topic IP allowlist.",
+      "input": "DeleteTopicIpWhiteListRequest",
+      "name": "Deletes topic IP allowlist",
+      "output": "DeleteTopicIpWhiteListResponse"
+    },
+    "DeleteUser": {
+      "document": "This API is used to delete a user.",
+      "input": "DeleteUserRequest",
+      "name": "Deletes user",
+      "output": "DeleteUserResponse"
+    },
+    "DescribeACL": {
+      "document": "This API is used to enumerate ACLs.",
+      "input": "DescribeACLRequest",
+      "name": "Enumerates ACLs",
+      "output": "DescribeACLResponse"
+    },
+    "DescribeAppInfo": {
+      "document": "This API is used to query the user list.",
+      "input": "DescribeAppInfoRequest",
+      "name": "Queries user list",
+      "output": "DescribeAppInfoResponse"
+    },
+    "DescribeConsumerGroup": {
+      "document": "This API is used to query consumer group information.",
+      "input": "DescribeConsumerGroupRequest",
+      "name": "Queries consumer group information",
+      "output": "DescribeConsumerGroupResponse"
+    },
+    "DescribeGroup": {
+      "document": "This API is used to enumerate consumer groups (simplified).",
+      "input": "DescribeGroupRequest",
+      "name": "Enumerates consumer groups (simplified)",
+      "output": "DescribeGroupResponse"
+    },
+    "DescribeGroupInfo": {
+      "document": "This API is used to get consumer group information.",
+      "input": "DescribeGroupInfoRequest",
+      "name": "Gets consumer group information",
+      "output": "DescribeGroupInfoResponse"
+    },
+    "DescribeGroupOffsets": {
+      "document": "This API is used to get the consumer group offset.",
+      "input": "DescribeGroupOffsetsRequest",
+      "name": "Gets consumer group offset",
+      "output": "DescribeGroupOffsetsResponse"
+    },
+    "DescribeInstanceAttributes": {
+      "document": "This API is used to get instance attributes.",
+      "input": "DescribeInstanceAttributesRequest",
+      "name": "Gets instance attributes",
+      "output": "DescribeInstanceAttributesResponse"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to get the list of CKafka instances under a user account.",
+      "input": "DescribeInstancesRequest",
+      "name": "Gets instance list",
+      "output": "DescribeInstancesResponse"
+    },
+    "DescribeInstancesDetail": {
+      "document": "This API is used to get instance list details under a user account.",
+      "input": "DescribeInstancesDetailRequest",
+      "name": "Gets instance list details",
+      "output": "DescribeInstancesDetailResponse"
+    },
+    "DescribeRoute": {
+      "document": "This API is used to view route information.",
+      "input": "DescribeRouteRequest",
+      "name": "Views route information",
+      "output": "DescribeRouteResponse"
+    },
+    "DescribeTopic": {
+      "document": "API domain name: https://ckafka.tencentcloudapi.com\nThis API is used to get the list of topics in a CKafka instance of a user.",
+      "input": "DescribeTopicRequest",
+      "name": "Gets topic list",
+      "output": "DescribeTopicResponse"
+    },
+    "DescribeTopicAttributes": {
+      "document": "This API is used to get topic attributes.\n",
+      "input": "DescribeTopicAttributesRequest",
+      "name": "Gets topic attributes",
+      "output": "DescribeTopicAttributesResponse"
+    },
+    "DescribeTopicDetail": {
+      "document": "This API is used to get topic list details (only for call in the console).",
+      "input": "DescribeTopicDetailRequest",
+      "name": "Gets topic list details",
+      "output": "DescribeTopicDetailResponse"
+    },
+    "DescribeUser": {
+      "document": "This API is used to query user information.",
+      "input": "DescribeUserRequest",
+      "name": "Queries user information",
+      "output": "DescribeUserResponse"
+    },
+    "ModifyGroupOffsets": {
+      "document": "This API is used to set the consumer group (Groups) offset.",
+      "input": "ModifyGroupOffsetsRequest",
+      "name": "Sets consumer group (Groups) offset",
+      "output": "ModifyGroupOffsetsResponse"
+    },
+    "ModifyInstanceAttributes": {
+      "document": "This API is used to set instance attributes.",
+      "input": "ModifyInstanceAttributesRequest",
+      "name": "Sets instance attributes",
+      "output": "ModifyInstanceAttributesResponse"
+    },
+    "ModifyPassword": {
+      "document": "This API is used to change the password.",
+      "input": "ModifyPasswordRequest",
+      "name": "Changes password",
+      "output": "ModifyPasswordResponse"
+    },
+    "ModifyTopicAttributes": {
+      "document": "This API is used to modify topic attributes.",
+      "input": "ModifyTopicAttributesRequest",
+      "name": "Sets topic attributes",
+      "output": "ModifyTopicAttributesResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-08-19",
+    "serviceNameCN": "消息队列 Ckafka",
+    "serviceShortName": "ckafka"
+  },
+  "objects": {
+    "Acl": {
+      "document": "ACL object entity",
+      "members": [
+        {
+          "default": "",
+          "document": "ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available,",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User list. The default value is `User:*`, which means that any user can access. The current user can only be one included in the user list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Principal",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS, 12: IDEMPOTEN_WRITE",
+          "member": "int64",
+          "name": "Operation",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW",
+          "member": "int64",
+          "name": "PermissionType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AclResponse": {
+      "document": "Set of returned ACL results",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of eligible data entries",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ACL list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Acl",
+          "name": "AclList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AppIdResponse": {
+      "document": "`AppId` query result",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of eligible `AppId`",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of eligible `AppId`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AppIdList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Assignment": {
+      "document": "Stores the information of partition assigned to this consumer",
+      "members": [
+        {
+          "default": "",
+          "document": "Assignment version information",
+          "member": "int64",
+          "name": "Version",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic information list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GroupInfoTopics",
+          "name": "Topics",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Config": {
+      "document": "Advanced configuration object",
+      "members": [
+        {
+          "default": "",
+          "document": "Message retention period\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Retention",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum number of sync replications\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MinInsyncReplicas",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log cleanup mode. Default value: delete.\ndelete: logs will be deleted by save time; compact: logs will be compressed by key; compact, delete: logs will be compressed by key and deleted by save time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CleanUpPolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Segment rolling duration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SegmentMs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "0: false, 1: true.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "UncleanLeaderElectionEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of bytes for segment rolling\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SegmentBytes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of message bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaxMessageBytes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumerGroup": {
+      "document": "User group entity",
+      "members": [
+        {
+          "default": "",
+          "document": "User group name",
+          "member": "string",
+          "name": "ConsumerGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subscribed message entity",
+          "member": "SubscribedInfo",
+          "name": "SubscribedInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumerGroupResponse": {
+      "document": "Returned consumer group result entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of eligible consumer groups",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ConsumerGroupTopic",
+          "name": "TopicList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Consumer group list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ConsumerGroup",
+          "name": "GroupList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of partitions\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalPartition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of monitored partitions\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Partition",
+          "name": "PartitionListForMonitor",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of topics\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalTopic",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of monitored topics\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ConsumerGroupTopic",
+          "name": "TopicListForMonitor",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of monitored groups\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Group",
+          "name": "GroupListForMonitor",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumerGroupTopic": {
+      "document": "Consumer group topic object",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic ID",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateAclRequest": {
+      "document": "CreateAcl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID information",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS",
+          "member": "int64",
+          "name": "Operation",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka",
+          "member": "int64",
+          "name": "PermissionType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User list. The default value is `*`, which means that any user can access. The current user can only be one included in the user list",
+          "member": "string",
+          "name": "Principal",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAclResponse": {
+      "document": "CreateAcl response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePartitionRequest": {
+      "document": "CreatePartition request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of topic partitions",
+          "member": "int64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePartitionResponse": {
+      "document": "CreatePartition response structure.",
+      "members": [
+        {
+          "document": "Returned result set",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTopicIpWhiteListRequest": {
+      "document": "CreateTopicIpWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP allowlist list",
+          "member": "string",
+          "name": "IpWhiteList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTopicIpWhiteListResponse": {
+      "document": "CreateTopicIpWhiteList response structure.",
+      "members": [
+        {
+          "document": "Result of deleting topic IP allowlist",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTopicRequest": {
+      "document": "CreateTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of partitions, which should be greater than 0",
+          "member": "int64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of replicas, which cannot be higher than the number of brokers. Maximum value: 3",
+          "member": "int64",
+          "name": "ReplicaNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP allowlist switch. 1: enabled, 0: disabled. Default value: 0",
+          "member": "int64",
+          "name": "EnableWhiteList",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP allowlist list for quota limit, which is required if `enableWhileList` is 1",
+          "member": "string",
+          "name": "IpWhiteList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Log cleanup policy, which is `delete` by default. `delete`: logs will be deleted by save time; `compact`: logs will be compressed by key; `compact, delete`: logs will be compressed by key and deleted by save time.",
+          "member": "string",
+          "name": "CleanUpPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Default value: 1",
+          "member": "int64",
+          "name": "MinInsyncReplicas",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to allow an unsynced replica to be elected as leader. false: no, true: yes. Default value: false",
+          "member": "int64",
+          "name": "UncleanLeaderElectionEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period in ms, which is optional. The current minimum value is 60,000 ms",
+          "member": "int64",
+          "name": "RetentionMs",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Segment rolling duration in ms. The current minimum value is 3,600,000 ms",
+          "member": "int64",
+          "name": "SegmentMs",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTopicResp": {
+      "document": "Return for topic creation",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic ID",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateTopicResponse": {
+      "document": "CreateTopic response structure.",
+      "members": [
+        {
+          "document": "Returned creation result",
+          "member": "CreateTopicResp",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRequest": {
+      "document": "CreateUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserResponse": {
+      "document": "CreateUser response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAclRequest": {
+      "document": "DeleteAcl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID information",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS, 12: IDEMPOTEN_WRITE. Currently, CKafka only supports `READ` and `WRITE`, and other values will be used for future ACLs compatible with open-source Kafka",
+          "member": "int64",
+          "name": "Operation",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW. Currently, CKafka supports `ALLOW` (equivalent to allowlist), and other fields will be used for future ACLs compatible with open-source Kafka",
+          "member": "int64",
+          "name": "PermissionType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User list. The default value is `*`, which means that any user can access. The current user can only be one included in the user list",
+          "member": "string",
+          "name": "Principal",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAclResponse": {
+      "document": "DeleteAcl response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicIpWhiteListRequest": {
+      "document": "DeleteTopicIpWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP allowlist list",
+          "member": "string",
+          "name": "IpWhiteList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicIpWhiteListResponse": {
+      "document": "DeleteTopicIpWhiteList response structure.",
+      "members": [
+        {
+          "document": "Result of deleting topic IP allowlist",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicRequest": {
+      "document": "DeleteTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CKafka instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CKafka topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicResponse": {
+      "document": "DeleteTopic response structure.",
+      "members": [
+        {
+          "document": "Returned result set",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRequest": {
+      "document": "DeleteUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserResponse": {
+      "document": "DeleteUser response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeACLRequest": {
+      "document": "DescribeACL request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available, and other fields will be used for future ACLs compatible with open-source Kafka",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset position",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Quantity limit",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Keyword match",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeACLResponse": {
+      "document": "DescribeACL response structure.",
+      "members": [
+        {
+          "document": "Returned ACL result set object",
+          "member": "AclResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAppInfoRequest": {
+      "document": "DescribeAppInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset position",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of users to be queried in this request. Maximum value: 50. Default value: 50",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAppInfoResponse": {
+      "document": "DescribeAppInfo response structure.",
+      "members": [
+        {
+          "document": "Returned list of eligible `AppId`",
+          "member": "AppIdResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumerGroupRequest": {
+      "document": "DescribeConsumerGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CKafka instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the group to be queried, which is optional.",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the corresponding topic in the group to be queried, which is optional. If this parameter is specified but `group` is not specified, this parameter will be ignored.",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned in this request",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset position",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumerGroupResponse": {
+      "document": "DescribeConsumerGroup response structure.",
+      "members": [
+        {
+          "document": "Returned consumer group information",
+          "member": "ConsumerGroupResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroup": {
+      "document": "`DescribeGroup` response entity",
+      "members": [
+        {
+          "default": "",
+          "document": "groupId",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol used by the group.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeGroupInfoRequest": {
+      "document": "DescribeGroupInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "(Filter) filter by instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kafka consumer group (`Consumer-group`), which is an array in the format of `GroupList.0=xxx&GroupList.1=yyy`.",
+          "member": "string",
+          "name": "GroupList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupInfoResponse": {
+      "document": "DescribeGroupInfo response structure.",
+      "members": [
+        {
+          "document": "Returned result\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GroupInfoResponse",
+          "name": "Result",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupOffsetsRequest": {
+      "document": "DescribeGroupOffsets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "(Filter) filter by instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kafka consumer group",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of the names of topics subscribed to by a group. If there is no such array, this parameter means the information of all topics in the specified group",
+          "member": "string",
+          "name": "Topics",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Fuzzy match by `topicName`",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset position of this query. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of results to be returned in this request. Default value: 50. Maximum value: 50",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupOffsetsResponse": {
+      "document": "DescribeGroupOffsets response structure.",
+      "members": [
+        {
+          "document": "Returned result object",
+          "member": "GroupOffsetResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupRequest": {
+      "document": "DescribeGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search keyword",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of results to be returned",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGroupResponse": {
+      "document": "DescribeGroup response structure.",
+      "members": [
+        {
+          "document": "List of returned results",
+          "member": "GroupResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAttributesRequest": {
+      "document": "DescribeInstanceAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAttributesResponse": {
+      "document": "DescribeInstanceAttributes response structure.",
+      "members": [
+        {
+          "document": "Returned result object of instance attributes",
+          "member": "InstanceAttributesResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesDetailRequest": {
+      "document": "DescribeInstancesDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "(Filter) filter by instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Filter) filter by instance name. Fuzzy search is supported",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag key match.",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesDetailResponse": {
+      "document": "DescribeInstancesDetail response structure.",
+      "members": [
+        {
+          "document": "Returned result object of instance details",
+          "member": "InstanceDetailResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "(Filter) filter by instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Filter) filter by instance name. Fuzzy search is supported",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag key match.",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "InstanceResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRouteRequest": {
+      "document": "DescribeRoute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRouteResponse": {
+      "document": "DescribeRoute response structure.",
+      "members": [
+        {
+          "document": "Returned result set of route information",
+          "member": "RouteResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicAttributesRequest": {
+      "document": "DescribeTopicAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicAttributesResponse": {
+      "document": "DescribeTopicAttributes response structure.",
+      "members": [
+        {
+          "document": "Returned result object",
+          "member": "TopicAttributesResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicDetailRequest": {
+      "document": "DescribeTopicDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Filter) filter by `topicName`. Fuzzy search is supported",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20. This value must be greater than 0",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicDetailResponse": {
+      "document": "DescribeTopicDetail response structure.",
+      "members": [
+        {
+          "document": "Returned entity of topic details",
+          "member": "TopicDetailResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicRequest": {
+      "document": "DescribeTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by `topicName`. Fuzzy search is supported",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicResponse": {
+      "document": "DescribeTopic response structure.",
+      "members": [
+        {
+          "document": "Returned result\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "TopicResult",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRequest": {
+      "document": "DescribeUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by name",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned in this request",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserResponse": {
+      "document": "DescribeUser response structure.",
+      "members": [
+        {
+          "document": "Returned result list",
+          "member": "UserResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Query filter\n>Key-value pair filters for conditional filtering queries, such as filter ID, name, and status\n> * If there are multiple `Filter`, the relationship among them is logical `AND`.\n> * If there are multiple `Values` in the same `Filter`, the relationship among them is logical `OR`.\n>\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Field to be filtered.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter value of field.",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Group": {
+      "document": "Group entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Group name",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupInfoMember": {
+      "document": "Consumer information",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID generated for consumer in consumer group by coordinator",
+          "member": "string",
+          "name": "MemberId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`client.id` information by the client consumer SDK",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Generally stores client IP address",
+          "member": "string",
+          "name": "ClientHost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stores the information of partition assigned to this consumer",
+          "member": "Assignment",
+          "name": "Assignment",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupInfoResponse": {
+      "document": "`GroupInfo` response data entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Error code. 0: success",
+          "member": "string",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group status description (common valid values: Empty, Stable, Dead):\nDead: the consumer group does not exist\nEmpty: there are currently no consumer subscriptions in the consumer group\nPreparingRebalance: the consumer group is currently in `rebalance` state\nCompletingRebalance: the consumer group is currently in `rebalance` state\nStable: each consumer in the consumer group has joined and is in stable state",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type of protocol selected by the consumer group, which is `consumer` for common consumers. However, some systems use their own protocols; for example, the protocol used by kafka-connect is `connect`. Only with the standard `consumer` protocol can this API get to know the specific assigning method and parse the specific partition assignment",
+          "member": "string",
+          "name": "ProtocolType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Consumer partition assignment algorithm, such as `range` (which is the default value for the Kafka consumer SDK), `roundrobin`, and `sticky`",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This array contains information only if `state` is `Stable` and `protocol_type` is `consumer`",
+          "member": "GroupInfoMember",
+          "name": "Members",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kafka consumer group",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupInfoTopics": {
+      "document": "Internal topic object of `GroupInfo`",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of assigned topics",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of assigned partition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Partitions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupOffsetPartition": {
+      "document": "Group offset partition object",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic `partitionId`",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset position submitted by consumer",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metadata can be passed in for other purposes when the consumer submits messages. Currently, this parameter is usually an empty string\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Metadata",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error code",
+          "member": "int64",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Latest offset of current partition",
+          "member": "int64",
+          "name": "LogEndOffset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of unconsumed messages",
+          "member": "int64",
+          "name": "Lag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupOffsetResponse": {
+      "document": "Returned result of consumer group offset",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of eligible results",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of partitions in the topic, where each element is a JSON object\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GroupOffsetTopic",
+          "name": "TopicList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupOffsetTopic": {
+      "document": "Consumer group topic object",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of partitions in the topic, where each element is a JSON object\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "GroupOffsetPartition",
+          "name": "Partitions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GroupResponse": {
+      "document": "`DescribeGroup` response",
+      "members": [
+        {
+          "default": "",
+          "document": "Count\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GroupList\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeGroup",
+          "name": "GroupList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Instance": {
+      "document": "Instance object",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an open-source instance. true: yes, false: no\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "IfCommunity",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceAttributesResponse": {
+      "document": "Returned result object of instance attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VIP list information of access point",
+          "member": "VipEntity",
+          "name": "VipList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual IP",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual port",
+          "member": "string",
+          "name": "Vport",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. 0: creating, 1: running, 2: deleting",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance bandwidth in Mbps",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is empty, it means the basic network",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID. If this parameter is empty, it means the basic network",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance health status. 1: healthy, 2: alarmed, 3: exceptional",
+          "member": "int64",
+          "name": "Healthy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance health information. Currently, the disk utilization is displayed with a maximum length of 256",
+          "member": "string",
+          "name": "HealthyMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message retention period in minutes",
+          "member": "int64",
+          "name": "MsgRetentionTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration for automatic topic creation. If this field is empty, it means that automatic creation is not enabled",
+          "member": "InstanceConfigDO",
+          "name": "Config",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of remaining creatable partitions",
+          "member": "int64",
+          "name": "RemainderPartitions",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of remaining creatable topics",
+          "member": "int64",
+          "name": "RemainderTopics",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of partitions already created",
+          "member": "int64",
+          "name": "CreatedPartitions",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of topics already created",
+          "member": "int64",
+          "name": "CreatedTopics",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag array\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cross-AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Kafka version information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of groups\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaxGroupNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sale type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Cvm",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Type.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Features supported by the instance. `FEATURE_SUBNET_ACL` indicates that the ACL policy supports setting subnets. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Features",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceConfigDO": {
+      "document": "Instance configuration entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to create topics automatically",
+          "member": "bool",
+          "name": "AutoCreateTopicsEnable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of partitions",
+          "member": "int64",
+          "name": "DefaultNumPartitions",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default replication factor",
+          "member": "int64",
+          "name": "DefaultReplicationFactor",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceDetail": {
+      "document": "Instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance VIP information",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance port information",
+          "member": "string",
+          "name": "Vport",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual IP list",
+          "member": "VipEntity",
+          "name": "VipList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance bandwidth in Mbps",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "vpcId. If this parameter is empty, it means the basic network",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status, which is an int-type value. 0: healthy, 1: alarmed, 2: exceptional",
+          "member": "int64",
+          "name": "Healthy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status information",
+          "member": "string",
+          "name": "HealthyMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "int64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance expiration time",
+          "member": "int64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an internal customer. 1: yes",
+          "member": "int64",
+          "name": "IsInternal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of topics",
+          "member": "int64",
+          "name": "TopicNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kafka version information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cross-AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CKafka sale type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Cvm",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceDetailResponse": {
+      "document": "Returned result of instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of eligible instances",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of eligible instance details",
+          "member": "InstanceDetail",
+          "name": "InstanceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceResponse": {
+      "document": "Aggregated returned result of instance status",
+      "members": [
+        {
+          "default": "",
+          "document": "List of eligible instances\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Instance",
+          "name": "InstanceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of eligible results\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "JgwOperateResponse": {
+      "document": "Returned result value of operation",
+      "members": [
+        {
+          "default": "",
+          "document": "Returned code. 0: normal, other values: error",
+          "member": "string",
+          "name": "ReturnCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Success message",
+          "member": "string",
+          "name": "ReturnMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data returned by an operation, which may contain `flowId`, etc.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "OperateResponseData",
+          "name": "Data",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyGroupOffsetsRequest": {
+      "document": "ModifyGroupOffsets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Kafka instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kafka consumer group",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset resetting policy. Meanings of the input parameters: 0: equivalent to the `shift-by` parameter, which indicates to shift the offset forward or backward by the value of the `shift`. 1: equivalent to `by-duration`, `to-datetime`, `to-earliest`, or `to-latest`, which indicates to move the offset to the specified timestamp. 2: equivalent to `to-offset`, which indicates to move the offset to the specified offset position",
+          "member": "int64",
+          "name": "Strategy",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Indicates the topics to be reset. If this parameter is left empty, all topics will be reset",
+          "member": "string",
+          "name": "Topics",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "When `strategy` is 0, this field is required. If it is above zero, the offset will be shifted backward by the value of the `shift`. If it is below zero, the offset will be shifted forward by the value of the `shift`. After a correct reset, the new offset should be (old_offset + shift). Note that if the new offset is smaller than the `earliest` parameter of the partition, it will be set to `earliest`, and if it is greater than the `latest` parameter of the partition, it will be set to `latest`",
+          "member": "int64",
+          "name": "Shift",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unit: ms. When `strategy` is 1, this field is required, where -2 indicates to reset the offset to the initial position, -1 indicates to reset to the latest position (equivalent to emptying), and other values represent the specified time, i.e., the offset of the topic at the specified time will be obtained and then reset. Note that if there is no message at the specified time, the last offset will be obtained",
+          "member": "int64",
+          "name": "ShiftTimestamp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Position of the offset that needs to be reset. When `strategy` is 2, this field is required",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGroupOffsetsResponse": {
+      "document": "ModifyGroupOffsets response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceAttributesConfig": {
+      "document": "Configuration object for modifying instance attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "Automatic creation. true: enabled, false: not enabled",
+          "member": "bool",
+          "name": "AutoCreateTopicEnable",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Optional. If `auto.create.topic.enable` is set to `true` and this value is not set, 3 will be used by default",
+          "member": "int64",
+          "name": "DefaultNumPartitions",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If `auto.create.topic.enable` is set to `true` but this value is not set, 2 will be used by default",
+          "member": "int64",
+          "name": "DefaultReplicationFactor",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyInstanceAttributesRequest": {
+      "document": "ModifyInstanceAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum retention period in minutes for instance log, which can be up to 30 days. 0 indicates not to enable the log retention period policy",
+          "member": "int64",
+          "name": "MsgRetentionTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance configuration",
+          "member": "ModifyInstanceAttributesConfig",
+          "name": "Config",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceAttributesResponse": {
+      "document": "ModifyInstanceAttributes response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPasswordRequest": {
+      "document": "ModifyPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Current user password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New user password",
+          "member": "string",
+          "name": "PasswordNew",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPasswordResponse": {
+      "document": "ModifyPassword response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTopicAttributesRequest": {
+      "document": "ModifyTopicAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name.",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP allowlist switch. 1: enabled, 0: disabled.",
+          "member": "int64",
+          "name": "EnableWhiteList",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Default value: 1.",
+          "member": "int64",
+          "name": "MinInsyncReplicas",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "0: false, 1: true. Default value: 0.",
+          "member": "int64",
+          "name": "UncleanLeaderElectionEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message retention period in ms. The current minimum value is 60,000 ms.",
+          "member": "int64",
+          "name": "RetentionMs",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Segment rolling duration in ms. The current minimum value is 86,400,000 ms.",
+          "member": "int64",
+          "name": "SegmentMs",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum topic message length in bytes. The maximum value is 8,388,608 bytes (i.e., 8 MB).",
+          "member": "int64",
+          "name": "MaxMessageBytes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Message deletion policy. Valid values: delete, compact",
+          "member": "string",
+          "name": "CleanUpPolicy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTopicAttributesResponse": {
+      "document": "ModifyTopicAttributes response structure.",
+      "members": [
+        {
+          "document": "Returned result set",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OperateResponseData": {
+      "document": "Data structure returned by operation",
+      "members": [
+        {
+          "default": "",
+          "document": "FlowId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Partition": {
+      "document": "Partition entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Partition ID",
+          "member": "int64",
+          "name": "PartitionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PartitionOffset": {
+      "document": "Partition and offset",
+      "members": [
+        {
+          "default": "",
+          "document": "Partition, such as \"0\" or \"1\"\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Partition",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Offset, such as 100\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Route": {
+      "document": "Route entity object",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance connection method\n0: PLAINTEXT (plaintext method, which does not carry user information and is supported for legacy versions and Community Edition)\n1: SASL_PLAINTEXT (plaintext method, which authenticates the login through SASL before data start and is supported only for Community Edition)\n2: SSL (SSL-encrypted communication, which does not carry user information and is supported for legacy versions and Community Edition)\n3: SASL_SSL (SSL-encrypted communication, which authenticates the login through SASL before data start and is supported only for Community Edition)",
+          "member": "int64",
+          "name": "AccessType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route ID",
+          "member": "int64",
+          "name": "RouteId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: Tencent Cloud-supported environment (generally used for internal instances); 5: SSL public network access; 6: BM VPC)",
+          "member": "int64",
+          "name": "VipType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual IP list",
+          "member": "VipEntity",
+          "name": "VipList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain name port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DomainPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RouteResponse": {
+      "document": "Returned object for route information",
+      "members": [
+        {
+          "default": "",
+          "document": "Route information list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Route",
+          "name": "Routers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SubscribedInfo": {
+      "document": "Subscribed message entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscribed topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subscribed partition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Partition offset information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PartitionOffset",
+          "name": "PartitionOffset",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the subscribed topic. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Tag object in instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Topic": {
+      "document": "Returned topic object",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic ID",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Note",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicAttributesResponse": {
+      "document": "Returned topic attributes result entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic ID",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "int64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Note",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of partitions",
+          "member": "int64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP allowlist switch. 1: enabled, 0: disabled",
+          "member": "int64",
+          "name": "EnableWhiteList",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP allowlist list",
+          "member": "string",
+          "name": "IpWhiteList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic configuration array",
+          "member": "Config",
+          "name": "Config",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Partition details",
+          "member": "TopicPartitionDO",
+          "name": "Partitions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicDetail": {
+      "document": "Topic details",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic ID",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of partitions",
+          "member": "int64",
+          "name": "PartitionNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of replicas",
+          "member": "int64",
+          "name": "ReplicaNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Note",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "int64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable IP authentication allowlist. true: yes, false: no",
+          "member": "bool",
+          "name": "EnableWhiteList",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of IPs in IP allowlist",
+          "member": "int64",
+          "name": "IpWhiteListCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS bucket for data backup: address of the destination COS bucket\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ForwardCosBucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status of data backup to COS. 1: not enabled, 0: enabled",
+          "member": "int64",
+          "name": "ForwardStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Frequency of data backup to COS",
+          "member": "int64",
+          "name": "ForwardInterval",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Advanced configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Config",
+          "name": "Config",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicDetailResponse": {
+      "document": "Returned topic details entity",
+      "members": [
+        {
+          "default": "",
+          "document": "List of returned topic details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "TopicDetail",
+          "name": "TopicList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of all eligible topic details",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicPartitionDO": {
+      "document": "Partition details",
+      "members": [
+        {
+          "default": "",
+          "document": "Partition ID",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Leader running status",
+          "member": "int64",
+          "name": "LeaderStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISR quantity",
+          "member": "int64",
+          "name": "IsrNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of replicas",
+          "member": "int64",
+          "name": "ReplicaNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicResult": {
+      "document": "`TopicResponse` returned uniformly",
+      "members": [
+        {
+          "default": "",
+          "document": "List of returned topic information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Topic",
+          "name": "TopicList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of eligible topics\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "User": {
+      "document": "User entity",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID",
+          "member": "int64",
+          "name": "UserId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last updated time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UserResponse": {
+      "document": "Returned user entity",
+      "members": [
+        {
+          "default": "",
+          "document": "List of eligible users\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "User",
+          "name": "Users",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of eligible users",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VipEntity": {
+      "document": "Virtual IP entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Virtual IP",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Virtual port",
+          "member": "string",
+          "name": "Vport",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

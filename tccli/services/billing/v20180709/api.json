@@ -1,0 +1,1731 @@
+{
+  "actions": {
+    "DescribeBillDetail": {
+      "document": "This API is used to query bill details.",
+      "input": "DescribeBillDetailRequest",
+      "name": "Queries bill details",
+      "output": "DescribeBillDetailResponse"
+    },
+    "DescribeBillResourceSummary": {
+      "document": "This API is used to query bill resources summary. ",
+      "input": "DescribeBillResourceSummaryRequest",
+      "name": "Queries bill resource summary",
+      "output": "DescribeBillResourceSummaryResponse"
+    },
+    "DescribeBillSummaryByPayMode": {
+      "document": "Gets the bill summarized according to billing mode",
+      "input": "DescribeBillSummaryByPayModeRequest",
+      "name": "Gets the bill summarized according to billing mode",
+      "output": "DescribeBillSummaryByPayModeResponse"
+    },
+    "DescribeBillSummaryByProduct": {
+      "document": "Gets the bill summarized according to product",
+      "input": "DescribeBillSummaryByProductRequest",
+      "name": "Gets the bill summarized according to product",
+      "output": "DescribeBillSummaryByProductResponse"
+    },
+    "DescribeBillSummaryByProject": {
+      "document": "Gets the bill summarized according to project",
+      "input": "DescribeBillSummaryByProjectRequest",
+      "name": "Gets the bill summarized according to project",
+      "output": "DescribeBillSummaryByProjectResponse"
+    },
+    "DescribeBillSummaryByRegion": {
+      "document": "Gets the bill summarized according to region",
+      "input": "DescribeBillSummaryByRegionRequest",
+      "name": "Gets the bill summarized according to region",
+      "output": "DescribeBillSummaryByRegionResponse"
+    },
+    "DescribeBillSummaryByTag": {
+      "document": "This API is used to get the cost distribution over different tags.",
+      "input": "DescribeBillSummaryByTagRequest",
+      "name": "Gets cost distribution over different tags",
+      "output": "DescribeBillSummaryByTagResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-07-09",
+    "serviceNameCN": "计费相关",
+    "serviceShortName": "billing"
+  },
+  "objects": {
+    "ActionSummaryOverviewItem": {
+      "document": "Detailed summary of costs by transaction type",
+      "members": [
+        {
+          "default": "",
+          "document": "Transaction type",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transaction type name",
+          "member": "string",
+          "name": "ActionTypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual cost",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cost ratio, to two decimal points",
+          "member": "string",
+          "name": "RealTotalCostRatio",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cash amount",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trial credit amount",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing month, e.g. `2019-08`",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BillDetail": {
+      "document": "Bill details",
+      "members": [
+        {
+          "default": "",
+          "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1",
+          "member": "string",
+          "name": "ProductCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode",
+          "member": "string",
+          "name": "PayModeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project: project of a resource",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region: region of a resource, e.g. South China (Guangzhou)",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transaction type",
+          "member": "string",
+          "name": "ActionTypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order ID",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transaction ID",
+          "member": "string",
+          "name": "BillId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment time",
+          "member": "datetime",
+          "name": "PayTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service start time",
+          "member": "datetime",
+          "name": "FeeBeginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service end time",
+          "member": "datetime",
+          "name": "FeeEndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component list",
+          "member": "BillDetailComponent",
+          "name": "ComponentSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payer's UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's UIN",
+          "member": "string",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator's UIN",
+          "member": "string",
+          "name": "OperateUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "BillTagInfo",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Product name/code (optional)",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subproduct name/code (optional)",
+          "member": "string",
+          "name": "ProductCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Transaction type/code (optional)",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BillDetailComponent": {
+      "document": "Information about components charged in the bill",
+      "members": [
+        {
+          "default": "",
+          "document": "Component type: type of a resource component, e.g. memory, disk, etc.",
+          "member": "string",
+          "name": "ComponentCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component name: name of a resource component, e.g. TencentDB for MySQL-memory",
+          "member": "string",
+          "name": "ItemCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component published price: original price of a resource component with the original granularity",
+          "member": "string",
+          "name": "SinglePrice",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specified price of the component",
+          "member": "string",
+          "name": "SpecifiedPrice",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Price unit",
+          "member": "string",
+          "name": "PriceUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component usage",
+          "member": "string",
+          "name": "UsedAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component usage unit",
+          "member": "string",
+          "name": "UsedAmountUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Usage period",
+          "member": "string",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time unit",
+          "member": "string",
+          "name": "TimeUnitName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original price of the component",
+          "member": "string",
+          "name": "Cost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount rate",
+          "member": "string",
+          "name": "Discount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offer type",
+          "member": "string",
+          "name": "ReduceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total discounted price",
+          "member": "string",
+          "name": "RealCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Amount paid in voucher",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Amount paid in cash",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Amount paid in trial credit",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Component type/code (optional)",
+          "member": "string",
+          "name": "ItemCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Component name/code (optional)",
+          "member": "string",
+          "name": "ComponentCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Contract price",
+          "member": "string",
+          "name": "ContractPrice",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BillResourceSummary": {
+      "document": "Information about resources charged in the bill",
+      "members": [
+        {
+          "default": "",
+          "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, '-' is returned.",
+          "member": "string",
+          "name": "ProductCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode",
+          "member": "string",
+          "name": "PayModeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource instance namDeduction timee",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transaction type",
+          "member": "string",
+          "name": "ActionTypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Order ID",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment time",
+          "member": "datetime",
+          "name": "PayTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service start time",
+          "member": "datetime",
+          "name": "FeeBeginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service end time",
+          "member": "datetime",
+          "name": "FeeEndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration description",
+          "member": "string",
+          "name": "ConfigDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extension field 1",
+          "member": "string",
+          "name": "ExtendField1",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extension field 2",
+          "member": "string",
+          "name": "ExtendField2",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cost, in USD",
+          "member": "string",
+          "name": "TotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount rate",
+          "member": "string",
+          "name": "Discount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offer type",
+          "member": "string",
+          "name": "ReduceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total cost after discount, in USD",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Amount paid in voucher, in USD",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Amount paid in cash, in USD",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Amount paid in trial credit, in USD",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extension field 3",
+          "member": "string",
+          "name": "ExtendField3",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extension field 4",
+          "member": "string",
+          "name": "ExtendField4",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extension field 5",
+          "member": "string",
+          "name": "ExtendField5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "BillTagInfo",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payer UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource owner UIN; '-' is returned if no value is obtained",
+          "member": "string",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator UIN; '-' is returned if no value is obtained",
+          "member": "string",
+          "name": "OperateUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ProductCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BillTagInfo": {
+      "document": "Bill tag information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cost allocation tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BusinessSummaryOverviewItem": {
+      "document": "Summarize product details by product",
+      "members": [
+        {
+          "default": "",
+          "document": "Product code\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual cost",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cost ratio, to two decimal points",
+          "member": "string",
+          "name": "RealTotalCostRatio",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cash amount",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trial credit amount",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing month, e.g. `2019-08`",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BusinessSummaryTotal": {
+      "document": "Summarize total cost by product",
+      "members": [
+        {
+          "default": "",
+          "document": "Total cost",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trial credit amount",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cash amount",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeBillDetailRequest": {
+      "document": "DescribeBillDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Quantity, maximum is 100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. ",
+          "member": "string",
+          "name": "PeriodType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
+          "member": "int64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Queries information on a specified product",
+          "member": "string",
+          "name": "ProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing mode: prePay/postPay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Queries information on a specified resource",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillDetailResponse": {
+      "document": "DescribeBillDetail response structure.",
+      "members": [
+        {
+          "document": "Details list",
+          "member": "BillDetail",
+          "name": "DetailSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillResourceSummaryRequest": {
+      "document": "DescribeBillResourceSummary request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Quantity, maximum is 1000",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
+          "member": "string",
+          "name": "PeriodType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Month; format: yyyy-mm. This value cannot be earlier than the month when Bill 2.0 is enabled. Last 24 months data are available.",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
+          "member": "int64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillResourceSummaryResponse": {
+      "document": "DescribeBillResourceSummary response structure.",
+      "members": [
+        {
+          "document": "Resource summary list",
+          "member": "BillResourceSummary",
+          "name": "ResourceSummarySet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of resource summary lists\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByPayModeRequest": {
+      "document": "DescribeBillSummaryByPayMode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query bill data user's UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByPayModeResponse": {
+      "document": "DescribeBillSummaryByPayMode response structure.",
+      "members": [
+        {
+          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed cost distribution for all billing modes\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "PayModeSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByProductRequest": {
+      "document": "DescribeBillSummaryByProduct request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queries bill data user's UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByProductResponse": {
+      "document": "DescribeBillSummaryByProduct response structure.",
+      "members": [
+        {
+          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total cost details\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "BusinessSummaryTotal",
+          "name": "SummaryTotal",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cost distribution of all products\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "BusinessSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByProjectRequest": {
+      "document": "DescribeBillSummaryByProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queries bill data user's UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByProjectResponse": {
+      "document": "DescribeBillSummaryByProject response structure.",
+      "members": [
+        {
+          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed cost distribution for all projects\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "ProjectSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByRegionRequest": {
+      "document": "DescribeBillSummaryByRegion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queries bill data user's UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only beginning in the current month is supported, and it must be the same month as the EndTime. For example, 2018-09-01 00:00:00.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only ending in the current month is supported, and it must be the same month as the BeginTime. For example, 2018-09-30 23:59:59.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByRegionResponse": {
+      "document": "DescribeBillSummaryByRegion response structure.",
+      "members": [
+        {
+          "document": "Indicates whether or not the data is ready. 0 = not ready, 1 = ready.",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed cost distribution for all regions\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "RegionSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByTagRequest": {
+      "document": "DescribeBillSummaryByTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Payer UIN",
+          "member": "string",
+          "name": "PayerUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Currently the period to be queried must start from a time point in the current month, and the starting time and the end time must be in the same month. Example: 2018-09-01 00:00:00.",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Currently the period to be queried must end at a time point in the current month, and the starting time and the end time must be in the same month. Example: 2018-09-30 23:59:59.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cost allocation tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryByTagResponse": {
+      "document": "DescribeBillSummaryByTag response structure.",
+      "members": [
+        {
+          "document": "Indicates whether or not the data is ready. `0`: not ready; `1`: ready.",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Details about cost distribution over different tags\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "TagSummaryOverviewItem",
+          "name": "SummaryOverview",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PayModeSummaryOverviewItem": {
+      "document": "Detailed summary of purchases by billing mode",
+      "members": [
+        {
+          "default": "",
+          "document": "Billing mode",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode name",
+          "member": "string",
+          "name": "PayModeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual cost",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cost ratio, to two decimal points",
+          "member": "string",
+          "name": "RealTotalCostRatio",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed summary of purchases by transaction type",
+          "member": "ActionSummaryOverviewItem",
+          "name": "Detail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cash amount",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trial credit amount",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProjectSummaryOverviewItem": {
+      "document": "Detailed summary of purchases by project",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project name",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual cost",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cost ratio, to two decimal points",
+          "member": "string",
+          "name": "RealTotalCostRatio",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cash amount",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trial credit amount",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing month, e.g. `2019-08`",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RegionSummaryOverviewItem": {
+      "document": "Detailed summary of purchases by region",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Actual cost",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cost ratio, to two decimal points",
+          "member": "string",
+          "name": "RealTotalCostRatio",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cash amount",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trial credit amount",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing month, e.g. `2019-08`",
+          "member": "string",
+          "name": "BillMonth",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TagSummaryOverviewItem": {
+      "document": "Details about cost distribution over different tags.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Actual cost\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cost percentage rounded to two decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RealTotalCostRatio",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

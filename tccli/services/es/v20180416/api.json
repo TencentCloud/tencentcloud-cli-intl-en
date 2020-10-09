@@ -1,0 +1,2142 @@
+{
+  "actions": {
+    "CreateInstance": {
+      "document": "This API is used to create an ES cluster instance with the specified specification.",
+      "input": "CreateInstanceRequest",
+      "name": "Creates an ES cluster instance",
+      "output": "CreateInstanceResponse"
+    },
+    "DeleteInstance": {
+      "document": "This API is used to terminate a cluster instance. ",
+      "input": "DeleteInstanceRequest",
+      "name": "Terminates an ES cluster instance",
+      "output": "DeleteInstanceResponse"
+    },
+    "DescribeInstanceLogs": {
+      "document": "This API is used to query the eligible ES cluster logs in the current region.",
+      "input": "DescribeInstanceLogsRequest",
+      "name": "Queries ES cluster logs",
+      "output": "DescribeInstanceLogsResponse"
+    },
+    "DescribeInstanceOperations": {
+      "document": "This API is used to query the operation history of an instance by specified criteria.",
+      "input": "DescribeInstanceOperationsRequest",
+      "name": "Queries instance operation history",
+      "output": "DescribeInstanceOperationsResponse"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to query all eligible instances in the current region under the current account.",
+      "input": "DescribeInstancesRequest",
+      "name": "Queries ES cluster instances",
+      "output": "DescribeInstancesResponse"
+    },
+    "RestartInstance": {
+      "document": "This API is used to restart an ES cluster instance (for operations such as system update). ",
+      "input": "RestartInstanceRequest",
+      "name": "Restarts an ES cluster instance",
+      "output": "RestartInstanceResponse"
+    },
+    "UpdateInstance": {
+      "document": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail.",
+      "input": "UpdateInstanceRequest",
+      "name": "Updates an ES cluster instance",
+      "output": "UpdateInstanceResponse"
+    },
+    "UpdatePlugins": {
+      "document": "This API is used to change the list of plugins.",
+      "input": "UpdatePluginsRequest",
+      "name": "Changes plugin list",
+      "output": "UpdatePluginsResponse"
+    },
+    "UpgradeInstance": {
+      "document": "This API is used to upgrade ES cluster version",
+      "input": "UpgradeInstanceRequest",
+      "name": "Upgrades ES cluster version",
+      "output": "UpgradeInstanceResponse"
+    },
+    "UpgradeLicense": {
+      "document": "This API is used to upgrade ES X-Pack.",
+      "input": "UpgradeLicenseRequest",
+      "name": "Upgrades ES X-Pack",
+      "output": "UpgradeLicenseResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-04-16",
+    "serviceNameCN": "Elasticsearch Service",
+    "serviceShortName": "es"
+  },
+  "objects": {
+    "CosBackup": {
+      "document": "Auto-backup to COS for ES",
+      "members": [
+        {
+          "default": "false",
+          "document": "Whether to enable auto-backup to COS",
+          "member": "bool",
+          "name": "IsAutoBackup",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-backup time (accurate down to the hour), such as \"22:00\"",
+          "member": "string",
+          "name": "BackupTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateInstanceRequest": {
+      "document": "CreateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Availability Zone",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance version (\"5.6.4\", \"6.4.3\", \"6.8.2\", or \"7.5.1\")",
+          "member": "string",
+          "name": "EsVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "ChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is not used on the global website",
+          "member": "uint64",
+          "name": "ChargePeriod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is not used on the global website",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNode specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "member": "string",
+          "name": "NodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNode storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNode disk size in GB",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is not used on the global website",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of voucher IDs (only one voucher can be specified at a time currently)",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nWhether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false",
+          "member": "bool",
+          "name": "EnableDedicatedMaster",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)",
+          "member": "uint64",
+          "name": "MasterNodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
+          "member": "string",
+          "name": "MasterNodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently",
+          "member": "uint64",
+          "name": "MasterNodeDiskSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized",
+          "member": "string",
+          "name": "ClusterNameInConf",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0",
+          "member": "uint64",
+          "name": "DeployMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)",
+          "member": "ZoneDetail",
+          "name": "MultiZoneInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
+          "member": "string",
+          "name": "LicenseType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size",
+          "member": "NodeInfo",
+          "name": "NodeInfoList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Node tag information list",
+          "member": "TagInfo",
+          "name": "TagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
+          "member": "uint64",
+          "name": "BasicSecurityType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceResponse": {
+      "document": "CreateInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceRequest": {
+      "document": "DeleteInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceResponse": {
+      "document": "DeleteInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceLogsRequest": {
+      "document": "DescribeInstanceLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log type. Default value: 1\n<li>1: primary log</li>\n<li>2: search slow log</li>\n<li>3: index slow log</li>\n<li>4: GC log</li>",
+          "member": "uint64",
+          "name": "LogType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination start value. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 100. Maximum value: 100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Time sorting order. Default value: 0\n<li>0: descending</li>\n<li>1: ascending</li>",
+          "member": "uint64",
+          "name": "OrderByType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceLogsResponse": {
+      "document": "DescribeInstanceLogs response structure.",
+      "members": [
+        {
+          "document": "Number of returned logs",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Log details list",
+          "member": "InstanceLog",
+          "name": "InstanceLogList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceOperationsRequest": {
+      "document": "DescribeInstanceOperations request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time, such as \"2019-03-07 16:30:39\"",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time, such as \"2019-03-30 20:18:03\"",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination start value",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceOperationsResponse": {
+      "document": "DescribeInstanceOperations response structure.",
+      "members": [
+        {
+          "document": "Total number of operation records",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Operation history",
+          "member": "Operation",
+          "name": "Operations",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ of the cluster instance. If this is not passed in, all AZs are used by default",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of cluster instance IDs",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of cluster instance names",
+          "member": "string",
+          "name": "InstanceNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Pagination start value. Default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sort by field <li>1: instance ID </li><li>2: instance name </li><li>3: AZ </li><li>4: creation time </li>If `orderKey` is not passed in, sort by creation time in descending order",
+          "member": "uint64",
+          "name": "OrderByKey",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default",
+          "member": "uint64",
+          "name": "OrderByType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node tag information list",
+          "member": "TagInfo",
+          "name": "TagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC VIP list",
+          "member": "string",
+          "name": "IpList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "document": "Number of returned instances",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance details",
+          "member": "InstanceInfo",
+          "name": "InstanceList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DictInfo": {
+      "document": "Information of the IK plugin dictionary",
+      "members": [
+        {
+          "default": "",
+          "document": "Dictionary key value",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dictionary name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dictionary size in B",
+          "member": "uint64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EsAcl": {
+      "document": "ES cluster configuration item",
+      "members": [
+        {
+          "default": "",
+          "document": "Kibana access blocklist",
+          "member": "string",
+          "name": "BlackIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana access allowlist",
+          "member": "string",
+          "name": "WhiteIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EsDictionaryInfo": {
+      "document": "ES dictionary information",
+      "members": [
+        {
+          "default": "",
+          "document": "List of non-stop words",
+          "member": "DictInfo",
+          "name": "MainDict",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of stop words",
+          "member": "DictInfo",
+          "name": "Stopwords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "QQ dictionary list",
+          "member": "DictInfo",
+          "name": "QQDict",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Synonym dictionary list",
+          "member": "DictInfo",
+          "name": "Synonym",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update dictionary type",
+          "member": "string",
+          "name": "UpdateType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EsPublicAcl": {
+      "document": "Public network ACL information of ES",
+      "members": [
+        {
+          "default": "",
+          "document": "Access blocklist",
+          "member": "string",
+          "name": "BlackIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access allowlist",
+          "member": "string",
+          "name": "WhiteIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "InstanceInfo": {
+      "document": "Instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability Zone",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User ID",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User UIN",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UID of the VPC where the instance resides",
+          "member": "string",
+          "name": "VpcUid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UID of the subnet where the instance resides",
+          "member": "string",
+          "name": "SubnetUid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)",
+          "member": "string",
+          "name": "ChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is not used on the global website",
+          "member": "uint64",
+          "name": "ChargePeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is not used on the global website",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores of the node",
+          "member": "uint64",
+          "name": "CpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node memory size in GB",
+          "member": "uint64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node disk type",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node disk size in GB",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES domain name",
+          "member": "string",
+          "name": "EsDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES VIP",
+          "member": "string",
+          "name": "EsVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES port",
+          "member": "uint64",
+          "name": "EsPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana access URL",
+          "member": "string",
+          "name": "KibanaUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES version number",
+          "member": "string",
+          "name": "EsVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES configuration item",
+          "member": "string",
+          "name": "EsConfig",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana access control configuration",
+          "member": "EsAcl",
+          "name": "EsAcl",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modified time of the instance",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is not used on the global website",
+          "member": "string",
+          "name": "Deadline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type (instance type identifier, which can be only 1 or 2 currently)",
+          "member": "uint64",
+          "name": "InstanceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IK analyzer configuration",
+          "member": "EsDictionaryInfo",
+          "name": "IkConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dedicated primary node configuration",
+          "member": "MasterNodeInfo",
+          "name": "MasterNodeInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-backup to COS configuration",
+          "member": "CosBackup",
+          "name": "CosBackup",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to allow auto-backup to COS",
+          "member": "bool",
+          "name": "AllowCosBackup",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of tags owned by the instance",
+          "member": "TagInfo",
+          "name": "TagList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
+          "member": "string",
+          "name": "LicenseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "EnableHotWarmMode",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "WarmNodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of warm nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "WarmNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of warm node CPU cores\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "WarmCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Warm node memory size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "WarmMemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Warm node disk type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "WarmDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Warm node disk size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "WarmDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster node information list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "NodeInfo",
+          "name": "NodeInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ES public IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EsPublicUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Multi-AZ network information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "ZoneDetail",
+          "name": "MultiZoneInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DeployMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PublicAccess",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ES public access control configuration",
+          "member": "EsAcl",
+          "name": "EsPublicAcl",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana private IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KibanaPrivateUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KibanaPublicAccess",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KibanaPrivateAccess",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "SecurityType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceLog": {
+      "document": "ES cluster log details",
+      "members": [
+        {
+          "default": "",
+          "document": "Log time",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "member": "string",
+          "name": "Level",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster node IP",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log content",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "KeyValue": {
+      "document": "`OperationDetail` uses an array of this structure to describe the old and new configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LocalDiskInfo": {
+      "document": "Local disk information of node",
+      "members": [
+        {
+          "default": "",
+          "document": "Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>",
+          "member": "string",
+          "name": "LocalDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of a single local disk",
+          "member": "uint64",
+          "name": "LocalDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of local disks",
+          "member": "uint64",
+          "name": "LocalDiskCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MasterNodeInfo": {
+      "document": "Information of the dedicated primary node in an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the dedicated primary node",
+          "member": "bool",
+          "name": "EnableDedicatedMaster",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
+          "member": "string",
+          "name": "MasterNodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of dedicated primary nodes",
+          "member": "uint64",
+          "name": "MasterNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores of the dedicated primary node",
+          "member": "uint64",
+          "name": "MasterNodeCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size of the dedicated primary node in GB",
+          "member": "uint64",
+          "name": "MasterNodeMemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk size of the dedicated primary node in GB",
+          "member": "uint64",
+          "name": "MasterNodeDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk type of the dedicated primary node",
+          "member": "string",
+          "name": "MasterNodeDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "NodeInfo": {
+      "document": "Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of nodes",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node type <li>hotData: hot data node</li>\n<li>warmData: warm data node</li>\n<li>dedicatedMaster: dedicated primary node</li>\nDefault value: hotData",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node disk size in GB",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Local disk information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "LocalDiskInfo",
+          "name": "LocalDiskInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of node disks",
+          "member": "uint64",
+          "name": "DiskCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to encrypt node disk. 0: no (default); 1: yes.",
+          "member": "uint64",
+          "name": "DiskEncrypt",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Operation": {
+      "document": "ES cluster operation details",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique operation ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation details",
+          "member": "OperationDetail",
+          "name": "Detail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation result",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Workflow task information",
+          "member": "TaskDetail",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation progress",
+          "member": "float",
+          "name": "Progress",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OperationDetail": {
+      "document": "Operation details",
+      "members": [
+        {
+          "default": "",
+          "document": "Original instance configuration information",
+          "member": "KeyValue",
+          "name": "OldInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Updated instance configuration information",
+          "member": "KeyValue",
+          "name": "NewInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RestartInstanceRequest": {
+      "document": "RestartInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false",
+          "member": "bool",
+          "name": "ForceRestart",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartInstanceResponse": {
+      "document": "RestartInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubTaskDetail": {
+      "document": "Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)",
+      "members": [
+        {
+          "default": "",
+          "document": "Subtask name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask result",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask error message",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask status. 0: processing, 1: succeeded, -1: failed",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the index for which the check for upgrade failed",
+          "member": "string",
+          "name": "FailedIndices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask end time",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask level. 1: warning, 2: failed",
+          "member": "int64",
+          "name": "Level",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TagInfo": {
+      "document": "Instance tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskDetail": {
+      "document": "Information of workflow task in instance operation history",
+      "members": [
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task progress",
+          "member": "float",
+          "name": "Progress",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task completion time",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtask",
+          "member": "SubTaskDetail",
+          "name": "SubTasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateInstanceRequest": {
+      "document": "UpdateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Configuration item (JSON string). Only the following items are supported currently: <li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>",
+          "member": "string",
+          "name": "EsConfig",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access control list",
+          "member": "EsAcl",
+          "name": "EsAcl",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nDisk size in GB",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNode specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "member": "string",
+          "name": "NodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported)",
+          "member": "uint64",
+          "name": "MasterNodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
+          "member": "string",
+          "name": "MasterNodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized",
+          "member": "uint64",
+          "name": "MasterNodeDiskSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false",
+          "member": "bool",
+          "name": "ForceRestart",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Auto-backup to COS",
+          "member": "CosBackup",
+          "name": "CosBackup",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified",
+          "member": "NodeInfo",
+          "name": "NodeInfoList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Public network access status",
+          "member": "string",
+          "name": "PublicAccess",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Public network ACL",
+          "member": "EsPublicAcl",
+          "name": "EsPublicAcl",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Public network access status of Kibana",
+          "member": "string",
+          "name": "KibanaPublicAccess",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Private network access status of Kibana",
+          "member": "string",
+          "name": "KibanaPrivateAccess",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Enables or disables user authentication for ES Basic Edition v6.8 and above",
+          "member": "int64",
+          "name": "BasicSecurityType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Kibana private port",
+          "member": "uint64",
+          "name": "KibanaPrivatePort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart",
+          "member": "int64",
+          "name": "ScaleType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateInstanceResponse": {
+      "document": "UpdateInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePluginsRequest": {
+      "document": "UpdatePlugins request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of names of the plugins to be installed",
+          "member": "string",
+          "name": "InstallPluginList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of names of the plugins to be uninstalled",
+          "member": "string",
+          "name": "RemovePluginList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to force restart",
+          "member": "bool",
+          "name": "ForceRestart",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePluginsResponse": {
+      "document": "UpdatePlugins response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceRequest": {
+      "document": "UpgradeInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1",
+          "member": "string",
+          "name": "EsVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to check for upgrade only. Default value: false",
+          "member": "bool",
+          "name": "CheckOnly",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic",
+          "member": "string",
+          "name": "LicenseType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
+          "member": "uint64",
+          "name": "BasicSecurityType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceResponse": {
+      "document": "UpgradeInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeLicenseRequest": {
+      "document": "UpgradeLicense request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
+          "member": "string",
+          "name": "LicenseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of voucher IDs (only one voucher can be specified at a time currently)",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
+          "member": "uint64",
+          "name": "BasicSecurityType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false",
+          "member": "bool",
+          "name": "ForceRestart",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeLicenseResponse": {
+      "document": "UpgradeLicense response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ZoneDetail": {
+      "document": "Details of AZs in multi-AZ deployment mode",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}

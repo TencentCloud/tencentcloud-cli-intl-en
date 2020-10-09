@@ -1,0 +1,2635 @@
+{
+  "actions": {
+    "ArchiveKey": {
+      "document": "This API is used to archive keys. The archived keys can only be used for decryption but not encryption.",
+      "input": "ArchiveKeyRequest",
+      "name": "Archives keys",
+      "output": "ArchiveKeyResponse"
+    },
+    "AsymmetricRsaDecrypt": {
+      "document": "This API is used to decrypt data with the specified private key that is encrypted with RSA asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption.",
+      "input": "AsymmetricRsaDecryptRequest",
+      "name": "Decrypts data with an RSA asymmetric key",
+      "output": "AsymmetricRsaDecryptResponse"
+    },
+    "AsymmetricSm2Decrypt": {
+      "document": "This API is used to decrypt data with the specified private key that is encrypted with SM2 asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption. The length of the ciphertext passed in cannot exceed 256 bytes.",
+      "input": "AsymmetricSm2DecryptRequest",
+      "name": "Decrypts data with an SM2 asymmetric key",
+      "output": "AsymmetricSm2DecryptResponse"
+    },
+    "BindCloudResource": {
+      "document": "This API is used to bind a key with a Tencent Cloud resource. If the key has been set to be expired automatically, the setting will be canceled to ensure that the key will not be invalid automatically. If the key and the resource has already been bound, the call will still be successful.",
+      "input": "BindCloudResourceRequest",
+      "name": "Binds a key with a Tencent Cloud resource",
+      "output": "BindCloudResourceResponse"
+    },
+    "CancelKeyArchive": {
+      "document": "This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`.",
+      "input": "CancelKeyArchiveRequest",
+      "name": "Unarchives keys",
+      "output": "CancelKeyArchiveResponse"
+    },
+    "CancelKeyDeletion": {
+      "document": "Cancel the scheduled deletion of CMK",
+      "input": "CancelKeyDeletionRequest",
+      "name": "Cancel CMK plan delete operation",
+      "output": "CancelKeyDeletionResponse"
+    },
+    "CreateKey": {
+      "document": "Create a master key CMK (Custom Master Key) for user management data keys",
+      "input": "CreateKeyRequest",
+      "name": "Create master key",
+      "output": "CreateKeyResponse"
+    },
+    "CreateWhiteBoxKey": {
+      "document": "This API is used to create a white-box key. Up to 50 ones can be created.",
+      "input": "CreateWhiteBoxKeyRequest",
+      "name": "Creates a white-box key",
+      "output": "CreateWhiteBoxKeyResponse"
+    },
+    "Decrypt": {
+      "document": "This API is used to decrypt the ciphertext and obtain the plaintext data.",
+      "input": "DecryptRequest",
+      "name": "Decrypt",
+      "output": "DecryptResponse"
+    },
+    "DeleteImportedKeyMaterial": {
+      "document": "This API is used to delete the imported key material. It is only valid for EXTERNAL CMKs. Specifically, it puts a CMK into `PendingImport` status instead of deleting the CMK, so that the CMK can be used again after key material is reimported. To delete the CMK completely, please call the `ScheduleKeyDeletion` API.",
+      "input": "DeleteImportedKeyMaterialRequest",
+      "name": "Deletes imported key material",
+      "output": "DeleteImportedKeyMaterialResponse"
+    },
+    "DeleteWhiteBoxKey": {
+      "document": "This API is used to delete a white-box key. Note: only disabled white-box keys can be deleted.",
+      "input": "DeleteWhiteBoxKeyRequest",
+      "name": "Deletes a white-box key",
+      "output": "DeleteWhiteBoxKeyResponse"
+    },
+    "DescribeKey": {
+      "document": "This API is used to get the attribute details of the CMK with a specified `KeyId`.",
+      "input": "DescribeKeyRequest",
+      "name": "Gets CMK attributes",
+      "output": "DescribeKeyResponse"
+    },
+    "DescribeKeys": {
+      "document": "This API is used to get the attribute information of CMKs in batches.",
+      "input": "DescribeKeysRequest",
+      "name": "Gets attributes of multiple CMKs",
+      "output": "DescribeKeysResponse"
+    },
+    "DescribeWhiteBoxDecryptKey": {
+      "document": "This API is used to get a white-box decryption key.",
+      "input": "DescribeWhiteBoxDecryptKeyRequest",
+      "name": "Gets a white-box decryption key",
+      "output": "DescribeWhiteBoxDecryptKeyResponse"
+    },
+    "DescribeWhiteBoxDeviceFingerprints": {
+      "document": "This API is used to get the device fingerprint list of a specified key.",
+      "input": "DescribeWhiteBoxDeviceFingerprintsRequest",
+      "name": "Gets the device fingerprint list of a specified key",
+      "output": "DescribeWhiteBoxDeviceFingerprintsResponse"
+    },
+    "DescribeWhiteBoxKey": {
+      "document": "This API is used to display white-box key information.",
+      "input": "DescribeWhiteBoxKeyRequest",
+      "name": "Displays white-box key information",
+      "output": "DescribeWhiteBoxKeyResponse"
+    },
+    "DescribeWhiteBoxKeyDetails": {
+      "document": "This API is used to get the white-box key list.",
+      "input": "DescribeWhiteBoxKeyDetailsRequest",
+      "name": "Gets the white-box key list",
+      "output": "DescribeWhiteBoxKeyDetailsResponse"
+    },
+    "DescribeWhiteBoxServiceStatus": {
+      "document": "This API is used to get the white-box key service status.",
+      "input": "DescribeWhiteBoxServiceStatusRequest",
+      "name": "Gets the white-box key service status",
+      "output": "DescribeWhiteBoxServiceStatusResponse"
+    },
+    "DisableKey": {
+      "document": "This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.",
+      "input": "DisableKeyRequest",
+      "name": "Disable master key",
+      "output": "DisableKeyResponse"
+    },
+    "DisableKeyRotation": {
+      "document": "Disabled key rotation for the specified CMK.",
+      "input": "DisableKeyRotationRequest",
+      "name": "Disable key rotation",
+      "output": "DisableKeyRotationResponse"
+    },
+    "DisableKeys": {
+      "document": "This API is used to batch prohibit the use of CMK.",
+      "input": "DisableKeysRequest",
+      "name": "Disable master keys in bulk",
+      "output": "DisableKeysResponse"
+    },
+    "DisableWhiteBoxKey": {
+      "document": "This API is used to disable a white-box key.",
+      "input": "DisableWhiteBoxKeyRequest",
+      "name": "Disables a white-box key",
+      "output": "DisableWhiteBoxKeyResponse"
+    },
+    "DisableWhiteBoxKeys": {
+      "document": "This API is used to disable white-box keys in batches.",
+      "input": "DisableWhiteBoxKeysRequest",
+      "name": "Disables white-box keys in batches",
+      "output": "DisableWhiteBoxKeysResponse"
+    },
+    "EnableKey": {
+      "document": "Enable a specified CMK.",
+      "input": "EnableKeyRequest",
+      "name": "Enable master key",
+      "output": "EnableKeyResponse"
+    },
+    "EnableKeyRotation": {
+      "document": "Turn on the key rotation function for the specified CMK.",
+      "input": "EnableKeyRotationRequest",
+      "name": "Turn on key rotation",
+      "output": "EnableKeyRotationResponse"
+    },
+    "EnableKeys": {
+      "document": "This API is used to enable CMK in batches.",
+      "input": "EnableKeysRequest",
+      "name": "Batch start master key",
+      "output": "EnableKeysResponse"
+    },
+    "EnableWhiteBoxKey": {
+      "document": "This API is used to enable a white-box key.",
+      "input": "EnableWhiteBoxKeyRequest",
+      "name": "Enables a white-box key",
+      "output": "EnableWhiteBoxKeyResponse"
+    },
+    "EnableWhiteBoxKeys": {
+      "document": "This API is used to enable white-box keys in batches.",
+      "input": "EnableWhiteBoxKeysRequest",
+      "name": "Enables white-box keys in batches",
+      "output": "EnableWhiteBoxKeysResponse"
+    },
+    "Encrypt": {
+      "document": "This API is used to encrypt any data up to 4KB. It can be used to encrypt database passwords, RSA Key, or other small sensitive information. For application data encryption, use the DataKey generated by GenerateDataKey to perform local data encryption and decryption operations",
+      "input": "EncryptRequest",
+      "name": "encryption",
+      "output": "EncryptResponse"
+    },
+    "EncryptByWhiteBox": {
+      "document": "This API is used to encrypt data with a white-box key.",
+      "input": "EncryptByWhiteBoxRequest",
+      "name": "Encrypts data with a white-box key",
+      "output": "EncryptByWhiteBoxResponse"
+    },
+    "GenerateDataKey": {
+      "document": "This API generates a data key, which you can use to encrypt local data.",
+      "input": "GenerateDataKeyRequest",
+      "name": "Generate data key",
+      "output": "GenerateDataKeyResponse"
+    },
+    "GenerateRandom": {
+      "document": "This API is used to generate a random number.",
+      "input": "GenerateRandomRequest",
+      "name": "Generates a random number",
+      "output": "GenerateRandomResponse"
+    },
+    "GetKeyRotationStatus": {
+      "document": "Query whether the specified CMK has the key rotation function.",
+      "input": "GetKeyRotationStatusRequest",
+      "name": "Query key rotation status",
+      "output": "GetKeyRotationStatusResponse"
+    },
+    "GetParametersForImport": {
+      "document": "This API is used to obtain the parameters of the material to be imported into a CMK. The returned `Token` is used as one of the parameters to execute `ImportKeyMaterial`, and the returned `PublicKey` is used to encrypt the key material. The `Token` and `PublicKey` are valid for 24 hours. If they are expired, you will need to call the API again to get a new `Token` and `PublicKey`.",
+      "input": "GetParametersForImportRequest",
+      "name": "Gets the parameters of the material to be imported into a CMK",
+      "output": "GetParametersForImportResponse"
+    },
+    "GetPublicKey": {
+      "document": "This API is used to get the information of the public key that is encrypted with the asymmetric cryptographic algorithm and of which the `KeyUsage` is `ASYMMETRIC_DECRYPT_RSA_2048` or `ASYMMETRIC_DECRYPT_SM2`. This public key can be used to encrypt data locally, and the data encrypted with it can only be decrypted with the corresponding private key through KMS. The public key can only be obtained from the asymmetric key in `Enabled` state.",
+      "input": "GetPublicKeyRequest",
+      "name": "Gets the information of the public key that is encrypted with the asymmetric cryptographic algorithm",
+      "output": "GetPublicKeyResponse"
+    },
+    "GetRegions": {
+      "document": "This API is used to obtain the list of supported regions.",
+      "input": "GetRegionsRequest",
+      "name": "Obtains the list of supported regions.",
+      "output": "GetRegionsResponse"
+    },
+    "GetServiceStatus": {
+      "document": "Used to query whether the user has activated the KMS service.",
+      "input": "GetServiceStatusRequest",
+      "name": "Query service status",
+      "output": "GetServiceStatusResponse"
+    },
+    "ImportKeyMaterial": {
+      "document": "This API is used to import key material into an EXTERNAL CMK. The key obtained through the `GetParametersForImport` API is used to encrypt the key material. You can only reimport the same key material into the specified CMK and set a new expiration time. After the CMK key material is imported, it cannot be replaced. After the key material is expired or deleted, the CMK will remain unavailable until the same key material is reimported. CMKs are independent, which means that the same key material can be imported into different CMKs, but data encrypted by one CMK cannot be decrypted by another one.\nKey material can only be imported into CMKs in `Enabled` and `PendingImport` status.",
+      "input": "ImportKeyMaterialRequest",
+      "name": "Imports key material",
+      "output": "ImportKeyMaterialResponse"
+    },
+    "ListAlgorithms": {
+      "document": "This API is used to list the encryption methods supported in the current region.",
+      "input": "ListAlgorithmsRequest",
+      "name": "Lists encryption methods supported in the current region",
+      "output": "ListAlgorithmsResponse"
+    },
+    "ListKeyDetail": {
+      "document": "Get the master key list details according to the specified Offset and Limit.",
+      "input": "ListKeyDetailRequest",
+      "name": "Get master key list details",
+      "output": "ListKeyDetailResponse"
+    },
+    "ListKeys": {
+      "document": "This API is used to list the KeyIds of CMKs in `Enabled`, `Disabled`, and `PendingImport` status under the account.",
+      "input": "ListKeysRequest",
+      "name": "Get master key list",
+      "output": "ListKeysResponse"
+    },
+    "OverwriteWhiteBoxDeviceFingerprints": {
+      "document": "This API is used to overwrite the device fingerprint information of a specified key.",
+      "input": "OverwriteWhiteBoxDeviceFingerprintsRequest",
+      "name": "Overwrites the device fingerprint information of a specified key",
+      "output": "OverwriteWhiteBoxDeviceFingerprintsResponse"
+    },
+    "ReEncrypt": {
+      "document": "Re-encrypt the ciphertext using the specified CMK.",
+      "input": "ReEncryptRequest",
+      "name": "Ciphertext refresh",
+      "output": "ReEncryptResponse"
+    },
+    "ScheduleKeyDeletion": {
+      "document": "CMK planned deletion API, used to specify the time of CMK deletion, the optional time interval is [7,30] days",
+      "input": "ScheduleKeyDeletionRequest",
+      "name": "CMK plan delete API",
+      "output": "ScheduleKeyDeletionResponse"
+    },
+    "UnbindCloudResource": {
+      "document": "This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer.",
+      "input": "UnbindCloudResourceRequest",
+      "name": "Unbinds a CMK with a Tencent Cloud resource",
+      "output": "UnbindCloudResourceResponse"
+    },
+    "UpdateAlias": {
+      "document": "This API is used to modify the alias of a CMK. CMKs in `PendingDelete` status cannot be modified.",
+      "input": "UpdateAliasRequest",
+      "name": "Modify alias",
+      "output": "UpdateAliasResponse"
+    },
+    "UpdateKeyDescription": {
+      "document": "This API is used to modify the description of the specified CMK. CMKs in `PendingDelete` status cannot be modified.",
+      "input": "UpdateKeyDescriptionRequest",
+      "name": "Modify master key description",
+      "output": "UpdateKeyDescriptionResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-01-18",
+    "serviceNameCN": "密钥管理系统",
+    "serviceShortName": "kms"
+  },
+  "objects": {
+    "AlgorithmInfo": {
+      "document": "Algorithm name and ID",
+      "members": [
+        {
+          "default": "",
+          "document": "Algorithm ID",
+          "member": "string",
+          "name": "KeyUsage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Algorithm name",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ArchiveKeyRequest": {
+      "document": "ArchiveKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ArchiveKeyResponse": {
+      "document": "ArchiveKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AsymmetricRsaDecryptRequest": {
+      "document": "AsymmetricRsaDecrypt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded ciphertext encrypted with `PublicKey`",
+          "member": "string",
+          "name": "Ciphertext",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Corresponding algorithm when a public key is used for encryption. Valid values: RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AsymmetricRsaDecryptResponse": {
+      "document": "AsymmetricRsaDecrypt response structure.",
+      "members": [
+        {
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded plaintext after decryption",
+          "member": "string",
+          "name": "Plaintext",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AsymmetricSm2DecryptRequest": {
+      "document": "AsymmetricSm2Decrypt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.",
+          "member": "string",
+          "name": "Ciphertext",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AsymmetricSm2DecryptResponse": {
+      "document": "AsymmetricSm2Decrypt response structure.",
+      "members": [
+        {
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded plaintext after decryption",
+          "member": "string",
+          "name": "Plaintext",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindCloudResourceRequest": {
+      "document": "BindCloudResource request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of a Tencent Cloud service",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindCloudResourceResponse": {
+      "document": "BindCloudResource response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelKeyArchiveRequest": {
+      "document": "CancelKeyArchive request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelKeyArchiveResponse": {
+      "document": "CancelKeyArchive response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelKeyDeletionRequest": {
+      "document": "CancelKeyDeletion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the CMK for which to cancel schedule deletion",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelKeyDeletionResponse": {
+      "document": "CancelKeyDeletion response structure.",
+      "members": [
+        {
+          "document": "Unique ID of the CMK for which the schedule deletion is canceled",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKeyRequest": {
+      "document": "CreateKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Key purpose. The default value is `ENCRYPT_DECRYPT` (creating a symmetric key for encryption and decryption). Other valid values include `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption) and `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption).",
+          "member": "string",
+          "name": "KeyUsage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.",
+          "member": "uint64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKeyResponse": {
+      "document": "CreateKey response structure.",
+      "members": [
+        {
+          "document": "Globally unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alias that makes a key more recognizable and understandable",
+          "member": "string",
+          "name": "Alias",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Key creation time in UNIX timestamp format",
+          "member": "uint64",
+          "name": "CreateTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CMK description",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CMK status",
+          "member": "string",
+          "name": "KeyState",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CMK usage",
+          "member": "string",
+          "name": "KeyUsage",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag operation return code. 0: success; 1: internal error; 2: business processing error",
+          "member": "uint64",
+          "name": "TagCode",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tag operation return information",
+          "member": "string",
+          "name": "TagMsg",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWhiteBoxKeyRequest": {
+      "document": "CreateWhiteBoxKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "All algorithm types for creating keys. Valid values: AES_256, SM4",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Key description of up to 1024 bytes",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWhiteBoxKeyResponse": {
+      "document": "CreateWhiteBoxKey response structure.",
+      "members": [
+        {
+          "document": "Base64-encoded encryption key",
+          "member": "string",
+          "name": "EncryptKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded decryption key",
+          "member": "string",
+          "name": "DecryptKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "member": "uint64",
+          "name": "TagCode",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "member": "string",
+          "name": "TagMsg",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DecryptRequest": {
+      "document": "Decrypt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ciphertext data to be decrypted.",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "EncryptionContext",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DecryptResponse": {
+      "document": "Decrypt response structure.",
+      "members": [
+        {
+          "document": "Globally unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Decrypted plaintext. This field is Base64-encoded. In order to get the original plaintext, the Base64-decoding is needed",
+          "member": "string",
+          "name": "Plaintext",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImportedKeyMaterialRequest": {
+      "document": "DeleteImportedKeyMaterial request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies the EXTERNAL CMK for which to delete the key material.",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImportedKeyMaterialResponse": {
+      "document": "DeleteImportedKeyMaterial response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWhiteBoxKeyRequest": {
+      "document": "DeleteWhiteBoxKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWhiteBoxKeyResponse": {
+      "document": "DeleteWhiteBoxKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKeyRequest": {
+      "document": "DescribeKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKeyResponse": {
+      "document": "DescribeKey response structure.",
+      "members": [
+        {
+          "document": "Key attribute information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "KeyMetadata",
+          "name": "KeyMetadata",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKeysRequest": {
+      "document": "DescribeKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the CMKs to be queried in batches. Up to 100 `KeyId` values are supported in one query.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKeysResponse": {
+      "document": "DescribeKeys response structure.",
+      "members": [
+        {
+          "document": "List of returned attribute information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "KeyMetadata",
+          "name": "KeyMetadatas",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxDecryptKeyRequest": {
+      "document": "DescribeWhiteBoxDecryptKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxDecryptKeyResponse": {
+      "document": "DescribeWhiteBoxDecryptKey response structure.",
+      "members": [
+        {
+          "document": "Base64-encoded white-box decryption key",
+          "member": "string",
+          "name": "DecryptKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxDeviceFingerprintsRequest": {
+      "document": "DescribeWhiteBoxDeviceFingerprints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "White-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxDeviceFingerprintsResponse": {
+      "document": "DescribeWhiteBoxDeviceFingerprints response structure.",
+      "members": [
+        {
+          "document": "Device fingerprint list",
+          "member": "DeviceFingerprint",
+          "name": "DeviceFingerprints",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxKeyDetailsRequest": {
+      "document": "DescribeWhiteBoxKeyDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter: key status. 0: disabled, 1: enabled",
+          "member": "int64",
+          "name": "KeyStatus",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag filter condition",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxKeyDetailsResponse": {
+      "document": "DescribeWhiteBoxKeyDetails response structure.",
+      "members": [
+        {
+          "document": "White-box key information list",
+          "member": "WhiteboxKeyInfo",
+          "name": "KeyInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of keys\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxKeyRequest": {
+      "document": "DescribeWhiteBoxKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxKeyResponse": {
+      "document": "DescribeWhiteBoxKey response structure.",
+      "members": [
+        {
+          "document": "White-box key information",
+          "member": "WhiteboxKeyInfo",
+          "name": "KeyInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhiteBoxServiceStatusRequest": {
+      "document": "DescribeWhiteBoxServiceStatus request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeWhiteBoxServiceStatusResponse": {
+      "document": "DescribeWhiteBoxServiceStatus response structure.",
+      "members": [
+        {
+          "document": "Whether the user's white-box key service is available",
+          "member": "bool",
+          "name": "ServiceEnabled",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeviceFingerprint": {
+      "document": "Device fingerprint",
+      "members": [
+        {
+          "default": "",
+          "document": "Fingerprint information collected by device fingerprint collector. Its format must be in the following regular expression: ^[0-9a-f]{8}[\\-][0-9a-f]{14}[\\-][0-9a-f]{14}[\\-][0-9a-f]{14}[\\-][0-9a-f]{16}$",
+          "member": "string",
+          "name": "Identity",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description, such as IP and device name. Length limit: 1,024 bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DisableKeyRequest": {
+      "document": "DisableKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableKeyResponse": {
+      "document": "DisableKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableKeyRotationRequest": {
+      "document": "DisableKeyRotation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableKeyRotationResponse": {
+      "document": "DisableKeyRotation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableKeysRequest": {
+      "document": "DisableKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the CMKs to be disabled in batches. Up to 100 CMKs are supported at a time",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableKeysResponse": {
+      "document": "DisableKeys response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableWhiteBoxKeyRequest": {
+      "document": "DisableWhiteBoxKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableWhiteBoxKeyResponse": {
+      "document": "DisableWhiteBoxKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableWhiteBoxKeysRequest": {
+      "document": "DisableWhiteBoxKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableWhiteBoxKeysResponse": {
+      "document": "DisableWhiteBoxKeys response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableKeyRequest": {
+      "document": "EnableKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableKeyResponse": {
+      "document": "EnableKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableKeyRotationRequest": {
+      "document": "EnableKeyRotation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableKeyRotationResponse": {
+      "document": "EnableKeyRotation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableKeysRequest": {
+      "document": "EnableKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the CMKs to be enabled in batches. Up to 100 CMKs are supported at a time",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableKeysResponse": {
+      "document": "EnableKeys response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableWhiteBoxKeyRequest": {
+      "document": "EnableWhiteBoxKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableWhiteBoxKeyResponse": {
+      "document": "EnableWhiteBoxKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableWhiteBoxKeysRequest": {
+      "document": "EnableWhiteBoxKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableWhiteBoxKeysResponse": {
+      "document": "EnableWhiteBoxKeys response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EncryptByWhiteBoxRequest": {
+      "document": "EncryptByWhiteBox request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique white-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded text to be encrypted. The size of the original text cannot exceed 4 KB.",
+          "member": "string",
+          "name": "PlainText",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded initialization vector of 16 bytes, which will be used by the encryption algorithm. If this parameter is not passed in, the backend service will generate a random one. You should save this value as a parameter for decryption.",
+          "member": "string",
+          "name": "InitializationVector",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EncryptByWhiteBoxResponse": {
+      "document": "EncryptByWhiteBox response structure.",
+      "members": [
+        {
+          "document": "Base64-encoded initialization vector, which will be used by the encryption algorithm. If this parameter is passed in by the caller, it will be returned as-is; otherwise, the backend service will generate a random one and return it.",
+          "member": "string",
+          "name": "InitializationVector",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded ciphertext after encryption",
+          "member": "string",
+          "name": "CipherText",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EncryptRequest": {
+      "document": "Encrypt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique ID of the CMK generated by calling the `CreateKey` API",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB",
+          "member": "string",
+          "name": "Plaintext",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JSON string of key-value pair. If this parameter is specified, the same parameter needs to be provided when the `Decrypt` API is called. It is up to 1,024 characters",
+          "member": "string",
+          "name": "EncryptionContext",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EncryptResponse": {
+      "document": "Encrypt response structure.",
+      "members": [
+        {
+          "document": "Base64-encoded encrypted ciphertext",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GenerateDataKeyRequest": {
+      "document": "GenerateDataKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.",
+          "member": "string",
+          "name": "KeySpec",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.",
+          "member": "uint64",
+          "name": "NumberOfBytes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "EncryptionContext",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GenerateDataKeyResponse": {
+      "document": "GenerateDataKey response structure.",
+      "members": [
+        {
+          "document": "",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.",
+          "member": "string",
+          "name": "Plaintext",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GenerateRandomRequest": {
+      "document": "GenerateRandom request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Length of the random number. Minimum value: 1. Maximum value: 1024",
+          "member": "uint64",
+          "name": "NumberOfBytes",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GenerateRandomResponse": {
+      "document": "GenerateRandom response structure.",
+      "members": [
+        {
+          "document": "Base64-encoded plaintext of the randomly generated number. You need to Base64-decode it to get the plaintext.",
+          "member": "string",
+          "name": "Plaintext",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetKeyRotationStatusRequest": {
+      "document": "GetKeyRotationStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetKeyRotationStatusResponse": {
+      "document": "GetKeyRotationStatus response structure.",
+      "members": [
+        {
+          "document": "Whether key rotation is enabled",
+          "member": "bool",
+          "name": "KeyRotationEnabled",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetParametersForImportRequest": {
+      "document": "GetParametersForImport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of a CMK. The CMK for which to get the key parameters must be of the `EXTERNAL` type, i.e., Type = 2 when the CMK is created by the `CreateKey` API.",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the algorithm for key material encryption. Currently, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256` are supported.",
+          "member": "string",
+          "name": "WrappingAlgorithm",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the type of wrapping key. Currently, only `RSA_2048` is supported.",
+          "member": "string",
+          "name": "WrappingKeySpec",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetParametersForImportResponse": {
+      "document": "GetParametersForImport response structure.",
+      "members": [
+        {
+          "document": "Unique ID of a CMK, which is used to specify the CMK into which to import key material.",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The token required for importing key material, which is used as a parameter for `ImportKeyMaterial`.",
+          "member": "string",
+          "name": "ImportToken",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The Base64-encoded RSA public key used to encrypt key material before importing it with `ImportKeyMaterial`.",
+          "member": "string",
+          "name": "PublicKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Validity period of the token and public key. A token and public key can only be imported when they are valid. If they are expired, you will need to call the `GetParametersForImport` API again to get a new token and public key.",
+          "member": "uint64",
+          "name": "ParametersValidTo",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPublicKeyRequest": {
+      "document": "GetPublicKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID.",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPublicKeyResponse": {
+      "document": "GetPublicKey response structure.",
+      "members": [
+        {
+          "document": "Unique CMK ID.",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded public key content.",
+          "member": "string",
+          "name": "PublicKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public key content in PEM format.",
+          "member": "string",
+          "name": "PublicKeyPem",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRegionsRequest": {
+      "document": "GetRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetRegionsResponse": {
+      "document": "GetRegions response structure.",
+      "members": [
+        {
+          "document": "The list of supported regions\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Regions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetServiceStatusRequest": {
+      "document": "GetServiceStatus request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetServiceStatusResponse": {
+      "document": "GetServiceStatus response structure.",
+      "members": [
+        {
+          "document": "Whether the KMS service has been activated. true: activated",
+          "member": "bool",
+          "name": "ServiceEnabled",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released",
+          "member": "int64",
+          "name": "InvalidType",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportKeyMaterialRequest": {
+      "document": "ImportKeyMaterial request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded key material that encrypted with the `PublicKey` returned by `GetParametersForImport`. For the KMS of SM-CRYPTO version, the length of the key material should be 128 bits, while for KMS of FIPS-compliant version, the length should be 256 bits.",
+          "member": "string",
+          "name": "EncryptedKeyMaterial",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Import token obtained by calling `GetParametersForImport`.",
+          "member": "string",
+          "name": "ImportToken",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the CMK into which to import key material, which must be the same as the one specified by `GetParametersForImport`.",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.",
+          "member": "uint64",
+          "name": "ValidTo",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportKeyMaterialResponse": {
+      "document": "ImportKeyMaterial response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Key": {
+      "document": "Returned CMK list information",
+      "members": [
+        {
+          "default": "",
+          "document": "Globally unique CMK ID.",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "KeyMetadata": {
+      "document": "CMK attribute information",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.",
+          "member": "string",
+          "name": "KeyState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CMK purpose. Valid values: ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2",
+          "member": "string",
+          "name": "KeyUsage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CMK type. 2: FIPS-compliant; 4: SM-CRYPTO",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "CreatorUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "KeyRotationEnabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Owner",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "NextRotateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "DeletionDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Origin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ValidTo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource ID in the format of `creatorUin/$creatorUin/$keyId`.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ListAlgorithmsRequest": {
+      "document": "ListAlgorithms request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListAlgorithmsResponse": {
+      "document": "ListAlgorithms response structure.",
+      "members": [
+        {
+          "document": "Symmetric encryption algorithms supported in this region",
+          "member": "AlgorithmInfo",
+          "name": "SymmetricAlgorithms",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Asymmetric encryption algorithms supported in this region",
+          "member": "AlgorithmInfo",
+          "name": "AsymmetricAlgorithms",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListKeyDetailRequest": {
+      "document": "ListKeyDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "Role",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "OrderType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.",
+          "member": "uint64",
+          "name": "KeyState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "SearchKeyAlias",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters by CMK type. \"TENCENT_KMS\" indicates to filter CMKs whose key materials are created by KMS; \"EXTERNAL\" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; \"ALL\" or empty indicates to filter CMKs of both types. This value is case-sensitive.",
+          "member": "string",
+          "name": "Origin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by `KeyUsage` of CMKs. Valid values: `ALL` (filter all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`.",
+          "member": "string",
+          "name": "KeyUsage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag filter condition",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListKeyDetailResponse": {
+      "document": "ListKeyDetail response structure.",
+      "members": [
+        {
+          "document": "",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of returned attribute information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "KeyMetadata",
+          "name": "KeyMetadatas",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListKeysRequest": {
+      "document": "ListKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service",
+          "member": "uint64",
+          "name": "Role",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListKeysResponse": {
+      "document": "ListKeys response structure.",
+      "members": [
+        {
+          "document": "CMK list array",
+          "member": "Key",
+          "name": "Keys",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of CMKs",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OverwriteWhiteBoxDeviceFingerprintsRequest": {
+      "document": "OverwriteWhiteBoxDeviceFingerprints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "White-box key ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device fingerprint list. If the list is empty, it means to delete all fingerprint information corresponding to the key. There can be up to 200 entries in the list.",
+          "member": "DeviceFingerprint",
+          "name": "DeviceFingerprints",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "OverwriteWhiteBoxDeviceFingerprintsResponse": {
+      "document": "OverwriteWhiteBoxDeviceFingerprints response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReEncryptRequest": {
+      "document": "ReEncrypt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Ciphertext to be re-encrypted",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CMK used for re-encryption. If this parameter is empty, the ciphertext will be re-encrypted by using the original CMK (as long as the key is not rotated, the ciphertext will not be refreshed)",
+          "member": "string",
+          "name": "DestinationKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JSON string of the key-value pair used during ciphertext encryption by `CiphertextBlob`. If not used during encryption, this parameter will be empty",
+          "member": "string",
+          "name": "SourceEncryptionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JSON string of the key-value pair used during re-encryption. If this field is used, the same string should be entered when the returned new ciphertext is decrypted",
+          "member": "string",
+          "name": "DestinationEncryptionContext",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReEncryptResponse": {
+      "document": "ReEncrypt response structure.",
+      "members": [
+        {
+          "document": "Re-encrypted ciphertext",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CMK used for re-encryption",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CMK used by ciphertext before re-encryption",
+          "member": "string",
+          "name": "SourceKeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`true` indicates that the ciphertext has been re-encrypted. When re-encryption is initiated by using the same CMK, as long as the CMK is not rotated, no actual re-encryption will be performed, and the original ciphertext will be returned",
+          "member": "bool",
+          "name": "ReEncrypted",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScheduleKeyDeletionRequest": {
+      "document": "ScheduleKeyDeletion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Schedule deletion time range. Value range: [7,30]",
+          "member": "uint64",
+          "name": "PendingWindowInDays",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ScheduleKeyDeletionResponse": {
+      "document": "ScheduleKeyDeletion response structure.",
+      "members": [
+        {
+          "document": "Schedule deletion execution time",
+          "member": "uint64",
+          "name": "DeletionDate",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unique ID of the CMK scheduled for deletion",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Tag": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TagFilter": {
+      "document": "Tag filter",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UnbindCloudResourceRequest": {
+      "document": "UnbindCloudResource request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of a Tencent Cloud service",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindCloudResourceResponse": {
+      "document": "UnbindCloudResource response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAliasRequest": {
+      "document": "UpdateAlias request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "New alias containing 1-60 characters or digits",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Globally unique CMK ID",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAliasResponse": {
+      "document": "UpdateAlias response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateKeyDescriptionRequest": {
+      "document": "UpdateKeyDescription request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the CMK for which to modify the description",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateKeyDescriptionResponse": {
+      "document": "UpdateKeyDescription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "WhiteboxKeyInfo": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "CreatorUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "EncryptKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "DecryptKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is a device fingerprint bound to the current key\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "DeviceFingerprintBind",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

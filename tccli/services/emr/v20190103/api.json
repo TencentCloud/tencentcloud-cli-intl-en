@@ -1,0 +1,3058 @@
+{
+  "actions": {
+    "CreateInstance": {
+      "document": "This API is used to create EMR instance.",
+      "input": "CreateInstanceRequest",
+      "name": "Creates EMR instance",
+      "output": "CreateInstanceResponse"
+    },
+    "DescribeClusterNodes": {
+      "document": "This API is used to query the information of a hardware node.",
+      "input": "DescribeClusterNodesRequest",
+      "name": "Queries hardware node information",
+      "output": "DescribeClusterNodesResponse"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to query EMR instances.",
+      "input": "DescribeInstancesRequest",
+      "name": "Queries EMR instances",
+      "output": "DescribeInstancesResponse"
+    },
+    "InquiryPriceCreateInstance": {
+      "document": "This API is used to query price of instance creation.",
+      "input": "InquiryPriceCreateInstanceRequest",
+      "name": "Queries price of instance creation",
+      "output": "InquiryPriceCreateInstanceResponse"
+    },
+    "InquiryPriceRenewInstance": {
+      "document": "This API is used to query the price for renewal.",
+      "input": "InquiryPriceRenewInstanceRequest",
+      "name": "Queries the price for renewal",
+      "output": "InquiryPriceRenewInstanceResponse"
+    },
+    "InquiryPriceScaleOutInstance": {
+      "document": "This API is used to query price of scale-out.",
+      "input": "InquiryPriceScaleOutInstanceRequest",
+      "name": "Queries price of scale-out",
+      "output": "InquiryPriceScaleOutInstanceResponse"
+    },
+    "InquiryPriceUpdateInstance": {
+      "document": "This API is used to query price of scaling.",
+      "input": "InquiryPriceUpdateInstanceRequest",
+      "name": "Queries price of scaling",
+      "output": "InquiryPriceUpdateInstanceResponse"
+    },
+    "ScaleOutInstance": {
+      "document": "This API is used to scale out instance.",
+      "input": "ScaleOutInstanceRequest",
+      "name": "Scales out instance",
+      "output": "ScaleOutInstanceResponse"
+    },
+    "TerminateInstance": {
+      "document": "This API is used to terminate an EMR instance. It is only supported in the official paid edition of EMR.",
+      "input": "TerminateInstanceRequest",
+      "name": "Terminates EMR instance",
+      "output": "TerminateInstanceResponse"
+    },
+    "TerminateTasks": {
+      "document": "This API is used to terminate a task node.",
+      "input": "TerminateTasksRequest",
+      "name": "Terminates a task node",
+      "output": "TerminateTasksResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-01-03",
+    "serviceNameCN": "弹性 MapReduce",
+    "serviceShortName": "emr"
+  },
+  "objects": {
+    "COSSettings": {
+      "document": "COS-related configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "COS `SecretId`",
+          "member": "string",
+          "name": "CosSecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS `SecrectKey`",
+          "member": "string",
+          "name": "CosSecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS path to log",
+          "member": "string",
+          "name": "LogOnCosPath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CdbInfo": {
+      "document": "Output parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Database instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database memory specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database disk specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Volume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Service",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApplyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PayType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "ExpireFlag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Renewal flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsAutoRenew",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database string\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SerialNo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ZoneId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RegionId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterInstancesInfo": {
+      "document": "Cluster instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Title\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Ftitle",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User APPID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User UIN\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster `VPCID`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "VpcId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SubnetId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance status code. Value range:\n<li>2: cluster running</li>\n<li>3: creating cluster.</li>\n<li>4: scaling out cluster.</li>\n<li>5: adding router node in cluster.</li>\n<li>6: installing component in cluster.</li>\n<li>7: cluster executing command.</li>\n<li>8: restarting service.</li>\n<li>9: entering maintenance.</li>\n<li>10: suspending service.</li>\n<li>11: exiting maintenance.</li>\n<li>12: exiting suspension.</li>\n<li>13: delivering configuration.</li>\n<li>14: terminating cluster.</li>\n<li>15: terminating core node.</li>\n<li>16: terminating task node.</li>\n<li>17: terminating router node.</li>\n<li>18: changing webproxy password.</li>\n<li>19: isolating cluster.</li>\n<li>20: resuming cluster.</li>\n<li>21: repossessing cluster.</li>\n<li>22: waiting for configuration adjustment.</li>\n<li>23: cluster isolated.</li>\n<li>24: removing node.</li>\n<li>33: waiting for refund.</li>\n<li>34: refunded.</li>\n<li>301: creation failed.</li>\n<li>302: scale-out failed.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Execution duration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RunTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster product configuration information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "EmrProductConfigOutter",
+          "name": "Config",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public IP of master node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MasterIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "EMR version\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EmrVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing mode\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Transaction version\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TradeVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource order ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ResourceOrderId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether this is a paid cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsTradeCluster",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm information for cluster error\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AlarmInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the new architecture is used\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsWoodpeckerCluster",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Metadatabase information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MetaDb",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Hive metadata\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HiveMetaDb",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster type: EMR, CLICKHOUSE, DRUID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ServiceClass",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alias serialization of all nodes in cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AliasInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster version ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProductId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateInstanceRequest": {
+      "document": "CreateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>1: EMR v1.3.1.</li>\n<li>2: EMR v2.0.1.</li>\n<li>4: EMR v2.1.0.</li>\n<li>7: EMR v3.0.0.</li>",
+          "member": "uint64",
+          "name": "ProductId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.",
+          "member": "VPCSettings",
+          "name": "VPCSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):\n<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>",
+          "member": "string",
+          "name": "Software",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Node resource specification.",
+          "member": "NewResourceSpec",
+          "name": "ResourceSpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable high node availability. Valid values:\n<li>0: does not enable high availability of node.</li>\n<li>1: enables high availability of node.</li>",
+          "member": "uint64",
+          "name": "SupportHA",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance name.\n<li>Length limit: 6-36 characters.</li>\n<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance login settings. This parameter allows you to set the login password or key for your purchased node.\n<li>If the key is set, the password will be only used for login to the native component WebUI.</li>\n<li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Parameter required for enabling COS access.",
+          "member": "COSSettings",
+          "name": "COSSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.",
+          "member": "string",
+          "name": "SgId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bootstrap script settings.",
+          "member": "PreExecuteFileSettings",
+          "name": "PreExecutedFileSettings",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether auto-renewal is enabled. Valid values:\n<li>0: auto-renewal not enabled.</li>\n<li>1: auto-renewal enabled.</li>",
+          "member": "uint64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Client token.",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable public IP access for master node. Valid values:\n<li>NEED_MASTER_WAN: enables public IP for master node.</li>\n<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.",
+          "member": "string",
+          "name": "NeedMasterWan",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.",
+          "member": "int64",
+          "name": "RemoteLoginAtCreate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable secure cluster. 0: no; other values: yes.",
+          "member": "int64",
+          "name": "CheckSecurity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Accesses to external file system.",
+          "member": "string",
+          "name": "ExtendFsField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a resource instance.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of spread placement group IDs. Only one can be specified currently.",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted",
+          "member": "uint64",
+          "name": "CbsEncrypt",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Hive-shared metadatabase type. Valid values:\n<li>EMR_DEFAULT_META: the cluster creates one by default.</li>\n<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>\n<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>",
+          "member": "string",
+          "name": "MetaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EMR-MetaDB instance",
+          "member": "string",
+          "name": "UnifyMetaInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom MetaDB instance information",
+          "member": "CustomMetaInfo",
+          "name": "MetaDBInfo",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceResponse": {
+      "document": "CreateInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CustomMetaInfo": {
+      "document": "User-created Hive-MetaDB instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`",
+          "member": "string",
+          "name": "MetaDataJdbcUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom MetaDB instance username",
+          "member": "string",
+          "name": "MetaDataUser",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom MetaDB instance password",
+          "member": "string",
+          "name": "MetaDataPass",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DescribeClusterNodesRequest": {
+      "document": "DescribeClusterNodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster instance ID in the format of emr-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node flag. Valid values:\n<li>all: gets the information of nodes in all types except TencentDB information.</li>\n<li>master: gets master node information.</li>\n<li>core: gets core node information.</li>\n<li>task: gets task node information.</li>\n<li>common: gets common node information.</li>\n<li>router: gets router node information.</li>\n<li>db: gets TencentDB information in normal status.</li>\nNote: only the above values are supported for the time being. Entering other values will cause errors.",
+          "member": "string",
+          "name": "NodeFlag",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0, indicating the first page.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results per page. Default value: 100. Maximum value: 100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource type. Valid values: all, host, pod. Default value: all",
+          "member": "string",
+          "name": "HardwareResourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Searchable field",
+          "member": "SearchItem",
+          "name": "SearchFields",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterNodesResponse": {
+      "document": "DescribeClusterNodes response structure.",
+      "members": [
+        {
+          "document": "Total number of queried nodes",
+          "member": "int64",
+          "name": "TotalCnt",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of node details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "NodeHardwareInfo",
+          "name": "NodeList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of tag keys owned by user\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TagKeys",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource type list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HardwareResourceTypeList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster filtering policy. Valid values:\n<li>clusterList: queries the list of clusters except terminated ones.</li>\n<li>monitorManage: queries the list of clusters except those that have been terminated, are being created, or failed to be created.</li>\n<li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>",
+          "member": "string",
+          "name": "DisplayStrategy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0, indicating the first page.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results per page. Default value: 10. Maximum value: 100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values:\n<li>clusterId: sorts by cluster ID.</li>\n<li>addTime: sorts by instance creation time.</li>\n<li>status: sorts by instance status code.</li>",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorts according to `OrderField` in ascending or descending order. Valid values:\n<li>0: descending order.</li>\n<li>1: ascending order.</li>Default value: 0.\u0007",
+          "member": "int64",
+          "name": "Asc",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances.",
+          "member": "int64",
+          "name": "TotalCnt",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of EMR instance details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ClusterInstancesInfo",
+          "name": "ClusterList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of tag keys associated to an instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TagKeys",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EmrProductConfigOutter": {
+      "document": "EMR product configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Software information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SoftInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of master nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MasterNodeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of core nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "CoreNodeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of task nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TaskNodeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of common nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ComNodeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Master node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "OutterResource",
+          "name": "MasterResource",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Core node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "OutterResource",
+          "name": "CoreResource",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "OutterResource",
+          "name": "TaskResource",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Common node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "OutterResource",
+          "name": "ComResource",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether COS is used\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "OnCos",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing mode\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of router nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RouterNodeSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether HA is supported\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "SupportHA",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether secure mode is supported\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "SecurityOn",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security group name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable CBS encryption\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "CbsEncrypt",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "HostVolumeContext": {
+      "document": "Pod `HostPath` mounting method description",
+      "members": [
+        {
+          "default": "",
+          "document": "Directory in the pod for mounting the host, which is the mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "VolumePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "InquiryPriceCreateInstanceRequest": {
+      "document": "InquiryPriceCreateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node specification queried for price.",
+          "member": "NewResourceSpec",
+          "name": "ResourceSpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Currency.",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable high availability of node. Valid values:\n<li>0: does not enable high availability of node.</li>\n<li>1: enables high availability of node.</li>",
+          "member": "uint64",
+          "name": "SupportHA",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):\n<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>\n<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>",
+          "member": "string",
+          "name": "Software",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.",
+          "member": "VPCSettings",
+          "name": "VPCSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Hive-shared metadatabase type. Valid values:\n<li>EMR_DEFAULT_META: the cluster creates one by default.</li>\n<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>\n<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>",
+          "member": "string",
+          "name": "MetaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EMR-MetaDB instance",
+          "member": "string",
+          "name": "UnifyMetaInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom MetaDB instance information",
+          "member": "CustomMetaInfo",
+          "name": "MetaDBInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>1: EMR v1.3.1.</li>\n<li>2: EMR v2.0.1.</li>\n<li>4: EMR v2.1.0.</li>\n<li>7: EMR v3.0.0.</li>",
+          "member": "uint64",
+          "name": "ProductId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceCreateInstanceResponse": {
+      "document": "InquiryPriceCreateInstance response structure.",
+      "members": [
+        {
+          "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "OriginalCost",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "DiscountCost",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TimeUnit",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Purchase duration of instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TimeSpan",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRenewInstanceRequest": {
+      "document": "InquiryPriceRenewInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "How long the instance will be renewed for, which needs to be used together with `TimeUnit`.",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode.",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unit of time for instance renewal.",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Currency.",
+          "member": "string",
+          "name": "Currency",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRenewInstanceResponse": {
+      "document": "InquiryPriceRenewInstance response structure.",
+      "members": [
+        {
+          "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "OriginalCost",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "DiscountCost",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Unit of time for instance renewal.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TimeUnit",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "How long the instance will be renewed for.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TimeSpan",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceScaleOutInstanceRequest": {
+      "document": "InquiryPriceScaleOutInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time unit of scale-out. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration of scale-out, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the AZ where an instance resides.",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of core nodes added.",
+          "member": "uint64",
+          "name": "CoreCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of task nodes added.",
+          "member": "uint64",
+          "name": "TaskCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Currency.",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of router nodes added.",
+          "member": "uint64",
+          "name": "RouterCount",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceScaleOutInstanceResponse": {
+      "document": "InquiryPriceScaleOutInstance response structure.",
+      "members": [
+        {
+          "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OriginalCost",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiscountCost",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time unit of scale-out. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Unit",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Node specification queried for price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PriceResource",
+          "name": "PriceSpec",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceUpdateInstanceRequest": {
+      "document": "InquiryPriceUpdateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time unit of scaling. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration of scaling, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Target node specification.",
+          "member": "UpdateInstanceSettings",
+          "name": "UpdateSpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Currency.",
+          "member": "string",
+          "name": "Currency",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceUpdateInstanceResponse": {
+      "document": "InquiryPriceUpdateInstance response structure.",
+      "members": [
+        {
+          "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "OriginalCost",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "DiscountCost",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time unit of scaling. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TimeUnit",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Duration of scaling.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TimeSpan",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LoginSettings": {
+      "document": "Login settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Password",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public Key",
+          "member": "string",
+          "name": "PublicKeyId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MultiDisk": {
+      "document": "Multi-cloud disk parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD, CLOUD_BASIC",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk size",
+          "member": "int64",
+          "name": "Volume",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of cloud disks of this type",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MultiDiskMC": {
+      "document": "Multi-cloud disk parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of cloud disks in this type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Type",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cloud disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Volume",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "NewResourceSpec": {
+      "document": "Resource description",
+      "members": [
+        {
+          "default": "",
+          "document": "Describes master node resource",
+          "member": "Resource",
+          "name": "MasterResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Describes core node resource",
+          "member": "Resource",
+          "name": "CoreResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Describes task node resource",
+          "member": "Resource",
+          "name": "TaskResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of master nodes",
+          "member": "int64",
+          "name": "MasterCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of core nodes",
+          "member": "int64",
+          "name": "CoreCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of task nodes",
+          "member": "int64",
+          "name": "TaskCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Describes common node resource",
+          "member": "Resource",
+          "name": "CommonResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of common nodes",
+          "member": "int64",
+          "name": "CommonCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "NodeHardwareInfo": {
+      "document": "Node hardware information",
+      "members": [
+        {
+          "default": "",
+          "document": "User `APPID`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Serial number\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SerialNo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Machine instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OrderNo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public IP bound to master node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "WanIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node type. 0: common node; 1: master node;\n2: core node; 3: task node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Flag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Spec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of node cores\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "CpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node memory description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MemDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApplyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Release time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FreeTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskSize",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NameTag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Services deployed on node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Services",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "StorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RootSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CdbIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "CdbPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "HwDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk capacity description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HwDiskSizeDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "HwMemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory capacity description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HwMemSizeDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node resource ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EmrResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Renewal flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsAutoRenew",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Device flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeviceClass",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Support for configuration adjustment\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Mutable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Multi-cloud disk\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "MultiDiskMC",
+          "name": "MCMultiDisk",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "CdbInfo",
+          "name": "CdbNodeInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether this node can be terminated. 1: yes, 0: no\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Destroyable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tags bound to node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.",
+          "member": "int64",
+          "name": "AutoFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource type. Valid values: host, pod\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HardwareResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OutterResource": {
+      "document": "Resource details",
+      "members": [
+        {
+          "default": "",
+          "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Spec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specification name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "StorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RootSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of CPUs\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PersistentVolumeContext": {
+      "document": "Pod `PVC` storage method description",
+      "members": [
+        {
+          "default": "",
+          "document": "Disk size in GB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type. Valid values: CLOUD_PREMIUM, CLOUD_SSD\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "int64",
+          "name": "DiskNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Placement": {
+      "document": "Location information of cluster instance",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If 0 is entered, the default project will be used.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ where the instance resides, such as ap-guangzhou-1. You can call the `DescribeZones` API and see the `Zone` field to get the value of this parameter.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PodSpec": {
+      "document": "Resource description for container resource expansion",
+      "members": [
+        {
+          "default": "",
+          "document": "Identifier of external resource provider, such as \"cls-a1cd23fa\".",
+          "member": "string",
+          "name": "ResourceProviderIdentifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type of external resource provider, such as \"tke\". Currently, only \"tke\" is supported.",
+          "member": "string",
+          "name": "ResourceProviderType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purpose of the resource, i.e., node type, which currently can only be \"TASK\".",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores.",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB.",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)",
+          "member": "string",
+          "name": "DataVolumes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EKS cluster - CPU type. Valid values: \"intel\", \"amd\"",
+          "member": "string",
+          "name": "CpuType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pod node data directory mounting information.",
+          "member": "PodVolume",
+          "name": "PodVolumes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PodVolume": {
+      "document": "Pod storage device description.",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage type. Valid values: \"pvc\", \"hostpath\".\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "VolumeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field will take effect if `VolumeType` is `pvc`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "PersistentVolumeContext",
+          "name": "PVCVolume",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field will take effect if `VolumeType` is `hostpath`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "HostVolumeContext",
+          "name": "HostVolume",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PreExecuteFileSettings": {
+      "document": "Pre-execution script configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "COS path to script, which has been disused",
+          "member": "string",
+          "name": "Path",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution script parameter",
+          "member": "string",
+          "name": "Args",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS bucket name, which has been disused",
+          "member": "string",
+          "name": "Bucket",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS region name, which has been disused",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS domain data, which has been disused",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution sequence",
+          "member": "int64",
+          "name": "RunOrder",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`resourceAfter` or `clusterAfter`",
+          "member": "string",
+          "name": "WhenRun",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Script name, which has been disused",
+          "member": "string",
+          "name": "CosFileName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS address of script",
+          "member": "string",
+          "name": "CosFileURI",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS `SecretId`",
+          "member": "string",
+          "name": "CosSecretId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS `SecretKey`",
+          "member": "string",
+          "name": "CosSecretKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "COS `appid`, which has been disused",
+          "member": "string",
+          "name": "AppId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PriceResource": {
+      "document": "Resource queried for price",
+      "members": [
+        {
+          "default": "",
+          "document": "Target specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Spec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "StorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RootSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of cores\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of cloud disks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "MultiDisk",
+          "name": "MultiDisks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of disks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskCnt",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of disks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of local disks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "LocalDiskNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Resource": {
+      "document": "Resource details",
+      "members": [
+        {
+          "default": "",
+          "document": "Node specification description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Spec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Storage class\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "StorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory capacity in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RootSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "MultiDisk",
+          "name": "MultiDisks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of tags to be bound\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specification type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of local disks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "LocalDiskNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of disks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DiskNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScaleOutInstanceRequest": {
+      "document": "ScaleOutInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time unit of scale-out. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration of scale-out, which needs to be used together with `TimeUnit`.",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Client token.",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bootstrap script settings.",
+          "member": "PreExecuteFileSettings",
+          "name": "PreExecutedFileSettings",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of task nodes added.",
+          "member": "uint64",
+          "name": "TaskCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of core nodes added.",
+          "member": "uint64",
+          "name": "CoreCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Process not required during scale-out.",
+          "member": "uint64",
+          "name": "UnNecessaryNodeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of router nodes added.",
+          "member": "uint64",
+          "name": "RouterCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Deployed service.\n<li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>\n<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>",
+          "member": "uint64",
+          "name": "SoftDeployInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Started process.",
+          "member": "uint64",
+          "name": "ServiceNodeInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of spread placement group IDs. Only one can be specified currently.",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of tags bound to added nodes.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Resource type selected for expansion. Valid values: host (general CVM resource), pod (resource provided by TKE cluster)",
+          "member": "string",
+          "name": "HardwareResourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified information such as pod specification and source for expansion with pod resources",
+          "member": "PodSpec",
+          "name": "PodSpec",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstanceResponse": {
+      "document": "ScaleOutInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Order number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DealNames",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Client token.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClientToken",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Scaling workflow ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Big order number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "BillId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchItem": {
+      "document": "Search field",
+      "members": [
+        {
+          "default": "",
+          "document": "Searchable type",
+          "member": "string",
+          "name": "SearchType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Searchable value",
+          "member": "string",
+          "name": "SearchValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Tag": {
+      "document": "Tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TerminateInstanceRequest": {
+      "document": "TerminateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of terminated node. This parameter is reserved and does not need to be configured.",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateInstanceResponse": {
+      "document": "TerminateInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateTasksRequest": {
+      "document": "TerminateTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateTasksResponse": {
+      "document": "TerminateTasks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateInstanceSettings": {
+      "document": "Target resource specification",
+      "members": [
+        {
+          "default": "",
+          "document": "Memory capacity in GB",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores",
+          "member": "uint64",
+          "name": "CPUCores",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Machine resource ID (EMR resource identifier)",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target machine specification",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VPCSettings": {
+      "document": "VPC parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}

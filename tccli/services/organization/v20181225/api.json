@@ -1,0 +1,1101 @@
+{
+  "actions": {
+    "AcceptOrganizationInvitation": {
+      "document": "This API is used to accept an invitation to an organization.",
+      "input": "AcceptOrganizationInvitationRequest",
+      "name": "Accepts an invitation to an organization",
+      "output": "AcceptOrganizationInvitationResponse"
+    },
+    "AddOrganizationNode": {
+      "document": "This API is used to add an organizational unit.",
+      "input": "AddOrganizationNodeRequest",
+      "name": "Adds an organizational unit",
+      "output": "AddOrganizationNodeResponse"
+    },
+    "CancelOrganizationInvitation": {
+      "document": "This API is used to cancel an invitation to an organization.",
+      "input": "CancelOrganizationInvitationRequest",
+      "name": "Cancels an invitation to an organization",
+      "output": "CancelOrganizationInvitationResponse"
+    },
+    "CreateOrganization": {
+      "document": "This API is used to create an organization.",
+      "input": "CreateOrganizationRequest",
+      "name": "Creates an organization",
+      "output": "CreateOrganizationResponse"
+    },
+    "DeleteOrganization": {
+      "document": "This API is used to delete an organization.",
+      "input": "DeleteOrganizationRequest",
+      "name": "Deletes an organization",
+      "output": "DeleteOrganizationResponse"
+    },
+    "DeleteOrganizationMemberFromNode": {
+      "document": "This API is used to delete an organization member.",
+      "input": "DeleteOrganizationMemberFromNodeRequest",
+      "name": "Deletes an organization member",
+      "output": "DeleteOrganizationMemberFromNodeResponse"
+    },
+    "DeleteOrganizationMembers": {
+      "document": "This API is used to delete multiple organization members in a single request.",
+      "input": "DeleteOrganizationMembersRequest",
+      "name": "Deletes multiple organization members",
+      "output": "DeleteOrganizationMembersResponse"
+    },
+    "DeleteOrganizationNodes": {
+      "document": "This API is used to delete multiple organizational units in a single request.",
+      "input": "DeleteOrganizationNodesRequest",
+      "name": "Deletes multiple organizational units",
+      "output": "DeleteOrganizationNodesResponse"
+    },
+    "DenyOrganizationInvitation": {
+      "document": "This API is used to decline an invitation to an organization.",
+      "input": "DenyOrganizationInvitationRequest",
+      "name": "Declines an invitation to an organization",
+      "output": "DenyOrganizationInvitationResponse"
+    },
+    "GetOrganization": {
+      "document": "This API is used to obtain information on organizations.",
+      "input": "GetOrganizationRequest",
+      "name": "Obtains organization information",
+      "output": "GetOrganizationResponse"
+    },
+    "GetOrganizationMember": {
+      "document": "This API is used to obtain information on organization members.",
+      "input": "GetOrganizationMemberRequest",
+      "name": "Obtains information on organization members",
+      "output": "GetOrganizationMemberResponse"
+    },
+    "ListOrganizationInvitations": {
+      "document": "This API is used to obtain an invitation list.",
+      "input": "ListOrganizationInvitationsRequest",
+      "name": "Obtains an invitation list",
+      "output": "ListOrganizationInvitationsResponse"
+    },
+    "ListOrganizationMembers": {
+      "document": "This API is used to obtain a list of organization members.",
+      "input": "ListOrganizationMembersRequest",
+      "name": "Obtains a list of organization members",
+      "output": "ListOrganizationMembersResponse"
+    },
+    "ListOrganizationNodeMembers": {
+      "document": "This API is used to obtain a list of organizational unit members.",
+      "input": "ListOrganizationNodeMembersRequest",
+      "name": "Obtains a list of organizational unit members",
+      "output": "ListOrganizationNodeMembersResponse"
+    },
+    "ListOrganizationNodes": {
+      "document": "This API is used to obtain a list of organizational units.",
+      "input": "ListOrganizationNodesRequest",
+      "name": "Obtains a list of organizational units",
+      "output": "ListOrganizationNodesResponse"
+    },
+    "MoveOrganizationMembersToNode": {
+      "document": "This API is used to move members to a specified organizational unit.",
+      "input": "MoveOrganizationMembersToNodeRequest",
+      "name": "Moves members to a specified organizational unit",
+      "output": "MoveOrganizationMembersToNodeResponse"
+    },
+    "QuitOrganization": {
+      "document": "This API is used to quit an organization.",
+      "input": "QuitOrganizationRequest",
+      "name": "Quits an organization",
+      "output": "QuitOrganizationResponse"
+    },
+    "SendOrganizationInvitation": {
+      "document": "This API is used to send an invitation to join an organization.",
+      "input": "SendOrganizationInvitationRequest",
+      "name": "Sends an invitation to join an organization",
+      "output": "SendOrganizationInvitationResponse"
+    },
+    "UpdateOrganizationMember": {
+      "document": "This API is used to update information on organization members.",
+      "input": "UpdateOrganizationMemberRequest",
+      "name": "Updates information on organization members",
+      "output": "UpdateOrganizationMemberResponse"
+    },
+    "UpdateOrganizationNode": {
+      "document": "This API is used to update organizational units.",
+      "input": "UpdateOrganizationNodeRequest",
+      "name": "Updates organizational units",
+      "output": "UpdateOrganizationNodeResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-12-25",
+    "serviceNameCN": "企业组织",
+    "serviceShortName": "organization"
+  },
+  "objects": {
+    "AcceptOrganizationInvitationRequest": {
+      "document": "AcceptOrganizationInvitation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Invitation ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AcceptOrganizationInvitationResponse": {
+      "document": "AcceptOrganizationInvitation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddOrganizationNodeRequest": {
+      "document": "AddOrganizationNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parent organizational unit ID",
+          "member": "uint64",
+          "name": "ParentNodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Organizational unit name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddOrganizationNodeResponse": {
+      "document": "AddOrganizationNode response structure.",
+      "members": [
+        {
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelOrganizationInvitationRequest": {
+      "document": "CancelOrganizationInvitation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Invitation ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelOrganizationInvitationResponse": {
+      "document": "CancelOrganizationInvitation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationRequest": {
+      "document": "CreateOrganization request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization type; currently its value is fixed as `1`",
+          "member": "uint64",
+          "name": "OrgType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationResponse": {
+      "document": "CreateOrganization response structure.",
+      "members": [
+        {
+          "document": "Organization ID",
+          "member": "uint64",
+          "name": "OrgId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creator's name",
+          "member": "string",
+          "name": "Nickname",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creator's email address",
+          "member": "string",
+          "name": "Mail",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Organization type",
+          "member": "uint64",
+          "name": "OrgType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMemberFromNodeRequest": {
+      "document": "DeleteOrganizationMemberFromNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN of the member to be deleted",
+          "member": "uint64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMemberFromNodeResponse": {
+      "document": "DeleteOrganizationMemberFromNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMembersRequest": {
+      "document": "DeleteOrganizationMembers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of UINs of members to be deleted",
+          "member": "uint64",
+          "name": "Uins",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMembersResponse": {
+      "document": "DeleteOrganizationMembers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationNodesRequest": {
+      "document": "DeleteOrganizationNodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organizational unit ID list",
+          "member": "uint64",
+          "name": "NodeIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationNodesResponse": {
+      "document": "DeleteOrganizationNodes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationRequest": {
+      "document": "DeleteOrganization request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DeleteOrganizationResponse": {
+      "document": "DeleteOrganization response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DenyOrganizationInvitationRequest": {
+      "document": "DenyOrganizationInvitation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Invitation ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DenyOrganizationInvitationResponse": {
+      "document": "DenyOrganizationInvitation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetOrganizationMemberRequest": {
+      "document": "GetOrganizationMember request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization member UIN",
+          "member": "uint64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetOrganizationMemberResponse": {
+      "document": "GetOrganizationMember response structure.",
+      "members": [
+        {
+          "document": "Organization member UIN",
+          "member": "uint64",
+          "name": "Uin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Organization member name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Notes",
+          "member": "string",
+          "name": "Remark",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Joining time ",
+          "member": "datetime",
+          "name": "JoinTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Organizational unit name",
+          "member": "string",
+          "name": "NodeName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parent organizational unit ID",
+          "member": "uint64",
+          "name": "ParentNodeId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetOrganizationRequest": {
+      "document": "GetOrganization request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetOrganizationResponse": {
+      "document": "GetOrganization response structure.",
+      "members": [
+        {
+          "document": "Organization ID",
+          "member": "uint64",
+          "name": "OrgId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creator UIN",
+          "member": "uint64",
+          "name": "HostUin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creator's name",
+          "member": "string",
+          "name": "Nickname",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creator's email address",
+          "member": "string",
+          "name": "Mail",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Organization type",
+          "member": "uint64",
+          "name": "OrgType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the organization is empty or not ",
+          "member": "uint64",
+          "name": "IsEmpty",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationInvitationsRequest": {
+      "document": "ListOrganizationInvitations request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to list the invitations you received or the invitations you sent. `1`: list the invitations you received; `0`: list the invitations you sent.",
+          "member": "uint64",
+          "name": "Invited",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationInvitationsResponse": {
+      "document": "ListOrganizationInvitations response structure.",
+      "members": [
+        {
+          "document": "List of invitations",
+          "member": "OrgInvitation",
+          "name": "Invitations",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationMembersRequest": {
+      "document": "ListOrganizationMembers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationMembersResponse": {
+      "document": "ListOrganizationMembers response structure.",
+      "members": [
+        {
+          "document": "Member list",
+          "member": "OrgMember",
+          "name": "Members",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationNodeMembersRequest": {
+      "document": "ListOrganizationNodeMembers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationNodeMembersResponse": {
+      "document": "ListOrganizationNodeMembers response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Member list",
+          "member": "OrgMember",
+          "name": "Members",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationNodesRequest": {
+      "document": "ListOrganizationNodes request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListOrganizationNodesResponse": {
+      "document": "ListOrganizationNodes response structure.",
+      "members": [
+        {
+          "document": "Organizational unit list",
+          "member": "OrgNode",
+          "name": "Nodes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MoveOrganizationMembersToNodeRequest": {
+      "document": "MoveOrganizationMembersToNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Member UIN list",
+          "member": "uint64",
+          "name": "Uins",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "MoveOrganizationMembersToNodeResponse": {
+      "document": "MoveOrganizationMembersToNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OrgInvitation": {
+      "document": "Information on an invitation to an organization.",
+      "members": [
+        {
+          "default": "",
+          "document": "Invitation ID",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UIN of the invitee",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator UIN",
+          "member": "uint64",
+          "name": "HostUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator's name",
+          "member": "string",
+          "name": "HostName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator's email address",
+          "member": "string",
+          "name": "HostMail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notes",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Organization type",
+          "member": "uint64",
+          "name": "OrgType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time of invitation",
+          "member": "datetime",
+          "name": "InviteTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "member": "datetime",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgMember": {
+      "document": "Information on an organization member.",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notes",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Joining time",
+          "member": "datetime",
+          "name": "JoinTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgNode": {
+      "document": "Information on an organizational unit.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parent organizational unit ID",
+          "member": "uint64",
+          "name": "ParentNodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of members",
+          "member": "uint64",
+          "name": "MemberCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QuitOrganizationRequest": {
+      "document": "QuitOrganization request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization ID",
+          "member": "uint64",
+          "name": "OrgId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QuitOrganizationResponse": {
+      "document": "QuitOrganization response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendOrganizationInvitationRequest": {
+      "document": "SendOrganizationInvitation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN of the invitee",
+          "member": "uint64",
+          "name": "InviteUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notes",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendOrganizationInvitationResponse": {
+      "document": "SendOrganizationInvitation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationMemberRequest": {
+      "document": "UpdateOrganizationMember request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Member UIN",
+          "member": "uint64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notes",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationMemberResponse": {
+      "document": "UpdateOrganizationMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationNodeRequest": {
+      "document": "UpdateOrganizationNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organizational unit ID",
+          "member": "uint64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parent organizational unit ID",
+          "member": "uint64",
+          "name": "ParentNodeId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationNodeResponse": {
+      "document": "UpdateOrganizationNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

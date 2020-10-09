@@ -1,0 +1,1839 @@
+{
+  "actions": {
+    "AddResourceTag": {
+      "document": "This API is used to associate resources with tags.",
+      "input": "AddResourceTagRequest",
+      "name": "Associating Resources and Tags",
+      "output": "AddResourceTagResponse"
+    },
+    "AttachResourcesTag": {
+      "document": "This API is used to associate a tag with multiple resources.",
+      "input": "AttachResourcesTagRequest",
+      "name": "Associates tag with resources in batches",
+      "output": "AttachResourcesTagResponse"
+    },
+    "CreateTag": {
+      "document": "This API is used to create a tag key and tag value pair.",
+      "input": "CreateTagRequest",
+      "name": "Creating Tags",
+      "output": "CreateTagResponse"
+    },
+    "DeleteResourceTag": {
+      "document": "This API is used to unassociate tags and resources.",
+      "input": "DeleteResourceTagRequest",
+      "name": "Unassociating Resources and Tags",
+      "output": "DeleteResourceTagResponse"
+    },
+    "DeleteTag": {
+      "document": "This API is used to delete a tag key and tag value pair.",
+      "input": "DeleteTagRequest",
+      "name": "Deleting Tags",
+      "output": "DeleteTagResponse"
+    },
+    "DescribeResourceTags": {
+      "document": "This API is used to query the tags associated with a resource.",
+      "input": "DescribeResourceTagsRequest",
+      "name": "Queries tags associated with resource",
+      "output": "DescribeResourceTagsResponse"
+    },
+    "DescribeResourceTagsByResourceIds": {
+      "document": "This API is used to query tag key and value pairs for existing resources.",
+      "input": "DescribeResourceTagsByResourceIdsRequest",
+      "name": "Querying Tags Associated with a Resource",
+      "output": "DescribeResourceTagsByResourceIdsResponse"
+    },
+    "DescribeResourceTagsByResourceIdsSeq": {
+      "document": "This API is used to view the tags associated with a resource in sequence.",
+      "input": "DescribeResourceTagsByResourceIdsSeqRequest",
+      "name": "Views tags associated with resource in sequence",
+      "output": "DescribeResourceTagsByResourceIdsSeqResponse"
+    },
+    "DescribeResourceTagsByTagKeys": {
+      "document": "This API is used to get resource tags based on tag keys.",
+      "input": "DescribeResourceTagsByTagKeysRequest",
+      "name": "Gets resource tags based on tag keys",
+      "output": "DescribeResourceTagsByTagKeysResponse"
+    },
+    "DescribeResourcesByTags": {
+      "document": "This API is used to query resources by tags.",
+      "input": "DescribeResourcesByTagsRequest",
+      "name": "Queries resources by tags",
+      "output": "DescribeResourcesByTagsResponse"
+    },
+    "DescribeResourcesByTagsUnion": {
+      "document": "This API is used to query resource list by tags.",
+      "input": "DescribeResourcesByTagsUnionRequest",
+      "name": "Queries resource list by tags",
+      "output": "DescribeResourcesByTagsUnionResponse"
+    },
+    "DescribeTagKeys": {
+      "document": "This API is used to query tag keys in an existing tag list.\n",
+      "input": "DescribeTagKeysRequest",
+      "name": "Querying Tag Keys",
+      "output": "DescribeTagKeysResponse"
+    },
+    "DescribeTagValues": {
+      "document": "This API is used to query tag values in an existing tag list.",
+      "input": "DescribeTagValuesRequest",
+      "name": "Querying Tag Values",
+      "output": "DescribeTagValuesResponse"
+    },
+    "DescribeTagValuesSeq": {
+      "document": "This API is used to query tag values in a created tag list.",
+      "input": "DescribeTagValuesSeqRequest",
+      "name": "Queries tag values in sequence",
+      "output": "DescribeTagValuesSeqResponse"
+    },
+    "DescribeTags": {
+      "document": "This API is used to query existing tag lists.\n",
+      "input": "DescribeTagsRequest",
+      "name": "Querying Tag Lists",
+      "output": "DescribeTagsResponse"
+    },
+    "DescribeTagsSeq": {
+      "document": "This API is used to query the created tag lists.\n",
+      "input": "DescribeTagsSeqRequest",
+      "name": "Queries tag lists in sequence",
+      "output": "DescribeTagsSeqResponse"
+    },
+    "DetachResourcesTag": {
+      "document": "This API is used to unbind a tag from multiple resources.",
+      "input": "DetachResourcesTagRequest",
+      "name": "Unbinds tag from resources in batches",
+      "output": "DetachResourcesTagResponse"
+    },
+    "ModifyResourceTags": {
+      "document": "This API is used to modify all tags associated with a resource.",
+      "input": "ModifyResourceTagsRequest",
+      "name": "Batch Modifying Tags Associated with a Resource",
+      "output": "ModifyResourceTagsResponse"
+    },
+    "ModifyResourcesTagValue": {
+      "document": "This API is used to modify the tag value corresponding to a tag key associated with multiple resources.",
+      "input": "ModifyResourcesTagValueRequest",
+      "name": "Modifies tag value associated with resources in batches",
+      "output": "ModifyResourcesTagValueResponse"
+    },
+    "UpdateResourceTagValue": {
+      "document": "This API is used to modify the values of tags associated with a resource (the tag key does not change).",
+      "input": "UpdateResourceTagValueRequest",
+      "name": "Modifying Resource Tag Values",
+      "output": "UpdateResourceTagValueResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-08-13",
+    "serviceNameCN": "标签",
+    "serviceShortName": "tag"
+  },
+  "objects": {
+    "AddResourceTagRequest": {
+      "document": "AddResourceTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddResourceTagResponse": {
+      "document": "AddResourceTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachResourcesTagRequest": {
+      "document": "AttachResourcesTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource service name",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource ID array, which can contain up to 50 resources",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource region. This field is not required for resources that do not have the region attribute",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix, which is not required for COS buckets",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachResourcesTagResponse": {
+      "document": "AttachResourcesTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagRequest": {
+      "document": "CreateTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagResponse": {
+      "document": "CreateTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteResourceTagRequest": {
+      "document": "DeleteResourceTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteResourceTagResponse": {
+      "document": "DeleteResourceTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTagRequest": {
+      "document": "DeleteTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The tag key to be deleted.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The tag value to be deleted.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTagResponse": {
+      "document": "DeleteTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsByResourceIdsRequest": {
+      "document": "DescribeResourceTagsByResourceIds request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service type.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix.",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID.",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The resource's region.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. The default value is 0.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsByResourceIdsResponse": {
+      "document": "DescribeResourceTagsByResourceIds response structure.",
+      "members": [
+        {
+          "document": "Total number of results.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Page size.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list.",
+          "member": "TagResource",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsByResourceIdsSeqRequest": {
+      "document": "DescribeResourceTagsByResourceIdsSeq request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service type",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Resource region",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 15",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsByResourceIdsSeqResponse": {
+      "document": "DescribeResourceTagsByResourceIdsSeq response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list",
+          "member": "TagResource",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsByTagKeysRequest": {
+      "document": "DescribeResourceTagsByTagKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service type",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource region",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Resource tag key",
+          "member": "string",
+          "name": "TagKeys",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 400",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsByTagKeysResponse": {
+      "document": "DescribeResourceTagsByTagKeys response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resource tag",
+          "member": "ResourceIdTag",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsRequest": {
+      "document": "DescribeResourceTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Creator `uin`",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource region.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 15",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether it is a COS resource ID",
+          "member": "uint64",
+          "name": "CosResourceId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsResponse": {
+      "document": "DescribeResourceTags response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource tag",
+          "member": "TagResource",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourcesByTagsRequest": {
+      "document": "DescribeResourcesByTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag filtering arrays.",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag creator uin.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. The default value is 15.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix.",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The resource's region.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourcesByTagsResponse": {
+      "document": "DescribeResourcesByTags response structure.",
+      "members": [
+        {
+          "document": "Total number of results.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource tag.",
+          "member": "ResourceTag",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourcesByTagsUnionRequest": {
+      "document": "DescribeResourcesByTagsUnion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag filtering arrays.",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag creator uin.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. The default value is 15.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix.",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The resource’s region.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type",
+          "member": "string",
+          "name": "ServiceType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourcesByTagsUnionResponse": {
+      "document": "DescribeResourcesByTagsUnion response structure.",
+      "members": [
+        {
+          "document": "Total number of results.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The size of each page.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resource tag.",
+          "member": "ResourceTag",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagKeysRequest": {
+      "document": "DescribeTagKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. The default value is 0.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to show project",
+          "member": "uint64",
+          "name": "ShowProject",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagKeysResponse": {
+      "document": "DescribeTagKeys response structure.",
+      "members": [
+        {
+          "document": "Total number of results.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Page size.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list.",
+          "member": "string",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagValuesRequest": {
+      "document": "DescribeTagValues request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key list.",
+          "member": "string",
+          "name": "TagKeys",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. The default value is 0.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagValuesResponse": {
+      "document": "DescribeTagValues response structure.",
+      "members": [
+        {
+          "document": "Total number of results.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Page size.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list.",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagValuesSeqRequest": {
+      "document": "DescribeTagValuesSeq request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key list",
+          "member": "string",
+          "name": "TagKeys",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 15",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagValuesSeqResponse": {
+      "document": "DescribeTagValuesSeq response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagsRequest": {
+      "document": "DescribeTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user's tags will be queried.",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user's tags will be queried.",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. The default value is 0.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.",
+          "member": "string",
+          "name": "TagKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to show project tag",
+          "member": "uint64",
+          "name": "ShowProject",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagsResponse": {
+      "document": "DescribeTags response structure.",
+      "members": [
+        {
+          "document": "Total number of results.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset.",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Page size.",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list.",
+          "member": "TagWithDelete",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagsSeqRequest": {
+      "document": "DescribeTagsSeq request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag value, which either exists or does not exist with the tag key. If it does not exist, all tags of the user will be queried",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 15",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.",
+          "member": "string",
+          "name": "TagKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to show project tag",
+          "member": "uint64",
+          "name": "ShowProject",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagsSeqResponse": {
+      "document": "DescribeTagsSeq response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data offset",
+          "member": "uint64",
+          "name": "Offset",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page",
+          "member": "uint64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list",
+          "member": "TagWithDelete",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachResourcesTagRequest": {
+      "document": "DetachResourcesTag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource service name",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource ID array, which can contain up to 50 resources",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key to be unbound",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource region. This field is not required for resources that do not have the region attribute",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix, which is not required for COS buckets",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachResourcesTagResponse": {
+      "document": "DetachResourcesTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourceTagsRequest": {
+      "document": "ModifyResourceTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.",
+          "member": "Tag",
+          "name": "ReplaceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The tags to be unassociated. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.",
+          "member": "TagKeyObject",
+          "name": "DeleteTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourceTagsResponse": {
+      "document": "ModifyResourceTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourcesTagValueRequest": {
+      "document": "ModifyResourcesTagValue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource service name",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource ID array, which can contain up to 50 resources",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource region. This field is not required for resources that do not have the region attribute",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource prefix, which is not required for COS buckets",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourcesTagValueResponse": {
+      "document": "ModifyResourcesTagValue response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResourceIdTag": {
+      "document": "Resource tag key value",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique resource ID\nNote: this field may return null, indicating that no valid values can be obtained",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag key-value pair\nNote: this field may return null, indicating that no valid values can be obtained",
+          "member": "Tag",
+          "name": "TagKeyValues",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ResourceTag": {
+      "document": "Resource tag.",
+      "members": [
+        {
+          "default": "",
+          "document": "The resource's region.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service type.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource prefix.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unique resource ID.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource tag.\nNote: This field may return null, indicating that no valid value is found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "A tag key-value pair.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TagFilter": {
+      "document": "Tag filtering array. '**AND**' relation if multiple arrays.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value array. '**OR**' relation if multiple values.",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TagKeyObject": {
+      "document": "Tag key object.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TagResource": {
+      "document": "Tag key-value pair and resource ID.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource ID.",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag key MD5 value.",
+          "member": "string",
+          "name": "TagKeyMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value MD5 value.",
+          "member": "string",
+          "name": "TagValueMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource type\nNote: this field may return null, indicating that no valid values found.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TagWithDelete": {
+      "document": "A tag key-value pair and if deletion is allowed.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If deletion is allowed.",
+          "member": "uint64",
+          "name": "CanDelete",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateResourceTagValueRequest": {
+      "document": "UpdateResourceTagValue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key associated with the resource.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Modified tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateResourceTagValueResponse": {
+      "document": "UpdateResourceTagValue response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}
