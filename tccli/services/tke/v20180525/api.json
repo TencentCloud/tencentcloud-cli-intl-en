@@ -114,6 +114,12 @@
       "name": "Queries the information of one or more nodes in a cluster.",
       "output": "DescribeClusterInstancesResponse"
     },
+    "DescribeClusterKubeconfig": {
+      "document": "This API is used to obtain the cluster kubeconfig file. Different sub-accounts have their own kubeconfig files. The kubeconfig file contains the kube-apiserver client certificate of the corresponding sub-account. By default, the client certificate is created when this API is called for the first time, and the certificate is valid for 20 years with no permissions granted. For the cluster owner or primary account, the cluster-admin permission is granted by default.",
+      "input": "DescribeClusterKubeconfigRequest",
+      "name": "Obtains the cluster kubeconfig file",
+      "output": "DescribeClusterKubeconfigResponse"
+    },
     "DescribeClusterRouteTables": {
       "document": "This API is used to query one or more cluster route tables.",
       "input": "DescribeClusterRouteTablesRequest",
@@ -240,7 +246,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.",
           "member": "string",
           "name": "HostName",
           "required": false,
@@ -392,7 +398,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag description list.",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": true,
@@ -401,7 +407,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Cluster status (Running, Creating, or Abnormal)",
           "member": "string",
           "name": "ClusterStatus",
           "required": true,
@@ -410,7 +416,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))",
           "member": "string",
           "name": "Property",
           "required": true,
@@ -506,7 +512,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "NodeName type for a node in a cluster (This includes the two forms of **hostname** and **lan-ip**, with the default as **lan-ip**. If **hostname** is used, you need to set the HostName parameter when creating a node, and the InstanceName needs to be the same as the HostName.)",
           "member": "string",
           "name": "NodeNameType",
           "required": false,
@@ -542,7 +548,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Indicates whether to enable cluster deletion protection.",
           "member": "bool",
           "name": "DeletionProtection",
           "required": false,
@@ -551,7 +557,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Cluster network proxy model",
           "member": "string",
           "name": "KubeProxyMode",
           "required": false,
@@ -854,7 +860,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a resource instance. Currently, a tag can only be bound to cluster instances.",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": false,
@@ -863,7 +869,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
           "member": "string",
           "name": "OsCustomizeType",
           "required": false,
@@ -872,7 +878,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable the node’s default security group (default: `No`, Aphla feature)",
           "member": "bool",
           "name": "NeedWorkSecurityGroup",
           "required": false,
@@ -1221,7 +1227,7 @@
         },
         {
           "default": "",
-          "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
+          "document": "Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotence of requests for adding cluster nodes, you need to add the ClientToken field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
           "member": "string",
           "name": "RunInstancePara",
           "required": true,
@@ -1321,6 +1327,14 @@
           "document": "CVM type and the corresponding data disk mounting configuration information.",
           "member": "InstanceDataDiskMountSetting",
           "name": "InstanceDataDiskMountSettings",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information of the add-on to be installed",
+          "member": "ExtensionAddon",
+          "name": "ExtensionAddons",
           "required": false,
           "type": "list"
         }
@@ -1578,7 +1592,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether or not there is forced deletion (when a node is initialized, the parameters can be specified as TRUE)",
           "member": "bool",
           "name": "ForceDelete",
           "required": false,
@@ -1945,7 +1959,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Node role. Valid values are MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER.",
           "member": "string",
           "name": "InstanceRole",
           "required": false,
@@ -1969,6 +1983,39 @@
           "member": "Instance",
           "name": "InstanceSet",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterKubeconfigRequest": {
+      "document": "DescribeClusterKubeconfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterKubeconfigResponse": {
+      "document": "DescribeClusterKubeconfig response structure.",
+      "members": [
+        {
+          "document": "Sub-account kubeconfig file, used to access the cluster kube-apiserver directly",
+          "member": "string",
+          "name": "Kubeconfig",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2649,10 +2696,34 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.",
           "member": "string",
           "name": "HostName",
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ExtensionAddon": {
+      "document": "Information of the add-on selected for installation during cluster creation",
+      "members": [
+        {
+          "default": "",
+          "document": "Add-on name",
+          "member": "string",
+          "name": "AddonName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Add-on information (description of the add-on resource object in JSON string format)",
+          "member": "string",
+          "name": "AddonParam",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2826,7 +2897,7 @@
       "members": [
         {
           "default": "",
-          "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: This field may return null, indicating that no valid value was found.",
+          "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "MountTarget",
           "required": false,
@@ -2871,7 +2942,7 @@
         },
         {
           "default": "",
-          "document": "Data disk information\nNote: This field may return null, indicating that no valid value was found.",
+          "document": "Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. If the purchase of multiple data disks is also set in DataDisks under RunInstancesPara of the CreateClusterInstances API for adding nodes, you can refer to the example of adding cluster nodes (multiple data disks) for the CreateClusterInstances API.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": false,
@@ -2943,7 +3014,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Name in map list",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2952,7 +3023,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Value in map list",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -3417,7 +3488,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The type of resource that the tag is bound to. The type currently supported is `cluster`.",
           "member": "string",
           "name": "ResourceType",
           "required": false,
@@ -3426,7 +3497,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "List of tag pairs",
           "member": "Tag",
           "name": "Tags",
           "required": false,

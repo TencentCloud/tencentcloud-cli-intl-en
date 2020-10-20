@@ -270,6 +270,12 @@
       "name": "Enables a workflow",
       "output": "EnableWorkflowResponse"
     },
+    "ExecuteFunction": {
+      "document": "This API is only used in unique custom development scenarios. Unless requested by Media Processing Service customer service, please do not call it.",
+      "input": "ExecuteFunctionRequest",
+      "name": "Runs a custom API",
+      "output": "ExecuteFunctionResponse"
+    },
     "ManageTask": {
       "document": "This API is used to manage an initiated task.\n> Note: currently, you can only terminate an ongoing live stream processing task.",
       "input": "ManageTaskRequest",
@@ -6622,7 +6628,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -6774,6 +6780,47 @@
     "EnableWorkflowResponse": {
       "document": "EnableWorkflow response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExecuteFunctionRequest": {
+      "document": "ExecuteFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of called backend API.",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "API parameter. Parameter format will depend on the actual function definition.",
+          "member": "string",
+          "name": "FunctionArg",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExecuteFunctionResponse": {
+      "document": "ExecuteFunction response structure.",
+      "members": [
+        {
+          "document": "Packed string, which will vary according to the custom API.",
+          "member": "string",
+          "name": "Result",
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -11557,7 +11604,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -13438,7 +13485,7 @@
         },
         {
           "default": "",
-          "document": "Video frame rate in Hz. Value range: [0, 60].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "document": "Video frame rate in Hz. Value range: [0, 100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
           "member": "uint64",
           "name": "Fps",
           "required": true,
@@ -13516,7 +13563,7 @@
         },
         {
           "default": "",
-          "document": "Video frame rate in Hz. Value range: [0, 60].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "document": "Video frame rate in Hz. Value range: [0, 100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
           "member": "uint64",
           "name": "Fps",
           "required": false,

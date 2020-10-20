@@ -17,6 +17,7 @@ include tccli/services/dayu/v20180709/api.json
 include tccli/services/dbbrain/v20191016/api.json
 include tccli/services/dc/v20180410/api.json
 include tccli/services/dcdb/v20180411/api.json
+include tccli/services/dms/v20200819/api.json
 include tccli/services/dts/v20180330/api.json
 include tccli/services/ecdn/v20191012/api.json
 include tccli/services/emr/v20190103/api.json

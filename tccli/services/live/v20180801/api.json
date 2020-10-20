@@ -103,7 +103,7 @@
       "output": "CreateLiveWatermarkRuleResponse"
     },
     "CreateRecordTask": {
-      "document": "This API is used to create a recording task that starts and ends at specified times and records by using the configuration corresponding to a specified recording template ID.\n- Prerequisites\n1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the corresponding document.\n- Precautions\n1. An interruption will end the current recording and generate a recording file. The task will still be valid before the end time expires, and as long as the stream is pushed normally during the period, it will record normally, regardless of whether the push is interrupted or restarted multiple times.\n2. Creating recording tasks with overlapping time periods must be avoided. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.\n3. The record of a created recording task will be retained for 3 months on the platform.\n4. The current recording task management APIs (CreateRecordTask/StopRecordTask/DeleteRecordTask) are not compatible with the legacy APIs (CreateLiveRecord/StopLiveRecord/DeleteLiveRecord), and they cannot be mixed.",
+      "document": "This API is used to create a recording task that starts and ends at specified times and records by using the configuration corresponding to a specified recording template ID.\n- Prerequisites\n1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) are charged according to the VOD billing method. For details, see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2837?from_cn_redirect=1).\n- Precautions\n1. An interruption will end the current recording and generate a recording file. The task will still be valid before the end time expires, and the stream will be recorded within this period as long as it is pushed, regardless of whether the push is interrupted or restarted multiple times.\n2. Avoid creating recording tasks with overlapping time periods. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.\n3. The record of a created recording task will be retained for 3 months on the platform.\n4. The current recording task management APIs (CreateRecordTask/StopRecordTask/DeleteRecordTask) are not compatible with the legacy APIs (CreateLiveRecord/StopLiveRecord/DeleteLiveRecord), and they cannot be used together.\n5. Do not create recording tasks and push streams at the same time, or recording tasks might not take effect and be delayed. Wait at least 3 seconds between each action.",
       "input": "CreateRecordTaskRequest",
       "name": "Creates recording task (new)",
       "output": "CreateRecordTaskResponse"
@@ -197,6 +197,12 @@
       "input": "DescribeAllStreamPlayInfoListRequest",
       "name": "Queries the downstream playback data of all streams at specified point in time",
       "output": "DescribeAllStreamPlayInfoListResponse"
+    },
+    "DescribeAreaBillBandwidthAndFluxList": {
+      "document": "This API is used to query the billable LVB bandwidth and traffic data outside Chinese mainland.",
+      "input": "DescribeAreaBillBandwidthAndFluxListRequest",
+      "name": "Queries the billable LVB bandwidth and traffic data outside Chinese mainland.",
+      "output": "DescribeAreaBillBandwidthAndFluxListResponse"
     },
     "DescribeBillBandwidthAndFluxList": {
       "document": "This API is used to query the data of billable LVB bandwidth and traffic.",
@@ -571,7 +577,7 @@
       "output": "StopLiveRecordResponse"
     },
     "StopRecordTask": {
-      "document": "This API is used to end a recording prematurely and terminate the running recording task. After the task is successfully terminated, it will no longer start.",
+      "document": "This API is used to end a recording prematurely and terminate an ongoing recording task. After the task is successfully terminated, it will not restart.",
       "input": "StopRecordTaskRequest",
       "name": "Terminates recording task (API)",
       "output": "StopRecordTaskResponse"
@@ -803,6 +809,54 @@
           "name": "Bandwidth",
           "required": true,
           "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BillAreaInfo": {
+      "document": "Region information, `DescribeAreaBillBandwidthAndFluxList` output parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed country information",
+          "member": "BillCountryInfo",
+          "name": "Countrys",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BillCountryInfo": {
+      "document": "The bandwidth information of a country, `DescribeAreaBillBandwidthAndFluxList` output parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Country",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed bandwidth information",
+          "member": "BillDataInfo",
+          "name": "BandInfoList",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2290,7 +2344,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate in Kbps. Value range: 100-8,000.\nNote: the transcoding template requires that bitrate should be unique, yet the final saved bitrate may be different from the input bitrate.",
+          "document": "Video bitrate. Value range: 0–8,000 Kbps.\nIf the value is 0, the original bitrate will be retained.\nNote: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.",
           "member": "int64",
           "name": "VideoBitrate",
           "required": true,
@@ -2362,7 +2416,7 @@
         },
         {
           "default": "",
-          "document": "Frame rate. Default value: 0.\nValue range: 0-60",
+          "document": "Frame rate. Default value: 0.\nRange: 0-60 Fps.",
           "member": "int64",
           "name": "Fps",
           "required": false,
@@ -2370,7 +2424,7 @@
         },
         {
           "default": "",
-          "document": "Keyframe interval in seconds. Default value: original interval\nValue range: 2-6",
+          "document": "Keyframe interval, unit: second.\nOriginal interval by default\nRange: 2-6",
           "member": "int64",
           "name": "Gop",
           "required": false,
@@ -2394,7 +2448,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original bitrate. 0: no; 1: yes. Default value: 0.",
+          "document": "Whether to use the original bitrate when the set bitrate is larger than the original bitrate.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "BitrateToOrig",
           "required": false,
@@ -2402,7 +2456,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original height. 0: no; 1: yes. Default value: 0.",
+          "document": "Whether to use the original height when the set height is higher than the original height.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "HeightToOrig",
           "required": false,
@@ -2410,7 +2464,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.",
+          "document": "Whether to use the original frame rate when the set frame rate is larger than the original frame rate.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "FpsToOrig",
           "required": false,
@@ -3221,6 +3275,55 @@
       ],
       "type": "object"
     },
+    "DescribeAreaBillBandwidthAndFluxListRequest": {
+      "document": "DescribeAreaBillBandwidthAndFluxList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time point in the format of yyyy-mm-dd HH:MM:SS.",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 1 days.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "LVB playback domain name. If it is left blank, the full data will be queried.",
+          "member": "string",
+          "name": "PlayDomains",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAreaBillBandwidthAndFluxListResponse": {
+      "document": "DescribeAreaBillBandwidthAndFluxList response structure.",
+      "members": [
+        {
+          "document": "Detailed data information.",
+          "member": "BillAreaInfo",
+          "name": "DataInfoList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBillBandwidthAndFluxListRequest": {
       "document": "DescribeBillBandwidthAndFluxList request structure.",
       "members": [
@@ -3234,7 +3337,7 @@
         },
         {
           "default": "",
-          "document": "End time point in the format of `yyyy-mm-dd HH:MM:SS`. The difference between the start time and end time cannot be greater than 31 days.",
+          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -3838,11 +3941,11 @@
       "document": "DescribeLiveDomain response structure.",
       "members": [
         {
-          "document": "Domain name information.",
+          "document": "Domain name information.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "DomainInfo",
           "name": "DomainInfo",
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4097,7 +4200,7 @@
       "members": [
         {
           "default": "",
-          "document": "Template ID obtained through the `DescribeRecordTemplates` API.",
+          "document": "Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -4822,7 +4925,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "An array of template IDs to be filtered.",
           "member": "int64",
           "name": "TemplateIds",
           "required": false,
@@ -4830,7 +4933,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "An array of domain names to be filtered.",
           "member": "string",
           "name": "DomainNames",
           "required": false,
@@ -5553,7 +5656,7 @@
       "members": [
         {
           "default": "",
-          "document": "Date in the format of `YYYY-mm-dd`.\nData is available at 3 AM the next day. You are recommended to query the latest data after this time point.",
+          "document": "Date in the format of YYYY-mm-dd\nData is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.",
           "member": "string",
           "name": "DayTime",
           "required": true,
@@ -5638,7 +5741,7 @@
       "members": [
         {
           "default": "",
-          "document": "Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM:SS`,\nThe start time cannot be more than 30 days after the current time.",
+          "document": "Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -5646,7 +5749,7 @@
         },
         {
           "default": "",
-          "document": "End time (Beijing time) in the format of `yyyy-mm-dd HH:MM:SS`.\nThe end time and start time must be on the same day.",
+          "document": "End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS\nThe end time and start time must be on the same day. Data in the last 3 days can be queried.",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7221,7 +7324,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate in Kbps. Value range: 100-8,000.\nNote: the transcoding template requires that the bitrate should be unique, yet the final saved bitrate may be different from the input bitrate.",
+          "document": "Video bitrate. Value range: 0–8,000 Kbps.\nIf the value is 0, the original bitrate will be retained.\nNote: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.",
           "member": "int64",
           "name": "VideoBitrate",
           "required": false,
@@ -7293,7 +7396,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original bitrate. 0: no; 1: yes. Default value: 0.",
+          "document": "Whether to use the original bitrate when the set bitrate is larger than the original bitrate.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "BitrateToOrig",
           "required": false,
@@ -7301,7 +7404,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original height. 0: no; 1: yes. Default value: 0.",
+          "document": "Whether to use the original height when the set height is higher than the original height.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "HeightToOrig",
           "required": false,
@@ -7309,7 +7412,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original frame rate. 0: no; 1: yes. Default value: 0.",
+          "document": "Whether to use the original frame rate when the set frame rate is larger than the original frame rate.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "FpsToOrig",
           "required": false,
@@ -8779,7 +8882,7 @@
       "members": [
         {
           "default": "",
-          "document": "Video encoding format:\nh264/h265.",
+          "document": "Codec: h264/h265/origin. Default value: h264.\n\norigin: keep the original codec.",
           "member": "string",
           "name": "Vcodec",
           "required": true,
@@ -8788,7 +8891,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate. Value range: 100-8000 Kbps.",
+          "document": "Video bitrate. Value range: 0–8,000 Kbps.\nIf the value is 0, the original bitrate will be retained.\nNote: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.",
           "member": "int64",
           "name": "VideoBitrate",
           "required": true,
@@ -8797,7 +8900,7 @@
         },
         {
           "default": "",
-          "document": "Audio codec. Valid values: aac, mp3.",
+          "document": "Audio codec: aac. Default value: aac.\nNote: This parameter will not take effect for now and will be supported soon.",
           "member": "string",
           "name": "Acodec",
           "required": true,
@@ -8806,7 +8909,7 @@
         },
         {
           "default": "",
-          "document": "Audio bitrate. Value range: 0-500 Kbps.",
+          "document": "Audio bitrate. Value range: 0–500 Kbps.\n0 by default.",
           "member": "int64",
           "name": "AudioBitrate",
           "required": true,
@@ -8815,7 +8918,7 @@
         },
         {
           "default": "",
-          "document": "Width. Value range: 0-3000.",
+          "document": "Width. Default value: 0.\nValue range: [0-3,000].\nThe value must be a multiple of 2. The original width is 0.",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -8824,7 +8927,7 @@
         },
         {
           "default": "",
-          "document": "Height. Value range: 0-3000.",
+          "document": "Height. Default value: 0.\nValue range: [0-3,000].\nThe value must be a multiple of 2. The original width is 0.",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -8833,7 +8936,7 @@
         },
         {
           "default": "",
-          "document": "Frame rate. Value range: 0-200 FPS.",
+          "document": "Frame rate. Default value: 0.\nRange: 0-60 Fps.",
           "member": "int64",
           "name": "Fps",
           "required": true,
@@ -8842,7 +8945,7 @@
         },
         {
           "default": "",
-          "document": "Keyframe interval. Value range: 1-50s.",
+          "document": "Keyframe interval, unit: second.\nOriginal interval by default\nRange: 2-6",
           "member": "int64",
           "name": "Gop",
           "required": true,
@@ -8851,7 +8954,7 @@
         },
         {
           "default": "",
-          "document": "Rotation angle. Valid values: 0, 90, 180, 270.",
+          "document": "Rotation angle. Default value: 0.\nValue range: 0, 90, 180, 270",
           "member": "int64",
           "name": "Rotate",
           "required": true,
@@ -8860,7 +8963,7 @@
         },
         {
           "default": "",
-          "document": "Encoding quality. Valid values:\nbaseline, main, high.",
+          "document": "Encoding quality:\nbaseline/main/high. Default value: baseline.",
           "member": "string",
           "name": "Profile",
           "required": true,
@@ -8869,7 +8972,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original bitrate. 0: no; 1: yes.",
+          "document": "Whether to use the original bitrate when the set bitrate is larger than the original bitrate.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "BitrateToOrig",
           "required": true,
@@ -8878,7 +8981,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original height. 0: no; 1: yes.",
+          "document": "Whether to use the original height when the set height is higher than the original height.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "HeightToOrig",
           "required": true,
@@ -8887,7 +8990,7 @@
         },
         {
           "default": "",
-          "document": "Whether to not exceed the original frame rate. 0: no; 1: yes.",
+          "document": "Whether to use the original frame rate when the set frame rate is larger than the original frame rate.\n0: no, 1: yes\nDefault value: 0.",
           "member": "int64",
           "name": "FpsToOrig",
           "required": true,
@@ -8950,12 +9053,21 @@
         },
         {
           "default": "",
-          "document": "`VideoBitrate` minus top speed codec bitrate. Value range: 0.1-0.5.",
+          "document": "Bitrate compression ratio of top speed code video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5.",
           "member": "float",
           "name": "AdaptBitratePercent",
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "ShortEdgeAsHeight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

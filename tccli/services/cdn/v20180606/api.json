@@ -830,6 +830,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp settings\ndec: decimal\nhex: hexadecimal\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2402,6 +2411,14 @@
           "document": "Node type.\nedge: edge server\nlast: intermediate server\nIf this parameter is left empty, edge server information will be returned by default",
           "member": "string",
           "name": "Layer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region to be queried.\nmainland: domestic nodes\noverseas: overseas nodes\nglobal: global nodes",
+          "member": "string",
+          "name": "Area",
           "required": false,
           "type": "string"
         }

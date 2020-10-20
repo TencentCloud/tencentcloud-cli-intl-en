@@ -557,7 +557,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "CMK description of up to 1,024 bytes in length",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -581,7 +581,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag list",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -687,7 +687,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag list",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -721,14 +721,14 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Tag operation return code. 0: success; 1: internal error; 2: business processing error",
           "member": "uint64",
           "name": "TagCode",
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Tag operation return message",
           "member": "string",
           "name": "TagMsg",
           "type": "string",
@@ -756,7 +756,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.",
           "member": "string",
           "name": "EncryptionContext",
           "required": false,
@@ -1477,7 +1477,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Globally unique ID of the CMK used for encryption",
           "member": "string",
           "name": "KeyId",
           "type": "string",
@@ -1497,7 +1497,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Globally unique CMK ID",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -1521,7 +1521,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.",
           "member": "string",
           "name": "EncryptionContext",
           "required": false,
@@ -1534,7 +1534,7 @@
       "document": "GenerateDataKey response structure.",
       "members": [
         {
-          "document": "",
+          "document": "Globally unique CMK ID",
           "member": "string",
           "name": "KeyId",
           "type": "string",
@@ -1871,7 +1871,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Globally unique CMK ID",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -1880,7 +1880,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Alias that makes a key more recognizable and understandable",
           "member": "string",
           "name": "Alias",
           "required": true,
@@ -1889,7 +1889,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Key creation time",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -1898,7 +1898,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "CMK description",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -1934,7 +1934,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Creator",
           "member": "uint64",
           "name": "CreatorUin",
           "required": true,
@@ -1943,7 +1943,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether key rotation is enabled",
           "member": "bool",
           "name": "KeyRotationEnabled",
           "required": true,
@@ -1952,7 +1952,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.",
           "member": "string",
           "name": "Owner",
           "required": true,
@@ -1961,7 +1961,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Time of next rotation if key rotation is enabled",
           "member": "uint64",
           "name": "NextRotateTime",
           "required": true,
@@ -1970,7 +1970,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Scheduled deletion time",
           "member": "uint64",
           "name": "DeletionDate",
           "required": true,
@@ -2043,7 +2043,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0.",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2059,7 +2059,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.",
           "member": "uint64",
           "name": "Role",
           "required": false,
@@ -2067,7 +2067,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Sorts by CMK creation time. 0: descending; 1: ascending",
           "member": "uint64",
           "name": "OrderType",
           "required": false,
@@ -2083,7 +2083,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Performs a fuzzy query by `KeyId` or `Alias`",
           "member": "string",
           "name": "SearchKeyAlias",
           "required": false,
@@ -2120,7 +2120,7 @@
       "document": "ListKeyDetail response structure.",
       "members": [
         {
-          "document": "",
+          "document": "Total number of CMKs",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -2359,11 +2359,11 @@
       "type": "object"
     },
     "Tag": {
-      "document": "",
+      "document": "Tag key and tag value",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Tag key",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -2372,7 +2372,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag value",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -2487,7 +2487,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "New description of up to 1,024 bytes in length",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -2517,11 +2517,11 @@
       "type": "object"
     },
     "WhiteboxKeyInfo": {
-      "document": "",
+      "document": "White-box key information",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Globally unique white-box key ID",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -2530,7 +2530,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1 to 60 letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
           "member": "string",
           "name": "Alias",
           "required": true,
@@ -2539,7 +2539,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Creator",
           "member": "uint64",
           "name": "CreatorUin",
           "required": true,
@@ -2548,7 +2548,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Key description information",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -2557,7 +2557,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Key creation time in Unix timestamp",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -2566,7 +2566,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "White-box key status. Valid values: Enabled, Disabled",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2575,7 +2575,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Creator",
           "member": "uint64",
           "name": "OwnerUin",
           "required": true,
@@ -2584,7 +2584,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Key algorithm type",
           "member": "string",
           "name": "Algorithm",
           "required": true,
@@ -2593,7 +2593,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Base64-encoded white-box encryption key",
           "member": "string",
           "name": "EncryptKey",
           "required": true,
@@ -2602,7 +2602,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Base64-encoded white-box decryption key",
           "member": "string",
           "name": "DecryptKey",
           "required": true,
@@ -2611,7 +2611,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Resource ID in the format of `creatorUin/$creatorUin/$keyId`",
           "member": "string",
           "name": "ResourceId",
           "required": true,

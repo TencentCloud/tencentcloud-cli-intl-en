@@ -3758,7 +3758,7 @@
         },
         {
           "default": "",
-          "document": "Statistics start time, such as 2020-08-19 00:00:00",
+          "document": "Statistics start time, such as `2020-08-19 00:00:00`",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -3766,7 +3766,7 @@
         },
         {
           "default": "",
-          "document": "Statistics end time, such as 2020-08-19 23:59:59",
+          "document": "Statistics end time, such as `2020-08-19 23:59:59`",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -3774,7 +3774,7 @@
         },
         {
           "default": "",
-          "document": "Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported",
+          "document": "Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported.",
           "member": "uint64",
           "name": "Granularity",
           "required": false,

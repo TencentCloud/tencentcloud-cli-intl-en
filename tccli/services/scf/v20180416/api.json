@@ -2137,6 +2137,13 @@
           "value_allowed_null": false
         },
         {
+          "document": "Cause of function failure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "StatusReason",
+          "name": "StatusReasons",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -3348,6 +3355,30 @@
         }
       ],
       "usage": "both"
+    },
+    "StatusReason": {
+      "document": "State reason description",
+      "members": [
+        {
+          "default": "",
+          "document": "Error code",
+          "member": "string",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "member": "string",
+          "name": "ErrorMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Tag": {
       "document": "Function tag",

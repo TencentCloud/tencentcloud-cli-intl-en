@@ -2194,7 +2194,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Number of disks\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DiskNum",
           "required": false,
@@ -2820,6 +2820,30 @@
           "name": "PodSpec",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Machine group name selected for ClickHouse cluster scaling-out",
+          "member": "string",
+          "name": "ClickHouseClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Machine group type selected for ClickHouse cluster scaling-out. new: creates a group; old: selects an existing group",
+          "member": "string",
+          "name": "ClickHouseClusterType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "YARN node label specified for rule-based scaling-out",
+          "member": "string",
+          "name": "YarnNodeLabel",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

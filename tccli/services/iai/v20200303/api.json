@@ -73,7 +73,7 @@
       "output": "DetectFaceResponse"
     },
     "DetectFaceAttributes": {
-      "document": "This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.\n\n \nThe face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, you are recommended to evaluate the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:\n\n1). [Creating](https://intl.cloud.tencent.com/document/product/867/32793?from_cn_redirect=1)/[Adding](https://intl.cloud.tencent.com/document/product/867/32795?from_cn_redirect=1) a person in a group: this is to ensure the quality of the face information to facilitate subsequent processing.\n\n2). [Face search](https://intl.cloud.tencent.com/document/product/867/32798?from_cn_redirect=1): this is to ensure the quality of the input image to quickly find the corresponding person.\n\n3). [Face verification](https://intl.cloud.tencent.com/document/product/867/32806?from_cn_redirect=1): this is to ensure the quality of the face information to avoid cases where the verification incorrectly fails.\n\n4). [Face fusion](https://intl.cloud.tencent.com/product/facefusion?from_cn_redirect=1): this is to ensure the quality of the uploaded face images to improve the fusion effect.\n\n>     \n- This API is an upgrade of [DetectFace](https://intl.cloud.tencent.com/document/product/867/44989?from_cn_redirect=1) in the following terms:\n1. This API can specify the face attributes that need to be computed and returned, which avoids ineffective computation and reduces the time consumption.\n2. This API supports more detailed attribute items and will continue providing new features in the future.\nPlease use this API to satisfy your corresponding face detection and attribute analysis needs.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
+      "document": "This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.\n\n \nThe face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommended evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:\n\n1. [Creating](https://intl.cloud.tencent.com/document/product/867/32793?from_cn_redirect=1)/[Adding](https://intl.cloud.tencent.com/document/product/867/32795?from_cn_redirect=1) a person in a group: this is to ensure the quality of the face information to facilitate subsequent processing.\n\n2. [Face search](https://intl.cloud.tencent.com/document/product/867/32798?from_cn_redirect=1): this is to ensure the quality of the input image to quickly find the corresponding person.\n\n3. [Face verification](https://intl.cloud.tencent.com/document/product/867/32806?from_cn_redirect=1): this is to ensure the quality of the face information to avoid cases where the verification incorrectly fails.\n\n4. [Face fusion](https://intl.cloud.tencent.com/product/facefusion?from_cn_redirect=1): this is to ensure the quality of the uploaded face images to improve the fusion effect.\n\n>     \n- This API is an upgrade of [DetectFace](https://intl.cloud.tencent.com/document/product/867/44989?from_cn_redirect=1) in the following terms:\n1. This API can be used to specify the face attributes that need to be computed and returned, which avoids ineffective computation and reduces time consumption.\n2. This API supports more detailed attribute items and will continue providing new features in the future.\nPlease use this API for corresponding face detection and attribute analysis.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
       "input": "DetectFaceAttributesRequest",
       "name": "Detects face and analyzes attributes",
       "output": "DetectFaceAttributesResponse"
@@ -83,6 +83,12 @@
       "input": "DetectLiveFaceRequest",
       "name": "Detects liveness based on image",
       "output": "DetectLiveFaceResponse"
+    },
+    "DetectLiveFaceAccurate": {
+      "document": "This API is used to detect the liveness of faces in images uploaded by users and determine whether these images are photographed.\n\nCompared with normal Image-based Liveness Detection services, this API enhances the defense capability against attacks from HD screens, printed photos, and 3D masks, as well as improves attack blocking four to five times the competing products, while maintaining high accuracy. It also supports face verification in different use cases, and satisfies the image-based liveness detection needs on mobile or PCs, making it ideal for liveness detection applications in various industries.",
+      "input": "DetectLiveFaceAccurateRequest",
+      "name": "Detects the liveness of faces in images (high precision)",
+      "output": "DetectLiveFaceAccurateResponse"
     },
     "GetGroupInfo": {
       "document": "This API is used to get the group information.",
@@ -194,7 +200,7 @@
         },
         {
           "default": "",
-          "document": "Base64-encoded image data, which cannot exceed 5 MB.  \nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.\n.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.",
+          "document": "Base64-encoded image data, which cannot exceed 5 MB.  \nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
           "required": false,
@@ -202,7 +208,7 @@
         },
         {
           "default": "",
-          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.  \nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nYou are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.  \nThe download speed and stability of non-Tencent Cloud URLs may be low.  \n.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.",
+          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.  \nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.  \nThe download speed and stability of non-Tencent Cloud URLs may be low.  \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -218,7 +224,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "int64",
           "name": "NeedRotateDetection",
           "required": false,
@@ -1011,7 +1017,7 @@
       "members": [
         {
           "default": "",
-          "document": "Horizontal coordinate of the top-left corner of face frame.",
+          "document": "X-coordinate of the top-left vertex of the face frame.",
           "member": "int64",
           "name": "X",
           "required": true,
@@ -1020,7 +1026,7 @@
         },
         {
           "default": "",
-          "document": "Vertical coordinate of the top-left corner of face frame.",
+          "document": "Y-coordinate of the top-left vertex of the face frame.",
           "member": "int64",
           "name": "Y",
           "required": true,
@@ -1047,7 +1053,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the left eye.",
+          "document": "XX points that outline the left eye.",
           "member": "Point",
           "name": "LeftEye",
           "required": true,
@@ -1056,7 +1062,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the right eye.",
+          "document": "XX points that outline the right eye.",
           "member": "Point",
           "name": "RightEye",
           "required": true,
@@ -1065,7 +1071,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the left eyebrow.",
+          "document": "XX points that outline the left eyebrow.",
           "member": "Point",
           "name": "LeftEyeBrow",
           "required": true,
@@ -1074,7 +1080,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the right eyebrow.",
+          "document": "XX points that outline the right eyebrow.",
           "member": "Point",
           "name": "RightEyeBrow",
           "required": true,
@@ -1083,7 +1089,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the outer contour of the mouth, which are returned from left anticlockwise.",
+          "document": "XX points that outline the outer contour of the mouth, which are returned from left anticlockwise.",
           "member": "Point",
           "name": "MouthOutside",
           "required": true,
@@ -1092,7 +1098,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the inner contour of the mouth, which are returned from left anticlockwise.",
+          "document": "XX points that outline the inner contour of the mouth, which are returned from left anticlockwise.",
           "member": "Point",
           "name": "MouthInside",
           "required": true,
@@ -1101,7 +1107,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the nose.",
+          "document": "XX points that outline the nose.",
           "member": "Point",
           "name": "Nose",
           "required": true,
@@ -1110,7 +1116,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the left pupil.",
+          "document": "XX points that outline the left pupil.",
           "member": "Point",
           "name": "LeftPupil",
           "required": true,
@@ -1119,7 +1125,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the right pupil.",
+          "document": "XX points that outline the right pupil.",
           "member": "Point",
           "name": "RightPupil",
           "required": true,
@@ -1128,7 +1134,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the midline.",
+          "document": "XX points that outline the midline.",
           "member": "Point",
           "name": "CentralAxis",
           "required": true,
@@ -1137,7 +1143,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the chin.",
+          "document": "XX points that outline the chin.",
           "member": "Point",
           "name": "Chin",
           "required": true,
@@ -1146,7 +1152,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the left eye bag.",
+          "document": "XX points that outline the left eye bag.",
           "member": "Point",
           "name": "LeftEyeBags",
           "required": true,
@@ -1155,7 +1161,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the right eye bag.",
+          "document": "XX points that outline the right eye bag.",
           "member": "Point",
           "name": "RightEyeBags",
           "required": true,
@@ -1164,7 +1170,7 @@
         },
         {
           "default": "",
-          "document": "XX points that describe the forehead.",
+          "document": "XX points that outline the forehead.",
           "member": "Point",
           "name": "Forehead",
           "required": true,
@@ -1187,7 +1193,7 @@
         },
         {
           "default": "",
-          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. \n.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.",
+          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
           "required": false,
@@ -1195,7 +1201,7 @@
         },
         {
           "default": "",
-          "document": "Image URL. \nThe image cannot exceed 5 MB in size after being Base64-encoded. \nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nYou are recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low. \n.png, .jpg, .jpeg, and .bmp images are supported, while .gif images are not.",
+          "document": "Image URL. \nThe image cannot exceed 5 MB in size after being Base64-encoded. \nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low. \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -1203,7 +1209,7 @@
         },
         {
           "default": "",
-          "document": "Whether to return attributes such as age, gender, and emotion. \nValid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, \nGender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. \n`None` indicates that no attributes need to be returned, which is the default value. \nYou need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. \nFor more information on the attributes, please see the output parameters as described below. \nThe face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.",
+          "document": "Whether to return attributes such as age, gender, and emotion. \nValid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, \nGender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. \nDefault value: None, indicating that no attributes need to be returned. \nYou need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. \nFor more information on the attributes, please see the output parameters as described below. \nThe face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.",
           "member": "string",
           "name": "FaceAttributesType",
           "required": false,
@@ -1211,7 +1217,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",
           "required": false,
@@ -1378,6 +1384,62 @@
       ],
       "type": "object"
     },
+    "DetectLiveFaceAccurateRequest": {
+      "document": "DetectLiveFaceAccurate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. \nThe recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).\nThe face must be greater than 100*100 px in size.\nSupported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.",
+          "member": "string",
+          "name": "Image",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image URL. The image cannot exceed 5 MB in size after being base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` of the image must be provided; if both are provided, only `Url` will be used. \nThe recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).\nThe face must be greater than 100*100 px in size.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.\nSupported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Algorithm model version used for face recognition. Valid value: 3.0",
+          "member": "string",
+          "name": "FaceModelVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetectLiveFaceAccurateResponse": {
+      "document": "DetectLiveFaceAccurate response structure.",
+      "members": [
+        {
+          "document": "Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend using the threshold 40.",
+          "member": "float",
+          "name": "Score",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Algorithm model version used for face recognition.",
+          "member": "string",
+          "name": "FaceModelVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DetectLiveFaceRequest": {
       "document": "DetectLiveFace request structure.",
       "members": [
@@ -1446,7 +1508,7 @@
       "members": [
         {
           "default": "",
-          "document": "Whether glasses are worn.\nThe `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses",
+          "document": "Whether glasses are worn.\nThe `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses.",
           "member": "AttributeItem",
           "name": "Glass",
           "required": true,
@@ -1455,7 +1517,7 @@
         },
         {
           "default": "",
-          "document": "Whether the eyes are open.\nThe `Type` values of the `AttributeItem` include: 0: open; 1: closed",
+          "document": "Whether the eyes are open.\nThe `Type` values of the `AttributeItem` include: 0: open; 1: closed.",
           "member": "AttributeItem",
           "name": "EyeOpen",
           "required": true,
@@ -1631,7 +1693,7 @@
       "usage": "out"
     },
     "FaceDetailAttributesInfo": {
-      "document": "Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), \nemotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), \nhair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), \nnose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile).  \nIf no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetailAttributesInfo` will be meaningless.",
+      "document": "Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty, \nEmotion, Eye, Eyebrow, Gender, \nHair, Hat, Headpose, Mask, Mouth, Moustache, \nNose, Shape, Skin, Smile, etc.  \nIf no types are specified in `FaceAttributesType`, the details returned by `FaceDetaiAttributesInfo` will be meaningless.",
       "members": [
         {
           "default": "",
@@ -1653,7 +1715,7 @@
         },
         {
           "default": "",
-          "document": "Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. \nThe `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared\nIf `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "document": "Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. \nThe `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared.\nIf `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Emotion",
           "required": true,
@@ -1743,7 +1805,7 @@
         },
         {
           "default": "",
-          "document": "Nose information. \nThe `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose\nIf `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "document": "Nose information. \nThe `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose.\nIf `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Nose",
           "required": true,
@@ -1785,7 +1847,7 @@
       "members": [
         {
           "default": "",
-          "document": "Position of detected face frame.",
+          "document": "Position of the detected face frame.",
           "member": "FaceRect",
           "name": "FaceRect",
           "required": true,
@@ -1794,7 +1856,7 @@
         },
         {
           "default": "",
-          "document": "Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), \nemotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), \nhair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), \nnose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile).  \nIf no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetailAttributesInfo` will be meaningless.",
+          "document": "Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), \nemotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), \nhair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), \nnose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile), etc.  \nIf no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetaiAttributesInfo` will be meaningless.",
           "member": "FaceDetailAttributesInfo",
           "name": "FaceDetailAttributesInfo",
           "required": true,
@@ -2577,7 +2639,7 @@
       "members": [
         {
           "default": "",
-          "document": "Hair length information.\nThe `Type` values of the `AttributeItem` include: 0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid.",
+          "document": "Hair length information.\nThe `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: medium hair, 3: long hair, 4: braid.",
           "member": "AttributeItem",
           "name": "Length",
           "required": true,
@@ -2801,7 +2863,7 @@
       "members": [
         {
           "default": "",
-          "document": "Whether the mouth is open.\nThe `Type` values of the `AttributeItem` include: 0: open; 1: closed.",
+          "document": "Whether the mouth is open.\nThe `Type` values of the `AttributeItem` include: 0: closed; 1: open.",
           "member": "AttributeItem",
           "name": "MouthOpen",
           "required": true,

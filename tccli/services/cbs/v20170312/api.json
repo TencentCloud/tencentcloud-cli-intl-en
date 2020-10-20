@@ -151,7 +151,7 @@
       "output": "ModifySnapshotsSharePermissionResponse"
     },
     "ResizeDisk": {
-      "document": "This API (ResizeDisk) is used to expand the capacity of the cloud disk.\n\n* Only elastic cloud disks can be expanded. The cloud disk type can be queried in the Portable field in the output parameters through the API [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1). For the cloud disk created along with the CVM, the capacity can only be expanded via the API [ResizeInstanceDisks](https://intl.cloud.tencent.com/document/product/213/15731?from_cn_redirect=1).\n* This API is an asynchronous API. The cloud disk is not immediately expanded to the specified size as the API successfully returns results. You can use the API [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) to query the cloud disk status. The cloud disk in the status of \"EXPANDING\" is in the process of capacity expansion. When the status changes to \"UNATTACHED\", the capacity expansion is completed. ",
+      "document": "This API is used to expand the capacity of a cloud disk.\n\n* This API supports only the expansion of elastic cloud disks. To query the type of a cloud disk, you can call [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) and check the `Portable` field in the response. To expand cloud disks created along with CVMs, you can call the [ResizeInstanceDisks](https://intl.cloud.tencent.com/document/product/213/15731?from_cn_redirect=1) API.\n* This is an async API. A successful return of this API does not mean that the cloud disk has been expanded successfully. You can call the [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) API to query the status of a cloud disk. `EXPANDING` indicates that the expansion is in process. ",
       "input": "ResizeDiskRequest",
       "name": "Expanding Cloud Disk Capacity",
       "output": "ResizeDiskResponse"
@@ -499,7 +499,7 @@
       "members": [
         {
           "default": "",
-          "document": "Type of hard disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.",
+          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -631,6 +631,14 @@
           "document": "Snapshot name. If it is left empty, the new snapshot name is \"Not named\" by default.",
           "member": "string",
           "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the snapshot. The snapshot will be automatically deleted upon expiration.",
+          "member": "datetime_iso",
+          "name": "Deadline",
           "required": false,
           "type": "string"
         }
@@ -857,7 +865,7 @@
         },
         {
           "default": "",
-          "document": "Type of hard disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.",
+          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD",
           "member": "string",
           "name": "DiskTypes",
           "required": false,
@@ -2132,11 +2140,19 @@
         },
         {
           "default": "",
-          "document": "The retention time of the snapshot. FALSE: non-permanent retention; TRUE: permanent retention. You can only modify non-permanent snapshots to permanent snapshots.",
+          "document": "Snapshot retention mode. Valid values: `FALSE`: non-permanent retention; `TRUE`: permanent retention.",
           "member": "bool",
           "name": "IsPermanent",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the snapshot. Setting this parameter will set the snapshot retention mode to `FALSE` (non-permanent retention) and the snapshot will be automatically deleted upon expiration.",
+          "member": "datetime_iso",
+          "name": "Deadline",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

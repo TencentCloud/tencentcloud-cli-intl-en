@@ -13,7 +13,7 @@
       "output": "DescribeAbnormalEventResponse"
     },
     "DescribeCallDetail": {
-      "document": "This API is used to query user list and call quality data within a specified time. It queries data in last 14 days. When `DataType` is not null, real-time data of up to 1 hour and up to 6 users can be queried. The query period can start and end on different days. When `DataType` and all `UserId`s are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100).",
+      "document": "This API is used to query the user list and call quality data within a specified time. It queries data from the last 14 days. When `DataType` is not null, real-time data of up to 1 hour can be queried. Up to 6 users can be queried each time. The query period can start and end on different days. When `DataType` and all `UserId` are null, data of 6 users will be queried by default. Data of up to 100 users can be displayed on one page (`PageSize` is up to 100). This API is used to query call quality and is not recommended for billing use.",
       "input": "DescribeCallDetailRequest",
       "name": "Queries user list and call metrics",
       "output": "DescribeCallDetailResponse"
@@ -335,7 +335,7 @@
         },
         {
           "default": "",
-          "document": "User `sdkappid`, such as 1400188366.",
+          "document": "User `SDKAppID`, such as 1400188366.",
           "member": "string",
           "name": "SdkAppId",
           "required": true,
@@ -367,7 +367,7 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When `DataType` and all `UserId`s are not null, `PageSize` is up to 6. When `DataType` and all `UserId`s are null, `PageSize` is up to 100.",
+          "document": "Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned by default. When either `DataType` or `UserId` is not null, `PageSize` is up to 6. When `DataType` and `UserId` are null, `PageSize` is up to 100.",
           "member": "string",
           "name": "PageSize",
           "required": false,
@@ -1036,7 +1036,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "A user list, which takes effect for floating, grid, or screen sharing templates. When the user list has been set, the stream mix output for users in this user list will include both audio and video; the stream mix output for users not in the list will only include audio. Up to 16 users can be set.",
           "member": "string",
           "name": "MixVideoUids",
           "required": false,

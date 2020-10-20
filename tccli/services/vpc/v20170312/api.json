@@ -474,6 +474,12 @@
       "name": "Queries the bandwidth package quota",
       "output": "DescribeBandwidthPackageQuotaResponse"
     },
+    "DescribeBandwidthPackageResources": {
+      "document": "This API is used to query resources in a bandwidth package based on the unique package ID. You can filter the result by specifying conditions and paginate the query results.\n",
+      "input": "DescribeBandwidthPackageResourcesRequest",
+      "name": "Queries resources in a bandwidth package",
+      "output": "DescribeBandwidthPackageResourcesResponse"
+    },
     "DescribeBandwidthPackages": {
       "document": "This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information.",
       "input": "DescribeBandwidthPackagesRequest",
@@ -859,7 +865,7 @@
       "output": "ModifyAddressTemplateGroupAttributeResponse"
     },
     "ModifyAddressesBandwidth": {
-      "document": "This API (ModifyAddressesBandwidth) is used to adjust [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) bandwidth, including the postpaid EIP, prepaid EIP and bandwidth package EIP.",
+      "document": "This API is used to adjust the bandwidth of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), including EIP billed on a pay-as-you-go, monthly subscription, and bandwidth package basis.",
       "input": "ModifyAddressesBandwidthRequest",
       "name": "Modifies the EIP bandwidth",
       "output": "ModifyAddressesBandwidthResponse"
@@ -1436,7 +1442,7 @@
       "members": [
         {
           "default": "",
-          "document": "Purchase duration of instance",
+          "document": "Purchased usage period, in month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -1445,11 +1451,11 @@
         },
         {
           "default": "",
-          "document": "Whether auto-renewal is enabled",
-          "member": "string",
-          "name": "RenewFlag",
+          "document": "Setting of renewal. Valid values: 0: manual renewal; 1: auto-renewal; 2: no renewal after expiration. Default value: 0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
           "required": false,
-          "type": "string",
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1635,7 +1641,7 @@
         },
         {
           "default": "",
-          "document": "The EIP billing method.\n<ul style=\"margin:0\"><li>For a user who has activated bandwidth billing by IP allowlist, possible values are:<ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1) (The bandwidth sharing allowlist must be activated additionally.)</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: bandwidth postpaid by hour</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: traffic postpaid by hour</li></ul>Default: TRAFFIC_POSTPAID_BY_HOUR</li>.\n<li>For users who do not use bill-by-bandwidth billing mode, InternetChargeType is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>",
+          "document": "The EIP billing method.\n<ul style=\"margin:0\"><li>For bill-by-IP account beta users, valid values: <ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)(who must also be bandwidth package beta users)</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: billed by hourly bandwidth on a pay-as-you-go basis</li>\n<li>BANDWIDTH_PREPAID_BY_MONTH: monthly bandwidth subscription</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: billed by hourly traffic on a pay-as-you-go basis</li></ul>Default value: TRAFFIC_POSTPAID_BY_HOUR</li>\n<li>If you are not a bill-by-IP account beta user, the EIP billing is the same as that for the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>",
           "member": "string",
           "name": "InternetChargeType",
           "required": false,
@@ -1643,11 +1649,19 @@
         },
         {
           "default": "",
-          "document": "The maximum EIP outbound bandwidth. Unit: Mbps.\n<ul style=\"margin:0\"><li>For a user who has activated bandwidth billing by IP allowlist, the value range is determined by the EIP billing method:<ul><li>BANDWIDTH_PACKAGE: 1 Mbps to 1,000 Mbps</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li></ul>Default: 1 Mbps</li>.\n<li>For a user who has not activated bandwidth billing by IP allowlist, InternetMaxBandwidthOut is consistent with that of the instance bound to the EIP. Therefore, it is unnecessary to pass in this parameter.</li></ul>",
+          "document": "The EIP outbound bandwidth cap, in Mbps.\n<ul style=\"margin:0\"><li>For bill-by-IP account beta users, valid values:<ul><li>BANDWIDTH_PACKAGE: 1 Mbps to 1000 Mbps</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li>\n<li>BANDWIDTH_PREPAID_BY_MONTH: 1 Mbps to 200 Mbps</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li></ul>Default value: 1 Mbps</li>\n<li>If you are not a bill-by-IP account beta user, the EIP outbound bandwidth cap is subject to that of the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>",
           "member": "int64",
           "name": "InternetMaxBandwidthOut",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "A required billing parameter for an EIP billed by monthly bandwidth subscription. For EIPs using other billing modes, it can be ignored.",
+          "member": "AddressChargePrepaid",
+          "name": "AddressChargePrepaid",
+          "required": false,
+          "type": "object"
         },
         {
           "default": "",
@@ -3314,7 +3328,7 @@
         },
         {
           "default": "",
-          "document": "The number of bandwidth packages (enter 1 for bill-by-CVM accounts).",
+          "document": "The number of bandwidth packages (It can only be “1” for bill-by-CVM accounts)",
           "member": "uint64",
           "name": "BandwidthPackageCount",
           "required": false,
@@ -6236,6 +6250,70 @@
           "document": "The quota of the bandwidth package.",
           "member": "Quota",
           "name": "QuotaSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBandwidthPackageResourcesRequest": {
+      "document": "DescribeBandwidthPackageResources request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the bandwidth package in the form of `bwp-11112222`.",
+          "member": "string",
+          "name": "BandwidthPackageId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li>resource-id - String - Required: no -  (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>\n<li>resource-type - String - Required: no - (Filter condition) Filters by the type of resources in a bandwidth package. It now supports only EIP (`Address`) and load balancer (`LoadBalance`).</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBandwidthPackageResourcesResponse": {
+      "document": "DescribeBandwidthPackageResources response structure.",
+      "members": [
+        {
+          "document": "The number of eligible resources in the bandwidth package.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The list of resources in the bandwidth package.",
+          "member": "Resource",
+          "name": "ResourceSet",
           "type": "list",
           "value_allowed_null": false
         },
@@ -10603,7 +10681,7 @@
         },
         {
           "default": "",
-          "document": "The monthly bandwidth start time",
+          "document": "(Disused) The start time of the monthly bandwidth subscription",
           "member": "datetime",
           "name": "StartTime",
           "required": false,
@@ -10611,7 +10689,7 @@
         },
         {
           "default": "",
-          "document": "The monthly bandwidth end time",
+          "document": "(Disused) The end time of the monthly bandwidth subscription",
           "member": "datetime",
           "name": "EndTime",
           "required": false,

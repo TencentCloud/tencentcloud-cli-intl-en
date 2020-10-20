@@ -563,6 +563,31 @@ def doAddLiveWatermark(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeAreaBillBandwidthAndFluxList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeAreaBillBandwidthAndFluxListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeAreaBillBandwidthAndFluxList(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteLiveWatermarkRule(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1188,7 +1213,7 @@ def doModifyLiveCallbackTemplate(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeGroupProIspPlayInfoList(args, parsed_globals):
+def doDescribeProIspPlaySumInfoList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1202,9 +1227,9 @@ def doDescribeGroupProIspPlayInfoList(args, parsed_globals):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeGroupProIspPlayInfoListRequest()
+    model = models.DescribeProIspPlaySumInfoListRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeGroupProIspPlayInfoList(model)
+    rsp = client.DescribeProIspPlaySumInfoList(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -2138,7 +2163,7 @@ def doCreateLiveSnapshotRule(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeProIspPlaySumInfoList(args, parsed_globals):
+def doDescribeGroupProIspPlayInfoList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -2152,9 +2177,9 @@ def doDescribeProIspPlaySumInfoList(args, parsed_globals):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeProIspPlaySumInfoListRequest()
+    model = models.DescribeGroupProIspPlayInfoListRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeProIspPlaySumInfoList(model)
+    rsp = client.DescribeGroupProIspPlayInfoList(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -2496,6 +2521,7 @@ ACTION_MAP = {
     "DescribeVisitTopSumInfoList": doDescribeVisitTopSumInfoList,
     "DescribeLiveDomainCert": doDescribeLiveDomainCert,
     "AddLiveWatermark": doAddLiveWatermark,
+    "DescribeAreaBillBandwidthAndFluxList": doDescribeAreaBillBandwidthAndFluxList,
     "DeleteLiveWatermarkRule": doDeleteLiveWatermarkRule,
     "DeleteLiveCallbackRule": doDeleteLiveCallbackRule,
     "CreateLiveSnapshotTemplate": doCreateLiveSnapshotTemplate,
@@ -2521,7 +2547,7 @@ ACTION_MAP = {
     "DescribeLiveCallbackTemplate": doDescribeLiveCallbackTemplate,
     "DeleteLiveDomain": doDeleteLiveDomain,
     "ModifyLiveCallbackTemplate": doModifyLiveCallbackTemplate,
-    "DescribeGroupProIspPlayInfoList": doDescribeGroupProIspPlayInfoList,
+    "DescribeProIspPlaySumInfoList": doDescribeProIspPlaySumInfoList,
     "DescribeStreamPlayInfoList": doDescribeStreamPlayInfoList,
     "CreateLiveCert": doCreateLiveCert,
     "DescribeLiveTranscodeRules": doDescribeLiveTranscodeRules,
@@ -2559,7 +2585,7 @@ ACTION_MAP = {
     "DescribeLiveWatermarkRules": doDescribeLiveWatermarkRules,
     "DeleteLiveRecord": doDeleteLiveRecord,
     "CreateLiveSnapshotRule": doCreateLiveSnapshotRule,
-    "DescribeProIspPlaySumInfoList": doDescribeProIspPlaySumInfoList,
+    "DescribeGroupProIspPlayInfoList": doDescribeGroupProIspPlayInfoList,
     "DescribeAllStreamPlayInfoList": doDescribeAllStreamPlayInfoList,
     "DescribeLivePlayAuthKey": doDescribeLivePlayAuthKey,
     "DescribeLiveStreamState": doDescribeLiveStreamState,

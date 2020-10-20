@@ -1,0 +1,178 @@
+{
+  "actions": {
+    "SendEmail": {
+      "document": "This API is used to send regular emails.",
+      "input": "SendEmailRequest",
+      "name": "Sends regular emails",
+      "output": "SendEmailResponse"
+    },
+    "SendTemplatedEmail": {
+      "document": "This API is used to send template emails.",
+      "input": "SendTemplatedEmailRequest",
+      "name": "Sends template emails",
+      "output": "SendTemplatedEmailResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-08-19",
+    "serviceNameCN": "邮件发送服务",
+    "serviceShortName": "dms"
+  },
+  "objects": {
+    "SendEmailRequest": {
+      "document": "SendEmail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender",
+          "member": "string",
+          "name": "FromAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient",
+          "member": "string",
+          "name": "ToAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email summary",
+          "member": "string",
+          "name": "Subject",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sender name",
+          "member": "string",
+          "name": "FromName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reply-to address",
+          "member": "string",
+          "name": "ReplyAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The body of an HTML email",
+          "member": "string",
+          "name": "HtmlContent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The body of a plain-text email",
+          "member": "string",
+          "name": "TextContent",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendEmailResponse": {
+      "document": "SendEmail response structure.",
+      "members": [
+        {
+          "document": "The result of creating an email task",
+          "member": "bool",
+          "name": "Result",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendTemplatedEmailRequest": {
+      "document": "SendTemplatedEmail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender address.",
+          "member": "string",
+          "name": "FromAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).",
+          "member": "string",
+          "name": "ToAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The name of the template created in advance.",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Template variable value, which is a JSON string.",
+          "member": "string",
+          "name": "TemplateValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sender name.",
+          "member": "string",
+          "name": "FromName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reply-to address.",
+          "member": "string",
+          "name": "ReplyAddress",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendTemplatedEmailResponse": {
+      "document": "SendTemplatedEmail response structure.",
+      "members": [
+        {
+          "document": "The result of creating a template email task",
+          "member": "bool",
+          "name": "Result",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

@@ -36,6 +36,12 @@
       "name": "Restarts an ES cluster instance",
       "output": "RestartInstanceResponse"
     },
+    "RestartNodes": {
+      "document": "This API is used to restart cluster nodes.",
+      "input": "RestartNodesRequest",
+      "name": "Restarts cluster nodes",
+      "output": "RestartNodesResponse"
+    },
     "UpdateInstance": {
       "document": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail.",
       "input": "UpdateInstanceRequest",
@@ -307,6 +313,14 @@
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
           "member": "uint64",
           "name": "BasicSecurityType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Scenario template type. 0: not enabled; 1: general; 2: log; 3: search",
+          "member": "int64",
+          "name": "SceneType",
           "required": false,
           "type": "int"
         }
@@ -1232,6 +1246,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SceneType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1609,6 +1632,48 @@
       ],
       "type": "object"
     },
+    "RestartNodesRequest": {
+      "document": "RestartNodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node name list",
+          "member": "string",
+          "name": "NodeNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to force restart",
+          "member": "bool",
+          "name": "ForceRestart",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartNodesResponse": {
+      "document": "RestartNodes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SubTaskDetail": {
       "document": "Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)",
       "members": [
@@ -1782,7 +1847,7 @@
         },
         {
           "default": "",
-          "document": "Configuration item (JSON string). Only the following items are supported currently: <li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>",
+          "document": "Configuration item (JSON string)",
           "member": "string",
           "name": "EsConfig",
           "required": false,
@@ -1923,6 +1988,22 @@
           "name": "ScaleType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Multi-AZ deployment",
+          "member": "ZoneDetail",
+          "name": "MultiZoneInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Scenario template type. -1: not enabled; 1: general; 2: log; 3: search",
+          "member": "int64",
+          "name": "SceneType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2031,6 +2112,14 @@
           "name": "BasicSecurityType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale",
+          "member": "string",
+          "name": "UpgradeMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

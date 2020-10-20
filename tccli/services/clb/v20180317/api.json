@@ -1483,6 +1483,14 @@
           "name": "SessionType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0",
+          "member": "int64",
+          "name": "KeepaliveEnable",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4883,6 +4891,14 @@
           "document": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners. Note: The SNI feature can be enabled but cannot be disabled once enabled.",
           "member": "int64",
           "name": "SniSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0",
+          "member": "int64",
+          "name": "KeepaliveEnable",
           "required": false,
           "type": "int"
         }
