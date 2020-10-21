@@ -2851,6 +2851,14 @@
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of partitions that need to be reset. If the topics parameter is not specified, reset partitions in the corresponding partition list of all topics. If the topics parameter is specified, reset partitions of the corresponding partition list of the specified topic list.",
+          "member": "int64",
+          "name": "Partitions",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

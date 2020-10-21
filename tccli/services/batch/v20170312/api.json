@@ -543,6 +543,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list of the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -654,6 +663,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list bound to the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -916,6 +934,14 @@
           "name": "TaskTemplateDescription",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag list. By setting this parameter, you can bind tags to a task template. Each task template supports up to 10 tags.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1293,6 +1319,13 @@
           "value_allowed_null": false
         },
         {
+          "document": "Tag list bound to the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1460,6 +1493,13 @@
           "value_allowed_null": false
         },
         {
+          "document": "Tag list bound to the compute environment.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1481,7 +1521,7 @@
         },
         {
           "default": "",
-          "document": "Filter\n<li> zone - String - Required: No - (Filter) Filter by availability zone.</li>\n<li> env-id - String - Required: No - (Filter) Filter by compute environment ID.</li>\n<li> env-name - String - Required: No - (Filter) Filter by compute environment name.</li>",
+          "document": "Filter.\n<li> `zone` - String - Optional - Filter by availability zone.</li>\n<li> `env-id` - String - Optional - Filter by compute environment ID.</li>\n<li> `env-name` - String - Optional - Filter by compute environment name.</li>\n<li> `resource-type` - String - Optional - Filter by compute resource type, which can be CVM or CPM (BM).</li>\n<li> `tag-key` - String - Optional - Filter by tag key.</li>\n</li>`tag-value` - String - Optional - Filter by tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>\nIt cannot be specified together with the `EnvIds` parameter.",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -1678,7 +1718,7 @@
         },
         {
           "document": "Task instance statistical metrics",
-          "member": "TaskInstanceView",
+          "member": "TaskInstanceMetrics",
           "name": "TaskInstanceMetrics",
           "type": "object",
           "value_allowed_null": false
@@ -1689,6 +1729,20 @@
           "name": "StateReason",
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Tag list bound to the job.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "member": "string",
+          "name": "NextAction",
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1759,6 +1813,13 @@
           "value_allowed_null": false
         },
         {
+          "document": "Tag list bound to the job.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1780,7 +1841,7 @@
         },
         {
           "default": "",
-          "document": "Filter\n<li> job-id - String - Required: No - (Filter) Filter by job ID.</li>\n<li> job-name - String - Required: No - (Filter) Filter by job name.</li>\n<li> job-state - String - Required: No - (Filter) Filter by job state.</li>\n<li> zone - String - Required: No - (Filter) Filter by availability zone.</li>",
+          "document": "Filter.\n<li> `job-id` - String - Optional - Filter by job ID.</li>\n<li> `job-name` - String - Optional - Filter by job name.</li>\n<li> `job-state` - String - Optional - Filter by job state.</li>\n<li> `zone` - String - Optional - Filter by availability zone.</li>\n<li> `tag-key` - String - Optional - Filter by tag key.</li>\n<li> `tag-value` - String - Optional - Filter by tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>\nIt cannot be specified together with the `JobIds` parameter.",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2030,7 +2091,7 @@
         },
         {
           "default": "",
-          "document": "Filter\n<li> task-template-name - String - Required: No - (Filter) Filter by task template name.</li>",
+          "document": "Filter.\n<li> `task-template-name` - String - Optional - Filter by task template name.</li>\n<li> `tag-key` - String - Optional - Filter by tag key.</li>\n<li> `tag-value` - String - Optional - Filter by tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by tag key-value pair. The tag-key should be replaced by a specified tag key.</li>\nIt cannot be specified together with the `TaskTemplateIds` parameter.",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3045,6 +3106,15 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list. By setting this parameter, you can bind tags to a job. Each job supports up to 10 tags.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -3123,6 +3193,15 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list bound to the job.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3450,6 +3529,15 @@
           "name": "ResourceMaxRetryCount",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list. By setting this parameter, you can bind tags to a compute environment. Each compute environment supports up to 10 tags.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3825,7 +3913,7 @@
       "members": [
         {
           "default": "",
-          "document": "System disk type. For more information on system disk types and their limits, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.",
+          "document": "System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default.",
           "member": "string",
           "name": "DiskType",
           "required": false,
@@ -3849,6 +3937,30 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Information on tags",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -4382,6 +4494,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list bound to the task template.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
