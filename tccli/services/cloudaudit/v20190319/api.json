@@ -1,33 +1,33 @@
 {
   "actions": {
     "CreateAudit": {
-      "document": "This API is used to create a tracking set.",
+      "document": "Parameter requirements:\n1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.\n2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.\n3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.\n4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.",
       "input": "CreateAuditRequest",
-      "name": "Creates a tracking set.",
+      "name": "Creates tracking set",
       "output": "CreateAuditResponse"
     },
     "DeleteAudit": {
       "document": "This API is used to delete a tracking set.",
       "input": "DeleteAuditRequest",
-      "name": "Deletes a tracking set.",
+      "name": "Deletes tracking set",
       "output": "DeleteAuditResponse"
     },
     "DescribeAudit": {
       "document": "This API is used to query the details of a tracking set.",
       "input": "DescribeAuditRequest",
-      "name": "Queries the details of a tracking set.",
+      "name": "Queries the details of tracking set",
       "output": "DescribeAuditResponse"
     },
     "GetAttributeKey": {
-      "document": "This API is used to query the value range of AttributeKey.",
+      "document": "This API is used to query the valid values range of `AttributeKey`.",
       "input": "GetAttributeKeyRequest",
-      "name": "Queries the value range of AttributeKey",
+      "name": "Queries the valid values range of `AttributeKey`",
       "output": "GetAttributeKeyResponse"
     },
     "InquireAuditCredit": {
-      "document": "This API is used to query the maximum number of tracking sets that can be created.",
+      "document": "This API is used to query the number of tracking sets that can be created.",
       "input": "InquireAuditCreditRequest",
-      "name": "Queries the maximum number of tracking sets that can be created",
+      "name": "Queries the number of tracking sets that can be created",
       "output": "InquireAuditCreditResponse"
     },
     "ListAudits": {
@@ -37,15 +37,15 @@
       "output": "ListAuditsResponse"
     },
     "ListCmqEnableRegion": {
-      "document": "This API is used to query the CloudAudit-enabled CMQ AZs.",
+      "document": "This API is used to query CloudAudit-enabled CMQ AZs.",
       "input": "ListCmqEnableRegionRequest",
       "name": "Queries CloudAudit-enabled CMQ AZs",
       "output": "ListCmqEnableRegionResponse"
     },
     "ListCosEnableRegion": {
-      "document": "This API is used to query the CloudAudit-enabled COS AZs.",
+      "document": "This API is used to query CloudAudit-enabled COS AZs.",
       "input": "ListCosEnableRegionRequest",
-      "name": "Queries the CloudAudit-supported COS AZs",
+      "name": "Queries CloudAudit-enabled COS AZs",
       "output": "ListCosEnableRegionResponse"
     },
     "LookUpEvents": {
@@ -57,19 +57,19 @@
     "StartLogging": {
       "document": "This API is used to enable a tracking set.",
       "input": "StartLoggingRequest",
-      "name": "Enables a tracking set.",
+      "name": "Enables tracking set",
       "output": "StartLoggingResponse"
     },
     "StopLogging": {
       "document": "This API is used to disable a tracking set.",
       "input": "StopLoggingRequest",
-      "name": "Disables a tracking set.",
+      "name": "Disables tracking set",
       "output": "StopLoggingResponse"
     },
     "UpdateAudit": {
-      "document": "Parameter requirements:\n1. If the value of IsCreateNewBucket exists, cosRegion and cosBucketName are required.\n2. If the value of IsEnableCmqNotify is 1, IsCreateNewQueue, CmqRegion, and CmqQueueName are required.\n3. If the value of IsEnableCmqNotify is 0, IsCreateNewQueue, CmqRegion, and CmqQueueName cannot be passed in.",
+      "document": "Parameter requirements:\n1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.\n2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.\n3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.\n4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.",
       "input": "UpdateAuditRequest",
-      "name": "Updates a tracking set.",
+      "name": "Updates tracking set",
       "output": "UpdateAuditResponse"
     }
   },
@@ -79,11 +79,11 @@
   },
   "objects": {
     "AttributeKeyDetail": {
-      "document": "Details of AttributeKey value",
+      "document": "`AttributeKey` value details",
       "members": [
         {
           "default": "",
-          "document": "Chinese label",
+          "document": "Tag",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -115,7 +115,7 @@
         },
         {
           "default": "",
-          "document": "AttributeKey value",
+          "document": "`AttributeKey` value",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -137,7 +137,7 @@
         },
         {
           "default": "",
-          "document": "Tracking set status. Value range: 1 (enabled), 0 (disabled)",
+          "document": "Tracking set status. Valid values: 1: enabled, 0: disabled",
           "member": "int64",
           "name": "AuditStatus",
           "required": false,
@@ -185,7 +185,7 @@
       "usage": "in"
     },
     "CosRegionInfo": {
-      "document": "CMQ region information",
+      "document": "COS region information",
       "members": [
         {
           "default": "",
@@ -207,11 +207,11 @@
       "usage": "in"
     },
     "CreateAuditRequest": {
-      "document": "Request parameter structure of CreateAudit",
+      "document": "`CreateAudit` request parameters structure",
       "members": [
         {
           "default": "",
-          "document": "Tracking set name, which can contain 3-128 ASCII letters (a-z; A-Z), digits (0-9), and underscores (_).",
+          "document": "Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).",
           "is_public": true,
           "member": "string",
           "name": "AuditName",
@@ -220,7 +220,7 @@
         },
         {
           "default": "",
-          "document": "User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
+          "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
           "is_public": true,
           "member": "string",
           "name": "CosBucketName",
@@ -229,7 +229,7 @@
         },
         {
           "default": "",
-          "document": "COS region. Supported regions can be queried using the ListCosEnableRegion API.",
+          "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
           "is_public": true,
           "member": "string",
           "name": "CosRegion",
@@ -238,7 +238,7 @@
         },
         {
           "default": "",
-          "document": "Whether to create a COS bucket. 1: yes; 0: no.",
+          "document": "Whether to create a COS bucket. Valid values: 1: yes; 0: no.",
           "is_public": true,
           "member": "int64",
           "name": "IsCreateNewBucket",
@@ -247,7 +247,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable CMQ message notification. 1: yes; 0: no. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
+          "document": "Whether to enable CMQ message notification. Valid values: 1: yes; 0: no. Currently, only CMQ is supported for message queue services. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
           "is_public": true,
           "member": "int64",
           "name": "IsEnableCmqNotify",
@@ -256,7 +256,7 @@
         },
         {
           "default": "",
-          "document": "Manages the read/write attribute of an event. Value range: 1 (read-only), 2 (write-only), 3 (read/write).",
+          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
           "is_public": true,
           "member": "int64",
           "name": "ReadWriteAttribute",
@@ -265,7 +265,7 @@
         },
         {
           "default": "",
-          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of IsEnableCmqNotify is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
+          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
           "is_public": true,
           "member": "string",
           "name": "CmqQueueName",
@@ -274,7 +274,7 @@
         },
         {
           "default": "",
-          "document": "Region where the queue is located. Supported CMQ regions can be queried using the ListCmqEnableRegion API. This field is required if the value of IsEnableCmqNotify is 1.",
+          "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "is_public": true,
           "member": "string",
           "name": "CmqRegion",
@@ -283,7 +283,7 @@
         },
         {
           "default": "",
-          "document": "Whether to create a queue. 1: yes; 0: no. This field is required if the value of IsEnableCmqNotify is 1.",
+          "document": "Whether to create a queue. Valid values: 1: yes; 0: no. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "is_public": true,
           "member": "int64",
           "name": "IsCreateNewQueue",
@@ -292,7 +292,34 @@
         },
         {
           "default": "",
-          "document": "Prefix of a log file, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9). It can be left empty and is the account ID by default.",
+          "document": "Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
+          "is_public": true,
+          "member": "int64",
+          "name": "IsEnableKmsEncry",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained via the `ListKeyAliasByRegion` API. CloudAudit will not verify the validity of the `KeyId`. Please enter it with caution to avoid consequent data loss.",
+          "is_public": true,
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "KMS region. Currently supported regions can be obtained via the `ListKmsEnableRegion` API. This must be the same as the COS region.",
+          "is_public": true,
+          "member": "string",
+          "name": "KmsRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is set to the account ID by default.",
           "is_public": true,
           "member": "string",
           "name": "LogFilePrefix",
@@ -303,16 +330,16 @@
       "type": "object"
     },
     "CreateAuditResponse": {
-      "document": "Return parameter structure of CreateAudit",
+      "document": "`CreateAudit` response parameters structure",
       "members": [
         {
-          "document": "Whether creation is successful.",
+          "document": "Indicates if the creation was successful",
           "member": "int64",
           "name": "IsSuccess",
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -321,7 +348,7 @@
       "type": "object"
     },
     "DeleteAuditRequest": {
-      "document": "Request parameter structure of DeleteAudit",
+      "document": "`DeleteAudit` request parameters structure",
       "members": [
         {
           "default": "",
@@ -336,16 +363,16 @@
       "type": "object"
     },
     "DeleteAuditResponse": {
-      "document": "Return parameter structure of DeleteAudit",
+      "document": "`DeleteAudit` response parameters structure",
       "members": [
         {
-          "document": "Whether deletion is successful",
+          "document": "Indicates if the deletion was successful",
           "member": "int64",
           "name": "IsSuccess",
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -354,7 +381,7 @@
       "type": "object"
     },
     "DescribeAuditRequest": {
-      "document": "Request parameter structure of DescribeAudit",
+      "document": "`DescribeAudit` request parameters structure",
       "members": [
         {
           "default": "",
@@ -369,7 +396,7 @@
       "type": "object"
     },
     "DescribeAuditResponse": {
-      "document": "Return parameter structure of DescribeAudit",
+      "document": "`DescribeAudit` response parameters structure",
       "members": [
         {
           "document": "Tracking set name.",
@@ -378,7 +405,7 @@
           "type": "string"
         },
         {
-          "document": "Tracking set status. Value range: 1 (enabled), 0 (disabled).",
+          "document": "Tracking set status. Valid values: 1: enabled, 0: disabled.",
           "member": "int64",
           "name": "AuditStatus",
           "type": "int"
@@ -390,7 +417,7 @@
           "type": "string"
         },
         {
-          "document": "Region where the queue is located.",
+          "document": "Queue region.",
           "member": "string",
           "name": "CmqRegion",
           "type": "string"
@@ -402,16 +429,40 @@
           "type": "string"
         },
         {
-          "document": "Region where the COS bucket is located.",
+          "document": "COS bucket region.",
           "member": "string",
           "name": "CosRegion",
           "type": "string"
         },
         {
-          "document": "Whether to enable CMQ message notification. 1: yes; 0: no.",
+          "document": "Whether to enable CMQ message notification. Valid values: 1: yes; 0: no.",
           "member": "int64",
           "name": "IsEnableCmqNotify",
           "type": "int"
+        },
+        {
+          "document": "Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
+          "member": "int64",
+          "name": "IsEnableKmsEncry",
+          "type": "int"
+        },
+        {
+          "document": "Globally unique CMK ID.",
+          "member": "string",
+          "name": "KeyId",
+          "type": "string"
+        },
+        {
+          "document": "CMK alias.",
+          "member": "string",
+          "name": "KmsAlias",
+          "type": "string"
+        },
+        {
+          "document": "KMS region.",
+          "member": "string",
+          "name": "KmsRegion",
+          "type": "string"
         },
         {
           "document": "Log prefix.",
@@ -420,13 +471,13 @@
           "type": "string"
         },
         {
-          "document": "Manages the read/write attribute of an event. Value range: 1 (read-only), 2 (write-only), 3 (read/write)",
+          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write)",
           "member": "int64",
           "name": "ReadWriteAttribute",
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -487,7 +538,7 @@
         },
         {
           "default": "",
-          "document": "Description of event name",
+          "document": "Chinese description of event name (please use this field as required; if you are using other languages, ignore this field)",
           "member": "string",
           "name": "EventNameCn",
           "required": false,
@@ -527,7 +578,15 @@
         },
         {
           "default": "",
-          "document": "Description of resource type",
+          "document": "Resource region",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Chinese description of resource type (please use this field as required; if you are using other languages, ignore this field)",
           "member": "string",
           "name": "ResourceTypeCn",
           "required": false,
@@ -561,11 +620,11 @@
       "usage": "in"
     },
     "GetAttributeKeyRequest": {
-      "document": "Request parameter structure of GetAttributeKey",
+      "document": "`GetAttributeKey` request parameters structure",
       "members": [
         {
           "default": "",
-          "document": "Website type. Value range: zh, en. Default value: zh",
+          "document": "Website type. Valid values: zh, en. If this parameter is left empty, `zh` will be used by default",
           "is_public": true,
           "member": "string",
           "name": "WebsiteType",
@@ -576,16 +635,16 @@
       "type": "object"
     },
     "GetAttributeKeyResponse": {
-      "document": "Return parameter structure of GetAttributeKey",
+      "document": "`GetAttributeKey` response parameters structure",
       "members": [
         {
-          "document": "AttributeKey value range",
+          "document": "Valid values range of `AttributeKey`",
           "member": "AttributeKeyDetail",
           "name": "AttributeKeyDetails",
           "type": "list"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -594,12 +653,12 @@
       "type": "object"
     },
     "InquireAuditCreditRequest": {
-      "document": "Request parameter structure of InquireAuditCredit",
+      "document": "`InquireAuditCredit` request parameters structure",
       "members": [],
       "type": "object"
     },
     "InquireAuditCreditResponse": {
-      "document": "Return parameter structure of InquireAuditCredit",
+      "document": "`InquireAuditCredit` response parameters structure",
       "members": [
         {
           "document": "Number of tracking sets that can be created",
@@ -608,7 +667,7 @@
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -617,21 +676,21 @@
       "type": "object"
     },
     "ListAuditsRequest": {
-      "document": "Request parameter structure of ListAudits",
+      "document": "`ListAudits` request parameters structure",
       "members": [],
       "type": "object"
     },
     "ListAuditsResponse": {
-      "document": "Return parameter structure of ListAudits",
+      "document": "`ListAudits` response parameters structure",
       "members": [
         {
-          "document": "Queries the summary set of tracking sets",
+          "document": "Set of queried tracking set summaries",
           "member": "AuditSummary",
           "name": "AuditSummarys",
           "type": "list"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -640,11 +699,11 @@
       "type": "object"
     },
     "ListCmqEnableRegionRequest": {
-      "document": "Request parameter structure of ListCmqEnableRegion",
+      "document": "`ListCmqEnableRegion` request parameters structure",
       "members": [
         {
           "default": "",
-          "document": "Website type. zh: Mainland China (default); en: outside Mainland China.",
+          "document": "Website type. Valid values: zh (Chinese mainland); en (outside Chinese mainland). Default value: zh",
           "is_public": true,
           "member": "string",
           "name": "WebsiteType",
@@ -655,7 +714,7 @@
       "type": "object"
     },
     "ListCmqEnableRegionResponse": {
-      "document": "Return parameter structure of ListCmqEnableRegion",
+      "document": "`ListCmqEnableRegion` response parameters structure",
       "members": [
         {
           "document": "CloudAudit-enabled CMQ AZs",
@@ -664,7 +723,7 @@
           "type": "list"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -673,11 +732,11 @@
       "type": "object"
     },
     "ListCosEnableRegionRequest": {
-      "document": "Request parameter structure of ListCosEnableRegion",
+      "document": "`ListCosEnableRegion` request parameters structure",
       "members": [
         {
           "default": "",
-          "document": "Website type. zh: Mainland China (default); en: outside Mainland China.",
+          "document": "Website type. Valid values: zh (Chinese mainland); en (outside Chinese mainland). Default value: zh",
           "is_public": true,
           "member": "string",
           "name": "WebsiteType",
@@ -688,7 +747,7 @@
       "type": "object"
     },
     "ListCosEnableRegionResponse": {
-      "document": "Return parameter structure of ListCosEnableRegion",
+      "document": "`ListCosEnableRegion` response parameters structure",
       "members": [
         {
           "document": "CloudAudit-enabled COS AZs",
@@ -697,7 +756,7 @@
           "type": "list"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -706,7 +765,7 @@
       "type": "object"
     },
     "LookUpEventsRequest": {
-      "document": "Request parameter structure of LookUpEvents",
+      "document": "`LookUpEvents` request parameters structure",
       "members": [
         {
           "default": "",
@@ -737,12 +796,21 @@
         },
         {
           "default": "",
-          "document": "Maximum number of logs that can be returned",
+          "document": "Maximum number of logs to be returned",
           "is_public": true,
           "member": "int64",
           "name": "MaxResults",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CloudAudit mode. Valid values: standard, quick. Default value: standard",
+          "is_public": true,
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string"
         },
         {
           "default": "",
@@ -757,7 +825,7 @@
       "type": "object"
     },
     "LookUpEventsResponse": {
-      "document": "Return parameter structure of LookUpEvents",
+      "document": "`LookUpEvents` response parameters structure",
       "members": [
         {
           "document": "Logset",
@@ -778,7 +846,7 @@
           "type": "string"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -791,7 +859,7 @@
       "members": [
         {
           "default": "",
-          "document": "AttributeKey value range: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, EventId",
+          "document": "Valid values of `AttributeKey`: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, EventId",
           "member": "string",
           "name": "AttributeKey",
           "required": true,
@@ -831,7 +899,7 @@
       "usage": "in"
     },
     "StartLoggingRequest": {
-      "document": "Request parameter structure of StartLogging",
+      "document": "`StartLogging` request parameters structure",
       "members": [
         {
           "default": "",
@@ -846,16 +914,16 @@
       "type": "object"
     },
     "StartLoggingResponse": {
-      "document": "Return parameter structure of StartLogging",
+      "document": "`StartLogging` response parameters structure",
       "members": [
         {
-          "document": "Whether it is successfully enabled",
+          "document": "Indicates if the tracking set was enabled successfully",
           "member": "int64",
           "name": "IsSuccess",
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -864,7 +932,7 @@
       "type": "object"
     },
     "StopLoggingRequest": {
-      "document": "Request parameter structure of StopLogging",
+      "document": "`StopLogging` request parameters structure",
       "members": [
         {
           "default": "",
@@ -879,16 +947,16 @@
       "type": "object"
     },
     "StopLoggingResponse": {
-      "document": "Return parameter structure of StopLogging",
+      "document": "`StopLogging` response parameters structure",
       "members": [
         {
-          "document": "Whether it is successfully disabled",
+          "document": "Indicates if the tracking set was disabled successfully",
           "member": "int64",
           "name": "IsSuccess",
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -897,7 +965,7 @@
       "type": "object"
     },
     "UpdateAuditRequest": {
-      "document": "Request parameter structure of UpdateAudit",
+      "document": "`UpdateAudit` request parameters structure",
       "members": [
         {
           "default": "",
@@ -910,7 +978,7 @@
         },
         {
           "default": "",
-          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of IsEnableCmqNotify is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
+          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
           "is_public": true,
           "member": "string",
           "name": "CmqQueueName",
@@ -919,7 +987,7 @@
         },
         {
           "default": "",
-          "document": "Region where the queue is located. Supported CMQ regions can be queried using the ListCmqEnableRegion API. This field is required if the value of IsEnableCmqNotify is 1.",
+          "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "is_public": true,
           "member": "string",
           "name": "CmqRegion",
@@ -928,7 +996,7 @@
         },
         {
           "default": "",
-          "document": "User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
+          "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
           "is_public": true,
           "member": "string",
           "name": "CosBucketName",
@@ -937,7 +1005,7 @@
         },
         {
           "default": "",
-          "document": "COS region. Supported regions can be queried using the ListCosEnableRegion API.",
+          "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
           "is_public": true,
           "member": "string",
           "name": "CosRegion",
@@ -946,7 +1014,7 @@
         },
         {
           "default": "",
-          "document": "Whether to create a COS bucket. 1: yes; 0: no.",
+          "document": "Whether to create a COS bucket. Valid values: 1: yes; 0: no.",
           "is_public": true,
           "member": "int64",
           "name": "IsCreateNewBucket",
@@ -955,7 +1023,7 @@
         },
         {
           "default": "",
-          "document": "Whether to create a queue. 1: yes; 0: no. This field is required if the value of IsEnableCmqNotify is 1.",
+          "document": "Whether to create a queue. Valid values: 1: yes; 0: no. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "is_public": true,
           "member": "int64",
           "name": "IsCreateNewQueue",
@@ -964,7 +1032,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable CMQ message notification. 1: yes; 0: no. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
+          "document": "Whether to enable CMQ message notification. Valid values: 1: yes; 0: no. Currently, only CMQ is supported for message queue services. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
           "is_public": true,
           "member": "int64",
           "name": "IsEnableCmqNotify",
@@ -973,7 +1041,34 @@
         },
         {
           "default": "",
-          "document": "Prefix of a log file, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9).",
+          "document": "Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
+          "is_public": true,
+          "member": "int64",
+          "name": "IsEnableKmsEncry",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained via the `ListKeyAliasByRegion` API. CloudAudit will not verify the validity of the `KeyId`. Please enter it with caution to avoid consequent data loss.",
+          "is_public": true,
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "KMS region. Currently supported regions can be obtained via the `ListKmsEnableRegion` API. This must be the same as the COS region.",
+          "is_public": true,
+          "member": "string",
+          "name": "KmsRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).",
           "is_public": true,
           "member": "string",
           "name": "LogFilePrefix",
@@ -982,7 +1077,7 @@
         },
         {
           "default": "",
-          "document": "Manages the read/write attribute of an event. Value range: 1 (read-only), 2 (write-only), 3 (read/write).",
+          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
           "is_public": true,
           "member": "int64",
           "name": "ReadWriteAttribute",
@@ -993,16 +1088,16 @@
       "type": "object"
     },
     "UpdateAuditResponse": {
-      "document": "Return parameter structure of UpdateAudit",
+      "document": "`UpdateAudit` response parameters structure",
       "members": [
         {
-          "document": "Whether update is successful",
+          "document": "Indicates if the update was completed successfully",
           "member": "int64",
           "name": "IsSuccess",
           "type": "int"
         },
         {
-          "document": "Unique ID of the request. Each request returns a unique ID. The RequestId is required to troubleshoot issues.",
+          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

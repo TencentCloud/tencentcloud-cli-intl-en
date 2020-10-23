@@ -4749,7 +4749,7 @@
       "members": [
         {
           "default": "",
-          "document": "Original upfront price, in USD.",
+          "document": "Original upfront payment, in USD.",
           "member": "float",
           "name": "OriginalFixedPrice",
           "required": true,
@@ -4758,7 +4758,7 @@
         },
         {
           "default": "",
-          "document": "Discounted upfront price, in USD.",
+          "document": "Discounted upfront payment, in USD.",
           "member": "float",
           "name": "DiscountFixedPrice",
           "required": true,
@@ -4767,7 +4767,7 @@
         },
         {
           "default": "",
-          "document": "Original usage price, in USD/hr.",
+          "document": "Original subsequent unit price, in USD/hr.",
           "member": "float",
           "name": "OriginalUsagePrice",
           "required": true,
@@ -4776,7 +4776,7 @@
         },
         {
           "default": "",
-          "document": "Discounted usage price, in USD/hr.",
+          "document": "Discounted subsequent unit price, in USD/hr.",
           "member": "float",
           "name": "DiscountUsagePrice",
           "required": true,
@@ -4800,7 +4800,7 @@
         },
         {
           "default": "",
-          "document": "Total upfront price, in USD.",
+          "document": "Upfront payment, in USD.",
           "member": "float",
           "name": "FixedPrice",
           "required": true,
@@ -4809,7 +4809,7 @@
         },
         {
           "default": "",
-          "document": "Total usage price, in USD/hr.",
+          "document": "Subsequent unit price, in USD/hr.",
           "member": "float",
           "name": "UsagePrice",
           "required": true,
@@ -4914,7 +4914,7 @@
         },
         {
           "default": "",
-          "document": "Number of ENIs.",
+          "document": "Number of NICs.",
           "member": "uint64",
           "name": "NetworkCard",
           "required": true,
@@ -5913,7 +5913,7 @@
       "members": [
         {
           "default": "",
-          "document": "System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default.",
+          "document": "System disk type. For more information on limits of system disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><br>The disk type currently in stock will be used by default. ",
           "member": "string",
           "name": "DiskType",
           "required": false,

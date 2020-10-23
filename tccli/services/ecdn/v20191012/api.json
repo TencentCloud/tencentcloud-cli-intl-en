@@ -42,6 +42,12 @@
       "name": "Queries access data",
       "output": "DescribeEcdnStatisticsResponse"
     },
+    "DescribeIpStatus": {
+      "document": "This API is used to query the detailed node information of the acceleration platform to which the domain name is connected.",
+      "input": "DescribeIpStatusRequest",
+      "name": "Queries the node status of the domain name",
+      "output": "DescribeIpStatusResponse"
+    },
     "DescribePurgeQuota": {
       "document": "This API is used to query the usage quota of the purge API.",
       "input": "DescribePurgeQuotaRequest",
@@ -55,7 +61,7 @@
       "output": "DescribePurgeTasksResponse"
     },
     "PurgePathCache": {
-      "document": "This API is used to batch purge cache directories. One purge task ID will be returned for each submission.",
+      "document": "This API is used to purge cache directories in batches. One purge task ID will be returned for each submission.",
       "input": "PurgePathCacheRequest",
       "name": "Purges directories",
       "output": "PurgePathCacheResponse"
@@ -211,7 +217,7 @@
         },
         {
           "default": "",
-          "document": "Whether to follow origin server's `Cache-Control: max-age` configuration\non: enable.\noff: disable.\nAfter this feature is enabled, resources that do not match the `CacheRules` rule will be cached on nodes according to the `max-age` value returned by the origin server, while resources that match the `CacheRules` rule will be cached on nodes according to the cache expiration time set in `CacheRules`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).\non: enable\noff: disable\nIf it is enabled, resources that do not match `CacheRules` will be cached on node according to the `max-age` value returned by the origin server, while resources that match `CacheRules` will be cached on node according to the cache expiration time set in `CacheRules`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FollowOrigin",
           "required": false,
@@ -679,6 +685,54 @@
           "member": "ResourceData",
           "name": "Data",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpStatusRequest": {
+      "document": "DescribeIpStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Acceleration domain name",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target region of the query:\nmainland: nodes in Mainland China\noverseas: nodes outside Mainland China\nglobal: global nodes",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpStatusResponse": {
+      "document": "DescribeIpStatus response structure.",
+      "members": [
+        {
+          "document": "Node list",
+          "member": "IpStatus",
+          "name": "Ips",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of nodes",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -1293,7 +1347,7 @@
         },
         {
           "default": "",
-          "document": "`MaxAge` value.",
+          "document": "`MaxAge` value.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MaxAge",
           "required": false,
@@ -1302,7 +1356,7 @@
         },
         {
           "default": "",
-          "document": "Whether to include subdomain names. Valid values: on, off.",
+          "document": "Whether to include subdomain names. Valid values: on, off.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "IncludeSubDomains",
           "required": false,
@@ -1440,7 +1494,7 @@
         },
         {
           "default": "",
-          "document": "Hsts configuration.",
+          "document": "HSTS configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "Hsts",
           "name": "Hsts",
           "required": false,
@@ -1506,6 +1560,57 @@
         }
       ],
       "usage": "both"
+    },
+    "IpStatus": {
+      "document": "Node IP information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node IP",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node region",
+          "member": "string",
+          "name": "District",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node ISP",
+          "member": "string",
+          "name": "Isp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node city",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node status\nonline: the node is online and scheduling normally\noffline: the node is offline",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Origin": {
       "document": "Origin server configuration.",

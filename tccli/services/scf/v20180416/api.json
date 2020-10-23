@@ -809,6 +809,14 @@
           "name": "InitTimeout",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag parameter of the function. It is an array of key-value pairs.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -915,6 +923,14 @@
           "document": "Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.",
           "member": "string",
           "name": "Enable",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom argument, supporting only the timer trigger.",
+          "member": "string",
+          "name": "CustomArgument",
           "required": false,
           "type": "string"
         }
@@ -1780,7 +1796,7 @@
         },
         {
           "default": "",
-          "document": "Service log related parameter. `Offset` on the first page is a null string. Enter other pages based on SearchContext in the response field.",
+          "document": "This field is disused.",
           "member": "LogSearchContext",
           "name": "SearchContext",
           "required": false,
@@ -1807,7 +1823,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Parameter on the log service page",
+          "document": "This field is disused.",
           "member": "LogSearchContext",
           "name": "SearchContext",
           "type": "object",

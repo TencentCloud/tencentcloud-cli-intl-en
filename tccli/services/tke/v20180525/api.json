@@ -1,5 +1,11 @@
 {
   "actions": {
+    "AcquireClusterAdminRole": {
+      "document": "This API can be called to acquire the ClusterRole tke:admin. By setting a CAM policy, you can grant permission of this API to a sub-account that has higher permission in CAM. In this way, this sub-account can call this API directly to acquire the admin role of a Kubernetes cluster.",
+      "input": "AcquireClusterAdminRoleRequest",
+      "name": "Acquiring the RBAC Admin role of a cluster",
+      "output": "AcquireClusterAdminRoleResponse"
+    },
     "AddExistedInstances": {
       "document": "This API is used to add one or more existing instances to a cluster.",
       "input": "AddExistedInstancesRequest",
@@ -193,6 +199,32 @@
     "serviceShortName": "tke"
   },
   "objects": {
+    "AcquireClusterAdminRoleRequest": {
+      "document": "AcquireClusterAdminRole request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AcquireClusterAdminRoleResponse": {
+      "document": "AcquireClusterAdminRole response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AddExistedInstancesRequest": {
       "document": "AddExistedInstances request structure.",
       "members": [
