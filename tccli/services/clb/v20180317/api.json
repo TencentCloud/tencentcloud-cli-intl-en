@@ -1623,9 +1623,33 @@
         },
         {
           "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Exclusive cluster information.",
+          "member": "ExclusiveCluster",
+          "name": "ExclusiveCluster",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
           "member": "string",
           "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag for the STGW exclusive cluster.",
+          "member": "string",
+          "name": "ClusterTag",
           "required": false,
           "type": "string"
         }

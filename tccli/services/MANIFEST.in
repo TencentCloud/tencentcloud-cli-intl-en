@@ -35,6 +35,7 @@ include tccli/services/mdp/v20200527/api.json
 include tccli/services/mongodb/v20190725/api.json
 include tccli/services/monitor/v20180724/api.json
 include tccli/services/mps/v20190612/api.json
+include tccli/services/msp/v20180319/api.json
 include tccli/services/ocr/v20181119/api.json
 include tccli/services/organization/v20181225/api.json
 include tccli/services/postgres/v20170312/api.json

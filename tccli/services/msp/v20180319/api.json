@@ -1,0 +1,667 @@
+{
+  "actions": {
+    "DeregisterMigrationTask": {
+      "document": "This API is used to cancel the registered migration tasks.",
+      "input": "DeregisterMigrationTaskRequest",
+      "name": "Cancels the registered migration tasks",
+      "output": "DeregisterMigrationTaskResponse"
+    },
+    "DescribeMigrationTask": {
+      "document": "This API is used to obtain the specified migration task details.",
+      "input": "DescribeMigrationTaskRequest",
+      "name": "Obtains the specified migration task details",
+      "output": "DescribeMigrationTaskResponse"
+    },
+    "ListMigrationProject": {
+      "document": "This API is used to obtain the list of migration project names.",
+      "input": "ListMigrationProjectRequest",
+      "name": "Obtains the list of migration project names",
+      "output": "ListMigrationProjectResponse"
+    },
+    "ListMigrationTask": {
+      "document": "This API is used to obtain migration task list.",
+      "input": "ListMigrationTaskRequest",
+      "name": "Obtains migration task list",
+      "output": "ListMigrationTaskResponse"
+    },
+    "ModifyMigrationTaskBelongToProject": {
+      "document": "This API is used to modify the project of a migration task.",
+      "input": "ModifyMigrationTaskBelongToProjectRequest",
+      "name": "Modifies the project of a migration task",
+      "output": "ModifyMigrationTaskBelongToProjectResponse"
+    },
+    "ModifyMigrationTaskStatus": {
+      "document": "This API is used to update the migration task status.",
+      "input": "ModifyMigrationTaskStatusRequest",
+      "name": "Updates the migration task status",
+      "output": "ModifyMigrationTaskStatusResponse"
+    },
+    "RegisterMigrationTask": {
+      "document": "This API is used to register a migration task.",
+      "input": "RegisterMigrationTaskRequest",
+      "name": "Registers a migration task",
+      "output": "RegisterMigrationTaskResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2018-03-19",
+    "serviceNameCN": "迁移服务平台",
+    "serviceShortName": "msp"
+  },
+  "objects": {
+    "DeregisterMigrationTaskRequest": {
+      "document": "DeregisterMigrationTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeregisterMigrationTaskResponse": {
+      "document": "DeregisterMigrationTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrationTaskRequest": {
+      "document": "DescribeMigrationTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID, such as msp-jitoh33n",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMigrationTaskResponse": {
+      "document": "DescribeMigrationTask response structure.",
+      "members": [
+        {
+          "document": "Migration details list",
+          "member": "TaskStatus",
+          "name": "TaskStatus",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DstInfo": {
+      "document": "Migration destination information",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration destination region",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration destination port",
+          "member": "string",
+          "name": "Port",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration destination instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ListMigrationProjectRequest": {
+      "document": "ListMigrationProject request structure.",
+      "members": [
+        {
+          "default": "0",
+          "document": "The initial number of records, default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "500",
+          "document": "The number of records returned, default value: 500",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListMigrationProjectResponse": {
+      "document": "ListMigrationProject response structure.",
+      "members": [
+        {
+          "document": "Project list",
+          "member": "Project",
+          "name": "Projects",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of projects",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListMigrationTaskRequest": {
+      "document": "ListMigrationTask request structure.",
+      "members": [
+        {
+          "default": "0",
+          "document": "The initial number of records, default value: 0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "10",
+          "document": "Number of records, default value: 10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID, the default value is empty.",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListMigrationTaskResponse": {
+      "document": "ListMigrationTask response structure.",
+      "members": [
+        {
+          "document": "Total number of records",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task list",
+          "member": "Task",
+          "name": "Tasks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrationTaskBelongToProjectRequest": {
+      "document": "ModifyMigrationTaskBelongToProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID, such as msp-jitoh33n",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID, such as 10005",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrationTaskBelongToProjectResponse": {
+      "document": "ModifyMigrationTaskBelongToProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrationTaskStatusRequest": {
+      "document": "ModifyMigrationTaskStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task ID, such as msp-jitoh33n",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMigrationTaskStatusResponse": {
+      "document": "ModifyMigrationTaskStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Project": {
+      "document": "List type",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project name",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RegisterMigrationTaskRequest": {
+      "document": "RegisterMigrationTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).",
+          "member": "string",
+          "name": "TaskType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service supplier name",
+          "member": "string",
+          "name": "ServiceSupplier",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task update time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.",
+          "member": "string",
+          "name": "MigrateClass",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task source information",
+          "member": "SrcInfo",
+          "name": "SrcInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Migration task destination information",
+          "member": "DstInfo",
+          "name": "DstInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)",
+          "member": "string",
+          "name": "SrcAccessType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`",
+          "member": "string",
+          "name": "SrcDatabaseType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)",
+          "member": "string",
+          "name": "DstAccessType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`",
+          "member": "string",
+          "name": "DstDatabaseType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterMigrationTaskResponse": {
+      "document": "RegisterMigrationTask response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SrcInfo": {
+      "document": "Migration source information",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration source region",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration source port",
+          "member": "string",
+          "name": "Port",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration source instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Task": {
+      "document": "Migration task type",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration type",
+          "member": "string",
+          "name": "MigrationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project name",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration source information",
+          "member": "SrcInfo",
+          "name": "SrcInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration time information",
+          "member": "TimeObj",
+          "name": "MigrationTimeLine",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status update time",
+          "member": "datetime",
+          "name": "Updated",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration destination information",
+          "member": "DstInfo",
+          "name": "DstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskStatus": {
+      "document": "Migration details list",
+      "members": [
+        {
+          "default": "",
+          "document": "Migration status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration progress",
+          "member": "string",
+          "name": "Progress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration date",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TimeObj": {
+      "document": "Time object",
+      "members": [
+        {
+          "default": "",
+          "document": "The creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}
