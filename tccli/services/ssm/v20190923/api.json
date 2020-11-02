@@ -1,0 +1,1030 @@
+{
+  "actions": {
+    "CreateSecret": {
+      "document": "This API is used to create a KMS-encrypted Secret. You can create and store up to 1,000 Secrets in each region.",
+      "input": "CreateSecretRequest",
+      "name": "Creates a Secret",
+      "output": "CreateSecretResponse"
+    },
+    "DeleteSecret": {
+      "document": "This API is used to delete a Secret. You can set whether to delete the Secret immediately or on schedule using the `RecoveryWindowInDays` parameter. For a Secret to be deleted on schedule, its status will be `PendingDelete` before the scheduled deletion time. You can use `RestoreSecret` to restore a deleted Secret during this time. A deleted Secret will not be restorable after the scheduled deletion time. A Secret can only be deleted after being disabled using `DisableSecret`.",
+      "input": "DeleteSecretRequest",
+      "name": "Deletes a Secret",
+      "output": "DeleteSecretResponse"
+    },
+    "DeleteSecretVersion": {
+      "document": "This API is used to delete a version of a Secret. The deletion takes effect immediately. Secret versions in any status can be deleted.",
+      "input": "DeleteSecretVersionRequest",
+      "name": "Deletes a Secret version",
+      "output": "DeleteSecretVersionResponse"
+    },
+    "DescribeSecret": {
+      "document": "This API is used to obtain the detailed attribute information of a Secret.",
+      "input": "DescribeSecretRequest",
+      "name": "Obtains the detailed information of a Secret",
+      "output": "DescribeSecretResponse"
+    },
+    "DisableSecret": {
+      "document": "This API is used to disable a Secret and will change its status to `Disabled`. The plaintext of a disabled Secret cannot be obtained through APIs.",
+      "input": "DisableSecretRequest",
+      "name": "Disables a Secret",
+      "output": "DisableSecretResponse"
+    },
+    "EnableSecret": {
+      "document": "This API is used to enable a Secret and will change its status to `Enabled`. You can call the `GetSecretValue` API to obtain the plaintext of this Secret. Secrets in `PendingDelete` status can only be enabled after being restored by using `RestoreSecret`.",
+      "input": "EnableSecretRequest",
+      "name": "Enables a Secret",
+      "output": "EnableSecretResponse"
+    },
+    "GetRegions": {
+      "document": "This API is used to obtain the list of regions displayed on Console.",
+      "input": "GetRegionsRequest",
+      "name": "Obtains the list of regions displayed on Console",
+      "output": "GetRegionsResponse"
+    },
+    "GetSecretValue": {
+      "document": "This API is used to obtain the plaintext of a specified Secret and version. Only plaintext of an enabled Secret can be obtained.",
+      "input": "GetSecretValueRequest",
+      "name": "Obtains the plaintext of a Secret",
+      "output": "GetSecretValueResponse"
+    },
+    "GetServiceStatus": {
+      "document": "This API is used to obtain the SecretsManager service status of a user.",
+      "input": "GetServiceStatusRequest",
+      "name": "Obtains the service status of a user",
+      "output": "GetServiceStatusResponse"
+    },
+    "ListSecretVersionIds": {
+      "document": "This API is used to obtain list of versions of a Secret.",
+      "input": "ListSecretVersionIdsRequest",
+      "name": "Obtains the list of versions of a Secret",
+      "output": "ListSecretVersionIdsResponse"
+    },
+    "ListSecrets": {
+      "document": "This API is used to obtain the detailed information list of all Secrets. You can specify the filter fields and sorting order as needed.",
+      "input": "ListSecretsRequest",
+      "name": "Obtains the list of Secret information",
+      "output": "ListSecretsResponse"
+    },
+    "PutSecretValue": {
+      "document": "This API is used to add a new version to a specified Secret. Each Secret supports up to 10 versions. You can only add versions to Secrets in `Enabled` or `Disabled` status.",
+      "input": "PutSecretValueRequest",
+      "name": "Adds a new Secret version",
+      "output": "PutSecretValueResponse"
+    },
+    "RestoreSecret": {
+      "document": "This API is used to restore a `PendingDelete` Secret, canceling its scheduled deletion. The restored Secret will be in `Disabled` status. You can call the `EnableSecret` API to enable this Secret again.",
+      "input": "RestoreSecretRequest",
+      "name": "Restores a `PendingDelete` Secret",
+      "output": "RestoreSecretResponse"
+    },
+    "UpdateDescription": {
+      "document": "This API is used to update the description of a Secret. This API can only update Secrets in `Enabled` or `Disabled` status.",
+      "input": "UpdateDescriptionRequest",
+      "name": "Updates the description of a Secret",
+      "output": "UpdateDescriptionResponse"
+    },
+    "UpdateSecret": {
+      "document": "This API is used to update the name and version ID of a Secret. Calling this API encrypts the new Secret content and overwrites the old content. This API can only update Secrets in `Enabled` or `Disabled` status.",
+      "input": "UpdateSecretRequest",
+      "name": "Updates the content of a Secret",
+      "output": "UpdateSecretResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-09-23",
+    "serviceNameCN": "凭据管理系统",
+    "serviceShortName": "ssm"
+  },
+  "objects": {
+    "CreateSecretRequest": {
+      "document": "CreateSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Secret name, which must be unique within a region. The name can be up to 128 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information.",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description information, such as the detailed use cases. It can be up to 2048 bytes.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "KMS CMK used for Secret encryption. If this parameter is left empty, SecretsManager will create a CMK by default. You can also specify a KMS CMK that is created in the same region.",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded plaintext of a binary Secret. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.",
+          "member": "string",
+          "name": "SecretBinary",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plaintext of a Secret, in text format. Base64 encoding is not required. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.",
+          "member": "string",
+          "name": "SecretString",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSecretResponse": {
+      "document": "CreateSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the new Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the new Secret version.",
+          "member": "string",
+          "name": "VersionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Return code of tag operation. `0`: success; `1`: internal error; `2`: business processing error\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "uint64",
+          "name": "TagCode",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Return message of tag operation.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "TagMsg",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecretRequest": {
+      "document": "DeleteSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret to be deleted.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduled deletion time, in days. If set to 0, the Secret is deleted immediately. A number in the range of 1 to 30 indicates the number of retention days. The Secret will be deleted after the set value.",
+          "member": "uint64",
+          "name": "RecoveryWindowInDays",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecretResponse": {
+      "document": "DeleteSecret response structure.",
+      "members": [
+        {
+          "document": "Name of deleted Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Secret deletion time, formatted as a Unix timestamp.",
+          "member": "int64",
+          "name": "DeleteTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecretVersionRequest": {
+      "document": "DeleteSecretVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the Secret version to be deleted.",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecretVersionResponse": {
+      "document": "DeleteSecretVersion response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version ID of the Secret.",
+          "member": "string",
+          "name": "VersionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecretRequest": {
+      "document": "DescribeSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of a Secret whose detailed information is to be obtained.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecretResponse": {
+      "document": "DescribeSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Description of the Secret.",
+          "member": "string",
+          "name": "Description",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the KMS CMK used for encryption.",
+          "member": "string",
+          "name": "KmsKeyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creator UIN.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Secret status, which can be `Enabled`, `Disabled`, or `PendingDelete`.",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Deletion time, formatted as a Unix timestamp. For a Secret that is not in `PendingDelete` status, this value is 0.",
+          "member": "uint64",
+          "name": "DeleteTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableSecretRequest": {
+      "document": "DisableSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret to be disabled.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableSecretResponse": {
+      "document": "DisableSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the disabled Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableSecretRequest": {
+      "document": "EnableSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret to be enabled.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableSecretResponse": {
+      "document": "EnableSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the enabled Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRegionsRequest": {
+      "document": "GetRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetRegionsResponse": {
+      "document": "GetRegions response structure.",
+      "members": [
+        {
+          "document": "List of regions.",
+          "member": "string",
+          "name": "Regions",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSecretValueRequest": {
+      "document": "GetSecretValue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of a Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the Secret version.",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSecretValueResponse": {
+      "document": "GetSecretValue response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the Secret version.",
+          "member": "string",
+          "name": "VersionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "If the `SecretBinary` field in the request body is specified in the `CreateSecret` call, this field is returned and base64-encoded. The caller needs to perform base64 decoding to obtain the original data. Either `SecretBinary` or `SecretString` will be returned.",
+          "member": "string",
+          "name": "SecretBinary",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "If the `SecretString` field in the request body is specified in the `CreateSecret` call, this field is returned. Either `SecretBinary` or `SecretString` will be returned.",
+          "member": "string",
+          "name": "SecretString",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetServiceStatusRequest": {
+      "document": "GetServiceStatus request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetServiceStatusResponse": {
+      "document": "GetServiceStatus response structure.",
+      "members": [
+        {
+          "document": "`true`: The service is activated; `false`: The service is not activated.",
+          "member": "bool",
+          "name": "ServiceEnabled",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released",
+          "member": "int64",
+          "name": "InvalidType",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSecretVersionIdsRequest": {
+      "document": "ListSecretVersionIds request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSecretVersionIdsResponse": {
+      "document": "ListSecretVersionIds response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`VersionId` list.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "VersionInfo",
+          "name": "Versions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSecretsRequest": {
+      "document": "ListSecrets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting position of the list, starting at 0. If not specified, 0 is used by default.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned Secrets in a query. If not set or set to 0, 20 is used by default.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.",
+          "member": "uint64",
+          "name": "OrderType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter according to Secret statuses. `0` (default): all Secrets; `1`: Secrets in `Enabled` status; `2`: Secrets in `Disabled` status; `3`: Secrets in `PendingDelete` status.",
+          "member": "uint64",
+          "name": "State",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter according to Secret names. If left empty, this filter is not applied.",
+          "member": "string",
+          "name": "SearchSecretName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag filter condition.",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSecretsResponse": {
+      "document": "ListSecrets response structure.",
+      "members": [
+        {
+          "document": "Number of filtered Secrets according to `State` and `SearchSecretName`.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of Secret information.",
+          "member": "SecretMetadata",
+          "name": "SecretMetadatas",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutSecretValueRequest": {
+      "document": "PutSecretValue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of a Secret where the version is added to.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Binary Secret information that is base64-encoded. Either `SecretBinary` or `SecretString` must be set.",
+          "member": "string",
+          "name": "SecretBinary",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.",
+          "member": "string",
+          "name": "SecretString",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutSecretValueResponse": {
+      "document": "PutSecretValue response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version ID that is newly added.",
+          "member": "string",
+          "name": "VersionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreSecretRequest": {
+      "document": "RestoreSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret to be restored.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreSecretResponse": {
+      "document": "RestoreSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SecretMetadata": {
+      "document": "Basic information of the Secret.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of the Secret.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "KMS Key ID used for Secret encryption.",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator UIN.",
+          "member": "uint64",
+          "name": "CreateUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Secret status, which can be `Enabled`, `Disabled`, or `PendingDelete`.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Secret deletion time, formatted as a Unix timestamp. This parameter is only applicable for Secrets in `PendingDelete` status.",
+          "member": "uint64",
+          "name": "DeleteTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Secret creation time, formatted as a Unix timestamp.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type of KMS CMK used for Secret encryption. `DEFAULT`: default key created by SecretsManager; `CUSTOMER`: user-specified key.",
+          "member": "string",
+          "name": "KmsKeyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Tag key and tag value.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TagFilter": {
+      "document": "Tag filter.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UpdateDescriptionRequest": {
+      "document": "UpdateDescription request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of a Secret whose description is to be updated.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New description information, which can be up to 2048 bytes.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDescriptionResponse": {
+      "document": "UpdateDescription response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSecretRequest": {
+      "document": "UpdateSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of a Secret whose content is to be updated.",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the Secret version whose content is to be updated.",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Use this field if the new Secret content is in binary format, and base64-encoded. Either `SecretBinary` or `SecretString` is set.",
+          "member": "string",
+          "name": "SecretBinary",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Use this field if the new Secret content is in text format, and base64-encoding is not required. Either `SecretBinary` or `SecretString` is set.",
+          "member": "string",
+          "name": "SecretString",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSecretResponse": {
+      "document": "UpdateSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the Secret.",
+          "member": "string",
+          "name": "SecretName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Version ID of the Secret.",
+          "member": "string",
+          "name": "VersionId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VersionInfo": {
+      "document": "List of version ID information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Version ID.",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time, formatted as a Unix timestamp.",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

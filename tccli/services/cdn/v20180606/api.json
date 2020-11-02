@@ -43,7 +43,7 @@
       "output": "DescribeCdnDomainLogsResponse"
     },
     "DescribeCdnIp": {
-      "document": "This API is used to query the CDN IP ownership.\n(Note: the request rate limit of this API is subject to the limit in CDN, which is 200 calls/10 minutes).",
+      "document": "This API is used to query CDN IP ownership.\n(Note: the request rate limit of this API is subject to the limit in CDN, which is 200 calls/10 minutes).  ",
       "input": "DescribeCdnIpRequest",
       "name": "Queries IP ownership",
       "output": "DescribeCdnIpResponse"
@@ -1472,6 +1472,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "City where the node resides\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4154,6 +4163,39 @@
       ],
       "usage": "both"
     },
+    "HttpHeaderRule": {
+      "document": "HTTP header setting rules.",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTP header setting method. Valid values: `add` (add header), `set` (set header) or `del` (delete header).",
+          "member": "string",
+          "name": "HeaderMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP header name",
+          "member": "string",
+          "name": "HeaderName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP header value",
+          "member": "string",
+          "name": "HeaderValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Https": {
       "document": "Domain name HTTPS acceleration configuration. This is disabled by default.",
       "members": [
@@ -4301,6 +4343,57 @@
           "member": "string",
           "name": "Filters",
           "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "IpFilterPathRule",
+          "name": "FilterRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IpFilterPathRule": {
+      "document": "IP blocklist/allowlist path-based configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "IP blocklist/allowlist type\n`whitelist`: allowlist IPs\n`blacklist`: blocklist IPs\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "FilterType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP blocklist/allowlist list\nSupports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.\nUp to 50 allowlists or blocklists can be entered.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Filters",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule types:\n`all`: effective for all files\n`file`: effective for specified file suffixes\n`directory`: effective for specified paths\n`path`: effective for specified absolute paths\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Content for each RuleType:\nFor `all`, enter an asterisk (*).\nFor `file`, enter the suffix, such as jpg, txt.\nFor `directory`, enter the path, such as /xxx/test/.\nFor `path`, enter the corresponding absolute path, such as /xxx/test.html.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "RulePaths",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -5198,6 +5291,24 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "BasePath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Path-based origin-pull configuration rules\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "PathRule",
+          "name": "PathRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5467,6 +5578,75 @@
           "name": "VideoSeek",
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PathRule": {
+      "document": "Path-based origin-pull configuration rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether regex match is used.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "bool",
+          "name": "Regex",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "URL path\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin-pull server when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Origin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin-pull host when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ServerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The region of origin server. Valid values: `CN` (mainland China), `OV` (outside mainland China)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "OriginArea",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin-pull URI path when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ForwardUri",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin-pull header setting when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "HttpHeaderRule",
+          "name": "RequestHeaders",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

@@ -581,7 +581,7 @@
         },
         {
           "default": "",
-          "document": "AppID",
+          "document": "Application ID",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -734,7 +734,7 @@
         },
         {
           "default": "",
-          "document": "UIN",
+          "document": "Account ID",
           "member": "string",
           "name": "Uin",
           "required": true,
@@ -752,7 +752,7 @@
         },
         {
           "default": "",
-          "document": "Number of nodes. 2: one primary and one secondary; 3: one primary and two secondaries",
+          "document": "Number of nodes. 2: one master and one slave; 3: one master and two slaves",
           "member": "int64",
           "name": "NodeCount",
           "required": true,
@@ -911,6 +911,78 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IPv6 flag for an instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Ipv6Flag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private network IPv6 address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Vipv6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network IPv6 address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "WanVipv6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network IPv6 port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "WanPortIpv6",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network IPv6 status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "WanStatusIpv6",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DCN flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DcnFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DcnStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of DCN disaster recovery instances\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DcnDstNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1681,6 +1753,22 @@
           "name": "ExclusterIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key used in queries",
+          "member": "string",
+          "name": "TagKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.",
+          "member": "string",
+          "name": "FilterInstanceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1781,6 +1869,13 @@
           "name": "Shards",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "Disaster recovery flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DcnFlag",
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

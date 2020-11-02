@@ -44,6 +44,7 @@ include tccli/services/scf/v20180416/api.json
 include tccli/services/sms/v20190711/api.json
 include tccli/services/sqlserver/v20180328/api.json
 include tccli/services/ssl/v20191205/api.json
+include tccli/services/ssm/v20190923/api.json
 include tccli/services/sts/v20180813/api.json
 include tccli/services/tag/v20180813/api.json
 include tccli/services/tcaplusdb/v20190823/api.json

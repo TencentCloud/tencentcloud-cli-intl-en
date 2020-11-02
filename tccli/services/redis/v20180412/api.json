@@ -1,7 +1,7 @@
 {
   "actions": {
     "AssociateSecurityGroups": {
-      "document": "This API is used to associate security groups with specified instances.",
+      "document": "This API is used to associate a security group with instances in batches.",
       "input": "AssociateSecurityGroupsRequest",
       "name": "Associates security groups with instances",
       "output": "AssociateSecurityGroupsResponse"
@@ -25,7 +25,7 @@
       "output": "CreateInstanceAccountResponse"
     },
     "CreateInstances": {
-      "document": "This API is used to create a Redis instance.",
+      "document": "This API is used to create Redis instances.",
       "input": "CreateInstancesRequest",
       "name": "Creates a Redis instance",
       "output": "CreateInstancesResponse"
@@ -126,6 +126,12 @@
       "name": "Queries the instance CPU time",
       "output": "DescribeInstanceMonitorTopNCmdTookResponse"
     },
+    "DescribeInstanceNodeInfo": {
+      "document": "This API is used to query instance node information.",
+      "input": "DescribeInstanceNodeInfoRequest",
+      "name": "Queries instance node information",
+      "output": "DescribeInstanceNodeInfoResponse"
+    },
     "DescribeInstanceParamRecords": {
       "document": "This API is used to query the list of parameter modifications.",
       "input": "DescribeInstanceParamRecordsRequest",
@@ -179,6 +185,12 @@
       "input": "DescribeProjectSecurityGroupsRequest",
       "name": "Queries the security group details of a project",
       "output": "DescribeProjectSecurityGroupsResponse"
+    },
+    "DescribeProxySlowLog": {
+      "document": "This API is used to query proxy slow logs.",
+      "input": "DescribeProxySlowLogRequest",
+      "name": "Queries proxy slow logs",
+      "output": "DescribeProxySlowLogResponse"
     },
     "DescribeSlowLog": {
       "document": "This API is used to query the slow log.",
@@ -702,7 +714,7 @@
       "members": [
         {
           "default": "",
-          "document": "AZ ID of instance",
+          "document": "Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
           "member": "uint64",
           "name": "ZoneId",
           "required": true,
@@ -710,7 +722,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: 2 (Redis 2.8 memory edition in standard architecture), 3 (Redis 3.2 memory edition in standard architecture), 4 (CKV 3.2 memory edition in standard architecture), 6 (Redis 4.0 memory edition in standard architecture), 7 (Redis 4.0 memory edition in cluster architecture), 8 (Redis 5.0 memory edition in standard architecture), 9 (Redis 5.0 memory edition in cluster architecture).",
+          "document": "Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).",
           "member": "uint64",
           "name": "TypeId",
           "required": true,
@@ -718,7 +730,7 @@
         },
         {
           "default": "",
-          "document": "Instance capacity in MB. The actual value is subject to the specifications returned by the purchasable specification querying API |",
+          "document": "Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
           "member": "uint64",
           "name": "MemSize",
           "required": true,
@@ -726,7 +738,7 @@
         },
         {
           "default": "",
-          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the purchasable specification querying API",
+          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
           "member": "uint64",
           "name": "GoodsNum",
           "required": true,
@@ -734,7 +746,7 @@
         },
         {
           "default": "",
-          "document": "Length of purchase in months, which is required when creating a monthly subscribed instances. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, enter 1",
+          "document": "Purchased usage period in months. which is required when creating an instance. For pay-as-you-go instances, the valid value is 1; for monthly subscription instances, the value range is [1,2,3,4,5,6,7,8,9,10,11,12,24,36].",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -758,7 +770,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the basic network will be selected by default. Please use the VPC list querying API to query.",
+          "document": "VPC ID, such as \"vpc-sad23jfdfk\". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -766,7 +778,7 @@
         },
         {
           "default": "",
-          "document": "In a basic network, subnetId is invalid. In a VPC subnet, the value is the subnet ID, such as subnet-fdj24n34j2",
+          "document": "In a classic network, `subnetId` is invalid. In a VPC subnet, the value can be queried by the `DescribeSubnets` API, such as \"subnet-fdj24n34j2\".",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -774,7 +786,7 @@
         },
         {
           "default": "",
-          "document": "Project ID. The value is subject to the projectId returned by user account > user account-related querying APIs > project list",
+          "document": "Project ID. The value is subject to the `projectId` returned by the `DescribeProject` API.",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -782,7 +794,7 @@
         },
         {
           "default": "",
-          "document": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "document": "Auto-renewal flag. Valid values: 0 (default status, indicating manual renewal), 1 (auto-renewal enabled), 2 (auto-renewal disabled)",
           "member": "uint64",
           "name": "AutoRenew",
           "required": false,
@@ -798,7 +810,7 @@
         },
         {
           "default": "",
-          "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535]",
+          "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024, 65535].",
           "member": "uint64",
           "name": "VPort",
           "required": false,
@@ -806,7 +818,7 @@
         },
         {
           "default": "",
-          "document": "Number of shards in an instance. This parameter is required for cluster edition instances. Valid values: 3, 5, 8, 12, 16, 24, 32, 64, 96, 128.",
+          "document": "Number of shards in an instance. This parameter is required for instances in cluster architecture. Value range: [3,5,8,12,16,24,32,64,96,128].",
           "member": "int64",
           "name": "RedisShardNum",
           "required": false,
@@ -822,7 +834,7 @@
         },
         {
           "default": "",
-          "document": "Whether to support read-only replicas. Neither Redis 2.8 standard edition nor CKV standard edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the primary node and read requests will be distributed on secondary nodes. To enable read-only replicas, we recommend you create 2 or more replicas.",
+          "document": "Whether to support read-only replicas. Neither Redis 2.8 in standard architecture nor CKV in standard architecture supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on the replica nodes. To enable read-only replicas, we recommend that you create 2 or more replicas.",
           "member": "bool",
           "name": "ReplicasReadonly",
           "required": false,
@@ -830,7 +842,7 @@
         },
         {
           "default": "",
-          "document": "Instance name. It contains only letters, digits, underscores, and dashes with a length of up to 60 characters.",
+          "document": "Instance name. It contains only letters, digits, and symbols (-_) with a length of up to 60 characters.",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -1047,7 +1059,7 @@
       "members": [
         {
           "default": "",
-          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "document": "Database engine name. For this API, its value is `redis`.",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -1384,7 +1396,7 @@
       "members": [
         {
           "default": "",
-          "document": "Array of order IDs",
+          "document": "Array of order IDs. It is the same as the response parameter `DealId` in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
           "member": "string",
           "name": "DealIds",
           "required": true,
@@ -1738,6 +1750,90 @@
           "name": "Data",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodeInfoRequest": {
+      "document": "DescribeInstanceNodeInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List size",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodeInfoResponse": {
+      "document": "DescribeInstanceNodeInfo response structure.",
+      "members": [
+        {
+          "document": "The number of proxy nodes",
+          "member": "int64",
+          "name": "ProxyCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Proxy node information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ProxyNodes",
+          "name": "Proxy",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of redis nodes",
+          "member": "int64",
+          "name": "RedisCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Redis node information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "RedisNodes",
+          "name": "Redis",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of tendis nodes",
+          "member": "int64",
+          "name": "TendisCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tendis node information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "TendisNodes",
+          "name": "Tendis",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2320,6 +2416,86 @@
           "member": "uint64",
           "name": "Total",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxySlowLogRequest": {
+      "document": "DescribeProxySlowLog request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Slow query threshold in microseconds",
+          "member": "int64",
+          "name": "MinQueryTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit`",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxySlowLogResponse": {
+      "document": "DescribeProxySlowLog response structure.",
+      "members": [
+        {
+          "document": "Total number of slow queries",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow query details",
+          "member": "InstanceProxySlowlogDetail",
+          "name": "InstanceProxySlowLogDetail",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3421,6 +3597,57 @@
       ],
       "usage": "out"
     },
+    "InstanceProxySlowlogDetail": {
+      "document": "Proxy slow query details",
+      "members": [
+        {
+          "default": "",
+          "document": "Slow query duration",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Client address",
+          "member": "string",
+          "name": "Client",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command line details",
+          "member": "string",
+          "name": "CommandLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution duration",
+          "member": "string",
+          "name": "ExecuteTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "InstanceSecurityGroupDetail": {
       "document": "Security group information of an instance",
       "members": [
@@ -3576,7 +3803,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. 1: Redis 2.8 cluster edition; 2: Redis 2.8 primary-secondary edition; 3: CKV primary-secondary edition (Redis 3.2); 4: CKV cluster edition (Redis 3.2); 5: Redis 2.8 standalone edition; 6: Redis 4.0 primary-secondary edition; 7: Redis 4.0 cluster edition",
+          "document": "Instance type. Valid values: 1 (Redis 2.8 Memory Edition in cluster architecture), 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 5 (Redis 2.8 Memory Edition in standalone architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -3612,7 +3839,7 @@
         },
         {
           "default": "",
-          "document": "Product type: Redis 2.8 cluster edition, Redis 2.8 primary-secondary edition, Redis 3.2 primary-secondary edition (CKV primary-secondary edition), Redis 3.2 cluster edition (CKV cluster edition), Redis 2.8 standalone edition, Redis 4.0 cluster edition",
+          "document": "Instance type. Valid values: standalone (standard edition), cluster (cluster edition)",
           "member": "string",
           "name": "ProductType",
           "required": true,
@@ -4759,6 +4986,21 @@
       ],
       "usage": "out"
     },
+    "ProxyNodes": {
+      "document": "Proxy node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RedisBackupSet": {
       "document": "Array of instance backups",
       "members": [
@@ -4812,6 +5054,39 @@
           "document": "Whether a backup is locked. 0: no; 1: yes",
           "member": "int64",
           "name": "Locked",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RedisNodes": {
+      "document": "Redis node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard ID",
+          "member": "int64",
+          "name": "ClusterId",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -5431,6 +5706,30 @@
       ],
       "usage": "out"
     },
+    "TendisNodes": {
+      "document": "Tendis node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TradeDealDetail": {
       "document": "Order deal information",
       "members": [
@@ -5607,7 +5906,7 @@
       "members": [
         {
           "default": "",
-          "document": "Target instance type. Its value is the same as the `Type` parameter of the `CreateInstances` API.",
+          "document": "The target instance type to which the instance will change. It is the same as the `TypeId` parameter in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
           "member": "string",
           "name": "TargetInstanceType",
           "required": true,
