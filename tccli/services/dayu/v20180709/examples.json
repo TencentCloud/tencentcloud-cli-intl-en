@@ -1,0 +1,845 @@
+{
+  "actions": {
+    "CreateBasicDDoSAlarmThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateBasicDDoSAlarmThreshold\r\n&Business=bgpip\r\n&Method=set\r\n&AlarmThreshold=1000\r\n&AlarmType=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"AlarmThreshold\": 1000,\r\n        \"AlarmType\": 1\r\n    }\r\n}",
+        "title": "Setting DDoS alarm threshold for Anti-DDoS Basic"
+      }
+    ],
+    "CreateBoundIP": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateBoundIP\r\n&Business=bgp\r\n&Id=bgp-000000xe\r\n&BoundDevList.0.Ip=1.1.1.1\r\n&BoundDevList.0.BizType=public\r\n&BoundDevList.0.DeviceType=cvm\r\n&BoundDevList.0.InstanceId=ins-f2f9ssbo\r\n&CopyPolicy=yes\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Binding an IP to Anti-DDoS Pro instance"
+      }
+    ],
+    "CreateCCFrequencyRules": [
+      {
+        "document": "This example shows you how to add an access frequency control rule for CC protection. To add a unified frequency control rule for all URIs under a forwarding rule, simply set `Uri` to `/`.",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateCCFrequencyRules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleId=rule-00000001\r\n&Uri=/\r\n&Mode=include\r\n&Period=60\r\n&ReqNumber=30\r\n&Act=alg\r\n&ExeDuration=120\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"CCFrequencyRuleId\": \"ccRule-000003h7\",\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "title": "Adding access frequency control rule for CC protection"
+      }
+    ],
+    "CreateCCSelfDefinePolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateCCSelfDefinePolicy\r\n&Business=bgp\r\n&Id=bgp-000000xe\r\n&Policy.Name=test\r\n&Policy.Smode=speedlimit\r\n&Policy.Frequency=1002\r\n&Policy.IpList.0=1.1.1.1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Creating custom CC policy"
+      }
+    ],
+    "CreateDDoSPolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateDDoSPolicy\r\n&Business=bgpip\r\n&Name=testpolicy\r\n&DropOptions.0.DropTcp=0\r\n&DropOptions.0.DropUdp=0\r\n&DropOptions.0.DropIcmp=1\r\n&DropOptions.0.DropOther=1\r\n&DropOptions.0.DropAbroad=1\r\n&DropOptions.0.CheckSyncConn=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"PolicyId\": \"policy-000003h7\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Adding advanced DDoS protection policy"
+      }
+    ],
+    "CreateDDoSPolicyCase": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateDDoSPolicyCase\r\n&Business=bgpip\r\n&CaseName=testpolicycase\r\n&PlatformTypes.0=PC\r\n&PlatformTypes.1=TV\r\n&AppType=WEB\r\n&AppProtocols.0=tcp\r\n&TcpPortList=80,443,600-700,888\r\n&UdpPortList=80,443,600-700,888\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"SceneId\": \"scene-000003h7\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Adding policy scenario"
+      }
+    ],
+    "CreateInstanceName": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateInstanceName\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Name=Test\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"Success\": {\r\n      \"Code\": \"Success\",\r\n      \"Message\": \"Success\"\r\n    }\r\n  }\r\n}",
+        "title": "Renaming an instance"
+      }
+    ],
+    "CreateL4HealthConfig": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL4HealthConfig\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&HealthConfig.0.Protocol=TCP\r\n&HealthConfig.0.VirtualPort=666\r\n&HealthConfig.0.Enable=1\r\n&HealthConfig.0.TimeOut=60\r\n&HealthConfig.0.Interval=300\r\n&HealthConfig.0.KickNum=3\r\n&HealthConfig.0.AliveNum=3\r\n&HealthConfig.0.KeepTime=60\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Uploading layer-4 health check configuration"
+      }
+    ],
+    "CreateL4Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL4Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Rules.0.RuleName=test\r\n&Rules.0.Protocol=TCP\r\n&Rules.0.VirtualPort=18888\r\n&Rules.0.SourcePort=18888\r\n&Rules.0.SourceType=2\r\n&Rules.0.LbType=1\r\n&Rules.0.KeepTime=300\r\n&Rules.0.KeepEnable=0\r\n&Rules.0.SourceList.0.Source=1.1.1.10\r\n&Rules.0.SourceList.0.Weight=100\r\n&Rules.0.SourceList.1.Source=1.1.1.20\r\n&Rules.0.SourceList.1.Weight=100\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding Layer-4 forwarding rules"
+      }
+    ],
+    "CreateL7CCRule": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL7CCRule\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleId=rule-00000001\r\n&Method=query\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"07efcf74-79b1-4faa-a61e-ec9310675b67\",\r\n        \"RuleConfig\": [\r\n            {\r\n                \"Period\": 60,\r\n                \"ReqNumber\": 1,\r\n                \"Action\": \"drop\",\r\n                \"ExeDuration\": 1\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Querying custom layer-7 CC access frequency control rule"
+      }
+    ],
+    "CreateL7HealthConfig": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL7HealthConfig\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&HealthConfig.0.Protocol=https\r\n&HealthConfig.0.Domain=443\r\n&HealthConfig.0.Enable=1\r\n&HealthConfig.0.Interval=300\r\n&HealthConfig.0.KickNum=3\r\n&HealthConfig.0.AliveNum=3\r\n&HealthConfig.0.Method=HEAD\r\n&HealthConfig.0.StatusCode=15\r\n&HealthConfig.0.Url=/\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Uploading layer-7 health check configuration"
+      }
+    ],
+    "CreateL7RuleCert": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL7RuleCert\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleId=rule-00000001\r\n&CertType=2\r\n&SSLId=sslid123\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Configuring certificate for layer-7 forwarding rule"
+      }
+    ],
+    "CreateL7Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL7Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Rules.0.RuleName=test\r\n&Rules.0.Protocol=http\r\n&Rules.0.Domain=www.abc.com\r\n&Rules.0.SourceType=2\r\n&Rules.0.LbType=1\r\n&Rules.0.KeepTime=300\r\n&Rules.0.SourceList.0.Source=1.1.1.10\r\n&Rules.0.SourceList.0.Weight=100\r\n&Rules.0.SourceList.1.Source=1.1.1.20\r\n&Rules.0.SourceList.1.Weight=100\r\n&Rules.0.CertType=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding layer-7 forwarding rules"
+      }
+    ],
+    "CreateL7RulesUpload": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateL7RulesUpload\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Rules.0.RuleName=test\r\n&Rules.0.Protocol=http\r\n&Rules.0.Domain=www.abc.com\r\n&Rules.0.SourceType=2\r\n&Rules.0.LbType=1\r\n&Rules.0.KeepTime=300\r\n&Rules.0.SourceList.0.Source=1.1.1.10\r\n&Rules.0.SourceList.0.Weight=100\r\n&Rules.0.SourceList.1.Source=1.1.1.20\r\n&Rules.0.SourceList.1.Weight=100\r\n&Rules.0.CertType=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Uploading layer-7 forwarding rules in batches"
+      }
+    ],
+    "CreateNetReturn": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateNetReturn\r\n&Business=net\r\n&Id=net-0000000e\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Switching to real server"
+      }
+    ],
+    "CreateNewL7RulesUpload": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateNewL7RulesUpload\r\n&Business=bgpip\r\n&IdList.0=bgpip-000001\r\n&VipList.0=192.168.1.1\r\n&Rules.0.RuleName=test\r\n&Rules.0.Protocol=http\r\n&Rules.0.Domain=www.abc.com\r\n&Rules.0.SourceType=2\r\n&Rules.0.LbType=1\r\n&Rules.0.KeepTime=300\r\n&Rules.0.SourceList.0.Source=1.1.1.10\r\n&Rules.0.SourceList.0.Weight=100\r\n&Rules.0.SourceList.1.Source=1.1.1.20\r\n&Rules.0.SourceList.1.Weight=100\r\n&Rules.0.CertType=0\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding Layer-7 forwarding rules"
+      }
+    ],
+    "CreateUnblockIp": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=CreateUnblockIp\r\n&Ip=1.1.1.1\r\n&ActionType=user\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ActionType\": \"user\",\r\n        \"Ip\": \"111.230.156.235\",\r\n        \"RequestId\": \"a78db8c5-598e-459e-87d0-37682739920e\",\r\n        \"UnblockTime\": \"2018-09-10 21:15:23\"\r\n    }\r\n}",
+        "title": "Unblocking an IP"
+      }
+    ],
+    "DeleteCCFrequencyRules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DeleteCCFrequencyRules\r\n&Business=bgpip\r\n&CCFrequencyRuleId=ccRule-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"Success\": {\r\n      \"Code\": \"Success\",\r\n      \"Message\": \"Success\"\r\n    }\r\n  }\r\n}",
+        "title": "Deleting access frequency control rule for CC protection"
+      }
+    ],
+    "DeleteCCSelfDefinePolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DeleteCCSelfDefinePolicy\r\n&Business=bgp\r\n&Id=bgp-000000xe\r\n&SetId=ccPolicy-000000sd\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Deleting a custom CC protection policy"
+      }
+    ],
+    "DeleteDDoSPolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DeleteDDoSPolicy\r\n&Business=bgpip\r\n&PolicyId=policy-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Deleting an advanced DDoS protection policy"
+      }
+    ],
+    "DeleteDDoSPolicyCase": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DeleteDDoSPolicyCase\r\n&Business=bgpip\r\n&SceneId=scene-00000003\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Deleting a policy scenario"
+      }
+    ],
+    "DeleteL4Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DeleteL4Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xd\r\n&RuleIdList.0=rule-00000001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Deleting layer-4 forwarding rules"
+      }
+    ],
+    "DeleteL7Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DeleteL7Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xd\r\n&RuleIdList.0=rule-00000001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Deleting layer-7 forwarding rules"
+      }
+    ],
+    "DescribeActionLog": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeActionLog\r\n&StartTime=2018-11-23 00:00:00\r\n&EndTime=2018-11-24 00:00:00\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Limit=10\r\n&Offset=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"AppId\",\r\n                        \"Value\": \"251000862\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Uin\",\r\n                        \"Value\": \"1445149556\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Business\",\r\n                        \"Value\": \"bgp\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"RsIdStr\",\r\n                        \"Value\": \"bgp-0000000o\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Action\",\r\n                        \"Value\": \"NS.BGP.ServicePack.SetCCThreshold\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"ActionDesc\",\r\n                        \"Value\": \"Set CC Threshold\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Params\",\r\n                        \"Value\": \"{\\\"id\\\":\\\"bgp-0000000o\\\",\\\"threshold\\\":\\\"850\\\"}\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"RespCode\",\r\n                        \"Value\": \"success\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Timestamp\",\r\n                        \"Value\": \"2018-11-23 11:46:47\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\": \"c451fdf9-d24d-4578-a40c-fe34e34829db\",\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Getting operation logs"
+      }
+    ],
+    "DescribeBGPIPL7RuleMaxCnt": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeBGPIPL7RuleMaxCnt\r\n&Business=bgpip\r\n&Id=bgpip-0000000e\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Count\": 1\r\n    }\r\n}",
+        "title": "Getting the maximum number of layer-7 rules that can be added to an Anti-DDoS Advanced instance"
+      }
+    ],
+    "DescribeBaradData": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeBaradData\r\n&Business=shield\r\n&Id=bgpip-000000x7\r\n&Period=300\r\n&StartTime=2018-08-28 07:15:00\r\n&EndTime=2018-08-28 10:05:00\r\n&Statistics=max\r\n&MetricName=connum\r\n&ProtocolPort.0.Protocol=tcp\r\n&ProtocolPort.0.Port=80\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"DataList\": [{\r\n\t\t\t\"MetricName\": \"connum\",\r\n\t\t\t\"Data\": [236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236],\r\n\t\t\t\"Count\": 35\r\n\t\t}, {\r\n\t\t\t\"MetricName\": \"new_conn\",\r\n\t\t\t\"Data\": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],\r\n\t\t\t\"Count\": 35\r\n\t\t}],\r\n\t\t\"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n\t}\r\n}",
+        "title": "Getting forwarding report data"
+      }
+    ],
+    "DescribeBasicCCThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeBasicCCThreshold\r\n&BasicIp=\"1.1.1.1\"\r\n&BasicRegion=\"gz\"\r\n&BasicBizType=\"nat\"\r\n&BasicDeviceType=\"cvm\"\r\n&BasicIpInstance=“aaa\"\r\n&BasicIspCode=5\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"CCEnable\": 1,\r\n        \"CCThreshold\": 100\r\n    }\r\n}",
+        "title": "Getting CC protection threshold of Anti-DDoS Basic"
+      }
+    ],
+    "DescribeBasicDeviceThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeBasicDeviceThreshold\r\n&BasicIp=\"1.1.1.1\"\r\n&BasicRegion=\"gz\"\r\n&BasicBizType=\"nat\"\r\n&BasicDeviceType=\"cvm\"\r\n&BasicIpInstance=“aaa\"\r\n&BasicIspCode=5\r\n&BasicCheckFlag=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Threshold\": 10000\r\n    }\r\n}",
+        "title": "DescribeBasicDeviceThreshold"
+      }
+    ],
+    "DescribeCCAlarmThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCAlarmThreshold\r\n&Business=bgpip\r\n&RsId=net-0000002h\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"CCAlarmThreshold\": {\r\n            \"AlarmThreshold\": 1000\r\n        }\r\n    }\r\n}",
+        "title": "Getting CC alarm threshold"
+      }
+    ],
+    "DescribeCCEvList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCEvList\r\n&Business=bgp\r\n&Id=bgp-00000010\r\n&IpList.0=3.3.3.3\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&Limit=30\r\n&Offset=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"bgp\",\r\n        \"Data\": [\r\n            {\r\n                \"Business\": \"bgp\",\r\n                \"Id\": \"bgp-00000010\",\r\n                \"Vip\": \"3.3.3.3\",\r\n                \"StartTime\": \"2018-08-27 15:05:10\",\r\n                \"EndTime\": \"2018-08-27 16:05:10\",\r\n                \"ReqQps\": 544231,\r\n                \"DropQps\": 13232,\r\n                \"AttackStatus\": 1,\r\n                \"DomainList\":\"www.dw.com;www.ksd.com\",\r\n                \"UriList\":\"/sef/sdf;/tesf/sdf\",\r\n                \"AttackipList\":\"1.1.1.1;2.2.3.2\"\r\n            }\r\n        ],\r\n        \"EndTime\": \"2019-03-07 14:50:00\",\r\n        \"Id\": \"bgp-00000010\",\r\n        \"IpList\": [\r\n            \"3.3.3.3\"\r\n        ],\r\n        \"RequestId\": \"69b1692b-4b6e-47c0-a7d6-0ff0da286874\",\r\n        \"StartTime\": \"2019-03-07 00:00:00\",\r\n        \"Total\": 1\r\n    }\r\n}",
+        "title": "Getting CC attack event list"
+      }
+    ],
+    "DescribeCCFrequencyRules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCFrequencyRules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleId=rule-0000001\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"CCFrequencyRuleList\": [\r\n            {\r\n                \"CCFrequencyRuleId\": \"ccRule-0000001i\",\r\n                \"Uri\": \"/\",\r\n                \"UserAgent\": \"\",\r\n                \"Cookie\": \"\",\r\n                \"Mode\": \"include\",\r\n                \"Period\": 10,\r\n                \"ReqNumber\": 1,\r\n                \"Act\": \"drop\",\r\n                \"ExeDuration\": 1\r\n            }\r\n        ],\r\n    \"CCFrequencyRuleStatus\": \"on\"\r\n  }\r\n}",
+        "title": "Getting access frequency control rule for CC protection"
+      }
+    ],
+    "DescribeCCIpAllowDeny": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCIpAllowDeny\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Type.0=black\r\n&Protocol=http\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"Key\": \"white\",\r\n                \"Value\": \"123.20.10.0/24,1.1.11.1\"\r\n            },\r\n            {\r\n                \"Key\": \"total\",\r\n                \"Value\": \"2\"\r\n            }\r\n        ],\r\n        \"RecordList\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"ip\",\r\n                        \"Value\": \"123.20.10.0/24\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"domain\",\r\n                        \"Value\": \"\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"protocol\",\r\n                        \"Value\": \"http\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"type\",\r\n                        \"Value\": \"white\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"ip\",\r\n                        \"Value\": \"1.1.11.1\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"domain\",\r\n                        \"Value\": \"\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"protocol\",\r\n                        \"Value\": \"http\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"type\",\r\n                        \"Value\": \"white\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\": \"40fc168e-a7c1-4bdc-92b9-d5b3f88369a9\",\r\n        \"Total\": 2\r\n    }\r\n}",
+        "title": "Getting IP blacklist/whitelist for CC protection"
+      }
+    ],
+    "DescribeCCSelfDefinePolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCSelfDefinePolicy\r\n&Business=bgp\r\n&Id=bgp-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n         \"Total\": 1,\r\n         \"Policys\":[{\r\n               \"SetId\" : 1262,\r\n               \"Business\" : \"bgp\",\r\n               \"Rsid\"  : \"bgp-000000xe\",\r\n               \"Name\" : \"12434\",\r\n               \"Smode\"  : \"matching\",\r\n               \"Frequency\"  :  0,\r\n               \"ExeMode\" : \"drop\",\r\n               \"ExeDuration\" : \"0\",\r\n               \"Switch\": 1,\r\n               \"CreateTime\" : \"2019-04-24 12:32:12\",\r\n               \"RuleList\" : [{\"Skey\": \"host\", \"Operator\": \"include\", \"Value\": \"24234\"}],\r\n               \"Protocol\" : \"http\",\r\n               \"Domain\"  : \"\"\r\n         }]\r\n    }\r\n}",
+        "title": "Getting custom CC protection policy"
+      }
+    ],
+    "DescribeCCTrend": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCTrend\n&Business=bgp\n&Id=bgp-00000010\n&Ip=3.3.3.3\n&MetricName=inqps\n&StartTime=2018-08-2715:05:10\n&EndTime=2018-08-2716:05:10\n&Period=3600\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"bgp\",\r\n        \"Count\": 1,\r\n        \"Data\": [\r\n            1234\r\n        ],\r\n        \"EndTime\": \"2018-08-27 16:05:10\",\r\n        \"Id\": \"bgp-00000010\",\r\n        \"Ip\": \"3.3.3.3\",\r\n        \"MetricName\": \"inqps\",\r\n        \"Period\": 300,\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"StartTime\": \"2018-08-27 15:05:10\"\r\n    }\r\n}",
+        "title": "Obtaining CC attack metric data"
+      }
+    ],
+    "DescribeCCUrlAllow": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeCCUrlAllow\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Type.0=white\r\n&Protocol=http\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"Key\": \"whiteurllist\",\r\n                \"Value\": \"\"\r\n            },\r\n            {\r\n                \"Key\": \"whitetotal\",\r\n                \"Value\": \"1\"\r\n            }\r\n        ],\r\n        \"RecordList\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"url\",\r\n                        \"Value\": \"http://2.2.2.2/test.html\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"domain\",\r\n                        \"Value\": \"\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"protocol\",\r\n                        \"Value\": \"http\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"type\",\r\n                        \"Value\": \"white\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\": \"6084150e-f2f7-4024-8821-a51fe7115ea0\",\r\n        \"Total\": 1\r\n    }\r\n}",
+        "title": "Getting URL whitelist for CC protection"
+      }
+    ],
+    "DescribeDDoSAlarmThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSAlarmThreshold\r\n&Business=bgpip\r\n&RsId=net-0000002h\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"DDoSAlarmThreshold\": {\r\n            \"AlarmType\": 1,\r\n            \"AlarmThreshold\": 1000\r\n        }\r\n    }\r\n}",
+        "title": "Getting DDoS alarm threshold"
+      }
+    ],
+    "DescribeDDoSAttackIPRegionMap": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSAttackIPRegionMap\r\n&Business=bgpip\r\n&Id=bgpip-0000000x\r\n&IpList.0=1.1.1.1\r\n&StartTime=2019-07-23 11:32:12\r\n&EndTime=2019-07-27 13:35:16\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"8466d9e1-70a9-4575-8e02-df15bd50bc49\",\r\n        \"NationCount\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"Nation\",\r\n                        \"Value\": \"Korea\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"AttackCount\",\r\n                        \"Value\": \"10\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketCount\",\r\n                        \"Value\": \"1350\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketBytes\",\r\n                        \"Value\": \"564090\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"Nation\",\r\n                        \"Value\": \"Bulgaria\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"AttackCount\",\r\n                        \"Value\": \"15\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketCount\",\r\n                        \"Value\": \"3520\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketBytes\",\r\n                        \"Value\": \"894090\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"ProvinceCount\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"Province\",\r\n                        \"Value\": \"Zhejiang\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"AttackCount\",\r\n                        \"Value\": \"25\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketCount\",\r\n                        \"Value\": \"3460\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketBytes\",\r\n                        \"Value\": \"56790\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"Province\",\r\n                        \"Value\": \"Taiwan (China)\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"AttackCount\",\r\n                        \"Value\": \"35\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketCount\",\r\n                        \"Value\": \"3590\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"PacketBytes\",\r\n                        \"Value\": \"894990\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Getting the geographical distribution map of DDoS attack source IPs"
+      }
+    ],
+    "DescribeDDoSAttackSource": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSAttackSource\r\n&Business=bgpip\r\n&Id=bgpip-0000000x\r\n&IpList.0=1.1.1.1\r\n&StartTime=2019-07-23 11:32:12\r\n&EndTime=2019-07-27 13:35:16\r\n&Limit=1\r\n&Offset=0\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n                \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n\t\t\"Total\": 1,\r\n               \"AttackSourceList\":[ {\r\n                          \"SrcIp\": \"1.1.1.1\",\r\n                          \"Province\":\"Zhejiang\",\r\n                          \"Nation\":\"China\",\r\n                          \"PacketSum\": 132124,\r\n                          \"PacketLen\":   12512551\r\n               }]\r\n\t}\r\n}",
+        "title": "Getting list of DDoS attack source"
+      }
+    ],
+    "DescribeDDoSCount": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSCount\r\n&Business=bgp\r\n&Id=bgp-00000010\r\n&Ip=3.3.3.3\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&MetricName=pkg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"bgpip\",\r\n        \"Data\": [\r\n        ],\r\n        \"EndTime\": \"2019-03-07 14:50:00\",\r\n        \"Id\": \"bgpip-000000y0\",\r\n        \"Ip\": \"3.3.3.3\",\r\n        \"RequestId\": \"69b1692b-4b6e-47c0-a7d6-0ff0da286874\",\r\n        \"StartTime\": \"2019-03-07 00:00:00\"\r\n    }\r\n}",
+        "title": "Getting DDoS attack counts"
+      }
+    ],
+    "DescribeDDoSDefendStatus": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSDefendStatus\r\n&Business=base\r\n&Ip=1.1.1.1\r\n&BizType=public\r\n&.DeviceType=cvm\r\n&InstanceId=ins-f2f9ssbo\r\n&IPRegion=gz\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n     \"DefendStatus\": 0,\r\n     \"UndefendExpire\": \"2019-11-14 15:00:00\",\r\n     \"ShowFlag\": 1\r\n  }\r\n}",
+        "title": "Getting DDoS protection status"
+      }
+    ],
+    "DescribeDDoSEvInfo": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSEvInfo\r\n&Business=bgp\r\n&Id=bgp-00000010\r\n&IpList.0=1.1.1.1\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"bgp\",\r\n        \"EndTime\": \"2019-03-06 09:48:00\",\r\n        \"IcmpKBSum\": 0,\r\n        \"IcmpPacketSum\": 0,\r\n        \"Id\": \"bgp-00000010\",\r\n        \"Ip\": \"1.1.1.1\",\r\n        \"Mbps\": 0,\r\n        \"OtherKBSum\": 0,\r\n        \"OtherPacketSum\": 0,\r\n        \"PcapUrl\": [\r\n            \"http://sign-pcap-1256159550.cos.ap-guangzhou.myqcloud.com/1.1.1.1_1551838173_482869894.cap?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDxjGYdU1UeaHk13gNjtoTt32nJbkgczPb%26q-sign-time%3D1551863991%3B1551864891%26q-key-time%3D1551863991%3B1551864891%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D801afa43c768b215557863c2d7768ffdac3513db%00\"\r\n        ],\r\n        \"Pps\": 0,\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"StartTime\": \"2019-03-06 09:32:00\",\r\n        \"TcpKBSum\": 0,\r\n        \"TcpPacketSum\": 0,\r\n        \"TotalTraffic\": 0,\r\n        \"UdpKBSum\": 0,\r\n        \"UdpPacketSum\": 0\r\n    }\r\n}",
+        "title": "Getting details of a specific DDoS attack"
+      }
+    ],
+    "DescribeDDoSEvList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSEvList\r\n&Business=bgp\r\n&Id=bgp-00000010\r\n&IpList.0=3.3.3.3\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&OverLoad=no\r\n&Limit=30\r\n&Offset=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"bgpip\",\r\n        \"Data\": [\r\n            {\r\n                \"Business\": \"bgp\",\r\n                \"Id\": \"bgp-00000010\",\r\n                \"Vip\": \"3.3.3.3\",\r\n                \"StartTime\": \"2018-08-27 15:05:10\",\r\n                \"EndTime\": \"2018-08-27 16:05:10\",\r\n                \"Mbps\": 231,\r\n                \"Pps\": 13232,\r\n                \"AttackType\": \"UDPFLOOD\",\r\n                \"AttackStatus\": 1,\r\n                \"BlockFlag\": 0,\r\n                \"OverLoad\": \"no\"\r\n            }\r\n        ],\r\n        \"EndTime\": \"2019-03-07 14:50:00\",\r\n        \"Id\": \"bgpip-000000y0\",\r\n        \"IpList\": [\r\n            \"3.3.3.3\"\r\n        ],\r\n        \"RequestId\": \"69b1692b-4b6e-47c0-a7d6-0ff0da286874\",\r\n        \"StartTime\": \"2019-03-07 00:00:00\",\r\n        \"Total\": 1\r\n    }\r\n}",
+        "title": "Getting DDoS attack event list"
+      }
+    ],
+    "DescribeDDoSIpLog": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSIpLog\r\n&Business=net\r\n&Id=net-00000010\r\n&IpList.0=1.1.1.1\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"net\",\r\n        \"Id\": \"net-00000010\",\r\n        \"Ip\": \"3.3.1.6\",\r\n        \"StartTime\": \"2019-03-06 09:32:00\",\r\n        \"EndTime\": \"2019-03-06 09:48:00\",\r\n        \"Data\":  [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"LogTime\",\r\n                        \"Value\": \"2019-03-12 10:35:15\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"LogMessage\",\r\n                        \"Value\": \"3.3.1.6 (Shanghai, China Unicom) is under DDoS attack with an attack traffic bandwidth of 10,123 Mbps\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"LogTime\",\r\n                        \"Value\": \"2019-03-12 10:35:05\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"LogMessage\",\r\n                        \"Value\": \"The DDoS attack to 3.3.1.6 (Shanghai, China Unicom) has stopped\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n   }\r\n}",
+        "title": "Getting DDoS IP attack log"
+      }
+    ],
+    "DescribeDDoSNetCount": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSNetCount\r\n&Business=net\r\n&Id=net-00000010\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&MetricName=pkg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"net\",\r\n        \"Data\": [\r\n        ],\r\n        \"EndTime\": \"2019-03-07 14:50:00\",\r\n        \"Id\": \"net-000000y0\",\r\n        \"RequestId\": \"69b1692b-4b6e-47c0-a7d6-0ff0da286874\",\r\n        \"StartTime\": \"2019-03-07 00:00:00\"\r\n    }\r\n}",
+        "title": "Getting DDoS attack proportion analysis for Anti-DDoS Ultimate resource"
+      }
+    ],
+    "DescribeDDoSNetEvInfo": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSNetEvInfo\r\n&Business=net\r\n&Id=net-00000010\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"net\",\r\n        \"EndTime\": \"2019-03-06 09:48:00\",\r\n        \"IcmpKBSum\": 0,\r\n        \"IcmpPacketSum\": 0,\r\n        \"Id\": \"net-00000010\",\r\n        \"Mbps\": 0,\r\n        \"OtherKBSum\": 0,\r\n        \"OtherPacketSum\": 0,\r\n        \"PcapUrl\": [\r\n            \"http://sign-pcap-1256159550.cos.ap-guangzhou.myqcloud.com/1.1.1.1_1551838173_482869894.cap?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDxjGYdU1UeaHk13gNjtoTt32nJbkgczPb%26q-sign-time%3D1551863991%3B1551864891%26q-key-time%3D1551863991%3B1551864891%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D801afa43c768b215557863c2d7768ffdac3513db%00\"\r\n        ],\r\n        \"Pps\": 0,\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"StartTime\": \"2019-03-06 09:32:00\",\r\n        \"TcpKBSum\": 0,\r\n        \"TcpPacketSum\": 0,\r\n        \"TotalTraffic\": 0,\r\n        \"UdpKBSum\": 0,\r\n        \"UdpPacketSum\": 0\r\n    }\r\n}",
+        "title": "Getting the DDoS attack details of Anti-DDoS Ultimate resource"
+      }
+    ],
+    "DescribeDDoSNetEvList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSNetEvList\r\n&Business=net\r\n&Id=net-00000010\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&Limit=30\r\n&Offset=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"net\",\r\n        \"Data\": [\r\n            {\r\n                \"Business\": \"bgp\",\r\n                \"Id\": \"bgp-00000010\",\r\n                \"StartTime\": \"2018-08-27 15:05:10\",\r\n                \"EndTime\": \"2018-08-27 16:05:10\",\r\n                \"Mbps\": 231,\r\n                \"Pps\": 13232,\r\n                \"AttackType\": \"UDPFLOOD\",\r\n                \"AttackStatus\": 1,\r\n                \"BlockFlag\": 2,\r\n                \"OverLoad\": \"\"\r\n            }\r\n        ],\r\n        \"EndTime\": \"2019-03-07 14:50:00\",\r\n        \"Id\": \"net-000000y0\",\r\n        \"RequestId\": \"69b1692b-4b6e-47c0-a7d6-0ff0da286874\",\r\n        \"StartTime\": \"2019-03-07 00:00:00\",\r\n        \"Total\": 1\r\n    }\r\n}",
+        "title": "Getting the DDoS attack list of Anti-DDoS Ultimate resource"
+      }
+    ],
+    "DescribeDDoSNetIpLog": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSNetIpLog\r\n&Business=net\r\n&Id=net-00000010\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"net\",\r\n        \"Id\": \"net-00000010\",\r\n        \"StartTime\": \"2019-03-06 09:32:00\",\r\n        \"EndTime\": \"2019-03-06 09:48:00\",\r\n        \"Data\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"LogTime\",\r\n                        \"Value\": \"2019-03-12 10:35:15\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"LogMessage\",\r\n                        \"Value\": \"3.3.1.6 (Shanghai, China Unicom) is under DDoS attack with an attack traffic bandwidth of 10,123 Mbps\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"LogTime\",\r\n                        \"Value\": \"2019-03-12 10:35:05\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"LogMessage\",\r\n                        \"Value\": \"The DDoS attack to 3.3.1.6 (Shanghai, China Unicom) has stopped\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n   }\r\n}",
+        "title": "Getting the DDoS IP attack logs of Anti-DDoS Ultimate resource"
+      }
+    ],
+    "DescribeDDoSNetTrend": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSNetTrend\r\n&Business=net\r\n&Id=net-00000010\r\n&MetricName=bps\r\n&StartTime=2018-08-27 15:05:10\r\n&EndTime=2018-08-27 16:05:10\r\n&Period=3600\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"net\",\r\n        \"Count\": 1,\r\n        \"Data\": [\r\n            1234\r\n        ],\r\n        \"EndTime\": \"2018-08-27 16:05:10\",\r\n        \"Id\": \"net-00000010\",\r\n        \"MetricName\": \"bps\",\r\n        \"Period\": 3600,\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"StartTime\": \"2018-08-27 15:05:10\"\r\n    }\r\n}",
+        "title": "Getting the DDoS attack metric data of Anti-DDoS Ultimate resource"
+      }
+    ],
+    "DescribeDDoSPolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSPolicy\r\n&Business=bgp\r\n&Id=bgpip-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"DDosPolicyList\": [\r\n            {\r\n                \"PolicyId\": \"policy-000003h6\",\r\n                \"PolicyName\": \"name2\",\r\n                \"DropOptions\": {\r\n                    \"DropTcp\": 1,\r\n                    \"DropUdp\": 1,\r\n                    \"DropIcmp\": 1,\r\n                    \"DropOther\": 1,\r\n                    \"DropAbroad\": 1,\r\n                    \"CheckSyncConn\": 1\r\n                },\r\n                \"PortLimits\": [\r\n                    {\r\n                        \"Protocol\": \"tcp\",\r\n                        \"DPortStart\": 0,\r\n                        \"DPortEnd\": 6000\r\n                    }\r\n                ],\r\n                \"IpBlackWhiteLists\": [\r\n                    {\r\n                        \"Ip\": \"1.1.1.13\",\r\n                        \"Type\": \"white\"\r\n                    },\r\n                    {\r\n                        \"Ip\": \"153.45.0.78\",\r\n                        \"Type\": \"black\"\r\n                    }\r\n                ],\r\n                \"PacketFilters\": [\r\n                    {\r\n                        \"Protocol\": \"tcp\",\r\n                        \"SportStart\": 0,\r\n                        \"SportEnd\": 65535,\r\n                        \"DportStart\": 0,\r\n                        \"DportEnd\": 65535,\r\n                        \"PktlenMin\": 520,\r\n                        \"PktlenMax\": 1024,\r\n                        \"MatchBegin\": \"no_match\",\r\n                        \"MatchType\": \"sunday\",\r\n                        \"Str\": \"\",\r\n                        \"Depth\": 0,\r\n                        \"Offset\": 0,\r\n                        \"IsNot\": 0,\r\n                        \"Action\": \"transmit\"\r\n                    }\r\n                ],\r\n                \"Resources\": [\r\n                    {\r\n                        \"Id\": \"bgpip-000000xe\",\r\n                        \"IpList\": [\r\n                            \"123.206.79.197\"\r\n                        ]\r\n                    }\r\n                ],\r\n                \"WaterPrint\": [\r\n                    {\r\n                        \"Offset\": 0,\r\n                        \"RemoveSwitch\": 1,\r\n                        \"OpenStatus\": 1,\r\n                        \"TcpPortList\": [\r\n                            \"1000-2000\"\r\n                        ],\r\n                        \"UdpPortList\": [\r\n                            \"1000-2000\"\r\n                        ]\r\n                    }\r\n                ],\r\n                \"WaterKey\": [\r\n                    {\r\n                        \"KeyId\": 1234,\r\n                        \"KeyContent\": \"abc6b301-a322-493a-8e36-83b295453497\",\r\n                        \"KeyVersion\": \"123\",\r\n                        \"OpenStatus\": 1\r\n                    }\r\n                ],\r\n                \"CreateTime\": \"2018-11-07 11:13:14\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Getting advanced DDoS policy"
+      }
+    ],
+    "DescribeDDoSTrend": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSTrend\n&Business=bgp\n&Id=bgp-00000010\n&Ip=3.3.3.3\n&MetricName=bps\n&StartTime=2018-08-2715:05:10\n&EndTime=2018-08-2716:05:10\n&Period=3600\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Business\": \"bgp\",\r\n        \"Count\": 1,\r\n        \"Data\": [\r\n            1234\r\n        ],\r\n        \"EndTime\": \"2018-08-27 16:05:10\",\r\n        \"Id\": \"bgp-00000010\",\r\n        \"Ip\": \"3.3.3.3\",\r\n        \"MetricName\": \"bps\",\r\n        \"Period\": 3600,\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"StartTime\": \"2018-08-27 15:05:10\"\r\n    }\r\n}",
+        "title": "Obtaining DDoS attack metric data"
+      }
+    ],
+    "DescribeDDoSUsedStatis": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeDDoSUsedStatis\r\n&Business=bgpip\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"Key\": \"Days\",\r\n                \"Value\": \"365\"\r\n            },\r\n            {\r\n                \"Key\": \"Attacks\",\r\n                \"Value\": \"30\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"8f7a9451-2372-4a88-a69d-9868b8991076\"\r\n    }\r\n}",
+        "title": "Getting DDoS protection usage statistics"
+      }
+    ],
+    "DescribeIPProductInfo": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeIPProductInfo\r\n&Business=bgp\r\n&IpList.0=1.1.1.1\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8466d9e1-70a9-4575-8e02-df15bd50bc49\",\r\n    \"Business\": \"bgpip\",\r\n    \"ServicePacks\": [\r\n      {\r\n        \"Record\": [\r\n          {\r\n            \"Key\": \"ProductName\",\r\n            \"Value\": \"test\"\r\n          },\r\n          {\r\n            \"Key\": \"ProductInstanceId\",\r\n            \"Value\": \"ins-ryv7esb2\"\r\n          },\r\n          {\r\n            \"Key\": \"ProductType\",\r\n            \"Value\": \"cvm\"\r\n          },\r\n          {\r\n            \"Key\": \"IP\",\r\n            \"Value\": \"1.1.1.1\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+        "title": "Getting Tencent Cloud asset information corresponding to IP of single IP instance or multi-IP instance"
+      }
+    ],
+    "DescribeInsurePacks": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeInsurePacks\r\n&IdList.0=insure-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"InsurePacks\": []\r\n    }\r\n}",
+        "title": "Getting guarantee package list"
+      }
+    ],
+    "DescribeIpBlockList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeIpBlockList\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"List\": [{\r\n\t\t\t\"Ip\": \"111.230.156.235\",\r\n\t\t\t\"Status\": \"UnBloking\",\r\n\t\t\t\"BlockTime\": \"2018-09-07 17:12:10\",\r\n\t\t\t\"UnBlockTime\": \"2018-09-07 17:36:41\"\r\n\t\t}],\r\n\t\t\"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n\t}\r\n}",
+        "title": "Getting blocked IP list"
+      }
+    ],
+    "DescribeIpUnBlockList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeIpUnBlockList\n&BeginTime=2018-09-0111:59:46\n&EndTime\"=\"2018-09-1011:59:46\n&Offset=0\n&Limit=10\n&<Common Request Parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"BeginTime\": \"2018-09-01 11:59:46\",\r\n\t\t\"EndTime\": \"2018-09-10 11:59:46\",\r\n\t\t\"List\": [{\r\n\t\t\t\"Ip\": \"111.230.156.235\",\r\n\t\t\t\"BlockTime\": \"2018-09-07 17:12:10\",\r\n\t\t\t\"UnBlockTime\": \"2018-09-07 17:36:41\",\r\n\t\t\t\"ActionType\": \"user\"\r\n\t\t}],\r\n\t\t\"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n\t\t\"Total\": 1\r\n\t}\r\n}",
+        "title": "Obtaining IP address unblocking records"
+      }
+    ],
+    "DescribeL4HealthConfig": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeL4HealthConfig\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleIdList.0=rule-00000002\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"HealthConfig\": [\r\n            {\r\n                \"Protocol\": \"TCP\",\r\n                \"VirtualPort\": 666,\r\n                \"Enable\": 1,\r\n                \"TimeOut\": 30,\r\n                \"Interval\": 300,\r\n                \"KickNum\": 2,\r\n                \"AliveNum\": 2,\r\n                \"KeepTime\": 60\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Exporting layer-4 health check configuration"
+      }
+    ],
+    "DescribeL4RulesErrHealth": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeL4RulesErrHealth\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Total\": 1,\r\n        \"ErrHealths\": [{\r\n            \"Key\": \"rule-00000001\",\r\n            \"Value\": \"1.1.1.1,2.2.2.2\"\r\n        }],\r\n        \"ExtErrHealths\": [\r\n             {\"Record\": [\r\n                 {\r\n                     \"Key\": \"RuleId\",\r\n                     \"Value\": \"rule-00000001\"\r\n                 },\r\n                 {\r\n                     \"Key\": \"Protocol\",\r\n                     \"Value\": \"TCP\"\r\n                 },\r\n                 {\r\n                     \"Key\": \"VirtualPort\",\r\n                     \"Value\": \"1234\"\r\n                 },\r\n                 {\r\n                     \"Key\": \"ErrMessage\",\r\n                     \"Value\": \"SourceIp:1.1.1.1|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6,SourceIp:2.2.2.2|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6\"\r\n                 }\r\n             ]}\r\n        ]\r\n    }\r\n}",
+        "title": "Getting the exception result of layer-4 forwarding rule health check"
+      }
+    ],
+    "DescribeL7HealthConfig": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeL7HealthConfig\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleIdList.0=rule-00000002\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"HealthConfig\": [\r\n            {\r\n                \"Protocol\": \"http\",\r\n                \"VirtualPort\": 80,\r\n                \"Enable\": 1,\r\n                \"Interval\": 300,\r\n                \"KickNum\": 2,\r\n                \"AliveNum\": 2,\r\n                \"Method\": \"HEAD\",\r\n                \"StatusCode\": 15,\r\n                \"Url\": \"/index.php\",\r\n                \"Status\": 1\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Exporting layer-7 health check configuration"
+      }
+    ],
+    "DescribePackIndex": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribePackIndex\r\n&Business=bgp\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"Key\": \"TotalPackCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"AttackPackCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"BlockPackCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"ExpiredPackCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"ExpireingPackCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"IsolatePackCount\",\r\n                \"Value\": \"0\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"8f7a9451-2372-4a88-a69d-9868b8991076\"\r\n    }\r\n}",
+        "title": "Getting product overview"
+      }
+    ],
+    "DescribePcap": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribePcap\r\n&Business=shield\r\n&Id=bgp-00000001\r\n&StartTime=2018-08-28 07:15:00\r\n&EndTime=2018-08-28 10:05:00\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"PcapUrlList\": [\"http://test.com/123456789/xx.pcap\"],\r\n\t\t\"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n\t}\r\n}",
+        "title": "Downloading the PCAP packet of attack event"
+      }
+    ],
+    "DescribePolicyCase": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribePolicyCase\r\n&Business=bgpip\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"CaseList\": []\r\n    }\r\n}",
+        "title": "DescribePolicyCase"
+      }
+    ],
+    "DescribeResIpList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeResIpList\r\n&Business=bgpip\r\n&Id.0=bgpip-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Resource\": [\r\n            {\r\n                \"Id\": \"bgpip-000000xe\",\r\n                \"IpList\": [\r\n                    \"1.1.1.1\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Getting the IP list of resource"
+      }
+    ],
+    "DescribeResourceList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeResourceList\r\n&Business=bgpip\r\n&RegionList.0=gz\r\n&Line.0=1\r\n&IdList.0=bgpip-000000001\r\n&IpList.0=3.3.3.3\r\n&Name=\"\"\r\n&Status.0=0\r\n&Status.1=1\r\n&Status.2=2\r\n&Expire=0\r\n&OderBy0.Field=bandwidth\r\n&OderBy0.Order=DESC\r\n&Limit=30\r\n&Offset=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"8466d9e1-70a9-4575-8e02-df15bd50bc49\",\r\n        \"Business\": \"bgpip\",\r\n        \"ServicePacks\": [\r\n            {\r\n                \"Record\": [\r\n                    {\r\n                        \"Key\": \"Id\",\r\n                        \"Value\": \"net-0000000v\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"DdosMax\",\r\n                        \"Value\": \"20000\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"ElasticLimit\",\r\n                        \"Value\": \"0\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"AutoRenewFlag\",\r\n                        \"Value\": \"0\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"DDoSLevel\",\r\n                        \"Value\": \"middle\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"RuleLimit\",\r\n                        \"Value\": \"60\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"DdosThreshold\",\r\n                        \"Value\": \"0\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CurrentRegion\",\r\n                        \"Value\": \"bj\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"DdosOverload\",\r\n                        \"Value\": \"0\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CCMax\",\r\n                        \"Value\": \"40000\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CName\",\r\n                        \"Value\": \"17fa9bb3.dayugslb.com\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CreateTime\",\r\n                        \"Value\": \"2018-09-26 21:39:55\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"IsolateTime\",\r\n                        \"Value\": \"0000-00-00 00:00:00\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Name\",\r\n                        \"Value\": \"Quantity\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"OriginRegion\",\r\n                        \"Value\": \"bj\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CurrentGroup\",\r\n                        \"Value\": \"100\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"ReturnHour\",\r\n                        \"Value\": \"2\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Expire\",\r\n                        \"Value\": \"2018-10-26 21:39:55\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"ServiceBandwidth\",\r\n                        \"Value\": \"100\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CCEnabled\",\r\n                        \"Value\": \"0\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"AutoReturn\",\r\n                        \"Value\": \"1\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"CCThreshold\",\r\n                        \"Value\": \"0\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"Status\",\r\n                        \"Value\": \"idle\"\r\n                    },\r\n                    {\r\n                        \"Key\": \"TransRules\",\r\n                        \"Value\": \"0\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"Total\": 1\r\n    }\r\n}",
+        "title": "Getting resource list."
+      }
+    ],
+    "DescribeRuleSets": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeRuleSets\r\n&Business=bgpip\r\n&IdList.0=bgpip-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"RequestId\": \"677f6c12-f53e-47d4-a4e6-66b932ef950d\",\r\n    \"L4RuleSets\": [\r\n        {\r\n            \"Record\": [\r\n                {\r\n                    \"Key\": \"Id\",\r\n                    \"Value\": \"net-0000000a\"\r\n                },\r\n                {\r\n                    \"Key\": \"RuleIdList\",\r\n                    \"Value\": \"rule-00000003,rule-00000004,rule-00000005\"\r\n                },\r\n                {\r\n                    \"Key\": \"RuleNameList\",\r\n                    \"Value\": \"baidu.com,baidu1.com,baidu.com\"\r\n                },\r\n                {\r\n                    \"Key\": \"RuleNum\",\r\n                    \"Value\": \"3\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"L7RuleSets\": [\r\n        {\r\n            \"Record\": [\r\n                {\r\n                    \"Key\": \"Id\",\r\n                    \"Value\": \"net-0000000a\"\r\n                },\r\n                {\r\n                    \"Key\": \"RuleIdList\",\r\n                    \"Value\": \"rule-00000013,rule-00000014,rule-00000015\"\r\n                },\r\n                {\r\n                    \"Key\": \"RuleNameList\",\r\n                    \"Value\": \"baidu.com,baidu1.com,baidu.com\"\r\n                },\r\n                {\r\n                    \"Key\": \"RuleNum\",\r\n                    \"Value\": \"3\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+        "title": "Getting the number of rules of resource"
+      }
+    ],
+    "DescribeSchedulingDomainList": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeSchedulingDomainList\r\n&Limit=30\r\n&Offset=0\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"8466d9e1-70a9-4575-8e02-df15bd50bc49\",\r\n        \"Total\": 1,\r\n        \"DomainList\": [\r\n            {\r\n                  \"Domain\":\"1.test.com\",\r\n                  \"BGPIpList\":[],\r\n                  \"CTCCIpList\":[],\r\n                  \"CUCCIpList\":[],\r\n                  \"CMCCIpList\":[],\r\n                  \"OverseaIpList\":[],\r\n                  \"Method\":\"priority\",\r\n                  \"CreateTime\":\"2019-08-21 12:32:12\",\r\n                  \"Status\":1,\r\n                  \"ModifyTime\":\"2019-08-21 12:32:45\"\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the scheduling domain name list"
+      }
+    ],
+    "DescribeSecIndex": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeSecIndex\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"BeginDate\": \"2018-10-01 00:00:00\",\r\n        \"EndDate\": \"2018-10-31 23:59:59\",\r\n        \"Data\": [\r\n            {\r\n                \"Key\": \"AttackIpCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"AttackCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"BlockCount\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"MaxMbps\",\r\n                \"Value\": \"0\"\r\n            },\r\n            {\r\n                \"Key\": \"IpNum\",\r\n                \"Value\": \"0\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"f264b10e-da87-456e-8398-3389b69e39fb\"\r\n    }\r\n}",
+        "title": "Getting security statistics"
+      }
+    ],
+    "DescribeSourceIpSegment": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeSourceIpSegment\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n         \"Data\": \"1.1.1.0/24;2.2.2.0/24\"\r\n    }\r\n}",
+        "title": "Getting intermediate IP range"
+      }
+    ],
+    "DescribeTransmitStatis": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeTransmitStatis\r\n&Business=bgpip\r\n&Id=bgpip-000000x7\r\n&Period=300\r\n&StartTime=2018-08-28 07:15:00\r\n&EndTime=2018-08-28 10:05:00\r\n&MetricName=traffic\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"InDataList\": [236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236],\r\n\t\t\"OutDataList\": [236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236, 236],\r\n\t\t\"MetricName\": \"traffic\",\r\n\t\t\"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n\t}\r\n}",
+        "title": "Getting business forwarding statistics"
+      }
+    ],
+    "DescribeUnBlockStatis": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribeUnBlockStatis\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"BeginTime\": \"2018-09-10 00:00:00\",\r\n        \"EndTime\": \"2018-09-11 00:00:00\",\r\n        \"RequestId\": \"20fe3e59-03ab-4418-86d6-242851af62e4\",\r\n        \"Total\": 3,\r\n        \"Used\": 0\r\n    }\r\n}",
+        "title": "Getting the number of blackhole unblockings"
+      }
+    ],
+    "DescribleL4Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribleL4Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleIdList.0=rule-00000002\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Total\": 1,\r\n        \"Rules\": [\r\n            {\r\n                \"RuleId\": \"rule-00000002\",\r\n                \"RuleName\": \"test\",\r\n                \"Protocol\": \"TCP\",\r\n                \"VirtualPort\": 2888,\r\n                \"SourcePort\": 2888,\r\n                \"SourceType\": 2,\r\n                \"LbType\": 1,\r\n                \"KeepTime\": 300,\r\n                \"SourceList\": [\r\n                    {\r\n                        \"Source\": \"2.1.1.1\",\r\n                        \"Weight\": 50\r\n                    },\r\n                    {\r\n                        \"Source\": \"2.1.1.2\",\r\n                        \"Weight\": 50\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n\"Healths\": [\r\n  {\r\n   \"RuleId\": \"rule-00000001\",\r\n   \"Enable\": 1,\r\n   \"TimeOut\": 30,\r\n   \"Interval\": 300,\r\n   \"KickNum\": 2,\r\n   \"AliveNum\": 2\r\n  }\r\n ]\r\n}",
+        "title": "Getting layer-4 forwarding rule"
+      }
+    ],
+    "DescribleL7Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribleL7Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleIdList.0=rule-00000002\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Total\": 1,\r\n        \"Rules\": [\r\n            {\r\n                \"RuleId\": \"rule-00000002\",\r\n                \"RuleName\": \"test\",\r\n                \"Protocol\": \"http\",\r\n                \"VirtualPort\": 80,\r\n                \"SourcePort\": 80,\r\n                \"SourceType\": 2,\r\n                \"LbType\": 1,\r\n                \"KeepTime\": 300,\r\n                \"SourceList\": [\r\n                    {\r\n                        \"Source\": \"2.1.1.1\",\r\n                        \"Weight\": 50\r\n                    },\r\n                    {\r\n                        \"Source\": \"2.1.1.2\",\r\n                        \"Weight\": 50\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n\"Healths\": [\r\n  {\r\n   \"RuleId\": \"rule-00000001\",\r\n   \"Enable\": 1,\r\n   \"Interval\": 300,\r\n   \"KickNum\": 2,\r\n   \"AliveNum\": 2,\r\n   \"Method\": \"HEAD\",\r\n   \"StatusCode\": 15,\r\n   \"Url\": \"/index.php\",\r\n   \"Status\": 1\r\n  }\r\n ]\r\n}",
+        "title": "Getting layer-7 forwarding rule"
+      }
+    ],
+    "DescribleRegionCount": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=DescribleRegionCount\r\n&Business=bgpip\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"RegionList\": [\r\n                {\r\n                    \"Count\": 5,\r\n                    \"Region\": \"gz\",\r\n                    \"RegionV3\": \"ap-guangzhou\"\r\n                },\r\n                {\r\n                    \"Count\": 4,\r\n                    \"Region\": \"sh\",\r\n                    \"RegionV3\": \"ap-shanghai\"\r\n                }\r\n            ]\r\n  }\r\n}",
+        "title": "Getting the number of resource instances in region"
+      }
+    ],
+    "ModifyCCAlarmThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCAlarmThreshold\r\n&Business=bgpip\r\n&IpList.1=212.64.63.57\r\n&IpList.2=129.28.240.128\r\n&RsId=net-0000002h\r\n&AlarmThreshold=1000\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Setting CC alarm threshold"
+      }
+    ],
+    "ModifyCCFrequencyRules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCFrequencyRules\r\n&Business=bgpip\r\n&CCFrequencyRuleId=ccRule-000003h7\r\n&Uri=/\r\n&Mode=include\r\n&Period=60\r\n&ReqNumber=30\r\n&Act=alg\r\n&ExeDuration=120\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"Success\": {\r\n      \"Code\": \"Success\",\r\n      \"Message\": \"Success\"\r\n    }\r\n  }\r\n}",
+        "title": "Modifying access frequency control rule for CC protection"
+      }
+    ],
+    "ModifyCCFrequencyRulesStatus": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCFrequencyRulesStatus\r\n&Business=bgpip\r\n&Id=bgpip-00000001\r\n&RuleId=rule-000000xe\r\n&Method=off\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"Success\": {\r\n      \"Code\": \"Success\",\r\n      \"Message\": \"Success\"\r\n    }\r\n  }\r\n}",
+        "title": "Enabling or disabling access frequency control rule for CC protection"
+      }
+    ],
+    "ModifyCCHostProtection": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCHostProtection\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleId=rule-00000002\r\n&Method=open\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Enabling or disabling CC domain name protection"
+      }
+    ],
+    "ModifyCCIpAllowDeny": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCIpAllowDeny\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=add\r\n&Type=white\r\n&IpList.0=1.1.1.1\r\n&IpList.1=1.1.1.2\r\n&Protocol=http\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding IP to HTTP CC protection blacklist/whitelist"
+      },
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCIpAllowDeny\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=add\r\n&Type=white\r\n&IpList.0=1.1.1.1\r\n&IpList.1=1.1.1.2\r\n&Protocol=https\r\n&Domain=test.com\r\n&RuleId=rule-0000001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding IP to HTTPS CC protection blacklist/whitelist"
+      },
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCIpAllowDeny\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=delete\r\n&Type=white\r\n&IpList.0=1.1.1.1\r\n&IpList.1=1.1.1.2\r\n&Protocol=https\r\n&Domain=test.com\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Removing IP from HTTPS CC protection blacklist/whitelist"
+      }
+    ],
+    "ModifyCCLevel": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCLevel\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Level=default\r\n&Protocol=https\r\n&RuleId=rule-0000000x\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying CC protection level"
+      }
+    ],
+    "ModifyCCPolicySwitch": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCPolicySwitch\r\n&Business=bgp\r\n&Id=bgp-000000xe\r\n&SetId=ccPolicy-000000sd\r\n&Switch=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Enabling or disabling custom CC policy"
+      }
+    ],
+    "ModifyCCSelfDefinePolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCSelfDefinePolicy\r\n&Business=bgp\r\n&Id=bgp-000000xe\r\n&SetId=ccPolicy-000000sd\r\n&Policy.Name=test\r\n&Policy.Smode=speedlimit\r\n&Policy.Frequency=1002\r\n&Policy.IpList.0=1.1.1.1\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"Success\": {\r\n      \"Code\": \"Success\",\r\n      \"Message\": \"Success\"\r\n    }\r\n  }\r\n}",
+        "title": "Modifying custom CC policy"
+      }
+    ],
+    "ModifyCCThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCThreshold\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Threshold=1000\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying CC protection threshold"
+      }
+    ],
+    "ModifyCCUrlAllow": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCUrlAllow\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=add\r\n&Type=white\r\n&UrlList.0=http://www.123.com/index.html\r\n&UrlList.1=www.456.com/buy.html\r\n&Protocol=http\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding URL to HTTP CC protection blacklist/whitelist"
+      },
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCUrlAllow\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=add\r\n&Type=white\r\n&UrlList.0=http://www.123.com/index.html\r\n&UrlList.1=www.456.com/buy.html\r\n&Protocol=https\r\n&Domain=test.com\r\n&RuleId=rule-0000001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Adding URL to HTTPS CC protection blacklist/whitelist"
+      },
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyCCUrlAllow\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=delete\r\n&Type=white\r\n&UrlList.0=http://www.123.com/index.html\r\n&UrlList.1=www.456.com/buy.html\r\n&Protocol=https\r\n&Domain=test.com\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Removing URL from HTTPS CC protection blacklist/whitelist"
+      }
+    ],
+    "ModifyDDoSAIStatus": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSAIStatus\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=set\r\n&DDoSAI=on\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DDoSAI\": \"on\",\r\n    \"Id\": \"bgpip-000000xe\",\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "title": "Modifying DDoS AI protection status"
+      }
+    ],
+    "ModifyDDoSAlarmThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSAlarmThreshold\r\n&Business=bgpip\r\n&IpList.1=212.64.63.57\r\n&IpList.2=129.28.240.128\r\n&RsId=net-0000002h\r\n&AlarmThreshold=1000\r\n&AlarmType=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Setting DDoS alarm threshold"
+      }
+    ],
+    "ModifyDDoSDefendStatus": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSDefendStatus\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Status=0\r\n&Hour=2\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying DDoS protection status"
+      }
+    ],
+    "ModifyDDoSLevel": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSLevel\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Method=set\r\n&Level=middle\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"DDoSLevel\":  \"middle\",\r\n         \"Id\":  \"bgpip-000000xe\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Modifying DDoS protection level"
+      }
+    ],
+    "ModifyDDoSPolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSPolicy\r\n&Business=bgpip\r\n&PolicyId=policy-000000xe\r\n&DropOptions.0.DropTcp=0\r\n&DropOptions.0.DropUdp=0\r\n&DropOptions.0.DropIcmp=1\r\n&DropOptions.0.DropOther=1\r\n&DropOptions.0.DropAbroad=1\r\n&DropOptions.0.CheckSyncConn=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying advanced DDoS policy"
+      }
+    ],
+    "ModifyDDoSPolicyCase": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSPolicyCase\r\n&Business=bgpip\r\n&SceneId=scene-00000003\r\n&PlatformTypes.0=PC\r\n&PlatformTypes.1=TV\r\n&AppType=WEB\r\n&AppProtocols.0=tcp\r\n&TcpPortList=80,443,600-700,888\r\n&UdpPortList=80,443,600-700,888\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying policy scenario"
+      }
+    ],
+    "ModifyDDoSPolicyName": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSPolicyName\r\n&Business=bgpip\r\n&PolicyId=policy-000000xe\r\n&Name=test\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Renaming advanced DDoS policy"
+      }
+    ],
+    "ModifyDDoSSwitch": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSSwitch\r\n&Business=basic\r\n&Method=set\r\n&Status=0\r\n&Ip=1.1.1.1\r\n&BizType=public\r\n&DeviceType=cvm\r\n&InstanceId=cvm-abdcasddd1\r\n&IPRegion=gz\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Status\": 0\r\n    }\r\n}",
+        "title": "Enabling or disabling DDoS protection"
+      }
+    ],
+    "ModifyDDoSThreshold": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSThreshold\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Threshold=1000\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying DDoS cleansing threshold."
+      }
+    ],
+    "ModifyDDoSWaterKey": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyDDoSWaterKey\r\n&Business=bgpip\r\n&PolicyId=policy-000000xe\r\n&Method=add\r\n&KeyId=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n         \"KeyList\": [\r\n                    {\r\n                        \"KeyId\": 1234,\r\n                        \"KeyContent\": \"abc6b301-a322-493a-8e36-83b295453497\",\r\n                        \"KeyVersion\": \"123\",\r\n                        \"OpenStatus\": 1,\r\n                        \"CreateTime\": \"2019-11-21 11:00:00\"\r\n                    }\r\n        ]\r\n    }\r\n}",
+        "title": "Modifying watermark key"
+      }
+    ],
+    "ModifyElasticLimit": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyElasticLimit\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Limit=1000\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying elastic protection threshold"
+      }
+    ],
+    "ModifyL4Health": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyL4Health\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Healths.0.RuleId=rule-000000xe\r\n&Healths.0.Enable=1\r\n&Healths.0.TimeOut=60\r\n&Healths.0.Interval=300\r\n&Healths.0.KickNum=3\r\n&Healths.0.AliveNum=3\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying the health check parameters of layer-4 forwarding rule"
+      }
+    ],
+    "ModifyL4KeepTime": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyL4KeepTime\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&RuleId=rule-000000xe\r\n&KeepEnable=1\r\n&KeepTime=300\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying the session persistence of layer-4 forwarding rule"
+      }
+    ],
+    "ModifyL4Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyL4Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Rule.RuleId=rule-000000xe\r\n&Rule.RuleName=test\r\n&Rule.Protocol=TCP\r\n&Rule.VirtualPort=18888\r\n&Rule.SourcePort=18888\r\n&Rule.SourceType=2\r\n&Rule.LbType=1\r\n&Rule.KeepTime=300\r\n&Rule.KeepEnable=0\r\n&Rule.SourceList.0.Source=1.1.1.10\r\n&Rule.SourceList.0.Weight=100\r\n&Rule.SourceList.1.Source=1.1.1.20\r\n&Rule.SourceList.1.Weight=100\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying Layer-4 forwarding rules"
+      }
+    ],
+    "ModifyL7Rules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyL7Rules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Rule.RuleName=test\r\n&Rule.Protocol=http\r\n&Rule.Domain=www.abc.com\r\n&Rule.SourceType=2\r\n&Rule.LbType=1\r\n&Rule.KeepTime=300\r\n&Rule.SourceList.0.Source=1.1.1.10\r\n&Rule.SourceList.0.Weight=100\r\n&Rule.SourceList.1.Source=1.1.1.20\r\n&Rule.SourceList.1.Weight=100\r\n&Rule.CertType=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying the layer-7 forwarding rules"
+      }
+    ],
+    "ModifyNetReturnSwitch": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyNetReturnSwitch\r\n&Business=net\r\n&Id=net-0000000e\r\n&Status=1\r\n&Hour=3\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting automatic switch to real server"
+      }
+    ],
+    "ModifyNewDomainRules": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyNewDomainRules\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&Rule.RuleName=test\r\n&Rule.Protocol=http\r\n&Rule.Domain=www.abc.com\r\n&Rule.SourceType=2\r\n&Rule.LbType=1\r\n&Rule.KeepTime=300\r\n&Rule.SourceList.0.Source=1.1.1.10\r\n&Rule.SourceList.0.Weight=100\r\n&Rule.SourceList.1.Source=1.1.1.20\r\n&Rule.SourceList.1.Weight=100\r\n&Rule.CertType=0\r\n&Rule.VirtualPort=8443\r\n&Rule.KeepEnable=0\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying Layer-7 forwarding rules"
+      }
+    ],
+    "ModifyNewL4Rule": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyNewL4Rule\n&Business=bgpip\n&Id=bgpip-000000xe\n&Rule.RuleId=rule-000000xe\n&Rule.RuleName=test\n&Rule.Protocol=TCP\n&Rule.VirtualPort=18888\n&Rule.SourcePort=18888\n&Rule.SourceType=2\n&Rule.LbType=1\n&Rule.KeepTime=300\n&Rule.KeepEnable=0\n&Rule.SourceList.0.Source=1.1.1.10\n&Rule.SourceList.0.Weight=100\n&Rule.SourceList.1.Source=1.1.1.20\n&Rule.SourceList.1.Weight=100\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Modifying Layer-4 forwarding rules"
+      }
+    ],
+    "ModifyResBindDDoSPolicy": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyResBindDDoSPolicy\r\n&Business=bgpip\r\n&Id=bgpip-000000xe\r\n&PolicyId=policy-000000xe\r\n&Method=bind\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Success\": {\r\n            \"Code\": \"Success\",\r\n            \"Message\": \"Success\"\r\n        }\r\n    }\r\n}",
+        "title": "Binding advanced DDoS policy to resource instance"
+      }
+    ],
+    "ModifyResourceRenewFlag": [
+      {
+        "document": "",
+        "input": "https://dayu.tencentcloudapi.com/?Action=ModifyResourceRenewFlag\r\n&Business=bgpip\r\n&Id=bgpip-000000x7\r\n&RenewFlag=1\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"Success\": {\r\n                      \"Code\":    \"Success\",\r\n                      \"Message\":    \"Success\"\r\n                },\r\n\t\t\"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n\t}\r\n}",
+        "title": "Modifying the auto-renewal flag of resource"
+      }
+    ]
+  },
+  "version": "1.0"
+}

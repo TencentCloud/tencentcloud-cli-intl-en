@@ -1,0 +1,63 @@
+{
+  "actions": {
+    "CreateApp": [
+      {
+        "document": "This example shows you how to use project 10000, enable voice chat with high sound quality, disable voice messaging and speech-to-text, and enable phrase filtering.",
+        "input": "https://gme.tencentcloudapi.com/?Action=CreateApplication\r\n&AppName=simple_gme_application\r\n&ProjectId=10000,\r\n&RealtimeSpeechConf.Status=open\r\n&RealtimeSpecchConf.Quality=high\r\n&VoiceMessageConf.Status=close\r\n&VoiceFilterConf.Status=open\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Data\":{\r\n            \"AppName\":\"simple_gme_application\",\r\n            \"CreateTime\":1568945078,\r\n            \"ProjectId\":10000,\r\n            \"BizId\":140000002,\r\n            \"SecretKey\":\"abcdefghijklmnop\",\r\n            \"RealtimeSpeechConf\":{\r\n                \"Status\":\"open\",\r\n                \"Quality\":\"high\"\r\n            },\r\n            \"VoiceMessageConf\":{\r\n                \"Status\":\"open\",\r\n                \"Language\":\"cnen\"\r\n            },\r\n            \"VoiceFilterConf\":{\r\n                \"Status\":\"open\"\r\n            }\r\n        },\r\n        \"RequestId\":\"d61be8ca-f010-11e9-af81-fa163ee00eb7\"\r\n    }\r\n}",
+        "title": "Creating a GME application by using custom configuration"
+      },
+      {
+        "document": "This example shows you how to create a GME application in the easiest way.",
+        "input": "https://gme.tencentcloudapi.com/?Action=CreateApplication\r\n&AppName=simple_gme_application\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Data\":{\r\n            \"AppName\":\"simple_gme_application\",\r\n            \"CreateTime\":1568945078,\r\n            \"ProjectId\":0,\r\n            \"BizId\":140000001,\r\n            \"SecretKey\":\"abcdefghijklmnop\",\r\n            \"RealtimeSpeechConf\":{\r\n                \"Status\": \"open\",\r\n                \"quality\":\"ordinary\"\r\n            },\r\n            \"VoiceMessageConf\":{\r\n                \"Status\": \"close\",\r\n                \"language\":\"cnen\"\r\n            },\r\n            \"VoiceFilterConf\":{\r\n                \"Status\": \"close\"\r\n            }\r\n        },\r\n        \"RequestId\":\"e2900289-f21e-43a8-a3bf-0b439cdbbbb8\"\r\n    }\r\n}",
+        "title": "Creating a GME application by using default configuration"
+      }
+    ],
+    "DescribeAppStatistics": [
+      {
+        "document": "",
+        "input": "https://gme.tencentcloudapi.com/?Action=DescribeAppStatistics\r\n&BizId=140000001\r\n&StartDate=2019-08-01\r\n&EndDate=2019-08-03\r\n&Services.0=RealTimeSpeech\r\n&Services.1=VoiceMessage\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Data\":{\r\n            \"AppStatistics\":[\r\n                {\r\n                    \"Date\":\"2019-08-01\",\r\n                    \"RealtimeSpeechStatisticsItem\":{\r\n                        \"MainLandDau\":10000,\r\n                        \"MainLandPcu\":5000,\r\n                        \"MainLandDuration\":1000000,\r\n                        \"OverseaDau\":5000,\r\n                        \"OverseaPcu\":2000,\r\n                        \"OverseaDuration\":500000\r\n                    },\r\n                    \"VoiceMessageStatisticsItem\":{\r\n                        \"Dau\":68000\r\n                    },\r\n                    \"VoiceFilterStatisticsItem\": null\r\n                },\r\n {\r\n                    \"Date\":\"2019-08-02\",\r\n                    \"RealtimeSpeechStatisticsItem\":{\r\n                        \"MainLandDau\":10000,\r\n                        \"MainLandPcu\":5000,\r\n                        \"MainLandDuration\":1000000,\r\n                        \"OverseaDau\":5000,\r\n                        \"OverseaPcu\":2000,\r\n                        \"OverseaDuration\":500000\r\n                    },\r\n                    \"VoiceMessageStatisticsItem\":{\r\n                        \"Dau\":68000\r\n                    },\r\n                    \"VoiceFilterStatisticsItem\": null\r\n                },\r\n {\r\n                    \"Date\":\"2019-08-03\",\r\n                    \"RealtimeSpeechStatisticsItem\":{\r\n                        \"MainLandDau\":10000,\r\n                        \"MainLandPcu\":5000,\r\n                        \"MainLandDuration\":1000000,\r\n                        \"OverseaDau\":5000,\r\n                        \"OverseaPcu\":2000,\r\n                        \"OverseaDuration\":500000\r\n                    },\r\n                    \"VoiceMessageStatisticsItem\":{\r\n                        \"Dau\":68000\r\n                    },\r\n                    \"VoiceFilterStatisticsItem\": null\r\n                }\r\n            ]\r\n        },\r\n        \"RequestId\":\"9b993045-9fa1-47f4-9d25-79160f305be8\"\r\n    }\r\n}",
+        "title": "Querying the usage statistics of voice chat and voice messaging and speech-to-text between August 1 and August 3, 2019"
+      }
+    ],
+    "DescribeScanResultList": [
+      {
+        "document": "",
+        "input": "https://gme.tencentcloudapi.com/?Action=DescribeScanResultList\r\n&BizId=1400000000\r\n&TaskIdList.0=xxx\r\n&Limit=20\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Data\": [{\r\n\t\t\"Code\": 0,\r\n\t\t\"DataId\": \"1400000000_test_data_id\",\r\n\t\t\"ScanFinishTime\": 1566720906,\r\n\t\t\"HitFlag\": true,\r\n\t\t\"Live\": false,\r\n\t\t\"Msg\": \"\",\r\n\t\t\"ScanPiece\": [{\r\n\t\t\t\"DumpUrl\": \"\",\r\n\t\t\t\"HitFlag\": true,\r\n\t\t\t\"MainType\": \"abuse\",\r\n\t\t\t\"Info\":\"\",\r\n                        \"Offset\": 0,\r\n                        \"Duration\": 3400,\r\n                        \"PieceStartTime\":1574684231,\r\n\t\t\t\"ScanDetail\": [{\r\n\t\t\t\t\"EndTime\": 1110,\r\n\t\t\t\t\"KeyWord\": \"xxx\",\r\n\t\t\t\t\"Label\": \"abuse\",\r\n\t\t\t\t\"Rate\": \"90.00\",\r\n\t\t\t\t\"StartTime\": 1110\r\n\t\t\t}, {\r\n\t\t\t\t\"EndTime\": 1380,\r\n\t\t\t\t\"KeyWord\": \"xxx\",\r\n\t\t\t\t\"Label\": \"abuse\",\r\n\t\t\t\t\"Rate\": \"90.00\",\r\n\t\t\t\t\"StartTime\": 930\r\n\t\t\t}, {\r\n\t\t\t\t\"EndTime\": 1560,\r\n\t\t\t\t\"KeyWord\": \"xxx\",\r\n\t\t\t\t\"Label\": \"abuse\",\r\n\t\t\t\t\"Rate\": \"90.00\",\r\n\t\t\t\t\"StartTime\": 930\r\n\t\t\t}, {\r\n\t\t\t\t\"EndTime\": 2820,\r\n\t\t\t\t\"KeyWord\": \"xxx\",\r\n\t\t\t\t\"Label\": \"abuse\",\r\n\t\t\t\t\"Rate\": \"90.00\",\r\n\t\t\t\t\"StartTime\": 2490\r\n\t\t\t}]\r\n\t\t}],\r\n\t\t\"ScanStartTime\": 1566720905,\r\n\t\t\"Scenes\":[ \r\n                    \"default\"\r\n                ],\r\n\t\t\"Status\": \"Success\",\r\n\t\t\"TaskId\": \"xxx\",\r\n\t\t\"Url\": \"https://xxx/xxx.m4a\"\r\n\t}],\r\n\t\"RequestId\": \"xxx\"\r\n}",
+        "title": "Querying speech detection result"
+      }
+    ],
+    "ModifyAppStatus": [
+      {
+        "document": "",
+        "input": "https://gme.tencentcloudapi.com/?Action=ModifyAppStatus\r\n&BizId=140000001\r\n&Status=close\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Data\":{\r\n            \"BizId\":140000001,\r\n            \"Status\":\"close\"\r\n        },\r\n        \"RequestId\":\"e2900289-f21e-43a8-a3bf-0b439cdbbbb8\"\r\n    }\r\n}",
+        "title": "Disabling GME application 140000001"
+      }
+    ],
+    "ScanVoice": [
+      {
+        "document": "This example shows you how to submit a speech detection task for an audio stream where the callback address is empty and the `DescribeScanResultList` API needs to be called to poll the detection result.",
+        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\r\n&BizId=1400000000\r\n&Scenes.0=default\r\n&Live=true\r\n&Callback=\r\n&Tasks.0.DataId=1400000000_test_data_id\r\n&Tasks.0.Url=https://xxxx\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"DataId\": \"1400000000_test_data_id\",\r\n                \"TaskId\": \"xxx-xxx-xxx\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"xxx-xxx-xxx\"\r\n    }\r\n}",
+        "title": "Submitting audio stream detection task"
+      },
+      {
+        "document": "This example shows you how to submit a speech detection task for an audio file where the callback address (`Callback`) is set to get the detection result.",
+        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\r\n&BizId=1400000000\r\n&Scenes.0=default\r\n&Live=false\r\n&Callback=https://0.0.0.0/user_callback\r\n&Tasks.0.DataId=1400000000_test_data_id\r\n&Tasks.0.Url=http://xxxx/audio_store/xxxx.mp3\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"DataId\": \"1400000000_test_data_id\",\r\n                \"TaskId\": \"xxx-xxx-xxx\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"xxx-xxx-xxx\"\r\n    }\r\n}",
+        "title": "Submitting audio file detection task"
+      },
+      {
+        "document": "This example shows you how to submit a speech detection task for an audio file where the callback address is empty and the `DescribeScanResultList` API needs to be called to poll the detection result.",
+        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\r\n&BizId=1400000000\r\n&Scenes.0=default\r\n&Live=false\r\n&Callback=\r\n&Tasks.0.DataId=1400000000_test_data_id\r\n&Tasks.0.Url=http://xxx/audio_store/xxxx.mp3\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Data\": [\r\n            {\r\n                \"DataId\": \"1400000000_test_data_id\",\r\n                \"TaskId\": \"xxx-xxx-xxx\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"xxx-xxx-xxx\"\r\n    }\r\n}",
+        "title": "Submitting audio file detection task"
+      }
+    ]
+  },
+  "version": "1.0"
+}

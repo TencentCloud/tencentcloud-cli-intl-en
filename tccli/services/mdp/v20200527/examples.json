@@ -1,0 +1,77 @@
+{
+  "actions": {
+    "CreateMediaPackageChannel": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=CreateMediaPackageChannel\r\n&Name=xxx\r\n&Protocol=HLS\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"Id\":\"AEABF123954\",\r\n            \"Name\":\"channelName\",\r\n            \"Protocol\":\"HLS\",\r\n            \"Points\":{\r\n                \"Inputs\":[\r\n                    {\r\n                        \"Url\":\"http://mediapackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\r\n                        \"AuthInfo\":{\r\n                            \"Username\":\"\",\r\n                            \"Password\":\"\"\r\n                        }\r\n                    },\r\n                    {\r\n                        \"Url\":\"http://mediapackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\r\n                        \"AuthInfo\":{\r\n                            \"Username\":\"\",\r\n                            \"Password\":\"\"\r\n                        }\r\n                    }\r\n                ],\r\n                \"Endpoints\":[\r\n\r\n                ]\r\n            }\r\n        },\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateMediaPackageChannelEndpoint": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=CreateMediaPackageChannelEndpoint\r\n&Id=XXX\r\n&Name=XXX\r\n&AuthInfo.WhiteIpList.0=0.0.0.0/0\r\n&AuthInfo.BlackIpList.0=0.0.0.0/0\r\n&AuthInfo.AuthKey=XXX\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-333\",\r\n        \"Info\":{\r\n            \"Name\":\"\",\r\n            \"Url\":\"\",\r\n            \"AuthInfo\":{\r\n                \"WhiteIpList:\":[\r\n                    \"1.2.3.4/24\",\r\n                    \"19.76.68.1/1\"\r\n                ],\r\n                \"BlackIpList:\":[\r\n                    \"1.2.3.4/24\",\r\n                    \"19.76.68.1/1\"\r\n                ],\r\n                \"AuthKey\":\"\"\r\n            }\r\n        }\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaPackageChannelEndpoints": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=DeleteMediaPackageChannelEndpoints\r\n&Id=xxx\r\n&Urls.0=xxx\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaPackageChannels": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=DeleteMediaPackageChannels\r\n&Ids.0=xxx\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"SuccessInfos\":[\r\n            {\r\n                \"Id\":\"AEABF123954\",\r\n                \"Name\":\"channelName\",\r\n                \"Protocol\":\"HLS\",\r\n                \"Points\":{\r\n                    \"Inputs\":[\r\n                        {\r\n                            \"Url\":\"http://mediapackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\r\n                            \"AuthInfo\":{\r\n                                \"Username\":\"\",\r\n                                \"Password\":\"\"\r\n                            }\r\n                        },\r\n                        {\r\n                            \"Url\":\"http://mediapackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\r\n                            \"AuthInfo\":{\r\n                                \"Username\":\"\",\r\n                                \"Password\":\"\"\r\n                            }\r\n                        }\r\n                    ],\r\n                    \"Endpoints\":[\r\n                        {\r\n                            \"Name\":\"\",\r\n                            \"Url\":\"\",\r\n                            \"AuthInfo\":{\r\n                                \"WhiteIpList:\":[\r\n                                    \"1.2.3.4/24\",\r\n                                    \"19.76.68.1/1\"\r\n                                ],\r\n                                \"BlackIpList:\":[\r\n                                    \"1.2.3.4/24\",\r\n                                    \"19.76.68.1/1\"\r\n                                ],\r\n                                \"AuthKey\":\"\"\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ],\r\n        \"FailInfos\":[\r\n            {\r\n                \"Id\":\"AD13ED\",\r\n                \"Name\":\"channelName\",\r\n                \"Protocol\":\"HLS\",\r\n                \"Points\":{\r\n                    \"Inputs\":[\r\n                        {\r\n                            \"Url\":\"http://mediapackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\r\n                            \"AuthInfo\":{\r\n                                \"Username\":\"\",\r\n                                \"Password\":\"\"\r\n                            }\r\n                        },\r\n                        {\r\n                            \"Url\":\"http://mediapackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\r\n                            \"AuthInfo\":{\r\n                                \"Username\":\"\",\r\n                                \"Password\":\"\"\r\n                            }\r\n                        }\r\n                    ],\r\n                    \"Endpoints\":[\r\n                        {\r\n                            \"Name\":\"\",\r\n                            \"Url\":\"\",\r\n                            \"AuthInfo\":{\r\n                                \"WhiteIpList:\":[\r\n                                    \"1.2.3.4/24\",\r\n                                    \"19.76.68.1/1\"\r\n                                ],\r\n                                \"BlackIpList:\":[\r\n                                    \"1.2.3.4/24\",\r\n                                    \"19.76.68.1/1\"\r\n                                ],\r\n                                \"AuthKey\":\"\"\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaPackageChannel": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=DescribeMediaPackageChannel\r\n&Id=xxx\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"Id\":\"AEABF123954\",\r\n            \"Name\":\"channelName\",\r\n            \"Protocol\":\"HLS\",\r\n            \"Points\":{\r\n                \"Inputs\":[\r\n                    {\r\n                        \"Url\":\"http://mediapackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\r\n                        \"AuthInfo\":{\r\n                            \"Username\":\"\",\r\n                            \"Password\":\"\"\r\n                        }\r\n                    },\r\n                    {\r\n                        \"Url\":\"http://mediapackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\r\n                        \"AuthInfo\":{\r\n                            \"Username\":\"\",\r\n                            \"Password\":\"\"\r\n                        }\r\n                    }\r\n                ],\r\n                \"Endpoints\":[\r\n                    {\r\n                        \"Name\":\"\",\r\n                        \"Url\":\"\",\r\n                        \"AuthInfo\":{\r\n                            \"WhiteIpList:\":[\r\n                                \"1.2.3.4/24\",\r\n                                \"19.76.68.1/1\"\r\n                            ],\r\n                            \"BlackIpList:\":[\r\n                                \"1.2.3.4/24\",\r\n                                \"19.76.68.1/1\"\r\n                            ],\r\n                            \"AuthKey\":\"\"\r\n                        }\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaPackageChannels": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=DescribeMediaPackageChannels\r\n&PageNum=1\r\n&PageSize=10\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":[\r\n            {\r\n                \"Id\":\"AEABF123954\",\r\n                \"Name\":\"channelName\",\r\n                \"Protocol\":\"HLS\",\r\n                \"Points\":{\r\n                    \"Inputs\":[\r\n                        {\r\n                            \"Url\":\"http://mediapackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\r\n                            \"AuthInfo\":{\r\n                                \"Username\":\"\",\r\n                                \"Password\":\"\"\r\n                            }\r\n                        },\r\n                        {\r\n                            \"Url\":\"http://mediapackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\r\n                            \"AuthInfo\":{\r\n                                \"Username\":\"\",\r\n                                \"Password\":\"\"\r\n                            }\r\n                        }\r\n                    ],\r\n                    \"Endpoints\":[\r\n                        {\r\n                            \"Name\":\"\",\r\n                            \"Url\":\"\",\r\n                            \"AuthInfo\":{\r\n                                \"WhiteIpList:\":[\r\n                                    \"1.2.3.4/24\",\r\n                                    \"19.76.68.1/1\"\r\n                                ],\r\n                                \"BlackIpList:\":[\r\n                                    \"1.2.3.4/24\",\r\n                                    \"19.76.68.1/1\"\r\n                                ],\r\n                                \"AuthKey\":\"\"\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ],\r\n        \"PageNum\":1,\r\n        \"PageSize\":10,\r\n        \"TotalNum\":1,\r\n        \"TotalPage\":1,\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaPackageChannel": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=ModifyMediaPackageChannel\r\n&Id=xxx\r\n&Name=xxx\r\n&Protocol=HLS\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaPackageChannelEndpoint": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=ModifyMediaPackageChannelEndpoint\r\n&Id=XXX\r\n&Url=XXX\r\n&Name=XXX\r\n&AuthInfo.WhiteIpList.0=0.0.0.0/0\r\n&AuthInfo.BlackIpList.0=0.0.0.0/0\r\n&AuthInfo.AuthKey=XXX\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaPackageChannelInputAuthInfo": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=ModifyMediaPackageChannelInputAuthInfo\r\n&Id=xxx\r\n&Url=xxx\r\n&ActionType=UPDATE\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-333\",\r\n        \"AuthInfo\":{\r\n            \"Username\":\"Sdsai3412y7\",\r\n            \"Password\":\"jsada54rhnj2SS\"\r\n        }\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ]
+  },
+  "version": "1.0"
+}

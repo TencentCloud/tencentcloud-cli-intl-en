@@ -1,0 +1,123 @@
+{
+  "actions": {
+    "ApplyCertificate": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=ApplyCertificate\r\n&DomainName=wgc.red\r\n&DvAuthMethod=DNS_AUTO\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"CertificateId\": \"a9TsmZkL\",\r\n        \"RequestId\": \"0b39eaa4-f938-476d-9b26-19fb07b80936\"\r\n    }\r\n}",
+        "title": "Applying for a free certificate"
+      }
+    ],
+    "CancelCertificateOrder": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=CancelCertificateOrder\r\n&CertificateId=abcb1234\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"CertificateId\":\"abcb1234\",\r\n        \"RequestId\":\"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\r\n    }\r\n}",
+        "title": "Cancelling a certificate order"
+      }
+    ],
+    "CommitCertificateInformation": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=CommitCertificateInformation\r\n&CertificateId=abcb1234\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"OrderId\": \"SO8zRv29\",\r\n        \"Status\": 8,\r\n        \"RequestId\":\"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\r\n    }\r\n}",
+        "title": "Submitting a certificate order"
+      }
+    ],
+    "DeleteCertificate": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DeleteCertificate\r\n&CertificateId=CertificateId\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"DeleteResult\": true,\r\n        \"RequestId\": \"0b39eaa4-f938-476d-9b26-19fb07b80936\"\r\n    }\r\n}",
+        "title": "Deleting a certificate"
+      }
+    ],
+    "DescribeCertificate": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DescribeCertificate\r\n&CertificateId=CertificateId\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"From\": \"trustasia\",\r\n        \"SubjectAltName\": null,\r\n        \"VulnerabilityReport\": null,\r\n        \"StatusName\": \"approved\",\r\n        \"CertificateExtra\": {\r\n            \"OriginCertificateId\": null,\r\n            \"ReplacedBy\": null,\r\n            \"ReplacedFor\": \"a8xHcaIs\",\r\n            \"DomainNumber\": null\r\n        },\r\n        \"RenewAble\": false,\r\n        \"Status\": 1,\r\n        \"IsDv\": true,\r\n        \"CertBeginTime\": \"2020-01-14 16:00:00\",\r\n        \"IsVulnerability\": false,\r\n        \"DvAuthDetail\": null,\r\n        \"VerifyType\": \"DNS\",\r\n        \"StatusMsg\": null,\r\n        \"ProjectId\": \"0\",\r\n        \"OwnerUin\": \"20548499\",\r\n        \"ProductZhName\": \"TrustAsia TLS RSA CA\",\r\n        \"CertEndTime\": \"2020-02-12 16:00:00\",\r\n        \"PackageType\": \"2\",\r\n        \"RequestId\": \"6209102a-0f05-411d-a05c-c841431cb636\",\r\n        \"InsertTime\": \"2020-01-14 10:54:47\",\r\n        \"CertificateType\": \"SVR\",\r\n        \"IsVip\": false,\r\n        \"ValidityPeriod\": \"0\",\r\n        \"OrderId\": \"TBD8NHC9J_01\",\r\n        \"Domain\": \"wgc.red\",\r\n        \"CertificateId\": \"a90XEOtj\",\r\n        \"Alias\": \"New order for a8xHcaIs\",\r\n        \"SubmittedData\": null,\r\n        \"IsWildcard\": false,\r\n        \"PackageTypeName\": \"TrustAsia TLS RSA CA\",\r\n        \"VulnerabilityStatus\": \"INACTIVE\"\r\n    }\r\n}",
+        "title": "Obtaining certificate information"
+      }
+    ],
+    "DescribeCertificateDetail": [
+      {
+        "document": "This example shows you how to obtain the details of a certificate which is being reviewed.",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DescribeCertificateDetail\r\n&CertificateId=aClRkC90\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"From\": \"trustasia\",\r\n        \"SubjectAltName\": null,\r\n        \"VulnerabilityReport\": null,\r\n        \"CertificatePrivateKey\": \"-----BEGIN RSA PRIVATE KEY-----......-----END RSA PRIVATE KEY-----\",\r\n        \"CertificatePublicKey\": null,\r\n        \"CertificateExtra\": {\r\n            \"OriginCertificateId\": null,\r\n            \"ReplacedBy\": null,\r\n            \"ReplacedFor\": null,\r\n            \"DomainNumber\": \"3\",\r\n            \"RenewOrder\": null\r\n        },\r\n        \"RenewAble\": false,\r\n        \"Status\": 5,\r\n        \"IsDv\": false,\r\n        \"IsVulnerability\": false,\r\n        \"CertBeginTime\": null,\r\n        \"TypeName\": \"Secure Site OV\",\r\n        \"DvAuthDetail\": null,\r\n        \"VerifyType\": null,\r\n        \"StatusMsg\": null,\r\n        \"StatusName\": \"OV certificate, to be submitted\",\r\n        \"ProjectId\": \"0\",\r\n        \"OwnerUin\": \"779000108\",\r\n        \"ProductZhName\": \"Secure Site OV\",\r\n        \"CertEndTime\": null,\r\n        \"PackageType\": \"6\",\r\n        \"RequestId\": \"330979e0-fd50-4b33-86b0-c2e264d8ff52\",\r\n        \"InsertTime\": \"2020-01-16 19:26:20\",\r\n        \"CertificateType\": \"SVR\",\r\n        \"IsVip\": true,\r\n        \"ValidityPeriod\": \"12\",\r\n        \"OrderId\": null,\r\n        \"Domain\": \"\",\r\n        \"CertificateId\": \"aClRkC90\",\r\n        \"Alias\": \"\",\r\n        \"SubmittedData\": {\r\n            \"OrganizationCity\": \"Shenzhen\",\r\n            \"CsrContent\": \"\",\r\n            \"OrganizationName\": \"Tencent\",\r\n            \"CertificateDomain\": \"test-dawd2143e21.com\",\r\n            \"AdminPhoneNum\": \"12345678901\",\r\n            \"AdminPosition\": \"developer\",\r\n            \"OrganizationDivision\": \"Qcloud\",\r\n            \"DomainList\": [\r\n                \"test-11111111111111.com\",\r\n                \"test-222222222222.com\"\r\n            ],\r\n            \"AdminFirstName\": \"test\",\r\n            \"ContactLastName\": \"test\",\r\n            \"ContactEmail\": \"test@tencent.com\",\r\n            \"ContactNumber\": \"12345678901\",\r\n            \"CsrType\": \"online\",\r\n            \"PhoneAreaCode\": \"0755\",\r\n            \"VerifyType\": \"\",\r\n            \"AdminLastName\": \"test\",\r\n            \"ContactFirstName\": \"test\",\r\n            \"OrganizationCountry\": \"CN\",\r\n            \"ContactPosition\": \"developer\",\r\n            \"OrganizationRegion\": \"Guangdong\",\r\n            \"PhoneNumber\": \"86013388\",\r\n            \"PostalCode\": \"\",\r\n            \"AdminEmail\": \"test@tencent.com\",\r\n            \"KeyPassword\": \"\",\r\n            \"OrganizationAddress\": \"Tencent Building, No. 10000 Shennan Road, Nanshan District\"\r\n        },\r\n        \"IsWildcard\": false,\r\n        \"Deployable\":false,\r\n        \"VulnerabilityStatus\": \"INACTIVE\"\r\n    }\r\n}",
+        "title": "Obtaining certificate details"
+      },
+      {
+        "document": "This example shows you how to obtain the details of a certificate which has been approved.",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DescribeCertificateDetail\r\n&CertificateId=aCMEQWHt\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"From\": \"trustasia\",\r\n        \"SubjectAltName\": [\r\n            \"test-ev-dawe23r243qfa.com\"\r\n        ],\r\n        \"VulnerabilityReport\": null,\r\n        \"CertificatePrivateKey\": \"-----BEGIN RSA PRIVATE KEY-----......-----END RSA PRIVATE KEY-----\",\r\n        \"CertificateExtra\": {\r\n            \"OriginCertificateId\": null,\r\n            \"ReplacedBy\": null,\r\n            \"ReplacedFor\": null,\r\n            \"DomainNumber\": \"2\",\r\n            \"RenewOrder\": null\r\n        },\r\n        \"RenewAble\": true,\r\n        \"Status\": 1,\r\n        \"IsDv\": false,\r\n        \"IsVulnerability\": true,\r\n        \"CertBeginTime\": \"2020-01-16 16:00:00\",\r\n        \"TypeName\": \"Secure Site EV\",\r\n        \"DvAuthDetail\": null,\r\n        \"VerifyType\": null,\r\n        \"StatusMsg\": null,\r\n        \"StatusName\": \"approved\",\r\n        \"ProjectId\": \"0\",\r\n        \"OwnerUin\": \"779000108\",\r\n        \"ProductZhName\": \"Secure Site EV\",\r\n        \"CertEndTime\": \"2020-02-14 16:00:00\",\r\n        \"PackageType\": \"4\",\r\n        \"RequestId\": \"658b9da1-b5e6-46b3-803c-d59a2cb60277\",\r\n        \"InsertTime\": \"2020-01-16 13:19:10\",\r\n        \"CertificateType\": \"SVR\",\r\n        \"IsVip\": true,\r\n        \"ValidityPeriod\": \"12\",\r\n        \"OrderId\": \"SE8PUhGU\",\r\n        \"Domain\": \"test-ev-dae23r32fd.com\",\r\n        \"CertificateId\": \"aCMEQWHt\",\r\n        \"Alias\": \"\",\r\n        \"SubmittedData\": null,\r\n        \"IsWildcard\": false,\r\n        \"Deployable\":true,\r\n        \"VulnerabilityStatus\": \"INACTIVE\"\r\n    }\r\n}",
+        "title": "Obtaining certificate details-2"
+      }
+    ],
+    "DescribeCertificateOperateLogs": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DescribeCertificateOperateLogs\r\n&Limit=5\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"AllTotal\":31,\r\n        \"TotalCount\":5,\r\n        \"OperateLogs\":[\r\n            {\r\n                \"Action\":\"User [uin: 1234567890] applies for certificate [id: ABC1abc1]\",\r\n                \"CreatedOn\":\"2020-01-14 15:46:38\"\r\n            },\r\n            {\r\n                \"Action\":\"User [uin: 1234567890] applies for certificate [id: ABC1abc1]\",\r\n                \"CreatedOn\":\"2020-01-14 15:45:45\"\r\n            },\r\n            {\r\n                \"Action\":\"User [uin: 1234567890] applies for certificate [id: ABC1abc1]\",\r\n                \"CreatedOn\":\"2020-01-14 14:52:19\"\r\n            },\r\n            {\r\n                \"Action\":\"User [uin: 1234567890] applies for certificate [id: ABC1abc1]\",\r\n                \"CreatedOn\":\"2020-01-14 14:50:52\"\r\n            },\r\n            {\r\n                \"Action\":\"User [uin: 1234567890] applies for certificate [id: ABC1abc1]\",\r\n                \"CreatedOn\":\"2020-01-14 14:50:21\"\r\n            }\r\n        ],\r\n        \"RequestId\":\"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\r\n    }\r\n}",
+        "title": "Obtaining the latest 5 certificate operation logs within the latest 15 days."
+      }
+    ],
+    "DescribeCertificates": [
+      {
+        "document": "This example shows you how to obtain the certificate list.",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DescribeCertificates\r\n&Limit=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Certificates\": [\r\n            {\r\n                \"From\": \"trustasia\",\r\n                \"SubjectAltName\": null,\r\n                \"BoundResource\": [],\r\n                \"CertificateExtra\": {\r\n                    \"OriginCertificateId\": null,\r\n                    \"ReplacedBy\": null,\r\n                    \"ReplacedFor\": \"a8xHcaIs\",\r\n                    \"DomainNumber\": null,\r\n                    \"RenewOrder\": null\r\n                },\r\n                \"StatusName\": \"approved\",\r\n                \"RenewAble\": false,\r\n                \"Status\": 1,\r\n                \"IsDv\": true,\r\n                \"CertBeginTime\": \"2020-01-14 16:00:00\",\r\n                \"IsVulnerability\": false,\r\n                \"VerifyType\": \"DNS\",\r\n                \"StatusMsg\": null,\r\n                \"ProjectId\": \"0\",\r\n                \"OwnerUin\": \"20548499\",\r\n                \"ProjectInfo\": {\r\n                    \"ProjectCreatorUin\": 0,\r\n                    \"ProjectCreateTime\": \"0000-00-00 00:00:00\",\r\n                    \"ProjectId\": \"0\",\r\n                    \"OwnerUin\": 0,\r\n                    \"ProjectResume\": \"Default project\",\r\n                    \"ProjectName\": \"Default project\"\r\n                },\r\n                \"ProductZhName\": \"TrustAsia TLS RSA CA\",\r\n                \"CertEndTime\": \"2020-02-12 16:00:00\",\r\n                \"PackageType\": \"2\",\r\n                \"InsertTime\": \"2020-01-14 10:54:47\",\r\n                \"CertificateType\": \"SVR\",\r\n                \"IsVip\": false,\r\n                \"ValidityPeriod\": \"0\",\r\n                \"Domain\": \"wgc.red\",\r\n                \"CertificateId\": \"a90XEOtj\",\r\n                \"Alias\": \"New order for a8xHcaIs\",\r\n                \"IsWildcard\": false,\r\n                \"PackageTypeName\": \"TrustAsia TLS RSA CA\",\r\n                \"VulnerabilityStatus\": \"INACTIVE\",\r\n                \"Deployable\":true\r\n            }\r\n        ],\r\n        \"TotalCount\": 12,\r\n        \"RequestId\": \"43b82119-c648-4230-8d38-5be63f039549\"\r\n    }\r\n}",
+        "title": "Obtaining certificate list"
+      }
+    ],
+    "DownloadCertificate": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=DownloadCertificate\r\n&CertificateId=CertificateId\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Content\": \"UEsD......vAAA\",\r\n        \"ContentType\": \"application/zip\",\r\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\r\n    }\r\n}",
+        "title": "Downloading a certificate"
+      }
+    ],
+    "ModifyCertificateAlias": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=ModifyCertificateAlias\r\n&CertificateId=abcb1234\r\n&Alias=others\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"CertificateId\":\"abcb1234\",\r\n        \"RequestId\":\"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\r\n    }\r\n}",
+        "title": "Modifying a certificate alias"
+      }
+    ],
+    "ModifyCertificateProject": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=ModifyCertificateProject\r\n&CertificateIdList.0=ABCD1234&CertificateIdList.1=ABCD1235&CertificateIdList.2=ABCD1236\r\n&ProjectId=12345\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"FailCertificates\": [],\r\n        \"SuccessCertificates\": [\r\n            \"ABCD1234\",\r\n            \"ABCD1235\",\r\n            \"ABCD1236\"\r\n        ],\r\n        \"RequestId\": \"95adbcc1-a0bb-4b9c-acf6-5c4e514b945f\"\r\n    }\r\n}",
+        "title": "Modifying the projects of multiple certificates"
+      }
+    ],
+    "ReplaceCertificate": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=ReplaceCertificate\r\n&CertificateId=a91hoLqi\r\n&ValidType=DNS\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"CertificateId\": \"a91hoLqo\",\r\n        \"RequestId\": \"91afa3b6-5b67-43e1-b312-9d3b9bf0f410\"\r\n    }\r\n}",
+        "title": "Reissuing a certificate"
+      }
+    ],
+    "SubmitCertificateInformation": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=SubmitCertificateInformation\r\n&CertificateId=abcb1234\r\n&CsrType=online\r\n&CertificateDomain=*.test-dq342da.com\r\n&OrganizationName=Tencent\r\n&OrganizationDivision=Qcloud\r\n&OrganizationAddress=Tencent Building, No. 10000 Shennan Road, Nanshan District\r\n&OrganizationCountry=CN\r\n&OrganizationCity=Shenzhen\r\n&OrganizationRegion=Guangdong\r\n&PhoneAreaCode=0755\r\n&PhoneNumber=86013388\r\n&AdminFirstName=test\r\n&AdminLastName=test\r\n&AdminPhoneNum=12345678901\r\n&AdminEmail=test@tencent.com\r\n&AdminPosition=developer\r\n&ContactFirstName=test\r\n&ContactLastName=test\r\n&ContactEmail=test@tencent.com\r\n&ContactNumber=12345678901\r\n&ContactPosition=developer\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"CertificateId\": \"abcb1234\",\r\n    \"RequestId\": \"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\r\n  }\r\n}",
+        "title": "Submitting certificate information"
+      }
+    ],
+    "UploadCertificate": [
+      {
+        "document": "",
+        "input": "https://ssl.tencentcloudapi.com/?Action=UploadCertificate\r\n&CertificatePublicKey=CertificateContent\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"CertificateId\": \"a92b1Z1i\",\r\n        \"RequestId\": \"7ef2d2bb-f609-4e3d-a35c-04a5d3ac633b\"\r\n    }\r\n}",
+        "title": "Uploading a certificate"
+      }
+    ]
+  },
+  "version": "1.0"
+}

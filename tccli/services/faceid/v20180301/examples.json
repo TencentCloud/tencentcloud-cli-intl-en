@@ -1,0 +1,13 @@
+{
+  "actions": {
+    "LivenessCompare": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=LivenessCompare\r\n&ImageBase64=<ImageBase64>\r\n&VideoBase64=<VideoBase64>\r\n&LivenessType=SILENT\r\n&<common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n   \"Result\":\"Success\",\r\n   \"Description\":\"Success\",\r\n   \"BestFrameBase64\":\"Imagebase64\",\r\n   \"Sim\":\"89.88\",\r\n    \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\r\n  }\r\n}",
+        "title": "Face comparison for silent liveness detection"
+      }
+    ]
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,173 @@
+{
+  "actions": {
+    "CreateMediaLiveChannel": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=CreateMediaLiveChannel\r\n&Name=channel\r\n&AttachedInputs.0.Id=EEEEE\r\n&AttachedInputs.0.AudioSelectors.0.Name=eng\r\n&AttachedInputs.0.AudioSelectors.0.AudioPidSelection.Pid=256\r\n&AudioTemplates.0.Name=test1\r\n&AudioTemplates.0.Acodec=AAC\r\n&AudioTemplates.0.AudioBitrate=112000\r\n&AudioTemplates.0.AudioSelectorName=eng\r\n&AudioTemplates.0.LanguageCode=eng\r\n&VideoTemplates.0.Name=test2\r\n&VideoTemplates.0.Vcodec=H264\r\n&VideoTemplates.0.VideoBitrate=1000000\r\n&VideoTemplates.0.Width=1920\r\n&VideoTemplates.0.Height=1080\r\n&VideoTemplates.0.Gop=2\r\n&VideoTemplates.0.Fps=60\r\n&OutputGroups.0.Name=outputGroup\r\n&OutputGroups.0.RemuxProtocol=DASH\r\n&OutputGroups.0.HlsRemuxSettings.SegmentDuration=2000\r\n&OutputGroups.0.HlsRemuxSettings.SegmentNumber=3\r\n&OutputGroups.0.HlsRemuxSettings.PdtInsertion=OPEN\r\n&OutputGroups.0.HlsRemuxSettings.PdtDuration=600\r\n&OutputGroups.0.DashRemuxSettings.SegmentDuration=2000\r\n&OutputGroups.0.DashRemuxSettings.SegmentNumber=3\r\n&OutputGroups.0.DashRemuxSettings.PeriodTriggers=OPEN\r\n&OutputGroups.0.DrmSettings.State=OPEN\r\n&OutputGroups.0.DrmSettings.ContentId=12312dsde2\r\n&OutputGroups.0.Outputs.0.Name=output\r\n&OutputGroups.0.Outputs.0.Scte35Settings.Behavior=PASSTHROUGH\r\n&OutputGroups.0.Destinations.0.OutputUrl=http://domain/live/1233\r\n&OutputGroups.0.Destinations.0.AuthKey=aaaa\r\n&OutputGroups.0.Destinations.0.Username=bbbb\r\n&OutputGroups.0.Destinations.0.Password=cccc\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Id\":\"sda\",\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateMediaLiveInput": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=CreateMediaLiveInput\r\n&Name=sdad\r\n&Type=RTMP_PUSH\r\n&SecurityGroupIds.0=123\r\n&InputSettings.0.AppName=live\r\n&InputSettings.0.StreamName=test\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Id\": 111,\r\n        \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateMediaLiveInputSecurityGroup": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=CreateMediaLiveInputSecurityGroup\r\n&Name=xxx\r\n&Whitelist.0=1.1.1.1/1\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n     \"Id\": \"1111\",\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaLiveChannel": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DeleteMediaLiveChannel\r\n&Id=12312\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaLiveInput": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DeleteMediaLiveInput\r\n&Id=111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaLiveInputSecurityGroup": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DeleteMediaLiveInputSecurityGroup\r\n&Id=1111\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveChannel": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveChannel\r\n&Id=AB458E\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"Region\":\"ap-guangzhou\",\r\n            \"Id\":\"5E95AB6430E630731B8B\",\r\n            \"Name\":\"555\",\r\n            \"State\":\"IDLE\",\r\n            \"AttachedInputs\":[\r\n                {\r\n                    \"Id\":\"5E8EEA7B30E6131D85CB\",\r\n                    \"AudioSelectors\":[\r\n                        {\r\n                            \"Name\":\"7777\",\r\n                            \"AudioPidSelection\":{\r\n                                \"Pid\":888\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ],\r\n            \"AudioTemplates\":[\r\n                {\r\n                    \"Name\":\"test1\",\r\n                    \"Acodec\":\"AAC\",\r\n                    \"AudioBitrate\":6000,\r\n                    \"AudioSelectorName\":\"7777\",\r\n                    \"LanguageCode\":\"eng\"\r\n                }\r\n            ],\r\n            \"VideoTemplates\":[\r\n                {\r\n                    \"Name\":\"test2\",\r\n                    \"Vcodec\":\"H264\",\r\n                    \"VideoBitrate\":1000000,\r\n                    \"Width\":1024,\r\n                    \"Height\":1024,\r\n                    \"Gop\":2,\r\n                    \"Fps\":30\r\n                }\r\n            ],\r\n            \"OutputGroups\":[\r\n                {\r\n                    \"Name\":\"9999\",\r\n                    \"RemuxProtocol\":\"DASH\",\r\n                    \"HlsRemuxSettings\":{\r\n                        \"SegmentDuration\":0,\r\n                        \"SegmentNumber\":0,\r\n                        \"PdtInsertion\":\"CLOSE\",\r\n                        \"PdtDuration\":0\r\n                    },\r\n                    \"DashRemuxSettings\":{\r\n                        \"SegmentDuration\":2000,\r\n                        \"SegmentNumber\":3,\r\n                        \"PeriodTriggers\":\"OPEN\"\r\n                    },\r\n                    \"DrmSettings\":{\r\n                        \"State\":\"OPEN\",\r\n                        \"ContentId\":\"f28d75a5-d386-4c5c-acce-779b4896cf0d\"\r\n                    },\r\n                    \"Outputs\":[\r\n                        {\r\n                            \"Name\":\"11111122222\",\r\n                            \"AudioTemplateNames\":[\r\n                                \"test1\"\r\n                            ],\r\n                            \"VideoTemplateNames\":[\r\n                                \"test2\"\r\n                            ],\r\n                            \"Scte35Settings\":{\r\n                                \"Behavior\":\"PASSTHROUGH\"\r\n                            }\r\n                        }\r\n                    ],\r\n                    \"Destinations\":[\r\n                        {\r\n                            \"OutputUrl\":\"http://domain/live/1233\",\r\n                            \"AuthKey\":\"2323\",\r\n                            \"Username\":\"24343\",\r\n                            \"Password\":\"\"\r\n                        },\r\n                        {\r\n                            \"OutputUrl\":\"http://domain/live/222\",\r\n                            \"AuthKey\":\"dsds\",\r\n                            \"Username\":\"443\",\r\n                            \"Password\":\"666\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        },\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveChannelAlerts": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveChannelAlerts\r\n&ChannelId=1111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":{\r\n            \"Pipeline0\":[\r\n                {\r\n                    \"SetTime\":\"2020-03-30T07:04:08Z\",\r\n                    \"ClearTime\":\"2020-03-30T08:04:08Z\",\r\n                    \"Type\":\"RTMP Stream Not Found\",\r\n                    \"Message\":\"Searching for RTMP Push stream [testStream], which does not exist at this time\"\r\n                }\r\n            ],\r\n            \"Pipeline1\":[\r\n                {\r\n                    \"SetTime\":\"2020-03-30T07:04:08Z\",\r\n                    \"ClearTime\":\"2020-03-30T08:04:08Z\",\r\n                    \"Type\":\"Failed to Wtite to Output\",\r\n                    \"Message\":\"Failed to send file for URL [http://www.domain2.com/live/index.m3u8], after [3] attempts, error [http client error [405]]\"\r\n                }\r\n            ]\r\n        },\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveChannelInputStatistics": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveChannelInputStatistics\r\n&ChannelId=AEAE83719CE\r\n&StartTime=2020-01-01T12:00:00Z\r\n&EndTime=2020-01-01T14:00:00Z\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":[\r\n            {\r\n                \"InputId\":\"1111\",\r\n                \"Statistics\":{\r\n                    \"Pipeline0\":[\r\n                        {\r\n                            \"Timestamp\":1585554600,\r\n                            \"NetworkIn\":1500000,\r\n                            \"Video\":[\r\n                                {\r\n                                    \"Fps\":30,\r\n                                    \"Rate\":1500,\r\n                                    \"Pid\":256\r\n                                }\r\n                            ],\r\n                            \"Audio\":[\r\n                                {\r\n                                    \"Fps\":30,\r\n                                    \"Rate\":1500,\r\n                                    \"Pid\":256\r\n                                }\r\n                            ]\r\n                        }\r\n                    ],\r\n                    \"Pipeline1\":[\r\n                        {\r\n                            \"Timestamp\":1585554600,\r\n                            \"NetworkIn\":1500000,\r\n                            \"Video\":[\r\n                                {\r\n                                    \"Fps\":30,\r\n                                    \"Rate\":1500,\r\n                                    \"Pid\":256\r\n                                }\r\n                            ],\r\n                            \"Audio\":[\r\n                                {\r\n                                    \"Fps\":30,\r\n                                    \"Rate\":1500,\r\n                                    \"Pid\":256\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveChannelLogs": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveChannelLogs\r\n&ChannelId=AEAE83719CE\r\n&StartTime=2020-01-01T12:00:00Z\r\n&EndTime=2020-01-01T14:00:00Z\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":{\r\n            \"Pipeline0\":[\r\n                {\r\n                    \"Type\":\"StreamStart\",\r\n                    \"Time\":\"2020-07-07T04:07:40Z\",\r\n                    \"Message\":{\r\n                        \"StreamInfo\":{\r\n                            \"ClientIp\":\"1.1.1.1\",\r\n                            \"Video\":[\r\n                                {\r\n                                    \"Pid\":256,\r\n                                    \"Codec\":\"H264\",\r\n                                    \"Fps\":0,\r\n                                    \"Rate\":0,\r\n                                    \"Width\":0,\r\n                                    \"Height\":0\r\n                                }\r\n                            ],\r\n                            \"Audio\":[\r\n                                {\r\n                                    \"Pid\":257,\r\n                                    \"Codec\":\"\",\r\n                                    \"Fps\":0,\r\n                                    \"Rate\":0,\r\n                                    \"SampleRate\":0\r\n                                }\r\n                            ],\r\n                            \"Scte35\":[\r\n                                {\r\n                                    \"Pid\":0\r\n                                }\r\n                            ]\r\n                        }\r\n                    }\r\n                }\r\n            ],\r\n            \"Pipeline1\":[\r\n\r\n            ]\r\n        },\r\n        \"RequestId\":\"85c76051-d775-4a88-84fa-a9a51c1cfd97\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveChannelOutputStatistics": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveChannelOutputStatistics\r\n&ChannelId=AEAE83719CE\r\n&StartTime=2020-01-01T12:00:00Z\r\n&EndTime=2020-01-01T14:00:00Z\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":[\r\n            {\r\n                \"OutputGroupName\":\"TEST\",\r\n                \"Statistics\":{\r\n                    \"Pipeline0\":[\r\n                        {\r\n                            \"Timestamp\":1585554600,\r\n                            \"NetworkOut\":2000000\r\n                        }\r\n                    ],\r\n                    \"Pipeline1\":[\r\n                        {\r\n                            \"Timestamp\":1585554600,\r\n                            \"NetworkOut\":2000000\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveChannels": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveChannels\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":[\r\n            {\r\n                \"Region\":\"ap-guangzhou\",\r\n                \"Id\":\"5E95AB6430E630731B8B\",\r\n                \"Name\":\"555\",\r\n                \"State\":\"IDLE\",\r\n                \"AttachedInputs\":[\r\n                    {\r\n                        \"Id\":\"5E8EEA7B30E6131D85CB\",\r\n                        \"AudioSelectors\":[\r\n                            {\r\n                                \"Name\":\"7777\",\r\n                                \"AudioPidSelection\":{\r\n                                    \"Pid\":888\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                ],\r\n                \"AudioTemplates\":[\r\n                    {\r\n                        \"Name\":\"test1\",\r\n                        \"Acodec\":\"AAC\",\r\n                        \"AudioBitrate\":6000,\r\n                        \"AudioSelectorName\":\"7777\",\r\n                        \"LanguageCode\":\"eng\"\r\n                    }\r\n                ],\r\n                \"VideoTemplates\":[\r\n                    {\r\n                        \"Name\":\"test2\",\r\n                        \"Vcodec\":\"H264\",\r\n                        \"VideoBitrate\":1000000,\r\n                        \"Width\":1024,\r\n                        \"Height\":1024,\r\n                        \"Gop\":2,\r\n                        \"Fps\":30\r\n                    }\r\n                ],\r\n                \"OutputGroups\":[\r\n                    {\r\n                        \"Name\":\"9999\",\r\n                        \"RemuxProtocol\":\"DASH\",\r\n                        \"HlsRemuxSettings\":{\r\n                            \"SegmentDuration\":0,\r\n                            \"SegmentNumber\":0,\r\n                            \"PdtInsertion\":\"CLOSE\",\r\n                            \"PdtDuration\":0\r\n                        },\r\n                        \"DashRemuxSettings\":{\r\n                            \"SegmentDuration\":2000,\r\n                            \"SegmentNumber\":3,\r\n                            \"PeriodTriggers\":\"OPEN\"\r\n                        },\r\n                        \"DrmSettings\":{\r\n                            \"State\":\"OPEN\",\r\n                            \"ContentId\":\"f28d75a5-d386-4c5c-acce-779b4896cf0d\"\r\n                        },\r\n                        \"Outputs\":[\r\n                            {\r\n                                \"Name\":\"11111122222\",\r\n                                \"AudioTemplateNames\":[\r\n                                    \"test1\"\r\n                                ],\r\n                                \"VideoTemplateNames\":[\r\n                                    \"test2\"\r\n                                ],\r\n                                \"Scte35Settings\":{\r\n                                    \"Behavior\":\"PASSTHROUGH\"\r\n                                }\r\n                            }\r\n                        ],\r\n                        \"Destinations\":[\r\n                            {\r\n                                \"OutputUrl\":\"http://domain/live/1233\",\r\n                                \"AuthKey\":\"2323\",\r\n                                \"Username\":\"24343\",\r\n                                \"Password\":\"\"\r\n                            },\r\n                            {\r\n                                \"OutputUrl\":\"http://domain/live/222\",\r\n                                \"AuthKey\":\"dsds\",\r\n                                \"Username\":\"443\",\r\n                                \"Password\":\"666\"\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\":\"11-222-333\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveInput": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveInput\r\n&Id=1111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"Id\":\"2\",\r\n            \"Name\":\"a\",\r\n            \"Type\":\"RTMP_PUSH\",\r\n            \"SecurityGroupIds\":[\r\n                \"sss\"\r\n            ],\r\n            \"AttachedChannels\":null,\r\n            \"InputSettings\":[\r\n                {\r\n                    \"InputAddress\":\"rtmp://1.mdialive.ap-xxx.livepush.myqcloud.com\",\r\n                    \"AppName\":\"live\",\r\n                    \"StreamName\":\"streamA\",\r\n                    \"SourceUrl\":\"\"\r\n                },\r\n                {\r\n                    \"InputAddress\":\"rtmp://1.mdialive.ap-xxx.livepush.myqcloud.com\",\r\n                    \"AppName\":\"live\",\r\n                    \"StreamName\":\"streamB\",\r\n                    \"SourceUrl\":\"\"\r\n                }\r\n            ]\r\n        },\r\n        \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveInputSecurityGroup": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveInputSecurityGroup\r\n&Id=1111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"Id\":\"1111\",\r\n            \"Name\":\"xxxx\",\r\n            \"Whitelist\":[\r\n                \"0.0.0.0/0\"\r\n            ],\r\n            \"OccupiedInputs\":[\r\n                \"xxxx\"\r\n            ]\r\n        },\r\n        \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveInputSecurityGroups": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveInputSecurityGroups\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":[{\r\n            \"Id\":\"1111\",\r\n            \"Name\":\"xxxx\",\r\n            \"Whitelist\":[\r\n                \"0.0.0.0/0\"\r\n            ],\r\n            \"OccupiedInputs\":[\r\n                \"xxxx\"\r\n            ]\r\n        }],\r\n        \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaLiveInputs": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=DescribeMediaLiveInputs\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":[\r\n            {\r\n                \"Id\":\"2\",\r\n                \"Name\":\"a\",\r\n                \"Type\":\"RTMP_PUSH\",\r\n                \"SecurityGroupIds\":[\r\n                    \"sss\"\r\n                ],\r\n                \"AttachedChannels\":[\r\n                    \"ccc\"\r\n                ],\r\n                \"InputSettings\":[\r\n                    {\r\n                        \"InputAddress\":\"rtmp://1.mdialive.ap-xxx.livepush.myqcloud.com\",\r\n                        \"AppName\":\"live\",\r\n                        \"StreamName\":\"streamA\",\r\n                        \"SourceUrl\":\"\"\r\n                    },\r\n                    {\r\n                        \"InputAddress\":\"rtmp://1.mdialive.ap-xxx.livepush.myqcloud.com\",\r\n                        \"AppName\":\"live\",\r\n                        \"StreamName\":\"streamB\",\r\n                        \"SourceUrl\":\"\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"Id\":\"2\",\r\n                \"Name\":\"a\",\r\n                \"Type\":\"RTMP_PUSH\",\r\n                \"SecurityGroupIds\":[\r\n                    \"sss\"\r\n                ],\r\n                \"AttachedChannels\":[\r\n                    \"ccc2\"\r\n                ],\r\n                \"InputSettings\":[\r\n                    {\r\n                        \"InputAddress\":\"rtmp://1.mdialive.ap-xxx.livepush.myqcloud.com\",\r\n                        \"AppName\":\"live\",\r\n                        \"StreamName\":\"streamC\",\r\n                        \"SourceUrl\":\"\"\r\n                    },\r\n                    {\r\n                        \"InputAddress\":\"rtmp://1.mdialive.ap-xxx.livepush.myqcloud.com\",\r\n                        \"AppName\":\"live\",\r\n                        \"StreamName\":\"streamD\",\r\n                        \"SourceUrl\":\"\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaLiveChannel": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=ModifyMediaLiveChannel\r\n&Id=ESASD13437\r\n&Name=channel\r\n&AttachedInputs.0.Id=EEEEE\r\n&AttachedInputs.0.AudioSelectors.0.Name=eng\r\n&AttachedInputs.0.AudioSelectors.0.AudioPidSelection.Pid=256\r\n&AudioTemplates.0.Name=test1\r\n&AudioTemplates.0.Acodec=AAC\r\n&AudioTemplates.0.AudioBitrate=112000\r\n&AudioTemplates.0.AudioSelectorName=eng\r\n&AudioTemplates.0.LanguageCode=eng\r\n&VideoTemplates.0.Name=test2\r\n&VideoTemplates.0.Vcodec=H264\r\n&VideoTemplates.0.VideoBitrate=1000000\r\n&VideoTemplates.0.Width=1920\r\n&VideoTemplates.0.Height=1080\r\n&VideoTemplates.0.Gop=2\r\n&VideoTemplates.0.Fps=60\r\n&OutputGroups.0.Name=outputGroup\r\n&OutputGroups.0.RemuxProtocol=DASH\r\n&OutputGroups.0.HlsRemuxSettings.SegmentDuration=2000\r\n&OutputGroups.0.HlsRemuxSettings.SegmentNumber=3\r\n&OutputGroups.0.HlsRemuxSettings.PdtInsertion=OPEN\r\n&OutputGroups.0.HlsRemuxSettings.PdtDuration=600\r\n&OutputGroups.0.DashRemuxSettings.SegmentDuration=2000\r\n&OutputGroups.0.DashRemuxSettings.SegmentNumber=3\r\n&OutputGroups.0.DashRemuxSettings.PeriodTriggers=OPEN\r\n&OutputGroups.0.DrmSettings.State=OPEN\r\n&OutputGroups.0.DrmSettings.ContentId=12312dsde2\r\n&OutputGroups.0.Outputs.0.Name=output\r\n&OutputGroups.0.Outputs.0.Scte35Settings.Behavior=PASSTHROUGH\r\n&OutputGroups.0.Destinations.0.OutputUrl=http://domain/live/1233\r\n&OutputGroups.0.Destinations.0.AuthKey=aaaa\r\n&OutputGroups.0.Destinations.0.Username=bbbb\r\n&OutputGroups.0.Destinations.0.Password=cccc\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaLiveInput": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=ModifyMediaLiveInput\r\n&Id=111\r\n&Name=sddd\r\n&SecurityGroupIds.0=1111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n           \"RequestId\":\"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaLiveInputSecurityGroup": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=ModifyMediaLiveInputSecurityGroup\r\n&Id= 1111\r\n&Name=xxxx\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StartMediaLiveChannel": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=StartMediaLiveChannel\r\n&Id=AB458E\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StopMediaLiveChannel": [
+      {
+        "document": "",
+        "input": "https://mdl.tencentcloudapi.com/?Action=StopMediaLiveChannel\r\n&Id=AB458E\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"11-222-222\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ]
+  },
+  "version": "1.0"
+}

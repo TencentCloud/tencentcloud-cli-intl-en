@@ -1,0 +1,125 @@
+{
+  "actions": {
+    "CreateSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=CreateSecret\r\n&SecretName=test_secret\r\n&VersionId=v1.0\r\n&Description=test create secret\r\n&SecretString=test\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"9debf284-eff9-465a-97b7-163a8b1cccaf\",\r\n        \"SecretName\": \"test_secret\",\r\n        \"VersionId\": \"v1.0\"\r\n    }\r\n}",
+        "title": "Creating a Secret"
+      }
+    ],
+    "DeleteSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DeleteSecret\r\n&SecretName=test\r\n&RecoveryWindowInDays=1\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\r\n        \"SecretName\": \"test\",\r\n        \"DeleteTime\": 1574247268\r\n    }\r\n}",
+        "title": "Deleting a Secret"
+      }
+    ],
+    "DeleteSecretVersion": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DeleteSecretVersion\r\n&SecretName=test\r\n&VersionId=v1.0\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c701cf6d-4199-4822-8630-d48ee953f485\",\r\n        \"SecretName\": \"test\",\r\n        \"VersionId\": \"v1.0\"\r\n    }\r\n}",
+        "title": "Deleting a Secret version"
+      }
+    ],
+    "DescribeSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"92ad8e05-8eee-475b-9cc9-48035f6310e1\",\r\n        \"SecretName\": \"test\",\r\n        \"Description\": \"description\",\r\n        \"KmsKeyId\": \"13437ab9-e002-11e9-9936-5254006d0810\",\r\n        \"CreateUin\": 3350000000,\r\n        \"Status\": \"Disabled\",\r\n        \"DeleteTime\": 0,\r\n        \"CreateTime\": 1574160561\r\n    }\r\n}",
+        "title": "Obtaining detailed information of a Secret"
+      }
+    ],
+    "DisableSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DisableSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
+        "output": "{\r\n\"Response\" : {\r\n  \"SecretName\" : \"test\",\r\n  \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\r\n  }\r\n}",
+        "title": "Disabling a Secret"
+      }
+    ],
+    "EnableSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=EnableSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
+        "output": "{\r\n\"Response\" : {\r\n  \"SecretName\" : \"test\",\r\n  \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\r\n  }\r\n}",
+        "title": "Enabling a Secret"
+      }
+    ],
+    "GetRegions": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=GetRegions\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"d1f030f9-35ea-4727-9867-f7b0e214feea\",\r\n        \"Regions\": [\r\n            \"ap-guangzhou\",\r\n            \"ap-hongkong\"\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the list of regions displayed on Console"
+      }
+    ],
+    "GetSecretValue": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=GetSecretValue\r\n&SecretName=test_secret\r\n&VersionId=v1.0\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"b8e6b67f-3ca7-4341-b4fa-a372bdf4e11c\",\r\n        \"SecretName\": \"test_secret\",\r\n        \"VersionId\": \"v1.0\",\r\n        \"SecretBinary\": \"\",\r\n        \"SecretString\": \"test\"\r\n    }\r\n}",
+        "title": "Obtaining the plaintext of a Secret"
+      }
+    ],
+    "GetServiceStatus": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=GetServiceStatus\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"1a327ad8-5fef-41d5-b1a1-73d58af83d66\",\r\n        \"ServiceEnabled\": true,\r\n        \"InvalidType\": 1\r\n    }\r\n}",
+        "title": "Obtaining service status"
+      }
+    ],
+    "ListSecretVersionIds": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=ListSecretVersionIds\r\n&SecretName=test\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"56fe436b-16ca-402e-a9bb-83c14e9cc9e8\",\r\n        \"SecretName\": \"test\",\r\n        \"Versions\": [\r\n            {\r\n                \"VersionId\": \"v2.0\",\r\n                \"CreateTime\": 1574161372\r\n            },\r\n            {\r\n                \"VersionId\": \"v1.0\",\r\n                \"CreateTime\": 1574161748\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the list of versions of a Secret"
+      }
+    ],
+    "ListSecrets": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=ListSecrets\r\n&Limit=2\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"3586bdc7-c8a5-4ccd-883f-9f256a96533a\",\r\n        \"TotalCount\": 8,\r\n        \"SecretMetadatas\": [\r\n            {\r\n                \"SecretName\": \"test\",\r\n                \"Description\": \"test version 1.0\",\r\n                \"KmsKeyId\": \"13437ab9-e002-11e9-9936-5254006d0810\",\r\n                \"KmsKeyType\": \"DEFAULT\",\r\n                \"CreateUin\": 3350000000,\r\n                \"Status\": \"Enabled\",\r\n                \"DeleteTime\": 0,\r\n                \"CreateTime\": 1574160561\r\n            },\r\n            {\r\n                \"SecretName\": \"test2\",\r\n                \"Description\": \"test desc 2\",\r\n                \"KmsKeyId\": \"13437ab9-e002-11e9-9936-5254006d0810\",\r\n                \"KmsKeyType\": \"DEFAULT\",\r\n                \"CreateUin\": 3350000000,\r\n                \"Status\": \"Enabled\",\r\n                \"DeleteTime\": 0,\r\n                \"CreateTime\": 1574067178\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the detailed information list of Secrets"
+      }
+    ],
+    "PutSecretValue": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=PutSecretValue\r\n&SecretName=test\r\n&VersionId=v2.0\r\n&SecretString=test v2\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"6764f1f5-8229-4033-a831-46180aee30cf\",\r\n        \"SecretName\": \"test\",\r\n        \"VersionId\": \"v2.0\"\r\n    }\r\n}",
+        "title": "Adding a new Secret version"
+      }
+    ],
+    "RestoreSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=RestoreSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"bf199317-0d31-4dba-a5e7-217dc37df2d4\",\r\n        \"SecretName\": \"test\"\r\n    }\r\n}",
+        "title": "Restoring a `PendingDelete` Secret"
+      }
+    ],
+    "UpdateDescription": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateDescription\r\n&SecretName=test\r\n&Description=new desc\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"dfa4908b-a586-4d44-8f76-3fad156c1be2\",\r\n        \"SecretName\": \"test\"\r\n    }\r\n}",
+        "title": "Updating the description of a Secret"
+      }
+    ],
+    "UpdateSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateSecret\r\n&SecretName=test\r\n&VersionId=v1.0\r\n&SecretString=new value\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"e6993612-6922-4f2d-bb36-37348f36eba5\",\r\n        \"SecretName\": \"test\",\r\n        \"VersionId\": \"v2.0\"\r\n    }\r\n}",
+        "title": "Updating the content of a Secret"
+      }
+    ]
+  },
+  "version": "1.0"
+}

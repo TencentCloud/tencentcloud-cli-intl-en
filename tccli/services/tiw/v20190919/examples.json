@@ -1,0 +1,133 @@
+{
+  "actions": {
+    "CreateTranscode": [
+      {
+        "document": "This example shows how to create a dynamic transcoding task for a PowerPoint file and generate a 960×540 thumbnail.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=CreateTranscode\r\n&SdkAppId=1400000001\r\n&Url=https://path/to/document.ppt\r\n&ThumbnailResolution=960x540\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"TaskId\": \"g6ls63ps49vteb8bk1mb\"\r\n    }\r\n}",
+        "title": "Creating a PowerPoint dynamic transcoding task"
+      },
+      {
+        "document": "This example shows how to create a static transcoding task for a PowerPoint file.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=CreateTranscode\r\n&SdkAppId=1400000001\r\n&Url=https://path/to/document.ppt\r\n&IsStaticPPT=True\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"TaskId\": \"g6ls63ps49vteb8bk1mb\"\r\n    }\r\n}",
+        "title": "Creating a PowerPoint static transcoding task"
+      }
+    ],
+    "DescribeOnlineRecord": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeOnlineRecord\r\n&SdkAppId=1400000001\r\n&TaskId=ghucnligqtgtvk2624mb\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"ExceptionCnt\": 0,\r\n        \"FinishReason\": \"USER_CALL\",\r\n        \"GroupId\": \"880528\",\r\n        \"OmittedDurations\": [],\r\n        \"RecordStartTime\": 1568949369,\r\n        \"RecordStopTime\": 1568949392,\r\n        \"RecordUserId\": \"tic_record_user_880528_test-01\",\r\n        \"RequestId\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\r\n        \"RoomId\": 880528,\r\n        \"Status\": \"FINISHED\",\r\n        \"TaskId\": \"ghucnligqtgtvk2624mb\",\r\n        \"TotalTime\": 18317,\r\n        \"VideoInfos\": [\r\n            {\r\n                \"UserId\": \"Mac_trtc_04\",\r\n                \"VideoDuration\": 17969,\r\n                \"VideoFormat\": \"mp4\",\r\n                \"VideoId\": \"dace3518e865e76a9e36712c629822ba\",\r\n                \"VideoPlayTime\": 0,\r\n                \"VideoSize\": 593418,\r\n                \"VideoType\": 0,\r\n                \"VideoUrl\": \"http://online-recording-1259648581.file.myqcloud.com/00sp43mantgtv4r842mb/d124f518e865e76a9e36712c629822ba.mp4\"\r\n            },\r\n            {\r\n                \"UserId\": \"tic_mixstream_880528_101\",\r\n                \"VideoDuration\": 18205,\r\n                \"VideoFormat\": \"mp4\",\r\n                \"VideoId\": \"763d1f6b8679c3f17fb118bd37d05c85\",\r\n                \"VideoPlayTime\": 3,\r\n                \"VideoSize\": 765545,\r\n                \"VideoType\": 3,\r\n                \"VideoUrl\": \"http://online-recording-1259648581.file.myqcloud.com/00sp43mantgtv4r842mb/763d1f6b86724f51fb118bd37d05c85.mp4\"\r\n            },\r\n            {\r\n                \"UserId\": \"tic_mixstream_880528_3\",\r\n                \"VideoDuration\": 18222,\r\n                \"VideoFormat\": \"mp4\",\r\n                \"VideoId\": \"1b9623df0516dc7318df89f6e7fffc1e\",\r\n                \"VideoPlayTime\": 95,\r\n                \"VideoSize\": 402038,\r\n                \"VideoType\": 3,\r\n                \"VideoUrl\": \"http://online-recording-1259648581.file.myqcloud.com/00sp43mantgtv4r842mb/1b9623df05124f51318df89f6e7fffc1e.mp4\"\r\n            },\r\n            {\r\n                \"UserId\": \"\",\r\n                \"VideoDuration\": 17605,\r\n                \"VideoFormat\": \"mp4\",\r\n                \"VideoId\": \"a8152f8faa2cfe621dc965a066a5813c\",\r\n                \"VideoPlayTime\": 623,\r\n                \"VideoSize\": 226337,\r\n                \"VideoType\": 2,\r\n                \"VideoUrl\": \"http://online-recording-1259648581.file.myqcloud.com/00sp43mantgtv4r842mb/a815224f512cfe621dc965a066a5813c.mp4\"\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Querying a real-time recording task"
+      },
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeOnlineRecord\r\n&SdkAppId=1400000001\r\n&TaskId=ghucnligqtgtvk2624mb\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.Record\",\r\n            \"Message\": \"code: 40004, msg: 2019-09-23 10:31:47, im login failed with code 6206, desc serSig expired\\n\"\r\n        },\r\n        \"RequestId\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\"\r\n    }\r\n}",
+        "title": "Querying failed real-time recording tasks"
+      }
+    ],
+    "DescribeOnlineRecordCallback": [
+      {
+        "document": "This example shows how to query the real-time recording callback address.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeOnlineRecordCallback\r\n&SdkAppId=1400000001\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Callback\": \"https://example.com/online/callback\",\r\n        \"CallbackKey\": \"6vg9G7Fd\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Querying the real-time recording callback address"
+      }
+    ],
+    "DescribeTranscode": [
+      {
+        "document": "This example shows you how to query the result of a dynamic document transcoding task.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeTranscode\r\n&SdkAppId=1400000001\r\n&TaskId=g0jb42ps49vtebjshilb\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Pages\": 1,\r\n        \"Progress\": 100,\r\n        \"RequestId\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\r\n        \"Resolution\": \"793x1122\",\r\n        \"ResultUrl\": \"https://transcode-result/0agdnligqtgtvkm65emb/index.html\",\r\n        \"Status\": \"FINISHED\",\r\n        \"TaskId\": \"0agdnligqtgtvkm65emb\",\r\n        \"Title\": \"59378.docx\",\r\n        \"ThumbnailUrl\": \"https://transcode-thumbnal/0agdnligqtgtvkm65emb/\",\r\n        \"ThumbnailResolution\": \"793x1122\",\r\n        \"CompressFileUrl\": \"\"\r\n    }\r\n}",
+        "title": "Querying a dynamic document transcoding task"
+      },
+      {
+        "document": "This example shows you how to query the result of a static document transcoding task.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeTranscode\r\n&SdkAppId=1400000001\r\n&TaskId=g0jb42ps49vtebjshilb\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Pages\": 1,\r\n        \"Progress\": 100,\r\n        \"RequestId\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\r\n        \"Resolution\": \"793x1122\",\r\n        \"ResultUrl\": \"https://transcode-result/0agdnligqtgtvkm65emb/\",\r\n        \"Status\": \"FINISHED\",\r\n        \"TaskId\": \"0agdnligqtgtvkm65emb\",\r\n        \"Title\": \"59378.docx\",\r\n        \"ThumbnailUrl\": \"\",\r\n        \"ThumbnailResolution\": \"\",\r\n        \"CompressFileUrl\": \"\"\r\n    }\r\n}",
+        "title": "Querying a static document transcoding task"
+      }
+    ],
+    "DescribeTranscodeCallback": [
+      {
+        "document": "This example shows how to query the document transcoding callback address.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeTranscodeCallback\r\n&SdkAppId=1400000001\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Callback\": \"https://example.com/transcode/callback\",\r\n        \"CallbackKey\": \"6vg9G7Fd\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Querying the document transcoding callback address"
+      }
+    ],
+    "PauseOnlineRecord": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=PauseOnlineRecord\r\n&SdkAppId=1400000001\r\n&TaskId=bj0mt2l23osdj300hl30\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Pausing a real-time recording task"
+      }
+    ],
+    "ResumeOnlineRecord": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=ResumeOnlineRecord\r\n&SdkAppId=1400000001\r\n&TaskId=07b4c70bpafm1b4majmb\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Resuming a real-time recording task"
+      }
+    ],
+    "SetOnlineRecordCallback": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=SetOnlineRecordCallback\r\n&SdkAppId=1400000001\r\n&Callback=https://example.com/online/callback\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting the real-time recording callback address"
+      }
+    ],
+    "SetOnlineRecordCallbackKey": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=SetOnlineRecordCallbackKey\r\n&SdkAppId=1400000001\r\n&CallbackKey=6vg9G7Fd\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting the authentication key for the real-time recording callback"
+      }
+    ],
+    "SetTranscodeCallback": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=SetTranscodeCallback\r\n&SdkAppId=1400000001\r\n&Callback=https://example.com/transcode/callback\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting the document transcoding callback address"
+      }
+    ],
+    "SetTranscodeCallbackKey": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=SetTranscodeCallbackKey\r\n&SdkAppId=1400000001\r\n&CallbackKey=6vg9G7Fd\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting the authentication key for the document transcoding callback"
+      }
+    ],
+    "StartOnlineRecord": [
+      {
+        "document": "",
+        "input": "https://tiw.tencentcloudapi.com/?Action=StartOnlineRecord\n&SdkAppId=1400000001\n&RoomId=1203\n&RecordUserId=tic_record_user_1203_141551\n&RecordUserSig=usersig_of_<tic_record_user_1203_141551>\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"TaskId\": \"bj0mt2l23osdj300hl30\"\r\n    }\r\n}",
+        "title": "Starting real-time recording"
+      },
+      {
+        "document": "This example shows you how to use a built-in mixed stream layout for mixed stream recording.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=StartOnlineRecord\n&SdkAppId=1400000001\n&RoomId=1203\n&RecordUserId=tic_record_user_1203_141551\n&RecordUserSig=usersig_of_<tic_record_user_1203_141551>\n&Whiteboard.Width=1280\n&Whiteboard.Height=960\n&Whiteboard.InitParam={\"ratio\":\"16:9\"}\n&Concat.Enabled=true\n&Concat.Image=http://background/image.jpg\n&MixStream.Enabled=true\n&MixStream.DisableAudio=false\n&MixStream.ModelId=2\n&MixStream.TeacherId=teacher\n&Extras.0=MIX_STREAM\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"TaskId\": \"bj0mt2l23osdj300hl30\"\r\n    }\r\n}",
+        "title": "Starting real-time mixed stream recording"
+      }
+    ],
+    "StopOnlineRecord": [
+      {
+        "document": "This example shows how to stop real-time recording.",
+        "input": "https://tiw.tencentcloudapi.com/?Action=StopOnlineRecord\r\n&SdkAppId=1400000001\r\n&TaskId=07b4c70bpafm1b4majmb\r\n&<Common Request Parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Stopping real-time recording"
+      }
+    ]
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,141 @@
+{
+  "actions": {
+    "AcceptDirectConnectTunnel": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=AcceptDirectConnectTunnel\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Accepting an application for a dedicated tunnel"
+      }
+    ],
+    "CreateDirectConnect": [
+      {
+        "document": "This example shows you how to apply for a connection, where the access point is Nanshan, the ISP is China Mobile, and the Tencent Cloud port is a 1-Gigabit single-mode optical Ethernet interface (1000Base-LX), with a redundant connection.",
+        "input": "https://dc.tencentcloudapi.com/?Action=CreateDirectConnect\r\n&DirectConnectName=Connection 1\r\n&AccessPointId=ap-cn-shenzhen-ns-A\r\n&LineOperator=ChinaMobile\r\n&CircuitCode=Shenzhen Nanshan ANE0348NP\r\n&Location=14/F, Building A, Science and Technology Park, Nanshan District, Shenzhen, Guangdong Province\r\n&PortType=1000Base-LX\r\n&Bandwidth=1000\r\n&RedundantDirectConnectId=dc-abcdedf\r\n&Vlan=100\r\n&TencentAddress=172.168.1.1/30\r\n&CustomerAddress=172.168.1.2/30\r\n&CustomerName=John Smith\r\n&CustomerContactMail=12345@qq.com\r\n&CustomerContactNumber=18812345678\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DirectConnectIdSet\": [\r\n      \"dc-abcdefgh\"\r\n    ],\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Creating a connection"
+      },
+      {
+        "document": "This example shows you how to apply for a connection, where the access point is TravelSky, the ISP is China Mobile, and the Tencent Cloud port is a 1-Gigabit single-mode optical Ethernet interface (1000Base-LX).",
+        "input": "https://dc.tencentcloudapi.com/?Action=CreateDirectConnect\r\n&DirectConnectName=TravelSky connection 1\r\n&AccessPointId=ap-cn-beijing-hx\r\n&LineOperator=ChinaMobile\r\n&CircuitCode=TravelSky ANE0348NP\r\n&Location=14/F, Sigma Mansion A, Haidian District, Beijing\r\n&PortType=1000Base-LX\r\n&Bandwidth=1000\r\n&CustomerName=John Smith\r\n&CustomerContactMail=12345@qq.com\r\n&CustomerContactNumber=18812345678\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DirectConnectIdSet\": [\r\n      \"dc-abcdefgh\"\r\n    ],\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Creating a connection - 2"
+      }
+    ],
+    "CreateDirectConnectTunnel": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=CreateDirectConnectTunnel\r\n&DirectConnectId=dc-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&DirectConnectOwnerAccount=240791248\r\n&NetworkType=VPC\r\n&NetworkRegion=ap-guangzhou\r\n&VpcId=vpc-abcdefgh\r\n&DirectConnectGatewayId=dcg-abcdefgh\r\n&Bandwidth=100\r\n&RouteType=BGP\r\n&Vlan=100\r\n&TencentAddress=192.168.1.2/30\r\n&CustomerAddress=192.168.1.1/30\r\n&BgpPeer.Asn=65128\r\n&BgpPeer.AuthKey=abcdefg\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DirectConnectTunnelIdSet\": [\r\n      \"dcx-abcdefgh\"\r\n    ],\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Dedicated tunnel using BGP routing and shared connection"
+      },
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=CreateDirectConnectTunnel\r\n&DirectConnectId=dc-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&NetworkType=CCN\r\n&NetworkRegion=ap-guangzhou\r\n&DirectConnectGatewayId=dcg-abcdefgh\r\n&Bandwidth=100\r\n&RouteType=BGP\r\n&Vlan=100\r\n&TencentAddress=192.168.1.2/30\r\n&CustomerAddress=192.168.1.1/30\r\n&BgpPeer.Asn=65128\r\n&BgpPeer.AuthKey=abcdefg\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DirectConnectTunnelIdSet\": [\r\n      \"dcx-abcdefgh\"\r\n    ],\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Dedicated tunnel using BGP routing and CCN"
+      },
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=CreateDirectConnectTunnel\r\n&DirectConnectId=dc-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&NetworkType=BMVPC\r\n&NetworkRegion=ap-guangzhou\r\n&VpcId=vpc-abcdefgh\r\n&Bandwidth=100\r\n&RouteType=STATIC\r\n&Vlan=100\r\n&TencentAddress=192.168.1.2/30\r\n&CustomerAddress=192.168.1.1/30\r\n&RouteFilterPrefixes.0.Cidr=192.168.0.0/24\r\n&RouteFilterPrefixes.1.Cidr=192.168.0.0/24\r\n&RouteFilterPrefixes.2.Cidr=192.168.0.0/24\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DirectConnectTunnelIdSet\": [\r\n      \"dcx-abcdefgh\"\r\n    ],\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Dedicated tunnel using static routing and BM VPC"
+      },
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=CreateDirectConnectTunnel\r\n&DirectConnectId=dc-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&NetworkType=VPC\r\n&NetworkRegion=ap-guangzhou\r\n&VpcId=vpc-abcdefgh\r\n&DirectConnectGatewayId=dcg-abcdefgh\r\n&Bandwidth=100\r\n&RouteType=BGP\r\n&Vlan=100\r\n&TencentAddress=192.168.1.2/30\r\n&CustomerAddress=192.168.1.1/30\r\n&BgpPeer.Asn=65128\r\n&BgpPeer.AuthKey=abcdefg\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"DirectConnectTunnelIdSet\": [\r\n      \"dcx-abcdefgh\"\r\n    ],\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Dedicated tunnel using BGP routing and VPC"
+      }
+    ],
+    "DeleteDirectConnect": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DeleteDirectConnect\r\n&DirectConnectId=dc-abcdefgh\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Deleting a connection"
+      }
+    ],
+    "DeleteDirectConnectTunnel": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DeleteDirectConnectTunnel\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Deleting a dedicated tunnel"
+      }
+    ],
+    "DescribeAccessPoints": [
+      {
+        "document": "This example shows you how to get the information of all access points, where `AVAILABLE` indicates available access points and `UNAVAILABLE` indicates the unavailable ones.",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeAccessPoints\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 6,\r\n        \"AccessPointSet\": [\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-beijing\",\r\n                \"AccessPointId\": \"ap-cn-beijing-hx\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"Location\": \"TravelSky High-Tech Industrial Park, Houshayu Town, Shunyi District, Beijing\",\r\n                \"AccessPointName\": \"TravelSky\"\r\n            },\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-beijing\",\r\n                \"AccessPointId\": \"ap-cn-beijing-jxq\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"Location\": \"BEZ IT Park, Chaoyang District, Beijing\",\r\n                \"AccessPointName\": \"Beijing Wanhong Road\"\r\n            },\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-beijing\",\r\n                \"AccessPointId\": \"ap-cn-beijing-yz\",\r\n                \"State\": \"UNAVAILABLE\",\r\n                \"Location\": \"No. 15, Middle Tongji Road, Beijing Economic-Technological Development Area, Daxing District, Beijing\",\r\n                \"AccessPointName\": \"Beijing 21Vianet 1\"\r\n            },\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-beijing\",\r\n                \"AccessPointId\": \"ap-cn-beijing-zj\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"Location\": \"No. 1, Bo'xing 8th Road, Beijing Economic-Technological Development Area, Beijing\"\r\n                \"AccessPointName\": \"Beijing CICC\"\r\n            },\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-beijing\",\r\n                \"AccessPointId\": \"ap-cn-beijing-yf\",\r\n                \"State\": \"UNAVAILABLE\",\r\n                \"Location\": \"Building B4, Zone C, AT&M Park, No. 11, Middle Fenghui Road, Haidian District, Beijing\",\r\n                \"AccessPointName\": \"Beijing Yongfeng\"\r\n            },\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-beijing\",\r\n                \"AccessPointId\": \"ap-cn-beijing-kc\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"Location\": \"No. 15, Kechuang 9th Street, Beijing Economic-Technological Development Area, Beijing\",\r\n                \"AccessPointName\": \"Beijing Kechuang\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"d591e41a-f3a5-4990-abf0-acdd88f238d9\"\r\n    }\r\n}",
+        "title": "Getting the information of all access points"
+      },
+      {
+        "document": "This example shows you how to get the information of access points in a specific region, where `AVAILABLE` indicates available access points and `UNAVAILABLE` indicates the unavailable ones.",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeAccessPoints\r\n&RegionId=ap-chongqing\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 2,\r\n        \"AccessPointSet\": [\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-chongqing\",\r\n                \"AccessPointId\": \"ap-cn-chongqing-yf\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"Location\": \"Chongqing China Telecom Yunfu Data Center\",\r\n                \"AccessPointName\": \"Chongqing Yunfu\"\r\n            },\r\n            {\r\n                \"LineOperator\": [\r\n                    \"ChinaTelecom\",\r\n                    \"ChinaMobile\",\r\n                    \"ChinaUnicom\",\r\n                    \"In-houseWiring\",\r\n                    \"ChinaOther\",\r\n                    \"InternationalOperator\"\r\n                ],\r\n                \"RegionId\": \"ap-chongqing\",\r\n                \"AccessPointId\": \"ap-cn-chongqing-yx\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"Location\": \"Chongqing China Unicom Yunxiang Data Center\",\r\n                \"AccessPointName\": \"Chongqing Yunxiang\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"b6aa097b-3cd9-4c79-bf41-bb0d2427ffa1\"\r\n    }\r\n}",
+        "title": "Getting the information of access points in a specific region"
+      }
+    ],
+    "DescribeDirectConnectTunnels": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeDirectConnectTunnels\r\n&Filters.0.Name=direct-connect-tunnel-id\r\n&Filters.0.Values.0=dcx-r3sml04o\r\n&Limit=20\r\n&Offset=1\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"DirectConnectTunnelSet\": [{\r\n\t\t\t\"DirectConnectOwnerAccount\": \"2407912486\",\r\n\t\t\t\"DirectConnectGatewayId\": \"dcg-r70hz833\",\r\n\t\t\t\"BgpPeer\": {\r\n\t\t\t\t\"AuthKey\": \"tencent\",\r\n\t\t\t\t\"Asn\": 65139\r\n\t\t\t},\r\n\t\t\t\"OwnerAccount\": \"2407912486\",\r\n\t\t\t\"DirectConnectId\": \"dc-9s5kpgyp\",\r\n\t\t\t\"State\": \"PENDING\",\r\n\t\t\t\"TencentAddress\": \"169.254.64.1/30\",\r\n\t\t\t\"CreatedTime\": \"2018-06-01 14:59:16\",\r\n\t\t\t\"DirectConnectTunnelId\": \"dcx-r3sml04o\",\r\n\t\t\t\"NetworkRegion\": \"ap-guangzhou\",\r\n\t\t\t\"VpcId\": \"vpc-aipqhdez\",\r\n\t\t\t\"CustomerAddress\": \"169.254.64.2/30\",\r\n\t\t\t\"Vlan\": 1321,\r\n\t\t\t\"RouteFilterPrefixes\": [],\r\n\t\t\t\"NetworkType\": \"VPC\",\r\n\t\t\t\"DirectConnectTunnelName\": \"Test dedicated tunnel\",\r\n\t\t\t\"RouteType\": \"BGP\"\r\n\t\t}]\r\n\t}\r\n}",
+        "title": "Querying dedicated tunnels using BGP routing"
+      },
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeDirectConnectTunnels\r\n&Filters.0.Name=direct-connect-tunnel-id\r\n&Filters.0.Values.0=dcx-r3sml04o\r\n&Limit=20\r\n&Offset=2\r\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"DirectConnectTunnelSet\": [{\r\n\t\t\t\"DirectConnectOwnerAccount\": \"2407912486\",\r\n\t\t\t\"DirectConnectGatewayId\": \"dcg-r70hz833\",\r\n\t\t\t\"BgpPeer\": {\r\n\t\t\t\t\"AuthKey\": \"\",\r\n\t\t\t\t\"Asn\": -1\r\n\t\t\t},\r\n\t\t\t\"OwnerAccount\": \"2407912486\",\r\n\t\t\t\"DirectConnectId\": \"dc-9s5kpgyp\",\r\n\t\t\t\"State\": \"PENDING\",\r\n\t\t\t\"TencentAddress\": \"169.254.64.1/30\",\r\n\t\t\t\"CreatedTime\": \"2018-06-01 14:59:16\",\r\n\t\t\t\"DirectConnectTunnelId\": \"dcx-r3sml04o\",\r\n\t\t\t\"NetworkRegion\": \"ap-guangzhou\",\r\n\t\t\t\"VpcId\": \"vpc-aipqhdez\",\r\n\t\t\t\"CustomerAddress\": \"169.254.64.2/30\",\r\n\t\t\t\"Vlan\": 1321,\r\n\t\t\t\"RouteFilterPrefixes\": [{\r\n\t\t\t\t\"Cidr\": \"172.18.27.6/32\"\r\n\t\t\t}, {\r\n\t\t\t\t\"Cidr\": \"172.18.27.0/24\"\r\n\t\t\t}],\r\n\t\t\t\"NetworkType\": \"VPC\",\r\n\t\t\t\"DirectConnectTunnelName\": \"Test dedicated tunnel\",\r\n\t\t\t\"RouteType\": \"STATIC\"\r\n\t\t}]\r\n\t}\r\n}",
+        "title": "Querying dedicated tunnels using static routing"
+      }
+    ],
+    "DescribeDirectConnects": [
+      {
+        "document": "This example shows you how to use the `direct-connect-name` filter to filter results.",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeDirectConnects\r\n&Filters.0.Name=direct-connect-name\r\n&Filters.0.Values.0=Direct Connect\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"DirectConnectSet\": [\r\n            {\r\n                \"EnabledTime\": \"2018-06-02 15:12:34\",\r\n                \"CustomerContactNumber\": \"18812345678\",\r\n                \"AccessPointId\": \"ap-cn-shenzhen-ns-A\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-gd3u0zov\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Room 591, Floor 13, Malata Building, Shennan Avenue\",\r\n                \"CreatedTime\": \"2018-05-03 15:12:34\",\r\n                \"PortType\": \"1000Base-T\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaTelecom\",\r\n                \"TencentAddress\": \"192.168.1.2/30\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"192.168.1.1/30\",\r\n                \"CustomerContactMail\": \"zzuzxy1111@163.com\",\r\n                \"Vlan\": 10,\r\n                \"Bandwidth\": 100,\r\n                \"DirectConnectName\": \"Self-created Direct Connect\",\r\n                \"ChargeType\": \"NON_RECURRING_CHARGE\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            },\r\n            {\r\n                \"EnabledTime\": \"2018-05-23 11:10:46\",\r\n                \"CustomerContactNumber\": \"18812345678\",\r\n                \"AccessPointId\": \"ap-cn-beijing-hx\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-2zeyish1\",\r\n                \"State\": \"BUILDING\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Beijing University of Posts and Telecommunications, No.10, Xitucheng Road\",\r\n                \"CreatedTime\": \"2018-04-23 11:10:46\",\r\n                \"PortType\": \"1000Base-T\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaMobile\",\r\n                \"TencentAddress\": \"192.168.1.156/24\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"192.168.1.157/24\",\r\n                \"CustomerContactMail\": \"zzuzxy@163.com\",\r\n                \"Vlan\": 253,\r\n                \"Bandwidth\": 2,\r\n                \"DirectConnectName\": \"Direct Connect one-time paid test\",\r\n                \"ChargeType\": \"PREPAID_BY_YEAR\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            },\r\n            {\r\n                \"EnabledTime\": \"2018-05-23 10:28:12\",\r\n                \"CustomerContactNumber\": \"18812345678\",\r\n                \"AccessPointId\": \"ap-cn-shenzhen-ns-A\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-epeq2tj7\",\r\n                \"State\": \"BUILDING\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Room 591, Floor 13, Malata Building\",\r\n                \"CreatedTime\": \"2018-04-23 10:28:12\",\r\n                \"PortType\": \"1000Base-T\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaMobile\",\r\n                \"TencentAddress\": \"192.168.1.2/30\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"192.168.1.1/30\",\r\n                \"CustomerContactMail\": \"zzuzxy@163.com\",\r\n                \"Vlan\": 100,\r\n                \"Bandwidth\": 2,\r\n                \"DirectConnectName\": \"Direct Connect one-time paid test\",\r\n                \"ChargeType\": \"NON_RECURRING_CHARGE\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"70d690c8-477a-4e5d-99c0-fa1bb012a105\",\r\n        \"TotalCount\": 3\r\n    }\r\n}",
+        "title": "Querying the connection list"
+      },
+      {
+        "document": "This example shows you how to filter the results by direct-connect-name.",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeDirectConnects\r\n&DirectConnectIds.0=dc-6mqd6t9j\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"DirectConnectSet\": [\r\n            {\r\n                \"EnabledTime\": \"2019-03-30 09:48:39\",\r\n                \"CustomerContactNumber\": \"13924777788\",\r\n                \"AccessPointId\": \"ap-cn-shenzhen-ns-A\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-6mqd6t9j\",\r\n                \"State\": \"PENDING\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Tencent Building\",\r\n                \"CreatedTime\": \"2019-02-28 09:48:39\",\r\n                \"PortType\": \"1000Base-LX\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaTelecom\",\r\n                \"TencentAddress\": \"\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"\",\r\n                \"CustomerContactMail\": \"zzubupt@163.com\",\r\n                \"Vlan\": -1,\r\n                \"Bandwidth\": 100,\r\n                \"DirectConnectName\": \"bbb\",\r\n                \"ChargeType\": \"PREPAID_BY_YEAR\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"a17e965b-5c58-4cf2-b5fb-2e00946deea8\",\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Querying the connection list - 2"
+      }
+    ],
+    "ModifyDirectConnectAttribute": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectAttribute\r\n&DirectConnectId=dcx-abcdefgh\r\n&DirectConnectName=abc\r\n&CircuitCode=ABF_123\r\n&Vlan=100\r\n&TencentAddress=172.168.1.1/30\r\n&CustomerAddress=172.168.1.2/30\r\n&CustomerName=John Smith\r\n&CustomerContactMail=12345@qq.com\r\n&CustomerContactNumber=18812345678\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Modifying connection attributes"
+      }
+    ],
+    "ModifyDirectConnectTunnelAttribute": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectTunnelAttribute\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&Bandwidth=100\r\n&TencentAddress=192.168.1.1/30\r\n&CustomerAddress=192.168.1.2/30\r\n&BgpPeer.Asn=65128\r\n&BgpPeer.AuthKey=abcdefg\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Modifying a dedicated tunnel using BGP routing"
+      },
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectTunnelAttribute\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&Bandwidth=100\r\n&TencentAddress=192.168.1.1/30\r\n&CustomerAddress=192.168.1.2/30\r\n&RouteFilterPrefixes.0.Cidr=192.168.0.0/24\r\n&RouteFilterPrefixes.1.Cidr=192.168.1.0/24\r\n&RouteFilterPrefixes.2.Cidr=192.168.2.0/24\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Modifying a dedicated tunnel using static routing"
+      }
+    ],
+    "RejectDirectConnectTunnel": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=RejectDirectConnectTunnel\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
+        "title": "Rejecting an application for a dedicated tunnel"
+      }
+    ]
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,437 @@
+{
+  "actions": {
+    "AnalyzeDenseLandmarks": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=AnalyzeDenseLandmarks\n&Mode=0\n&Url=http://test.image.myqcloud.com/testA.jpg\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ImageWidth\": 550,\r\n        \"ImageHeight\": 366,\r\n        \"DenseFaceShapeSet\": [\r\n            {\r\n                \"Chin\": [\r\n                    {\r\n                        \"X\": 376,\r\n                        \"Y\": 66\r\n                    }\r\n                ],\r\n                \"LeftEye\": [\r\n                    {\r\n                        \"X\": 384,\r\n                        \"Y\": 66\r\n                    }\r\n                ],\r\n                \"RightEye\": [\r\n                    {\r\n                        \"X\": 422,\r\n                        \"Y\": 72\r\n                    }\r\n                ],\r\n                \"LeftEyeBrow\": [\r\n                    {\r\n                        \"X\": 382,\r\n                        \"Y\": 61\r\n                    }\r\n                ],\r\n                \"RightEyeBrow\": [\r\n                    {\r\n                        \"X\": 428,\r\n                        \"Y\": 68\r\n                    }\r\n                ],\r\n                \"Nose\": [\r\n                    {\r\n                        \"X\": 398,\r\n                        \"Y\": 69\r\n                    }\r\n                ],\r\n                \"MouthInside\": [\r\n                    {\r\n                        \"X\": 386,\r\n                        \"Y\": 98\r\n                    }\r\n                ],\r\n                \"MouthOutside\": [\r\n                    {\r\n                        \"X\": 386,\r\n                        \"Y\": 98\r\n                    }\r\n                ],\r\n                \"LeftPupil\": [\r\n                    {\r\n                        \"X\": 390,\r\n                        \"Y\": 65\r\n                    }\r\n                ],\r\n                \"RightPupil\": [\r\n                    {\r\n                        \"X\": 416,\r\n                        \"Y\": 70\r\n                    }\r\n                ],\r\n                \"LeftEyeBags\": [\r\n                    {\r\n                        \"X\": 395,\r\n                        \"Y\": 69\r\n                    }\r\n                ],\r\n                \"RightEyeBags\": [\r\n                    {\r\n                        \"X\": 410,\r\n                        \"Y\": 72\r\n                    }\r\n                ],\r\n                \"Forehead\": [\r\n                    {\r\n                        \"X\": 376,\r\n                        \"Y\": 65\r\n                    }\r\n                ],\r\n                \"CentralAxis\": [\r\n                    {\r\n                        \"X\": 405,\r\n                        \"Y\": 54\r\n                    }\r\n                ],\r\n                \"X\": 375,\r\n                \"Y\": 37,\r\n                \"Width\": 63,\r\n                \"Height\": 82\r\n            }\r\n        ],\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"cebb639a-ec53-4a23-a5a5-fbcc5f0ae2bc\"\r\n    }\r\n}",
+        "title": "Getting dense keypoints"
+      }
+    ],
+    "AnalyzeFace": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=AnalyzeFace\r\n&Mode=0\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ImageWidth\": 550,\r\n        \"ImageHeight\": 366,\r\n        \"FaceShapeSet\":[\r\n               {\r\n                     \"FaceProfile\":[{\"X\":63,\"Y\":335},{\"X\":63,\"Y\":374},{\"X\":66,\"Y\":412},{\"X\":74,\"Y\":450},{\"X\":85,\"Y\":487},{\"X\":100,\"Y\":522},{\"X\":121,\"Y\":554},{\"X\":147,\"Y\":582},{\"X\":176,\"Y\":608},{\"X\":208,\"Y\":627},{\"X\":245,\"Y\":634},{\"X\":282,\"Y\":627},{\"X\":315,\"Y\":607},{\"X\":344,\"Y\":582},{\"X\":370,\"Y\":554},{\"X\":391,\"Y\":522},{\"X\":405,\"Y\":487},{\"X\":416,\"Y\":449},{\"X\":423,\"Y\":411},{\"X\":427,\"Y\":372},{\"X\":426,\"Y\":334}],\r\n                     \"LeftEye\":[{\"X\":114,\"Y\":333},{\"X\":128,\"Y\":345},{\"X\":146,\"Y\":349},{\"X\":165,\"Y\":347},{\"X\":183,\"Y\":341},{\"X\":169,\"Y\":325},{\"X\":150,\"Y\":318},{\"X\":130,\"Y\":321}],\r\n                     \"RightEye\":[{\"X\":378,\"Y\":331},{\"X\":364,\"Y\":343},{\"X\":345,\"Y\":348},{\"X\":327,\"Y\":346},{\"X\":309,\"Y\":340},{\"X\":322,\"Y\":323},{\"X\":341,\"Y\":316},{\"X\":361,\"Y\":319}],\r\n                     \"LeftEyeBrow\":[{\"X\":79,\"Y\":280},{\"X\":108,\"Y\":275},{\"X\":138,\"Y\":274},{\"X\":168,\"Y\":277},{\"X\":198,\"Y\":279},{\"X\":173,\"Y\":256},{\"X\":139,\"Y\":251},{\"X\":105,\"Y\":256}],\r\n                     \"RightEyeBrow\":[{\"X\":410,\"Y\":277},{\"X\":380,\"Y\":273},{\"X\":350,\"Y\":272},{\"X\":320,\"Y\":275},{\"X\":290,\"Y\":277},{\"X\":315,\"Y\":255},{\"X\":349,\"Y\":249},{\"X\":384,\"Y\":254}],\r\n                     \"Mouth\":[{\"X\":173,\"Y\":522},{\"X\":193,\"Y\":541},{\"X\":217,\"Y\":554},{\"X\":244,\"Y\":558},{\"X\":272,\"Y\":554},{\"X\":297,\"Y\":541},{\"X\":317,\"Y\":522},{\"X\":291,\"Y\":517},{\"X\":264,\"Y\":512},{\"X\":245,\"Y\":517},{\"X\":225,\"Y\":512},{\"X\":199,\"Y\":517},{\"X\":196,\"Y\":528},{\"X\":220,\"Y\":532},{\"X\":244,\"Y\":535},{\"X\":269,\"Y\":532},{\"X\":293,\"Y\":528},{\"X\":293,\"Y\":525},{\"X\":269,\"Y\":527},{\"X\":245,\"Y\":530},{\"X\":221,\"Y\":528},{\"X\":197,\"Y\":525}],\r\n                    \"Nose\":[{\"X\":244,\"Y\":428},{\"X\":245,\"Y\":341},{\"X\":231,\"Y\":367},{\"X\":217,\"Y\":392},{\"X\":203,\"Y\":418},{\"X\":187,\"Y\":448},{\"X\":217,\"Y\":464},{\"X\":245,\"Y\":468},{\"X\":272,\"Y\":464},{\"X\":302,\"Y\":448},{\"X\":287,\"Y\":417},{\"X\":273,\"Y\":392},{\"X\":259,\"Y\":366}],\r\n                    \"LeftPupil\":[{\"X\":188,\"Y\":303}],\r\n                    \"RightPupil\":[{\"X\":201,\"Y\":304}]\r\n              }\r\n         ],\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"a8eb4545-a154-4f86-9510-57a8be9cae0c\"\r\n    }\r\n}",
+        "title": "Performing facial feature localization"
+      }
+    ],
+    "CompareFace": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CompareFace\r\n&UrlA=http://test.image.myqcloud.com/testA.jpg\r\n&UrlB=http://test.image.myqcloud.com/testB.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Score\": 0.999,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"a8eb4545-a154-4f86-9510-57a8be9cae0c\"\r\n    }\r\n}",
+        "title": "Comparing faces"
+      }
+    ],
+    "CopyPerson": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CopyPerson\r\n&PersonId=2001\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&GroupIds.1=ShenZhenCitizen\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"SucGroupNum\": 2,\r\n        \"SucGroupIds\": [\r\n            \"ShenZhenCitizen\",\r\n            \"TencentShenZhenEmployee\"\r\n        ],\r\n        \"RequestId\": \"9841c008-e597-4356-a8d5-c47a246abd8d\"\r\n    }\r\n}",
+        "title": "Copying person"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CopyPerson\r\n&PersonId=1001\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&GroupIds.1=ZhuYuanDormitoryNo1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.GroupPersonMapExist\",\r\n            \"Message\": \"The ID of the corresponding person is already in the group.\"\r\n        },\r\n        \"RequestId\": \"8ecfa566-68a9-4eb5-a6da-95ba9be26947\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "CreateFace": [
+      {
+        "document": "This example shows you how to add a set of face images to a person.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateFace\r\n&PersonId=1001\r\n&Urls.0=http://test.image.myqcloud.com/testA.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"SucFaceNum\": 1,\r\n        \"SucFaceIds\": [\r\n            \"2875186538564559728\"\r\n        ],\r\n        \"RetCode\": [\r\n            0\r\n        ],\r\n        \"SucIndexes\":[\r\n           0\r\n        ],\r\n        \"SucFaceRects\": [\r\n        {\r\n        \"X\": 135,\r\n        \"Y\": 42,\r\n        \"Width\": 98,\r\n        \"Height\": 136\r\n        }\r\n        ],\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"07d63403-a199-4bbe-b9e0-692356ac738d\"\r\n    }\r\n}",
+        "title": "Adding face"
+      },
+      {
+        "document": "One person can have up to 5 face images.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateFace\r\n&PersonId=1001\r\n&Urls.0=http://test.image.myqcloud.com/testB.jpg\r\n&Urls.1=http://test.image.myqcloud.com/testC.jpg\r\n&Urls.2=http://test.image.myqcloud.com/testD.jpg\r\n&Urls.3=http://test.image.myqcloud.com/testE.jpg\r\n&Urls.4=http://test.image.myqcloud.com/testF.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameterValue.UploadFaceNumExceed\",\r\n            \"Message\": \"Up to four faces can be uploaded at a time.\"\r\n        },\r\n        \"RequestId\": \"44506f79-2191-49bc-997b-748a566d781c\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "CreateGroup": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateGroup\r\n&GroupName=Tencent Employees in Shenzhen\r\n&FaceModelVersion=3.0\r\n&GroupId=TencentShenZhenEmployee\r\n&Tag=Excluding interns\r\n&GroupExDescriptions.0=Division\r\n&GroupExDescriptions.1=Department name\r\n&GroupExDescriptions.2=Team name\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"e53ee4ec-9099-4b35-a129-21dd4820ff85\"\r\n  }\r\n}",
+        "title": "Creating group"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateGroup\r\n&GroupName=Dormitory Building #1, Zhuyuan Campus, XX University\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&FaceModelVersion=3.0\r\n&Tag=All girls\r\n&GroupExDescriptions.0=School name\r\n&GroupExDescriptions.1=Major\r\n&GroupExDescriptions.2=Grade\r\n&GroupExDescriptions.3=Student ID\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"1695f3dd-b668-479e-8b87-f37de371a8ec\"\r\n  }\r\n}",
+        "title": "Creating group - 2"
+      },
+      {
+        "document": "The group ID must be unique.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateGroup\r\n&GroupName=Tencent Employees in Shenzhen\r\n&GroupId=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.GroupIdAlreadyExist\",\r\n      \"Message\": \"The group ID already exists. It must be unique.\"\r\n    },\r\n    \"RequestId\": \"76ec6e41-37d6-4ab9-abef-48ef0c6ab175\"\r\n  }\r\n}",
+        "title": "Sample error"
+      },
+      {
+        "document": "The group ID cannot contain Chinese characters.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateGroup\r\n&GroupName=Tencent Employees in Shenzhen\r\n&GroupId=Tencent Employees in Shenzhen\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.GroupIdIllegal\",\r\n      \"Message\": \"The group ID contains invalid characters. It can contain only letters, digits, and -%@#&_.\"\r\n    },\r\n    \"RequestId\": \"8125dda4-2905-4e02-88bd-79a93a660ad2\"\r\n  }\r\n}",
+        "title": "Sample error - 2"
+      }
+    ],
+    "CreatePerson": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&PersonName=Junly\r\n&PersonId=2001\r\n&Gender=1\r\n&Url=http://test.image.myqcloud.com/testB.jpg\r\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=0\r\n&PersonExDescriptionInfos.0.PersonExDescription=School of Computing\r\n&PersonExDescriptionInfos.1.PersonExDescriptionIndex=1\r\n&PersonExDescriptionInfos.1.PersonExDescription=Software Engineering\r\n&PersonExDescriptionInfos.2.PersonExDescriptionIndex=2\r\n&PersonExDescriptionInfos.2.PersonExDescription='15\r\n&PersonExDescriptionInfos.3.PersonExDescriptionIndex=3\r\n&PersonExDescriptionInfos.3.PersonExDescription=3150808\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"FaceId\": \"3454816969590585885\",\r\n    \"SimilarPersonId\": \"\",\r\n    \"FaceRect\": {\r\n      \"X\": 172,\r\n      \"Y\": 122,\r\n      \"Width\": 178,\r\n      \"Height\": 228\r\n    },\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"738a2fb0-bd4b-4cf6-9c91-18d50978d76b\"\r\n  }\r\n}",
+        "title": "Creating person"
+      },
+      {
+        "document": "This example shows you how to create a person.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\r\n&GroupId=TencentShenZhenEmployee\r\n&PersonName=evanliao\r\n&PersonId=1001\r\n&Gender=1\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=0\r\n&PersonExDescriptionInfos.0.PersonExDescription=Cloud and Smart Industries Group\r\n&PersonExDescriptionInfos.1.PersonExDescriptionIndex=1\r\n&PersonExDescriptionInfos.1.PersonExDescription=AI Product Center\r\n&PersonExDescriptionInfos.2.PersonExDescriptionIndex=2\r\n&PersonExDescriptionInfos.2.PersonExDescription=Face Recognition Product Team\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"FaceId\": \"3454816969590585881\",\r\n    \"SimilarPersonId\": \"\",\r\n    \"FaceRect\": {\r\n      \"X\": 172,\r\n      \"Y\": 122,\r\n      \"Width\": 178,\r\n      \"Height\": 228\r\n    },\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"269a6bc0-0016-47e8-a63d-517ce4052b0e\"\r\n  }\r\n}",
+        "title": "Creating person - 2"
+      },
+      {
+        "document": "The person ID must be unique.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&PersonName=Cheng\r\n&PersonId=1001\r\n&Gender=2\r\n&Url=http://test.image.myqcloud.com/testD.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameterValue.PersonIdAlreadyExist\",\r\n            \"Message\": \"The person ID already exists. It must be unique.\"\r\n        },\r\n        \"RequestId\": \"76dedef7-af27-4a20-9064-c5ef3133926d\"\r\n    }\r\n}",
+        "title": "Sample error"
+      },
+      {
+        "document": "The group ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\r\n&GroupId=ShenZhenCitizen\r\n&PersonName=Siccy\r\n&PersonId=3001\r\n&Gender=2\r\n&Url=http://test.image.myqcloud.com/testC.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameterValue.GroupIdNotExist\",\r\n            \"Message\": \"The group ID does not exist.\"\r\n        },\r\n        \"RequestId\": \"dfa512fc-fd07-4bf1-a292-cb497b620857\"\r\n    }\r\n}",
+        "title": "Sample error - 2"
+      }
+    ],
+    "DeleteFace": [
+      {
+        "document": "This example shows you how to delete the face images of a person.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeleteFace\r\n&PersonId=1001\r\n&FaceIds.0=2875186538564559728\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"SucDeletedNum\": 1,\r\n        \"SucFaceIds\": [\r\n            \"2875186538564559728\"\r\n        ],\r\n        \"RequestId\": \"38f96439-d5ea-48ea-899b-44a284708f6b\"\r\n    }\r\n}",
+        "title": "Deleting face"
+      },
+      {
+        "document": "The person ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeleteFace\r\n&PersonId=5001\r\n&FaceIds.0=2875186538564559728\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"ResourceNotFound.ErrorPersonNotExisted\",\r\n            \"Message\": \"The person does not exist.\"\r\n        },\r\n        \"RequestId\": \"e2b603e5-51d0-4a8a-8319-2df026ae7518\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "DeleteGroup": [
+      {
+        "document": "This example shows you how to delete a specified group and all its members.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeleteGroup\n&GroupId=ZhuYuanDormitoryNo1\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"2ff7181c-ef20-4f02-b4ed-13924b381368\"\r\n    }\r\n}",
+        "title": "Calling the DeleteGroup API"
+      },
+      {
+        "document": "This example shows the error occurred when the specified group ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeleteGroup\n&GroupId=ZhuYuanDormitory\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameterValue.GroupIdNotExist\",\r\n            \"Message\": \"The specified group ID does not exist.\"\r\n        },\r\n        \"RequestId\": \"878b225f-d3a4-4aa0-a849-3df415ac61a9\"\r\n    }\r\n}",
+        "title": "Sample Error"
+      }
+    ],
+    "DeletePerson": [
+      {
+        "document": "This example shows you how to delete the information of a specified person.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeletePerson\r\n&PersonId=2001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"4b609b7c-7a9a-4ea0-be8b-1fb638c2ceca\"\r\n    }\r\n}",
+        "title": "Deleting person"
+      },
+      {
+        "document": "The person ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeletePerson\r\n&PersonId=3001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"ResourceNotFound.ErrorPersonNotExisted\",\r\n            \"Message\": \"The person does not exist.\"\r\n        },\r\n        \"RequestId\": \"4b9c1bdc-86eb-413f-8c74-15bcf4466cd5\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "DeletePersonFromGroup": [
+      {
+        "document": "This example shows you how to remove a person from a specified group. This operation only affects the group.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeletePersonFromGroup\r\n&PersonId=1001\r\n&GroupId=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"f9b22bbc-c94d-4287-a2ab-fa68f7bbbaf3\"\r\n    }\r\n}",
+        "title": "Deleting person from group"
+      },
+      {
+        "document": "The specified person is not in the group.",
+        "input": "https://iai.tencentcloudapi.com/?Action=DeletePersonFromGroup\r\n&PersonId=3001\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.GroupPersonMapNotExist\",\r\n            \"Message\": \"The ID of the corresponding person is not in the group.\"\r\n        },\r\n        \"RequestId\": \"b9d9641d-3de2-4a6f-a728-36a3b66e7bd0\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "DetectFace": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=DetectFace\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&Url=http://test.image.myqcloud.com/testB.jpg\r\n&NeedFaceAttributes=0\r\n&NeedQualityDetection=0\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ImageWidth\": 640,\r\n        \"ImageHeight\": 440,\r\n        \"FaceInfos\": [\r\n            {\r\n                \"X\": 156,\r\n                \"Y\": 129,\r\n                \"Width\": 196,\r\n                \"Height\": 196,\r\n                \"FaceAttributesInfo\": {\r\n                    \"Gender\": 0,\r\n                    \"Age\": 0,\r\n                    \"Expression\": 0,\r\n                    \"Hat\": false,\r\n                    \"Glass\": false,\r\n                    \"Mask\": false,\r\n                    \"Hair\": {\r\n                        \"Length\": 0,\r\n                        \"Bang\": 0,\r\n                        \"Color\": 0\r\n                    },\r\n                    \"Pitch\": 0,\r\n                    \"Yaw\": 0,\r\n                    \"Roll\": 0,\r\n                    \"Beauty\": 0\r\n                },\r\n                \"FaceQualityInfo\": {\r\n                    \"Score\": 0,\r\n                    \"Sharpness\": 0,\r\n                    \"Brightness\": 0,\r\n                    \"Completeness\": {\r\n                        \"Eyebrow\": 0,\r\n                        \"Eye\": 0,\r\n                        \"Nose\": 0,\r\n                        \"Cheek\": 0,\r\n                        \"Mouth\": 0,\r\n                        \"Chin\": 0\r\n                    }\r\n                }\r\n            }\r\n        ],\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"a574102d-1b86-48a7-a08b-6a741a8fedb6\"\r\n    }\r\n}",
+        "title": "Detecting and analyzing face"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=DetectFace\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&NeedFaceAttributes=1\r\n&NeedQualityDetection=1\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ImageWidth\": 640,\r\n        \"ImageHeight\": 440,\r\n        \"FaceInfos\": [\r\n            {\r\n                \"X\": 156,\r\n                \"Y\": 129,\r\n                \"Width\": 196,\r\n                \"Height\": 196,\r\n                \"FaceAttributesInfo\": {\r\n                    \"Gender\": 99,\r\n                    \"Age\": 51,\r\n                    \"Expression\": 99,\r\n                    \"Hat\": false,\r\n                    \"Glass\": false,\r\n                    \"Mask\": true,\r\n                    \"Hair\": {\r\n                        \"Length\": 1,\r\n                        \"Bang\": 1,\r\n                        \"Color\": 0\r\n                    },\r\n                    \"Pitch\": 17,\r\n                    \"Yaw\": 5,\r\n                    \"Roll\": -2,\r\n                    \"Beauty\": 71\r\n                },\r\n                \"FaceQualityInfo\": {\r\n                    \"Score\": 63,\r\n                    \"Sharpness\": 73,\r\n                    \"Brightness\": 47,\r\n                    \"Completeness\": {\r\n                        \"Eyebrow\": 99,\r\n                        \"Eye\": 99,\r\n                        \"Nose\": 99,\r\n                        \"Cheek\": 52,\r\n                        \"Mouth\": 99,\r\n                        \"Chin\": 47\r\n                    }\r\n                }\r\n            }\r\n        ],\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"bcde47b5-e6d8-446e-a538-bcecffbe306a\"\r\n    }\r\n}",
+        "title": "Detecting and analyzing face - 2"
+      }
+    ],
+    "DetectFaceAttributes": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=DetectFaceAttributes\n&Url=http://test.image.myqcloud.com/testA.jpg\n&FaceAttributesType=eye\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ImageWidth\": 550,\r\n        \"ImageHeight\": 366,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"FaceDetailInfos\": [\r\n            {\r\n                \"FaceRect\": {\r\n                    \"X\": 375,\r\n                    \"Y\": 37,\r\n                    \"Width\": 63,\r\n                    \"Height\": 82\r\n                },\r\n                \"FaceDetailAttributesInfo\": {\r\n                    \"Age\": 0,\r\n                    \"Beauty\": 0,\r\n                    \"Emotion\": {\r\n                        \"Type\": 0,\r\n                        \"Probability\": 0\r\n                    },\r\n                    \"Eye\": {\r\n                        \"Glass\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0.99936753511429\r\n                        },\r\n                        \"EyeOpen\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0.99949336051941\r\n                        },\r\n                        \"EyelidType\": {\r\n                            \"Type\": 1,\r\n                            \"Probability\": 0.75467920303345\r\n                        },\r\n                        \"EyeSize\": {\r\n                            \"Type\": 2,\r\n                            \"Probability\": 0.59152442216873\r\n                        }\r\n                    },\r\n                    \"Eyebrow\": {\r\n                        \"EyebrowDensity\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        },\r\n                        \"EyebrowCurve\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        },\r\n                        \"EyebrowLength\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        }\r\n                    },\r\n                    \"Gender\": {\r\n                        \"Type\": 0,\r\n                        \"Probability\": 0\r\n                    },\r\n                    \"Hair\": {\r\n                        \"Length\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        },\r\n                        \"Bang\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        },\r\n                        \"Color\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        }\r\n                    },\r\n                    \"Hat\": {\r\n                        \"Style\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        },\r\n                        \"Color\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        }\r\n                    },\r\n                    \"HeadPose\": {\r\n                        \"Pitch\": 0,\r\n                        \"Yaw\": 0,\r\n                        \"Roll\": 0\r\n                    },\r\n                    \"Mask\": {\r\n                        \"Type\": 0,\r\n                        \"Probability\": 0\r\n                    },\r\n                    \"Mouth\": {\r\n                        \"MouthOpen\": {\r\n                            \"Type\": 0,\r\n                            \"Probability\": 0\r\n                        }\r\n                    },\r\n                    \"Moustache\": {\r\n                        \"Type\": 0,\r\n                        \"Probability\": 0\r\n                    },\r\n                    \"Nose\": {\r\n                        \"Type\": 2,\r\n                        \"Probability\": 0.75233882665634\r\n                    },\r\n                    \"Shape\": {\r\n                        \"Type\": 0,\r\n                        \"Probability\": 0\r\n                    },\r\n                    \"Skin\": {\r\n                        \"Type\": 0,\r\n                        \"Probability\": 0\r\n                    },\r\n                    \"Smile\": 0\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\": \"b2c154b9-4620-4d37-8fd1-f6af3748f998\"\r\n    }\r\n}",
+        "title": "Detecting face and analyzing attributes"
+      }
+    ],
+    "DetectLiveFace": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=DetectLiveFace\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Score\": 99,\r\n    \"IsLiveness\": true,\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"048a5eb3-f7a9-4c1f-a982-00e90b6b892c\"\r\n  }\r\n}",
+        "title": "Detecting liveness based on image"
+      }
+    ],
+    "DetectLiveFaceAccurate": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=DetectLiveFaceAccurate\n&Url=http://test.image.myqcloud.com/testA.jpg\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Score\": 99,\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"048a5eb3-f7a9-4c1f-a982-00e90b6b892c\"\r\n  }\r\n}",
+        "title": "Calling the DetectLiveFaceAccurate API"
+      }
+    ],
+    "GetGroupInfo": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetGroupInfo\r\n&GroupId=aaa\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"GroupName\": \"aaa\",\r\n        \"GroupId\": \"aaa\",\r\n        \"GroupExDescriptions\": [\r\n            \"24\"\r\n        ],\r\n        \"Tag\": \"fdsaf\",\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"CreationTimestamp\": 1559530931613,\r\n        \"RequestId\": \"6faa05d0-287b-464e-8755-cf3e8d0c703d\"\r\n    }\r\n}",
+        "title": "Getting group information"
+      }
+    ],
+    "GetGroupList": [
+      {
+        "document": "This example shows you how to get the group list.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetGroupList\n&Offset=0\n&Limit=10\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"GroupInfos\": [\r\n            {\r\n                \"GroupName\": \"Tencent Shenzhen Employees\",\r\n                \"GroupId\": \"TencentShenZhenEmployee\",\r\n                \"GroupExDescriptions\": [\r\n                    \"Business group\",\r\n                    \"Department name\",\r\n                    \"Group name\"\r\n                ],\r\n                \"Tag\": \"Excluding interns\"\r\n                \"FaceModelVersion\":\"3.0\",\r\n                \"CreationTimestamp\": 1592210245686\r\n            },\r\n            {\r\n                \"GroupName\": \"Building 1, Zhuyuan Dormitory of XXX University\",\r\n                \"GroupId\": \"ZhuYuanDormitoryNo1\",\r\n                \"GroupExDescriptions\": [\r\n                    \"School name\",\r\n                    \"Major\",\r\n                    \"Grade\",\r\n                    \"Student ID\"\r\n                ],\r\n                \"Tag\": \"Female only\"\r\n                \"FaceModelVersion\": \"3.0\",\r\n                \"CreationTimestamp\": 1594552117118\r\n            }\r\n        ],\r\n        \"GroupNum\": 2,\r\n        \"RequestId\": \"72102087-a18d-4225-9ae9-87ef49e9f63e\"\r\n    }\r\n}",
+        "title": "Calling the GetGroupList API"
+      },
+      {
+        "document": "This example shows the error occurred when the starting number is less than 0.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetGroupList\n&Offset=-1\n&Limit=100\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameter\",\r\n            \"Message\": \"The value type of parameter `Offset` is not valid.\"\r\n        },\r\n        \"RequestId\": \"9c987f11-f5d0-4aa7-aa13-3d8c1b4b3042\"\r\n    }\r\n}",
+        "title": "Sample Error"
+      },
+      {
+        "document": "This example shows the error occurred when the number of returned results is greater than 1000.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetGroupList\n&Offset=0\n&Limit=1001\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.LimitExceed\",\r\n      \"Message\": \"Number of returned results exceeded the limit.\"\r\n    },\r\n    \"RequestId\": \"a6bb57de-773b-45e4-9e1c-c30ef48eba85\"\r\n  }\r\n}",
+        "title": "Sample Error 2"
+      }
+    ],
+    "GetPersonBaseInfo": [
+      {
+        "document": "This example shows you how to get the information of a specified person, including name, gender, face, etc.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonBaseInfo\r\n&PersonId=1001\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"PersonName\": \"EvanLiao\",\r\n        \"Gender\": 1,\r\n        \"FaceIds\": [\r\n            \"2873640802022644880\",\r\n            \"2875186538564559728\"\r\n        ],\r\n        \"RequestId\": \"9568a077-0710-40d2-9d6a-b9483d3f2051\"\r\n    }\r\n}",
+        "title": "Getting the basic information of person"
+      },
+      {
+        "document": "The person ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonBaseInfo\r\n&PersonId=1002\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameterValue.PersonIdNotExist\",\r\n            \"Message\": \"The person ID does not exist.\"\r\n        },\r\n        \"RequestId\": \"98b4a0bc-802b-4764-9701-bc0c6c544395\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "GetPersonGroupInfo": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonGroupInfo\r\n&PersonId=2001\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"GroupNum\":\"1\",\r\n    \"PersonGroupInfos\": [\r\n      {\r\n        \"GroupId\": \"ZhuYuanDormitoryNo1\",\r\n        \"PersonExDescriptions\": [\r\n          \"School of Computing\",\r\n          \"Software Engineering\",\r\n          \"'15\",\r\n          \"3150108080\"\r\n        ]\r\n      }\r\n    ],\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"671f0a1d-2b35-47c4-b9d1-b18053f71a04\"\r\n  }\r\n}",
+        "title": "Getting the group information of person"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonGroupInfo\r\n&PersonId=1001\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"GroupNum\":\"1\",\r\n    \"PersonGroupInfos\": [\r\n      {\r\n        \"GroupId\": \"TencentShenZhenEmployee\",\r\n        \"PersonExDescriptions\": [\r\n          \"Cloud and Smart Industries Group\",\r\n          \"Big Data and AI Product Center\",\r\n          \"Face Recognition Product Team\"\r\n        ]\r\n      }\r\n    ],\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"b7a505ad-4a85-42da-97b3-886c7999fb76\"\r\n  }\r\n}",
+        "title": "Getting the group information of person - 2"
+      },
+      {
+        "document": "The person ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonGroupInfo\r\n&PersonId=1002\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.PersonIdNotExist\",\r\n      \"Message\": \"The person ID does not exist.\"\r\n    },\r\n    \"RequestId\": \"98330f25-eb2e-432a-a30c-3830774210c1\"\r\n  }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "GetPersonList": [
+      {
+        "document": "This example shows you how to get the list of persons in a specified group.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonList\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"PersonInfos\": [\r\n      {\r\n        \"PersonName\": \"Junly\",\r\n        \"PersonId\": \"2001\",\r\n        \"Gender\": 1,\r\n        \"PersonExDescriptions\": [\r\n          \"School of Computing\",\r\n          \"Software Engineering\",\r\n          \"'15\",\r\n          \"3150108080\"\r\n        ],\r\n        \"FaceIds\": [\r\n          \"2877244861637985315\"\r\n        ],\r\n        \"CreationTimestamp\": 1594642823572\r\n      }\r\n    ],\r\n    \"PersonNum\": 1,\r\n    \"FaceNum\": 1,\r\n     \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"337d1bb5-3f88-4681-9291-5194f478f0d1\"\r\n  }\r\n}",
+        "title": "Getting person list"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonList\r\n&GroupId=TencentShenZhenEmployee\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"PersonInfos\": [\r\n      {\r\n        \"PersonName\": \"evanliao\",\r\n        \"PersonId\": \"1001\",\r\n        \"Gender\": 1,\r\n        \"PersonExDescriptions\": [\r\n          \"Cloud and Smart Industries Group\",\r\n          \"Big Data and AI Product Center\",\r\n          \"Face Recognition Product Team\"\r\n        ],\r\n        \"FaceIds\": [\r\n          \"2877242150180891493\"\r\n        ],\r\n        \"CreationTimestamp\": 1594642823572\r\n      }\r\n    ],\r\n    \"PersonNum\": 1,\r\n    \"FaceNum\": 1,\r\n    \"FaceModelVersion\": \"3.0\",\r\n    \"RequestId\": \"aa292f16-27d9-423b-9048-cdd43f6e4156\"\r\n  }\r\n}",
+        "title": "Getting person list - 2"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonList\r\n&GroupId=ZhuYuanDormitory\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.GroupIdNotExist\",\r\n      \"Message\": \"The group ID does not exist.\"\r\n    },\r\n    \"RequestId\": \"b7c0cd81-d621-465f-8fd6-86a6b49e67be\"\r\n  }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "GetPersonListNum": [
+      {
+        "document": "This example shows you how to get the number of persons in the specified group.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonListNum\n&GroupId=TencentShenZhenEmployee\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"PersonNum\": 2,\r\n        \"FaceNum\": 2,\r\n        \"RequestId\": \"18fb1e31-0d33-4371-9f41-b1fd59e0c781\"\r\n    }\r\n}",
+        "title": "Calling the GetPersonListNum API"
+      },
+      {
+        "document": "This example shows the error occurred when the specified group ID does not exist.",
+        "input": "https://iai.tencentcloudapi.com/?Action=GetPersonListNum\n&GroupId=Tencent\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"InvalidParameterValue.GroupIdNotExist\",\r\n            \"Message\": \"The specified group ID does not exist.\"\r\n        },\r\n        \"RequestId\": \"2865a458-4db1-46bd-ae52-b7507c9f4e62\"\r\n    }\r\n}",
+        "title": "Sample Error"
+      }
+    ],
+    "ModifyGroup": [
+      {
+        "document": "This example shows you how to modify the name, tag, and custom description field of a group.",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyGroup\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&GroupName=Building Dormitory #1, Zhuyuan Campus, XX University\r\n&Tag=Graduates\r\n&GroupExDescriptionInfos.0.GroupExDescriptionIndex=0\r\n&GroupExDescriptionInfos.0.GroupExDescription=School\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"da051f16-0400-49d4-9832-2cfd3b51866f\"\r\n  }\r\n}",
+        "title": "Modifying group"
+      },
+      {
+        "document": "This example shows you how to modify the name, tag, and custom description field of a group.",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyGroup\r\n&GroupId=TencentShenZhenEmployee\r\n&GroupName=Current Tencent Employees in Shenzhen\r\n&Tag=Including interns\r\n&GroupExDescriptionInfos.0.GroupExDescriptionIndex=1\r\n&GroupExDescriptionInfos.0.GroupExDescription=Department\r\n&GroupExDescriptionInfos.1.GroupExDescriptionIndex=2\r\n&GroupExDescriptionInfos.1.GroupExDescription=Project team\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"98381738-509f-4749-8a66-dbf54247333d\"\r\n  }\r\n}",
+        "title": "Modifying group - 2"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyGroup\r\n&GroupId=TencentShenZhenEmployee\r\n&GroupExDescriptionInfos.0.GroupExDescriptionIndex=0\r\n&GroupExDescriptionInfos.0.GroupExDescription=Department\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"FailedOperation.DuplicatedGroupDescription\",\r\n      \"Message\": \"The custom description field must be unique in the group.\"\r\n    },\r\n    \"RequestId\": \"4b483679-3f08-4a7c-b827-4a6332dc030f\"\r\n  }\r\n}",
+        "title": "Sample error"
+      },
+      {
+        "document": "The group name must be unique.",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyGroup\r\n&GroupId=TencentShenZhenEmployee\r\n&GroupName=Building Dormitory #1, Zhuyuan Campus, XX University\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.GroupNameAlreadyExist\",\r\n      \"Message\": \"The group name already exists. It must be unique.\"\r\n    },\r\n    \"RequestId\": \"2dcce170-30cf-4078-9b3c-309362fbad21\"\r\n  }\r\n}",
+        "title": "Sample error - 2"
+      }
+    ],
+    "ModifyPersonBaseInfo": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyPersonBaseInfo\r\n&PersonId=2001\r\n&PersonName=JunlyWang\r\n&Gender=1\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"6e2a0fb7-7c9e-45c7-abf1-338457d1def7\"\r\n  }\r\n}",
+        "title": "Modifying the basic information of person"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyPersonBaseInfo\r\n&PersonId=1001\r\n&PersonName=EvanLiao\r\n&Gender=1\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"6e2a0fb7-7c9e-45c7-abf1-338457d1def7\"\r\n  }\r\n}",
+        "title": "Modifying the basic information of person - 2"
+      },
+      {
+        "document": "An error occurred while setting the person gender.",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyPersonBaseInfo\r\n&PersonId=1001\r\n&Gender=-1\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameterValue.PersonGenderIllegal\",\r\n      \"Message\": \"An error occurred while setting person gender. 0: empty; 1: male; 2: female.\"\r\n    },\r\n    \"RequestId\": \"f40bf659-0283-4773-abe8-945f643d5015\"\r\n  }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "ModifyPersonGroupInfo": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyPersonGroupInfo\r\n&GroupId=ZhuYuanDormitoryNo1\r\n&PersonId=2001\r\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=3\r\n&PersonExDescriptionInfos.0.PersonExDescription=3150108080\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"77e11a2d-0fc0-4fba-ab25-016e998221c3\"\r\n  }\r\n}",
+        "title": "Modifying person description"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyPersonGroupInfo\r\n&GroupId=TencentShenZhenEmployee\r\n&PersonId=1001\r\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=1\r\n&PersonExDescriptionInfos.0.PersonExDescription=Big Data and AI Product Center\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"77e11a2d-0fc0-4fba-ab25-016e998221c3\"\r\n  }\r\n}",
+        "title": "Modifying person description - 2"
+      },
+      {
+        "document": "Invalid subscript.",
+        "input": "https://iai.tencentcloudapi.com/?Action=ModifyPersonGroupInfo\r\n&GroupId=TencentShenZhenEmployee\r\n&PersonId=1001\r\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=-1\r\n&PersonExDescriptionInfos.0.PersonExDescription=AI Lab\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Error\": {\r\n      \"Code\": \"InvalidParameter\",\r\n      \"Message\": \"The value type of parameter `PersonExDescriptionInfos.0.PersonExDescriptionIndex` is not valid.\"\r\n    },\r\n    \"RequestId\": \"f944657d-6260-4a2e-a4d8-9c1845f39e56\"\r\n  }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "SearchFaces": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&MaxPersonNum=5\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Results\": [\r\n            {\r\n                \"RetCode\": 0,\r\n                \"Candidates\": [\r\n                    {\r\n                        \"PersonId\": \"1001\",\r\n                        \"FaceId\": \"2875093635484912302\",\r\n                        \"PersonName\": \"Jerry\",\r\n                        \"Gender\": 0,\r\n                        \"Score\": 100,\r\n                        \"PersonGroupInfos\": [{\r\n                                   \"GroupId\": \"abc\",\r\n                                   \"PersonExDescriptions\": [\r\n                                          \"description1\",\r\n                                          \"description2\"\r\n                                   ]\r\n\r\n                        }]\r\n                    }\r\n                ],\r\n                \"FaceRect\": {\r\n                    \"X\": 370,\r\n                    \"Y\": 46,\r\n                    \"Width\": 75,\r\n                    \"Height\": 75\r\n                }\r\n            }\r\n        ],\r\n        \"FaceNum\": 1,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"57b42b73-b978-45b9-8095-8f50e9642d35\"\r\n    }\r\n}",
+        "title": "Searching for face"
+      },
+      {
+        "document": "`MaxFaceNum` cannot be above 10.",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&MaxFaceNum=11\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.SearchFacesExceed\",\r\n            \"Message\": \"The number of faces searched for exceeds the limit.\"\r\n        },\r\n        \"RequestId\": \"f04ba2f3-532c-4207-9caa-6e818ded7fb9\"\r\n    }\r\n}",
+        "title": "Sample error"
+      },
+      {
+        "document": "Incorrect image URL.",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\r\n&Url=http://test.image.myqcloud.com/testA\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.ImageDownloadError\",\r\n            \"Message\": \"An error occurred while downloading the image.\"\r\n        },\r\n        \"RequestId\": \"527ecffe-4c6a-47c9-8217-4dd2e3f018da\"\r\n    }\r\n}",
+        "title": "Sample error - 2"
+      }
+    ],
+    "SearchFacesReturnsByGroup": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchFacesReturnsByGroup\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&MaxPersonNumPerGroup=5\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ResultsReturnsByGroup\": [\r\n            {\r\n                \"RetCode\": 0,\r\n                \"FaceRect\": {\r\n                    \"X\": 370,\r\n                    \"Y\": 46,\r\n                    \"Width\": 75,\r\n                    \"Height\": 80\r\n                },\r\n                \"GroupCandidates\": [\r\n\t\t\t\t    {\r\n\t\t\t\t\t    \"GroupId\" : \"Group1\",\r\n\t\t\t\t\t    \"Candidates\" : {\r\n                            \"PersonId\": \"1001\",\r\n                            \"FaceId\": \"2875093635484912302\",\r\n                            \"Score\": 100,\r\n                            \"PersonName\": \"John Smith\",\r\n                            \"Gender\": 0,\r\n                            \"PersonGroupInfos\": [{\r\n                                   \"GroupId\": \"abc\",\r\n                                   \"PersonExDescriptions\": [\r\n                                          \"description1\",\r\n                                          \"description2\"\r\n                                   ]\r\n\r\n                              }]\r\n                        }\r\n\t\t\t\t\t}\r\n                ]\r\n            }\r\n        ],\r\n        \"FaceNum\": 1,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"57b42b73-b978-45b9-8095-8f50e9642d35\"\r\n    }\r\n}",
+        "title": "Searching for face with results returned by group"
+      }
+    ],
+    "SearchPersons": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersons\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&MaxPersonNum=3\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Results\": [\r\n            {\r\n                \"RetCode\": 0,\r\n                \"Candidates\": [\r\n                    {\r\n                        \"PersonId\": \"person1\",\r\n                        \"FaceId\": \"\",\r\n                        \"Score\": 100,\r\n                        \"PersonName\": null,\r\n                        \"Gender\": null,\r\n                        \"PersonGroupInfos\": null\r\n                    },\r\n                    {\r\n                        \"PersonId\": \"person2\",\r\n                        \"FaceId\": \"\",\r\n                        \"Score\": 60,\r\n                        \"PersonName\": null,\r\n                        \"Gender\": null,\r\n                        \"PersonGroupInfos\": null\r\n                    },\r\n                    {\r\n                        \"PersonId\": \"person3\",\r\n                        \"FaceId\": \"\",\r\n                        \"Score\": 50,\r\n                        \"PersonName\": null,\r\n                        \"Gender\": null,\r\n                        \"PersonGroupInfos\": null\r\n                    }\r\n                ],\r\n                \"FaceRect\": {\r\n                    \"X\": 139,\r\n                    \"Y\": 59,\r\n                    \"Width\": 124,\r\n                    \"Height\": 162\r\n                }\r\n            },\r\n            {\r\n                \"RetCode\": 0,\r\n                \"Candidates\": [\r\n                    {\r\n                        \"PersonId\": \"person2\",\r\n                        \"FaceId\": \"\",\r\n                        \"Score\": 100,\r\n                        \"PersonName\": null,\r\n                        \"Gender\": null,\r\n                        \"PersonGroupInfos\": null\r\n                    },\r\n                    {\r\n                        \"PersonId\": \"person1\",\r\n                        \"FaceId\": \"\",\r\n                        \"Score\": 60,\r\n                        \"PersonName\": null,\r\n                        \"Gender\": null,\r\n                        \"PersonGroupInfos\": null\r\n                    },\r\n                    {\r\n                        \"PersonId\": \"person3\",\r\n                        \"FaceId\": \"\",\r\n                        \"Score\": 20,\r\n                        \"PersonName\": null,\r\n                        \"Gender\": null,\r\n                        \"PersonGroupInfos\": null\r\n                    }\r\n                ],\r\n                \"FaceRect\": {\r\n                    \"X\": 328,\r\n                    \"Y\": 70,\r\n                    \"Width\": 119,\r\n                    \"Height\": 162\r\n                }\r\n            }\r\n        ],\r\n        \"PersonNum\": 5,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"c4608852-ff60-4a01-8dc3-367f6046baaf\"\r\n    }\r\n}",
+        "title": "Searching for person"
+      },
+      {
+        "document": "Incorrect image URL.",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersons\r\n&Url=http://test.image.myqcloud.com/testA\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.ImageDownloadError\",\r\n            \"Message\": \"An error occurred while downloading the image.\"\r\n        },\r\n        \"RequestId\": \"527ecffe-4c6a-47c9-8217-4dd2e3f018da\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "SearchPersonsReturnsByGroup": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersonsReturnsByGroup\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&MaxPersonNumPerGroup=5\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ResultsReturnsByGroup\": [\r\n            {\r\n                \"RetCode\": 0,\r\n                \"FaceRect\": {\r\n                    \"X\": 375,\r\n                    \"Y\": 37,\r\n                    \"Width\": 63,\r\n                    \"Height\": 82\r\n                },\r\n                \"GroupCandidates\": [\r\n                    {\r\n                        \"GroupId\": \"TencentShenZhenEmployee\",\r\n                        \"Candidates\": [\r\n                            {\r\n                                \"PersonId\": \"testtest3\",\r\n                                \"FaceId\": \"\",\r\n                                \"Score\": 100,\r\n                                \"PersonName\": null,\r\n                                \"Gender\": null,\r\n                                \"PersonGroupInfos\": null\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"PersonNum\": 1,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"c8a06ec5-ecb4-4dd7-a8c8-ce5e675495c2\"\r\n    }\r\n}",
+        "title": "Searching for person with results returned by group"
+      },
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersonsReturnsByGroup\r\n&Url=http://test.image.myqcloud.com/testB.jpg\r\n&MaxFaceNum=1\r\n&MinFaceSize=40\r\n&MaxPersonNumPerGroup=5\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Error\": {\r\n            \"Code\": \"FailedOperation.ImageDownloadError\",\r\n            \"Message\": \"An error occurred while downloading the image.\"\r\n        },\r\n        \"RequestId\": \"527ecffe-4c6a-47c9-8217-4dd2e3f018da\"\r\n    }\r\n}",
+        "title": "Sample error"
+      }
+    ],
+    "VerifyFace": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=VerifyFace\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&PersonId=11111111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Score\": 100,\r\n        \"IsMatch\": true,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"a8eb4545-a154-4f86-9510-57a8be9cae0c\"\r\n    }\r\n}",
+        "title": "Verifying face"
+      }
+    ],
+    "VerifyPerson": [
+      {
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=VerifyPerson\r\n&Url=http://test.image.myqcloud.com/testA.jpg\r\n&PersonId=11111111\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Score\": 100,\r\n        \"IsMatch\": true,\r\n        \"FaceModelVersion\": \"3.0\",\r\n        \"RequestId\": \"a8eb4545-a154-4f86-9510-57a8be9cae0c\"\r\n    }\r\n}",
+        "title": "Verifying face"
+      }
+    ]
+  },
+  "version": "1.0"
+}

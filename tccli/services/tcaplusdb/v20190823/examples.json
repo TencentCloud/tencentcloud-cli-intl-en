@@ -1,0 +1,275 @@
+{
+  "actions": {
+    "ClearTables": [
+      {
+        "document": "This example shows you how to clear a table.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ClearTables\r\n&ClusterId=5674209986\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"122bb375-7464-4536-a3c5-8ddbdd6f4ce4\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"TableGroupId\": \"101\",\r\n                \"TableIdlType\": null,\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": null,\r\n                \"TaskId\": \"5674209986-1199\",\r\n                \"TaskIds\": null\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": " Clearing table"
+      }
+    ],
+    "CompareIdlFiles": [
+      {
+        "document": "This example shows you how to upload and verify a table structure modification file.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=CompareIdlFiles\r\n&ClusterId=5674209986\r\n&NewIdlFiles.0.FileName=tb_example_modify\r\n&NewIdlFiles.0.FileType=PROTO\r\n&NewIdlFiles.0.FileExtType=proto\r\n&NewIdlFiles.0.FileSize=287\r\n&NewIdlFiles.0.FileContent=syntax%3d%22proto2%22%3bpackage+myTcaplusTable%3bimport+%22tcaplusservice.optionv1.proto%22%3bmessage+tb_example%7boption(tcaplusservice.tcaplus_primary_key)%3d%22uin%2cname%22%3brequired+int64+uin+%3d+1%3brequired+string+name+%3d+2%3brequired+int32+gamesvrid+%3d+3%3boptional+string+logintime+%3d+4%3boptional+int32+add_v1+%3d+5%3b%7d\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&SelectedTables.0.TableIdlType=PROTO\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"IdlFiles\": [\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 600,\r\n                \"FileName\": \"tb_example_modify\",\r\n                \"FileSize\": 287,\r\n                \"FileType\": \"PROTO\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"81274902-0df6-4574-a3b0-2ea229ef903f\",\r\n        \"TableInfos\": [\r\n            {\r\n                \"Error\": null,\r\n                \"IndexKeySet\": null,\r\n                \"KeyFields\": \"{\\\"KeyField\\\":[{\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"uin\\\",\\\"Type\\\":\\\"int64\\\"},{\\\"Crypto\\\":false,\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"name\\\",\\\"Type\\\":\\\"string\\\"}],\\\"Num\\\":2}\",\r\n                \"TableGroupId\": \"101\",\r\n                \"OldKeyFields\": \"{\\\"KeyField\\\":[{\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"uin\\\",\\\"Type\\\":\\\"int64\\\"},{\\\"Crypto\\\":false,\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"name\\\",\\\"Type\\\":\\\"string\\\"}],\\\"Num\\\":2}\",\r\n                \"OldValueFields\": \"{\\\"Num\\\":2,\\\"ValueField\\\":[{\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"gamesvrid\\\",\\\"Type\\\":\\\"int32\\\"},{\\\"Crypto\\\":false,\\\"Label\\\":\\\"optional\\\",\\\"Name\\\":\\\"logintime\\\",\\\"Type\\\":\\\"string\\\"}]}\",\r\n                \"ShardingKeySet\": \"\",\r\n                \"SumKeyFieldSize\": 1022,\r\n                \"SumValueFieldSize\": 262144,\r\n                \"TableIdlType\": \"PROTO\",\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": \"GENERIC\",\r\n                \"TdrVersion\": 1,\r\n                \"ListElementNum\": null,\r\n                \"SortFieldNum\": null,\r\n                \"SortRule\": null,\r\n                \"ValueFields\": \"{\\\"Num\\\":3,\\\"ValueField\\\":[{\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"gamesvrid\\\",\\\"Type\\\":\\\"int32\\\"},{\\\"Crypto\\\":false,\\\"Label\\\":\\\"optional\\\",\\\"Name\\\":\\\"logintime\\\",\\\"Type\\\":\\\"string\\\"},{\\\"Label\\\":\\\"optional\\\",\\\"Name\\\":\\\"add_v1\\\",\\\"Type\\\":\\\"int32\\\"}]}\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Uploading and verifying table structure modification file"
+      }
+    ],
+    "CreateBackup": [
+      {
+        "document": "This example shows you how to create a backup.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=CreateBackup\r\n&ClusterId=22762983670\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&Remark=test\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c3446e81-4d07-4a80-a07f-f34f94b598bc\",\r\n        \"TaskIds\": [\r\n            \"22762983670-1\"\r\n        ]\r\n    }\r\n}",
+        "title": "Creating backup"
+      }
+    ],
+    "CreateCluster": [
+      {
+        "document": "This example shows you how to create a TcaplusDB cluster.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=CreateCluster\r\n&IdlType=TDR\r\n&ClusterName=gz test TDR\r\n&VpcId=vpc-kppg4pm1\r\n&SubnetId=subnet-3sww53pa\r\n&Password=84ea4cbf06573ED\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ClusterId\": \"6179109757\",\r\n        \"RequestId\": \"8f1cc454-4a80-4ed3-a6c3-b7df2b0e8ec7\"\r\n    }\r\n}",
+        "title": "Creating cluster"
+      }
+    ],
+    "CreateTableGroup": [
+      {
+        "document": "This example shows you how to create a TcaplusDB table group in a cluster.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=CreateTableGroup\r\n&ClusterId=6179109757\r\n&TableGroupName=tdr zone 1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"TableGroupId\": \"1\",\r\n        \"RequestId\": \"d87c0378-47af-4d59-920d-82fd2a778e6c\"\r\n    }\r\n}",
+        "title": "Creating table group"
+      }
+    ],
+    "CreateTables": [
+      {
+        "document": "This example shows you how to create tables in batches.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=CreateTables\r\n&ClusterId=22762983670\r\n&IdlFiles.0.FileName=table_test_2_modify\r\n&IdlFiles.0.FileSize=673\r\n&IdlFiles.0.FileExtType=proto\r\n&IdlFiles.0.FileId=46\r\n&IdlFiles.0.FileType=PROTO\r\n&SelectedTables.0.TableIdlType=PROTO\r\n&SelectedTables.0.ReservedReadQps=80\r\n&SelectedTables.0.ReservedWriteQps=26\r\n&SelectedTables.0.ReservedVolume=1\r\n&SelectedTables.0.TableGroupId=2\r\n&SelectedTables.0.TableName=PLAYERONLINECNT\r\n&SelectedTables.0.TableType=GENERIC\r\n&SelectedTables.0.Memo=test\r\n&<common request parameters>",
+        "output": "{\r\n \"Response\": {\r\n  \"TotalCount\": 1, \r\n  \"TableResults\": [\r\n   {\r\n    \"TableIdlType\": \"TDR\", \r\n    \"TableInstanceId\": \"tcaplus-c6187008\", \r\n    \"TableName\": \"PLAYERONLINECNT\", \r\n    \"TableGroupId\": \"2\", \r\n    \"TaskId\": \"22762983670-144\", \r\n    \"TableType\": \"GENERIC\"\r\n   }\r\n  ], \r\n  \"RequestId\":\"8cEcE3E8-2fE2-6d4b-5E34-Fdc01E35f2C6\"\r\n }\r\n}",
+        "title": "Creating tables in batches"
+      }
+    ],
+    "DeleteCluster": [
+      {
+        "document": "This example shows you how to delete a TcaplusDB cluster by specifying the cluster ID.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DeleteCluster\r\n&ClusterId=6179109757\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TaskId\": \"6179109757-1210\"\r\n    }\r\n}",
+        "title": "Deleting cluster"
+      }
+    ],
+    "DeleteIdlFiles": [
+      {
+        "document": "This example shows you how to delete a target IDL file.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DeleteIdlFiles\r\n&ClusterId=6084038577\r\n&IdlFiles.0.FileName=tb_example\r\n&IdlFiles.0.FileType=PROTO\r\n&IdlFiles.0.FileExtType=proto\r\n&IdlFiles.0.FileSize=266\r\n&IdlFiles.0.FileId=849\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"IdlFileInfos\": [\r\n            {\r\n                \"Error\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 849,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"4e79897b-5696-4d1b-b337-d2b46824de64\",\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Deleting target IDL file"
+      }
+    ],
+    "DeleteTableGroup": [
+      {
+        "document": "This example shows you how to delete a table group based on cluster ID and table group ID.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DeleteTableGroup\r\n&ClusterId=6179109757\r\n&TableGroupId=1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"1d7ba682-570c-4589-9624-7b463cd5d852\",\r\n        \"TaskId\": \"6179109757-1208\"\r\n    }\r\n}",
+        "title": "Deleting table group"
+      }
+    ],
+    "DeleteTables": [
+      {
+        "document": "This example shows you how to drop a table.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DeleteTables\r\n&ClusterId=5674209986\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"ebc273d5-d56c-4c54-ad19-9b5a25815eed\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"TableGroupId\": \"101\",\r\n                \"TableIdlType\": null,\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": null,\r\n                \"TaskId\": \"5674209986-1180\",\r\n                \"TaskIds\": null\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Dropping table"
+      }
+    ],
+    "DescribeClusterTags": [
+      {
+        "document": "This example shows you how to obtain the list of tags associated with a cluster.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeClusterTags\r\n&ClusterIds.0=5674209986\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TotalCount\": 1,\r\n        \"Rows\": [\r\n            {\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Tags\": {\r\n                    \"TagKey\": \"test1\",\r\n                    \"TagValue\": \"value1\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the list of tags associated with a cluster"
+      }
+    ],
+    "DescribeClusters": [
+      {
+        "document": "This example shows you how to query your list of clusters.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeClusters\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Clusters\": [\r\n            {\r\n                \"ApiAccessId\": \"8\",\r\n                \"ApiAccessIp\": \"10.18.7.15\",\r\n                \"ApiAccessIpv6\": \"\",\r\n                \"ApiAccessPort\": 9999,\r\n                \"ClusterId\": \"5462425805\",\r\n                \"ClusterName\": \"gz test application\",\r\n                \"CreatedTime\": \"2019-12-04 11:28:16\",\r\n                \"IdlType\": \"PROTO\",\r\n                \"NetworkType\": \"vpc-normal\",\r\n                \"OldPasswordExpireTime\": \"\",\r\n                \"Password\": \"gz123AppTest56\",\r\n                \"PasswordStatus\": \"modifiable\",\r\n                \"Region\": \"ap-guangzhou\",\r\n                \"SubnetId\": \"subnet-jq2cqev2\",\r\n                \"VpcId\": \"vpc-oezt2hwl\"\r\n            },\r\n            {\r\n                \"ApiAccessId\": \"2\",\r\n                \"ApiAccessIp\": \"10.18.7.9\",\r\n                \"ApiAccessIpv6\": \"2001:3CA1:010F:001A:121B:0000:0000:0010\",\r\n                \"ApiAccessPort\": 9999,\r\n                \"ClusterId\": \"6032569361\",\r\n                \"ClusterName\": \"Thunder Fighter Test\",\r\n                \"CreatedTime\": \"2019-12-25 11:54:02\",\r\n                \"IdlType\": \"PROTO\",\r\n                \"NetworkType\": \"vpc-normal\",\r\n                \"OldPasswordExpireTime\": \"\",\r\n                \"Password\": \"ltzj123123X\",\r\n                \"PasswordStatus\": \"modifiable\",\r\n                \"Region\": \"ap-guangzhou\",\r\n                \"SubnetId\": \"subnet-jq2cqev2\",\r\n                \"VpcId\": \"vpc-oezt2hwl\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"34680b61-9836-44d9-bae9-e231f4b61a48\",\r\n        \"TotalCount\": 2\r\n    }\r\n}",
+        "title": "Querying the cluster list"
+      }
+    ],
+    "DescribeIdlFileInfos": [
+      {
+        "document": "This example shows you how to query file details by specifying the cluster ID and file ID.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeIdlFileInfos\r\n&ClusterId=5674209986\r\n&IdlFileIds.0=564\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"IdlFileInfos\": [\r\n            {\r\n                \"FileContent\": \"syntax%3D%22proto2%22%3Bpackage%20myTcaplusTable%3Bimport%20%22tcaplusservice.optionv1.proto%22%3Bmessage%20tb_example%7Boption%28tcaplusservice.tcaplus_primary_key%29%3D%22uin%2Cname%22%3Brequired%20int64%20uin%20%3D%201%3Brequired%20string%20name%20%3D%202%3Brequired%20int32%20gamesvrid%20%3D%203%3Boptional%20string%20logintime%20%3D%204%3B%7D\",\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 564,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"5d592aa1-ee73-4b5e-90bf-062efcc05966\",\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Querying file details by specifying cluster ID and file ID"
+      },
+      {
+        "document": "This example shows you how to query the description file list by specifying a cluster ID.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeIdlFileInfos\r\n&ClusterId=5674209986\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"IdlFileInfos\": [\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 600,\r\n                \"FileName\": \"tb_example_modify\",\r\n                \"FileSize\": 292,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 548,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 298,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 549,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 298,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 550,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 551,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 552,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 553,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 559,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 560,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 561,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 562,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 267,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 563,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 380,\r\n                \"FileType\": \"PROTO\"\r\n            },\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 564,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 266,\r\n                \"FileType\": \"PROTO\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"1b6a5d3f-beb3-4380-9b6d-3d9f2d83654c\",\r\n        \"TotalCount\": 13\r\n    }\r\n}",
+        "title": "Querying description file details"
+      }
+    ],
+    "DescribeRegions": [
+      {
+        "document": "This example shows you how to get the region list.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeRegions\r\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RegionInfos\": [\r\n            {\r\n                \"RegionAbbr\": \"sh\",\r\n                \"RegionId\": 4,\r\n                \"RegionName\": \"Shanghai\",\r\n                \"Ipv6Enable\": \"1\"\r\n            },\r\n            {\r\n                \"RegionAbbr\": \"gz\",\r\n                \"RegionId\": 1,\r\n                \"RegionName\": \"Guangzhou\",\r\n                \"Ipv6Enable\": \"0\"\r\n            },\r\n            {\r\n                \"RegionAbbr\": \"hk\",\r\n                \"RegionId\": 5,\r\n                \"RegionName\": \"Hongkong\",\r\n                \"Ipv6Enable\": \"1\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"b64fa31b-a0ca-4a06-82e9-211d610ba516\",\r\n        \"TotalCount\": 3\r\n    }\r\n}",
+        "title": "Getting the region list"
+      }
+    ],
+    "DescribeTableGroupTags": [
+      {
+        "document": "This example shows you how to obtain the list of tags associated with a table group.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTableGroupTags\r\n&ClusterId=5674209986\r\n&TableGroupIds.0=1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TotalCount\": 1,\r\n        \"Rows\": [\r\n            {\r\n                \"ClusterId\": \"5674209986\",\r\n                \"TableGroupId\": \"1\",\r\n                \"Tags\": {\r\n                    \"TagKey\": \"test1\",\r\n                    \"TagValue\": \"value1\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the list of tags associated with a table group"
+      }
+    ],
+    "DescribeTableGroups": [
+      {
+        "document": "This example shows you how to query the table group list.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTableGroups\r\n&ClusterId=6179109757\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"dbaf73f4-3d1d-4f7b-b3b3-259d53e546be\",\r\n        \"TotalCount\": 2,\r\n        \"TableGroups\": [\r\n            {\r\n                \"CreatedTime\": \"2019-08-30 18:57:02\",\r\n                \"TableGroupId\": \"1\",\r\n                \"TableCount\": 0,\r\n                \"TotalSize\": 0,\r\n                \"TableGroupName\": \"tdr test zone 1\"\r\n            },\r\n            {\r\n                \"CreatedTime\": \"2019-08-30 18:58:03\",\r\n                \"TableGroupId\": \"1001\",\r\n                \"TableCount\": 0,\r\n                \"TotalSize\": 0,\r\n                \"TableGroupName\": \"tdr production zone 1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Querying table group list"
+      }
+    ],
+    "DescribeTableTags": [
+      {
+        "document": "This example shows you how to obtain table tags.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTableTags\r\n&ClusterId=5674209986\r\n&SelectedTables.0.TableInstanceId=tcaplus-0xm12ck1\r\n&SelectedTables.0.TableGroupId=1\r\n&SelectedTables.0.TableName=tb_test\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TotalCount\": 1,\r\n        \"Rows\": [\r\n            {\r\n                \"TableInstanceId\": \"tcaplus-0xm12ck1\",\r\n                \"TableGroupId\": \"1\",\r\n                \"TableName\": \"tb_test\",\r\n                \"Tags\": {\r\n                    \"TagKey\": \"test1\",\r\n                    \"TagValue\": \"value1\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining table tags"
+      }
+    ],
+    "DescribeTables": [
+      {
+        "document": "This example shows you how to query the table list.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTables\r\n&ClusterId=5674209986\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"68821f04-f15b-46e6-b4ce-669341e6c848\",\r\n        \"TableInfos\": [\r\n            {\r\n                \"ApiAccessId\": \"10\",\r\n                \"ClusterName\": \"gz test App\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"CreatedTime\": \"2019-08-29 22:03:27\",\r\n                \"Error\": null,\r\n                \"IdlFiles\": [\r\n                    {\r\n                        \"FileContent\": null,\r\n                        \"FileExtType\": \"proto\",\r\n                        \"FileId\": 551,\r\n                        \"FileName\": \"tb_example\",\r\n                        \"FileSize\": 266,\r\n                        \"FileType\": \"PROTO\"\r\n                    }\r\n                ],\r\n                \"IndexStruct\": null,\r\n                \"KeyStruct\": null,\r\n                \"ListElementNum\": 1,\r\n                \"TableGroupId\": \"101\",\r\n                \"Memo\": \"pb test table 1\",\r\n                \"ReservedReadQps\": 80,\r\n                \"ReservedVolume\": 1,\r\n                \"ReservedWriteQps\": 26,\r\n                \"ShardingKeySet\": \"key\",\r\n                \"Status\": \"RUNNING\",\r\n                \"TableIdlType\": \"PROTO\",\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableSize\": 48566336,\r\n                \"TableType\": \"GENERIC\",\r\n                \"UpdatedTime\": \"\",\r\n                \"ValueStruct\": null,\r\n                \"SortFieldNum\": null,\r\n                \"SortRule\": null,\r\n                \"TableGroupName\": \"test_zone_1\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Querying table list"
+      }
+    ],
+    "DescribeTablesInRecycle": [
+      {
+        "document": "This example shows you how to query the list of tables in the recycle bin.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTablesInRecycle\r\n&ClusterId=5674209986\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"5d7da70a-2aa6-4e61-9389-46a92770974c\",\r\n        \"TableInfos\": [\r\n            {\r\n                \"ApiAccessId\": \"10\",\r\n                \"ClusterName\": \"gz test App\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"CreatedTime\": \"2019-08-29 22:03:27\",\r\n                \"Error\": null,\r\n                \"IdlFiles\": [\r\n                    {\r\n                        \"FileContent\": null,\r\n                        \"FileExtType\": \"proto\",\r\n                        \"FileId\": 551,\r\n                        \"FileName\": \"tb_example\",\r\n                        \"FileSize\": 266,\r\n                        \"FileType\": \"PROTO\"\r\n                    }\r\n                ],\r\n                \"IndexStruct\": null,\r\n                \"KeyStruct\": null,\r\n                \"ListElementNum\": 1,\r\n                \"TableGroupId\": \"101\",\r\n                \"Memo\": null,\r\n                \"ReservedReadQps\": 80,\r\n                \"ReservedVolume\": 1,\r\n                \"ReservedWriteQps\": 26,\r\n                \"ShardingKeySet\": \"key\",\r\n                \"Status\": \"RECYCLING\",\r\n                \"TableIdlType\": \"PROTO\",\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableSize\": 48566336,\r\n                \"TableType\": \"GENERIC\",\r\n                \"UpdatedTime\": \"\",\r\n                \"ValueStruct\": null,\r\n                \"SortFieldNum\": null,\r\n                \"SortRule\": null,\r\n                \"TableGroupName\": \"test_zone_1\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Querying the list of tables in recycle bin"
+      }
+    ],
+    "DescribeTasks": [
+      {
+        "document": "This example shows you how to query task details by specifying task IDs.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTasks\r\n&ClusterIds.0=5674209986\r\n&Offset=3\r\n&Limit=3\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"72fc70ce-2396-4b8e-ac54-9bce72058da1\",\r\n        \"TaskInfos\": [\r\n            {\r\n                \"ClusterName\": \"gz test PROTO\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Content\": \"20548499 modify quotas table(tb_example) of Cluster(5674209986) TableGroup(101), InstanceId tcaplus-1f224454, Storage Layer Expand: volume[1 -> 2], owner 20548499\",\r\n                \"Operator\": \"20548499\",\r\n                \"Progress\": 0,\r\n                \"StartTime\": \"2019-08-30 18:16:50\",\r\n                \"TaskId\": \"5674209986-1202\",\r\n                \"TaskType\": \"ModifyTableQuotas\",\r\n                \"TransId\": \"0\",\r\n                \"UpdateTime\": \"2019-08-30 18:16:50\"\r\n            },\r\n            {\r\n                \"ClusterName\": \"gz test PROTO\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Content\": \"20548499 modify table(tb_example)'s structure of Cluster(5674209986) TableGroup(101), InstanceId tcaplus-1f224454, owner 20548499\",\r\n                \"Operator\": \"20548499\",\r\n                \"Progress\": 100,\r\n                \"StartTime\": \"2019-08-30 18:02:50\",\r\n                \"TaskId\": \"5674209986-1200\",\r\n                \"TaskType\": \"ModifyTables\",\r\n                \"TransId\": \"558\",\r\n                \"UpdateTime\": \"2019-08-30 18:02:51\"\r\n            },\r\n            {\r\n                \"ClusterName\": \"gz test PROTO\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Content\": \"20548499 clear table(tb_example) of Cluster(5674209986) TableGroup(101), InstanceId tcaplus-1f224454, owner 20548499\",\r\n                \"Operator\": \"20548499\",\r\n                \"Progress\": 0,\r\n                \"StartTime\": \"2019-08-30 17:34:07\",\r\n                \"TaskId\": \"5674209986-1199\",\r\n                \"TaskType\": \"ClearTables\",\r\n                \"TransId\": \"557\",\r\n                \"UpdateTime\": \"2019-08-30 17:34:07\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 19\r\n    }\r\n}",
+        "title": "Querying task list"
+      }
+    ],
+    "DescribeUinInWhitelist": [
+      {
+        "document": "Querying whether the current user is in the whitelist",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeUinInWhitelist\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c5401419-d469-4a9b-8317-bf844ceebb09\",\r\n        \"Result\": \"FALSE\"\r\n    }\r\n}",
+        "title": "Querying whether the current user is in the whitelist"
+      }
+    ],
+    "ModifyClusterName": [
+      {
+        "document": "This example shows you how to rename a cluster based on ClusterId.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyClusterName\r\n&ClusterId=5674209986\r\n&ClusterName=gz test PROTO\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"87562838-1eda-45f3-abda-59a704135fe7\"\r\n    }\r\n}",
+        "title": "Renaming cluster"
+      }
+    ],
+    "ModifyClusterPassword": [
+      {
+        "document": "This example shows you how to change a cluster password.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyClusterPassword\r\n&ClusterId=23311894780\r\n&OldPassword=canmkdmk1215LM\r\n&NewPassword=99c59cb345c61063db\r\n&OldPasswordExpireTime=2019-08-26%2017%3A25%3A00\r\n&<common request parameters>",
+        "output": "{\r\n \"Response\": {\r\n  \"RequestId\":\"8cEcE3E8-2fE2-6d4b-5E34-Fdc01E35f2C6\"\r\n }\r\n}",
+        "title": "Changing cluster password"
+      }
+    ],
+    "ModifyClusterTags": [
+      {
+        "document": "This example shows you how to modify cluster tags.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyClusterTags\r\n&ClusterId=5674209986\r\n&ReplaceTags.0.TagKey=test1\r\n&ReplaceTags.0.TagValue=value1\r\n&DeleteTags.0.TagKey=delete1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TaskId\": \"5674209986-1210\"\r\n    }\r\n}",
+        "title": "Modifying cluster tags"
+      }
+    ],
+    "ModifyTableGroupName": [
+      {
+        "document": "This example shows you how to rename a table group.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyTableGroupName\r\n&ClusterId=6179109757\r\n&TableGroupId=1\r\n&TableGroupName=tdr test zone 1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c3d85d90-65a6-46ed-9187-b2a429e18cfc\"\r\n    }\r\n}",
+        "title": "Renaming table group"
+      }
+    ],
+    "ModifyTableGroupTags": [
+      {
+        "document": "This example shows you how to modify table group tags.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyTableGroupTags\r\n&ClusterId=5674209986\r\n&TableGroupId=1\r\n&ReplaceTags.0.TagKey=test1\r\n&ReplaceTags.0.TagValue=value1\r\n&DeleteTags.0.TagKey=delete1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TaskId\": \"5674209986-1211\"\r\n    }\r\n}",
+        "title": "Modifying table group tags"
+      }
+    ],
+    "ModifyTableMemos": [
+      {
+        "document": "This example shows you how to modify table remarks.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyTableMemos\r\n&ClusterId=5674209986\r\n&TableMemos.0.TableInstanceId=tcaplus-1f224454\r\n&TableMemos.0.TableGroupId=101\r\n&TableMemos.0.TableName=tb_example\r\n&TableMemos.0.Memo=pb test table 1xx\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c3446e81-4d07-4a80-a07f-f34f94b598bc\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"TableGroupId\": \"101\",\r\n                \"TableIdlType\": null,\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": \"PROTO\",\r\n                \"TaskId\": null,\r\n                \"TaskIds\": null\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Modifying table remarks"
+      }
+    ],
+    "ModifyTableQuotas": [
+      {
+        "document": "This example shows you how to scale a table.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyTableQuotas\r\n&ClusterId=5674209986\r\n&TableQuotas.0.TableInstanceId=tcaplus-1f224454\r\n&TableQuotas.0.TableGroupId=101\r\n&TableQuotas.0.TableName=tb_example\r\n&TableQuotas.0.TableIdlType=PROTO\r\n&TableQuotas.0.ReservedVolume=2\r\n&TableQuotas.0.ReservedReadQps=240\r\n&TableQuotas.0.ReservedWriteQps=78\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"bb90baab-4189-4d01-9e92-250b57c571b3\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"TableGroupId\": \"101\",\r\n                \"TableIdlType\": null,\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": null,\r\n                \"TaskId\": null,\r\n                \"TaskIds\": [\r\n                    \"5674209986-1201\",\r\n                    \"5674209986-1202\"\r\n                ]\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Scaling table"
+      }
+    ],
+    "ModifyTableTags": [
+      {
+        "document": "This example shows you how to modify table tags.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyTableTags\r\n&ClusterId=5674209986\r\n&SelectedTables.0.TableInstanceId=tcaplus-0xm12ck1\r\n&SelectedTables.0.TableGroupId=1\r\n&SelectedTables.0.TableName=tb_test\r\n&ReplaceTags.0.TagKey=test1\r\n&ReplaceTags.0.TagValue=value1\r\n&DeleteTags.0.TagKey=delete1\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"abd7111a-62d4-4bbb-a781-3646040e9530\",\r\n        \"TotalCount\": 1,\r\n        \"TableResults\": [\r\n            {\r\n                \"TableInstanceId\": \"tcaplus-0xm12ck1\",\r\n                \"TableGroupId\": \"1\",\r\n                \"TableName\": \"tb_test\",\r\n                \"TaskId\": \"5674209986-1212\"\r\n            }\r\n        ]\r\n    }\r\n}",
+        "title": "Modifying table tags"
+      }
+    ],
+    "ModifyTables": [
+      {
+        "document": "This example shows you how to modify table structure.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=ModifyTables\r\n&ClusterId=5674209986\r\n&IdlFiles.0.FileName=tb_example_modify\r\n&IdlFiles.0.FileType=PROTO\r\n&IdlFiles.0.FileExtType=proto\r\n&IdlFiles.0.FileSize=292\r\n&IdlFiles.0.FileId=600\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&SelectedTables.0.TableIdlType=PROTO\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"007a279d-fd19-452c-842e-46a804e8564b\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"TableGroupId\": \"101\",\r\n                \"TableIdlType\": \"PROTO\",\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": \"GENERIC\",\r\n                \"TaskId\": \"5674209986-1200\",\r\n                \"TaskIds\": null\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Modifying table structure"
+      }
+    ],
+    "RecoverRecycleTables": [
+      {
+        "document": "This example shows you how to recover a table in the recycle bin based on the specified table information.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=RecoverRecycleTables\r\n&ClusterId=5674209986\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"f19ec9d8-ecd6-41f2-9da1-712dfdbe9ef7\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"TableGroupId\": \"101\",\r\n                \"TableIdlType\": null,\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": null,\r\n                \"TaskId\": \"5674209986-1198\",\r\n                \"TaskIds\": null\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Recovering table in recycle bin"
+      }
+    ],
+    "RollbackTables": [
+      {
+        "document": "This example shows you how to roll back a table by the primary key.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=RollbackTables\r\n&ClusterId=5674209986\r\n&RollbackTime=2019-08-29 10:00:00\r\n&SelectedTables.0.TableInstanceId=tcaplus-1f224454\r\n&SelectedTables.0.TableGroupId=101\r\n&SelectedTables.0.TableName=tb_example\r\n&SelectedTables.0.FileName=tb_example_key1\r\n&SelectedTables.0.FileExtType=txt\r\n&SelectedTables.0.FileSize=40\r\n&SelectedTables.0.FileContent=uin%20name%0A1%20calvin%0A2%20jacob%0A3%20matthew%0A%0A\r\n&SelectedTables.0.TableIdlType=PROTO\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"128a5622-0de1-41ed-9850-483944f11370\",\r\n        \"TableResults\": [\r\n            {\r\n                \"Error\": null,\r\n                \"FileId\": \"604\",\r\n                \"TableGroupId\": \"101\",\r\n                \"SuccKeyNum\": 3,\r\n                \"TableIdlType\": \"PROTO\",\r\n                \"TableInstanceId\": \"tcaplus-1f224454\",\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": null,\r\n                \"TaskId\": \"5674209986-1212\",\r\n                \"TaskIds\": null,\r\n                \"TotalKeyNum\": 3\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Rolling back table by primary key"
+      }
+    ],
+    "VerifyIdlFiles": [
+      {
+        "document": "This example shows you how to select an uploaded table creation IDL file and verify it.",
+        "input": "https://tcaplus.tencentcloudapi.com/?Action=VerifyIdlFiles\r\n&ClusterId=5674209986\r\n&TableGroupId=101\r\n&ExistingIdlFiles.0.FileName=tb_example\r\n&ExistingIdlFiles.0.FileSize=261\r\n&ExistingIdlFiles.0.FileExtType=proto\r\n&ExistingIdlFiles.0.FileId=551\r\n&ExistingIdlFiles.0.FileType=PROTO\r\n&<common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"IdlFiles\": [\r\n            {\r\n                \"FileContent\": null,\r\n                \"FileExtType\": \"proto\",\r\n                \"FileId\": 564,\r\n                \"FileName\": \"tb_example\",\r\n                \"FileSize\": 261,\r\n                \"FileType\": \"PROTO\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"70707604-2031-4c7e-a85f-a52daf354eb0\",\r\n        \"TableInfos\": [\r\n            {\r\n                \"Error\": null,\r\n                \"IndexKeySet\": \"{\\\"Num\\\":0}\",\r\n                \"KeyFields\": \"{\\\"KeyField\\\":[{\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"uin\\\",\\\"Type\\\":\\\"int64\\\"},{\\\"Crypto\\\":false,\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"name\\\",\\\"Type\\\":\\\"string\\\"}],\\\"Num\\\":2}\",\r\n                \"TableGroupId\": null,\r\n                \"OldKeyFields\": null,\r\n                \"OldValueFields\": null,\r\n                \"ShardingKeySet\": \"\",\r\n                \"SumKeyFieldSize\": 1022,\r\n                \"SumValueFieldSize\": 262144,\r\n                \"TableIdlType\": \"PROTO\",\r\n                \"TableInstanceId\": null,\r\n                \"TableName\": \"tb_example\",\r\n                \"TableType\": \"GENERIC\",\r\n                \"TdrVersion\": 1,\r\n                \"ListElementNum\": null,\r\n                \"SortFieldNum\": null,\r\n                \"SortRule\": null,\r\n                \"ValueFields\": \"{\\\"Num\\\":2,\\\"ValueField\\\":[{\\\"Label\\\":\\\"required\\\",\\\"Name\\\":\\\"gamesvrid\\\",\\\"Type\\\":\\\"int32\\\"},{\\\"Crypto\\\":false,\\\"Label\\\":\\\"optional\\\",\\\"Name\\\":\\\"logintime\\\",\\\"Type\\\":\\\"string\\\"}]}\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Verifying table creation file"
+      }
+    ]
+  },
+  "version": "1.0"
+}
