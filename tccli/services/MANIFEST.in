@@ -30,6 +30,7 @@ include tccli/services/iai/v20200303/api.json
 include tccli/services/kms/v20190118/api.json
 include tccli/services/live/v20180801/api.json
 include tccli/services/mariadb/v20170312/api.json
+include tccli/services/mdc/v20200828/api.json
 include tccli/services/mdl/v20200326/api.json
 include tccli/services/mdp/v20200527/api.json
 include tccli/services/mongodb/v20190725/api.json

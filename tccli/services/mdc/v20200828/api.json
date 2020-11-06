@@ -1,0 +1,1647 @@
+{
+  "actions": {
+    "CreateMediaConnectFlow": {
+      "document": "This API is used to create the configuration of a MediaConnect flow.",
+      "input": "CreateMediaConnectFlowRequest",
+      "name": "Creates MediaConnect flow",
+      "output": "CreateMediaConnectFlowResponse"
+    },
+    "CreateMediaConnectOutput": {
+      "document": "This API is used to create the output information of a MediaConnect flow.",
+      "input": "CreateMediaConnectOutputRequest",
+      "name": "Creates MediaConnect output",
+      "output": "CreateMediaConnectOutputResponse"
+    },
+    "DeleteMediaConnectFlow": {
+      "document": "This API is used to delete the configuration of a MediaConnect flow.",
+      "input": "DeleteMediaConnectFlowRequest",
+      "name": "Deletes MediaConnect flow",
+      "output": "DeleteMediaConnectFlowResponse"
+    },
+    "DeleteMediaConnectOutput": {
+      "document": "This API is used to delete the output configuration of a MediaConnect flow.",
+      "input": "DeleteMediaConnectOutputRequest",
+      "name": "Deletes MediaConnect output",
+      "output": "DeleteMediaConnectOutputResponse"
+    },
+    "DescribeMediaConnectFlow": {
+      "document": "This API is used to query the configuration information of a MediaConnect flow.",
+      "input": "DescribeMediaConnectFlowRequest",
+      "name": "Queries MediaConnect flow",
+      "output": "DescribeMediaConnectFlowResponse"
+    },
+    "DescribeMediaConnectFlows": {
+      "document": "This API is used to query the configuration information of multiple MediaConnect flows in batches.",
+      "input": "DescribeMediaConnectFlowsRequest",
+      "name": "Queries MediaConnect flows in batches",
+      "output": "DescribeMediaConnectFlowsResponse"
+    },
+    "ModifyMediaConnectFlow": {
+      "document": "This API is used to modify the configuration information of a MediaConnect flow.",
+      "input": "ModifyMediaConnectFlowRequest",
+      "name": "Modifies MediaConnect flow",
+      "output": "ModifyMediaConnectFlowResponse"
+    },
+    "ModifyMediaConnectInput": {
+      "document": "This API is used to modify the input information of a MediaConnect flow.",
+      "input": "ModifyMediaConnectInputRequest",
+      "name": "Modifies MediaConnect input",
+      "output": "ModifyMediaConnectInputResponse"
+    },
+    "ModifyMediaConnectOutput": {
+      "document": "This API is used to modify the output configuration of a MediaConnect flow.",
+      "input": "ModifyMediaConnectOutputRequest",
+      "name": "Modifies MediaConnect output",
+      "output": "ModifyMediaConnectOutputResponse"
+    },
+    "StartMediaConnectFlow": {
+      "document": "This API is used to start a MediaConnect flow.",
+      "input": "StartMediaConnectFlowRequest",
+      "name": "Starts MediaConnect flow",
+      "output": "StartMediaConnectFlowResponse"
+    },
+    "StopMediaConnectFlow": {
+      "document": "This API is used to stop a MediaConnect flow.",
+      "input": "StopMediaConnectFlowRequest",
+      "name": "Stops MediaConnect flow",
+      "output": "StopMediaConnectFlowResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-08-28",
+    "serviceNameCN": "媒体传输",
+    "serviceShortName": "mdc"
+  },
+  "objects": {
+    "CreateInput": {
+      "document": "Configuration information of the created input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Input name, which can contain 1–32 letters, digits, and underscores.",
+          "member": "string",
+          "name": "InputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input protocol. Valid values: [SRT|RTP].",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input description. Length: [0, 255].",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allowlist of input IPs in CIDR format.",
+          "member": "string",
+          "name": "AllowIpList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SRT configuration information of input.",
+          "member": "CreateInputSRTSettings",
+          "name": "SRTSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RTP configuration information of input.",
+          "member": "CreateInputRTPSettings",
+          "name": "RTPSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateInputRTPSettings": {
+      "document": "RTP configuration information of the created input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Default value: none. Valid values: ['none'].",
+          "member": "string",
+          "name": "FEC",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].",
+          "member": "int64",
+          "name": "IdleTimeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateInputSRTSettings": {
+      "document": "SRT configuration information of the created input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Stream ID, which can contain 0–512 letters, digits, and special symbols (.#!:&,=_-).",
+          "member": "string",
+          "name": "StreamId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Latency in ms. Default value: 0. Value range: [0, 3000].",
+          "member": "int64",
+          "name": "Latency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Receipt latency in ms. Default value: 120. Value range: [0, 3000].",
+          "member": "int64",
+          "name": "RecvLatency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peer latency in ms. Default value: 0. Value range: [0, 3000].",
+          "member": "int64",
+          "name": "PeerLatency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].",
+          "member": "int64",
+          "name": "PeerIdleTimeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].",
+          "member": "string",
+          "name": "Passphrase",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key length. Default value: 0. Valid values: [0|16|24|32].",
+          "member": "int64",
+          "name": "PbKeyLen",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateMediaConnectFlowRequest": {
+      "document": "CreateMediaConnectFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow name.",
+          "member": "string",
+          "name": "FlowName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum bandwidth in bps. Valid values: [10000000, 20000000, 50000000].",
+          "member": "int64",
+          "name": "MaxBandwidth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Flow input group.",
+          "member": "CreateInput",
+          "name": "InputGroup",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMediaConnectFlowResponse": {
+      "document": "CreateMediaConnectFlow response structure.",
+      "members": [
+        {
+          "document": "Information of the created flow.",
+          "member": "DescribeFlow",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMediaConnectOutputRequest": {
+      "document": "CreateMediaConnectOutput request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Output configuration of flow.",
+          "member": "CreateOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMediaConnectOutputResponse": {
+      "document": "CreateMediaConnectOutput response structure.",
+      "members": [
+        {
+          "document": "Information of the created output.",
+          "member": "DescribeOutput",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOutput": {
+      "document": "Configuration information of the created output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Output name.",
+          "member": "string",
+          "name": "OutputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output protocol.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output region.",
+          "member": "string",
+          "name": "OutputRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SRT configuration of output.",
+          "member": "CreateOutputSrtSettings",
+          "name": "SRTSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RTP configuration of output.",
+          "member": "CreateInputRTPSettings",
+          "name": "RTPSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RTMP configuration of output.",
+          "member": "CreateOutputRTMPSettings",
+          "name": "RTMPSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOutputRTMPSettings": {
+      "document": "RTMP configuration of the created MediaConnect flow output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push destination address. 1–2 addresses can be entered.",
+          "member": "CreateOutputRtmpSettingsDestinations",
+          "name": "Destinations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RTMP chunk size. Value range: [4096, 40960].",
+          "member": "int64",
+          "name": "ChunkSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOutputRTPSettings": {
+      "document": "RTP configuration of the created MediaConnect flow output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push destination address. 1–2 addresses can be entered.",
+          "member": "CreateOutputRTPSettingsDestinations",
+          "name": "Destinations",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Only `none` can be entered.",
+          "member": "string",
+          "name": "FEC",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Idle timeout period.",
+          "member": "int64",
+          "name": "IdleTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOutputRTPSettingsDestinations": {
+      "document": "RTP destination address of the created MediaConnect flow output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push destination IP.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Push destination port.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOutputRtmpSettingsDestinations": {
+      "document": "RTMP destination address of the created MediaConnect flow output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push URL in the format of `rtmp://domain/live`.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Push `StreamKey` in the format of `stream?key=value`.",
+          "member": "string",
+          "name": "StreamKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOutputSrtSettings": {
+      "document": "SRT configuration of the created MediaConnect flow output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push destination address. Please configure 1–2 addresses.",
+          "member": "CreateOutputSrtSettingsDestinations",
+          "name": "Destinations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stream ID of SRT push.",
+          "member": "string",
+          "name": "StreamId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total latency of SRT push.",
+          "member": "int64",
+          "name": "Latency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Receipt latency of SRT push.",
+          "member": "int64",
+          "name": "RecvLatency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peer latency of SRT push.",
+          "member": "int64",
+          "name": "PeerLatency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peer idle timeout period of SRT push.",
+          "member": "int64",
+          "name": "PeerIdleTimeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Encryption key of SRT push.",
+          "member": "string",
+          "name": "Passphrase",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key length of SRT push.",
+          "member": "int64",
+          "name": "PbKeyLen",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOutputSrtSettingsDestinations": {
+      "document": "SRT destination address of the created MediaConnect flow output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Output IP.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output port.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DeleteMediaConnectFlowRequest": {
+      "document": "DeleteMediaConnectFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaConnectFlowResponse": {
+      "document": "DeleteMediaConnectFlow response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaConnectOutputRequest": {
+      "document": "DeleteMediaConnectOutput request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Output ID.",
+          "member": "string",
+          "name": "OutputId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMediaConnectOutputResponse": {
+      "document": "DeleteMediaConnectOutput response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFlow": {
+      "document": "Configuration information of the queried flow.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Flow name.",
+          "member": "string",
+          "name": "FlowName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Flow status.",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum bandwidth value.",
+          "member": "int64",
+          "name": "MaxBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input group.",
+          "member": "DescribeInput",
+          "name": "InputGroup",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output group.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeOutput",
+          "name": "OutputGroup",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeInput": {
+      "document": "Configuration information of the queried input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Input ID.",
+          "member": "string",
+          "name": "InputId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input name.",
+          "member": "string",
+          "name": "InputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Input protocol.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input address list.",
+          "member": "InputAddress",
+          "name": "InputAddressList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input IP allowlist.",
+          "member": "string",
+          "name": "AllowIpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SRT configuration information of input.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeInputSRTSettings",
+          "name": "SRTSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RTP configuration information of input.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeInputRTPSettings",
+          "name": "RTPSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Input region.",
+          "member": "string",
+          "name": "InputRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeInputRTPSettings": {
+      "document": "RTP configuration information of the queried input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is FEC.",
+          "member": "string",
+          "name": "FEC",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Idle timeout period.",
+          "member": "int64",
+          "name": "IdleTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeInputSRTSettings": {
+      "document": "SRT configuration information of the queried input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Stream ID.",
+          "member": "string",
+          "name": "StreamId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Latency.",
+          "member": "int64",
+          "name": "Latency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Receipt latency.",
+          "member": "int64",
+          "name": "RecvLatency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peer latency.",
+          "member": "int64",
+          "name": "PeerLatency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peer idle timeout period.",
+          "member": "int64",
+          "name": "PeerIdleTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Decryption key.",
+          "member": "string",
+          "name": "Passphrase",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key length.",
+          "member": "int64",
+          "name": "PbKeyLen",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMediaConnectFlowRequest": {
+      "document": "DescribeMediaConnectFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaConnectFlowResponse": {
+      "document": "DescribeMediaConnectFlow response structure.",
+      "members": [
+        {
+          "document": "Configuration information of flow.",
+          "member": "DescribeFlow",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaConnectFlowsRequest": {
+      "document": "DescribeMediaConnectFlows request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of current pages. Default value: 1.",
+          "member": "int64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Default value: 10.",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaConnectFlowsResponse": {
+      "document": "DescribeMediaConnectFlows response structure.",
+      "members": [
+        {
+          "document": "Configuration information list of flow.",
+          "member": "DescribeFlow",
+          "name": "Infos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of current pages.",
+          "member": "int64",
+          "name": "PageNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries per page.",
+          "member": "int64",
+          "name": "PageSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number.",
+          "member": "int64",
+          "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of pages.",
+          "member": "int64",
+          "name": "TotalPage",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOutput": {
+      "document": "Configuration information of the queried output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Output ID.",
+          "member": "string",
+          "name": "OutputId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output name.",
+          "member": "string",
+          "name": "OutputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output type.",
+          "member": "string",
+          "name": "OutputType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Output protocol.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output destination address information list.",
+          "member": "OutputAddress",
+          "name": "OutputAddressList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output region.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OutputRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "SRT configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeOutputSRTSettings",
+          "name": "SRTSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RTP configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeOutputRTPSettings",
+          "name": "RTPSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RTMP configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "DescribeOutputRTMPSettings",
+          "name": "RTMPSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeOutputRTMPSettings": {
+      "document": "RTMP configuration information of the queried output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IdleTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Chunk size.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ChunkSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Destination address information list of RTMP push.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "RTMPAddressDestination",
+          "name": "Destinations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeOutputRTPSettings": {
+      "document": "RTP configuration information of the queried output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Destination address information list of RTP push.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "RTPAddressDestination",
+          "name": "Destinations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is FEC.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FEC",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IdleTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeOutputSRTSettings": {
+      "document": "SRT configuration information of the queried output.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push destination address information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "SRTAddressDestination",
+          "name": "Destinations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Stream ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StreamId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Latency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Receipt latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RecvLatency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Peer latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PeerLatency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Peer idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PeerIdleTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Encryption key.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Passphrase",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Encryption key length.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PbKeyLen",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InputAddress": {
+      "document": "Input address information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Input address IP.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input address port.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyInput": {
+      "document": "Parameters of the modified input.",
+      "members": [
+        {
+          "default": "",
+          "document": "Input ID.",
+          "member": "string",
+          "name": "InputId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input name.",
+          "member": "string",
+          "name": "InputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Input description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allowed push IP in CIDR format.",
+          "member": "string",
+          "name": "AllowIpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SRT configuration information.",
+          "member": "CreateInputSRTSettings",
+          "name": "SRTSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RTP configuration information.",
+          "member": "CreateInputRTPSettings",
+          "name": "RTPSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyMediaConnectFlowRequest": {
+      "document": "ModifyMediaConnectFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the flow to be modified.",
+          "member": "string",
+          "name": "FlowName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaConnectFlowResponse": {
+      "document": "ModifyMediaConnectFlow response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaConnectInputRequest": {
+      "document": "ModifyMediaConnectInput request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Information of the input to be modified.",
+          "member": "ModifyInput",
+          "name": "Input",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaConnectInputResponse": {
+      "document": "ModifyMediaConnectInput response structure.",
+      "members": [
+        {
+          "document": "Input information after modification.",
+          "member": "DescribeInput",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaConnectOutputRequest": {
+      "document": "ModifyMediaConnectOutput request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the output to be modified.",
+          "member": "ModifyOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaConnectOutputResponse": {
+      "document": "ModifyMediaConnectOutput response structure.",
+      "members": [
+        {
+          "document": "Output configuration after modification.",
+          "member": "DescribeOutput",
+          "name": "Info",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOutput": {
+      "document": "Configuration of the modified output.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the output to be modified.",
+          "member": "string",
+          "name": "OutputId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output name.",
+          "member": "string",
+          "name": "OutputName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output push protocol. Valid values: SRT|RTMP.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration of SRT push.",
+          "member": "CreateOutputSrtSettings",
+          "name": "SRTSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration of RTP push.",
+          "member": "CreateOutputRTPSettings",
+          "name": "RTPSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration of RTMP push.",
+          "member": "CreateOutputRTMPSettings",
+          "name": "RTMPSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "OutputAddress": {
+      "document": "Output destination address.",
+      "members": [
+        {
+          "default": "",
+          "document": "Output destination IP.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RTMPAddressDestination": {
+      "document": "Destination address information of RTMP push.",
+      "members": [
+        {
+          "default": "",
+          "document": "Destination URL of RTMP push in the format of 'rtmp://domain/live'.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.",
+          "member": "string",
+          "name": "StreamKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RTPAddressDestination": {
+      "document": "Destination address information of RTP push.",
+      "members": [
+        {
+          "default": "",
+          "document": "Push destination address IP.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Push destination address port.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SRTAddressDestination": {
+      "document": "Push destination address information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Destination address IP.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination address port.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StartMediaConnectFlowRequest": {
+      "document": "StartMediaConnectFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartMediaConnectFlowResponse": {
+      "document": "StartMediaConnectFlow response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopMediaConnectFlowRequest": {
+      "document": "StopMediaConnectFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow ID.",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopMediaConnectFlowResponse": {
+      "document": "StopMediaConnectFlow response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

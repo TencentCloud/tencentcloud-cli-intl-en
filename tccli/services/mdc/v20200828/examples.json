@@ -1,0 +1,93 @@
+{
+  "actions": {
+    "CreateMediaConnectFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMediaConnectFlow\n<Common request parameters>\n\n{\"FlowName\":\"aaa\",\"MaxBandwidth\":20000000,\"InputGroup\":[{\"InputName\":\"inputname\",\"Description\":\"inputnameDescription\",\"Protocol\":\"RTP\",\"AllowIpList\":[\"0.0.0.0/0\"],\"SRTSettings\":{\"StreamId\":\"#!::u=johnny,t=file,m=publish,r=results.csv\",\"Latency\":1000,\"RecvLatency\":1000,\"PeerLatency\":1000,\"PeerIdleTimeout\":1000,\"Passphrase\":\"aaa\",\"Pbkeylen\":10},\"RTPSettings\":{\"FEC\":\"none\",\"IdleTimeout\":1000}}]}",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"FlowId\":\"01742ac4e2b90956b92d573b0443\",\r\n            \"FlowName\":\"aaa\",\r\n            \"State\":\"IDLE\",\r\n            \"InputGroup\":[\r\n                {\r\n                    \"InputId\":\"01742ac4e2b90956b92d573b0444\",\r\n                    \"InputName\":\"inputname\",\r\n                    \"InputType\":\"\",\r\n                    \"Description\":\"inputname Description\",\r\n                    \"Protocol\":\"RTP\",\r\n                    \"InputIP\":\"\",\r\n                    \"InputPort\":0,\r\n                    \"IpWhitelist\":[\r\n                        \"0.0.0.0/0\"\r\n                    ],\r\n                    \"SRTSettings\":{\r\n                        \"Latency\":0,\r\n                        \"RecvLatency\":0,\r\n                        \"PeerLatency\":0,\r\n                        \"PeerIdleTimeout\":0,\r\n                        \"Passphrase\":\"\",\r\n                        \"Pbkeylen\":0\r\n                    },\r\n                    \"RTPSettings\":{\r\n                        \"FEC\":\"none\",\r\n                        \"IdleTimeout\":1000\r\n                    },\r\n                    \"RTMPSettings\":{\r\n                        \"IdleTimeout\":0,\r\n                        \"ChunkSize\":0,\r\n                        \"Url\":\"\",\r\n                        \"StreamKey\":\"\"\r\n                    }\r\n                }\r\n            ],\r\n            \"OutputGroup\":[\r\n\r\n            ]\r\n        },\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateMediaConnectOutput": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMediaConnectOutput\n<Common request parameters>\n\n{\"FlowId\":\"01746cfeda560956b92d34d30445\",\"Output\":{\"OutputName\":\"bbbbaaa\",\"Description\":\"description\",\"Protocol\":\"SRT\",\"OutputRegion\":\"ap-mumbai\",\"SRTSettings\":{\"Destinations\":[{\"Ip\":\"1.1.1.1\",\"Port\":10000},{\"Ip\":\"1.1.1.1\",\"Port\":10000}],\"StreamId\":\"#!::u=johnny,t=file,m=publish,r=results.csv\",\"Latency\":1000,\"RecvLatency\":1000,\"PeerLatency\":1000,\"PeerIdleTimeout\":1000},\"RTPSettings\":{\"Destinations\":[{\"Ip\":\"1.1.1.1\",\"Port\":10000},{\"Ip\":\"1.1.1.1\",\"Port\":10000}],\"FEC\":\"none\",\"IdleTimeout\":1000},\"RTMPSettings\":{\"Destinations\":[{\"Url\":\"rtmp://domain/live\",\"StreamKey\":\"streamid?a=b\"},{\"Url\":\"rtmp://domain/live\",\"StreamKey\":\"streamid?a=b\"}],\"ChunkSize\":4096,\"Url\":\"rtmp://domain/live\",\"StreamKey\":\"streamid?a=b\"}}}",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"OutputId\":\"01746d03dd8c0956b92d34d30447\",\r\n            \"OutputName\":\"bbbbaaa\",\r\n            \"OutputType\":\"Internet\",\r\n            \"Description\":\"description\",\r\n            \"Protocol\":\"SRT\",\r\n            \"OutputAddressList\":[\r\n                {\r\n                    \"Ip\":\"1.1.1.1\"\r\n                },\r\n                {\r\n                    \"Ip\":\"2.2.2.2\"\r\n                }\r\n            ],\r\n            \"OutputRegion\":\"ap-mumbai\",\r\n            \"SRTSettings\":{\r\n                \"Destinations\":[\r\n                    {\r\n                        \"Ip\":\"1.1.1.1\",\r\n                        \"Port\":10000\r\n                    },\r\n                    {\r\n                        \"Ip\":\"1.1.1.1\",\r\n                        \"Port\":10000\r\n                    }\r\n                ],\r\n                \"StreamId\":\"#!::u=johnny,t=file,m=publish,r=results.csv\",\r\n                \"Latency\":1000,\r\n                \"RecvLatency\":1000,\r\n                \"PeerLatency\":1000,\r\n                \"PeerIdleTimeout\":1000,\r\n                \"Passphrase\":\"\",\r\n                \"PbKeyLen\":0\r\n            },\r\n            \"RTPSettings\":{\r\n                \"Destinations\":[\r\n\r\n                ],\r\n                \"FEC\":\"\",\r\n                \"IdleTimeout\":0\r\n            },\r\n            \"RTMPSettings\":{\r\n                \"Destinations\":[\r\n\r\n                ],\r\n                \"IdleTimeout\":0,\r\n                \"ChunkSize\":0\r\n            }\r\n        },\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaConnectFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMediaConnectFlow\n<Common request parameters>\n\n{\"FlowId\":\"aaa\"}",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteMediaConnectOutput": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMediaConnectOutput\n<Common request parameters>\n\n{\"FlowId\":\"aaa\",\"OutputId\":\"asd21dsa\"}",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaConnectFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMediaConnectFlow\n<Common request parameters>\n\n{\"FlowId\":\"aaa\"}",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"FlowId\":\"\",\r\n            \"FlowName\":\"sacdsad\",\r\n            \"State\":\"IDLE\",\r\n            \"MaxBandwidth\":10000000,\r\n            \"InputGroup\":[\r\n                {\r\n                    \"InputId\":\"123sada2\",\r\n                    \"InputName\":\"sadsa\",\r\n                    \"Description\":\"2esda\",\r\n                    \"Protocol\":\"SRT\",\r\n                    \"InputIP\":\"1.1.1.1\",\r\n                    \"InputPort\":65535,\r\n                    \"IpWhitelist\":[\r\n                        \"0.0.0.0/0\"\r\n                    ],\r\n                    \"SRTSettings\":{\r\n                        \"StreamId\":\"\",\r\n                        \"Latency\":1000,\r\n                        \"RecvLatency\":1000,\r\n                        \"PeerLatency\":0,\r\n                        \"PeerIdleTimeout\":1000,\r\n                        \"Passphrase\":\"aaaa\",\r\n                        \"Pbkeylen\":1000\r\n                    },\r\n                    \"RTPSettings\":{\r\n                        \"FEC\":\"none\",\r\n                        \"IdleTimeout\":1000\r\n                    }\r\n                }\r\n            ],\r\n            \"OutputGroup\":[\r\n                {\r\n                    \"OutputId\":\"asd21dsa\",\r\n                    \"OutputName\":\"sad231edqsq\",\r\n                    \"OutputType\":\"Internet\",\r\n                    \"Description\":\"sdajidhj2d'\",\r\n                    \"Protocol\":\"RTP\",\r\n                    \"OutputIp\":\"1.1.1.1\",\r\n                    \"SRTSettings\":{\r\n                        \"DestIP\":\"\",\r\n                        \"DestPort\":1223,\r\n                        \"StreamId\":\"aaaa\",\r\n                        \"Latency\":10000,\r\n                        \"RecvLatency\":20000,\r\n                        \"PeerLatency\":30000,\r\n                        \"PeerIdleTimeout\":40000\r\n                    },\r\n                    \"RTPSettings\":{\r\n                        \"DestIP\":\"\",\r\n                        \"Port\":12334,\r\n                        \"FEC\":\"none\",\r\n                        \"IdleTimeout\":1000\r\n                    },\r\n                    \"RTMPSettings\":{\r\n                        \"IdleTimeout\":1000,\r\n                        \"ChunkSize\":4096,\r\n                        \"Url\":\"rtmp://domain/live\",\r\n                        \"StreamKey\":\"streamid?a=b\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeMediaConnectFlows": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMediaConnectFlows\n<Common request parameters>\n\n{\"PageNum\":1,\"PageSize\":10}",
+        "output": "{\r\n    \"Response\":{\r\n        \"Infos\":[\r\n            {\r\n                \"Uin\":\"12312\",\r\n                \"AppId\":123123,\r\n                \"ProductName\":\"MEDIACONNECT\",\r\n                \"Region\":\"ap-mumbai\",\r\n                \"FlowId\":\"123ds12\",\r\n                \"FlowName\":\"sacdsad\",\r\n                \"ExpireTime\":12312313,\r\n                \"State\":\"IDLE\",\r\n                \"MaxBandwidth\":10000000,\r\n                \"InputGroup\":[\r\n                    {\r\n                        \"InputId\":\"123sada2\",\r\n                        \"InputName\":\"sadsa\",\r\n                        \"Description\":\"2esda\",\r\n                        \"Protocol\":\"SRT\",\r\n                        \"InputIP\":\"1.1.1.1\",\r\n                        \"InputPort\":65535,\r\n                        \"IpWhitelist\":[\r\n                            \"0.0.0.0/0\"\r\n                        ],\r\n                        \"SRTSettings\":{\r\n                            \"StreamId\":\"1111\",\r\n                            \"Latency\":1000,\r\n                            \"RecvLatency\":1000,\r\n                            \"PeerLatency\":1000,\r\n                            \"PeerIdleTimeout\":1000,\r\n                            \"Passphrase\":\"aaaa\",\r\n                            \"Pbkeylen\":1000\r\n                        },\r\n                        \"RTPSettings\":{\r\n                            \"FEC\":\"none\",\r\n                            \"IdleTimeout\":1000\r\n                        },\r\n                        \"RTMPSettings\":{\r\n                            \"IdleTimeout\":1000,\r\n                            \"ChunkSize\":4096,\r\n                            \"Url\":\"rtmp://domain/live\",\r\n                            \"StreamKey\":\"streamid?a=b\"\r\n                        }\r\n                    }\r\n                ],\r\n                \"OutputGroup\":[\r\n                    {\r\n                        \"OutputId\":\"asd21dsa\",\r\n                        \"OutputName\":\"sad231edqsq\",\r\n                        \"OutputType\":\"Internet\",\r\n                        \"Description\":\"sdajidhj2d'\",\r\n                        \"Protocol\":\"RTP\",\r\n                        \"DestIP\":\"1.1.1.1\",\r\n                        \"DestPort\":234,\r\n                        \"OutputIp\":\"2.2.2.2\",\r\n                        \"SRTSettings\":{\r\n                            \"StreamId\":\"aaaa\",\r\n                            \"Latency\":10000,\r\n                            \"RecvLatency\":20000,\r\n                            \"PeerLatency\":30000,\r\n                            \"PeerIdleTimeout\":40000\r\n                        },\r\n                        \"RTPSettings\":{\r\n                            \"FEC\":\"none\",\r\n                            \"IdleTimeout\":1000\r\n                        },\r\n                        \"RTMPSettings\":{\r\n                            \"IdleTimeout\":1000,\r\n                            \"ChunkSize\":4096,\r\n                            \"Url\":\"rtmp://domain/live\",\r\n                            \"StreamKey\":\"streamid?a=b\"\r\n                        }\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"PageNum\":1,\r\n        \"PageSize\":10,\r\n        \"TotalNum\":1,\r\n        \"TotalPage\":1,\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaConnectFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMediaConnectFlow\n<Common request parameters>\n\n{\"FlowId\":\"aaa\",\"FlowName\":\"aaa\"}",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaConnectInput": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMediaConnectInput\n<Common request parameters>\n\n{\"FlowId\":\"01746cfeda560956b92d34d30445\",\"Input\":{\"InputId\":\"01746cfeda570956b92d34d30446\",\"InputName\":\"inputname\",\"Description\":\"inputnameDescription\",\"AllowIpList\":[\"0.0.0.0/0\"],\"SRTSettings\":{\"Latency\":1000,\"RecvLatency\":1000,\"PeerLatency\":0,\"PeerIdleTimeout\":1000,\"Passphrase\":\"aaaaaaaaaa\",\"PbKeyLen\":32},\"RTPSettings\":{\"FEC\":\"\",\"IdleTimeout\":0}}}",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"InputId\":\"01746cfeda570956b92d34d30446\",\r\n            \"InputName\":\"inputname\",\r\n            \"Description\":\"inputname Description\",\r\n            \"Protocol\":\"SRT\",\r\n            \"InputAddressList\":[\r\n                {\r\n                    \"Ip\":\"1.1.1.1\",\r\n                    \"Port\":1\r\n                },\r\n                {\r\n                    \"Ip\":\"1.1.1.1\",\r\n                    \"Port\":1\r\n                }\r\n            ],\r\n            \"AllowIpList\":[\r\n                \"0.0.0.0/0\"\r\n            ],\r\n            \"SRTSettings\":{\r\n                \"Latency\":1000,\r\n                \"RecvLatency\":1000,\r\n                \"PeerLatency\":0,\r\n                \"PeerIdleTimeout\":1000,\r\n                \"Passphrase\":\"aaaaaaaaaa\",\r\n                \"PbKeyLen\":32\r\n            },\r\n            \"RTPSettings\":{\r\n                \"FEC\":\"\",\r\n                \"IdleTimeout\":0\r\n            }\r\n        },\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyMediaConnectOutput": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMediaConnectOutput\n<Common request parameters>\n\n{\"FlowId\":\"01746cfeda560956b92d34d30445\",\"Output\":{\"OutputId\":\"01746d03dd8c0956b92d34d30447\",\"OutputName\":\"bbbb\",\"Description\":\"description\",\"Protocol\":\"SRT\",\"OutputRegion\":\"ap-mumbai\",\"SRTSettings\":{\"Destinations\":[{\"Ip\":\"1.1.1.1\",\"Port\":10000},{\"Ip\":\"1.1.1.1\",\"Port\":10000}],\"StreamId\":\"#!::u=johnny,t=file,m=publish,r=results.csv\",\"Latency\":1000,\"RecvLatency\":1000,\"PeerLatency\":1000,\"PeerIdleTimeout\":1000},\"RTPSettings\":{\"Destinations\":[{\"Ip\":\"1.1.1.1\",\"Port\":10000},{\"Ip\":\"1.1.1.1\",\"Port\":10000}],\"FEC\":\"none\",\"IdleTimeout\":1000},\"RTMPSettings\":{\"Destinations\":[{\"Url\":\"rtmp://domain/live\",\"StreamKey\":\"streamid?a=b\"},{\"Url\":\"rtmp://domain/live\",\"StreamKey\":\"streamid?a=b\"}],\"ChunkSize\":4096,\"Url\":\"rtmp://domain/live\",\"StreamKey\":\"streamid?a=b\"}}}",
+        "output": "{\r\n    \"Response\":{\r\n        \"Info\":{\r\n            \"OutputId\":\"01746d03dd8c0956b92d34d30447\",\r\n            \"OutputName\":\"bbbb\",\r\n            \"OutputType\":\"Internet\",\r\n            \"Description\":\"description\",\r\n            \"Protocol\":\"SRT\",\r\n            \"OutputAddressList\":[\r\n                {\r\n                    \"Ip\":\"1.1.1.1\"\r\n                },\r\n                {\r\n                    \"Ip\":\"2.2.2.2\"\r\n                }\r\n            ],\r\n            \"OutputRegion\":\"ap-mumbai\",\r\n            \"SRTSettings\":{\r\n                \"Destinations\":[\r\n                    {\r\n                        \"Ip\":\"1.1.1.1\",\r\n                        \"Port\":10000\r\n                    },\r\n                    {\r\n                        \"Ip\":\"1.1.1.1\",\r\n                        \"Port\":10000\r\n                    }\r\n                ],\r\n                \"StreamId\":\"#!::u=johnny,t=file,m=publish,r=results.csv\",\r\n                \"Latency\":1000,\r\n                \"RecvLatency\":1000,\r\n                \"PeerLatency\":1000,\r\n                \"PeerIdleTimeout\":1000,\r\n                \"Passphrase\":\"\",\r\n                \"PbKeyLen\":0\r\n            },\r\n            \"RTPSettings\":{\r\n                \"Destinations\":[\r\n\r\n                ],\r\n                \"FEC\":\"\",\r\n                \"IdleTimeout\":0\r\n            },\r\n            \"RTMPSettings\":{\r\n                \"Destinations\":[\r\n\r\n                ],\r\n                \"IdleTimeout\":0,\r\n                \"ChunkSize\":0\r\n            }\r\n        },\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StartMediaConnectFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartMediaConnectFlow\n<Common request parameters>\n\n{\"FlowId\":\"aaa\"}",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StopMediaConnectFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopMediaConnectFlow\n<Common request parameters>\n\n{\"FlowId\":\"aaa\"}",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"aaaaa\"\r\n    }\r\n}",
+        "title": "Sample request"
+      }
+    ]
+  },
+  "version": "1.0"
+}
