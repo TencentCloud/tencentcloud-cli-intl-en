@@ -5,7 +5,7 @@
         "document": "",
         "input": "https://batch.tencentcloudapi.com/?Action=AttachInstances\r\n&EnvId=env-nuydksjj\r\n&Instances.0.InstanceId=ins-dus5t7tu\r\n&Instances.0.ImageId=img-8toqc6s3\r\n&Instances.0.LoginSettings.Password=xxxxxxxxx\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"a402b86a-5b45-4edf-b64c-d233c2984fbd\"\r\n    }\r\n}",
-        "title": "Adding instances to the compute environment"
+        "title": "Adding an instance to the compute environment"
       }
     ],
     "CreateComputeEnv": [

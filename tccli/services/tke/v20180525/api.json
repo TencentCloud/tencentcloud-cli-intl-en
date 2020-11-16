@@ -12,6 +12,12 @@
       "name": "Adds one or more existing instances to a cluster.",
       "output": "AddExistedInstancesResponse"
     },
+    "AddNodeToNodePool": {
+      "document": "This API is used to move nodes in a cluster to a node pool.",
+      "input": "AddNodeToNodePoolRequest",
+      "name": "Moves nodes in a cluster to a node pool",
+      "output": "AddNodeToNodePoolResponse"
+    },
     "CreateCluster": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClusterRequest",
@@ -41,6 +47,18 @@
       "input": "CreateClusterInstancesRequest",
       "name": "Creates one or more cluster nodes.",
       "output": "CreateClusterInstancesResponse"
+    },
+    "CreateClusterNodePool": {
+      "document": "This API is used to create a node pool.",
+      "input": "CreateClusterNodePoolRequest",
+      "name": "Creates a node pool",
+      "output": "CreateClusterNodePoolResponse"
+    },
+    "CreateClusterNodePoolFromExistingAsg": {
+      "document": "This API is used to upgrade a scaling group to a node pool.",
+      "input": "CreateClusterNodePoolFromExistingAsgRequest",
+      "name": "Upgrades a scaling group to a node pool",
+      "output": "CreateClusterNodePoolFromExistingAsgResponse"
     },
     "CreateClusterRouteTable": {
       "document": "This API is used to create a cluster route table.",
@@ -77,6 +95,12 @@
       "input": "DeleteClusterInstancesRequest",
       "name": "Deletes one or more nodes from a cluster.",
       "output": "DeleteClusterInstancesResponse"
+    },
+    "DeleteClusterNodePool": {
+      "document": "This API is used to delete a node pool.",
+      "input": "DeleteClusterNodePoolRequest",
+      "name": "Deletes a node pool",
+      "output": "DeleteClusterNodePoolResponse"
     },
     "DeleteClusterRoute": {
       "document": "This API is used to delete a cluster route.",
@@ -125,6 +149,18 @@
       "input": "DescribeClusterKubeconfigRequest",
       "name": "Obtains the cluster kubeconfig file",
       "output": "DescribeClusterKubeconfigResponse"
+    },
+    "DescribeClusterNodePoolDetail": {
+      "document": "This API is used to query detailed information of a node pool.",
+      "input": "DescribeClusterNodePoolDetailRequest",
+      "name": "Queries detailed information of a node pool",
+      "output": "DescribeClusterNodePoolDetailResponse"
+    },
+    "DescribeClusterNodePools": {
+      "document": "This API is used to query the node pool list",
+      "input": "DescribeClusterNodePoolsRequest",
+      "name": "Queries the node pool list.",
+      "output": "DescribeClusterNodePoolsResponse"
     },
     "DescribeClusterRouteTables": {
       "document": "This API is used to query one or more cluster route tables.",
@@ -191,6 +227,18 @@
       "input": "ModifyClusterEndpointSPRequest",
       "name": "Modify the security policy of the external network port of the managed cluster",
       "output": "ModifyClusterEndpointSPResponse"
+    },
+    "ModifyClusterNodePool": {
+      "document": "This API is used to edit a node pool.",
+      "input": "ModifyClusterNodePoolRequest",
+      "name": "Edits a node pool",
+      "output": "ModifyClusterNodePoolResponse"
+    },
+    "RemoveNodeFromNodePool": {
+      "document": "This API is used to remove a node from a node pool but retain it in the cluster.",
+      "input": "RemoveNodeFromNodePoolRequest",
+      "name": "Removes a node from a node pool but retains it in the cluster.",
+      "output": "RemoveNodeFromNodePoolResponse"
     }
   },
   "metadata": {
@@ -312,6 +360,55 @@
           "value_allowed_null": true
         },
         {
+          "document": "Causes of the failure to add a node to a cluster\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "FailedReasons",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddNodeToNodePoolRequest": {
+      "document": "AddNodeToNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddNodeToNodePoolResponse": {
+      "document": "AddNodeToNodePool response structure.",
+      "members": [
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -343,6 +440,48 @@
         }
       ],
       "usage": "in"
+    },
+    "AutoscalingAdded": {
+      "document": "Nodes that are added in scale-out",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of nodes that are being added",
+          "member": "int64",
+          "name": "Joining",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes that are being initialized",
+          "member": "int64",
+          "name": "Initializing",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of normal nodes",
+          "member": "int64",
+          "name": "Normal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of nodes",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Cluster": {
       "document": "Cluster information struct",
@@ -619,6 +758,15 @@
           "document": "Specifies the ID of topic to which the audit logs are uploaded.",
           "member": "string",
           "name": "AuditLogTopicId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.",
+          "member": "string",
+          "name": "VpcCniType",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1295,6 +1443,136 @@
       ],
       "type": "object"
     },
+    "CreateClusterNodePoolFromExistingAsgRequest": {
+      "document": "CreateClusterNodePoolFromExistingAsg request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "member": "string",
+          "name": "AutoscalingGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterNodePoolFromExistingAsgResponse": {
+      "document": "CreateClusterNodePoolFromExistingAsg response structure.",
+      "members": [
+        {
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterNodePoolRequest": {
+      "document": "CreateClusterNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AS group parameters",
+          "member": "string",
+          "name": "AutoScalingGroupPara",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Running parameters",
+          "member": "string",
+          "name": "LaunchConfigurePara",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sample parameters",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether to enable auto scaling",
+          "member": "bool",
+          "name": "EnableAutoscale",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Node pool name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Labels",
+          "member": "Label",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Taints",
+          "member": "Taint",
+          "name": "Taints",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterNodePoolResponse": {
+      "document": "CreateClusterNodePool response structure.",
+      "members": [
+        {
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateClusterRequest": {
       "document": "CreateCluster request structure.",
       "members": [
@@ -1657,6 +1935,48 @@
           "type": "list",
           "value_allowed_null": true
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterNodePoolRequest": {
+      "document": "DeleteClusterNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ClusterId of a node pool",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IDs of node pools to delete",
+          "member": "string",
+          "name": "NodePoolIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether nodes in a node pool are retained when the node pool is deleted. (The nodes are removed from the cluster. However, the corresponding instances will not be terminated.)",
+          "member": "bool",
+          "name": "KeepInstance",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClusterNodePoolResponse": {
+      "document": "DeleteClusterNodePool response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2048,6 +2368,87 @@
           "member": "string",
           "name": "Kubeconfig",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterNodePoolDetailRequest": {
+      "document": "DescribeClusterNodePoolDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterNodePoolDetailResponse": {
+      "document": "DescribeClusterNodePoolDetail response structure.",
+      "members": [
+        {
+          "document": "Node pool details",
+          "member": "NodePool",
+          "name": "NodePool",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterNodePoolsRequest": {
+      "document": "DescribeClusterNodePools request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ClusterId (cluster ID)",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterNodePoolsResponse": {
+      "document": "DescribeClusterNodePools response structure.",
+      "members": [
+        {
+          "document": "NodePools (node pool list)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "NodePool",
+          "name": "NodePoolSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total resources",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -3098,6 +3499,48 @@
       ],
       "usage": "both"
     },
+    "ManuallyAdded": {
+      "document": "Nodes that are manually added",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of nodes that are being added",
+          "member": "int64",
+          "name": "Joining",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes that are being initialized",
+          "member": "int64",
+          "name": "Initializing",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of normal nodes",
+          "member": "int64",
+          "name": "Normal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of nodes",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyClusterAsGroupAttributeRequest": {
       "document": "ModifyClusterAsGroupAttribute request structure.",
       "members": [
@@ -3237,6 +3680,235 @@
       ],
       "type": "object"
     },
+    "ModifyClusterNodePoolRequest": {
+      "document": "ModifyClusterNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of nodes",
+          "member": "int64",
+          "name": "MaxNodesNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Minimum number of nodes",
+          "member": "int64",
+          "name": "MinNodesNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Labels",
+          "member": "Label",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Taints",
+          "member": "Taint",
+          "name": "Taints",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether auto scaling is enabled.",
+          "member": "bool",
+          "name": "EnableAutoscale",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterNodePoolResponse": {
+      "document": "ModifyClusterNodePool response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NodeCountSummary": {
+      "document": "Node statistics list",
+      "members": [
+        {
+          "default": "",
+          "document": "Nodes that are manually managed\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "ManuallyAdded",
+          "name": "ManuallyAdded",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Nodes that are automatically managed\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "AutoscalingAdded",
+          "name": "AutoscalingAdded",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "NodePool": {
+      "document": "Node pool description",
+      "members": [
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node pool name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster instance ID",
+          "member": "string",
+          "name": "ClusterInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status",
+          "member": "string",
+          "name": "LifeState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Launch configuration ID",
+          "member": "string",
+          "name": "LaunchConfigurationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-scaling group ID",
+          "member": "string",
+          "name": "AutoscalingGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Labels",
+          "member": "Label",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of taint",
+          "member": "Taint",
+          "name": "Taints",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node list",
+          "member": "NodeCountSummary",
+          "name": "NodeCountSummary",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "AutoscalingGroupStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "MaxNodesNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "MinNodesNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Desired number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "DesiredNodesNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RegionInstance": {
       "document": "Region information",
       "members": [
@@ -3296,6 +3968,48 @@
         }
       ],
       "usage": "out"
+    },
+    "RemoveNodeFromNodePoolRequest": {
+      "document": "RemoveNodeFromNodePool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node ID list",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveNodeFromNodePoolResponse": {
+      "document": "RemoveNodeFromNodePool response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ResourceDeleteOption": {
       "document": "The policy to deal with resources in the cluster when the cluster is deleted.",
@@ -3538,6 +4252,39 @@
         }
       ],
       "usage": "both"
+    },
+    "Taint": {
+      "document": "Kubernetes Taint",
+      "members": [
+        {
+          "default": "",
+          "document": "Key of the taint",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value of the taint",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Effect of the taint",
+          "member": "string",
+          "name": "Effect",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     }
   },
   "version": "1.0"

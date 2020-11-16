@@ -718,6 +718,14 @@
           "name": "MetaDBInfo",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Custom application role.",
+          "member": "string",
+          "name": "ApplicationRole",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
