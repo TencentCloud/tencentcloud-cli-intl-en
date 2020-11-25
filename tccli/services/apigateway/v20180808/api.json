@@ -2227,6 +2227,14 @@
           "name": "AppIdType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag information.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2270,7 +2278,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Service creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+          "document": "Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "type": "string",
@@ -3766,7 +3774,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Tags bound to a service.\nNote: this field may return null, indicating that no valid values found.",
           "member": "Tag",
           "name": "Tags",
           "type": "list",
@@ -5813,7 +5821,7 @@
         },
         {
           "default": "",
-          "document": "API frontend parameter position, such as `head`. Valid values: head, query, path.",
+          "document": "Position of the API frontend parameter, such as the header. Supported values: `header`, `query`, and `path`.",
           "member": "string",
           "name": "Position",
           "required": true,
@@ -6134,7 +6142,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tags bound to a service.\nNote: this field may return null, indicating that no valid values found.",
           "member": "Tag",
           "name": "Tags",
           "required": true,

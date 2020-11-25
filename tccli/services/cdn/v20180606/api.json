@@ -7,7 +7,7 @@
       "output": "AddCdnDomainResponse"
     },
     "CreateClsLogTopic": {
-      "document": "This API is used to create a log topic. Note: up to 10 log topics can be created under one logset.",
+      "document": "This API is used to create a log topic. Up to 10 log topics can be created under one logset.",
       "input": "CreateClsLogTopicRequest",
       "name": "Creating a log topic",
       "output": "CreateClsLogTopicResponse"
@@ -5597,7 +5597,7 @@
         },
         {
           "default": "",
-          "document": "URL path\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "The matched URL path\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -5606,7 +5606,7 @@
         },
         {
           "default": "",
-          "document": "Origin-pull server when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Origin-pull server when the path matches. COS source with private read/write is not supported.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Origin",
           "required": true,

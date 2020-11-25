@@ -187,6 +187,22 @@
           "name": "ForceRedirect",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Tag bound to a domain name.",
+          "member": "Tag",
+          "name": "Tag",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "WebSocket",
+          "name": "WebSocket",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1206,6 +1222,24 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain name tag.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "Tag",
+          "name": "Tag",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "WebSocket",
+          "name": "WebSocket",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2032,6 +2066,30 @@
       ],
       "type": "object"
     },
+    "Tag": {
+      "document": "Tag key and tag value.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "TimestampData": {
       "document": "Timestamp and its corresponding value",
       "members": [
@@ -2161,6 +2219,30 @@
         }
       ],
       "type": "object"
+    },
+    "WebSocket": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"

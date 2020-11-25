@@ -48,6 +48,12 @@
       "name": "Queries the download address of a backup RDB",
       "output": "DescribeBackupUrlResponse"
     },
+    "DescribeCommonDBInstances": {
+      "document": "This API is used to query information of the Redis instance list.",
+      "input": "DescribeCommonDBInstancesRequest",
+      "name": "Queries information of the Redis instance list",
+      "output": "DescribeCommonDBInstancesResponse"
+    },
     "DescribeDBSecurityGroups": {
       "document": "This API is used to query the security group details of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
@@ -722,7 +728,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).",
+          "document": "Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).",
           "member": "uint64",
           "name": "TypeId",
           "required": true,
@@ -730,7 +736,7 @@
         },
         {
           "default": "",
-          "document": "Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
+          "document": "Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).\nIf `TypeId` indicates the standard architecture, `MemSize` indicates the total memory capacity of an instance; if `TypeId` indicates the cluster architecture, `MemSize` indicates the memory capacity per shard.",
           "member": "uint64",
           "name": "MemSize",
           "required": true,
@@ -762,7 +768,7 @@
         },
         {
           "default": "",
-          "document": "Instance password. It can contain 8-30 characters and must contain at least two of the following types of characters: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/). It cannot stat with the symbol (/).",
+          "document": "Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.\nIf the instance type parameter `TypeId` indicates Redis 2.8, 4.0, or 5.0, the password cannot start with \"/\" and must contain 8-30 characters which are comprised of at least two of the following: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).\nIf the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -855,6 +861,14 @@
           "name": "NoAuth",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "RedisNodeInfo",
+          "name": "NodeSet",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1042,6 +1056,142 @@
           "document": "Download address on the private network (valid for 6 hours)",
           "member": "string",
           "name": "InnerDownloadUrl",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCommonDBInstancesRequest": {
+      "document": "DescribeCommonDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance VIPs",
+          "member": "int64",
+          "name": "VpcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of subnet IDs",
+          "member": "int64",
+          "name": "SubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of billing modes. Valid values: `0` (monthly subscription), `1` (pay-as-you-go)",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of instance IDs",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of instance names",
+          "member": "string",
+          "name": "InstanceNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of instance status",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sort field",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort order",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance VIPs",
+          "member": "string",
+          "name": "Vips",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of unique VPC IDs",
+          "member": "string",
+          "name": "UniqVpcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of unique subnet IDs",
+          "member": "string",
+          "name": "UniqSubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Quantity limit. The default value `100` is recommended.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCommonDBInstancesResponse": {
+      "document": "DescribeCommonDBInstances response structure.",
+      "members": [
+        {
+          "document": "Instance quantity",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance information",
+          "member": "RedisCommonInstanceList",
+          "name": "InstanceDetails",
           "type": "list",
           "value_allowed_null": false
         },
@@ -5060,6 +5210,171 @@
         }
       ],
       "usage": "out"
+    },
+    "RedisCommonInstanceList": {
+      "document": "Information of an instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User ID",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID of the instance",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance availability zone",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance network ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: `0` (creating), `1` (running)",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance network IP",
+          "member": "string",
+          "name": "Vips",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance network port",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "string",
+          "name": "Createtime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription)",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network type. Valid values: `0` (classic network), `1` (VPC)",
+          "member": "int64",
+          "name": "NetType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RedisNodeInfo": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "int64",
+          "name": "NodeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "int64",
+          "name": "NodeId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RedisNodes": {
       "document": "Redis node information",

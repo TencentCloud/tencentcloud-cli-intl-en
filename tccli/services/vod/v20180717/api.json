@@ -295,7 +295,7 @@
       "output": "DescribeProcedureTemplatesResponse"
     },
     "DescribeReviewDetails": {
-      "document": "This API is used to query the length of audited video content in seconds per day within the specified time range.\n\n1. Statistics on the length of audited video content for the last 365 days can be queried.\n2. The query time range cannot be more than 90 days.",
+      "document": "<b>This API is disused and replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1).</b>\n\nThis API will return the duration of audited video content in seconds per day within the queried period.\n\n1. The API is used to query statistics on the duration of audited video content for the last 365 days.\n2. The queried period is up to 90 days.",
       "input": "DescribeReviewDetailsRequest",
       "name": "Queries content audit details",
       "output": "DescribeReviewDetailsResponse"
@@ -511,7 +511,7 @@
       "output": "ProcessMediaByProcedureResponse"
     },
     "ProcessMediaByUrl": {
-      "document": "This API is used to initiate a processing task for an audio/video media file from a URL, including:\n\n1. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n2. Intelligent content analysis (tag, category, cover, and frame-specific tag);\n3. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).\n\nIf the event notification is used, its type is [Task Flow Status Change](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
+      "document": "This API is <font color='red'>disused</font>, please use [ProcessMedia](https://intl.cloud.tencent.com/document/product/862/37578?from_cn_redirect=1) API of MPS, and enter a video URL in the input parameter `InputInfo.UrlInputInfo.Url`.",
       "input": "ProcessMediaByUrlRequest",
       "name": "Processes a video at a specified URL",
       "output": "ProcessMediaByUrlResponse"
@@ -990,6 +990,15 @@
           "document": "Whether to remove audio stream. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
           "member": "uint64",
           "name": "RemoveAudio",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to remove a video stream. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
+          "member": "uint64",
+          "name": "RemoveVideo",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -4540,7 +4549,7 @@
         },
         {
           "default": "",
-          "document": "Audio channel system. Valid values:\n<li>1: mono</li>\n<li>2: dual</li>\n<li>6: stereo</li>\nDefault value: 2.",
+          "document": "Audio channel system. Valid values:\n<li>1: Mono-channel</li>\n<li>2: Dual-channel</li>\n<li>6: Stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).\nDefault value: 2.",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
@@ -4582,7 +4591,7 @@
         },
         {
           "default": "",
-          "document": "Audio channel system. Valid values:\n<li>1: mono</li>\n<li>2: dual</li>\n<li>6: stereo</li>",
+          "document": "Audio channel system. Valid values:\n<li>1: Mono-channel</li>\n<li>2: Dual-channel</li>\n<li>6: Stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
@@ -4597,7 +4606,7 @@
       "members": [
         {
           "default": "",
-          "document": "Source of media file for audio material, which can be an ID of a VOD file or URL of another file.",
+          "document": "Source of media material for audio segment, which can be:\n<li>VOD media file ID;</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -5009,7 +5018,7 @@
       "members": [
         {
           "default": "",
-          "document": "List of input media tracks, i.e., information of multiple tracks composed of video, audio, image, and other materials. Multiple input tracks are aligned with the output media file on the time axis. The materials of each track at the same time point on the time axis will be superimposed. Specifically, videos or images will be superimposed for video image by track order, where a material with a higher track order will be more on top, while audio materials will be mixed.",
+          "document": "List of input media tracks, i.e., information of multiple tracks composed of video, audio, image, and other materials. <li>Multiple input tracks are aligned with the output media file on the time axis. </li><li>The materials of each track at the same time point on the time axis will be superimposed. Specifically, videos or images will be superimposed for video image by track order, where a material with a higher track order will be more on top, while audio materials will be mixed. </li><li>Up to 10 tracks are supported for each type (video, audio, or image).</li>",
           "member": "MediaTrack",
           "name": "Tracks",
           "required": true,
@@ -5041,7 +5050,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is null or an empty string, the above operation will not be performed.",
+          "document": "ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -8241,7 +8250,7 @@
         },
         {
           "default": "",
-          "document": "Type of video processing task to be queried. Valid value: Transcode. Default value: Transcode.\n<li>Transcode: transcoding</li>",
+          "document": "This API is used to query video processing task types. The following types are supported now:\n<li> Transcoding: Basic transcoding</li>\n<li> Transcoding-TESHD: TESHD transcoding</li>\n<li> Editing: Video editing</li>\n<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li> ContentAudit: content audit</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -8765,7 +8774,16 @@
     },
     "DescribeSubAppIdsRequest": {
       "document": "DescribeSubAppIds request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Tag information. You can query the list of subapplications with specified tags.",
+          "member": "ResourceTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
       "type": "object"
     },
     "DescribeSubAppIdsResponse": {
@@ -9491,9 +9509,17 @@
         },
         {
           "default": "",
-          "document": "ID used for task deduplication. If there was a request with the same ID in the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reserved field for special purposes.",
+          "member": "string",
+          "name": "ExtInfo",
           "required": false,
           "type": "string"
         },
@@ -14164,7 +14190,7 @@
         },
         {
           "default": "",
-          "document": "Subapplication status. Valid values:\n<li>On: enabled</li>\n<li>Off: disabled</li>",
+          "document": "Subapplication status. Valid strings include:\n<li>On: to enable the subapplication.</li>\n<li>Off: to disable the subapplication.</li>\n<li>Destroyed: to terminate the subapplication. </li>\nYou cannot enable a subapplication when its status is “Destroying”. You can enable it after it was terminated.",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15798,7 +15824,7 @@
         },
         {
           "default": "",
-          "document": "ID used for deduplication. If there was a request with the same ID on the last day, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -15847,7 +15873,7 @@
       "members": [
         {
           "default": "",
-          "document": "Information of input video, including video's URL, name, and custom ID.",
+          "document": "This API is<font color='red'>disused</font>. We recommend using an alternative API. For more information, see API overview.",
           "member": "MediaInputInfo",
           "name": "InputInfo",
           "required": false,
@@ -15911,7 +15937,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16016,7 +16042,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16350,7 +16376,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16629,6 +16655,30 @@
         }
       ],
       "usage": "both"
+    },
+    "ResourceTag": {
+      "document": "Tag key value. For details, see [Tags](https://intl.cloud.tencent.com/document/product/651?from_cn_redirect=1).",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "SampleSnapshotTaskInput": {
       "document": "Input parameter type of sampling screencapturing task",
@@ -17378,7 +17428,7 @@
       "members": [
         {
           "default": "",
-          "document": "Source of media file for sticker material, which can be an ID of a VOD file or URL of another file.",
+          "document": "Source of media material for sticker segment, which can be:\n<li>VOD media file ID;</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -17501,7 +17551,7 @@
         },
         {
           "default": "",
-          "document": "Subapplication status. Valid values:\n<li>On: enabled;</li>\n<li>Off: disabled.</li>",
+          "document": "Subapplication status. Valid strings include:\n<li>On: enabled;</li>\n<li>Off: disabled.</li>\n<li>Destroying: terminating. </li>\n<li>Destroyed: terminated. </li>",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -17720,7 +17770,7 @@
       "members": [
         {
           "default": "",
-          "document": "Task type\n<li>Transcode: transcoding</li>\n<li>Snapshot: screencapturing</li>",
+          "document": "Task type.\n<li> Transcoding: basic transcoding</li>\n<li> Transcoding-TESHD: TESHD transcoding</li>\n<li> Editing: Video editing</li>\n<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li> ContentAudit: content audit</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -17729,7 +17779,7 @@
         },
         {
           "default": "",
-          "document": "Task statistics overview.\n<li>Transcode: usage in seconds</li>",
+          "document": "Task statistics overview (usage unit: second).",
           "member": "TaskStatDataItem",
           "name": "Summary",
           "required": true,
@@ -18287,6 +18337,24 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -18761,7 +18829,7 @@
         },
         {
           "default": "",
-          "document": "Video frame rate in Hz. Value range: [0, 60].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "document": "Video frame rate in Hz. Value range: [0,100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
           "member": "uint64",
           "name": "Fps",
           "required": true,
@@ -18806,11 +18874,20 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch video image frame by frame to fill the screen. The video image may become \"squashed\" or \"stretched\" after transcoding;</li>\n<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>\n<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>\n<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>\nDefault value: black.",
           "member": "string",
           "name": "FillType",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video Constant Rate Factor (CRF). Value range: 1-51.\nIf this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.\nWe don’t recommend specifying this parameter if you have no special requirements.",
+          "member": "uint64",
+          "name": "Vcrf",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -18830,7 +18907,7 @@
         },
         {
           "default": "",
-          "document": "Video frame rate in Hz. Value range: [0, 60].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "document": "Video frame rate in Hz. Value range: [0,100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
           "member": "uint64",
           "name": "Fps",
           "required": false,
@@ -18875,11 +18952,20 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch video image frame by frame to fill the screen. The video image may become \"squashed\" or \"stretched\" after transcoding;</li>\n<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>\n<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>\n<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>",
           "member": "string",
           "name": "FillType",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.\nWe don’t recommend specifying this parameter if you have no special requirements.",
+          "member": "uint64",
+          "name": "Vcrf",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -18890,7 +18976,7 @@
       "members": [
         {
           "default": "",
-          "document": "Source of media material for video segment, which can be an ID of a VOD file or URL of another file.",
+          "document": "Source of media material for video segment, which can be:\n<li>VOD media file ID;</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -19028,7 +19114,7 @@
         },
         {
           "default": "",
-          "document": "Text content of up to 100 characters. This needs to be entered only when the watermark type is text.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Text content, which contains up to 100 characters. This field is required only when the watermark type is text.\nVOD does not support adding text watermarks on screenshots.",
           "member": "string",
           "name": "TextContent",
           "required": false,
@@ -19037,7 +19123,7 @@
         },
         {
           "default": "",
-          "document": "SVG content of up to 2,000,000 characters. This needs to be entered only when the watermark type is `SVG`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "SVG content, which contains up to 2,000,000 characters. This field is required only when the watermark type is SVG.\nVOD does not support adding SVG watermarks on screenshots.",
           "member": "string",
           "name": "SvgContent",
           "required": false,

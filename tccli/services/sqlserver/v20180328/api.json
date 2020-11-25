@@ -186,6 +186,12 @@
       "name": "Modifies migration task",
       "output": "ModifyMigrationResponse"
     },
+    "RecycleDBInstance": {
+      "document": "This API is used to manually repossess a deactivated SQL Server instance.",
+      "input": "RecycleDBInstanceRequest",
+      "name": "Manually repossesses a deactivated SQL Server instance",
+      "output": "RecycleDBInstanceResponse"
+    },
     "ResetAccountPassword": {
       "document": "This API is used to reset the account password of an instance.",
       "input": "ResetAccountPasswordRequest",
@@ -359,6 +365,15 @@
           "name": "Dbs",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an admin account",
+          "member": "bool",
+          "name": "IsAdmin",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1274,7 +1289,7 @@
         },
         {
           "default": "",
-          "document": "Instance high availability status. 1: dual-server high-availability, 2: single-server",
+          "document": "High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (used for Tencent’s business)",
           "member": "int64",
           "name": "Model",
           "required": true,
@@ -3360,6 +3375,39 @@
           "document": "Migration task ID",
           "member": "uint64",
           "name": "MigrateId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecycleDBInstanceRequest": {
+      "document": "RecycleDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecycleDBInstanceResponse": {
+      "document": "RecycleDBInstance response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "int64",
+          "name": "FlowId",
           "type": "int",
           "value_allowed_null": false
         },
