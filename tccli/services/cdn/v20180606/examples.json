@@ -251,7 +251,7 @@
     "PurgePathCache": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=PurgePathCache\r\n&Paths.0=http://www.test.com/test/&FlushType=flush\r\n&<Common request parameter>",
+        "input": "https://cdn.tencentcloudapi.com/?Action=PurgePathCache\n&Paths.0=http://www.test.com/test/\n&FlushType=flush\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"4d5a83f8-a61f-445b-8036-5636be640bef\",\r\n\t\t\"TaskId\": \"1533045796-i60rfmzm\"\r\n\t}\r\n}",
         "title": "Submitting a directory purge task"
       }
@@ -259,7 +259,7 @@
     "PurgeUrlsCache": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=PurgeUrlsCache\r\n&Urls.0=http://www.test.com/1.jpg\r\n&<Common request parameter>",
+        "input": "https://cdn.tencentcloudapi.com/?Action=PurgeUrlsCache\n&Urls.0=http://www.test.com/1.jpg\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"4d5a83f8-a61f-445b-8036-5636be640bef\",\r\n\t\t\"TaskId\": \"1533045796-i60rfmzm\"\r\n\t}\r\n}",
         "title": "Submitting a URL purge task"
       }

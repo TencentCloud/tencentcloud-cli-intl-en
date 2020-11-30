@@ -199,7 +199,7 @@
       "output": "PurgeUrlsCacheResponse"
     },
     "PushUrlsCache": {
-      "document": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1,000 URLs can be prefetched per day either within or outside Mainland China, and up to 20 tasks can be submitted at a time.\nThis API is in beta test and not fully available yet. Please stay tuned.",
+      "document": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1000 URLs can be prefetched per day either within or outside Chinese mainland, and up to 20 tasks can be submitted at a time.",
       "input": "PushUrlsCacheRequest",
       "name": "Prefetches URLs",
       "output": "PushUrlsCacheResponse"
@@ -4117,7 +4117,7 @@
       "members": [
         {
           "default": "",
-          "document": "HTTP header setting method\nadd: add header. If a header exists, then there will be a duplicated header.\nset: only supports origin-pull header configuration. If a header exists, it will be overwritten. If one does not exist, then the header will be added.\ndel: delete header\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "HTTP header setting methods\n`add`: add header. If a header already exists, then there will be a duplicated header.\n`del`: delete header.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "HeaderMode",
           "required": true,
@@ -5670,6 +5670,14 @@
           "name": "FlushType",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to encode Chinese characters before purge.",
+          "member": "bool",
+          "name": "UrlEncode",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -5771,6 +5779,14 @@
           "name": "Area",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to encode Chinese characters before purge.",
+          "member": "bool",
+          "name": "UrlEncode",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
