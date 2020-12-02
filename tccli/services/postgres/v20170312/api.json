@@ -12,6 +12,18 @@
       "name": "Creates database instance",
       "output": "CreateDBInstancesResponse"
     },
+    "CreateServerlessDBInstance": {
+      "document": "This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.",
+      "input": "CreateServerlessDBInstanceRequest",
+      "name": "Creates a PostgreSQL for Serverless instance",
+      "output": "CreateServerlessDBInstanceResponse"
+    },
+    "DeleteServerlessDBInstance": {
+      "document": "This API is used to delete a PostgreSQL for Serverless instance.",
+      "input": "DeleteServerlessDBInstanceRequest",
+      "name": "Deletes a PostgreSQL for Serverless instance",
+      "output": "DeleteServerlessDBInstanceResponse"
+    },
     "DescribeAccounts": {
       "document": "This API is used to get the instance user list.",
       "input": "DescribeAccountsRequest",
@@ -77,6 +89,12 @@
       "input": "DescribeRegionsRequest",
       "name": "Queries purchasable regions",
       "output": "DescribeRegionsResponse"
+    },
+    "DescribeServerlessDBInstances": {
+      "document": "This API is used to query the details of one or more PostgreSQL for Serverless instances.",
+      "input": "DescribeServerlessDBInstancesRequest",
+      "name": "Queries the list of PostgreSQL for Serverless instances",
+      "output": "DescribeServerlessDBInstancesResponse"
     },
     "DescribeZones": {
       "document": "This API is used to query the supported AZs.",
@@ -451,6 +469,95 @@
       ],
       "type": "object"
     },
+    "CreateServerlessDBInstanceRequest": {
+      "document": "CreateServerlessDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Availability zone ID. Only ap-shanghai-2, ap-beijing-1, and ap-guangzhou-2 are supported during the beta test.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name. The value must be unique for the same account.",
+          "member": "string",
+          "name": "DBInstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kernel version of a PostgreSQL instance. Currently, only 10.4 is supported.",
+          "member": "string",
+          "name": "DBVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database character set of a PostgreSQL instance. Currently, only UTF-8 is supported.",
+          "member": "string",
+          "name": "DBCharset",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID.",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of tags to be bound with the instance",
+          "member": "Tag",
+          "name": "TagList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServerlessDBInstanceResponse": {
+      "document": "CreateServerlessDBInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID, such as \"postgres-xxxxx\". The value must be globally unique.",
+          "member": "string",
+          "name": "DBInstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DBBackup": {
       "document": "Database backup information",
       "members": [
@@ -810,6 +917,33 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Primary instance information, which is returned only when the instance is read-only\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MasterDBInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of read-only instances\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReadOnlyInstanceNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The status of a instance in a read-only group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StatusInReadonlyGroup",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -859,6 +993,40 @@
         }
       ],
       "usage": "out"
+    },
+    "DeleteServerlessDBInstanceRequest": {
+      "document": "DeleteServerlessDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.",
+          "member": "string",
+          "name": "DBInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteServerlessDBInstanceResponse": {
+      "document": "DeleteServerlessDBInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeAccountsRequest": {
       "document": "DescribeAccounts request structure.",
@@ -1500,6 +1668,78 @@
           "name": "RegionSet",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServerlessDBInstancesRequest": {
+      "document": "DescribeServerlessDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query conditions",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of queries",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The offset value",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting metric. Currently, only \"CreateTime\" (instance creation time) is supported.",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Ascending and descending are supported.",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServerlessDBInstancesResponse": {
+      "document": "DescribeServerlessDBInstances response structure.",
+      "members": [
+        {
+          "document": "The number of query results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Query results\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ServerlessDBInstance",
+          "name": "DBInstanceSet",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2416,6 +2656,231 @@
         }
       ],
       "type": "object"
+    },
+    "ServerlessDBAccount": {
+      "document": "PostgreSQL for Serverless instance account description",
+      "members": [
+        {
+          "default": "",
+          "document": "Username\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBUser",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Password\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBPassword",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum number of connections\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DBConnLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ServerlessDBInstance": {
+      "document": "PostgreSQL for Serverless instance description",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, which is the unique identifier\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBInstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBInstanceStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Character set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBCharset",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance network information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ServerlessDBInstanceNetInfo",
+          "name": "DBInstanceNetInfo",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance account information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ServerlessDBAccount",
+          "name": "DBAccountSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of the databases in an instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DBDatabaseList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The array of tags bound to an instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "TagList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ServerlessDBInstanceNetInfo": {
+      "document": "PostgreSQL for Serverless instance network description",
+      "members": [
+        {
+          "default": "",
+          "document": "Address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Port number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Network type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "SetAutoRenewFlagRequest": {
       "document": "SetAutoRenewFlag request structure.",
