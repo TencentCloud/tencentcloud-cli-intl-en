@@ -2264,14 +2264,14 @@
           "value_allowed_null": false
         },
         {
-          "document": "Default public network domain name.",
+          "document": "Default public domain name.",
           "member": "string",
           "name": "OuterSubDomain",
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Default private network domain name of VPC",
+          "document": "Default VPC domain name.",
           "member": "string",
           "name": "InnerSubDomain",
           "type": "string",

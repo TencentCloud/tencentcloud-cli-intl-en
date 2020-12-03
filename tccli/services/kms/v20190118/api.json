@@ -1793,6 +1793,34 @@
           "value_allowed_null": true
         },
         {
+          "document": "0: Basic Edition, 1: Ultimate Edition",
+          "member": "uint64",
+          "name": "UserLevel",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Ultimate Edition expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ProExpireTime",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to automatically renew Ultimate Edition. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ProRenewFlag",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ProResourceId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",

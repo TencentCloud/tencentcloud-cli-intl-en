@@ -951,7 +951,7 @@
         },
         {
           "default": "",
-          "document": "IPv6 flag for an instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Indicates whether the instance uses IPv6\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "Ipv6Flag",
           "required": true,
@@ -1014,7 +1014,7 @@
         },
         {
           "default": "",
-          "document": "DCN flag. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DcnFlag",
           "required": true,

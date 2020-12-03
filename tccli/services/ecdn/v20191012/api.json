@@ -198,7 +198,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "WebSocket configuration.",
           "member": "WebSocket",
           "name": "WebSocket",
           "required": false,
@@ -1225,7 +1225,7 @@
         },
         {
           "default": "",
-          "document": "Domain name tag.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Domain name tag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "Tag",
           "name": "Tag",
           "required": true,
@@ -1234,7 +1234,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "WebSocket configuration.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "WebSocket",
           "name": "WebSocket",
           "required": true,
@@ -2204,6 +2204,14 @@
           "name": "Area",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "WebSocket configuration.",
+          "member": "WebSocket",
+          "name": "WebSocket",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2221,11 +2229,11 @@
       "type": "object"
     },
     "WebSocket": {
-      "document": "",
+      "document": "WebSocket configuration.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "WebSocket configuration switch, which can be `on` or `off`.",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -2234,7 +2242,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Sets timeout period in seconds. Maximum value: 65\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Timeout",
           "required": false,

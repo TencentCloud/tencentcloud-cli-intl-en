@@ -3,7 +3,7 @@
     "CreateMediaConnectFlow": {
       "document": "This API is used to create the configuration of a MediaConnect flow.",
       "input": "CreateMediaConnectFlowRequest",
-      "name": "Creates MediaConnect flow",
+      "name": "Creates a MediaConnect flow",
       "output": "CreateMediaConnectFlowResponse"
     },
     "CreateMediaConnectOutput": {
@@ -15,7 +15,7 @@
     "DeleteMediaConnectFlow": {
       "document": "This API is used to delete the configuration of a MediaConnect flow.",
       "input": "DeleteMediaConnectFlowRequest",
-      "name": "Deletes MediaConnect flow",
+      "name": "Deletes a MediaConnect flow",
       "output": "DeleteMediaConnectFlowResponse"
     },
     "DeleteMediaConnectOutput": {
@@ -27,7 +27,7 @@
     "DescribeMediaConnectFlow": {
       "document": "This API is used to query the configuration information of a MediaConnect flow.",
       "input": "DescribeMediaConnectFlowRequest",
-      "name": "Queries MediaConnect flow",
+      "name": "Queries a MediaConnect flow",
       "output": "DescribeMediaConnectFlowResponse"
     },
     "DescribeMediaConnectFlows": {
@@ -39,7 +39,7 @@
     "ModifyMediaConnectFlow": {
       "document": "This API is used to modify the configuration information of a MediaConnect flow.",
       "input": "ModifyMediaConnectFlowRequest",
-      "name": "Modifies MediaConnect flow",
+      "name": "Modifies a MediaConnect flow",
       "output": "ModifyMediaConnectFlowResponse"
     },
     "ModifyMediaConnectInput": {
@@ -57,13 +57,13 @@
     "StartMediaConnectFlow": {
       "document": "This API is used to start a MediaConnect flow.",
       "input": "StartMediaConnectFlowRequest",
-      "name": "Starts MediaConnect flow",
+      "name": "Starts a MediaConnect flow",
       "output": "StartMediaConnectFlowResponse"
     },
     "StopMediaConnectFlow": {
       "document": "This API is used to stop a MediaConnect flow.",
       "input": "StopMediaConnectFlowRequest",
-      "name": "Stops MediaConnect flow",
+      "name": "Stops a MediaConnect flow",
       "output": "StopMediaConnectFlowResponse"
     }
   },
@@ -78,7 +78,7 @@
       "members": [
         {
           "default": "",
-          "document": "Input name, which can contain 1–32 letters, digits, and underscores.",
+          "document": "Input name, which can contain 1 to 32 letters, digits, and underscores.",
           "member": "string",
           "name": "InputName",
           "required": true,
@@ -87,7 +87,7 @@
         },
         {
           "default": "",
-          "document": "Input protocol. Valid values: [SRT|RTP].",
+          "document": "Input protocol. Valid values: SRT, RTP.",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -162,7 +162,7 @@
       "members": [
         {
           "default": "",
-          "document": "Stream ID, which can contain 0–512 letters, digits, and special symbols (.#!:&,=_-).",
+          "document": "Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).",
           "member": "string",
           "name": "StreamId",
           "required": false,
@@ -180,7 +180,7 @@
         },
         {
           "default": "",
-          "document": "Receipt latency in ms. Default value: 120. Value range: [0, 3000].",
+          "document": "Receive latency in ms. Default value: 120. Value range: [0, 3000].",
           "member": "int64",
           "name": "RecvLatency",
           "required": false,
@@ -216,7 +216,7 @@
         },
         {
           "default": "",
-          "document": "Key length. Default value: 0. Valid values: [0|16|24|32].",
+          "document": "Key length. Default value: 0. Valid values: 0, 16, 24, 32.",
           "member": "int64",
           "name": "PbKeyLen",
           "required": false,
@@ -239,7 +239,7 @@
         },
         {
           "default": "",
-          "document": "Maximum bandwidth in bps. Valid values: [10000000, 20000000, 50000000].",
+          "document": "Maximum bandwidth in bps. Valid values: 10000000, 20000000, 50000000.",
           "member": "int64",
           "name": "MaxBandwidth",
           "required": true,
@@ -288,7 +288,7 @@
         },
         {
           "default": "",
-          "document": "Output configuration of flow.",
+          "document": "Output configuration of a flow.",
           "member": "CreateOutput",
           "name": "Output",
           "required": true,
@@ -390,7 +390,7 @@
       "members": [
         {
           "default": "",
-          "document": "Push destination address. 1–2 addresses can be entered.",
+          "document": "Push destination address. You can enter one or two addresses.",
           "member": "CreateOutputRtmpSettingsDestinations",
           "name": "Destinations",
           "required": true,
@@ -414,7 +414,7 @@
       "members": [
         {
           "default": "",
-          "document": "Push destination address. 1–2 addresses can be entered.",
+          "document": "Push destination address. You can enter one or two addresses.",
           "member": "CreateOutputRTPSettingsDestinations",
           "name": "Destinations",
           "required": true,
@@ -495,7 +495,7 @@
       "members": [
         {
           "default": "",
-          "document": "Push destination address. Please configure 1–2 addresses.",
+          "document": "Push destination address. Please configure one or two addresses.",
           "member": "CreateOutputSrtSettingsDestinations",
           "name": "Destinations",
           "required": true,
@@ -522,7 +522,7 @@
         },
         {
           "default": "",
-          "document": "Receipt latency of SRT push.",
+          "document": "Receive latency of SRT push.",
           "member": "int64",
           "name": "RecvLatency",
           "required": false,
@@ -846,7 +846,7 @@
         },
         {
           "default": "",
-          "document": "Receipt latency.",
+          "document": "Receive latency.",
           "member": "int64",
           "name": "RecvLatency",
           "required": true,
@@ -910,7 +910,7 @@
       "document": "DescribeMediaConnectFlow response structure.",
       "members": [
         {
-          "document": "Configuration information of flow.",
+          "document": "Configuration information of a flow.",
           "member": "DescribeFlow",
           "name": "Info",
           "type": "object",
@@ -951,7 +951,7 @@
       "document": "DescribeMediaConnectFlows response structure.",
       "members": [
         {
-          "document": "Configuration information list of flow.",
+          "document": "Configuration information list of a flow.",
           "member": "DescribeFlow",
           "name": "Infos",
           "type": "list",
@@ -1188,7 +1188,7 @@
         },
         {
           "default": "",
-          "document": "Receipt latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Receive latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RecvLatency",
           "required": true,
@@ -1466,7 +1466,7 @@
         },
         {
           "default": "",
-          "document": "Output push protocol. Valid values: SRT|RTMP.",
+          "document": "Output push protocol. Valid values: SRT, RTMP.",
           "member": "string",
           "name": "Protocol",
           "required": true,
