@@ -186,7 +186,7 @@
       {
         "document": "",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceNodeInfo\n&InstanceId=crs-asdasdas\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\":\"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\r\n    \"ProxyCount\": 10,\r\n    \"RedisCount\": 10,\r\n    \"TendisCount\": 5,\r\n    \"Proxy\": [\r\n      {\r\n        \"NodeId\": \"6abb7c308ed3d65930599d6f3d978971864cec77\"\r\n      }\r\n    ],\r\n    \"Redis\": [\r\n      {\r\n        \"ClusterId\": 0,\r\n        \"NodeId\": \"0f2ce0f969c4f43bc338bc1d6f60597d654bb3e4\",\r\n        \"NodeRole\": \"slave\"\r\n      }\r\n    ],\r\n    \"Tendis\": [\r\n      {\r\n        \"NodeId\": \"54dc6b83093359783abd2f0b07da61d3\",\r\n        \"NodeRole\": \"master\"\r\n      }\r\n    ]\r\n  }\r\n}",
+        "output": "{\r\n    \"code\":0,\r\n    \"msg\":\"xxx\",\r\n    \"data\":{\r\n        \"ProxyCount\": 10,\r\n        \"RedisCount\": 10,\r\n        \"Proxy\":[\r\n            {\r\n                \"NodeId\":\"6abb7c308ed3d65930599d6f3d978971864cec77\"\r\n            }],\r\n        \"Redis\":[\r\n            {\r\n                \"ClusterId\":0,\r\n                \"NodeId\":\"0f2ce0f969c4f43bc338bc1d6f60597d654bb3e4\",\r\n                \"NodeRole\":\"slave\"\r\n            }]\r\n    }\r\n}",
         "title": "Sample request"
       }
     ],
@@ -265,8 +265,8 @@
     "DescribeProxySlowLog": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-08 12:12:41\n&EndTime=2019-09-09 12:12:41\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"TotalCount\": 106980,\r\n    \"InstanceProxySlowLogDetail\": [\r\n      {\r\n        \"Duration\": 45,\r\n        \"ExecuteTime\": \"2019-09-08 12:13:08\",\r\n        \"CommandLine\": \"hget hash_key classify_scope::default\",\r\n        \"Client\": \"172.16.21.78\",\r\n        \"Command\": \"hget\"\r\n      }\r\n    ],\r\n    \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\"\r\n  }\r\n}",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-0812:12:41\n&EndTime=2019-09-0912:12:41\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"InstanceProxySlowlogDetail\":[\r\n            {\r\n                \"Client\":\"172.16.21.78\",\r\n                \"Command\":\"hget\",\r\n                \"CommandLine\":\"hget hash_key classify_scope::default\",\r\n                \"Duration\":45,\r\n                \"ExecuteTime\":\"2019-09-08 12:13:08\"\r\n            },\r\n            {\r\n                \"Client\":\"172.16.21.53\",\r\n                \"Command\":\"keys\",\r\n                \"CommandLine\":\"keys OtherResControler:orion.ovs.client.1514259512471:orion.ovs.entprise.9281083591:sence:*\",\r\n                \"Duration\":41,\r\n                \"ExecuteTime\":\"2019-09-08 12:13:08\"\r\n            },\r\n            {\r\n                \"Client\":\"172.16.31.239\",\r\n                \"Command\":\"get\",\r\n                \"CommandLine\":\"get slot::fsm::status::orion.ovs.client.1508751991541::1db7ffcf9216bc1fd939e6c710514f6fb40fd4fe1525f\",\r\n                \"Duration\":41,\r\n                \"ExecuteTime\":\"2019-09-08 12:13:08\"\r\n            }\r\n        ],\r\n        \"RequestId\":\"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\r\n        \"TotalCount\":106980\r\n    }\r\n}",
         "title": "Sample request"
       }
     ],

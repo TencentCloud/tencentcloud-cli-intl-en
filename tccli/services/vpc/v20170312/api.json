@@ -85,7 +85,7 @@
       "output": "AttachClassicLinkVpcResponse"
     },
     "AttachNetworkInterface": {
-      "document": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound to multiple ENIs, but only one primary ENI. For more information on the limits, see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only CVMs in the running or shutdown state can be bound to an ENI. For more information on CVM states, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">Tencent CVM Information</a>.\n* An ENI can only be bound to a CVM in a VPC instance, and the CVM must reside in the same availability zone as the subnet of the ENI.",
+      "document": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound with multiple ENIs, but only one primary ENI. For more information about the limits, please see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only the running or shutdown CVMs can be bound with ENIs. For more information about the CVM status, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">InstanceStatus</a> in the Data Types.\n* An ENI can only be bound to a VPC-based CVM under the same availability zone as the ENI subnet.",
       "input": "AttachNetworkInterfaceRequest",
       "name": "Binds an ENI to a CVM",
       "output": "AttachNetworkInterfaceResponse"
@@ -121,7 +121,7 @@
       "output": "CreateAddressTemplateGroupResponse"
     },
     "CreateAndAttachNetworkInterface": {
-      "document": "This API is used to create an ENI and bind it to a CVM.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be idle and in the same subnet as the ENI.\n* When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.\n* An ENI can only be bound to a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.",
+      "document": "This API is used to create an ENI and bind it to a CVM.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be idle and in the same subnet as the ENI.\n* When creating an ENI, you can specify the number of private IPs that you want to apply for. The system will randomly generate private IP addresses.\n* The number of IPs bound with an ENI is limited. For more information, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateAndAttachNetworkInterfaceRequest",
       "name": "Creates an ENI and binds it to a CVM",
       "output": "CreateAndAttachNetworkInterfaceResponse"
@@ -235,7 +235,7 @@
       "output": "CreateSecurityGroupPoliciesResponse"
     },
     "CreateSecurityGroupWithPolicies": {
-      "document": "This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.\n* Note the<a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a>per project in each region under each account.\n* Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.\n\nDescription:\n* `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.\n* `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* `Port`: A single port number, or a port range in the format of '8000-8010'. The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive. \n* `Action`: Values can be `ACCEPT` or `DROP`.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. 'Protocol + Port' and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent.",
+      "document": "This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.\n* Note the<a href=\"https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1\">maximum number of security groups</a>per project in each region under each account.\n* Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.\n\nDescription:\n* `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.\n* `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.\n* `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.\n* `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.\n* `Port`: A single port number, or a port range in the format of “8000-8010”. The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive. \n* `Action`: Values can be `ACCEPT` or `DROP`.\n* CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. “Protocol + Port” and ServiceTemplate are mutually exclusive and cannot be entered at the same time.\n* Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent.",
       "input": "CreateSecurityGroupWithPoliciesRequest",
       "name": "Creates security groups and policies",
       "output": "CreateSecurityGroupWithPoliciesResponse"
@@ -576,6 +576,12 @@
       "name": "Queries the HAVIP list",
       "output": "DescribeHaVipsResponse"
     },
+    "DescribeIpGeolocationDatabaseUrl": {
+      "document": "This API is used to obtain the download link of an IP location database.",
+      "input": "DescribeIpGeolocationDatabaseUrlRequest",
+      "name": "Obtains the download link of an IP location database",
+      "output": "DescribeIpGeolocationDatabaseUrlResponse"
+    },
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
       "document": "This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.",
       "input": "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest",
@@ -691,9 +697,9 @@
       "output": "DescribeVpcPrivateIpAddressesResponse"
     },
     "DescribeVpcResourceDashboard": {
-      "document": "This API is used to query the VPC resource information.",
+      "document": "View VPC resources.",
       "input": "DescribeVpcResourceDashboardRequest",
-      "name": "Queries the VPC resource information",
+      "name": "Views VPC resources.",
       "output": "DescribeVpcResourceDashboardResponse"
     },
     "DescribeVpcs": {
@@ -733,7 +739,7 @@
       "output": "DetachClassicLinkVpcResponse"
     },
     "DetachNetworkInterface": {
-      "document": "This API (DetachNetworkInterface) is used to unbind an ENI from a CVM.",
+      "document": "This API is used to unbind an ENI from a CVM.",
       "input": "DetachNetworkInterfaceRequest",
       "name": "Unbinds an ENI from a CVM",
       "output": "DetachNetworkInterfaceResponse"
@@ -3211,7 +3217,7 @@
         },
         {
           "default": "",
-          "document": "The CVM instance ID.",
+          "document": "CVM instance ID.",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3445,7 +3451,7 @@
         },
         {
           "default": "",
-          "document": "The bandwidth limit type. OUTER_REGION_LIMIT: regional outbound limit. INTER_REGION_LIMIT: inter-regional limit. Default: OUTER_REGION_LIMIT.",
+          "document": "The bandwidth limit type. Valid values: OUTER_REGION_LIMIT: region outbound bandwidth limit; INTER_REGION_LIMIT: inter-region bandwidth limit. Default value: OUTER_REGION_LIMIT. Monthly-subscribed CCN instances only support inter-region bandwidth limit, while pay-as-you-go CCN instances support the both bandwidth limit types.",
           "member": "string",
           "name": "BandwidthLimitType",
           "required": false,
@@ -5187,7 +5193,7 @@
         },
         {
           "default": "",
-          "document": "Instance's memory capacity. Unit: GB.",
+          "document": "Instance’s memory capacity. Unit: GB.",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -7516,6 +7522,46 @@
       ],
       "type": "object"
     },
+    "DescribeIpGeolocationDatabaseUrlRequest": {
+      "document": "DescribeIpGeolocationDatabaseUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol type of the IP location database. Valid values: `ipv4` and `ipv6`.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpGeolocationDatabaseUrlResponse": {
+      "document": "DescribeIpGeolocationDatabaseUrl response structure.",
+      "members": [
+        {
+          "document": "Download link of the IP location database.",
+          "member": "string",
+          "name": "DownLoadUrl",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Link expiration time in UTC format following the ISO8601 standard.",
+          "member": "datetime_iso",
+          "name": "ExpiredAt",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest": {
       "document": "DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.",
       "members": [
@@ -7889,7 +7935,7 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) ID of the bound security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>\n<li>ip-exact-match - Boolean - (Filter condition) Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filter by tag key. See Example 2 for the detailed usage.</li>\n<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>\n<li>is-primary - Boolean - Required: no - (Filter condition) Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>",
+          "document": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>\n<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>\n<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9685,7 +9731,7 @@
         },
         {
           "default": "",
-          "document": "Inbound bandwidth, unit: `Byte`.",
+          "document": "Inbound traffic, in Byte.",
           "member": "uint64",
           "name": "InTraffic",
           "required": true,
@@ -9694,7 +9740,7 @@
         },
         {
           "default": "",
-          "document": "Outbound bandwidth, unit: `Byte`.",
+          "document": "Outbound traffic, in Byte.",
           "member": "uint64",
           "name": "OutTraffic",
           "required": true,
@@ -11077,7 +11123,7 @@
         },
         {
           "default": "",
-          "document": "Bandwidth limit value in Mbps. Valid values: >0: set the limit to the specified value. 0: block all traffic. -1: no bandwidth limit.",
+          "document": "Bandwidth limit value.",
           "member": "int64",
           "name": "Bandwidth",
           "required": true,
@@ -13125,6 +13171,14 @@
           "member": "SecurityGroupPolicySet",
           "name": "SecurityGroupPolicySet",
           "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "(Optional) The old policy set of the security group, which is used for log records.",
+          "member": "SecurityGroupPolicySet",
+          "name": "OriginalSecurityGroupPolicySet",
+          "required": false,
           "type": "object"
         }
       ],

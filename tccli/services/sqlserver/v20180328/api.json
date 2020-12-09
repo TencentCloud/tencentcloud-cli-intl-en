@@ -187,9 +187,9 @@
       "output": "ModifyMigrationResponse"
     },
     "RecycleDBInstance": {
-      "document": "This API is used to manually repossess a deactivated SQL Server instance.",
+      "document": "This API is used to return a deactivated SQL Server instance.",
       "input": "RecycleDBInstanceRequest",
-      "name": "Manually repossesses a deactivated SQL Server instance",
+      "name": "Returns a deactivated SQL Server instance",
       "output": "RecycleDBInstanceResponse"
     },
     "ResetAccountPassword": {
@@ -223,9 +223,9 @@
       "output": "RunMigrationResponse"
     },
     "TerminateDBInstance": {
-      "document": "This API is used to manually terminate a pay-as-you-go instance.",
+      "document": "This API is used to isolate an instance to move it into a recycle bin.",
       "input": "TerminateDBInstanceRequest",
-      "name": "Manually terminates pay-as-you-go instance",
+      "name": "Isolates an instance",
       "output": "TerminateDBInstanceResponse"
     },
     "UpgradeDBInstance": {
@@ -659,7 +659,7 @@
         },
         {
           "default": "",
-          "document": "Backup name. If this parameter is left empty, a backup name in the format of \"Instance ID_Backup start timestamp\" will be automatically generated.",
+          "document": "Backup name. If this parameter is left empty, a backup name in the format of \"[Instance ID]_[Backup start timestamp]\" will be automatically generated.",
           "member": "string",
           "name": "BackupName",
           "required": false,
@@ -965,7 +965,7 @@
         },
         {
           "default": "",
-          "document": "Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format. This parameter takes effect only when `SourceType=5`.",
+          "document": "Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.",
           "member": "RenameRestoreDatabase",
           "name": "RenameRestore",
           "required": false,
@@ -2312,6 +2312,14 @@
           "member": "string",
           "name": "Zone",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The type of instances to be purchased. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
           "type": "string"
         }
       ],
@@ -3926,6 +3934,24 @@
           "document": "Billing mode under this specification. POST: pay-as-you-go",
           "member": "string",
           "name": "PayModeStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)",
+          "member": "string",
+          "name": "MultiZonesStatus",
           "required": true,
           "type": "string",
           "value_allowed_null": false

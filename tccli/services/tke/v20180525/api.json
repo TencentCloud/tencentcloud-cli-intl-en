@@ -18,6 +18,12 @@
       "name": "Moves nodes in a cluster to a node pool",
       "output": "AddNodeToNodePoolResponse"
     },
+    "CheckInstancesUpgradeAble": {
+      "document": "This API is used to check which nodes can be upgraded in the given node list. ",
+      "input": "CheckInstancesUpgradeAbleRequest",
+      "name": "Checks whether the nodes can be upgraded",
+      "output": "CheckInstancesUpgradeAbleResponse"
+    },
     "CreateCluster": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClusterRequest",
@@ -239,6 +245,12 @@
       "input": "RemoveNodeFromNodePoolRequest",
       "name": "Removes a node from a node pool but retains it in the cluster.",
       "output": "RemoveNodeFromNodePoolResponse"
+    },
+    "UpgradeClusterInstances": {
+      "document": "This API is used to upgrade one or more work nodes in the cluster. ",
+      "input": "UpgradeClusterInstancesRequest",
+      "name": "Upgrades cluster nodes",
+      "output": "UpgradeClusterInstancesResponse"
     }
   },
   "metadata": {
@@ -482,6 +494,100 @@
         }
       ],
       "usage": "out"
+    },
+    "CheckInstancesUpgradeAbleRequest": {
+      "document": "CheckInstancesUpgradeAble request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specify the node list to check. If it’s not passed in, all nodes of the cluster will be checked.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Upgrade type",
+          "member": "string",
+          "name": "UpgradeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination limit",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filtering",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckInstancesUpgradeAbleResponse": {
+      "document": "CheckInstancesUpgradeAble response structure.",
+      "members": [
+        {
+          "document": "The current minor version of cluster Master",
+          "member": "string",
+          "name": "ClusterVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The latest minor version of cluster Master corresponding major version",
+          "member": "string",
+          "name": "LatestVersion",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of nodes that can be upgraded\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "UpgradeAbleInstancesItem",
+          "name": "UpgradeAbleInstances",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Cluster": {
       "document": "Cluster information struct",
@@ -4290,6 +4396,155 @@
           "name": "Effect",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UpgradeAbleInstancesItem": {
+      "document": "Upgradeable node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The current version of the node",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The latest minor version of the current version\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "LatestVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpgradeClusterInstancesRequest": {
+      "document": "UpgradeClusterInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "create: starting an upgrade task\npause: pausing the task\nresume: continuing the task\nabort: stopping the task",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upgrade type. It’s only required when `Operation` is set as `create`.\nreset: the reinstallation and upgrade of major version\nhot: the hot upgrade of minor version\nmajor: in-place upgrade of major version",
+          "member": "string",
+          "name": "UpgradeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of nodes that need to upgrade",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter is used when the node joins the cluster again. Refer to the API of creating one or more cluster nodes.",
+          "member": "UpgradeNodeResetParam",
+          "name": "ResetParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to skip the pre-upgrade check of the node",
+          "member": "bool",
+          "name": "SkipPreCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The maximum tolerable proportion of unavailable pods",
+          "member": "float",
+          "name": "MaxNotReadyPercent",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeClusterInstancesResponse": {
+      "document": "UpgradeClusterInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeNodeResetParam": {
+      "document": "Node upgrade and reinstallation parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Additional parameters set for the instance",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node login information. For now, it only supports Password or a single KeyIds",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group to which the instance belongs. This parameter can be obtained from the `sgId` field in the response of `DescribeSecurityGroups`. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId.)",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
