@@ -263,6 +263,31 @@ def doModifyDBInstanceName(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doStopRollback(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StopRollbackRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.StopRollback(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doOfflineIsolatedInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -630,6 +655,31 @@ def doReleaseIsolatedDBInstances(args, parsed_globals):
     model = models.ReleaseIsolatedDBInstancesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ReleaseIsolatedDBInstances(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateCloneInstance(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateCloneInstanceRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateCloneInstance(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -2113,6 +2163,31 @@ def doDescribeRoGroups(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCloneList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCloneListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeCloneList(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyNameOrDescByDpId(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2234,6 +2309,7 @@ ACTION_MAP = {
     "ModifyInstanceTag": doModifyInstanceTag,
     "DescribeBackupOverview": doDescribeBackupOverview,
     "ModifyDBInstanceName": doModifyDBInstanceName,
+    "StopRollback": doStopRollback,
     "OfflineIsolatedInstances": doOfflineIsolatedInstances,
     "OpenDBInstanceGTID": doOpenDBInstanceGTID,
     "DescribeRollbackTaskDetail": doDescribeRollbackTaskDetail,
@@ -2249,6 +2325,7 @@ ACTION_MAP = {
     "DescribeTables": doDescribeTables,
     "DescribeAccountPrivileges": doDescribeAccountPrivileges,
     "ReleaseIsolatedDBInstances": doReleaseIsolatedDBInstances,
+    "CreateCloneInstance": doCreateCloneInstance,
     "ModifyTimeWindow": doModifyTimeWindow,
     "DeleteDeployGroups": doDeleteDeployGroups,
     "SwitchForUpgrade": doSwitchForUpgrade,
@@ -2308,6 +2385,7 @@ ACTION_MAP = {
     "DescribeBinlogs": doDescribeBinlogs,
     "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
     "DescribeRoGroups": doDescribeRoGroups,
+    "DescribeCloneList": doDescribeCloneList,
     "ModifyNameOrDescByDpId": doModifyNameOrDescByDpId,
     "UpgradeDBInstance": doUpgradeDBInstance,
     "CreateDeployGroup": doCreateDeployGroup,

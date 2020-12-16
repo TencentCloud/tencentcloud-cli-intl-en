@@ -48,6 +48,12 @@
       "name": "Queries IP ownership",
       "output": "DescribeCdnIpResponse"
     },
+    "DescribeCdnOriginIp": {
+      "document": "This API is used to query the IP information of CDN intermediate nodes. Note: the relevant allowlist needs to be enabled for this API.",
+      "input": "DescribeCdnOriginIpRequest",
+      "name": "Queries intermediate nodes",
+      "output": "DescribeCdnOriginIpResponse"
+    },
     "DescribeCertDomains": {
       "document": "This API is used to verify an SSL certificate and extract the domain names. It will then return the list of domain names connected to CDN and the list of domain names with the certificate configured.",
       "input": "DescribeCertDomainsRequest",
@@ -610,6 +616,471 @@
           "name": "CacheTime",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthentication": {
+      "document": "Timestamp hotlink protection advanced configuration (allowlist feature)",
+      "members": [
+        {
+          "default": "",
+          "document": "Hotlink protection configuration switch (which can be on or off). If it is enabled, only one mode can and must be configured, while other modes are null.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration mode A\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthenticationTypeA",
+          "name": "TypeA",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration mode B\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthenticationTypeB",
+          "name": "TypeB",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration mode C\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthenticationTypeC",
+          "name": "TypeC",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration mode D\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthenticationTypeD",
+          "name": "TypeD",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration mode E\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthenticationTypeE",
+          "name": "TypeE",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration mode F\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthenticationTypeF",
+          "name": "TypeF",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthenticationTypeA": {
+      "document": "Timestamp hotlink protection advanced configuration mode A",
+      "members": [
+        {
+          "default": "",
+          "document": "Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.",
+          "member": "string",
+          "name": "SignParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.",
+          "member": "string",
+          "name": "TimeParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time in seconds",
+          "member": "int64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the expiration time parameter is required",
+          "member": "bool",
+          "name": "ExpireTimeRequired",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL composition, e.g., `${private_key}${schema}${host}${full_uri}`.",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time format. Valid values: dec (decimal), hex (hexadecimal).",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status code returned when the authentication failed",
+          "member": "int64",
+          "name": "FailCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status code returned when the URL expired",
+          "member": "int64",
+          "name": "ExpireCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of URLs to be authenticated",
+          "member": "string",
+          "name": "RulePaths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reserved field",
+          "member": "int64",
+          "name": "Transformation",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthenticationTypeB": {
+      "document": "Timestamp hotlink protection advanced configuration mode B",
+      "members": [
+        {
+          "default": "",
+          "document": "Alpha key name",
+          "member": "string",
+          "name": "KeyAlpha",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Beta key name",
+          "member": "string",
+          "name": "KeyBeta",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Gamma key name",
+          "member": "string",
+          "name": "KeyGamma",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.",
+          "member": "string",
+          "name": "SignParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.",
+          "member": "string",
+          "name": "TimeParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time in seconds",
+          "member": "int64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time format. Valid values: dec (decimal), hex (hexadecimal).",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status code returned when the authentication failed",
+          "member": "int64",
+          "name": "FailCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status code returned when the URL expired",
+          "member": "int64",
+          "name": "ExpireCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of URLs to be authenticated",
+          "member": "string",
+          "name": "RulePaths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthenticationTypeC": {
+      "document": "Timestamp hotlink protection advanced configuration mode C",
+      "members": [
+        {
+          "default": "",
+          "document": "Access key",
+          "member": "string",
+          "name": "AccessKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Authentication key",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthenticationTypeD": {
+      "document": "Timestamp hotlink protection advanced configuration mode D",
+      "members": [
+        {
+          "default": "",
+          "document": "Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alternative key used for authentication after the authentication key (`SecretKey`) failed",
+          "member": "string",
+          "name": "BackupSecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.",
+          "member": "string",
+          "name": "SignParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.",
+          "member": "string",
+          "name": "TimeParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time in seconds",
+          "member": "int64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time format. Valid values: dec (decimal), hex (hexadecimal).",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthenticationTypeE": {
+      "document": "Timestamp hotlink protection advanced configuration mode E",
+      "members": [
+        {
+          "default": "",
+          "document": "Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SignParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ACL signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AclSignParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StartTimeParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ExpireTimeParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time format (dec)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedAuthenticationTypeF": {
+      "document": "Timestamp hotlink protection advanced authentication configuration mode F (TypeF)",
+      "members": [
+        {
+          "default": "",
+          "document": "Signature field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SignParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TimeParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Transaction field name in the URI string, starting with a letter, and consisting of letters, digits, and underscores.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TransactionParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CMK used for signature calculation, allowing 6 to 32 bytes of letters and digits.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alternative key used for signature calculation, which is used after the CMK fails in authentication. It allows 6 to 32 bytes of letters and digits.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "BackupSecretKey",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2244,6 +2715,37 @@
       ],
       "type": "object"
     },
+    "DescribeCdnOriginIpRequest": {
+      "document": "DescribeCdnOriginIp request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCdnOriginIpResponse": {
+      "document": "DescribeCdnOriginIp response structure.",
+      "members": [
+        {
+          "document": "Intermediate node IP details",
+          "member": "OriginIp",
+          "name": "Ips",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of intermediate node IPs",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCertDomainsRequest": {
       "document": "DescribeCertDomains request structure.",
       "members": [
@@ -3437,7 +3939,7 @@
         },
         {
           "default": "",
-          "document": "IPv6 configuration (in beta)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "IPv6 origin-pull configuration (in beta)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "Ipv6",
           "name": "Ipv6",
           "required": true,
@@ -3568,6 +4070,24 @@
           "name": "Tag",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration (allowlist feature)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvancedAuthentication",
+          "name": "AdvancedAuthentication",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin-pull authentication advanced configuration (allowlist feature)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "OriginAuthentication",
+          "name": "OriginAuthentication",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -5189,7 +5709,7 @@
       "members": [
         {
           "default": "",
-          "document": "Rule types:\n`all`: effective for all files\n`file`: effective for specified file suffixes\n`directory`: effective for specified paths\n`path`: effective for specified absolute paths",
+          "document": "Rule types:\n`all`: effective for all files.\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`index`: effective for specified homepages.",
           "member": "string",
           "name": "MaxAgeType",
           "required": true,
@@ -5198,7 +5718,7 @@
         },
         {
           "default": "",
-          "document": "Content for each MaxAgeType:\nFor `all`, enter an asterisk (*).\nFor `file`, enter the suffix, such as jpg, txt.\nFor `directory`, enter the path, such as /xxx/test/.\nFor `path`, enter the corresponding absolute path, such as /xxx/test.html.",
+          "document": "Content for each `MaxAgeType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter the suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter the path, e.g., `/xxx/test/`.\nFor `path`, enter the absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.",
           "member": "string",
           "name": "MaxAgeContents",
           "required": true,
@@ -5213,6 +5733,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "FollowOrigin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5312,6 +5841,60 @@
         }
       ],
       "usage": "both"
+    },
+    "OriginAuthentication": {
+      "document": "Origin-pull authentication advanced configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Authentication switch, which can be on or off.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authentication type configuration A\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "OriginAuthenticationTypeA",
+          "name": "TypeA",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OriginAuthenticationTypeA": {
+      "document": "Origin-pull authentication advanced configuration TypeA",
+      "members": [
+        {
+          "default": "",
+          "document": "Key used for signature calculation, allowing 6 to 32 bytes of letters and digits.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OriginIp": {
+      "document": "IP information of CDN intermediate nodes",
+      "members": [
+        {
+          "default": "",
+          "document": "Intermediate IP range/intermediate IP. The IP range information is returned by default.",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "OriginPullOptimization": {
       "document": "Cross-border origin-pull optimization configuration. This is disabled by default. (This feature is in beta and not generally available yet.)",
@@ -5597,7 +6180,7 @@
         },
         {
           "default": "",
-          "document": "The matched URL path\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -5606,34 +6189,34 @@
         },
         {
           "default": "",
-          "document": "Origin-pull server when the path matches. COS source with private read/write is not supported.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Origin server when the path matches. COS origin with private read/write is not supported. The default origin server will be used by default when this field is left empty.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Origin",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Origin-pull host when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Origin server host header when the path matches. The default `ServerName` will be used by default when this field is left empty.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ServerName",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "The region of origin server. Valid values: `CN` (mainland China), `OV` (outside mainland China)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Origin server region. Valid values: CN (the Chinese mainland), OV (outside the Chinese mainland).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "OriginArea",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Origin-pull URI path when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ForwardUri",
           "required": false,
@@ -6358,7 +6941,7 @@
       "members": [
         {
           "default": "",
-          "document": "Content for each CacheType:\nFor `all`, enter an asterisk (*).\nFor `file`, enter the suffix, such as jpg, txt.\nFor `directory`, enter the path, such as /xxx/test/.\nFor `path`, enter the corresponding absolute path, such as /xxx/test.html.\nFor `index`, enter a backslash (/).\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Content for each `CacheType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter the suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter the path, e.g., `/xxx/test/`.\nFor `path`, enter the absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.\nFor `default`, enter `no max-age`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RulePaths",
           "required": true,
@@ -6367,7 +6950,7 @@
         },
         {
           "default": "",
-          "document": "Rule types:\n`all`: effective for all files\n`file`: effective for specified file suffixes\n`directory`: effective for specified paths\n`path`: effective for specified absolute paths\n`index`: home page\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Rule types:\n`all`: effective for all files.\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`index`: homepage.\n`default`: effective when the origin server does not have the `max-age` value.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -7355,6 +7938,22 @@
           "name": "AccessPort",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Timestamp hotlink protection advanced configuration (allowlist feature)",
+          "member": "AdvancedAuthentication",
+          "name": "AdvancedAuthentication",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Origin-pull authentication advanced configuration (allowlist feature)",
+          "member": "OriginAuthentication",
+          "name": "OriginAuthentication",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -7485,7 +8084,7 @@
         },
         {
           "default": "",
-          "document": "Pattern of the URL to be matched, which can contain up to 1,024 characters. Full-path match and regex match are supported.",
+          "document": "URL to be matched. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.",
           "member": "string",
           "name": "Pattern",
           "required": true,
@@ -7494,12 +8093,21 @@
         },
         {
           "default": "",
-          "document": "Target URL, which must begin with `/` and can contain up to 1,024 characters.",
+          "document": "Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.",
           "member": "string",
           "name": "RedirectUrl",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RedirectHost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

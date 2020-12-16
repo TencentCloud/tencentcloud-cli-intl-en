@@ -36,6 +36,12 @@
       "name": "Restarts an ES cluster instance",
       "output": "RestartInstanceResponse"
     },
+    "RestartKibana": {
+      "document": "This API is used to restart Kibana. ",
+      "input": "RestartKibanaRequest",
+      "name": "Restarts Kibana",
+      "output": "RestartKibanaResponse"
+    },
     "RestartNodes": {
       "document": "This API is used to restart cluster nodes.",
       "input": "RestartNodesRequest",
@@ -1632,6 +1638,32 @@
       ],
       "type": "object"
     },
+    "RestartKibanaRequest": {
+      "document": "RestartKibana request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ES instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartKibanaResponse": {
+      "document": "RestartKibana response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RestartNodesRequest": {
       "document": "RestartNodes request structure.",
       "members": [
@@ -1847,7 +1879,7 @@
         },
         {
           "default": "",
-          "document": "Configuration item (JSON string)",
+          "document": "ES configuration item (JSON string)",
           "member": "string",
           "name": "EsConfig",
           "required": false,
@@ -2004,6 +2036,14 @@
           "name": "SceneType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Kibana configuration item (JSON string)",
+          "member": "string",
+          "name": "KibanaConfig",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

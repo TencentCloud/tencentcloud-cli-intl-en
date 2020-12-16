@@ -64,6 +64,14 @@
         "title": "Querying IP information"
       }
     ],
+    "DescribeCdnOriginIp": [
+      {
+        "document": "",
+        "input": "https://cdn.tencentcloudapi.com/?Action=DescribeCdnOriginIp\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"156bde25-56b5-4dae-9638-b7b08b08e4f6\",\r\n        \"Ips\": [\r\n            {\r\n                \"Ip\": \"101.89.13.0/24\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 1\r\n    }\r\n}",
+        "title": "Querying intermediate nodes"
+      }
+    ],
     "DescribeCertDomains": [
       {
         "document": "",
@@ -299,9 +307,9 @@
     "UpdateDomainConfig": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=UpdateDomainConfig\r\n&ProjectId=0\r\n&Domain=www.test.com\r\n&<Common request parameter>",
+        "input": "https://cdn.tencentcloudapi.com/?Action=UpdateDomainConfig\n&ProjectId=0\n&Domain=www.test.com\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c17\"\r\n    }\r\n}",
-        "title": "Updating a domain name configuration"
+        "title": "Updating domain name configurations"
       }
     ],
     "UpdatePayType": [

@@ -18,7 +18,7 @@
       "members": [
         {
           "default": "",
-          "document": "Base64 value of a photo for face comparison;\nBase64-encoded image data is up to 3 MB. Only JPG and PNG formats are supported.",
+          "document": "Base64 string of the image for face comparison.\nThe size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.",
           "member": "string",
           "name": "ImageBase64",
           "required": true,
@@ -26,7 +26,7 @@
         },
         {
           "default": "",
-          "document": "Base64 value of a video for liveness detection;\nThe size after Base64-encoding cannot exceed 5 MB. MP4, AVI, and FLV formats are supported.",
+          "document": "Base64 string of the video for liveness detection.\nThe size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.",
           "member": "string",
           "name": "VideoBase64",
           "required": true,
@@ -67,7 +67,7 @@
           "member": "string",
           "name": "BestFrameBase64",
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "document": "Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).",
@@ -89,6 +89,13 @@
           "name": "Description",
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "member": "string",
+          "name": "BestFrameList",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

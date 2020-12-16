@@ -1023,6 +1023,15 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Environment information published for API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Environments",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1690,7 +1699,7 @@
         },
         {
           "default": "",
-          "document": "API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).",
+          "document": "API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -1706,7 +1715,7 @@
         },
         {
           "default": "",
-          "document": "API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.",
+          "document": "API frontend request protocol. Valid values: HTTPS, WEBSOCKET.",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -2166,7 +2175,7 @@
       "members": [
         {
           "default": "",
-          "document": "Custom service name. If this parameter is left empty, the system will automatically generate a unique name.",
+          "document": "Custom service name.",
           "member": "string",
           "name": "ServiceName",
           "required": true,

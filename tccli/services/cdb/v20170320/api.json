@@ -36,6 +36,12 @@
       "name": "Creates a TencentDB instance backup",
       "output": "CreateBackupResponse"
     },
+    "CreateCloneInstance": {
+      "document": "This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.",
+      "input": "CreateCloneInstanceRequest",
+      "name": "Clones an instance",
+      "output": "CreateCloneInstanceResponse"
+    },
     "CreateDBImportJob": {
       "document": "This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.\n\nNote that the files for a data import task must be uploaded to Tencent Cloud in advance. You need to do so in the console.",
       "input": "CreateDBImportJobRequest",
@@ -161,6 +167,12 @@
       "input": "DescribeBinlogsRequest",
       "name": "Queries binlog backup file list",
       "output": "DescribeBinlogsResponse"
+    },
+    "DescribeCloneList": {
+      "document": "This API is used to query the clone task list of an instance.",
+      "input": "DescribeCloneListRequest",
+      "name": "Queries the clone task list",
+      "output": "DescribeCloneListResponse"
     },
     "DescribeDBImportRecords": {
       "document": "This API (DescribeDBImportRecords) is used to query the records of import tasks in a TencentDB instance.",
@@ -357,7 +369,7 @@
     "DescribeUploadedFiles": {
       "document": "This API is used to query the list of user-imported SQL files.",
       "input": "DescribeUploadedFilesRequest",
-      "name": "Queries SQL file list",
+      "name": "Queries the list of imported SQL files (deprecated)",
       "output": "DescribeUploadedFilesResponse"
     },
     "DisassociateSecurityGroups": {
@@ -510,6 +522,12 @@
       "name": "Stops a data import task",
       "output": "StopDBImportJobResponse"
     },
+    "StopRollback": {
+      "document": "This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.",
+      "input": "StopRollbackRequest",
+      "name": "Cancels a rollback task",
+      "output": "StopRollbackResponse"
+    },
     "SwitchForUpgrade": {
       "document": "This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the primary instance being upgraded is pending switch.",
       "input": "SwitchForUpgradeRequest",
@@ -624,7 +642,7 @@
         },
         {
           "default": "",
-          "document": "Time period available for maintenance on Monday in the format of 10:00-12:00. Each period lasts from half an hour to three hours, with the start time and end time aligned by half-hour. Up to two time periods can be set. The same rule applies below.",
+          "document": "Maintenance window on Monday. The format should be 10:00-12:00. You can set multiple time windows on a day. Each time window lasts from half an hour to three hours, and must start and end on the hour or half hour. At least one time window is required in a week. The same rule applies to the following parameters.",
           "member": "string",
           "name": "Monday",
           "required": false,
@@ -632,7 +650,7 @@
         },
         {
           "default": "",
-          "document": "Maintenance time window on Tuesday",
+          "document": "Maintenance window on Tuesday. At least one time window is required in a week.",
           "member": "string",
           "name": "Tuesday",
           "required": false,
@@ -640,7 +658,7 @@
         },
         {
           "default": "",
-          "document": "Maintenance time window on Wednesday",
+          "document": "Maintenance window on Wednesday. At least one time window is required in a week.",
           "member": "string",
           "name": "Wednesday",
           "required": false,
@@ -648,7 +666,7 @@
         },
         {
           "default": "",
-          "document": "Maintenance time window on Thursday",
+          "document": "Maintenance window on Thursday. At least one time window is required in a week.",
           "member": "string",
           "name": "Thursday",
           "required": false,
@@ -656,7 +674,7 @@
         },
         {
           "default": "",
-          "document": "Maintenance time window on Friday",
+          "document": "Maintenance window on Friday. At least one time window is required in a week.",
           "member": "string",
           "name": "Friday",
           "required": false,
@@ -664,7 +682,7 @@
         },
         {
           "default": "",
-          "document": "Maintenance time window on Saturday",
+          "document": "Maintenance window on Saturday. At least one time window is required in a week.",
           "member": "string",
           "name": "Saturday",
           "required": false,
@@ -672,7 +690,7 @@
         },
         {
           "default": "",
-          "document": "Maintenance time window on Sunday",
+          "document": "Maintenance window on Sunday. At least one time window is required in a week.",
           "member": "string",
           "name": "Sunday",
           "required": false,
@@ -1116,6 +1134,84 @@
       ],
       "usage": "out"
     },
+    "CloneItem": {
+      "document": "Clone task information.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the original instance in a clone task",
+          "member": "string",
+          "name": "SrcInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the cloned instance in a clone task",
+          "member": "string",
+          "name": "DstInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Clone task ID",
+          "member": "int64",
+          "name": "CloneJobId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The policy used in a clone task. Valid values: `timepoint` (roll back to a specific point in time), `backupset` (roll back by using a specific backup file).",
+          "member": "string",
+          "name": "RollbackStrategy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The point in time to which the cloned instance will be rolled back",
+          "member": "string",
+          "name": "RollbackTargetTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task start time",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task end time",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. Valid values: `initial`, `running`, `wait_complete`, `success`, `failed`.",
+          "member": "string",
+          "name": "TaskStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CloseWanServiceRequest": {
       "document": "CloseWanService request structure.",
       "members": [
@@ -1351,6 +1447,159 @@
           "member": "uint64",
           "name": "BackupId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCloneInstanceRequest": {
+      "document": "CreateCloneInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be cloned from",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "To roll back the cloned instance to a specific point in time, set this parameter to a value in the format of \"yyyy-mm-dd hh:mm:ss\".",
+          "member": "string",
+          "name": "SpecifiedRollbackTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "To roll back the cloned instance to a specific physical backup file, set this parameter to the ID of the physical backup file. The ID can be obtained by the [DescribeBackups](https://intl.cloud.tencent.com/document/api/236/15842?from_cn_redirect=1) API.",
+          "member": "int64",
+          "name": "SpecifiedBackupId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID, which can be obtained by the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API. If this parameter is left empty, the classic network will be used by default.",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID, which can be obtained by the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API. If `UniqVpcId` is set, `UniqSubnetId` will be required.",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Memory of the cloned instance in MB, which should be equal to (by default) or larger than that of the original instance",
+          "member": "int64",
+          "name": "Memory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Disk capacity of the cloned instance in GB, which should be equal to (by default) or larger than that of the original instance",
+          "member": "int64",
+          "name": "Volume",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name of the cloned instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group parameter, which can be obtained by the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information of the cloned instance tag",
+          "member": "TagInfo",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CPU core quantity of the cloned instance, which is equal to or larger than that of the original instance",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.",
+          "member": "int64",
+          "name": "ProtectMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Multi-AZ or single-AZ. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0.",
+          "member": "int64",
+          "name": "DeployMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Availability zone information of replica 1 of the cloned instance, which is the same as the value of `Zone` of the original instance by default",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Availability zone information of replica 2 of the cloned instance, \nwhich is left empty by default. Specify this parameter when cloning a strong sync source instance.",
+          "member": "string",
+          "name": "BackupZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the cloned instance. Valid values: `HA` (High-Availability Edition), `EXCLUSIVE` (dedicated). Default value: `HA`.",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCloneInstanceResponse": {
+      "document": "CreateCloneInstance response structure.",
+      "members": [
+        {
+          "document": "LimitAsync task request ID, which can be used to query the execution result of an async task",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2844,6 +3093,62 @@
       ],
       "type": "object"
     },
+    "DescribeCloneListRequest": {
+      "document": "DescribeCloneList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the original instance. This parameter is used to query the clone task list of a specific original instance.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Paginated query offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of results per page in paginated queries",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloneListResponse": {
+      "document": "DescribeCloneList response structure.",
+      "members": [
+        {
+          "document": "The number of results which meet the conditions",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Clone task list",
+          "member": "CloneItem",
+          "name": "Items",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBImportRecordsRequest": {
       "document": "DescribeDBImportRecords request structure.",
       "members": [
@@ -3846,7 +4151,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned per page. Maximum value: 400.",
+          "document": "The number of results per page in paginated queries. Default value: 100. Maximum value: 400.",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4372,7 +4677,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned at a time. Maximum value: 400.",
+          "document": "The number of results per page in paginated queries. Default value: 100. Maximum value: 400.",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -8536,6 +8841,39 @@
     "StopDBImportJobResponse": {
       "document": "StopDBImportJob response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopRollbackRequest": {
+      "document": "StopRollback request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance whose rollback task is canceled",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopRollbackResponse": {
+      "document": "StopRollback response structure.",
+      "members": [
+        {
+          "document": "Async task request ID",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
