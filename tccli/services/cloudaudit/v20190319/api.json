@@ -1,345 +1,233 @@
 {
   "actions": {
-    "CreateAudit": {
-      "document": "Parameter requirements:\n1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.\n2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.\n3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.\n4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.",
-      "input": "CreateAuditRequest",
-      "name": "Creates tracking set",
-      "output": "CreateAuditResponse"
+    "CreateRecorder": {
+      "document": "This API is used to create resource recorders to detect and record resource configuration changes.",
+      "input": "CreateRecorderRequest",
+      "name": "Creates resource recorders",
+      "output": "CreateRecorderResponse"
     },
-    "DeleteAudit": {
-      "document": "This API is used to delete a tracking set.",
-      "input": "DeleteAuditRequest",
-      "name": "Deletes tracking set",
-      "output": "DeleteAuditResponse"
+    "DeleteRecorder": {
+      "document": "This API is used to delete resource recorders. After deletion, resource configuration changes will not be recorded.",
+      "input": "DeleteRecorderRequest",
+      "name": "Deletes resource recorders",
+      "output": "DeleteRecorderResponse"
     },
-    "DescribeAudit": {
-      "document": "This API is used to query the details of a tracking set.",
-      "input": "DescribeAuditRequest",
-      "name": "Queries the details of tracking set",
-      "output": "DescribeAuditResponse"
+    "DescribeDiscoveredResource": {
+      "document": "This API is used to view the basic information of discovered resources.",
+      "input": "DescribeDiscoveredResourceRequest",
+      "name": "Views resource details",
+      "output": "DescribeDiscoveredResourceResponse"
     },
-    "GetAttributeKey": {
-      "document": "This API is used to query the valid values range of `AttributeKey`.",
-      "input": "GetAttributeKeyRequest",
-      "name": "Queries the valid values range of `AttributeKey`",
-      "output": "GetAttributeKeyResponse"
+    "DescribeRecorder": {
+      "document": "This API is used to display current configurations and status of a recorder.",
+      "input": "DescribeRecorderRequest",
+      "name": "Views recorder information",
+      "output": "DescribeRecorderResponse"
     },
-    "InquireAuditCredit": {
-      "document": "This API is used to query the number of tracking sets that can be created.",
-      "input": "InquireAuditCreditRequest",
-      "name": "Queries the number of tracking sets that can be created",
-      "output": "InquireAuditCreditResponse"
+    "GetConfigurationItems": {
+      "document": "This API is used to get the list of resource configuration items and display resource configuration changes in chronological order.",
+      "input": "GetConfigurationItemsRequest",
+      "name": "Gets the resource configuration item list",
+      "output": "GetConfigurationItemsResponse"
     },
-    "ListAudits": {
-      "document": "This API is used to query the summary of tracking sets.",
-      "input": "ListAuditsRequest",
-      "name": "Queries the summary of tracking sets",
-      "output": "ListAuditsResponse"
+    "ListDiscoveredResources": {
+      "document": "This API is used to view the list of discovered resources.",
+      "input": "ListDiscoveredResourcesRequest",
+      "name": "Views the list of discovered resources",
+      "output": "ListDiscoveredResourcesResponse"
     },
-    "ListCmqEnableRegion": {
-      "document": "This API is used to query CloudAudit-enabled CMQ AZs.",
-      "input": "ListCmqEnableRegionRequest",
-      "name": "Queries CloudAudit-enabled CMQ AZs",
-      "output": "ListCmqEnableRegionResponse"
+    "ListSupportResourceTypes": {
+      "document": "This API is used to query the list of all CFA supported resource types.",
+      "input": "ListSupportResourceTypesRequest",
+      "name": "Queries the list of supported resource types",
+      "output": "ListSupportResourceTypesResponse"
     },
-    "ListCosEnableRegion": {
-      "document": "This API is used to query CloudAudit-enabled COS AZs.",
-      "input": "ListCosEnableRegionRequest",
-      "name": "Queries CloudAudit-enabled COS AZs",
-      "output": "ListCosEnableRegionResponse"
-    },
-    "LookUpEvents": {
-      "document": "This API is used to search for operation logs to help query relevant operation information.",
-      "input": "LookUpEventsRequest",
-      "name": "Searches for logs",
-      "output": "LookUpEventsResponse"
-    },
-    "StartLogging": {
-      "document": "This API is used to enable a tracking set.",
-      "input": "StartLoggingRequest",
-      "name": "Enables tracking set",
-      "output": "StartLoggingResponse"
-    },
-    "StopLogging": {
-      "document": "This API is used to disable a tracking set.",
-      "input": "StopLoggingRequest",
-      "name": "Disables tracking set",
-      "output": "StopLoggingResponse"
-    },
-    "UpdateAudit": {
-      "document": "Parameter requirements:\n1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `cosBucketName` are required.\n2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.\n3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.\n4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.",
-      "input": "UpdateAuditRequest",
-      "name": "Updates tracking set",
-      "output": "UpdateAuditResponse"
+    "UpdateRecorder": {
+      "document": "This API is used to modify the resources to monitor, recorder name, and other recorder configurations.",
+      "input": "UpdateRecorderRequest",
+      "name": "Modifies recorder configurations",
+      "output": "UpdateRecorderResponse"
     }
   },
   "metadata": {
     "apiVersion": "2019-03-19",
+    "serviceNameCN": "云审计",
     "serviceShortName": "cloudaudit"
   },
   "objects": {
-    "AttributeKeyDetail": {
-      "document": "`AttributeKey` value details",
+    "ConfigurationItems": {
+      "document": "Resource configuration items",
       "members": [
         {
           "default": "",
-          "document": "Tag",
-          "member": "string",
-          "name": "Label",
-          "required": true,
-          "type": "string"
+          "document": "Time of getting a configuration item",
+          "member": "datetime",
+          "name": "ConfigurationItemCaptureTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Input box type",
+          "document": "Resource relationship list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
-          "name": "LabelType",
-          "required": true,
-          "type": "string"
+          "name": "Relationships",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Display sort order",
-          "member": "int64",
-          "name": "Order",
-          "required": true,
-          "type": "int"
+          "document": "This parameter takes effect only when `DiffMode` is set to `true`. When the input parameter `ChronologicalOrder` of the `GetConfigurationItems` API is set to `Forward`, details of the configuration item before the first one (if not a creation configuration item) will be returned. When this parameter is set to `Reverse`, details of the configuration item after the last one (if not a resource deletion configuration item) will be returned.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LastItemInfo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Initial display",
-          "member": "string",
-          "name": "Starter",
-          "required": true,
-          "type": "string"
+          "document": "List of events associated with the configuration changes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "RelatedEvent",
+          "name": "RelatedEvents",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "`AttributeKey` value",
+          "document": "Resource type",
           "member": "string",
-          "name": "Value",
-          "required": true,
-          "type": "string"
+          "name": "ResourceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration item ID",
+          "member": "string",
+          "name": "ConfigurationStateId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "ResourceCreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CFA version",
+          "member": "string",
+          "name": "Version",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Configuration",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource name",
+          "member": "string",
+          "name": "ResourceAlias",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration item status. Valid values: OK, ResourceDiscovered, ResourceNotRecorded, ResourceDeleted, ResourceDeletedNotRecorded.",
+          "member": "string",
+          "name": "ConfigurationItemStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "out"
     },
-    "AuditSummary": {
-      "document": "Tracking set overview",
+    "CreateRecorderRequest": {
+      "document": "CreateRecorder request structure.",
       "members": [
         {
           "default": "",
-          "document": "Tracking set name",
+          "document": "Role name authorized to CFA",
           "member": "string",
-          "name": "AuditName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Tracking set status. Valid values: 1: enabled, 0: disabled",
-          "member": "int64",
-          "name": "AuditStatus",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "COS bucket name",
-          "member": "string",
-          "name": "CosBucketName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Log prefix",
-          "member": "string",
-          "name": "LogFilePrefix",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "usage": "in"
-    },
-    "CmqRegionInfo": {
-      "document": "CMQ region information",
-      "members": [
-        {
-          "default": "",
-          "document": "CMQ region",
-          "member": "string",
-          "name": "CmqRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Region description",
-          "member": "string",
-          "name": "CmqRegionName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "usage": "in"
-    },
-    "CosRegionInfo": {
-      "document": "COS region information",
-      "members": [
-        {
-          "default": "",
-          "document": "COS region",
-          "member": "string",
-          "name": "CosRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Region description",
-          "member": "string",
-          "name": "CosRegionName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "usage": "in"
-    },
-    "CreateAuditRequest": {
-      "document": "`CreateAudit` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).",
-          "is_public": true,
-          "member": "string",
-          "name": "AuditName",
+          "name": "Role",
           "required": true,
           "type": "string"
         },
         {
           "default": "",
-          "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
-          "is_public": true,
-          "member": "string",
-          "name": "CosBucketName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
-          "is_public": true,
-          "member": "string",
-          "name": "CosRegion",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to create a COS bucket. Valid values: 1: yes; 0: no.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsCreateNewBucket",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable CMQ message notification. Valid values: 1: yes; 0: no. Currently, only CMQ is supported for message queue services. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsEnableCmqNotify",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
-          "is_public": true,
-          "member": "int64",
-          "name": "ReadWriteAttribute",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
-          "is_public": true,
-          "member": "string",
-          "name": "CmqQueueName",
+          "document": "Whether to select all supported resource types. Valid values: true (default), false.",
+          "member": "bool",
+          "name": "AllSupported",
           "required": false,
-          "type": "string"
+          "type": "bool"
         },
         {
           "default": "",
-          "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "is_public": true,
+          "document": "Whether to enable the resource recorder. Valid values: true (default), false.",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Resource recorder name. Default name: default.",
           "member": "string",
-          "name": "CmqRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to create a queue. Valid values: 1: yes; 0: no. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsCreateNewQueue",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsEnableKmsEncry",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained via the `ListKeyAliasByRegion` API. CloudAudit will not verify the validity of the `KeyId`. Please enter it with caution to avoid consequent data loss.",
-          "is_public": true,
-          "member": "string",
-          "name": "KeyId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "KMS region. Currently supported regions can be obtained via the `ListKmsEnableRegion` API. This must be the same as the COS region.",
-          "is_public": true,
-          "member": "string",
-          "name": "KmsRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is set to the account ID by default.",
-          "is_public": true,
-          "member": "string",
-          "name": "LogFilePrefix",
+          "name": "Name",
           "required": false,
           "type": "string"
         }
       ],
       "type": "object"
     },
-    "CreateAuditResponse": {
-      "document": "`CreateAudit` response parameters structure",
+    "CreateRecorderResponse": {
+      "document": "CreateRecorder response structure.",
       "members": [
         {
-          "document": "Indicates if the creation was successful",
-          "member": "int64",
+          "document": "Whether the recorder was created successfully",
+          "member": "bool",
           "name": "IsSuccess",
-          "type": "int"
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -347,32 +235,23 @@
       ],
       "type": "object"
     },
-    "DeleteAuditRequest": {
-      "document": "`DeleteAudit` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Tracking set name",
-          "is_public": true,
-          "member": "string",
-          "name": "AuditName",
-          "required": true,
-          "type": "string"
-        }
-      ],
+    "DeleteRecorderRequest": {
+      "document": "DeleteRecorder request structure.",
+      "members": [],
       "type": "object"
     },
-    "DeleteAuditResponse": {
-      "document": "`DeleteAudit` response parameters structure",
+    "DeleteRecorderResponse": {
+      "document": "DeleteRecorder response structure.",
       "members": [
         {
-          "document": "Indicates if the deletion was successful",
-          "member": "int64",
+          "document": "Whether the recorder was deleted successfully",
+          "member": "bool",
           "name": "IsSuccess",
-          "type": "int"
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -380,201 +259,296 @@
       ],
       "type": "object"
     },
-    "DescribeAuditRequest": {
-      "document": "`DescribeAudit` request parameters structure",
+    "DescribeDiscoveredResourceRequest": {
+      "document": "DescribeDiscoveredResource request structure.",
       "members": [
-        {
-          "default": "",
-          "document": "Tracking set name",
-          "is_public": true,
-          "member": "string",
-          "name": "AuditName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAuditResponse": {
-      "document": "`DescribeAudit` response parameters structure",
-      "members": [
-        {
-          "document": "Tracking set name.",
-          "member": "string",
-          "name": "AuditName",
-          "type": "string"
-        },
-        {
-          "document": "Tracking set status. Valid values: 1: enabled, 0: disabled.",
-          "member": "int64",
-          "name": "AuditStatus",
-          "type": "int"
-        },
-        {
-          "document": "Queue name.",
-          "member": "string",
-          "name": "CmqQueueName",
-          "type": "string"
-        },
-        {
-          "document": "Queue region.",
-          "member": "string",
-          "name": "CmqRegion",
-          "type": "string"
-        },
-        {
-          "document": "COS bucket name.",
-          "member": "string",
-          "name": "CosBucketName",
-          "type": "string"
-        },
-        {
-          "document": "COS bucket region.",
-          "member": "string",
-          "name": "CosRegion",
-          "type": "string"
-        },
-        {
-          "document": "Whether to enable CMQ message notification. Valid values: 1: yes; 0: no.",
-          "member": "int64",
-          "name": "IsEnableCmqNotify",
-          "type": "int"
-        },
-        {
-          "document": "Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
-          "member": "int64",
-          "name": "IsEnableKmsEncry",
-          "type": "int"
-        },
-        {
-          "document": "Globally unique CMK ID.",
-          "member": "string",
-          "name": "KeyId",
-          "type": "string"
-        },
-        {
-          "document": "CMK alias.",
-          "member": "string",
-          "name": "KmsAlias",
-          "type": "string"
-        },
-        {
-          "document": "KMS region.",
-          "member": "string",
-          "name": "KmsRegion",
-          "type": "string"
-        },
-        {
-          "document": "Log prefix.",
-          "member": "string",
-          "name": "LogFilePrefix",
-          "type": "string"
-        },
-        {
-          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write)",
-          "member": "int64",
-          "name": "ReadWriteAttribute",
-          "type": "int"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "Event": {
-      "document": "Log details",
-      "members": [
-        {
-          "default": "",
-          "document": "Resource pair",
-          "member": "Resource",
-          "name": "Resources",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Root account ID",
-          "member": "int64",
-          "name": "AccountID",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Log details",
-          "member": "string",
-          "name": "CloudAuditEvent",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Authentication error code",
-          "member": "int64",
-          "name": "ErrorCode",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Log ID",
-          "member": "string",
-          "name": "EventId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Event name",
-          "member": "string",
-          "name": "EventName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Chinese description of event name (please use this field as required; if you are using other languages, ignore this field)",
-          "member": "string",
-          "name": "EventNameCn",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Event region",
-          "member": "string",
-          "name": "EventRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Request source",
-          "member": "string",
-          "name": "EventSource",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Event time",
-          "member": "string",
-          "name": "EventTime",
-          "required": false,
-          "type": "string"
-        },
         {
           "default": "",
           "document": "Request ID",
           "member": "string",
-          "name": "RequestID",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiscoveredResourceResponse": {
+      "document": "DescribeDiscoveredResource response structure.",
+      "members": [
+        {
+          "document": "Last update time",
+          "member": "datetime",
+          "name": "LastUpdateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resource type",
+          "member": "string",
+          "name": "ResourceType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resource creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tag details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Tag",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Current resource configuration details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ResourceInfo",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ResourceRegion",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Resource alias",
+          "member": "string",
+          "name": "ResourceAlias",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecorderRequest": {
+      "document": "DescribeRecorder request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRecorderResponse": {
+      "document": "DescribeRecorder response structure.",
+      "members": [
+        {
+          "document": "Whether to enable the recorder. Valid values: true (enable), false (disable).",
+          "member": "bool",
+          "name": "Enable",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Recorder name",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Last error message of the recorder, which corresponds to `LastErrorCode`.",
+          "member": "string",
+          "name": "LastErrorMessage",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The status of the recorder when it recorded information last time. Valid values: PENDING, OK, FAILED.",
+          "member": "string",
+          "name": "LastStatus",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of the resource types monitored by the recorder\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "RecordResourceType",
+          "name": "ResourceTypes",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time when the recorder was enabled last time",
+          "member": "datetime",
+          "name": "LastStartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Last error code of the recorder",
+          "member": "string",
+          "name": "LastErrorCode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time when the recorder was disabled last time",
+          "member": "datetime",
+          "name": "LastStopTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to monitor all currently supported resource types. Valid values: true (yes), false (no).",
+          "member": "bool",
+          "name": "AllSupported",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Recorder creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Role name authorized to CFA",
+          "member": "string",
+          "name": "Role",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetConfigurationItemsRequest": {
+      "document": "GetConfigurationItems request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Chronological order. Valid values: Reverse, Forward (default).",
+          "member": "string",
+          "name": "ChronologicalOrder",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable `DiffMode`. Valid values: true, false (default).",
+          "member": "bool",
+          "name": "DiffMode",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Returned number. default: 10, maximum: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetConfigurationItemsResponse": {
+      "document": "GetConfigurationItems response structure.",
+      "members": [
+        {
+          "document": "Resource configuration item list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ConfigurationItems",
+          "name": "ConfigurationItems",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDiscoveredResourcesRequest": {
+      "document": "ListDiscoveredResources request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource type",
+          "member": "string",
+          "name": "ResourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Returned number. default: 20, maximum: 200.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
         },
         {
           "default": "",
@@ -586,267 +560,42 @@
         },
         {
           "default": "",
-          "document": "Chinese description of resource type (please use this field as required; if you are using other languages, ignore this field)",
-          "member": "string",
-          "name": "ResourceTypeCn",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Certificate ID",
-          "member": "string",
-          "name": "SecretId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Source IP",
-          "member": "string",
-          "name": "SourceIPAddress",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Username",
-          "member": "string",
-          "name": "Username",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "usage": "in"
-    },
-    "GetAttributeKeyRequest": {
-      "document": "`GetAttributeKey` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Website type. Valid values: zh, en. If this parameter is left empty, `zh` will be used by default",
-          "is_public": true,
-          "member": "string",
-          "name": "WebsiteType",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetAttributeKeyResponse": {
-      "document": "`GetAttributeKey` response parameters structure",
-      "members": [
-        {
-          "document": "Valid values range of `AttributeKey`",
-          "member": "AttributeKeyDetail",
-          "name": "AttributeKeyDetails",
-          "type": "list"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "InquireAuditCreditRequest": {
-      "document": "`InquireAuditCredit` request parameters structure",
-      "members": [],
-      "type": "object"
-    },
-    "InquireAuditCreditResponse": {
-      "document": "`InquireAuditCredit` response parameters structure",
-      "members": [
-        {
-          "document": "Number of tracking sets that can be created",
-          "member": "int64",
-          "name": "AuditAmount",
-          "type": "int"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ListAuditsRequest": {
-      "document": "`ListAudits` request parameters structure",
-      "members": [],
-      "type": "object"
-    },
-    "ListAuditsResponse": {
-      "document": "`ListAudits` response parameters structure",
-      "members": [
-        {
-          "document": "Set of queried tracking set summaries",
-          "member": "AuditSummary",
-          "name": "AuditSummarys",
-          "type": "list"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ListCmqEnableRegionRequest": {
-      "document": "`ListCmqEnableRegion` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Website type. Valid values: zh (Chinese mainland); en (outside Chinese mainland). Default value: zh",
-          "is_public": true,
-          "member": "string",
-          "name": "WebsiteType",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ListCmqEnableRegionResponse": {
-      "document": "`ListCmqEnableRegion` response parameters structure",
-      "members": [
-        {
-          "document": "CloudAudit-enabled CMQ AZs",
-          "member": "CmqRegionInfo",
-          "name": "EnableRegions",
-          "type": "list"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ListCosEnableRegionRequest": {
-      "document": "`ListCosEnableRegion` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Website type. Valid values: zh (Chinese mainland); en (outside Chinese mainland). Default value: zh",
-          "is_public": true,
-          "member": "string",
-          "name": "WebsiteType",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ListCosEnableRegionResponse": {
-      "document": "`ListCosEnableRegion` response parameters structure",
-      "members": [
-        {
-          "document": "CloudAudit-enabled COS AZs",
-          "member": "CosRegionInfo",
-          "name": "EnableRegions",
-          "type": "list"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "LookUpEventsRequest": {
-      "document": "`LookUpEvents` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "End time",
-          "is_public": true,
-          "member": "int64",
-          "name": "EndTime",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Start time",
-          "is_public": true,
-          "member": "int64",
-          "name": "StartTime",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Search criteria",
-          "is_public": true,
-          "member": "LookupAttribute",
-          "name": "LookupAttributes",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Maximum number of logs to be returned",
-          "is_public": true,
-          "member": "int64",
-          "name": "MaxResults",
+          "document": "Offset. Default: 0.",
+          "member": "uint64",
+          "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
           "default": "",
-          "document": "CloudAudit mode. Valid values: standard, quick. Default value: standard",
-          "is_public": true,
-          "member": "string",
-          "name": "Mode",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Credential for viewing more logs",
-          "is_public": true,
-          "member": "string",
-          "name": "NextToken",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "LookUpEventsResponse": {
-      "document": "`LookUpEvents` response parameters structure",
-      "members": [
-        {
-          "document": "Logset",
-          "member": "Event",
-          "name": "Events",
-          "type": "list"
-        },
-        {
-          "document": "Whether the logset ends",
+          "document": "Whether the resource is deleted",
           "member": "bool",
-          "name": "ListOver",
+          "name": "IsDeleted",
+          "required": false,
           "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDiscoveredResourcesResponse": {
+      "document": "ListDiscoveredResources response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
         },
         {
-          "document": "Credential for viewing more logs",
-          "member": "string",
-          "name": "NextToken",
-          "type": "string"
+          "document": "Resource list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "Resources",
+          "name": "Resources",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -854,38 +603,59 @@
       ],
       "type": "object"
     },
-    "LookupAttribute": {
-      "document": "Search criteria",
+    "ListSupportResourceTypesRequest": {
+      "document": "ListSupportResourceTypes request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListSupportResourceTypesResponse": {
+      "document": "ListSupportResourceTypes response structure.",
       "members": [
         {
-          "default": "",
-          "document": "Valid values of `AttributeKey`: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, EventId",
-          "member": "string",
-          "name": "AttributeKey",
-          "required": true,
-          "type": "string"
+          "document": "List of supported resource types",
+          "member": "SupportResourceType",
+          "name": "ResourceTypes",
+          "type": "list",
+          "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "AttributeValue",
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
-          "name": "AttributeValue",
-          "required": false,
+          "name": "RequestId",
           "type": "string"
         }
       ],
-      "usage": "in"
+      "type": "object"
     },
-    "Resource": {
-      "document": "Resource type",
+    "RecordResourceType": {
+      "document": "Resource types monitored by CFA",
       "members": [
         {
           "default": "",
-          "document": "Resource name",
+          "document": "CAM policy name",
           "member": "string",
-          "name": "ResourceName",
+          "name": "PolicyName",
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time of resource types for monitoring",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service",
+          "member": "string",
+          "name": "Service",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
@@ -893,211 +663,225 @@
           "member": "string",
           "name": "ResourceType",
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service name",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource type name",
+          "member": "string",
+          "name": "ResourceTypeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RelatedEvent": {
+      "document": "List of associated events",
+      "members": [
+        {
+          "default": "",
+          "document": "Event name",
+          "member": "string",
+          "name": "EventName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation time",
+          "member": "datetime",
+          "name": "EventTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the operator account",
+          "member": "uint64",
+          "name": "OperateUin",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CloudAudit event ID",
+          "member": "string",
+          "name": "EventReqId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Resources": {
+      "document": "Resource list",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource type",
+          "member": "string",
+          "name": "ResourceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource region",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource alias",
+          "member": "string",
+          "name": "ResourceAlias",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the resource is deleted",
+          "member": "bool",
+          "name": "IsDeleted",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
     },
-    "StartLoggingRequest": {
-      "document": "`StartLogging` request parameters structure",
+    "SupportResourceType": {
+      "document": "Supported resource types",
       "members": [
         {
           "default": "",
-          "document": "Tracking set name",
-          "is_public": true,
+          "document": "Resource type",
           "member": "string",
-          "name": "AuditName",
-          "required": true,
+          "name": "ResourceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CAM policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service name",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource type name in Chinese",
+          "member": "string",
+          "name": "ResourceTypeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service",
+          "member": "string",
+          "name": "Service",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UpdateRecorderRequest": {
+      "document": "UpdateRecorder request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to select all currently supported resource types",
+          "member": "bool",
+          "name": "AllSupported",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the recorder. Valid values: true (enable), false (disable).",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Recorder name after modification",
+          "member": "string",
+          "name": "Name",
+          "required": false,
           "type": "string"
         }
       ],
       "type": "object"
     },
-    "StartLoggingResponse": {
-      "document": "`StartLogging` response parameters structure",
+    "UpdateRecorderResponse": {
+      "document": "UpdateRecorder response structure.",
       "members": [
         {
-          "document": "Indicates if the tracking set was enabled successfully",
-          "member": "int64",
+          "document": "Whether the modification is successful",
+          "member": "bool",
           "name": "IsSuccess",
-          "type": "int"
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "StopLoggingRequest": {
-      "document": "`StopLogging` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Tracking set name",
-          "is_public": true,
-          "member": "string",
-          "name": "AuditName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "StopLoggingResponse": {
-      "document": "`StopLogging` response parameters structure",
-      "members": [
-        {
-          "document": "Indicates if the tracking set was disabled successfully",
-          "member": "int64",
-          "name": "IsSuccess",
-          "type": "int"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateAuditRequest": {
-      "document": "`UpdateAudit` request parameters structure",
-      "members": [
-        {
-          "default": "",
-          "document": "Tracking set name",
-          "is_public": true,
-          "member": "string",
-          "name": "AuditName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
-          "is_public": true,
-          "member": "string",
-          "name": "CmqQueueName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "is_public": true,
-          "member": "string",
-          "name": "CmqRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Please enter the name with caution so as to avoid log delivery failure and consequent data loss.",
-          "is_public": true,
-          "member": "string",
-          "name": "CosBucketName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
-          "is_public": true,
-          "member": "string",
-          "name": "CosRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to create a COS bucket. Valid values: 1: yes; 0: no.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsCreateNewBucket",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Whether to create a queue. Valid values: 1: yes; 0: no. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsCreateNewQueue",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable CMQ message notification. Valid values: 1: yes; 0: no. Currently, only CMQ is supported for message queue services. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsEnableCmqNotify",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable KMS encryption. Valid values: 1: yes, 0: no. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
-          "is_public": true,
-          "member": "int64",
-          "name": "IsEnableKmsEncry",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained via the `ListKeyAliasByRegion` API. CloudAudit will not verify the validity of the `KeyId`. Please enter it with caution to avoid consequent data loss.",
-          "is_public": true,
-          "member": "string",
-          "name": "KeyId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "KMS region. Currently supported regions can be obtained via the `ListKmsEnableRegion` API. This must be the same as the COS region.",
-          "is_public": true,
-          "member": "string",
-          "name": "KmsRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).",
-          "is_public": true,
-          "member": "string",
-          "name": "LogFilePrefix",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
-          "is_public": true,
-          "member": "int64",
-          "name": "ReadWriteAttribute",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateAuditResponse": {
-      "document": "`UpdateAudit` response parameters structure",
-      "members": [
-        {
-          "document": "Indicates if the update was completed successfully",
-          "member": "int64",
-          "name": "IsSuccess",
-          "type": "int"
-        },
-        {
-          "document": "Unique ID of request. Each request returns a unique ID. The `RequestId` is required for troubleshooting.",
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

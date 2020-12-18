@@ -533,7 +533,7 @@
       "members": [
         {
           "default": "",
-          "document": "Real server type. Value range: CVM, ENI (coming soon)",
+          "document": "Real server type. Valid values: CVM, ENI.",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1623,9 +1623,17 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Applies for CLB instances for a specified VIP",
           "member": "string",
           "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "BandwidthPackageId",
           "required": false,
           "type": "string"
         },
@@ -1644,6 +1652,22 @@
           "name": "ClientToken",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether Binding IPs of other VPCs feature switch",
+          "member": "bool",
+          "name": "SnatPro",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Creates `SnatIp` when the binding IPs of other VPCs feature is enabled",
+          "member": "SnatIp",
+          "name": "SnatIps",
+          "required": false,
+          "type": "list"
         },
         {
           "default": "",
@@ -4106,7 +4130,7 @@
         },
         {
           "default": "",
-          "document": "CLB instance billing mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ChargeType",
           "required": false,
@@ -4282,6 +4306,15 @@
           "name": "MixIpTarget",
           "required": false,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone of a VPC-based private network CLB instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -6252,7 +6285,7 @@
       "members": [
         {
           "default": "",
-          "document": "Listening port of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Listening port of a real server\nNote: this parameter is required when binding a CVM or ENI.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -6270,7 +6303,7 @@
         },
         {
           "default": "",
-          "document": "Unique ID of a CVM instance, which needs to be passed in when binding a CVM instance and can be obtained from the InstanceId field in the return of the DescribeInstances API.\nNote: Either InstanceId or EniIp must be passed in.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API.\nNote: either `InstanceId` or `EniIp` must be passed in.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -6288,7 +6321,7 @@
         },
         {
           "default": "",
-          "document": "This parameter must be passed in when you bind an ENI, which represents the IP address of the ENI. The ENI has to be bound to a CVM instance first before it can be bound to a CLB instance. Note: Either InstanceId or EniIp must be passed in. To bind an ENI, you need to submit a ticket for application first.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "IP of an ENI, which is required when binding an ENI. To bind an ENI with a CLB, you must bind it with a CVM first.\nNote: either `InstanceId` or `EniIp` must be passed in. Binding ENI is now only available to beta users. Please submit a ticket to apply for it if necessary. \nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "EniIp",
           "required": false,

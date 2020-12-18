@@ -319,6 +319,14 @@
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"1732a0dd-48d8-4ff1-8dcb-7f04ca139825\"\r\n    }\r\n}",
         "title": "Modifying billing mode"
       }
+    ],
+    "UpdateScdnDomain": [
+      {
+        "document": "",
+        "input": "https://cdn.tencentcloudapi.com/?Action=UpdateScdnDomain\r\n&Domain=www.test.com\r\n&Acl.Switch=on\r\n&Acl.ScriptData.0.RuleName=test\r\n&Acl.ScriptData.0.Result=refuse\r\n&Acl.ScriptData.0.Configure.0.MatchKey=params\r\n&Acl.ScriptData.0.Configure.0.LogiOperator=exclude\r\n&Acl.ScriptData.0.Configure.0.MatchValue=www.attatck.com\r\n&<Common request parameters>",
+        "output": "{\"Response\": {\"RequestId\": \"08b287d9-6342-4b70-9ec7-201efcd93b9d\",\"Result\": \"Success\"}}",
+        "title": "Modifying SCDN domain name configuration"
+      }
     ]
   },
   "version": "1.0"

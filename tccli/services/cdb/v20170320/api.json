@@ -474,6 +474,18 @@
       "name": "Updates RO instance group",
       "output": "ModifyRoGroupInfoResponse"
     },
+    "ModifyRoReplicationDelay": {
+      "document": "This API is used to modify the replication delay of a delayed RO replica.",
+      "input": "ModifyRoReplicationDelayRequest",
+      "name": "Modifies the replication delay of a delayed RO replica",
+      "output": "ModifyRoReplicationDelayResponse"
+    },
+    "ModifyRoType": {
+      "document": "This API is used to change a general RO replica to delayed RO replica.",
+      "input": "ModifyRoTypeRequest",
+      "name": "Changes the type of a RO replica",
+      "output": "ModifyRoTypeResponse"
+    },
     "ModifyTimeWindow": {
       "document": "This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.",
       "input": "ModifyTimeWindowRequest",
@@ -516,11 +528,23 @@
       "name": "Rolls back database tables",
       "output": "StartBatchRollbackResponse"
     },
+    "StartDelayReplication": {
+      "document": "This API is used to start delayed replication on a delayed RO replica.",
+      "input": "StartDelayReplicationRequest",
+      "name": "Starts delayed replication",
+      "output": "StartDelayReplicationResponse"
+    },
     "StopDBImportJob": {
       "document": "This API (StopDBImportJob) is used to stop a data import task.",
       "input": "StopDBImportJobRequest",
       "name": "Stops a data import task",
       "output": "StopDBImportJobResponse"
+    },
+    "StopDelayReplication": {
+      "document": "This API is used to stop delayed replication on a delayed RO replica.",
+      "input": "StopDelayReplicationRequest",
+      "name": "Stops delayed replication",
+      "output": "StopDelayReplicationResponse"
     },
     "StopRollback": {
       "document": "This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.",
@@ -7026,6 +7050,90 @@
       ],
       "type": "object"
     },
+    "ModifyRoReplicationDelayRequest": {
+      "document": "ModifyRoReplicationDelay request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replication delay in seconds. Value range: 1 to 259200.",
+          "member": "int64",
+          "name": "ReplicationDelay",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoReplicationDelayResponse": {
+      "document": "ModifyRoReplicationDelay response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoTypeRequest": {
+      "document": "ModifyRoType request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The original type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).",
+          "member": "string",
+          "name": "SrcRoInstType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The target type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).",
+          "member": "string",
+          "name": "DstRoInstType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replication delay in seconds. This parameter is required when a regular RO replica is switched to a delayed one. Value range: 1 to 259200.",
+          "member": "int64",
+          "name": "ReplicationDelay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoTypeResponse": {
+      "document": "ModifyRoType response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyTimeWindowRequest": {
       "document": "ModifyTimeWindow request structure.",
       "members": [
@@ -8824,6 +8932,63 @@
       ],
       "type": "object"
     },
+    "StartDelayReplicationRequest": {
+      "document": "StartDelayReplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Delayed replication mode. Valid values: `DEFAULT` (replicate according to the specified replication delay), `GTID` (replicate according to the specified GTID), `DUE_TIME` (replicate according to the specified point in time).",
+          "member": "string",
+          "name": "DelayReplicationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified point in time. Default value: 0. The maximum value cannot be later than the current time.",
+          "member": "int64",
+          "name": "DueTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specified GITD. This parameter is required when the delayed replication mode is `GTID`.",
+          "member": "string",
+          "name": "Gtid",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartDelayReplicationResponse": {
+      "document": "StartDelayReplication response structure.",
+      "members": [
+        {
+          "document": "Delayed replication task ID. This parameter will be returned if `DelayReplicationType` is not `DEFAULT`. It can be used to view the status of the delayed replication task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StopDBImportJobRequest": {
       "document": "StopDBImportJob request structure.",
       "members": [
@@ -8840,6 +9005,32 @@
     },
     "StopDBImportJobResponse": {
       "document": "StopDBImportJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopDelayReplicationRequest": {
+      "document": "StopDelayReplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopDelayReplicationResponse": {
+      "document": "StopDelayReplication response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

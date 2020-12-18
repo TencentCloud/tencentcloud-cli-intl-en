@@ -239,6 +239,12 @@
       "input": "UpdatePayTypeRequest",
       "name": "Modifies billing mode.",
       "output": "UpdatePayTypeResponse"
+    },
+    "UpdateScdnDomain": {
+      "document": "This API is used to modify security configurations of SCDN acceleration domain names.",
+      "input": "UpdateScdnDomainRequest",
+      "name": "Updates SCDN domain name configuration",
+      "output": "UpdateScdnDomainResponse"
     }
   },
   "metadata": {
@@ -1451,6 +1457,126 @@
           "document": "The last time the bandwidth cap threshold was triggered\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "LastTriggerTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BotCookie": {
+      "document": "Bot cookie policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule type, which can only be `all` currently.",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule value. Valid value: `*`.",
+          "member": "string",
+          "name": "RuleValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Redirection target page\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RedirectUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BotJavaScript": {
+      "document": "Bot JS policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule type, which can only be `file` currently.",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule value. Valid values: `html` and `htm`.",
+          "member": "string",
+          "name": "RuleValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Redirection target page\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RedirectUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "UpdateTime",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4799,6 +4925,15 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TLS version settings, which only support certain advanced domain names. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TlsVersion",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5718,7 +5853,7 @@
         },
         {
           "default": "",
-          "document": "Content for each `MaxAgeType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter the suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter the path, e.g., `/xxx/test/`.\nFor `path`, enter the absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.",
+          "document": "Content for each `MaxAgeType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter a suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter a path, e.g., `/xxx/test/`.\nFor `path`, enter an absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.\nNote: the rule `all` cannot be deleted. It follows origin by default and can be modified.",
           "member": "string",
           "name": "MaxAgeContents",
           "required": true,
@@ -5727,7 +5862,7 @@
         },
         {
           "default": "",
-          "document": "MaxAge time (in seconds)",
+          "document": "MaxAge time (in seconds)\nNote: the value `0` means not to cache.",
           "member": "int64",
           "name": "MaxAgeTime",
           "required": true,
@@ -5736,7 +5871,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to follow the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FollowOrigin",
           "required": false,
@@ -6171,7 +6306,7 @@
       "members": [
         {
           "default": "",
-          "document": "Whether regex match is used.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Whether to enable wildcard match (`*`).\nfalse: disable\ntrue: enable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "Regex",
           "required": true,
@@ -6180,7 +6315,7 @@
         },
         {
           "default": "",
-          "document": "Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. If wildcard match is enabled, up to 5 wildcards are supported. The URL can contain up to 1,024 characters.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -6207,7 +6342,7 @@
         },
         {
           "default": "",
-          "document": "Origin server region. Valid values: CN (the Chinese mainland), OV (outside the Chinese mainland).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Origin server region. Valid values: `CN` and `OV`.\nCN: the Chinese mainland\nOV: outside the Chinese mainland\nDefault value: `CN`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "OriginArea",
           "required": false,
@@ -6216,7 +6351,7 @@
         },
         {
           "default": "",
-          "document": "Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the match path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ForwardUri",
           "required": false,
@@ -7031,6 +7166,372 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnAclConfig": {
+      "document": "SCDN access control",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable. Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ACL rule group, which is required when the access control is on.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ScdnAclGroup",
+          "name": "ScriptData",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error page configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ScdnErrorPage",
+          "name": "ErrorPage",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnAclGroup": {
+      "document": "SCDN precise access control configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specific configurations",
+          "member": "ScdnAclRule",
+          "name": "Configure",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule action, which is generally `refuse`.",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the rule is effective. Valid values: `active` and `inactive`.",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnAclRule": {
+      "document": "Precise access control match rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Match keywords. Valid values: `params`, `url`, `ip`, `referer`, and `user-agent`.",
+          "member": "string",
+          "name": "MatchKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logical operator. Valid values: `exclude`, `include`, `notequal`, `equal`, `len-less`, `len-equal`, and `len-more`.",
+          "member": "string",
+          "name": "LogiOperator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Match value",
+          "member": "string",
+          "name": "MatchValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnBotConfig": {
+      "document": "Bot configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bot cookie policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "BotCookie",
+          "name": "BotCookie",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Bot JS policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "BotJavaScript",
+          "name": "BotJavaScript",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnCCRules": {
+      "document": "SCDN custom CC rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule types:\n`all`: effective for all files.\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`index`: effective for web homepages and root directories.",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule value (blocking condition)",
+          "member": "string",
+          "name": "RuleValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP access limit rule",
+          "member": "uint64",
+          "name": "Qps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection granularity\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DetectionTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Frequency threshold\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "FrequencyLimit",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to block or redirect requests from suspicious IPs. Valid values: `on` and `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PunishmentSwitch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Suspicious IP restriction duration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "PunishmentTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `intercept` and `redirect`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The redirection target URL used when the `Action` is `redirect`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RedirectUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnConfig": {
+      "document": "CC attack defense configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom CC attack defense rule\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ScdnCCRules",
+          "name": "Rules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnDdosConfig": {
+      "document": "DDoS configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable DDoS defense. Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnErrorPage": {
+      "document": "ACL error page",
+      "members": [
+        {
+          "default": "",
+          "document": "Status code",
+          "member": "int64",
+          "name": "RedirectCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Redirection URL",
+          "member": "string",
+          "name": "RedirectUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnWafConfig": {
+      "document": "WAF configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable WAF. Valid values: `on` and `off`.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Redirection error page\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ScdnErrorPage",
+          "name": "ErrorPage",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "WebShellSwitch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Attack blocking rules\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ScdnWafRule",
+          "name": "Rules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnWafRule": {
+      "document": "WAF rule information",
+      "members": [
+        {
+          "default": "",
+          "document": "Attack type",
+          "member": "string",
+          "name": "AttackType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Defense action. Valid value: `observe`.",
+          "member": "string",
+          "name": "Operate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -8004,6 +8505,79 @@
       ],
       "type": "object"
     },
+    "UpdateScdnDomainRequest": {
+      "document": "UpdateScdnDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "WAF configuration",
+          "member": "ScdnWafConfig",
+          "name": "Waf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Custom defense policy configuration",
+          "member": "ScdnAclConfig",
+          "name": "Acl",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "CC attack defense configurations. CC attack defense is enabled by default.",
+          "member": "ScdnConfig",
+          "name": "CC",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "DDoS defense configuration. DDoS defense is enabled by default.",
+          "member": "ScdnDdosConfig",
+          "name": "Ddos",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Bot defense configuration",
+          "member": "ScdnBotConfig",
+          "name": "Bot",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateScdnDomainResponse": {
+      "document": "UpdateScdnDomain response structure.",
+      "members": [
+        {
+          "document": "Result of the request. `Success` indicates that the configurations are updated.",
+          "member": "string",
+          "name": "Result",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UrlRecord": {
       "document": "Details of the blocked URLs",
       "members": [
@@ -8102,7 +8676,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RedirectHost",
           "required": false,
