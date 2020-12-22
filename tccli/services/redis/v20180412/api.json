@@ -162,6 +162,12 @@
       "name": "Gets the information of cluster edition instance shards",
       "output": "DescribeInstanceShardsResponse"
     },
+    "DescribeInstanceZoneInfo": {
+      "document": "This API is used to query Redis node information.",
+      "input": "DescribeInstanceZoneInfoRequest",
+      "name": "Queries Redis node information",
+      "output": "DescribeInstanceZoneInfoResponse"
+    },
     "DescribeInstances": {
       "document": "This API is used to query the list of Redis instances.",
       "input": "DescribeInstancesRequest",
@@ -864,9 +870,17 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Node information of an instance. Currently, information about the node type (master or replica) and node availability zone can be passed in. This parameter is not required for instances deployed in a single availability zone.",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The tag bound with the instance to be purchased",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
           "required": false,
           "type": "list"
         }
@@ -904,7 +918,7 @@
       "members": [
         {
           "default": "",
-          "document": "Distribution ladder",
+          "document": "Delay distribution. The mapping between delay range and `Ladder` value is as follows:\n[0ms,1ms]: 1;\n[1ms,5ms]: 5;\n[5ms,10ms]: 10;\n[10ms,50ms]: 50;\n[50ms,200ms]: 200;\n[200ms,∞]: -1.",
           "member": "int64",
           "name": "Ladder",
           "required": true,
@@ -913,7 +927,7 @@
         },
         {
           "default": "",
-          "document": "Size",
+          "document": "The number of commands whose delay falls within the current delay range",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -2181,6 +2195,46 @@
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceZoneInfoRequest": {
+      "document": "DescribeInstanceZoneInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, such as crs-6ubhgouj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceZoneInfoResponse": {
+      "document": "DescribeInstanceZoneInfo response structure.",
+      "members": [
+        {
+          "document": "The number of instance node groups",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The list of instance node groups",
+          "member": "ReplicaGroup",
+          "name": "ReplicaGroups",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -5018,7 +5072,7 @@
       "members": [
         {
           "default": "",
-          "document": "Product type. 2: Redis primary-secondary edition; 3: CKV primary-secondary edition; 4: CKV cluster edition; 5: Redis standalone edition; 7: Redis cluster edition",
+          "document": "Product type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `10` (Redis 4.0 Hybrid Storage Edition (Tendis)).",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -5027,7 +5081,7 @@
         },
         {
           "default": "",
-          "document": "Product name: Redis primary-secondary edition, CKV primary-secondary edition, CKV cluster edition, Redis standalone edition, or Redis cluster edition",
+          "document": "Product name: Redis Master-Replica Edition, CKV Master-Replica Edition, CKV Cluster Edition, Redis Standalone Edition, Redis Cluster Edition, Tendis Hybrid Storage Edition",
           "member": "string",
           "name": "TypeName",
           "required": true,
@@ -5343,12 +5397,54 @@
       ],
       "usage": "out"
     },
-    "RedisNodeInfo": {
-      "document": "",
+    "RedisNode": {
+      "document": "The operation information of Redis nodes",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The number of keys on a node",
+          "member": "int64",
+          "name": "Keys",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Distribution of node slots",
+          "member": "string",
+          "name": "Slot",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RedisNodeInfo": {
+      "document": "Redis master or replica node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node type. Valid values: `0` (master node), `1` (replica node)",
           "member": "int64",
           "name": "NodeType",
           "required": true,
@@ -5357,7 +5453,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID of the availability zone of the master or replica node",
           "member": "uint64",
           "name": "ZoneId",
           "required": true,
@@ -5366,7 +5462,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID of the master or replica node, which is not required when creating an instance",
           "member": "int64",
           "name": "NodeId",
           "required": false,
@@ -5501,6 +5597,57 @@
       ],
       "type": "object"
     },
+    "ReplicaGroup": {
+      "document": "Instance node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node group ID",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node group name",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node availability zone ID, such as ap-guangzhou-1",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node group type. Valid values: `master` (master node group), `replica` (replica node group)",
+          "member": "string",
+          "name": "Role",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of nodes in a node group",
+          "member": "RedisNode",
+          "name": "RedisNodes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ResetPasswordRequest": {
       "document": "ResetPassword request structure.",
       "members": [
@@ -5549,6 +5696,30 @@
         }
       ],
       "type": "object"
+    },
+    "ResourceTag": {
+      "document": "The tag bound with the instance purchased via APIs",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "RestoreInstanceRequest": {
       "document": "RestoreInstance request structure.",

@@ -582,6 +582,12 @@
       "name": "Obtains the download link of an IP location database",
       "output": "DescribeIpGeolocationDatabaseUrlResponse"
     },
+    "DescribeIpGeolocationInfos": {
+      "document": "This API is used to query the IP addresses, including their geographical locations and networks.",
+      "input": "DescribeIpGeolocationInfosRequest",
+      "name": "Queries IP location",
+      "output": "DescribeIpGeolocationInfosResponse"
+    },
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
       "document": "This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.",
       "input": "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest",
@@ -821,6 +827,12 @@
       "input": "HaVipDisassociateAddressIpRequest",
       "name": "Unbinds an EIP from HAVIP",
       "output": "HaVipDisassociateAddressIpResponse"
+    },
+    "InquirePriceCreateDirectConnectGateway": {
+      "document": "This API is used to query the price of creating a direct connect gateway.",
+      "input": "InquirePriceCreateDirectConnectGatewayRequest",
+      "name": "Queries the price of creating a direct connect gateway",
+      "output": "InquirePriceCreateDirectConnectGatewayResponse"
     },
     "InquiryPriceCreateVpnGateway": {
       "document": "This API (InquiryPriceCreateVpnGateway) is used to query the price for VPN gateway creation.",
@@ -3642,6 +3654,14 @@
           "document": "The type of the gateway. Valid values:\n<li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>\n<li>NAT - NAT type</li>NAT gateway supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway",
           "member": "string",
           "name": "GatewayType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CCN route publishing method. Valid values: `standard` and `exquisite`. This parameter is only valid for the CCN direct connect gateway.",
+          "member": "string",
+          "name": "ModeType",
           "required": false,
           "type": "string"
         }
@@ -7562,6 +7582,54 @@
       ],
       "type": "object"
     },
+    "DescribeIpGeolocationInfosRequest": {
+      "document": "DescribeIpGeolocationInfos request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IP addresses to be queried. Both IPv4 and IPv6 addresses are supported.",
+          "member": "string",
+          "name": "AddressIps",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Fields of the IP addresses to be queried, including `Country`, `Province`, `City`, `Region`, `Isp`, `AsName` and `AsId`",
+          "member": "IpField",
+          "name": "Fields",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpGeolocationInfosResponse": {
+      "document": "DescribeIpGeolocationInfos response structure.",
+      "members": [
+        {
+          "document": "IP address details",
+          "member": "IpGeolocationInfo",
+          "name": "AddressInfo",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of IP addresses",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest": {
       "document": "DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.",
       "members": [
@@ -9160,6 +9228,24 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the direct connect gateway supports the VXLAN architecture.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "VXLANSupport",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CCN route publishing mode. Valid values: `standard` and `exquisite`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ModeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -10202,6 +10288,37 @@
       ],
       "usage": "in"
     },
+    "InquirePriceCreateDirectConnectGatewayRequest": {
+      "document": "InquirePriceCreateDirectConnectGateway request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "InquirePriceCreateDirectConnectGatewayResponse": {
+      "document": "InquirePriceCreateDirectConnectGateway response structure.",
+      "members": [
+        {
+          "document": "Standard access fee for a direct connect gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TotalCost",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Actual access fee for a direct connect gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RealTotalCost",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InquiryPriceCreateVpnGatewayRequest": {
       "document": "InquiryPriceCreateVpnGateway request structure.",
       "members": [
@@ -10374,6 +10491,171 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IpField": {
+      "document": "IP fields to be queried online",
+      "members": [
+        {
+          "default": "",
+          "document": "Country/region field",
+          "member": "bool",
+          "name": "Country",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Province/municipality field",
+          "member": "bool",
+          "name": "Province",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "City field",
+          "member": "bool",
+          "name": "City",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Urban area field",
+          "member": "bool",
+          "name": "Region",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access ISP field",
+          "member": "bool",
+          "name": "Isp",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISP backbone network’s AS field",
+          "member": "bool",
+          "name": "AsName",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AS ID",
+          "member": "bool",
+          "name": "AsId",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Comment",
+          "member": "bool",
+          "name": "Comment",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "IpGeolocationInfo": {
+      "document": "IP location",
+      "members": [
+        {
+          "default": "",
+          "document": "Country/region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Country",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Province- or municipality-level administrative region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Province",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Municipal administrative region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "City",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Urban area\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Access ISP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ISP backbone network’s AS name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AsName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ISP backbone network’s AS ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AsId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Comment. The APN value of mobile users is entered currently. If there is no APN attribute, this is `null`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AddressIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -11042,6 +11324,14 @@
           "document": "The CCN route-learning type. Valid values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). You can only modify `CcnRouteType` for a CCN direct connect gateway with BGP enabled.",
           "member": "string",
           "name": "CcnRouteType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CCN route publishing method. Valid values: `standard` and `exquisite`. You can only modify `ModeType` for a CCN direct connect gateway.",
+          "member": "string",
+          "name": "ModeType",
           "required": false,
           "type": "string"
         }

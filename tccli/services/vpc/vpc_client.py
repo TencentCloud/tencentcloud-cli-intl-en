@@ -413,7 +413,7 @@ def doModifyFlowLogAttribute(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyServiceTemplateGroupAttribute(args, parsed_globals):
+def doDisassociateNetworkInterfaceSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -427,9 +427,9 @@ def doModifyServiceTemplateGroupAttribute(args, parsed_globals):
     client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyServiceTemplateGroupAttributeRequest()
+    model = models.DisassociateNetworkInterfaceSecurityGroupsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyServiceTemplateGroupAttribute(model)
+    rsp = client.DisassociateNetworkInterfaceSecurityGroups(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -1488,7 +1488,7 @@ def doDisassociateAddress(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDisassociateNetworkInterfaceSecurityGroups(args, parsed_globals):
+def doDescribeDirectConnectGateways(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -1502,9 +1502,34 @@ def doDisassociateNetworkInterfaceSecurityGroups(args, parsed_globals):
     client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DisassociateNetworkInterfaceSecurityGroupsRequest()
+    model = models.DescribeDirectConnectGatewaysRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DisassociateNetworkInterfaceSecurityGroups(model)
+    rsp = client.DescribeDirectConnectGateways(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyServiceTemplateGroupAttribute(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyServiceTemplateGroupAttributeRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyServiceTemplateGroupAttribute(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -3313,7 +3338,7 @@ def doModifyIpv6AddressesAttribute(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDirectConnectGateways(args, parsed_globals):
+def doCreateAddressTemplateGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -3327,9 +3352,9 @@ def doDescribeDirectConnectGateways(args, parsed_globals):
     client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDirectConnectGatewaysRequest()
+    model = models.CreateAddressTemplateGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDirectConnectGateways(model)
+    rsp = client.CreateAddressTemplateGroup(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -3405,6 +3430,31 @@ def doMigratePrivateIpAddress(args, parsed_globals):
     model = models.MigratePrivateIpAddressRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.MigratePrivateIpAddress(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeIpGeolocationInfos(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIpGeolocationInfosRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeIpGeolocationInfos(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -4488,7 +4538,7 @@ def doModifyCcnAttribute(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateAddressTemplateGroup(args, parsed_globals):
+def doInquirePriceCreateDirectConnectGateway(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -4502,9 +4552,9 @@ def doCreateAddressTemplateGroup(args, parsed_globals):
     client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateAddressTemplateGroupRequest()
+    model = models.InquirePriceCreateDirectConnectGatewayRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateAddressTemplateGroup(model)
+    rsp = client.InquirePriceCreateDirectConnectGateway(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -4865,7 +4915,7 @@ ACTION_MAP = {
     "DeleteNetworkAcl": doDeleteNetworkAcl,
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": doDescribeNatGatewayDestinationIpPortTranslationNatRules,
     "ModifyFlowLogAttribute": doModifyFlowLogAttribute,
-    "ModifyServiceTemplateGroupAttribute": doModifyServiceTemplateGroupAttribute,
+    "DisassociateNetworkInterfaceSecurityGroups": doDisassociateNetworkInterfaceSecurityGroups,
     "ModifyAddressInternetChargeType": doModifyAddressInternetChargeType,
     "DescribeCcnAttachedInstances": doDescribeCcnAttachedInstances,
     "ResetRoutes": doResetRoutes,
@@ -4908,7 +4958,8 @@ ACTION_MAP = {
     "DeleteServiceTemplateGroup": doDeleteServiceTemplateGroup,
     "DescribeGatewayFlowQos": doDescribeGatewayFlowQos,
     "DisassociateAddress": doDisassociateAddress,
-    "DisassociateNetworkInterfaceSecurityGroups": doDisassociateNetworkInterfaceSecurityGroups,
+    "DescribeDirectConnectGateways": doDescribeDirectConnectGateways,
+    "ModifyServiceTemplateGroupAttribute": doModifyServiceTemplateGroupAttribute,
     "CreateVpc": doCreateVpc,
     "AddBandwidthPackageResources": doAddBandwidthPackageResources,
     "AssignIpv6SubnetCidrBlock": doAssignIpv6SubnetCidrBlock,
@@ -4981,10 +5032,11 @@ ACTION_MAP = {
     "CreateDirectConnectGatewayCcnRoutes": doCreateDirectConnectGatewayCcnRoutes,
     "DescribeVpcPrivateIpAddresses": doDescribeVpcPrivateIpAddresses,
     "ModifyIpv6AddressesAttribute": doModifyIpv6AddressesAttribute,
-    "DescribeDirectConnectGateways": doDescribeDirectConnectGateways,
+    "CreateAddressTemplateGroup": doCreateAddressTemplateGroup,
     "RenewVpnGateway": doRenewVpnGateway,
     "AssignIpv6Addresses": doAssignIpv6Addresses,
     "MigratePrivateIpAddress": doMigratePrivateIpAddress,
+    "DescribeIpGeolocationInfos": doDescribeIpGeolocationInfos,
     "DescribeServiceTemplates": doDescribeServiceTemplates,
     "UnassignIpv6CidrBlock": doUnassignIpv6CidrBlock,
     "ModifyNatGatewayDestinationIpPortTranslationNatRule": doModifyNatGatewayDestinationIpPortTranslationNatRule,
@@ -5028,7 +5080,7 @@ ACTION_MAP = {
     "CreateServiceTemplateGroup": doCreateServiceTemplateGroup,
     "ReplaceRoutes": doReplaceRoutes,
     "ModifyCcnAttribute": doModifyCcnAttribute,
-    "CreateAddressTemplateGroup": doCreateAddressTemplateGroup,
+    "InquirePriceCreateDirectConnectGateway": doInquirePriceCreateDirectConnectGateway,
     "DescribeSecurityGroupAssociationStatistics": doDescribeSecurityGroupAssociationStatistics,
     "UnassignIpv6SubnetCidrBlock": doUnassignIpv6SubnetCidrBlock,
     "DescribeIpGeolocationDatabaseUrl": doDescribeIpGeolocationDatabaseUrl,

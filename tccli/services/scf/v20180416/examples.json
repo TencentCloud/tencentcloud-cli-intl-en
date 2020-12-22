@@ -5,7 +5,7 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=CopyFunction\r\n&Namespace=default\r\n&FunctionName=myfunc\r\n&TargetNamespace=otherns\r\n&NewFunctionName=newfunc\r\n&TargetRegion=ap-shanghai\r\n&Override=FALSE\r\n&CopyConfiguration=TRUE\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestID\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
-        "title": "Replicating a Function"
+        "title": "Replicating function"
       }
     ],
     "CreateAlias": [
@@ -13,31 +13,31 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=CreateAlias\r\n&Name=<AliasName>\r\n&Namespace=<Namespace>\r\n&FunctionName=<FunctionName>\r\n&FunctionVersion=<FunctionVersion>\r\n&RoutingConfig.AdditionalVersionWeights.0.Version=<OtherVersion>\r\n&RoutingConfig.AdditionalVersionWeights.0.Weight=<Weight>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Creating an alias"
+        "title": "Creating alias"
       }
     ],
     "CreateFunction": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=CreateFunction\r\n&FunctionName=<FunctionName>\r\n&Handler=<function.handler>\r\n&Code.CosBucketName=<CosBucketName>\r\n&Code.CosObjectName=<CosObjectName>\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=CreateFunction\n&FunctionName=<FunctionName>\n&Handler=<function.handler>\n&Code.CosBucketName=<CosBucketName>\n&Code.CosObjectName=<CosObjectName>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Creating a Function"
+        "title": "Creating function"
       }
     ],
     "CreateNamespace": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=CreateNamespace\r\n&Namespace=test\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=CreateNamespace\r\n&Namespace=test\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestID\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
-        "title": "Creating a Namespace"
+        "title": "Creating namespace"
       }
     ],
     "CreateTrigger": [
       {
         "document": "This example shows you how to use this function to create a trigger.",
-        "input": "https://scf.tencentcloudapi.com/?Action=CreateTrigger\n&FunctionName=<FunctionName>\n&TriggerName=<TriggerName>\n&Type=timer\n&TriggerDesc=*/2****\n&<Common Request Parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=CreateTrigger\n&FunctionName=<FunctionName>\n&TriggerName=<TriggerName>\n&Type=timer\n&TriggerDesc=*/2****\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Creating a trigger"
+        "title": "Creating trigger"
       }
     ],
     "DeleteAlias": [
@@ -45,15 +45,15 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=DeleteAlias\r\n&Namespace=<Namespace>\r\n&FunctionName=<FunctionName>\r\n&Name=<AliasName>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"d1b93f9c-ac3a-412a-a4f3-6f0697099f72\"\r\n    }\r\n}",
-        "title": "Deleting an alias"
+        "title": "Deleting alias"
       }
     ],
     "DeleteFunction": [
       {
-        "document": "The following sample shows how to delete a function with specified version and namespace.",
-        "input": "https://scf.tencentcloudapi.com/?Action=DeleteFunction\r\n&FunctionName=<FunctionName>\r\n&<common request parameters>",
+        "document": "This example shows you how to delete a function with the specified version and namespace.",
+        "input": "https://scf.tencentcloudapi.com/?Action=DeleteFunction\n&FunctionName=<FunctionName>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Deleting a Function"
+        "title": "Deleting function"
       }
     ],
     "DeleteLayerVersion": [
@@ -61,23 +61,23 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=DeleteLayerVersion\r\n&LayerName=<LayerName>\r\n&LayerVersion=<LayerVersion>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"a1ffbba5-5489-45bc-89c5-453e50d5386e\"\r\n    }\r\n}",
-        "title": "Deleting a layer version"
+        "title": "Deleting layer version"
       }
     ],
     "DeleteNamespace": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=DeleteNamespace\r\n&Namespace=test\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=DeleteNamespace\r\n&Namespace=test\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestID\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
-        "title": "Deleting a Namespace"
+        "title": "Deleting namespace"
       }
     ],
     "DeleteTrigger": [
       {
-        "document": "You use this function to delete a trigger.",
-        "input": "https://scf.tencentcloudapi.com/?Action=DeleteTrigger\r\n&FunctionName=ledDummyAPITest\r\n&TriggerName=test3\r\n&Type=timer\r\n&<common request parameters>",
+        "document": "This example shows you how to use this function to delete a trigger.",
+        "input": "https://scf.tencentcloudapi.com/?Action=DeleteTrigger\r\n&FunctionName=ledDummyAPITest\r\n&TriggerName=test3\r\n&Type=timer\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Deleting a Trigger"
+        "title": "Deleting trigger"
       }
     ],
     "GetAlias": [
@@ -90,7 +90,7 @@
     ],
     "GetFunction": [
       {
-        "document": "This example shows you how to get the information of the corresponding function. You can specify the version and namespace.",
+        "document": "This example shows you how to get the information of a function with the specified version and namespace.",
         "input": "https://scf.tencentcloudapi.com/?Action=GetFunction\r\n&FunctionName=<FunctionName>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"ModTime\": \"2018-06-07 09:52:23\",\r\n        \"Environment\": {\r\n            \"Variables\": []\r\n        },\r\n        \"CodeError\": \"\",\r\n        \"Description\": \"\",\r\n        \"VpcConfig\": {\r\n            \"SubnetId\": \"\",\r\n            \"VpcId\": \"\"\r\n        },\r\n        \"Triggers\": [],\r\n        \"ErrNo\": 0,\r\n        \"UseGpu\": \"FALSE\",\r\n        \"CodeSize\": 0,\r\n        \"MemorySize\": 128,\r\n        \"Namespace\": \"default\",\r\n        \"FunctionVersion\": \"$LATEST\",\r\n        \"Timeout\": 3,\r\n        \"RequestId\": \"a1ffbba5-5489-45bc-89c5-453e50d5386e\",\r\n        \"CodeResult\": \"failed\",\r\n        \"Handler\": \"scfredis.main_handler\",\r\n        \"Runtime\": \"Python2.7\",\r\n        \"FunctionName\": \"ledDummyAPITest\",\r\n        \"CodeInfo\": \"\",\r\n        \"Role\": \"\",\r\n        \"Qualifier\": \"$LATEST\",\r\n        \"AvailableStatus\": \"Available\",\r\n        \"CfsConfig\": {\r\n        \"CfsInsList\":[\r\n                      {\r\n                      \"LocalMountDir\": \"\",\r\n                      \"RemoteMountDir\": \"\",\r\n     \t              \"MountInsId\": \"\",\r\n                      \"UserId\": 0,\r\n                      \"UserGroupId\": 0,\r\n                      \"CfsId\": \"\",\r\n                      \"IpAddress\": \"\",\r\n                      \"MountVpcId\": \"\",\r\n                      \"MountSubnetId\": \"\"\r\n                     }\r\n                ]\r\n        }\r\n    }\r\n}",
         "title": "Getting function details"
@@ -99,17 +99,17 @@
     "GetFunctionAddress": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=GetFunctionAddress\r\n&FunctionName=<FunctionName>\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=GetFunctionAddress\r\n&FunctionName=<FunctionName>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"Url\": \"http://lambdacode-1253970226.cosgz.myqcloud.com/1253970226/ledDummyAPITest/ledDummyAPITest_LATEST.zip?sign=RwvyBS5VPXz75hYNCJKHrSUHBqBhPTEyNTM5NzAyMjYmaz1BS0lEQ2dPUFdqUTZCQXh2SHR5Y2toV0FCSlZZU0JqNTQ4cE4mZT0wJnQ9MTUyOTg1MTQxNSZyPTY5NzYyMTk3NCZmPS8xMjUzOTcwMjI2L2xlZER1bW15QVBJVGVzdC9sZWREdW1teUFQSVRlc3RfTEFURVNULnppcCZiPWxhbWJkYWNvZGU=\",\r\n        \"CodeSha256\": \"5077f5203547b225b532434dd6fcf7c9897025d7581a9f3d474a7afee88bc696\",\r\n        \"RequestId\": \"a90cb10a-7ad4-4270-b92d-ba0319be6dbd\"\r\n    }\r\n}",
-        "title": "Obtaining Download Address of the Function Code"
+        "title": "Getting the download address of function code"
       }
     ],
     "GetFunctionLogs": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=GetFunctionLogs\n&FunctionName=<FunctionName>\n&<Common Request Parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=GetFunctionLogs\n&FunctionName=<FunctionName>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1,\r\n        \"Data\": [\r\n            {\r\n                \"MemUsage\": 3174400,\r\n                \"RetCode\": 1,\r\n                \"RetMsg\": \"Success\",\r\n                \"Log\": \"\",\r\n                \"BillDuration\": 100,\r\n                \"InvokeFinished\": 1,\r\n                \"RequestId\": \"bc309eaa-6d64-11e8-a7fe-5254000b4175\",\r\n                \"StartTime\": \"2018-06-11 18:46:45\",\r\n                \"Duration\": 0.532,\r\n                \"FunctionName\": \"APITest\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"e2571ff3-da04-4c53-8438-f58bf057ce4a\"\r\n    }\r\n}",
-        "title": "Obtaining the function execution log"
+        "title": "Getting function execution log"
       }
     ],
     "GetLayerVersion": [
@@ -123,31 +123,31 @@
     "Invoke": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=Invoke\r\n&FunctionName=xxxx\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=Invoke\r\n&FunctionName=xxxx\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"Result\": {\r\n            \"MemUsage\": 3207168,\r\n            \"Log\": \"\",\r\n            \"RetMsg\": \"hello from scf\",\r\n            \"BillDuration\": 100,\r\n            \"FunctionRequestId\": \"6add56fa-58f1-11e8-89a9-5254005d5fdb\",\r\n            \"Duration\": 0.826,\r\n            \"ErrMsg\": \"\",\r\n            \"InvokeResult\": 0\r\n        },\r\n        \"RequestId\": \"c2af8a64-c922-4d55-aee0-bd86a5c2cd12\"\r\n    }\r\n}",
-        "title": "Running a Function"
+        "title": "Running function"
       }
     ],
     "ListAliases": [
       {
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=ListAliases\r\n&Namespace=<Namespace>\r\n&FunctionName=<FunctionName>\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"d1b93f9c-ac3a-412a-a4f3-6f0697099f72\",\r\n        \"Aliases\": [\r\n            {\r\n                \"FunctionVersion\": \"1\",\r\n                \"Name\": \"al3\",\r\n                \"RoutingConfig\": {\r\n                    \"AdditionalVersionWeights\": [\r\n                        {\r\n                            \"Version\": \"3\",\r\n                            \"Weight\": 0.30\r\n                        },\r\n                        {\r\n                            \"Version\": \"2\",\r\n                            \"Weight\": 0.20\r\n                        }\r\n                    ]\r\n                },\r\n                \"Description\": \"\"\r\n            }\r\n        ]\r\n    }\r\n}",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"d1b93f9c-ac3a-412a-a4f3-6f0697099f72\",\r\n        \"EipUseNum\": 4,\r\n        \"EipUserQuota\": 5,\r\n        \"EipTotalUseNum\": 80,\r\n        \"EipTotalQuota\": 200\r\n    }\r\n}",
         "title": "Querying all aliases under function"
       }
     ],
     "ListFunctions": [
       {
-        "document": "It queries functions whose status tag is `dev` and owner tag is `me`.",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\r\n&Filters.0.Name=tag-status\r\n&Filters.0.Values.0=dev\r\n&Filters.1.Name=tag-owner\r\n&Filters.1.Values.0=me\r\n&<common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"Functions\": [\r\n            {\r\n                \"FunctionId\": \"lam-xxxxxxx\",\r\n                \"Namespace\": \"default\",\r\n                \"FunctionName\": \"test\",\r\n                \"ModTime\": \"2018-04-08 19:02:20\",\r\n                \"AddTime\": \"2018-04-08 15:18:49\",\r\n                \"Runtime\": \"Python2.7\"            \r\n            }\r\n        ],\r\n        \"TotalCount\": 1,\r\n        \"RequestID\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
-        "title": "Querying Functions Based on Tags"
+        "document": "It queries functions whose status tag is dev and owner tag is me.",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\n&Limit=2\n&Order=ASC\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1, \r\n        \"Functions\": [\r\n            {\r\n                \"ModTime\": \"xx\", \r\n                \"Status\": \"xx\", \r\n                \"StatusDesc\": \"xx\", \r\n                \"FunctionName\": \"xx\", \r\n                \"TotalProvisionedConcurrencyMem\": 1, \r\n                \"Tags\": [\r\n                    {\r\n                        \"Value\": \"xx\", \r\n                        \"Key\": \"xx\"\r\n                    }\r\n                ], \r\n                \"AddTime\": \"xx\", \r\n                \"Namespace\": \"xx\", \r\n                \"StatusReasons\": [\r\n                    {\r\n                        \"ErrorCode\": \"xx\", \r\n                        \"ErrorMessage\": \"xx\"\r\n                    }\r\n                ], \r\n                \"Runtime\": \"xx\", \r\n                \"Type\": \"xx\", \r\n                \"FunctionId\": \"xx\", \r\n                \"ReservedConcurrencyMem\": 1, \r\n                \"Description\": \"xx\"\r\n            }\r\n        ], \r\n        \"RequestId\": \"xx\"\r\n    }\r\n}",
+        "title": "Getting function list"
       },
       {
-        "document": "It queries functions whose status tag is dev and owner tag is me.",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\r\n&Limit=2\r\n&Order=ASC\r\n&<common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"Functions\": [\r\n            {\r\n                \"FunctionId\": \"lam-xxxxxxx\",\r\n                \"Namespace\": \"default\",\r\n                \"FunctionName\": \"test\",\r\n                \"ModTime\": \"2018-04-08 19:02:20\",\r\n                \"AddTime\": \"2018-04-08 15:18:49\",\r\n                \"Runtime\": \"Python2.7\"            \r\n            }\r\n        ],\r\n        \"TotalCount\": 1,\r\n        \"RequestID\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
-        "title": "Obtaining a Function List"
+        "document": "This example shows you how to query functions whose status tag is `dev` and owner tag is `me`.",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\n&Filters.0.Name=tag-status\n&Filters.0.Values.0=dev\n&Filters.1.Name=tag-owner\n&Filters.1.Values.0=me\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1, \r\n        \"Functions\": [\r\n            {\r\n                \"ModTime\": \"xx\", \r\n                \"Status\": \"xx\", \r\n                \"StatusDesc\": \"xx\", \r\n                \"FunctionName\": \"xx\", \r\n                \"TotalProvisionedConcurrencyMem\": 1, \r\n                \"Tags\": [\r\n                    {\r\n                        \"Value\": \"xx\", \r\n                        \"Key\": \"xx\"\r\n                    }\r\n                ], \r\n                \"AddTime\": \"xx\", \r\n                \"Namespace\": \"xx\", \r\n                \"StatusReasons\": [\r\n                    {\r\n                        \"ErrorCode\": \"xx\", \r\n                        \"ErrorMessage\": \"xx\"\r\n                    }\r\n                ], \r\n                \"Runtime\": \"xx\", \r\n                \"Type\": \"xx\", \r\n                \"FunctionId\": \"xx\", \r\n                \"ReservedConcurrencyMem\": 1, \r\n                \"Description\": \"xx\"\r\n            }\r\n        ], \r\n        \"RequestId\": \"xx\"\r\n    }\r\n}",
+        "title": "Querying functions by tags"
       }
     ],
     "ListLayerVersions": [
@@ -161,7 +161,7 @@
     "ListLayers": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListLayers\r\n&CompatibleRuntime=<CompatibleRuntime>\r\n&Limit=<Limit>\r\n&Offset=<Offset>\r\n&SearchKey=<SearchKey>\r\n&<Common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListLayers\n&CompatibleRuntime=<CompatibleRuntime>\n&Limit=<Limit>\n&Offset=<Offset>\n&SearchKey=<SearchKey>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n       \"Layers\":[],\r\n       \"TotalCount\":0\r\n    }\r\n}",
         "title": "Pulling layer list"
       }
@@ -169,9 +169,9 @@
     "ListNamespaces": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListNamespaces\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListNamespaces\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"Namespaces\": [{\r\n\t\t\t\"Namespaces\": \"python\",\r\n\t\t\t\"Description\": \"test\",\r\n\t\t\t\"AddTime\": \"2018-11-27 12:02:25\",\r\n\t\t\t\"ModTime\": \"2018-11-27 12:02:25\",\r\n                        \"Type\":\"default\"\r\n\t\t}],\r\n\t\t\"TotalCount\": 1,\r\n\t\t\"RequestId\": \"d6b24531-8594-4994-b1a8-f154ec07ff76\"\r\n\t}\r\n}",
-        "title": "Displaying a Namespace List"
+        "title": "Listing namespaces"
       }
     ],
     "ListTriggers": [
@@ -185,15 +185,15 @@
     "ListVersionByFunction": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListVersionByFunction\r\n&FunctionName=xxxxx\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListVersionByFunction\r\n&FunctionName=xxxxx\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"FunctionVersion\": [\r\n            \"$LATEST\",\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n        ],\r\n        \"RequestId\": \"d1b93f9c-ac3a-412a-a4f3-6f0697099f72\",\r\n        \"Versions\": [\r\n            {\r\n                \"Version\": \"$LATEST\",\r\n                \"Description\": \"123\"\r\n            },\r\n            {\r\n                \"Version\": \"3\",\r\n                \"Description\": \"123\"\r\n            },\r\n            {\r\n                \"Version\": \"2\",\r\n                \"Description\": \"123\"\r\n            },\r\n            {\r\n                \"Version\": \"1\",\r\n                \"Description\": \"123\"\r\n            }\r\n        ]\r\n    }\r\n}",
-        "title": "Querying a Function Version"
+        "title": "Querying function version"
       }
     ],
     "PublishLayerVersion": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=PublishLayerVersion\r\n&LayerName=<LayerName>\r\n&CompatibleRuntimes=<CompatibleRuntimes>\r\n&Content=<Content>\r\n&Description=<Description>\r\n&LicenseInfo=<LicenseInfo>\r\n&<Common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=PublishLayerVersion\n&LayerName=<LayerName>\n&CompatibleRuntimes=<CompatibleRuntimes>\n&Content=<Content>\n&Description=<Description>\n&LicenseInfo=<LicenseInfo>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"LayerVersion\": 1\r\n    }\r\n}",
         "title": "Publishing layer version"
       }
@@ -201,9 +201,9 @@
     "PublishVersion": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=PublishVersion\r\n&FunctionName=<FunctionName>\r\n&Description=<Description>\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=PublishVersion\r\n&FunctionName=<FunctionName>\r\n&Description=<Description>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"Namespace\": \"default\",\r\n        \"Description\": \"dummytut\",\r\n        \"CodeSize\": 45686,\r\n        \"MemorySize\": 256,\r\n        \"Handler\": \"scfredis.main_handler\",\r\n        \"RequestId\": \"68c9669c-9e2c-47b0-9a01-e8406a41be59\",\r\n        \"Timeout\": 3,\r\n        \"Runtime\": \"Python2.7\",\r\n        \"FunctionVersion\": \"4\"\r\n    }\r\n}",
-        "title": "Releasing a New Version"
+        "title": "Publishing new version"
       }
     ],
     "UpdateAlias": [
@@ -217,25 +217,25 @@
     "UpdateFunctionCode": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionCode\r\n&FunctionName=test\r\n&Handler=index.main\r\n&CosBucketName=<CosBucketName>\r\n&CosObjectName=<CosObjectName>\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionCode\n&FunctionName=test\n&Handler=index.main\n&CosBucketName=<CosBucketName>\n&CosObjectName=<CosObjectName>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Updating the Function Code"
+        "title": "Updating function code"
       }
     ],
     "UpdateFunctionConfiguration": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionConfiguration\r\n&FunctionName=<FunctionName>\r\n&Description=<Description>\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionConfiguration\n&FunctionName=<FunctionName>\n&Description=<Description>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Updating the Function Configuration"
+        "title": "Updating function configuration"
       }
     ],
     "UpdateNamespace": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=UpdateNamespace\r\n&Namespace=test01\r\n&Description=fdsgfds\r\n&<common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=UpdateNamespace\r\n&Namespace=test01\r\n&Description=fdsgfds\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"b2b845e1-d44a-4c3e-8314-b6b774b4e66f\"\r\n    }\r\n}",
-        "title": "Updating a Namespace"
+        "title": "Updating namespace"
       }
     ]
   },

@@ -54,6 +54,12 @@
       "name": "Queries the room list",
       "output": "DescribeRoomInformationResponse"
     },
+    "DescribeUserInformation": {
+      "document": "This API is used to query the user list within a specified time. It queries data in last 14 days. Data of 6 users will be queried on one page by default. And data of up to 100 users can be displayed on one page (`PageSize` is up to 100).",
+      "input": "DescribeUserInformationRequest",
+      "name": "This API is used to query user lists.",
+      "output": "DescribeUserInformationResponse"
+    },
     "DismissRoom": {
       "document": "This API is used to remove all users from a room and dismiss the room. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.",
       "input": "DismissRoomRequest",
@@ -67,7 +73,7 @@
       "output": "RemoveUserResponse"
     },
     "StartMCUMixTranscode": {
-      "document": "This API is used to enable On-Cloud MixTranscoding and specify the layout position of each channel of video image in the mixed video image.\n\nThere may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images into one channel, specify the position of each channel, and mix the multiple channels of audio so as to output one channel of audio/video stream for easier recording and live streaming.\n\nYou can use this API to perform the following operations:\n- Set the image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.\n- Set the image layout, i.e., positions of all channels of images. You only need to set the layout once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange the video images in the configured layout in subsequent operations.\n- Set the recording file name for future playback.\n- Set the CDN live stream ID for live streaming over CDN.\n\nCurrently, the following layout templates are supported:\n- Floating template: the entire screen will be covered by the video image of the first user who enters the room, and the video images of other users will be displayed as small images in horizontal rows from the bottom-left corner in room entry sequence. The screen can contain up to 4 rows with 4 small images each row, which float over the big image. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still use an image spot.\n- Grid template: the screen is divided into user video images with the same dimensions. The more the users, the smaller the image dimensions. Up to 16 images are supported. If a user sends audio only, the user will still use an image spot.\n- Screen sharing template: it is suitable for video conferencing and online education. The shared screen (or camera of the anchor) is always displayed in the big image on the left of the screen, and the video images of other users are vertically displayed on the right in up to 2 columns with up to 8 small images in each column. Up to 1 big image and 15 small images are supported. If width and height of the upstream image’s resolution don’t match those of the output image, the big image on the left will be scaled to display it as a whole, while the small images on the right will be cropped.\n- Picture-in-picture template: it is suitable for mixing a pair of big/small images or a big image with the audio of other users. The small image floats over the big image, and the users in the big/small images and the display position of the small image can be specified.",
+      "document": "This API is used to enable On-Cloud MixTranscoding and specify the layout position of each channel of video image in the mixed video image.\n\nThere may be multiple channels of audio/video streams in a TRTC room. You can call this API to request the Tencent Cloud server to combine multiple channels of video images into one channel, specify the position of each channel, and mix the multiple channels of audio so as to output one channel of audio/video stream for easier recording and live streaming.\n\nYou can use this API to perform the following operations:\n- Set image and audio quality parameters of the final live stream, including video resolution, video bitrate, video frame rate, and audio quality.\n- Set the image layout, i.e., positions of all channels of images. You only need to set the layout once when enabling On-Cloud MixTranscoding, and the layout engine will automatically arrange the video images in the configured layout in subsequent operations.\n- Set the recording file name for future playback.\n- Set the CDN live stream ID for live streaming over CDN.\n\nCurrently, On-Cloud MixTranscoding supports the following layout templates:\n- Floating template: the entire screen is covered by the video image of the first user who enters the room, and the video images of other users are displayed as small images in horizontal rows in the bottom-left corner in room entry sequence. The screen can accommodate up to 4 rows of 4 small images, which float over the big image. Up to 1 big image and 15 small images are supported. If a user sends audio only, the user will still occupy an image spot.\n- Grid template: the screen is divided into user video images with the same dimensions. The more the users, the smaller the image dimensions. Up to 16 images are supported. If a user sends audio only, the user will still occupy an image spot.\n- Screen sharing template: this is designed for video conferencing and online classes. The shared screen (or camera of the lecturer) is shown as the big image and always takes up the left half of the screen, and the video images of other users are displayed in the right half in up to 2 columns with up to 8 small images in each column. Up to 1 big image and 15 small images are supported. If the aspect ratio of the upstream image doesn’t match that of the output image, the big image on the left will be scaled so as to be displayed in whole, and the small images on the right will be cropped.\n- Picture-in-picture template: this is designed for mixing a pair of big/small images or a big image with the audio of other users. The small image floats over the big image, and the users in the big/small images and the display position of the small image can be specified. Up to 2 images are supported.\n- Custom template: this is designed for specifying the image positions of users in the mixed stream or presetting image positions. If users are assigned to preset image positions, the layout engine will reserve the positions for the users; if not, users will occupy the positions in room entry sequence. If a user sends audio only, the user will still occupy an image spot, which shows the background. When all preset positions are occupied, the audio and video of other users will no longer be mixed.\n\nNote: only applications created on or after January 9, 2020 can call this API. Those created before use the LVB stream mix by default. If you want to switch to MCU On-Cloud MixTranscoding, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
       "input": "StartMCUMixTranscodeRequest",
       "name": "Enables On-Cloud MixTranscoding",
       "output": "StartMCUMixTranscodeResponse"
@@ -319,7 +325,7 @@
         },
         {
           "default": "",
-          "document": "Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.",
+          "document": "Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -422,7 +428,7 @@
         },
         {
           "default": "",
-          "document": "Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.",
+          "document": "Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -714,7 +720,7 @@
         },
         {
           "default": "",
-          "document": "Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 5 days.",
+          "document": "Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -781,6 +787,94 @@
       ],
       "type": "object"
     },
+    "DescribeUserInformationRequest": {
+      "document": "DescribeUserInformation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of a call: sdkappid_roomgString_createTime. The `roomgString` refers to the room ID, and `createTime` refers to the creation time of a room in the format of UNIX timestamp in seconds, such as 1400353843_218695_1590065777. Its value can be obtained from the `DescribeRoomInformation` API (related document: https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1).",
+          "member": "string",
+          "name": "CommId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 14 days.",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query end time in the format of UNIX timestamp (e.g. 1588031999s).",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User `SDKAppID` (e.g. 1400188366).",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The array of user IDs for query. You can enter up to 6 user IDs. If it is left empty, data of 6 users will be returned.",
+          "member": "string",
+          "name": "UserIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Page index starting from 0. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned.",
+          "member": "string",
+          "name": "PageNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. If either `PageNumber` or `PageSize` is left empty, 6 data entries will be returned. `PageSize` is up to 100.",
+          "member": "string",
+          "name": "PageSize",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserInformationResponse": {
+      "document": "DescribeUserInformation response structure.",
+      "members": [
+        {
+          "document": "Total number of users whose information will be returned",
+          "member": "uint64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User information list\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "UserInformation",
+          "name": "UserList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DismissRoomRequest": {
       "document": "DismissRoom request structure.",
       "members": [
@@ -820,7 +914,7 @@
       "members": [
         {
           "default": "",
-          "document": "Output stream audio sample rate for stream mix in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.",
+          "document": "Output stream audio sample rate for On-Cloud MixTranscoding in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.",
           "member": "uint64",
           "name": "AudioSampleRate",
           "required": true,
@@ -838,7 +932,7 @@
         },
         {
           "default": "",
-          "document": "Number of output stream audio sound channels for On-Cloud MixTranscoding. Value range: [1, 2].",
+          "document": "Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.",
           "member": "uint64",
           "name": "AudioChannels",
           "required": true,
@@ -874,7 +968,7 @@
         },
         {
           "default": "",
-          "document": "Output stream frame rate for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [6, 12, 15, 24, 30, 48, 60]. If the frame rate lies outside the valid value range, it will be automatically modified to a value within the range.",
+          "document": "Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].",
           "member": "uint64",
           "name": "VideoFramerate",
           "required": false,
@@ -991,7 +1085,7 @@
       "members": [
         {
           "default": "",
-          "document": "On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template.",
+          "document": "On-cloud stream mix layout template ID. 0: floating template (default value); 1: grid template; 2: screen sharing template; 3: picture-in-picture template; 4: custom template.",
           "member": "uint64",
           "name": "Template",
           "required": false,
@@ -1042,6 +1136,15 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid in custom template, used to specify the video image position of a user in mixed streams.",
+          "member": "PresetLayoutConfig",
+          "name": "PresetLayoutConfig",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -1081,6 +1184,84 @@
           "document": "Value range: [0, 1]. If it is 0, the recording template configured in the console will be used; if it is 1, streams are recorded as .mp3 files.",
           "member": "uint64",
           "name": "RecordAudioOnly",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PresetLayoutConfig": {
+      "document": "Valid in custom template, used to specify the video image position of a user in mixed streams.",
+      "members": [
+        {
+          "default": "",
+          "document": "Used to assign users to preset positions; if not assigned, users will occupy the positions set in `PresetLayoutConfig` in room entry sequence.",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stream type of the user when a specified user is assigned to the image. 0: camera; 1: screen sharing. Set this parameter to 0 when the small image is occupied by a web user.",
+          "member": "uint64",
+          "name": "StreamType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Width of the output image in pixels. If this parameter is not set, 0 is used by default.",
+          "member": "uint64",
+          "name": "ImageWidth",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Height of the output image in pixels. If this parameter is not set, 0 is used by default.",
+          "member": "uint64",
+          "name": "ImageHeight",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "X offset of the output image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the mixed stream. If this parameter is not set, 0 is used by default.",
+          "member": "uint64",
+          "name": "LocationX",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.",
+          "member": "uint64",
+          "name": "LocationY",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Z-order of the image in pixels. If this parameter is not set, 0 is used by default.",
+          "member": "uint64",
+          "name": "ZOrder",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Render mode of the output image. 0: cropping; 1: scaling. If this parameter is not set, 0 is used by default.",
+          "member": "uint64",
+          "name": "RenderMode",
           "required": false,
           "type": "int",
           "value_allowed_null": false
