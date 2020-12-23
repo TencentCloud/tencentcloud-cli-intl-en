@@ -186,6 +186,12 @@
       "name": "Queries a CLB instance by the certificate ID",
       "output": "DescribeLoadBalancerListByCertIdResponse"
     },
+    "DescribeLoadBalancerTraffic": {
+      "document": "This API is used to query CLB instances with high traffic and return the top 10 results. For queries using a sub-account, only the result CLB instances authorized to the sub-account will be returned.",
+      "input": "DescribeLoadBalancerTrafficRequest",
+      "name": "Queries CLB instances with high traffic",
+      "output": "DescribeLoadBalancerTrafficResponse"
+    },
     "DescribeLoadBalancers": {
       "document": "This API is used to query the list of CLB instances in a region.\n",
       "input": "DescribeLoadBalancersRequest",
@@ -1535,7 +1541,7 @@
         },
         {
           "default": "",
-          "document": "CLB instance name, which takes effect only when an instance is created. Rule: 1-50 letters, digits, dashes (-), or underscores (_).\nNote: If this name is the same as the name of an existing CLB instance in the system, the system will automatically generate a name for this newly created instance.",
+          "document": "CLB instance name, which takes effect only when an instance is created. It consists of 1 to 60 letters, digits, hyphens (-), or underscores (_).\nNote: If the name of the new CLB instance already exists in the system, the system will automatically generate a name for the new CLB instance.",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -1631,7 +1637,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).",
           "member": "string",
           "name": "BandwidthPackageId",
           "required": false,
@@ -2663,6 +2669,39 @@
           "name": "CertSet",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoadBalancerTrafficRequest": {
+      "document": "DescribeLoadBalancerTraffic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CLB instance region. If this parameter is not passed in, CLB instances in all regions will be returned.",
+          "member": "string",
+          "name": "LoadBalancerRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoadBalancerTrafficResponse": {
+      "document": "DescribeLoadBalancerTraffic response structure.",
+      "members": [
+        {
+          "document": "Information of CLB instances descendingly sorted by outbound bandwidth\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "LoadBalancerTraffic",
+          "name": "LoadBalancerTraffic",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4629,6 +4668,57 @@
       ],
       "usage": "out"
     },
+    "LoadBalancerTraffic": {
+      "document": "CLB instance traffic data",
+      "members": [
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance name",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance VIP",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum outbound bandwidth in Mbps",
+          "member": "float",
+          "name": "OutBandwidth",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ManualRewriteRequest": {
       "document": "ManualRewrite request structure.",
       "members": [
@@ -5744,7 +5834,7 @@
         },
         {
           "default": "",
-          "document": "Health check status of the real server bound to this rule\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Health status of the real server bound to this rule\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "TargetHealth",
           "name": "Targets",
           "required": true,

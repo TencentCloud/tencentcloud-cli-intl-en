@@ -1,5 +1,29 @@
 {
   "actions": {
+    "CreateDBDiagReportTask": {
+      "document": "This API is used to create a health report and select whether to send an email.",
+      "input": "CreateDBDiagReportTaskRequest",
+      "name": "Creates a health report generation task",
+      "output": "CreateDBDiagReportTaskResponse"
+    },
+    "CreateMailProfile": {
+      "document": "This API is used to create the email configuration. The input parameter “ProfileType” represents the type of the email configuration. Valid values: “dbScan_mail_configuration” (email configuration of database inspection report) and “scheduler_mail_configuration” (email configuration of scheduled task report).",
+      "input": "CreateMailProfileRequest",
+      "name": "Creates email configuration",
+      "output": "CreateMailProfileResponse"
+    },
+    "DescribeAllUserContact": {
+      "document": "This API is used to obtain the information of the contact in the email.",
+      "input": "DescribeAllUserContactRequest",
+      "name": "Obtains information of the contact in the email",
+      "output": "DescribeAllUserContactResponse"
+    },
+    "DescribeAllUserGroup": {
+      "document": "This API is used to obtain the information of the contact group in the email.",
+      "input": "DescribeAllUserGroupRequest",
+      "name": "Obtains information of the contact group in the email",
+      "output": "DescribeAllUserGroupResponse"
+    },
     "DescribeDBDiagEvent": {
       "document": "This API is used to get the details of an instance exception diagnosis event.",
       "input": "DescribeDBDiagEventRequest",
@@ -41,6 +65,12 @@
       "input": "DescribeTopSpaceTablesRequest",
       "name": "Queries space statistics of top tables",
       "output": "DescribeTopSpaceTablesResponse"
+    },
+    "ModifyDiagDBInstanceConf": {
+      "document": "This API is used to modify instance inspection switch.",
+      "input": "ModifyDiagDBInstanceConfRequest",
+      "name": "Modifies switch status of instance inspection",
+      "output": "ModifyDiagDBInstanceConfResponse"
     }
   },
   "metadata": {
@@ -49,6 +79,282 @@
     "serviceShortName": "dbbrain"
   },
   "objects": {
+    "ContactItem": {
+      "document": "Contact description.",
+      "members": [
+        {
+          "default": "",
+          "document": "Contact ID.",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Contact name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The mailbox bound to the contact.",
+          "member": "string",
+          "name": "Mail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDBDiagReportTaskRequest": {
+      "document": "CreateDBDiagReportTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time, such as `2020-11-08T14:00:00+08:00`.",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time, such as `2020-11-09T14:00:00+08:00`.",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to send an email. Valid values: 0 - Yes, 1 - No.",
+          "member": "int64",
+          "name": "SendMailFlag",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "An array of contact IDs to receive the email.",
+          "member": "int64",
+          "name": "ContactPerson",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "An array of contact group IDs to receive the email.",
+          "member": "int64",
+          "name": "ContactGroup",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBDiagReportTaskResponse": {
+      "document": "CreateDBDiagReportTask response structure.",
+      "members": [
+        {
+          "document": "ID of an async task request, which can be used to query the execution result of an async task.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "AsyncRequestId",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMailProfileRequest": {
+      "document": "CreateMailProfile request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The content of email configuration.",
+          "member": "ProfileInfo",
+          "name": "ProfileInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration level. Valid values: \"User\" (user-level), \"Instance\" (instance-level). The email of database inspection report is configured as the user level, and the email of scheduled task report is configured as the instance level.",
+          "member": "string",
+          "name": "ProfileLevel",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name configuration, which needs to be unique. The email configuration name of database inspection report can be customize; the email configuration name of scheduled task report should in the format of \"scheduler_\" + {instanceId}, such as \"schduler_cdb-test\".",
+          "member": "string",
+          "name": "ProfileName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration type. Valid values: \"dbScan_mail_configuration\" (email configuration of database inspection report), \"scheduler_mail_configuration\" (email configuration of scheduled task report).",
+          "member": "string",
+          "name": "ProfileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID bound to the configuration, which is set when the configuration level is \"Instance\".",
+          "member": "string",
+          "name": "BindInstanceIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMailProfileResponse": {
+      "document": "CreateMailProfile response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllUserContactRequest": {
+      "document": "DescribeAllUserContact request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "An array of contact name. Fuzzy search is supported.",
+          "member": "string",
+          "name": "Names",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllUserContactResponse": {
+      "document": "DescribeAllUserContact response structure.",
+      "members": [
+        {
+          "document": "Total number of contacts.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Contact information.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "ContactItem",
+          "name": "Contacts",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllUserGroupRequest": {
+      "document": "DescribeAllUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "An array of contact group name. Fuzzy search is supported.",
+          "member": "string",
+          "name": "Names",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllUserGroupResponse": {
+      "document": "DescribeAllUserGroup response structure.",
+      "members": [
+        {
+          "document": "Total number of contact groups.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Contact group information.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "GroupItem",
+          "name": "Groups",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBDiagEventRequest": {
       "document": "DescribeDBDiagEvent request structure.",
       "members": [
@@ -703,6 +1009,155 @@
       ],
       "usage": "out"
     },
+    "GroupItem": {
+      "document": "Describe the group information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Group ID.",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of group members.",
+          "member": "int64",
+          "name": "MemberCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceConfs": {
+      "document": "Instance configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "The switch of database inspection. Valid values: Yes/No.",
+          "member": "string",
+          "name": "DailyInspection",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MailConfiguration": {
+      "document": "Email sending configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable email sending. Valid values: 0 (No), 1 (Yes).",
+          "member": "int64",
+          "name": "SendMail",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region configuration, such as \"ap-guangzhou\", \"ap-shanghai\".",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sending a report with the specified health level, such as \"HEALTH\", \"SUB_HEALTH\", \"RISK\", \"HIGH_RISK\".",
+          "member": "string",
+          "name": "HealthStatus",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Contact ID. The contact/contact group cannot be empty.",
+          "member": "int64",
+          "name": "ContactPerson",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Contact group ID. The contact/contact group cannot be empty.",
+          "member": "int64",
+          "name": "ContactGroup",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyDiagDBInstanceConfRequest": {
+      "document": "ModifyDiagDBInstanceConf request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Inspection switch.",
+          "member": "InstanceConfs",
+          "name": "InstanceConfs",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The effective instance region. If the value is \"All\", it means it is effective for the whole region.",
+          "member": "string",
+          "name": "Regions",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specify the instance ID that needs to modify the inspection status.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDiagDBInstanceConfResponse": {
+      "document": "ModifyDiagDBInstanceConf response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "MonitorFloatMetric": {
       "document": "Monitoring data in float type",
       "members": [
@@ -816,6 +1271,30 @@
         }
       ],
       "usage": "out"
+    },
+    "ProfileInfo": {
+      "document": "Information configured by user.",
+      "members": [
+        {
+          "default": "",
+          "document": "Language, such as “zh”.",
+          "member": "string",
+          "name": "Language",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The content of email template.",
+          "member": "MailConfiguration",
+          "name": "MailConfiguration",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SchemaItem": {
       "document": "`SchemaItem` array",

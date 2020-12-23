@@ -5462,7 +5462,7 @@
         },
         {
           "default": "",
-          "document": "ID of the master or replica node, which is not required when creating an instance",
+          "document": "ID of the master or replica node, which is not required upon creation of the instance",
           "member": "int64",
           "name": "NodeId",
           "required": false,
