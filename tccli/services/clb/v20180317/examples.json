@@ -312,10 +312,10 @@
     ],
     "DescribeLoadBalancers": [
       {
-        "document": "This example shows you how to query the CLB instance bound to the real server whose private IP is `172.26.0.11`.",
+        "document": "This example shows you how to query the CLB instances bound to the real server whose private IP is `172.26.0.11`.",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeLoadBalancers\n&WithRs=1\n&BackendPrivateIps.0=172.26.0.11\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"TotalCount\": 2,\r\n    \"LoadBalancerSet\": [\r\n      {\r\n        \"LoadBalancerId\": \"lb-rbw529fz\",\r\n        \"LoadBalancerName\": \"test_LB\",\r\n        \"Forward\": 1,\r\n        \"Domain\": \"\",\r\n        \"LoadBalancerVips\": [\r\n          \"129.226.78.67\"\r\n        ],\r\n        \"LoadBalancerType\": \"OPEN\",\r\n        \"Status\": 1,\r\n        \"CreateTime\": \"2019-07-02 18:12:52\",\r\n        \"StatusTime\": \"2019-07-02 18:12:53\",\r\n        \"ProjectId\": 0,\r\n        \"OpenBgp\": 0,\r\n        \"Snat\": false,\r\n        \"Isolation\": 0,\r\n        \"Log\": \"\",\r\n        \"AnycastZone\": \"\",\r\n        \"AddressIPVersion\": \"ipv4\",\r\n        \"VpcId\": \"vpc-lt9uj4mo\",\r\n        \"NumericalVpcId\": 117008,\r\n        \"TargetRegionInfo\": {\r\n          \"Region\": \"ap-hongkong\",\r\n          \"VpcId\": \"vpc-lt9uj12o\"\r\n        },\r\n        \"SubnetId\": \"\",\r\n        \"SecureGroups\": [],\r\n        \"Tags\": [],\r\n        \"VipIsp\": \"BGP\",\r\n        \"MasterZone\": null,\r\n        \"BackupZoneSet\": null,\r\n        \"IsolatedTime\": null,\r\n        \"ExpireTime\": \"2019-08-02 18:12:52\",\r\n        \"ChargeType\": \"POSTPAID_BY_HOUR\",\r\n        \"NetworkAttributes\": {\r\n          \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\r\n          \"InternetMaxBandwidthOut\": 10\r\n        },\r\n        \"PrepaidAttributes\": null\r\n      }\r\n    ],\r\n    \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\r\n  }\r\n}",
-        "title": "Querying the CLB instance with a specified private IP of the real server bound to it"
+        "title": "Querying the CLB instances bound with the real server with the specified private IP"
       },
       {
         "document": "",
@@ -333,7 +333,7 @@
         "document": "",
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeLoadBalancers\n&LoadBalancerType=OPEN\n&ProjectId=0\n&LoadBalancerName=test_LB\n&LoadBalancerVips.0=129.226.78.67\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"TotalCount\": 1,\r\n    \"LoadBalancerSet\": [\r\n      {\r\n        \"LoadBalancerId\": \"lb-rbw529fz\",\r\n        \"LoadBalancerName\": \"test_LB\",\r\n        \"Forward\": 1,\r\n        \"Domain\": \"\",\r\n        \"LoadBalancerVips\": [\r\n          \"129.226.78.67\"\r\n        ],\r\n        \"LoadBalancerType\": \"OPEN\",\r\n        \"Status\": 1,\r\n        \"CreateTime\": \"2019-07-02 18:12:52\",\r\n        \"StatusTime\": \"2019-07-02 18:12:53\",\r\n        \"ProjectId\": 0,\r\n        \"OpenBgp\": 0,\r\n        \"Snat\": false,\r\n        \"Isolation\": 0,\r\n        \"Log\": \"\",\r\n        \"AnycastZone\": \"\",\r\n        \"AddressIPVersion\": \"ipv4\",\r\n        \"VpcId\": \"vpc-lt9uj4mo\",\r\n        \"NumericalVpcId\": 117008,\r\n        \"TargetRegionInfo\": {\r\n          \"Region\": \"ap-hongkong\",\r\n          \"VpcId\": \"vpc-lt9uj12o\"\r\n        },\r\n        \"SubnetId\": \"\",\r\n        \"SecureGroups\": [],\r\n        \"Tags\": [],\r\n        \"VipIsp\": \"BGP\",\r\n        \"MasterZone\": null,\r\n        \"BackupZoneSet\": null,\r\n        \"IsolatedTime\": null,\r\n        \"ExpireTime\": \"2019-08-02 18:12:52\",\r\n        \"ChargeType\": \"POSTPAID_BY_HOUR\",\r\n        \"NetworkAttributes\": {\r\n          \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\r\n          \"InternetMaxBandwidthOut\": 10\r\n        },\r\n        \"PrepaidAttributes\": null\r\n      }\r\n    ],\r\n    \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\r\n  }\r\n}",
-        "title": "Querying by CLB instance type, project, name, and VIP"
+        "title": "Querying CLB instances by type, project, name, and VIP"
       }
     ],
     "DescribeLoadBalancersDetail": [

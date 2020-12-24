@@ -295,7 +295,7 @@
       "output": "DescribeProcedureTemplatesResponse"
     },
     "DescribeReviewDetails": {
-      "document": "<b>This API is disused and replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1).</b>\n\nThis API will return the duration of audited video content in seconds per day within the queried period.\n\n1. The API is used to query statistics on the duration of audited video content for the last 365 days.\n2. The queried period is up to 90 days.",
+      "document": "<b>This API is replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1) and not recommended for use.</b>\n\nThis API returns the duration of reviewed video content in seconds per day within the queried period.\n\n1. The API is used to query statistics on the duration of reviewed video content for the last 365 days.\n2. The queried period is up to 90 days.",
       "input": "DescribeReviewDetailsRequest",
       "name": "Queries content audit details",
       "output": "DescribeReviewDetailsResponse"
@@ -511,7 +511,7 @@
       "output": "ProcessMediaByProcedureResponse"
     },
     "ProcessMediaByUrl": {
-      "document": "This API is <font color='red'>disused</font>, please use [ProcessMedia](https://intl.cloud.tencent.com/document/product/862/37578?from_cn_redirect=1) API of MPS, and enter a video URL in the input parameter `InputInfo.UrlInputInfo.Url`.",
+      "document": "This API is <font color='red'>disused</font>, please use [ProcessMedia](https://intl.cloud.tencent.com/document/product/862/37578?from_cn_redirect=1) API of MPS, with the input parameter `InputInfo.UrlInputInfo.Url` set to a video URL.",
       "input": "ProcessMediaByUrlRequest",
       "name": "Processes a video at a specified URL",
       "output": "ProcessMediaByUrlResponse"
@@ -996,7 +996,7 @@
         },
         {
           "default": "",
-          "document": "Whether to remove a video stream. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
+          "document": "Whether to remove a video stream. Valid values:\n<li>0: no</li>\n<li>1: yes</li>",
           "member": "uint64",
           "name": "RemoveVideo",
           "required": false,
@@ -4549,7 +4549,7 @@
         },
         {
           "default": "",
-          "document": "Audio channel system. Valid values:\n<li>1: Mono-channel</li>\n<li>2: Dual-channel</li>\n<li>6: Stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).\nDefault value: 2.",
+          "document": "Audio channel system. Valid values:\n<li>1: mono-channel</li>\n<li>2: dual-channel</li>\n<li>6: stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).\nDefault value: 2",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
@@ -4591,7 +4591,7 @@
         },
         {
           "default": "",
-          "document": "Audio channel system. Valid values:\n<li>1: Mono-channel</li>\n<li>2: Dual-channel</li>\n<li>6: Stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).",
+          "document": "Audio channel system. Valid values:\n<li>1: mono-channel</li>\n<li>2: dual-channel</li>\n<li>6: stereo</li>\nYou cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
@@ -8250,7 +8250,7 @@
         },
         {
           "default": "",
-          "document": "This API is used to query video processing task types. The following types are supported now:\n<li> Transcoding: Basic transcoding</li>\n<li> Transcoding-TESHD: TESHD transcoding</li>\n<li> Editing: Video editing</li>\n<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li> ContentAudit: content audit</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>",
+          "document": "This API is used to query video processing task types. Valid values:\n<li>Transcoding: basic transcoding</li>\n<li>Transcoding-TESHD: TESHD transcoding</li>\n<li>Editing: video editing</li>\n<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li>ContentAudit: content moderation</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -8775,6 +8775,22 @@
     "DescribeSubAppIdsRequest": {
       "document": "DescribeSubAppIds request structure.",
       "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
         {
           "default": "",
           "document": "Tag information. You can query the list of subapplications with specified tags.",
@@ -14190,7 +14206,7 @@
         },
         {
           "default": "",
-          "document": "Subapplication status. Valid strings include:\n<li>On: to enable the subapplication.</li>\n<li>Off: to disable the subapplication.</li>\n<li>Destroyed: to terminate the subapplication. </li>\nYou cannot enable a subapplication when its status is “Destroying”. You can enable it after it was terminated.",
+          "document": "Subapplication status. Valid values:\n<li>On: enabled</li>\n<li>Off: disabled</li>\n<li>Destroyed: terminated</li>\nYou cannot enable a subapplication whose status is “Destroying”. You can enable it after it was terminated.",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15873,7 +15889,7 @@
       "members": [
         {
           "default": "",
-          "document": "This API is<font color='red'>disused</font>. We recommend using an alternative API. For more information, see API overview.",
+          "document": "This API is<font color='red'>disused</font>. You are advised to use an alternative API. For more information, see API overview.",
           "member": "MediaInputInfo",
           "name": "InputInfo",
           "required": false,
@@ -17551,7 +17567,7 @@
         },
         {
           "default": "",
-          "document": "Subapplication status. Valid strings include:\n<li>On: enabled;</li>\n<li>Off: disabled.</li>\n<li>Destroying: terminating. </li>\n<li>Destroyed: terminated. </li>",
+          "document": "Subapplication status. Valid values:\n<li>On: enabled</li>\n<li>Off: disabled</li>\n<li>Destroying: terminating</li>\n<li>Destroyed: terminated</li>",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -17770,7 +17786,7 @@
       "members": [
         {
           "default": "",
-          "document": "Task type.\n<li> Transcoding: basic transcoding</li>\n<li> Transcoding-TESHD: TESHD transcoding</li>\n<li> Editing: Video editing</li>\n<li> AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li> ContentAudit: content audit</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing (not recommended)</li>",
+          "document": "Task type.\n<li>Transcoding: basic transcoding</li>\n<li>Transcoding-TESHD: TESHD transcoding</li>\n<li>Editing: video editing</li>\n<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li>ContentAudit: content moderation</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -18874,7 +18890,7 @@
         },
         {
           "default": "",
-          "document": "Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch video image frame by frame to fill the screen. The video image may become \"squashed\" or \"stretched\" after transcoding;</li>\n<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>\n<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>\n<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>\nDefault value: black.",
+          "document": "Fill type, the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:\n<li>stretch: stretches the video image frame by frame to fill the screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>black: fills the uncovered area with black color, without changing the image's aspect ratio.</li>\n<li>white: fills the uncovered area with white color, without changing the image's aspect ratio.</li>\n<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>\nDefault value: black",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -18883,9 +18899,18 @@
         },
         {
           "default": "",
-          "document": "Video Constant Rate Factor (CRF). Value range: 1-51.\nIf this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.\nWe don’t recommend specifying this parameter if you have no special requirements.",
+          "document": "Video Constant Rate Factor (CRF). Value range: 1-51.\nIf this parameter is specified, CRF will be used to control video bitrate for transcoding and the original video bitrate will not be used.\nWe don’t recommend specifying this parameter unless you have special requirements.",
           "member": "uint64",
           "name": "Vcrf",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "Gop",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -18952,7 +18977,7 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch video image frame by frame to fill the screen. The video image may become \"squashed\" or \"stretched\" after transcoding;</li>\n<li>black: keep the image's aspect ratio unchanged and fill the uncovered area with black color.</li>\n<li>white: keep the image's aspect ratio unchanged and fill the uncovered area with white color.</li>\n<li>gauss: keep the image's aspect ratio unchanged and apply Gaussian blur to the uncovered area.</li>",
+          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:\n<li>stretch: stretches video image frame by frame to fill the screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>black: fills the uncovered area with black color, without changing the image's aspect ratio.</li>\n<li>white: fills the uncovered area with white color, without changing the image's aspect ratio.</li>\n<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -18961,9 +18986,18 @@
         },
         {
           "default": "",
-          "document": "Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.\nWe don’t recommend specifying this parameter if you have no special requirements.",
+          "document": "Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.\nWe don’t recommend specifying this parameter unless you have special requirements.",
           "member": "uint64",
           "name": "Vcrf",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "uint64",
+          "name": "Gop",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -19114,7 +19148,7 @@
         },
         {
           "default": "",
-          "document": "Text content, which contains up to 100 characters. This field is required only when the watermark type is text.\nVOD does not support adding text watermarks on screenshots.",
+          "document": "Text content, which contains up to 100 characters. Set this parameter only when the watermark type is text.\nVOD does not support adding text watermarks on screenshots.",
           "member": "string",
           "name": "TextContent",
           "required": false,
@@ -19123,7 +19157,7 @@
         },
         {
           "default": "",
-          "document": "SVG content, which contains up to 2,000,000 characters. This field is required only when the watermark type is SVG.\nVOD does not support adding SVG watermarks on screenshots.",
+          "document": "SVG content, which contains up to 2,000,000 characters. Set this parameter only when the watermark type is SVG.\nVOD does not support adding SVG watermarks on screenshots.",
           "member": "string",
           "name": "SvgContent",
           "required": false,

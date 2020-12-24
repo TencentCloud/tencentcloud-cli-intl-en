@@ -187,9 +187,9 @@
       "output": "DescribeLoadBalancerListByCertIdResponse"
     },
     "DescribeLoadBalancerTraffic": {
-      "document": "This API is used to query CLB instances with high traffic and return the top 10 results. For queries using a sub-account, only the result CLB instances authorized to the sub-account will be returned.",
+      "document": "This API is used to query CLB instances with high traffic under the current account, and return the top 10 results. For queries using a sub-account, only the CLB instances authorized to the sub-account will be returned.",
       "input": "DescribeLoadBalancerTrafficRequest",
-      "name": "Queries CLB instances with high traffic",
+      "name": "Queries CLB instances with high traffic under the current account",
       "output": "DescribeLoadBalancerTrafficResponse"
     },
     "DescribeLoadBalancers": {
@@ -1541,7 +1541,7 @@
         },
         {
           "default": "",
-          "document": "CLB instance name, which takes effect only when an instance is created. It consists of 1 to 60 letters, digits, hyphens (-), or underscores (_).\nNote: If the name of the new CLB instance already exists in the system, the system will automatically generate a name for the new CLB instance.",
+          "document": "CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).\nNote: if the name of the new CLB instance already exists, a default name will be generated automatically.",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -2697,7 +2697,7 @@
       "document": "DescribeLoadBalancerTraffic response structure.",
       "members": [
         {
-          "document": "Information of CLB instances descendingly sorted by outbound bandwidth\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Information of CLB instances sorted by outbound bandwidth from highest to lowest\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "LoadBalancerTraffic",
           "name": "LoadBalancerTraffic",
           "type": "list",
