@@ -367,7 +367,7 @@
       "output": "ParseNotificationResponse"
     },
     "ProcessLiveStream": {
-      "document": "This API is used to initiate a processing task for a live streaming media file, including:\n\n* Intelligent content audit (detection of porn, terrorism, and politically sensitive information in image and porn information in speech);\n\nThe live stream processing event notification is written into the specified CMQ queue in real time. You need to obtain the event notification result from CMQ. If a file is output during video processing, it will be written into the specified target bucket.",
+      "document": "This API is used to initiate tasks to process live streaming media files. Such tasks include:\n\n* Intelligent content moderation (detecting porn, terrorism, and politically sensitive information in image and porn information in speech)\n* Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)\n\nLive stream processing event notifications are written into specified CMQ queues in real time. Users need to obtain event notification results from such CMQ queues. Output files of the processing tasks are written into destination buckets specified by users.",
       "input": "ProcessLiveStreamRequest",
       "name": "Initiates a live stream processing task",
       "output": "ProcessLiveStreamResponse"
@@ -909,7 +909,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code, 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -999,7 +1008,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1080,7 +1098,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1176,7 +1203,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1425,7 +1461,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1566,7 +1611,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1704,7 +1758,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1884,7 +1947,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2031,7 +2103,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2580,7 +2661,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2631,7 +2721,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2682,7 +2781,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2733,7 +2841,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2784,7 +2901,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2835,7 +2961,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2886,7 +3021,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2937,7 +3081,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2988,7 +3141,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3039,7 +3201,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3741,7 +3912,7 @@
         },
         {
           "default": "",
-          "document": "Audio channel system. Valid values:\n<li>1: Mono</li>\n<li>2: Dual</li>\n<li>6: Stereo</li>\nDefault value: 2.",
+          "document": "Audio channel system. Valid values:\n<li>1: Mono</li>\n<li>2: Dual</li>\n<li>6: Stereo</li>\nWhen the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.\nDefault value: 2",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
@@ -3783,7 +3954,7 @@
         },
         {
           "default": "",
-          "document": "Audio channel system. Valid values:\n<li>1: Mono</li>\n<li>2: Dual</li>\n<li>6: Stereo</li>",
+          "document": "Audio channel system. Valid values:\n<li>1: Mono</li>\n<li>2: Dual</li>\n<li>6: Stereo</li>\nWhen the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
@@ -8702,7 +8873,7 @@
       "members": [
         {
           "default": "",
-          "document": "Video processing object type. Only COS is supported currently.",
+          "document": "The type of video processing input object. COS and URL objects are supported.",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -8717,6 +8888,15 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is required and valid when `Type` is `URL`, indicating the information of a URL object for video processing.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "UrlInputInfo",
+          "name": "UrlInputInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8840,7 +9020,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -8891,7 +9080,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: Invalid input parameter. Please check it;</li>\n<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: Internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -8942,7 +9140,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: Invalid input parameter. Please check it;</li>\n<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: Internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9122,7 +9329,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: Invalid input parameter. Please check it;</li>\n<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: Internal service error. Please try again.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9173,7 +9389,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: Invalid input parameter. Please check it;</li>\n<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: Internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9224,7 +9449,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: Invalid input parameter. Please check it;</li>\n<li>60000: Invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: Internal service error. Please try again.</li>",
+          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -10737,6 +10971,66 @@
         }
       ],
       "usage": "in"
+    },
+    "OverrideTranscodeParameter": {
+      "document": "Custom specification parameters for video processing, which are used to override corresponding parameters in templates.",
+      "members": [
+        {
+          "default": "",
+          "document": "Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.",
+          "member": "string",
+          "name": "Container",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to remove video data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
+          "member": "uint64",
+          "name": "RemoveVideo",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to remove audio data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
+          "member": "uint64",
+          "name": "RemoveAudio",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video stream configuration parameter.",
+          "member": "VideoTemplateInfoForUpdate",
+          "name": "VideoTemplate",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio stream configuration parameter.",
+          "member": "AudioTemplateInfoForUpdate",
+          "name": "AudioTemplate",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TESHD transcoding parameter.",
+          "member": "TEHDConfigForUpdate",
+          "name": "TEHDConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ParseLiveStreamProcessNotificationRequest": {
       "document": "ParseLiveStreamProcessNotification request structure.",
@@ -12975,6 +13269,15 @@
         },
         {
           "default": "",
+          "document": "Video transcoding custom parameter, which is valid when `Definition` is not 0.\nWhen any parameters in this structure are entered, they will be used to override corresponding parameters in templates.\nThis parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "OverrideTranscodeParameter",
+          "name": "OverrideParameter",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "List of up to 10 image or text watermarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
@@ -13152,6 +13455,21 @@
         }
       ],
       "usage": "out"
+    },
+    "UrlInputInfo": {
+      "document": "Information of a video processing URL object.",
+      "members": [
+        {
+          "default": "",
+          "document": "URL of a video.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "UserDefineAsrTextReviewTemplateInfo": {
       "document": "Control parameter of a custom speech audit task",
@@ -13539,11 +13857,20 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
           "member": "string",
           "name": "FillType",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The control factor of video constant bitrate. Value range: [1, 51]\nIf this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)\nIt is not recommended to specify this parameter if there are no special requirements.",
+          "member": "uint64",
+          "name": "Vcrf",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -13617,11 +13944,20 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>",
           "member": "string",
           "name": "FillType",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.\nIt is not recommended to specify this parameter if there are no special requirements.",
+          "member": "uint64",
+          "name": "Vcrf",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -13641,7 +13977,7 @@
         },
         {
           "default": "",
-          "document": "Custom watermark parameter, which is valid if `Definition` is 0.\nThis parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.",
+          "document": "Custom watermark parameter, which is valid if `Definition` is 0.\nThis parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.\nCustom watermark parameter is not available for screenshot.",
           "member": "RawWatermarkParameter",
           "name": "RawParameter",
           "required": false,
@@ -13650,7 +13986,7 @@
         },
         {
           "default": "",
-          "document": "Text content of up to 100 characters. This field is required only when the watermark type is text.",
+          "document": "Text content of up to 100 characters. This field is required only when the watermark type is text.\nText watermark is not available for screenshot.",
           "member": "string",
           "name": "TextContent",
           "required": false,
@@ -13659,7 +13995,7 @@
         },
         {
           "default": "",
-          "document": "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.",
+          "document": "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.\nSVG watermark is not available for screenshot.",
           "member": "string",
           "name": "SvgContent",
           "required": false,

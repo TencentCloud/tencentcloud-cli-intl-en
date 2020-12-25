@@ -583,7 +583,7 @@
       "output": "DescribeIpGeolocationDatabaseUrlResponse"
     },
     "DescribeIpGeolocationInfos": {
-      "document": "This API is used to query the IP addresses, including their geographical locations and networks.",
+      "document": "This API is used to query the information of IP addresses, including their geographical locations and networks.",
       "input": "DescribeIpGeolocationInfosRequest",
       "name": "Queries IP location",
       "output": "DescribeIpGeolocationInfosResponse"
@@ -10496,11 +10496,11 @@
       "usage": "out"
     },
     "IpField": {
-      "document": "IP fields to be queried online",
+      "document": "IP information to be queried",
       "members": [
         {
           "default": "",
-          "document": "Country/region field",
+          "document": "Country/region of the IP",
           "member": "bool",
           "name": "Country",
           "required": false,
@@ -10509,7 +10509,7 @@
         },
         {
           "default": "",
-          "document": "Province/municipality field",
+          "document": "Province/municipality/state of the IP",
           "member": "bool",
           "name": "Province",
           "required": false,
@@ -10518,7 +10518,7 @@
         },
         {
           "default": "",
-          "document": "City field",
+          "document": "City of the IP",
           "member": "bool",
           "name": "City",
           "required": false,
@@ -10527,7 +10527,7 @@
         },
         {
           "default": "",
-          "document": "Urban area field",
+          "document": "City district of the IP",
           "member": "bool",
           "name": "Region",
           "required": false,
@@ -10554,7 +10554,7 @@
         },
         {
           "default": "",
-          "document": "AS ID",
+          "document": "Backbone AS ID",
           "member": "bool",
           "name": "AsId",
           "required": false,
