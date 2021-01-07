@@ -175,8 +175,8 @@
     "DescribeClusterAsGroupOption": [
       {
         "document": "This example shows you how to configure cluster auto scaling.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroupOption\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroupOption\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"ClusterAsGroupOption\": {\r\n            \"ScaleDownUnreadyTime\": 0, \r\n            \"ScaleDownDelay\": 0, \r\n            \"ScaleDownUtilizationThreshold\": 0, \r\n            \"MaxTotalUnreadyPercentage\": 0, \r\n            \"IsScaleDownEnabled\": true, \r\n            \"OkTotalUnreadyCount\":0, \r\n            \"SkipNodesWithSystemPods\": true, \r\n            \"MaxEmptyBulkDelete\": 0, \r\n            \"UnregisteredNodeRemovalTime\": 0, \r\n            \"SkipNodesWithLocalStorage\": true, \r\n            \"IgnoreDaemonSetsUtilization\": true, \r\n            \"Expander\": \"xxx\", \r\n            \"ScaleDownUnneededTime\": 0\r\n        }, \r\n        \"RequestId\": \"xxx\"\r\n    }\r\n}",
         "title": "Configuring cluster auto scaling"
       }
     ],
@@ -306,6 +306,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterAsGroupAttribute\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
         "title": "Modifying cluster scaling group attributes"
+      }
+    ],
+    "ModifyClusterAsGroupOptionAttribute": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterAsGroupOptionAttribute\n&ClusterId=cls-xxxxxx\n&ClusterAsGroupOption.IsScaleDownEnabled=true\n&ClusterAsGroupOption.UnregisteredNodeRemovalTime=x\n&ClusterAsGroupOption.OkTotalUnreadyCount=x\n&ClusterAsGroupOption.ScaleDownUnreadyTime=x\n&ClusterAsGroupOption.MaxTotalUnreadyPercentage=x\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
+        "title": "Modifying cluster auto scaling attributes"
       }
     ],
     "ModifyClusterAttribute": [

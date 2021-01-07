@@ -1,13 +1,13 @@
 {
   "actions": {
     "CreateDBDiagReportTask": {
-      "document": "This API is used to create a health report and select whether to send an email.",
+      "document": "This API is used to create a health report and send it via email as configured.",
       "input": "CreateDBDiagReportTaskRequest",
       "name": "Creates a health report generation task",
       "output": "CreateDBDiagReportTaskResponse"
     },
     "CreateMailProfile": {
-      "document": "This API is used to create the email configuration. The input parameter “ProfileType” represents the type of the email configuration. Valid values: “dbScan_mail_configuration” (email configuration of database inspection report) and “scheduler_mail_configuration” (email configuration of scheduled task report).",
+      "document": "This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email configuration of scheduled task report).",
       "input": "CreateMailProfileRequest",
       "name": "Creates email configuration",
       "output": "CreateMailProfileResponse"
@@ -67,9 +67,9 @@
       "output": "DescribeTopSpaceTablesResponse"
     },
     "ModifyDiagDBInstanceConf": {
-      "document": "This API is used to modify instance inspection switch.",
+      "document": "This API is used to enable/disable instance inspection.",
       "input": "ModifyDiagDBInstanceConfRequest",
-      "name": "Modifies switch status of instance inspection",
+      "name": "Enables/disables instance inspection",
       "output": "ModifyDiagDBInstanceConfResponse"
     }
   },
@@ -102,7 +102,7 @@
         },
         {
           "default": "",
-          "document": "The mailbox bound to the contact.",
+          "document": "The email address of the contact.",
           "member": "string",
           "name": "Mail",
           "required": true,
@@ -198,7 +198,7 @@
       "members": [
         {
           "default": "",
-          "document": "The content of email configuration.",
+          "document": "Email configurations",
           "member": "ProfileInfo",
           "name": "ProfileInfo",
           "required": true,
@@ -206,7 +206,7 @@
         },
         {
           "default": "",
-          "document": "Configuration level. Valid values: \"User\" (user-level), \"Instance\" (instance-level). The email of database inspection report is configured as the user level, and the email of scheduled task report is configured as the instance level.",
+          "document": "Configuration level. Valid values: \"User\" (user-level), \"Instance\" (instance-level). For database inspection report, it should be `User`; and for scheduled task reports, it should be `Instance`.",
           "member": "string",
           "name": "ProfileLevel",
           "required": true,
@@ -214,7 +214,7 @@
         },
         {
           "default": "",
-          "document": "Name configuration, which needs to be unique. The email configuration name of database inspection report can be customize; the email configuration name of scheduled task report should in the format of \"scheduler_\" + {instanceId}, such as \"schduler_cdb-test\".",
+          "document": "Configuration name, which needs to be unique. For database inspection reports, this name can be customize as needed. For scheduled task reports, the name should be in the format of \"scheduler_\" + {instanceId}, such as \"schduler_cdb-test\".",
           "member": "string",
           "name": "ProfileName",
           "required": true,
@@ -238,7 +238,7 @@
         },
         {
           "default": "",
-          "document": "Instance ID bound to the configuration, which is set when the configuration level is \"Instance\".",
+          "document": "Instance ID bound to the configuration, which is required when the configuration level is `Instance`.",
           "member": "string",
           "name": "BindInstanceIds",
           "required": false,
@@ -1047,7 +1047,7 @@
       "members": [
         {
           "default": "",
-          "document": "The switch of database inspection. Valid values: Yes/No.",
+          "document": "Whether to enable database inspection. Valid values: Yes/No.",
           "member": "string",
           "name": "DailyInspection",
           "required": false,
@@ -1089,7 +1089,7 @@
         },
         {
           "default": "",
-          "document": "Contact ID. The contact/contact group cannot be empty.",
+          "document": "Contact ID. Either `ContactGroup` or `ContactID` should be passed in.",
           "member": "int64",
           "name": "ContactPerson",
           "required": false,
@@ -1098,7 +1098,7 @@
         },
         {
           "default": "",
-          "document": "Contact group ID. The contact/contact group cannot be empty.",
+          "document": "Contact group ID. Either `ContactGroup` or `ContactID` should be passed in.",
           "member": "int64",
           "name": "ContactGroup",
           "required": false,
@@ -1113,7 +1113,7 @@
       "members": [
         {
           "default": "",
-          "document": "Inspection switch.",
+          "document": "Whether to enable inspection",
           "member": "InstanceConfs",
           "name": "InstanceConfs",
           "required": true,
@@ -1121,7 +1121,7 @@
         },
         {
           "default": "",
-          "document": "The effective instance region. If the value is \"All\", it means it is effective for the whole region.",
+          "document": "Target regions of the request. If the value is `All`, it is applied to all regions.",
           "member": "string",
           "name": "Regions",
           "required": true,
@@ -1137,7 +1137,7 @@
         },
         {
           "default": "",
-          "document": "Specify the instance ID that needs to modify the inspection status.",
+          "document": "ID of the instance to modify.",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -1277,7 +1277,7 @@
       "members": [
         {
           "default": "",
-          "document": "Language, such as “zh”.",
+          "document": "Language of the email, such as `en`.",
           "member": "string",
           "name": "Language",
           "required": true,

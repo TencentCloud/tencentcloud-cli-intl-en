@@ -222,6 +222,12 @@
       "name": "Modify cluster scaling group attributes",
       "output": "ModifyClusterAsGroupAttributeResponse"
     },
+    "ModifyClusterAsGroupOptionAttribute": {
+      "document": "This API is used to modify cluster auto scaling attributes.",
+      "input": "ModifyClusterAsGroupOptionAttributeRequest",
+      "name": "Modifies cluster auto scaling attributes",
+      "output": "ModifyClusterAsGroupOptionAttributeResponse"
+    },
     "ModifyClusterAttribute": {
       "document": "This API is used to modify cluster attributes.",
       "input": "ModifyClusterAttributeRequest",
@@ -298,7 +304,7 @@
         },
         {
           "default": "",
-          "document": "Instance list",
+          "document": "Instance list. Spot instance is not supported.",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -343,6 +349,14 @@
           "name": "HostName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool options",
+          "member": "NodePoolOption",
+          "name": "NodePool",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3690,6 +3704,40 @@
       ],
       "type": "object"
     },
+    "ModifyClusterAsGroupOptionAttributeRequest": {
+      "document": "ModifyClusterAsGroupOptionAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster auto scaling attributes",
+          "member": "ClusterAsGroupOption",
+          "name": "ClusterAsGroupOption",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterAsGroupOptionAttributeResponse": {
+      "document": "ModifyClusterAsGroupOptionAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyClusterAttributeRequest": {
       "document": "ModifyClusterAttribute request structure.",
       "members": [
@@ -3861,6 +3909,22 @@
           "name": "EnableAutoscale",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Operating system name",
+          "member": "string",
+          "name": "OsName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
+          "member": "string",
+          "name": "OsCustomizeType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4023,6 +4087,39 @@
         }
       ],
       "usage": "out"
+    },
+    "NodePoolOption": {
+      "document": "The options for adding the existing node to the node pool",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to add to the node pool.",
+          "member": "bool",
+          "name": "AddToNodePool",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to inherit the node pool configuration.",
+          "member": "bool",
+          "name": "InheritConfigurationFromNodePool",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "RegionInstance": {
       "document": "Region information",

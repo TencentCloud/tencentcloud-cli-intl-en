@@ -72,6 +72,22 @@
         "title": "Deleting namespace"
       }
     ],
+    "DeleteProvisionedConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=DeleteProvisionedConcurrencyConfig\n&FunctionName=test\n&Qualifier=1\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Deleting provisioned concurrency"
+      }
+    ],
+    "DeleteReservedConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=DeleteReservedConcurrencyConfig\n&FunctionName=test\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Deleting the reserved concurrency of function"
+      }
+    ],
     "DeleteTrigger": [
       {
         "document": "This example shows you how to use this function to delete a trigger.",
@@ -91,7 +107,7 @@
     "GetFunction": [
       {
         "document": "This example shows you how to get the information of a function with the specified version and namespace.",
-        "input": "https://scf.tencentcloudapi.com/?Action=GetFunction\r\n&FunctionName=<FunctionName>\r\n&<Common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=GetFunction\n&FunctionName=<FunctionName>\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"ModTime\": \"2018-06-07 09:52:23\",\r\n        \"Environment\": {\r\n            \"Variables\": []\r\n        },\r\n        \"CodeError\": \"\",\r\n        \"Description\": \"\",\r\n        \"VpcConfig\": {\r\n            \"SubnetId\": \"\",\r\n            \"VpcId\": \"\"\r\n        },\r\n        \"Triggers\": [],\r\n        \"ErrNo\": 0,\r\n        \"UseGpu\": \"FALSE\",\r\n        \"CodeSize\": 0,\r\n        \"MemorySize\": 128,\r\n        \"Namespace\": \"default\",\r\n        \"FunctionVersion\": \"$LATEST\",\r\n        \"Timeout\": 3,\r\n        \"RequestId\": \"a1ffbba5-5489-45bc-89c5-453e50d5386e\",\r\n        \"CodeResult\": \"failed\",\r\n        \"Handler\": \"scfredis.main_handler\",\r\n        \"Runtime\": \"Python2.7\",\r\n        \"FunctionName\": \"ledDummyAPITest\",\r\n        \"CodeInfo\": \"\",\r\n        \"Role\": \"\",\r\n        \"Qualifier\": \"$LATEST\",\r\n        \"AvailableStatus\": \"Available\",\r\n        \"CfsConfig\": {\r\n        \"CfsInsList\":[\r\n                      {\r\n                      \"LocalMountDir\": \"\",\r\n                      \"RemoteMountDir\": \"\",\r\n     \t              \"MountInsId\": \"\",\r\n                      \"UserId\": 0,\r\n                      \"UserGroupId\": 0,\r\n                      \"CfsId\": \"\",\r\n                      \"IpAddress\": \"\",\r\n                      \"MountVpcId\": \"\",\r\n                      \"MountSubnetId\": \"\"\r\n                     }\r\n                ]\r\n        }\r\n    }\r\n}",
         "title": "Getting function details"
       }
@@ -120,6 +136,22 @@
         "title": "Getting layer version details"
       }
     ],
+    "GetProvisionedConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=GetProvisionedConcurrencyConfig\n&FunctionName=test\n&Qualifier=1\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"UnallocatedConcurrencyNum\": 1, \r\n        \"Allocated\": [\r\n            {\r\n                \"Status\": \"xx\", \r\n                \"AllocatedProvisionedConcurrencyNum\": 1, \r\n                \"AvailableProvisionedConcurrencyNum\": 1, \r\n                \"Qualifier\": \"xx\", \r\n                \"StatusReason\": \"xx\"\r\n            }\r\n        ], \r\n        \"RequestId\": \"xx\"\r\n    }\r\n}",
+        "title": "Getting the provisioned concurrency details of function"
+      }
+    ],
+    "GetReservedConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=GetReservedConcurrencyConfig\n&FunctionName=test\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"ReservedMem\": 128 \r\n    }\r\n}",
+        "title": "Getting details of reserved concurrency of the function "
+      }
+    ],
     "Invoke": [
       {
         "document": "",
@@ -138,7 +170,7 @@
     ],
     "ListFunctions": [
       {
-        "document": "It queries functions whose status tag is dev and owner tag is me.",
+        "document": "This example shows you how to query functions whose status tag is `dev` and owner tag is `me`.",
         "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\n&Limit=2\n&Order=ASC\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1, \r\n        \"Functions\": [\r\n            {\r\n                \"ModTime\": \"xx\", \r\n                \"Status\": \"xx\", \r\n                \"StatusDesc\": \"xx\", \r\n                \"FunctionName\": \"xx\", \r\n                \"TotalProvisionedConcurrencyMem\": 1, \r\n                \"Tags\": [\r\n                    {\r\n                        \"Value\": \"xx\", \r\n                        \"Key\": \"xx\"\r\n                    }\r\n                ], \r\n                \"AddTime\": \"xx\", \r\n                \"Namespace\": \"xx\", \r\n                \"StatusReasons\": [\r\n                    {\r\n                        \"ErrorCode\": \"xx\", \r\n                        \"ErrorMessage\": \"xx\"\r\n                    }\r\n                ], \r\n                \"Runtime\": \"xx\", \r\n                \"Type\": \"xx\", \r\n                \"FunctionId\": \"xx\", \r\n                \"ReservedConcurrencyMem\": 1, \r\n                \"Description\": \"xx\"\r\n            }\r\n        ], \r\n        \"RequestId\": \"xx\"\r\n    }\r\n}",
         "title": "Getting function list"
@@ -204,6 +236,30 @@
         "input": "https://scf.tencentcloudapi.com/?Action=PublishVersion\r\n&FunctionName=<FunctionName>\r\n&Description=<Description>\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"Namespace\": \"default\",\r\n        \"Description\": \"dummytut\",\r\n        \"CodeSize\": 45686,\r\n        \"MemorySize\": 256,\r\n        \"Handler\": \"scfredis.main_handler\",\r\n        \"RequestId\": \"68c9669c-9e2c-47b0-9a01-e8406a41be59\",\r\n        \"Timeout\": 3,\r\n        \"Runtime\": \"Python2.7\",\r\n        \"FunctionVersion\": \"4\"\r\n    }\r\n}",
         "title": "Publishing new version"
+      }
+    ],
+    "PutProvisionedConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=PutProvisionedConcurrencyConfig\n&FunctionName=test\n&Qualifier=1\n&VersionProvisionedConcurrencyNum=10\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting provisioned concurrency"
+      }
+    ],
+    "PutReservedConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=PutReservedConcurrencyConfig\n&FunctionName=test\n&ReservedConcurrencyMem=12800\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting reserved concurrency"
+      }
+    ],
+    "PutTotalConcurrencyConfig": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=PutTotalConcurrencyConfig\n&TotalConcurrencyMem=128000\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Setting user concurrency memory quota"
       }
     ],
     "UpdateAlias": [

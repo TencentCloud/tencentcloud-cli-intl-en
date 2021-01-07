@@ -54,6 +54,18 @@
       "name": "Deletes a namespace",
       "output": "DeleteNamespaceResponse"
     },
+    "DeleteProvisionedConcurrencyConfig": {
+      "document": "This API is used to delete the provisioned concurrency configuration of a function version.",
+      "input": "DeleteProvisionedConcurrencyConfigRequest",
+      "name": "Deletes provisioned concurrency",
+      "output": "DeleteProvisionedConcurrencyConfigResponse"
+    },
+    "DeleteReservedConcurrencyConfig": {
+      "document": "This API is used to delete the reserved concurrency configuration of a function.",
+      "input": "DeleteReservedConcurrencyConfigRequest",
+      "name": "Deletes the reserved concurrency of function",
+      "output": "DeleteReservedConcurrencyConfigResponse"
+    },
     "DeleteTrigger": {
       "document": "This API is used to delete an existing trigger based on the input parameters.",
       "input": "DeleteTriggerRequest",
@@ -89,6 +101,18 @@
       "input": "GetLayerVersionRequest",
       "name": "Gets layer version details",
       "output": "GetLayerVersionResponse"
+    },
+    "GetProvisionedConcurrencyConfig": {
+      "document": "This API is used to get the provisioned concurrency details of a function or its specified version.",
+      "input": "GetProvisionedConcurrencyConfigRequest",
+      "name": "Gets the provisioned concurrency details of function",
+      "output": "GetProvisionedConcurrencyConfigResponse"
+    },
+    "GetReservedConcurrencyConfig": {
+      "document": "This API is used to get the reserved concurrency details of a function.",
+      "input": "GetReservedConcurrencyConfigRequest",
+      "name": "Gets the reserved concurrency details of function",
+      "output": "GetReservedConcurrencyConfigResponse"
     },
     "Invoke": {
       "document": "This API is used to run a function.",
@@ -149,6 +173,24 @@
       "input": "PublishVersionRequest",
       "name": "Releases a new version",
       "output": "PublishVersionResponse"
+    },
+    "PutProvisionedConcurrencyConfig": {
+      "document": "This API is used to set the provisioned concurrency of a non-$LATEST version of a function.",
+      "input": "PutProvisionedConcurrencyConfigRequest",
+      "name": "Sets provisioned concurrency",
+      "output": "PutProvisionedConcurrencyConfigResponse"
+    },
+    "PutReservedConcurrencyConfig": {
+      "document": "This API is used to set the reserved concurrency of a function.",
+      "input": "PutReservedConcurrencyConfigRequest",
+      "name": "Sets reserved concurrency",
+      "output": "PutReservedConcurrencyConfigResponse"
+    },
+    "PutTotalConcurrencyConfig": {
+      "document": "This API is used to modify the account concurrency limit quota.",
+      "input": "PutTotalConcurrencyConfigRequest",
+      "name": "Modifies account concurrency limit quota",
+      "output": "PutTotalConcurrencyConfigResponse"
     },
     "UpdateAlias": {
       "document": "This API is used to update the configuration of an alias.",
@@ -708,7 +750,7 @@
         },
         {
           "default": "",
-          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime. Default value: Python2.7",
+          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7",
           "member": "string",
           "name": "Runtime",
           "required": false,
@@ -1115,6 +1157,82 @@
     },
     "DeleteNamespaceResponse": {
       "document": "DeleteNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProvisionedConcurrencyConfigRequest": {
+      "document": "DeleteProvisionedConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function for which to delete the provisioned concurrency",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version number",
+          "member": "string",
+          "name": "Qualifier",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProvisionedConcurrencyConfigResponse": {
+      "document": "DeleteProvisionedConcurrencyConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReservedConcurrencyConfigRequest": {
+      "document": "DeleteReservedConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function for which to delete the provisioned concurrency",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReservedConcurrencyConfigResponse": {
+      "document": "DeleteReservedConcurrencyConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2292,6 +2410,103 @@
       ],
       "type": "object"
     },
+    "GetProvisionedConcurrencyConfigRequest": {
+      "document": "GetProvisionedConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function for which to get the provisioned concurrency details.",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default.",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetProvisionedConcurrencyConfigResponse": {
+      "document": "GetProvisionedConcurrencyConfig response structure.",
+      "members": [
+        {
+          "document": "Unallocated provisioned concurrency amount of function.",
+          "member": "uint64",
+          "name": "UnallocatedConcurrencyNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Allocated provisioned concurrency amount of function.",
+          "member": "VersionProvisionedConcurrencyInfo",
+          "name": "Allocated",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetReservedConcurrencyConfigRequest": {
+      "document": "GetReservedConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function for which to get the provisioned concurrency details.",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default.",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetReservedConcurrencyConfigResponse": {
+      "document": "GetReservedConcurrencyConfig response structure.",
+      "members": [
+        {
+          "document": "Reserved concurrency memory of function.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ReservedMem",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InvokeRequest": {
       "document": "Invoke request structure.",
       "members": [
@@ -3297,6 +3512,132 @@
       ],
       "type": "object"
     },
+    "PutProvisionedConcurrencyConfigRequest": {
+      "document": "PutProvisionedConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function for which to set the provisioned concurrency",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version number. Note: the `$LATEST` version does not support provisioned concurrency",
+          "member": "string",
+          "name": "Qualifier",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100",
+          "member": "uint64",
+          "name": "VersionProvisionedConcurrencyNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutProvisionedConcurrencyConfigResponse": {
+      "document": "PutProvisionedConcurrencyConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutReservedConcurrencyConfigRequest": {
+      "document": "PutReservedConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the function for which to set the provisioned concurrency",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800",
+          "member": "uint64",
+          "name": "ReservedConcurrencyMem",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutReservedConcurrencyConfigResponse": {
+      "document": "PutReservedConcurrencyConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutTotalConcurrencyConfigRequest": {
+      "document": "PutTotalConcurrencyConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800",
+          "member": "uint64",
+          "name": "TotalConcurrencyMem",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Namespace. Default value: default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PutTotalConcurrencyConfigResponse": {
+      "document": "PutTotalConcurrencyConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Result": {
       "document": "Response of the executed function",
       "members": [
@@ -3545,6 +3886,15 @@
           "document": "Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console",
           "member": "string",
           "name": "TriggerAttribute",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The alias or version bound with the trigger",
+          "member": "string",
+          "name": "Qualifier",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -4099,6 +4449,57 @@
         }
       ],
       "usage": "both"
+    },
+    "VersionProvisionedConcurrencyInfo": {
+      "document": "Provisioned concurrency information of function version, including the set provisioned concurrency amount, available provisioned concurrency amount, and provisioned concurrency setting task status.",
+      "members": [
+        {
+          "default": "",
+          "document": "Set provisioned concurrency amount.",
+          "member": "uint64",
+          "name": "AllocatedProvisionedConcurrencyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Currently available provisioned concurrency amount.",
+          "member": "uint64",
+          "name": "AvailableProvisionedConcurrencyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Provisioned concurrency setting task status. Done: completed; InProgress: in progress; Failed: partially or completely failed.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status description of provisioned concurrency setting task.",
+          "member": "string",
+          "name": "StatusReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function version number",
+          "member": "string",
+          "name": "Qualifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "VersionWeight": {
       "document": "Function version with weight",
