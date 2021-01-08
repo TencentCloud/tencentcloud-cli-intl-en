@@ -722,7 +722,7 @@
       "members": [
         {
           "default": "",
-          "document": "Watermark image URL.",
+          "document": "Watermark image URL.\nUnallowed characters in the URL:\n ;(){}$>`#\"\\'|",
           "member": "string",
           "name": "PictureUrl",
           "required": true,
@@ -762,7 +762,7 @@
         },
         {
           "default": "",
-          "document": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.",
+          "document": "Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -2344,7 +2344,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate. Value range: 0–8,000 Kbps.\nIf the value is 0, the original bitrate will be retained.\nNote: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.",
+          "document": "Video bitrate in Kbps. Value range: 100-8000.\nNote: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.",
           "member": "int64",
           "name": "VideoBitrate",
           "required": true,
@@ -2352,7 +2352,7 @@
         },
         {
           "default": "",
-          "document": "Audio codec: acc by default.\nNote: this parameter is unsupported now.",
+          "document": "Audio codec. Default value: aac.\nNote: this parameter is unsupported now.",
           "member": "string",
           "name": "Acodec",
           "required": false,
@@ -2368,7 +2368,7 @@
         },
         {
           "default": "",
-          "document": "Video codec: `h264/h265/origin`. Default value: `h264`.\n\norigin: original codec as the output codec",
+          "document": "Video codec. Valid values: h264 (default), h265, origin\n\norigin: original codec as the output codec",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -2384,7 +2384,7 @@
         },
         {
           "default": "",
-          "document": "Width. Default value: 0.\nValue range: 0-3,000\nIt must be a multiple of 2. The original width is 0",
+          "document": "Width. Default value: 0.\nValue range: 0-3000\nIt must be a multiple of 2. The original width is 0.",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -2408,7 +2408,7 @@
         },
         {
           "default": "",
-          "document": "Height. Default value: 0.\nValue range: 0-3,000\nIt must be a multiple of 2. The original height is 0",
+          "document": "Height. Default value: 0.\nValue range: 0-3000\nIt must be a multiple of 2. The original height is 0.",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -2416,7 +2416,7 @@
         },
         {
           "default": "",
-          "document": "Frame rate. Default value: 0.\nRange: 0-60 Fps.",
+          "document": "Frame rate. Default value: 0.\nValue range: 0-60",
           "member": "int64",
           "name": "Fps",
           "required": false,
@@ -2424,7 +2424,7 @@
         },
         {
           "default": "",
-          "document": "Keyframe interval, unit: second.\nOriginal interval by default\nRange: 2-6",
+          "document": "Keyframe interval in seconds. Default value: original interval\nValue range: 2-6",
           "member": "int64",
           "name": "Gop",
           "required": false,
@@ -2488,7 +2488,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0.",
+          "document": "Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.",
           "member": "int64",
           "name": "ShortEdgeAsHeight",
           "required": false,
@@ -2595,7 +2595,7 @@
         },
         {
           "default": "",
-          "document": "The recording end time in UNIX timestamp format. The “EndTime” should be later than “StartTime”. Normally the duration between “EndTime” and “StartTime” is up to 24 hours.",
+          "document": "Recording end time in UNIX timestamp format. “EndTime” should be later than “StartTime”, and the duration between “EndTime” and “StartTime” is up to 24 hours.",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -2603,7 +2603,7 @@
         },
         {
           "default": "",
-          "document": "The recording start time in UNIX timestamp format. If the “StartTime” is not entered, recording will start immediately after the API is successfully called. Normally the “StartTime” should be within 6 days from current time.",
+          "document": "Recording start time in UNIX timestamp format. If “StartTime” is not entered, recording will start immediately after the API is successfully called. “StartTime” should be within 6 days from the current time.",
           "member": "uint64",
           "name": "StartTime",
           "required": false,
@@ -2640,7 +2640,7 @@
       "document": "CreateRecordTask response structure.",
       "members": [
         {
-          "document": "`TaskId`, which is a globally unique task ID. If the `TaskId` is returned, that means the recording task has been successfully created.",
+          "document": "A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -3369,7 +3369,7 @@
         },
         {
           "default": "",
-          "document": "Service name. Valid values: LVB, LEB. Default value: LVB.",
+          "document": "Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.",
           "member": "string",
           "name": "ServiceName",
           "required": false,
@@ -6196,6 +6196,24 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of domain names in the certificate.\n[\"*.x.com\"] for example.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CertDomains",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tencent Cloud SSL certificate ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CloudCertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7292,7 +7310,7 @@
         },
         {
           "default": "",
-          "document": "Video codec: `h264/h265/origin`. Default value: `h264`.\n\norigin: original codec as the output codec",
+          "document": "Video codec. Valid values: h264 (default), h265, origin\n\norigin: original codec as the output codec",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -7300,7 +7318,7 @@
         },
         {
           "default": "",
-          "document": "Audio codec: acc by default.\nNote: this parameter is unsupported now.",
+          "document": "Audio codec. Defaut value: aac.\nNote: this parameter is unsupported now.",
           "member": "string",
           "name": "Acodec",
           "required": false,
@@ -7324,7 +7342,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate. Value range: 0–8,000 Kbps.\nIf the value is 0, the original bitrate will be retained.\nNote: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.",
+          "document": "Video bitrate in Kbps. Value range: 100-8000.\nNote: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.",
           "member": "int64",
           "name": "VideoBitrate",
           "required": false,
@@ -7332,7 +7350,7 @@
         },
         {
           "default": "",
-          "document": "Width in pixels. Value range: 0-3,000.\nIt must be a multiple of 2. The original width is 0",
+          "document": "Width in pixels. Value range: 0-3000.\nIt must be a multiple of 2. The original width is 0.",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -7356,7 +7374,7 @@
         },
         {
           "default": "",
-          "document": "Height in pixels. Value range: 0-3,000.\nIt must be a multiple of 2. The original height is 0",
+          "document": "Height in pixels. Value range: 0-3000.\nIt must be a multiple of 2. The original height is 0.",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -7428,7 +7446,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is used to define whether the short side is the video height. 0: no, 1: yes. The default value is 0.",
+          "document": "Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.",
           "member": "int64",
           "name": "ShortEdgeAsHeight",
           "required": false,
@@ -9222,7 +9240,7 @@
         },
         {
           "default": "",
-          "document": "Watermark image URL.",
+          "document": "Watermark image URL.\nUnallowed characters in the URL:\n ;(){}$>`#\"\\'|",
           "member": "string",
           "name": "PictureUrl",
           "required": true,

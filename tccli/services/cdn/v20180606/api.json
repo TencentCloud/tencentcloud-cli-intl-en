@@ -578,6 +578,22 @@
           "name": "Tag",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IPv6 access configuration",
+          "member": "Ipv6Access",
+          "name": "Ipv6Access",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "OfflineCache",
+          "name": "OfflineCache",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -626,6 +642,30 @@
         }
       ],
       "usage": "both"
+    },
+    "AdvanceConfig": {
+      "document": "Advanced configuration set",
+      "members": [
+        {
+          "default": "",
+          "document": "Advanced configuration name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether advanced configuration is supported:\n`on`: support\n`off`: do not support\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "AdvancedAuthentication": {
       "document": "Timestamp hotlink protection advanced configuration (allowlist feature)",
@@ -4215,6 +4255,42 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IPv6 access configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "Ipv6Access",
+          "name": "Ipv6Access",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Advanced configuration set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AdvanceConfig",
+          "name": "AdvanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "OfflineCache",
+          "name": "OfflineCache",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "OriginCombine",
+          "name": "OriginCombine",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4601,6 +4677,15 @@
           "name": "RedirectStatusCode",
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to return the added header in forced redirection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CarryHeaders",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -5144,6 +5229,21 @@
         }
       ],
       "usage": "out"
+    },
+    "Ipv6Access": {
+      "document": "IPv6 access configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the IPv6 access feature for a domain name. Valid values: `on` and `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "KeyRule": {
       "document": "Path-based cache key configuration",
@@ -5881,6 +5981,21 @@
       ],
       "usage": "both"
     },
+    "OfflineCache": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Origin": {
       "document": "Complex origin server configurations. The following configurations are supported:\n+ Origin server specified as a single domain name\n+ Origin server specified as multiple IPs. Supported port range: 1-65535; Supported weight range: 1-100. Format: IP:Port:Weight.\n+ Origin-pull domain name configuration\n+ Cloud Object Storage (COS) specified as origin server\n+ Hot backup origin server specified as a single domain name\n+ Hot backup origin server specified as multiple IPs. Supported port range: 1-65535. At present, weight configuration is not supported.\n+ Hot backup origin server origin-pull domain name configuration",
       "members": [
@@ -5967,9 +6082,18 @@
         },
         {
           "default": "",
-          "document": "Path-based origin-pull configuration rules\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Origin URL rewrite rule configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "PathRule",
           "name": "PathRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "PathBasedOriginRule",
+          "name": "PathBasedOrigin",
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6012,6 +6136,21 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OriginCombine": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -6297,6 +6436,39 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PathBasedOriginRule": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RulePaths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Origin",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -6631,6 +6803,14 @@
           "name": "Layer",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.\nNotes:\n1. This feature requires that the M3U8 index file can be directly requested and obtained.\n2. In the M3U8 index file, currently only the TS shards at the first to the third level can be recursively resolved.\n3. Prefetching the TS shards obtained through recursive resolution consumes the daily prefetch quota. If the usage exceeds the quota, the feature will be disabled and TS shards will not be prefetched.",
+          "member": "bool",
+          "name": "ParseM3U8",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -8453,6 +8633,30 @@
           "document": "Origin-pull authentication advanced configuration (allowlist feature)",
           "member": "OriginAuthentication",
           "name": "OriginAuthentication",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "IPv6 access configuration",
+          "member": "Ipv6Access",
+          "name": "Ipv6Access",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "OfflineCache",
+          "name": "OfflineCache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "OriginCombine",
+          "name": "OriginCombine",
           "required": false,
           "type": "object"
         }

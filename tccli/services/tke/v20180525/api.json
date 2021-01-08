@@ -848,7 +848,7 @@
         },
         {
           "default": "",
-          "document": "Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:\n`iptables`: do not set IPVS and KubeProxyMode.\n`ipvs` mode: set IPVS to `true` and do not set KubeProxyMode.\n`ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.\nThe following conditions are required to use ipvs-bpf network mode:\n1. The cluster version must be v1.14 or later.\n2. The system image must be a TKE custom image such as Ubuntu TKE Optimized or Centos TKE Optimized.",
+          "document": "Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:\n`iptables`: do not set IPVS and KubeProxyMode.\n`ipvs`: set IPVS to `true` and do not set KubeProxyMode.\n`ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.\nThe following conditions are required to use ipvs-bpf network mode:\n1. The cluster version must be v1.14 or later.\n2. The system image must be Tencent Linux 2.4.",
           "member": "string",
           "name": "KubeProxyMode",
           "required": false,
@@ -4083,6 +4083,33 @@
           "name": "DesiredNodesNum",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The operating system of the node pool\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "NodePoolOs",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "OsCustomizeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Image ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

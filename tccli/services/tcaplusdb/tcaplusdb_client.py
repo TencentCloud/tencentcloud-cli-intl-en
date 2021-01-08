@@ -13,6 +13,31 @@ from tencentcloud.tcaplusdb.v20190823 import tcaplusdb_client as tcaplusdb_clien
 from tencentcloud.tcaplusdb.v20190823 import models as models_v20190823
 
 
+def doDeleteTableIndex(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteTableIndexRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteTableIndex(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeTableTags(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -80,6 +105,31 @@ def doCreateCluster(args, parsed_globals):
     model = models.CreateClusterRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateCluster(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeMachine(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeMachineRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeMachine(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -288,6 +338,31 @@ def doRecoverRecycleTables(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doSetTableIndex(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.SetTableIndexRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.SetTableIndex(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateBackup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -363,7 +438,7 @@ def doModifyTableQuotas(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyClusterTags(args, parsed_globals):
+def doDescribeClusters(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -377,9 +452,34 @@ def doModifyClusterTags(args, parsed_globals):
     client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyClusterTagsRequest()
+    model = models.DescribeClustersRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyClusterTags(model)
+    rsp = client.DescribeClusters(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyClusterMachine(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyClusterMachineRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyClusterMachine(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -513,7 +613,7 @@ def doModifyTableTags(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeClusters(args, parsed_globals):
+def doModifyClusterTags(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -527,9 +627,9 @@ def doDescribeClusters(args, parsed_globals):
     client = mod.TcaplusdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeClustersRequest()
+    model = models.ModifyClusterTagsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeClusters(model)
+    rsp = client.ModifyClusterTags(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -849,9 +949,11 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
+    "DeleteTableIndex": doDeleteTableIndex,
     "DescribeTableTags": doDescribeTableTags,
     "DescribeTasks": doDescribeTasks,
     "CreateCluster": doCreateCluster,
+    "DescribeMachine": doDescribeMachine,
     "DescribeUinInWhitelist": doDescribeUinInWhitelist,
     "DescribeTablesInRecycle": doDescribeTablesInRecycle,
     "RollbackTables": doRollbackTables,
@@ -860,16 +962,18 @@ ACTION_MAP = {
     "ModifyClusterPassword": doModifyClusterPassword,
     "DeleteIdlFiles": doDeleteIdlFiles,
     "RecoverRecycleTables": doRecoverRecycleTables,
+    "SetTableIndex": doSetTableIndex,
     "CreateBackup": doCreateBackup,
     "CreateTables": doCreateTables,
     "ModifyTableQuotas": doModifyTableQuotas,
-    "ModifyClusterTags": doModifyClusterTags,
+    "DescribeClusters": doDescribeClusters,
+    "ModifyClusterMachine": doModifyClusterMachine,
     "DeleteTableGroup": doDeleteTableGroup,
     "ModifyTableGroupName": doModifyTableGroupName,
     "CreateTableGroup": doCreateTableGroup,
     "DescribeRegions": doDescribeRegions,
     "ModifyTableTags": doModifyTableTags,
-    "DescribeClusters": doDescribeClusters,
+    "ModifyClusterTags": doModifyClusterTags,
     "ModifyTableGroupTags": doModifyTableGroupTags,
     "DescribeTableGroupTags": doDescribeTableGroupTags,
     "DescribeTableGroups": doDescribeTableGroups,
