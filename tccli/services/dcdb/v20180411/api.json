@@ -90,12 +90,6 @@
       "name": "Queries the list of databases",
       "output": "DescribeDatabasesResponse"
     },
-    "DescribeProjects": {
-      "document": "This API is used to query the project list.",
-      "input": "DescribeProjectsRequest",
-      "name": "Queries the project list",
-      "output": "DescribeProjectsResponse"
-    },
     "GrantAccountPrivileges": {
       "document": "This API is used to grant permissions to a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "GrantAccountPrivilegesRequest",
@@ -980,6 +974,15 @@
           "document": "The number of DCN disaster recovery instances\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "DcnDstNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `1` (primary instance (dedicated)), `2` (primary instance), `3` (disaster recovery instance), `4` (disaster recovery instance (dedicated))\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "InstanceType",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -2072,30 +2075,6 @@
       ],
       "type": "object"
     },
-    "DescribeProjectsRequest": {
-      "document": "DescribeProjects request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DescribeProjectsResponse": {
-      "document": "DescribeProjects response structure.",
-      "members": [
-        {
-          "document": "Project list",
-          "member": "Project",
-          "name": "Projects",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "GrantAccountPrivilegesRequest": {
       "document": "GrantAccountPrivileges request structure.",
       "members": [
@@ -2603,111 +2582,6 @@
           "name": "Code",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "Project": {
-      "document": "Project description",
-      "members": [
-        {
-          "default": "",
-          "document": "Project ID",
-          "member": "int64",
-          "name": "ProjectId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The `uin` of the resource owner (root account)",
-          "member": "int64",
-          "name": "OwnerUin",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Application ID",
-          "member": "int64",
-          "name": "AppId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project name",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creator `uin`",
-          "member": "int64",
-          "name": "CreatorUin",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Source platform",
-          "member": "string",
-          "name": "SrcPlat",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Source `AppId`",
-          "member": "int64",
-          "name": "SrcAppId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project status. 0: normal; -1: disabled; 3: default project.",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether it is the default project. 1: yes; 0: no.",
-          "member": "int64",
-          "name": "IsDefault",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Description",
-          "member": "string",
-          "name": "Info",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         }
       ],

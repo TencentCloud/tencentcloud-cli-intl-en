@@ -11,9 +11,9 @@
     "CloseDBExtranetAccess": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=CloseDBExtranetAccess\r\n&InstanceId=dcdbt-avw0207d\r\n&<common request parameters>",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=CloseDBExtranetAccess\r\n&InstanceId=dcdbt-avw0207d\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"2d1e21a2-b29a-490a-8be0-b61287d92e28\",\r\n\t\t\"FlowId\": 3024\r\n\t}\r\n}",
-        "title": "Disabling public network access for TencentDB instance"
+        "title": "Disabling public network access for a TencentDB instance"
       }
     ],
     "CopyAccountPrivileges": [
@@ -27,9 +27,9 @@
     "CreateAccount": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=CreateAccount\r\n&InstanceId=dcdbt-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&Password=1234qweri#\r\n&Description=Test account\r\n&<common request parameters>",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=CreateAccount\r\n&InstanceId=dcdbt-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&Password=1234qweri#\r\n&Description=Test account\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"2cc4e4dc-c3e9-4858-ab80-03e3526cf24d\",\r\n\t\t\"CdbInstanceId\": \"dcdbt-fdpjf5zh\",\r\n\t\t\"UserName\": \"testuser1\",\r\n\t\t\"Host\": \"172.17.%\",\r\n\t\t\"Readonly\": 0\r\n\t}\r\n}",
-        "title": "Create an Access account for a cloud database instance"
+        "title": "Creating an account for a TencentDB instance"
       }
     ],
     "DeleteAccount": [
@@ -43,9 +43,9 @@
     "DescribeAccountPrivileges": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeAccountPrivileges\r\n&InstanceId=dcdbt-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&DbName=*\r\n&Type=*\r\n&<common request parameters>",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeAccountPrivileges\r\n&InstanceId=dcdbt-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&DbName=*\r\n&Type=*\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"3381c9e9-d87f-4e21-ba1d-596d6f697a7e\",\r\n\t\t\"InstanceId\": \"dcdbt-fdpjf5zh\",\r\n\t\t\"UserName\": \"testuser1\",\r\n\t\t\"Host\": \"172.17.%\",\r\n\t\t\"Privileges\": [\r\n\t\t\t\"SELECT\",\r\n\t\t\t\"UPDATE\"\r\n\t\t]\r\n\t}\r\n}",
-        "title": "Query the global Permission of the cloud database account"
+        "title": "Querying the global permissions of a TencentDB account"
       }
     ],
     "DescribeAccounts": [
@@ -120,28 +120,20 @@
         "title": "Querying the list of databases on a TencentDB instance"
       }
     ],
-    "DescribeProjects": [
-      {
-        "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeProjects\r\n&<common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"Projects\": [\r\n      {\r\n        \"AppId\": 0,\r\n        \"CreateTime\": \"0000-00-00 00:00:00\",\r\n        \"CreatorUin\": 0,\r\n        \"Info\": \"Default project\",\r\n        \"IsDefault\": 1,\r\n        \"Name\": \"Default project\",\r\n        \"OwnerUin\": 0,\r\n        \"ProjectId\": 0,\r\n        \"SrcAppId\": 0,\r\n        \"SrcPlat\": \"qcloud\",\r\n        \"Status\": 3\r\n      },\r\n      {\r\n        \"AppId\": 1251966477,\r\n        \"CreateTime\": \"2019-09-17 15:47:05\",\r\n        \"CreatorUin\": 3374998458,\r\n        \"Info\": \"\",\r\n        \"IsDefault\": 0,\r\n        \"Name\": \"ryanforredis\",\r\n        \"OwnerUin\": 3374998458,\r\n        \"ProjectId\": 1159121,\r\n        \"SrcAppId\": 0,\r\n        \"SrcPlat\": \"qcloud\",\r\n        \"Status\": 0\r\n      }\r\n    ],\r\n    \"RequestId\": \"31666e3c-f5bf-4862-8876-68f81131eef1\"\r\n  }\r\n}",
-        "title": "Pulling the projects under an account"
-      }
-    ],
     "GrantAccountPrivileges": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=GrantAccountPrivileges\r\n&InstanceId=dcdbt-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&DbName=*\r\n&Type=*\r\n&Privileges.0=select\r\n&Privileges.1=update\r\n&<common request parameters>",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=GrantAccountPrivileges\r\n&InstanceId=dcdbt-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&DbName=*\r\n&Type=*\r\n&Privileges.0=select\r\n&Privileges.1=update\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"87201772-351f-4fb5-9164-fe757fbadb79\"\r\n\t}\r\n}",
-        "title": "Empower the cloud database account"
+        "title": "Granting permissions to a TencentDB account"
       }
     ],
     "InitDCDBInstances": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=InitDCDBInstances\r\n&InstanceIds.0=dcdbt-fdpjf5zh\r\n&InstanceIds.1=dcdbt-avw0207d\r\n&Params.0.Param=lower_case_table_names\r\n&Params.0.Value=1\r\n&Params.1.Param=innodb_page_size\r\n&Params.1.Value=16384\r\n&Params.2.Param=character_set_server\r\n&Params.2.Value=utf8\r\n&<common request parameters>",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=InitDCDBInstances\r\n&InstanceIds.0=dcdbt-fdpjf5zh\r\n&InstanceIds.1=dcdbt-avw0207d\r\n&Params.0.Param=lower_case_table_names\r\n&Params.0.Value=1\r\n&Params.1.Param=innodb_page_size\r\n&Params.1.Value=16384\r\n&Params.2.Param=character_set_server\r\n&Params.2.Value=utf8\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"d94ef093-ff84-4851-b2e0-a5c5920d618e\",\r\n\t\t\"InstanceIds\": [\r\n\t\t\t\"dcdbt-fdpjf5zh\",\r\n\t\t\t\"dcdbt-avw0207d\"\r\n\t\t],\r\n\t\t\"FlowIds\": [\r\n\t\t\t3340,\r\n\t\t\t3341\r\n\t\t]\r\n\t}\r\n}",
-        "title": "Batch initialize cloud database instances"
+        "title": "Initializing TencentDB instances in batches"
       }
     ],
     "ModifyAccountDescription": [
@@ -179,9 +171,9 @@
     "OpenDBExtranetAccess": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=OpenDBExtranetAccess\r\n&InstanceId=dcdbt-avw0207d\r\n&<common request parameters>",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=OpenDBExtranetAccess\r\n&InstanceId=dcdbt-avw0207d\r\n&<Common request parameters>",
         "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"901bd41c-08a2-4001-8364-5a63f32056ae\",\r\n\t\t\"FlowId\": 3023\r\n\t}\r\n}",
-        "title": "Public network Access of Enable's cloud database instance"
+        "title": "Enabling public network access for a TencentDB instance"
       }
     ],
     "ResetAccountPassword": [
