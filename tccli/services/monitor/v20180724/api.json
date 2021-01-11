@@ -6,11 +6,35 @@
       "name": "Binds a policy object.",
       "output": "BindingPolicyObjectResponse"
     },
+    "CreateAlarmNotice": {
+      "document": "This API is used to create a notification template.",
+      "input": "CreateAlarmNoticeRequest",
+      "name": "Creates notification template",
+      "output": "CreateAlarmNoticeResponse"
+    },
+    "CreateAlarmPolicy": {
+      "document": "This API is used to create an alarm policy.",
+      "input": "CreateAlarmPolicyRequest",
+      "name": "Creates alarm policy",
+      "output": "CreateAlarmPolicyResponse"
+    },
     "CreatePolicyGroup": {
       "document": "This API is used to add a policy group.",
       "input": "CreatePolicyGroupRequest",
       "name": "Adds a policy group.",
       "output": "CreatePolicyGroupResponse"
+    },
+    "DeleteAlarmNotices": {
+      "document": "This API is used to delete alarm notification templates.",
+      "input": "DeleteAlarmNoticesRequest",
+      "name": "Deletes alarm notification templates in batches",
+      "output": "DeleteAlarmNoticesResponse"
+    },
+    "DeleteAlarmPolicy": {
+      "document": "This API is used to delete an alarm policy.",
+      "input": "DeleteAlarmPolicyRequest",
+      "name": "Deletes alarm policy",
+      "output": "DeleteAlarmPolicyResponse"
     },
     "DeletePolicyGroup": {
       "document": "This API is used to delete an alarm policy group.",
@@ -23,6 +47,60 @@
       "input": "DescribeAccidentEventListRequest",
       "name": "Gets the platform event list.",
       "output": "DescribeAccidentEventListResponse"
+    },
+    "DescribeAlarmEvents": {
+      "document": "This API is used to query the list of alarm events.",
+      "input": "DescribeAlarmEventsRequest",
+      "name": "Queries alarm event list",
+      "output": "DescribeAlarmEventsResponse"
+    },
+    "DescribeAlarmHistories": {
+      "document": "This API is used to query the alarm records.",
+      "input": "DescribeAlarmHistoriesRequest",
+      "name": "Queries alarm records",
+      "output": "DescribeAlarmHistoriesResponse"
+    },
+    "DescribeAlarmMetrics": {
+      "document": "This API is used to query the list of alarm metrics.",
+      "input": "DescribeAlarmMetricsRequest",
+      "name": "Queries alarm metric list",
+      "output": "DescribeAlarmMetricsResponse"
+    },
+    "DescribeAlarmNotice": {
+      "document": "This API is used to query the details of a single notification template.",
+      "input": "DescribeAlarmNoticeRequest",
+      "name": "Queries the details of single notification template",
+      "output": "DescribeAlarmNoticeResponse"
+    },
+    "DescribeAlarmNoticeCallbacks": {
+      "document": "This API is used to get all the callback URLs of an alarm notification template.",
+      "input": "DescribeAlarmNoticeCallbacksRequest",
+      "name": "Gets the list of all callback URLs under account",
+      "output": "DescribeAlarmNoticeCallbacksResponse"
+    },
+    "DescribeAlarmNotices": {
+      "document": "This API is used to query the list of notification templates.",
+      "input": "DescribeAlarmNoticesRequest",
+      "name": "Queries notification template list",
+      "output": "DescribeAlarmNoticesResponse"
+    },
+    "DescribeAlarmPolicies": {
+      "document": "This API is used to query the list of alarm policies.",
+      "input": "DescribeAlarmPoliciesRequest",
+      "name": "Queries alarm policy list",
+      "output": "DescribeAlarmPoliciesResponse"
+    },
+    "DescribeAlarmPolicy": {
+      "document": "This API is used to get the details of a single alarm policy.",
+      "input": "DescribeAlarmPolicyRequest",
+      "name": "Gets the details of single alarm policy",
+      "output": "DescribeAlarmPolicyResponse"
+    },
+    "DescribeAllNamespaces": {
+      "document": "This API is used to query all namespaces.",
+      "input": "DescribeAllNamespacesRequest",
+      "name": "Queries all namespaces",
+      "output": "DescribeAllNamespacesResponse"
     },
     "DescribeBaseMetrics": {
       "document": "This API is used to get the details of basic metrics.",
@@ -41,6 +119,12 @@
       "input": "DescribeBindingPolicyObjectListRequest",
       "name": "Gets the bound object list.",
       "output": "DescribeBindingPolicyObjectListResponse"
+    },
+    "DescribeMonitorTypes": {
+      "document": "This API is used to list all the monitor types supported by CM.",
+      "input": "DescribeMonitorTypesRequest",
+      "name": "Queries monitor types",
+      "output": "DescribeMonitorTypesResponse"
     },
     "DescribePolicyConditionList": {
       "document": "This API is used to get basic alarm policy conditions.",
@@ -72,6 +156,42 @@
       "name": "Pulls metric monitoring data",
       "output": "GetMonitorDataResponse"
     },
+    "ModifyAlarmNotice": {
+      "document": "This API is used to edit an alarm notification template.",
+      "input": "ModifyAlarmNoticeRequest",
+      "name": "Modifies notification template",
+      "output": "ModifyAlarmNoticeResponse"
+    },
+    "ModifyAlarmPolicyCondition": {
+      "document": "This API is used to edit the trigger condition of an alarm policy.",
+      "input": "ModifyAlarmPolicyConditionRequest",
+      "name": "Edits the trigger condition of alarm policy",
+      "output": "ModifyAlarmPolicyConditionResponse"
+    },
+    "ModifyAlarmPolicyInfo": {
+      "document": "This API is used to edit the basic information of a v2.0 alarm policy, including policy name and remarks.",
+      "input": "ModifyAlarmPolicyInfoRequest",
+      "name": "Edits the basic information of alarm policy",
+      "output": "ModifyAlarmPolicyInfoResponse"
+    },
+    "ModifyAlarmPolicyNotice": {
+      "document": "This API is used to modify the alarm notification template bound to an alarm policy.",
+      "input": "ModifyAlarmPolicyNoticeRequest",
+      "name": "Modifies alarm notification template bound to alarm policy",
+      "output": "ModifyAlarmPolicyNoticeResponse"
+    },
+    "ModifyAlarmPolicyStatus": {
+      "document": "This API is used to enable/disable an alarm policy.",
+      "input": "ModifyAlarmPolicyStatusRequest",
+      "name": "Enables/Disables alarm policy",
+      "output": "ModifyAlarmPolicyStatusResponse"
+    },
+    "ModifyAlarmPolicyTasks": {
+      "document": "This API is used to modify the task triggered by an alarm policy. The `TriggerTasks` field contains the list of triggered tasks. If an empty array is passed in for `TriggerTasks`, it indicates to unbind all the triggered tasks from this policy.",
+      "input": "ModifyAlarmPolicyTasksRequest",
+      "name": "Modifies task triggered by alarm policy",
+      "output": "ModifyAlarmPolicyTasksResponse"
+    },
     "ModifyAlarmReceivers": {
       "document": "This API is used to modify alarm recipients.",
       "input": "ModifyAlarmReceiversRequest",
@@ -96,6 +216,12 @@
       "name": "Sends a custom alarm notification.",
       "output": "SendCustomAlarmMsgResponse"
     },
+    "SetDefaultAlarmPolicy": {
+      "document": "This API is used to set an alarm policy as the default policy in the current policy type under the current project.\nAlarm policies in the same type under the project will be set as non-default.",
+      "input": "SetDefaultAlarmPolicyRequest",
+      "name": "Sets default alarm policy",
+      "output": "SetDefaultAlarmPolicyResponse"
+    },
     "UnBindingAllPolicyObject": {
       "document": "This API is used to delete all bound objects.",
       "input": "UnBindingAllPolicyObjectRequest",
@@ -115,6 +241,789 @@
     "serviceShortName": "monitor"
   },
   "objects": {
+    "AlarmEvent": {
+      "document": "Alarm event",
+      "members": [
+        {
+          "default": "",
+          "document": "Event name",
+          "member": "string",
+          "name": "EventName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event display name",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm policy type",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AlarmHistory": {
+      "document": "Alarm record data",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm record ID",
+          "member": "string",
+          "name": "AlarmId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monitor type",
+          "member": "string",
+          "name": "MonitorType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy type",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm object",
+          "member": "string",
+          "name": "AlarmObject",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm content",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp of the first occurrence",
+          "member": "int64",
+          "name": "FirstOccurTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp of the last occurrence",
+          "member": "int64",
+          "name": "LastOccurTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data)",
+          "member": "string",
+          "name": "AlarmStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC of alarm object for basic product alarm",
+          "member": "string",
+          "name": "VPC",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project name",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance group of alarm object",
+          "member": "InstanceGroups",
+          "name": "InstanceGroup",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient list",
+          "member": "int64",
+          "name": "ReceiverUids",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient group list",
+          "member": "int64",
+          "name": "ReceiverGroups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm channel list. Valid values: SMS (SMS), EMAIL (email), CALL (phone), WECHAT (WeChat)",
+          "member": "string",
+          "name": "NoticeWays",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compatible Alarm 1.0 policy group ID",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm type",
+          "member": "string",
+          "name": "AlarmType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event ID",
+          "member": "int64",
+          "name": "EventId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the policy exists. Valid values: 0 (no), 1 (yes)",
+          "member": "int64",
+          "name": "PolicyExists",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AlarmNotice": {
+      "document": "Alarm notification template details",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm notification template ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm notification template name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last modified time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last modified by\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UpdatedBy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NoticeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User notification list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "UserNotice",
+          "name": "UserNotices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Callback notification list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "URLNotice",
+          "name": "URLNotices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is the system default notification template. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsPreset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification language. Valid values: zh-CN (Chinese), en-US (English)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NoticeLanguage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the alarm policies bound to alarm notification template\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PolicyIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AlarmPolicy": {
+      "document": "Alarm policy details",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm policy ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm policy name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MonitorType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: 0 (disabled), 1 (enabled)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of instances bound to policy group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "UseSum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID. Valid values: -1 (no project), 0 (default project)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm policy type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Trigger condition template ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ConditionTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Metric trigger condition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyCondition",
+          "name": "Condition",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event trigger condition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyEventCondition",
+          "name": "EventCondition",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification rule ID list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NoticeIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification rule list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmNotice",
+          "name": "Notices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Triggered task list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyTriggerTask",
+          "name": "TriggerTasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Template policy group\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ConditionsTemp",
+          "name": "ConditionsTemp",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`Uin` of the last modifying user\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LastEditUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "InsertTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Namespace display name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NamespaceShowName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is the default policy. Valid values: 1 (yes), 0 (no)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsDefault",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the default policy can be set. Valid values: 1 (yes), 0 (no)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "CanSetDefault",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "InstanceGroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of instances in instance group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "InstanceSum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance group name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AlarmPolicyCondition": {
+      "document": "Metric trigger condition of alarm policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Metric trigger condition operator. Valid values: 0 (OR), 1 (AND)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsUnionRule",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm trigger condition list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AlarmPolicyEventCondition": {
+      "document": "Event trigger condition of alarm policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm trigger condition list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AlarmPolicyFilter": {
+      "document": "Filter condition of alarm policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "JSON string generated by serializing the `AlarmPolicyDimension` two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationship\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Dimensions",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AlarmPolicyRule": {
+      "document": "Trigger condition of alarm policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Metric name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "MetricName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Statistical period in seconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operator\nintelligent = intelligent detection without threshold\neq = equal to\nge = greater than or equal to\ngt = greater than\nle = less than or equal to\nlt = less than\nne = not equal to\nday_increase = daily increase\nday_decrease = daily decrease\nday_wave = daily fluctuation\nweek_increase = weekly increase\nweek_decrease = weekly decrease\nweek_wave = weekly fluctuation\ncycle_increase = periodical increase\ncycle_decrease = periodical decrease\ncycle_wave = periodical fluctuation\nre = regex match\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Threshold\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of cycles for continuous notification. Valid values: 1 (1 cycle), 2 (2 cycles), and so on.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ContinuePeriod",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours),  43200 (alarm once every 12 hours), 86400 (alarm once every day)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "NoticeFrequency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsPowerNotice",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Filter condition for one single trigger rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Metric display name, which is used in the output parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unit, which is used in the output parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Unit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic threshold)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RuleType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AlarmPolicyTriggerTask": {
+      "document": "Task triggered by alarm policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Triggered task type. Valid value: AS (auto scaling)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration information in JSON format, such as {\"Key1\":\"Value1\",\"Key2\":\"Value2\"}\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskConfig",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "BindingPolicyObjectDimension": {
       "document": "Dimensions of instances bound to a policy",
       "members": [
@@ -198,6 +1107,310 @@
     "BindingPolicyObjectResponse": {
       "document": "BindingPolicyObject response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CommonNamespace": {
+      "document": "Unified namespace information",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace ID",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product name",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration information",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of supported regions",
+          "member": "string",
+          "name": "AvailableRegions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sort ID",
+          "member": "int64",
+          "name": "SortId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID in Dashboard",
+          "member": "string",
+          "name": "DashboardId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConditionsTemp": {
+      "document": "Alarm condition template",
+      "members": [
+        {
+          "default": "",
+          "document": "Template name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Metric trigger condition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyCondition",
+          "name": "Condition",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event trigger condition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "AlarmPolicyEventCondition",
+          "name": "EventCondition",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateAlarmNoticeRequest": {
+      "document": "CreateAlarmNotice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notification template name, which can contain up to 60 characters",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)",
+          "member": "string",
+          "name": "NoticeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notification language. Valid values: zh-CN (Chinese), en-US (English)",
+          "member": "string",
+          "name": "NoticeLanguage",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User notifications (up to 5)",
+          "member": "UserNotice",
+          "name": "UserNotices",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Callback notifications (up to 3)",
+          "member": "URLNotice",
+          "name": "URLNotices",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAlarmNoticeResponse": {
+      "document": "CreateAlarmNotice response structure.",
+      "members": [
+        {
+          "document": "Alarm notification template ID",
+          "member": "string",
+          "name": "NoticeId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAlarmPolicyRequest": {
+      "document": "CreateAlarmPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Value fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy name, which can contain up to 20 characters",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)",
+          "member": "string",
+          "name": "MonitorType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks with up to 100 letters, digits, underscores, and hyphens",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable. Valid values: 0 (no), 1 (yes). Default value: 1. This parameter can be left empty",
+          "member": "int64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID. Valid values: -1 (no project), 0 (default project). Default value: -1. This parameter can be left empty",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Metric trigger condition",
+          "member": "AlarmPolicyCondition",
+          "name": "Condition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Event trigger condition",
+          "member": "AlarmPolicyEventCondition",
+          "name": "EventCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "List of notification rule IDs, which is obtained through the `DescribeAlarmNotices` API",
+          "member": "string",
+          "name": "NoticeIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Triggered task list",
+          "member": "AlarmPolicyTriggerTask",
+          "name": "TriggerTasks",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAlarmPolicyResponse": {
+      "document": "CreateAlarmPolicy response structure.",
+      "members": [
+        {
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)",
+          "member": "string",
+          "name": "OriginId",
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -481,6 +1694,74 @@
       ],
       "usage": "out"
     },
+    "DeleteAlarmNoticesRequest": {
+      "document": "DeleteAlarmNotices request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification template ID list",
+          "member": "string",
+          "name": "NoticeIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAlarmNoticesResponse": {
+      "document": "DeleteAlarmNotices response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAlarmPolicyRequest": {
+      "document": "DeleteAlarmPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name, which is fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID list",
+          "member": "string",
+          "name": "PolicyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAlarmPolicyResponse": {
+      "document": "DeleteAlarmPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeletePolicyGroupRequest": {
       "document": "DeletePolicyGroup request structure.",
       "members": [
@@ -721,6 +2002,729 @@
       ],
       "type": "object"
     },
+    "DescribeAlarmEventsRequest": {
+      "document": "DescribeAlarmEvents request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name, which is fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmEventsResponse": {
+      "document": "DescribeAlarmEvents response structure.",
+      "members": [
+        {
+          "document": "Alarm event list",
+          "member": "AlarmEvent",
+          "name": "Events",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmHistoriesRequest": {
+      "document": "DescribeAlarmHistories request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Value fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number starting from 1. Default value: 1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: 1–100. Default value: 20",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time, which is the timestamp exactly one day ago",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time, which is the current timestamp by default",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "member": "string",
+          "name": "MonitorTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by alarm object. Fuzzy search with string is supported",
+          "member": "string",
+          "name": "AlarmObject",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default",
+          "member": "string",
+          "name": "AlarmStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by project ID. Valid values: -1 (no project), 0 (default project)",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance group ID",
+          "member": "int64",
+          "name": "InstanceGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by policy type",
+          "member": "MonitorTypeNamespace",
+          "name": "Namespaces",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by metric name",
+          "member": "string",
+          "name": "MetricNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Fuzzy search by policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fuzzy search by alarm content",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search by recipient",
+          "member": "int64",
+          "name": "ReceiverUids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Search by recipient group",
+          "member": "int64",
+          "name": "ReceiverGroups",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Search by alarm policy ID list",
+          "member": "string",
+          "name": "PolicyIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmHistoriesResponse": {
+      "document": "DescribeAlarmHistories response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm record list",
+          "member": "AlarmHistory",
+          "name": "Histories",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmMetricsRequest": {
+      "document": "DescribeAlarmMetrics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Value fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Monitor type filter. Valid values: MT_QCE (Tencent Cloud service monitoring)",
+          "member": "string",
+          "name": "MonitorType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmMetricsResponse": {
+      "document": "DescribeAlarmMetrics response structure.",
+      "members": [
+        {
+          "document": "Alarm metric list",
+          "member": "Metric",
+          "name": "Metrics",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNoticeCallbacksRequest": {
+      "document": "DescribeAlarmNoticeCallbacks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNoticeCallbacksResponse": {
+      "document": "DescribeAlarmNoticeCallbacks response structure.",
+      "members": [
+        {
+          "document": "Alarm callback notification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "URLNotice",
+          "name": "URLNotices",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNoticeRequest": {
+      "document": "DescribeAlarmNotice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification template ID",
+          "member": "string",
+          "name": "NoticeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNoticeResponse": {
+      "document": "DescribeAlarmNotice response structure.",
+      "members": [
+        {
+          "document": "Alarm notification template details",
+          "member": "AlarmNotice",
+          "name": "Notice",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNoticesRequest": {
+      "document": "DescribeAlarmNotices request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number. Minimum value: 1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: 1–200",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sort by update time. Valid values: ASC (ascending), DESC (descending)",
+          "member": "string",
+          "name": "Order",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Root account `uid`, which is used to create preset notifications",
+          "member": "int64",
+          "name": "OwnerUid",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification template name, which is used for fuzzy search",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by recipient. The type of notified users should be selected for the alarm notification template. Valid values: USER (user), GROUP (user group). If this parameter is left empty, no filter by recipient will be performed",
+          "member": "string",
+          "name": "ReceiverType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient object list",
+          "member": "int64",
+          "name": "UserIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Recipient group list",
+          "member": "int64",
+          "name": "GroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNoticesResponse": {
+      "document": "DescribeAlarmNotices response structure.",
+      "members": [
+        {
+          "document": "Total number of alarm notification templates",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm notification template list",
+          "member": "AlarmNotice",
+          "name": "Notices",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmPoliciesRequest": {
+      "document": "DescribeAlarmPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Value fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number starting from 1. Default value: 1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: 1–100. Default value: 20",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Fuzzy search by policy name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "member": "string",
+          "name": "MonitorTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by namespace",
+          "member": "string",
+          "name": "Namespaces",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Alarm object list",
+          "member": "string",
+          "name": "Dimensions",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search by recipient",
+          "member": "int64",
+          "name": "ReceiverUids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Search by recipient group",
+          "member": "int64",
+          "name": "ReceiverGroups",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed",
+          "member": "string",
+          "name": "PolicyType",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sort by field",
+          "member": "string",
+          "name": "Field",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort order. Valid values: ASC (ascending), DESC (descending)",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID array",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification ID list",
+          "member": "string",
+          "name": "NoticeIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed",
+          "member": "string",
+          "name": "RuleTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: 1 (enabled), 0 (disabled)",
+          "member": "int64",
+          "name": "Enable",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmPoliciesResponse": {
+      "document": "DescribeAlarmPolicies response structure.",
+      "members": [
+        {
+          "document": "Total number of policies",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Policy array",
+          "member": "AlarmPolicy",
+          "name": "Policies",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmPolicyRequest": {
+      "document": "DescribeAlarmPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Value fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmPolicyResponse": {
+      "document": "DescribeAlarmPolicy response structure.",
+      "members": [
+        {
+          "document": "Policy details",
+          "member": "AlarmPolicy",
+          "name": "Policy",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllNamespacesRequest": {
+      "document": "DescribeAllNamespaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter by use case. Valid values: ST_DASHBOARD (Dashboard type), ST_ALARM (alarm type)",
+          "member": "string",
+          "name": "SceneType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Value fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "member": "string",
+          "name": "MonitorTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by namespace ID. If this parameter is left empty, all will be queried",
+          "member": "string",
+          "name": "Ids",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllNamespacesResponse": {
+      "document": "DescribeAllNamespaces response structure.",
+      "members": [
+        {
+          "document": "Alarm policy type of Tencent Cloud service (disused)",
+          "member": "CommonNamespace",
+          "name": "QceNamespaces",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Other alarm policy type (disused)",
+          "member": "CommonNamespace",
+          "name": "CustomNamespaces",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm policy type of Tencent Cloud service",
+          "member": "CommonNamespace",
+          "name": "QceNamespacesNew",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Other alarm policy type (not supported currently)",
+          "member": "CommonNamespace",
+          "name": "CustomNamespacesNew",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBaseMetricsRequest": {
       "document": "DescribeBaseMetrics request structure.",
       "members": [
@@ -794,7 +2798,7 @@
         },
         {
           "default": "",
-          "document": "Alarm status ID.\nNote: This field may return null, indicating that no valid value was found.",
+          "document": "Alarm status ID. Valid values: 0 (not resolved), 1 (resolved), 2/3/5 (insufficient data), 4 (expired)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -803,7 +2807,7 @@
         },
         {
           "default": "",
-          "document": "Alarm status.\nNote: This field may return null, indicating that no valid value was found.",
+          "document": "Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_DATA (insufficient data), NO_CONF (expired)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "AlarmStatus",
           "required": true,
@@ -1332,6 +3336,39 @@
           "name": "InstanceGroup",
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMonitorTypesRequest": {
+      "document": "DescribeMonitorTypes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name, which is fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMonitorTypesResponse": {
+      "document": "DescribeMonitorTypes response structure.",
+      "members": [
+        {
+          "document": "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)",
+          "member": "string",
+          "name": "MonitorTypes",
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3320,7 +5357,7 @@
       "members": [
         {
           "default": "",
-          "document": "Namespace. For detailed namespace descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation",
+          "document": "Namespace, such as QCE/CVM. For more information on the namespaces of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1)",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -3328,7 +5365,7 @@
         },
         {
           "default": "",
-          "document": "Metric name. For detailed metric descriptions of each Tencent Cloud service, see the corresponding [Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1) documentation",
+          "document": "Metric name, such as `CPUUsage`. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is the `MetricName`",
           "member": "string",
           "name": "MetricName",
           "required": true,
@@ -3336,7 +5373,7 @@
         },
         {
           "default": "",
-          "document": "Combination of instance object dimensions",
+          "document": "Dimension combination of instance object in the format of `key-value` pair, such as [{\"Name\":\"InstanceId\",\"Value\":\"ins-j0hk02zo\"}]. For more information on the dimensions of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The value in the dimension column is the `key` in the dimension combination, and the value corresponding to the `key` is the `value` in the combination",
           "member": "Instance",
           "name": "Instances",
           "required": true,
@@ -3344,7 +5381,7 @@
         },
         {
           "default": "",
-          "document": "Monitoring statistical period. The default value is 300, and the unit is s",
+          "document": "Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods",
           "member": "uint64",
           "name": "Period",
           "required": false,
@@ -3360,7 +5397,7 @@
         },
         {
           "default": "",
-          "document": "End time. Uses the current time by default and cannot be earlier than StartTime",
+          "document": "End time, which is the current time by default, such as 2018-09-22T20:51:23+08:00. `EndTime` cannot be earlier than `StartTime`",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": false,
@@ -3451,6 +5488,141 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceGroups": {
+      "document": "Instance group of alarm object",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance group ID",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance group name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Metric": {
+      "document": "Metric, which can be used to set alarms and query data",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm policy type",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric name",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric display name",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum value",
+          "member": "float",
+          "name": "Min",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum value",
+          "member": "float",
+          "name": "Max",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dimension list",
+          "member": "string",
+          "name": "Dimensions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unit",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "MetricConfig",
+          "name": "MetricConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MetricConfig": {
+      "document": "Metric configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Allowed operator",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allowed data cycle in seconds",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allowed number of continuous cycles",
+          "member": "int64",
+          "name": "ContinuePeriod",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3580,6 +5752,306 @@
         }
       ],
       "usage": "out"
+    },
+    "ModifyAlarmNoticeRequest": {
+      "document": "ModifyAlarmNotice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification rule name, which can contain up to 60 characters",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)",
+          "member": "string",
+          "name": "NoticeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Notification language. Valid values: zh-CN (Chinese), en-US (English)",
+          "member": "string",
+          "name": "NoticeLanguage",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification template ID",
+          "member": "string",
+          "name": "NoticeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User notifications (up to 5)",
+          "member": "UserNotice",
+          "name": "UserNotices",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Callback notifications (up to 3)",
+          "member": "URLNotice",
+          "name": "URLNotices",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmNoticeResponse": {
+      "document": "ModifyAlarmNotice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyConditionRequest": {
+      "document": "ModifyAlarmPolicyCondition request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name, which is fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metric trigger condition",
+          "member": "AlarmPolicyCondition",
+          "name": "Condition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Event trigger condition",
+          "member": "AlarmPolicyEventCondition",
+          "name": "EventCondition",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyConditionResponse": {
+      "document": "ModifyAlarmPolicyCondition response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyInfoRequest": {
+      "document": "ModifyAlarmPolicyInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Field to be modified. Valid values: NAME (policy name), REMARK (policy remarks)",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Value after modification",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyInfoResponse": {
+      "document": "ModifyAlarmPolicyInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyNoticeRequest": {
+      "document": "ModifyAlarmPolicyNotice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm notification template ID list",
+          "member": "string",
+          "name": "NoticeIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyNoticeResponse": {
+      "document": "ModifyAlarmPolicyNotice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyStatusRequest": {
+      "document": "ModifyAlarmPolicyStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name, which is fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: 0 (disabled), 1 (enabled)",
+          "member": "int64",
+          "name": "Enable",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyStatusResponse": {
+      "document": "ModifyAlarmPolicyStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyTasksRequest": {
+      "document": "ModifyAlarmPolicyTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name. Enter \"monitor\" here",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tasks triggered by alarm policy. If this parameter is left empty, it indicates to unbind all tasks",
+          "member": "AlarmPolicyTriggerTask",
+          "name": "TriggerTasks",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmPolicyTasksResponse": {
+      "document": "ModifyAlarmPolicyTasks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyAlarmReceiversRequest": {
       "document": "ModifyAlarmReceivers request structure.",
@@ -3831,6 +6303,30 @@
         }
       ],
       "type": "object"
+    },
+    "MonitorTypeNamespace": {
+      "document": "Policy type",
+      "members": [
+        {
+          "default": "",
+          "document": "Monitor type",
+          "member": "string",
+          "name": "MonitorType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy type value",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "PeriodsSt": {
       "document": "Statistical method during the period",
@@ -4089,6 +6585,73 @@
       ],
       "type": "object"
     },
+    "SetDefaultAlarmPolicyRequest": {
+      "document": "SetDefaultAlarmPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module name, which is fixed at \"monitor\"",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetDefaultAlarmPolicyResponse": {
+      "document": "SetDefaultAlarmPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "URLNotice": {
+      "document": "Cloud Monitor alarm notification template - callback notification details",
+      "members": [
+        {
+          "default": "",
+          "document": "Callback URL, which can contain up to 256 characters\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "URL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether verification is passed. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "IsValid",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Verification code\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ValidationCode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "UnBindingAllPolicyObjectRequest": {
       "document": "UnBindingAllPolicyObject request structure.",
       "members": [
@@ -4144,7 +6707,7 @@
         },
         {
           "default": "",
-          "document": "List of unique IDs of object instances to be deleted.",
+          "document": "List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API",
           "member": "string",
           "name": "UniqueId",
           "required": true,
@@ -4172,6 +6735,111 @@
         }
       ],
       "type": "object"
+    },
+    "UserNotice": {
+      "document": "Cloud Monitor alarm notification template - user notification details",
+      "members": [
+        {
+          "default": "",
+          "document": "Recipient type. Valid values: USER (user), GROUP (user group)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ReceiverType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification channel list. Valid values: EMAIL (email), SMS (SMS), CALL (phone), WECHAT (WeChat)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NoticeWay",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User `uid` list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "UserIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User group ID list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "GroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Phone polling list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PhoneOrder",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of phone pollings. Value range: 1–5\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PhoneCircleTimes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Call interval in seconds within one polling. Value range: 60–900\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PhoneInnerInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Polling interval in seconds. Value range: 60–900\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PhoneCircleInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether receipt notification is required. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "NeedPhoneArriveNotice",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
