@@ -589,7 +589,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Offline cache",
           "member": "OfflineCache",
           "name": "OfflineCache",
           "required": false,
@@ -4276,7 +4276,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Offline cache\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "OfflineCache",
           "name": "OfflineCache",
           "required": true,
@@ -5982,11 +5982,11 @@
       "usage": "both"
     },
     "OfflineCache": {
-      "document": "",
+      "document": "Whether to enable offline cache",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable offline cache. Valid values: `on` and `off`.",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -6091,7 +6091,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Path-based origin-pull configurations\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "PathBasedOriginRule",
           "name": "PathBasedOrigin",
           "required": false,
@@ -6441,11 +6441,11 @@
       "usage": "both"
     },
     "PathBasedOriginRule": {
-      "document": "",
+      "document": "Path-based origin-pull rules",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Rule types:\n`file`: effective for files with specified suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`index`: effective for specified homepages.",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -6454,7 +6454,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Content for each `RuleType`:\nFor `file`, enter a suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter a path, e.g., `/xxx/test/`.\nFor `path`, enter an absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.",
           "member": "string",
           "name": "RulePaths",
           "required": true,
@@ -6463,7 +6463,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Origin server list. Domain names and IPv4 addresses are supported.",
           "member": "string",
           "name": "Origin",
           "required": true,
@@ -8646,7 +8646,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Offline cache",
           "member": "OfflineCache",
           "name": "OfflineCache",
           "required": false,

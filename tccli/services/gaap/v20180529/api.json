@@ -307,7 +307,7 @@
       "output": "DescribeRealServerStatisticsResponse"
     },
     "DescribeRealServers": {
-      "document": "This API (DescribeRealServers) is used to query origin server information. It can query all origin server information by project names, and supports fuzzy query by specified IPs or domain names.",
+      "document": "This API is used to query origin server information. It can query all origin servers under the specified project name, and supports fuzzy query by specified IPs or domain names.",
       "input": "DescribeRealServersRequest",
       "name": "Queries origin server information.",
       "output": "DescribeRealServersResponse"
@@ -391,7 +391,7 @@
       "output": "ModifyCertificateResponse"
     },
     "ModifyCertificateAttributes": {
-      "document": "This API (ModifyCertificateAttributes) is used to modify certificates, including identification name and certificate content.",
+      "document": "This API is used to modify certificate name and content.",
       "input": "ModifyCertificateAttributesRequest",
       "name": "Modifies certificate attributes.",
       "output": "ModifyCertificateAttributesResponse"
@@ -2178,6 +2178,14 @@
           "name": "RealServerPorts",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.",
+          "member": "int64",
+          "name": "ClientIPMethod",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3685,7 +3693,7 @@
         },
         {
           "default": "",
-          "document": "Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets); PacketLoss (packet loss rate); Latency (latency).",
+          "document": "Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).",
           "member": "string",
           "name": "MetricNames",
           "required": true,
@@ -4040,6 +4048,22 @@
           "name": "RuleId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of values to be returned. The default value is 20. Maximum is 1000.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4831,6 +4855,15 @@
           "name": "PolyRealServerCertificateAliasInfo",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain name status.\n0: running;\n1: changing;\n2: deleting.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DomainStatus",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -6408,6 +6441,33 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security policy ID. This field exists if security policies are set.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection group version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ClientIPMethod",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6753,11 +6813,20 @@
         },
         {
           "default": "",
-          "document": "Connection type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Connection type. 104: SILVER connection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "ProxyType",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ClientIPMethod",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -7043,6 +7112,33 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin server failure check frequency\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "FailedCountInter",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin server health check threshold. The service will be blocked once the threshold is exceeded.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "FailedThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time of a request is blocked after the origin server health check threshold is exceeded.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "BlockInter",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -7531,6 +7627,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ClientIPMethod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
