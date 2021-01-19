@@ -1,0 +1,1189 @@
+{
+  "actions": {
+    "CreateEmailAddress": {
+      "document": "After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as \"Tencent Cloud\") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.",
+      "input": "CreateEmailAddressRequest",
+      "name": "Creates a sender address",
+      "output": "CreateEmailAddressResponse"
+    },
+    "CreateEmailIdentity": {
+      "document": "This API is used to create a sender domain. Before you can send an email using Tencent Cloud SES, you must create a sender domain as your identity. It can be the domain of your website or mobile app. You must verify the domain to prove that you own it and authorize Tencent Cloud SES to use it to send emails.",
+      "input": "CreateEmailIdentityRequest",
+      "name": "Creates a sender domain",
+      "output": "CreateEmailIdentityResponse"
+    },
+    "CreateEmailTemplate": {
+      "document": "This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.\nNote: only an approved template can be used to send emails.",
+      "input": "CreateEmailTemplateRequest",
+      "name": "Creates an email template",
+      "output": "CreateEmailTemplateResponse"
+    },
+    "DeleteBlackList": {
+      "document": "This API is used to unblocklist email addresses. If you confirm that a blocklisted recipient address is valid and active, you can remove it from Tencent Cloud’s address blocklist database.",
+      "input": "DeleteBlackListRequest",
+      "name": "Unblocklists recipient addresses",
+      "output": "DeleteBlackListResponse"
+    },
+    "DeleteEmailAddress": {
+      "document": "This API is used to delete a sender address.",
+      "input": "DeleteEmailAddressRequest",
+      "name": "Deletes a sender address",
+      "output": "DeleteEmailAddressResponse"
+    },
+    "DeleteEmailIdentity": {
+      "document": "This API is used to delete a sender domain. After deleted, the sender domain can no longer be used to send emails.",
+      "input": "DeleteEmailIdentityRequest",
+      "name": "Deletes a sender domain",
+      "output": "DeleteEmailIdentityResponse"
+    },
+    "DeleteEmailTemplate": {
+      "document": "This API is used to delete an email template.",
+      "input": "DeleteEmailTemplateRequest",
+      "name": "Deletes an email template",
+      "output": "DeleteEmailTemplateResponse"
+    },
+    "GetEmailIdentity": {
+      "document": "This API is used to get the configuration details of a sender domain.",
+      "input": "GetEmailIdentityRequest",
+      "name": "Gets the configuration details of a sender domain",
+      "output": "GetEmailIdentityResponse"
+    },
+    "GetEmailTemplate": {
+      "document": "This API is used to get the details of a template.",
+      "input": "GetEmailTemplateRequest",
+      "name": "Gets the details of a template",
+      "output": "GetEmailTemplateResponse"
+    },
+    "GetStatisticsReport": {
+      "document": "This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on. The maximum time span is 14 days.",
+      "input": "GetStatisticsReportRequest",
+      "name": "Gets email sending statistics",
+      "output": "GetStatisticsReportResponse"
+    },
+    "ListBlackEmailAddress": {
+      "document": "The API is used to get blocklisted addresses. In the case of a hard bounce, Tencent Cloud will blocklist the recipient address and do not allow any user to send emails to this address. If you confirm that this is a misjudgment, you can remove it from the blocklist.",
+      "input": "ListBlackEmailAddressRequest",
+      "name": "Gets blocklisted email addresses",
+      "output": "ListBlackEmailAddressResponse"
+    },
+    "ListEmailAddress": {
+      "document": "This API is used to get the list of sender addresses.",
+      "input": "ListEmailAddressRequest",
+      "name": "Gets the list of sender addresses",
+      "output": "ListEmailAddressResponse"
+    },
+    "ListEmailIdentities": {
+      "document": "This API is used to get the list of sender domains, including verified and unverified domains.",
+      "input": "ListEmailIdentitiesRequest",
+      "name": "Gets the list of sender domains",
+      "output": "ListEmailIdentitiesResponse"
+    },
+    "ListEmailTemplates": {
+      "document": "This API is used to get the list of email templates.",
+      "input": "ListEmailTemplatesRequest",
+      "name": "Gets the list of email templates",
+      "output": "ListEmailTemplatesResponse"
+    },
+    "SendEmail": {
+      "document": "This API is used to send a TEXT or HTML email. By default, you can only send emails using a template. To send custom content, please contact your sales rep to enable this feature.",
+      "input": "SendEmailRequest",
+      "name": "Sends an email",
+      "output": "SendEmailResponse"
+    },
+    "UpdateEmailIdentity": {
+      "document": "This API is used to verify whether your DNS configuration is correct.",
+      "input": "UpdateEmailIdentityRequest",
+      "name": "Verifies DNS configuration",
+      "output": "UpdateEmailIdentityResponse"
+    },
+    "UpdateEmailTemplate": {
+      "document": "This API is used to update an email template. An updated template must be approved again before it can be used.",
+      "input": "UpdateEmailTemplateRequest",
+      "name": "Updates an email template",
+      "output": "UpdateEmailTemplateResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-10-02",
+    "serviceNameCN": "邮件推送",
+    "serviceShortName": "ses"
+  },
+  "objects": {
+    "Attachment": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BlackEmailAddress": {
+      "document": "Email address blocklist structure, including the blocklisted address and the time when it is blocklisted.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time when the email address is blocklisted.",
+          "member": "datetime",
+          "name": "BounceTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Blocklisted email address.",
+          "member": "string",
+          "name": "EmailAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateEmailAddressRequest": {
+      "document": "CreateEmailAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Your sender address. You can create up to 10 sender addresses for each domain.",
+          "member": "string",
+          "name": "EmailAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sender name.",
+          "member": "string",
+          "name": "EmailSenderName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEmailAddressResponse": {
+      "document": "CreateEmailAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEmailIdentityRequest": {
+      "document": "CreateEmailIdentity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.",
+          "member": "string",
+          "name": "EmailIdentity",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEmailIdentityResponse": {
+      "document": "CreateEmailIdentity response structure.",
+      "members": [
+        {
+          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "member": "string",
+          "name": "IdentityType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Verification passed or not.",
+          "member": "bool",
+          "name": "VerifiedForSendingStatus",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNS information that needs to be configured.",
+          "member": "DNSAttributes",
+          "name": "Attributes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEmailTemplateRequest": {
+      "document": "CreateEmailTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template name.",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Template content.",
+          "member": "TemplateContent",
+          "name": "TemplateContent",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEmailTemplateResponse": {
+      "document": "CreateEmailTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DNSAttributes": {
+      "document": "Describes the domain name, record type, expected value, and currently configured value of DNS records.",
+      "members": [
+        {
+          "default": "",
+          "document": "Record types: CNAME, A, TXT, and MX.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name.",
+          "member": "string",
+          "name": "SendDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expected value.",
+          "member": "string",
+          "name": "ExpectedValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Currently configured value.",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Approved or not. The default value is `false`.",
+          "member": "bool",
+          "name": "Status",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteBlackListRequest": {
+      "document": "DeleteBlackList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of email addresses to be unblocklisted. Enter at least one address.",
+          "member": "string",
+          "name": "EmailAddressList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBlackListResponse": {
+      "document": "DeleteBlackList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEmailAddressRequest": {
+      "document": "DeleteEmailAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender address.",
+          "member": "string",
+          "name": "EmailAddress",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEmailAddressResponse": {
+      "document": "DeleteEmailAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEmailIdentityRequest": {
+      "document": "DeleteEmailIdentity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender domain.",
+          "member": "string",
+          "name": "EmailIdentity",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEmailIdentityResponse": {
+      "document": "DeleteEmailIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEmailTemplateRequest": {
+      "document": "DeleteEmailTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Email template to be deleted.",
+          "member": "uint64",
+          "name": "TemplateID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEmailTemplateResponse": {
+      "document": "DeleteEmailTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EmailIdentity": {
+      "document": "Sender domain verification list structure",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender domain.",
+          "member": "string",
+          "name": "IdentityName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "member": "string",
+          "name": "IdentityType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Verification passed or not.",
+          "member": "bool",
+          "name": "SendingEnabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EmailSender": {
+      "document": "Describes sender information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender address.",
+          "member": "string",
+          "name": "EmailAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sender name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EmailSenderName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CreatedTimestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GetEmailIdentityRequest": {
+      "document": "GetEmailIdentity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender domain.",
+          "member": "string",
+          "name": "EmailIdentity",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetEmailIdentityResponse": {
+      "document": "GetEmailIdentity response structure.",
+      "members": [
+        {
+          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "member": "string",
+          "name": "IdentityType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Verification passed or not.",
+          "member": "bool",
+          "name": "VerifiedForSendingStatus",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNS configuration details.",
+          "member": "DNSAttributes",
+          "name": "Attributes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetEmailTemplateRequest": {
+      "document": "GetEmailTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template ID.",
+          "member": "uint64",
+          "name": "TemplateID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetEmailTemplateResponse": {
+      "document": "GetEmailTemplate response structure.",
+      "members": [
+        {
+          "document": "Template content.",
+          "member": "TemplateContent",
+          "name": "TemplateContent",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetStatisticsReportRequest": {
+      "document": "GetStatisticsReport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start date.",
+          "member": "date",
+          "name": "StartDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End date.",
+          "member": "date",
+          "name": "EndDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sender domain.",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient address type, for example, gmail.com.",
+          "member": "string",
+          "name": "ReceivingMailboxType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetStatisticsReportResponse": {
+      "document": "GetStatisticsReport response structure.",
+      "members": [
+        {
+          "document": "Daily email sending statistics.",
+          "member": "Volume",
+          "name": "DailyVolumes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Overall email sending statistics.",
+          "member": "Volume",
+          "name": "OverallVolume",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListBlackEmailAddressRequest": {
+      "document": "ListBlackEmailAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start date.",
+          "member": "date",
+          "name": "StartDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End date.",
+          "member": "date",
+          "name": "EndDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Common parameter. It must be used with `Offset`.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Common parameter. It must be used with `Limit`.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "You can specify an email address to query.",
+          "member": "string",
+          "name": "EmailAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "You can specify a task ID to query.",
+          "member": "string",
+          "name": "TaskID",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListBlackEmailAddressResponse": {
+      "document": "ListBlackEmailAddress response structure.",
+      "members": [
+        {
+          "document": "List of blocklisted addresses.",
+          "member": "BlackEmailAddress",
+          "name": "BlackList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of blocklisted addresses.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEmailAddressRequest": {
+      "document": "ListEmailAddress request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListEmailAddressResponse": {
+      "document": "ListEmailAddress response structure.",
+      "members": [
+        {
+          "document": "Details of sender addresses.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EmailSender",
+          "name": "EmailSenders",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEmailIdentitiesRequest": {
+      "document": "ListEmailIdentities request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListEmailIdentitiesResponse": {
+      "document": "ListEmailIdentities response structure.",
+      "members": [
+        {
+          "document": "List of sender domains.",
+          "member": "EmailIdentity",
+          "name": "EmailIdentities",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEmailTemplatesRequest": {
+      "document": "ListEmailTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of templates to get. This parameter is used for pagination.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Template offset to get. This parameter is used for pagination.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEmailTemplatesResponse": {
+      "document": "ListEmailTemplates response structure.",
+      "members": [
+        {
+          "document": "List of email templates.",
+          "member": "TemplatesMetadata",
+          "name": "TemplatesMetadata",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of templates.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendEmailRequest": {
+      "document": "SendEmail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:  \nsender &lt;email address&gt;. For example: \nTencent Cloud team &lt;noreply@mail.qcloud.com&gt;",
+          "member": "string",
+          "name": "FromEmailAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient address.",
+          "member": "string",
+          "name": "Destination",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Email subject.",
+          "member": "string",
+          "name": "Subject",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.",
+          "member": "string",
+          "name": "ReplyToAddresses",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Template when sending emails using a template.",
+          "member": "Template",
+          "name": "Template",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Email content when sending emails by calling the API.",
+          "member": "Simple",
+          "name": "Simple",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "Attachment",
+          "name": "Attachments",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SendEmailResponse": {
+      "document": "SendEmail response structure.",
+      "members": [
+        {
+          "document": "Unique ID generated when receiving the message.",
+          "member": "string",
+          "name": "MessageId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Simple": {
+      "document": "Email content, which can be plain text (TEXT), pure code (HTML), or a combination of TEXT and HTML (recommended).",
+      "members": [
+        {
+          "default": "",
+          "document": "HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.",
+          "member": "string",
+          "name": "Html",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.",
+          "member": "string",
+          "name": "Text",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Template": {
+      "document": "Template information, including template ID, template variable parameters, etc.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template ID. If you don’t have any template, please create one.",
+          "member": "uint64",
+          "name": "TemplateID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.",
+          "member": "string",
+          "name": "TemplateData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TemplateContent": {
+      "document": "Template content, which must include at least one of TEXT and HTML. A combination of TEXT and HTML is recommended.",
+      "members": [
+        {
+          "default": "",
+          "document": "HTML code after base64 encoding.",
+          "member": "string",
+          "name": "Html",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Text content after base64 encoding.",
+          "member": "string",
+          "name": "Text",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TemplatesMetadata": {
+      "document": "Template list structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Creation time.",
+          "member": "uint64",
+          "name": "CreatedTimestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template name.",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.",
+          "member": "int64",
+          "name": "TemplateStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template ID.",
+          "member": "uint64",
+          "name": "TemplateID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Review reply",
+          "member": "string",
+          "name": "ReviewReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateEmailIdentityRequest": {
+      "document": "UpdateEmailIdentity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain to be verified.",
+          "member": "string",
+          "name": "EmailIdentity",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEmailIdentityResponse": {
+      "document": "UpdateEmailIdentity response structure.",
+      "members": [
+        {
+          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "member": "string",
+          "name": "IdentityType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Verification passed or not.",
+          "member": "bool",
+          "name": "VerifiedForSendingStatus",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNS information that needs to be configured.",
+          "member": "DNSAttributes",
+          "name": "Attributes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEmailTemplateRequest": {
+      "document": "UpdateEmailTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template content.",
+          "member": "TemplateContent",
+          "name": "TemplateContent",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Template ID.",
+          "member": "uint64",
+          "name": "TemplateID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Template name.",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEmailTemplateResponse": {
+      "document": "UpdateEmailTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Volume": {
+      "document": "Statistics structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Date\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "date",
+          "name": "SendDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of email requests.",
+          "member": "uint64",
+          "name": "RequestCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of email requests accepted by Tencent Cloud.",
+          "member": "uint64",
+          "name": "AcceptedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of delivered emails.",
+          "member": "uint64",
+          "name": "DeliveredCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of users (deduplicated) who opened emails.",
+          "member": "uint64",
+          "name": "OpenedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of recipients who clicked on links in emails.",
+          "member": "uint64",
+          "name": "ClickedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of bounced emails.",
+          "member": "uint64",
+          "name": "BounceCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of users who canceled subscriptions.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "UnsubscribeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

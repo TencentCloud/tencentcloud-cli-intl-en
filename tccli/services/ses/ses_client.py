@@ -9,11 +9,11 @@ from tccli.exceptions import ConfigurationError
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.iai.v20200303 import iai_client as iai_client_v20200303
-from tencentcloud.iai.v20200303 import models as models_v20200303
+from tencentcloud.ses.v20201002 import ses_client as ses_client_v20201002
+from tencentcloud.ses.v20201002 import models as models_v20201002
 
 
-def doDeletePersonFromGroup(args, parsed_globals):
+def doListEmailAddress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -24,12 +24,12 @@ def doDeletePersonFromGroup(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePersonFromGroupRequest()
+    model = models.ListEmailAddressRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeletePersonFromGroup(model)
+    rsp = client.ListEmailAddress(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -38,7 +38,7 @@ def doDeletePersonFromGroup(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doSearchFacesReturnsByGroup(args, parsed_globals):
+def doCreateEmailIdentity(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -49,12 +49,12 @@ def doSearchFacesReturnsByGroup(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SearchFacesReturnsByGroupRequest()
+    model = models.CreateEmailIdentityRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.SearchFacesReturnsByGroup(model)
+    rsp = client.CreateEmailIdentity(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -63,7 +63,7 @@ def doSearchFacesReturnsByGroup(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateGroup(args, parsed_globals):
+def doDeleteBlackList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -74,12 +74,12 @@ def doCreateGroup(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateGroupRequest()
+    model = models.DeleteBlackListRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateGroup(model)
+    rsp = client.DeleteBlackList(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -88,7 +88,7 @@ def doCreateGroup(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetPersonBaseInfo(args, parsed_globals):
+def doCreateEmailAddress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -99,12 +99,12 @@ def doGetPersonBaseInfo(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetPersonBaseInfoRequest()
+    model = models.CreateEmailAddressRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GetPersonBaseInfo(model)
+    rsp = client.CreateEmailAddress(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -113,7 +113,7 @@ def doGetPersonBaseInfo(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDetectLiveFace(args, parsed_globals):
+def doCreateEmailTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -124,12 +124,12 @@ def doDetectLiveFace(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DetectLiveFaceRequest()
+    model = models.CreateEmailTemplateRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DetectLiveFace(model)
+    rsp = client.CreateEmailTemplate(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -138,7 +138,7 @@ def doDetectLiveFace(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateFace(args, parsed_globals):
+def doGetStatisticsReport(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -149,12 +149,12 @@ def doCreateFace(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateFaceRequest()
+    model = models.GetStatisticsReportRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateFace(model)
+    rsp = client.GetStatisticsReport(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -163,7 +163,7 @@ def doCreateFace(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetPersonListNum(args, parsed_globals):
+def doSendEmail(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -174,12 +174,12 @@ def doGetPersonListNum(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetPersonListNumRequest()
+    model = models.SendEmailRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GetPersonListNum(model)
+    rsp = client.SendEmail(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -188,7 +188,7 @@ def doGetPersonListNum(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetPersonGroupInfo(args, parsed_globals):
+def doListBlackEmailAddress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -199,12 +199,12 @@ def doGetPersonGroupInfo(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetPersonGroupInfoRequest()
+    model = models.ListBlackEmailAddressRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GetPersonGroupInfo(model)
+    rsp = client.ListBlackEmailAddress(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -213,7 +213,7 @@ def doGetPersonGroupInfo(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAnalyzeFace(args, parsed_globals):
+def doDeleteEmailTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -224,12 +224,12 @@ def doAnalyzeFace(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AnalyzeFaceRequest()
+    model = models.DeleteEmailTemplateRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.AnalyzeFace(model)
+    rsp = client.DeleteEmailTemplate(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -238,7 +238,7 @@ def doAnalyzeFace(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyPersonBaseInfo(args, parsed_globals):
+def doDeleteEmailAddress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -249,12 +249,12 @@ def doModifyPersonBaseInfo(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyPersonBaseInfoRequest()
+    model = models.DeleteEmailAddressRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyPersonBaseInfo(model)
+    rsp = client.DeleteEmailAddress(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -263,7 +263,7 @@ def doModifyPersonBaseInfo(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetGroupInfo(args, parsed_globals):
+def doUpdateEmailTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -274,12 +274,12 @@ def doGetGroupInfo(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetGroupInfoRequest()
+    model = models.UpdateEmailTemplateRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GetGroupInfo(model)
+    rsp = client.UpdateEmailTemplate(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -288,7 +288,7 @@ def doGetGroupInfo(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCopyPerson(args, parsed_globals):
+def doGetEmailIdentity(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -299,12 +299,12 @@ def doCopyPerson(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CopyPersonRequest()
+    model = models.GetEmailIdentityRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CopyPerson(model)
+    rsp = client.GetEmailIdentity(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -313,7 +313,7 @@ def doCopyPerson(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doVerifyFace(args, parsed_globals):
+def doListEmailTemplates(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -324,12 +324,12 @@ def doVerifyFace(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.VerifyFaceRequest()
+    model = models.ListEmailTemplatesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.VerifyFace(model)
+    rsp = client.ListEmailTemplates(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -338,7 +338,7 @@ def doVerifyFace(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteGroup(args, parsed_globals):
+def doUpdateEmailIdentity(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -349,12 +349,12 @@ def doDeleteGroup(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteGroupRequest()
+    model = models.UpdateEmailIdentityRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteGroup(model)
+    rsp = client.UpdateEmailIdentity(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -363,7 +363,7 @@ def doDeleteGroup(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeletePerson(args, parsed_globals):
+def doGetEmailTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -374,12 +374,12 @@ def doDeletePerson(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePersonRequest()
+    model = models.GetEmailTemplateRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeletePerson(model)
+    rsp = client.GetEmailTemplate(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -388,7 +388,7 @@ def doDeletePerson(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyGroup(args, parsed_globals):
+def doDeleteEmailIdentity(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -399,12 +399,12 @@ def doModifyGroup(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyGroupRequest()
+    model = models.DeleteEmailIdentityRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyGroup(model)
+    rsp = client.DeleteEmailIdentity(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -413,7 +413,7 @@ def doModifyGroup(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreatePerson(args, parsed_globals):
+def doListEmailIdentities(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -424,262 +424,12 @@ def doCreatePerson(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.SesClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreatePersonRequest()
+    model = models.ListEmailIdentitiesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreatePerson(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSearchFaces(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SearchFacesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.SearchFaces(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDetectFace(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DetectFaceRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DetectFace(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetPersonList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetPersonListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.GetPersonList(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doVerifyPerson(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.VerifyPersonRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.VerifyPerson(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyPersonGroupInfo(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyPersonGroupInfoRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyPersonGroupInfo(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSearchPersons(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SearchPersonsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.SearchPersons(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCompareFace(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CompareFaceRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CompareFace(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSearchPersonsReturnsByGroup(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SearchPersonsReturnsByGroupRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.SearchPersonsReturnsByGroup(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetGroupList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetGroupListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.GetGroupList(model)
-    result = rsp.to_json_string()
-    try:
-        jsonobj = json.loads(result)
-    except TypeError as e:
-        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteFace(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IaiClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteFaceRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DeleteFace(model)
+    rsp = client.ListEmailIdentities(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -689,48 +439,38 @@ def doDeleteFace(args, parsed_globals):
 
 
 CLIENT_MAP = {
-    "v20200303": iai_client_v20200303,
+    "v20201002": ses_client_v20201002,
 
 }
 
 MODELS_MAP = {
-    "v20200303": models_v20200303,
+    "v20201002": models_v20201002,
 
 }
 
 ACTION_MAP = {
-    "DeletePersonFromGroup": doDeletePersonFromGroup,
-    "SearchFacesReturnsByGroup": doSearchFacesReturnsByGroup,
-    "CreateGroup": doCreateGroup,
-    "GetPersonBaseInfo": doGetPersonBaseInfo,
-    "DetectLiveFace": doDetectLiveFace,
-    "CreateFace": doCreateFace,
-    "GetPersonListNum": doGetPersonListNum,
-    "GetPersonGroupInfo": doGetPersonGroupInfo,
-    "AnalyzeFace": doAnalyzeFace,
-    "ModifyPersonBaseInfo": doModifyPersonBaseInfo,
-    "GetGroupInfo": doGetGroupInfo,
-    "CopyPerson": doCopyPerson,
-    "VerifyFace": doVerifyFace,
-    "DeleteGroup": doDeleteGroup,
-    "DeletePerson": doDeletePerson,
-    "ModifyGroup": doModifyGroup,
-    "CreatePerson": doCreatePerson,
-    "SearchFaces": doSearchFaces,
-    "DetectFace": doDetectFace,
-    "GetPersonList": doGetPersonList,
-    "VerifyPerson": doVerifyPerson,
-    "ModifyPersonGroupInfo": doModifyPersonGroupInfo,
-    "SearchPersons": doSearchPersons,
-    "CompareFace": doCompareFace,
-    "SearchPersonsReturnsByGroup": doSearchPersonsReturnsByGroup,
-    "GetGroupList": doGetGroupList,
-    "DeleteFace": doDeleteFace,
+    "ListEmailAddress": doListEmailAddress,
+    "CreateEmailIdentity": doCreateEmailIdentity,
+    "DeleteBlackList": doDeleteBlackList,
+    "CreateEmailAddress": doCreateEmailAddress,
+    "CreateEmailTemplate": doCreateEmailTemplate,
+    "GetStatisticsReport": doGetStatisticsReport,
+    "SendEmail": doSendEmail,
+    "ListBlackEmailAddress": doListBlackEmailAddress,
+    "DeleteEmailTemplate": doDeleteEmailTemplate,
+    "DeleteEmailAddress": doDeleteEmailAddress,
+    "UpdateEmailTemplate": doUpdateEmailTemplate,
+    "GetEmailIdentity": doGetEmailIdentity,
+    "ListEmailTemplates": doListEmailTemplates,
+    "UpdateEmailIdentity": doUpdateEmailIdentity,
+    "GetEmailTemplate": doGetEmailTemplate,
+    "DeleteEmailIdentity": doDeleteEmailIdentity,
+    "ListEmailIdentities": doListEmailIdentities,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    "v20200303",
+    "v20201002",
 
 ]
 
@@ -788,11 +528,11 @@ def parse_global_arg(parsed_globals):
         if g_param[OptionsDefine.ServiceVersion]:
             g_param[OptionsDefine.Version] = "v" + g_param[OptionsDefine.ServiceVersion].replace('-', '')
         else:
-            version = conf["iai"][OptionsDefine.Version]
+            version = conf["ses"][OptionsDefine.Version]
             g_param[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if g_param[OptionsDefine.Endpoint] is None:
-            g_param[OptionsDefine.Endpoint] = conf["iai"][OptionsDefine.Endpoint]
+            g_param[OptionsDefine.Endpoint] = conf["ses"][OptionsDefine.Endpoint]
     except Exception as err:
         raise ConfigurationError("config file:%s error, %s" % (conf_path, str(err)))
 

@@ -40,6 +40,14 @@
         "title": "Querying ES cluster instances"
       }
     ],
+    "GetRequestTargetNodeTypes": [
+      {
+        "document": "This example shows you how to get the node types used to receive client requests in a cluster with a hot-warm architecture.",
+        "input": "https://es.tencentcloudapi.com/?Action=GetRequestTargetNodeTypes\n&InstanceId=es-xxxxxx\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"8fd57721-808b-4f21-8f6b-51bca79ff1xx\",\r\n        \"TargetNodeTypes\":[\"hot\",\"warm\"]\r\n    }\r\n}",
+        "title": "Getting the node types used to receive client requests"
+      }
+    ],
     "RestartInstance": [
       {
         "document": "This example shows you how to perform operations such as version update.",
@@ -108,6 +116,14 @@
         "input": "https://es.tencentcloudapi.com/?Action=UpdatePlugins\r\n&InstanceId=es-xxxxxxxx\r\n&RemovePluginList.0=analysis-qq\r\n&RemovePluginList.1=sql\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\r\n    }\r\n}",
         "title": "Uninstalling plugins in batches"
+      }
+    ],
+    "UpdateRequestTargetNodeTypes": [
+      {
+        "document": "For clusters with a hot-warm architecture, you can assign requests from clients to hot nodes only when warm nodes have relatively low specifications. In this case, only the hot nodes work as coordinators.",
+        "input": "https://es.tencentcloudapi.com/?Action=UpdateRequestTargetNodeTypes\n&InstanceId=es-xxxxxx\n&TargetNodeTypes.0=hot\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"8fd57721-808b-4f21-8f6b-51bca79ff1xx\"\r\n    }\r\n}",
+        "title": "Updating the node types used to receive client requests"
       }
     ],
     "UpgradeInstance": [

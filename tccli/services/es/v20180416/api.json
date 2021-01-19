@@ -30,6 +30,12 @@
       "name": "Queries ES cluster instances",
       "output": "DescribeInstancesResponse"
     },
+    "GetRequestTargetNodeTypes": {
+      "document": "This API is used to get the node types used to receive client requests.",
+      "input": "GetRequestTargetNodeTypesRequest",
+      "name": "Gets the node types used to receive client requests",
+      "output": "GetRequestTargetNodeTypesResponse"
+    },
     "RestartInstance": {
       "document": "This API is used to restart an ES cluster instance (for operations such as system update). ",
       "input": "RestartInstanceRequest",
@@ -59,6 +65,12 @@
       "input": "UpdatePluginsRequest",
       "name": "Changes plugin list",
       "output": "UpdatePluginsResponse"
+    },
+    "UpdateRequestTargetNodeTypes": {
+      "document": "This API is used to update the node types used to receive client requests.",
+      "input": "UpdateRequestTargetNodeTypesRequest",
+      "name": "Updates the node types used to receive client requests",
+      "output": "UpdateRequestTargetNodeTypesResponse"
     },
     "UpgradeInstance": {
       "document": "This API is used to upgrade ES cluster version",
@@ -782,6 +794,39 @@
       ],
       "usage": "in"
     },
+    "GetRequestTargetNodeTypesRequest": {
+      "document": "GetRequestTargetNodeTypes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRequestTargetNodeTypesResponse": {
+      "document": "GetRequestTargetNodeTypes response structure.",
+      "members": [
+        {
+          "document": "A list of node types used to receive requests.",
+          "member": "string",
+          "name": "TargetNodeTypes",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InstanceInfo": {
       "document": "Instance details",
       "members": [
@@ -1260,6 +1305,15 @@
           "name": "SceneType",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Kibana configuration item.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KibanaConfig",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2100,6 +2154,40 @@
     },
     "UpdatePluginsResponse": {
       "document": "UpdatePlugins response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRequestTargetNodeTypesRequest": {
+      "document": "UpdateRequestTargetNodeTypes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A list of node types used to receive requests.",
+          "member": "string",
+          "name": "TargetNodeTypes",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRequestTargetNodeTypesResponse": {
+      "document": "UpdateRequestTargetNodeTypes response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

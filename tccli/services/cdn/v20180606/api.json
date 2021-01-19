@@ -4285,7 +4285,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Merging pull requests\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "OriginCombine",
           "name": "OriginCombine",
           "required": true,
@@ -6141,11 +6141,11 @@
       "usage": "both"
     },
     "OriginCombine": {
-      "document": "",
+      "document": "Merging pull requests configurations",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable the merging pull requests feature. Valid values: `on` and `off`.",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -8654,7 +8654,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Merging pull requests",
           "member": "OriginCombine",
           "name": "OriginCombine",
           "required": false,

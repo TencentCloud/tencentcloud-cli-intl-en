@@ -39,7 +39,7 @@
     "TableOCR": {
       "document": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "TableOCRRequest",
-      "name": "Recognizes form",
+      "name": "Form OCR (v1)",
       "output": "TableOCRResponse"
     }
   },
@@ -62,11 +62,51 @@
         },
         {
           "default": "",
-          "document": "URL address of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nIt is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "RetBorderCutImage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "RetCardNoImage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "EnableCopyCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "EnableReshootCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "EnableBorderCheck",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -141,7 +181,7 @@
         },
         {
           "default": "",
-          "document": "URL address of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "URL address of image. (This field is not supported outside Chinese mainland)\nThe image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -181,7 +221,7 @@
       "members": [
         {
           "default": "",
-          "document": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "document": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -189,7 +229,7 @@
         },
         {
           "default": "",
-          "document": "URL address of image/PDF.\nThe image/PDF cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "URL address of image/PDF. (This field is not supported outside Chinese mainland)\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -299,7 +339,7 @@
         },
         {
           "default": "",
-          "document": "URL of the image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -675,7 +715,7 @@
         },
         {
           "default": "",
-          "document": "URL address of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -688,7 +728,7 @@
       "document": "TableOCR response structure.",
       "members": [
         {
-          "document": "Recognized text. For more information, please click the link on the left.",
+          "document": "Recognized text. For more information, please click the link on the left",
           "member": "TextTable",
           "name": "TextDetections",
           "type": "list",

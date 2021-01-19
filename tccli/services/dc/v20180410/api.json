@@ -475,6 +475,14 @@
           "name": "TencentBackupAddress",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cloud Attached Connection Service ID",
+          "member": "string",
+          "name": "CloudAttachId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1261,6 +1269,15 @@
           "name": "SignLaw",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cloud Attached Connection Service ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CloudAttachId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
