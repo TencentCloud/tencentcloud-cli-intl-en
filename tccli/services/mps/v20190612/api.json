@@ -25,9 +25,9 @@
       "output": "CreateAnimatedGraphicsTemplateResponse"
     },
     "CreateContentReviewTemplate": {
-      "document": "This API is used to create a custom content audit template. Up to 50 templates can be created.",
+      "document": "This API is used to create a custom template for intelligent content recognition. Up to 50 templates can be created.",
       "input": "CreateContentReviewTemplateRequest",
-      "name": "Creates a content audit template",
+      "name": "Creates intelligent content recognition templates",
       "output": "CreateContentReviewTemplateResponse"
     },
     "CreateImageSpriteTemplate": {
@@ -37,9 +37,9 @@
       "output": "CreateImageSpriteTemplateResponse"
     },
     "CreatePersonSample": {
-      "document": "This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology.",
+      "document": "This API is used to create material samples for video processing operations such as content recognition and detection of inappropriate information with the help of technologies such as facial feature positioning.",
       "input": "CreatePersonSampleRequest",
-      "name": "Creates a figure sample",
+      "name": "Creates material samples",
       "output": "CreatePersonSampleResponse"
     },
     "CreateSampleSnapshotTemplate": {
@@ -67,7 +67,7 @@
       "output": "CreateWatermarkTemplateResponse"
     },
     "CreateWordSamples": {
-      "document": "This API is used to create keyword samples in batches for video processing operations such as content recognition and audit using the OCR and ASR technologies.",
+      "document": "This API is used to create keyword samples in batches for video processing operations such as content recognition and detection of inappropriate information with the help of the OCR and ASR technologies.",
       "input": "CreateWordSamplesRequest",
       "name": "Creates keyword samples",
       "output": "CreateWordSamplesResponse"
@@ -103,9 +103,9 @@
       "output": "DeleteAnimatedGraphicsTemplateResponse"
     },
     "DeleteContentReviewTemplate": {
-      "document": "This API is used to delete a custom content audit template.",
+      "document": "This API is used to delete a custom intelligent content recognition template.",
       "input": "DeleteContentReviewTemplateRequest",
-      "name": "Deletes a content audit template",
+      "name": "Deletes intelligent content recognition templates",
       "output": "DeleteContentReviewTemplateResponse"
     },
     "DeleteImageSpriteTemplate": {
@@ -115,9 +115,9 @@
       "output": "DeleteImageSpriteTemplateResponse"
     },
     "DeletePersonSample": {
-      "document": "This API is used to delete a figure sample based on figure ID.",
+      "document": "This API is used to delete the material samples that belong to a material ID.",
       "input": "DeletePersonSampleRequest",
-      "name": "Deletes a figure sample",
+      "name": "Deletes material samples",
       "output": "DeletePersonSampleResponse"
     },
     "DeleteSampleSnapshotTemplate": {
@@ -181,9 +181,9 @@
       "output": "DescribeAnimatedGraphicsTemplatesResponse"
     },
     "DescribeContentReviewTemplates": {
-      "document": "This API is used to get the list of content audit templates based on unique template ID. The return result includes all eligible custom and preset content audit templates.",
+      "document": "This API is used to get the list of content recognition templates using their unique ID. The returned result includes all custom templates that meet the conditions as well as preset content recognition templates.",
       "input": "DescribeContentReviewTemplatesRequest",
-      "name": "Gets the list of content audit templates",
+      "name": "Gets the list of intelligent content recognition templates",
       "output": "DescribeContentReviewTemplatesResponse"
     },
     "DescribeImageSpriteTemplates": {
@@ -199,9 +199,9 @@
       "output": "DescribeMediaMetaDataResponse"
     },
     "DescribePersonSamples": {
-      "document": "This API is used to query the information of figure samples and supports paged queries by figure ID, name, and tag.",
+      "document": "This API is used to query the information of material samples. It supports paginated queries by material ID, name, and tag.",
       "input": "DescribePersonSamplesRequest",
-      "name": "Gets the list of figure samples",
+      "name": "Gets the list of material samples",
       "output": "DescribePersonSamplesResponse"
     },
     "DescribeSampleSnapshotTemplates": {
@@ -277,7 +277,7 @@
       "output": "ExecuteFunctionResponse"
     },
     "ManageTask": {
-      "document": "This API is used to manage an initiated task.\n> Note: currently, you can only terminate an ongoing live stream processing task.",
+      "document": "This API is used to manage initiated tasks.",
       "input": "ManageTaskRequest",
       "name": "Manages task",
       "output": "ManageTaskResponse"
@@ -307,9 +307,9 @@
       "output": "ModifyAnimatedGraphicsTemplateResponse"
     },
     "ModifyContentReviewTemplate": {
-      "document": "This API is used to modify a custom content audit template.",
+      "document": "This API is used to modify a custom intelligent content recognition template.",
       "input": "ModifyContentReviewTemplateRequest",
-      "name": "Modifies a content audit template",
+      "name": "Modifies intelligent content recognition templates",
       "output": "ModifyContentReviewTemplateResponse"
     },
     "ModifyImageSpriteTemplate": {
@@ -319,9 +319,9 @@
       "output": "ModifyImageSpriteTemplateResponse"
     },
     "ModifyPersonSample": {
-      "document": "This API is used to modify figure sample information based on figure ID, such as modifying the name and description and adding/deleting/resetting a face or tag. There should be at least one image left after the face deletion operation; otherwise, please use the reset operation.",
+      "document": "This API is used to modify material samples by material ID. You can use it to modify the name and description of a material sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.",
       "input": "ModifyPersonSampleRequest",
-      "name": "Modifies a figure sample",
+      "name": "Modifies material samples",
       "output": "ModifyPersonSampleResponse"
     },
     "ModifySampleSnapshotTemplate": {
@@ -909,7 +909,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -918,7 +918,7 @@
         },
         {
           "default": "",
-          "document": "Error code, 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1008,7 +1008,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1017,7 +1017,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1098,7 +1098,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1107,7 +1107,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1203,7 +1203,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1212,7 +1212,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1461,7 +1461,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1470,7 +1470,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1611,7 +1611,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1620,7 +1620,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1758,7 +1758,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1767,7 +1767,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1947,7 +1947,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1956,7 +1956,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2103,7 +2103,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2112,7 +2112,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2670,7 +2670,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2721,7 +2721,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2730,7 +2730,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2781,7 +2781,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2790,7 +2790,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2841,7 +2841,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2850,7 +2850,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2901,7 +2901,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2910,7 +2910,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2961,7 +2961,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2970,7 +2970,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3021,7 +3021,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3030,7 +3030,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3081,7 +3081,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3090,7 +3090,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3141,7 +3141,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3150,7 +3150,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3201,7 +3201,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3210,7 +3210,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4540,7 +4540,7 @@
       "members": [
         {
           "default": "",
-          "document": "Name of a content audit template. Length limit: 64 characters.",
+          "document": "Name of an intelligent content recognition template. Length limit: 64 characters.",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -4548,7 +4548,7 @@
         },
         {
           "default": "",
-          "document": "Description of a content audit template. Length limit: 256 characters.",
+          "document": "Description of an intelligent content recognition template. Length limit: 256 characters.",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -4556,7 +4556,7 @@
         },
         {
           "default": "",
-          "document": "Porn information detection control parameter.",
+          "document": "Control parameter for offensive content",
           "member": "PornConfigureInfo",
           "name": "PornConfigure",
           "required": false,
@@ -4564,7 +4564,7 @@
         },
         {
           "default": "",
-          "document": "Terrorism information detection control parameter.",
+          "document": "Control parameter for insecure content",
           "member": "TerrorismConfigureInfo",
           "name": "TerrorismConfigure",
           "required": false,
@@ -4572,7 +4572,7 @@
         },
         {
           "default": "",
-          "document": "Politically sensitive information detection control parameter.",
+          "document": "Control parameter for inappropriate content",
           "member": "PoliticalConfigureInfo",
           "name": "PoliticalConfigure",
           "required": false,
@@ -4588,7 +4588,7 @@
         },
         {
           "default": "",
-          "document": "Custom content audit control parameter.",
+          "document": "Control parameter for custom intelligent content recognition",
           "member": "UserDefineConfigureInfo",
           "name": "UserDefineConfigure",
           "required": false,
@@ -4601,7 +4601,7 @@
       "document": "CreateContentReviewTemplate response structure.",
       "members": [
         {
-          "document": "Unique ID of a content audit template.",
+          "document": "Unique ID of an intelligent content recognition template",
           "member": "int64",
           "name": "Definition",
           "type": "int",
@@ -4726,7 +4726,7 @@
       "members": [
         {
           "default": "",
-          "document": "Name of a figure. Length limit: 20 characters.",
+          "document": "Name of a material. Length limit: 20 characters.",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4734,7 +4734,7 @@
         },
         {
           "default": "",
-          "document": "Figure sample use case. Valid values:\n1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.\n2. Review: It is used for content audit, equivalent to `Review.Face`.\n3. All: It is used for content recognition and content audit, equivalent to 1+2 above.",
+          "document": "Material use case. Valid values:\n1. Recognition: used for content recognition, equivalent to `Recognition.Face`\n2. Review: used for detection of inappropriate content, equivalent to `Review.Face`\n3. All: all of the above, equivalent to 1 and 2 combined",
           "member": "string",
           "name": "Usages",
           "required": true,
@@ -4742,7 +4742,7 @@
         },
         {
           "default": "",
-          "document": "Figure description. Length limit: 1,024 characters.",
+          "document": "Material description. Length limit: 1,024 characters.",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -4750,7 +4750,7 @@
         },
         {
           "default": "",
-          "document": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a face image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.",
+          "document": "[Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.",
           "member": "string",
           "name": "FaceContents",
           "required": false,
@@ -4758,7 +4758,7 @@
         },
         {
           "default": "",
-          "document": "Figure tag\n<li>Array length limit: 20 tags;</li>\n<li>Tag length limit: 128 characters.</li>",
+          "document": "Material tag\n<li>Array length limit: 20 tags;</li>\n<li>Tag length limit: 128 characters.</li>",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -4771,14 +4771,14 @@
       "document": "CreatePersonSample response structure.",
       "members": [
         {
-          "document": "Figure information.",
+          "document": "Material information",
           "member": "AiSamplePerson",
           "name": "Person",
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Face information failing to be processed.",
+          "document": "Positioning information of facial features processed unsuccessfully",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "type": "list",
@@ -5169,7 +5169,7 @@
       "members": [
         {
           "default": "",
-          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based content audit;\n4. Review.Asr: ASR-based content audit;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;\n6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;\n7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;",
+          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based detection of inappropriate content;\n4. Review.Asr：ASR-based detection of inappropriate content;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR- and OCR-based content recognition, equivalent to 1+2 above;\n6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;\n7. All: ASR- and OCR-based content recognition and detection of inappropriate content, equivalent to 1+2+3+4 above;",
           "member": "string",
           "name": "Usages",
           "required": true,
@@ -5412,7 +5412,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of a content audit template.",
+          "document": "Unique ID of an intelligent content recognition template",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -5464,7 +5464,7 @@
       "members": [
         {
           "default": "",
-          "document": "Figure ID.",
+          "document": "Material ID",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -5886,7 +5886,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID filter of content audit templates. Array length limit: 50.",
+          "document": "Unique ID of intelligent content recognition templates as the filter. Array length limit: 50.",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -6039,7 +6039,7 @@
       "members": [
         {
           "default": "",
-          "document": "Pulled figure type. Valid values:\n<li>UserDefine: Custom figure library;</li>\n<li>Default: Default figure library.</li>\n\nDefault value: UserDefine (the custom figure library will be pulled.)\nNote: The default figure library can be pulled only through \"figure name\" or \"figure ID + figure name\", and only one face image will be returned.",
+          "document": "Type of the material pulled. Valid values:\n<li>UserDefine: custom material library;</li>\n<li>Default: default material library.</li>\n\nDefault value: UserDefine (the materials of the custom material library are pulled.)\nNote: you can pull the default material library only using the material name or a combination of the material name and ID, and only one face image is returned.",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -6047,7 +6047,7 @@
         },
         {
           "default": "",
-          "document": "Figure ID. Array length limit: 100.",
+          "document": "Material ID. Array length limit: 100.",
           "member": "string",
           "name": "PersonIds",
           "required": false,
@@ -6055,7 +6055,7 @@
         },
         {
           "default": "",
-          "document": "Figure name. Array length limit: 20.",
+          "document": "Material name. Array length limit: 20.",
           "member": "string",
           "name": "Names",
           "required": false,
@@ -6063,7 +6063,7 @@
         },
         {
           "default": "",
-          "document": "Figure tag. Array length limit: 20.",
+          "document": "Material tag. Array length limit: 20.",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -6099,7 +6099,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Figure information.",
+          "document": "Material information",
           "member": "AiSamplePerson",
           "name": "PersonSet",
           "type": "list",
@@ -6564,17 +6564,17 @@
       "members": [
         {
           "default": "",
-          "document": "<b>Keyword use case filter. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based content audit;\n4. Review.Asr: ASR-based content audit;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;\n6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;\nMultiple elements can be selected, and the relationship between them is \"or\", i.e., any keyword use case that contains any element in this field set will be deemed eligible.",
+          "document": "Keyword filter. Array length limit: 100 words.",
           "member": "string",
-          "name": "Usages",
+          "name": "Keywords",
           "required": false,
           "type": "list"
         },
         {
           "default": "",
-          "document": "Keyword filter. Array length limit: 100 words.",
+          "document": "<b>Keyword use case filter. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based detection of inappropriate content;\n4. Review.Asr：ASR-based detection of inappropriate content;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;\n6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;\nMultiple elements can be selected, and the relationship between them is \"or\", i.e., any keyword use case that contains any element in this field set will be deemed eligible.",
           "member": "string",
-          "name": "Keywords",
+          "name": "Usages",
           "required": false,
           "type": "list"
         },
@@ -7345,6 +7345,15 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
+          "member": "string",
+          "name": "RepeatType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -7378,6 +7387,15 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
+          "member": "string",
+          "name": "RepeatType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -7408,6 +7426,15 @@
           "document": "Watermark height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels.</li>\n`0px` means that `Height` will be proportionally scaled according to the video width.",
           "member": "string",
           "name": "Height",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
+          "member": "string",
+          "name": "RepeatType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8209,7 +8236,7 @@
       "members": [
         {
           "default": "",
-          "document": "Operation type. Valid values:\n<li>Abort: terminates task.</li>",
+          "document": "Operation type. Valid values:\n<ul>\n<li>Abort: task termination. Description:\n<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting (`WAITING`) or processing (`PROCESSING`) can be terminated;</li>\n<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting can be terminated.</li></ul>\n</li></ul>",
           "member": "string",
           "name": "OperationType",
           "required": true,
@@ -8873,7 +8900,7 @@
       "members": [
         {
           "default": "",
-          "document": "The type of video processing input object. COS and URL objects are supported.",
+          "document": "The type of video processing input object, which supports COS and URL.",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -9020,7 +9047,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9029,7 +9056,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9080,7 +9107,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9089,7 +9116,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9140,7 +9167,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9149,7 +9176,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9329,7 +9356,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9338,7 +9365,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9389,7 +9416,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9398,7 +9425,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9449,7 +9476,7 @@
         },
         {
           "default": "",
-          "document": "Error code, an empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9458,7 +9485,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 suggests the task is successful; otherwise it is failed. This field is no longer recommended. Consider using the new error code ErrCodeExt.",
+          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -10111,7 +10138,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of a content audit template.",
+          "document": "Unique ID of an intelligent content recognition template",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -10119,7 +10146,7 @@
         },
         {
           "default": "",
-          "document": "Name of a content audit template. Length limit: 64 characters.",
+          "document": "Name of an intelligent content recognition template. Length limit: 64 characters.",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -10127,7 +10154,7 @@
         },
         {
           "default": "",
-          "document": "Description of a content audit template. Length limit: 256 characters.",
+          "document": "Description of an intelligent content recognition template. Length limit: 256 characters.",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -10135,7 +10162,7 @@
         },
         {
           "default": "",
-          "document": "Porn information detection control parameter.",
+          "document": "Control parameter for offensive content",
           "member": "PornConfigureInfoForUpdate",
           "name": "PornConfigure",
           "required": false,
@@ -10143,7 +10170,7 @@
         },
         {
           "default": "",
-          "document": "Terrorism information detection control parameter.",
+          "document": "Control parameter for insecure content",
           "member": "TerrorismConfigureInfoForUpdate",
           "name": "TerrorismConfigure",
           "required": false,
@@ -10151,7 +10178,7 @@
         },
         {
           "default": "",
-          "document": "Politically sensitive information detection control parameter.",
+          "document": "Control parameter for inappropriate content",
           "member": "PoliticalConfigureInfoForUpdate",
           "name": "PoliticalConfigure",
           "required": false,
@@ -10167,7 +10194,7 @@
         },
         {
           "default": "",
-          "document": "Custom content audit control parameter.",
+          "document": "Control parameter for custom intelligent content recognition",
           "member": "UserDefineConfigureInfoForUpdate",
           "name": "UserDefineConfigure",
           "required": false,
@@ -10299,7 +10326,7 @@
       "members": [
         {
           "default": "",
-          "document": "Figure ID.",
+          "document": "Material ID",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -10323,7 +10350,7 @@
         },
         {
           "default": "",
-          "document": "Figure sample use case. Valid values:\n1. Recognition: It is used for content recognition, equivalent to `Recognition.Face`.\n2. Review: It is used for content audit, equivalent to `Review.Face`.\n3. All: It is used for content recognition and content audit, equivalent to 1+2 above.",
+          "document": "Material use case. Valid values:\n1. Recognition: used for content recognition, equivalent to `Recognition.Face`.\n2. Review: used for detection of inappropriate content, equivalent to `Review.Face`.\n3. All: used for content recognition and detection of inappropriate content, equivalent to 1 and 2 combined.",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -10331,7 +10358,7 @@
         },
         {
           "default": "",
-          "document": "Face operation information.",
+          "document": "Facial feature operation information",
           "member": "AiSampleFaceOperation",
           "name": "FaceOperationInfo",
           "required": false,
@@ -10352,14 +10379,14 @@
       "document": "ModifyPersonSample response structure.",
       "members": [
         {
-          "document": "Figure information.",
+          "document": "Material information",
           "member": "AiSamplePerson",
           "name": "Person",
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Face information failing to be processed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Information of facial features processed unsuccessfully\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "type": "list",
@@ -10754,7 +10781,7 @@
         },
         {
           "default": "",
-          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based content audit;\n4. Review.Asr: ASR-based content audit;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;\n6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;\n7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;",
+          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based detection of inappropriate content;\n4. Review.Asr：ASR-based detection of inappropriate content;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;\n6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3 and 4 combined.\n7. All: all of the above, equivalent to 1, 2, 3, and 4 combined.",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -13292,6 +13319,24 @@
           "name": "MosaicSet",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": false,
+          "type": "float",
           "value_allowed_null": false
         },
         {

@@ -55,9 +55,9 @@
       "output": "CreateClassResponse"
     },
     "CreateContentReviewTemplate": {
-      "document": "This API is used to create a custom video content audit template. Up to 50 templates can be created.",
+      "document": "This API is used to create custom intelligent video content recognition templates. Up to 50 templates can be created.",
       "input": "CreateContentReviewTemplateRequest",
-      "name": "Creates video content audit template",
+      "name": "Creates intelligent video content recognition templates",
       "output": "CreateContentReviewTemplateResponse"
     },
     "CreateImageSpriteTemplate": {
@@ -67,9 +67,9 @@
       "output": "CreateImageSpriteTemplateResponse"
     },
     "CreatePersonSample": {
-      "document": "This API is used to create a figure sample for video processing operations such as content recognition and audit using the face recognition technology.",
+      "document": "This API is used to create samples for using facial features positioning and other technologies to perform video processing operations such as content recognition and inappropriate information recognition.",
       "input": "CreatePersonSampleRequest",
-      "name": "Creates figure sample",
+      "name": "Creates samples",
       "output": "CreatePersonSampleResponse"
     },
     "CreateProcedureTemplate": {
@@ -115,7 +115,7 @@
       "output": "CreateWatermarkTemplateResponse"
     },
     "CreateWordSamples": {
-      "document": "This API is used to create keyword samples in batches for video processing operations such as content recognition and audit by using the OCR and ASR technologies.",
+      "document": "This API is used to create keyword samples in batches for using OCR and ASR technologies to perform video processing operations such as content recognition and inappropriate information recognition.",
       "input": "CreateWordSamplesRequest",
       "name": "Creates keyword samples",
       "output": "CreateWordSamplesResponse"
@@ -151,9 +151,9 @@
       "output": "DeleteClassResponse"
     },
     "DeleteContentReviewTemplate": {
-      "document": "This API is used to delete a custom video content audit template.",
+      "document": "This API is used to delete custom intelligent video content recognition templates.",
       "input": "DeleteContentReviewTemplateRequest",
-      "name": "Deletes video content audit template",
+      "name": "Deletes intelligent video content recognition templates",
       "output": "DeleteContentReviewTemplateResponse"
     },
     "DeleteImageSpriteTemplate": {
@@ -169,9 +169,9 @@
       "output": "DeleteMediaResponse"
     },
     "DeletePersonSample": {
-      "document": "This API is used to delete a figure sample based on figure ID.",
+      "document": "This API is used to delete samples according to sample IDs.",
       "input": "DeletePersonSampleRequest",
-      "name": "Deletes figure sample",
+      "name": "Deletes samples",
       "output": "DeletePersonSampleResponse"
     },
     "DeleteProcedureTemplate": {
@@ -246,6 +246,12 @@
       "name": "Gets the list of animated image generating templates",
       "output": "DescribeAnimatedGraphicsTemplatesResponse"
     },
+    "DescribeCDNStatDetails": {
+      "document": "This API is used to query CDN bandwidth, traffic, and other data of VOD domain names.\n* The query period is up to 90 days.\n* You can query data of different service regions.\n* You can query data of Chinese mainland by region and ISP.",
+      "input": "DescribeCDNStatDetailsRequest",
+      "name": "Queries CDN statistics of VOD domain names",
+      "output": "DescribeCDNStatDetailsResponse"
+    },
     "DescribeCDNUsageData": {
       "document": "This API is used to query the CDN statistics of VOD such as traffic and bandwidth.\n   1. Only CDN usage data for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days.\n   3. The time granularity of usage data can be specified, including 5-minute, 1-hour, and 1-day.\n   4. Traffic refers to the total traffic within the query time granularity, while bandwidth the peak bandwidth.",
       "input": "DescribeCDNUsageDataRequest",
@@ -259,10 +265,16 @@
       "output": "DescribeCdnLogsResponse"
     },
     "DescribeContentReviewTemplates": {
-      "document": "This API is used to get the list of video content audit templates based on unique template ID. The return result includes all eligible custom and [preset video content audit templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF).",
+      "document": "This API is used to get the list of intelligent video content recognition template details according to unique template IDs. The return result includes all eligible custom and [preset intelligent video content recognition templates](https://intl.cloud.tencent.com/document/product/266/33932).",
       "input": "DescribeContentReviewTemplatesRequest",
-      "name": "Gets the list of video content audit templates",
+      "name": "Gets intelligent video content recognition templates",
       "output": "DescribeContentReviewTemplatesResponse"
+    },
+    "DescribeDailyPlayStatFileList": {
+      "document": "This API is used to query the download links of playback statistics files.\n* You can query the download links of playback statistics files in last 30 days.\n* Every day, VOD will analyze CDN request logs of the previous day and then generate a playback statistics file.\n* A playback statistics file includes playback times and traffic of media files.\n* Notes on playback times:\n    1. HLS file: VOD counts playback times when accessing M3U8 files, but not when accessing TS files.\n    2. Other files (MP4 files for example): VOD does not count playback times when the playback request carries the `range` parameter and the `start` parameter in `range` is not 0. In other cases, VOD counts playback times.\n* Statistics on playback devices: VOD counts playback times on mobile clients when the playback request carries the `UserAgent` parameter which includes an identifier such as `Android` or `iPhone`. In other cases, VOD counts playback times on PC clients.",
+      "input": "DescribeDailyPlayStatFileListRequest",
+      "name": "Queries the download list of playback statistics files",
+      "output": "DescribeDailyPlayStatFileListResponse"
     },
     "DescribeImageSpriteTemplates": {
       "document": "This API is used to query the list of image sprite generating templates and supports paged queries by filters.",
@@ -283,9 +295,9 @@
       "output": "DescribeMediaProcessUsageDataResponse"
     },
     "DescribePersonSamples": {
-      "document": "This API is used to query the information of figure samples and supports paginated queries by figure ID, name, and tag.",
+      "document": "This API is used to query the information of samples and supports paginated queries by sample ID, name, and tag.",
       "input": "DescribePersonSamplesRequest",
-      "name": "Gets figure sample list",
+      "name": "Gets the list of samples",
       "output": "DescribePersonSamplesResponse"
     },
     "DescribeProcedureTemplates": {
@@ -295,9 +307,9 @@
       "output": "DescribeProcedureTemplatesResponse"
     },
     "DescribeReviewDetails": {
-      "document": "<b>This API is replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1) and not recommended for use.</b>\n\nThis API returns the duration of reviewed video content in seconds per day within the queried period.\n\n1. The API is used to query statistics on the duration of reviewed video content for the last 365 days.\n2. The queried period is up to 90 days.",
+      "document": "<b>This API is disused and replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1).</b>\n\nThis API returns the video content duration for intelligent recognition in seconds per day within the queried period.\n\n1. The API is used to query statistics on the video content duration for intelligent recognition in the last 365 days.\n2. The query period is up to 90 days.",
       "input": "DescribeReviewDetailsRequest",
-      "name": "Queries content audit details",
+      "name": "Queries intelligent content recognition details",
       "output": "DescribeReviewDetailsResponse"
     },
     "DescribeSampleSnapshotTemplates": {
@@ -319,7 +331,7 @@
       "output": "DescribeStorageDataResponse"
     },
     "DescribeStorageDetails": {
-      "document": "This API is used to query the used VOD storage capacity in bytes within the specified time range.\n   1. Only storage capacity usage data for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days;\n   3. The query time range at the minute granularity cannot be more than 5 days;\n   4. The query time range at the hour granularity cannot be more than 10 days.",
+      "document": "This API is used to query VOD storage usage in bytes within the query period.\n    1. You can only query storage usage for the last 365 days.\n    2. The query period is up to 90 days.\n    3. The query period at minute-level granularity is up to 7 days.",
       "input": "DescribeStorageDetailsRequest",
       "name": "Queries storage capacity usage details",
       "output": "DescribeStorageDetailsResponse"
@@ -390,6 +402,12 @@
       "name": "Clips a live streaming",
       "output": "LiveRealTimeClipResponse"
     },
+    "ManageTask": {
+      "document": "This API is used to manage initiated tasks.",
+      "input": "ManageTaskRequest",
+      "name": "Task management",
+      "output": "ManageTaskResponse"
+    },
     "ModifyAIAnalysisTemplate": {
       "document": "This API is used to modify a custom video content analysis template.\n\nNote: templates with an ID below 10000 are preset and cannot be modified.",
       "input": "ModifyAIAnalysisTemplateRequest",
@@ -421,9 +439,9 @@
       "output": "ModifyClassResponse"
     },
     "ModifyContentReviewTemplate": {
-      "document": "This API is used to modify a custom video content audit template.",
+      "document": "This API is used to modify custom intelligent video content recognition templates.",
       "input": "ModifyContentReviewTemplateRequest",
-      "name": "Modifies video content audit template",
+      "name": "Modifies intelligent video content recognition templates",
       "output": "ModifyContentReviewTemplateResponse"
     },
     "ModifyImageSpriteTemplate": {
@@ -439,9 +457,9 @@
       "output": "ModifyMediaInfoResponse"
     },
     "ModifyPersonSample": {
-      "document": "This API is used to modify figure sample information based on figure ID, such as modifying the name and description and adding/deleting/resetting a face or tag. There should be at least one image left after the face deletion operation; otherwise, please use the reset operation.",
+      "document": "This API is used to modify sample information according to the sample ID. You can modify the name and description, add, delete, and reset facial features or tags. Leave at least one image after deleting facial features. To leave no image, please use the reset operation.",
       "input": "ModifyPersonSampleRequest",
-      "name": "Modifies figure sample",
+      "name": "Modifies samples",
       "output": "ModifyPersonSampleResponse"
     },
     "ModifySampleSnapshotTemplate": {
@@ -547,7 +565,7 @@
       "output": "SearchMediaResponse"
     },
     "SimpleHlsClip": {
-      "document": "This API is used to clip an HLS video by time period.\n\nNote: the clipped video shares the same ts segments with the source video, and only a new m3u8 file will be generated. Deleting the source video will also delete the clipped video.",
+      "document": "This API is used to clip an HLS video by time period and then generate a new HLS video which developers can share right away or store persistently.\n\nVOD supports two types of clipping:\n- Clipping for persistent storage: the video clip is saved as an independent video file with a `FileId`.\n- Clipping for temporary sharing: the video clip is affiliated to the input file and has no `FileId`.\n\nNotes:\n- Clipping is based on the input M3U8 file that contains the list of TS segments, so the smallest clipping unit is one TS segment instead of in seconds or less.\n\n\n### Clipping for Persistent Storage\nIn this mode, a video clip is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the input video. Even if the source video is deleted, the video clip still exists. Moreover, the video clip can be transcoded, published on WeChat, and processed in other ways.\n\nTake the video of a two-hour long football match for example. The customer may only want to store the original two-hour video for two months to save costs, but want to store clipped highlights for a specified longer time and also to transcode and publish such highlights on WeChat. Clipping for persistent storage is suitable for this customer.\n\nThe advantage of clipping for persistent storage is that the video clip has a lifecycle independent of the input video and can be managed independently and stored persistently.\n\n### Clipping for Temporary Sharing\nThe video clip (an M3U8 file) shares the same TS segments with the input video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the input video. Once the input video is deleted, the video clip cannot be played back.\n\nAs the video clip is not an independent video, it will not be managed as a VOD media asset. For example, it will not be counted in the total videos displayed on the VOD console, and also cannot be transcoded or published on WeChat.\n\nClipping for temporary sharing is lightweight and incurs no additional storage fees. However, the video clip has the same lifecycle as the source recording video and cannot be transcoded or processed in other ways.",
       "input": "SimpleHlsClipRequest",
       "name": "Performs simple HLS clipping",
       "output": "SimpleHlsClipResponse"
@@ -1110,7 +1128,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1191,7 +1218,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1272,7 +1308,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1353,7 +1398,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1449,7 +1503,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1707,7 +1770,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1839,7 +1911,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1977,7 +2058,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2142,7 +2232,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2265,7 +2364,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2412,7 +2520,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2559,7 +2676,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2706,7 +2832,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3258,7 +3393,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3309,7 +3453,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3360,7 +3513,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3411,7 +3573,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3462,7 +3633,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3513,7 +3693,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3564,7 +3753,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3615,7 +3813,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3666,7 +3873,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3717,7 +3933,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -6007,7 +6232,7 @@
       "members": [
         {
           "default": "",
-          "document": "Switch controlling whether to add audit result to review list (for human review).\n<li>ON: yes;</li>\n<li>OFF: no.</li>",
+          "document": "Whether to allow the recognition result to enter the intelligent recognition platform (for human recognition).\n<li>ON: yes</li>\n<li>OFF: no</li>",
           "member": "string",
           "name": "ReviewWallSwitch",
           "required": true,
@@ -6015,7 +6240,7 @@
         },
         {
           "default": "",
-          "document": "Content audit template name. Length limit: 64 characters.",
+          "document": "Name of an intelligent content recognition template. Length limit: 64 characters.",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -6023,7 +6248,7 @@
         },
         {
           "default": "",
-          "document": "Description of content audit template. Length limit: 256 characters.",
+          "document": "Description of an intelligent content recognition template. Length limit: 256 characters.",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -6031,7 +6256,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter of porn detection.",
+          "document": "Control parameter for porn information.",
           "member": "PornConfigureInfo",
           "name": "PornConfigure",
           "required": false,
@@ -6039,7 +6264,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection.",
+          "document": "Control parameter for terrorism information.",
           "member": "TerrorismConfigureInfo",
           "name": "TerrorismConfigure",
           "required": false,
@@ -6047,7 +6272,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection.",
+          "document": "Control parameter for politically sensitive information.",
           "member": "PoliticalConfigureInfo",
           "name": "PoliticalConfigure",
           "required": false,
@@ -6063,7 +6288,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter of custom content audit.",
+          "document": "Control parameter for custom intelligent content recognition.",
           "member": "UserDefineConfigureInfo",
           "name": "UserDefineConfigure",
           "required": false,
@@ -6092,7 +6317,7 @@
       "document": "CreateContentReviewTemplate response structure.",
       "members": [
         {
-          "document": "Unique ID of content audit template.",
+          "document": "Unique ID of an intelligent recognition template.",
           "member": "int64",
           "name": "Definition",
           "type": "int",
@@ -6303,7 +6528,7 @@
       "members": [
         {
           "default": "",
-          "document": "Figure name. Length limit: 20 characters.",
+          "document": "Name of a sample. Length limit: 20 characters.",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -6311,7 +6536,7 @@
         },
         {
           "default": "",
-          "document": "Figure use case. Valid values:\n1. Recognition: it is used for content recognition and equivalent to `Recognition.Face`.\n2. Review: it is used for content audit and equivalent to `Review.Face`.\n3. All: it is used for content recognition and content audit and equivalent to 1+2 above.",
+          "document": "Usage of a sample. Valid values:\n1. Recognition: used for content recognition; equivalent to `Recognition.Face`\n2. Review: used for inappropriate information recognition; equivalent to `Review.Face`\n3. All: equivalent to 1+2.",
           "member": "string",
           "name": "Usages",
           "required": true,
@@ -6319,7 +6544,7 @@
         },
         {
           "default": "",
-          "document": "Figure description. Length limit: 1,024 characters.",
+          "document": "Description of a sample. Length limit: 1024 characters.",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -6327,7 +6552,7 @@
         },
         {
           "default": "",
-          "document": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) face image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: the image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.",
+          "document": "String generated after the sample image is encoded by [Base64](https://tools.ietf.org/html/rfc4648). Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: the image must be a relatively clear full-face photo of a person and has a resolution of no less than 200 x 200.",
           "member": "string",
           "name": "FaceContents",
           "required": false,
@@ -6335,7 +6560,7 @@
         },
         {
           "default": "",
-          "document": "Figure tag\n<li>Array length limit: 20 tags;</li>\n<li>Tag length limit: 128 characters.</li>",
+          "document": "Tags of a sample\n<li>Array length limit: 20 tags</li>\n<li>Length limit of a tag: 128 characters</li>",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -6356,14 +6581,14 @@
       "document": "CreatePersonSample response structure.",
       "members": [
         {
-          "document": "Figure information.",
+          "document": "Information of a sample.",
           "member": "AiSamplePerson",
           "name": "Person",
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Face information failed to be processed.",
+          "document": "Information of samples that failed the verification by facial feature positioning.",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "type": "list",
@@ -6999,7 +7224,7 @@
       "members": [
         {
           "default": "",
-          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based content audit;\n4. Review.Asr: ASR-based content audit;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;\n6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;\n7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;",
+          "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\n7. All: ASR- and OCR-based content recognition and inappropriate information recognition; equivalent to 1+2+3+4",
           "member": "string",
           "name": "Usages",
           "required": true,
@@ -7211,7 +7436,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of content audit template.",
+          "document": "Unique ID of an intelligent content recognition template.",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -7321,7 +7546,7 @@
       "members": [
         {
           "default": "",
-          "document": "Figure ID.",
+          "document": "ID of a sample.",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -7893,6 +8118,110 @@
       ],
       "type": "object"
     },
+    "DescribeCDNStatDetailsRequest": {
+      "document": "DescribeCDNStatDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Metrics to query. Valid values:\n<li>Traffic: traffic in bytes.</li>\n<li>Bandwidth: bandwidth in bps.</li>",
+          "member": "string",
+          "name": "Metric",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of domain names. The usage data of up to 20 domain names can be queried at a time. The usage data of all domain names is returned by default.",
+          "member": "string",
+          "name": "DomainNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Service region. Valid values:\n<li>Chinese Mainland</li>\n<li>Asia Pacific Region 1: Hong Kong (China), Macao (China), Singapore, Vietnam, and Thailand</li>\n<li>Asia Pacific Region 2: Taiwan (China), Japan, Malaysia, Indonesia, and South Korea</li>\n<li>Asia Pacific Region 3: Philippines, India, Australia, and other Asia Pacific countries and regions</li>\n<li>Middle East</li>\n<li>Europe</li>\n<li>North America</li>\n<li>South America</li>\n<li>Africa</li>\nDefault value: Chinese Mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "District where users are located. When `Area` is `Chinese Mainland`, valid values for `Districts` are as follows. Otherwise, `Districts` can be ignored.\n<li>Beijing</li>\n<li>Inner Mongolia</li>\n<li>Shanxi</li>\n<li>Hebei</li>\n<li>Tianjin</li>\n<li>Ningxia</li>\n<li>Shaanxi</li>\n<li>Gansu</li>\n<li>Qinghai</li>\n<li>Xinjiang</li>\n<li>Heilongjiang</li>\n<li>Jilin</li>\n<li>Liaoning</li>\n<li>Fujian</li>\n<li>Jiangsu</li>\n<li>Anhui</li>\n<li>Shandong</li>\n<li>Shanghai</li>\n<li>Zhejiang</li>\n<li>Henan</li>\n<li>Hubei</li>\n<li>Jiangxi</li>\n<li>Hunan</li>\n<li>Guizhou</li>\n<li>Yunnan</li>\n<li>Chongqing</li>\n<li>Sichuan</li>\n<li>Tibet</li>\n<li>Guangdong</li>\n<li>Guangxi</li>\n<li>Hainan</li>\n<li>Hong Kong, Macao and Taiwan</li>\n<li>Outside Chinese Mainland</li>\n<li>Other</li>",
+          "member": "string",
+          "name": "Districts",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ISP of users. When `Area` is `Chinese Mainland`, valid values for `Isps` are as follows. Otherwise, `Isps` can be ignored.\n<li>China Telecom</li>\n<li>China Unicom</li>\n<li>CERNET</li>\n<li>Great Wall Broadband Network</li>\n<li>China Mobile</li>\n<li>China Mobile Tietong</li>\n<li>ISPs outside Chinese Mainland</li>\n<li>Other ISPs</li>",
+          "member": "string",
+          "name": "Isps",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Time granularity of every piece of data in minutes. Valid values:\n<li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>\n<li>1440: 1-day granularity. The data at 1-day granularity in the query period will be returned. If the query period is larger than 24 hours, only data at 1-day granularity can be queried.</li>\nIf the difference between `StartTime` and `EndTime` is larger than 24 hours, the default value of `DataInterval` is 1440.",
+          "member": "uint64",
+          "name": "DataInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCDNStatDetailsResponse": {
+      "document": "DescribeCDNStatDetails response structure.",
+      "members": [
+        {
+          "document": "Time granularity of every piece of data in minutes.",
+          "member": "uint64",
+          "name": "DataInterval",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CDN usage statistics.",
+          "member": "StatDataItem",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCDNUsageDataRequest": {
       "document": "DescribeCDNUsageData request structure.",
       "members": [
@@ -7922,7 +8251,7 @@
         },
         {
           "default": "",
-          "document": "Time granularity of usage data in minutes. Valid values:\n<li>5: 5-minute granularity, which returns the details at the 5-minute granularity within the specified time range.</li>\n<li>60: 1-hour granularity, which returns the details at the 1-hour granularity within the specified time range.</li>\n<li>1440: 1-day granularity, which returns the details at the 1-day granularity within the specified time range.</li>\nDefault value: 1440. Data at the 1-day granularity will be returned.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.",
+          "document": "Time granularity of usage data in minutes. Valid values:\n<li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>\n<li>60: 1-hour granularity. The data at 1-hour granularity in the query period will be returned.</li>\n<li>1440: 1-day granularity. The data at 1-day granularity in the query period will be returned.</li>\nDefault value: 1440. Data at 1-day granularity will be returned.",
           "member": "uint64",
           "name": "DataInterval",
           "required": false,
@@ -8042,7 +8371,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID filter of content audit templates. Array length limit: 100.",
+          "document": "Unique IDs for filters of an intelligent content recognition template. Array length limit: 100.",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -8086,9 +8415,58 @@
           "value_allowed_null": false
         },
         {
-          "document": "List of content audit template details.",
+          "document": "List of intelligent content recognition template details.",
           "member": "ContentReviewTemplateItem",
           "name": "ContentReviewTemplateSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDailyPlayStatFileListRequest": {
+      "document": "DescribeDailyPlayStatFileList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDailyPlayStatFileListResponse": {
+      "document": "DescribeDailyPlayStatFileList response structure.",
+      "members": [
+        {
+          "document": "List of playback statistics files.",
+          "member": "PlayStatFileInfo",
+          "name": "PlayStatFileSet",
           "type": "list",
           "value_allowed_null": false
         },
@@ -8291,7 +8669,7 @@
       "members": [
         {
           "default": "",
-          "document": "Pulled figure type. Valid values:\n<li>UserDefine: custom figure library;</li>\n<li>Default: default figure library.</li>\n\nDefault value: UserDefine (the custom figure library will be pulled.)\nNote: the default figure library can be pulled only through \"figure name\" or \"figure ID + figure name\", and only one face image will be returned.",
+          "document": "Type of samples to pull. Valid values:\n<li>UserDefine: custom sample library</li>\n<li>Default: default sample library</li>\n\nDefault value: UserDefine. Samples in the custom sample library will be pulled.\nNote: samples from the default library can only be pulled by providing the name or both the ID and name of a sample. Only one face image will be returned.",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -8299,7 +8677,7 @@
         },
         {
           "default": "",
-          "document": "Figure ID. Array length limit: 100.",
+          "document": "IDs of samples. Array length limit: 100.",
           "member": "string",
           "name": "PersonIds",
           "required": false,
@@ -8307,7 +8685,7 @@
         },
         {
           "default": "",
-          "document": "Figure name. Array length limit: 20.",
+          "document": "Names of samples. Array length limit: 20.",
           "member": "string",
           "name": "Names",
           "required": false,
@@ -8315,7 +8693,7 @@
         },
         {
           "default": "",
-          "document": "Figure tag. Array length limit: 20.",
+          "document": "Tags of a sample. Array length limit: 20.",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -8480,21 +8858,21 @@
       "document": "DescribeReviewDetails response structure.",
       "members": [
         {
-          "document": "Number of initiated content audits.",
+          "document": "Times of initiating intelligent content recognition tasks.",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Total content audit duration.",
+          "document": "Duration of intelligent recognition content.",
           "member": "int64",
           "name": "TotalDuration",
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Data of content audit duration, which is collected once per day.",
+          "document": "Data of intelligent recognition content duration. One piece of data is collected every day.",
           "member": "StatDataItem",
           "name": "Data",
           "type": "list",
@@ -8699,6 +9077,13 @@
           "value_allowed_null": false
         },
         {
+          "document": "Storage usage by billing region.",
+          "member": "StorageStatData",
+          "name": "StorageStat",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -8712,7 +9097,7 @@
       "members": [
         {
           "default": "",
-          "document": "Start time in ISO 8601 format. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "Start time in ISO 8601 format. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -8720,7 +9105,7 @@
         },
         {
           "default": "",
-          "document": "End time in ISO 8601 format, which must be after the start time. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "End time in ISO 8601 format, which should be larger than the start time. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -8728,7 +9113,7 @@
         },
         {
           "default": "",
-          "document": "Query time interval. Valid values:\n<li>Minute: once per minute.</li>\n<li>Hour: once per hour.</li>\n<li>Day: once per day.</li>\nThe default value is determined by the time span. `Minute` will be used if the time span is less than 1 hour, `Hour` if less than or equal to 7 days, and `Day` if more than 7 days.",
+          "document": "Time granularity. Valid values:\n<li>Minute: 5-minute granularity</li>\n<li>Day: 1-day granularity</li>\nThe value is set according to query period length by default. 5-minute granularity is set for periods no longer than 1 day, and 1-day granularity is set for periods longer than 1 day.",
           "member": "string",
           "name": "Interval",
           "required": false,
@@ -8749,6 +9134,14 @@
           "name": "SubAppId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Storage region to query. Valid values:\n<li>Chinese Mainland</li>\n<li>Outside Chinese Mainland</li>\nDefault value: Chinese Mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8757,7 +9150,7 @@
       "document": "DescribeStorageDetails response structure.",
       "members": [
         {
-          "document": "Storage statistics. One data entry per minute/hour/day.",
+          "document": "Storage statistics with one piece of data for every 5 minutes or 1 day.",
           "member": "StatDataItem",
           "name": "Data",
           "type": "list",
@@ -8777,19 +9170,11 @@
       "members": [
         {
           "default": "",
-          "document": "",
-          "member": "uint64",
-          "name": "Limit",
+          "document": "Subapplication name.",
+          "member": "string",
+          "name": "Name",
           "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
+          "type": "string"
         },
         {
           "default": "",
@@ -8798,6 +9183,22 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Page number offset from the beginning of paginated queries. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum return results of pulling paginated queries. Default: 200; maximum: 200.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -8810,6 +9211,13 @@
           "member": "SubAppIdInfo",
           "name": "SubAppIdInfoSet",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of subapplications.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -8919,7 +9327,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "Task type. Valid values:\n<li>Procedure: video processing task;</li>\n<li>EditMedia: video editing task;</li>\n<li>WechatPublish: release on WeChat task;</li>\n<li>WechatMiniProgramPublish: release on WeChat Mini Program task;</li>\n<li>ComposeMedia: media file composing task;</li>\n<li>PullUpload: media file pulling for upload task.</li>\n\nTask types compatible with v2017:\n<li>Transcode: transcoding task;</li>\n<li>SnapshotByTimeOffset: screencapturing task</li>\n<li>Concat: video splicing task;</li>\n<li>Clip: video clipping task;</li>\n<li>ImageSprites: image sprite generating task.</li>",
+          "document": "Task type. Valid values:\n<li>Procedure: video processing task</li>\n<li>EditMedia: video editing task</li>\n<li>SplitMedia: video splitting task</li>\n<li>ComposeMedia: media file producing task</li>\n<li>WechatPublish: WeChat publishing task</li>\n<li>WechatMiniProgramPublish: video publishing on WeChat Mini Program</li>\n<li>PullUpload: pulling media files for upload</li>\n\nSupport v2017 task types:\n<li>Transcode: transcoding task</li>\n<li>SnapshotByTimeOffset: screencapturing task</li>\n<li>Concat: video splicing task</li>\n<li>Clip: video clipping task</li>\n<li>ImageSprites: image sprite generating task</li>",
           "member": "string",
           "name": "TaskType",
           "type": "string",
@@ -8982,6 +9390,20 @@
           "value_allowed_null": true
         },
         {
+          "document": "Video splitting task information. This field has a value only when `TaskType` is `EditMedia`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "SplitMediaTask",
+          "name": "SplitMediaTask",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Release on WeChat Mini Program task information. This field has a value only when `TaskType` is `WechatMiniProgramPublish`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "WechatMiniProgramPublishTask",
+          "name": "WechatMiniProgramPublishTask",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
           "document": "Media file pulling for upload task information. This field has a value only when `TaskType` is `PullUpload`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "PullUploadTask",
           "name": "PullUploadTask",
@@ -8992,13 +9414,6 @@
           "document": "Video transcoding task information. This field has a value only when `TaskType` is `Transcode`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "TranscodeTask2017",
           "name": "TranscodeTask",
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Time point screencapturing task information. This field has a value only when `TaskType` is `SnapshotByTimeOffset`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "SnapshotByTimeOffsetTask2017",
-          "name": "SnapshotByTimeOffsetTask",
           "type": "object",
           "value_allowed_null": true
         },
@@ -9024,9 +9439,9 @@
           "value_allowed_null": true
         },
         {
-          "document": "Release on WeChat Mini Program task information. This field has a value only when `TaskType` is `WechatMiniProgramPublish`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "WechatMiniProgramPublishTask",
-          "name": "WechatMiniProgramPublishTask",
+          "document": "Time point screencapturing task information. This field has a value only when `TaskType` is `SnapshotByTimeOffset`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "SnapshotByTimeOffsetTask2017",
+          "name": "SnapshotByTimeOffsetTask",
           "type": "object",
           "value_allowed_null": true
         },
@@ -9276,7 +9691,7 @@
       "members": [
         {
           "default": "",
-          "document": "<b>Keyword use case filter. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based content audit;\n4. Review.Asr: ASR-based content audit;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;\n6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;\nMultiple elements can be selected, and the relationship between them is \"OR\", i.e., any keyword use case that contains any element in this field set will be deemed eligible.",
+          "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\nYou can select multiple elements, which are connected by OR logic. If a use case contains any element in this parameter, the keyword sample will be used.",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -9811,7 +10226,7 @@
         },
         {
           "default": "",
-          "document": "<b>Supported event type:</b>\n<li>NewFileUpload: video upload completion;</li>\n<li>ProcedureStateChanged: task flow status change;</li>\n<li>FileDeleted: video deletion completion;</li>\n<li>PullComplete: video pull for upload completion;</li>\n<li>EditMediaComplete: video editing completion;</li>\n<li>WechatPublishComplete: release on WeChat completion;</li>\n<li>ComposeMediaComplete: media file composing completion;</li>\n<li>WechatMiniProgramPublishComplete: release on WeChat Mini Program completion.</li>\n<b>Event types compatible with v2017:</b>\n<li>TranscodeComplete: video transcoding completion;</li>\n<li>ConcatComplete: video splicing completion;</li>\n<li>ClipComplete: video clipping completion;</li>\n<li>CreateImageSpriteComplete: image sprite generating completion;</li>\n<li>CreateSnapshotByTimeOffsetComplete: time point screencapturing completion.</li>",
+          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: finished video upload</li>\n<li>ProcedureStateChanged: task flow status changed</li>\n<li>FileDeleted: finished video deletion</li>\n<li>PullComplete: finished pulling for upload</li>\n<li>EditMediaComplete: finished video editing</li>\n<li>SplitMediaComplete: finished video splitting</li>\n<li>WechatPublishComplete: finished publishing on WeChat</li>\n<li>ComposeMediaComplete: finished producing the media file</li>\n<li>WechatMiniProgramPublishComplete: finished publishing on WeChat Mini Program</li>\n<b>Support v2017 task types:</b>\n<li>TranscodeComplete: finished video transcoding</li>\n<li>ConcatComplete: finished video splicing</li>\n<li>ClipComplete: finished video clipping</li>\n<li>CreateImageSpriteComplete: finished image sprite generation</li>\n<li>CreateSnapshotByTimeOffsetComplete: finished point-in-time screencapturing</li>",
           "member": "string",
           "name": "EventType",
           "required": true,
@@ -9865,27 +10280,18 @@
         },
         {
           "default": "",
-          "document": "Release on WeChat completion event, which is valid if the event type is `WechatPublishComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "WechatPublishTask",
-          "name": "WechatPublishCompleteEvent",
+          "document": "Video splitting completion event, which is valid if the event type is `EditMediaComplete`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "SplitMediaTask",
+          "name": "SplitMediaCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Video transcoding completion event, which is valid if the event type is `TranscodeComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "TranscodeTask2017",
-          "name": "TranscodeCompleteEvent",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Video splicing completion event, which is valid if the event type is `ConcatComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "ConcatTask2017",
-          "name": "ConcatCompleteEvent",
+          "document": "Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ComposeMediaTask",
+          "name": "ComposeMediaCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -9901,9 +10307,27 @@
         },
         {
           "default": "",
+          "document": "Video transcoding completion event, which is valid if the event type is `TranscodeComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "TranscodeTask2017",
+          "name": "TranscodeCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Image sprite generating completion event, which is valid if the event type is `CreateImageSpriteComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "CreateImageSpriteTask2017",
           "name": "CreateImageSpriteCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Video splicing completion event, which is valid if the event type is `ConcatComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ConcatTask2017",
+          "name": "ConcatCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -9919,9 +10343,9 @@
         },
         {
           "default": "",
-          "document": "Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "ComposeMediaTask",
-          "name": "ComposeMediaCompleteEvent",
+          "document": "Release on WeChat completion event, which is valid if the event type is `WechatPublishComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "WechatPublishTask",
+          "name": "WechatPublishCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -10569,6 +10993,15 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RepeatType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -10602,6 +11035,15 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RepeatType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -10632,6 +11074,15 @@
           "document": "Watermark height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px;</li>\n`0px` means that `Height` will be proportionally scaled according to the video width.",
           "member": "string",
           "name": "Height",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "RepeatType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10756,6 +11207,48 @@
           "type": "object",
           "value_allowed_null": true
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ManageTaskRequest": {
+      "document": "ManageTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Video processing task ID.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Operation type. Valid value:\n<li>Abort: terminate a task. You can only terminate initiated tasks in `WAITING` status.</li>",
+          "member": "string",
+          "name": "OperationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ManageTaskResponse": {
+      "document": "ManageTask response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -12153,7 +12646,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12204,7 +12706,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12255,7 +12766,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12306,7 +12826,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12504,7 +13033,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12555,7 +13093,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12606,7 +13153,16 @@
         },
         {
           "default": "",
-          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -12639,6 +13195,15 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Transcoding progress. Value range: 0-100.",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -13523,7 +14088,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of content audit template.",
+          "document": "Unique ID of an intelligent content recognition template.",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -13531,7 +14096,7 @@
         },
         {
           "default": "",
-          "document": "Content audit template name. Length limit: 64 characters.",
+          "document": "Name of an intelligent content recognition template. Length limit: 64 characters.",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -13539,7 +14104,7 @@
         },
         {
           "default": "",
-          "document": "Description of content audit template. Length limit: 256 characters.",
+          "document": "Description of an intelligent content recognition template. Length limit: 256 characters.",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -13547,15 +14112,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter of porn detection.",
-          "member": "PornConfigureInfoForUpdate",
-          "name": "PornConfigure",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Control parameter of terrorism information detection.",
+          "document": "Control parameter for terrorism information.",
           "member": "TerrorismConfigureInfoForUpdate",
           "name": "TerrorismConfigure",
           "required": false,
@@ -13563,7 +14120,15 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection.",
+          "document": "Control parameter for porn information.",
+          "member": "PornConfigureInfoForUpdate",
+          "name": "PornConfigure",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Control parameter for politically sensitive information.",
           "member": "PoliticalConfigureInfoForUpdate",
           "name": "PoliticalConfigure",
           "required": false,
@@ -13579,7 +14144,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter of custom content audit.",
+          "document": "Control parameter for custom intelligent content recognition tasks.",
           "member": "UserDefineConfigureInfoForUpdate",
           "name": "UserDefineConfigure",
           "required": false,
@@ -13595,7 +14160,7 @@
         },
         {
           "default": "",
-          "document": "Switch controlling whether to add audit result to review list (for human review).\n<li>ON: yes;</li>\n<li>OFF: no.</li>",
+          "document": "Whether to allow the recognition result to enter the intelligent recognition platform (for human recognition).\n<li>ON: yes</li>\n<li>OFF: no</li>",
           "member": "string",
           "name": "ReviewWallSwitch",
           "required": false,
@@ -13872,7 +14437,7 @@
       "members": [
         {
           "default": "",
-          "document": "Figure ID.",
+          "document": "ID of a sample.",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -13896,7 +14461,7 @@
         },
         {
           "default": "",
-          "document": "Figure use case. Valid values:\n1. Recognition: it is used for content recognition and equivalent to `Recognition.Face`.\n2. Review: it is used for content audit and equivalent to `Review.Face`.\n3. All: it is used for content recognition and content audit and equivalent to 1+2 above.",
+          "document": "Sample usage. Valid values:\n1. Recognition: used for content recognition; equivalent to `Recognition.Face`\n2. Review: used for inappropriate information recognition; equivalent to `Review.Face`\n3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -13904,7 +14469,7 @@
         },
         {
           "default": "",
-          "document": "Face operation information.",
+          "document": "Information of operations on facial features.",
           "member": "AiSampleFaceOperation",
           "name": "FaceOperationInfo",
           "required": false,
@@ -13933,14 +14498,14 @@
       "document": "ModifyPersonSample response structure.",
       "members": [
         {
-          "document": "Figure information.",
+          "document": "Information of a sample.",
           "member": "AiSamplePerson",
           "name": "Person",
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Face information failed to be processed.",
+          "document": "Information of samples that failed the verification by facial feature positioning.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "type": "list",
@@ -14541,7 +15106,7 @@
         },
         {
           "default": "",
-          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based content audit;\n4. Review.Asr: ASR-based content audit;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR-based and OCR-based content recognition, which is equivalent to 1+2 above;\n6. Review: ASR-based and OCR-based content audit, which is equivalent to 3+4 above;\n7. All: ASR-based and OCR-based content recognition and audit, which is equivalent to 1+2+3+4 above;",
+          "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\n7. All: equivalent to 1+2+3+4",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -14870,6 +15435,30 @@
         }
       ],
       "type": "object"
+    },
+    "PlayStatFileInfo": {
+      "document": "Information of a playback statistics file",
+      "members": [
+        {
+          "default": "",
+          "document": "Date of playback statistics in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "member": "string",
+          "name": "Date",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL of a playback statistics file, including the following contents:\n<li> date: playback date</li>\n<li> file_id: video file ID</li>\n<li> ip_count: number of client IPs after deduplication</li>\n<li> flux: playback traffic in bytes</li>\n<li> play_times: total playback times</li>\n<li> pc_play_times: playback times on PC clients</li>\n<li> mobile_play_times: playback times on mobile clients</li>\n<li> iphone_play_times: playback times on iPhone</li>\n<li> android_play_times: playback times on Android</li>\n<li> host_name: domain name</li>",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PlayerConfig": {
       "document": "Player configuration details",
@@ -17110,6 +17699,14 @@
         },
         {
           "default": "",
+          "document": "Whether to store the video clip persistently. 0: no (default), 1: yes.",
+          "member": "int64",
+          "name": "IsPersistence",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
           "member": "uint64",
           "name": "SubAppId",
@@ -17134,6 +17731,13 @@
           "member": "MediaMetaData",
           "name": "MetaData",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unique ID of a video clip for persistent storage.",
+          "member": "string",
+          "name": "FileId",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -17415,6 +18019,210 @@
       ],
       "usage": "out"
     },
+    "SplitMediaOutputConfig": {
+      "document": "Information of video splitting output files.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of an output file. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.",
+          "member": "string",
+          "name": "MediaName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output file format. Valid values: mp4 (default), hls.",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Category ID, which is used to categorize the media file for management. You can use [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>Default value: 0, which means other categories.</li>",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of an output file. After passing the expiration time, the file will be deleted. There is no expiration time set for a file by default. The time is in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SplitMediaTask": {
+      "document": "Video splitting task information. This field has a value only when `TaskType` is `SplitMedia`.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task flow status. Valid values:\n<li>PROCESSING: processing</li>\n<li>FINISH: finished</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. You're not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error information.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of video splitting task details.",
+          "member": "SplitMediaTaskSegmentInfo",
+          "name": "FileInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1000 characters.",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or set to an empty string, no deduplication will be performed.",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SplitMediaTaskInput": {
+      "document": "Input information of a video splitting task.",
+      "members": [
+        {
+          "default": "",
+          "document": "Video ID.",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset of the video splitting start time in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset of the video splitting end time in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Task flow template](https://intl.cloud.tencent.com/document/product/266/33931?lang=en&pg=) name, which should be entered if you want to perform a task flow on the generated new video.",
+          "member": "string",
+          "name": "ProcedureName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output information of a video splitting task.",
+          "member": "SplitMediaOutputConfig",
+          "name": "OutputConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SplitMediaTaskSegmentInfo": {
+      "document": "Information of a video splitting task.",
+      "members": [
+        {
+          "default": "",
+          "document": "Input information of a video splitting task.",
+          "member": "SplitMediaTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output information of a video splitting task.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "TaskOutputMediaInfo",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "If a video processing flow is specified when a video splitting task is initiated, this field will be the task flow ID.",
+          "member": "string",
+          "name": "ProcedureTaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "StatDataItem": {
       "document": "Statistics",
       "members": [
@@ -17525,6 +18333,48 @@
         }
       ],
       "usage": "both"
+    },
+    "StorageStatData": {
+      "document": "VOD storage usage by region.",
+      "members": [
+        {
+          "default": "",
+          "document": "VOD storage billing region. Valid values:\n<li>Chinese Mainland</li>\n<li>Outside Chinese Mainland</li>",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current total storage capacity in bytes.",
+          "member": "uint64",
+          "name": "TotalStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current STANDARD_IA storage capacity in bytes.",
+          "member": "uint64",
+          "name": "InfrequentStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current STANDARD storage capacity in bytes.",
+          "member": "uint64",
+          "name": "StandardStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SubAppIdInfo": {
       "document": "Subapplication information.",
@@ -17711,6 +18561,30 @@
         }
       ],
       "usage": "in"
+    },
+    "TaskOutputMediaInfo": {
+      "document": "Output media file information of a video processing task.",
+      "members": [
+        {
+          "default": "",
+          "document": "Media file ID.",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "MediaBasicInfo",
+          "name": "MediaBasicInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TaskSimpleInfo": {
       "document": "Task overview information",
@@ -18908,7 +19782,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "I-frame interval in frames. Valid values: 0 and 1-100000.\nWhen this parameter is set to 0 or left empty, `Gop` will be automatically set.",
           "member": "uint64",
           "name": "Gop",
           "required": false,
@@ -18986,7 +19860,7 @@
         },
         {
           "default": "",
-          "document": "Video Constant Rate Factor (CRF). Value range: 1-51. This parameter will be disabled if you enter 0.\nWe don’t recommend specifying this parameter unless you have special requirements.",
+          "document": "Video Constant Rate Factor (CRF). Value range: 0-51. This parameter will be disabled if you enter 0.\nWe don’t recommend specifying this parameter unless you have special requirements.",
           "member": "uint64",
           "name": "Vcrf",
           "required": false,
@@ -18995,7 +19869,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "I-frame interval in frames. Valid values: 0 and 1-100000.\nWhen this parameter is set to 0 or left empty, `Gop` will be automatically set.",
           "member": "uint64",
           "name": "Gop",
           "required": false,
