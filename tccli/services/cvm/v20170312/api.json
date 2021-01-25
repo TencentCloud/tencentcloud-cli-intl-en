@@ -861,7 +861,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Cloud disk performance, in MB/s\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ThroughputPerformance",
           "required": false,
@@ -3817,7 +3817,7 @@
         },
         {
           "default": "",
-          "document": "Discount. For example, 20.0 indicates 80% off.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Percentage of the original price. For example, if you enter \"20.0\", the discounted price will be 20% of the original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "float",
           "name": "Discount",
           "required": true,

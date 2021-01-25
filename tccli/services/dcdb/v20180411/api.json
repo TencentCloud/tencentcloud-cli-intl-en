@@ -1,5 +1,11 @@
 {
   "actions": {
+    "AssociateSecurityGroups": {
+      "document": "This API is used to associate security groups with Tencent Cloud resources in batches.",
+      "input": "AssociateSecurityGroupsRequest",
+      "name": "Associates security groups in batches",
+      "output": "AssociateSecurityGroupsResponse"
+    },
     "CloneAccount": {
       "document": "This API is used to clone an instance account.",
       "input": "CloneAccountRequest",
@@ -54,6 +60,12 @@
       "name": "Views database parameters",
       "output": "DescribeDBParametersResponse"
     },
+    "DescribeDBSecurityGroups": {
+      "document": "This API is used to query the security group details of an instance.",
+      "input": "DescribeDBSecurityGroupsRequest",
+      "name": "Queries the security group details of an instance",
+      "output": "DescribeDBSecurityGroupsResponse"
+    },
     "DescribeDBSyncMode": {
       "document": "This API is used to query the sync mode of a TencentDB instance.",
       "input": "DescribeDBSyncModeRequest",
@@ -90,6 +102,18 @@
       "name": "Queries the list of databases",
       "output": "DescribeDatabasesResponse"
     },
+    "DescribeProjectSecurityGroups": {
+      "document": "This API is used to query the security group details of a project.",
+      "input": "DescribeProjectSecurityGroupsRequest",
+      "name": "Queries the security group details of a project",
+      "output": "DescribeProjectSecurityGroupsResponse"
+    },
+    "DisassociateSecurityGroups": {
+      "document": "This API is used to unassociate security groups from instances in batches.",
+      "input": "DisassociateSecurityGroupsRequest",
+      "name": "Unassociates security groups in batches",
+      "output": "DisassociateSecurityGroupsResponse"
+    },
     "GrantAccountPrivileges": {
       "document": "This API is used to grant permissions to a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "GrantAccountPrivilegesRequest",
@@ -107,6 +131,12 @@
       "input": "ModifyAccountDescriptionRequest",
       "name": "Modifies account remarks",
       "output": "ModifyAccountDescriptionResponse"
+    },
+    "ModifyDBInstanceSecurityGroups": {
+      "document": "This API is used to modify the security groups associated with TencentDB.",
+      "input": "ModifyDBInstanceSecurityGroupsRequest",
+      "name": "Modifies the security groups associated with TencentDB",
+      "output": "ModifyDBInstanceSecurityGroupsResponse"
     },
     "ModifyDBInstancesProject": {
       "document": "This API is used to modify the project to which TencentDB instances belong.",
@@ -145,6 +175,48 @@
     "serviceShortName": "dcdb"
   },
   "objects": {
+    "AssociateSecurityGroupsRequest": {
+      "document": "AssociateSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name. Valid value: `dcdb`.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the security group to be associated in the format of sg-efil73jd.",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID(s) of the instance(s) to be associated in the format of tdsqlshard-lesecurk. You can specify multiple instances.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateSecurityGroupsResponse": {
+      "document": "AssociateSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CloneAccountRequest": {
       "document": "CloneAccount request structure.",
       "members": [
@@ -1602,6 +1674,47 @@
       ],
       "type": "object"
     },
+    "DescribeDBSecurityGroupsRequest": {
+      "document": "DescribeDBSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name. Valid value: `dcdb`.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsResponse": {
+      "document": "DescribeDBSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "Security group details",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBSyncModeRequest": {
       "document": "DescribeDBSyncMode request structure.",
       "members": [
@@ -2075,6 +2188,89 @@
       ],
       "type": "object"
     },
+    "DescribeProjectSecurityGroupsRequest": {
+      "document": "DescribeProjectSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name. Valid value: `dcdb`.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectSecurityGroupsResponse": {
+      "document": "DescribeProjectSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "Security group details",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateSecurityGroupsRequest": {
+      "document": "DisassociateSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name. Valid value: `dcdb`.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID list, which is an array of one or more instance IDs.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateSecurityGroupsResponse": {
+      "document": "DisassociateSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GrantAccountPrivilegesRequest": {
       "document": "GrantAccountPrivileges request structure.",
       "members": [
@@ -2287,6 +2483,48 @@
     },
     "ModifyAccountDescriptionResponse": {
       "document": "ModifyAccountDescription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsRequest": {
+      "document": "ModifyDBInstanceSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name. Valid value: `dcdb`.",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsResponse": {
+      "document": "ModifyDBInstanceSecurityGroups response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2636,6 +2874,117 @@
         }
       ],
       "type": "object"
+    },
+    "SecurityGroup": {
+      "document": "Security group details",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group name",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group remarks",
+          "member": "string",
+          "name": "SecurityGroupRemark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Inbound rule",
+          "member": "SecurityGroupBound",
+          "name": "Inbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Outbound rule",
+          "member": "SecurityGroupBound",
+          "name": "Outbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroupBound": {
+      "document": "Security group inbound/outbound rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy, which can be `ACCEPT` or `DROP`",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP or source IP range, such as 192.168.0.0/16",
+          "member": "string",
+          "name": "CidrIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port",
+          "member": "string",
+          "name": "PortRange",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network protocol. UDP and TCP are supported.",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ShardInfo": {
       "document": "Shard information",

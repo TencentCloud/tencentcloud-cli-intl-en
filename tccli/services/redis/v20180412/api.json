@@ -6364,6 +6364,14 @@
           "name": "RedisReplicasNum",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.",
+          "member": "RedisNodeInfo",
+          "name": "NodeSet",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

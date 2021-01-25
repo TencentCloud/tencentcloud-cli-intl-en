@@ -108,6 +108,12 @@
       "name": "CheckNetDetectState",
       "output": "CheckNetDetectStateResponse"
     },
+    "CloneSecurityGroup": {
+      "document": "This API is used to create a security group with the same rule configurations as an existing security group. The cloning only copies the security group and its rules, but not the security group tags.",
+      "input": "CloneSecurityGroupRequest",
+      "name": "Clones an security group",
+      "output": "CloneSecurityGroupResponse"
+    },
     "CreateAddressTemplate": {
       "document": "This API (CreateAddressTemplate) is used to create an IP address template.",
       "input": "CreateAddressTemplateRequest",
@@ -265,7 +271,7 @@
       "output": "CreateSubnetsResponse"
     },
     "CreateVpc": {
-      "document": "This API is used to create a VPC instance.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information, see the corresponding documents about VPC IP address ranges.\n* The number of VPC instances that can be created in a region is limited. For more information, see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537\" title=\"VPC Use Limits\">VPC Use Limits</a>. To request more resources, contact the online customer service.\n* You can bind a tag when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.",
+      "document": "This API is used to create a VPC instance.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information on how to plan VPC IP ranges, see [Network Planning](https://intl.cloud.tencent.com/document/product/215/30313?from_cn_redirect=1).\n* The number of VPC instances that can be created in a region is limited. For more information, see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537?from_cn_redirect=1\" title=\"VPC Use Limits\">VPC Use Limits</a>. To request more resources, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).\n* You can bind tags when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateVpcRequest",
       "name": "Creates a VPC",
       "output": "CreateVpcResponse"
@@ -559,7 +565,7 @@
       "output": "DescribeFlowLogsResponse"
     },
     "DescribeGatewayFlowMonitorDetail": {
-      "document": "This API (DescribeGatewayFlowMonitorDetail) is used to query the monitoring details of the gateway traffic.\n* Only querying of a single gateway instance is supported. That is, only one of the `VpnId`, `DirectConnectGatewayId`, `PeeringConnectionId`, or `NatId` input parameters is supported, and one must be used.\n* If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring has been enabled in the corresponding gateway details page in the console.",
+      "document": "This API is used to query the traffic monitoring details of the gateway.\n* You can only use this API to query a single gateway instance, which means you must pass in only one of `VpnId`, `DirectConnectGatewayId`, `PeeringConnectionId`, or `NatId`.\n* If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring has been enabled in the corresponding gateway details page in the console.",
       "input": "DescribeGatewayFlowMonitorDetailRequest",
       "name": "Queries the monitoring details of a gateway",
       "output": "DescribeGatewayFlowMonitorDetailResponse"
@@ -3061,6 +3067,71 @@
       ],
       "usage": "out"
     },
+    "CloneSecurityGroupRequest": {
+      "document": "CloneSecurityGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the security group to be cloned, such as `sg-33ocnj9n`. This can be obtained through the `DescribeSecurityGroups` API.",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The name of security group clone. You can enter any name within 60 characters. If this parameter is left empty, the security group clone will use the name of the source security group.",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of the security group clone. You can enter up to 100 characters. If this parameter is left empty, the security group clone will use the description of the source security group.",
+          "member": "string",
+          "name": "GroupDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID of the security group clone. The default is 0. You can query it on the project management page of the Tencent Cloud console.",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The region of the source security group for a cross-region clone. For example, to clone the security group in Guangzhou to Shanghai, set it to `ap-guangzhou`.",
+          "member": "string",
+          "name": "RemoteRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneSecurityGroupResponse": {
+      "document": "CloneSecurityGroup response structure.",
+      "members": [
+        {
+          "document": "Security group object\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "SecurityGroup",
+          "name": "SecurityGroup",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ConflictItem": {
       "document": "Conflict resource items.",
       "members": [
@@ -3552,7 +3623,7 @@
       "members": [
         {
           "default": "",
-          "document": "The ID of the availability zone in which the subnet resides. The availability zone will be randomly selected if not specified.",
+          "document": "The ID of the availability zone in which the subnet resides. This parameter can be obtained through the [`DescribeZones`](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API, such as `ap-guangzhou-1`. If it’s not specified, a random availability zone will be used.",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -4636,7 +4707,7 @@
         },
         {
           "default": "",
-          "document": "VPC CIDR, which must fall within the following private network IP ranges: 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.",
+          "document": "VPC CIDR blocks, which must fall within the following three private network IP ranges: 10.0.0.0/16, 172.16.0.0/16 and 192.168.0.0/16.",
           "member": "string",
           "name": "CidrBlock",
           "required": true,
@@ -4652,7 +4723,7 @@
         },
         {
           "default": "",
-          "document": "The DNS address. A maximum of 4 addresses is supported.",
+          "document": "DNS address. A maximum of 4 addresses is supported.",
           "member": "string",
           "name": "DnsServers",
           "required": false,
@@ -4660,7 +4731,7 @@
         },
         {
           "default": "",
-          "document": "Domain name",
+          "document": "Domain name of DHCP",
           "member": "string",
           "name": "DomainName",
           "required": false,
@@ -4668,7 +4739,7 @@
         },
         {
           "default": "",
-          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -4798,7 +4869,7 @@
       "members": [
         {
           "default": "",
-          "document": "The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.",
+          "document": "VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -7560,7 +7631,7 @@
       "document": "DescribeIpGeolocationDatabaseUrl response structure.",
       "members": [
         {
-          "document": "Download link of the IP location database.",
+          "document": "Download link of an IP location database",
           "member": "string",
           "name": "DownLoadUrl",
           "type": "string",
@@ -11112,7 +11183,7 @@
         },
         {
           "default": "",
-          "document": "Load CIDR blocks to add. CIDR block set; format: e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]",
+          "document": "Array of the secondary CIDR blocks to be added, such as [\"10.0.0.0/16\", \"172.16.0.0/16\"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.",
           "member": "string",
           "name": "NewCidrBlocks",
           "required": false,
@@ -11120,7 +11191,7 @@
         },
         {
           "default": "",
-          "document": "Load CIDR blocks to delete. CIDR block set; Format: e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]",
+          "document": "Array of the secondary CIDR blocks to be deleted, such as [\"10.0.0.0/16\", \"172.16.0.0/16\"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.",
           "member": "string",
           "name": "OldCidrBlocks",
           "required": false,
@@ -11536,6 +11607,22 @@
           "name": "InternetMaxBandwidthOut",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to modify the security group bound to the NAT Gateway",
+          "member": "bool",
+          "name": "ModifySecurityGroup",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -12384,6 +12471,15 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of the security groups bound to the NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SecurityGroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -14377,7 +14473,7 @@
         },
         {
           "default": "",
-          "document": "Number of database instances.",
+          "document": "Number of TencentDB for MySQL instances",
           "member": "uint64",
           "name": "CDB",
           "required": true,

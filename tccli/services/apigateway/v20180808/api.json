@@ -1032,6 +1032,33 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "IsBase64Encoded",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "IsBase64Trigger",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "Base64EncodedTriggerRule",
+          "name": "Base64EncodedTriggerRules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1342,6 +1369,30 @@
       ],
       "usage": "out"
     },
+    "Base64EncodedTriggerRule": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "BindEnvironmentRequest": {
       "document": "BindEnvironment request structure.",
       "members": [
@@ -1571,6 +1622,14 @@
           "name": "PathMappingSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.",
+          "member": "bool",
+          "name": "IsForcedHttps",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1578,6 +1637,13 @@
     "BindSubDomainResponse": {
       "document": "BindSubDomain response structure.",
       "members": [
+        {
+          "document": "Whether binding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Result",
+          "type": "bool",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2048,6 +2114,14 @@
           "name": "UserType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "bool",
+          "name": "IsBase64Encoded",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -5590,6 +5664,14 @@
           "name": "NetType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.",
+          "member": "bool",
+          "name": "IsForcedHttps",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

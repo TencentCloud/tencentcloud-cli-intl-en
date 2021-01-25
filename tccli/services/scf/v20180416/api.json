@@ -187,9 +187,9 @@
       "output": "PutReservedConcurrencyConfigResponse"
     },
     "PutTotalConcurrencyConfig": {
-      "document": "This API is used to modify the account concurrency limit quota.",
+      "document": "This API is used to modify the account concurrency quota.",
       "input": "PutTotalConcurrencyConfigRequest",
-      "name": "Modifies account concurrency limit quota",
+      "name": "Modifies account concurrency quota",
       "output": "PutTotalConcurrencyConfigResponse"
     },
     "UpdateAlias": {
@@ -1188,7 +1188,7 @@
         },
         {
           "default": "",
-          "document": "Function namespace. Default value: default",
+          "document": "Function namespace. Default value: `default`",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -1222,7 +1222,7 @@
         },
         {
           "default": "",
-          "document": "Function namespace. Default value: default",
+          "document": "Function namespace. Default value: `default`",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -3541,7 +3541,7 @@
         },
         {
           "default": "",
-          "document": "Function namespace. Default value: default",
+          "document": "Function namespace. Default value: `default`",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -3583,7 +3583,7 @@
         },
         {
           "default": "",
-          "document": "Function namespace. Default value: default",
+          "document": "Function namespace. Default value: `default`",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -3617,7 +3617,7 @@
         },
         {
           "default": "",
-          "document": "Namespace. Default value: default",
+          "document": "Namespace. Default value: `default`",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -4473,7 +4473,7 @@
         },
         {
           "default": "",
-          "document": "Provisioned concurrency setting task status. Done: completed; InProgress: in progress; Failed: partially or completely failed.",
+          "document": "Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.",
           "member": "string",
           "name": "Status",
           "required": true,

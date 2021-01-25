@@ -151,7 +151,7 @@
       "output": "ModifySnapshotsSharePermissionResponse"
     },
     "ResizeDisk": {
-      "document": "This API is used to expand the capacity of a cloud disk.\n\n* This API supports only the expansion of elastic cloud disks. To query the type of a cloud disk, you can call [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) and check the `Portable` field in the response. To expand cloud disks created along with CVMs, you can call the [ResizeInstanceDisks](https://intl.cloud.tencent.com/document/product/213/15731?from_cn_redirect=1) API.\n* This is an async API. A successful return of this API does not mean that the cloud disk has been expanded successfully. You can call the [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) API to query the status of a cloud disk. `EXPANDING` indicates that the expansion is in process. ",
+      "document": "This API is used to expand the capacity of a cloud disk.\n\n* This API supports only the expansion of elastic cloud disks. To query the type of a cloud disk, you can call the [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) API and check the `Portable` field in the response. To expand non-elastic cloud disks, you can call the [ResizeInstanceDisks](https://intl.cloud.tencent.com/document/product/213/15731?from_cn_redirect=1) API.\n* This is an async API. A successful return of this API does not mean that the cloud disk has been expanded successfully. You can call the [DescribeDisks](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1?from_cn_redirect=1) API to query the status of a cloud disk. `EXPANDING` indicates that the expansion is in process. ",
       "input": "ResizeDiskRequest",
       "name": "Expanding Cloud Disk Capacity",
       "output": "ResizeDiskResponse"
@@ -499,7 +499,7 @@
       "members": [
         {
           "default": "",
-          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD",
+          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -592,6 +592,14 @@
           "name": "Shareable",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).",
+          "member": "uint64",
+          "name": "ThroughputPerformance",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1870,7 +1878,7 @@
       "members": [
         {
           "default": "",
-          "document": "Type of cloud hard disk. Value range: <br><li>Ordinary cloud disk: CLOUD_BASIC <br><li>Premium cloud storage: CLOUD_PREMIUM <br><li>SSD cloud disk: CLOUD_SSD.",
+          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD.",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -1913,6 +1921,14 @@
           "document": "ID of project the cloud disk belongs to.",
           "member": "uint64",
           "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Extra performance (in MB/sec) purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and Tremendous SSD (CLOUD_TSSD).",
+          "member": "uint64",
+          "name": "ThroughputPerformance",
           "required": false,
           "type": "int"
         }
@@ -2306,6 +2322,69 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Highly-precise published unit price of a monthly-subscribed cloud disk or a snapshot, in USD.",
+          "member": "string",
+          "name": "OriginalPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Highly-precise discounted unit price of a monthly-subscribed cloud disk or a snapshot, in USD.",
+          "member": "string",
+          "name": "DiscountPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Published unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ChargeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discount unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Highly-precise published unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnitPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Highly-precise discounted unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnitPriceDiscountHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2356,6 +2435,42 @@
           "name": "UnitPriceDiscount",
           "required": true,
           "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Highly-precise published unit price of a monthly-subscribed cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "OriginalPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Highly-precise discounted unit price of a monthly-subscribed cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiscountPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Highly-precise published unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnitPriceHigh",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Highly-precise discounted unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UnitPriceDiscountHigh",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2469,7 +2584,7 @@
         },
         {
           "default": "",
-          "document": "Status of the snapshot. Value range: <br><li>NORMAL: Normal <br><li>CREATING: Creating <br><li>ROLLBACKING: Rolling backing <br><li>COPYING_FROM_REMOTE: Copying snapshot across regions.",
+          "document": "Snapshot status. Valid values: <br><li>NORMAL: normal <br><li>CREATING: creating<br><li>ROLLBACKING: rolling back<br><li>COPYING_FROM_REMOTE: cross-region replicating<li>CHECKING_COPIED: verifying the cross-region replicated data<br><li>TORECYCLE: to be repossessed.",
           "member": "string",
           "name": "SnapshotState",
           "required": false,
@@ -2582,6 +2697,15 @@
           "name": "ShareReference",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "date",
+          "name": "TimeStartShare",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

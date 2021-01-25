@@ -303,7 +303,7 @@
         },
         {
           "default": "",
-          "document": "Product name/code (optional)",
+          "document": "Product code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "BusinessCode",
           "required": true,
@@ -312,7 +312,7 @@
         },
         {
           "default": "",
-          "document": "Subproduct name/code (optional)",
+          "document": "Subproduct code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ProductCode",
           "required": true,
@@ -336,6 +336,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID: ID of the project to which the resource belongs",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -489,7 +498,7 @@
         },
         {
           "default": "",
-          "document": "Component type/code (optional)",
+          "document": "Component type code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ItemCode",
           "required": true,
@@ -498,7 +507,7 @@
         },
         {
           "default": "",
-          "document": "Component name/code (optional)",
+          "document": "Component code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ComponentCode",
           "required": true,
@@ -1054,6 +1063,14 @@
           "name": "ActionType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID: ID of the project to which the resource belongs",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
