@@ -3,9 +3,9 @@
     "BindingPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=BindingPolicyObject\r\n&Module=monitor\r\n&GroupId=111111\r\n&Dimensions.0.Dimensions={\"unInstanceId\":\"ins-ot3cq4bi\"}\r\n&Dimensions.0.EventDimensions={\"uuid\":\"9d51a69e-0e4a-4120-ae58-9c073c851e24\"}\r\n&Dimensions.0.Region=gz\r\n&Dimensions.0.RegionId=1\r\n&<Common request parameters>",
+        "input": "https://monitor.tencentcloudapi.com/?Action=BindingPolicyObject\n&Module=monitor\n&GroupId=111111\n&Dimensions.0.Dimensions={\"unInstanceId\":\"ins-ot3cq4bi\"}\n&Dimensions.0.EventDimensions={\"uuid\":\"9d51a69e-0e4a-4120-ae58-9c073c851e24\"}\n&Dimensions.0.Region=gz\n&Dimensions.0.RegionId=1\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"78345016-ff97-4360-839a-82f3d96430e8\"\r\n  }\r\n}",
-        "title": "Binding policy object"
+        "title": "Binding a policy object"
       }
     ],
     "CreateAlarmNotice": [
@@ -206,6 +206,14 @@
         "title": "Getting product event list"
       }
     ],
+    "DescribeStatisticData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStatisticData\n<Common request parameters>\n\n{\n  \"Module\": \"monitor\",\n  \"Namespace\": \"QCE/TKE\",\n  \"MetricNames\": [\n    \"K8sPodCpuCoreUsed\"\n  ],\n  \"Period\": 300,\n  \"Conditions\": [\n    {\n      \"Key\": \"tke_cluster_instance_id\",\n      \"Operator\": \"=\",\n      \"Value\": [\n        \"cls-mw2w40s7\"\n      ]\n    }\n  ],\n  \"StartTime\": \"2020-11-24T15:15:50+08:00\",\n  \"EndTime\": \"2020-11-24T15:25:50+08:00\"\n}",
+        "output": "{\r\n  \"Response\": {\r\n    \"Data\": [\r\n      {\r\n        \"MetricName\": \"K8sPodCpuCoreUsed\",\r\n        \"Points\": [\r\n          {\r\n            \"Dimensions\": [\r\n              {\r\n                \"Name\": \"tke_cluster_instance_id\",\r\n                \"Value\": \"cls-mw2w40s7\"\r\n              },\r\n              {\r\n                \"Name\": \"node\",\r\n                \"Value\": \"cls-gn7vut9a-virtual-kubelet-subnet-node-2\"\r\n              },\r\n              {\r\n                \"Name\": \"pod_name\",\r\n                \"Value\": \"proxy-edge-j7j95\"\r\n              },\r\n              {\r\n                \"Name\": \"workload_name\",\r\n                \"Value\": \"init-test-nfs02\"\r\n              },\r\n              {\r\n                \"Name\": \"namespace\",\r\n                \"Value\": \"default-test\"\r\n              },\r\n              {\r\n                \"Name\": \"node_role\",\r\n                \"Value\": \"node\"\r\n              },\r\n              {\r\n                \"Name\": \"un_instance_id\",\r\n                \"Value\": \"cls-gn7vut9a-virtual-kubelet-subnet-nmpi5ecw-1\"\r\n              },\r\n              {\r\n                \"Name\": \"workload_kind\",\r\n                \"Value\": \"Deployment\"\r\n              }\r\n            ],\r\n            \"Values\": [\r\n              {\r\n                \"Timestamp\": 1606202100,\r\n                \"Value\": 41.066\r\n              },\r\n              {\r\n                \"Timestamp\": 1606202400,\r\n                \"Value\": 38.666\r\n              },\r\n              {\r\n                \"Timestamp\": 1606202700,\r\n                \"Value\": 37.866\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"Dimensions\": [\r\n              {\r\n                \"Name\": \"namespace\",\r\n                \"Value\": \"default-test\"\r\n              },\r\n              {\r\n                \"Name\": \"node\",\r\n                \"Value\": \"cls-gn7vut9a-virtual-kubelet-subnet-node-3\"\r\n              },\r\n              {\r\n                \"Name\": \"node_role\",\r\n                \"Value\": \"node\"\r\n              },\r\n              {\r\n                \"Name\": \"pod_name\",\r\n                \"Value\": \"network-tools-b94d6dd89-flf7n\"\r\n              },\r\n              {\r\n                \"Name\": \"un_instance_id\",\r\n                \"Value\": \"cls-gn7vut9a-virtual-kubelet-subnet-nmpi5ecw-1\"\r\n              },\r\n              {\r\n                \"Name\": \"workload_kind\",\r\n                \"Value\": \"Deployment\"\r\n              },\r\n              {\r\n                \"Name\": \"workload_name\",\r\n                \"Value\": \"init-test-nfs00\"\r\n              },\r\n              {\r\n                \"Name\": \"tke_cluster_instance_id\",\r\n                \"Value\": \"cls-mw2w40s7\"\r\n              }\r\n            ],\r\n            \"Values\": [\r\n              {\r\n                \"Timestamp\": 1606202100,\r\n                \"Value\": 42.666\r\n              },\r\n              {\r\n                \"Timestamp\": 1606202400,\r\n                \"Value\": 33.6\r\n              },\r\n              {\r\n                \"Timestamp\": 1606202700,\r\n                \"Value\": 40.266\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"EndTime\": \"2020-11-24 15:25:00\",\r\n    \"Period\": 300,\r\n    \"RequestId\": \"0d25d659-71ee-4c93-b8e1-f3992c61ff46\",\r\n    \"StartTime\": \"2020-11-24 15:15:00\"\r\n  }\r\n}",
+        "title": "Querying monitoring data by dimension condition"
+      }
+    ],
     "GetMonitorData": [
       {
         "document": "This example shows you how to get the 5-minute CPU utilization monitoring data of one CVM instance in a certain period of time.",
@@ -317,7 +325,7 @@
     "UnBindingAllPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingAllPolicyObject\r\n&Module=monitor\r\n&GroupId=11111\r\n&<Common request parameters>",
+        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingAllPolicyObject\n&Module=monitor\n&GroupId=11111\n&<Common request parameters>",
         "output": "{\"Response\": {\"RequestId\": \"0dbb66c2-b4d6-4c2c-90a9-617d80347ab5\"}}",
         "title": "Deleting all bound objects"
       }

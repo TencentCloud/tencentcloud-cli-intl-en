@@ -150,6 +150,12 @@
       "name": "Gets the list of product events.",
       "output": "DescribeProductEventListResponse"
     },
+    "DescribeStatisticData": {
+      "document": "This API is used to query monitoring data by dimension conditions.",
+      "input": "DescribeStatisticDataRequest",
+      "name": "Queries monitoring data by dimension conditions",
+      "output": "DescribeStatisticDataResponse"
+    },
     "GetMonitorData": {
       "document": "This API is used to get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can obtain the data of up to 10 instances and up to 1,440 data points.\nThis API may fail due to the rate limit if you need to call a lot of metrics and objects. We recommended that you spread the call requests over time.",
       "input": "GetMonitorDataRequest",
@@ -1071,7 +1077,7 @@
       "members": [
         {
           "default": "",
-          "document": "Policy group ID.",
+          "document": "Policy group ID. If `PolicyId` is specified, you can pass any value to this field.",
           "member": "int64",
           "name": "GroupId",
           "required": true,
@@ -1100,6 +1106,14 @@
           "name": "Dimensions",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID. If this field is used, you can pass any value to `GroupId`.",
+          "member": "string",
+          "name": "PolicyId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5313,6 +5327,116 @@
       ],
       "type": "object"
     },
+    "DescribeStatisticDataRequest": {
+      "document": "DescribeStatisticData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Module, whose value is fixed at `monitor`",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace. Valid values: QCE/TKE",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metric name list",
+          "member": "string",
+          "name": "MetricNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Dimension condition. The `=` and `in` operators are supported",
+          "member": "MidQueryCondition",
+          "name": "Conditions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Statistical granularity in s. Default value: 300",
+          "member": "uint64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`groupBy` by the specified dimension",
+          "member": "string",
+          "name": "GroupBys",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStatisticDataResponse": {
+      "document": "DescribeStatisticData response structure.",
+      "members": [
+        {
+          "document": "Statistical period",
+          "member": "uint64",
+          "name": "Period",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Start time",
+          "member": "string",
+          "name": "StartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "End time",
+          "member": "string",
+          "name": "EndTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Monitoring data",
+          "member": "MetricData",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Dimension": {
       "document": "Combination of instance object dimensions",
       "members": [
@@ -5627,6 +5751,54 @@
       ],
       "usage": "out"
     },
+    "MetricData": {
+      "document": "`DescribeMetricData` output parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Metric name",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monitoring data point",
+          "member": "MetricDataPoint",
+          "name": "Points",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MetricDataPoint": {
+      "document": "`DescribeMetricData` output parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Combination of instance object dimensions",
+          "member": "Dimension",
+          "name": "Dimensions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data point list",
+          "member": "Point",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MetricDatum": {
       "document": "Metric names and values",
       "members": [
@@ -5752,6 +5924,39 @@
         }
       ],
       "usage": "out"
+    },
+    "MidQueryCondition": {
+      "document": "`DescribeMidDimensionValueList` query conditions",
+      "members": [
+        {
+          "default": "",
+          "document": "Dimension",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator. Valid values: eq (equal to), ne (not equal to), in",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dimension value. If `Operator` is `eq` or `ne`, only the first element will be used",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ModifyAlarmNoticeRequest": {
       "document": "ModifyAlarmNotice request structure.",
@@ -6352,6 +6557,30 @@
       ],
       "usage": "out"
     },
+    "Point": {
+      "document": "Monitoring data point",
+      "members": [
+        {
+          "default": "",
+          "document": "Time point when this monitoring data point is generated",
+          "member": "uint64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monitoring data point value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "Value",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "PutMonitorDataRequest": {
       "document": "PutMonitorData request structure.",
       "members": [
@@ -6665,11 +6894,19 @@
         },
         {
           "default": "",
-          "document": "Policy group ID.",
+          "document": "Policy group ID. If `PolicyId` is specified, you can pass any value to this field.",
           "member": "int64",
           "name": "GroupId",
           "required": true,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID. If this field is used, you can pass any value to `GroupId`.",
+          "member": "string",
+          "name": "PolicyId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6699,7 +6936,7 @@
         },
         {
           "default": "",
-          "document": "Policy group ID.",
+          "document": "Policy group ID. If `PolicyId` is specified, you can pass any value to this field.",
           "member": "int64",
           "name": "GroupId",
           "required": true,
@@ -6720,6 +6957,14 @@
           "name": "InstanceGroupId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID. If this field is used, you can pass any value to `GroupId`.",
+          "member": "string",
+          "name": "PolicyId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
