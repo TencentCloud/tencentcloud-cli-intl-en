@@ -3,9 +3,17 @@
     "AcceptDirectConnectTunnel": [
       {
         "document": "",
-        "input": "https://dc.tencentcloudapi.com/?Action=AcceptDirectConnectTunnel\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&<Common request parameters>",
+        "input": "https://dc.tencentcloudapi.com/?Action=AcceptDirectConnectTunnel\n&DirectConnectTunnelId=dcx-abcdefgh\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
         "title": "Accepting an application for a dedicated tunnel"
+      }
+    ],
+    "ApplyInternetAddress": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=ApplyInternetAddress\n&AddrType=0\n&AddrProto=0\n&MaskLen=30\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n   \"InstanceId\": \"ipv4-h2k2jna1\", \r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Applying for a BGP IPv4 address"
       }
     ],
     "CreateDirectConnect": [
@@ -59,7 +67,7 @@
     "DeleteDirectConnectTunnel": [
       {
         "document": "",
-        "input": "https://dc.tencentcloudapi.com/?Action=DeleteDirectConnectTunnel\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&<Common request parameters>",
+        "input": "https://dc.tencentcloudapi.com/?Action=DeleteDirectConnectTunnel\n&DirectConnectTunnelId=dcx-abcdefgh\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
         "title": "Deleting a dedicated tunnel"
       }
@@ -94,7 +102,7 @@
     ],
     "DescribeDirectConnects": [
       {
-        "document": "This example shows you how to filter the results by direct-connect-name.",
+        "document": "This example shows you how to filter by `direct-connect-name`.",
         "input": "https://dc.tencentcloudapi.com/?Action=DescribeDirectConnects\r\n&DirectConnectIds.0=dc-6mqd6t9j\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"DirectConnectSet\": [\r\n            {\r\n                \"EnabledTime\": \"2019-03-30 09:48:39\",\r\n                \"CustomerContactNumber\": \"13924777788\",\r\n                \"AccessPointId\": \"ap-cn-shenzhen-ns-A\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-6mqd6t9j\",\r\n                \"State\": \"PENDING\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Tencent Building\",\r\n                \"CreatedTime\": \"2019-02-28 09:48:39\",\r\n                \"PortType\": \"1000Base-LX\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaTelecom\",\r\n                \"TencentAddress\": \"\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"\",\r\n                \"CustomerContactMail\": \"zzubupt@163.com\",\r\n                \"Vlan\": -1,\r\n                \"Bandwidth\": 100,\r\n                \"DirectConnectName\": \"bbb\",\r\n                \"ChargeType\": \"PREPAID_BY_YEAR\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"a17e965b-5c58-4cf2-b5fb-2e00946deea8\",\r\n        \"TotalCount\": 1\r\n    }\r\n}",
         "title": "Querying the connection list - 2"
@@ -104,6 +112,46 @@
         "input": "https://dc.tencentcloudapi.com/?Action=DescribeDirectConnects\r\n&Filters.0.Name=direct-connect-name\r\n&Filters.0.Values.0=Direct Connect\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"DirectConnectSet\": [\r\n            {\r\n                \"EnabledTime\": \"2018-06-02 15:12:34\",\r\n                \"CustomerContactNumber\": \"18812345678\",\r\n                \"AccessPointId\": \"ap-cn-shenzhen-ns-A\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-gd3u0zov\",\r\n                \"State\": \"AVAILABLE\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Room 591, Floor 13, Malata Building, Shennan Avenue\",\r\n                \"CreatedTime\": \"2018-05-03 15:12:34\",\r\n                \"PortType\": \"1000Base-T\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaTelecom\",\r\n                \"TencentAddress\": \"192.168.1.2/30\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"192.168.1.1/30\",\r\n                \"CustomerContactMail\": \"zzuzxy1111@163.com\",\r\n                \"Vlan\": 10,\r\n                \"Bandwidth\": 100,\r\n                \"DirectConnectName\": \"User-built Direct Connect\",\r\n                \"ChargeType\": \"NON_RECURRING_CHARGE\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            },\r\n            {\r\n                \"EnabledTime\": \"2018-05-23 11:10:46\",\r\n                \"CustomerContactNumber\": \"18812345678\",\r\n                \"AccessPointId\": \"ap-cn-beijing-hx\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-2zeyish1\",\r\n                \"State\": \"BUILDING\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Beijing University of Posts and Telecommunications, No.10, Xitucheng Road\",\r\n                \"CreatedTime\": \"2018-04-23 11:10:46\",\r\n                \"PortType\": \"1000Base-T\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaMobile\",\r\n                \"TencentAddress\": \"192.168.1.156/24\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"192.168.1.157/24\",\r\n                \"CustomerContactMail\": \"zzuzxy@163.com\",\r\n                \"Vlan\": 253,\r\n                \"Bandwidth\": 2,\r\n                \"DirectConnectName\": \"Direct Connect one-time paid test\",\r\n                \"ChargeType\": \"PREPAID_BY_YEAR\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            },\r\n            {\r\n                \"EnabledTime\": \"2018-05-23 10:28:12\",\r\n                \"CustomerContactNumber\": \"18812345678\",\r\n                \"AccessPointId\": \"ap-cn-shenzhen-ns-A\",\r\n                \"ChargeState\": \"NORMAL\",\r\n                \"DirectConnectId\": \"dc-epeq2tj7\",\r\n                \"State\": \"BUILDING\",\r\n                \"ExpiredTime\": null,\r\n                \"Location\": \"Room 591, Floor 13, Malata Building\",\r\n                \"CreatedTime\": \"2018-04-23 10:28:12\",\r\n                \"PortType\": \"1000Base-T\",\r\n                \"CustomerName\": \"John Smith\",\r\n                \"LineOperator\": \"ChinaMobile\",\r\n                \"TencentAddress\": \"192.168.1.2/30\",\r\n                \"CircuitCode\": \"\",\r\n                \"CustomerAddress\": \"192.168.1.1/30\",\r\n                \"CustomerContactMail\": \"zzuzxy@163.com\",\r\n                \"Vlan\": 100,\r\n                \"Bandwidth\": 2,\r\n                \"DirectConnectName\": \"Direct Connect one-time paid test\",\r\n                \"ChargeType\": \"NON_RECURRING_CHARGE\",\r\n                \"RedundantDirectConnectId\": \"\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"70d690c8-477a-4e5d-99c0-fa1bb012a105\",\r\n        \"TotalCount\": 3\r\n    }\r\n}",
         "title": "Querying the connection list"
+      }
+    ],
+    "DescribeInternetAddress": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeInternetAddress\n&Limit=20\n&Offset=1\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n  \"TotalCount\": 1,\r\n   \"Subnets\": [{\r\n            \"Status\": 0,\r\n            \"Subnet\": \"220.110.1.0\", \r\n            \"MaskLen\": 30, \r\n            \"AddrType\": 0, \r\n            \"AppId\": 251010426,\r\n            \"InstanceId\": \"ipv4-qmda2nqv\", \r\n            \"AddrProto\": 0,\r\n            \"StopTime\": \"2020-09-22 00:00:00\",\r\n            \"Region\": \"gz\",\r\n            \"ApplyTime\": \"2020-09-22 00:00:00\", \r\n            \"ReleaseTime\": \"2020-09-22 00:00:00\"\r\n        }], \r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Obtaining the public IP addresses you have applied for"
+      }
+    ],
+    "DescribeInternetAddressQuota": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeInternetAddressQuota\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"Ipv4BgpQuota\": 256,\r\n        \"Ipv4OtherQuota\": 4,\r\n        \"Ipv6PrefixLen\": 56,\r\n        \"Ipv4BgpNum\": 50,\r\n        \"Ipv4OtherNum\": 4,\r\n        \"RequestId\":\"aac03e7b-3c91-4970-b2bc-c20f0c6bdd38\"\r\n    }\r\n}",
+        "title": "Obtaining the public IP address quota of internet tunnels"
+      }
+    ],
+    "DescribeInternetAddressStatistics": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DescribeInternetAddressStatistics\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"TotalCount\": 1,\r\n        \"InternetAddressStatistics\":[{\"Region\": \"gz\", \"SubnetNum\": 1}],\r\n        \"RequestId\":\"aac03e7b-3c91-4970-b2bc-c20f0c6bdd38\"\r\n    }\r\n}",
+        "title": "Obtaining the public IP address assignment statistics of internet tunnels"
+      }
+    ],
+    "DisableInternetAddress": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=DisableInternetAddress\n&InstanceId=\"ipv4-qmda2nqv\"\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Disabling an applied public IP address"
+      }
+    ],
+    "EnableInternetAddress": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=EnableInternetAddress\n&InstanceId=\"ipv4-qmda2nqv\"\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Enabling an public IP address for internet tunnels"
       }
     ],
     "ModifyDirectConnectAttribute": [
@@ -117,13 +165,13 @@
     "ModifyDirectConnectTunnelAttribute": [
       {
         "document": "",
-        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectTunnelAttribute\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&Bandwidth=100\r\n&TencentAddress=192.168.1.1/30\r\n&CustomerAddress=192.168.1.2/30\r\n&BgpPeer.Asn=65128\r\n&BgpPeer.AuthKey=abcdefg\r\n&<Common request parameters>",
+        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectTunnelAttribute\n&DirectConnectTunnelId=dcx-abcdefgh\n&DirectConnectTunnelName=Test\n&Bandwidth=100\n&TencentAddress=192.168.1.1/30\n&CustomerAddress=192.168.1.2/30\n&BgpPeer.Asn=65128\n&BgpPeer.AuthKey=abcdefg\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
         "title": "Modifying a dedicated tunnel using BGP routing"
       },
       {
         "document": "",
-        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectTunnelAttribute\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&DirectConnectTunnelName=Test\r\n&Bandwidth=100\r\n&TencentAddress=192.168.1.1/30\r\n&CustomerAddress=192.168.1.2/30\r\n&RouteFilterPrefixes.0.Cidr=192.168.0.0/24\r\n&RouteFilterPrefixes.1.Cidr=192.168.1.0/24\r\n&RouteFilterPrefixes.2.Cidr=192.168.2.0/24\r\n&<Common request parameters>",
+        "input": "https://dc.tencentcloudapi.com/?Action=ModifyDirectConnectTunnelAttribute\n&DirectConnectTunnelId=dcx-abcdefgh\n&DirectConnectTunnelName=Test\n&Bandwidth=100\n&TencentAddress=192.168.1.1/30\n&CustomerAddress=192.168.1.2/30\n&RouteFilterPrefixes.0.Cidr=192.168.0.0/24\n&RouteFilterPrefixes.1.Cidr=192.168.1.0/24\n&RouteFilterPrefixes.2.Cidr=192.168.2.0/24\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
         "title": "Modifying a dedicated tunnel using static routing"
       }
@@ -131,9 +179,17 @@
     "RejectDirectConnectTunnel": [
       {
         "document": "",
-        "input": "https://dc.tencentcloudapi.com/?Action=RejectDirectConnectTunnel\r\n&DirectConnectTunnelId=dcx-abcdefgh\r\n&<Common request parameters>",
+        "input": "https://dc.tencentcloudapi.com/?Action=RejectDirectConnectTunnel\n&DirectConnectTunnelId=dcx-abcdefgh\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
         "title": "Rejecting an application for a dedicated tunnel"
+      }
+    ],
+    "ReleaseInternetAddress": [
+      {
+        "document": "",
+        "input": "https://dc.tencentcloudapi.com/?Action=ReleaseInternetAddress\n&InstanceId=\"ipv4-qmda2nqv\"\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"24a0d7e5-4c13-49be-aa16-94f698fbef3e\"\r\n  }\r\n}",
+        "title": "Releasing a public IP address of internet tunnels"
       }
     ]
   },

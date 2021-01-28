@@ -54,7 +54,7 @@
       "members": [
         {
           "default": "",
-          "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "document": "Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -70,7 +70,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`",
           "member": "bool",
           "name": "RetBorderCutImage",
           "required": false,
@@ -78,7 +78,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to return the card number image data after slicing. Default value: `false`",
           "member": "bool",
           "name": "RetCardNoImage",
           "required": false,
@@ -86,7 +86,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`",
           "member": "bool",
           "name": "EnableCopyCheck",
           "required": false,
@@ -94,7 +94,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`",
           "member": "bool",
           "name": "EnableReshootCheck",
           "required": false,
@@ -102,7 +102,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`",
           "member": "bool",
           "name": "EnableBorderCheck",
           "required": false,
@@ -129,11 +129,46 @@
           "value_allowed_null": false
         },
         {
-          "document": "Expiration date",
+          "document": "Expiration date. Format: 07/2023",
           "member": "string",
           "name": "ValidDate",
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Card type",
+          "member": "string",
+          "name": "CardType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Card name",
+          "member": "string",
+          "name": "CardName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sliced image data\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "BorderCutImage",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Card number image data\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CardNoImage",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Warning code:\n-9110: the bank card date is invalid. \n-9111: the bank card border is incomplete. \n-9112: the bank card image is reflective.\n-9113: the bank card image is a photocopy.\n-9114: the bank card image is a photograph.\nMultiple warning codes may be returned at a time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "WarningCode",
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

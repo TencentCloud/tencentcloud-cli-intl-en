@@ -6,6 +6,12 @@
       "name": "Accepts an application for a dedicated tunnel",
       "output": "AcceptDirectConnectTunnelResponse"
     },
+    "ApplyInternetAddress": {
+      "document": "This API is used to apply for an internet tunnel’s CIDR block.",
+      "input": "ApplyInternetAddressRequest",
+      "name": "Applies for an internet tunnel’s IP address",
+      "output": "ApplyInternetAddressResponse"
+    },
     "CreateDirectConnect": {
       "document": "This API is used to apply for a connection.\nWhen calling this API, please note that:\nYou need to complete identity verification for your account; otherwise, you cannot apply for a connection;\nIf there is any connection in arrears under your account, you cannot apply for more connections.",
       "input": "CreateDirectConnectRequest",
@@ -48,6 +54,36 @@
       "name": "Queries the list of connections",
       "output": "DescribeDirectConnectsResponse"
     },
+    "DescribeInternetAddress": {
+      "document": "This API is used to obtain the public IP address of an internet tunnel.",
+      "input": "DescribeInternetAddressRequest",
+      "name": "Obtains the public IP address of an internet tunnel",
+      "output": "DescribeInternetAddressResponse"
+    },
+    "DescribeInternetAddressQuota": {
+      "document": "This API is used to obtain the public IP quota of internet tunnels.",
+      "input": "DescribeInternetAddressQuotaRequest",
+      "name": "Obtains the public IP quota of internet tunnels",
+      "output": "DescribeInternetAddressQuotaResponse"
+    },
+    "DescribeInternetAddressStatistics": {
+      "document": "This API is used to obtain the public IP address assignment statistics of internet tunnels.",
+      "input": "DescribeInternetAddressStatisticsRequest",
+      "name": "Obtains the public IP address statistics of internet tunnels",
+      "output": "DescribeInternetAddressStatisticsResponse"
+    },
+    "DisableInternetAddress": {
+      "document": "This API is used to disable a public IP address of internet tunnels.",
+      "input": "DisableInternetAddressRequest",
+      "name": "Disables a public IP address of internet tunnels",
+      "output": "DisableInternetAddressResponse"
+    },
+    "EnableInternetAddress": {
+      "document": "This API is used to enable a public IP address for internet tunnels.",
+      "input": "EnableInternetAddressRequest",
+      "name": "Enables a public IP address for internet tunnels",
+      "output": "EnableInternetAddressResponse"
+    },
     "ModifyDirectConnectAttribute": {
       "document": "This API is used to modify connection attributes.",
       "input": "ModifyDirectConnectAttributeRequest",
@@ -65,6 +101,12 @@
       "input": "RejectDirectConnectTunnelRequest",
       "name": "Rejects an application for a dedicated tunnel",
       "output": "RejectDirectConnectTunnelResponse"
+    },
+    "ReleaseInternetAddress": {
+      "document": "This API is used to release an IP address of internet tunnels.",
+      "input": "ReleaseInternetAddressRequest",
+      "name": "Releases an IP address of internet tunnels",
+      "output": "ReleaseInternetAddressResponse"
     }
   },
   "metadata": {
@@ -167,6 +209,55 @@
         }
       ],
       "usage": "out"
+    },
+    "ApplyInternetAddressRequest": {
+      "document": "ApplyInternetAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mask length of a CIDR block",
+          "member": "int64",
+          "name": "MaskLen",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Address type. Valid values: 0: BGP\n1: China Telecom\n2: China Mobile\n3: China Unicom",
+          "member": "int64",
+          "name": "AddrType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Address protocol. Valid values: 0: IPv4\n1: IPv6",
+          "member": "int64",
+          "name": "AddrProto",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyInternetAddressResponse": {
+      "document": "ApplyInternetAddress response structure.",
+      "members": [
+        {
+          "document": "ID of the internet tunnel’s public IP address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BgpPeer": {
       "document": "BGP parameter, including Asn and AuthKey.",
@@ -749,6 +840,145 @@
       ],
       "type": "object"
     },
+    "DescribeInternetAddressQuotaRequest": {
+      "document": "DescribeInternetAddressQuota request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeInternetAddressQuotaResponse": {
+      "document": "DescribeInternetAddressQuota response structure.",
+      "members": [
+        {
+          "document": "Minimum prefix length allowed for a public IPv6 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Ipv6PrefixLen",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Quota of BGP IPv4 addresses\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Ipv4BgpQuota",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Quota of non-BGP IPv4 addresses\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Ipv4OtherQuota",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Used number of BGP IPv4 addresses\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Ipv4BgpNum",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Used number of non-BGP IPv4 addresses\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Ipv4OtherNum",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInternetAddressRequest": {
+      "document": "DescribeInternetAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions:\n<li>AddrType, address type. Valid values: 0: BGP; 1: China Telecom; 2: China Mobile; 3: China Unicom</li>\n<li>AddrProto, address protocol. Valid values: 0: IPv4; 1: IPv6</li>\n<li>Status, address status. Valid values: 0: in use; 1: disabled; 2: returned</li>\n<li>Subnet, public IP address array</li>\n<InstanceIds>Public IP address ID array</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInternetAddressResponse": {
+      "document": "DescribeInternetAddress response structure.",
+      "members": [
+        {
+          "document": "Number of public IP addresses for internet tunnels",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of the public IP addresses for internet tunnels\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "InternetAddressDetail",
+          "name": "Subnets",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInternetAddressStatisticsRequest": {
+      "document": "DescribeInternetAddressStatistics request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeInternetAddressStatisticsResponse": {
+      "document": "DescribeInternetAddressStatistics response structure.",
+      "members": [
+        {
+          "document": "Number of public IP address statistics for internet tunnels",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of the public IP address statistics for internet tunnels\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "InternetAddressStatistics",
+          "name": "InternetAddressStatistics",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DirectConnect": {
       "document": "Connection information list.",
       "members": [
@@ -1283,6 +1513,58 @@
       ],
       "usage": "out"
     },
+    "DisableInternetAddressRequest": {
+      "document": "DisableInternetAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the internet tunnel’s public IP address",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableInternetAddressResponse": {
+      "document": "DisableInternetAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableInternetAddressRequest": {
+      "document": "EnableInternetAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the internet tunnel’s public IP address",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableInternetAddressResponse": {
+      "document": "EnableInternetAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Filter": {
       "document": "Used for conditional filtering queries.",
       "members": [
@@ -1306,6 +1588,144 @@
         }
       ],
       "usage": "in"
+    },
+    "InternetAddressDetail": {
+      "document": "Internet tunnel’s IP address details",
+      "members": [
+        {
+          "default": "",
+          "document": "Internet tunnel’s IP address ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Internet tunnel’s network address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Subnet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Mask length of a network address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaskLen",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address type. Valid values: 0: BGP\n1: China Telecom\n2: China Mobile\n3: China Unicom\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AddrType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address status. Valid values: 0: in use\n1: disabled\n2: returned",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Applied at\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApplyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disabled at\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StopTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Returned at\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ReleaseTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address protocol. Valid values: 0: IPv4; 1: IPv6\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AddrProto",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Retention period of a released IP address, in days\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReserveTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InternetAddressStatistics": {
+      "document": "Public IP address statistics of internet tunnels",
+      "members": [
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of public IP addresses for internet tunnels\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "SubnetNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ModifyDirectConnectAttributeRequest": {
       "document": "ModifyDirectConnectAttribute request structure.",
@@ -1519,6 +1939,32 @@
     },
     "RejectDirectConnectTunnelResponse": {
       "document": "RejectDirectConnectTunnel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseInternetAddressRequest": {
+      "document": "ReleaseInternetAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the internet tunnel’s public IP address",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseInternetAddressResponse": {
+      "document": "ReleaseInternetAddress response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

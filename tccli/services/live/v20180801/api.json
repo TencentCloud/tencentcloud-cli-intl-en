@@ -474,6 +474,12 @@
       "name": "Queries the information of top n client IPs in certain period of time",
       "output": "DescribeTopClientIpSumInfoListResponse"
     },
+    "DescribeUploadStreamNums": {
+      "document": "This API is used to query the number of LVB upstream channels.",
+      "input": "DescribeUploadStreamNumsRequest",
+      "name": "Queries the number of LVB upstream channels.",
+      "output": "DescribeUploadStreamNumsResponse"
+    },
     "DescribeVisitTopSumInfoList": {
       "document": "This API is used to query the information of the top n domain names or stream IDs in a certain period of time (top 1,000 is supported currently).",
       "input": "DescribeVisitTopSumInfoListRequest",
@@ -1220,7 +1226,7 @@
         },
         {
           "default": "",
-          "document": "Certificate type:\n0: Tencent Cloud-hosted certificate.\n1: user-added certificate.",
+          "document": "Certificate type.\n0: User-added certificate.\n1: Tencent Cloud-hosted certificate.",
           "member": "int64",
           "name": "CertType",
           "required": true,
@@ -2368,7 +2374,7 @@
         },
         {
           "default": "",
-          "document": "Video codec. Valid values: h264 (default), h265, origin\n\norigin: original codec as the output codec",
+          "document": "Video codec. Valid values: h264, h265, origin (default).\n\norigin: original codec as the output codec.",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -3240,7 +3246,7 @@
       "members": [
         {
           "default": "",
-          "document": "Query time accurate down to the minute in the format of `yyyy-mm-dd HH:MM:SS`. Data for the last month can be queried. The data has a delay of about 5 minutes; therefore, if you want to query real-time data, we recommend you pass in a point in time 5 minutes ago.",
+          "document": "Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.",
           "member": "string",
           "name": "QueryTime",
           "required": true,
@@ -4613,7 +4619,7 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page.\nMaximum value: 100.\nValue range: any integer between 1 and 100.\nDefault value: 10.",
+          "document": "Number of entries per page.\nMaximum value: 100.\nValid values: integers between 10 and 100.\nDefault value: 10.",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -5260,7 +5266,7 @@
       "document": "DescribePlayErrorCodeSumInfoList response structure.",
       "members": [
         {
-          "document": "Information of 4xx or 5xx error codes by district and ISP.",
+          "document": "Information of error codes starting with 2, 3, 4, or 5 by district and ISP.",
           "member": "ProIspPlayCodeDataInfo",
           "name": "ProIspInfoList",
           "type": "list",
@@ -5556,6 +5562,14 @@
           "name": "MainlandOrOversea",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP type:\n\"Ipv6\": IPv6 data\nData of all IPs will be returned if this parameter is left empty.",
+          "member": "string",
+          "name": "IpType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5749,7 +5763,7 @@
         },
         {
           "default": "",
-          "document": "End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS\nThe end time and start time must be on the same day. Data in the last 3 days can be queried.",
+          "document": "End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.\nThe difference between the start time and end time cannot be greater than 24 hours. Data in the last 30 days can be queried.",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -5977,6 +5991,63 @@
         {
           "document": "Data content.",
           "member": "ClientIpPlaySumInfo",
+          "name": "DataInfoList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUploadStreamNumsRequest": {
+      "document": "DescribeUploadStreamNums request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time point in the format of yyyy-mm-dd HH:MM:SS.",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "LVB domain names. If this parameter is left empty, data of all domain names will be queried.",
+          "member": "string",
+          "name": "Domains",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Time granularity of the data. Valid values:\n5: 5-minute granularity (the query period is up to 1 day).\n1440: 1-day granularity (the query period is up to 1 month).\nDefault value: 5.",
+          "member": "uint64",
+          "name": "Granularity",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUploadStreamNumsResponse": {
+      "document": "DescribeUploadStreamNums response structure.",
+      "members": [
+        {
+          "document": "Detailed data.",
+          "member": "ConcurrentRecordStreamNum",
           "name": "DataInfoList",
           "type": "list",
           "value_allowed_null": false
@@ -7310,7 +7381,7 @@
         },
         {
           "default": "",
-          "document": "Video codec. Valid values: h264 (default), h265, origin\n\norigin: original codec as the output codec",
+          "document": "Video codec. Valid values: h264, h265, origin (default).\n\norigin: original codec as the output codec.",
           "member": "string",
           "name": "Vcodec",
           "required": false,
