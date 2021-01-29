@@ -264,6 +264,12 @@
       "name": "CMK plan delete API",
       "output": "ScheduleKeyDeletionResponse"
     },
+    "SignByAsymmetricKey": {
+      "document": "This API is used to generate a signature with an asymmetric key.\nNote: only the keys with `KeyUsage= ASYMMETRIC_SIGN_VERIFY_SM2` can be used for signature generation.",
+      "input": "SignByAsymmetricKeyRequest",
+      "name": "Generates a signature",
+      "output": "SignByAsymmetricKeyResponse"
+    },
     "UnbindCloudResource": {
       "document": "This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer.",
       "input": "UnbindCloudResourceRequest",
@@ -281,6 +287,12 @@
       "input": "UpdateKeyDescriptionRequest",
       "name": "Modify master key description",
       "output": "UpdateKeyDescriptionResponse"
+    },
+    "VerifyByAsymmetricKey": {
+      "document": "This API is used to verify a signature with an asymmetric key.",
+      "input": "VerifyByAsymmetricKeyRequest",
+      "name": "Verifies a signature",
+      "output": "VerifyByAsymmetricKeyResponse"
     }
   },
   "metadata": {
@@ -565,7 +577,7 @@
         },
         {
           "default": "",
-          "document": "Key purpose. The default value is `ENCRYPT_DECRYPT` (creating a symmetric key for encryption and decryption). Other valid values include `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption) and `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption).",
+          "document": "Key purpose. Valid values: `ENCRYPT_DECRYPT` (default value; creating a symmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption), and `ASYMMETRIC_SIGN_VERIFY_SM2` (creating an SM2 asymmetric key for signature verification).",
           "member": "string",
           "name": "KeyUsage",
           "required": false,
@@ -1944,7 +1956,7 @@
         },
         {
           "default": "",
-          "document": "CMK purpose. Valid values: ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2",
+          "document": "CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.",
           "member": "string",
           "name": "KeyUsage",
           "required": true,
@@ -2058,6 +2070,13 @@
           "value_allowed_null": false
         },
         {
+          "document": "Asymmetric signature verification algorithms supported in the current region",
+          "member": "AlgorithmInfo",
+          "name": "AsymmetricSignVerifyAlgorithms",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -2127,7 +2146,7 @@
         },
         {
           "default": "",
-          "document": "Filter by `KeyUsage` of CMKs. Valid values: `ALL` (filter all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`.",
+          "document": "Filter by the `KeyUsage` field of CMKs. Valid values: `ALL` (filtering all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.",
           "member": "string",
           "name": "KeyUsage",
           "required": false,
@@ -2386,6 +2405,63 @@
       ],
       "type": "object"
     },
+    "SignByAsymmetricKeyRequest": {
+      "document": "SignByAsymmetricKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Signature algorithm. Supported algorithm: SM2DSA.",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of a key",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.",
+          "member": "string",
+          "name": "MessageType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SignByAsymmetricKeyResponse": {
+      "document": "SignByAsymmetricKey response structure.",
+      "members": [
+        {
+          "document": "Base64-encoded signature",
+          "member": "string",
+          "name": "Signature",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Tag": {
       "document": "Tag key and tag value",
       "members": [
@@ -2535,6 +2611,71 @@
     "UpdateKeyDescriptionResponse": {
       "document": "UpdateKeyDescription response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyByAsymmetricKeyRequest": {
+      "document": "VerifyByAsymmetricKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of a key",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature value, which is generated by calling the KMS signature API.",
+          "member": "string",
+          "name": "SignatureValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature algorithm. Supported algorithm: SM2DSA.",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.",
+          "member": "string",
+          "name": "MessageType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyByAsymmetricKeyResponse": {
+      "document": "VerifyByAsymmetricKey response structure.",
+      "members": [
+        {
+          "document": "Whether the signature is valid.",
+          "member": "bool",
+          "name": "SignatureValid",
+          "type": "bool",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
