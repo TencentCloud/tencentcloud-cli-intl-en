@@ -60,7 +60,7 @@
       {
         "document": "",
         "input": "https://ecdn.tencentcloudapi.com/?Action=DescribeIpStatus\n&Domain=www.test.com\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"b6e9964d-26a3-49d0-adab-993e17d2f950\",\r\n        \"Ips\": [\r\n            {\r\n                \"Ip\": \"1.1.1.1\",\r\n                \"District\": \"Guangdong\",\r\n                \"Isp\": \"China Telecom\",\r\n                \"City\": \"Shenzhen\",\r\n                \"Status\": \"online\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 0\r\n    }\r\n}",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"b6e9964d-26a3-49d0-adab-993e17d2f950\",\r\n        \"Ips\": [\r\n            {\r\n                \"Ip\": \"1.1.1.1\",\r\n                \"District\": \"Guangdong\",\r\n                \"Isp\": \"China Telecom\",\r\n                \"City\": \"Shenzhen\",\r\n                \"Status\": \"online\"\r\n                \"CreateTime\": \"2019-10-12 00:00:00\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 0\r\n    }\r\n}",
         "title": "Querying node information of domain name"
       }
     ],
