@@ -37,9 +37,9 @@
       "output": "CreateImageSpriteTemplateResponse"
     },
     "CreatePersonSample": {
-      "document": "This API is used to create material samples for video processing operations such as content recognition and detection of inappropriate information with the help of technologies such as facial feature positioning.",
+      "document": "This API is used to create image samples for video processing operations such as content recognition and inappropriate information detection with the help of technologies such as facial feature positioning.",
       "input": "CreatePersonSampleRequest",
-      "name": "Creates material samples",
+      "name": "Creates image samples",
       "output": "CreatePersonSampleResponse"
     },
     "CreateSampleSnapshotTemplate": {
@@ -67,7 +67,7 @@
       "output": "CreateWatermarkTemplateResponse"
     },
     "CreateWordSamples": {
-      "document": "This API is used to create keyword samples in batches for video processing operations such as content recognition and detection of inappropriate information with the help of the OCR and ASR technologies.",
+      "document": "This API is used to create keyword samples in batches for video processing operations such as content recognition and inappropriate information detection with the help of the OCR and ASR technologies.",
       "input": "CreateWordSamplesRequest",
       "name": "Creates keyword samples",
       "output": "CreateWordSamplesResponse"
@@ -115,9 +115,9 @@
       "output": "DeleteImageSpriteTemplateResponse"
     },
     "DeletePersonSample": {
-      "document": "This API is used to delete the material samples that belong to a material ID.",
+      "document": "This API is used to delete image samples by image ID.",
       "input": "DeletePersonSampleRequest",
-      "name": "Deletes material samples",
+      "name": "Deletes image samples",
       "output": "DeletePersonSampleResponse"
     },
     "DeleteSampleSnapshotTemplate": {
@@ -181,7 +181,7 @@
       "output": "DescribeAnimatedGraphicsTemplatesResponse"
     },
     "DescribeContentReviewTemplates": {
-      "document": "This API is used to get the list of content recognition templates using their unique ID. The returned result includes all custom templates that meet the conditions as well as preset content recognition templates.",
+      "document": "This API is used to get the list of intelligent content recognition templates using their unique ID. The returned result includes all custom templates that meet the conditions as well as preset intelligent content recognition templates.",
       "input": "DescribeContentReviewTemplatesRequest",
       "name": "Gets the list of intelligent content recognition templates",
       "output": "DescribeContentReviewTemplatesResponse"
@@ -199,9 +199,9 @@
       "output": "DescribeMediaMetaDataResponse"
     },
     "DescribePersonSamples": {
-      "document": "This API is used to query the information of material samples. It supports paginated queries by material ID, name, and tag.",
+      "document": "This API is used to query the information of image samples. It supports paginated queries by image ID, name, and tag.",
       "input": "DescribePersonSamplesRequest",
-      "name": "Gets the list of material samples",
+      "name": "Gets the list of image samples",
       "output": "DescribePersonSamplesResponse"
     },
     "DescribeSampleSnapshotTemplates": {
@@ -319,9 +319,9 @@
       "output": "ModifyImageSpriteTemplateResponse"
     },
     "ModifyPersonSample": {
-      "document": "This API is used to modify material samples by material ID. You can use it to modify the name and description of a material sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.",
+      "document": "This API is used to modify image samples by image ID. You can use it to modify the name and description of an image sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.",
       "input": "ModifyPersonSampleRequest",
-      "name": "Modifies material samples",
+      "name": "Modifies image samples",
       "output": "ModifyPersonSampleResponse"
     },
     "ModifySampleSnapshotTemplate": {
@@ -3030,7 +3030,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3090,7 +3090,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3150,7 +3150,7 @@
         },
         {
           "default": "",
-          "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4540,7 +4540,7 @@
       "members": [
         {
           "default": "",
-          "document": "Name of an intelligent content recognition template. Length limit: 64 characters.",
+          "document": "Name of an intelligent content recognition template. Length limit: 64 characters",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -4548,7 +4548,7 @@
         },
         {
           "default": "",
-          "document": "Description of an intelligent content recognition template. Length limit: 256 characters.",
+          "document": "Description of an intelligent content recognition template. Length limit: 256 characters",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -4556,7 +4556,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for offensive content",
+          "document": "Control parameter for porn information",
           "member": "PornConfigureInfo",
           "name": "PornConfigure",
           "required": false,
@@ -4564,7 +4564,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for insecure content",
+          "document": "Control parameter for terrorism information",
           "member": "TerrorismConfigureInfo",
           "name": "TerrorismConfigure",
           "required": false,
@@ -4572,7 +4572,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for inappropriate content",
+          "document": "Control parameter for politically sensitive information",
           "member": "PoliticalConfigureInfo",
           "name": "PoliticalConfigure",
           "required": false,
@@ -4588,7 +4588,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for custom intelligent content recognition",
+          "document": "Control parameter for custom intelligent content recognition tasks",
           "member": "UserDefineConfigureInfo",
           "name": "UserDefineConfigure",
           "required": false,
@@ -4726,7 +4726,7 @@
       "members": [
         {
           "default": "",
-          "document": "Name of a material. Length limit: 20 characters.",
+          "document": "Name of an image. Length limit: 20 characters",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4734,7 +4734,7 @@
         },
         {
           "default": "",
-          "document": "Material use case. Valid values:\n1. Recognition: used for content recognition, equivalent to `Recognition.Face`\n2. Review: used for detection of inappropriate content, equivalent to `Review.Face`\n3. All: all of the above, equivalent to 1 and 2 combined",
+          "document": "Image usage. Valid values:\n1. Recognition: used for content recognition; equivalent to `Recognition.Face`\n2. Review: used for inappropriate information recognition; equivalent to `Review.Face`\n3. All: equivalent to 1+2",
           "member": "string",
           "name": "Usages",
           "required": true,
@@ -4742,7 +4742,7 @@
         },
         {
           "default": "",
-          "document": "Material description. Length limit: 1,024 characters.",
+          "document": "Image description. Length limit: 1,024 characters",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -4750,7 +4750,7 @@
         },
         {
           "default": "",
-          "document": "[Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images.\nNote: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.",
+          "document": "[Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images\nNote: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.",
           "member": "string",
           "name": "FaceContents",
           "required": false,
@@ -4758,7 +4758,7 @@
         },
         {
           "default": "",
-          "document": "Material tag\n<li>Array length limit: 20 tags;</li>\n<li>Tag length limit: 128 characters.</li>",
+          "document": "Image tag\n<li>Array length limit: 20 tags</li>\n<li>Tag length limit: 128 characters</li>",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -4771,14 +4771,14 @@
       "document": "CreatePersonSample response structure.",
       "members": [
         {
-          "document": "Material information",
+          "document": "Image information",
           "member": "AiSamplePerson",
           "name": "Person",
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Positioning information of facial features processed unsuccessfully",
+          "document": "Information of images that failed the verification by facial feature positioning",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "type": "list",
@@ -5169,7 +5169,7 @@
       "members": [
         {
           "default": "",
-          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based detection of inappropriate content;\n4. Review.Asr：ASR-based detection of inappropriate content;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR- and OCR-based content recognition, equivalent to 1+2 above;\n6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;\n7. All: ASR- and OCR-based content recognition and detection of inappropriate content, equivalent to 1+2+3+4 above;",
+          "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\n7. All: ASR- and OCR-based content recognition and inappropriate information detection; equivalent to 1+2+3+4",
           "member": "string",
           "name": "Usages",
           "required": true,
@@ -5464,7 +5464,7 @@
       "members": [
         {
           "default": "",
-          "document": "Material ID",
+          "document": "Image ID",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -5886,7 +5886,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of intelligent content recognition templates as the filter. Array length limit: 50.",
+          "document": "Unique ID of intelligent content recognition templates as the filter. Array length limit: 50",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -6039,7 +6039,7 @@
       "members": [
         {
           "default": "",
-          "document": "Type of the material pulled. Valid values:\n<li>UserDefine: custom material library;</li>\n<li>Default: default material library.</li>\n\nDefault value: UserDefine (the materials of the custom material library are pulled.)\nNote: you can pull the default material library only using the material name or a combination of the material name and ID, and only one face image is returned.",
+          "document": "Type of images to pull. Valid values:\n<li>UserDefine: custom image library</li>\n<li>Default: default image library</li>\n\nDefault value: UserDefine. Samples in the custom image library will be pulled.\nNote: you can pull the default image library only using the image name or a combination of the image name and ID, and only one face image is returned.",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -6047,7 +6047,7 @@
         },
         {
           "default": "",
-          "document": "Material ID. Array length limit: 100.",
+          "document": "Image ID. Array length limit: 100",
           "member": "string",
           "name": "PersonIds",
           "required": false,
@@ -6055,7 +6055,7 @@
         },
         {
           "default": "",
-          "document": "Material name. Array length limit: 20.",
+          "document": "Image name. Array length limit: 20",
           "member": "string",
           "name": "Names",
           "required": false,
@@ -6063,7 +6063,7 @@
         },
         {
           "default": "",
-          "document": "Material tag. Array length limit: 20.",
+          "document": "Image tag. Array length limit: 20",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -6099,7 +6099,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Material information",
+          "document": "Image information",
           "member": "AiSamplePerson",
           "name": "PersonSet",
           "type": "list",
@@ -6572,7 +6572,7 @@
         },
         {
           "default": "",
-          "document": "<b>Keyword use case filter. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based detection of inappropriate content;\n4. Review.Asr：ASR-based detection of inappropriate content;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;\n6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3+4 above;\nMultiple elements can be selected, and the relationship between them is \"or\", i.e., any keyword use case that contains any element in this field set will be deemed eligible.",
+          "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\nYou can select multiple elements, which are connected by OR logic. If a usage contains any element in this parameter, the keyword sample will be used.",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -8236,7 +8236,7 @@
       "members": [
         {
           "default": "",
-          "document": "Operation type. Valid values:\n<ul>\n<li>Abort: task termination. Description:\n<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting (`WAITING`) or processing (`PROCESSING`) can be terminated;</li>\n<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is waiting can be terminated.</li></ul>\n</li></ul>",
+          "document": "Operation type. Valid values:\n<ul>\n<li>Abort: task termination. Description:\n<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>\n<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>\n</li></ul>",
           "member": "string",
           "name": "OperationType",
           "required": true,
@@ -10146,7 +10146,7 @@
         },
         {
           "default": "",
-          "document": "Name of an intelligent content recognition template. Length limit: 64 characters.",
+          "document": "Name of an intelligent content recognition template. Length limit: 64 characters",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -10154,7 +10154,7 @@
         },
         {
           "default": "",
-          "document": "Description of an intelligent content recognition template. Length limit: 256 characters.",
+          "document": "Description of an intelligent content recognition template. Length limit: 256 characters",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -10162,7 +10162,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for offensive content",
+          "document": "Control parameter for porn information",
           "member": "PornConfigureInfoForUpdate",
           "name": "PornConfigure",
           "required": false,
@@ -10170,7 +10170,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for insecure content",
+          "document": "Control parameter for terrorism information",
           "member": "TerrorismConfigureInfoForUpdate",
           "name": "TerrorismConfigure",
           "required": false,
@@ -10178,7 +10178,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for inappropriate content",
+          "document": "Control parameter for politically sensitive information",
           "member": "PoliticalConfigureInfoForUpdate",
           "name": "PoliticalConfigure",
           "required": false,
@@ -10194,7 +10194,7 @@
         },
         {
           "default": "",
-          "document": "Control parameter for custom intelligent content recognition",
+          "document": "Control parameter for custom intelligent content recognition tasks",
           "member": "UserDefineConfigureInfoForUpdate",
           "name": "UserDefineConfigure",
           "required": false,
@@ -10326,7 +10326,7 @@
       "members": [
         {
           "default": "",
-          "document": "Material ID",
+          "document": "Image ID",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -10350,7 +10350,7 @@
         },
         {
           "default": "",
-          "document": "Material use case. Valid values:\n1. Recognition: used for content recognition, equivalent to `Recognition.Face`.\n2. Review: used for detection of inappropriate content, equivalent to `Review.Face`.\n3. All: used for content recognition and detection of inappropriate content, equivalent to 1 and 2 combined.",
+          "document": "Image usage. Valid values:\n1. Recognition: used for content recognition; equivalent to `Recognition.Face`\n2. Review: used for inappropriate information recognition; equivalent to `Review.Face`\n3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -10358,7 +10358,7 @@
         },
         {
           "default": "",
-          "document": "Facial feature operation information",
+          "document": "Information of operations on facial features",
           "member": "AiSampleFaceOperation",
           "name": "FaceOperationInfo",
           "required": false,
@@ -10379,14 +10379,14 @@
       "document": "ModifyPersonSample response structure.",
       "members": [
         {
-          "document": "Material information",
+          "document": "Image information",
           "member": "AiSamplePerson",
           "name": "Person",
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Information of facial features processed unsuccessfully\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Information of images that failed the verification by facial feature positioning.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "type": "list",
@@ -10781,7 +10781,7 @@
         },
         {
           "default": "",
-          "document": "<b>Keyword use case. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition;\n2. Recognition.Asr: ASR-based content recognition;\n3. Review.Ocr: OCR-based detection of inappropriate content;\n4. Review.Asr：ASR-based detection of inappropriate content;\n<b>These values can be merged as follows:</b>\n5. Recognition: ASR- and OCR-based content recognition, equivalent to 1 and 2 combined;\n6. Review: ASR- and OCR-based detection of inappropriate content, equivalent to 3 and 4 combined.\n7. All: all of the above, equivalent to 1, 2, 3, and 4 combined.",
+          "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\n7. All: equivalent to 1+2+3+4",
           "member": "string",
           "name": "Usages",
           "required": false,
