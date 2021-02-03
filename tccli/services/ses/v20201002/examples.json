@@ -113,7 +113,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListEmailAddress\n<Common request parameters>\n\n{}",
         "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"EmailSenders\": [\r\n      {\r\n        \"EmailAddress\": \"service@mail.qcloud.com\",\r\n        \"EmailSenderName\": \"Tencent Cloud email notification\",\r\n        \"CreatedTimestamp\": 1602143617\r\n      },\r\n      {\r\n        \"EmailAddress\": \"verify@mail.qcloud.com\",\r\n        \"EmailSenderName\": \"Tencent Cloud verification code\",\r\n        \"CreatedTimestamp\": 1602143617\r\n      }\r\n    ]\r\n  }\r\n}",
-        "title": "Getting the sender address list"
+        "title": "Getting the list of sender addresses"
       }
     ],
     "ListEmailIdentities": [

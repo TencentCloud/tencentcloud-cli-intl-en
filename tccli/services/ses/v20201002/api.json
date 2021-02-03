@@ -116,11 +116,12 @@
   },
   "objects": {
     "Attachment": {
-      "document": "",
+      "document": "Attachment structure, including attachment name and content after base64 encoding.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).",
+          "example": "example.txt",
           "member": "string",
           "name": "FileName",
           "required": true,
@@ -129,7 +130,8 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Attachment content after base64 encoding. A single attachment cannot exceed 5 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 10 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 10 MB.",
+          "example": "dGhpcyBpcyBhIGV4YW1wbGU=",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -168,7 +170,7 @@
       "members": [
         {
           "default": "",
-          "document": "Your sender address. You can create up to 10 sender addresses for each domain.",
+          "document": "Your sender address. (You can create up to 10 sender addresses for each domain.)",
           "member": "string",
           "name": "EmailAddress",
           "required": true,
@@ -412,7 +414,7 @@
       "members": [
         {
           "default": "",
-          "document": "Email template to be deleted.",
+          "document": "Template ID",
           "member": "uint64",
           "name": "TemplateID",
           "required": true,
@@ -713,7 +715,7 @@
       "members": [
         {
           "default": "",
-          "document": "Start date.",
+          "document": "Start date in the format of `YYYY-MM-DD`",
           "member": "date",
           "name": "StartDate",
           "required": true,
@@ -721,7 +723,7 @@
         },
         {
           "default": "",
-          "document": "End date.",
+          "document": "End date in the format of `YYYY-MM-DD`",
           "member": "date",
           "name": "EndDate",
           "required": true,
@@ -737,7 +739,7 @@
         },
         {
           "default": "",
-          "document": "Common parameter. It must be used with `Limit`.",
+          "document": "Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -898,7 +900,7 @@
         },
         {
           "default": "",
-          "document": "Recipient email addresses. You can send an email to up to 50 recipients at a time.",
+          "document": "Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.",
           "example": "无",
           "member": "string",
           "name": "Destination",
@@ -916,7 +918,7 @@
         },
         {
           "default": "",
-          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.",
+          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud.",
           "example": "noreply@mail.qcloud.com",
           "member": "string",
           "name": "ReplyToAddresses",
@@ -943,7 +945,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Email attachments",
           "example": "无",
           "member": "Attachment",
           "name": "Attachments",
@@ -957,9 +959,11 @@
       "document": "SendEmail response structure.",
       "members": [
         {
-          "document": "Unique ID generated when receiving the message.",
+          "document": "Unique ID generated when receiving the message",
+          "example": "qcloud-ses-messageid",
           "member": "string",
           "name": "MessageId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
