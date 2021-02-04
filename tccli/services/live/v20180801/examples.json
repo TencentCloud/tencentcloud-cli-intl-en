@@ -86,13 +86,13 @@
     ],
     "CreateLiveRecord": [
       {
-        "document": "This API is suitable for scenarios with fixed start time and end time of recording, such as training courses, business events, shows, and performances.",
+        "document": "This example shows you how to use this API for scenarios with fixed start time and end time of recording, such as training courses, business events, shows, and performances.",
         "input": "https://live.tencentcloudapi.com/?Action=CreateLiveRecord\r\n&AppName=live\r\n&DomainName=5000.live.push.com\r\n&StreamName=livetest\r\n&StartTime=2018-09-11+12%3a04%3a01\r\n&EndTime=2018-09-11+12%3a08%3a01\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"TaskId\": 1234567\r\n    }\r\n}",
         "title": "Creating a scheduled recording task"
       },
       {
-        "document": "This API is used to immediately start to record any frame of a stream in real time. You can specify the `EndTime` of the recording. The recording period is up to 30 minutes.",
+        "document": "This example shows you how to immediately start to record any frame of a stream in real time. You can specify the `EndTime` of the recording. The recording period is up to 30 minutes.",
         "input": "https://live.tencentcloudapi.com/?Action=CreateLiveRecord\r\n&AppName=live\r\n&DomainName=5000.live.push.com\r\n&StreamName=livetest\r\n&Highlight=1\r\n&EndTime=2018-09-11+12%3a08%3a01\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"TaskId\": 1234567\r\n    }\r\n}",
         "title": "Creating a real-time recording task"
@@ -143,7 +143,7 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=CreateLiveTranscodeTemplate\n&Vcodec=h264\n&Acodec=aac\n&AudioBitrate=500\n&TemplateName=900m\n&Description=test\n&VideoBitrate=900\n&Width=250\n&NeedVideo=1\n&NeedAudio=1\n&Height=250\n&Fps=30\n&Gop=3\n&Rotate=0\n&Profile=main\n&BitrateToOrig=0\n&HeightToOrig=0\n&FpsToOrig=0\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"TemplateId\":1000,\r\n    \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n  }\r\n}",
-        "title": "Request sample"
+        "title": "Sample request"
       }
     ],
     "CreateLiveWatermarkRule": [
@@ -526,7 +526,7 @@
       {
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveTranscodeDetailInfo\r\n&DayTime=20190307\r\n&PageNum=1\r\n&PageSize=20\r\n&<Common request parameters>",
-        "output": "{\r\n\t\"Response\": {\r\n\t\t\"DataInfoList\": [{\r\n\t\t\t\"StreamName\":\"test\",\r\n\t\t\t\"StartTime\": \"2019-03-01 01:00\",\r\n\t\t\t\"EndTime\": \"2019-03-01 04:00\",\r\n\t\t\t\"Duration\": 8,\r\n\t\t\t\"MoudleCodec\": \"liveprocessor_H264\",\r\n\t\t\t\"Bitrate\": 120,\r\n\t\t\t\"Type\": \"Mixed stream\",\r\n                        \"PushDomain\":\"5000.livepush.com\",\r\n                        \"Resolution\":\"480P\"\r\n\t\t}],\r\n\t\t\"PageNum\":1,\r\n\t\t\"PageSize\":20,\r\n\t\t\"TotalNum\":1,\r\n\t\t\"TotalPage\":1,\r\n\t\t\"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\r\n\t}\r\n}",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"DataInfoList\": [{\r\n\t\t\t\"StreamName\":\"test\",\r\n\t\t\t\"StartTime\": \"2019-03-01 01:00\",\r\n\t\t\t\"EndTime\": \"2019-03-01 04:00\",\r\n\t\t\t\"Duration\": 8,\r\n\t\t\t\"MoudleCodec\": \"liveprocessor_H264\",\r\n\t\t\t\"Bitrate\": 120,\r\n\t\t\t\"Type\": \"Stream mix\",\r\n                        \"PushDomain\":\"5000.livepush.com\",\r\n                        \"Resolution\":\"480P\"\r\n\t\t}],\r\n\t\t\"PageNum\":1,\r\n\t\t\"PageSize\":20,\r\n\t\t\"TotalNum\":1,\r\n\t\t\"TotalPage\":1,\r\n\t\t\"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\r\n\t}\r\n}",
         "title": "Sample request"
       }
     ],
@@ -605,7 +605,7 @@
     "DescribeProvinceIspPlayInfoList": [
       {
         "document": "This example shows you how to query the district/ISP [mapping table](https://intl.cloud.tencent.com/document/api/267/34019?from_cn_redirect=1).",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeProvinceIspPlayInfoList\n&PlayDomains.0=5000.playdomain.com\n&StartTime=2019-02-01 00:00:00\n&EndTime=2019-02-02 00:00:00\n&Granularity=1\n&StatType=Bandwidth\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeProvinceIspPlayInfoList\r\n&PlayDomains.0=5000.playdomain.com\r\n&StartTime=2019-02-01 00:00:00\r\n&EndTime=2019-02-02 00:00:00\r\n&Granularity=1\r\n&StatType=Bandwidth\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n    \"DataInfoList\": [\r\n\t\t\t{\r\n\t\t\t\t\"Time\": \"2019-02-01 00:00:00\",\r\n\t\t\t\t\"Value\": 500.0\r\n\t\t\t}\r\n\t\t],\r\n    \"StatType\":\"Bandwidth\",\r\n    \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\r\n\t}\r\n}",
         "title": "Sample request"
       }

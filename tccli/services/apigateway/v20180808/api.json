@@ -1035,7 +1035,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "IsBase64Encoded",
           "required": true,
@@ -1044,7 +1044,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "IsBase64Trigger",
           "required": true,
@@ -1053,7 +1053,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Header trigger rules. The number of rules cannot exceed 10.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "Base64EncodedTriggerRule",
           "name": "Base64EncodedTriggerRules",
           "required": true,
@@ -1370,11 +1370,11 @@
       "usage": "out"
     },
     "Base64EncodedTriggerRule": {
-      "document": "",
+      "document": "Header trigger rule for Base64 encoding.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Header for triggering encoding. Valid values are `Accept` and `Content_Type`, corresponding to the `Accept` and `Content-Type` headers in the data stream request, respectively.",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1383,7 +1383,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Array of header values that can trigger the encoding. Each element in the array can be up to 40 characters, including digits, letters, and special characters (`.`, `+`, `*`, `-`, `/`, and `_`). \n\nFor example, [\n    \"application/x-vpeg005\",\n    \"application/xhtml+xml\",\n    \"application/vnd.ms-project\",\n    \"application/vnd.rn-rn_music_package\"\n] are valid.",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -2117,7 +2117,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.",
           "member": "bool",
           "name": "IsBase64Encoded",
           "required": false,
@@ -5432,6 +5432,30 @@
           "document": "Custom error code configuration.",
           "member": "ResponseErrorCodeReq",
           "name": "ResponseErrorCodes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.",
+          "member": "bool",
+          "name": "IsBase64Encoded",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.",
+          "member": "bool",
+          "name": "IsBase64Trigger",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Header trigger rules. The number of rules cannot exceed 10.",
+          "member": "Base64EncodedTriggerRule",
+          "name": "Base64EncodedTriggerRules",
           "required": false,
           "type": "list"
         }

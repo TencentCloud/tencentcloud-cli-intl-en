@@ -1226,7 +1226,7 @@
         },
         {
           "default": "",
-          "document": "Certificate type.\n0: User-added certificate.\n1: Tencent Cloud-hosted certificate.",
+          "document": "Certificate type.\n0: user-added certificate\n1: Tencent Cloud-hosted certificate",
           "member": "int64",
           "name": "CertType",
           "required": true,
@@ -2374,7 +2374,7 @@
         },
         {
           "default": "",
-          "document": "Video codec. Valid values: h264, h265, origin (default).\n\norigin: original codec as the output codec.",
+          "document": "Video codec. Valid values: h264, h265, origin (default)\n\norigin: original codec as the output codec",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -4619,7 +4619,7 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page.\nMaximum value: 100.\nValid values: integers between 10 and 100.\nDefault value: 10.",
+          "document": "Number of entries per page.\nMaximum value: 100\nValid values: integers between 10 and 100\nDefault value: 10",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -5792,6 +5792,14 @@
           "name": "AppName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6033,7 +6041,7 @@
         },
         {
           "default": "",
-          "document": "Time granularity of the data. Valid values:\n5: 5-minute granularity (the query period is up to 1 day).\n1440: 1-day granularity (the query period is up to 1 month).\nDefault value: 5.",
+          "document": "Time granularity of the data. Valid values:\n5: 5-minute granularity (the query period is up to 1 day)\n1440: 1-day granularity (the query period is up to 1 month)\nDefault value: 5",
           "member": "uint64",
           "name": "Granularity",
           "required": false,
@@ -7381,7 +7389,7 @@
         },
         {
           "default": "",
-          "document": "Video codec. Valid values: h264, h265, origin (default).\n\norigin: original codec as the output codec.",
+          "document": "Video codec. Valid values: h264, h265, origin (default)\n\norigin: original codec as the output codec",
           "member": "string",
           "name": "Vcodec",
           "required": false,
