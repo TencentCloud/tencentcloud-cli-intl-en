@@ -75,13 +75,13 @@
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterInstances\n&ClusterId=cls-xxxxxxxx\n&RunInstancePara={\"Placement\":{\"Zone\":\"ap-guangzhou-4\"},\"InstanceType\":\"S3.SMALL1\"}\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"InstanceIdSet\": [\r\n            \"ins-xxxxxxxx\"\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Extending cluster nodes"
+        "title": "Adding cluster nodes"
       },
       {
         "document": "This example shows you how to add a node with multiple data disks to a cluster.\nNote 1: set DataDisks in InstanceAdvancedSettings to set the mounting information for multiple data disks. The backend will match data disks with data disk IDs based on their types and sizes and mount them to the corresponding paths.\nNote 2: set DataDisks in RunInstancePara. This parameter will be passed through to the CVM to indicate the purchase of multiple data disks.\nNote 3: MountTarget in InstanceAdvancedSettings initially supported single-disk configuration but is discarded in multi-disk scenarios, so it does not need to be entered here.",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterInstances\n<Common request parameters>\n\n{\"Action\":\"CreateClusterInstances\",\"ApiModule\":\"tke\",\"AppId\":123,\"ClientIp\":\"127.0.0.1\",\"ClusterId\":\"cls-qxxxxxx\",\"InstanceAdvancedSettings\":{\"DataDisks\":[{\"AutoFormatAndMount\":true,\"DiskSize\":50,\"DiskType\":\"CLOUD_PREMIUM\",\"FileSystem\":\"ext4\",\"MountTarget\":\"/data2\"},{\"AutoFormatAndMount\":true,\"DiskSize\":120,\"DiskType\":\"CLOUD_PREMIUM\",\"FileSystem\":\"ext4\",\"MountTarget\":\"/data4\"},{\"AutoFormatAndMount\":true,\"DiskSize\":100,\"DiskType\":\"CLOUD_PREMIUM\",\"FileSystem\":\"ext4\",\"MountTarget\":\"/data3\"},{\"AutoFormatAndMount\":true,\"DiskSize\":50,\"DiskType\":\"CLOUD_PREMIUM\",\"FileSystem\":\"ext4\",\"MountTarget\":\"/data5\"}],\"DockerGraphPath\":\"/var/lib/docker\",\"MountTarget\":\"/var/lib/docker\",\"Unschedulable\":0,\"UserScript\":\"\"},\"Language\":\"zh-CN\",\"Region\":\"ap-chongqing\",\"RequestId\":\"76a8bf8c-c039-4f52-ab31-5be5cafc53e3\",\"RequestSource\":\"MC\",\"RunInstancePara\":\"{\\\"InstanceChargeType\\\":\\\"POSTPAID_BY_HOUR\\\",\\\"Placement\\\":{\\\"Zone\\\":\\\"ap-chongqing-1\\\",\\\"ProjectId\\\":0},\\\"InstanceType\\\":\\\"S3.SMALL1\\\",\\\"SystemDisk\\\":{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskSize\\\":50},\\\"DataDisks\\\":[{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskSize\\\":50},{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskSize\\\":120},{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskSize\\\":100},{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskSize\\\":50}],\\\"VirtualPrivateCloud\\\":{\\\"VpcId\\\":\\\"vpc-d5ivotej\\\",\\\"SubnetId\\\":\\\"subnet-qh3ax3mo\\\",\\\"AsVpcGateway\\\":false},\\\"InternetAccessible\\\":{\\\"InternetChargeType\\\":\\\"TRAFFIC_POSTPAID_BY_HOUR\\\",\\\"InternetMaxBandwidthOut\\\":1,\\\"PublicIpAssigned\\\":true},\\\"InstanceCount\\\":1,\\\"ImageId\\\":\\\"img-xxxxxx\\\",\\\"InstanceName\\\":\\\"tke_cls-xxx_worker\\\",\\\"LoginSettings\\\":{\\\"KeyIds\\\":[\\\"skey-cxxxx\\\"]},\\\"SecurityGroupIds\\\":[\\\"sg-nxxxxxx\\\"],\\\"EnhancedService\\\":{\\\"SecurityService\\\":{\\\"Enabled\\\":true},\\\"MonitorService\\\":{\\\"Enabled\\\":true}}}\",\"SubAccountUin\":\"123\",\"Timestamp\":\"1574854507\",\"Token\":\"\",\"Uin\":\"12345678\",\"Version\":\"2018-05-25\"}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterInstances\n<Common request parameters>\n\n{\n\t\"InstanceAdvancedSettings\": {\n\t\t\"DataDisks\": [{\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 50,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data2\"\n\t\t}, {\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 120,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data4\"\n\t\t}, {\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 100,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data3\"\n\t\t}, {\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 50,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data5\"\n\t\t}],\n\t\t\"DockerGraphPath\": \"/var/lib/docker\",\n\t\t\"MountTarget\": \"/var/lib/docker\",\n\t\t\"Unschedulable\": 0,\n\t\t\"UserScript\": \"\"\n\t},\n\t\"SkipValidateOptions\": [\n        \t\"GlobalRouteCIDRCheck\",\n                \"VpcCniCIDRCheck\"\n        ], \n    \"RunInstancePara\": \"xx\", \n    \"ClusterId\": \"cls-xxxxx\"\n}",
         "output": "{\r\n    \"Response\": {\r\n        \"InstanceIdSet\": [\r\n            \"ins-xxxxxxxx\"\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
-        "title": "Adding cluster nodes (multiple data disks)"
+        "title": "Adding a node with multiple data disks"
       }
     ],
     "CreateClusterNodePool": [
@@ -170,6 +170,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterRouteTable\r\n&RouteTableName=MANAGED_CLUSTER\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\r\n    }\r\n}",
         "title": "Deleting a cluster route table"
+      }
+    ],
+    "DescribeAvailableClusterVersion": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeAvailableClusterVersion\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"Clusters\": [\r\n            {\r\n                \"ClusterId\": \"xx\", \r\n                \"Versions\": [\r\n                    \"xx\"\r\n                ]\r\n            }\r\n        ], \r\n        \"RequestId\": \"xx\", \r\n        \"Versions\": [\r\n            \"1.8.13\"\r\n        ]\r\n    }\r\n}",
+        "title": "Obtaining the versions that the cluster can upgrade to"
       }
     ],
     "DescribeClusterAsGroupOption": [
@@ -300,6 +308,14 @@
         "title": "Querying whether a route table has conflicts"
       }
     ],
+    "GetUpgradeInstanceProgress": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=GetUpgradeInstanceProgress\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"LifeState\": \"xx\", \r\n        \"Instances\": [\r\n            {\r\n                \"StartAt\": \"xx\", \r\n                \"InstanceID\": \"xx\", \r\n                \"Detail\": [\r\n                    {\r\n                        \"StartAt\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"LifeState\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }, \r\n                    {\r\n                        \"LifeState\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"StartAt\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }, \r\n                    {\r\n                        \"LifeState\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"StartAt\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }, \r\n                    {\r\n                        \"LifeState\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"StartAt\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }\r\n                ], \r\n                \"EndAt\": \"xx\", \r\n                \"CheckResult\": {\r\n                    \"Items\": [\r\n                        {\r\n                            \"WorkLoadKind\": \"xx\", \r\n                            \"After\": 1, \r\n                            \"Namespace\": \"xx\", \r\n                            \"WorkLoadName\": \"xx\", \r\n                            \"Pods\": [\r\n                                \"xx\"\r\n                            ], \r\n                            \"Before\": 1\r\n                        }\r\n                    ], \r\n                    \"CheckPass\": true, \r\n                    \"SinglePods\": [\r\n                        \"xx\"\r\n                    ]\r\n                }, \r\n                \"LifeState\": \"xx\"\r\n            }\r\n        ], \r\n        \"Done\": 1, \r\n        \"RequestId\": \"xx\", \r\n        \"ClusterStatus\": {\r\n            \"PodTotal\": 0, \r\n            \"NotReadyPod\": 0\r\n        }, \r\n        \"Total\": 3\r\n    }\r\n}",
+        "title": "Querying the upgrade status"
+      }
+    ],
     "ModifyClusterAsGroupAttribute": [
       {
         "document": "",
@@ -346,6 +362,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=RemoveNodeFromNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxxxx\n&InstanceIds.0=ins-xxxxxxxx\n&<Common request parameters>",
         "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"xxxxxx\"\r\n    }\r\n}",
         "title": "Removing nodes from a node pool"
+      }
+    ],
+    "UpdateClusterVersion": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=UpdateClusterVersion\n&ClusterId=cls-xxxxxxxx\n&DstVersion=1.8.13\n&<Common request parameters>",
+        "output": "{\r\n   \"Response\" : {\r\n      \"RequestId\" : \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\r\n   }\r\n}",
+        "title": "Upgrading the cluster to the specified version"
       }
     ],
     "UpgradeClusterInstances": [

@@ -120,6 +120,12 @@
       "name": "Deletes a cluster route table.",
       "output": "DeleteClusterRouteTableResponse"
     },
+    "DescribeAvailableClusterVersion": {
+      "document": "This API is used to obtain all versions that the cluster can upgrade to.",
+      "input": "DescribeAvailableClusterVersionRequest",
+      "name": "Obtains all versions that the cluster can upgrade to",
+      "output": "DescribeAvailableClusterVersionResponse"
+    },
     "DescribeClusterAsGroupOption": {
       "document": "Cluster auto scaling configuration",
       "input": "DescribeClusterAsGroupOptionRequest",
@@ -216,6 +222,12 @@
       "name": "Queries the list of route table conflicts.",
       "output": "DescribeRouteTableConflictsResponse"
     },
+    "GetUpgradeInstanceProgress": {
+      "document": "This API is used to obtain the current progress of the node upgrade. ",
+      "input": "GetUpgradeInstanceProgressRequest",
+      "name": "Obtains the current progress of the node upgrade",
+      "output": "GetUpgradeInstanceProgressResponse"
+    },
     "ModifyClusterAsGroupAttribute": {
       "document": "Modify cluster scaling group attributes",
       "input": "ModifyClusterAsGroupAttributeRequest",
@@ -251,6 +263,12 @@
       "input": "RemoveNodeFromNodePoolRequest",
       "name": "Removes a node from a node pool but retains it in the cluster.",
       "output": "RemoveNodeFromNodePoolResponse"
+    },
+    "UpdateClusterVersion": {
+      "document": "This API is used to upgrade the master component of the cluster to the specified version.",
+      "input": "UpdateClusterVersionRequest",
+      "name": "Upgrades cluster",
+      "output": "UpdateClusterVersionResponse"
     },
     "UpgradeClusterInstances": {
       "document": "This API is used to upgrade one or more work nodes in the cluster. ",
@@ -297,6 +315,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-berpx5vg",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -305,6 +324,7 @@
         {
           "default": "",
           "document": "Instance list. Spot instance is not supported.",
+          "example": "[]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -313,6 +333,7 @@
         {
           "default": "",
           "document": "Additional parameter to be set for the instance",
+          "example": "{}",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
           "required": false,
@@ -321,6 +342,7 @@
         {
           "default": "",
           "document": "Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.",
+          "example": "{}",
           "member": "EnhancedService",
           "name": "EnhancedService",
           "required": false,
@@ -329,6 +351,7 @@
         {
           "default": "",
           "document": "Node login information (currently only supports using Password or single KeyIds)",
+          "example": "{}",
           "member": "LoginSettings",
           "name": "LoginSettings",
           "required": false,
@@ -336,15 +359,8 @@
         },
         {
           "default": "",
-          "document": "Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)",
-          "member": "string",
-          "name": "SecurityGroupIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
           "document": "When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.",
+          "example": "\"\"",
           "member": "string",
           "name": "HostName",
           "required": false,
@@ -352,11 +368,30 @@
         },
         {
           "default": "",
+          "document": "Security group to which the instance belongs. This parameter can be obtained from the `sgId` field returned by DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)",
+          "example": "[]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
           "document": "Node pool options",
+          "example": "{}",
           "member": "NodePoolOption",
           "name": "NodePool",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck",
+          "example": "[]",
+          "member": "string",
+          "name": "SkipValidateOptions",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1368,6 +1403,30 @@
       ],
       "usage": "both"
     },
+    "ClusterVersion": {
+      "document": "Cluster version information",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of cluster major version, such as 1.18.4",
+          "member": "string",
+          "name": "Versions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateClusterAsGroupRequest": {
       "document": "CreateClusterAsGroup request structure.",
       "members": [
@@ -1529,6 +1588,7 @@
         {
           "default": "",
           "document": "Cluster ID. Enter the ClusterId field returned by the DescribeClusters API",
+          "example": "cls-berpx5vg",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1537,6 +1597,7 @@
         {
           "default": "",
           "document": "Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotence of requests for adding cluster nodes, you need to add the ClientToken field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
+          "example": "{}",
           "member": "string",
           "name": "RunInstancePara",
           "required": true,
@@ -1545,10 +1606,20 @@
         {
           "default": "",
           "document": "Additional parameter to be set for the instance",
+          "example": "{}",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck",
+          "example": "[",
+          "member": "string",
+          "name": "SkipValidateOptions",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1619,6 +1690,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1627,6 +1699,7 @@
         {
           "default": "",
           "document": "AS group parameters",
+          "example": "{\\\"AutoScalingGroupName\\\":\\\"\\\",\\\"MaxSize\\\":1,\\\"MinSize\\\":0,\\\"Des",
           "member": "string",
           "name": "AutoScalingGroupPara",
           "required": true,
@@ -1635,6 +1708,7 @@
         {
           "default": "",
           "document": "Running parameters",
+          "example": "{\\\"LaunchConfigurationName\\\":\\\"\\\",\\\"InstanceType\\\":\\\"S3.SMALL1\\\"",
           "member": "string",
           "name": "LaunchConfigurePara",
           "required": true,
@@ -1643,6 +1717,7 @@
         {
           "default": "",
           "document": "Sample parameters",
+          "example": "无",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
           "required": true,
@@ -1651,6 +1726,7 @@
         {
           "default": "",
           "document": "Indicates whether to enable auto scaling",
+          "example": "true",
           "member": "bool",
           "name": "EnableAutoscale",
           "required": true,
@@ -1659,6 +1735,7 @@
         {
           "default": "",
           "document": "Node pool name",
+          "example": "测试集群",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -1667,6 +1744,7 @@
         {
           "default": "",
           "document": "Labels",
+          "example": "无",
           "member": "Label",
           "name": "Labels",
           "required": false,
@@ -1675,10 +1753,29 @@
         {
           "default": "",
           "document": "Taints",
+          "example": "无",
           "member": "Taint",
           "name": "Taints",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Operating system of the node pool",
+          "example": "ubuntu18.04.1x86_64",
+          "member": "string",
+          "name": "NodePoolOs",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
+          "example": "GENERAL",
+          "member": "string",
+          "name": "OsCustomizeType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2216,6 +2313,54 @@
     "DeleteClusterRouteTableResponse": {
       "document": "DeleteClusterRouteTable response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableClusterVersionRequest": {
+      "document": "DescribeAvailableClusterVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of cluster IDs",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableClusterVersionResponse": {
+      "document": "DescribeAvailableClusterVersion response structure.",
+      "members": [
+        {
+          "document": "Upgradable cluster version\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Versions",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster information\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "ClusterVersion",
+          "name": "Clusters",
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3316,6 +3461,83 @@
       ],
       "usage": "in"
     },
+    "GetUpgradeInstanceProgressRequest": {
+      "document": "GetUpgradeInstanceProgress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of nodes to be queried",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The starting node for the query",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetUpgradeInstanceProgressResponse": {
+      "document": "GetUpgradeInstanceProgress response structure.",
+      "members": [
+        {
+          "document": "Total nodes to upgrade",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total upgraded nodes",
+          "member": "int64",
+          "name": "Done",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The lifecycle of the upgrade task\nprocess: running\npaused: stopped\npausing: stopping\ndone: completed\ntimeout: timed out\naborted: canceled",
+          "member": "string",
+          "name": "LifeState",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Details of upgrade progress of each node",
+          "member": "InstanceUpgradeProgressItem",
+          "name": "Instances",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Current cluster status",
+          "member": "InstanceUpgradeClusterStatus",
+          "name": "ClusterStatus",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ImageInstance": {
       "document": "Image details",
       "members": [
@@ -3570,6 +3792,183 @@
         }
       ],
       "usage": "both"
+    },
+    "InstanceUpgradeClusterStatus": {
+      "document": "Current status of the cluster during node upgrade",
+      "members": [
+        {
+          "default": "",
+          "document": "Total Pods",
+          "member": "int64",
+          "name": "PodTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of NotReady Pods",
+          "member": "int64",
+          "name": "NotReadyPod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceUpgradePreCheckResult": {
+      "document": "Pre-upgrade check result of a node",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the check is passed",
+          "member": "bool",
+          "name": "CheckPass",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of check items",
+          "member": "InstanceUpgradePreCheckResultItem",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of independent pods on this node",
+          "member": "string",
+          "name": "SinglePods",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceUpgradePreCheckResultItem": {
+      "document": "Check result for node upgrade",
+      "members": [
+        {
+          "default": "",
+          "document": "The namespace of the workload",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Workload type",
+          "member": "string",
+          "name": "WorkLoadKind",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Workload name",
+          "member": "string",
+          "name": "WorkLoadName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of running pods in the workload before draining the node",
+          "member": "uint64",
+          "name": "Before",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of running pods in the workload after draining the node",
+          "member": "uint64",
+          "name": "After",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The pod list of the workload on this node",
+          "member": "string",
+          "name": "Pods",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceUpgradeProgressItem": {
+      "document": "Upgrade progress of a node",
+      "members": [
+        {
+          "default": "",
+          "document": "Node instance ID",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task lifecycle\nprocess: running\npaused: stopped\npausing: stopping\ndone: completed\ntimeout: timed out\naborted: canceled\npending: not started",
+          "member": "string",
+          "name": "LifeState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Upgrade start time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "StartAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Upgrade end time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "EndAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Check result before upgrading",
+          "member": "InstanceUpgradePreCheckResult",
+          "name": "CheckResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Upgrade steps details",
+          "member": "TaskStepInfo",
+          "name": "Detail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Label": {
       "document": "k8s tags, generally exist as an array",
@@ -4524,6 +4923,107 @@
         }
       ],
       "usage": "in"
+    },
+    "TaskStepInfo": {
+      "document": "Task step information",
+      "members": [
+        {
+          "default": "",
+          "document": "Step name",
+          "member": "string",
+          "name": "Step",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Lifecycle\npending: the step is not started\nrunning: the step is in progress\nsuccess: the step is completed\nfailed: the step failed",
+          "member": "string",
+          "name": "LifeState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step start time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "StartAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Step end time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "EndAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "If the lifecycle of the step is failed, this field will display the error information.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "FailedMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateClusterVersionRequest": {
+      "document": "UpdateClusterVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The version that needs to upgrade to",
+          "member": "string",
+          "name": "DstVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum tolerable number of unavailable pods",
+          "member": "float",
+          "name": "MaxNotReadyPercent",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "Whether to skip the precheck",
+          "member": "bool",
+          "name": "SkipPreCheck",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateClusterVersionResponse": {
+      "document": "UpdateClusterVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpgradeAbleInstancesItem": {
       "document": "Upgradeable node information",
