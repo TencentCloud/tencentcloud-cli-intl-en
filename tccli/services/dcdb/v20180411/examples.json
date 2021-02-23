@@ -144,6 +144,14 @@
         "title": "Sample 1. Querying the security group details of a project"
       }
     ],
+    "DescribeProjects": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeProjects\r\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"Projects\": [\r\n      {\r\n        \"AppId\": 0,\r\n        \"CreateTime\": \"0000-00-00 00:00:00\",\r\n        \"CreatorUin\": 0,\r\n        \"Info\": \"Default project\",\r\n        \"IsDefault\": 1,\r\n        \"Name\": \"Default project\",\r\n        \"OwnerUin\": 0,\r\n        \"ProjectId\": 0,\r\n        \"SrcAppId\": 0,\r\n        \"SrcPlat\": \"qcloud\",\r\n        \"Status\": 3\r\n      },\r\n      {\r\n        \"AppId\": 1251966477,\r\n        \"CreateTime\": \"2019-09-17 15:47:05\",\r\n        \"CreatorUin\": 3374998458,\r\n        \"Info\": \"\",\r\n        \"IsDefault\": 0,\r\n        \"Name\": \"ryanforredis\",\r\n        \"OwnerUin\": 3374998458,\r\n        \"ProjectId\": 1159121,\r\n        \"SrcAppId\": 0,\r\n        \"SrcPlat\": \"qcloud\",\r\n        \"Status\": 0\r\n      }\r\n    ],\r\n    \"RequestId\": \"31666e3c-f5bf-4862-8876-68f81131eef1\"\r\n  }\r\n}",
+        "title": "Pulling the projects under an account"
+      }
+    ],
     "DisassociateSecurityGroups": [
       {
         "document": "",

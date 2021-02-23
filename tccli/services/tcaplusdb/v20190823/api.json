@@ -138,6 +138,18 @@
       "name": "Queries whether the current user is in the allowlist",
       "output": "DescribeUinInWhitelistResponse"
     },
+    "DisableRestProxy": {
+      "document": "This API is used to disable the RESTful API.",
+      "input": "DisableRestProxyRequest",
+      "name": "Disables the RESTful API",
+      "output": "DisableRestProxyResponse"
+    },
+    "EnableRestProxy": {
+      "document": "This API is used to enable the RESTful API.",
+      "input": "EnableRestProxyRequest",
+      "name": "Enables the RESTful API",
+      "output": "EnableRestProxyResponse"
+    },
     "ModifyClusterMachine": {
       "document": "This API is used to modify the machines of a dedicated cluster.",
       "input": "ModifyClusterMachineRequest",
@@ -1697,6 +1709,86 @@
           "document": "Query result. FALSE: yes, TRUE: no",
           "member": "string",
           "name": "Result",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableRestProxyRequest": {
+      "document": "DisableRestProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The value is the same as `appid`.",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableRestProxyResponse": {
+      "document": "DisableRestProxy response structure.",
+      "members": [
+        {
+          "document": "RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).",
+          "member": "uint64",
+          "name": "RestProxyStatus",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.",
+          "member": "string",
+          "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableRestProxyRequest": {
+      "document": "EnableRestProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The value is the same as `appid`.",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableRestProxyResponse": {
+      "document": "EnableRestProxy response structure.",
+      "members": [
+        {
+          "document": "RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).",
+          "member": "uint64",
+          "name": "RestProxyStatus",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.",
+          "member": "string",
+          "name": "TaskId",
           "type": "string",
           "value_allowed_null": false
         },

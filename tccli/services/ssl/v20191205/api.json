@@ -73,7 +73,7 @@
       "output": "ReplaceCertificateResponse"
     },
     "SubmitCertificateInformation": {
-      "document": "This API is used to submit certificate information.",
+      "document": "This API is used to submit certificate information. You can call this API to submit the information of a certificate for several times. However, please make sure the submitted information is complete.",
       "input": "SubmitCertificateInformationRequest",
       "name": "Submits certificate information",
       "output": "SubmitCertificateInformationResponse"
@@ -97,6 +97,7 @@
         {
           "default": "",
           "document": "Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file.",
+          "example": "无",
           "member": "string",
           "name": "DvAuthMethod",
           "required": true,
@@ -105,6 +106,7 @@
         {
           "default": "",
           "document": "Domain name.",
+          "example": "无",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -113,6 +115,7 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "无",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -121,6 +124,7 @@
         {
           "default": "",
           "document": "Certificate type. Currently, the only supported value is 2, which indicates TrustAsia TLS RSA CA.",
+          "example": "无",
           "member": "string",
           "name": "PackageType",
           "required": false,
@@ -129,6 +133,7 @@
         {
           "default": "",
           "document": "Email address.",
+          "example": "无",
           "member": "string",
           "name": "ContactEmail",
           "required": false,
@@ -137,6 +142,7 @@
         {
           "default": "",
           "document": "Mobile number.",
+          "example": "无",
           "member": "string",
           "name": "ContactPhone",
           "required": false,
@@ -145,6 +151,7 @@
         {
           "default": "",
           "document": "Validity period. The default value is 12 months, which is the only supported value currently.",
+          "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
           "required": false,
@@ -153,6 +160,7 @@
         {
           "default": "",
           "document": "Encryption algorithm. Only RSA is supported.",
+          "example": "无",
           "member": "string",
           "name": "CsrEncryptAlgo",
           "required": false,
@@ -161,6 +169,7 @@
         {
           "default": "",
           "document": "Key pair parameter. Only the 2048-bit key pair is supported.",
+          "example": "无",
           "member": "string",
           "name": "CsrKeyParameter",
           "required": false,
@@ -169,6 +178,7 @@
         {
           "default": "",
           "document": "CSR encryption password.",
+          "example": "无",
           "member": "string",
           "name": "CsrKeyPassword",
           "required": false,
@@ -177,6 +187,7 @@
         {
           "default": "",
           "document": "Alias.",
+          "example": "无",
           "member": "string",
           "name": "Alias",
           "required": false,
@@ -185,6 +196,7 @@
         {
           "default": "",
           "document": "Original certificate ID, which is used to apply for a new certificate.",
+          "example": "无",
           "member": "string",
           "name": "OldCertificateId",
           "required": false,
@@ -198,6 +210,7 @@
       "members": [
         {
           "document": "Certificate ID.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
           "type": "string",
@@ -302,6 +315,7 @@
         {
           "default": "",
           "document": "User UIN.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -311,6 +325,7 @@
         {
           "default": "",
           "document": "Project ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProjectId",
           "required": true,
@@ -320,6 +335,7 @@
         {
           "default": "",
           "document": "Certificate source.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "From",
           "required": true,
@@ -329,6 +345,7 @@
         {
           "default": "",
           "document": "Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PackageType",
           "required": true,
@@ -338,6 +355,7 @@
         {
           "default": "",
           "document": "Certificate type. CA: client certificate; SVR: server certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificateType",
           "required": true,
@@ -347,6 +365,7 @@
         {
           "default": "",
           "document": "Issuer.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProductZhName",
           "required": true,
@@ -356,6 +375,7 @@
         {
           "default": "",
           "document": "Primary domain name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -365,6 +385,7 @@
         {
           "default": "",
           "document": "Alias.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Alias",
           "required": true,
@@ -374,6 +395,7 @@
         {
           "default": "",
           "document": "Status value. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS resolution record added; 5: OV/EV certificate, information to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "Status",
           "required": true,
@@ -383,6 +405,7 @@
         {
           "default": "",
           "document": "Extended information of the certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateExtra",
           "name": "CertificateExtra",
           "required": true,
@@ -392,6 +415,7 @@
         {
           "default": "",
           "document": "Vulnerability scanning status. INACTIVE: not activated; ACTIVE: activated.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VulnerabilityStatus",
           "required": true,
@@ -401,6 +425,7 @@
         {
           "default": "",
           "document": "Status information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "StatusMsg",
           "required": true,
@@ -410,6 +435,7 @@
         {
           "default": "",
           "document": "Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file; EMAIL: verification by email.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VerifyType",
           "required": true,
@@ -419,6 +445,7 @@
         {
           "default": "",
           "document": "Time when the certificate takes effect.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertBeginTime",
           "required": true,
@@ -428,6 +455,7 @@
         {
           "default": "",
           "document": "Time when the certificate expires.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertEndTime",
           "required": true,
@@ -437,6 +465,7 @@
         {
           "default": "",
           "document": "Validity period of the certificate (unit: month).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
           "required": true,
@@ -446,6 +475,7 @@
         {
           "default": "",
           "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "InsertTime",
           "required": true,
@@ -455,6 +485,7 @@
         {
           "default": "",
           "document": "Certificate ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -464,6 +495,7 @@
         {
           "default": "",
           "document": "Domain names associated with the certificate (including the primary domain name).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SubjectAltName",
           "required": true,
@@ -473,6 +505,7 @@
         {
           "default": "",
           "document": "Certificate type name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PackageTypeName",
           "required": true,
@@ -482,6 +515,7 @@
         {
           "default": "",
           "document": "Status description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "StatusName",
           "required": true,
@@ -491,6 +525,7 @@
         {
           "default": "",
           "document": "Whether the customer is a VIP customer.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsVip",
           "required": true,
@@ -500,6 +535,7 @@
         {
           "default": "",
           "document": "Whether the certificate is a DV certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsDv",
           "required": true,
@@ -509,6 +545,7 @@
         {
           "default": "",
           "document": "Whether the certificate is a wildcard certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsWildcard",
           "required": true,
@@ -518,6 +555,7 @@
         {
           "default": "",
           "document": "Whether the vulnerability scanning feature is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsVulnerability",
           "required": true,
@@ -527,6 +565,7 @@
         {
           "default": "",
           "document": "Whether the certificate can be reissued.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "RenewAble",
           "required": true,
@@ -536,6 +575,7 @@
         {
           "default": "",
           "document": "Project information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ProjectInfo",
           "name": "ProjectInfo",
           "required": true,
@@ -545,6 +585,7 @@
         {
           "default": "",
           "document": "Associated Tencent Cloud services. Currently, this parameter is unavailable.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "BoundResource",
           "required": true,
@@ -554,10 +595,21 @@
         {
           "default": "",
           "document": "Whether the certificate can be deployed.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "Deployable",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of tags\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -581,14 +633,14 @@
       "document": "CommitCertificateInformation response structure.",
       "members": [
         {
-          "document": "TrustAsia order ID",
+          "document": "Order number at the certificate authority",
           "member": "string",
           "name": "OrderId",
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Certificate status. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS record added; 5: OV certificate, to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded; 9: certificate being revoked; 10: revoked; 11: reissuing; 12: revocation confirmation letter to be uploaded.",
+          "document": "Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload; `13`: pending information submission for the free certificate.",
           "member": "uint64",
           "name": "Status",
           "type": "int",
@@ -621,7 +673,7 @@
       "document": "DeleteCertificate response structure.",
       "members": [
         {
-          "document": "Deletion result.",
+          "document": "Deletion result (`true`: deleted successfully; `false`: failed to delete)",
           "member": "bool",
           "name": "DeleteResult",
           "type": "bool",
@@ -642,6 +694,7 @@
         {
           "default": "",
           "document": "Certificate ID.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -655,233 +708,308 @@
       "members": [
         {
           "document": "User UIN.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OwnerUin",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Project ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProjectId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate source. trustasia: TrustAsia; upload: certificate uploaded by users.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "From",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate type. CA: client certificate; SVR: server certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificateType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod Chinese Cryptographic DV; `34`: DNSPod Chinese Cryptographic DV multi-domain; `35`: DNSPod Chinese Cryptographic DV wildcard; `37`: DNSPod Chinese Cryptographic OV; `38`: DNSPod Chinese Cryptographic OV multi-domain; `39`: DNSPod Chinese Cryptographic OV wildcard: `40`: DNSPod Chinese Cryptographic EV; `41`: DNSPod Chinese Cryptographic EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PackageType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Issuer.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProductZhName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Domain name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Alias.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Alias",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Certificate status. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS record added; 5: OV certificate, to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded; 9: certificate being revoked; 10: revoked; 11: reissuing; 12: revocation confirmation letter to be uploaded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload; `13`: pending information submission for the free certificate.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "Status",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Status information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "StatusMsg",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file; EMAIL: verification by email.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VerifyType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Vulnerability scanning status.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VulnerabilityStatus",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Time when the certificate takes effect.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "CertBeginTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Time when the certificate expires.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "CertEndTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Validity period of the certificate (unit: month).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Application time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "InsertTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Order ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OrderId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Extended information of the certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateExtra",
           "name": "CertificateExtra",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Private key of the certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificatePrivateKey",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Public key of the certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Certificate public key (i.e., certificate content)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificatePublicKey",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "DV authentication information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DvAuthDetail",
           "name": "DvAuthDetail",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Vulnerability scanning assessment report.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VulnerabilityReport",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate type name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "TypeName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Status description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "StatusName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Domain names associated with the certificate (including the primary domain name).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SubjectAltName",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "document": "Whether the customer is a VIP customer.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsVip",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate is a wildcard certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsWildcard",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate is a DV certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsDv",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the vulnerability scanning feature is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsVulnerability",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Submitted data.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SubmittedData",
           "name": "SubmittedData",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate can be reissued.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "RenewAble",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate can be deployed.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "Deployable",
+          "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of associated tags\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -970,6 +1098,7 @@
         {
           "default": "",
           "document": "Certificate ID.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -983,219 +1112,290 @@
       "members": [
         {
           "document": "User UIN.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OwnerUin",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Project ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProjectId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate source. trustasia: TrustAsia; upload: certificate uploaded by users.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "From",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate type. CA: client certificate; SVR: server certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificateType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate package type. 1: GeoTrust DV SSL CA - G3; 2: TrustAsia TLS RSA CA; 3: Secure Site EV Pro; 4: Secure Site EV; 5: Secure Site OV Pro; 6: Secure Site OV; 7: Secure Site OV wildcard SSL certificate; 8: GeoTrust EV; 9: GeoTrust OV; 10: GeoTrust OV wildcard SSL certificate; 11: TrustAsia DV multi-domain SSL certificate; 12: TrustAsia DV wildcard SSL certificate; 13: TrustAsia OV wildcard SSL certificate (D3); 14: TrustAsia OV SSL certificate (D3); 15: TrustAsia OV multi-domain SSL certificate (D3); 16: TrustAsia EV SSL certificate (D3); 17: TrustAsia EV multi-domain SSL certificate (D3); 18: GlobalSign OV SSL certificate; 19: GlobalSign OV wildcard SSL certificate; 20: GlobalSign EV SSL certificate; 21: TrustAsia OV multi-domain wildcard SSL certificate (D3); 22: GlobalSign OV multi-domain SSL certificate; 23: GlobalSign OV multi-domain wildcard SSL certificate; 24: GlobalSign EV multi-domain SSL certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PackageType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Name of the certificate issuer.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Name of the certificate issuer\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProductZhName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Domain name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Alias.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Alias",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate status. 0: being reviewed; 1: approved; 2: not approved; 3: expired; 4: DNS record added; 5: OV certificate, to be submitted; 6: order being canceled; 7: cancelled; 8: information submitted, confirmation letter to be uploaded; 9: certificate being revoked; 10: revoked; 11: reissuing; 12: revocation confirmation letter to be uploaded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "Status",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Status information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "StatusMsg",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file; EMAIL: verification by email.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VerifyType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Vulnerability scanning status.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VulnerabilityStatus",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Time when the certificate takes effect.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertBeginTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Time when the certificate expires.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertEndTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Validity period of the certificate (unit: month).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Application time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "InsertTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Order ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OrderId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Extended information of the certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateExtra",
           "name": "CertificateExtra",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "DV authentication information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DvAuthDetail",
           "name": "DvAuthDetail",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Vulnerability scanning assessment report.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VulnerabilityReport",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Certificate type name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PackageTypeName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Status description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "StatusName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Domain names associated with the certificate (including the primary domain name).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SubjectAltName",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "document": "Whether the customer is a VIP customer.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsVip",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate is a wildcard certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsWildcard",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate is a DV certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsDv",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the vulnerability scanning feature is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "IsVulnerability",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate can be reissued.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "RenewAble",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "document": "Submitted data.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SubmittedData",
           "name": "SubmittedData",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Whether the certificate can be deployed.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "bool",
           "name": "Deployable",
+          "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of tags\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -1213,6 +1413,7 @@
         {
           "default": "",
           "document": "Pagination offset, starting from 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1221,6 +1422,7 @@
         {
           "default": "",
           "document": "Number of certificates on each page. The default value is 20.",
+          "example": "11",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1229,6 +1431,7 @@
         {
           "default": "",
           "document": "Keyword for search, which can be a certificate ID, alias, or domain name. For example, a8xHcaIs.",
+          "example": "string",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -1237,6 +1440,7 @@
         {
           "default": "",
           "document": "Certificate type. CA: client certificate; SVR: server certificate.",
+          "example": "CA",
           "member": "string",
           "name": "CertificateType",
           "required": false,
@@ -1245,6 +1449,7 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "1",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -1253,6 +1458,7 @@
         {
           "default": "",
           "document": "Sorting by expiration time. DESC: descending; ASC: ascending.",
+          "example": "DESC ",
           "member": "string",
           "name": "ExpirationSort",
           "required": false,
@@ -1261,6 +1467,7 @@
         {
           "default": "",
           "document": "Certificate status.",
+          "example": "1",
           "member": "uint64",
           "name": "CertificateStatus",
           "required": false,
@@ -1269,6 +1476,7 @@
         {
           "default": "",
           "document": "Whether the certificate can be deployed. 1: yes; 0: no.",
+          "example": "1",
           "member": "uint64",
           "name": "Deployable",
           "required": false,
@@ -1282,15 +1490,19 @@
       "members": [
         {
           "document": "Total number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "List.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "Certificates",
           "name": "Certificates",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1404,7 +1616,7 @@
       "usage": "out"
     },
     "DvAuths": {
-      "document": "Content of the DvAuths parameter.",
+      "document": "Returns the content of the `DvAuths` parameter key.",
       "members": [
         {
           "default": "",
@@ -1649,7 +1861,7 @@
         },
         {
           "default": "",
-          "document": "Verification type. DNS_AUTO: automatic DNS verification; DNS: manual DNS verification; FILE: verification by file.",
+          "document": "Validation type. `DNS_AUTO`: automatic DNS validation (only available for domains hosted in Tencent Cloud and when the DNS status is OK); `DNS`: manual DNS validation; `FILE`: file validation.",
           "member": "string",
           "name": "ValidType",
           "required": true,
@@ -1676,6 +1888,14 @@
           "document": "Password of the key.",
           "member": "string",
           "name": "CsrkeyPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reissue reason",
+          "member": "string",
+          "name": "Reason",
           "required": false,
           "type": "string"
         }
@@ -1746,7 +1966,7 @@
         },
         {
           "default": "",
-          "document": "Password of the private key.",
+          "document": "Private key password (optional)",
           "member": "string",
           "name": "KeyPassword",
           "required": false,
@@ -1826,7 +2046,7 @@
         },
         {
           "default": "",
-          "document": "Certificate verification method.",
+          "document": "Validation type. `DNS_AUTO`: automatic DNS validation (only available for domains hosted in Tencent Cloud and when the DNS status is OK); `DNS`: manual DNS validation; `FILE`: file validation.",
           "member": "string",
           "name": "VerifyType",
           "required": false,
@@ -1834,7 +2054,7 @@
         },
         {
           "default": "",
-          "document": "Last name of the admin.",
+          "document": "First name of the administrator",
           "member": "string",
           "name": "AdminFirstName",
           "required": false,
@@ -1842,7 +2062,7 @@
         },
         {
           "default": "",
-          "document": "First name of the admin.",
+          "document": "Last name of the administrator",
           "member": "string",
           "name": "AdminLastName",
           "required": false,
@@ -1874,7 +2094,7 @@
         },
         {
           "default": "",
-          "document": "Last name of the contact.",
+          "document": "First name of the contact",
           "member": "string",
           "name": "ContactFirstName",
           "required": false,
@@ -1882,7 +2102,7 @@
         },
         {
           "default": "",
-          "document": "First name of the contact.",
+          "document": "Last name of the contact",
           "member": "string",
           "name": "ContactLastName",
           "required": false,
@@ -2165,12 +2385,37 @@
       ],
       "usage": "both"
     },
+    "Tags": {
+      "document": "Tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UploadCertificateRequest": {
       "document": "UploadCertificate request structure.",
       "members": [
         {
           "default": "",
-          "document": "Public key of the certificate.",
+          "document": "Certificate content",
+          "example": "无",
           "member": "string",
           "name": "CertificatePublicKey",
           "required": true,
@@ -2179,6 +2424,7 @@
         {
           "default": "",
           "document": "Private key content. This parameter is required when the certificate type is SVR, and not required when the certificate type is CA.",
+          "example": "无",
           "member": "string",
           "name": "CertificatePrivateKey",
           "required": false,
@@ -2187,6 +2433,7 @@
         {
           "default": "",
           "document": "Certificate type. CA: client certificate; SVR: server certificate. The default value is SVR.",
+          "example": "无",
           "member": "string",
           "name": "CertificateType",
           "required": false,
@@ -2195,6 +2442,7 @@
         {
           "default": "",
           "document": "Alias.",
+          "example": "无",
           "member": "string",
           "name": "Alias",
           "required": false,
@@ -2203,10 +2451,20 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "无",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateUse",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2216,8 +2474,10 @@
       "members": [
         {
           "document": "Certificate ID.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },

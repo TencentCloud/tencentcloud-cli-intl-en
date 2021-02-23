@@ -1,5 +1,11 @@
 {
   "actions": {
+    "CopyFleet": {
+      "document": "This API is used to replicate server fleet.",
+      "input": "CopyFleetRequest",
+      "name": "Replicates server fleet",
+      "output": "CopyFleetResponse"
+    },
     "CreateGameServerSession": {
       "document": "This API is used to create a game server session.",
       "input": "CreateGameServerSessionRequest",
@@ -72,6 +78,18 @@
       "name": "Stops placing game server session",
       "output": "StopGameServerSessionPlacementResponse"
     },
+    "UpdateBucketAccelerateOpt": {
+      "document": "This API (UpdateBucketAccelerateOpt) is used to enable COS global acceleration.",
+      "input": "UpdateBucketAccelerateOptRequest",
+      "name": "Sets COS global acceleration",
+      "output": "UpdateBucketAccelerateOptResponse"
+    },
+    "UpdateBucketCORSOpt": {
+      "document": "This API (UpdateBucketCORSOpt) is used to configure CORS for COS.",
+      "input": "UpdateBucketCORSOptRequest",
+      "name": "Sets COS CORS",
+      "output": "UpdateBucketCORSOptResponse"
+    },
     "UpdateGameServerSession": {
       "document": "This API is used to update a game server session.",
       "input": "UpdateGameServerSessionRequest",
@@ -85,6 +103,204 @@
     "serviceShortName": "gse"
   },
   "objects": {
+    "CopyFleetRequest": {
+      "document": "CopyFleet request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Server fleet ID",
+          "example": "fleet-qp3g3caa-2m6pzf4g",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replica number. It should a value between 1 to the number of the remaining quota. It can be obtained through [Obtaining User Quota](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).",
+          "example": "2",
+          "member": "int64",
+          "name": "CopyNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Asset package ID",
+          "example": "asset-qrdiw1a9",
+          "member": "string",
+          "name": "AssetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description. The length is 0-100 characters.",
+          "example": "Human description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network configuration",
+          "example": "无",
+          "member": "InboundPermission",
+          "name": "InboundPermissions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Server type. It can be obtained through [Obtaining Server Instance Type List](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).",
+          "example": "S5.LARGE8",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server fleet type, which only supports “ON_DEMAND” type now.",
+          "example": "ON_DEMAND",
+          "member": "string",
+          "name": "FleetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server fleet name. The length is 1-50 characters.",
+          "example": "testfleet",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protection policy. Valid values: NoProtection·(no protection), FullProtection (full protection), TimeLimitProtection (time-limited protection)",
+          "example": "NoProtection",
+          "member": "string",
+          "name": "NewGameServerSessionProtectionPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Limit policy of resource creation",
+          "example": "无",
+          "member": "ResourceCreationLimitPolicy",
+          "name": "ResourceCreationLimitPolicy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Progress configuration",
+          "example": "无",
+          "member": "RuntimeConfiguration",
+          "name": "RuntimeConfiguration",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes. This parameter is valid only when NewGameSessionProtectionPolicy is set as TimeLimitProtection.",
+          "example": "61",
+          "member": "int64",
+          "name": "GameServerSessionProtectionTimeLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.",
+          "example": "SCALING_SELECTED",
+          "member": "string",
+          "name": "SelectedScalingType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to select CCN. Valid values: CCN_SELECTED, CCN_UNSELECTED. Default value: CCN_UNSELECTED.",
+          "example": "CCN_SELECTED",
+          "member": "string",
+          "name": "SelectedCcnType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag list. Up to 50 tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.",
+          "example": "无",
+          "member": "DiskInfo",
+          "name": "SystemDiskInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. ",
+          "example": "无",
+          "member": "DiskInfo",
+          "name": "DataDiskInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.",
+          "example": "TIMER_UNSELECTED",
+          "member": "string",
+          "name": "SelectedTimerType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CopyFleetResponse": {
+      "document": "CopyFleet response structure.",
+      "members": [
+        {
+          "document": "Server fleet attributes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "FleetAttributes",
+          "name": "FleetAttributes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of server fleets",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateGameServerSessionRequest": {
       "document": "CreateGameServerSession request structure.",
       "members": [
@@ -502,6 +718,209 @@
         }
       ],
       "usage": "in"
+    },
+    "DiskInfo": {
+      "document": "Disk storage information",
+      "members": [
+        {
+          "default": "",
+          "document": "Disk type: Premium Cloud Storage (CLOUD_PREMIUM) or SSD (CLOUD_SSD)",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk: the available disk capacity is 50-500 GB. Data disk: the available disk capacity is 100-32000 GB, and the value is a multiple of 10. When the disk type is SSD (CLOUD_SSD), the minimum capacity is 100 GB.",
+          "example": "300",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "FleetAttributes": {
+      "document": "Service deployment attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "Asset package ID",
+          "member": "string",
+          "name": "AssetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server fleet creation time",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description of server fleet resource\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "FleetArn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server fleet ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server fleet type, which only supports ON_DEMAND now.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "FleetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server type, such as S5.LARGE8\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server fleet name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Game session protection policy\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "NewGameServerSessionProtectionPolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operating system type\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "OperatingSystem",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Limit policy of resource creation\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "ResourceCreationLimitPolicy",
+          "name": "ResourceCreationLimitPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Statuses: “Create”, “Downloading”, “Verifying”, “Generating”, “Activating”, “Active”, “Exception”, “Deleting”, and “End”.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The status of server fleet when it stopped. If this field is left empty, it means automatic scaling.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "StoppedActions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server fleet termination time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "TerminationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "uint64",
+          "name": "GameServerSessionProtectionTimeLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing status: Unactivated, Activated, Exception, Isolated due to arrears, Terminated, and Unfrozen.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "BillingStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag list. Up to 50 tags.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. \nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "DiskInfo",
+          "name": "DataDiskInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "DiskInfo",
+          "name": "SystemDiskInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "GameProperty": {
       "document": "Game attribute details",
@@ -988,6 +1407,52 @@
       ],
       "type": "object"
     },
+    "InboundPermission": {
+      "document": "Allowed network range.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start port number. Minimum value: 1025.",
+          "example": "1026",
+          "member": "uint64",
+          "name": "FromPort",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP range. Valid range of the input IPv4 addresses in CIDR format; for example, 0.0.0.0.0/0.",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "IpRange",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol type: TCP or UDP.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End port number. Maximum value: 60000.",
+          "example": "60000",
+          "member": "uint64",
+          "name": "ToPort",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "InstanceAccess": {
       "document": "Identity credentials for instance access",
       "members": [
@@ -1323,6 +1788,68 @@
       ],
       "usage": "out"
     },
+    "ResourceCreationLimitPolicy": {
+      "document": "Resource creation policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Creation quantity. Minimum value: 1. Default value: 2.",
+          "example": "2",
+          "member": "uint64",
+          "name": "NewGameServerSessionsPerCreator",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unit time. Minimum value: 1. Default value: 3. Unit: minute.",
+          "example": "3",
+          "member": "uint64",
+          "name": "PolicyPeriodInMinutes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RuntimeConfiguration": {
+      "document": "Runtime configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Game session timeout. Value range: 1-600. Unit: second.",
+          "example": "500",
+          "member": "uint64",
+          "name": "GameServerSessionActivationTimeoutSeconds",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of game sessions. Value range: 1-2,147,483,647.",
+          "example": "210",
+          "member": "uint64",
+          "name": "MaxConcurrentGameServerSessionActivations",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service process configuration. There must be at least one service configuration.",
+          "example": "无",
+          "member": "ServerProcesse",
+          "name": "ServerProcesses",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "SearchGameServerSessionsRequest": {
       "document": "SearchGameServerSessions request structure.",
       "members": [
@@ -1402,6 +1929,42 @@
         }
       ],
       "type": "object"
+    },
+    "ServerProcesse": {
+      "document": "Game service process",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of concurrent processes. Value range of total concurrent processes: 1-50.",
+          "example": "2",
+          "member": "uint64",
+          "name": "ConcurrentExecutions",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Launch Path. Linux: /local/game/ or Windows: C:\\game\\. The path length is 1-1024.",
+          "example": "105",
+          "member": "string",
+          "name": "LaunchPath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Launch parameter. The length is 0-1024.",
+          "example": "30",
+          "member": "string",
+          "name": "Parameters",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "StartGameServerSessionPlacementRequest": {
       "document": "StartGameServerSessionPlacement request structure.",
@@ -1516,6 +2079,116 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Tag": {
+      "document": "Tag structure",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key. Up to 127 bytes are allowed.",
+          "example": "tag1",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value. Up to 255 bytes are allowed.",
+          "example": "tagvalue",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpdateBucketAccelerateOptRequest": {
+      "document": "UpdateBucketAccelerateOpt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`true`: enable global acceleration; `false`: disable global acceleration",
+          "member": "bool",
+          "name": "Allowed",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateBucketAccelerateOptResponse": {
+      "document": "UpdateBucketAccelerateOpt response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateBucketCORSOptRequest": {
+      "document": "UpdateBucketCORSOpt request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Allowed access source. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
+          "member": "string",
+          "name": "AllowedOrigins",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Allowed HTTP method(s). Multiple methods are allowed, including PUT, GET, POST, and HEAD. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
+          "member": "string",
+          "name": "AllowedMethods",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specifies the custom HTTP request headers that the browser is allowed to include in a CORS request. Wildcard (*) is supported, indicating allowing all headers (recommended). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
+          "member": "string",
+          "name": "AllowedHeaders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sets the validity duration for the CORS configuration (in second). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
+          "member": "int64",
+          "name": "MaxAgeSeconds",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CORS response header(s) that can be exposed to the browser, case-insensitive. If this parameter is not specified, the browser can access only simple response headers Cache-Control, Content-Type, Expires, and Last-Modified by default. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
+          "member": "string",
+          "name": "ExposeHeaders",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateBucketCORSOptResponse": {
+      "document": "UpdateBucketCORSOpt response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

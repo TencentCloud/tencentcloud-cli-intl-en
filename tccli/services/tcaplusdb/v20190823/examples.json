@@ -177,7 +177,7 @@
     "DescribeTasks": [
       {
         "document": "This example shows you how to query task details by specifying task IDs.",
-        "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeTasks\r\n&ClusterIds.0=5674209986\r\n&Offset=3\r\n&Limit=3\r\n&<Common request parameters>",
+        "input": "https://tcaplusdb.tencentcloudapi.com/?Action=DescribeTasks\n&ClusterIds.0=5674209986\n&Offset=3\n&Limit=3\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"72fc70ce-2396-4b8e-ac54-9bce72058da1\",\r\n        \"TaskInfos\": [\r\n            {\r\n                \"ClusterName\": \"gz test PROTO\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Content\": \"20548499 modify quotas table(tb_example) of Cluster(5674209986) TableGroup(101), InstanceId tcaplus-1f224454, Storage Layer Expand: volume[1 -> 2], owner 20548499\",\r\n                \"Operator\": \"20548499\",\r\n                \"Progress\": 0,\r\n                \"StartTime\": \"2019-08-30 18:16:50\",\r\n                \"TaskId\": \"5674209986-1202\",\r\n                \"TaskType\": \"ModifyTableQuotas\",\r\n                \"TransId\": \"0\",\r\n                \"UpdateTime\": \"2019-08-30 18:16:50\"\r\n            },\r\n            {\r\n                \"ClusterName\": \"gz test PROTO\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Content\": \"20548499 modify table(tb_example)'s structure of Cluster(5674209986) TableGroup(101), InstanceId tcaplus-1f224454, owner 20548499\",\r\n                \"Operator\": \"20548499\",\r\n                \"Progress\": 100,\r\n                \"StartTime\": \"2019-08-30 18:02:50\",\r\n                \"TaskId\": \"5674209986-1200\",\r\n                \"TaskType\": \"ModifyTables\",\r\n                \"TransId\": \"558\",\r\n                \"UpdateTime\": \"2019-08-30 18:02:51\"\r\n            },\r\n            {\r\n                \"ClusterName\": \"gz test PROTO\",\r\n                \"ClusterId\": \"5674209986\",\r\n                \"Content\": \"20548499 clear table(tb_example) of Cluster(5674209986) TableGroup(101), InstanceId tcaplus-1f224454, owner 20548499\",\r\n                \"Operator\": \"20548499\",\r\n                \"Progress\": 0,\r\n                \"StartTime\": \"2019-08-30 17:34:07\",\r\n                \"TaskId\": \"5674209986-1199\",\r\n                \"TaskType\": \"ClearTables\",\r\n                \"TransId\": \"557\",\r\n                \"UpdateTime\": \"2019-08-30 17:34:07\"\r\n            }\r\n        ],\r\n        \"TotalCount\": 19\r\n    }\r\n}",
         "title": "Querying the task list"
       }
@@ -188,6 +188,22 @@
         "input": "https://tcaplus.tencentcloudapi.com/?Action=DescribeUinInWhitelist\r\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c5401419-d469-4a9b-8317-bf844ceebb09\",\r\n        \"Result\": \"FALSE\"\r\n    }\r\n}",
         "title": "Querying whether the current user is in the allowlist"
+      }
+    ],
+    "DisableRestProxy": [
+      {
+        "document": "This example shows how to disable the RESTful API by specifying the `ClusterId`.",
+        "input": "https://tcaplusdb.tencentcloudapi.com/?Action=DisableRestProxy\n&ClusterId=5674209986\n&<Common request parameters>",
+        "output": "{\r\n \"Response\": {\r\n  \"RestProxyStatus\": 3, \r\n  \"RequestId\": \"request-xxx123\", \r\n  \"TaskId\": \"838418134-44\"\r\n }\r\n}",
+        "title": "Disabling the RESTful API"
+      }
+    ],
+    "EnableRestProxy": [
+      {
+        "document": "This example shows how to enable the RESTful API by specifying the `ClusterId`.",
+        "input": "https://tcaplusdb.tencentcloudapi.com/?Action=EnableRestProxy\n&ClusterId=5674209986\n&<Common request parameters>",
+        "output": "{\r\n \"Response\": {\r\n  \"RestProxyStatus\": 1, \r\n  \"RequestId\": \"request-xxx123\", \r\n  \"TaskId\": \"838418134-44\"\r\n }\r\n}",
+        "title": "Enabling the RESTful API"
       }
     ],
     "ModifyClusterMachine": [

@@ -834,6 +834,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "TagInstance",
+          "name": "TagInstances",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2466,6 +2475,7 @@
         {
           "default": "",
           "document": "Value fixed at \"monitor\"",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -2474,6 +2484,7 @@
         {
           "default": "",
           "document": "Page number starting from 1. Default value: 1",
+          "example": "1",
           "member": "int64",
           "name": "PageNumber",
           "required": false,
@@ -2482,6 +2493,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Value range: 1–100. Default value: 20",
+          "example": "20",
           "member": "int64",
           "name": "PageSize",
           "required": false,
@@ -2490,6 +2502,7 @@
         {
           "default": "",
           "document": "Fuzzy search by policy name",
+          "example": "policy-24sxe890",
           "member": "string",
           "name": "PolicyName",
           "required": false,
@@ -2498,6 +2511,7 @@
         {
           "default": "",
           "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "example": "[MT_QCE]",
           "member": "string",
           "name": "MonitorTypes",
           "required": false,
@@ -2506,6 +2520,7 @@
         {
           "default": "",
           "document": "Filter by namespace",
+          "example": "[cvm]",
           "member": "string",
           "name": "Namespaces",
           "required": false,
@@ -2514,6 +2529,7 @@
         {
           "default": "",
           "document": "Alarm object list",
+          "example": "Region",
           "member": "string",
           "name": "Dimensions",
           "required": false,
@@ -2522,6 +2538,7 @@
         {
           "default": "",
           "document": "Search by recipient",
+          "example": "[9989]",
           "member": "int64",
           "name": "ReceiverUids",
           "required": false,
@@ -2530,6 +2547,7 @@
         {
           "default": "",
           "document": "Search by recipient group",
+          "example": "[1112]",
           "member": "int64",
           "name": "ReceiverGroups",
           "required": false,
@@ -2538,6 +2556,7 @@
         {
           "default": "",
           "document": "Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed",
+          "example": "[DEFAULT]",
           "member": "string",
           "name": "PolicyType",
           "required": false,
@@ -2546,6 +2565,7 @@
         {
           "default": "",
           "document": "Sort by field",
+          "example": "PolicyId",
           "member": "string",
           "name": "Field",
           "required": false,
@@ -2554,6 +2574,7 @@
         {
           "default": "",
           "document": "Sort order. Valid values: ASC (ascending), DESC (descending)",
+          "example": "DESC",
           "member": "string",
           "name": "Order",
           "required": false,
@@ -2562,6 +2583,7 @@
         {
           "default": "",
           "document": "Project ID array",
+          "example": "[1]",
           "member": "int64",
           "name": "ProjectIds",
           "required": false,
@@ -2570,6 +2592,7 @@
         {
           "default": "",
           "document": "Alarm notification ID list",
+          "example": "[1,2]",
           "member": "string",
           "name": "NoticeIds",
           "required": false,
@@ -2578,6 +2601,7 @@
         {
           "default": "",
           "document": "Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed",
+          "example": "[STATIC]",
           "member": "string",
           "name": "RuleTypes",
           "required": false,
@@ -2586,10 +2610,20 @@
         {
           "default": "",
           "document": "Status. Valid values: 1 (enabled), 0 (disabled)",
+          "example": "1",
           "member": "int64",
           "name": "Enable",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the notification rule is configured. 1: not configured; 0: configured",
+          "example": "1",
+          "member": "int64",
+          "name": "NotBindingNoticeRule",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4889,6 +4923,7 @@
         {
           "default": "",
           "document": "Event ID.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "111",
           "member": "int64",
           "name": "EventId",
           "required": true,
@@ -4898,6 +4933,7 @@
         {
           "default": "",
           "document": "Event name in Chinese.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ping不可达",
           "member": "string",
           "name": "EventCName",
           "required": true,
@@ -4907,6 +4943,7 @@
         {
           "default": "",
           "document": "Event name in English.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ping_unreachable",
           "member": "string",
           "name": "EventEName",
           "required": true,
@@ -4916,6 +4953,7 @@
         {
           "default": "",
           "document": "Event name abbreviation.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ping_unreachable",
           "member": "string",
           "name": "EventName",
           "required": true,
@@ -4925,6 +4963,7 @@
         {
           "default": "",
           "document": "Product name in Chinese.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "cvm",
           "member": "string",
           "name": "ProductCName",
           "required": true,
@@ -4934,6 +4973,7 @@
         {
           "default": "",
           "document": "Product name in English.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "cvm",
           "member": "string",
           "name": "ProductEName",
           "required": true,
@@ -4943,6 +4983,7 @@
         {
           "default": "",
           "document": "Product name abbreviation.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "cvm",
           "member": "string",
           "name": "ProductName",
           "required": true,
@@ -4952,6 +4993,7 @@
         {
           "default": "",
           "document": "Instance ID.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ins-3xdfd90",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -4961,6 +5003,7 @@
         {
           "default": "",
           "document": "Instance name.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ins-3xdfd90",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -4970,6 +5013,7 @@
         {
           "default": "",
           "document": "Project ID.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "123",
           "member": "string",
           "name": "ProjectId",
           "required": true,
@@ -4979,6 +5023,7 @@
         {
           "default": "",
           "document": "Region.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "gz",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -4988,6 +5033,7 @@
         {
           "default": "",
           "document": "Status.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "1",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4997,6 +5043,7 @@
         {
           "default": "",
           "document": "Whether to support alarms.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "1",
           "member": "int64",
           "name": "SupportAlarm",
           "required": true,
@@ -5006,6 +5053,7 @@
         {
           "default": "",
           "document": "Event type.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "21",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -5015,6 +5063,7 @@
         {
           "default": "",
           "document": "Start time.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "1611560738",
           "member": "int64",
           "name": "StartTime",
           "required": true,
@@ -5024,6 +5073,7 @@
         {
           "default": "",
           "document": "Update time.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "1611560790",
           "member": "int64",
           "name": "UpdateTime",
           "required": true,
@@ -5033,6 +5083,7 @@
         {
           "default": "",
           "document": "Instance object information.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "DescribeProductEventListEventsDimensions",
           "name": "Dimensions",
           "required": true,
@@ -5042,6 +5093,7 @@
         {
           "default": "",
           "document": "Additional information of the instance object.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "DescribeProductEventListEventsDimensions",
           "name": "AdditionMsg",
           "required": true,
@@ -5051,6 +5103,7 @@
         {
           "default": "",
           "document": "Whether to configure alarms.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "1",
           "member": "int64",
           "name": "IsAlarmConfig",
           "required": true,
@@ -5060,10 +5113,21 @@
         {
           "default": "",
           "document": "Policy information.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "DescribeProductEventListEventsGroupInfo",
           "name": "GroupInfo",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Display name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cvm/device",
+          "member": "string",
+          "name": "ViewName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -6847,6 +6911,75 @@
         }
       ],
       "type": "object"
+    },
+    "TagInstance": {
+      "document": "Instance tag information of the alarm policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of instances\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "InstanceSum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service type, for example, CVM\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Binding status. 2: bound; 1: binding\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "BindingStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag status. 2: existent; 1: nonexistent\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TagStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "URLNotice": {
       "document": "Cloud Monitor alarm notification template - callback notification details",

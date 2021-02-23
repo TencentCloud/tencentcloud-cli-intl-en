@@ -1,5 +1,11 @@
 {
   "actions": {
+    "CloneDB": {
+      "document": "This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.",
+      "input": "CloneDBRequest",
+      "name": "Clones databases",
+      "output": "CloneDBResponse"
+    },
     "CreateAccount": {
       "document": "This API is used to create an instance account.",
       "input": "CreateAccountRequest",
@@ -161,6 +167,12 @@
       "input": "ModifyDBInstanceNameRequest",
       "name": "Renames instance",
       "output": "ModifyDBInstanceNameResponse"
+    },
+    "ModifyDBInstanceNetwork": {
+      "document": "This API is used to switch a running instance from a VPC to another.",
+      "input": "ModifyDBInstanceNetworkRequest",
+      "name": "Changes instance network",
+      "output": "ModifyDBInstanceNetworkResponse"
     },
     "ModifyDBInstanceProject": {
       "document": "This API is used to modify the project to which a database instance belongs.",
@@ -589,6 +601,51 @@
       ],
       "usage": "out"
     },
+    "CloneDBRequest": {
+      "document": "CloneDB request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-j8kv137v",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Clone and rename the databases specified in `ReNameRestoreDatabase`. Please note that the clones must be renamed.",
+          "example": "RenameRestore.0.OldName=db1&RenameRestore.0.NewName=clone_db1",
+          "member": "RenameRestoreDatabase",
+          "name": "RenameRestore",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneDBResponse": {
+      "document": "CloneDB response structure.",
+      "members": [
+        {
+          "document": "Async task request ID, which can be used in the `DescribeFlowStatus` API to query the execution result of an async task",
+          "example": "3546",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAccountRequest": {
       "document": "CreateAccount request structure.",
       "members": [
@@ -841,6 +898,14 @@
           "name": "MultiZones",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Tags associated with the instances to be created",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1430,6 +1495,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The list of tags associated with the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1844,6 +1918,14 @@
           "name": "BackupId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1938,6 +2020,54 @@
           "document": "Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string (\"\") is passed in, filtering will be made by basic network.",
           "member": "string",
           "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of instance private IPs, such as 172.1.0.12",
+          "member": "string",
+          "name": "VipSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of instance names used for fuzzy match",
+          "member": "string",
+          "name": "InstanceNameSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of instance version numbers, such as 2008R2, 2012SP3",
+          "member": "string",
+          "name": "VersionSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance availability zone, such as ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of instance tags",
+          "member": "string",
+          "name": "TagKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Keyword used for fuzzy match, including instance ID, instance name, and instance private IP",
+          "member": "string",
+          "name": "SearchKey",
           "required": false,
           "type": "string"
         }
@@ -3190,6 +3320,63 @@
       ],
       "type": "object"
     },
+    "ModifyDBInstanceNetworkRequest": {
+      "document": "ModifyDBInstanceNetwork request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the new VPC",
+          "member": "string",
+          "name": "NewVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the new subnet",
+          "member": "string",
+          "name": "NewSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.",
+          "member": "int64",
+          "name": "OldIpRetainTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNetworkResponse": {
+      "document": "ModifyDBInstanceNetwork response structure.",
+      "members": [
+        {
+          "document": "ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceProjectRequest": {
       "document": "ModifyDBInstanceProject request structure.",
       "members": [
@@ -3471,11 +3658,12 @@
       "usage": "out"
     },
     "RenameRestoreDatabase": {
-      "document": "It is used in the `RestoreInstance`, `RollbackInstance`, and `CreateMigration` APIs, and used to specify the databases to be restored and rename them after restoration.",
+      "document": "Used in the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, and `CloneDB` APIs to specify and rename the database to be restored, rolled back, migrated, or cloned.",
       "members": [
         {
           "default": "",
           "document": "Database name. If the `OldName` database does not exist, a failure will be returned.\nIt can be left empty in offline migration tasks.",
+          "example": "db1",
           "member": "string",
           "name": "OldName",
           "required": false,
@@ -3484,7 +3672,8 @@
         },
         {
           "default": "",
-          "document": "New database name. If this parameter is left empty, the restored database will be renamed in the default format. If this parameter is left empty in offline migration tasks, the restored database will be named `OldName`. `OldName` and `NewName` cannot be both empty.",
+          "document": "New database name. In offline migration, `OldName` will be used if `NewName` is left empty (`OldName` and `NewName` cannot be both empty). In database cloning, `OldName` and `NewName` must be both specified and cannot have the same value.",
+          "example": "db2",
           "member": "string",
           "name": "NewName",
           "required": false,
@@ -3534,6 +3723,30 @@
         }
       ],
       "type": "object"
+    },
+    "ResourceTag": {
+      "document": "The information of tags associated with instances",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RestartDBInstanceRequest": {
       "document": "RestartDBInstance request structure.",
@@ -4001,7 +4214,7 @@
           "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -4009,7 +4222,7 @@
           "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity",
           "member": "int64",
           "name": "Storage",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -4035,6 +4248,30 @@
           "name": "Cpu",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.",
+          "member": "string",
+          "name": "HAType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).",
+          "member": "string",
+          "name": "MultiZones",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

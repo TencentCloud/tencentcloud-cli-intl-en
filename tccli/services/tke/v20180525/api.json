@@ -3681,7 +3681,8 @@
       "members": [
         {
           "default": "",
-          "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 (xfs for tlinux system) and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "/tmp",
           "member": "string",
           "name": "MountTarget",
           "required": false,
@@ -3691,6 +3692,7 @@
         {
           "default": "",
           "document": "Specified value of dockerd --graph. Default value: /var/lib/docker\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "/var/lib/docker",
           "member": "string",
           "name": "DockerGraphPath",
           "required": false,
@@ -3700,6 +3702,7 @@
         {
           "default": "",
           "document": "Base64-encoded user script, which will be executed after the K8s component starts running. You need to ensure the reentrant and retry logic of the script. The script and its log files can be viewed at the node path: /data/ccs_userscript/. If you want to initialize nodes before adding them to the scheduling list, you can use this parameter together with the unschedulable parameter. After the final initialization of userScript is completed, add the kubectl uncordon nodename --kubeconfig=/root/.kube/config command to enable the node for scheduling.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "#!/bin/sh echo \"hello world\"",
           "member": "string",
           "name": "UserScript",
           "required": false,
@@ -3709,6 +3712,7 @@
         {
           "default": "",
           "document": "Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run kubectl uncordon nodename to enable this node for scheduling.",
+          "example": "false",
           "member": "int64",
           "name": "Unschedulable",
           "required": false,
@@ -3718,6 +3722,7 @@
         {
           "default": "",
           "document": "Node label array\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "Label",
           "name": "Labels",
           "required": false,
@@ -3726,7 +3731,8 @@
         },
         {
           "default": "",
-          "document": "Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. If the purchase of multiple data disks is also set in DataDisks under RunInstancesPara of the CreateClusterInstances API for adding nodes, you can refer to the example of adding cluster nodes (multiple data disks) for the CreateClusterInstances API.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks, for example `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API. You can refer to the example of adding a cluster node with multiple data disks in the CreateClusterInstances API. This parameter does not take effect when the AddExistedInstances API is called.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": false,
@@ -3736,6 +3742,7 @@
         {
           "default": "",
           "document": "Information about node custom parameters\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "InstanceExtraArgs",
           "name": "ExtraArgs",
           "required": false,

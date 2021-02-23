@@ -12,6 +12,12 @@
       "name": "Gets application usage statistics",
       "output": "DescribeAppStatisticsResponse"
     },
+    "DescribeApplicationData": {
+      "document": "This API (DescribeApplicationData) is used to query usage data details within 90 days.",
+      "input": "DescribeApplicationDataRequest",
+      "name": "Obtains data details",
+      "output": "DescribeApplicationDataResponse"
+    },
     "DescribeScanResultList": {
       "document": "This API is used to query the speech detection result. Up to 100 tasks can be added in the task query list.\n<p style=\"color:red\">If the `Callback` field is not set when a speech detection task is submitted, this API will be needed to get the detection result.</p>",
       "input": "DescribeScanResultListRequest",
@@ -74,6 +80,129 @@
           "name": "Date",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplicationDataStatistics": {
+      "document": "Application statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DAU data",
+          "member": "uint64",
+          "name": "DauDataNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DAU in Chinese mainland",
+          "member": "StatisticsItem",
+          "name": "DauDataMainland",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DAU outside Chinese mainland",
+          "member": "StatisticsItem",
+          "name": "DauDataOversea",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total DAU",
+          "member": "StatisticsItem",
+          "name": "DauDataSum",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of voice chat metrics",
+          "member": "uint64",
+          "name": "DurationDataNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration of voice chat in Chinese mainland in minutes",
+          "member": "StatisticsItem",
+          "name": "DurationDataMainland",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration of voice chat outside Chinese mainland in minutes",
+          "member": "StatisticsItem",
+          "name": "DurationDataOversea",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total duration of voice chat in minutes",
+          "member": "StatisticsItem",
+          "name": "DurationDataSum",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "PCU data",
+          "member": "uint64",
+          "name": "PcuDataNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "PCU in Chinese mainland",
+          "member": "StatisticsItem",
+          "name": "PcuDataMainland",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "PCU outside Chinese mainland",
+          "member": "StatisticsItem",
+          "name": "PcuDataOversea",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total PCU",
+          "member": "StatisticsItem",
+          "name": "PcuDataSum",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -279,6 +408,60 @@
         }
       ],
       "usage": "out"
+    },
+    "DescribeApplicationDataRequest": {
+      "document": "DescribeApplicationData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "140000001",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data start date in the format of yyyy-mm-dd, such as 2018-07-13",
+          "example": "2018-07-13",
+          "member": "date",
+          "name": "StartDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data end date in the format of yyyy-mm-dd, such as 2018-07-13",
+          "example": "2018-08-13",
+          "member": "date",
+          "name": "EndDate",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationDataResponse": {
+      "document": "DescribeApplicationData response structure.",
+      "members": [
+        {
+          "document": "Application statistics",
+          "example": "[]",
+          "member": "ApplicationDataStatistics",
+          "name": "Data",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeScanResult": {
       "document": "Returned speech detection result",
@@ -804,6 +987,30 @@
           "name": "TaskId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StatisticsItem": {
+      "document": "Usage data",
+      "members": [
+        {
+          "default": "",
+          "document": "Date in the format of yyyy-mm-dd, such as 2018-07-13",
+          "member": "date",
+          "name": "StatDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Statistics",
+          "member": "uint64",
+          "name": "Data",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

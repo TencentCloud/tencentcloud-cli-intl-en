@@ -241,7 +241,7 @@
       "output": "DescribeDataBackupOverviewResponse"
     },
     "DescribeDatabases": {
-      "document": "This API (DescribeDatabases) is used to query the information of databases of a TencentDB instance.",
+      "document": "This API is used to query the information of databases in a TencentDB instance which must be a source or disaster recovery instance.",
       "input": "DescribeDatabasesRequest",
       "name": "Queries databases",
       "output": "DescribeDatabasesResponse"
@@ -343,7 +343,7 @@
       "output": "DescribeSupportedPrivilegesResponse"
     },
     "DescribeTables": {
-      "document": "This API (DescribeTables) is used to query the database tables of a TencentDB instance.",
+      "document": "This API is used to query the information of database tables in a TencentDB instance. It only supports source or disaster recovery instances.",
       "input": "DescribeTablesRequest",
       "name": "Queries database tables",
       "output": "DescribeTablesResponse"
@@ -551,6 +551,18 @@
       "input": "StopRollbackRequest",
       "name": "Cancels a rollback task",
       "output": "StopRollbackResponse"
+    },
+    "SwitchDBInstanceMasterSlave": {
+      "document": "This API is used for source-to-replica switch.",
+      "input": "SwitchDBInstanceMasterSlaveRequest",
+      "name": "Performs source-to-replica switch",
+      "output": "SwitchDBInstanceMasterSlaveResponse"
+    },
+    "SwitchDrInstanceToMaster": {
+      "document": "This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.",
+      "input": "SwitchDrInstanceToMasterRequest",
+      "name": "Promotes a disaster recovery instance to source instance",
+      "output": "SwitchDrInstanceToMasterResponse"
     },
     "SwitchForUpgrade": {
       "document": "This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the primary instance being upgraded is pending switch.",
@@ -1841,7 +1853,7 @@
         },
         {
           "default": "",
-          "document": "AZ information of secondary database 2, which is empty by default. This parameter can be specified when purchasing strong sync primary instances and is meaningless for other types of instances.",
+          "document": "Availability zone information of replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.",
           "member": "string",
           "name": "BackupZone",
           "required": false,
@@ -4188,6 +4200,14 @@
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.",
+          "member": "string",
+          "name": "InstType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4706,6 +4726,14 @@
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.",
+          "member": "string",
+          "name": "InstType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5921,7 +5949,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Value range: HA (High-Availability Edition), FE (Finance Edition), BASIC (Basic Edition)",
+          "document": "Instance type",
           "member": "string",
           "name": "DeviceType",
           "required": true,
@@ -9062,6 +9090,105 @@
           "document": "Async task request ID",
           "member": "string",
           "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDBInstanceMasterSlaveRequest": {
+      "document": "SwitchDBInstanceMasterSlave request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "\"cdb-xxx\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the replica server to switched to. Valid values: `first` (the first replica server), `second` (the second replica server). Default value: `first`. `second` is valid only for a multi-AZ instance.",
+          "example": "\"first\"",
+          "member": "string",
+          "name": "DstSlave",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to force the switch. Valid values: `True`, `False` (default). If this parameter is set to `True`, instance data may be lost during the switch.",
+          "example": "false",
+          "member": "bool",
+          "name": "ForceSwitch",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to perform the switch during a time window. Valid values: `True`, `False` (default). If `ForceSwitch` is set to `True`, this parameter is invalid.",
+          "example": "false",
+          "member": "bool",
+          "name": "WaitSwitch",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDBInstanceMasterSlaveResponse": {
+      "document": "SwitchDBInstanceMasterSlave response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDrInstanceToMasterRequest": {
+      "document": "SwitchDrInstanceToMaster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-***",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDrInstanceToMasterResponse": {
+      "document": "SwitchDrInstanceToMaster response structure.",
+      "members": [
+        {
+          "document": "Async task request ID, which can be used to query the execution result of an async task",
+          "example": "be9f64a6-fa652dc6-f5c878b6-a6a50746",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },

@@ -108,6 +108,12 @@
       "name": "Queries the security group details of a project",
       "output": "DescribeProjectSecurityGroupsResponse"
     },
+    "DescribeProjects": {
+      "document": "This API is used to query the project list.",
+      "input": "DescribeProjectsRequest",
+      "name": "Queries the project list",
+      "output": "DescribeProjectsResponse"
+    },
     "DisassociateSecurityGroups": {
       "document": "This API is used to unassociate security groups from instances in batches.",
       "input": "DisassociateSecurityGroupsRequest",
@@ -1280,6 +1286,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The value range of shardkey, which includes 64 hash values, such as 0-31, 32-63.",
+          "member": "string",
+          "name": "Range",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2229,6 +2244,30 @@
       ],
       "type": "object"
     },
+    "DescribeProjectsRequest": {
+      "document": "DescribeProjects request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeProjectsResponse": {
+      "document": "DescribeProjects response structure.",
+      "members": [
+        {
+          "document": "Project list",
+          "member": "Project",
+          "name": "Projects",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisassociateSecurityGroupsRequest": {
       "document": "DisassociateSecurityGroups request structure.",
       "members": [
@@ -2820,6 +2859,111 @@
           "name": "Code",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Project": {
+      "document": "Project description",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The `uin` of the resource owner (root account)",
+          "member": "int64",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator `uin`",
+          "member": "int64",
+          "name": "CreatorUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source platform",
+          "member": "string",
+          "name": "SrcPlat",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source `AppId`",
+          "member": "int64",
+          "name": "SrcAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project status. 0: normal; -1: disabled; 3: default project.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is the default project. 1: yes; 0: no.",
+          "member": "int64",
+          "name": "IsDefault",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "member": "string",
+          "name": "Info",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

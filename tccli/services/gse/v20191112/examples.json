@@ -1,5 +1,13 @@
 {
   "actions": {
+    "CopyFleet": [
+      {
+        "document": "",
+        "input": "https://gse.tencentcloudapi.com/?Action=CopyFleet\n&FleetId=fleet-qp3g3caa-2m6pzf4g\n&AssetId=asset-qrdiw1a9\n&Description=Human description\n&InstanceType=S5.LARGE8\n&FleetType=ON_DEMAND\n&Name=testfleet\n&NewGameServerSessionProtectionPolicy=TimeLimitProtection\n&ResourceCreationLimitPolicy.NewGameServerSessionsPerCreator=2\n&ResourceCreationLimitPolicy.PolicyPeriodInMinutes=0\n&RuntimeConfiguration.GameServerSessionActivationTimeoutSeconds=5\n&RuntimeConfiguration.MaxConcurrentGameServerSessionActivations=5\n&RuntimeConfiguration.ServerProcesses.0.ConcurrentExecutions=10\n&RuntimeConfiguration.ServerProcesses.0.LaunchPath=/local/game/GameLiftLinuxServer\n&InboundPermissions.0.FromPort=1900\n&InboundPermissions.0.IpRange=0.0.0.0/0\n&InboundPermissions.0.Protocol=TCP\n&InboundPermissions.0.ToPort=2900\n&SelectedScalingType=SCALING_UNSELECTED\n&SelectedCcnType=CCN_UNSELECTED\n&SelectedTimerType=TIMER_UNSELECTED\n&CopyNumber=1\n&DataDiskInfo.0.DiskType=CLOUD_PREMIUM\n&DataDiskInfo.0.DiskSize=50\n&SystemDiskInfo.DiskType=CLOUD_PREMIUM\n&SystemDiskInfo.DiskSize=50\n&<Common request parameters>",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"FleetAttributes\": [{\r\n\t\t\t\"AssetId\": \"asset-qrdiw1a9\",\r\n\t\t\t\"BillingStatus\": \"BILLING_ACTIVATED\",\r\n\t\t\t\"CreationTime\": \"2020-11-18T04:01:03Z\",\r\n\t\t\t\"Description\": \"Human description test update\",\r\n\t\t\t\"FleetArn\": \"qcs::gse:ap-shanghai:uin/838831829:fleet/fleet-qp3g3caa-95z2gimq\",\r\n\t\t\t\"FleetId\": \"fleet-qp3g3caa-95z2gimq\",\r\n\t\t\t\"FleetType\": \"ON_DEMAND\",\r\n\t\t\t\"GameServerSessionProtectionTimeLimit\": 60,\r\n\t\t\t\"InstanceType\": \"S5.LARGE8\",\r\n\t\t\t\"Name\": \"frederickli-test-fleet\",\r\n\t\t\t\"NewGameServerSessionProtectionPolicy\": \"TimeLimitProtection\",\r\n\t\t\t\"OperatingSystem\": \"CentOS 7.16 64位\",\r\n\t\t\t\"ResourceCreationLimitPolicy\": {\r\n\t\t\t\t\"NewGameServerSessionsPerCreator\": 2,\r\n\t\t\t\t\"PolicyPeriodInMinutes\": 3\r\n\t\t\t},\r\n\t\t\t\"Status\": \"NEW\",\r\n\t\t\t\"StoppedActions\": [],\r\n\t\t\t\"TerminationTime\": null,\r\n\t\t\t\"DataDiskInfo\": [{\r\n\t\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\r\n\t\t\t\t\"DiskSize\": 50\r\n\t\t\t}],\r\n\t\t\t\"SystemDiskInfo\": {\r\n\t\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\r\n\t\t\t\t\"DiskSize\": 50\r\n\t\t\t}\r\n\t\t}],\r\n\t\t\"RequestId\": \"s1605672063311364390\",\r\n\t\t\"TotalCount\": 1\r\n\t}\r\n}",
+        "title": "Replicating a server fleet"
+      }
+    ],
     "CreateGameServerSession": [
       {
         "document": "This example shows you how to create a game server session.",
@@ -106,6 +114,22 @@
         "input": "https://gse.tencentcloudapi.com/?Action=StopGameServerSessionPlacement\n&PlacementId=PlacementId-3a7d34cd-5240-11ea-b02a-3464sdfsfsdf13fe\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"GameServerSessionPlacement\": {\r\n            \"DnsName\": \"\",\r\n            \"EndTime\": \"2020-02-18T11:33:49Z\",\r\n            \"GameProperties\": [\r\n                {\r\n                    \"Key\": \"Key-8658b11f-5242-11ea-9c67-3464a435513fe\",\r\n                    \"Value\": \"Value-8658b120-5242-11ea-8527-34t4a91513fe\"\r\n                }\r\n            ],\r\n            \"GameServerSessionData\": \"GameServerSessionData-8658b121-5242-11ea-af53-34644351513fe\",\r\n            \"GameServerSessionId\": \"\",\r\n            \"GameServerSessionName\": \"GameServerSessionName-8658b122-5242-11ea-9f8f-3464491513fe\",\r\n            \"GameServerSessionQueueName\": \"PlacementTwo\",\r\n            \"GameServerSessionRegion\": \"\",\r\n            \"IpAddress\": \"\",\r\n            \"MatchmakerData\": \"\",\r\n            \"MaximumPlayerSessionCount\": 100,\r\n            \"PlacedPlayerSessions\": [\r\n                \r\n            ],\r\n            \"PlacementId\": \"PlacementId-3a7d34cd-5240-11ea-b02a-3464sdfsfsdf13fe\",\r\n            \"PlayerLatencies\": [\r\n                {\r\n                    \"LatencyInMilliseconds\": 10000,\r\n                    \"PlayerId\": \"Player-8658b123-5242-11ea-9e2f-3464sf91513fe\",\r\n                    \"RegionIdentifier\": \"ap-shanghai\"\r\n                }\r\n            ],\r\n            \"Port\": 0,\r\n            \"StartTime\": \"2020-02-18T11:33:49Z\",\r\n            \"Status\": \"CANCELLED\"\r\n        },\r\n        \"RequestId\": \"2f631834-4c91-4c9b-a13a-2d5757582eb5f\"\r\n    }\r\n}",
         "title": "Stopping placing game server session"
+      }
+    ],
+    "UpdateBucketAccelerateOpt": [
+      {
+        "document": "This example shows you how to configure COS global acceleration.",
+        "input": "https://gse.tencentcloudapi.com/?Action=UpdateBucketAccelerateOpt\n&Allowed=true\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"s1609299213222354000\"\r\n    }\r\n}",
+        "title": "Configuring COS global acceleration"
+      }
+    ],
+    "UpdateBucketCORSOpt": [
+      {
+        "document": "This example shows you how to set COS cross-origin request.",
+        "input": "https://gse.tencentcloudapi.com/?Action=UpdateBucketCORSOpt\n&AllowedOrigins.0=*\n&AllowedMethods.0=GET\n&AllowedHeaders.0=x-cos-meta-test\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"s1609831145190946000\"\r\n    }\r\n}",
+        "title": "Setting COS cross-origin request"
       }
     ],
     "UpdateGameServerSession": [

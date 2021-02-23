@@ -35,7 +35,7 @@
     "CreateAccounts": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=CreateAccounts\n&InstanceId=cdb-f35wr6wj\n&Accounts.0.user=xxxxx\n&Password=fsdgfdgfd\n&Accounts.0.host=127.0.0.1\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccounts\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-f35wr6wj\", \n    \"Password\": \"fsdgfdgfd\", \n    \"Accounts\": [\n        {\n            \"Host\": \"127.0.0.1\", \n            \"User\": \"test_user\"\n        }\n    ], \n    \"Description\": \"test description\"\n}",
         "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n        \"AsyncRequestId\":\"256117ed-efa08b54-61784d44-91781bbd\"\r\n    }\r\n}",
         "title": "Creating a TencentDB account"
       }
@@ -148,7 +148,7 @@
       {
         "document": "",
         "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAccounts\n&InstanceId=cdb-f35wr6wj\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n        \"TotalCount\":2,\r\n        \"Items\":[\r\n            {\r\n                \"Notes\":\"\",\r\n                \"Host\":\"localhost\",\r\n                \"User\":\"\",\r\n                \"ModifyTime\":\"\",\r\n                \"ModifyPasswordTime\":\"\",\r\n                \"CreateTime\":\"\"\r\n            },\r\n            {\r\n                \"Notes\":\"\",\r\n                \"Host\":\"localhost\",\r\n                \"User\":\"root\",\r\n                \"ModifyTime\":\"\",\r\n                \"ModifyPasswordTime\":\"\",\r\n                \"CreateTime\":\"\"\r\n            }\r\n        ]\r\n    }\r\n}",
+        "output": "{\r\n\t\"Response\": {\r\n\t\t\"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n\t\t\"TotalCount\": 2,\r\n\t\t\"Items\": [{\r\n\t\t\t\t\"Notes\": \"test\",\r\n\t\t\t\t\"Host\": \"localhost\",\r\n\t\t\t\t\"User\": \"test_user\",\r\n\t\t\t\t\"ModifyTime\": \"2020-11-10 01:00:00\",\r\n\t\t\t\t\"ModifyPasswordTime\": \"2020-11-10 01:00:00\",\r\n\t\t\t\t\"CreateTime\": \"2020-11-10 01:00:00\"\r\n\t\t\t}, {\r\n\t\t\t\t\"Notes\": \"test2\",\r\n\t\t\t\t\"Host\": \"localhost\",\r\n\t\t\t\t\"User\": \"root\",\r\n\t\t\t\t\"ModifyTime\": \"2020-11-10 01:00:00\",\r\n\t\t\t\t\"ModifyPasswordTime\": \"2020-11-10 01:00:00\",\r\n\t\t\t\t\"CreateTime\": \"2020-11-10 01:00:00\"\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n}",
         "title": "Querying the information of all TencentDB accounts"
       }
     ],
@@ -323,7 +323,7 @@
     "DescribeDatabases": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeDatabases\r\n&InstanceId=cdb-f35wr6wj\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeDatabases\n&InstanceId=cdb-f35wr6wj\n&<Common request parameters>",
         "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n        \"TotalCount\":7,\r\n        \"Items\":[\r\n            \"information_schema\",\r\n            \"mysql\",\r\n            \"performance_schema\",\r\n            \"test\",\r\n            \"trsf1\",\r\n            \"trsf2\",\r\n            \"trsf3\"\r\n        ]\r\n    }\r\n}",
         "title": "Querying databases"
       }
@@ -459,7 +459,7 @@
     "DescribeTables": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeTables\r\n&InstanceId=cdb-c1nl9rpv\r\n&Database=mysql\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeTables\n&InstanceId=cdb-c1nl9rpv\n&Database=mysql\n&<Common request parameters>",
         "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n        \"TotalCount\":10,\r\n        \"Items\":[\r\n            \"CHARACTER_SETS\",\r\n            \"COLLATIONS\",\r\n            \"COLLATION_CHARACTER_SET_APPLICABILITY\",\r\n            \"COLUMNS\",\r\n            \"COLUMN_PRIVILEGES\",\r\n            \"ENGINES\",\r\n            \"EVENTS\",\r\n            \"FILES\",\r\n            \"GLOBAL_STATUS\",\r\n            \"GLOBAL_VARIABLES\"\r\n        ]\r\n    }\r\n}",
         "title": "Querying database tables"
       }
@@ -740,6 +740,22 @@
         "input": "https://cdb.tencentcloudapi.com/?Action=StopRollback\n&InstanceId=cdb-9303wd4x\n&<Common request parameters>",
         "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n        \"AsyncRequestId\":\"256117ed-efa08b54-61784d44-91781bbd\"\r\n    }\r\n}",
         "title": "Canceling a rollback task"
+      }
+    ],
+    "SwitchDBInstanceMasterSlave": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=SwitchDBInstanceMasterSlave\n&InstanceId=cdb-xxxxxxxx\n&DstSlave=second\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"faae8d6a-38fb-44de-988e-5a0e78aba4a7\", \r\n        \"AsyncRequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\r\n    }\r\n}",
+        "title": "Performing a source-to-replica switch"
+      }
+    ],
+    "SwitchDrInstanceToMaster": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=SwitchDrInstanceToMaster\n&InstanceId=cdb-9kq0g26l\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\r\n        \"AsyncRequestId\":\"be9f64a6-fa652dc6-f5c878b6-a6a50746\"\r\n    }\r\n}",
+        "title": "Promoting a disaster recovery instance to source instance"
       }
     ],
     "SwitchForUpgrade": [
