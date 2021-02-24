@@ -518,6 +518,22 @@
           "name": "Domains",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Redirection status code. Valid values: 301, 302, and 307.",
+          "member": "int64",
+          "name": "RewriteCodes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether the matched URL is carried in redirection.",
+          "member": "bool",
+          "name": "TakeUrls",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -784,7 +800,7 @@
         },
         {
           "default": "",
-          "document": "CVM instance ID",
+          "document": "CVM instance ID. Indicating binding the primary IP of the primary ENI.",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -793,7 +809,7 @@
         },
         {
           "default": "",
-          "document": "ENI IP",
+          "document": "ENI IP or other private IP. This parameter is required for binding a dual-stack IPv6 CVM instance.",
           "member": "string",
           "name": "EniIp",
           "required": false,
@@ -802,7 +818,7 @@
         },
         {
           "default": "",
-          "document": "Weight of a CVM instance. Value range: [0, 100]. If it is not specified when binding the instance, 10 will be used by default.",
+          "document": "CVM instance weight. Value range: [0, 100]. If it is not specified when binding the instance, 10 will be used by default.",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -3808,11 +3824,20 @@
         },
         {
           "default": "",
-          "document": "Whether a persistent connection is enabled (This parameter can only be configured in HTTP/HTTPS listeners)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "KeepaliveEnable",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Only the NAT64 CLB TCP listeners are supported.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Toa",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
@@ -4363,6 +4388,15 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is an NFV CLB instance. No returned information: no; l7nfv: yes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NfvInfo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -4636,6 +4670,24 @@
           "document": "0: not isolated; 1: isolated.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "Isolation",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of the security groups bound to the CLB instance.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the CLB instance is billed by IP.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "LoadBalancerPassToTarget",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -5722,6 +5774,33 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Redirection status code. Valid values: 301, 302, and 307.",
+          "member": "int64",
+          "name": "RewriteCode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the matched URL is carried in redirection. It is required when configuring `RewriteCode`.",
+          "member": "bool",
+          "name": "TakeUrl",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original domain name of redirection, which must be the corresponding domain name of `SourceLocationId`. It is required when configuring `RewriteCode`.",
+          "member": "string",
+          "name": "SourceDomain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -5743,6 +5822,33 @@
           "document": "Forwarding rule ID of a redirect target\nNote: This field may return null, indicating that there is no redirection.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TargetLocationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Redirection status code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RewriteCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the matched URL is carried in redirection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "TakeUrl",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Redirection type. Manual: manual redirection; Auto: automatic redirection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RewriteType",
           "required": true,
           "type": "string",
           "value_allowed_null": true

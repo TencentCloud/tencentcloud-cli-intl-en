@@ -4575,7 +4575,7 @@
         },
         {
           "default": "",
-          "document": "Reserved field for special purposes.",
+          "document": "Reserved parameter for special purposes.",
           "member": "string",
           "name": "ExtInfo",
           "required": false,
@@ -4831,7 +4831,7 @@
       "members": [
         {
           "default": "",
-          "document": "Source of media material for audio segment, which can be:\n<li>VOD media file ID;</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
+          "document": "Source of media material for audio segment, which can be:\n<li>ID of VOD media files</li>\n<li>Download URL of other media files</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -5267,7 +5267,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is used to pass through user request information. `ComposeMediaComplete` callback will return the value of this field. It contains up to 1,000 characters.",
+          "document": "Used to pass through user request information. `ComposeMediaComplete` callback will return the value of this parameter. It contains up to 1,000 characters.",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -5275,7 +5275,7 @@
         },
         {
           "default": "",
-          "document": "ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -9940,7 +9940,7 @@
         },
         {
           "default": "",
-          "document": "ID used for task deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16429,7 +16429,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16542,7 +16542,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16647,7 +16647,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -16981,7 +16981,7 @@
         },
         {
           "default": "",
-          "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.",
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -17838,7 +17838,7 @@
         },
         {
           "default": "",
-          "document": "The list of screenshot time points. “s” and “%” formats are supported:\n<li>When a time point string ends with “s”, its unit is second. For example, “3.5 s” means the 3.5th second of the video;</li>\n<li>When a time point string ends with “%”, it is marked with corresponding percentage of the video’s duration. For example, “10%” means that the time point is at the 10% of the video’s entire duration.</li>",
+          "document": "The list of screenshot time points. “s” and “%” formats are supported:\n<li>When a time point string ends with “s”, its unit is second. For example, “3.5s” means the 3.5th second of the video.</li>\n<li>When a time point string ends with “%”, it represents the percentage of the video’s duration. For example, “10%” means that the time point is at the 10% of the video’s entire duration.</li>",
           "member": "string",
           "name": "ExtTimeOffsetSet",
           "required": false,
@@ -18252,7 +18252,7 @@
       "members": [
         {
           "default": "",
-          "document": "Source of media material for sticker segment, which can be:\n<li>VOD media file ID;</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
+          "document": "Source of media material for sticker segment, which can be:\n<li>ID of VOD media files</li>\n<li>Download URL of other media files</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -19886,7 +19886,7 @@
       "members": [
         {
           "default": "",
-          "document": "Source of media material for video segment, which can be:\n<li>VOD media file ID;</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
+          "document": "Source of media material for video segment, which can be:\n<li>ID of VOD media files</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
