@@ -163,9 +163,9 @@
       "output": "DescribeScheduledActionsResponse"
     },
     "DetachInstances": {
-      "document": "This API (DetachInstances) is used to remove CVM instances from an auto scaling group. Instances removed via this API will not be terminated.",
+      "document": "This API is used to remove CVM instances from a scaling group. Instances removed via this API will not be terminated.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, an error will be reported.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.",
       "input": "DetachInstancesRequest",
-      "name": "Removes CVM instances from an auto scaling group",
+      "name": "Detaches CVM instances from an auto scaling group",
       "output": "DetachInstancesResponse"
     },
     "DisableAutoScalingGroup": {
@@ -235,7 +235,7 @@
       "output": "PreviewPaiDomainNameResponse"
     },
     "RemoveInstances": {
-      "document": "This API (RemoveInstances) is used to remove CVM instances from an auto scaling group. Instances created automatically by AS will be terminated, while those added to the auto scaling group after creation will be removed and retained.",
+      "document": "This API is used to remove CVM instances from a scaling group. Instances that are automatically created through AS will be terminated, while those manually added to the scaling group will be removed and retained.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, an error will be reported.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.",
       "input": "RemoveInstancesRequest",
       "name": "Removes CVM instances from an auto scaling group",
       "output": "RemoveInstancesResponse"
@@ -827,6 +827,7 @@
         {
           "default": "",
           "document": "The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.",
+          "example": "asgname",
           "member": "string",
           "name": "AutoScalingGroupName",
           "required": true,
@@ -835,6 +836,7 @@
         {
           "default": "",
           "document": "The instance ID.",
+          "example": "ins-aaaabbbb",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -842,7 +844,8 @@
         },
         {
           "default": "",
-          "document": "The maximum number of instances. Value range: 0 - 2000.",
+          "document": "The minimum number of instances. Value range: 0-2000.",
+          "example": "1",
           "member": "int64",
           "name": "MinSize",
           "required": true,
@@ -850,7 +853,8 @@
         },
         {
           "default": "",
-          "document": "The minimum number of instances. Value range: 0 - 2000.",
+          "document": "The maximum number of instances. Value range: 0-2000.",
+          "example": "1",
           "member": "int64",
           "name": "MaxSize",
           "required": true,
@@ -859,6 +863,7 @@
         {
           "default": "",
           "document": "The desired capacity. Its value must be greater than the minimum and smaller than the maximum.",
+          "example": "1",
           "member": "int64",
           "name": "DesiredCapacity",
           "required": false,
@@ -867,6 +872,7 @@
         {
           "default": "",
           "document": "Whether to inherit the instance tag. Default value: False",
+          "example": "False",
           "member": "bool",
           "name": "InheritInstanceTag",
           "required": false,
@@ -1164,7 +1170,7 @@
         },
         {
           "default": "",
-          "document": "Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.\n<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis\n<br><li>SPOTPAID: Bidding",
+          "document": "Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -1301,7 +1307,7 @@
         },
         {
           "default": "",
-          "document": "Additional information sent by Auto Scaling to the notification target. Default value is ''. Maximum length is 1024 characters.",
+          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default. Up to 1024 characters are allowed.",
           "member": "string",
           "name": "NotificationMetadata",
           "required": false,
@@ -3751,6 +3757,7 @@
         {
           "default": "",
           "document": "Launch configuration ID",
+          "example": "asc-aaaabbbb",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -3759,6 +3766,7 @@
         {
           "default": "",
           "document": "Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>",
+          "example": "img-8toqc6s3",
           "member": "string",
           "name": "ImageId",
           "required": false,
@@ -3766,7 +3774,8 @@
         },
         {
           "default": "",
-          "document": "List of instance types. Different instance models specify different resource specifications. Up to 5 instance models can be supported.\nThe launch configuration uses InstanceType to indicate one single instance type and InstanceTypes to indicate multiple instance types. After InstanceTypes is successfully specified for the launch configuration, the original InstanceType will be automatically invalidated.",
+          "document": "List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. After `InstanceTypes` is successfully specified for the launch configuration, the original `InstanceType` will be automatically invalidated.",
+          "example": "S5.SMALL2",
           "member": "string",
           "name": "InstanceTypes",
           "required": false,
@@ -3775,6 +3784,7 @@
         {
           "default": "",
           "document": "Instance type verification policy which works when InstanceTypes is actually modified. Value range: ALL, ANY. Default value: ANY.\n<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.\n<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.\n\nCommon reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.\nIf a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.",
+          "example": "ALL",
           "member": "string",
           "name": "InstanceTypesCheckPolicy",
           "required": false,
@@ -3783,6 +3793,7 @@
         {
           "default": "",
           "document": "Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators (\"-\"), and decimal points with a maximum length of 60 bytes.",
+          "example": "myascname",
           "member": "string",
           "name": "LaunchConfigurationName",
           "required": false,
@@ -3791,10 +3802,56 @@
         {
           "default": "",
           "document": "Base64-encoded custom data of up to 16 KB. If you want to clear UserData, specify it as an empty string",
+          "example": "\"\"",
           "member": "string",
           "name": "UserData",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group to which the instance belongs. This parameter can be obtained from the `SecurityGroupId` field in the response of the [`DescribeSecurityGroups`](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.\nAt least one security group is required for this parameter. The security group specified is sequential.",
+          "example": "[\"sg-aaaabbbb\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Information of the public network bandwidth configuration.\nTo modify it or even its subfield, you should specify all the subfields again.",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Market-related options for instances, such as parameters related to spot instances.\nThis parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after the spot instance is changed to another instance billing mode.\nTo modify it or even its subfield, you should specify all the subfields again.",
+          "example": "无",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4677,6 +4734,7 @@
         {
           "default": "",
           "document": "Launch configuration ID.",
+          "example": "asc-aaaabbbb",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -4685,6 +4743,7 @@
         {
           "default": "",
           "document": "Valid [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-8toqc6s3`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the image IDs; for `marketplace images`, query the image IDs through [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>This value can be obtained from the `ImageId` field in the return value of the [DescribeImages API](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1).</li>",
+          "example": "img-aaaabbbb",
           "member": "string",
           "name": "ImageId",
           "required": true,
@@ -4693,6 +4752,7 @@
         {
           "default": "",
           "document": "List of instance models. Different instance models specify different resource specifications. Up to 5 instance models can be supported.",
+          "example": "[\"S5.SMALL2\"]",
           "member": "string",
           "name": "InstanceTypes",
           "required": true,
@@ -4701,6 +4761,7 @@
         {
           "default": "",
           "document": "Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators (\"-\"), and decimal points with a maximum length of 60 bytes.",
+          "example": "myascname",
           "member": "string",
           "name": "LaunchConfigurationName",
           "required": true,
@@ -4709,6 +4770,7 @@
         {
           "default": "",
           "document": "Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": false,
@@ -4717,6 +4779,7 @@
         {
           "default": "",
           "document": "Enhanced service. This parameter is used to specify whether to enable Cloud Security, Cloud Monitoring and other services. If this parameter is not specified, Cloud Monitoring and Cloud Security will be enabled by default.",
+          "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
           "required": false,
@@ -4724,7 +4787,8 @@
         },
         {
           "default": "",
-          "document": "Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.\n<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis\n<br><li>SPOTPAID: Bidding",
+          "document": "Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -4733,6 +4797,7 @@
         {
           "default": "",
           "document": "Market-related options of the instance, such as the parameters related to stop instances. If the billing method of instance is specified as bidding, this parameter must be passed in.",
+          "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
           "required": false,
@@ -4741,6 +4806,7 @@
         {
           "default": "",
           "document": "Instance type verification policy. Value range: ALL, ANY. Default value: ANY.\n<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.\n<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.\n\nCommon reasons why an instance type is unavailable include stock-out of the instance type and the corresponding cloud disk.\nIf a model in InstanceTypes does not exist or has been deactivated, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.",
+          "example": "ALL",
           "member": "string",
           "name": "InstanceTypesCheckPolicy",
           "required": false,
@@ -4749,6 +4815,7 @@
         {
           "default": "",
           "document": "Configuration information of public network bandwidth. If this parameter is not specified, the default public network bandwidth is 0 Mbps.",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
           "required": false,
@@ -4757,6 +4824,7 @@
         {
           "default": "",
           "document": "Login settings of the instance. This parameter is used to set the login password and key for the instance, or to keep the original login settings for the image. By default, a random password is generated and sent to the user via the internal message.",
+          "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",
           "required": false,
@@ -4765,6 +4833,7 @@
         {
           "default": "",
           "document": "Project ID of the instance. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.",
+          "example": "1222",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -4773,6 +4842,7 @@
         {
           "default": "",
           "document": "The security group of instance. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.",
+          "example": "[\"sg-aaaabbbb\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -4781,6 +4851,7 @@
         {
           "default": "",
           "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be assigned to it.",
+          "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
           "required": false,
@@ -4789,6 +4860,7 @@
         {
           "default": "",
           "document": "Base64-encoded custom data of up to 16 KB.",
+          "example": "\"\"",
           "member": "string",
           "name": "UserData",
           "required": false,
@@ -4797,6 +4869,7 @@
         {
           "default": "",
           "document": "List of tags. This parameter is used to bind up to 10 tags to newly added instances.",
+          "example": "无",
           "member": "InstanceTag",
           "name": "InstanceTags",
           "required": false,
@@ -4805,6 +4878,7 @@
         {
           "default": "",
           "document": "CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.",
+          "example": "myrolename",
           "member": "string",
           "name": "CamRoleName",
           "required": false,
@@ -4813,6 +4887,7 @@
         {
           "default": "",
           "document": "CVM HostName settings.",
+          "example": "无",
           "member": "HostNameSettings",
           "name": "HostNameSettings",
           "required": false,
@@ -4821,6 +4896,7 @@
         {
           "default": "",
           "document": "Settings of CVM instance names.",
+          "example": "无",
           "member": "InstanceNameSettings",
           "name": "InstanceNameSettings",
           "required": false,
@@ -4829,6 +4905,7 @@
         {
           "default": "",
           "document": "Advance payment mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.",
+          "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "required": false,
@@ -4894,7 +4971,7 @@
         },
         {
           "default": "",
-          "document": "Additional information sent by AS to the notification target. The default value is ''",
+          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default.",
           "member": "string",
           "name": "NotificationMetadata",
           "required": false,
