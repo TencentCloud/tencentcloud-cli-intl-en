@@ -6,6 +6,12 @@
       "name": "Disables public network link to instance",
       "output": "CloseDBExtranetAccessResponse"
     },
+    "CloseServerlessDBExtranetAccess": {
+      "document": "This API is used to disable public network access for a PostgreSQL for Serverless instance.",
+      "input": "CloseServerlessDBExtranetAccessRequest",
+      "name": "Disables public network access for a PostgreSQL for Serverless instance",
+      "output": "CloseServerlessDBExtranetAccessResponse"
+    },
     "CreateDBInstances": {
       "document": "This API is used to create one or more TencentDB for PostgreSQL instances.",
       "input": "CreateDBInstancesRequest",
@@ -156,6 +162,12 @@
       "name": "Enables public network access",
       "output": "OpenDBExtranetAccessResponse"
     },
+    "OpenServerlessDBExtranetAccess": {
+      "document": "This API is used to enable public network access for a PostgreSQL for Serverless instance.",
+      "input": "OpenServerlessDBExtranetAccessRequest",
+      "name": "Enables public network access for a PostgreSQL for Serverless instance",
+      "output": "OpenServerlessDBExtranetAccessResponse"
+    },
     "RenewInstance": {
       "document": "This API is used to renew an instance.",
       "input": "RenewInstanceRequest",
@@ -285,6 +297,40 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseServerlessDBExtranetAccessRequest": {
+      "document": "CloseServerlessDBExtranetAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of an instance",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "DBInstanceName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseServerlessDBExtranetAccessResponse": {
+      "document": "CloseServerlessDBExtranetAccess response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2418,6 +2464,40 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenServerlessDBExtranetAccessRequest": {
+      "document": "OpenServerlessDBExtranetAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of an instance",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "DBInstanceName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenServerlessDBExtranetAccessResponse": {
+      "document": "OpenServerlessDBExtranetAccess response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

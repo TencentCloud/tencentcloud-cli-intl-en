@@ -8,6 +8,14 @@
         "title": "Disabling the public network access for an instance"
       }
     ],
+    "CloseServerlessDBExtranetAccess": [
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=CloseServerlessDBExtranetAccess\n&DBInstanceId=postgres-apzvwncr\n&DBInstanceName=test\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\r\n  }\r\n}",
+        "title": "Disabling public network access for a PostgreSQL for Serverless instance"
+      }
+    ],
     "CreateDBInstances": [
       {
         "document": "",
@@ -236,6 +244,20 @@
         "input": "https://postgres.tencentcloudapi.com/?Action=OpenDBExtranetAccess\r\n&DBInstanceId=postgres-apzvwncr\r\n&<Common request parameters>",
         "output": "{\r\n  \"Response\": {\r\n    \"FlowId\":1234,\r\n    \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\r\n  }\r\n}",
         "title": "Enabling the public network address"
+      }
+    ],
+    "OpenServerlessDBExtranetAccess": [
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=OpenServerlessDBExtranetAccess\n&DBInstanceId=postgres-apzvwncr\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\r\n  }\r\n}",
+        "title": "Enabling public network access for a PostgreSQL for Serverless instance by specifying its ID"
+      },
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=OpenServerlessDBExtranetAccess\n&DBInstanceName=db-test\n&<Common request parameters>",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\r\n  }\r\n}",
+        "title": "Enabling public network access for a PostgreSQL for Serverless instance by specifying its name"
       }
     ],
     "RenewInstance": [
