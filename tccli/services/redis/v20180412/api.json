@@ -892,15 +892,19 @@
       "members": [
         {
           "document": "Transaction ID",
+          "example": "199878234",
           "member": "string",
           "name": "DealId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Instance ID (this field is during beta test and is not displayed in some regions)",
+          "document": "Instance ID",
+          "example": "crs-3sz5wdav",
           "member": "string",
           "name": "InstanceIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4280,6 +4284,42 @@
           "document": "Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MonitorVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The minimum value of the range of maximum connections to the client\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ClientLimitMin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum value of the range of maximum connections to the client\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ClientLimitMax",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance node details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "RedisNodeInfo",
+          "name": "NodeSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region where the instance is deployed\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Region",
           "required": true,
           "type": "string",
           "value_allowed_null": true
