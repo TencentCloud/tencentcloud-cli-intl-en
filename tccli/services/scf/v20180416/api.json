@@ -126,6 +126,12 @@
       "name": "Gets alias list",
       "output": "ListAliasesResponse"
     },
+    "ListAsyncEvents": {
+      "document": "This API is used to pull the list of async function events.",
+      "input": "ListAsyncEventsRequest",
+      "name": "Pulls async function event list",
+      "output": "ListAsyncEventsResponse"
+    },
     "ListFunctions": {
       "document": "This API is used to return relevant function information based on the input query parameters.",
       "input": "ListFunctionsRequest",
@@ -191,6 +197,12 @@
       "input": "PutTotalConcurrencyConfigRequest",
       "name": "Modifies account concurrency quota",
       "output": "PutTotalConcurrencyConfigResponse"
+    },
+    "TerminateAsyncEvent": {
+      "document": "This API is used to terminate a running async function event.",
+      "input": "TerminateAsyncEventRequest",
+      "name": "Terminates async function event",
+      "output": "TerminateAsyncEventResponse"
     },
     "UpdateAlias": {
       "document": "This API is used to update the configuration of an alias.",
@@ -307,6 +319,66 @@
       ],
       "usage": "both"
     },
+    "AsyncEvent": {
+      "document": "Async event",
+      "members": [
+        {
+          "default": "",
+          "document": "Invocation request ID",
+          "member": "string",
+          "name": "InvokeRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Invocation type",
+          "member": "string",
+          "name": "InvokeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function version",
+          "member": "string",
+          "name": "Qualifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Invocation start time in the format of \"%Y-%m-%d %H:%M:%S.%f\"",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Invocation end time in the format of \"%Y-%m-%d %H:%M:%S.%f\"",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CfsConfig": {
       "document": "File system (CFS) configuration description",
       "members": [
@@ -414,7 +486,8 @@
       "members": [
         {
           "default": "",
-          "document": "COS bucket name",
+          "document": "Object bucket name (enter the custom part of the bucket name without `-appid`)",
+          "example": "BucketName",
           "member": "string",
           "name": "CosBucketName",
           "required": false,
@@ -424,6 +497,7 @@
         {
           "default": "",
           "document": "COS object path",
+          "example": "ObjectName",
           "member": "string",
           "name": "CosObjectName",
           "required": false,
@@ -433,6 +507,7 @@
         {
           "default": "",
           "document": "It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.",
+          "example": "base64编码",
           "member": "string",
           "name": "ZipFile",
           "required": false,
@@ -442,6 +517,7 @@
         {
           "default": "",
           "document": "COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.",
+          "example": "ap-chongqing",
           "member": "string",
           "name": "CosBucketRegion",
           "required": false,
@@ -451,6 +527,7 @@
         {
           "default": "",
           "document": "`DemoId` is required if Demo is used for the creation.",
+          "example": "Demo的Id",
           "member": "string",
           "name": "DemoId",
           "required": false,
@@ -460,6 +537,7 @@
         {
           "default": "",
           "document": "`TempCosObjectName` is required if TempCos is used for the creation.",
+          "example": "TempCosObjectName",
           "member": "string",
           "name": "TempCosObjectName",
           "required": false,
@@ -469,6 +547,7 @@
         {
           "default": "",
           "document": "Git address",
+          "example": "Git地址",
           "member": "string",
           "name": "GitUrl",
           "required": false,
@@ -478,6 +557,7 @@
         {
           "default": "",
           "document": "Git user name",
+          "example": "Git用户名",
           "member": "string",
           "name": "GitUserName",
           "required": false,
@@ -487,6 +567,7 @@
         {
           "default": "",
           "document": "Git password",
+          "example": "Git密码",
           "member": "string",
           "name": "GitPassword",
           "required": false,
@@ -496,6 +577,7 @@
         {
           "default": "",
           "document": "Git password after encryption. In general, this value is not required.",
+          "example": "加密后的Git密码",
           "member": "string",
           "name": "GitPasswordSecret",
           "required": false,
@@ -505,6 +587,7 @@
         {
           "default": "",
           "document": "Git branch",
+          "example": "Git分支",
           "member": "string",
           "name": "GitBranch",
           "required": false,
@@ -514,6 +597,7 @@
         {
           "default": "",
           "document": "Code path in Git repository",
+          "example": "代码在Git仓库中的路径",
           "member": "string",
           "name": "GitDirectory",
           "required": false,
@@ -523,6 +607,7 @@
         {
           "default": "",
           "document": "Version to be pulled",
+          "example": "Git拉取的版本",
           "member": "string",
           "name": "GitCommitId",
           "required": false,
@@ -532,6 +617,7 @@
         {
           "default": "",
           "document": "Git user name after encryption. In general, this value is not required.",
+          "example": "加密后的Git用户名",
           "member": "string",
           "name": "GitUserNameSecret",
           "required": false,
@@ -1853,7 +1939,8 @@
       "members": [
         {
           "default": "",
-          "document": "Function name",
+          "document": "Function name.\n- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.\n- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.",
+          "example": "helloworld-demo",
           "member": "string",
           "name": "FunctionName",
           "required": false,
@@ -1862,6 +1949,7 @@
         {
           "default": "",
           "document": "Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -1870,6 +1958,7 @@
         {
           "default": "",
           "document": "Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -1878,6 +1967,7 @@
         {
           "default": "",
           "document": "It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.",
+          "example": "desc",
           "member": "string",
           "name": "Order",
           "required": false,
@@ -1886,6 +1976,7 @@
         {
           "default": "",
           "document": "It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.",
+          "example": "function_name",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -1894,6 +1985,7 @@
         {
           "default": "",
           "document": "Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. ",
+          "example": "not0",
           "member": "LogFilter",
           "name": "Filter",
           "required": false,
@@ -1902,6 +1994,7 @@
         {
           "default": "",
           "document": "Function namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -1910,6 +2003,7 @@
         {
           "default": "",
           "document": "Function version",
+          "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
           "required": false,
@@ -1918,6 +2012,7 @@
         {
           "default": "",
           "document": "RequestId corresponding to the executed function",
+          "example": "d1922633-55cf-443a-a6cc-0788ce93df06",
           "member": "string",
           "name": "FunctionRequestId",
           "required": false,
@@ -1926,6 +2021,7 @@
         {
           "default": "",
           "document": "Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.",
+          "example": "2017-05-16 20:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": false,
@@ -1934,6 +2030,7 @@
         {
           "default": "",
           "document": "Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.",
+          "example": "2017-05-16 20:59:59",
           "member": "datetime",
           "name": "EndTime",
           "required": false,
@@ -1942,6 +2039,7 @@
         {
           "default": "",
           "document": "This field is disused.",
+          "example": "无",
           "member": "LogSearchContext",
           "name": "SearchContext",
           "required": false,
@@ -2753,6 +2851,150 @@
       ],
       "type": "object"
     },
+    "ListAsyncEventsRequest": {
+      "document": "ListAsyncEvents request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "example": "helloworld",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter (function version)",
+          "example": "$LATEST",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter (invocation type list)",
+          "example": "[COS]",
+          "member": "string",
+          "name": "InvokeType",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter (event status list)",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter (left-closed-right-open range of execution start time)",
+          "example": "无",
+          "member": "TimeInterval",
+          "name": "StartTimeInterval",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Filter (left-closed-right-open range of execution end time)",
+          "example": "无",
+          "member": "TimeInterval",
+          "name": "EndTimeInterval",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Valid values: ASC, DESC. Default value: DESC",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: StartTime, EndTime. Default value: StartTime",
+          "example": "StartTime",
+          "member": "string",
+          "name": "Orderby",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter (event invocation request ID)",
+          "example": "5f825fd3-a59d-4879-aa28-3ac967c128885f825fd3-a59d-4879-aa28-3ac9",
+          "member": "string",
+          "name": "InvokeRequestId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAsyncEventsResponse": {
+      "document": "ListAsyncEvents response structure.",
+      "members": [
+        {
+          "document": "Total number of events that meet the filter",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Async event list",
+          "example": "无",
+          "member": "AsyncEvent",
+          "name": "EventList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ListFunctionsRequest": {
       "document": "ListFunctions request structure.",
       "members": [
@@ -3055,7 +3297,7 @@
         },
         {
           "default": "",
-          "document": "Indicates by which field to sort the returned results. Valid values: AddTime, ModTime. Default value: ModTime",
+          "document": "Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -3787,6 +4029,75 @@
         }
       ],
       "usage": "both"
+    },
+    "TerminateAsyncEventRequest": {
+      "document": "TerminateAsyncEvent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "example": "helloworld",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Terminated invocation request ID",
+          "example": "5f825fd3-a59d-4879-aa28-3ac967c128885f825fd3-a59d-4879-aa28-3ac9",
+          "member": "string",
+          "name": "InvokeRequestId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateAsyncEventResponse": {
+      "document": "TerminateAsyncEvent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TimeInterval": {
+      "document": "Left-closed-right-open time range between the start time and end time in the format of \"%Y-%m-%d %H:%M:%S\"",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time (inclusive) in the format of \"%Y-%m-%d %H:%M:%S\"",
+          "member": "string",
+          "name": "Start",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time (exclusive) in the format of \"%Y-%m-%d %H:%M:%S\"",
+          "member": "string",
+          "name": "End",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "Trigger": {
       "document": "Trigger type",

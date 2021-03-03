@@ -124,7 +124,7 @@
       {
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=GetFunctionLogs\n&FunctionName=<FunctionName>\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1,\r\n        \"Data\": [\r\n            {\r\n                \"MemUsage\": 3174400,\r\n                \"RetCode\": 1,\r\n                \"RetMsg\": \"Success\",\r\n                \"Log\": \"\",\r\n                \"BillDuration\": 100,\r\n                \"InvokeFinished\": 1,\r\n                \"RequestId\": \"bc309eaa-6d64-11e8-a7fe-5254000b4175\",\r\n                \"StartTime\": \"2018-06-11 18:46:45\",\r\n                \"Duration\": 0.532,\r\n                \"FunctionName\": \"APITest\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"e2571ff3-da04-4c53-8438-f58bf057ce4a\"\r\n    }\r\n}",
+        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1,\r\n        \"Data\": [\r\n            {\r\n                \"MemUsage\": 3174400,\r\n                \"RetCode\": 1,\r\n                \"RetMsg\": \"Success\",\r\n                \"Log\": \"\",\r\n                \"BillDuration\": 100,\r\n                \"InvokeFinished\": 1,\r\n                \"RequestId\": \"bc309eaa-6d64-11e8-a7fe-5254000b4175\",\r\n                \"StartTime\": \"2018-06-11 18:46:45\",\r\n                \"Duration\": 0.532,\r\n                \"FunctionName\": \"APITest\",\r\n                \"Level\": \"\", \r\n                \"Source\": \"\", \r\n                \"RetryNum\": 1\r\n            }\r\n        ],\r\n        \"SearchContext\":{\"Offset\":\"\",\"Limit\":0,\"Keyword\":\"\",\"Type\":\"\"},\r\n        \"RequestId\": \"e2571ff3-da04-4c53-8438-f58bf057ce4a\"\r\n    }\r\n}",
         "title": "Getting function execution log"
       }
     ],
@@ -168,6 +168,14 @@
         "title": "Querying all aliases under function"
       }
     ],
+    "ListAsyncEvents": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListAsyncEvents\n&FunctionName=helloworld\n&Qualifier=1\n&Offset=0\n&Limit=20\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 2,\r\n        \"EventList\": [\r\n            {\r\n                \"InvokeRequestId\": \"xxxxxxxxxxxxxx\",\r\n                \"Qualifier\": \"1\",\r\n                \"Status\": \"FINISHED\",\r\n                \"InvokeType\": \"COS\",\r\n                \"StartTime\": \"2020-12-01 08:35:00.000\",\r\n                \"EndTime\": \"2020-12-01 08:35:30.000\"\r\n            },\r\n            {\r\n                \"InvokeRequestId\": \"xxxxxxxxxxxxxx\",\r\n                \"Qualifier\": \"1\",\r\n                \"Status\": \"RUNNING\",\r\n                \"InvokeType\": \"COS\",\r\n               \"StartTime\": \"2020-12-01 08:35:00.000\",\r\n                \"EndTime\": \"\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"26c5f1a9-ebd4-407e-83d7-ae8001cca644\"\r\n    }\r\n}",
+        "title": "Pulling async function event list"
+      }
+    ],
     "ListFunctions": [
       {
         "document": "This example shows you how to query functions whose status tag is `dev` and owner tag is `me`.",
@@ -209,7 +217,7 @@
     "ListTriggers": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListTriggers&FunctionName=aaa\r\n&Limit=2\r\n&Order=ASC\r\n&<Common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListTriggers\n&FunctionName=aaa\n&Limit=2\n&Order=ASC\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"Triggers\": [\r\n        ],\r\n        \"TotalCount\": 0,\r\n        \"RequestID\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\r\n    }\r\n}",
         "title": "Getting function trigger list"
       }
@@ -260,6 +268,14 @@
         "input": "https://scf.tencentcloudapi.com/?Action=PutTotalConcurrencyConfig\n&TotalConcurrencyMem=128000\n&<Common request parameters>",
         "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
         "title": "Setting user concurrency memory quota"
+      }
+    ],
+    "TerminateAsyncEvent": [
+      {
+        "document": "",
+        "input": "https://scf.tencentcloudapi.com/?Action=TerminateAsyncEvent\n&Namespace=default\n&FunctionName=helloworld\n&InvokeRequestId=b379787f-8487-4bac-bd8c-17a20a9ce40e\n&<Common request parameters>",
+        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"ee33a89b-3825-4d2f-bd88-35a8fa27aae1\"\r\n    }\r\n}",
+        "title": "Terminating async event"
       }
     ],
     "UpdateAlias": [

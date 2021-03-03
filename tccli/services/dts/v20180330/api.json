@@ -484,6 +484,14 @@
           "name": "AutoRenew",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance resource tags",
+          "member": "TagItem",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1073,6 +1081,20 @@
           "value_allowed_null": false
         },
         {
+          "document": "Tags of the subscription\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "TagItem",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether auto-renewal is enabled. 0: do not enable, 1: enable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1169,6 +1191,22 @@
           "document": "Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time",
           "member": "string",
           "name": "OrderDirection",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag filtering condition",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Subscription instance edition. `txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition",
+          "member": "string",
+          "name": "SubscribeVersion",
           "required": false,
           "type": "string"
         }
@@ -2579,6 +2617,33 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "TagItem",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether auto-renewal is enabled. 0: do not enable; 1: enable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subscription instance edition. ·`txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubscribeVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -3067,6 +3132,54 @@
         }
       ],
       "usage": "out"
+    },
+    "TagFilter": {
+      "document": "Tag filtering",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key value",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TagItem": {
+      "document": "Tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key value",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
