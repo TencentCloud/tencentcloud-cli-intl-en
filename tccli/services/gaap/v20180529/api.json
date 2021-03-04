@@ -5981,6 +5981,38 @@
           "name": "PolicyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security rule action",
+          "member": "string",
+          "name": "RuleAction",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A CIDR IP address associated with the rule",
+          "member": "string",
+          "name": "SourceCidr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol type",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Port range. Valid values:\nA single port: 80\nMultiple ports: 80 and 443\nConsecutive ports: 3306-20000\nAll ports: ALL",
+          "member": "string",
+          "name": "DestPortRange",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6328,6 +6360,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "1234",
           "member": "int64",
           "name": "CreateTime",
           "required": true,
@@ -6337,6 +6370,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "1000",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -6346,6 +6380,7 @@
         {
           "default": "",
           "document": "Number of connections in connection group",
+          "example": "1",
           "member": "int64",
           "name": "ProxyNum",
           "required": true,
@@ -6355,6 +6390,7 @@
         {
           "default": "",
           "document": "Connection group status:\n0: running normally;\n1: creating;\n4: terminating;\n11: migrating;",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -6364,6 +6400,7 @@
         {
           "default": "",
           "document": "Owner UIN",
+          "example": "100100",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -6373,6 +6410,7 @@
         {
           "default": "",
           "document": "Creation UIN",
+          "example": "100100",
           "member": "string",
           "name": "CreateUin",
           "required": true,
@@ -6382,6 +6420,7 @@
         {
           "default": "",
           "document": "Connection name",
+          "example": "Test",
           "member": "string",
           "name": "GroupName",
           "required": true,
@@ -6391,6 +6430,7 @@
         {
           "default": "",
           "document": "Default IP of domain name resolution for connection groups",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "DnsDefaultIp",
           "required": true,
@@ -6400,6 +6440,7 @@
         {
           "default": "",
           "document": "Connection group domain name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "link-test.gaapqcloud.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -6409,6 +6450,7 @@
         {
           "default": "",
           "document": "Target region",
+          "example": "EastChina",
           "member": "RegionDetail",
           "name": "RealServerRegionInfo",
           "required": true,
@@ -6418,6 +6460,7 @@
         {
           "default": "",
           "document": "Whether it is an old connection group, i.e., those created before August 3, 2018.",
+          "example": "false",
           "member": "bool",
           "name": "IsOldGroup",
           "required": true,
@@ -6427,6 +6470,7 @@
         {
           "default": "",
           "document": "Connection group ID",
+          "example": "\"\"",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -6436,6 +6480,7 @@
         {
           "default": "",
           "document": "Tag list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "TagPair",
           "name": "TagSet",
           "required": true,
@@ -6445,6 +6490,7 @@
         {
           "default": "",
           "document": "Security policy ID. This field exists if security policies are set.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -6454,6 +6500,7 @@
         {
           "default": "",
           "document": "Connection group version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"1.0\"",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -6463,6 +6510,7 @@
         {
           "default": "",
           "document": "Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ClientIPMethod",
           "required": true,
@@ -7124,7 +7172,7 @@
         },
         {
           "default": "",
-          "document": "Origin server health check threshold. The service will be blocked once the threshold is exceeded.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Origin server health check threshold. All requests to the origin server will be blocked once the threshold is exceeded.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "FailedThreshold",
           "required": false,
@@ -7133,7 +7181,7 @@
         },
         {
           "default": "",
-          "document": "Time of a request is blocked after the origin server health check threshold is exceeded.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Duration to block requests targeting the origin server after a failed health check\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "BlockInter",
           "required": false,
