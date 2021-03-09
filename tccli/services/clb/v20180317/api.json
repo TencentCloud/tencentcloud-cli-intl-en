@@ -1421,6 +1421,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1429,6 +1430,7 @@
         {
           "default": "",
           "document": "Specifies for which ports to create listeners. Each port corresponds to a new listener",
+          "example": "[\"7569\\n\",\"7570\\n\"]",
           "member": "int64",
           "name": "Ports",
           "required": true,
@@ -1437,6 +1439,7 @@
         {
           "default": "",
           "document": "Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application)",
+          "example": "TCP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -1445,6 +1448,7 @@
         {
           "default": "",
           "document": "List of names of the listeners to be created. The array of names and array of ports are in one-to-one correspondence. If you do not want to name them now, you do not need to provide this parameter.",
+          "example": "[\"lis0\\n\",\"lis1\\n\"]",
           "member": "string",
           "name": "ListenerNames",
           "required": false,
@@ -1453,6 +1457,7 @@
         {
           "default": "",
           "document": "Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners",
+          "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
           "required": false,
@@ -1461,6 +1466,7 @@
         {
           "default": "",
           "document": "Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled.",
+          "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
           "required": false,
@@ -1469,6 +1475,7 @@
         {
           "default": "",
           "document": "Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.",
+          "example": "60",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": false,
@@ -1477,6 +1484,7 @@
         {
           "default": "",
           "document": "Forwarding method of a listener. Value range: WRR, LEAST_CONN.\nThey represent weighted round robin and least connections, respectively. Default value: WRR. This parameter is applicable only to TCP/UDP/TCP_SSL listeners.",
+          "example": "WRR",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -1485,6 +1493,7 @@
         {
           "default": "",
           "document": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners",
+          "example": "1",
           "member": "int64",
           "name": "SniSwitch",
           "required": false,
@@ -1493,6 +1502,7 @@
         {
           "default": "",
           "document": "Target real server type. `NODE`: binding a general node; `TARGETGROUP`: binding a target group.",
+          "example": "NODE",
           "member": "string",
           "name": "TargetType",
           "required": false,
@@ -1501,6 +1511,7 @@
         {
           "default": "",
           "document": "Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners. If this field is not specified, the default session persistence type will be used.",
+          "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
           "required": false,
@@ -1509,8 +1520,18 @@
         {
           "default": "",
           "document": "Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to specify the end port and is required when creating a port range listener. Only one member can be passed in when inputting the `Ports` parameter, which is used to specify the start port. If you want to try the port range feature, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "example": "1000",
+          "member": "uint64",
+          "name": "EndPort",
           "required": false,
           "type": "int"
         }

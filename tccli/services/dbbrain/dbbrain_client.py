@@ -38,7 +38,7 @@ def doDescribeSlowLogTimeSeriesStats(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBDiagEvent(args, parsed_globals):
+def doDescribeMailProfile(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -52,9 +52,34 @@ def doDescribeDBDiagEvent(args, parsed_globals):
     client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBDiagEventRequest()
+    model = models.DescribeMailProfileRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDBDiagEvent(model)
+    rsp = client.DescribeMailProfile(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateSchedulerMailProfile(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateSchedulerMailProfileRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateSchedulerMailProfile(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -113,7 +138,7 @@ def doDescribeDBSpaceStatus(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTopSpaceTables(args, parsed_globals):
+def doDescribeDBDiagEvent(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -127,9 +152,9 @@ def doDescribeTopSpaceTables(args, parsed_globals):
     client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTopSpaceTablesRequest()
+    model = models.DescribeDBDiagEventRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeTopSpaceTables(model)
+    rsp = client.DescribeDBDiagEvent(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -180,6 +205,81 @@ def doCreateMailProfile(args, parsed_globals):
     model = models.CreateMailProfileRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateMailProfile(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeHealthScore(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeHealthScoreRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeHealthScore(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDiagDBInstances(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDiagDBInstancesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeDiagDBInstances(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeTopSpaceTables(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeTopSpaceTablesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeTopSpaceTables(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -263,6 +363,31 @@ def doDescribeTopSpaceTableTimeSeries(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doAddUserContact(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DbbrainClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AddUserContactRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.AddUserContact(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeAllUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -325,15 +450,20 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "DescribeSlowLogTimeSeriesStats": doDescribeSlowLogTimeSeriesStats,
-    "DescribeDBDiagEvent": doDescribeDBDiagEvent,
+    "DescribeMailProfile": doDescribeMailProfile,
+    "CreateSchedulerMailProfile": doCreateSchedulerMailProfile,
     "DescribeDBDiagHistory": doDescribeDBDiagHistory,
     "DescribeDBSpaceStatus": doDescribeDBSpaceStatus,
-    "DescribeTopSpaceTables": doDescribeTopSpaceTables,
+    "DescribeDBDiagEvent": doDescribeDBDiagEvent,
     "CreateDBDiagReportTask": doCreateDBDiagReportTask,
     "CreateMailProfile": doCreateMailProfile,
+    "DescribeHealthScore": doDescribeHealthScore,
+    "DescribeDiagDBInstances": doDescribeDiagDBInstances,
+    "DescribeTopSpaceTables": doDescribeTopSpaceTables,
     "ModifyDiagDBInstanceConf": doModifyDiagDBInstanceConf,
     "DescribeSlowLogTopSqls": doDescribeSlowLogTopSqls,
     "DescribeTopSpaceTableTimeSeries": doDescribeTopSpaceTableTimeSeries,
+    "AddUserContact": doAddUserContact,
     "DescribeAllUserGroup": doDescribeAllUserGroup,
     "DescribeAllUserContact": doDescribeAllUserContact,
 
