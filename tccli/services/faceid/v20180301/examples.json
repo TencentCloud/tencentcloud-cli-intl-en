@@ -4,7 +4,7 @@
       {
         "document": "",
         "input": "https://faceid.tencentcloudapi.com/?Action=LivenessCompare\n&ImageBase64=<ImageBase64>\n&VideoBase64=<VideoBase64>\n&LivenessType=SILENT\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n   \"Result\":\"Success\",\r\n   \"Description\":\"Success\",\r\n   \"BestFrameBase64\":\"Imagebase64\",\r\n   \"BestFrameList\": [\"Imagebase64\"],\r\n   \"Sim\":89.88,\r\n    \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrameBase64\": \"Imagebase64\",\n        \"BestFrameList\": [\n            \"Imagebase64\"\n        ],\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
         "title": "Detecting silent liveness and comparing faces"
       }
     ]
