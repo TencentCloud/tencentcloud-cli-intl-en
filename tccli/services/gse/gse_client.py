@@ -213,6 +213,31 @@ def doUpdateGameServerSession(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteTimerScalingPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteTimerScalingPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteTimerScalingPolicy(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeGameServerSessionDetails(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -255,6 +280,56 @@ def doStartGameServerSessionPlacement(args, parsed_globals):
     model = models.StartGameServerSessionPlacementRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.StartGameServerSessionPlacement(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateGameServerSession(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateGameServerSessionRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateGameServerSession(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doSearchGameServerSessions(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.SearchGameServerSessionsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.SearchGameServerSessions(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -313,7 +388,7 @@ def doGetGameServerSessionLogUrl(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doSearchGameServerSessions(args, parsed_globals):
+def doSetServerReserved(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -327,9 +402,9 @@ def doSearchGameServerSessions(args, parsed_globals):
     client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SearchGameServerSessionsRequest()
+    model = models.SetServerReservedRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.SearchGameServerSessions(model)
+    rsp = client.SetServerReserved(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -388,7 +463,7 @@ def doUpdateBucketAccelerateOpt(args, parsed_globals):
     FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateGameServerSession(args, parsed_globals):
+def doDescribeTimerScalingPolicies(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
@@ -402,9 +477,34 @@ def doCreateGameServerSession(args, parsed_globals):
     client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateGameServerSessionRequest()
+    model = models.DescribeTimerScalingPoliciesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateGameServerSession(model)
+    rsp = client.DescribeTimerScalingPolicies(model)
+    result = rsp.to_json_string()
+    try:
+        jsonobj = json.loads(result)
+    except TypeError as e:
+        jsonobj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", jsonobj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doPutTimerScalingPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey])
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.GseClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.PutTimerScalingPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.PutTimerScalingPolicy(model)
     result = rsp.to_json_string()
     try:
         jsonobj = json.loads(result)
@@ -432,14 +532,18 @@ ACTION_MAP = {
     "JoinGameServerSession": doJoinGameServerSession,
     "JoinGameServerSessionBatch": doJoinGameServerSessionBatch,
     "UpdateGameServerSession": doUpdateGameServerSession,
+    "DeleteTimerScalingPolicy": doDeleteTimerScalingPolicy,
     "DescribeGameServerSessionDetails": doDescribeGameServerSessionDetails,
     "StartGameServerSessionPlacement": doStartGameServerSessionPlacement,
+    "CreateGameServerSession": doCreateGameServerSession,
+    "SearchGameServerSessions": doSearchGameServerSessions,
     "DescribePlayerSessions": doDescribePlayerSessions,
     "GetGameServerSessionLogUrl": doGetGameServerSessionLogUrl,
-    "SearchGameServerSessions": doSearchGameServerSessions,
+    "SetServerReserved": doSetServerReserved,
     "StopGameServerSessionPlacement": doStopGameServerSessionPlacement,
     "UpdateBucketAccelerateOpt": doUpdateBucketAccelerateOpt,
-    "CreateGameServerSession": doCreateGameServerSession,
+    "DescribeTimerScalingPolicies": doDescribeTimerScalingPolicies,
+    "PutTimerScalingPolicy": doPutTimerScalingPolicy,
 
 }
 

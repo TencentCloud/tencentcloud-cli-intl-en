@@ -18,6 +18,12 @@
       "name": "Creates backup",
       "output": "CreateBackupResponse"
     },
+    "CreateBackupMigration": {
+      "document": "This API is used to create a backup import task.",
+      "input": "CreateBackupMigrationRequest",
+      "name": "Creates backup import tasks",
+      "output": "CreateBackupMigrationResponse"
+    },
     "CreateDB": {
       "document": "This API is used to create a database.",
       "input": "CreateDBRequest",
@@ -29,6 +35,12 @@
       "input": "CreateDBInstancesRequest",
       "name": "Creates instance",
       "output": "CreateDBInstancesResponse"
+    },
+    "CreateIncrementalMigration": {
+      "document": "This API is used to create an incremental backup import task.",
+      "input": "CreateIncrementalMigrationRequest",
+      "name": "Creates incremental backup import tasks",
+      "output": "CreateIncrementalMigrationResponse"
     },
     "CreateMigration": {
       "document": "This API is used to create a migration task.",
@@ -42,11 +54,23 @@
       "name": "Deletes instance account",
       "output": "DeleteAccountResponse"
     },
+    "DeleteBackupMigration": {
+      "document": "This API is used to delete a backup import task.",
+      "input": "DeleteBackupMigrationRequest",
+      "name": "Deletes backup import tasks",
+      "output": "DeleteBackupMigrationResponse"
+    },
     "DeleteDB": {
       "document": "This API is used to drop a database.",
       "input": "DeleteDBRequest",
       "name": "Drops database",
       "output": "DeleteDBResponse"
+    },
+    "DeleteIncrementalMigration": {
+      "document": "This API is used to delete an incremental backup import task.",
+      "input": "DeleteIncrementalMigrationRequest",
+      "name": "Deletes incremental backup import tasks",
+      "output": "DeleteIncrementalMigrationResponse"
     },
     "DeleteMigration": {
       "document": "This API is used to delete a migration task.",
@@ -60,11 +84,35 @@
       "name": "Pulls list of instance accounts",
       "output": "DescribeAccountsResponse"
     },
+    "DescribeBackupCommand": {
+      "document": "This API is used to query the commands of creating backups canonically.",
+      "input": "DescribeBackupCommandRequest",
+      "name": "Queries the commands of creating backups",
+      "output": "DescribeBackupCommandResponse"
+    },
+    "DescribeBackupMigration": {
+      "document": "This API is used to create an incremental backup import task.",
+      "input": "DescribeBackupMigrationRequest",
+      "name": "Queries backup import tasks",
+      "output": "DescribeBackupMigrationResponse"
+    },
+    "DescribeBackupUploadSize": {
+      "document": "This API is used to query the size of uploaded backup files. It is valid if the backup file type is `COS_UPLOAD` (the file is stored in COS).",
+      "input": "DescribeBackupUploadSizeRequest",
+      "name": "Queries the size of uploaded backup files",
+      "output": "DescribeBackupUploadSizeResponse"
+    },
     "DescribeBackups": {
       "document": "This API is used to query the list of backups.",
       "input": "DescribeBackupsRequest",
       "name": "Queries list of backups",
       "output": "DescribeBackupsResponse"
+    },
+    "DescribeDBCharsets": {
+      "document": "This API is used to query the database character sets supported by an instance.",
+      "input": "DescribeDBCharsetsRequest",
+      "name": "Queries the supported database character sets",
+      "output": "DescribeDBCharsetsResponse"
     },
     "DescribeDBInstances": {
       "document": "This API is used to query the list of instances.",
@@ -83,6 +131,12 @@
       "input": "DescribeFlowStatusRequest",
       "name": "Queries flow status",
       "output": "DescribeFlowStatusResponse"
+    },
+    "DescribeIncrementalMigration": {
+      "document": "This API is used to query an incremental backup import task.",
+      "input": "DescribeIncrementalMigrationRequest",
+      "name": "Queries incremental backup import tasks",
+      "output": "DescribeIncrementalMigrationResponse"
     },
     "DescribeMigrationDetail": {
       "document": "This API is used to query migration task details.",
@@ -126,6 +180,12 @@
       "name": "Gets file information of slow query logs",
       "output": "DescribeSlowlogsResponse"
     },
+    "DescribeUploadBackupInfo": {
+      "document": "This API is used to query a backup upload permission.",
+      "input": "DescribeUploadBackupInfoRequest",
+      "name": "Queries backup upload permissions.",
+      "output": "DescribeUploadBackupInfoResponse"
+    },
     "DescribeZones": {
       "document": "This API is used to query currently purchasable AZs.",
       "input": "DescribeZonesRequest",
@@ -155,6 +215,12 @@
       "input": "ModifyAccountRemarkRequest",
       "name": "Modifies account remarks",
       "output": "ModifyAccountRemarkResponse"
+    },
+    "ModifyBackupMigration": {
+      "document": "This API is used to modify a backup import task.",
+      "input": "ModifyBackupMigrationRequest",
+      "name": "Modifies backup import tasks",
+      "output": "ModifyBackupMigrationResponse"
     },
     "ModifyBackupStrategy": {
       "document": "This API is used to modify the backup policy.",
@@ -191,6 +257,12 @@
       "input": "ModifyDBRemarkRequest",
       "name": "Modifies database remarks",
       "output": "ModifyDBRemarkResponse"
+    },
+    "ModifyIncrementalMigration": {
+      "document": "This API is used to modify an incremental backup import task.",
+      "input": "ModifyIncrementalMigrationRequest",
+      "name": "Modifies incremental backup import tasks.",
+      "output": "ModifyIncrementalMigrationResponse"
     },
     "ModifyMigration": {
       "document": "This API is used to modify an existing migration task.",
@@ -233,6 +305,18 @@
       "input": "RunMigrationRequest",
       "name": "Runs migration task",
       "output": "RunMigrationResponse"
+    },
+    "StartBackupMigration": {
+      "document": "This API is used to start a backup import task.",
+      "input": "StartBackupMigrationRequest",
+      "name": "Starts backup import tasks",
+      "output": "StartBackupMigrationResponse"
+    },
+    "StartIncrementalMigration": {
+      "document": "This API is used to start an incremental backup import task.",
+      "input": "StartIncrementalMigrationRequest",
+      "name": "Starts incremental backup import tasks",
+      "output": "StartIncrementalMigrationResponse"
     },
     "TerminateDBInstance": {
       "document": "This API is used to isolate an instance to move it into a recycle bin.",
@@ -646,6 +730,30 @@
       ],
       "type": "object"
     },
+    "CosUploadBackupFile": {
+      "document": "Querying the size of uploaded backup files.",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup name",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup size",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateAccountRequest": {
       "document": "CreateAccount request structure.",
       "members": [
@@ -676,6 +784,71 @@
           "member": "int64",
           "name": "FlowId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupMigrationRequest": {
+      "document": "CreateBackupMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration",
+          "member": "string",
+          "name": "RecoveryType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "member": "string",
+          "name": "UploadType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "MigrationName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "member": "string",
+          "name": "BackupFiles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupMigrationResponse": {
+      "document": "CreateBackupMigration response structure.",
+      "members": [
+        {
+          "document": "Backup import task ID",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -966,6 +1139,63 @@
           "member": "int64",
           "name": "FlowId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIncrementalMigrationRequest": {
+      "document": "CreateIncrementalMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration.",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "member": "string",
+          "name": "BackupFiles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether restoration is required. No: not required. Yes: required. Not required by default.",
+          "member": "string",
+          "name": "IsRecovery",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIncrementalMigrationResponse": {
+      "document": "CreateIncrementalMigration response structure.",
+      "members": [
+        {
+          "document": "ID of an incremental backup import task",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1714,6 +1944,40 @@
       ],
       "type": "object"
     },
+    "DeleteBackupMigrationRequest": {
+      "document": "DeleteBackupMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Target instance ID, which is returned through the API DescribeBackupMigration.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API DescribeBackupMigration.",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBackupMigrationResponse": {
+      "document": "DeleteBackupMigration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteDBRequest": {
       "document": "DeleteDB request structure.",
       "members": [
@@ -1746,6 +2010,48 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIncrementalMigrationRequest": {
+      "document": "DeleteIncrementalMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Target instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of an incremental backup import task",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIncrementalMigrationResponse": {
+      "document": "DeleteIncrementalMigration response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1833,6 +2139,232 @@
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupCommandRequest": {
+      "document": "DescribeBackupCommand request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.",
+          "member": "string",
+          "name": "BackupFileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "DataBaseName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether restoration is required. No: not required. Yes: required.",
+          "member": "string",
+          "name": "IsRecovery",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\\\.",
+          "member": "string",
+          "name": "LocalPath",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupCommandResponse": {
+      "document": "DescribeBackupCommand response structure.",
+      "members": [
+        {
+          "document": "Create a backup command",
+          "member": "string",
+          "name": "Command",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupMigrationRequest": {
+      "document": "DescribeBackupMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration.",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Import task name",
+          "member": "string",
+          "name": "MigrationName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup file name",
+          "member": "string",
+          "name": "BackupFileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status set of import tasks",
+          "member": "int64",
+          "name": "StatusSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Import task restoration type: FULL,FULL_LOG,FULL_DIFF",
+          "member": "string",
+          "name": "RecoveryType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "member": "string",
+          "name": "UploadType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Paging. Page size",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Paging. Number of pages",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Field for order: name,createTime,startTime,endTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of order: desc,asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupMigrationResponse": {
+      "document": "DescribeBackupMigration response structure.",
+      "members": [
+        {
+          "document": "Total number of tasks",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Migration task set",
+          "member": "Migration",
+          "name": "BackupMigrationSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupUploadSizeRequest": {
+      "document": "DescribeBackupUploadSize request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Incremental import task ID",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupUploadSizeResponse": {
+      "document": "DescribeBackupUploadSize response structure.",
+      "members": [
+        {
+          "document": "Information of uploaded backups",
+          "member": "CosUploadBackupFile",
+          "name": "CosUploadBackupFileSet",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -1944,6 +2476,42 @@
           "document": "Backup list details",
           "member": "Backup",
           "name": "Backups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBCharsetsRequest": {
+      "document": "DescribeDBCharsets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-j8kv137v",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBCharsetsResponse": {
+      "document": "DescribeDBCharsets response structure.",
+      "members": [
+        {
+          "document": "Database character set list",
+          "example": "[\"SQL_EBCDIC1141_CP1_CS_AS\"]",
+          "member": "string",
+          "name": "DatabaseCharsets",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2178,6 +2746,110 @@
           "member": "int64",
           "name": "Status",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIncrementalMigrationRequest": {
+      "document": "DescribeIncrementalMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup file name",
+          "member": "string",
+          "name": "BackupFileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status set of import tasks",
+          "member": "int64",
+          "name": "StatusSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Paging. Page size",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Paging. Number of pages",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Field for order: name,createTime,startTime,endTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of order: desc,asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of an incremental backup import task",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIncrementalMigrationResponse": {
+      "document": "DescribeIncrementalMigration response structure.",
+      "members": [
+        {
+          "document": "Total number of import tasks",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Incremental import task set",
+          "member": "Migration",
+          "name": "IncrementalMigrationSet",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -2614,6 +3286,96 @@
           "member": "SlowlogInfo",
           "name": "Slowlogs",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUploadBackupInfoRequest": {
+      "document": "DescribeUploadBackupInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUploadBackupInfoResponse": {
+      "document": "DescribeUploadBackupInfo response structure.",
+      "members": [
+        {
+          "document": "Bucket name",
+          "member": "string",
+          "name": "BucketName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bucket location information",
+          "member": "string",
+          "name": "Region",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Storage path",
+          "member": "string",
+          "name": "Path",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key ID",
+          "member": "string",
+          "name": "TmpSecretId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key (Key)",
+          "member": "string",
+          "name": "TmpSecretKey",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key (Token)",
+          "member": "string",
+          "name": "XCosSecurityToken",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key start time",
+          "member": "string",
+          "name": "StartTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key expiration time",
+          "member": "string",
+          "name": "ExpiredTime",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -3147,6 +3909,280 @@
       ],
       "usage": "out"
     },
+    "Migration": {
+      "document": "Cold backup migration import",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup import task ID or incremental import task ID",
+          "example": "mssql-incremental-migration-kp7bgv8p",
+          "member": "string",
+          "name": "MigrationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup import task name. For an incremental import task, this field will be left empty.\nNote: this field may return ‘null’, indicating that no valid values can be obtained.",
+          "example": "MigrationName",
+          "member": "string",
+          "name": "MigrationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "251006279",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of migrated target instance",
+          "example": "mssql-rdc0gajn",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task restoration type",
+          "example": "FULL_LOG",
+          "member": "string",
+          "name": "RecoveryType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup user upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "example": "COS_UPLOAD",
+          "member": "string",
+          "name": "UploadType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.",
+          "example": "db_cvm_1_20200927204209_2log2_2noreconvery2.bak",
+          "member": "string",
+          "name": "BackupFiles",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task status,",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task creation time",
+          "example": "2020-09-27 20:44:59",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task start time",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration task end time",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "More information",
+          "example": "Message",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Migration detail",
+          "example": "Detail",
+          "member": "MigrationDetail",
+          "name": "Detail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation allowed in the current status",
+          "example": "Action",
+          "member": "MigrationAction",
+          "name": "Action",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether this is the final restoration. For a full import task, this field will be left empty.\nNote: this field may return ‘null’, indicating that no valid values can be obtained.",
+          "example": "NO",
+          "member": "string",
+          "name": "IsRecovery",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrationAction": {
+      "document": "Operation allowed by a cold backup import task",
+      "members": [
+        {
+          "default": "",
+          "document": "All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).",
+          "member": "string",
+          "name": "AllAction",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.",
+          "member": "string",
+          "name": "AllowedAction",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrationDetail": {
+      "document": "Details of a cold backup import task",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of steps",
+          "member": "int64",
+          "name": "StepAll",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current step",
+          "member": "int64",
+          "name": "StepNow",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Overall progress. For example, “30” means 30%.",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step information. ‘null’ means the migration has not started\nNote: this field may return ‘null’, indicating that no valid values can be obtained.",
+          "member": "MigrationStep",
+          "name": "StepInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MigrationStep": {
+      "document": "Migration steps of a cold backup import task",
+      "members": [
+        {
+          "default": "",
+          "document": "Step sequence",
+          "member": "int64",
+          "name": "StepNo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step name",
+          "member": "string",
+          "name": "StepName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step ID in English",
+          "member": "string",
+          "name": "StepId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyAccountPrivilegeRequest": {
       "document": "ModifyAccountPrivilege request structure.",
       "members": [
@@ -3213,6 +4249,79 @@
     "ModifyAccountRemarkResponse": {
       "document": "ModifyAccountRemark response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupMigrationRequest": {
+      "document": "ModifyBackupMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "MigrationName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task restoration type: FULL,FULL_LOG,FULL_DIFF",
+          "member": "string",
+          "name": "RecoveryType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "member": "string",
+          "name": "UploadType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "member": "string",
+          "name": "BackupFiles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupMigrationResponse": {
+      "document": "ModifyBackupMigration response structure.",
+      "members": [
+        {
+          "document": "Backup import task ID",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3492,6 +4601,71 @@
     "ModifyDBRemarkResponse": {
       "document": "ModifyDBRemark response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIncrementalMigrationRequest": {
+      "document": "ModifyIncrementalMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Incremental import task ID",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether restoration is required. No: not required. Yes: required.",
+          "member": "string",
+          "name": "IsRecovery",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "member": "string",
+          "name": "BackupFiles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIncrementalMigrationResponse": {
+      "document": "ModifyIncrementalMigration response structure.",
+      "members": [
+        {
+          "document": "ID of an incremental backup import task",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4171,6 +5345,96 @@
         }
       ],
       "usage": "out"
+    },
+    "StartBackupMigrationRequest": {
+      "document": "StartBackupMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartBackupMigrationResponse": {
+      "document": "StartBackupMigration response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "uint64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartIncrementalMigrationRequest": {
+      "document": "StartIncrementalMigration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of imported target instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "member": "string",
+          "name": "BackupMigrationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of an incremental backup import task",
+          "member": "string",
+          "name": "IncrementalMigrationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartIncrementalMigrationResponse": {
+      "document": "StartIncrementalMigration response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "member": "uint64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TerminateDBInstanceRequest": {
       "document": "TerminateDBInstance request structure.",

@@ -12,6 +12,12 @@
       "name": "Creates game server session",
       "output": "CreateGameServerSessionResponse"
     },
+    "DeleteTimerScalingPolicy": {
+      "document": "This API (DeleteTimerScalingPolicy) is used to delete a scheduled scaling policy of a fleet.\n",
+      "input": "DeleteTimerScalingPolicyRequest",
+      "name": "Deleting a scheduled scaling policy",
+      "output": "DeleteTimerScalingPolicyResponse"
+    },
     "DescribeGameServerSessionDetails": {
       "document": "This API is used to query the list of game server session details.",
       "input": "DescribeGameServerSessionDetailsRequest",
@@ -35,6 +41,12 @@
       "input": "DescribePlayerSessionsRequest",
       "name": "Queries player session list",
       "output": "DescribePlayerSessionsResponse"
+    },
+    "DescribeTimerScalingPolicies": {
+      "document": "This API (DescribeTimerScalingPolicies) is used to query the scheduled scaling policies of a fleet. You can query the policies by `fleetID` or the fleet name. The returned results are paged. \n",
+      "input": "DescribeTimerScalingPoliciesRequest",
+      "name": "Queries the list of scheduled scaling policies",
+      "output": "DescribeTimerScalingPoliciesResponse"
     },
     "GetGameServerSessionLogUrl": {
       "document": "This API is used to get the log URL of a game server session.",
@@ -60,11 +72,23 @@
       "name": "Joins game server sessions in batch",
       "output": "JoinGameServerSessionBatchResponse"
     },
+    "PutTimerScalingPolicy": {
+      "document": "This API (PutTimerScalingPolicy) is used to create or update a scheduled scaling policy for a fleet.\n\nIf the field `timerID` is filled in, the specified policy will be updated, and if `timerID` is left empty, a new policy will be created.\n",
+      "input": "PutTimerScalingPolicyRequest",
+      "name": "Creating or updating a scheduled scaling policy",
+      "output": "PutTimerScalingPolicyResponse"
+    },
     "SearchGameServerSessions": {
       "document": "This API is used to search in the list of game server sessions.",
       "input": "SearchGameServerSessionsRequest",
       "name": "Searches in game server session list",
       "output": "SearchGameServerSessionsResponse"
+    },
+    "SetServerReserved": {
+      "document": "This API (SetServerReserved) is used to mark the exceptional instances as retained for troubleshooting.\n\n`ReserveValue`: specifies whether to retain the instance. Valid values: `0` (do not retain), `1` (retain). Default value: `0`.\n",
+      "input": "SetServerReservedRequest",
+      "name": "Specifies whether to retain an exceptional instance for troubleshooting",
+      "output": "SetServerReservedResponse"
     },
     "StartGameServerSessionPlacement": {
       "document": "This API is used to start placing a game server session.",
@@ -422,6 +446,51 @@
       ],
       "usage": "out"
     },
+    "DeleteTimerScalingPolicyRequest": {
+      "document": "DeleteTimerScalingPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the policy",
+          "example": "timerId-oc80v5zp",
+          "member": "string",
+          "name": "TimerId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the fleet to be bound with the policy",
+          "example": "fleet-qp3g3caa-mg4w88ho",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduled scaling policy name",
+          "example": "testDay",
+          "member": "string",
+          "name": "TimerName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTimerScalingPolicyResponse": {
+      "document": "DeleteTimerScalingPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeGameServerSessionDetailsRequest": {
       "document": "DescribeGameServerSessionDetails request structure.",
       "members": [
@@ -684,6 +753,96 @@
           "member": "string",
           "name": "NextToken",
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimerScalingPoliciesRequest": {
+      "document": "DescribeTimerScalingPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the fleet to be bound with the policy",
+          "example": "fleet-qp3g3caa-mg4w88ho",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduled scaling policy name",
+          "example": "timer01",
+          "member": "string",
+          "name": "TimerName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time of the scheduled scaling policy",
+          "example": "2021-01-14T14:04:29.496Z",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of the scheduled scaling policy",
+          "example": "2021-01-15T14:09:29.496Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimerScalingPoliciesResponse": {
+      "document": "DescribeTimerScalingPolicies response structure.",
+      "members": [
+        {
+          "document": "Configuration of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "TimerScalingPolicy",
+          "name": "TimerScalingPolicies",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of scheduled scaling policies\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         },
         {
@@ -1788,6 +1947,33 @@
       ],
       "usage": "out"
     },
+    "PutTimerScalingPolicyRequest": {
+      "document": "PutTimerScalingPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Configuration of the scheduled scaling policy",
+          "example": "无",
+          "member": "TimerScalingPolicy",
+          "name": "TimerScalingPolicy",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "PutTimerScalingPolicyResponse": {
+      "document": "PutTimerScalingPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResourceCreationLimitPolicy": {
       "document": "Resource creation policy",
       "members": [
@@ -1966,6 +2152,51 @@
       ],
       "usage": "in"
     },
+    "SetServerReservedRequest": {
+      "document": "SetServerReserved request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the fleet to be bound with the policy",
+          "example": "fleet-qp3g3caa-mg4w88ho",
+          "member": "string",
+          "name": "FleetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ins-3g57621x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the instance is retained. Valid values: 1 (retained), 0 (not retained). Default value: 0.",
+          "example": "1",
+          "member": "int64",
+          "name": "ReserveValue",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetServerReservedResponse": {
+      "document": "SetServerReserved response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StartGameServerSessionPlacementRequest": {
       "document": "StartGameServerSessionPlacement request structure.",
       "members": [
@@ -2110,6 +2341,241 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TargetConfiguration": {
+      "document": "Configuration of target tracking scaling",
+      "members": [
+        {
+          "default": "",
+          "document": "Ratio of reserved server session resource \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "TargetValue",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TimerConfiguration": {
+      "document": "The recurrence pattern of auto-scaling",
+      "members": [
+        {
+          "default": "",
+          "document": "The recurrence pattern of auto-scaling. `0`: undefined, `1`: once, `2`: daily, `3`: monthly, `4`: weekly\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimerType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details of the recurrence pattern of auto-scaling\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimerValue",
+          "name": "TimerValue",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-01-14T03:36:35Z",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-01-15T03:36:35Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TimerFleetCapacity": {
+      "document": "The capacity configurations of the scheduled scaling policy",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the fleet to be bound with the policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "fleet-qp3g3caa-mg4w88ho",
+          "member": "string",
+          "name": "FleetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Desired number of instances\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "DesiredInstances",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum number of instances\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "MinSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of instances\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "MaxSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scaling cooldown period, in minutes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "ScalingInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scaling type. `1`: manual, `2`: automatic, `0`: undefined\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ScalingType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration of target tracking scaling\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TargetConfiguration",
+          "name": "TargetConfiguration",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TimerScalingPolicy": {
+      "document": "Configurations of a scheduled scaling policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the policy. When it’s filled in, the policy will be updated.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "timerId-oc80v5zp",
+          "member": "string",
+          "name": "TimerId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scheduled scaling policy name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "testonce1",
+          "member": "string",
+          "name": "TimerName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scheduled scaling policy status. `0`: Undefined, `1`: Not started, 2: Activated, `3`: Stopped, `4`: Expired\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimerStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The capacity configurations of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimerFleetCapacity",
+          "name": "TimerFleetCapacity",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The recurrence pattern of auto-scaling\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimerConfiguration",
+          "name": "TimerConfiguration",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TimerValue": {
+      "document": "Details of the recurrence pattern of the scheduled scaling policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Execute once every X day(s)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Day",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specify the first day to execute the scaling action in a month (execute once per day)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "FromDay",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specify the last day to execute the scaling action in a month\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ToDay",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specify the week days to repeat the scaling action. Multiple values are supported. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday). \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "WeekDays",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
