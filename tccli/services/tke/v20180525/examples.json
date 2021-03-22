@@ -4,7 +4,7 @@
       {
         "document": "When a CAM admin sub-account is granted this action permission, it can acquire the cluster admin role through this API to access resources in the Kubernetes cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=AcquireClusterAdminRole\n&ClusterId=cls-xxxx\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\":{\r\n    \"RequestId\":\"xxx\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "Acquiring the admin role of a cluster"
       }
     ],
@@ -12,7 +12,7 @@
       {
         "document": "This example shows how to add existing CVM instances to the specified cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=AddExistedInstances\n&ClusterId=cls-xxxxxx\n&InstanceIds.0=ins-xxxxx\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"TimeoutInstanceIds\": [\r\n        \"ins-lqdahrp3\"\r\n    ], \r\n    \"SuccInstanceIds\": [\r\n        \"ins-lqdahrp4\"\r\n    ], \r\n    \"FailedInstanceIds\": [\r\n        \"ins-lqdahrp5\"\r\n     ], \r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n    \"FailedReasons\": [\r\n        \"InstanceId ins-lqdahrp5 ServiceResetCvmV3 failed ...\"\r\n     ]\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"TimeoutInstanceIds\": [\n            \"ins-lqdahrp3\"\n        ],\n        \"SuccInstanceIds\": [\n            \"ins-lqdahrp4\"\n        ],\n        \"FailedInstanceIds\": [\n            \"ins-lqdahrp5\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"FailedReasons\": [\n            \"InstanceId ins-lqdahrp5 ServiceResetCvmV3 failed ...\"\n        ]\n    }\n}",
         "title": "Adding Existing Instances to a Cluster"
       }
     ],
@@ -20,7 +20,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=AddNodeToNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxx\n&InstanceIds.0=ins-xxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"xxxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx\"\n    }\n}",
         "title": "This API is used to move nodes in a cluster to a node pool."
       }
     ],
@@ -28,7 +28,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CheckInstancesUpgradeAble\n&ClusterId=cls-xxxxxx\n&InstanceIds.0=ins-q40fqbso\n&InstanceIds.1=ins-hvldgo6w\n&InstanceIds.2=ins-hrtaxazg\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"ClusterVersion\": \"1.14.3-tk8s-v1.1-1\",\r\n    \"LatestVersion\": \"1.14.3-tk8s-v1.1-1\",\r\n    \"Total\": 3,\r\n    \"RequestId\": \"123\",\r\n    \"UpgradeAbleInstances\": [\r\n      {\r\n        \"InstanceId\": \"ins-q40fqbso\",\r\n        \"LatestVersion\": \"xx\",\r\n        \"Version\": \"1.14.3-tk8s-v1.0\"\r\n      },\r\n      {\r\n        \"InstanceId\": \"ins-hvldgo6w\",\r\n         \"LatestVersion\": \"xx\",\r\n        \"Version\": \"1.14.3-tk8s-v1.0\"\r\n      },\r\n      {\r\n        \"InstanceId\": \"ins-hrtaxazg\",\r\n         \"LatestVersion\": \"xx\",\r\n        \"Version\": \"1.14.3-tk8s-v1.0\"\r\n      }\r\n    ]\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterVersion\": \"1.14.3-tk8s-v1.1-1\",\n        \"LatestVersion\": \"1.14.3-tk8s-v1.1-1\",\n        \"Total\": 3,\n        \"RequestId\": \"123\",\n        \"UpgradeAbleInstances\": [\n            {\n                \"InstanceId\": \"ins-q40fqbso\",\n                \"LatestVersion\": \"xx\",\n                \"Version\": \"1.14.3-tk8s-v1.0\"\n            },\n            {\n                \"InstanceId\": \"ins-hvldgo6w\",\n                \"LatestVersion\": \"xx\",\n                \"Version\": \"1.14.3-tk8s-v1.0\"\n            },\n            {\n                \"InstanceId\": \"ins-hrtaxazg\",\n                \"LatestVersion\": \"xx\",\n                \"Version\": \"1.14.3-tk8s-v1.0\"\n            }\n        ]\n    }\n}",
         "title": "Checking whether the node can be upgraded"
       }
     ],
@@ -36,13 +36,13 @@
       {
         "document": "This example shows you how to create a managed cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateCluster\n&ClusterType=MANAGED_CLUSTER\n&ClusterCIDRSettings.ClusterCIDR=10.4.0.0/14\n&RunInstancesForNode.0.NodeRole=WORKER\n&RunInstancesForNode.0.RunInstancesPara.0={\"VirtualPrivateCloud\":{\"SubnetId\":\"subnet-xxx\",\"VpcId\":\"vpc-xxx\"},\"Placement\":{\"Zone\":\"ap-region-1\",\"ProjectId\":1032509},\"InstanceType\":\"S3.LARGE8\",\"SystemDisk\":{\"DiskType\":\"CLOUD_PREMIUM\"},\"DataDisks\":[{\"DiskType\":\"CLOUD_PREMIUM\",\"DiskSize\":50}],\"InstanceCount\":1,\"InternetAccessible\":{\"PublicIpAssigned\":true,\"InternetMaxBandwidthOut\":1},\"LoginSettings\":{\"Password\":\"YourPassword\"},\"UserData\":\"IyEvYmluL3NoCgplY2hvIGFhYQo=\"}\n&ExtensionAddons.0.AddonName=GameApp\n&ExtensionAddons.0.AddonReq={\"kind\":\"GameApp\",\"apiVersion\":\"platform.tke/v1\",\"metadata\":{\"generateName\":\"ga\"},\"spec\":{\"clusterName\":\"xxx\"}}\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"ClusterId\": \"cls-xxx\",\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterId\": \"cls-xxx\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a managed cluster"
       },
       {
         "document": "This example shows you how to create a self-deployed cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateCluster\n&ClusterType=INDEPENDENT_CLUSTER\n&ClusterCIDRSettings.ClusterCIDR=10.4.0.0/14\n&RunInstancesForNode.0.NodeRole=MASTER_ETCD\n&RunInstancesForNode.0.RunInstancesPara.0={\"VirtualPrivateCloud\":{\"SubnetId\":\"subnet-xxx\",\"VpcId\":\"vpc-xxx\"},\"Placement\":{\"Zone\":\"ap-region-1\",\"ProjectId\":1032509},\"InstanceType\":\"S3.LARGE8\",\"SystemDisk\":{\"DiskType\":\"CLOUD_PREMIUM\"},\"DataDisks\":[{\"DiskType\":\"CLOUD_PREMIUM\",\"DiskSize\":50}],\"InstanceCount\":3,\"InternetAccessible\":{\"PublicIpAssigned\":true,\"InternetMaxBandwidthOut\":1},\"LoginSettings\":{\"Password\":\"YourPassword\"},\"UserData\":\"IyEvYmluL3NoCgplY2hvIGFhYQo=\"}\n&RunInstancesForNode.1.NodeRole=WORKER\n&RunInstancesForNode.1.RunInstancesPara.0={\"VirtualPrivateCloud\":{\"SubnetId\":\"subnet-xxx\",\"VpcId\":\"vpc-xxx\"},\"Placement\":{\"Zone\":\"ap-region-1\",\"ProjectId\":1032509},\"InstanceType\":\"S3.LARGE8\",\"SystemDisk\":{\"DiskType\":\"CLOUD_PREMIUM\"},\"DataDisks\":[{\"DiskType\":\"CLOUD_PREMIUM\",\"DiskSize\":50}],\"InstanceCount\":1,\"InternetAccessible\":{\"PublicIpAssigned\":true,\"InternetMaxBandwidthOut\":1},\"LoginSettings\":{\"Password\":\"YourPassword\"},\"UserData\":\"IyEvYmluL3NoCgplY2hvIGFhYQo=\"}\n&ExtensionAddons.0.AddonName=GameApp\n&ExtensionAddons.0.AddonReq={\"kind\":\"GameApp\",\"apiVersion\":\"platform.tke/v1\",\"metadata\":{\"generateName\":\"ga\"},\"spec\":{\"clusterName\":\"xxx\"}}\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"ClusterId\": \"cls-xxx\",\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterId\": \"cls-xxx\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a self-deployed cluster"
       }
     ],
@@ -50,7 +50,7 @@
       {
         "document": "This example shows you how to create a cluster's scaling group.",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterAsGroup\r\n&ClusterId=cls-xxxxxx\r\n&AutoScalingGroupPara=\"{\"AutoScalingGroupName\":\"001\",\"MaxSize\":5,\"MinSize\":0,\"VpcId\":\"vpc-xxxxxxx\",\"SubnetIds\":[\"subnet-xxxxxxx\"],\"RetryPolicy\":\"IMMEDIATE_RETRY\"}\"\r\n&LaunchConfigurePara=\"{\"LaunchConfigurationName\":\"\",\"InstanceType\":\"S4.SMALL1\",\"SystemDisk\":{\"DiskType\":\"CLOUD_PREMIUM\",\"DiskSize\":50},\"InternetAccessible\":{\"InternetChargeType\":\"TRAFFIC_POSTPAID_BY_HOUR\",\"InternetMaxBandwidthOut\":1,\"PublicIpAssigned\":true},\"LoginSettings\":{\"Password\":\"YourPassword\"},\"SecurityGroupIds\":[\"sg-xxxxxxx\"],\"EnhancedService\":{\"SecurityService\":{\"Enabled\":true},\"MonitorService\":{\"Enabled\":true}},\"InstanceChargeType\":\"POSTPAID_BY_HOUR\"}\"\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"AutoScalingGroupId\":\"asg-xxxxxxx\",\r\n    \"LaunchConfigurationId\":\"asc-xxxxxxxx\",\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoScalingGroupId\": \"asg-xxxxxxx\",\n        \"LaunchConfigurationId\": \"asc-xxxxxxxx\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a cluster's scaling group"
       }
     ],
@@ -58,7 +58,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpoint\r\n&ClusterId=cls-xxxxxxxx\r\n&SubnetId=subnet-xxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a cluster access port"
       }
     ],
@@ -66,7 +66,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpointVip\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestFlowId\": \"100000\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestFlowId\": \"100000\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a public network access port for a managed cluster"
       }
     ],
@@ -74,13 +74,13 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterInstances\n&ClusterId=cls-xxxxxxxx\n&RunInstancePara={\"Placement\":{\"Zone\":\"ap-guangzhou-4\"},\"InstanceType\":\"S3.SMALL1\"}\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"InstanceIdSet\": [\r\n            \"ins-xxxxxxxx\"\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-xxxxxxxx\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Adding cluster nodes"
       },
       {
         "document": "This example shows you how to add a node with multiple data disks to a cluster.\nNote 1: set DataDisks in InstanceAdvancedSettings to set the mounting information for multiple data disks. The backend will match data disks with data disk IDs based on their types and sizes and mount them to the corresponding paths.\nNote 2: set DataDisks in RunInstancePara. This parameter will be passed through to the CVM to indicate the purchase of multiple data disks.\nNote 3: MountTarget in InstanceAdvancedSettings initially supported single-disk configuration but is discarded in multi-disk scenarios, so it does not need to be entered here.",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterInstances\n<Common request parameters>\n\n{\n\t\"InstanceAdvancedSettings\": {\n\t\t\"DataDisks\": [{\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 50,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data2\"\n\t\t}, {\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 120,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data4\"\n\t\t}, {\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 100,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data3\"\n\t\t}, {\n\t\t\t\"AutoFormatAndMount\": true,\n\t\t\t\"DiskSize\": 50,\n\t\t\t\"DiskType\": \"CLOUD_PREMIUM\",\n\t\t\t\"FileSystem\": \"ext4\",\n\t\t\t\"MountTarget\": \"/data5\"\n\t\t}],\n\t\t\"DockerGraphPath\": \"/var/lib/docker\",\n\t\t\"MountTarget\": \"/var/lib/docker\",\n\t\t\"Unschedulable\": 0,\n\t\t\"UserScript\": \"\"\n\t},\n\t\"SkipValidateOptions\": [\n        \t\"GlobalRouteCIDRCheck\",\n                \"VpcCniCIDRCheck\"\n        ], \n    \"RunInstancePara\": \"xx\", \n    \"ClusterId\": \"cls-xxxxx\"\n}",
-        "output": "{\r\n    \"Response\": {\r\n        \"InstanceIdSet\": [\r\n            \"ins-xxxxxxxx\"\r\n        ],\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterInstances\n<Common request parameters>\n\n{\n    \"InstanceAdvancedSettings\": {\n        \"DataDisks\": [\n            {\n                \"AutoFormatAndMount\": true,\n                \"DiskSize\": 50,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"FileSystem\": \"ext4\",\n                \"MountTarget\": \"/data2\"\n            },\n            {\n                \"AutoFormatAndMount\": true,\n                \"DiskSize\": 120,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"FileSystem\": \"ext4\",\n                \"MountTarget\": \"/data4\"\n            },\n            {\n                \"AutoFormatAndMount\": true,\n                \"DiskSize\": 100,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"FileSystem\": \"ext4\",\n                \"MountTarget\": \"/data3\"\n            },\n            {\n                \"AutoFormatAndMount\": true,\n                \"DiskSize\": 50,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"FileSystem\": \"ext4\",\n                \"MountTarget\": \"/data5\"\n            }\n        ],\n        \"DockerGraphPath\": \"/var/lib/docker\",\n        \"MountTarget\": \"/var/lib/docker\",\n        \"Unschedulable\": 0,\n        \"UserScript\": \"\"\n    },\n    \"SkipValidateOptions\": [\n        \"GlobalRouteCIDRCheck\",\n        \"VpcCniCIDRCheck\"\n    ],\n    \"RunInstancePara\": \"xx\",\n    \"ClusterId\": \"cls-xxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-xxxxxxxx\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Adding a node with multiple data disks"
       }
     ],
@@ -88,7 +88,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterNodePool\n&ClusterId=cls-xxxxxx\n&AutoScalingGroupPara={\"AutoScalingGroupName\":\"\",\"MaxSize\":1,\"MinSize\":0,\"DesiredCapacity\":1,\"VpcId\":\"vpc-xxx\",\"SubnetIds\":[\"subnet-xxx\"],\"RetryPolicy\":\"IMMEDIATE_RETRY\",\"ServiceSettings\":{\"ScalingMode\":\"CLASSIC_SCALING\"}}\n&LaunchConfigurePara={\"LaunchConfigurationName\":\"\",\"InstanceType\":\"SA2.SMALL1\",\"SystemDisk\":{\"DiskType\":\"CLOUD_PREMIUM\",\"DiskSize\":50},\"InternetAccessible\":{\"InternetChargeType\":\"TRAFFIC_POSTPAID_BY_HOUR\",\"InternetMaxBandwidthOut\":0,\"PublicIpAssigned\":false},\"LoginSettings\":{\"Password\":\"xxx\"},\"SecurityGroupIds\":[\"sg-xxx\"],\"EnhancedService\":{\"SecurityService\":{\"Enabled\":true},\"MonitorService\":{\"Enabled\":true}},\"InstanceChargeType\":\"POSTPAID_BY_HOUR\"}\n&InstanceAdvancedSettings.MountTarget=xxx\n&EnableAutoscale=true\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"NodePoolId\":\"np-xxx\",\r\n        \"RequestId\":\"xxx-xxx-xxxx-xxx-xxxxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"NodePoolId\": \"np-xxx\",\n        \"RequestId\": \"xxx-xxx-xxxx-xxx-xxxxx\"\n    }\n}",
         "title": "Creating a node pool"
       }
     ],
@@ -96,7 +96,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterNodePoolFromExistingAsg\n&ClusterId=cls-xxxxxx\n&AutoscalingGroupId=asg-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"NodePoolId\":\"np-xxxxxxxx\",\r\n        \"RequestId\":\"xxxxxxxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"NodePoolId\": \"np-xxxxxxxx\",\n        \"RequestId\": \"xxxxxxxx\"\n    }\n}",
         "title": "Upgrading a scaling group to a node pool"
       }
     ],
@@ -104,7 +104,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterRouteTable\r\n&RouteTableName=MANAGED_CLUSTER\r\n&RouteTableCidrBlock=10.4.0.0/16\r\n&VpcId=vpc-xxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Creating a cluster route table"
       }
     ],
@@ -112,7 +112,7 @@
       {
         "document": "This example shows you how to delete a cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteCluster\r\n&ClusterId=cls-xxxxxxxx\r\n&InstanceDeleteMode=terminate\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting a cluster"
       }
     ],
@@ -120,7 +120,7 @@
       {
         "document": "This example shows you how to delete a cluster scaling group.",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterAsGroups\r\n&ClusterId=cls-xxxxxx\r\n&AutoScalingGroupIds.0=asg-xxxxxxxx\r\n&KeepInstance=false\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting a cluster scaling group"
       }
     ],
@@ -128,7 +128,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterEndpoint\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting the cluster access port"
       }
     ],
@@ -136,7 +136,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterEndpointVip\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting the public network access port of a managed cluster"
       }
     ],
@@ -144,7 +144,7 @@
       {
         "document": "This example shows you how to delete a node in a cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterInstances\r\n&ClusterId=cls-xxxxxx\r\n&InstanceIds.0=ins-xxxxx\r\n&InstanceDeleteMode=terminate\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting a node in a cluster"
       }
     ],
@@ -152,7 +152,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolIds.0=np-xxxxxxxx\n&KeepInstance=true\n&<Common request parameters>",
-        "output": "{\"Response\": {\"RequestId\": \"xxxx\"}}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx\"\n    }\n}",
         "title": "Deleting a node pool"
       }
     ],
@@ -160,7 +160,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterRoute\r\n&RouteTableName=MANAGED_CLUSTER\r\n&DestinationCidrBlock=10.4.0.0/24\r\n&GatewayIp=10.0.0.3\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Deleting cluster routes"
       }
     ],
@@ -168,7 +168,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterRouteTable\r\n&RouteTableName=MANAGED_CLUSTER\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Deleting a cluster route table"
       }
     ],
@@ -176,7 +176,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeAvailableClusterVersion\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"Clusters\": [\r\n            {\r\n                \"ClusterId\": \"xx\", \r\n                \"Versions\": [\r\n                    \"xx\"\r\n                ]\r\n            }\r\n        ], \r\n        \"RequestId\": \"xx\", \r\n        \"Versions\": [\r\n            \"1.8.13\"\r\n        ]\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"Clusters\": [\n            {\n                \"ClusterId\": \"xx\",\n                \"Versions\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"Versions\": [\n            \"1.8.13\"\n        ]\n    }\n}",
         "title": "Obtaining the versions that the cluster can upgrade to"
       }
     ],
@@ -184,7 +184,7 @@
       {
         "document": "This example shows you how to configure cluster auto scaling.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroupOption\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"ClusterAsGroupOption\": {\r\n            \"ScaleDownUnreadyTime\": 0, \r\n            \"ScaleDownDelay\": 0, \r\n            \"ScaleDownUtilizationThreshold\": 0, \r\n            \"MaxTotalUnreadyPercentage\": 0, \r\n            \"IsScaleDownEnabled\": true, \r\n            \"OkTotalUnreadyCount\":0, \r\n            \"SkipNodesWithSystemPods\": true, \r\n            \"MaxEmptyBulkDelete\": 0, \r\n            \"UnregisteredNodeRemovalTime\": 0, \r\n            \"SkipNodesWithLocalStorage\": true, \r\n            \"IgnoreDaemonSetsUtilization\": true, \r\n            \"Expander\": \"xxx\", \r\n            \"ScaleDownUnneededTime\": 0\r\n        }, \r\n        \"RequestId\": \"xxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterAsGroupOption\": {\n            \"ScaleDownUnreadyTime\": 0,\n            \"ScaleDownDelay\": 0,\n            \"ScaleDownUtilizationThreshold\": 0,\n            \"MaxTotalUnreadyPercentage\": 0,\n            \"IsScaleDownEnabled\": true,\n            \"OkTotalUnreadyCount\": 0,\n            \"SkipNodesWithSystemPods\": true,\n            \"MaxEmptyBulkDelete\": 0,\n            \"UnregisteredNodeRemovalTime\": 0,\n            \"SkipNodesWithLocalStorage\": true,\n            \"IgnoreDaemonSetsUtilization\": true,\n            \"Expander\": \"xxx\",\n            \"ScaleDownUnneededTime\": 0\n        },\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "Configuring cluster auto scaling"
       }
     ],
@@ -192,7 +192,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroups\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\n    }\n}",
         "title": "Querying the list of cluster-associated scaling groups"
       }
     ],
@@ -200,7 +200,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpointStatus\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\r\n        \"Status\": \"Created\"\r\n}\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Status\": \"Created\"\n    }\n}",
         "title": "Querying the status of the cluster access port"
       }
     ],
@@ -208,7 +208,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpointVipStatus\r\n&ClusterId=cls-xxxxxxxx,\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"Status\": \"Creating\",\r\n       \"ErrorMsg\":\"\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"Creating\",\n        \"ErrorMsg\": \"\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Querying the status of the cluster port enabling process"
       }
     ],
@@ -216,7 +216,7 @@
       {
         "document": "This example shows you how to query information of instances in a cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterInstances\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1,\r\n        \"InstanceSet\": [\r\n            {\r\n                \"InstanceId\": \"ins-gsk7l6vw\",\r\n                \"InstanceRole\": \"WORKER\",\r\n                \"InstanceState\": \"running\",\r\n                \"FailedReason\": \"\"\r\n            }\r\n        ],\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceSet\": [\n            {\n                \"InstanceId\": \"ins-gsk7l6vw\",\n                \"InstanceRole\": \"WORKER\",\n                \"InstanceState\": \"running\",\n                \"FailedReason\": \"\"\n            }\n        ],\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\n    }\n}",
         "title": "Querying information of instances in a cluster"
       }
     ],
@@ -224,7 +224,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterKubeconfig\n&ClusterId=cls-65r1c5nu\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"Kubeconfig\":\"xxx\",\r\n        \"RequestId\":\"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"Kubeconfig\": \"xxx\",\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
         "title": "Obtaining the cluster kubeconfig file"
       }
     ],
@@ -232,7 +232,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterNodePoolDetail\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"NodePool\":{\r\n            \"AutoscalingGroupId\":\"asg-xxx\",\r\n            \"AutoscalingGroupStatus\":\"enabled\",\r\n            \"ClusterInstanceId\":\"cls-xxx\",\r\n            \"DesiredNodesNum\":0,\r\n            \"Labels\":[\r\n\r\n            ],\r\n            \"LaunchConfigurationId\":\"asc-xxx\",\r\n            \"LifeState\":\"normal\",\r\n            \"MaxNodesNum\":1,\r\n            \"MinNodesNum\":0,\r\n            \"Name\":\"test\",\r\n            \"NodeCountSummary\":{\r\n                \"AutoscalingAdded\":{\r\n                    \"Initializing\":0,\r\n                    \"Joining\":0,\r\n                    \"Normal\":0,\r\n                    \"Total\":0\r\n                },\r\n                \"ManuallyAdded\":{\r\n                    \"Initializing\":0,\r\n                    \"Joining\":0,\r\n                    \"Normal\":1,\r\n                    \"Total\":1\r\n                }\r\n            },\r\n            \"NodePoolId\":\"np-xxxxx\",\r\n            \"Taints\":[\r\n\r\n            ]\r\n        },\r\n        \"RequestId\":\"xxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"NodePool\": {\n            \"AutoscalingGroupId\": \"asg-xxx\",\n            \"AutoscalingGroupStatus\": \"enabled\",\n            \"ClusterInstanceId\": \"cls-xxx\",\n            \"DesiredNodesNum\": 0,\n            \"Labels\": [],\n            \"LaunchConfigurationId\": \"asc-xxx\",\n            \"LifeState\": \"normal\",\n            \"MaxNodesNum\": 1,\n            \"MinNodesNum\": 0,\n            \"Name\": \"test\",\n            \"NodeCountSummary\": {\n                \"AutoscalingAdded\": {\n                    \"Initializing\": 0,\n                    \"Joining\": 0,\n                    \"Normal\": 0,\n                    \"Total\": 0\n                },\n                \"ManuallyAdded\": {\n                    \"Initializing\": 0,\n                    \"Joining\": 0,\n                    \"Normal\": 1,\n                    \"Total\": 1\n                }\n            },\n            \"NodePoolId\": \"np-xxxxx\",\n            \"Taints\": []\n        },\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "Querying detailed information of a node pool"
       }
     ],
@@ -240,7 +240,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterNodePools\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"NodePoolSet\":[\r\n            {\r\n                \"AutoscalingGroupId\":\"asg-xxxxx\",\r\n                \"AutoscalingGroupStatus\":\"enabled\",\r\n                \"ClusterInstanceId\":\"cls-xxxxx\",\r\n                \"DesiredNodesNum\":1,\r\n                \"Labels\":[\r\n\r\n                ],\r\n                \"LaunchConfigurationId\":\"asc-xxxxx\",\r\n                \"LifeState\":\"normal\",\r\n                \"MaxNodesNum\":1,\r\n                \"MinNodesNum\":0,\r\n                \"Name\": \"test2\",\r\n                \"NodeCountSummary\":{\r\n                    \"AutoscalingAdded\":{\r\n                        \"Initializing\":0,\r\n                        \"Joining\":0,\r\n                        \"Normal\":1,\r\n                        \"Total\":1\r\n                    },\r\n                    \"ManuallyAdded\":{\r\n                        \"Initializing\":0,\r\n                        \"Joining\":0,\r\n                        \"Normal\":0,\r\n                        \"Total\":0\r\n                    }\r\n                },\r\n                \"NodePoolId\":\"np-xxxx\",\r\n                \"Taints\":[\r\n\r\n                ]\r\n            }\r\n        ],\r\n        \"RequestId\":\"xxxxxx\",\r\n        \"TotalCount\":1\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"NodePoolSet\": [\n            {\n                \"AutoscalingGroupId\": \"asg-xxxxx\",\n                \"AutoscalingGroupStatus\": \"enabled\",\n                \"ClusterInstanceId\": \"cls-xxxxx\",\n                \"DesiredNodesNum\": 1,\n                \"Labels\": [],\n                \"LaunchConfigurationId\": \"asc-xxxxx\",\n                \"LifeState\": \"normal\",\n                \"MaxNodesNum\": 1,\n                \"MinNodesNum\": 0,\n                \"Name\": \"test2\",\n                \"NodeCountSummary\": {\n                    \"AutoscalingAdded\": {\n                        \"Initializing\": 0,\n                        \"Joining\": 0,\n                        \"Normal\": 1,\n                        \"Total\": 1\n                    },\n                    \"ManuallyAdded\": {\n                        \"Initializing\": 0,\n                        \"Joining\": 0,\n                        \"Normal\": 0,\n                        \"Total\": 0\n                    }\n                },\n                \"NodePoolId\": \"np-xxxx\",\n                \"Taints\": []\n            }\n        ],\n        \"RequestId\": \"xxxxxx\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the node pool list"
       }
     ],
@@ -248,7 +248,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterRouteTables\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RouteTableSet\": [{\r\n            \"VpcId\": \"vpc-xxx\",\r\n            \"RouteTableCidrBlock\": \"10.4.0.0/16\",\r\n            \"RouteTableName\": \"MANAGED_CLUSTER\"\r\n        }],\r\n        \"TotalCount\": 1,\r\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RouteTableSet\": [\n            {\n                \"VpcId\": \"vpc-xxx\",\n                \"RouteTableCidrBlock\": \"10.4.0.0/16\",\n                \"RouteTableName\": \"MANAGED_CLUSTER\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Querying a cluster route table"
       }
     ],
@@ -256,7 +256,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterRoutes\n&RouteTableName=MANAGED_CLUSTER\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RouteSet\": [{\r\n            \"RouteTableName\": \"MANAGED_CLUSTER\",\r\n            \"DestinationCidrBlock\": \"10.4.0.0/24\",\r\n            \"GatewayIp\": \"10.0.0.3\"\r\n        }],\r\n        \"TotalCount\": 1,\r\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RouteSet\": [\n            {\n                \"RouteTableName\": \"MANAGED_CLUSTER\",\n                \"DestinationCidrBlock\": \"10.4.0.0/24\",\n                \"GatewayIp\": \"10.0.0.3\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Querying routes of a cluster"
       }
     ],
@@ -264,7 +264,7 @@
       {
         "document": "This example shows you how to query the secret information of a cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterSecurity\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"UserName\": \"xxxxx\",\r\n        \"CertificationAuthority\":\"xxxxxx\",\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"UserName\": \"xxxxx\",\n        \"CertificationAuthority\": \"xxxxxx\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Querying secret information of a cluster"
       }
     ],
@@ -272,7 +272,7 @@
       {
         "document": "This example shows you how to query the cluster list to obtain the cluster list.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusters\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"TotalCount\": 1,\r\n        \"Clusters\": [\r\n            {\r\n                \"ClusterId\": \"cls-xxxxxxx\",\r\n                \"ClusterName\": \"Cluster\",\r\n                \"ClusterDescription\": \"\",\r\n                \"ClusterVersion\": \"1.10.5\",\r\n                \"ClusterOs\": \"ubuntu16.04.1 LTSx86_64\",\r\n                \"ClusterType\": \"INDEPENDENT_CLUSTER\",\r\n                \"ClusterNetworkSettings\": {\r\n                    \"ClusterCIDR\": \"10.211.0.0/16\",\r\n                    \"IgnoreClusterCIDRConflict\": false,\r\n                    \"MaxNodePodNum\": 256,\r\n                    \"MaxClusterServiceNum\": 256,\r\n                    \"Ipvs\": false,\r\n                    \"VpcId\": \"vpc-xxxxxx\"\r\n                },\r\n                \"ClusterNodeNum\": 3\r\n            }\r\n        ],\r\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Clusters\": [\n            {\n                \"ClusterId\": \"cls-xxxxxxx\",\n                \"ClusterName\": \"Cluster\",\n                \"ClusterDescription\": \"\",\n                \"ClusterVersion\": \"1.10.5\",\n                \"ClusterOs\": \"ubuntu16.04.1 LTSx86_64\",\n                \"ClusterType\": \"INDEPENDENT_CLUSTER\",\n                \"ClusterNetworkSettings\": {\n                    \"ClusterCIDR\": \"10.211.0.0/16\",\n                    \"IgnoreClusterCIDRConflict\": false,\n                    \"MaxNodePodNum\": 256,\n                    \"MaxClusterServiceNum\": 256,\n                    \"Ipvs\": false,\n                    \"VpcId\": \"vpc-xxxxxx\"\n                },\n                \"ClusterNodeNum\": 3\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Querying the cluster list"
       }
     ],
@@ -280,7 +280,7 @@
       {
         "document": "This example shows you how to query whether an existing node can be added to a cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeExistedInstances\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"TotalCount\": 1,\r\n    \"ExistedInstanceSet\": [\r\n     {\r\n        \"Usable\": true,\r\n        \"UnusableReason\": \"\",\r\n        \"AlreadyInCluster\": \"\",\r\n        \"InstanceId\": \"ins-xxxxxxxx\",\r\n        \"InstanceName\": \"Not named\",\r\n        \"PrivateIpAddresses\": [\r\n          \"192.168.x.x\"\r\n        ],\r\n        \"PublicIpAddresses\": [\r\n          \"118.24.x.x\"\r\n        ],\r\n        \"CreatedTime\": \"2019-05-13T03:37:24Z\",\r\n        \"CPU\": 2,\r\n        \"Memory\": 4,\r\n        \"OsName\": \"Ubuntu xxxxxxxxx\",\r\n        \"InstanceType\": \"Sxxxxxx\"\r\n      }\r\n    ],\r\n    \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ExistedInstanceSet\": [\n            {\n                \"Usable\": true,\n                \"UnusableReason\": \"\",\n                \"AlreadyInCluster\": \"\",\n                \"InstanceId\": \"ins-xxxxxxxx\",\n                \"InstanceName\": \"Not named\",\n                \"PrivateIpAddresses\": [\n                    \"192.168.x.x\"\n                ],\n                \"PublicIpAddresses\": [\n                    \"118.24.x.x\"\n                ],\n                \"CreatedTime\": \"2019-05-13T03:37:24Z\",\n                \"CPU\": 2,\n                \"Memory\": 4,\n                \"OsName\": \"Ubuntu xxxxxxxxx\",\n                \"InstanceType\": \"Sxxxxxx\"\n            }\n        ],\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
         "title": "Querying an existing node"
       }
     ],
@@ -288,7 +288,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeImages\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Obtaining image information"
       }
     ],
@@ -296,7 +296,7 @@
       {
         "document": "This example shows you how to get the region list.",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeRegions\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Getting the region list"
       }
     ],
@@ -304,7 +304,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeRouteTableConflicts\n&RouteTableCidrBlock=10.4.0.0/16\n&VpcId=vpc-xxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n       \"HasConflict\": false,\r\n       \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"HasConflict\": false,\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Querying whether a route table has conflicts"
       }
     ],
@@ -312,7 +312,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=GetUpgradeInstanceProgress\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"LifeState\": \"xx\", \r\n        \"Instances\": [\r\n            {\r\n                \"StartAt\": \"xx\", \r\n                \"InstanceID\": \"xx\", \r\n                \"Detail\": [\r\n                    {\r\n                        \"StartAt\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"LifeState\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }, \r\n                    {\r\n                        \"LifeState\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"StartAt\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }, \r\n                    {\r\n                        \"LifeState\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"StartAt\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }, \r\n                    {\r\n                        \"LifeState\": \"xx\", \r\n                        \"Step\": \"xx\", \r\n                        \"StartAt\": \"xx\", \r\n                        \"EndAt\": \"xx\", \r\n                        \"FailedMsg\": \"xx\"\r\n                    }\r\n                ], \r\n                \"EndAt\": \"xx\", \r\n                \"CheckResult\": {\r\n                    \"Items\": [\r\n                        {\r\n                            \"WorkLoadKind\": \"xx\", \r\n                            \"After\": 1, \r\n                            \"Namespace\": \"xx\", \r\n                            \"WorkLoadName\": \"xx\", \r\n                            \"Pods\": [\r\n                                \"xx\"\r\n                            ], \r\n                            \"Before\": 1\r\n                        }\r\n                    ], \r\n                    \"CheckPass\": true, \r\n                    \"SinglePods\": [\r\n                        \"xx\"\r\n                    ]\r\n                }, \r\n                \"LifeState\": \"xx\"\r\n            }\r\n        ], \r\n        \"Done\": 1, \r\n        \"RequestId\": \"xx\", \r\n        \"ClusterStatus\": {\r\n            \"PodTotal\": 0, \r\n            \"NotReadyPod\": 0\r\n        }, \r\n        \"Total\": 3\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"LifeState\": \"xx\",\n        \"Instances\": [\n            {\n                \"StartAt\": \"xx\",\n                \"InstanceID\": \"xx\",\n                \"Detail\": [\n                    {\n                        \"StartAt\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"LifeState\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    }\n                ],\n                \"EndAt\": \"xx\",\n                \"CheckResult\": {\n                    \"Items\": [\n                        {\n                            \"WorkLoadKind\": \"xx\",\n                            \"After\": 1,\n                            \"Namespace\": \"xx\",\n                            \"WorkLoadName\": \"xx\",\n                            \"Pods\": [\n                                \"xx\"\n                            ],\n                            \"Before\": 1\n                        }\n                    ],\n                    \"CheckPass\": true,\n                    \"SinglePods\": [\n                        \"xx\"\n                    ]\n                },\n                \"LifeState\": \"xx\"\n            }\n        ],\n        \"Done\": 1,\n        \"RequestId\": \"xx\",\n        \"ClusterStatus\": {\n            \"PodTotal\": 0,\n            \"NotReadyPod\": 0\n        },\n        \"Total\": 3\n    }\n}",
         "title": "Querying the upgrade status"
       }
     ],
@@ -320,7 +320,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterAsGroupAttribute\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\n    }\n}",
         "title": "Modifying cluster scaling group attributes"
       }
     ],
@@ -328,7 +328,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterAsGroupOptionAttribute\n&ClusterId=cls-xxxxxx\n&ClusterAsGroupOption.IsScaleDownEnabled=true\n&ClusterAsGroupOption.UnregisteredNodeRemovalTime=x\n&ClusterAsGroupOption.OkTotalUnreadyCount=x\n&ClusterAsGroupOption.ScaleDownUnreadyTime=x\n&ClusterAsGroupOption.MaxTotalUnreadyPercentage=x\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\n    }\n}",
         "title": "Modifying cluster auto scaling attributes"
       }
     ],
@@ -336,7 +336,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterAttribute\r\n&ClusterId=cls-xxxxxxx\r\n&ClusterName=aaa\r\n&<Common request parameters>",
-        "output": "{\r\n  \"Response\": {\r\n    \"ClusterName\":\"xxxxx\",\r\n    \"ClusterDesc\":\"xxxxx\",\r\n    \"ProjectId\":0,\r\n    \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterName\": \"xxxxx\",\n        \"ClusterDesc\": \"xxxxx\",\n        \"ProjectId\": 0,\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Modifying cluster attributes"
       }
     ],
@@ -344,7 +344,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterEndpointSP\r\n&ClusterId=cls-xxxxxxxx\r\n&SecurityPolicies.0=192.168.1.0/24\r\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying the security policy for the public network port of a managed cluster"
       }
     ],
@@ -352,7 +352,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"xxxxxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxx\"\n    }\n}",
         "title": "Editing a node pool"
       }
     ],
@@ -360,7 +360,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=RemoveNodeFromNodePool\n&ClusterId=cls-xxxxxx\n&NodePoolId=np-xxxxxxxx\n&InstanceIds.0=ins-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\":{\r\n        \"RequestId\":\"xxxxxx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxx\"\n    }\n}",
         "title": "Removing nodes from a node pool"
       }
     ],
@@ -368,7 +368,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=UpdateClusterVersion\n&ClusterId=cls-xxxxxxxx\n&DstVersion=1.8.13\n&<Common request parameters>",
-        "output": "{\r\n   \"Response\" : {\r\n      \"RequestId\" : \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\r\n   }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Upgrading the cluster to the specified version"
       }
     ],
@@ -376,7 +376,7 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=UpgradeClusterInstances\n&ClusterId=cls-xxxxxx\n&UpgradeType=reset\n&Operation=create\n&InstanceIds.0=ins-xxx\n&<Common request parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"xx\"\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Upgrading cluster nodes"
       }
     ]

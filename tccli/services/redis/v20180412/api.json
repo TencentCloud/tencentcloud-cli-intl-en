@@ -3624,6 +3624,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter unit\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4371,6 +4380,15 @@
           "document": "Execution duration",
           "member": "string",
           "name": "ExecuteTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "Node",
           "required": true,
           "type": "string",
           "value_allowed_null": false

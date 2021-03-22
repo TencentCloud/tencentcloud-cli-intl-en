@@ -516,6 +516,12 @@
       "name": "Queries the list of instances associated with a CCN",
       "output": "DescribeCcnAttachedInstancesResponse"
     },
+    "DescribeCcnRegionBandwidthLimits": {
+      "document": "This API is used to query the outbound bandwidth caps of all regions connected with a CCN instance. The API only returns regions included in the associated network instances.",
+      "input": "DescribeCcnRegionBandwidthLimitsRequest",
+      "name": "Queries the outbound bandwidth caps of all regions connected with the specified CCN instance",
+      "output": "DescribeCcnRegionBandwidthLimitsResponse"
+    },
     "DescribeCcnRoutes": {
       "document": "This API (DescribeCcnRoutes) is used to query routes that have been added to a CCN.",
       "input": "DescribeCcnRoutesRequest",
@@ -6394,7 +6400,8 @@
       "members": [
         {
           "default": "",
-          "document": "The list of unique IDs of EIPs, such as `eip-11112222`. `AddressIds` and `Filters` cannot be specified at the same time.",
+          "document": "The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.",
+          "example": "eip-11112222",
           "member": "string",
           "name": "AddressIds",
           "required": false,
@@ -6402,7 +6409,8 @@
         },
         {
           "default": "",
-          "document": "The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. Detailed filter conditions are as follows:\n<li> address-id - String - Required: no - (Filter condition) The unique EIP ID, such as `eip-11112222`.</li>\n<li> address-name - String - Required: no - (Filter condition) The EIP name. Fuzzy filtering is not supported.</li>\n<li> address-ip - String - Required: no - (Filter condition) Filters by EIP.</li>\n<li> address-status - String - Required: no - (Filter condition) The EIP state. Possible EIP states are: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.</li>\n<li> instance-id - String - Required: no - (Filter condition) The ID of the instance bound to the EIP, such as `ins-11112222`.</li>\n<li> private-ip-address - String - Required: no - (Filter condition) The private IP address bound to the EIP.</li>\n<li> network-interface-id - String - Required: no - (Filter condition) The ID of the ENI bound to the EIP, such as `eni-11112222`.</li>\n<li> is-arrears - String - Required: no - (Filter condition) Whether the EIP is in arrears. (TRUE: the EIP is in arrears | FALSE: the billing status of the EIP is normal)</li>",
+          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> `address-id` - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>\n<li> `address-name` - String - Required: No - (Filter condition) Filter by EIP name. Fuzzy filtering is not supported. </li>\n<li> `address-ip` - String - Required: No - (Filter condition) Filter by the IP address of EIP.</li>\n<li> address-status - String - Required: no - (Filter condition) Filter by the EIP state. Possible EIP states are: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.</li>\n<li> `instance-id` - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>\n<li> `private-ip-address` - String - Required: No - (Filter condition) Filter by the private IP bound to the EIP.</li>\n<li> `network-interface-id` - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>\n<li> `is-arrears` - String - Required: No - (Filter condition) Filter by whether the EIP is overdue. (TRUE: The EIP is overdue | FALSE: The EIP billing status is normal)</li>\n<li> `address-type` - String - Required: No - (Filter condition) Filter by the IP type. Optional values: 'EIP'，'AnycastEIP'，'HighQualityEIP'</li>\n<li> `address-isp` - String - Required: No - (Filter condition) Filter by the ISP type. Optional values: 'BGP'，'CMCC'，'CUCC', 'CTCC'</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -6411,6 +6419,7 @@
         {
           "default": "",
           "document": "The Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -6419,6 +6428,7 @@
         {
           "default": "",
           "document": "Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -6770,6 +6780,39 @@
           "document": "The list of associated instances.",
           "member": "CcnAttachedInstance",
           "name": "InstanceSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcnRegionBandwidthLimitsRequest": {
+      "document": "DescribeCcnRegionBandwidthLimits request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The CCN instance ID in the format of `ccn-f49l6u0z`.",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcnRegionBandwidthLimitsResponse": {
+      "document": "DescribeCcnRegionBandwidthLimits response structure.",
+      "members": [
+        {
+          "document": "The outbound bandwidth caps of all regions connected with the specified CCN instance",
+          "member": "CcnRegionBandwidthLimit",
+          "name": "CcnRegionBandwidthLimitSet",
           "type": "list",
           "value_allowed_null": false
         },
@@ -8555,16 +8598,20 @@
       "document": "DescribeSecurityGroups response structure.",
       "members": [
         {
-          "document": "Security group object.",
+          "document": "Security group object.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "SecurityGroupSet",
+          "required": true,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "document": "The number of instances meeting the filter condition.",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },

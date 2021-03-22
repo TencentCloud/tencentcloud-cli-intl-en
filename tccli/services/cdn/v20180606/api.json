@@ -12,6 +12,12 @@
       "name": "Creating a log topic",
       "output": "CreateClsLogTopicResponse"
     },
+    "CreateScdnFailedLogTask": {
+      "document": "This API is used to recreate a failed event log task.",
+      "input": "CreateScdnFailedLogTaskRequest",
+      "name": "Recreates an event log task",
+      "output": "CreateScdnFailedLogTaskResponse"
+    },
     "DeleteCdnDomain": {
       "document": "This API is used to delete a specified acceleration domain name.",
       "input": "DeleteCdnDomainRequest",
@@ -49,7 +55,7 @@
       "output": "DescribeCdnIpResponse"
     },
     "DescribeCdnOriginIp": {
-      "document": "This API is used to query the IP information of CDN intermediate nodes. Note: the relevant allowlist needs to be enabled for this API.",
+      "document": "This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon. Please call `DescribeIpStatus` instead.",
       "input": "DescribeCdnOriginIpRequest",
       "name": "Queries intermediate nodes",
       "output": "DescribeCdnOriginIpResponse"
@@ -139,7 +145,7 @@
       "output": "DescribeUrlViolationsResponse"
     },
     "DisableCaches": {
-      "document": "This API (DisableCaches) is used to block access to a specific URL on CDN. After a URL is blocked, error 403 will be returned for all access requests to it. (This API is during beta test and not fully available now.)",
+      "document": "This API is used to block access to a specific URL on CDN. After a URL is blocked, a 403 error will be returned for the arrived access requests initiated from the Chinese mainland. This API is in beta and not fully available now.",
       "input": "DisableCachesRequest",
       "name": "Blocks URLs",
       "output": "DisableCachesResponse"
@@ -334,6 +340,7 @@
         {
           "default": "",
           "document": "Domain name",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -342,6 +349,7 @@
         {
           "default": "",
           "document": "Acceleration domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming media VOD acceleration",
+          "example": "web",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -350,6 +358,7 @@
         {
           "default": "",
           "document": "Origin server configuration",
+          "example": "无",
           "member": "Origin",
           "name": "Origin",
           "required": true,
@@ -358,6 +367,7 @@
         {
           "default": "",
           "document": "Project ID. Default value: 0, indicating `Default Project`",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -366,6 +376,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist configuration",
+          "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
           "required": false,
@@ -374,6 +385,7 @@
         {
           "default": "",
           "document": "IP access limit configuration",
+          "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
           "required": false,
@@ -382,6 +394,7 @@
         {
           "default": "",
           "document": "Status code cache configuration",
+          "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
           "required": false,
@@ -390,6 +403,7 @@
         {
           "default": "",
           "document": "Smart compression configuration",
+          "example": "无",
           "member": "Compression",
           "name": "Compression",
           "required": false,
@@ -398,6 +412,7 @@
         {
           "default": "",
           "document": "Bandwidth cap configuration",
+          "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
           "required": false,
@@ -406,6 +421,7 @@
         {
           "default": "",
           "document": "Range GETs configuration",
+          "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
           "required": false,
@@ -414,6 +430,7 @@
         {
           "default": "",
           "document": "301/302 origin-pull follow-redirect configuration",
+          "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
           "required": false,
@@ -422,6 +439,7 @@
         {
           "default": "",
           "document": "Error code redirect configuration (This feature is in beta and not generally available yet.)",
+          "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
           "required": false,
@@ -430,6 +448,7 @@
         {
           "default": "",
           "document": "Request header configuration",
+          "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
           "required": false,
@@ -438,6 +457,7 @@
         {
           "default": "",
           "document": "Response header configuration",
+          "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
           "required": false,
@@ -446,6 +466,7 @@
         {
           "default": "",
           "document": "Download speed configuration",
+          "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
           "required": false,
@@ -454,6 +475,7 @@
         {
           "default": "",
           "document": "Node cache key configuration",
+          "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
           "required": false,
@@ -462,6 +484,7 @@
         {
           "default": "",
           "document": "Header cache configuration",
+          "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
           "required": false,
@@ -470,6 +493,7 @@
         {
           "default": "",
           "document": "Video dragging configuration",
+          "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
           "required": false,
@@ -478,6 +502,7 @@
         {
           "default": "",
           "document": "Cache expiration time configuration",
+          "example": "无",
           "member": "Cache",
           "name": "Cache",
           "required": false,
@@ -486,6 +511,7 @@
         {
           "default": "",
           "document": "Cross-border linkage optimization configuration",
+          "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
           "required": false,
@@ -494,6 +520,7 @@
         {
           "default": "",
           "document": "HTTPS acceleration configuration",
+          "example": "无",
           "member": "Https",
           "name": "Https",
           "required": false,
@@ -502,6 +529,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection configuration",
+          "example": "无",
           "member": "Authentication",
           "name": "Authentication",
           "required": false,
@@ -510,6 +538,7 @@
         {
           "default": "",
           "document": "SEO configuration",
+          "example": "无",
           "member": "Seo",
           "name": "Seo",
           "required": false,
@@ -518,6 +547,7 @@
         {
           "default": "",
           "document": "Access protocol forced redirect configuration",
+          "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
           "required": false,
@@ -526,6 +556,7 @@
         {
           "default": "",
           "document": "Referer hotlink protection configuration",
+          "example": "无",
           "member": "Referer",
           "name": "Referer",
           "required": false,
@@ -534,6 +565,7 @@
         {
           "default": "",
           "document": "Browser cache configuration (This feature is in beta and not generally available yet.)",
+          "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
           "required": false,
@@ -542,6 +574,7 @@
         {
           "default": "",
           "document": "IPv6 configuration (This feature is in beta and not generally available yet.)",
+          "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
           "required": false,
@@ -550,6 +583,7 @@
         {
           "default": "",
           "document": "Specific region configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.",
+          "example": "无",
           "member": "SpecificConfig",
           "name": "SpecificConfig",
           "required": false,
@@ -558,6 +592,7 @@
         {
           "default": "",
           "document": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration\nOverseas acceleration service must be enabled to use overseas acceleration and global acceleration.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -566,6 +601,7 @@
         {
           "default": "",
           "document": "Origin-pull timeout configuration",
+          "example": "无",
           "member": "OriginPullTimeout",
           "name": "OriginPullTimeout",
           "required": false,
@@ -574,6 +610,7 @@
         {
           "default": "",
           "document": "Tag configuration",
+          "example": "无",
           "member": "Tag",
           "name": "Tag",
           "required": false,
@@ -582,6 +619,7 @@
         {
           "default": "",
           "document": "IPv6 access configuration",
+          "example": "无",
           "member": "Ipv6Access",
           "name": "Ipv6Access",
           "required": false,
@@ -590,8 +628,18 @@
         {
           "default": "",
           "document": "Offline cache",
+          "example": "无",
           "member": "OfflineCache",
           "name": "OfflineCache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.",
+          "example": "无",
+          "member": "Quic",
+          "name": "Quic",
           "required": false,
           "type": "object"
         }
@@ -1138,6 +1186,7 @@
         {
           "default": "",
           "document": "Cache expiration rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "AdvanceCacheRule",
           "name": "CacheRules",
           "required": true,
@@ -1147,6 +1196,7 @@
         {
           "default": "",
           "document": "Forced cache configuration\non: enabled\noff: disabled\nWhen this is enabled, if the origin server returns no-cache, no-store headers, node caching will still be performed according to the cache expiration rules.\nThis is disabled by default\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "IgnoreCacheControl",
           "required": true,
@@ -1155,7 +1205,8 @@
         },
         {
           "default": "",
-          "document": "Ignore the Set-Cookie header of an origin server\non: enabled\noff: disabled\nThis is disabled by default\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to cache the header and body on cache nodes if the origin server returns the header `Set-Cookie`.\non: Enable; do not cache the header and body.\noff: Disable; follow the custom cache rules of cache nodes.\nIt is disabled by default.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "IgnoreSetCookie",
           "required": true,
@@ -2452,6 +2503,51 @@
       ],
       "type": "object"
     },
+    "CreateScdnFailedLogTaskRequest": {
+      "document": "CreateScdnFailedLogTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the failed task to retry",
+          "example": "1111",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region. Valid values: `mainland` and `overseas`.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateScdnFailedLogTaskResponse": {
+      "document": "CreateScdnFailedLogTask response structure.",
+      "members": [
+        {
+          "document": "Creation result. \n0: Creation succeeded",
+          "example": "0",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCdnDomainRequest": {
       "document": "DeleteCdnDomain request structure.",
       "members": [
@@ -3664,7 +3760,8 @@
       "members": [
         {
           "default": "",
-          "document": "Query start time in the format of `yyyy-MM-dd`",
+          "document": "Query the start time in the format of `yyyy-MM-dd`\nIf the report type is `daily`, the start time and end time must be the same day.\nIf the report type is `weekly`, the start time must be Monday and the end time must be the Sunday of the same week.\nIf the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.",
+          "example": "2021-02-01",
           "member": "date",
           "name": "StartTime",
           "required": true,
@@ -3672,7 +3769,8 @@
         },
         {
           "default": "",
-          "document": "Query end time in the format of `yyyy-MM-dd`",
+          "document": "Query the end time in the format of `yyyy-MM-dd`\nIf the report type is `daily`, the start time and end time must be of the same day.\nIf the report type is `weekly`, the start time must be Monday and the end time must be the Sunday of the same week.\nIf the report type is `monthly`, the start time must be the first day of the calendar month and the end time must be the last day of the same calendar month.",
+          "example": "2021-02-01",
           "member": "date",
           "name": "EndTime",
           "required": true,
@@ -3681,6 +3779,7 @@
         {
           "default": "",
           "document": "Report type\ndaily: daily report\nweekly: weekly report (Monday to Sunday)\nmonthly: monthly report (calendar month)",
+          "example": "daily",
           "member": "string",
           "name": "ReportType",
           "required": true,
@@ -3689,6 +3788,7 @@
         {
           "default": "",
           "document": "Domain name acceleration region\nmainland: in Mainland China\noverseas: outside Mainland China",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -3697,6 +3797,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3705,6 +3806,7 @@
         {
           "default": "",
           "document": "Number of data entries. Default value: 1000.",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3713,6 +3815,7 @@
         {
           "default": "",
           "document": "Filters by project ID",
+          "example": "0",
           "member": "int64",
           "name": "Project",
           "required": false,
@@ -3809,6 +3912,7 @@
         {
           "default": "",
           "document": "Domain name ID",
+          "example": "cdn-00001x",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -3818,6 +3922,7 @@
         {
           "default": "",
           "document": "Tencent Cloud account ID",
+          "example": "123456789",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -3827,6 +3932,7 @@
         {
           "default": "",
           "document": "Acceleration domain name",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -3836,6 +3942,7 @@
         {
           "default": "",
           "document": "CNAME address of domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "www.test.com.cdn.dnsv1.com",
           "member": "string",
           "name": "Cname",
           "required": true,
@@ -3845,6 +3952,7 @@
         {
           "default": "",
           "document": "Acceleration service status\nrejected: the domain name is rejected due to expiration/deregistration of its ICP filing\nprocessing: deploying\nonline: activated\noffline: disabled",
+          "example": "online",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3854,6 +3962,7 @@
         {
           "default": "",
           "document": "Project ID, which can be viewed on the Tencent Cloud project management page",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -3863,6 +3972,7 @@
         {
           "default": "",
           "document": "Domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming VOD acceleration",
+          "example": "web",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -3872,6 +3982,7 @@
         {
           "default": "",
           "document": "Domain name creation time",
+          "example": "2020-01-01 00:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -3881,6 +3992,7 @@
         {
           "default": "",
           "document": "Last modified time of domain name",
+          "example": "2021-01-01 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -3890,6 +4002,7 @@
         {
           "default": "",
           "document": "Origin server configuration",
+          "example": "无",
           "member": "Origin",
           "name": "Origin",
           "required": true,
@@ -3899,6 +4012,7 @@
         {
           "default": "",
           "document": "IP blacklist/whitelist configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
           "required": true,
@@ -3908,6 +4022,7 @@
         {
           "default": "",
           "document": "IP access frequency limit configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
           "required": true,
@@ -3917,6 +4032,7 @@
         {
           "default": "",
           "document": "Status code cache configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
           "required": true,
@@ -3926,6 +4042,7 @@
         {
           "default": "",
           "document": "Smart compression configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Compression",
           "name": "Compression",
           "required": true,
@@ -3935,6 +4052,7 @@
         {
           "default": "",
           "document": "Bandwidth cap configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
           "required": true,
@@ -3944,6 +4062,7 @@
         {
           "default": "",
           "document": "Range GETs configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
           "required": true,
@@ -3953,6 +4072,7 @@
         {
           "default": "",
           "document": "301/302 origin-pull follow-redirect configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
           "required": true,
@@ -3962,6 +4082,7 @@
         {
           "default": "",
           "document": "Custom error page configuration (in beta)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
           "required": true,
@@ -3971,6 +4092,7 @@
         {
           "default": "",
           "document": "Custom request header configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
           "required": true,
@@ -3980,6 +4102,7 @@
         {
           "default": "",
           "document": "Custom response header configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
           "required": true,
@@ -3989,6 +4112,7 @@
         {
           "default": "",
           "document": "Single-link downstream speed limit configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
           "required": true,
@@ -3998,6 +4122,7 @@
         {
           "default": "",
           "document": "Configuration of cache with/without parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
           "required": true,
@@ -4007,6 +4132,7 @@
         {
           "default": "",
           "document": "Origin server header cache configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
           "required": true,
@@ -4016,6 +4142,7 @@
         {
           "default": "",
           "document": "Video dragging configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
           "required": true,
@@ -4025,6 +4152,7 @@
         {
           "default": "",
           "document": "Node cache expiration rule configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Cache",
           "name": "Cache",
           "required": true,
@@ -4034,6 +4162,7 @@
         {
           "default": "",
           "document": "Cross-border linkage optimization configuration (in beta)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
           "required": true,
@@ -4043,6 +4172,7 @@
         {
           "default": "",
           "document": "HTTPS acceleration configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Https",
           "name": "Https",
           "required": true,
@@ -4052,6 +4182,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Authentication",
           "name": "Authentication",
           "required": true,
@@ -4061,6 +4192,7 @@
         {
           "default": "",
           "document": "SEO configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Seo",
           "name": "Seo",
           "required": true,
@@ -4070,6 +4202,7 @@
         {
           "default": "",
           "document": "Domain name block status\nnormal: normal\noverdue: the domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.\nmalicious: the acceleration service has been forcibly disabled due to detection of malicious behavior.\nddos: the acceleration service has been disabled due to large-scale DDoS attacks to the domain name\nidle: no operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.\nunlicensed: the acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.\ncapping: the configured upper limit for bandwidth has been reached.\nreadonly: the domain name has a special configuration and has been locked.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "normal",
           "member": "string",
           "name": "Disable",
           "required": true,
@@ -4079,6 +4212,7 @@
         {
           "default": "",
           "document": "Access protocol forced redirect configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
           "required": true,
@@ -4088,6 +4222,7 @@
         {
           "default": "",
           "document": "Referer hotlink protection configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Referer",
           "name": "Referer",
           "required": true,
@@ -4097,6 +4232,7 @@
         {
           "default": "",
           "document": "Browser cache expiration rule configuration (in beta)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
           "required": true,
@@ -4106,6 +4242,7 @@
         {
           "default": "",
           "document": "IPv6 origin-pull configuration (in beta)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Ipv6",
           "name": "Ipv6",
           "required": true,
@@ -4115,6 +4252,7 @@
         {
           "default": "",
           "document": "Backwards compatibility configuration (compatibility field for internal use)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Compatibility",
           "name": "Compatibility",
           "required": true,
@@ -4124,6 +4262,7 @@
         {
           "default": "",
           "document": "Region-specific configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SpecificConfig",
           "name": "SpecificConfig",
           "required": true,
@@ -4133,6 +4272,7 @@
         {
           "default": "",
           "document": "Acceleration region\nmainland: acceleration in Mainland China\noverseas: acceleration outside Mainland China\nglobal: global acceleration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -4142,6 +4282,7 @@
         {
           "default": "",
           "document": "Domain name lock status\nnormal: not locked\nmainland: locked in Mainland China\noverseas: locked outside Mainland China\nglobal: locked globally\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "normal",
           "member": "string",
           "name": "Readonly",
           "required": true,
@@ -4151,6 +4292,7 @@
         {
           "default": "",
           "document": "Origin-pull timeout configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OriginPullTimeout",
           "name": "OriginPullTimeout",
           "required": true,
@@ -4160,6 +4302,7 @@
         {
           "default": "",
           "document": "S3 bucket origin access authentication configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AwsPrivateAccess",
           "name": "AwsPrivateAccess",
           "required": true,
@@ -4169,6 +4312,7 @@
         {
           "default": "",
           "document": "SCDN configuration",
+          "example": "无",
           "member": "SecurityConfig",
           "name": "SecurityConfig",
           "required": true,
@@ -4178,6 +4322,7 @@
         {
           "default": "",
           "document": "Image Optimization configuration",
+          "example": "无",
           "member": "ImageOptimization",
           "name": "ImageOptimization",
           "required": true,
@@ -4187,6 +4332,7 @@
         {
           "default": "",
           "document": "`UA` blocklist/allowlist configuration",
+          "example": "无",
           "member": "UserAgentFilter",
           "name": "UserAgentFilter",
           "required": true,
@@ -4196,6 +4342,7 @@
         {
           "default": "",
           "document": "Access control",
+          "example": "无",
           "member": "AccessControl",
           "name": "AccessControl",
           "required": true,
@@ -4205,6 +4352,7 @@
         {
           "default": "",
           "document": "Whether to support advanced configuration items\non: supported\noff: not supported\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "on",
           "member": "string",
           "name": "Advance",
           "required": true,
@@ -4214,6 +4362,7 @@
         {
           "default": "",
           "document": "URL redirect configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "UrlRedirect",
           "name": "UrlRedirect",
           "required": true,
@@ -4223,6 +4372,7 @@
         {
           "default": "",
           "document": "Access port configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[80,8080,443]",
           "member": "int64",
           "name": "AccessPort",
           "required": true,
@@ -4232,6 +4382,7 @@
         {
           "default": "",
           "document": "Tag configuration\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "Tag",
           "name": "Tag",
           "required": true,
@@ -4241,6 +4392,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection advanced configuration (allowlist feature)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AdvancedAuthentication",
           "name": "AdvancedAuthentication",
           "required": true,
@@ -4250,6 +4402,7 @@
         {
           "default": "",
           "document": "Origin-pull authentication advanced configuration (allowlist feature)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OriginAuthentication",
           "name": "OriginAuthentication",
           "required": true,
@@ -4259,6 +4412,7 @@
         {
           "default": "",
           "document": "IPv6 access configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Ipv6Access",
           "name": "Ipv6Access",
           "required": true,
@@ -4268,6 +4422,7 @@
         {
           "default": "",
           "document": "Advanced configuration set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AdvanceConfig",
           "name": "AdvanceSet",
           "required": true,
@@ -4277,6 +4432,7 @@
         {
           "default": "",
           "document": "Offline cache\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OfflineCache",
           "name": "OfflineCache",
           "required": true,
@@ -4286,8 +4442,29 @@
         {
           "default": "",
           "document": "Merging pull requests\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OriginCombine",
           "name": "OriginCombine",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "POST request configuration item\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PostSize",
+          "name": "PostMaxSize",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "QUIC configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Quic",
+          "name": "Quic",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -4300,7 +4477,8 @@
       "members": [
         {
           "default": "",
-          "document": "List of URLs to be blocked\nUp to 100 entries can be submitted at a time and 3,000 entries per day.",
+          "document": "List of URLs to be blocked (URLs must contain `http://` or `https://`).\nUp to 100 entries can be submitted at a time and 3,000 entries per day.",
+          "example": "http://www.test.com/1.txt",
           "member": "string",
           "name": "Urls",
           "required": true,
@@ -5442,6 +5620,7 @@
         {
           "default": "",
           "document": "Query start time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly supports data query at daily granularity. The date in the input parameter is used as the start date.\nData generated after or at 00:00:00 on the start date will be returned\nOnly data for the last 90 days can be queried",
+          "example": "2021-01-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -5450,6 +5629,7 @@
         {
           "default": "",
           "document": "Query end time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly supports data query at daily granularity. The date in the input parameter is used as the end date.\nData generated before or at 23:59:59 on the end date will be returned\n`EndTime` must be later than or equal to `StartTime`",
+          "example": "2021-01-01 23:59:59",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -5457,7 +5637,8 @@
         },
         {
           "default": "",
-          "document": "Object representing the sort criteria. The following objects are supported:\nurl: sorts by access URL (including the query string). Supported filters are `flux` and `request`\npath: sorts by access URL (excluding the query string). Supported filters are `flux` and `request` (allowlist-based feature)\ndistrict: sorts by district. Supported filters are `flux` and `request`\nisp: sorts by ISP. Supported filters are `flux` and `request`\nhost: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, 2XX, 3XX, 4XX, 5XX, and `statusCode`\noriginHost: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, `origin_2XX`, `origin_3XX`, `origin_4XX`, `origin_5XX`, and `OriginStatusCode`",
+          "document": "Object representing the sort criteria. The following objects are supported:\n`url`: sorts by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.\n`district`: sorts by province, country, or region. Supported filters are `flux` and `request`.\n`isp`: sorts by ISP. Supported filters are `flux` and `request`.\n`host`: sorts by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, and `statusCode` (2XX, 3XX, 4XX, 5XX).\n`originHost`: sorts by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).",
+          "example": "host",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -5466,6 +5647,7 @@
         {
           "default": "",
           "document": "Metric name used for sorting:\nflux: If Metric is `host`, it indicates the access traffic; if Metric is `originHost`, it indicates the origin-pull traffic.\nbandwidth: If Metric is `host`, it indicates the access bandwidth; if Metric is `originHost`, it indicates the origin-pull bandwidth.\nrequest: If Metric is `host`, it indicates the number of access requests; if Metric is `originHost`, it indicates the number of origin-pull requests.\nfluxHitRate: Average traffic hit rate\n2XX: access 2XX status code\n3XX: access 3XX status code\n4XX: access 4XX status code\n5XX: access 5XX status code\norigin_2XX: origin-pull 2XX status code\norigin_3XX: origin-pull 3XX status code\norigin_4XX: origin-pull 4XX status code\norigin_5XX: origin-pull 5XX status code\nstatusCode: statistics of a specific access status code which is specified in the `Code` parameter.\nOriginStatusCode: statistics of a specific origin-pull status code which is specified in the `Code` parameter.",
+          "example": "flux",
           "member": "string",
           "name": "Filter",
           "required": true,
@@ -5474,6 +5656,7 @@
         {
           "default": "",
           "document": "Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -5482,6 +5665,7 @@
         {
           "default": "",
           "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nPlease note that if domain names are specified, this parameter will be ignored.",
+          "example": "0",
           "member": "int64",
           "name": "Project",
           "required": false,
@@ -5490,6 +5674,7 @@
         {
           "default": "",
           "document": "Default is `false` for multi-domain name queries, which returns sorted results of all domain names. \nIf `Metric` is `url`, `path`, `district`, or `isp` and `Filter` is `flux` or `request`, it can be set to `true` to return the sorted results of each domain.",
+          "example": "false",
           "member": "bool",
           "name": "Detail",
           "required": false,
@@ -5498,6 +5683,7 @@
         {
           "default": "",
           "document": "When Filter is `statusCode` or `OriginStatusCode`, enter a code to query and sort results.",
+          "example": "200",
           "member": "string",
           "name": "Code",
           "required": false,
@@ -5506,6 +5692,7 @@
         {
           "default": "",
           "document": "Specifies a service region for the query. If it is left blank, CDN data within Mainland China will be queried.\n`mainland`: specifies to query CDN data within Mainland China;\n`overseas`: specifies to query CDN data outside Mainland China. Supported metrics are `url`, `district`, `host`, and `originHost`. If `Metric` is `originHost`, supported filters are `flux`, `request`, and `bandwidth`.",
+          "example": "overseas",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -5514,6 +5701,7 @@
         {
           "default": "",
           "document": "The region type can be specified only when you query CDN data outside Mainland China and `Metric` is `district` or `host`; if you leave it empty, data of the service region will be queried (only applicable when `Area` is `overseas` and `Metric` is `district` or `host`)\nserver: specifies to query data of service region (where a CDN node is located)\nclient: specifies to query data of the client region (where a user request device is located). If `Metric` is `host`, `Filter` can only be `flux`, `request`, or `bandwidth`",
+          "example": "server",
           "member": "string",
           "name": "AreaType",
           "required": false,
@@ -6542,6 +6730,32 @@
       ],
       "usage": "both"
     },
+    "PostSize": {
+      "document": "Maximum size of the file uploaded for streaming via a POST request",
+      "members": [
+        {
+          "default": "",
+          "document": "Limit the size of a POST request. The default value is 32 MB.\noff: Disable\non: Enable",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum size. Value range: 1 MB to 200 MB.",
+          "example": "32",
+          "member": "int64",
+          "name": "MaxSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PurgePathCacheRequest": {
       "document": "PurgePathCache request structure.",
       "members": [
@@ -6872,6 +7086,22 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Quic": {
+      "document": "QUIC configuration item",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable QUIC",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -7647,6 +7877,7 @@
         {
           "default": "",
           "document": "Whether to enable WAF. Valid values: `on` and `off`.",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -7656,6 +7887,7 @@
         {
           "default": "",
           "document": "WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "intercept",
           "member": "string",
           "name": "Mode",
           "required": false,
@@ -7665,6 +7897,7 @@
         {
           "default": "",
           "document": "Redirection error page\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "见子类型",
           "member": "ScdnErrorPage",
           "name": "ErrorPage",
           "required": false,
@@ -7674,6 +7907,7 @@
         {
           "default": "",
           "document": "Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "on",
           "member": "string",
           "name": "WebShellSwitch",
           "required": false,
@@ -7683,8 +7917,29 @@
         {
           "default": "",
           "document": "Attack blocking rules\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "见子类型",
           "member": "ScdnWafRule",
           "name": "Rules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "WAF rule level. Valid values: 100, 200, and 300.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Level",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "WAF sub-rule switch\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "见子类型",
+          "member": "WafSubRuleStatus",
+          "name": "SubRuleSwitch",
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -8351,6 +8606,7 @@
         {
           "default": "",
           "document": "Domain name",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -8359,6 +8615,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -8367,6 +8624,7 @@
         {
           "default": "",
           "document": "Origin server configuration",
+          "example": "无",
           "member": "Origin",
           "name": "Origin",
           "required": false,
@@ -8375,6 +8633,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist configuration",
+          "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
           "required": false,
@@ -8383,6 +8642,7 @@
         {
           "default": "",
           "document": "IP access limit configuration",
+          "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
           "required": false,
@@ -8391,6 +8651,7 @@
         {
           "default": "",
           "document": "Status code cache configuration",
+          "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
           "required": false,
@@ -8399,6 +8660,7 @@
         {
           "default": "",
           "document": "Smart compression configuration",
+          "example": "无",
           "member": "Compression",
           "name": "Compression",
           "required": false,
@@ -8407,6 +8669,7 @@
         {
           "default": "",
           "document": "Bandwidth cap configuration",
+          "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
           "required": false,
@@ -8415,6 +8678,7 @@
         {
           "default": "",
           "document": "Range GETs configuration",
+          "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
           "required": false,
@@ -8423,6 +8687,7 @@
         {
           "default": "",
           "document": "301/302 origin-pull follow-redirect configuration",
+          "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
           "required": false,
@@ -8431,6 +8696,7 @@
         {
           "default": "",
           "document": "Error code redirect configuration (This feature is in beta and not generally available yet.)",
+          "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
           "required": false,
@@ -8439,6 +8705,7 @@
         {
           "default": "",
           "document": "Request header configuration",
+          "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
           "required": false,
@@ -8447,6 +8714,7 @@
         {
           "default": "",
           "document": "Response header configuration",
+          "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
           "required": false,
@@ -8455,6 +8723,7 @@
         {
           "default": "",
           "document": "Download speed configuration",
+          "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
           "required": false,
@@ -8463,6 +8732,7 @@
         {
           "default": "",
           "document": "Node cache key configuration",
+          "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
           "required": false,
@@ -8471,6 +8741,7 @@
         {
           "default": "",
           "document": "Header cache configuration",
+          "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
           "required": false,
@@ -8479,6 +8750,7 @@
         {
           "default": "",
           "document": "Video dragging configuration",
+          "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
           "required": false,
@@ -8487,6 +8759,7 @@
         {
           "default": "",
           "document": "Cache expiration time configuration",
+          "example": "无",
           "member": "Cache",
           "name": "Cache",
           "required": false,
@@ -8495,6 +8768,7 @@
         {
           "default": "",
           "document": "Cross-border linkage optimization configuration",
+          "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
           "required": false,
@@ -8503,6 +8777,7 @@
         {
           "default": "",
           "document": "HTTPS acceleration configuration",
+          "example": "无",
           "member": "Https",
           "name": "Https",
           "required": false,
@@ -8511,6 +8786,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection configuration",
+          "example": "无",
           "member": "Authentication",
           "name": "Authentication",
           "required": false,
@@ -8519,6 +8795,7 @@
         {
           "default": "",
           "document": "SEO configuration",
+          "example": "无",
           "member": "Seo",
           "name": "Seo",
           "required": false,
@@ -8527,6 +8804,7 @@
         {
           "default": "",
           "document": "Access protocol forced redirect configuration",
+          "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
           "required": false,
@@ -8535,6 +8813,7 @@
         {
           "default": "",
           "document": "Referer hotlink protection configuration",
+          "example": "无",
           "member": "Referer",
           "name": "Referer",
           "required": false,
@@ -8543,6 +8822,7 @@
         {
           "default": "",
           "document": "Browser cache configuration (This feature is in beta and not generally available yet.)",
+          "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
           "required": false,
@@ -8551,6 +8831,7 @@
         {
           "default": "",
           "document": "Domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming media VOD acceleration",
+          "example": "web",
           "member": "string",
           "name": "ServiceType",
           "required": false,
@@ -8559,6 +8840,7 @@
         {
           "default": "",
           "document": "Specific region configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.",
+          "example": "无",
           "member": "SpecificConfig",
           "name": "SpecificConfig",
           "required": false,
@@ -8567,6 +8849,7 @@
         {
           "default": "",
           "document": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -8575,6 +8858,7 @@
         {
           "default": "",
           "document": "Origin-pull timeout configuration",
+          "example": "无",
           "member": "OriginPullTimeout",
           "name": "OriginPullTimeout",
           "required": false,
@@ -8583,6 +8867,7 @@
         {
           "default": "",
           "document": "Origin access authentication for S3 bucket",
+          "example": "无",
           "member": "AwsPrivateAccess",
           "name": "AwsPrivateAccess",
           "required": false,
@@ -8591,6 +8876,7 @@
         {
           "default": "",
           "document": "UA blocklist/allowlist Configuration",
+          "example": "无",
           "member": "UserAgentFilter",
           "name": "UserAgentFilter",
           "required": false,
@@ -8599,6 +8885,7 @@
         {
           "default": "",
           "document": "Access control",
+          "example": "无",
           "member": "AccessControl",
           "name": "AccessControl",
           "required": false,
@@ -8607,6 +8894,7 @@
         {
           "default": "",
           "document": "URL redirect configuration",
+          "example": "无",
           "member": "UrlRedirect",
           "name": "UrlRedirect",
           "required": false,
@@ -8615,6 +8903,7 @@
         {
           "default": "",
           "document": "Access port configuration",
+          "example": "[80,8080]",
           "member": "int64",
           "name": "AccessPort",
           "required": false,
@@ -8623,6 +8912,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection advanced configuration (allowlist feature)",
+          "example": "无",
           "member": "AdvancedAuthentication",
           "name": "AdvancedAuthentication",
           "required": false,
@@ -8631,6 +8921,7 @@
         {
           "default": "",
           "document": "Origin-pull authentication advanced configuration (allowlist feature)",
+          "example": "无",
           "member": "OriginAuthentication",
           "name": "OriginAuthentication",
           "required": false,
@@ -8639,6 +8930,7 @@
         {
           "default": "",
           "document": "IPv6 access configuration",
+          "example": "无",
           "member": "Ipv6Access",
           "name": "Ipv6Access",
           "required": false,
@@ -8647,6 +8939,7 @@
         {
           "default": "",
           "document": "Offline cache",
+          "example": "无",
           "member": "OfflineCache",
           "name": "OfflineCache",
           "required": false,
@@ -8655,8 +8948,18 @@
         {
           "default": "",
           "document": "Merging pull requests",
+          "example": "无",
           "member": "OriginCombine",
           "name": "OriginCombine",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.",
+          "example": "无",
+          "member": "Quic",
+          "name": "Quic",
           "required": false,
           "type": "object"
         }
@@ -9030,6 +9333,32 @@
         }
       ],
       "usage": "out"
+    },
+    "WafSubRuleStatus": {
+      "document": "WAF sub-rule status",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-rule status. Valid values: `on` and `off`.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of rule IDs",
+          "example": "[1,2]",
+          "member": "int64",
+          "name": "SubIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "WebpAdapter": {
       "document": "Image optimization - `WebpAdapter` configuration",

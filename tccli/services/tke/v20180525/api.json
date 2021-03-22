@@ -812,6 +812,7 @@
         {
           "default": "",
           "document": "Whether IPVS is enabled",
+          "example": "false",
           "member": "bool",
           "name": "IPVS",
           "required": false,
@@ -821,6 +822,7 @@
         {
           "default": "",
           "document": "Whether auto-scaling is enabled for nodes in the cluster (Enabling this function is not supported when you create a cluster)",
+          "example": "false",
           "member": "bool",
           "name": "AsEnabled",
           "required": false,
@@ -830,6 +832,7 @@
         {
           "default": "",
           "document": "Type of runtime component used by the cluster. The types include \"docker\" and \"containerd\". Default value: docker",
+          "example": "docker",
           "member": "string",
           "name": "ContainerRuntime",
           "required": false,
@@ -839,6 +842,7 @@
         {
           "default": "",
           "document": "NodeName type for a node in a cluster (This includes the two forms of **hostname** and **lan-ip**, with the default as **lan-ip**. If **hostname** is used, you need to set the HostName parameter when creating a node, and the InstanceName needs to be the same as the HostName.)",
+          "example": "lan-ip",
           "member": "string",
           "name": "NodeNameType",
           "required": false,
@@ -848,6 +852,7 @@
         {
           "default": "",
           "document": "Cluster custom parameter",
+          "example": "无",
           "member": "ClusterExtraArgs",
           "name": "ExtraArgs",
           "required": false,
@@ -857,6 +862,7 @@
         {
           "default": "",
           "document": "Cluster network type, which can be GR (Global Router) or VPC-CNI. The default value is GR.",
+          "example": "GR",
           "member": "string",
           "name": "NetworkType",
           "required": false,
@@ -866,6 +872,7 @@
         {
           "default": "",
           "document": "Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.",
+          "example": "false",
           "member": "bool",
           "name": "IsNonStaticIpMode",
           "required": false,
@@ -875,6 +882,7 @@
         {
           "default": "",
           "document": "Indicates whether to enable cluster deletion protection.",
+          "example": "false",
           "member": "bool",
           "name": "DeletionProtection",
           "required": false,
@@ -884,6 +892,7 @@
         {
           "default": "",
           "document": "Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:\n`iptables`: do not set IPVS and KubeProxyMode.\n`ipvs`: set IPVS to `true` and do not set KubeProxyMode.\n`ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.\nThe following conditions are required to use ipvs-bpf network mode:\n1. The cluster version must be v1.14 or later.\n2. The system image must be Tencent Linux 2.4.",
+          "example": "kube-proxy-eni",
           "member": "string",
           "name": "KubeProxyMode",
           "required": false,
@@ -893,6 +902,7 @@
         {
           "default": "",
           "document": "Indicates whether to enable auditing",
+          "example": "false",
           "member": "bool",
           "name": "AuditEnabled",
           "required": false,
@@ -902,6 +912,7 @@
         {
           "default": "",
           "document": "Specifies the ID of logset to which the audit logs are uploaded.",
+          "example": "无",
           "member": "string",
           "name": "AuditLogsetId",
           "required": false,
@@ -911,6 +922,7 @@
         {
           "default": "",
           "document": "Specifies the ID of topic to which the audit logs are uploaded.",
+          "example": "无",
           "member": "string",
           "name": "AuditLogTopicId",
           "required": false,
@@ -920,6 +932,7 @@
         {
           "default": "",
           "document": "Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.",
+          "example": "tke-direct-eni",
           "member": "string",
           "name": "VpcCniType",
           "required": false,
@@ -929,10 +942,31 @@
         {
           "default": "",
           "document": "Runtime version",
+          "example": "1.16.3",
           "member": "string",
           "name": "RuntimeVersion",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Indicates whether to enable the custom mode for the node’s pod CIDR range",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableCustomizedPodCIDR",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The basic number of Pods in custom mode",
+          "example": "16",
+          "member": "int64",
+          "name": "BasePodNumber",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1307,6 +1341,7 @@
         {
           "default": "",
           "document": "kube-apiserver custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"max-requests-inflight=500\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"].\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "[\"max-requests-inflight=200\"]",
           "member": "string",
           "name": "KubeAPIServer",
           "required": false,
@@ -1316,6 +1351,7 @@
         {
           "default": "",
           "document": "kube-controller-manager custom parameter\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "[\"kube-api-burst=500\"]",
           "member": "string",
           "name": "KubeControllerManager",
           "required": false,
@@ -1325,8 +1361,19 @@
         {
           "default": "",
           "document": "kube-scheduler custom parameter\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "[\"kube-api-burst=500\"]",
           "member": "string",
           "name": "KubeScheduler",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "etcd custom parameter, which is only effective for self-deployed cluster.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "[\"node-data-dir=/data\"]",
+          "member": "string",
+          "name": "Etcd",
           "required": false,
           "type": "list",
           "value_allowed_null": true

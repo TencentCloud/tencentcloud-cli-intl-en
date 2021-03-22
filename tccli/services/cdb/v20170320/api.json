@@ -49,7 +49,7 @@
       "output": "CreateDBImportJobResponse"
     },
     "CreateDBInstanceHour": {
-      "document": "This API is used to create a pay-as-you-go TencentDB instance (which can be a primary, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.\n\nThis is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is 1 and `TaskStatus` is 0, the instance has been successfully delivered.\n\n1. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance specifications first and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the supported instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, and v5.7 are supported;\n4. primary instances, read-only instances, and disaster recovery instances can be created;\n5. If `Port`, `ParamList`, or `Password` is set in the input parameters, the instance will be initialized.",
+      "document": "This API is used to create pay-as-you-go TencentDB instances (which can be source instances, disaster recovery instances, or read-only replicas) by passing in information such as instance specifications, MySQL version number, and instance quantity.\n\nThis is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instances have been successfully delivered.\n\n1. Use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances;\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months;\n3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported;\n4. Source instances, disaster recovery instances, and read-only replicas can be created;\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance will be initialized.",
       "input": "CreateDBInstanceHourRequest",
       "name": "Creates pay-as-you-go TencentDB instance",
       "output": "CreateDBInstanceHourResponse"
@@ -753,6 +753,7 @@
         {
           "default": "",
           "document": "Security group ID.",
+          "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -761,10 +762,20 @@
         {
           "default": "",
           "document": "List of instance IDs, which is an array of one or more instance IDs.",
+          "example": "[\"cdb-eb2w7dto\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter takes effect only when the IDs of read-only replicas are passed in. If this parameter is set to `False` or left empty, the security group will be bound to the RO groups of these read-only replicas. If this parameter is set to `True`, the security group will be bound to the read-only replicas themselves.",
+          "example": "False",
+          "member": "bool",
+          "name": "ForReadonlyInstance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1500,6 +1511,7 @@
         {
           "default": "",
           "document": "ID of the instance to be cloned from",
+          "example": "cdb-***",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1508,6 +1520,7 @@
         {
           "default": "",
           "document": "To roll back the cloned instance to a specific point in time, set this parameter to a value in the format of \"yyyy-mm-dd hh:mm:ss\".",
+          "example": "2020-01-28 20:47:26",
           "member": "string",
           "name": "SpecifiedRollbackTime",
           "required": false,
@@ -1516,6 +1529,7 @@
         {
           "default": "",
           "document": "To roll back the cloned instance to a specific physical backup file, set this parameter to the ID of the physical backup file. The ID can be obtained by the [DescribeBackups](https://intl.cloud.tencent.com/document/api/236/15842?from_cn_redirect=1) API.",
+          "example": "0",
           "member": "int64",
           "name": "SpecifiedBackupId",
           "required": false,
@@ -1524,6 +1538,7 @@
         {
           "default": "",
           "document": "VPC ID, which can be obtained by the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API. If this parameter is left empty, the classic network will be used by default.",
+          "example": "vpc-***",
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
@@ -1532,6 +1547,7 @@
         {
           "default": "",
           "document": "VPC subnet ID, which can be obtained by the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API. If `UniqVpcId` is set, `UniqSubnetId` will be required.",
+          "example": "subnet-***",
           "member": "string",
           "name": "UniqSubnetId",
           "required": false,
@@ -1540,6 +1556,7 @@
         {
           "default": "",
           "document": "Memory of the cloned instance in MB, which should be equal to (by default) or larger than that of the original instance",
+          "example": "1000",
           "member": "int64",
           "name": "Memory",
           "required": false,
@@ -1548,6 +1565,7 @@
         {
           "default": "",
           "document": "Disk capacity of the cloned instance in GB, which should be equal to (by default) or larger than that of the original instance",
+          "example": "50",
           "member": "int64",
           "name": "Volume",
           "required": false,
@@ -1556,6 +1574,7 @@
         {
           "default": "",
           "document": "Name of the cloned instance",
+          "example": "***",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -1564,6 +1583,7 @@
         {
           "default": "",
           "document": "Security group parameter, which can be obtained by the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API",
+          "example": "[]",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -1572,6 +1592,7 @@
         {
           "default": "",
           "document": "Information of the cloned instance tag",
+          "example": "[]",
           "member": "TagInfo",
           "name": "ResourceTags",
           "required": false,
@@ -1580,6 +1601,7 @@
         {
           "default": "",
           "document": "CPU core quantity of the cloned instance, which is equal to or larger than that of the original instance",
+          "example": "1",
           "member": "int64",
           "name": "Cpu",
           "required": false,
@@ -1588,6 +1610,7 @@
         {
           "default": "",
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "ProtectMode",
           "required": false,
@@ -1596,6 +1619,7 @@
         {
           "default": "",
           "document": "Multi-AZ or single-AZ. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "DeployMode",
           "required": false,
@@ -1604,6 +1628,7 @@
         {
           "default": "",
           "document": "Availability zone information of replica 1 of the cloned instance, which is the same as the value of `Zone` of the original instance by default",
+          "example": "‘’",
           "member": "string",
           "name": "SlaveZone",
           "required": false,
@@ -1612,6 +1637,7 @@
         {
           "default": "",
           "document": "Availability zone information of replica 2 of the cloned instance, \nwhich is left empty by default. Specify this parameter when cloning a strong sync source instance.",
+          "example": "‘’",
           "member": "string",
           "name": "BackupZone",
           "required": false,
@@ -1619,11 +1645,21 @@
         },
         {
           "default": "",
-          "document": "Type of the cloned instance. Valid values: `HA` (High-Availability Edition), `EXCLUSIVE` (dedicated). Default value: `HA`.",
+          "document": "Resource isolation type of the clone. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance). Default value: `UNIVERSAL`.",
+          "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of nodes of the clone. If this parameter is set to `3` or the `BackupZone` parameter is specified, the clone will have three nodes. If this parameter is set to `2` or left empty, the clone will have two nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceNodes",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1718,6 +1754,7 @@
         {
           "default": "",
           "document": "Number of instances. Value range: 1-100. Default value: 1.",
+          "example": "1",
           "member": "int64",
           "name": "GoodsNum",
           "required": true,
@@ -1726,6 +1763,7 @@
         {
           "default": "",
           "document": "Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.",
+          "example": "1000",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -1734,6 +1772,7 @@
         {
           "default": "",
           "document": "Instance disk size in GB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.",
+          "example": "50",
           "member": "int64",
           "name": "Volume",
           "required": true,
@@ -1741,7 +1780,8 @@
         },
         {
           "default": "",
-          "document": "MySQL version. Valid values: 5.5, 5.6, 5.7. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.",
+          "document": "MySQL version. Valid values: `5.5`, `5.6`, `5.7`, `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.",
+          "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
           "required": false,
@@ -1750,6 +1790,7 @@
         {
           "default": "",
           "document": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.",
+          "example": "vpc-***",
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
@@ -1758,6 +1799,7 @@
         {
           "default": "",
           "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.",
+          "example": "subnet-***",
           "member": "string",
           "name": "UniqSubnetId",
           "required": false,
@@ -1766,6 +1808,7 @@
         {
           "default": "",
           "document": "Project ID. If this is left empty, the default project will be used. Please use the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API to get the project ID.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1774,6 +1817,7 @@
         {
           "default": "",
           "document": "AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.",
+          "example": "ap-beijing-3",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -1782,6 +1826,7 @@
         {
           "default": "",
           "document": "Instance ID, which is required and the same as the primary instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance IDs.",
+          "example": "cdb-***",
           "member": "string",
           "name": "MasterInstanceId",
           "required": false,
@@ -1790,6 +1835,7 @@
         {
           "default": "",
           "document": "Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.",
+          "example": "master",
           "member": "string",
           "name": "InstanceRole",
           "required": false,
@@ -1798,6 +1844,7 @@
         {
           "default": "",
           "document": "AZ information of the primary instance, which is required for purchasing disaster recovery instances.",
+          "example": "ap-beijing",
           "member": "string",
           "name": "MasterRegion",
           "required": false,
@@ -1806,6 +1853,7 @@
         {
           "default": "",
           "document": "Custom port. Value range: [1024-65535].",
+          "example": "3306",
           "member": "int64",
           "name": "Port",
           "required": false,
@@ -1814,6 +1862,7 @@
         {
           "default": "",
           "document": "Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "your_password",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -1822,6 +1871,7 @@
         {
           "default": "",
           "document": "List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.",
+          "example": "[]",
           "member": "ParamInfo",
           "name": "ParamList",
           "required": false,
@@ -1830,6 +1880,7 @@
         {
           "default": "",
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "0",
           "member": "int64",
           "name": "ProtectMode",
           "required": false,
@@ -1838,6 +1889,7 @@
         {
           "default": "",
           "document": "Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "0",
           "member": "int64",
           "name": "DeployMode",
           "required": false,
@@ -1846,6 +1898,7 @@
         {
           "default": "",
           "document": "AZ information of secondary database 1, which is the `Zone` value by default. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "ap-beijing-3",
           "member": "string",
           "name": "SlaveZone",
           "required": false,
@@ -1854,6 +1907,7 @@
         {
           "default": "",
           "document": "Availability zone information of replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.",
+          "example": "ap-beijing-4",
           "member": "string",
           "name": "BackupZone",
           "required": false,
@@ -1862,6 +1916,7 @@
         {
           "default": "",
           "document": "Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.",
+          "example": "[]",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -1870,6 +1925,7 @@
         {
           "default": "",
           "document": "Read-only instance information. This parameter must be passed in when purchasing read-only instances.",
+          "example": "null",
           "member": "RoGroup",
           "name": "RoGroup",
           "required": false,
@@ -1878,6 +1934,7 @@
         {
           "default": "",
           "document": "This field is meaningless when purchasing pay-as-you-go instances.",
+          "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": false,
@@ -1886,6 +1943,7 @@
         {
           "default": "",
           "document": "Instance name.",
+          "example": "***",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -1894,6 +1952,7 @@
         {
           "default": "",
           "document": "Instance tag information.",
+          "example": "[]",
           "member": "TagInfo",
           "name": "ResourceTags",
           "required": false,
@@ -1902,6 +1961,7 @@
         {
           "default": "",
           "document": "Placement group ID.",
+          "example": "ps-7t11vrwf",
           "member": "string",
           "name": "DeployGroupId",
           "required": false,
@@ -1910,6 +1970,7 @@
         {
           "default": "",
           "document": "A string that is used to guarantee the idempotency of the request, which is generated by the user and must be unique in each request on the same day. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "example": "*******",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -1917,7 +1978,8 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: HA (High-Availability Edition), BASIC (Basic Edition). If this parameter is not specified, High-Availability Edition will be used by default.",
+          "document": "Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.",
+          "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
           "required": false,
@@ -1926,6 +1988,7 @@
         {
           "default": "",
           "document": "Parameter template ID.",
+          "example": "0",
           "member": "int64",
           "name": "ParamTemplateId",
           "required": false,
@@ -1934,10 +1997,38 @@
         {
           "default": "",
           "document": "The array of alarm policy IDs.",
+          "example": "[]",
           "member": "int64",
           "name": "AlarmPolicyList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of nodes of the instance. To purchase a read-only replica or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceNodes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of CPU cores of the instance. If this parameter is left empty, the number of CPU cores depends on the `Memory` value.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes).",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoSyncFlag",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3738,10 +3829,20 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-eb2w7dto",
           "member": "string",
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter takes effect only when the ID of read-only replica is passed in. If this parameter is set to `False` or left empty, the security groups bound with the RO group of the read-only replica will be queried. If this parameter is set to `True`, the security groups bound with the read-only replica itself will be queried.",
+          "example": "False",
+          "member": "bool",
+          "name": "ForReadonlyInstance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -5416,6 +5517,7 @@
         {
           "default": "",
           "document": "Security group ID.",
+          "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -5424,10 +5526,20 @@
         {
           "default": "",
           "document": "List of instance IDs, which is an array of one or more instance IDs.",
+          "example": "[\"cdb-eb2w7dto\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter takes effect only when the IDs of read-only replicas are passed in. If this parameter is set to `False` or left empty, the security group will be unbound from the RO groups of these read-only replicas. If this parameter is set to `True`, the security group will be unbound from the read-only replicas themselves.",
+          "example": "False",
+          "member": "bool",
+          "name": "ForReadonlyInstance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -5653,6 +5765,7 @@
         {
           "default": "",
           "document": "Policy, which can be ACCEPT or DROP",
+          "example": "ACCEPT",
           "member": "string",
           "name": "Action",
           "required": false,
@@ -5662,6 +5775,7 @@
         {
           "default": "",
           "document": "Source IP or IP range, such as 192.168.0.0/16",
+          "example": "192.168.0.0/16",
           "member": "string",
           "name": "CidrIp",
           "required": false,
@@ -5671,6 +5785,7 @@
         {
           "default": "",
           "document": "Port",
+          "example": "ALL",
           "member": "string",
           "name": "PortRange",
           "required": false,
@@ -5680,6 +5795,7 @@
         {
           "default": "",
           "document": "Network protocol. UDP and TCP are supported.",
+          "example": "ALL",
           "member": "string",
           "name": "IpProtocol",
           "required": false,
@@ -5689,9 +5805,20 @@
         {
           "default": "",
           "document": "The direction of the rule, which is INPUT for inbound rules",
+          "example": "‘’",
           "member": "string",
           "name": "Dir",
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description",
+          "example": "放通内网",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -5761,6 +5888,7 @@
         {
           "default": "",
           "document": "Public network access status. Value range: 0 (not enabled), 1 (enabled), 2 (disabled)",
+          "example": "0",
           "member": "int64",
           "name": "WanStatus",
           "required": true,
@@ -5770,6 +5898,7 @@
         {
           "default": "",
           "document": "AZ information",
+          "example": "ap-beijing-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -5779,6 +5908,7 @@
         {
           "default": "",
           "document": "Initialization flag. Value range: 0 (not initialized), 1 (initialized)",
+          "example": "1",
           "member": "int64",
           "name": "InitFlag",
           "required": true,
@@ -5788,6 +5918,7 @@
         {
           "default": "",
           "document": "VIP information of a read-only instance. This field is exclusive to read-only instances where read-only access is enabled separately\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
           "member": "RoVipInfo",
           "name": "RoVipInfo",
           "required": true,
@@ -5797,6 +5928,7 @@
         {
           "default": "",
           "document": "Memory capacity in MB",
+          "example": "1000",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -5806,6 +5938,7 @@
         {
           "default": "",
           "document": "Instance status. Value range: 0 (creating), 1 (running), 4 (isolating), 5 (isolated)",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -5815,6 +5948,7 @@
         {
           "default": "",
           "document": "VPC ID, such as 51102",
+          "example": "51102",
           "member": "int64",
           "name": "VpcId",
           "required": true,
@@ -5824,6 +5958,7 @@
         {
           "default": "",
           "document": "Information of a secondary server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
           "member": "SlaveInfo",
           "name": "SlaveInfo",
           "required": true,
@@ -5833,6 +5968,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "cdb-***",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5842,6 +5978,7 @@
         {
           "default": "",
           "document": "Disk capacity in GB",
+          "example": "50",
           "member": "int64",
           "name": "Volume",
           "required": true,
@@ -5851,6 +5988,7 @@
         {
           "default": "",
           "document": "Auto-renewal flag. Value range: 0 (auto-renewal not enabled), 1 (auto-renewal enabled), 2 (auto-renewal disabled)",
+          "example": "1",
           "member": "int64",
           "name": "AutoRenew",
           "required": true,
@@ -5860,6 +5998,7 @@
         {
           "default": "",
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync)",
+          "example": "0",
           "member": "int64",
           "name": "ProtectMode",
           "required": true,
@@ -5869,6 +6008,7 @@
         {
           "default": "",
           "document": "Details of a read-only group\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "RoGroup",
           "name": "RoGroups",
           "required": true,
@@ -5878,6 +6018,7 @@
         {
           "default": "",
           "document": "Subnet ID, such as 2333",
+          "example": "2333",
           "member": "int64",
           "name": "SubnetId",
           "required": true,
@@ -5887,6 +6028,7 @@
         {
           "default": "",
           "document": "Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)",
+          "example": "1",
           "member": "int64",
           "name": "InstanceType",
           "required": true,
@@ -5896,6 +6038,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -5905,6 +6048,7 @@
         {
           "default": "",
           "document": "Region information",
+          "example": "ap-beijing",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -5914,6 +6058,7 @@
         {
           "default": "",
           "document": "Instance expiration time",
+          "example": "2020-09-29 08:37:33",
           "member": "datetime",
           "name": "DeadlineTime",
           "required": true,
@@ -5923,6 +6068,7 @@
         {
           "default": "",
           "document": "AZ deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ)",
+          "example": "0",
           "member": "int64",
           "name": "DeployMode",
           "required": true,
@@ -5932,6 +6078,7 @@
         {
           "default": "",
           "document": "Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed",
+          "example": "0",
           "member": "int64",
           "name": "TaskStatus",
           "required": true,
@@ -5941,6 +6088,7 @@
         {
           "default": "",
           "document": "Details of a primary instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
           "member": "MasterInfo",
           "name": "MasterInfo",
           "required": false,
@@ -5950,6 +6098,7 @@
         {
           "default": "",
           "document": "Instance type",
+          "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
           "required": true,
@@ -5959,6 +6108,7 @@
         {
           "default": "",
           "document": "Kernel version",
+          "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
           "required": true,
@@ -5968,6 +6118,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "******",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -5977,6 +6128,7 @@
         {
           "default": "",
           "document": "Details of a disaster recovery instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "DrInfo",
           "name": "DrInfo",
           "required": true,
@@ -5986,6 +6138,7 @@
         {
           "default": "",
           "document": "Public domain name",
+          "example": "''",
           "member": "string",
           "name": "WanDomain",
           "required": true,
@@ -5995,6 +6148,7 @@
         {
           "default": "",
           "document": "Public network port number",
+          "example": "0",
           "member": "int64",
           "name": "WanPort",
           "required": true,
@@ -6004,6 +6158,7 @@
         {
           "default": "",
           "document": "Billing type",
+          "example": "1",
           "member": "int64",
           "name": "PayType",
           "required": true,
@@ -6013,6 +6168,7 @@
         {
           "default": "",
           "document": "Instance creation time",
+          "example": "2020-08-29 08:37:33",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -6022,6 +6178,7 @@
         {
           "default": "",
           "document": "Instance IP",
+          "example": "1.2.3.4",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -6031,6 +6188,7 @@
         {
           "default": "",
           "document": "Port number",
+          "example": "3306",
           "member": "int64",
           "name": "Vport",
           "required": true,
@@ -6040,6 +6198,7 @@
         {
           "default": "",
           "document": "Lock flag",
+          "example": "0",
           "member": "int64",
           "name": "CdbError",
           "required": true,
@@ -6049,6 +6208,7 @@
         {
           "default": "",
           "document": "VPC descriptor, such as \"vpc-5v8wn9mg\"",
+          "example": "vpc-5v8wn9mg",
           "member": "string",
           "name": "UniqVpcId",
           "required": true,
@@ -6058,6 +6218,7 @@
         {
           "default": "",
           "document": "Subnet descriptor, such as \"subnet-1typ0s7d\"",
+          "example": "subnet-1typ0s7d",
           "member": "string",
           "name": "UniqSubnetId",
           "required": true,
@@ -6067,6 +6228,7 @@
         {
           "default": "",
           "document": "Physical ID",
+          "example": "''",
           "member": "string",
           "name": "PhysicalId",
           "required": true,
@@ -6076,6 +6238,7 @@
         {
           "default": "",
           "document": "Number of cores",
+          "example": "1",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -6085,6 +6248,7 @@
         {
           "default": "",
           "document": "Queries per second",
+          "example": "1000",
           "member": "int64",
           "name": "Qps",
           "required": true,
@@ -6094,6 +6258,7 @@
         {
           "default": "",
           "document": "AZ name",
+          "example": "北京三区",
           "member": "string",
           "name": "ZoneName",
           "required": true,
@@ -6103,6 +6268,7 @@
         {
           "default": "",
           "document": "Physical machine model\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "‘’",
           "member": "string",
           "name": "DeviceClass",
           "required": true,
@@ -6112,6 +6278,7 @@
         {
           "default": "",
           "document": "Placement group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "‘’",
           "member": "string",
           "name": "DeployGroupId",
           "required": true,
@@ -6121,8 +6288,19 @@
         {
           "default": "",
           "document": "AZ ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "800003",
           "member": "int64",
           "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of nodes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceNodes",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -6736,6 +6914,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-eb2w7dto",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6744,10 +6923,20 @@
         {
           "default": "",
           "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
+          "example": "[\"sg-ajr1jzgj\\r\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter takes effect only when the ID of read-only replica is passed in. If this parameter is set to `False` or left empty, the security groups bound with the RO group of the read-only replicas will be modified. If this parameter is set to `True`, the security groups bound with the read-only replica itself will be modified.",
+          "example": "False",
+          "member": "bool",
+          "name": "ForReadonlyInstance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -7302,6 +7491,7 @@
         {
           "default": "",
           "document": "Policy, which can be ACCEPT or DROP",
+          "example": "ACCEPT",
           "member": "string",
           "name": "Action",
           "required": false,
@@ -7311,6 +7501,7 @@
         {
           "default": "",
           "document": "Destination IP or IP range, such as 172.16.0.0/12",
+          "example": "0.0.0.0/0",
           "member": "string",
           "name": "CidrIp",
           "required": false,
@@ -7320,6 +7511,7 @@
         {
           "default": "",
           "document": "Port or port range",
+          "example": "ALL",
           "member": "string",
           "name": "PortRange",
           "required": false,
@@ -7329,6 +7521,7 @@
         {
           "default": "",
           "document": "Network protocol. UDP and TCP are supported",
+          "example": "ALL",
           "member": "string",
           "name": "IpProtocol",
           "required": false,
@@ -7338,9 +7531,20 @@
         {
           "default": "",
           "document": "The direction of the rule, which is OUTPUT for inbound rules",
+          "example": "‘’",
           "member": "string",
           "name": "Dir",
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description",
+          "example": "放通内网",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -7928,186 +8132,232 @@
         {
           "default": "",
           "document": "Master instance ID corresponding to the RO group",
+          "example": "cdb-***",
           "member": "string",
           "name": "MasterInstanceId",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance status in the RO group. Value range: online, offline",
+          "example": "online",
           "member": "string",
           "name": "RoStatus",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Last deactivation time of a RO instance in the RO group",
+          "example": "''",
           "member": "string",
           "name": "OfflineTime",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance weight in the RO group",
+          "example": "1",
           "member": "int64",
           "name": "Weight",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance region name, such as ap-shanghai",
+          "example": "ap-shanghai",
           "member": "string",
           "name": "Region",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Name of RO AZ, such as ap-shanghai-1",
+          "example": "ap-shanghai-1",
           "member": "string",
           "name": "Zone",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance ID in the format of cdbro-c1nl9rpv",
+          "example": "cdbro-***",
           "member": "string",
           "name": "InstanceId",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance status. Value range: 0 (creating), 1 (running), 4 (deleting)",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)",
+          "example": "3",
           "member": "int64",
           "name": "InstanceType",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance name",
+          "example": "''",
           "member": "string",
           "name": "InstanceName",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Pay-as-you-go billing status. Value range: 1 (normal), 2 (in arrears)",
+          "example": "1",
           "member": "int64",
           "name": "HourFeeStatus",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance task status. Value range: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - activating secondary <br>4 - public network access enabled <br>5 - batch operation in progress <br>6 - rolling back <br>7 - public network access not enabled <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built instance <br>13 - dropping table <br>14 - creating and syncing disaster recovery instance",
+          "example": "0",
           "member": "int64",
           "name": "TaskStatus",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance memory size in MB",
+          "example": "1000",
           "member": "int64",
           "name": "Memory",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance disk size in GB",
+          "example": "1",
           "member": "int64",
           "name": "Volume",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Queries per second",
+          "example": "0",
           "member": "int64",
           "name": "Qps",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Private IP address of the RO instance",
+          "example": "1.2.3.4",
           "member": "string",
           "name": "Vip",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Access port of the RO instance",
+          "example": "3306",
           "member": "int64",
           "name": "Vport",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "VPC ID of the RO instance",
+          "example": "246100",
           "member": "int64",
           "name": "VpcId",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "VPC subnet ID of the RO instance",
+          "example": "995192",
           "member": "int64",
           "name": "SubnetId",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance specification description. Value range: CUSTOM",
+          "example": "CUSTOM",
           "member": "string",
           "name": "DeviceType",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Database engine version of the RO instance. Value range: 5.1, 5.5, 5.6, 5.7",
+          "document": "Database engine version of the read-only replica. Valid values: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`",
+          "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance expiration time in the format of yyyy-mm-dd hh:mm:ss. If it is a pay-as-you-go instance, the value of this field is 0000-00-00 00:00:00",
+          "example": "‘’",
           "member": "string",
           "name": "DeadlineTime",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "RO instance billing method. Value range: 0 (monthly subscribed), 1 (pay-as-you-go), 2 (monthly postpaid)",
+          "example": "0",
           "member": "int64",
           "name": "PayType",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
