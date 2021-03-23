@@ -1906,7 +1906,7 @@
         },
         {
           "default": "",
-          "document": "Availability zone information of replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.",
+          "document": "The availability zone information of Replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.",
           "example": "ap-beijing-4",
           "member": "string",
           "name": "BackupZone",

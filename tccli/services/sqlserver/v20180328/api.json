@@ -1294,6 +1294,7 @@
         {
           "default": "",
           "document": "Database name",
+          "example": "DBName",
           "member": "string",
           "name": "DBName",
           "required": true,
@@ -1302,28 +1303,31 @@
         },
         {
           "default": "",
-          "document": "Character set. Valid values: Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, Chinese_PRC_BIN, Chinese_Taiwan_Stroke_CI_AS, SQL_Latin1_General_CP1_CI_AS, and SQL_Latin1_General_CP1_CS_AS. If this parameter is left empty, `Chinese_PRC_CI_AS` will be used by default",
+          "document": "Character set, which can be queried by the `DescribeDBCharsets` API. Default value: `Chinese_PRC_CI_AS`.",
+          "example": "Chinese_PRC_CI_AS",
           "member": "string",
           "name": "Charset",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Database account permission information",
+          "example": "Accounts",
           "member": "AccountPrivilege",
           "name": "Accounts",
-          "required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Remarks",
+          "example": "Remark",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3994,7 +3998,7 @@
         },
         {
           "default": "",
-          "document": "Migration task status,",
+          "document": "Migration task status. Valid values: `2` (Creation completed), `7` (Importing full backups), `8` (Waiting for incremental backups), `9` (Import success), `10` (Import failure), `12` (Importing incremental backups).",
           "example": "2",
           "member": "int64",
           "name": "Status",

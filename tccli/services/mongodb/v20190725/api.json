@@ -43,7 +43,7 @@
       "output": "DescribeClientConnectionsResponse"
     },
     "DescribeDBBackups": {
-      "document": "This API is used to query the list of instance backups. Currently, only backups in the last 7 days can be queried.",
+      "document": "This API is used to query the list of instance backups. Currently, only backups created in the last seven days can be queried.",
       "input": "DescribeDBBackupsRequest",
       "name": "Queries the list of instance backups",
       "output": "DescribeDBBackupsResponse"
@@ -792,7 +792,7 @@
       "members": [
         {
           "default": "",
-          "document": "Async request ID",
+          "document": "Async task ID, which is returned by APIs related to async tasks, such as `CreateBackupDBInstance`.",
           "member": "string",
           "name": "AsyncRequestId",
           "required": true,
@@ -941,6 +941,30 @@
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup mode. Valid values: `0` (logical backup), `1` (physical backup), `2` (both modes). Default value: `0`.",
+          "member": "int64",
+          "name": "BackupMethod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Maximum value: `100`. If this parameter is left empty, all entries will be returned.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset, starting from `0`. Default value: `0`.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1054,7 +1078,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (valid), -2 (expired)",
+          "document": "Instance status. Valid values: `0` (to be initialized), `1` (executing task), `2` (running), `-2` (isolated monthly-subscribed instance), `-3` (isolated pay-as-you-go instance)",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -1131,6 +1155,14 @@
           "name": "SearchKey",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag information",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1167,6 +1199,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
+          "example": "cmgo-a3bm93hf",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1175,6 +1208,7 @@
         {
           "default": "",
           "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "example": "2020-04-20 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -1183,6 +1217,7 @@
         {
           "default": "",
           "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "example": "2020-04-20 22:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -1191,6 +1226,7 @@
         {
           "default": "",
           "document": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.",
+          "example": "100",
           "member": "uint64",
           "name": "SlowMS",
           "required": true,
@@ -1199,6 +1235,7 @@
         {
           "default": "",
           "document": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1207,10 +1244,20 @@
         {
           "default": "",
           "document": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.",
+          "example": "json",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1247,6 +1294,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
+          "example": "cmgo-a3bm93hf",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1255,6 +1303,7 @@
         {
           "default": "",
           "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "example": "2020-04-20 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -1263,6 +1312,7 @@
         {
           "default": "",
           "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "example": "2020-04-20 22:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -1271,6 +1321,7 @@
         {
           "default": "",
           "document": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.",
+          "example": "100",
           "member": "uint64",
           "name": "SlowMS",
           "required": true,
@@ -1279,6 +1330,7 @@
         {
           "default": "",
           "document": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1287,10 +1339,20 @@
         {
           "default": "",
           "document": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.",
+          "example": "json",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1580,7 +1642,7 @@
       "members": [
         {
           "default": "",
-          "document": "Purchased usage period (in month). Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36. Default value: 1.",
+          "document": "Purchased usage period (in month). Valid values: `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36`. Default value: `1`.\n(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)",
           "member": "int64",
           "name": "Period",
           "required": false,
@@ -1589,7 +1651,7 @@
         },
         {
           "default": "",
-          "document": "Auto-renewal flag. Valid values:\nNOTIFY_AND_AUTO_RENEW: notify expiration and renew automatically\nNOTIFY_AND_MANUAL_RENEW: notify expiration but not renew automatically\nDISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify expiration nor renew automatically\n\nDefault value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.",
+          "document": "Auto-renewal flag. Valid values:\n`NOTIFY_AND_AUTO_RENEW`: notify expiration and renew automatically\n`NOTIFY_AND_MANUAL_RENEW`: notify expiration but not renew automatically\n`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify expiration nor renew automatically\n\nDefault value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.\n(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
