@@ -2148,6 +2148,14 @@
           "name": "ForceRestart",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to reinstall",
+          "member": "bool",
+          "name": "ForceUpdate",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

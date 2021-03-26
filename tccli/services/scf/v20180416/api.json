@@ -72,6 +72,12 @@
       "name": "Deletes a trigger",
       "output": "DeleteTriggerResponse"
     },
+    "GetAccount": {
+      "document": "This API is used to get the account information.",
+      "input": "GetAccountRequest",
+      "name": "Gets account information",
+      "output": "GetAccountResponse"
+    },
     "GetAlias": {
       "document": "This API is used to get the alias details such as the name, description, version, and routing information.",
       "input": "GetAliasRequest",
@@ -1794,6 +1800,41 @@
       ],
       "usage": "both"
     },
+    "GetAccountRequest": {
+      "document": "GetAccount request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetAccountResponse": {
+      "document": "GetAccount response structure.",
+      "members": [
+        {
+          "document": "Namespace usage information",
+          "example": "无",
+          "member": "UsageInfo",
+          "name": "AccountUsage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Namespace limit information",
+          "example": "无",
+          "member": "LimitsInfo",
+          "name": "AccountLimit",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetAliasRequest": {
       "document": "GetAlias request structure.",
       "members": [
@@ -2779,6 +2820,30 @@
       ],
       "usage": "both"
     },
+    "LimitsInfo": {
+      "document": "Limit information",
+      "members": [
+        {
+          "default": "",
+          "document": "Limit of namespace quantity",
+          "member": "int64",
+          "name": "NamespacesCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace limit information",
+          "member": "NamespaceLimit",
+          "name": "Namespace",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ListAliasesRequest": {
       "document": "ListAliases request structure.",
       "members": [
@@ -3543,6 +3608,135 @@
       ],
       "usage": "out"
     },
+    "NamespaceLimit": {
+      "document": "Namespace limit",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of functions",
+          "member": "int64",
+          "name": "FunctionsCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger information",
+          "member": "TriggerCount",
+          "name": "Trigger",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Concurrency",
+          "member": "int64",
+          "name": "ConcurrentExecutions",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timeout limit",
+          "member": "int64",
+          "name": "TimeoutLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Test event limit\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TestModelLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Initialization timeout limit",
+          "member": "int64",
+          "name": "InitTimeoutLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Limit of async retry attempt quantity",
+          "member": "int64",
+          "name": "RetryNumLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Lower limit of message retention time for async retry",
+          "member": "int64",
+          "name": "MinMsgTTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Upper limit of message retention time for async retry",
+          "member": "int64",
+          "name": "MaxMsgTTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "NamespaceUsage": {
+      "document": "Namespace usage information",
+      "members": [
+        {
+          "default": "",
+          "document": "Function array",
+          "member": "string",
+          "name": "Functions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of functions in namespace",
+          "member": "int64",
+          "name": "FunctionsCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PublicNetConfigIn": {
       "document": "Public network access configuration",
       "members": [
@@ -4213,6 +4407,111 @@
       ],
       "usage": "out"
     },
+    "TriggerCount": {
+      "document": "`TriggerCount` describes the numbers of triggers in different types",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of COS triggers",
+          "member": "int64",
+          "name": "Cos",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of timer triggers",
+          "member": "int64",
+          "name": "Timer",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CMQ triggers",
+          "member": "int64",
+          "name": "Cmq",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of triggers",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CKafka triggers",
+          "member": "int64",
+          "name": "Ckafka",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of API Gateway triggers",
+          "member": "int64",
+          "name": "Apigw",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CLS triggers",
+          "member": "int64",
+          "name": "Cls",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CLB triggers",
+          "member": "int64",
+          "name": "Clb",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of MPS triggers",
+          "member": "int64",
+          "name": "Mps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CM triggers",
+          "member": "int64",
+          "name": "Cm",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of VOD triggers",
+          "member": "int64",
+          "name": "Vod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TriggerInfo": {
       "document": "Trigger information",
       "members": [
@@ -4694,6 +4993,57 @@
         }
       ],
       "type": "object"
+    },
+    "UsageInfo": {
+      "document": "Usage information",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of namespaces",
+          "member": "int64",
+          "name": "NamespacesCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace details",
+          "member": "NamespaceUsage",
+          "name": "Namespace",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Upper limit of user concurrency memory in the current region",
+          "member": "int64",
+          "name": "TotalConcurrencyMem",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Quota of configured user concurrency memory in the current region",
+          "member": "int64",
+          "name": "TotalAllocatedConcurrencyMem",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Quota of account concurrency actually configured by user",
+          "member": "int64",
+          "name": "UserConcurrencyMemLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Variable": {
       "document": "Variable parameter",
