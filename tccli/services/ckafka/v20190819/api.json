@@ -1878,6 +1878,48 @@
       ],
       "type": "object"
     },
+    "DynamicRetentionTime": {
+      "document": "Dynamic message retention time configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the dynamic message retention time configuration is enabled. 0: disabled; 1: enabled\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Enable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk quota threshold (in percentage) for triggering the message retention time change event\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskQuotaPercentage",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Percentage by which the message retention time is shortened each time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "StepForwardPercentage",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum retention time, in minutes\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "BottomRetention",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Filter": {
       "document": "Query filter\n>Key-value pair filters for conditional filtering queries, such as filter ID, name, and status\n> * If there are multiple `Filter`, the relationship among them is logical `AND`.\n> * If there are multiple `Values` in the same `Filter`, the relationship among them is logical `OR`.\n>\n",
       "members": [
@@ -2447,7 +2489,7 @@
         },
         {
           "default": "",
-          "document": "Sale type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Offering type. `0`: Standard Edition; `1`: Professional Edition\nNote: this field may return `null`, indicating that no valid value was found.",
           "member": "int64",
           "name": "Cvm",
           "required": true,
@@ -2470,6 +2512,15 @@
           "name": "Features",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dynamic message retention policy\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "DynamicRetentionTime",
+          "name": "RetentionTimeConfig",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -2514,6 +2565,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "1",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2523,6 +2575,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "1",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -2532,6 +2585,7 @@
         {
           "default": "",
           "document": "Instance VIP information",
+          "example": "1",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -2541,6 +2595,7 @@
         {
           "default": "",
           "document": "Instance port information",
+          "example": "1",
           "member": "string",
           "name": "Vport",
           "required": true,
@@ -2550,6 +2605,7 @@
         {
           "default": "",
           "document": "Virtual IP list",
+          "example": "1",
           "member": "VipEntity",
           "name": "VipList",
           "required": true,
@@ -2559,6 +2615,7 @@
         {
           "default": "",
           "document": "Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2568,6 +2625,7 @@
         {
           "default": "",
           "document": "Instance bandwidth in Mbps",
+          "example": "1",
           "member": "int64",
           "name": "Bandwidth",
           "required": true,
@@ -2577,6 +2635,7 @@
         {
           "default": "",
           "document": "Instance storage capacity in GB",
+          "example": "1",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -2586,6 +2645,7 @@
         {
           "default": "",
           "document": "AZ ID",
+          "example": "1",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -2595,6 +2655,7 @@
         {
           "default": "",
           "document": "vpcId. If this parameter is empty, it means the basic network",
+          "example": "1",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -2604,6 +2665,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "1",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -2613,6 +2675,7 @@
         {
           "default": "",
           "document": "Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no",
+          "example": "1",
           "member": "int64",
           "name": "RenewFlag",
           "required": true,
@@ -2622,6 +2685,7 @@
         {
           "default": "",
           "document": "Instance status, which is an int-type value. 0: healthy, 1: alarmed, 2: exceptional",
+          "example": "1",
           "member": "int64",
           "name": "Healthy",
           "required": true,
@@ -2631,6 +2695,7 @@
         {
           "default": "",
           "document": "Instance status information",
+          "example": "1",
           "member": "string",
           "name": "HealthyMessage",
           "required": true,
@@ -2640,6 +2705,7 @@
         {
           "default": "",
           "document": "Instance creation time",
+          "example": "1",
           "member": "int64",
           "name": "CreateTime",
           "required": true,
@@ -2649,6 +2715,7 @@
         {
           "default": "",
           "document": "Instance expiration time",
+          "example": "1",
           "member": "int64",
           "name": "ExpireTime",
           "required": true,
@@ -2658,6 +2725,7 @@
         {
           "default": "",
           "document": "Whether it is an internal customer. 1: yes",
+          "example": "1",
           "member": "int64",
           "name": "IsInternal",
           "required": true,
@@ -2667,6 +2735,7 @@
         {
           "default": "",
           "document": "Number of topics",
+          "example": "1",
           "member": "int64",
           "name": "TopicNum",
           "required": true,
@@ -2676,6 +2745,7 @@
         {
           "default": "",
           "document": "Tag",
+          "example": "1",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -2685,6 +2755,7 @@
         {
           "default": "",
           "document": "Kafka version information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -2694,6 +2765,7 @@
         {
           "default": "",
           "document": "Cross-AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ZoneIds",
           "required": true,
@@ -2703,10 +2775,61 @@
         {
           "default": "",
           "document": "CKafka sale type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "Cvm",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CKafka instance type\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of topics for the current instance\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxTopicNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of partitions for the current instance\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxPartitionNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time of scheduled upgrade\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "'yyyy-MM-dd HH:mm:ss'",
+          "member": "string",
+          "name": "RebalanceTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2949,6 +3072,22 @@
           "name": "Config",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Dynamic message retention policy configuration",
+          "member": "DynamicRetentionTime",
+          "name": "DynamicRetentionConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Modification of the rebalancing time after upgrade",
+          "member": "int64",
+          "name": "RebalanceTime",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3550,6 +3689,15 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message retention time configuration (for recording the latest retention time)\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "TopicRetentionTimeConfigRsp",
+          "name": "RetentionTimeConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3637,6 +3785,39 @@
           "document": "Number of eligible topics\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicRetentionTimeConfigRsp": {
+      "document": "Information returned for topic message retention time configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Expected value, i.e., the topic message retention time (min) configured\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Expect",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current value (min), i.e., the retention time currently in effect, which may be dynamically adjusted\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Current",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last modified time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ModTimeStamp",
           "required": true,
           "type": "int",
           "value_allowed_null": true
