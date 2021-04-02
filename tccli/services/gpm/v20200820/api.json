@@ -1,0 +1,577 @@
+{
+  "actions": {
+    "CancelMatching": {
+      "document": "This API is used to cancel matching.",
+      "input": "CancelMatchingRequest",
+      "name": "Cancels matching",
+      "output": "CancelMatchingResponse"
+    },
+    "DescribeMatchingProgress": {
+      "document": "This API is used to query the matching progress.",
+      "input": "DescribeMatchingProgressRequest",
+      "name": "Queries matching progress",
+      "output": "DescribeMatchingProgressResponse"
+    },
+    "DescribeToken": {
+      "document": "This API is used to query the token of a Matchcode, which is used for verified the pushed message.",
+      "input": "DescribeTokenRequest",
+      "name": "Queries the token of a Matchcode",
+      "output": "DescribeTokenResponse"
+    },
+    "ModifyToken": {
+      "document": "This API is used to modify the token of a Matchcode.",
+      "input": "ModifyTokenRequest",
+      "name": "Modifies the token of a Matchcode",
+      "output": "ModifyTokenResponse"
+    },
+    "StartMatching": {
+      "document": "This API is used to pass in one player or multiple players to initiate match. Players within the same request will be assigned to the same game session.",
+      "input": "StartMatchingRequest",
+      "name": "Initiates match",
+      "output": "StartMatchingResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-08-20",
+    "serviceNameCN": "游戏玩家匹配",
+    "serviceShortName": "gpm"
+  },
+  "objects": {
+    "AttributeMap": {
+      "document": "The map key and map value of the player attribute",
+      "members": [
+        {
+          "default": "",
+          "document": "Map key, supporting [a-zA-Z0-9-\\.]*",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Map value",
+          "member": "int64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CancelMatchingRequest": {
+      "document": "CancelMatching request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The MatchTicket ID of the matchmaking to cancel",
+          "member": "string",
+          "name": "MatchTicketId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelMatchingResponse": {
+      "document": "CancelMatching response structure.",
+      "members": [
+        {
+          "document": "Error code",
+          "member": "uint64",
+          "name": "ErrCode",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchingProgressRequest": {
+      "document": "DescribeMatchingProgress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of MatchTicket IDs. It can contain up to 12 IDs.",
+          "example": "无",
+          "member": "MTicket",
+          "name": "MatchTicketIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchingProgressResponse": {
+      "document": "DescribeMatchingProgress response structure.",
+      "members": [
+        {
+          "document": "MatchTicket list\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "MatchTicket",
+          "name": "MatchTickets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Error code\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTokenRequest": {
+      "document": "DescribeToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTokenResponse": {
+      "document": "DescribeToken response structure.",
+      "members": [
+        {
+          "document": "The token corresponding to the current MatchCode. If the current MatchCode does not have a token, this parameter may not obtain a valid value.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "MatchToken",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The time period during which GPM will continuously push the original token in seconds when the token is replaced.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "uint64",
+          "name": "CompatibleSpan",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MTicket": {
+      "document": "The combination of MatchCode and MatchTicket ID.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MatchTicket ID",
+          "member": "string",
+          "name": "MatchTicketId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MatchAttribute": {
+      "document": "Player attributes for matching",
+      "members": [
+        {
+          "default": "",
+          "document": "Attribute name. It can contain up to 128 characters, supporting [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attribute type. 0: number, 1: string. Default value: 0",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Numeric attribute value. Default value: 0.0",
+          "member": "float",
+          "name": "NumberValue",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "String attribute value. Up to 128 characters are allowed. Default value: \"\"",
+          "member": "string",
+          "name": "StringValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List attribute value",
+          "member": "string",
+          "name": "ListValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Map attribute value",
+          "member": "AttributeMap",
+          "name": "MapValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MatchTicket": {
+      "document": "MatchTicket information",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchTicket ID. It can contain up to 128 characters, supporting [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Different structure serialized results will be returned according to the MatchType.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "MatchResult",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Matchmaking type. Valid values: NORMAL, GSE\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "MatchType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Player information list",
+          "member": "Player",
+          "name": "Players",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Matching status. Valid values: SEARCHING (matching), PLACING (pending match), COMPLETED (match completed), CANCELLED (match cancelled), TIMEDOUT (match timeouts), FAILED (match failed)",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Matching status descriptions\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "StatusMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reason for the matching status\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "StatusReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The time when the GPM received the matchmaking request, for example \"2020-08-17T08:14:38.077Z\".",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the matchmaking request stopped executing due to the completion, failure, timeout, or cancellation, for example \"2020-08-17T08:14:38.077Z\".\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyTokenRequest": {
+      "document": "ModifyToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced. Value range: 0 - 1800. Within the CompatibleSpan time period, user will receive the current and original token in the event notification.",
+          "member": "uint64",
+          "name": "CompatibleSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Token. It can contain 0 - 64 characters, supporting [a-zA-Z0-9-_.]. If this parameter is left empty, the token will be randomly generated by GPM.",
+          "member": "string",
+          "name": "MatchToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTokenResponse": {
+      "document": "ModifyToken response structure.",
+      "members": [
+        {
+          "document": "Token that has been set successfully.",
+          "member": "string",
+          "name": "MatchToken",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "uint64",
+          "name": "CompatibleSpan",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Player": {
+      "document": "Player information",
+      "members": [
+        {
+          "default": "",
+          "document": "Player ID. It can contain up to 128 characters, supporting [a-zA-Z\\d-\\._]*.",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player nickname. Up to 128 characters are allowed.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Player attribute for matching. Up to 10 attributes are supported.",
+          "member": "MatchAttribute",
+          "name": "MatchAttributes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Team name. A player can pass in a different team name, which can contain up to 128 characters, and support [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "Team",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom player status. This parameter will be passed through. Value range: [0, 99999]",
+          "member": "uint64",
+          "name": "CustomPlayerStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom player information. Up to 1024 characters are allowed. This parameter will be passed through.",
+          "member": "string",
+          "name": "CustomProfile",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of delays in each area. Up to 20 delays are supported.",
+          "member": "RegionLatency",
+          "name": "RegionLatencies",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RegionLatency": {
+      "document": "The network delay time for players to reach different regions.",
+      "members": [
+        {
+          "default": "",
+          "document": "Region\nap-beijing          North China (Beijing)\nap-chengdu          Southwest China (Chengdu)\nap-guangzhou           South China (Guangzhou)\nap-hongkong           Hong Kong/Macao/Taiwan (Hong Kong, China)\nap-seoul          Asia Pacific (Seoul)\nap-shanghai          East China (Shanghai)\nap-singapore          Southeast Asia (Singapore)\neu-frankfurt          Europe (Frankfurt)\nna-siliconvalley          Western US (Silicon Valley)\nna-toronto           North America (Toronto)\nap-mumbai           Asia Pacific (Mumbai)\nna-ashburn          Eastern US (Virginia)\nap-bangkok           Asia Pacific (Bangkok)\neu-moscow           Europe (Moscow)\nap-tokyo           Asia Pacific (Tokyo)",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Delay time in ms. Value range: 0 - 999999",
+          "member": "uint64",
+          "name": "Latency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "StartMatchingRequest": {
+      "document": "StartMatching request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Player information. Up to 200 entries can be entered.",
+          "member": "Player",
+          "name": "Players",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "MatchTicket ID, which can contain up to 128 characters and can only contain numbers, letters, “.”, and “-”. This parameter is left empty by default. When it is empty, the MatchTicket ID will be automatically generated by GPM.",
+          "member": "string",
+          "name": "MatchTicketId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartMatchingResponse": {
+      "document": "StartMatching response structure.",
+      "members": [
+        {
+          "document": "Error code",
+          "member": "uint64",
+          "name": "ErrCode",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "MatchTicket ID. Up to 128 characters are allowed.",
+          "member": "string",
+          "name": "MatchTicketId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

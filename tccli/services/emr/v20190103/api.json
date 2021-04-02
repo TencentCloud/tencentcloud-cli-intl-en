@@ -2312,7 +2312,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "PodVolume": {
       "document": "Pod storage device description.",

@@ -96,6 +96,12 @@
       "name": "Obtains download address of the function code",
       "output": "GetFunctionAddressResponse"
     },
+    "GetFunctionEventInvokeConfig": {
+      "document": "This API is used to get the async retry configuration of a function, including the number of retry attempts and message retention period.",
+      "input": "GetFunctionEventInvokeConfigRequest",
+      "name": "Gets the async retry configuration of function",
+      "output": "GetFunctionEventInvokeConfigResponse"
+    },
     "GetFunctionLogs": {
       "document": "This API is used to return function running logs according to the specified log query criteria.",
       "input": "GetFunctionLogsRequest",
@@ -227,6 +233,12 @@
       "input": "UpdateFunctionConfigurationRequest",
       "name": "Updates the function configuration",
       "output": "UpdateFunctionConfigurationResponse"
+    },
+    "UpdateFunctionEventInvokeConfig": {
+      "document": "This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.",
+      "input": "UpdateFunctionEventInvokeConfigRequest",
+      "name": "Updates the async retry configuration of function",
+      "output": "UpdateFunctionEventInvokeConfigResponse"
     },
     "UpdateNamespace": {
       "document": "This API is used to update a namespace.",
@@ -384,6 +396,30 @@
         }
       ],
       "usage": "out"
+    },
+    "AsyncTriggerConfig": {
+      "document": "Async retry configuration details of function",
+      "members": [
+        {
+          "default": "",
+          "document": "Async retry configuration of function upon user error",
+          "member": "RetryConfig",
+          "name": "RetryConfig",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message retention period",
+          "member": "int64",
+          "name": "MsgTTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "CfsConfig": {
       "document": "File system (CFS) configuration description",
@@ -1964,6 +2000,60 @@
           "member": "string",
           "name": "CodeSha256",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionEventInvokeConfigRequest": {
+      "document": "GetFunctionEventInvokeConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "example": "Unzip-1609933864",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function version. Default value: $LATEST",
+          "example": "$LATEST",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFunctionEventInvokeConfigResponse": {
+      "document": "GetFunctionEventInvokeConfig response structure.",
+      "members": [
+        {
+          "document": "Async retry configuration information",
+          "example": "无",
+          "member": "AsyncTriggerConfig",
+          "name": "AsyncTriggerConfig",
+          "required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -4152,6 +4242,21 @@
       ],
       "usage": "out"
     },
+    "RetryConfig": {
+      "document": "Async retry configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of retry attempts",
+          "member": "int64",
+          "name": "RetryNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RoutingConfig": {
       "document": "Version routing configuration of alias",
       "members": [
@@ -4950,6 +5055,51 @@
     },
     "UpdateFunctionConfigurationResponse": {
       "document": "UpdateFunctionConfiguration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionEventInvokeConfigRequest": {
+      "document": "UpdateFunctionEventInvokeConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Async retry configuration information",
+          "example": "无",
+          "member": "AsyncTriggerConfig",
+          "name": "AsyncTriggerConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Function name",
+          "example": "FunctionName",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function namespace. Default value: default",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionEventInvokeConfigResponse": {
+      "document": "UpdateFunctionEventInvokeConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

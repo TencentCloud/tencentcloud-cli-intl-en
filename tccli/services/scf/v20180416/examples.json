@@ -128,6 +128,14 @@
         "title": "Getting the download address of function code"
       }
     ],
+    "GetFunctionEventInvokeConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: scf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetFunctionEventInvokeConfig\n<Common request parameters>\n\n{\n    \"FunctionName\": \"Unzip-1609933864\",\n    \"Namespace\": \"default\",\n    \"Qualifier\": \"$LATEST\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AsyncTriggerConfig\": {\n            \"MsgTTL\": 3600,\n            \"RetryConfig\": [\n                {\n                    \"RetryNum\": 1\n                },\n                {\n                    \"RetryNum\": -1\n                }\n            ]\n        },\n        \"RequestId\": \"435fbf8e-d512-4f03-baf3-9cf1688f6c98\"\n    }\n}",
+        "title": "Getting async retry configuration"
+      }
+    ],
     "GetFunctionLogs": [
       {
         "document": "",
@@ -308,6 +316,14 @@
         "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionConfiguration\n&FunctionName=<FunctionName>\n&Description=<Description>\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Updating function configuration"
+      }
+    ],
+    "UpdateFunctionEventInvokeConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: scf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateFunctionEventInvokeConfig\n<Common request parameters>\n\n{\n    \"FunctionName\": \"FunctionName\",\n    \"Namespace\": \"default\",\n    \"AsyncTriggerConfig\": {\n        \"MsgTTL\": 3600,\n        \"RetryConfig\": [\n            {\n                \"RetryNum\": 1\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"XXXXXX\"\n    }\n}",
+        "title": "Updating async retry configuration"
       }
     ],
     "UpdateNamespace": [

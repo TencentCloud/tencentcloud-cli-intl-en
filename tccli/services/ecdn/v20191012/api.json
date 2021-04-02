@@ -37,7 +37,7 @@
       "output": "DescribeEcdnDomainStatisticsResponse"
     },
     "DescribeEcdnStatistics": {
-      "document": "This API is used to query ECDN real-time access monitoring data and supports the following metrics:\n\n+ Traffic (in bytes)\n+ Bandwidth (in bps)\n+ Number of requests\n+ Response time (in ms)\n+ Number of 2xx status codes and details of status codes starting with 2\n+ Number of 3xx status codes and details of status codes starting with 3\n+ Number of 4xx status codes and details of status codes starting with 4\n+ Number of 5xx status codes and details of status codes starting with 5",
+      "document": "This API is used to query ECDN real-time access monitoring data and supports the following metrics:\n\n+ Traffic (in bytes)\n+ Bandwidth (in bps)\n+ Number of requests\n+ Number of 2xx status codes and details of status codes starting with 2\n+ Number of 3xx status codes and details of status codes starting with 3\n+ Number of 4xx status codes and details of status codes starting with 4\n+ Number of 5xx status codes and details of status codes starting with 5",
       "input": "DescribeEcdnStatisticsRequest",
       "name": "Queries access data",
       "output": "DescribeEcdnStatisticsResponse"
@@ -557,6 +557,7 @@
         {
           "default": "",
           "document": "Query start time, such as 2019-12-13 00:00:00.\nThe time span cannot exceed 90 days.",
+          "example": "2018-09-04 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -565,6 +566,7 @@
         {
           "default": "",
           "document": "Query end time, such as 2019-12-13 23:59:59.\nThe time span cannot exceed 90 days.",
+          "example": "2018-09-04 12:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -572,7 +574,8 @@
         },
         {
           "default": "",
-          "document": "Statistical metric name. flux: traffic in bytes\nbandwidth: bandwidth in bps\nrequest: number of requests\ndelay: response time in ms\nstatic_request: number of static requests\nstatic_flux: static traffic in bytes\nstatic_bandwidth: static bandwidth in bps\ndynamic_request: number of dynamic requests\ndynamic_flux: dynamic traffic in bytes\ndynamic_bandwidth: dynamic bandwidth in bps",
+          "document": "Statistical metric names:\nflux: traffic (in bytes)\nbandwidth: bandwidth (in bps)\nrequest: number of requests",
+          "example": "[\"flux\\n\",\"delay\\n\",\"request\\n\",\"bandwidth\\n\"]",
           "member": "string",
           "name": "Metrics",
           "required": true,
@@ -581,6 +584,7 @@
         {
           "default": "",
           "document": "Specifies the list of domain names to be queried",
+          "example": "[\"www.test.com\\n\"]",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -589,6 +593,7 @@
         {
           "default": "",
           "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail",
+          "example": "[\"0\\n\"]",
           "member": "int64",
           "name": "Projects",
           "required": false,
@@ -597,6 +602,7 @@
         {
           "default": "",
           "document": "Pagination offset. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -605,10 +611,20 @@
         {
           "default": "",
           "document": "Number of entries per page. Default value: 1000. Maximum value: 3,000.",
+          "example": "1000",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Statistical areas:\nmainland: Chinese mainland\noversea: outside the Chinese mainland\nglobal: global\nDefault value: global",
+          "example": "global",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -645,6 +661,7 @@
         {
           "default": "",
           "document": "Query start time, such as 2019-12-13 00:00:00",
+          "example": "2018-09-04 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -653,6 +670,7 @@
         {
           "default": "",
           "document": "Query end time, such as 2019-12-13 23:59:59",
+          "example": "2018-09-04 12:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -660,7 +678,8 @@
         },
         {
           "default": "",
-          "document": "Specifies the query metric, which can be:\nflux: traffic in bytes\nbandwidth: bandwidth in bps\nrequest: number of requests\ndelay: response time in ms\n2xx: returns the number of 2xx status codes or details of status codes starting with 2\n3xx: returns the number of 3xx status codes or details of status codes starting with 3\n4xx: returns the number of 4xx status codes or details of status codes starting with 4\n5xx: returns the number of 5xx status codes or details of status codes starting with 5\nstatic_request: number of static requests\nstatic_flux: static traffic in bytes\nstatic_bandwidth: static bandwidth in bps\ndynamic_request: number of dynamic requests\ndynamic_flux: dynamic traffic in bytes\ndynamic_bandwidth: dynamic bandwidth in bps",
+          "document": "Specifies the query metric, which can be:\nflux: traffic (in bytes)\nbandwidth: bandwidth (in bps)\nrequest: number of requests\n2xx: returns the number of 2xx status codes or details of status codes starting with 2\n3xx: returns the number of 3xx status codes or details of status codes starting with 3\n4xx: returns the number of 4xx status codes or details of status codes starting with 4\n5xx: returns the number of 5xx status codes or details of status codes starting with 5",
+          "example": "[\"flux\\n\"]",
           "member": "string",
           "name": "Metrics",
           "required": true,
@@ -669,6 +688,7 @@
         {
           "default": "",
           "document": "Time granularity, which can be:\n1 day\t 1, 5, 15, 30, 60, 120, 240, 1440 \n2-3 days 15, 30, 60, 120, 240, 1440\n4-7 days 30, 60, 120, 240, 1440\n8-90 days\t 60, 120, 240, 1440",
+          "example": "60",
           "member": "int64",
           "name": "Interval",
           "required": true,
@@ -677,6 +697,7 @@
         {
           "default": "",
           "document": "Specifies the list of domain names to be queried\n\nUp to 30 acceleration domain names can be queried at a time.",
+          "example": "[\"www.test.com\\n\"]",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -685,10 +706,20 @@
         {
           "default": "",
           "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail",
+          "example": "[\"0\\n\"]",
           "member": "int64",
           "name": "Projects",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Statistical areas:\nmainland: Chinese mainland\noversea: outside the Chinese mainland\nglobal: global\nDefault value: global",
+          "example": "global",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1660,7 +1691,8 @@
       "members": [
         {
           "default": "",
-          "document": "Primary origin server list. The default format is [\"ip1:port1\", \"ip2:port2\"].\nWeights can be configured in the origin server list. The weight format of IP origin servers is [\"ip1:port1:weight1\", \"ip2:port2:weight2\"].",
+          "document": "Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of [\"origin1:port1\", \"origin2:port2\"]. Configure origin-pull weight in the format of [\"origin1::weight1\", \"origin2::weight2\"]. Configure both port and weight in the format of [\"origin1:port1:weight1\", \"origin2:port2:weight2\"]. Valid range of weight value: 0 - 100.",
+          "example": "[\"1.1.1.1:80\", \"2.2.2.2:80\"]",
           "member": "string",
           "name": "Origins",
           "required": false,
@@ -1670,6 +1702,7 @@
         {
           "default": "",
           "document": "Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).\nThis is required when setting `Origins`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ip",
           "member": "string",
           "name": "OriginType",
           "required": false,
@@ -1679,6 +1712,7 @@
         {
           "default": "",
           "document": "Host header value during origin-pull.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ecdn.test.com",
           "member": "string",
           "name": "ServerName",
           "required": false,
@@ -1687,7 +1721,8 @@
         },
         {
           "default": "",
-          "document": "Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).\nIf this parameter is left empty, HTTP origin-pull will be used by default.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "http",
           "member": "string",
           "name": "OriginPullProtocol",
           "required": false,
@@ -1697,6 +1732,7 @@
         {
           "default": "",
           "document": "Secondary origin server list.",
+          "example": "[\"3.3.3.3:80\", \"4.4.4.4:80\"]",
           "member": "string",
           "name": "BackupOrigins",
           "required": false,
@@ -1706,6 +1742,7 @@
         {
           "default": "",
           "document": "Secondary origin server type, which is the same as `OriginType`.\nThis is required when setting `BackupOrigins`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ip",
           "member": "string",
           "name": "BackupOriginType",
           "required": false,
