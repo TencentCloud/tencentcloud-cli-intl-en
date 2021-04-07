@@ -8398,15 +8398,8 @@
       "members": [
         {
           "default": "",
-          "document": "The route table instance ID, such as `rtb-azd4dt1c`.",
-          "member": "string",
-          "name": "RouteTableIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Filter condition. `RouteTableIds` and `Filters` cannot be speified at the same time.\n<li>route-table-id - String - (Filter condition) Route table instance ID.</li>\n<li>route-table-name - String - (Filter condition) Route table name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>association.main - String - (Filter condition) Whether it is the main route table.</li>\n<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>",
+          "document": "Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.\n<li>route-table-id - String - (Filter condition) Route table instance ID.</li>\n<li>route-table-name - String - (Filter condition) Route table name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>association.main - String - (Filter condition) Whether it is the main route table.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>\n<li>is-need-router-info - String - (Filter condition) Whether to obtain routing policies. It defaults to `false`. To obtain routing policies, change the parameter value to `true`.</li>",
+          "example": "[{\"Name\":\"route-table-id\", \"Values\": [\"rtb-3yuu2t62\"]},{\"Name\":\"",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -8414,7 +8407,17 @@
         },
         {
           "default": "",
+          "document": "The route table instance ID, such as `rtb-azd4dt1c`.",
+          "example": "无",
+          "member": "string",
+          "name": "RouteTableIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
           "document": "Offset.",
+          "example": "0",
           "member": "string",
           "name": "Offset",
           "required": false,
@@ -8423,6 +8426,7 @@
         {
           "default": "",
           "document": "The number of request objects.",
+          "example": "1",
           "member": "string",
           "name": "Limit",
           "required": false,
@@ -14710,6 +14714,16 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time of the routing policy",
+          "example": "2021-03-02 14:41:15",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

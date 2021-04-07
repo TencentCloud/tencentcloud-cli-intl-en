@@ -8,6 +8,70 @@
         "title": "Canceling matching"
       }
     ],
+    "CreateMatch": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=CreateMatch\n&MatchName=test\n&MatchDesc=test\n&RuleCode=rule-r4x6tk49\n&Timeout=60\n&NotifyUrl=https://test.com\n&ServerType=1\n&ServerRegion=ap-shanghai\n&ServerQueue=gpmtest\n&CustomPushData=test\n&ServerSessionData=test\n&LogSwitch=1\n&GameProperties.0.Key=test\n&GameProperties.0.Value=test\n&Tags.0.Key=String\n&Tags.0.Value=String\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"MatchInfo\": {\n            \"AppId\": \"1300704415\",\n            \"CreateTime\": \"2020-09-29 15:24:19\",\n            \"CreateUin\": \"100012125188\",\n            \"CustomPushData\": \"test\",\n            \"GameProperties\": [\n                {\n                    \"Key\": \"test\",\n                    \"Value\": \"test\"\n                }\n            ],\n            \"LogSwitch\": 1,\n            \"LogTopicId\": \"\",\n            \"LogTopicName\": \"\",\n            \"LogsetId\": \"\",\n            \"LogsetName\": \"\",\n            \"MatchCode\": \"match-58mnuqlz\",\n            \"MatchDesc\": \"test\",\n            \"MatchName\": \"test\",\n            \"NotifyUrl\": \"https://test.com\",\n            \"Region\": \"ap-shanghai\",\n            \"RuleCode\": \"rule-r4x6tk49\",\n            \"RuleName\": \"\",\n            \"ServerQueue\": \"gpmtest\",\n            \"ServerRegion\": \"ap-shanghai\",\n            \"ServerSessionData\": \"test\",\n            \"ServerType\": 1,\n            \"Tags\": [\n                {\n                    \"Key\": \"String\",\n                    \"Value\": \"String\"\n                }\n            ],\n            \"Timeout\": 60,\n            \"Uin\": \"100012125188\"\n        },\n        \"RequestId\": \"20e5c29d-fa33-45bd-8e90-5b00773fa4cb\"\n    }\n}",
+        "title": "Creating a match"
+      }
+    ],
+    "CreateRule": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=CreateRule\n&RuleName=test\n&RuleDesc=test\n&RuleScript=test\n&Tags.0.Key=String\n&Tags.0.Value=String\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d49cff57-ac1e-437e-a89e-5372fd6538ed\",\n        \"RuleInfo\": {\n            \"AppId\": \"1300704415\",\n            \"CreateTime\": \"2020-09-29 15:15:36\",\n            \"CreateUin\": \"100012125188\",\n            \"MatchCodeList\": [],\n            \"Region\": \"ap-shanghai\",\n            \"RuleCode\": \"rule-v879tr24\",\n            \"RuleDesc\": \"test\",\n            \"RuleName\": \"test\",\n            \"RuleScript\": \"test\",\n            \"Tags\": [\n                {\n                    \"Key\": \"String\",\n                    \"Value\": \"String\"\n                }\n            ],\n            \"Uin\": \"100012125188\"\n        }\n    }\n}",
+        "title": "Creating a match"
+      }
+    ],
+    "DeleteMatch": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DeleteMatch\n&MatchCode=match-58mnuqlz\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"56200c07-6508-469e-ae9c-e11f21eea9ea\"\n    }\n}",
+        "title": "Deleting a match"
+      }
+    ],
+    "DeleteRule": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DeleteRule\n&RuleCode=rule-v879tr24\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f37c0f52-ed2a-49e0-a574-f075402a1faf\"\n    }\n}",
+        "title": "Deleting a rule"
+      }
+    ],
+    "DescribeData": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DescribeData\n&MatchCode=match-v87jcr87\n&StartTime=1600741736\n&EndTime=1601000936\n&TimeType=2\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"OverviewData\": {\n            \"AverageSec\": 1.91,\n            \"FailPercent\": 2.86,\n            \"SuccessPercent\": 22.86,\n            \"TimeoutPercent\": 40,\n            \"TotalTimes\": \"35\"\n        },\n        \"RequestId\": \"024cba11-2f69-40ac-ac14-bbd31b210159\",\n        \"TrendData\": {\n            \"CancelList\": [\n                \"0\",\n                \"0\",\n                \"0\"\n            ],\n            \"FailList\": [\n                \"0\",\n                \"0\",\n                \"0\"\n            ],\n            \"SuccessList\": [\n                \"0\",\n                \"2\",\n                \"0\"\n            ],\n            \"TimeList\": [\n                \"1601103600\",\n                \"1601107200\",\n                \"1601110800\",\n                \"1601362800\"\n            ],\n            \"TimeoutList\": [\n                \"0\",\n                \"1\",\n                \"0\",\n                \"0\"\n            ],\n            \"TotalList\": [\n                \"0\",\n                \"3\",\n                \"0\",\n                \"0\"\n            ]\n        }\n    }\n}",
+        "title": "Querying data"
+      }
+    ],
+    "DescribeMatch": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DescribeMatch\n&MatchCode=match-58mnuqlz\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"MatchInfo\": {\n            \"AppId\": \"1300704415\",\n            \"CreateTime\": \"2020-09-29 15:24:20\",\n            \"CreateUin\": \"100012125188\",\n            \"CustomPushData\": \"test\",\n            \"GameProperties\": [\n                {\n                    \"Key\": \"test\",\n                    \"Value\": \"test\"\n                }\n            ],\n            \"LogSwitch\": 1,\n            \"LogTopicId\": \"\",\n            \"LogTopicName\": \"\",\n            \"LogsetId\": \"\",\n            \"LogsetName\": \"\",\n            \"MatchCode\": \"match-58mnuqlz\",\n            \"MatchDesc\": \"test\",\n            \"MatchName\": \"test\",\n            \"NotifyUrl\": \"https://test.com\",\n            \"Region\": \"ap-shanghai\",\n            \"RuleCode\": \"rule-r4x6tk49\",\n            \"RuleName\": \"test\",\n            \"ServerQueue\": \"gpmtest\",\n            \"ServerRegion\": \"ap-shanghai\",\n            \"ServerSessionData\": \"test\",\n            \"ServerType\": 1,\n            \"Tags\": [\n                {\n                    \"Key\": \"String\",\n                    \"Value\": \"String\"\n                }\n            ],\n            \"Timeout\": 60,\n            \"Uin\": \"100012125188\"\n        },\n        \"RequestId\": \"ab6ab15a-ab3a-495c-8818-e826084ea072\"\n    }\n}",
+        "title": "Querying a match"
+      }
+    ],
+    "DescribeMatchCodes": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DescribeMatchCodes\n&Offset=1\n&Limit=15\n&MatchCode=match-rzsfvf\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"MatchCodes\": [\n            \"match-rzsfvf\"\n        ],\n        \"RequestId\": \"eefe26e0-fc8a-41e4-a9be-69694662c6cc\",\n        \"TotalCount\": 0\n    }\n}",
+        "title": "Querying a MatchCode and paginating the query result"
+      }
+    ],
+    "DescribeMatches": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DescribeMatches\n&PageNumber=1\n&PageSize=10\n&SearchType=matchCode\n&Keyword=match-58mnuqlz\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Keyword\": \"match-58mnuqlz\",\n        \"MatchInfoList\": [\n            {\n                \"AppId\": \"1300704415\",\n                \"CreateTime\": \"2020-09-29 15:24:20\",\n                \"CreateUin\": \"100012125188\",\n                \"CustomPushData\": \"test\",\n                \"GameProperties\": [\n                    {\n                        \"Key\": \"test\",\n                        \"Value\": \"test\"\n                    }\n                ],\n                \"LogSwitch\": 1,\n                \"LogTopicId\": \"\",\n                \"LogTopicName\": \"\",\n                \"LogsetId\": \"\",\n                \"LogsetName\": \"\",\n                \"MatchCode\": \"match-58mnuqlz\",\n                \"MatchDesc\": \"test\",\n                \"MatchName\": \"test\",\n                \"NotifyUrl\": \"https://test.com\",\n                \"Region\": \"ap-shanghai\",\n                \"RuleCode\": \"rule-r4x6tk49\",\n                \"RuleName\": \"test\",\n                \"ServerQueue\": \"gpmtest\",\n                \"ServerRegion\": \"ap-shanghai\",\n                \"ServerSessionData\": \"test\",\n                \"ServerType\": 1,\n                \"Tags\": [\n                    {\n                        \"Key\": \"String\",\n                        \"Value\": \"String\"\n                    }\n                ],\n                \"Timeout\": 60,\n                \"Uin\": \"100012125188\"\n            }\n        ],\n        \"PageNumber\": 1,\n        \"PageSize\": 10,\n        \"RequestId\": \"6e0c3a5d-a8cc-4eaf-bdff-214789ac2326\",\n        \"SearchType\": \"matchCode\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the matchmaking list"
+      }
+    ],
     "DescribeMatchingProgress": [
       {
         "document": "",
@@ -16,12 +80,44 @@
         "title": "Obtaining the matching progress information"
       }
     ],
+    "DescribeRule": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DescribeRule\n&RuleCode=rule-r4x6tk49\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"16a99485-c55a-4202-9302-dc329e710d00\",\n        \"RuleInfo\": {\n            \"AppId\": \"1300704415\",\n            \"CreateTime\": \"2020-09-29 10:52:48\",\n            \"CreateUin\": \"100012125188\",\n            \"MatchCodeList\": [\n                {\n                    \"Key\": \"match-74w0ckl8\",\n                    \"Value\": \"test\"\n                }\n            ],\n            \"Region\": \"ap-shanghai\",\n            \"RuleCode\": \"rule-r4x6tk49\",\n            \"RuleDesc\": \"test\",\n            \"RuleName\": \"test\",\n            \"RuleScript\": \"1\",\n            \"Tags\": [],\n            \"Uin\": \"100012125188\"\n        }\n    }\n}",
+        "title": "Querying a rule"
+      }
+    ],
+    "DescribeRules": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=DescribeRules\n&PageNumber=1\n&PageSize=10\n&SearchType=ruleCode\n&Keyword=rule-r4x6tk49\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Keyword\": \"rule-r4x6tk49\",\n        \"PageNumber\": 1,\n        \"PageSize\": 10,\n        \"RequestId\": \"a2719713-1ee9-4a67-894a-e776fa52d203\",\n        \"RuleInfoList\": [\n            {\n                \"CreateTime\": \"2020-09-29 10:52:48\",\n                \"MatchCodeList\": [\n                    {\n                        \"Key\": \"match-74w0ckl8\",\n                        \"Value\": \"test\"\n                    }\n                ],\n                \"RuleCode\": \"rule-r4x6tk49\",\n                \"RuleName\": \"test\"\n            }\n        ],\n        \"SearchType\": \"ruleCode\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the rule list"
+      }
+    ],
     "DescribeToken": [
       {
         "document": "",
         "input": "https://gpm.tencentcloudapi.com/?Action=DescribeToken\n&MatchCode=match-58mnuqlz\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"MatchToken\": \"mytoken\",\n        \"CompatibleSpan\": 180,\n        \"RequestId\": \"ab6ab15a-ab3a-495c-8818-e826084ea072\"\n    }\n}",
         "title": "Querying the token of a Matchcode"
+      }
+    ],
+    "ModifyMatch": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=ModifyMatch\n&MatchName=test\n&MatchDesc=test\n&RuleCode=rule-r4x6tk49\n&Timeout=60\n&NotifyUrl=https://test.com\n&ServerType=1\n&ServerRegion=apshanghai\n&ServerQueue=gpmtest\n&CustomPushData=test\n&ServerSessionData=test\n&LogSwitch=1\n&MatchCode=match-58mnuqlz\n&GameProperties.0.Key=test\n&GameProperties.0.Value=test\n&Tags.0.Key=String\n&Tags.0.Value=String\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"MatchInfo\": {\n            \"AppId\": \"1300704415\",\n            \"CreateTime\": \"\",\n            \"CreateUin\": \"100012125188\",\n            \"CustomPushData\": \"test\",\n            \"GameProperties\": [\n                {\n                    \"Key\": \"test\",\n                    \"Value\": \"test\"\n                }\n            ],\n            \"LogSwitch\": 1,\n            \"LogTopicId\": \"\",\n            \"LogTopicName\": \"\",\n            \"LogsetId\": \"\",\n            \"LogsetName\": \"\",\n            \"MatchCode\": \"match-58mnuqlz\",\n            \"MatchDesc\": \"test\",\n            \"MatchName\": \"test\",\n            \"NotifyUrl\": \"https://test.com\",\n            \"Region\": \"ap-shanghai\",\n            \"RuleCode\": \"rule-r4x6tk49\",\n            \"RuleName\": \"test\",\n            \"ServerQueue\": \"gpmtest\",\n            \"ServerRegion\": \"ap-shanghai\",\n            \"ServerSessionData\": \"test\",\n            \"ServerType\": 1,\n            \"Tags\": [\n                {\n                    \"Key\": \"String\",\n                    \"Value\": \"String\"\n                }\n            ],\n            \"Timeout\": 60,\n            \"Uin\": \"100012125188\"\n        },\n        \"RequestId\": \"b6184808-9699-43db-837c-110344620c5d\"\n    }\n}",
+        "title": "Modifying a match"
+      }
+    ],
+    "ModifyRule": [
+      {
+        "document": "",
+        "input": "https://gpm.tencentcloudapi.com/?Action=ModifyRule\n&RuleDesc=test\n&RuleCode=rule-v879tr24\n&RuleName=test\n&Tags.0.Key=String\n&Tags.0.Value=String\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c34a20b9-0fba-4c37-8819-c25a271778f6\",\n        \"RuleInfo\": {\n            \"AppId\": \"1300704415\",\n            \"CreateTime\": \"2020-09-29 15:15:36\",\n            \"CreateUin\": \"100012125188\",\n            \"MatchCodeList\": [],\n            \"Region\": \"ap-shanghai\",\n            \"RuleCode\": \"rule-v879tr24\",\n            \"RuleDesc\": \"test\",\n            \"RuleName\": \"test\",\n            \"RuleScript\": \"test\",\n            \"Tags\": [\n                {\n                    \"Key\": \"String\",\n                    \"Value\": \"String\"\n                }\n            ],\n            \"Uin\": \"100012125188\"\n        }\n    }\n}",
+        "title": "Modifying a rule"
       }
     ],
     "ModifyToken": [

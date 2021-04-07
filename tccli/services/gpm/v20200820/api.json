@@ -6,17 +6,89 @@
       "name": "Cancels matching",
       "output": "CancelMatchingResponse"
     },
+    "CreateMatch": {
+      "document": "This API is used to create a match.",
+      "input": "CreateMatchRequest",
+      "name": "Creates a match",
+      "output": "CreateMatchResponse"
+    },
+    "CreateRule": {
+      "document": "This API is used to create a rule.",
+      "input": "CreateRuleRequest",
+      "name": "Creates a rule",
+      "output": "CreateRuleResponse"
+    },
+    "DeleteMatch": {
+      "document": "This API is used to delete a match.",
+      "input": "DeleteMatchRequest",
+      "name": "Deletes a match",
+      "output": "DeleteMatchResponse"
+    },
+    "DeleteRule": {
+      "document": "This API is used to delete a rule.",
+      "input": "DeleteRuleRequest",
+      "name": "Deletes a rule",
+      "output": "DeleteRuleResponse"
+    },
+    "DescribeData": {
+      "document": "This API is used to view statistics.",
+      "input": "DescribeDataRequest",
+      "name": "Views statistics",
+      "output": "DescribeDataResponse"
+    },
+    "DescribeMatch": {
+      "document": "This API is used to query the matchmaking details.",
+      "input": "DescribeMatchRequest",
+      "name": "Queries the matchmaking details",
+      "output": "DescribeMatchResponse"
+    },
+    "DescribeMatchCodes": {
+      "document": "This API is used to query the created MatchCodes and paginate the query result.",
+      "input": "DescribeMatchCodesRequest",
+      "name": "Queries the created MatchCodes and paginates the query result",
+      "output": "DescribeMatchCodesResponse"
+    },
+    "DescribeMatches": {
+      "document": "This API is used to query the matchmaking list and paginate the query result.",
+      "input": "DescribeMatchesRequest",
+      "name": "Queries the matchmaking list and paginates the query result",
+      "output": "DescribeMatchesResponse"
+    },
     "DescribeMatchingProgress": {
       "document": "This API is used to query the matching progress.",
       "input": "DescribeMatchingProgressRequest",
       "name": "Queries matching progress",
       "output": "DescribeMatchingProgressResponse"
     },
+    "DescribeRule": {
+      "document": "This API is used to query the rule details.",
+      "input": "DescribeRuleRequest",
+      "name": "Queries the rule details",
+      "output": "DescribeRuleResponse"
+    },
+    "DescribeRules": {
+      "document": "This API is used to query the rule set list and paginate the query result.",
+      "input": "DescribeRulesRequest",
+      "name": "Queries the rule set list and paginates the query result",
+      "output": "DescribeRulesResponse"
+    },
     "DescribeToken": {
       "document": "This API is used to query the token of a Matchcode, which is used for verified the pushed message.",
       "input": "DescribeTokenRequest",
       "name": "Queries the token of a Matchcode",
       "output": "DescribeTokenResponse"
+    },
+    "ModifyMatch": {
+      "document": "This API is used to modify a match.",
+      "input": "ModifyMatchRequest",
+      "name": "Modifies a match",
+      "output": "ModifyMatchResponse"
+    },
+    "ModifyRule": {
+      "document": "This API is used to modify a rule (including description and tag).",
+      "input": "ModifyRuleRequest",
+      "name": "Modifies a rule",
+      "output": "ModifyRuleResponse"
     },
     "ModifyToken": {
       "document": "This API is used to modify the token of a Matchcode.",
@@ -102,6 +174,497 @@
       ],
       "type": "object"
     },
+    "CreateMatchRequest": {
+      "document": "CreateMatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "MatchName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Timeout period in seconds. Value range: 1 600",
+          "member": "int64",
+          "name": "Timeout",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources",
+          "member": "int64",
+          "name": "ServerType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Matchmaking description. Up to 1024 bytes are allowed.",
+          "member": "string",
+          "name": "MatchDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only HTTP and HTTPS protocols are supported.",
+          "member": "string",
+          "name": "NotifyUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the game server queue",
+          "member": "string",
+          "name": "ServerRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server queue",
+          "member": "string",
+          "name": "ServerQueue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom push data",
+          "member": "string",
+          "name": "CustomPushData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session data",
+          "member": "string",
+          "name": "ServerSessionData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game attribute. It is an array of key-value structure.",
+          "member": "StringKV",
+          "name": "GameProperties",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enable or disable the log. 0: disable, 1: enable",
+          "member": "int64",
+          "name": "LogSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag. It is an array of key-value structure.",
+          "member": "StringKV",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMatchResponse": {
+      "document": "CreateMatch response structure.",
+      "members": [
+        {
+          "document": "Matchmaking information",
+          "member": "MatchInfo",
+          "name": "MatchInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRuleRequest": {
+      "document": "CreateRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule script. Up to 65535 bytes are allowed.",
+          "member": "string",
+          "name": "RuleScript",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule description. Up to 1024 bytes are allowed.",
+          "member": "string",
+          "name": "RuleDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag. It is an array of key-value structure. Up to 50 tags can be associated.",
+          "member": "StringKV",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRuleResponse": {
+      "document": "CreateRule response structure.",
+      "members": [
+        {
+          "document": "Rule information",
+          "member": "RuleInfo",
+          "name": "RuleInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMatchRequest": {
+      "document": "DeleteMatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMatchResponse": {
+      "document": "DeleteMatch response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRuleRequest": {
+      "document": "DeleteRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRuleResponse": {
+      "document": "DeleteRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataRequest": {
+      "document": "DescribeData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time in seconds",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time in seconds",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Time granularity. Valid values: 1: 1 day, 2: 1 hour, 3: 1 minute, 4: 10 minutes, 5: 30 minutes",
+          "member": "int64",
+          "name": "TimeType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataResponse": {
+      "document": "DescribeData response structure.",
+      "members": [
+        {
+          "document": "Matchmaking statistics overview\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "ReportOverviewData",
+          "name": "OverviewData",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Trend data of the number of matchmaking requests\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "ReportTrendData",
+          "name": "TrendData",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchCodesRequest": {
+      "document": "DescribeMatchCodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset, number of pages.",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of MatchCodes per page",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query by the MatchCode value (a string).",
+          "member": "string",
+          "name": "MatchCode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchCodesResponse": {
+      "document": "DescribeMatchCodes response structure.",
+      "members": [
+        {
+          "document": "MatchCode\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "MatchCodeAttr",
+          "name": "MatchCodes",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The total number of queried MatchCodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchRequest": {
+      "document": "DescribeMatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchResponse": {
+      "document": "DescribeMatch response structure.",
+      "members": [
+        {
+          "document": "Matchmaking information\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "MatchInfo",
+          "name": "MatchInfo",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchesRequest": {
+      "document": "DescribeMatches request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The current page number. If this parameter is left empty, all queried matches will be obtained.",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of matchmaking lists per page. If this parameter is left empty, all queried matches will be obtained.",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)",
+          "member": "string",
+          "name": "SearchType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Keyword. Enter a keyword about SearchType to query.",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tags. Enter a tag for querying.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMatchesResponse": {
+      "document": "DescribeMatches response structure.",
+      "members": [
+        {
+          "document": "Matchmaking information list\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "MatchInfo",
+          "name": "MatchInfoList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The current page number. The first page will be returned by default if this parameter is left empty.",
+          "member": "int64",
+          "name": "PageNumber",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of matches per page. If this parameter is left empty, 30 matches are displayed per page by default. Maximum value: 30",
+          "member": "int64",
+          "name": "PageSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)",
+          "member": "string",
+          "name": "SearchType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Keyword for querying (optional)",
+          "member": "string",
+          "name": "Keyword",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMatchingProgressRequest": {
       "document": "DescribeMatchingProgress request structure.",
       "members": [
@@ -137,6 +700,139 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRuleRequest": {
+      "document": "DescribeRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRuleResponse": {
+      "document": "DescribeRule response structure.",
+      "members": [
+        {
+          "document": "Rule information\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "RuleInfo",
+          "name": "RuleInfo",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRulesRequest": {
+      "document": "DescribeRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The current page number. The first page will be returned if this parameter is left empty.",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of rules per page. If this parameter is left empty, 30 rules are displayed per page by default. Maximum value: 30",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)",
+          "member": "string",
+          "name": "SearchType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Keyword. Enter a keyword about SearchType to query.",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tags. Enter a tag for querying.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRulesResponse": {
+      "document": "DescribeRules response structure.",
+      "members": [
+        {
+          "document": "Rule information list\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "RuleBriefInfo",
+          "name": "RuleInfoList",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of results",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The current page number",
+          "member": "int64",
+          "name": "PageNumber",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of rules per page",
+          "member": "int64",
+          "name": "PageSize",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)",
+          "member": "string",
+          "name": "SearchType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Keyword for querying (optional)",
+          "member": "string",
+          "name": "Keyword",
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -271,6 +967,252 @@
       ],
       "usage": "in"
     },
+    "MatchCodeAttr": {
+      "document": "MatchCode",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MatchInfo": {
+      "document": "Matchmaking information",
+      "members": [
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Match name",
+          "member": "string",
+          "name": "MatchName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Matchmaking description\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "MatchDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timeout period",
+          "member": "int64",
+          "name": "Timeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Receiving notification address",
+          "member": "string",
+          "name": "NotifyUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to request server resources for the match results. 0: no, 1: request GSE resources",
+          "member": "int64",
+          "name": "ServerType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the server queue\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ServerRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server queue\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ServerQueue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom push data\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "CustomPushData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game server session data\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "ServerSessionData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Game attributes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "StringKV",
+          "name": "GameProperties",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Enable or disable the log. 0: disable, 1: enable",
+          "member": "int64",
+          "name": "LogSwitch",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logset ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "LogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Logset name\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "LogsetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log topic ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "LogTopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log topic name\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "LogTopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "StringKV",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User AppId\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User root account UIN\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Create user account UIN\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "CreateUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule Name\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log status. 0: normal, 1: the log set does not exist, 2: the log topic does not exist, 3: neither the log set nor the log topic exists.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "int64",
+          "name": "LogStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "MatchTicket": {
       "document": "MatchTicket information",
       "members": [
@@ -366,6 +1308,200 @@
         }
       ],
       "usage": "out"
+    },
+    "ModifyMatchRequest": {
+      "document": "ModifyMatch request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "MatchName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Timeout period in seconds. Value range: 1 600",
+          "member": "int64",
+          "name": "Timeout",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources",
+          "member": "int64",
+          "name": "ServerType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "MatchCode",
+          "member": "string",
+          "name": "MatchCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Matchmaking description. Up to 1024 bytes are allowed.",
+          "member": "string",
+          "name": "MatchDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Only HTTP and HTTPS protocols are supported.",
+          "member": "string",
+          "name": "NotifyUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the game server queue",
+          "member": "string",
+          "name": "ServerRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server queue",
+          "member": "string",
+          "name": "ServerQueue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom push data",
+          "member": "string",
+          "name": "CustomPushData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game server session data",
+          "member": "string",
+          "name": "ServerSessionData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Game attribute. It is an array of key-value structure.",
+          "member": "StringKV",
+          "name": "GameProperties",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enable or disable the log. 0: disable, 1: enable",
+          "member": "int64",
+          "name": "LogSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag. It is an array of key-value structure.",
+          "member": "StringKV",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMatchResponse": {
+      "document": "ModifyMatch response structure.",
+      "members": [
+        {
+          "document": "Matchmaking information",
+          "member": "MatchInfo",
+          "name": "MatchInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRuleRequest": {
+      "document": "ModifyRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule name. It can only contain numbers, letters, \".\", and \"-\".",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule description. Up to 1024 bytes are allowed.",
+          "member": "string",
+          "name": "RuleDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag. It is an array of key-value structure. Up to 50 tags can be associated.",
+          "member": "StringKV",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRuleResponse": {
+      "document": "ModifyRule response structure.",
+      "members": [
+        {
+          "document": "Rule information",
+          "member": "RuleInfo",
+          "name": "RuleInfo",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyTokenRequest": {
       "document": "ModifyToken request structure.",
@@ -516,6 +1652,264 @@
       ],
       "usage": "in"
     },
+    "ReportOverviewData": {
+      "document": "Matchmaking statistics overview",
+      "members": [
+        {
+          "default": "",
+          "document": "Total count",
+          "member": "string",
+          "name": "TotalTimes",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Success rate",
+          "member": "float",
+          "name": "SuccessPercent",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timeout rate",
+          "member": "float",
+          "name": "TimeoutPercent",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Failure rate",
+          "member": "float",
+          "name": "FailPercent",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average matching time",
+          "member": "float",
+          "name": "AverageSec",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReportTrendData": {
+      "document": "Trend data",
+      "members": [
+        {
+          "default": "",
+          "document": "Total count",
+          "member": "string",
+          "name": "TotalList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of requests cancelled",
+          "member": "string",
+          "name": "CancelList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of successes",
+          "member": "string",
+          "name": "SuccessList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of failures",
+          "member": "string",
+          "name": "FailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of request timeout",
+          "member": "string",
+          "name": "TimeoutList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time array in seconds",
+          "member": "string",
+          "name": "TimeList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RuleBriefInfo": {
+      "document": "Brief rule information",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name. It supports [a-zA-Z\\d-\\.]*.",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The associated match",
+          "member": "StringKV",
+          "name": "MatchCodeList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RuleInfo": {
+      "document": "Rule information",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name. It supports [a-zA-Z0-9-\\.]*.",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "RuleDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule script",
+          "member": "string",
+          "name": "RuleScript",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "StringKV",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The associated match\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "StringKV",
+          "name": "MatchCodeList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RuleCode",
+          "member": "string",
+          "name": "RuleCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User AppId\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User UIN\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User OwnerUin\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "member": "string",
+          "name": "CreateUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "StartMatchingRequest": {
       "document": "StartMatching request structure.",
       "members": [
@@ -571,6 +1965,54 @@
         }
       ],
       "type": "object"
+    },
+    "StringKV": {
+      "document": "Key-value structure. Both key and value are string types.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Tag key-value pair",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
