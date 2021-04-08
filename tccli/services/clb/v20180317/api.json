@@ -49,7 +49,7 @@
       "output": "CreateLoadBalancerResponse"
     },
     "CreateLoadBalancerSnatIps": {
-      "document": "This API is used to add a SNAT IP for a SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.",
+      "document": "This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.",
       "input": "CreateLoadBalancerSnatIpsRequest",
       "name": "Adds SNAT IP",
       "output": "CreateLoadBalancerSnatIpsResponse"
@@ -91,7 +91,7 @@
       "output": "DeleteLoadBalancerListenersResponse"
     },
     "DeleteLoadBalancerSnatIps": {
-      "document": "This API is used to delete a SNAT IP for a SnatPro CLB instance.",
+      "document": "This API is used to delete the SNAT IP for an SnatPro CLB instance.",
       "input": "DeleteLoadBalancerSnatIpsRequest",
       "name": "Deletes SNAT IP",
       "output": "DeleteLoadBalancerSnatIpsResponse"
@@ -115,7 +115,7 @@
       "output": "DeleteTargetGroupsResponse"
     },
     "DeregisterTargetGroupInstances": {
-      "document": "This API is used to unbind a server from a target group.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
+      "document": "This API is used to unbind a server from a target group.\nThis is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "DeregisterTargetGroupInstancesRequest",
       "name": "Unbinds a server from a target group",
       "output": "DeregisterTargetGroupInstancesResponse"
@@ -127,7 +127,7 @@
       "output": "DeregisterTargetsResponse"
     },
     "DeregisterTargetsFromClassicalLB": {
-      "document": "This API (DeregisterTargetsFromClassicalLB) is used to unbind real servers from a classic load balancer.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
+      "document": "This API is used to unbind a CLB real server. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "DeregisterTargetsFromClassicalLBRequest",
       "name": "Unbinds real servers from a classic CLB",
       "output": "DeregisterTargetsFromClassicalLBResponse"
@@ -145,7 +145,7 @@
       "output": "DescribeBlockIPTaskResponse"
     },
     "DescribeClassicalLBByInstanceId": {
-      "document": "This API (DescribeClassicalLBByInstanceId) is used to get the list of classic CLB IDs through the real server instance ID.",
+      "document": "This API is used to get the list of classic CLB instance IDs through a real server ID.",
       "input": "DescribeClassicalLBByInstanceIdRequest",
       "name": "Queries the classic CLB bound to a real server",
       "output": "DescribeClassicalLBByInstanceIdResponse"
@@ -163,15 +163,15 @@
       "output": "DescribeClassicalLBListenersResponse"
     },
     "DescribeClassicalLBTargets": {
-      "document": "This API (DescribeClassicalLBTargets) is used to get the real servers bound to a classic CLB.",
+      "document": "This API is used to get the real servers bound to a classic CLB instance.",
       "input": "DescribeClassicalLBTargetsRequest",
       "name": "Gets the list of real servers bound to a classic CLB",
       "output": "DescribeClassicalLBTargetsResponse"
     },
     "DescribeClsLogSet": {
-      "document": "This API is used to get the CLB dedicated logset.",
+      "document": "This API is used to get the CLB exclusive logset.",
       "input": "DescribeClsLogSetRequest",
-      "name": "Gets the CLB dedicated logset",
+      "name": "Gets the CLB exclusive logset",
       "output": "DescribeClsLogSetResponse"
     },
     "DescribeListeners": {
@@ -343,7 +343,7 @@
       "output": "RegisterTargetsResponse"
     },
     "RegisterTargetsWithClassicalLB": {
-      "document": "This API (RegisterTargetsWithClassicalLB) is used to bind real servers to a classic CLB.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
+      "document": "This API is used to bind a real server with a classic CLB instance. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "RegisterTargetsWithClassicalLBRequest",
       "name": "Binds real servers to a classic CLB",
       "output": "RegisterTargetsWithClassicalLBResponse"
@@ -385,6 +385,7 @@
         {
           "default": "",
           "document": "Association array",
+          "example": "无",
           "member": "TargetGroupAssociation",
           "name": "Associations",
           "required": true,
@@ -498,6 +499,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-r6nx1iby",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -506,6 +508,7 @@
         {
           "default": "",
           "document": "`HTTPS:443` listener ID",
+          "example": "lbl-lmeeyb1q",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -514,6 +517,7 @@
         {
           "default": "",
           "document": "The domain name to be redirected under the listener `HTTPS:443`. If it is left empty, all domain names under the listener `HTTPS:443` will be configured with redirects.",
+          "example": "[\"www.abc.com\\n\"]",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -522,6 +526,7 @@
         {
           "default": "",
           "document": "Redirection status code. Valid values: 301, 302, and 307.",
+          "example": "301",
           "member": "int64",
           "name": "RewriteCodes",
           "required": false,
@@ -530,6 +535,7 @@
         {
           "default": "",
           "document": "Whether the matched URL is carried in redirection.",
+          "example": "true",
           "member": "bool",
           "name": "TakeUrls",
           "required": false,
@@ -667,6 +673,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-xxxx",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -674,7 +681,8 @@
         },
         {
           "default": "",
-          "document": "Unbound targets",
+          "document": "Unbinding targets",
+          "example": "无",
           "member": "BatchTarget",
           "name": "Targets",
           "required": true,
@@ -688,8 +696,10 @@
       "members": [
         {
           "document": "IDs of the listeners failed to unbind",
+          "example": "[]",
           "member": "string",
           "name": "FailListenerIdSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -708,6 +718,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-dx98lwo0",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -716,6 +727,7 @@
         {
           "default": "",
           "document": "List of weights to be modified in batches",
+          "example": "无",
           "member": "RsWeightRule",
           "name": "ModifyList",
           "required": true,
@@ -742,6 +754,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-xxxx",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -750,6 +763,7 @@
         {
           "default": "",
           "document": "Binding target",
+          "example": "无",
           "member": "BatchTarget",
           "name": "Targets",
           "required": true,
@@ -1421,7 +1435,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
-          "example": "lb-cuxw2rm0",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1429,7 +1443,7 @@
         },
         {
           "default": "",
-          "document": "Specifies for which ports to create listeners. Each port corresponds to a new listener",
+          "document": "Specifies for which ports to create listeners. Each port corresponds to a new listener.",
           "example": "[\"7569\\n\",\"7570\\n\"]",
           "member": "int64",
           "name": "Ports",
@@ -1438,7 +1452,7 @@
         },
         {
           "default": "",
-          "document": "Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application)",
+          "document": "Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application).",
           "example": "TCP",
           "member": "string",
           "name": "Protocol",
@@ -1456,7 +1470,7 @@
         },
         {
           "default": "",
-          "document": "Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners",
+          "document": "Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.",
           "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
@@ -1519,7 +1533,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0",
+          "document": "Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners. Valid values: 0 (disable; default value) and 1 (enable).",
           "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
@@ -1543,8 +1557,10 @@
       "members": [
         {
           "document": "Array of unique IDs of the created listeners",
+          "example": "[\"lbl-d1ubsydq\",\"lbl-4udz130k\"]",
           "member": "string",
           "name": "ListenerIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1563,6 +1579,7 @@
         {
           "default": "",
           "document": "CLB instance network type:\nOPEN: public network; INTERNAL: private network.",
+          "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
           "required": true,
@@ -1570,7 +1587,8 @@
         },
         {
           "default": "",
-          "document": "CLB instance type. 1: generic CLB instance. Currently, only 1 can be passed in",
+          "document": "CLB instance type. Valid value: 1 (generic CLB instance).",
+          "example": "1",
           "member": "int64",
           "name": "Forward",
           "required": false,
@@ -1579,6 +1597,7 @@
         {
           "default": "",
           "document": "CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).\nNote: if the name of the new CLB instance already exists, a default name will be generated automatically.",
+          "example": "test",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -1587,6 +1606,7 @@
         {
           "default": "",
           "document": "Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network (\"0\").",
+          "example": "vpc-30xq****",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1595,6 +1615,7 @@
         {
           "default": "",
           "document": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet.",
+          "example": "subnet-dva8****",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -1603,6 +1624,7 @@
         {
           "default": "",
           "document": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1611,6 +1633,7 @@
         {
           "default": "",
           "document": "IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances.",
+          "example": "IPV4",
           "member": "string",
           "name": "AddressIPVersion",
           "required": false,
@@ -1619,6 +1642,7 @@
         {
           "default": "",
           "document": "Number of CLBs to be created. Default value: 1.",
+          "example": "1",
           "member": "uint64",
           "name": "Number",
           "required": false,
@@ -1627,6 +1651,7 @@
         {
           "default": "",
           "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as 100001 or ap-guangzhou-1, which is applicable only to public network CLB.\nNote: A primary AZ carries traffic, while a secondary AZ does not carry traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. The list of primary AZs in a specific region can be queried through the DescribeMasterZones API.",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
           "required": false,
@@ -1634,7 +1659,8 @@
         },
         {
           "default": "",
-          "document": "Specifies an AZ ID for creating a CLB instance, such as ap-guangzhou-1, which is applicable only to public network CLB.",
+          "document": "Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "ZoneId",
           "required": false,
@@ -1643,6 +1669,7 @@
         {
           "default": "",
           "document": "CLB network billing mode. This parameter is applicable only to public network CLB instances.",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
           "required": false,
@@ -1651,6 +1678,7 @@
         {
           "default": "",
           "document": "This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.",
+          "example": "CMCC",
           "member": "string",
           "name": "VipIsp",
           "required": false,
@@ -1659,6 +1687,7 @@
         {
           "default": "",
           "document": "Tags a CLB instance when purchasing it",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": false,
@@ -1667,6 +1696,7 @@
         {
           "default": "",
           "document": "Applies for CLB instances for a specified VIP",
+          "example": "139.X.X.X",
           "member": "string",
           "name": "Vip",
           "required": false,
@@ -1675,6 +1705,7 @@
         {
           "default": "",
           "document": "Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).",
+          "example": "bwp-pnbe****",
           "member": "string",
           "name": "BandwidthPackageId",
           "required": false,
@@ -1682,7 +1713,8 @@
         },
         {
           "default": "",
-          "document": "Exclusive cluster information.",
+          "document": "Dedicated cluster information",
+          "example": "无",
           "member": "ExclusiveCluster",
           "name": "ExclusiveCluster",
           "required": false,
@@ -1691,6 +1723,7 @@
         {
           "default": "",
           "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "example": "23494*****",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -1699,6 +1732,7 @@
         {
           "default": "",
           "document": "Whether Binding IPs of other VPCs feature switch",
+          "example": "true",
           "member": "bool",
           "name": "SnatPro",
           "required": false,
@@ -1707,6 +1741,7 @@
         {
           "default": "",
           "document": "Creates `SnatIp` when the binding IPs of other VPCs feature is enabled",
+          "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
           "required": false,
@@ -1715,6 +1750,7 @@
         {
           "default": "",
           "document": "Tag for the STGW exclusive cluster.",
+          "example": "test",
           "member": "string",
           "name": "ClusterTag",
           "required": false,
@@ -1722,7 +1758,17 @@
         },
         {
           "default": "",
+          "document": "Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.\nNote: A secondary AZ will load traffic if the primary AZ has failures. The API `DescribeMasterZones` is used to query the primary and secondary AZ list of a region.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "SlaveZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance. E.g., `eip-11112222`.",
+          "example": "eip-1111****",
           "member": "string",
           "name": "EipAddressId",
           "required": false,
@@ -1755,7 +1801,8 @@
       "members": [
         {
           "default": "",
-          "document": "Unique CLB instance ID, such as lb-12345678",
+          "document": "Unique ID of a CLB instance, e.g., lb-12345678.",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1764,6 +1811,7 @@
         {
           "default": "",
           "document": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet.",
+          "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
           "required": true,
@@ -1790,6 +1838,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1798,6 +1847,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "lbl-4fbx*****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -1806,6 +1856,7 @@
         {
           "default": "",
           "document": "Information of the new forwarding rule",
+          "example": "无",
           "member": "RuleInput",
           "name": "Rules",
           "required": true,
@@ -1819,8 +1870,10 @@
       "members": [
         {
           "document": "Array of unique IDs of created forwarding rules",
+          "example": "[\"loc-ho6lvh8m\"]",
           "member": "string",
           "name": "LocationIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1896,6 +1949,7 @@
         {
           "default": "",
           "document": "Log topic name",
+          "example": "clb-topic",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -1904,6 +1958,7 @@
         {
           "default": "",
           "document": "The number of topic partitions, which changes as partitions are split or merged. Each log topic can have up to 50 partitions. If this parameter is not passed in, 1 partition will be created by default and up to 10 partitions are allowed to be created.",
+          "example": "3",
           "member": "uint64",
           "name": "PartitionCount",
           "required": false,
@@ -1917,8 +1972,10 @@
       "members": [
         {
           "document": "Log topic ID",
+          "example": "b046ae5f-00cf-4e90-880c-215e5ae7b6xy",
           "member": "string",
           "name": "TopicId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1937,6 +1994,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1945,6 +2003,7 @@
         {
           "default": "",
           "document": "ID of the listener to be deleted",
+          "example": "lbl-4udz****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -1971,6 +2030,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-db2n****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1979,6 +2039,7 @@
         {
           "default": "",
           "document": "Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted.",
+          "example": "无",
           "member": "string",
           "name": "ListenerIds",
           "required": false,
@@ -2004,7 +2065,8 @@
       "members": [
         {
           "default": "",
-          "document": "Array of IDs of the CLB instances to be deleted. Array length limit: 20",
+          "document": "Array of IDs of the CLB instances to be deleted. Array length limit: 20.",
+          "example": "[\"lb-hsb93u5o\\r\\n\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
@@ -2030,7 +2092,8 @@
       "members": [
         {
           "default": "",
-          "document": "Unique CLB instance ID, such as lb-12345678",
+          "document": "Unique ID of a CLB instance, e.g., lb-12345678.",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2039,6 +2102,7 @@
         {
           "default": "",
           "document": "Array of the SNAT IP addresses to be deleted",
+          "example": "[\"192.168.0.128\\r\\n\"]",
           "member": "string",
           "name": "Ips",
           "required": true,
@@ -2065,6 +2129,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-51jj****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2073,6 +2138,7 @@
         {
           "default": "",
           "document": "Source listener ID",
+          "example": "lbl-r4ia****",
           "member": "string",
           "name": "SourceListenerId",
           "required": true,
@@ -2081,6 +2147,7 @@
         {
           "default": "",
           "document": "Target listener ID",
+          "example": "lbl-0non****",
           "member": "string",
           "name": "TargetListenerId",
           "required": true,
@@ -2089,6 +2156,7 @@
         {
           "default": "",
           "document": "Redirection relationship between forwarding rules",
+          "example": "无",
           "member": "RewriteLocationMap",
           "name": "RewriteInfos",
           "required": true,
@@ -2115,6 +2183,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2123,6 +2192,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-4fbxq45k",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -2131,6 +2201,7 @@
         {
           "default": "",
           "document": "Array of IDs of the forwarding rules to be deleted",
+          "example": "无",
           "member": "string",
           "name": "LocationIds",
           "required": false,
@@ -2138,7 +2209,8 @@
         },
         {
           "default": "",
-          "document": "Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified",
+          "document": "Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.",
+          "example": "foo.net",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -2146,7 +2218,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified",
+          "document": "Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.",
+          "example": "/bar2",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -2155,6 +2228,7 @@
         {
           "default": "",
           "document": "A listener must be configured with a default domain name. If you need to delete the default domain name, you can specify another one as the new default domain name.",
+          "example": "www.default.example.com",
           "member": "string",
           "name": "NewDefaultServerDomain",
           "required": false,
@@ -2181,6 +2255,7 @@
         {
           "default": "",
           "document": "Target group ID array",
+          "example": "[\"lbtg-f1phe5j6\\r\\n\"]",
           "member": "string",
           "name": "TargetGroupIds",
           "required": true,
@@ -2207,6 +2282,7 @@
         {
           "default": "",
           "document": "Target group ID",
+          "example": "lbtg-815iz538",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -2215,6 +2291,7 @@
         {
           "default": "",
           "document": "Information of server to be unbound",
+          "example": "无",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
           "required": true,
@@ -2241,6 +2318,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-a3u5****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2248,7 +2326,8 @@
         },
         {
           "default": "",
-          "document": "List of real server instance IDs",
+          "document": "List of real server IDs",
+          "example": "[\"ins-odjhn6vc\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -2274,7 +2353,8 @@
       "members": [
         {
           "default": "",
-          "document": "CLB instance ID in the format of lb-12345678",
+          "document": "CLB instance ID in the format of \"lb-12345678\"",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2282,7 +2362,8 @@
         },
         {
           "default": "",
-          "document": "Listener ID in the format of lbl-12345678",
+          "document": "Listener ID in the format of \"lbl-12345678\"",
+          "example": "lbl-d1ub****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -2290,7 +2371,8 @@
         },
         {
           "default": "",
-          "document": "List of real servers to be unbound. Array length limit: 20",
+          "document": "List of real servers to be unbound. Array length limit: 20.",
+          "example": "无",
           "member": "Target",
           "name": "Targets",
           "required": true,
@@ -2298,7 +2380,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding rule ID in the format of loc-12345678. When unbinding a server from a layer-7 forwarding rule, you must provide either this parameter or Domain+Url",
+          "document": "Forwarding rule ID in the format of \"loc-12345678\". When unbinding a server from a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.",
+          "example": "loc-1234****",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -2306,7 +2389,8 @@
         },
         {
           "default": "",
-          "document": "Target rule domain name. This parameter does not take effect if LocationId is specified",
+          "document": "Target rule domain name. This parameter does not take effect if LocationId is specified.",
+          "example": "www.aaa.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -2314,7 +2398,8 @@
         },
         {
           "default": "",
-          "document": "Target rule URL. This parameter does not take effect if LocationId is specified",
+          "document": "Target rule URL. This parameter does not take effect if LocationId is specified.",
+          "example": "/test",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -2436,7 +2521,8 @@
       "members": [
         {
           "default": "",
-          "document": "List of real server IDs.",
+          "document": "List of real server IDs",
+          "example": "[\"ins-odjhn6vc\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -2450,8 +2536,10 @@
       "members": [
         {
           "document": "CLB information list",
+          "example": "无",
           "member": "ClassicalLoadBalancerInfo",
           "name": "LoadBalancerInfoList",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2470,6 +2558,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-a3u5****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2478,6 +2567,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-0non****",
           "member": "string",
           "name": "ListenerId",
           "required": false,
@@ -2490,9 +2580,11 @@
       "document": "DescribeClassicalLBHealthStatus response structure.",
       "members": [
         {
-          "document": "List of real server health statuses\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of real server health statuses\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ClassicalHealth",
           "name": "HealthList",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -2511,6 +2603,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-a3u5****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2519,6 +2612,7 @@
         {
           "default": "",
           "document": "List of CLB listener IDs",
+          "example": "无",
           "member": "string",
           "name": "ListenerIds",
           "required": false,
@@ -2526,7 +2620,8 @@
         },
         {
           "default": "",
-          "document": "CLB listening protocol. Value range: TCP, UDP, HTTP, HTTPS",
+          "document": "CLB listening protocol. Valid values: TCP, UDP, HTTP, and HTTPS.",
+          "example": "TCP",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -2534,7 +2629,8 @@
         },
         {
           "default": "",
-          "document": "CLB listening port. Value range: [1-65535]",
+          "document": "CLB listening port. Value range: 1 - 65535.",
+          "example": "22",
           "member": "int64",
           "name": "ListenerPort",
           "required": false,
@@ -2542,7 +2638,8 @@
         },
         {
           "default": "",
-          "document": "Listener status. Value range: 0 (creating), 1 (running)",
+          "document": "Listener status. Valid values: 0 (creating) and 1 (running).",
+          "example": "0",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -2555,9 +2652,11 @@
       "document": "DescribeClassicalLBListeners response structure.",
       "members": [
         {
-          "document": "List of listeners\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Listener list\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ClassicalListener",
           "name": "Listeners",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -2576,6 +2675,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-a3u5l5zc",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2588,9 +2688,11 @@
       "document": "DescribeClassicalLBTargets response structure.",
       "members": [
         {
-          "document": "List of real servers\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Real server list\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ClassicalTarget",
           "name": "Targets",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -2633,6 +2735,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-aniq****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -2641,6 +2744,7 @@
         {
           "default": "",
           "document": "Array of IDs of the CLB listeners to be queried",
+          "example": "无",
           "member": "string",
           "name": "ListenerIds",
           "required": false,
@@ -2648,7 +2752,8 @@
         },
         {
           "default": "",
-          "document": "Type of the listener protocol to be queried. Value range: TCP, UDP, HTTP, HTTPS, TCP_SSL",
+          "document": "Type of the listener protocols to be queried. Valid values: TCP, UDP, HTTP, HTTPS, and TCP_SSL.",
+          "example": "TCP",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -2656,7 +2761,8 @@
         },
         {
           "default": "",
-          "document": "Port of the listener to be queried",
+          "document": "Port of the listeners to be queried",
+          "example": "23",
           "member": "int64",
           "name": "Port",
           "required": false,
@@ -2669,16 +2775,20 @@
       "document": "DescribeListeners response structure.",
       "members": [
         {
-          "document": "List of listeners",
+          "document": "Listener list",
+          "example": "无",
           "member": "Listener",
           "name": "Listeners",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of listeners\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Total number of listeners (with filters of port, protocol, and listener ID applied).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "3",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -2742,9 +2852,11 @@
       "document": "DescribeLoadBalancerTraffic response structure.",
       "members": [
         {
-          "document": "Information of CLB instances sorted by outbound bandwidth from highest to lowest\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Information of CLB instances sorted by outbound bandwidth from highest to lowest\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "LoadBalancerTraffic",
           "name": "LoadBalancerTraffic",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -2763,6 +2875,7 @@
         {
           "default": "",
           "document": "Number of CLB instance lists returned. Default value: 20; maximum value: 100.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2770,7 +2883,8 @@
         },
         {
           "default": "",
-          "document": "Starting offset of the CLB instance list returned. Default value: 0",
+          "document": "Starting offset of the CLB instance list returned. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2779,6 +2893,7 @@
         {
           "default": "",
           "document": "List of fields to be returned. The `LoadBalancerId` and `LoadBalancerName` are returned by default.",
+          "example": "无",
           "member": "string",
           "name": "Fields",
           "required": false,
@@ -2787,6 +2902,7 @@
         {
           "default": "",
           "document": "Target type. Valid values: NODE and GROUP. If the list of fields contains `TargetId`, `TargetAddress`, `TargetPort`, `TargetWeight` and other fields, `Target` of the target group or non-target group must be exported.",
+          "example": "NODE",
           "member": "string",
           "name": "TargetType",
           "required": false,
@@ -2795,6 +2911,7 @@
         {
           "default": "",
           "document": "Filter condition of querying lists describing CLB instance details:\n<li> loadbalancer-id - String - Required: no - (Filter condition) CLB instance ID, such as \"lb-12345678\". </li>\n<li> project-id - String - Required: no - (Filter condition) Project ID, such as \"0\" and \"123\".</li>\n<li> network - String - Required: no - (Filter condition) Network type of the CLB instance, such as \"Public\" and \"Private\".</li>\n<li> vip - String - Required: no - (Filter condition) CLB instance VIP, such as \"1.1.1.1\" and \"2204::22:3\". </li>\n<li> target-ip - String - Required: no - (Filter condition) Private IP of the target real servers, such as\"1.1.1.1\" and \"2203::214:4\".</li>\n<li> vpcid - String - Required: no - (Filter condition) Identifier of the VPC instance to which the CLB instance belongs, such as \"vpc-12345678\".</li>\n<li> zone - String - Required: no - (Filter condition) Availability zone where the CLB instance resides, such as \"ap-guangzhou-1\".</li>\n<li> tag-key - String - Required: no - (Filter condition) Tag key of the CLB instance, such as \"name\".</li>\n<li> tag:* - String - Required: no - (Filter condition) CLB instance tag, followed by tag key after the colon ':'. For example, use {\"Name\": \"tag:name\",\"Values\": [\"zhangsan\", \"lisi\"]} to filter the tag key “name” with the tag value “zhangsan” and “lisi”.</li>\n<li> fuzzy-search - String - Required: no - (Filter condition) Fuzzy search for CLB instance VIP and CLB instance name, such as \"1.1\".</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3043,6 +3160,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-qc2i****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -3051,6 +3169,7 @@
         {
           "default": "",
           "document": "Array of CLB listener IDs",
+          "example": "[\"lbl-j36caqde\\r\\n\"]",
           "member": "string",
           "name": "SourceListenerIds",
           "required": false,
@@ -3058,7 +3177,8 @@
         },
         {
           "default": "",
-          "document": "Array of CLB forwarding rules",
+          "document": "Array of CLB forwarding rule IDs",
+          "example": "[\"loc-5t7526km\\r\\n\"]",
           "member": "string",
           "name": "SourceLocationIds",
           "required": false,
@@ -3071,9 +3191,11 @@
       "document": "DescribeRewrite response structure.",
       "members": [
         {
-          "document": "Array of redirection forwarding rules. If there are no redirection rules, an empty array will be returned",
+          "document": "Array of redirection forwarding rules. If there are no redirection rules, an empty array will be returned.",
+          "example": "无",
           "member": "RuleOutput",
           "name": "RewriteSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3155,6 +3277,7 @@
         {
           "default": "",
           "document": "Target group ID array",
+          "example": "无",
           "member": "string",
           "name": "TargetGroupIds",
           "required": false,
@@ -3162,7 +3285,8 @@
         },
         {
           "default": "",
-          "document": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName. Target group ID will be used first.",
+          "document": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`. Target group ID will be used first.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3171,6 +3295,7 @@
         {
           "default": "",
           "document": "Starting display offset",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3178,7 +3303,8 @@
         },
         {
           "default": "",
-          "document": "Limit of the number of displayed results. Default value: 20",
+          "document": "Limit of the number of displayed results. Default value: 20.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3192,15 +3318,19 @@
       "members": [
         {
           "document": "Number of displayed results",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Information set of displayed target groups",
+          "example": "无",
           "member": "TargetGroupInfo",
           "name": "TargetGroupSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3219,6 +3349,7 @@
         {
           "default": "",
           "document": "Target group ID, which is exclusive of `Filters`.",
+          "example": "[\"lbtg-5xunivs0\\r\\n\"]",
           "member": "string",
           "name": "TargetGroupIds",
           "required": false,
@@ -3226,7 +3357,8 @@
         },
         {
           "default": "",
-          "document": "Limit of the number of displayed results. Default value: 20",
+          "document": "Limit of the number of displayed results. Default value: 20.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3235,6 +3367,7 @@
         {
           "default": "",
           "document": "Starting display offset",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3242,7 +3375,8 @@
         },
         {
           "default": "",
-          "document": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: TargetGroupVpcId, TargetGroupName",
+          "document": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3256,15 +3390,19 @@
       "members": [
         {
           "document": "Number of displayed results",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Information set of displayed target groups",
+          "example": "无",
           "member": "TargetGroupInfo",
           "name": "TargetGroupSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3283,6 +3421,7 @@
         {
           "default": "",
           "document": "List of IDs of CLB instances to be queried",
+          "example": "[\"lb-qc2iq5yc\\n\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
@@ -3295,9 +3434,11 @@
       "document": "DescribeTargetHealth response structure.",
       "members": [
         {
-          "document": "List of CLB instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "CLB instance list\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "LoadBalancerHealth",
           "name": "LoadBalancers",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3316,6 +3457,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-10iq9lou",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -3323,7 +3465,8 @@
         },
         {
           "default": "",
-          "document": "List of listener IDs",
+          "document": "Listener ID list",
+          "example": "无",
           "member": "string",
           "name": "ListenerIds",
           "required": false,
@@ -3332,6 +3475,7 @@
         {
           "default": "",
           "document": "Listener protocol type",
+          "example": "HTTP",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -3340,6 +3484,7 @@
         {
           "default": "",
           "document": "Listener port",
+          "example": "80",
           "member": "int64",
           "name": "Port",
           "required": false,
@@ -3352,9 +3497,11 @@
       "document": "DescribeTargets response structure.",
       "members": [
         {
-          "document": "Information of real servers bound to the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Information of real servers bound to the listener\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ListenerBackend",
           "name": "Listeners",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3372,7 +3519,8 @@
       "members": [
         {
           "default": "",
-          "document": "Request ID, i.e., the RequestId parameter returned by the API",
+          "document": "Request ID, i.e., the RequestId parameter returned by the API.",
+          "example": "55c85074-3e7f-4c6d-864f-673660d4f8de",
           "member": "string",
           "name": "TaskId",
           "required": false,
@@ -3406,6 +3554,7 @@
         {
           "default": "",
           "document": "Array of rules to be unbound",
+          "example": "无",
           "member": "TargetGroupAssociation",
           "name": "Associations",
           "required": true,
@@ -4806,6 +4955,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-51jj****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -4814,6 +4964,7 @@
         {
           "default": "",
           "document": "Source listener ID",
+          "example": "lbl-0non****",
           "member": "string",
           "name": "SourceListenerId",
           "required": true,
@@ -4822,6 +4973,7 @@
         {
           "default": "",
           "document": "Target listener ID",
+          "example": "lbl-r4ia****",
           "member": "string",
           "name": "TargetListenerId",
           "required": true,
@@ -4830,6 +4982,7 @@
         {
           "default": "",
           "document": "Redirection relationship between forwarding rules",
+          "example": "无",
           "member": "RewriteLocationMap",
           "name": "RewriteInfos",
           "required": true,
@@ -4929,6 +5082,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-1wvl****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -4937,6 +5091,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-n8mb****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -4945,6 +5100,7 @@
         {
           "default": "",
           "document": "Domain name, which must be under a created forwarding rule.",
+          "example": "foo.net",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -4953,6 +5109,7 @@
         {
           "default": "",
           "document": "New domain name",
+          "example": "www.new.example.com",
           "member": "string",
           "name": "NewDomain",
           "required": false,
@@ -4961,6 +5118,7 @@
         {
           "default": "",
           "document": "Domain name certificate information. Note: This is only applicable to SNI-enabled listeners.",
+          "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
           "required": false,
@@ -4969,6 +5127,7 @@
         {
           "default": "",
           "document": "Whether to enable HTTP/2. Note: HTTP/2 can be enabled only for HTTPS domain names.",
+          "example": "true",
           "member": "bool",
           "name": "Http2",
           "required": false,
@@ -4977,6 +5136,7 @@
         {
           "default": "",
           "document": "Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.",
+          "example": "true",
           "member": "bool",
           "name": "DefaultServer",
           "required": false,
@@ -4985,6 +5145,7 @@
         {
           "default": "",
           "document": "A listener must be configured with a default domain name. If you need to disable the default domain name, you must specify another one as the new default domain name.",
+          "example": "www.qcloud.example.com",
           "member": "string",
           "name": "NewDefaultServerDomain",
           "required": false,
@@ -5061,6 +5222,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5069,6 +5231,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-d1ub****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5077,6 +5240,7 @@
         {
           "default": "",
           "document": "New listener name",
+          "example": "newlis",
           "member": "string",
           "name": "ListenerName",
           "required": false,
@@ -5085,6 +5249,7 @@
         {
           "default": "",
           "document": "Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.",
+          "example": "120",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": false,
@@ -5092,7 +5257,8 @@
         },
         {
           "default": "",
-          "document": "Health check parameter, which is applicable only to TCP/UDP/TCP_SSL listeners.",
+          "document": "Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.",
+          "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
           "required": false,
@@ -5100,7 +5266,8 @@
         },
         {
           "default": "",
-          "document": "Certificate information. This parameter is applicable only to HTTPS/TCP_SSL listeners.",
+          "document": "Certificate information. This parameter is applicable only to HTTPS and TCP_SSL listeners.",
+          "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
           "required": false,
@@ -5109,6 +5276,7 @@
         {
           "default": "",
           "document": "Forwarding method of a listener. Value range: WRR, LEAST_CONN.\nThey represent weighted round robin and least connections, respectively. Default value: WRR.",
+          "example": "LEAST_CONN",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -5117,6 +5285,7 @@
         {
           "default": "",
           "document": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners. Note: The SNI feature can be enabled but cannot be disabled once enabled.",
+          "example": "0",
           "member": "int64",
           "name": "SniSwitch",
           "required": false,
@@ -5124,7 +5293,8 @@
         },
         {
           "default": "",
-          "document": "Whether to enable a persistent connection (This parameter can only be configured in HTTP/HTTPS listeners). Valid values: 0: no; 1: yes. Default value: 0",
+          "document": "Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners.",
+          "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
           "required": false,
@@ -5224,6 +5394,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5232,6 +5403,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-4fbxq45k",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5240,6 +5412,7 @@
         {
           "default": "",
           "document": "ID of the forwarding rule to be modified.",
+          "example": "loc-9dr7bsl3",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -5247,7 +5420,8 @@
         },
         {
           "default": "",
-          "document": "New forwarding path of the forwarding rule. This parameter is not required if the URL does not need to be modified",
+          "document": "New forwarding path of the forwarding rule. This parameter is not required if the URL does not need to be modified.",
+          "example": "/bar",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -5256,6 +5430,7 @@
         {
           "default": "",
           "document": "Health check information",
+          "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
           "required": false,
@@ -5264,6 +5439,7 @@
         {
           "default": "",
           "document": "Request forwarding method of the rule. Value range: WRR, LEAST_CONN, IP_HASH\nThey represent weighted round robin, least connections, and IP hash, respectively. Default value: WRR.",
+          "example": "LEAST_CONN",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -5272,6 +5448,7 @@
         {
           "default": "",
           "document": "Session persistence time",
+          "example": "75",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": false,
@@ -5279,7 +5456,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, TRPC.",
+          "document": "Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, and TRPC.",
+          "example": "HTTP",
           "member": "string",
           "name": "ForwardType",
           "required": false,
@@ -5287,7 +5465,8 @@
         },
         {
           "default": "",
-          "document": "TRPC callee server route, which is required when `ForwardType` is `TRPC`.",
+          "document": "TRPC callee server route, which is required when `ForwardType` is \"TRPC\".",
+          "example": "xyz",
           "member": "string",
           "name": "TrpcCallee",
           "required": false,
@@ -5295,7 +5474,8 @@
         },
         {
           "default": "",
-          "document": "TRPC calling service API, which is required when `ForwardType` is `TRPC`.",
+          "document": "TRPC calling service API, which is required when `ForwardType` is \"TRPC\".",
+          "example": "abc",
           "member": "string",
           "name": "TrpcFunc",
           "required": false,
@@ -5322,6 +5502,7 @@
         {
           "default": "",
           "document": "Target group ID",
+          "example": "lbtg-815iz538",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -5330,6 +5511,7 @@
         {
           "default": "",
           "document": "New name of target group",
+          "example": "xxxxholic",
           "member": "string",
           "name": "TargetGroupName",
           "required": false,
@@ -5338,6 +5520,7 @@
         {
           "default": "",
           "document": "New default port of target group",
+          "example": "22",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -5364,6 +5547,7 @@
         {
           "default": "",
           "document": "Target group ID",
+          "example": "lbtg-815iz538",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -5371,7 +5555,8 @@
         },
         {
           "default": "",
-          "document": "Array of servers for which to modify port",
+          "document": "Array of servers for which to modify ports",
+          "example": "无",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
           "required": true,
@@ -5398,6 +5583,7 @@
         {
           "default": "",
           "document": "Target group ID",
+          "example": "lbtg-815iz538",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -5405,7 +5591,8 @@
         },
         {
           "default": "",
-          "document": "Array of servers for which to modify weight",
+          "document": "Array of servers for which to modify weights",
+          "example": "无",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
           "required": true,
@@ -5432,6 +5619,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5440,6 +5628,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-d1ub****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5448,6 +5637,7 @@
         {
           "default": "",
           "document": "List of real servers for which to modify the ports",
+          "example": "无",
           "member": "Target",
           "name": "Targets",
           "required": true,
@@ -5456,6 +5646,7 @@
         {
           "default": "",
           "document": "New port of the real server bound to a listener or forwarding rule",
+          "example": "334",
           "member": "int64",
           "name": "NewPort",
           "required": true,
@@ -5463,7 +5654,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url",
+          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.",
+          "example": "loc-fi8g****",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -5471,7 +5663,8 @@
         },
         {
           "default": "",
-          "document": "Target rule domain name. This parameter does not take effect if LocationId is specified",
+          "document": "Target rule domain name. This parameter does not take effect if LocationId is specified.",
+          "example": "www.qcloud.example.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -5479,7 +5672,8 @@
         },
         {
           "default": "",
-          "document": "Target rule URL. This parameter does not take effect if LocationId is specified",
+          "document": "Target rule URL. This parameter does not take effect if LocationId is specified.",
+          "example": "/index",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -5506,6 +5700,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5514,6 +5709,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-d1ub****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5521,7 +5717,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url",
+          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.",
+          "example": "loc-fi8g****",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -5529,7 +5726,8 @@
         },
         {
           "default": "",
-          "document": "Target rule domain name. This parameter does not take effect if LocationId is specified",
+          "document": "Target rule domain name. This parameter does not take effect if LocationId is specified.",
+          "example": "www.new.example.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -5537,7 +5735,8 @@
         },
         {
           "default": "",
-          "document": "Target rule URL. This parameter does not take effect if LocationId is specified",
+          "document": "Target rule URL. This parameter does not take effect if LocationId is specified.",
+          "example": "/index",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -5545,7 +5744,8 @@
         },
         {
           "default": "",
-          "document": "List of real servers for which to modify the weight",
+          "document": "List of real servers for which to modify the weights",
+          "example": "无",
           "member": "Target",
           "name": "Targets",
           "required": false,
@@ -5554,6 +5754,7 @@
         {
           "default": "",
           "document": "New forwarding weight of a real server. Value range: 0-100. Default value: 10. If the Targets.Weight parameter is set, this parameter will not take effect.",
+          "example": "8",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -5647,6 +5848,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5655,6 +5857,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-d1ub****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5662,7 +5865,8 @@
         },
         {
           "default": "",
-          "document": "List of real servers to be bound. Array length limit: 20",
+          "document": "List of real servers to be bound. Array length limit: 20.",
+          "example": "无",
           "member": "Target",
           "name": "Targets",
           "required": true,
@@ -5670,7 +5874,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url",
+          "document": "Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or Domain+Url.",
+          "example": "loc-fi8g****",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -5678,7 +5883,8 @@
         },
         {
           "default": "",
-          "document": "Target forwarding rule domain name. This parameter does not take effect if LocationId is specified",
+          "document": "Target forwarding rule domain name. This parameter does not take effect if LocationId is specified.",
+          "example": "www.qcloud.example.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -5686,7 +5892,8 @@
         },
         {
           "default": "",
-          "document": "Target forwarding rule URL. This parameter does not take effect if LocationId is specified",
+          "document": "Target forwarding rule URL. This parameter does not take effect if LocationId is specified.",
+          "example": "/index",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -5713,6 +5920,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-a3u5****",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5721,6 +5929,7 @@
         {
           "default": "",
           "document": "Real server information",
+          "example": "无",
           "member": "ClassicalTargetInfo",
           "name": "Targets",
           "required": true,
@@ -6604,6 +6813,7 @@
         {
           "default": "",
           "document": "Target group ID",
+          "example": "lbtg-5f37****",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -6613,6 +6823,7 @@
         {
           "default": "",
           "document": "Real server type. Valid values: CVM, ENI (coming soon)",
+          "example": "CVM",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -6622,6 +6833,7 @@
         {
           "default": "",
           "document": "Unique real server ID",
+          "example": "ins-2bei****",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6631,6 +6843,7 @@
         {
           "default": "",
           "document": "Listening port of real server",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -6640,6 +6853,7 @@
         {
           "default": "",
           "document": "Forwarding weight of real server. Value range: [0, 100]. Default value: 10.",
+          "example": "10",
           "member": "uint64",
           "name": "Weight",
           "required": true,
@@ -6649,6 +6863,7 @@
         {
           "default": "",
           "document": "Public IP of real server\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[1.1.1.1]",
           "member": "string",
           "name": "PublicIpAddresses",
           "required": true,
@@ -6658,6 +6873,7 @@
         {
           "default": "",
           "document": "Private IP of real server\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[2.2.2.2]",
           "member": "string",
           "name": "PrivateIpAddresses",
           "required": true,
@@ -6667,6 +6883,7 @@
         {
           "default": "",
           "document": "Real server instance name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "testName",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -6676,6 +6893,7 @@
         {
           "default": "",
           "document": "Real server binding time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-16 00:00:00",
           "member": "datetime",
           "name": "RegisteredTime",
           "required": true,
@@ -6685,10 +6903,21 @@
         {
           "default": "",
           "document": "Unique ENI ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "eni-jf7u****",
           "member": "string",
           "name": "EniId",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AZ ID of the real server\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "400001",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -6886,6 +7115,7 @@
         {
           "default": "",
           "document": "Unique AZ ID in a numeric form, such as 100001\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100001",
           "member": "uint64",
           "name": "ZoneId",
           "required": true,
@@ -6895,6 +7125,7 @@
         {
           "default": "",
           "document": "Unique AZ ID in a string form, such as ap-guangzhou-1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -6904,10 +7135,31 @@
         {
           "default": "",
           "document": "AZ name, such as Guangzhou Zone 1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "广州一区",
           "member": "string",
           "name": "ZoneName",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AZ region, e.g., ap-guangzhou.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "ZoneRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the AZ is the `LocalZone`, e.g., false.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "LocalZone",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],

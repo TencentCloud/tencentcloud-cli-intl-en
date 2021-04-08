@@ -972,7 +972,8 @@
       "members": [
         {
           "default": "",
-          "document": "Output stream audio sample rate for On-Cloud MixTranscoding in Hz. Valid values: 48000, 44100, 32000, 24000, 16000, 12000, 8000.",
+          "document": "Output audio sample rate (Hz) for On-Cloud MixTranscoding. Valid values: 48000, 44100, 32000, 24000, 16000, 8000",
+          "example": "48000",
           "member": "uint64",
           "name": "AudioSampleRate",
           "required": true,
@@ -981,7 +982,8 @@
         },
         {
           "default": "",
-          "document": "Output stream audio bitrate in Kbps for On-Cloud MixTranscoding. Value range: [8, 500].",
+          "document": "Output audio bitrate (Kbps) for On-Cloud MixTranscoding. Value range: 8-500",
+          "example": "64",
           "member": "uint64",
           "name": "AudioBitrate",
           "required": true,
@@ -991,6 +993,7 @@
         {
           "default": "",
           "document": "Number of sound channels of output stream for On-Cloud MixTranscoding. Valid values: 1, 2. 1 represents mono-channel, and 2 represents dual-channel.",
+          "example": "2",
           "member": "uint64",
           "name": "AudioChannels",
           "required": true,
@@ -1000,6 +1003,7 @@
         {
           "default": "",
           "document": "Output stream width in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1920].",
+          "example": "1280",
           "member": "uint64",
           "name": "VideoWidth",
           "required": false,
@@ -1009,6 +1013,7 @@
         {
           "default": "",
           "document": "Output stream height in pixels for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [0, 1080].",
+          "example": "720",
           "member": "uint64",
           "name": "VideoHeight",
           "required": false,
@@ -1017,7 +1022,8 @@
         },
         {
           "default": "",
-          "document": "Output stream bitrate in Kbps for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 10000].",
+          "document": "Output bitrate (Kbps) for On-Cloud MixTranscoding, which is required for audio-video output. Value range: 1-10000",
+          "example": "512",
           "member": "uint64",
           "name": "VideoBitrate",
           "required": false,
@@ -1027,6 +1033,7 @@
         {
           "default": "",
           "document": "Output stream frame rate for On-Cloud MixTranscoding in FPS. This parameter is required for audio/video outputs. Value range: [1, 60].",
+          "example": "15",
           "member": "uint64",
           "name": "VideoFramerate",
           "required": false,
@@ -1036,6 +1043,7 @@
         {
           "default": "",
           "document": "Output stream GOP in seconds for On-Cloud MixTranscoding, which is required for audio/video output. Value range: [1, 5].",
+          "example": "2",
           "member": "uint64",
           "name": "VideoGop",
           "required": false,
@@ -1044,7 +1052,8 @@
         },
         {
           "default": "",
-          "document": "Output stream background color for On-Cloud MixTranscoding.",
+          "document": "Output background color for On-Cloud MixTranscoding. Valid values: decimal integers. Commonly used colors include:\nRed: 0xff0000, whose decimal number is 16724736\nYellow: 0xffff00, whose decimal number is 16776960\nGreen: 0x33cc00, whose decimal number is 3394560\nBlue: 0x0066ff, whose decimal number is 26367\nBlack: 0x000000, whose decimal number is 0\nWhite: 0xFFFFFF, whose decimal number is 16777215\nGrey: 0x999999, whose decimal number is 10066329",
+          "example": "0",
           "member": "uint64",
           "name": "BackgroundColor",
           "required": false,
@@ -1054,8 +1063,19 @@
         {
           "default": "",
           "document": "Output stream background image for stream mix. Its value is the ID of image uploaded through the TRTC Console.",
+          "example": "0",
           "member": "uint64",
           "name": "BackgroundImageId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output audio codec for On-Cloud MixTranscoding. Valid values: 0, 1, 2. 0 (default): LC-AAC; 1: HE-AAC; 2: HE-AACv2. If this parameter is set to 2 (HE-AACv2), On-Cloud MixTranscoding can produce only dual-channel streams. If it is set to 1 (HE-AAC) or 2 (HE-AACv2), the valid values for the audio sample rate of output streams are 48000, 44100, 32000, 24000, and 16000.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AudioCodec",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1240,6 +1260,7 @@
         {
           "default": "",
           "document": "Custom live stream ID, which must be different from the ID of relayed stream.",
+          "example": "mix_stream",
           "member": "string",
           "name": "StreamId",
           "required": true,
@@ -1249,6 +1270,7 @@
         {
           "default": "",
           "document": "Value range: [0, 1]. If it is 0, live streams are audio and video; if it is 1, live streams are only audio. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "PureAudioStream",
           "required": false,
@@ -1257,7 +1279,8 @@
         },
         {
           "default": "",
-          "document": "Custom recording file name. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1",
+          "document": "Prefix of custom recording file names. Please enable the recording feature in the TRTC console first. https://intl.cloud.tencent.com/document/product/647/50768?from_cn_redirect=1",
+          "example": "mix_stream_record",
           "member": "string",
           "name": "RecordId",
           "required": false,
@@ -1267,6 +1290,7 @@
         {
           "default": "",
           "document": "Value range: [0, 1]. If it is 0, the recording template configured in the console will be used; if it is 1, streams are recorded as .mp3 files.",
+          "example": "0",
           "member": "uint64",
           "name": "RecordAudioOnly",
           "required": false,

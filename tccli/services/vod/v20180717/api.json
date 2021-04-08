@@ -4959,6 +4959,7 @@
         {
           "default": "",
           "document": "Log date in the format of `yyyy-MM-dd`, such as 2018-03-01.",
+          "example": "无",
           "member": "string",
           "name": "Date",
           "required": true,
@@ -4968,6 +4969,7 @@
         {
           "default": "",
           "document": "Log name in the format of date and time-domain name,\nsuch as 2018120101-test.vod2.mqcloud.com.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4977,8 +4979,29 @@
         {
           "default": "",
           "document": "Log download link, which is valid for 24 hours.",
+          "example": "无",
           "member": "string",
           "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=)",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=)",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8348,6 +8371,7 @@
         {
           "default": "",
           "document": "Domain name.",
+          "example": "test.vod2.myqcloud.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -8356,6 +8380,7 @@
         {
           "default": "",
           "document": "Start time for log acquisition in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2018-12-0116:00:00Z",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -8364,6 +8389,7 @@
         {
           "default": "",
           "document": "End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F), which must be after the start time.",
+          "example": "2018-12-0316:00:00Z",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -8371,7 +8397,26 @@
         },
         {
           "default": "",
+          "document": "Maximum return results of pulling paginated queries. Default value: 100; maximum value: 1000",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number offset from the beginning of paginated queries. Default value: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "0",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -8384,16 +8429,29 @@
       "document": "DescribeCdnLogs response structure.",
       "members": [
         {
-          "document": "Log download list for CDN nodes in Mainland China.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "CdnLogInfo",
-          "name": "DomesticCdnLogs",
-          "type": "list",
+          "document": "Total number of log download links\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Log download list for CDN nodes outside Mainland China. If global acceleration is not enabled for the domain name, ignore this parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CdnLogInfo",
           "name": "OverseaCdnLogs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Log download list for CDN nodes in Mainland China.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CdnLogInfo",
+          "name": "DomesticCdnLogs",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
