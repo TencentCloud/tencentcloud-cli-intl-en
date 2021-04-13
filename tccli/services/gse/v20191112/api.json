@@ -127,6 +127,32 @@
     "serviceShortName": "gse"
   },
   "objects": {
+    "CcnInfo": {
+      "document": "CCN information",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN account",
+          "example": "13734*",
+          "member": "string",
+          "name": "AccountId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CCN ID",
+          "example": "ccn-f0jyb*",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "CopyFleetRequest": {
       "document": "CopyFleet request structure.",
       "members": [
@@ -249,8 +275,8 @@
         },
         {
           "default": "",
-          "document": "Whether to select CCN. Valid values: CCN_SELECTED, CCN_UNSELECTED. Default value: CCN_UNSELECTED.",
-          "example": "CCN_SELECTED",
+          "document": "Whether to select CCN: CCN_SELECTED_BEFORE_CREATE (associated before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (not associated); CCN_UNSELECTED by default",
+          "example": "CCN_UNSELECTED",
           "member": "string",
           "name": "SelectedCcnType",
           "required": false,
@@ -291,6 +317,15 @@
           "name": "SelectedTimerType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CCN information, including the corresponding CCN account and ID.",
+          "example": "无",
+          "member": "CcnInfo",
+          "name": "CcnInfos",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -910,6 +945,7 @@
         {
           "default": "",
           "document": "Asset package ID",
+          "example": "无",
           "member": "string",
           "name": "AssetId",
           "required": true,
@@ -919,6 +955,7 @@
         {
           "default": "",
           "document": "Server fleet creation time",
+          "example": "无",
           "member": "string",
           "name": "CreationTime",
           "required": true,
@@ -928,6 +965,7 @@
         {
           "default": "",
           "document": "Description\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -937,6 +975,7 @@
         {
           "default": "",
           "document": "Description of server fleet resource\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "FleetArn",
           "required": true,
@@ -946,6 +985,7 @@
         {
           "default": "",
           "document": "Server fleet ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "FleetId",
           "required": true,
@@ -955,6 +995,7 @@
         {
           "default": "",
           "document": "Server fleet type, which only supports ON_DEMAND now.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "FleetType",
           "required": true,
@@ -964,6 +1005,7 @@
         {
           "default": "",
           "document": "Server type, such as S5.LARGE8\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -973,6 +1015,7 @@
         {
           "default": "",
           "document": "Server fleet name",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -982,6 +1025,7 @@
         {
           "default": "",
           "document": "Game session protection policy\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "NewGameServerSessionProtectionPolicy",
           "required": true,
@@ -991,6 +1035,7 @@
         {
           "default": "",
           "document": "Operating system type\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "OperatingSystem",
           "required": true,
@@ -1000,6 +1045,7 @@
         {
           "default": "",
           "document": "Limit policy of resource creation\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "ResourceCreationLimitPolicy",
           "name": "ResourceCreationLimitPolicy",
           "required": true,
@@ -1009,6 +1055,7 @@
         {
           "default": "",
           "document": "Statuses: “Create”, “Downloading”, “Verifying”, “Generating”, “Activating”, “Active”, “Exception”, “Deleting”, and “End”.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1018,6 +1065,7 @@
         {
           "default": "",
           "document": "The status of server fleet when it stopped. If this field is left empty, it means automatic scaling.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "StoppedActions",
           "required": true,
@@ -1027,6 +1075,7 @@
         {
           "default": "",
           "document": "Server fleet termination time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "TerminationTime",
           "required": true,
@@ -1036,6 +1085,7 @@
         {
           "default": "",
           "document": "Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "GameServerSessionProtectionTimeLimit",
           "required": true,
@@ -1045,6 +1095,7 @@
         {
           "default": "",
           "document": "Billing status: Unactivated, Activated, Exception, Isolated due to arrears, Terminated, and Unfrozen.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "BillingStatus",
           "required": true,
@@ -1054,6 +1105,7 @@
         {
           "default": "",
           "document": "Tag list. Up to 50 tags.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -1063,6 +1115,7 @@
         {
           "default": "",
           "document": "Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. \nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "DiskInfo",
           "name": "DataDiskInfo",
           "required": true,
@@ -1072,10 +1125,21 @@
         {
           "default": "",
           "document": "System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "DiskInfo",
           "name": "SystemDiskInfo",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CCN information\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RelatedCcnInfo",
+          "name": "RelatedCcnInfos",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -1973,6 +2037,42 @@
         }
       ],
       "type": "object"
+    },
+    "RelatedCcnInfo": {
+      "document": "CCN information description",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN account",
+          "example": "13734*",
+          "member": "string",
+          "name": "AccountId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CCN ID",
+          "example": "ccn-f0jyb*",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of associated CCN",
+          "example": "CCN_SELECTED_BEFORE_CREATE",
+          "member": "string",
+          "name": "AttachType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ResourceCreationLimitPolicy": {
       "document": "Resource creation policy",

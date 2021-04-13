@@ -2014,6 +2014,7 @@
         {
           "default": "",
           "document": "Database engine name. Valid value: `mariadb`.",
+          "example": "mariadb",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -2022,6 +2023,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "tdsql-eb2w7dto",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2035,10 +2037,30 @@
       "members": [
         {
           "document": "Security group details",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "Instance VIP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance port\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "VPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

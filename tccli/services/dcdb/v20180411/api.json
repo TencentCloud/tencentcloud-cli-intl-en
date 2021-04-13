@@ -1716,10 +1716,30 @@
       "members": [
         {
           "document": "Security group details",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "Instance VIP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance port\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "VPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1749,15 +1769,28 @@
       "members": [
         {
           "document": "Sync mode. 0: async; 1: strong sync; 2: downgradable strong sync",
+          "example": "0",
           "member": "int64",
           "name": "SyncMode",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Whether a modification is in progress. 1: yes; 0: no.",
+          "example": "1",
           "member": "int64",
           "name": "IsModifying",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Current sync mode. Valid values: `0` (async), `1` (sync).",
+          "example": "0",
+          "member": "int64",
+          "name": "CurrentSyncMode",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2878,7 +2911,7 @@
         },
         {
           "default": "",
-          "document": "The `uin` of the resource owner (root account)",
+          "document": "The UIN of the resource owner (root account)",
           "member": "int64",
           "name": "OwnerUin",
           "required": true,
@@ -2905,7 +2938,7 @@
         },
         {
           "default": "",
-          "document": "Creator `uin`",
+          "document": "Creator UIN",
           "member": "int64",
           "name": "CreatorUin",
           "required": true,
@@ -2923,7 +2956,7 @@
         },
         {
           "default": "",
-          "document": "Source `AppId`",
+          "document": "Source APPID",
           "member": "int64",
           "name": "SrcAppId",
           "required": true,
@@ -2932,7 +2965,7 @@
         },
         {
           "default": "",
-          "document": "Project status. 0: normal; -1: disabled; 3: default project.",
+          "document": "Project status. Valid values: `0` (normal), `-1` (disabled), `3` (default project).",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2950,7 +2983,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is the default project. 1: yes; 0: no.",
+          "document": "Whether it is the default project. Valid values: `1` (yes), `0` (no).",
           "member": "int64",
           "name": "IsDefault",
           "required": true,

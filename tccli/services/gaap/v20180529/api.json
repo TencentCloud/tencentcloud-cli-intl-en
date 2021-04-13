@@ -2102,6 +2102,7 @@
         {
           "default": "",
           "document": "Listener name.",
+          "example": "test1",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -2110,6 +2111,7 @@
         {
           "default": "",
           "document": "List of listener ports.",
+          "example": "[\"90\\n\"]",
           "member": "uint64",
           "name": "Ports",
           "required": true,
@@ -2118,6 +2120,7 @@
         {
           "default": "",
           "document": "Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
           "required": true,
@@ -2126,6 +2129,7 @@
         {
           "default": "",
           "document": "Whether origin server has the health check enabled. 1: enabled; 0: disabled. UDP listeners do not support health check.",
+          "example": "1",
           "member": "uint64",
           "name": "HealthCheck",
           "required": true,
@@ -2134,6 +2138,7 @@
         {
           "default": "",
           "document": "The origin server type of listeners, supporting IP or DOMAIN type. The DOMAIN origin servers do not support the weighted round robin.",
+          "example": "IP",
           "member": "string",
           "name": "RealServerType",
           "required": true,
@@ -2142,6 +2147,7 @@
         {
           "default": "",
           "document": "Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "link-bjkpdum1",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -2150,6 +2156,7 @@
         {
           "default": "",
           "document": "Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "lg-bjkpdum1",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -2158,6 +2165,7 @@
         {
           "default": "",
           "document": "Time interval of origin server health check (unit: seconds). Value range: [5, 300].",
+          "example": "20",
           "member": "uint64",
           "name": "DelayLoop",
           "required": false,
@@ -2166,6 +2174,7 @@
         {
           "default": "",
           "document": "Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.",
+          "example": "20",
           "member": "uint64",
           "name": "ConnectTimeout",
           "required": false,
@@ -2174,6 +2183,7 @@
         {
           "default": "",
           "document": "List of origin server ports, which only supports the listeners of version 1.0 and connection group.",
+          "example": "[443]",
           "member": "uint64",
           "name": "RealServerPorts",
           "required": false,
@@ -2182,8 +2192,18 @@
         {
           "default": "",
           "document": "Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.",
+          "example": "0",
           "member": "int64",
           "name": "ClientIPMethod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.",
+          "example": "0",
+          "member": "int64",
+          "name": "FailoverSwitch",
           "required": false,
           "type": "int"
         }
@@ -6035,6 +6055,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "listener-o0f3at99",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -6043,6 +6064,7 @@
         {
           "default": "",
           "document": "Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "lg-bjkpdum1",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -6051,6 +6073,7 @@
         {
           "default": "",
           "document": "Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "link-bjkpdum1",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -6059,6 +6082,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "test10",
           "member": "string",
           "name": "ListenerName",
           "required": false,
@@ -6067,6 +6091,7 @@
         {
           "default": "",
           "document": "Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -6075,6 +6100,7 @@
         {
           "default": "",
           "document": "Time interval of origin server health check (unit: seconds). Value range: [5, 300].",
+          "example": "30",
           "member": "uint64",
           "name": "DelayLoop",
           "required": false,
@@ -6083,6 +6109,7 @@
         {
           "default": "",
           "document": "Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.",
+          "example": "20",
           "member": "uint64",
           "name": "ConnectTimeout",
           "required": false,
@@ -6091,8 +6118,18 @@
         {
           "default": "",
           "document": "Whether to enable health check. 1: enable; 0: disable.",
+          "example": "1",
           "member": "uint64",
           "name": "HealthCheck",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FailoverSwitch",
           "required": false,
           "type": "int"
         }
@@ -6980,11 +7017,12 @@
       "usage": "out"
     },
     "RealServerBindSetReq": {
-      "document": "RealServerBindSetReq",
+      "document": "Information of the bound origin server",
       "members": [
         {
           "default": "",
           "document": "Origin server ID",
+          "example": "rs-123456",
           "member": "string",
           "name": "RealServerId",
           "required": true,
@@ -6994,6 +7032,7 @@
         {
           "default": "",
           "document": "Origin server port",
+          "example": "443",
           "member": "uint64",
           "name": "RealServerPort",
           "required": true,
@@ -7003,6 +7042,7 @@
         {
           "default": "",
           "document": "Origin server IP",
+          "example": "192.168.1.1",
           "member": "string",
           "name": "RealServerIP",
           "required": true,
@@ -7012,10 +7052,21 @@
         {
           "default": "",
           "document": "Origin server weight",
+          "example": "1",
           "member": "uint64",
           "name": "RealServerWeight",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin server role: master (primary origin server); slave (secondary origin server). This parameter is applicable when the primary/secondary origin server mode is enabled for a TCP listener.",
+          "example": "master",
+          "member": "string",
+          "name": "RealServerFailoverRole",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
