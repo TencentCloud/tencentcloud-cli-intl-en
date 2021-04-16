@@ -8122,6 +8122,7 @@
         {
           "default": "",
           "document": "Data time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.",
+          "example": "2021-03-01 00:00:00",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -8131,6 +8132,7 @@
         {
           "default": "",
           "document": "Push domain name.",
+          "example": "test.com",
           "member": "string",
           "name": "PushDomain",
           "required": true,
@@ -8140,6 +8142,7 @@
         {
           "default": "",
           "document": "Push path.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -8149,6 +8152,7 @@
         {
           "default": "",
           "document": "Push client IP.",
+          "example": "0.0.0.0",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -8158,6 +8162,7 @@
         {
           "default": "",
           "document": "Push start time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.",
+          "example": "2021-03-01 00:00:00",
           "member": "string",
           "name": "BeginPushTime",
           "required": true,
@@ -8167,6 +8172,7 @@
         {
           "default": "",
           "document": "Resolution information.",
+          "example": "480*864",
           "member": "string",
           "name": "Resolution",
           "required": true,
@@ -8176,6 +8182,7 @@
         {
           "default": "",
           "document": "Video codec.",
+          "example": "H264",
           "member": "string",
           "name": "VCodec",
           "required": true,
@@ -8185,6 +8192,7 @@
         {
           "default": "",
           "document": "Audio codec.",
+          "example": "AAC",
           "member": "string",
           "name": "ACodec",
           "required": true,
@@ -8194,6 +8202,7 @@
         {
           "default": "",
           "document": "Push serial number, which uniquely identifies a push.",
+          "example": "11111",
           "member": "string",
           "name": "Sequence",
           "required": true,
@@ -8203,6 +8212,7 @@
         {
           "default": "",
           "document": "Video frame rate.",
+          "example": "1",
           "member": "uint64",
           "name": "VideoFps",
           "required": true,
@@ -8212,6 +8222,7 @@
         {
           "default": "",
           "document": "Video bitrate in bps.",
+          "example": "1",
           "member": "uint64",
           "name": "VideoRate",
           "required": true,
@@ -8221,6 +8232,7 @@
         {
           "default": "",
           "document": "Audio frame rate.",
+          "example": "1",
           "member": "uint64",
           "name": "AudioFps",
           "required": true,
@@ -8230,6 +8242,7 @@
         {
           "default": "",
           "document": "Audio bitrate in bps.",
+          "example": "1",
           "member": "uint64",
           "name": "AudioRate",
           "required": true,
@@ -8239,6 +8252,7 @@
         {
           "default": "",
           "document": "Local elapsed time in milliseconds. The greater the difference between audio/video elapsed time and local elapsed time, the poorer the push quality and the more serious the upstream lag.",
+          "example": "10",
           "member": "uint64",
           "name": "LocalTs",
           "required": true,
@@ -8248,6 +8262,7 @@
         {
           "default": "",
           "document": "Video elapsed time in milliseconds.",
+          "example": "10",
           "member": "uint64",
           "name": "VideoTs",
           "required": true,
@@ -8257,6 +8272,7 @@
         {
           "default": "",
           "document": "Audio elapsed time in milliseconds.",
+          "example": "10",
           "member": "uint64",
           "name": "AudioTs",
           "required": true,
@@ -8266,6 +8282,7 @@
         {
           "default": "",
           "document": "Video bitrate in `metadata` in Kbps.",
+          "example": "1",
           "member": "uint64",
           "name": "MetaVideoRate",
           "required": true,
@@ -8275,6 +8292,7 @@
         {
           "default": "",
           "document": "Audio bitrate in `metadata` in Kbps.",
+          "example": "1",
           "member": "uint64",
           "name": "MetaAudioRate",
           "required": true,
@@ -8284,10 +8302,21 @@
         {
           "default": "",
           "document": "Frame rate in `metadata`.",
+          "example": "1",
           "member": "uint64",
           "name": "MateFps",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Push parameter",
+          "example": "&test=1",
+          "member": "string",
+          "name": "StreamParam",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

@@ -964,6 +964,52 @@
       ],
       "type": "object"
     },
+    "DynamicPodSpec": {
+      "document": "Pod floating specification",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum number of CPU cores",
+          "example": "0.1234",
+          "member": "float",
+          "name": "RequestCpu",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of CPU cores",
+          "example": "1.2345",
+          "member": "float",
+          "name": "LimitCpu",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum memory in MB",
+          "example": "1234.5678",
+          "member": "float",
+          "name": "RequestMemory",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum memory in MB",
+          "example": "8765.4321",
+          "member": "float",
+          "name": "LimitMemory",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "EmrProductConfigOutter": {
       "document": "EMR product configuration",
       "members": [
@@ -1759,6 +1805,7 @@
         {
           "default": "",
           "document": "User `APPID`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -1768,6 +1815,7 @@
         {
           "default": "",
           "document": "Serial number\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "SerialNo",
           "required": true,
@@ -1777,6 +1825,7 @@
         {
           "default": "",
           "document": "Machine instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "OrderNo",
           "required": true,
@@ -1786,6 +1835,7 @@
         {
           "default": "",
           "document": "Public IP bound to master node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "WanIp",
           "required": true,
@@ -1795,6 +1845,7 @@
         {
           "default": "",
           "document": "Node type. 0: common node; 1: master node;\n2: core node; 3: task node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Flag",
           "required": true,
@@ -1804,6 +1855,7 @@
         {
           "default": "",
           "document": "Node specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Spec",
           "required": true,
@@ -1813,6 +1865,7 @@
         {
           "default": "",
           "document": "Number of node cores\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "CpuNum",
           "required": true,
@@ -1822,6 +1875,7 @@
         {
           "default": "",
           "document": "Node memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "MemSize",
           "required": true,
@@ -1831,6 +1885,7 @@
         {
           "default": "",
           "document": "Node memory description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "MemDesc",
           "required": true,
@@ -1840,6 +1895,7 @@
         {
           "default": "",
           "document": "Node region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "RegionId",
           "required": true,
@@ -1849,6 +1905,7 @@
         {
           "default": "",
           "document": "Node AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -1858,6 +1915,7 @@
         {
           "default": "",
           "document": "Application time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "ApplyTime",
           "required": true,
@@ -1867,6 +1925,7 @@
         {
           "default": "",
           "document": "Release time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "FreeTime",
           "required": true,
@@ -1876,6 +1935,7 @@
         {
           "default": "",
           "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "DiskSize",
           "required": true,
@@ -1885,6 +1945,7 @@
         {
           "default": "",
           "document": "Node description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "NameTag",
           "required": true,
@@ -1894,6 +1955,7 @@
         {
           "default": "",
           "document": "Services deployed on node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Services",
           "required": true,
@@ -1903,6 +1965,7 @@
         {
           "default": "",
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "StorageType",
           "required": true,
@@ -1912,6 +1975,7 @@
         {
           "default": "",
           "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "RootSize",
           "required": true,
@@ -1921,6 +1985,7 @@
         {
           "default": "",
           "document": "Payment type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ChargeType",
           "required": true,
@@ -1930,6 +1995,7 @@
         {
           "default": "",
           "document": "Database IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "CdbIp",
           "required": true,
@@ -1939,6 +2005,7 @@
         {
           "default": "",
           "document": "Database port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "CdbPort",
           "required": true,
@@ -1948,6 +2015,7 @@
         {
           "default": "",
           "document": "Disk capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "HwDiskSize",
           "required": true,
@@ -1957,6 +2025,7 @@
         {
           "default": "",
           "document": "Disk capacity description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "HwDiskSizeDesc",
           "required": true,
@@ -1966,6 +2035,7 @@
         {
           "default": "",
           "document": "Memory capacity\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "HwMemSize",
           "required": true,
@@ -1975,6 +2045,7 @@
         {
           "default": "",
           "document": "Memory capacity description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "HwMemSizeDesc",
           "required": true,
@@ -1984,6 +2055,7 @@
         {
           "default": "",
           "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -1993,6 +2065,7 @@
         {
           "default": "",
           "document": "Node resource ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "EmrResourceId",
           "required": true,
@@ -2002,6 +2075,7 @@
         {
           "default": "",
           "document": "Renewal flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "IsAutoRenew",
           "required": true,
@@ -2011,6 +2085,7 @@
         {
           "default": "",
           "document": "Device flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "DeviceClass",
           "required": true,
@@ -2020,6 +2095,7 @@
         {
           "default": "",
           "document": "Support for configuration adjustment\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Mutable",
           "required": true,
@@ -2029,6 +2105,7 @@
         {
           "default": "",
           "document": "Multi-cloud disk\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "MultiDiskMC",
           "name": "MCMultiDisk",
           "required": true,
@@ -2038,6 +2115,7 @@
         {
           "default": "",
           "document": "Database information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CdbInfo",
           "name": "CdbNodeInfo",
           "required": true,
@@ -2047,6 +2125,7 @@
         {
           "default": "",
           "document": "Private IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -2056,6 +2135,7 @@
         {
           "default": "",
           "document": "Whether this node can be terminated. 1: yes, 0: no\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Destroyable",
           "required": true,
@@ -2065,6 +2145,7 @@
         {
           "default": "",
           "document": "Tags bound to node\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -2074,6 +2155,7 @@
         {
           "default": "",
           "document": "Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.",
+          "example": "0",
           "member": "int64",
           "name": "AutoFlag",
           "required": true,
@@ -2083,8 +2165,29 @@
         {
           "default": "",
           "document": "Resource type. Valid values: host, pod\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "HardwareResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether floating specification is used. `1`: yes; `0`: no\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsDynamicSpec",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Floating specification in JSON string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "DynamicPodSpec",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -2236,12 +2339,49 @@
       ],
       "usage": "in"
     },
+    "PodParameter": {
+      "document": "Custom pod permission and parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "TKE or EKS cluster ID",
+          "example": "cls-1234abcd",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom permission",
+          "example": "{   \"apiVersion\": \"v1\",   \"clusters\": [     {       \"cluster\": {",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameter",
+          "example": "{   \"apiVersion\": \"apps/v1\",   \"kind\": \"Deployment\",   \"metadata",
+          "member": "string",
+          "name": "Parameter",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "PodSpec": {
       "document": "Resource description for container resource expansion",
       "members": [
         {
           "default": "",
           "document": "Identifier of external resource provider, such as \"cls-a1cd23fa\".",
+          "example": "\"\"",
           "member": "string",
           "name": "ResourceProviderIdentifier",
           "required": true,
@@ -2251,6 +2391,7 @@
         {
           "default": "",
           "document": "Type of external resource provider, such as \"tke\". Currently, only \"tke\" is supported.",
+          "example": "\"\"",
           "member": "string",
           "name": "ResourceProviderType",
           "required": true,
@@ -2260,6 +2401,7 @@
         {
           "default": "",
           "document": "Purpose of the resource, i.e., node type, which currently can only be \"TASK\".",
+          "example": "\"\"",
           "member": "string",
           "name": "NodeType",
           "required": true,
@@ -2269,6 +2411,7 @@
         {
           "default": "",
           "document": "Number of CPU cores.",
+          "example": "0",
           "member": "uint64",
           "name": "Cpu",
           "required": true,
@@ -2278,6 +2421,7 @@
         {
           "default": "",
           "document": "Memory size in GB.",
+          "example": "0",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -2287,6 +2431,7 @@
         {
           "default": "",
           "document": "Mount point of resources for the host. The specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)",
+          "example": "[]",
           "member": "string",
           "name": "DataVolumes",
           "required": false,
@@ -2296,6 +2441,7 @@
         {
           "default": "",
           "document": "EKS cluster - CPU type. Valid values: \"intel\", \"amd\"",
+          "example": "\"\"",
           "member": "string",
           "name": "CpuType",
           "required": false,
@@ -2305,11 +2451,32 @@
         {
           "default": "",
           "document": "Pod node data directory mounting information.",
+          "example": "[]",
           "member": "PodVolume",
           "name": "PodVolumes",
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether floating specification is used. `1`: yes; `0`: no",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsDynamicSpec",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Floating specification\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DynamicPodSpec",
+          "name": "DynamicPodSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2704,6 +2871,7 @@
         {
           "default": "",
           "document": "Time unit of scale-out. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>",
+          "example": "s",
           "member": "string",
           "name": "TimeUnit",
           "required": true,
@@ -2712,6 +2880,7 @@
         {
           "default": "",
           "document": "Duration of scale-out, which needs to be used together with `TimeUnit`.",
+          "example": "3600",
           "member": "uint64",
           "name": "TimeSpan",
           "required": true,
@@ -2720,6 +2889,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "emr-5n3l5c83",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2728,6 +2898,7 @@
         {
           "default": "",
           "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "example": "0",
           "member": "uint64",
           "name": "PayMode",
           "required": true,
@@ -2736,6 +2907,7 @@
         {
           "default": "",
           "document": "Client token.",
+          "example": "\"\"",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -2744,6 +2916,7 @@
         {
           "default": "",
           "document": "Bootstrap script settings.",
+          "example": "无",
           "member": "PreExecuteFileSettings",
           "name": "PreExecutedFileSettings",
           "required": false,
@@ -2752,6 +2925,7 @@
         {
           "default": "",
           "document": "Number of task nodes added.",
+          "example": "0",
           "member": "uint64",
           "name": "TaskCount",
           "required": false,
@@ -2760,6 +2934,7 @@
         {
           "default": "",
           "document": "Number of core nodes added.",
+          "example": "1",
           "member": "uint64",
           "name": "CoreCount",
           "required": false,
@@ -2768,6 +2943,7 @@
         {
           "default": "",
           "document": "Process not required during scale-out.",
+          "example": "[]",
           "member": "uint64",
           "name": "UnNecessaryNodeList",
           "required": false,
@@ -2776,6 +2952,7 @@
         {
           "default": "",
           "document": "Number of router nodes added.",
+          "example": "0",
           "member": "uint64",
           "name": "RouterCount",
           "required": false,
@@ -2784,6 +2961,7 @@
         {
           "default": "",
           "document": "Deployed service.\n<li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>\n<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>",
+          "example": "[]",
           "member": "uint64",
           "name": "SoftDeployInfo",
           "required": false,
@@ -2792,6 +2970,7 @@
         {
           "default": "",
           "document": "Started process.",
+          "example": "[]",
           "member": "uint64",
           "name": "ServiceNodeInfo",
           "required": false,
@@ -2800,6 +2979,7 @@
         {
           "default": "",
           "document": "List of spread placement group IDs. Only one can be specified currently.",
+          "example": "[]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
           "required": false,
@@ -2808,6 +2988,7 @@
         {
           "default": "",
           "document": "List of tags bound to added nodes.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -2816,6 +2997,7 @@
         {
           "default": "",
           "document": "Resource type selected for expansion. Valid values: host (general CVM resource), pod (resource provided by TKE cluster)",
+          "example": "\"\"",
           "member": "string",
           "name": "HardwareResourceType",
           "required": false,
@@ -2824,6 +3006,7 @@
         {
           "default": "",
           "document": "Specified information such as pod specification and source for expansion with pod resources",
+          "example": "无",
           "member": "PodSpec",
           "name": "PodSpec",
           "required": false,
@@ -2832,6 +3015,7 @@
         {
           "default": "",
           "document": "Machine group name selected for ClickHouse cluster scaling-out",
+          "example": "\"\"",
           "member": "string",
           "name": "ClickHouseClusterName",
           "required": false,
@@ -2840,6 +3024,7 @@
         {
           "default": "",
           "document": "Machine group type selected for ClickHouse cluster scaling-out. new: creates a group; old: selects an existing group",
+          "example": "\"\"",
           "member": "string",
           "name": "ClickHouseClusterType",
           "required": false,
@@ -2848,10 +3033,29 @@
         {
           "default": "",
           "document": "YARN node label specified for rule-based scaling-out",
+          "example": "\"\"",
           "member": "string",
           "name": "YarnNodeLabel",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom pod permission and parameter",
+          "example": "无",
+          "member": "PodParameter",
+          "name": "PodParameter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Number of master nodes to be added",
+          "example": "1",
+          "member": "uint64",
+          "name": "MasterCount",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
