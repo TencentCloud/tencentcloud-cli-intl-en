@@ -144,6 +144,12 @@
       "name": "Queries security settings",
       "output": "DescribeSafeAuthFlagCollResponse"
     },
+    "DescribeSubAccounts": {
+      "document": "This API is used to query sub-users through the sub-user UIN list.",
+      "input": "DescribeSubAccountsRequest",
+      "name": "Queries sub-users through sub-user UIN list",
+      "output": "DescribeSubAccountsResponse"
+    },
     "DetachGroupPolicy": {
       "document": "This API (DetachGroupPolicy) is used to unassociate a policy and a user group.",
       "input": "DetachGroupPolicyRequest",
@@ -1633,6 +1639,42 @@
           "member": "OffsiteFlag",
           "name": "OffsiteFlag",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubAccountsRequest": {
+      "document": "DescribeSubAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of sub-user UINs. Up to 50 UINs are supported.",
+          "example": "[12,23,34]",
+          "member": "uint64",
+          "name": "FilterSubAccountUin",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSubAccountsResponse": {
+      "document": "DescribeSubAccounts response structure.",
+      "members": [
+        {
+          "document": "Sub-user list",
+          "example": "[]",
+          "member": "SubAccountUser",
+          "name": "SubAccounts",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3779,6 +3821,92 @@
           "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SubAccountUser": {
+      "document": "Sub-user information",
+      "members": [
+        {
+          "default": "",
+          "document": "Sub-user ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user name",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user UID",
+          "example": "1",
+          "member": "uint64",
+          "name": "Uid",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user remarks",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-02-01 08:00:00",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)",
+          "example": "1",
+          "member": "uint64",
+          "name": "UserType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "LastLoginIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2021-03-15 20:00:00",
+          "member": "string",
+          "name": "LastLoginTime",
           "required": true,
           "type": "string",
           "value_allowed_null": true

@@ -8,6 +8,14 @@
         "title": "Adding an instance to a scaling group"
       }
     ],
+    "ClearLaunchConfigurationAttributes": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ClearLaunchConfigurationAttributes\n<Common request parameters>\n\n{\n    \"LaunchConfigurationId\": \"asc-kr4beurf\",\n    \"ClearDataDisks\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"382c6cad-15ae-496a-a965-66b95674f5a7\"\n    }\n}",
+        "title": "Clearing data disk information of the launch configuration"
+      }
+    ],
     "CompleteLifecycleAction": [
       {
         "document": "",

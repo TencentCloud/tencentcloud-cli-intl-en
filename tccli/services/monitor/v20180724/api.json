@@ -87,7 +87,7 @@
     "DescribeAlarmPolicies": {
       "document": "This API is used to query the list of alarm policies.",
       "input": "DescribeAlarmPoliciesRequest",
-      "name": "Queries alarm policy list",
+      "name": "Queries the list of alarm policies (by instance, etc.)",
       "output": "DescribeAlarmPoliciesResponse"
     },
     "DescribeAlarmPolicy": {
@@ -103,9 +103,9 @@
       "output": "DescribeAllNamespacesResponse"
     },
     "DescribeBaseMetrics": {
-      "document": "This API is used to get the details of basic metrics.",
+      "document": "This API is used to get the attributes of basic metrics.",
       "input": "DescribeBaseMetricsRequest",
-      "name": "Gets details of basic metrics",
+      "name": "Gets the attributes of basic metrics",
       "output": "DescribeBaseMetricsResponse"
     },
     "DescribeBasicAlarmList": {
@@ -169,9 +169,9 @@
       "output": "ModifyAlarmNoticeResponse"
     },
     "ModifyAlarmPolicyCondition": {
-      "document": "This API is used to edit the trigger condition of an alarm policy.",
+      "document": "This API is used to modify the trigger condition of an alarm policy.",
       "input": "ModifyAlarmPolicyConditionRequest",
-      "name": "Edits the trigger condition of alarm policy",
+      "name": "Modifies the trigger condition of an alarm policy",
       "output": "ModifyAlarmPolicyConditionResponse"
     },
     "ModifyAlarmPolicyInfo": {
@@ -286,6 +286,7 @@
         {
           "default": "",
           "document": "Alarm record ID",
+          "example": "01e1f33f-b4ec-43db-8fd0-6f7e163e6ca5",
           "member": "string",
           "name": "AlarmId",
           "required": true,
@@ -295,6 +296,7 @@
         {
           "default": "",
           "document": "Monitor type",
+          "example": "MT_QCE",
           "member": "string",
           "name": "MonitorType",
           "required": true,
@@ -304,6 +306,7 @@
         {
           "default": "",
           "document": "Policy type",
+          "example": "cvm_device",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -313,6 +316,7 @@
         {
           "default": "",
           "document": "Alarm object",
+          "example": "ins-abcdef",
           "member": "string",
           "name": "AlarmObject",
           "required": true,
@@ -322,6 +326,7 @@
         {
           "default": "",
           "document": "Alarm content",
+          "example": "CPU 使用率 > 80%",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -331,6 +336,7 @@
         {
           "default": "",
           "document": "Timestamp of the first occurrence",
+          "example": "1611700000",
           "member": "int64",
           "name": "FirstOccurTime",
           "required": true,
@@ -340,6 +346,7 @@
         {
           "default": "",
           "document": "Timestamp of the last occurrence",
+          "example": "1611734567",
           "member": "int64",
           "name": "LastOccurTime",
           "required": true,
@@ -349,6 +356,7 @@
         {
           "default": "",
           "document": "Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data)",
+          "example": "ALARM",
           "member": "string",
           "name": "AlarmStatus",
           "required": true,
@@ -358,6 +366,7 @@
         {
           "default": "",
           "document": "Alarm policy ID",
+          "example": "policy-abcdef",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -367,6 +376,7 @@
         {
           "default": "",
           "document": "Policy name",
+          "example": "云服务器告警策略",
           "member": "string",
           "name": "PolicyName",
           "required": true,
@@ -376,6 +386,7 @@
         {
           "default": "",
           "document": "VPC of alarm object for basic product alarm",
+          "example": "0",
           "member": "string",
           "name": "VPC",
           "required": true,
@@ -385,6 +396,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -394,6 +406,7 @@
         {
           "default": "",
           "document": "Project name",
+          "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
           "required": true,
@@ -403,6 +416,7 @@
         {
           "default": "",
           "document": "Instance group of alarm object",
+          "example": "无",
           "member": "InstanceGroups",
           "name": "InstanceGroup",
           "required": true,
@@ -412,6 +426,7 @@
         {
           "default": "",
           "document": "Recipient list",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverUids",
           "required": true,
@@ -421,6 +436,7 @@
         {
           "default": "",
           "document": "Recipient group list",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverGroups",
           "required": true,
@@ -430,6 +446,7 @@
         {
           "default": "",
           "document": "Alarm channel list. Valid values: SMS (SMS), EMAIL (email), CALL (phone), WECHAT (WeChat)",
+          "example": "无",
           "member": "string",
           "name": "NoticeWays",
           "required": true,
@@ -438,7 +455,8 @@
         },
         {
           "default": "",
-          "document": "Compatible Alarm 1.0 policy group ID",
+          "document": "Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy",
+          "example": "12345",
           "member": "string",
           "name": "OriginId",
           "required": true,
@@ -448,6 +466,7 @@
         {
           "default": "",
           "document": "Alarm type",
+          "example": "METRIC",
           "member": "string",
           "name": "AlarmType",
           "required": true,
@@ -457,6 +476,7 @@
         {
           "default": "",
           "document": "Event ID",
+          "example": "0",
           "member": "int64",
           "name": "EventId",
           "required": true,
@@ -466,6 +486,7 @@
         {
           "default": "",
           "document": "Region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -475,10 +496,77 @@
         {
           "default": "",
           "document": "Whether the policy exists. Valid values: 0 (no), 1 (yes)",
+          "example": "1",
           "member": "int64",
           "name": "PolicyExists",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AlarmHistoryMetric",
+          "name": "MetricsInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AlarmHistoryMetric": {
+      "document": "Metric information of alarm records",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace used to query data by Tencent Cloud service monitoring type",
+          "example": "qce/cvm",
+          "member": "string",
+          "name": "QceNamespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric name",
+          "example": "CpuUsage",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Statistical period",
+          "example": "60",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value triggering alarm",
+          "example": "10",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric display name",
+          "example": "CPU使用率",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -915,7 +1003,8 @@
       "members": [
         {
           "default": "",
-          "document": "Metric name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Metric name or event name. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1) and the supported events via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "CpuUsage",
           "member": "string",
           "name": "MetricName",
           "required": false,
@@ -924,7 +1013,8 @@
         },
         {
           "default": "",
-          "document": "Statistical period in seconds\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Statistical period in seconds. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "60",
           "member": "int64",
           "name": "Period",
           "required": false,
@@ -933,7 +1023,8 @@
         },
         {
           "default": "",
-          "document": "Operator\nintelligent = intelligent detection without threshold\neq = equal to\nge = greater than or equal to\ngt = greater than\nle = less than or equal to\nlt = less than\nne = not equal to\nday_increase = daily increase\nday_decrease = daily decrease\nday_wave = daily fluctuation\nweek_increase = weekly increase\nweek_decrease = weekly decrease\nweek_wave = weekly fluctuation\ncycle_increase = periodical increase\ncycle_decrease = periodical decrease\ncycle_wave = periodical fluctuation\nre = regex match\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Operator\nintelligent = intelligent detection without threshold\neq = equal to\nge = greater than or equal to\ngt = greater than\nle = less than or equal to\nlt = less than\nne = not equal to\nday_increase = day-on-day increase\nday_decrease = day-on-day decrease\nday_wave = day-on-day fluctuation\nweek_increase = week-on-week increase\nweek_decrease = week-on-week decrease\nweek_wave = week-on-week fluctuation\ncycle_increase = cyclical increase\ncycle_decrease = cyclical decrease\ncycle_wave = cyclical fluctuation\nre = regex match\nThe valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "gt",
           "member": "string",
           "name": "Operator",
           "required": false,
@@ -942,7 +1033,8 @@
         },
         {
           "default": "",
-          "document": "Threshold\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Threshold. The valid value range can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "100",
           "member": "string",
           "name": "Value",
           "required": false,
@@ -951,7 +1043,8 @@
         },
         {
           "default": "",
-          "document": "Number of cycles for continuous notification. Valid values: 1 (1 cycle), 2 (2 cycles), and so on.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of periods. `1`: continue for one period; `2`: continue for two periods; and so on. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ContinuePeriod",
           "required": false,
@@ -961,6 +1054,7 @@
         {
           "default": "",
           "document": "Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours),  43200 (alarm once every 12 hours), 86400 (alarm once every day)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "300",
           "member": "int64",
           "name": "NoticeFrequency",
           "required": false,
@@ -970,6 +1064,7 @@
         {
           "default": "",
           "document": "Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "IsPowerNotice",
           "required": false,
@@ -979,6 +1074,7 @@
         {
           "default": "",
           "document": "Filter condition for one single trigger rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AlarmPolicyFilter",
           "name": "Filter",
           "required": false,
@@ -988,6 +1084,7 @@
         {
           "default": "",
           "document": "Metric display name, which is used in the output parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "CPU使用率",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -997,6 +1094,7 @@
         {
           "default": "",
           "document": "Unit, which is used in the output parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "%",
           "member": "string",
           "name": "Unit",
           "required": false,
@@ -1005,7 +1103,8 @@
         },
         {
           "default": "",
-          "document": "Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic threshold)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Trigger condition type. `STATIC`: static threshold; `dynamic`: dynamic threshold. If you do not specify this parameter when creating or editing a policy, `STATIC` is used by default.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "STATIC",
           "member": "string",
           "name": "RuleType",
           "required": false,
@@ -1045,6 +1144,7 @@
         {
           "default": "",
           "document": "Region name.",
+          "example": "gz",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -1054,6 +1154,7 @@
         {
           "default": "",
           "document": "Region ID.",
+          "example": "1",
           "member": "int64",
           "name": "RegionId",
           "required": false,
@@ -1062,7 +1163,8 @@
         },
         {
           "default": "",
-          "document": "Dimensions.",
+          "document": "Instance dimension information in the following format:\n{\"unInstanceId\":\"ins-00jvv9mo\"}. The dimension information varies by Tencent Cloud services. For more information, please see:\n[Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)",
+          "example": "{\"unInstanceId\":\"ins-00jvv9mo\"}",
           "member": "string",
           "name": "Dimensions",
           "required": false,
@@ -1072,6 +1174,7 @@
         {
           "default": "",
           "document": "Event dimensions.",
+          "example": "{\"uuid\":\"c734cd0d-d050-44bd-8d17-f6381039b4b6\"}",
           "member": "string",
           "name": "EventDimensions",
           "required": false,
@@ -1086,7 +1189,8 @@
       "members": [
         {
           "default": "",
-          "document": "Policy group ID. If `PolicyId` is specified, you can pass any value to this field.",
+          "document": "Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., 0, can be passed in.",
+          "example": "0",
           "member": "int64",
           "name": "GroupId",
           "required": true,
@@ -1095,6 +1199,7 @@
         {
           "default": "",
           "document": "Required. The value is fixed to monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -1103,6 +1208,7 @@
         {
           "default": "",
           "document": "Instance group ID.",
+          "example": "0",
           "member": "int64",
           "name": "InstanceGroupId",
           "required": false,
@@ -1111,6 +1217,7 @@
         {
           "default": "",
           "document": "Dimensions of an object to be bound.",
+          "example": "无",
           "member": "BindingPolicyObjectDimension",
           "name": "Dimensions",
           "required": false,
@@ -1118,7 +1225,8 @@
         },
         {
           "default": "",
-          "document": "Alarm policy ID. If this field is used, you can pass any value to `GroupId`.",
+          "document": "Alarm policy ID. If this parameter is used, `GroupId` will be ignored.",
+          "example": "policy-abc123",
           "member": "string",
           "name": "PolicyId",
           "required": false,
@@ -1329,6 +1437,7 @@
         {
           "default": "",
           "document": "Value fixed at \"monitor\"",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -1337,6 +1446,7 @@
         {
           "default": "",
           "document": "Policy name, which can contain up to 20 characters",
+          "example": "云服务器告警策略",
           "member": "string",
           "name": "PolicyName",
           "required": true,
@@ -1345,6 +1455,7 @@
         {
           "default": "",
           "document": "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)",
+          "example": "MT_QCE",
           "member": "string",
           "name": "MonitorType",
           "required": true,
@@ -1352,7 +1463,8 @@
         },
         {
           "default": "",
-          "document": "Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API",
+          "document": "Type of alarm policy, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). An example value is `cvm_device`.",
+          "example": "cvm_device",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -1361,6 +1473,7 @@
         {
           "default": "",
           "document": "Remarks with up to 100 letters, digits, underscores, and hyphens",
+          "example": "这是一句备注",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -1369,6 +1482,7 @@
         {
           "default": "",
           "document": "Whether to enable. Valid values: 0 (no), 1 (yes). Default value: 1. This parameter can be left empty",
+          "example": "1",
           "member": "int64",
           "name": "Enable",
           "required": false,
@@ -1376,7 +1490,8 @@
         },
         {
           "default": "",
-          "document": "Project ID. Valid values: -1 (no project), 0 (default project). Default value: -1. This parameter can be left empty",
+          "document": "Project ID. For products with different projects, a value other than `-1` must be passed in. `-1`: no project; `0`: default project. If no value is passed in, `-1` will be used. The supported project IDs can be viewed on the [**Account Center** > **Project Management**](https://console.cloud.tencent.com/project) page of the console.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1384,7 +1499,17 @@
         },
         {
           "default": "",
-          "document": "Metric trigger condition",
+          "document": "ID of trigger condition template. This parameter can be left empty.",
+          "example": "无",
+          "member": "int64",
+          "name": "ConditionTemplateId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Metric trigger condition. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).",
+          "example": "无",
           "member": "AlarmPolicyCondition",
           "name": "Condition",
           "required": false,
@@ -1392,7 +1517,8 @@
         },
         {
           "default": "",
-          "document": "Event trigger condition",
+          "document": "Event trigger condition. The supported events can be queried via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).",
+          "example": "无",
           "member": "AlarmPolicyEventCondition",
           "name": "EventCondition",
           "required": false,
@@ -1400,7 +1526,8 @@
         },
         {
           "default": "",
-          "document": "List of notification rule IDs, which is obtained through the `DescribeAlarmNotices` API",
+          "document": "List of notification rule IDs, which can be obtained via [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)",
+          "example": "[\"notice-bv9b4ghqbg\",\"notice-gj2n9wnt29\"]",
           "member": "string",
           "name": "NoticeIds",
           "required": false,
@@ -1409,6 +1536,7 @@
         {
           "default": "",
           "document": "Triggered task list",
+          "example": "无",
           "member": "AlarmPolicyTriggerTask",
           "name": "TriggerTasks",
           "required": false,
@@ -1422,15 +1550,19 @@
       "members": [
         {
           "document": "Alarm policy ID",
+          "example": "policy-hi498gw3h2",
           "member": "string",
           "name": "PolicyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)",
+          "document": "Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy",
+          "example": "1234556",
           "member": "string",
           "name": "OriginId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2072,6 +2204,7 @@
         {
           "default": "",
           "document": "Value fixed at \"monitor\"",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -2080,6 +2213,7 @@
         {
           "default": "",
           "document": "Page number starting from 1. Default value: 1",
+          "example": "1",
           "member": "int64",
           "name": "PageNumber",
           "required": false,
@@ -2088,6 +2222,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Value range: 1–100. Default value: 20",
+          "example": "20",
           "member": "int64",
           "name": "PageSize",
           "required": false,
@@ -2096,6 +2231,7 @@
         {
           "default": "",
           "document": "Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)",
+          "example": "DESC",
           "member": "string",
           "name": "Order",
           "required": false,
@@ -2103,7 +2239,8 @@
         },
         {
           "default": "",
-          "document": "Start time, which is the timestamp exactly one day ago",
+          "document": "Start time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the timestamp of a day earlier.",
+          "example": "1611600000",
           "member": "int64",
           "name": "StartTime",
           "required": false,
@@ -2111,7 +2248,8 @@
         },
         {
           "default": "",
-          "document": "End time, which is the current timestamp by default",
+          "document": "End time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the current timestamp.",
+          "example": "1611650000",
           "member": "int64",
           "name": "EndTime",
           "required": false,
@@ -2120,6 +2258,7 @@
         {
           "default": "",
           "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "example": "MT_QCE",
           "member": "string",
           "name": "MonitorTypes",
           "required": false,
@@ -2128,6 +2267,7 @@
         {
           "default": "",
           "document": "Filter by alarm object. Fuzzy search with string is supported",
+          "example": "无",
           "member": "string",
           "name": "AlarmObject",
           "required": false,
@@ -2136,6 +2276,7 @@
         {
           "default": "",
           "document": "Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default",
+          "example": "ALARM",
           "member": "string",
           "name": "AlarmStatus",
           "required": false,
@@ -2144,6 +2285,7 @@
         {
           "default": "",
           "document": "Filter by project ID. Valid values: -1 (no project), 0 (default project)",
+          "example": "无",
           "member": "int64",
           "name": "ProjectIds",
           "required": false,
@@ -2152,6 +2294,7 @@
         {
           "default": "",
           "document": "Filter by instance group ID",
+          "example": "无",
           "member": "int64",
           "name": "InstanceGroupIds",
           "required": false,
@@ -2160,6 +2303,7 @@
         {
           "default": "",
           "document": "Filter by policy type",
+          "example": "cvm_device",
           "member": "MonitorTypeNamespace",
           "name": "Namespaces",
           "required": false,
@@ -2168,6 +2312,7 @@
         {
           "default": "",
           "document": "Filter by metric name",
+          "example": "CpuUsage",
           "member": "string",
           "name": "MetricNames",
           "required": false,
@@ -2176,6 +2321,7 @@
         {
           "default": "",
           "document": "Fuzzy search by policy name",
+          "example": "无",
           "member": "string",
           "name": "PolicyName",
           "required": false,
@@ -2184,6 +2330,7 @@
         {
           "default": "",
           "document": "Fuzzy search by alarm content",
+          "example": "无",
           "member": "string",
           "name": "Content",
           "required": false,
@@ -2192,6 +2339,7 @@
         {
           "default": "",
           "document": "Search by recipient",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverUids",
           "required": false,
@@ -2200,6 +2348,7 @@
         {
           "default": "",
           "document": "Search by recipient group",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverGroups",
           "required": false,
@@ -2208,6 +2357,7 @@
         {
           "default": "",
           "document": "Search by alarm policy ID list",
+          "example": "policy-abcedf",
           "member": "string",
           "name": "PolicyIds",
           "required": false,
@@ -2519,7 +2669,7 @@
         },
         {
           "default": "",
-          "document": "Filter by namespace",
+          "document": "Filter by namespace. For the values of different policy types, please see:\n[Policy Type List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)",
           "example": "[cvm]",
           "member": "string",
           "name": "Namespaces",
@@ -2528,7 +2678,7 @@
         },
         {
           "default": "",
-          "document": "Alarm object list",
+          "document": "Alarm object list. The outer array corresponds to multiple instances.\nEach inner array corresponds to one instance, where `object` corresponds to the dimension information of the instance. The format is as follows:\n[\n\t[{\"name\":\"unInstanceId\",\"value\":\"ins-qr888845g\"}],\n\t[{\"name\":\"unInstanceId\",\"value\":\"ins-qr8d555g\"}]\n\t...\n]\nFor the samples for different Tencent Cloud services, please see:\n[Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)",
           "example": "Region",
           "member": "string",
           "name": "Dimensions",
@@ -2537,7 +2687,7 @@
         },
         {
           "default": "",
-          "document": "Search by recipient",
+          "document": "Search by recipient `uid`, which should be queried by calling the CAM API. For more information, please see:\n[ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1)",
           "example": "[9989]",
           "member": "int64",
           "name": "ReceiverUids",
@@ -2546,7 +2696,7 @@
         },
         {
           "default": "",
-          "document": "Search by recipient group",
+          "document": "Search by recipient group `uid`, which should be queried by calling the CAM API. For more information, please see:\n[ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1)",
           "example": "[1112]",
           "member": "int64",
           "name": "ReceiverGroups",
@@ -2564,7 +2714,7 @@
         },
         {
           "default": "",
-          "document": "Sort by field",
+          "document": "Sort by field. For example, to sort by the last modification time, use Field: \"UpdateTime\".",
           "example": "PolicyId",
           "member": "string",
           "name": "Field",
@@ -2582,7 +2732,7 @@
         },
         {
           "default": "",
-          "document": "Project ID array",
+          "document": "ID array of the policy project, which can be viewed on the following page:\n[Project Management](https://console.cloud.tencent.com/project)",
           "example": "[1]",
           "member": "int64",
           "name": "ProjectIds",
@@ -2591,7 +2741,7 @@
         },
         {
           "default": "",
-          "document": "Alarm notification ID list",
+          "document": "ID list of the notification template, which can be obtained by querying the notification template list.\n[DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)",
           "example": "[1,2]",
           "member": "string",
           "name": "NoticeIds",
@@ -2609,7 +2759,7 @@
         },
         {
           "default": "",
-          "document": "Status. Valid values: 1 (enabled), 0 (disabled)",
+          "document": "Filter by alarm status. Valid values: [1]: enabled; [0]: disabled; [0, 1]: all",
           "example": "1",
           "member": "int64",
           "name": "Enable",
@@ -2618,7 +2768,7 @@
         },
         {
           "default": "",
-          "document": "Indicates whether the notification rule is configured. 1: not configured; 0: configured",
+          "document": "If `1` is passed in, alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in, all alarm policies are queried.",
           "example": "1",
           "member": "int64",
           "name": "NotBindingNoticeRule",
@@ -5238,6 +5388,7 @@
         {
           "default": "",
           "document": "API component name. It is fixed to monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -5246,6 +5397,7 @@
         {
           "default": "",
           "document": "Filter by product type. For example, 'cvm' indicates Cloud Virtual Machine.",
+          "example": "cvm",
           "member": "string",
           "name": "ProductName",
           "required": false,
@@ -5254,6 +5406,7 @@
         {
           "default": "",
           "document": "Filter by product name. For example, \"guest_reboot\" indicates server restart.",
+          "example": "guest_reboot",
           "member": "string",
           "name": "EventName",
           "required": false,
@@ -5261,7 +5414,8 @@
         },
         {
           "default": "",
-          "document": "Affected object, such as ins-19708ino.",
+          "document": "Affected object, such as \"ins-19708ino\"",
+          "example": "ins-19708ino",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -5270,6 +5424,7 @@
         {
           "default": "",
           "document": "Filter by dimension, such as by public IP: 10.0.0.1.",
+          "example": "无",
           "member": "DescribeProductEventListDimensions",
           "name": "Dimensions",
           "required": false,
@@ -5277,7 +5432,8 @@
         },
         {
           "default": "",
-          "document": "Filter by region, such as by gz.",
+          "document": "Region filter parameter for service events, such as `gz`. For region abbreviations, please see [Region List](https://intl.cloud.tencent.com/document/product/248/50863?from_cn_redirect=1)",
+          "example": "gz",
           "member": "string",
           "name": "RegionList",
           "required": false,
@@ -5286,6 +5442,7 @@
         {
           "default": "",
           "document": "Filter by event type. Valid values: [\"status_change\",\"abnormal\"], which indicate events whose statuses have changed and events with exceptions respectively.",
+          "example": "abnormal",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -5294,6 +5451,7 @@
         {
           "default": "",
           "document": "Filter by event status. Valid values: [\"recover\",\"alarm\",\"-\"], which indicate that an event has been recovered, has not been recovered, and has no status respectively.",
+          "example": "recover",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -5302,6 +5460,7 @@
         {
           "default": "",
           "document": "Filter by project ID.",
+          "example": "0",
           "member": "string",
           "name": "Project",
           "required": false,
@@ -5310,6 +5469,7 @@
         {
           "default": "",
           "document": "Filter by alarm status configuration. The value 1 indicates that the alarm status has been configured. The value 0 indicates that the alarm status has not been configured.",
+          "example": "1",
           "member": "int64",
           "name": "IsAlarmConfig",
           "required": false,
@@ -5318,6 +5478,7 @@
         {
           "default": "",
           "document": "Sorting by update time. The value ASC indicates the ascending order. The value DESC indicates the descending order. The default value is DESC.",
+          "example": "DESC",
           "member": "string",
           "name": "TimeOrder",
           "required": false,
@@ -5326,6 +5487,7 @@
         {
           "default": "",
           "document": "Start time, which is the timestamp one day prior by default.",
+          "example": "1572624000",
           "member": "int64",
           "name": "StartTime",
           "required": false,
@@ -5334,6 +5496,7 @@
         {
           "default": "",
           "document": "End time, which is the current timestamp by default.",
+          "example": "1573228799",
           "member": "int64",
           "name": "EndTime",
           "required": false,
@@ -5342,6 +5505,7 @@
         {
           "default": "",
           "document": "Page offset. The default value is 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5350,6 +5514,7 @@
         {
           "default": "",
           "document": "The number of parameters that can be returned on each page. The default value is 20.",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -6102,6 +6267,7 @@
         {
           "default": "",
           "document": "Module name, which is fixed at \"monitor\"",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -6110,6 +6276,7 @@
         {
           "default": "",
           "document": "Alarm policy ID",
+          "example": "policy-hi498gw3h2",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -6117,7 +6284,17 @@
         },
         {
           "default": "",
+          "document": "ID of trigger condition template. This parameter can be left empty.",
+          "example": "123",
+          "member": "int64",
+          "name": "ConditionTemplateId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "Metric trigger condition",
+          "example": "无",
           "member": "AlarmPolicyCondition",
           "name": "Condition",
           "required": false,
@@ -6126,6 +6303,7 @@
         {
           "default": "",
           "document": "Event trigger condition",
+          "example": "无",
           "member": "AlarmPolicyEventCondition",
           "name": "EventCondition",
           "required": false,
@@ -7020,6 +7198,7 @@
         {
           "default": "",
           "document": "The value is fixed to monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -7027,7 +7206,8 @@
         },
         {
           "default": "",
-          "document": "Policy group ID. If `PolicyId` is specified, you can pass any value to this field.",
+          "document": "Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.",
+          "example": "0",
           "member": "int64",
           "name": "GroupId",
           "required": true,
@@ -7035,7 +7215,8 @@
         },
         {
           "default": "",
-          "document": "Alarm policy ID. If this field is used, you can pass any value to `GroupId`.",
+          "document": "Alarm policy ID. If this parameter is used, `GroupId` will be ignored.",
+          "example": "policy-abc123",
           "member": "string",
           "name": "PolicyId",
           "required": false,
@@ -7062,6 +7243,7 @@
         {
           "default": "",
           "document": "The value is fixed to monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -7069,7 +7251,8 @@
         },
         {
           "default": "",
-          "document": "Policy group ID. If `PolicyId` is specified, you can pass any value to this field.",
+          "document": "Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.",
+          "example": "11111",
           "member": "int64",
           "name": "GroupId",
           "required": true,
@@ -7078,6 +7261,7 @@
         {
           "default": "",
           "document": "List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API",
+          "example": "[\"3dd5113208fd467b2e5d0c1111111111\\n\"]",
           "member": "string",
           "name": "UniqueId",
           "required": true,
@@ -7085,7 +7269,8 @@
         },
         {
           "default": "",
-          "document": "Instance group ID. The UniqueId parameter is invalid if object instances are deleted by instance group.",
+          "document": "Instance group ID. The `UniqueId` parameter is invalid if object instances are deleted by instance group.",
+          "example": "0",
           "member": "int64",
           "name": "InstanceGroupId",
           "required": false,
@@ -7093,7 +7278,8 @@
         },
         {
           "default": "",
-          "document": "Alarm policy ID. If this field is used, you can pass any value to `GroupId`.",
+          "document": "Alarm policy ID. If this parameter is used, `GroupId` will be ignored.",
+          "example": "policy-abc123",
           "member": "string",
           "name": "PolicyId",
           "required": false,
