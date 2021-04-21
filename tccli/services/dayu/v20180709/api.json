@@ -168,6 +168,12 @@
       "name": "Gets blackhole threshold of Anti-DDoS Basic",
       "output": "DescribeBasicDeviceThresholdResponse"
     },
+    "DescribeBizHttpStatus": {
+      "document": "This API is used to get the statistics on the status codes of business traffic.",
+      "input": "DescribeBizHttpStatusRequest",
+      "name": "Gets the statistics on the status codes of business traffic",
+      "output": "DescribeBizHttpStatusResponse"
+    },
     "DescribeCCAlarmThreshold": {
       "document": "This API is used to get the alarm notification threshold set for CC attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.",
       "input": "DescribeCCAlarmThresholdRequest",
@@ -657,7 +663,7 @@
       "members": [
         {
           "default": "",
-          "document": "IP",
+          "document": "IP address",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -666,7 +672,7 @@
         },
         {
           "default": "",
-          "document": "Bound product type. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]",
+          "document": "Category of product that can be bound. Valid values: public (CVM and CLB), bm (BM), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), and other (Hosted IP).",
           "member": "string",
           "name": "BizType",
           "required": false,
@@ -1644,7 +1650,7 @@
         },
         {
           "default": "",
-          "document": "IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist",
+          "document": "Request source IP blocklist/allowlist, which should be an empty array if there are no blocked or allowed IPs.",
           "member": "IpBlackWhite",
           "name": "IpAllowDenys",
           "required": false,
@@ -3602,6 +3608,105 @@
           "member": "uint64",
           "name": "Threshold",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBizHttpStatusRequest": {
+      "document": "DescribeBizHttpStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
+          "example": "bgpip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource ID",
+          "example": "bgpip-000000xe",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Statistical period in seconds. Valid values: 300, 1800, 3600, 21600, and 86400.",
+          "example": "300",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Statistics start time",
+          "example": "2020-02-01 12:04:12",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Statistics end time",
+          "example": "2020-02-03 18:03:23",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Statistical mode, which only supports sum.",
+          "example": "sum",
+          "member": "string",
+          "name": "Statistics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol and port list, which is valid when the statistical dimension is the number of connections. Valid protocols: TCP, UDP, HTTP, and HTTPS.",
+          "example": "无",
+          "member": "ProtocolPort",
+          "name": "ProtoInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specific domain name query",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBizHttpStatusResponse": {
+      "document": "DescribeBizHttpStatus response structure.",
+      "members": [
+        {
+          "document": "Statistics on the HTTP status codes of business traffic",
+          "example": "无",
+          "member": "HttpStatusMap",
+          "name": "HttpStatusMap",
+          "required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -6354,6 +6459,7 @@
         {
           "default": "",
           "document": "Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)",
+          "example": "bgpip",
           "member": "string",
           "name": "Business",
           "required": true,
@@ -6362,6 +6468,7 @@
         {
           "default": "",
           "document": "Region code search, which is optional. If no regions are to be specified, enter an empty array. If a region is to be specified, enter a region code, such as [\"gz\", \"sh\"]",
+          "example": "gz",
           "member": "string",
           "name": "RegionList",
           "required": false,
@@ -6370,6 +6477,7 @@
         {
           "default": "",
           "document": "Line search. This field can be optionally entered only when getting the list of Anti-DDoS Advanced resources. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. Please enter an empty array when getting other products;",
+          "example": "1",
           "member": "uint64",
           "name": "Line",
           "required": false,
@@ -6378,6 +6486,7 @@
         {
           "default": "",
           "document": "Resource ID search, which is optional. If this field is not an empty array, it means to get the resource list of a specified resource;",
+          "example": "无",
           "member": "string",
           "name": "IdList",
           "required": false,
@@ -6386,6 +6495,7 @@
         {
           "default": "",
           "document": "Resource name search, which is optional. If this field is not an empty string, it means to search for resources by name;",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -6393,7 +6503,8 @@
         },
         {
           "default": "",
-          "document": "IP search list, which is optional. If this field is not empty, it means to search for resources by IP;",
+          "document": "IP query list, which is optional. Resources will be queried by IP if the list is not empty.",
+          "example": "无",
           "member": "string",
           "name": "IpList",
           "required": false,
@@ -6402,6 +6513,7 @@
         {
           "default": "",
           "document": "Resource status search list, which is optional. Valid values: [0 (running), 1 (cleansing), 2 (blocking)]. No status search will be performed if an empty array is entered;",
+          "example": "无",
           "member": "uint64",
           "name": "Status",
           "required": false,
@@ -6410,6 +6522,7 @@
         {
           "default": "",
           "document": "Expiring resource search, which is optional. Valid values: [0 (no search), 1 (search for expiring resources)]",
+          "example": "无",
           "member": "uint64",
           "name": "Expire",
           "required": false,
@@ -6418,6 +6531,7 @@
         {
           "default": "",
           "document": "Sort by field, which is optional",
+          "example": "无",
           "member": "OrderBy",
           "name": "OderBy",
           "required": false,
@@ -6426,6 +6540,7 @@
         {
           "default": "",
           "document": "Number of entries per page. A value of 0 means no pagination",
+          "example": "无",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -6434,6 +6549,7 @@
         {
           "default": "",
           "document": "Page start offset, whose value is (page number - 1) * number of entries per page",
+          "example": "无",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -6442,6 +6558,7 @@
         {
           "default": "",
           "document": "CNAME of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;",
+          "example": "无",
           "member": "string",
           "name": "CName",
           "required": false,
@@ -6450,6 +6567,7 @@
         {
           "default": "",
           "document": "Domain name of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -6463,22 +6581,28 @@
       "members": [
         {
           "document": "Total number of records",
+          "example": "1",
           "member": "uint64",
           "name": "Total",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Resource record list. Valid values of `key`:\n\"Key\": \"CreateTime\" - resource instance purchase time\n\"Key\": \"Region\" - resource instance region\n\"Key\": \"BoundIP\" - IP bound to single IP instance\n\"Key\": \"Id\" - resource instance ID\n\"Key\": \"CCEnabled\" - CC protection status of resource instance\n\"Key\": \"DDoSThreshold\" - DDoS cleansing threshold of resource instance\t\n\"Key\": \"BoundStatus\" - IP binding status of single IP instance or multi-IP instance (binding or bound)\n\"Key\": \"Type\" - this field has been disused\n\"Key\": \"ElasticLimit\" - elastic protection value of resource instance\n\"Key\": \"DDoSAI\" - DDoS AI protection status of resource instance\n\"Key\": \"Bandwidth\" - base protection value of resource instance\n\"Key\": \"OverloadCount\" - number of attacks to the resource instance that exceed the elastic protection value\n\"Key\": \"Status\" - resource instance status (idle: running, attacking: attacking, blocking: blocking, isolate: isolating)\n\"Key\": \"Lbid\" - this field has been disused\n\"Key\": \"ShowFlag\" - this field has been disused\n\"Key\": \"Expire\" - resource instance expiration time\n\"Key\": \"CCThreshold\" - CC protection triggering threshold of resource instance\n\"Key\": \"AutoRenewFlag\" - auto-renewal flag of resource instance\n\"Key\": \"IspCode\" - line of single IP instance or multi-IP instance (0: China Telecom, 1: China Unicom, 2: China Mobile, 5: BGP)\n\"Key\": \"PackType\" - package type\n\"Key\": \"PackId\" - package ID\n\"Key\": \"Name\" - resource instance name\n\"Key\": \"Locked\" - this field has been disused\n\"Key\": \"IpDDoSLevel\" - protection level of resource instance (low: loose, middle: normal, high: strict)\n\"Key\": \"DefendStatus\" - DDoS protection status of resource (enabled or temporarily disabled)\n\"Key\": \"UndefendExpire\" - end time of temporary disablement of DDoS protection for resource instance\n\"Key\": \"Tgw\" - whether the resource instance is a new resource",
+          "document": "Resource record list. The description of key values is as follows:\n\"Key\": \"CreateTime\" (Instance purchase time)\n\"Key\": \"Region\" (Instance region)\n\"Key\": \"BoundIP\" (IP bound to the single-IP instance)\n\"Key\": \"Id\" (Instance ID)\n\"Key\": \"CCEnabled\" (CC protection switch status of the instance)\n\"Key\": \"DDoSThreshold\" (Anti-DDoS cleansing threshold of the instance)\t\n\"Key\": \"BoundStatus\" (IP binding status of the single-IP/multi-IP instance; binding or bound)\n\"Key\": \"Type\" (Disused field)\n\"Key\": \"ElasticLimit\" (Elastic protection value of the instance)\n\"Key\": \"DDoSAI\" (Anti-DDoS AI protection switch of the instance)\n\"Key\": \"OverloadCount\" (The number of attacks exceeding the elastic protection value to the instance)\n\"Key\": \"Status\" (Instance status; idle: running; attacking: under attacks; blocking: being blocked; isolate: being isolated)\n\"Key\": \"Lbid\" (Disused field)\n\"Key\": \"ShowFlag\" (Disused field)\n\"Key\": \"Expire\" (Instance expiry time)\n\"Key\": \"CCThreshold\" (CC protection trigger value of the instance)\n\"Key\": \"AutoRenewFlag\" (Whether the instance is on auto-renewal)\n\"Key\": \"IspCode\" (Line of the single-IP/multi-IP instance; 0: China Telecom; 1: China Unicom; 2: China Mobile; 5: BGP)\n\"Key\": \"PackType\" (Package type)\n\"Key\": \"PackId\" (Package ID)\n\"Key\": \"Name\" (Instance name)\n\"Key\": \"Locked\" (Disused field)\n\"Key\": \"IpDDoSLevel\" (Protection level of the instance; low: loose; middle: normal; high: strict)\n\"Key\": \"DefendStatus\" (DDoS protection status of the instance; enabled or temporarily disabled)\n\"Key\": \"UndefendExpire\" (End time of the temporary disabling on DDoS protection for the instance)\n\"Key\": \"Tgw\" (Whether it is a new instance)\n\"Key\": \"Bandwidth\" (Base protection value of the Anti-DDoS Pro/Advanced instance)\n\"Key\": \"DdosMax\" (Base protection value of the Anti-DDoS Ultimate instance)\n\"Key\": \"GFBandwidth\" (Base business application bandwidth of the Anti-DDoS Advanced instance)\n\"Key\": \"ServiceBandwidth\" (Base business application bandwidth of the Anti-DDoS Ultimate instance)",
+          "example": "无",
           "member": "KeyValueRecord",
           "name": "ServicePacks",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)",
+          "example": "bgpip",
           "member": "string",
           "name": "Business",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7036,6 +7160,112 @@
         }
       ],
       "type": "object"
+    },
+    "HttpStatusMap": {
+      "document": "Aggregated data on the HTTP status codes of business traffic",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTP 2xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http2xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 3xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http3xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 404 Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http404",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 4xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http4xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 5xx Status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "Http5xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 2xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp2xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 3xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp3xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 404 Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp404",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 4xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp4xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP 5xx Forwarding status code",
+          "example": "[1,2,3]",
+          "member": "float",
+          "name": "SourceHttp5xx",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "IpBlackWhite": {
       "document": "IP blocklist/allowlist",
