@@ -6,6 +6,12 @@
       "name": "Applies for upload",
       "output": "ApplyUploadResponse"
     },
+    "AttachMediaSubtitles": {
+      "document": "This API is used to associate/disassociate subtitles with/from a media file of a specific adaptive bitrate streaming template ID.",
+      "input": "AttachMediaSubtitlesRequest",
+      "name": "Associates subtitles with a media file",
+      "output": "AttachMediaSubtitlesResponse"
+    },
     "CommitUpload": {
       "document": "This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.",
       "input": "CommitUploadRequest",
@@ -451,7 +457,7 @@
       "output": "ModifyImageSpriteTemplateResponse"
     },
     "ModifyMediaInfo": {
-      "document": "This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, and video cover.",
+      "document": "This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, video thumbnail, and subtitle information.",
       "input": "ModifyMediaInfoRequest",
       "name": "Modifies media file attribute",
       "output": "ModifyMediaInfoResponse"
@@ -4745,6 +4751,60 @@
         }
       ],
       "usage": "in"
+    },
+    "AttachMediaSubtitlesRequest": {
+      "document": "AttachMediaSubtitles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the media file",
+          "example": "123",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Operation. Valid values:\n<li>`Attach`: associates subtitles.</li>\n<li>`Detach`: disassociates subtitles.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "[Adaptive bitrate streaming template ID](https://intl.cloud.tencent.com/document/product/266/34071?from_cn_redirect=1#zsy)",
+          "example": "无",
+          "member": "uint64",
+          "name": "AdaptiveDynamicStreamingDefinition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unique IDs of the subtitles",
+          "example": "无",
+          "member": "string",
+          "name": "SubtitleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachMediaSubtitlesResponse": {
+      "document": "AttachMediaSubtitles response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "AudioTemplateInfo": {
       "document": "Audio stream configuration parameter",
@@ -13487,6 +13547,118 @@
       ],
       "usage": "out"
     },
+    "MediaSubtitleInput": {
+      "document": "Input parameters of subtile information",
+      "members": [
+        {
+          "default": "",
+          "document": "Subtitle name. Length limit: 64 characters",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtitle language. Common values:\n<li>`cn`: Chinese</li>\n<li>`ja`: Japanese</li>\n<li>`en-US`: English</li>\nFor other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).",
+          "example": "无",
+          "member": "string",
+          "name": "Language",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtitle format. Valid value:\n<li>vtt</li>",
+          "example": "vtt",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtitle content, which is [Base64-encoded](https://tools.ietf.org/html/rfc4648) strings",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subtitle ID. Its length cannot exceed 16 characters. Uppercase and lowercase letters, numbers, underscores (_), and hyphens (-) are supported. It cannot be the same as the IDs of the existing subtitles in the media file.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "MediaSubtitleItem": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Language",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "vtt",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MediaTrack": {
       "document": "Track information",
       "members": [
@@ -14426,6 +14598,7 @@
         {
           "default": "",
           "document": "Unique media file ID.",
+          "example": "123",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -14434,6 +14607,7 @@
         {
           "default": "",
           "document": "Media filename, which can contain up to 64 characters.",
+          "example": "新的视频名称",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -14442,6 +14616,7 @@
         {
           "default": "",
           "document": "Media file description, which can contain up to 128 characters.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -14450,6 +14625,7 @@
         {
           "default": "",
           "document": "Media file category ID.",
+          "example": "无",
           "member": "int64",
           "name": "ClassId",
           "required": false,
@@ -14458,6 +14634,7 @@
         {
           "default": "",
           "document": "Media file expiration time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The value `9999-12-31T23:59:59Z` indicates that the media file never expires. After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted.",
+          "example": "无",
           "member": "string",
           "name": "ExpireTime",
           "required": false,
@@ -14466,6 +14643,7 @@
         {
           "default": "",
           "document": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the video cover image file (such as .jpeg or .png file). Only .gif, .jpeg, and .png image formats are supported.",
+          "example": "无",
           "member": "string",
           "name": "CoverData",
           "required": false,
@@ -14474,6 +14652,7 @@
         {
           "default": "",
           "document": "Set of video timestamps to be added. If a timestamp already exists at an offset time point, it will be overwritten. Up to 100 timestamps can be added to one media file. In the same request, the time offset parameters of `AddKeyFrameDescs` must be different from those of `DeleteKeyFrameDescs`.",
+          "example": "无",
           "member": "MediaKeyFrameDescItem",
           "name": "AddKeyFrameDescs",
           "required": false,
@@ -14482,6 +14661,7 @@
         {
           "default": "",
           "document": "Time offset of the set of video timestamps to be deleted in seconds. In the same request, the time offset parameters of `AddKeyFrameDescs` must be different from those of `DeleteKeyFrameDescs`.",
+          "example": "无",
           "member": "float",
           "name": "DeleteKeyFrameDescs",
           "required": false,
@@ -14490,6 +14670,7 @@
         {
           "default": "",
           "document": "The value `1` indicates to delete all timestamps in the video. Other values are meaningless.\nIn the same request, `ClearKeyFrameDescs` and `AddKeyFrameDescs` cannot be present at the same time.",
+          "example": "无",
           "member": "int64",
           "name": "ClearKeyFrameDescs",
           "required": false,
@@ -14498,6 +14679,7 @@
         {
           "default": "",
           "document": "Set of tags to be added. Up to 16 tags can be added to one media file, and one tag can contain up to 16 characters. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.",
+          "example": "无",
           "member": "string",
           "name": "AddTags",
           "required": false,
@@ -14506,6 +14688,7 @@
         {
           "default": "",
           "document": "Set of tags to be deleted. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.",
+          "example": "无",
           "member": "string",
           "name": "DeleteTags",
           "required": false,
@@ -14514,6 +14697,7 @@
         {
           "default": "",
           "document": "The value `1` indicates to delete all tags of the media file. Other values are meaningless.\nIn the same request, `ClearTags` and `AddTags` cannot be present at the same time.",
+          "example": "无",
           "member": "int64",
           "name": "ClearTags",
           "required": false,
@@ -14521,7 +14705,35 @@
         },
         {
           "default": "",
+          "document": "Information of multiple subtitles to be added. A single media file can have up to 16 subtitles. In the same request, the subtitle IDs specified in `AddSubtitles` must be different from those in `DeleteSubtitleIds`.",
+          "example": "无",
+          "member": "MediaSubtitleInput",
+          "name": "AddSubtitles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Unique IDs of the subtitles to be deleted. In the same request, the subtitle IDs specified in `AddSubtitles` must be different from those in `DeleteSubtitleIds`.",
+          "example": "无",
+          "member": "string",
+          "name": "DeleteSubtitleIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The value `1` indicates to delete all subtitle information of the media file. Other values are meaningless.\n`ClearSubtitles` and `AddSubtitles` cannot co-exist in the same request.",
+          "example": "无",
+          "member": "int64",
+          "name": "ClearSubtitles",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -14535,9 +14747,20 @@
       "members": [
         {
           "document": "URL of new video cover.\n* Note: this returned value is valid only if the request carries `CoverData`.*",
+          "example": "无",
           "member": "string",
           "name": "CoverUrl",
+          "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Added subtitle information",
+          "example": "无",
+          "member": "MediaSubtitleItem",
+          "name": "AddedSubtitleSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -17704,6 +17927,15 @@
           "example": "无",
           "member": "string",
           "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Regions](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).\n<li>Length limit for a single region: 20 characters</li>\n<li>Array length limit: 20</li>",
+          "example": "无",
+          "member": "string",
+          "name": "StorageRegions",
           "required": false,
           "type": "list"
         },

@@ -445,6 +445,7 @@
         {
           "default": "",
           "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "example": "无",
           "member": "string",
           "name": "SpecCode",
           "required": true,
@@ -453,6 +454,7 @@
         {
           "default": "",
           "document": "PostgreSQL kernel version. Currently, only two versions are supported: 9.3.5 and 9.5.4.",
+          "example": "无",
           "member": "string",
           "name": "DBVersion",
           "required": true,
@@ -461,6 +463,7 @@
         {
           "default": "",
           "document": "Instance capacity size in GB.",
+          "example": "无",
           "member": "uint64",
           "name": "Storage",
           "required": true,
@@ -469,6 +472,7 @@
         {
           "default": "",
           "document": "Number of instances purchased at a time. Value range: 1-100.",
+          "example": "无",
           "member": "uint64",
           "name": "InstanceCount",
           "required": true,
@@ -477,6 +481,7 @@
         {
           "default": "",
           "document": "Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.",
+          "example": "无",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -485,6 +490,7 @@
         {
           "default": "",
           "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
+          "example": "无",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -493,6 +499,7 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "无",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -501,6 +508,7 @@
         {
           "default": "",
           "document": "Instance billing type.",
+          "example": "无",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -509,6 +517,7 @@
         {
           "default": "",
           "document": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: no.",
+          "example": "无",
           "member": "uint64",
           "name": "AutoVoucher",
           "required": false,
@@ -517,6 +526,7 @@
         {
           "default": "",
           "document": "Voucher ID list (only one voucher can be specified currently).",
+          "example": "无",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -525,6 +535,7 @@
         {
           "default": "",
           "document": "VPC ID.",
+          "example": "无",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -533,6 +544,7 @@
         {
           "default": "",
           "document": "VPC subnet ID.",
+          "example": "无",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -541,6 +553,7 @@
         {
           "default": "",
           "document": "Renewal flag. 0: normal renewal (default), 1: auto-renewal.",
+          "example": "无",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": false,
@@ -549,6 +562,7 @@
         {
           "default": "",
           "document": "Activity ID",
+          "example": "无",
           "member": "int64",
           "name": "ActivityId",
           "required": false,
@@ -557,6 +571,7 @@
         {
           "default": "",
           "document": "Instance name (which will be supported in the future)",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -565,6 +580,7 @@
         {
           "default": "",
           "document": "Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)",
+          "example": "无",
           "member": "uint64",
           "name": "NeedSupportIpv6",
           "required": false,
@@ -573,8 +589,18 @@
         {
           "default": "",
           "document": "The information of tags to be associated with instances. This parameter is left empty by default.",
+          "example": "无",
           "member": "Tag",
           "name": "TagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
         }
@@ -787,6 +813,15 @@
           "name": "TagList",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "[\"sasasasd\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -922,6 +957,15 @@
           "name": "MinDelayEliminateReserve",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "[\"sasasasd\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1156,6 +1200,7 @@
         {
           "default": "",
           "document": "Instance region such as ap-guangzhou, which corresponds to the `Region` field of `RegionSet`",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -1165,6 +1210,7 @@
         {
           "default": "",
           "document": "Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`",
+          "example": "100003",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -1174,6 +1220,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "1",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -1183,6 +1230,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "123123",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -1192,6 +1240,7 @@
         {
           "default": "",
           "document": "SubnetId",
+          "example": "1",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -1201,6 +1250,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "postgre-123",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -1210,6 +1260,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "postgre-123",
           "member": "string",
           "name": "DBInstanceName",
           "required": true,
@@ -1219,6 +1270,7 @@
         {
           "default": "",
           "document": "Instance status",
+          "example": "applying",
           "member": "string",
           "name": "DBInstanceStatus",
           "required": true,
@@ -1228,6 +1280,7 @@
         {
           "default": "",
           "document": "Assigned instance memory size in GB",
+          "example": "2",
           "member": "uint64",
           "name": "DBInstanceMemory",
           "required": true,
@@ -1237,6 +1290,7 @@
         {
           "default": "",
           "document": "Assigned instance storage capacity in GB",
+          "example": "10",
           "member": "uint64",
           "name": "DBInstanceStorage",
           "required": true,
@@ -1246,6 +1300,7 @@
         {
           "default": "",
           "document": "Number of assigned CPUs",
+          "example": "2",
           "member": "uint64",
           "name": "DBInstanceCpu",
           "required": true,
@@ -1255,6 +1310,7 @@
         {
           "default": "",
           "document": "Purchasable specification ID",
+          "example": "11",
           "member": "string",
           "name": "DBInstanceClass",
           "required": true,
@@ -1264,6 +1320,7 @@
         {
           "default": "",
           "document": "Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)",
+          "example": "primary",
           "member": "string",
           "name": "DBInstanceType",
           "required": true,
@@ -1273,6 +1330,7 @@
         {
           "default": "",
           "document": "Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported",
+          "example": "standard",
           "member": "string",
           "name": "DBInstanceVersion",
           "required": true,
@@ -1282,6 +1340,7 @@
         {
           "default": "",
           "document": "Instance database character set",
+          "example": "utf-8",
           "member": "string",
           "name": "DBCharset",
           "required": true,
@@ -1291,6 +1350,7 @@
         {
           "default": "",
           "document": "PostgreSQL kernel version",
+          "example": "12.4",
           "member": "string",
           "name": "DBVersion",
           "required": true,
@@ -1300,6 +1360,7 @@
         {
           "default": "",
           "document": "Instance creation time",
+          "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -1309,6 +1370,7 @@
         {
           "default": "",
           "document": "Instance last modified time",
+          "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -1318,6 +1380,7 @@
         {
           "default": "",
           "document": "Instance expiration time",
+          "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "ExpireTime",
           "required": true,
@@ -1327,6 +1390,7 @@
         {
           "default": "",
           "document": "Instance isolation time",
+          "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "IsolatedTime",
           "required": true,
@@ -1336,6 +1400,7 @@
         {
           "default": "",
           "document": "Billing mode. postpaid: pay-as-you-go",
+          "example": "prepaid",
           "member": "string",
           "name": "PayType",
           "required": true,
@@ -1345,6 +1410,7 @@
         {
           "default": "",
           "document": "Whether to renew automatically. 1: yes, 0: no",
+          "example": "1",
           "member": "uint64",
           "name": "AutoRenew",
           "required": true,
@@ -1354,6 +1420,7 @@
         {
           "default": "",
           "document": "Instance network connection information",
+          "example": "1",
           "member": "DBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
           "required": true,
@@ -1363,6 +1430,7 @@
         {
           "default": "",
           "document": "Machine type",
+          "example": "1",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1372,6 +1440,7 @@
         {
           "default": "",
           "document": "User `AppId`",
+          "example": "123455",
           "member": "uint64",
           "name": "AppId",
           "required": true,
@@ -1381,6 +1450,7 @@
         {
           "default": "",
           "document": "Instance `Uid`",
+          "example": "12344",
           "member": "uint64",
           "name": "Uid",
           "required": true,
@@ -1390,6 +1460,7 @@
         {
           "default": "",
           "document": "Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)",
+          "example": "1",
           "member": "uint64",
           "name": "SupportIpv6",
           "required": true,
@@ -1399,6 +1470,7 @@
         {
           "default": "",
           "document": "The information of tags associated with instances.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "Tag",
           "name": "TagList",
           "required": true,
@@ -1408,6 +1480,7 @@
         {
           "default": "",
           "document": "Primary instance information, which is returned only when the instance is read-only\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "postgre-123",
           "member": "string",
           "name": "MasterDBInstanceId",
           "required": true,
@@ -1417,6 +1490,7 @@
         {
           "default": "",
           "document": "Number of read-only instances\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "6",
           "member": "int64",
           "name": "ReadOnlyInstanceNum",
           "required": true,
@@ -1426,8 +1500,19 @@
         {
           "default": "",
           "document": "The status of a instance in a read-only group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ok",
           "member": "string",
           "name": "StatusInReadonlyGroup",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Elimination time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2014-08-03 12:00",
+          "member": "string",
+          "name": "OfflineTime",
           "required": true,
           "type": "string",
           "value_allowed_null": true
