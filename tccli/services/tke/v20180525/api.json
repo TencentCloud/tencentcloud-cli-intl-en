@@ -4087,6 +4087,7 @@
         {
           "default": "",
           "document": "Number of nodes that are being added",
+          "example": "0",
           "member": "int64",
           "name": "Joining",
           "required": true,
@@ -4096,6 +4097,7 @@
         {
           "default": "",
           "document": "Number of nodes that are being initialized",
+          "example": "0",
           "member": "int64",
           "name": "Initializing",
           "required": true,
@@ -4105,6 +4107,7 @@
         {
           "default": "",
           "document": "Number of normal nodes",
+          "example": "1",
           "member": "int64",
           "name": "Normal",
           "required": true,
@@ -4114,6 +4117,7 @@
         {
           "default": "",
           "document": "Total number of nodes",
+          "example": "1",
           "member": "int64",
           "name": "Total",
           "required": true,
@@ -4424,6 +4428,7 @@
         {
           "default": "",
           "document": "Node pool ID",
+          "example": "np-xxx",
           "member": "string",
           "name": "NodePoolId",
           "required": true,
@@ -4433,6 +4438,7 @@
         {
           "default": "",
           "document": "Node pool name",
+          "example": "xxx",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4442,6 +4448,7 @@
         {
           "default": "",
           "document": "Cluster instance ID",
+          "example": "cls-xxx",
           "member": "string",
           "name": "ClusterInstanceId",
           "required": true,
@@ -4451,6 +4458,7 @@
         {
           "default": "",
           "document": "Status",
+          "example": "normal",
           "member": "string",
           "name": "LifeState",
           "required": true,
@@ -4460,6 +4468,7 @@
         {
           "default": "",
           "document": "Launch configuration ID",
+          "example": "asc-xxx",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -4469,6 +4478,7 @@
         {
           "default": "",
           "document": "Auto-scaling group ID",
+          "example": "asg-xxx",
           "member": "string",
           "name": "AutoscalingGroupId",
           "required": true,
@@ -4478,6 +4488,7 @@
         {
           "default": "",
           "document": "Labels",
+          "example": "无",
           "member": "Label",
           "name": "Labels",
           "required": true,
@@ -4487,6 +4498,7 @@
         {
           "default": "",
           "document": "Array of taint",
+          "example": "无",
           "member": "Taint",
           "name": "Taints",
           "required": true,
@@ -4496,6 +4508,7 @@
         {
           "default": "",
           "document": "Node list",
+          "example": "{\"AutoscalingAdded\":{\"Initializing\":0,\"Joining\":0,\"Normal\":1,\"Sh",
           "member": "NodeCountSummary",
           "name": "NodeCountSummary",
           "required": true,
@@ -4505,6 +4518,7 @@
         {
           "default": "",
           "document": "",
+          "example": "enabled",
           "member": "string",
           "name": "AutoscalingGroupStatus",
           "required": true,
@@ -4514,6 +4528,7 @@
         {
           "default": "",
           "document": "Maximum number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "5",
           "member": "int64",
           "name": "MaxNodesNum",
           "required": true,
@@ -4523,6 +4538,7 @@
         {
           "default": "",
           "document": "Minimum number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
           "member": "int64",
           "name": "MinNodesNum",
           "required": true,
@@ -4532,6 +4548,7 @@
         {
           "default": "",
           "document": "Desired number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "3",
           "member": "int64",
           "name": "DesiredNodesNum",
           "required": true,
@@ -4541,6 +4558,7 @@
         {
           "default": "",
           "document": "The operating system of the node pool\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "tlinux2.4x86_64",
           "member": "string",
           "name": "NodePoolOs",
           "required": true,
@@ -4550,6 +4568,7 @@
         {
           "default": "",
           "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "GENERAL",
           "member": "string",
           "name": "OsCustomizeType",
           "required": true,
@@ -4559,8 +4578,29 @@
         {
           "default": "",
           "document": "Image ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "img-xxx",
           "member": "string",
           "name": "ImageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This parameter is required when the custom PodCIDR mode is enabled for the cluster.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "16",
+          "member": "int64",
+          "name": "DesiredPodNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom script\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserScript",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -5035,6 +5075,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -5043,6 +5084,7 @@
         {
           "default": "",
           "document": "The version that needs to upgrade to",
+          "example": "1.18.4",
           "member": "string",
           "name": "DstVersion",
           "required": true,
@@ -5050,7 +5092,17 @@
         },
         {
           "default": "",
+          "document": "Cluster custom parameter",
+          "example": "无",
+          "member": "ClusterExtraArgs",
+          "name": "ExtraArgs",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "The maximum tolerable number of unavailable pods",
+          "example": "100",
           "member": "float",
           "name": "MaxNotReadyPercent",
           "required": false,
@@ -5059,6 +5111,7 @@
         {
           "default": "",
           "document": "Whether to skip the precheck",
+          "example": "false",
           "member": "bool",
           "name": "SkipPreCheck",
           "required": false,

@@ -1794,6 +1794,7 @@
         {
           "default": "",
           "document": "Connection ID.",
+          "example": "dcx-abcdefgh",
           "member": "string",
           "name": "DirectConnectId",
           "required": true,
@@ -1802,6 +1803,7 @@
         {
           "default": "",
           "document": "Connection name.",
+          "example": "abc",
           "member": "string",
           "name": "DirectConnectName",
           "required": false,
@@ -1810,6 +1812,7 @@
         {
           "default": "",
           "document": "Circuit code of a connection, which is provided by the ISP or connection provider.",
+          "example": "ABF_123",
           "member": "string",
           "name": "CircuitCode",
           "required": false,
@@ -1818,6 +1821,7 @@
         {
           "default": "",
           "document": "VLAN for connection debugging.",
+          "example": "100",
           "member": "int64",
           "name": "Vlan",
           "required": false,
@@ -1826,6 +1830,7 @@
         {
           "default": "",
           "document": "Tencent-side IP address for connection debugging.",
+          "example": "172.168.1.1/30",
           "member": "string",
           "name": "TencentAddress",
           "required": false,
@@ -1834,6 +1839,7 @@
         {
           "default": "",
           "document": "User-side IP address for connection debugging.",
+          "example": "172.168.1.2/30",
           "member": "string",
           "name": "CustomerAddress",
           "required": false,
@@ -1842,6 +1848,7 @@
         {
           "default": "",
           "document": "Name of connection applicant, which is obtained from the account system by default.",
+          "example": "张三",
           "member": "string",
           "name": "CustomerName",
           "required": false,
@@ -1850,6 +1857,7 @@
         {
           "default": "",
           "document": "Email address of connection applicant, which is obtained from the account system by default.",
+          "example": "12345@qq.com",
           "member": "string",
           "name": "CustomerContactMail",
           "required": false,
@@ -1858,6 +1866,7 @@
         {
           "default": "",
           "document": "Contact number of connection applicant, which is obtained from the account system by default.",
+          "example": "18812345678",
           "member": "string",
           "name": "CustomerContactNumber",
           "required": false,
@@ -1866,6 +1875,7 @@
         {
           "default": "",
           "document": "Fault reporting contact person.",
+          "example": "张三",
           "member": "string",
           "name": "FaultReportContactPerson",
           "required": false,
@@ -1874,6 +1884,7 @@
         {
           "default": "",
           "document": "Fault reporting contact number.",
+          "example": "18812345678",
           "member": "string",
           "name": "FaultReportContactNumber",
           "required": false,
@@ -1882,10 +1893,20 @@
         {
           "default": "",
           "document": "Whether the connection applicant has signed the service agreement.",
+          "example": "true",
           "member": "bool",
           "name": "SignLaw",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Connection’s bandwidth",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Bandwidth",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

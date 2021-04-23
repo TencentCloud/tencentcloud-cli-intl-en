@@ -1394,6 +1394,7 @@
         {
           "default": "",
           "document": "Logset retention period in days; max value: 90",
+          "example": "7",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -1402,8 +1403,18 @@
         {
           "default": "",
           "document": "Logset name, which must be unique among all CLS logsets; default value: clb_logset",
+          "example": "clb_logset",
           "member": "string",
           "name": "LogsetName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Logset type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).",
+          "example": "ACCESS",
+          "member": "string",
+          "name": "LogsetType",
           "required": false,
           "type": "string"
         }
@@ -1963,6 +1974,15 @@
           "name": "PartitionCount",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).",
+          "example": "ACCESS",
+          "member": "string",
+          "name": "TopicType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2715,8 +2735,19 @@
       "members": [
         {
           "document": "Logset ID",
+          "example": "b046ae5f-00cf-4e90-880c-215e5ae72222",
           "member": "string",
           "name": "LogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Health check logset ID",
+          "example": "b046ae5f-00cf-4e90-880c-215e5ae71111",
+          "member": "string",
+          "name": "HealthLogsetId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4130,6 +4161,7 @@
         {
           "default": "",
           "document": "CLB instance ID.",
+          "example": "lb-fwzzxxxx",
           "member": "string",
           "name": "LoadBalancerId",
           "required": false,
@@ -4139,6 +4171,7 @@
         {
           "default": "",
           "document": "CLB instance name.",
+          "example": "name",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -4148,6 +4181,7 @@
         {
           "default": "",
           "document": "CLB instance network type:\nOPEN: public network; INTERNAL: private network.",
+          "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
           "required": false,
@@ -4157,6 +4191,7 @@
         {
           "default": "",
           "document": "CLB type identifier. Value range: 1 (CLB); 0 (classic CLB).",
+          "example": "1",
           "member": "uint64",
           "name": "Forward",
           "required": false,
@@ -4166,6 +4201,7 @@
         {
           "default": "",
           "document": "CLB instance domain name. This field is provided only to public network classic CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "www.aaa.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -4175,6 +4211,7 @@
         {
           "default": "",
           "document": "List of VIPs of a CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "x.x.x.x",
           "member": "string",
           "name": "LoadBalancerVips",
           "required": false,
@@ -4184,6 +4221,7 @@
         {
           "default": "",
           "document": "CLB instance status, including:\n0: creating; 1: running.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
           "required": false,
@@ -4193,6 +4231,7 @@
         {
           "default": "",
           "document": "CLB instance creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-12-08 08:00:00",
           "member": "string",
           "name": "CreateTime",
           "required": false,
@@ -4202,6 +4241,7 @@
         {
           "default": "",
           "document": "Last status change time of a CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-12-08 08:00:00",
           "member": "string",
           "name": "StatusTime",
           "required": false,
@@ -4211,6 +4251,7 @@
         {
           "default": "",
           "document": "ID of the project to which a CLB instance belongs. 0: default project.",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -4220,6 +4261,7 @@
         {
           "default": "",
           "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-mj65xxxx",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -4229,6 +4271,7 @@
         {
           "default": "",
           "document": "Protective CLB identifier. Value range: 1 (protective), 0 (non-protective).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "OpenBgp",
           "required": false,
@@ -4238,6 +4281,7 @@
         {
           "default": "",
           "document": "SNAT is enabled for all private network classic CLB created before December 2016.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "Snat",
           "required": false,
@@ -4247,6 +4291,7 @@
         {
           "default": "",
           "document": "0: not isolated; 1: isolated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "Isolation",
           "required": false,
@@ -4256,6 +4301,7 @@
         {
           "default": "",
           "document": "Log information. Only the public network CLB that have HTTP or HTTPS listeners can generate logs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": " null",
           "member": "string",
           "name": "Log",
           "required": false,
@@ -4265,6 +4311,7 @@
         {
           "default": "",
           "document": "Subnet where a CLB instance resides (meaningful only for private network VPC CLB)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-lzj3xxxx",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -4274,6 +4321,7 @@
         {
           "default": "",
           "document": "CLB instance tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": false,
@@ -4283,6 +4331,7 @@
         {
           "default": "",
           "document": "Security group of a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sg-hx6dxxxx",
           "member": "string",
           "name": "SecureGroups",
           "required": false,
@@ -4292,6 +4341,7 @@
         {
           "default": "",
           "document": "Basic information of a backend server bound to a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TargetRegionInfo",
           "name": "TargetRegionInfo",
           "required": false,
@@ -4301,6 +4351,7 @@
         {
           "default": "",
           "document": "Anycast CLB publishing region. For non-anycast CLB, this field returns an empty string.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": " null",
           "member": "string",
           "name": "AnycastZone",
           "required": false,
@@ -4310,6 +4361,7 @@
         {
           "default": "",
           "document": "IP version. Valid values: ipv4, ipv6\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ipv4",
           "member": "string",
           "name": "AddressIPVersion",
           "required": false,
@@ -4319,6 +4371,7 @@
         {
           "default": "",
           "document": "VPC ID in a numeric form\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "77599",
           "member": "uint64",
           "name": "NumericalVpcId",
           "required": false,
@@ -4328,6 +4381,7 @@
         {
           "default": "",
           "document": "ISP to which a CLB IP address belongs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "BGP",
           "member": "string",
           "name": "VipIsp",
           "required": false,
@@ -4337,6 +4391,7 @@
         {
           "default": "",
           "document": "Primary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ZoneInfo",
           "name": "MasterZone",
           "required": false,
@@ -4346,6 +4401,7 @@
         {
           "default": "",
           "document": "Secondary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ZoneInfo",
           "name": "BackupZoneSet",
           "required": false,
@@ -4355,6 +4411,7 @@
         {
           "default": "",
           "document": "CLB instance isolation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-02-12 12:15:08",
           "member": "string",
           "name": "IsolatedTime",
           "required": false,
@@ -4364,6 +4421,7 @@
         {
           "default": "",
           "document": "CLB instance expiration time, which takes effect only for prepaid instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:15:08",
           "member": "string",
           "name": "ExpireTime",
           "required": false,
@@ -4373,6 +4431,7 @@
         {
           "default": "",
           "document": "Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
           "required": false,
@@ -4382,6 +4441,7 @@
         {
           "default": "",
           "document": "CLB instance network attributes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "NetworkAttributes",
           "required": false,
@@ -4391,6 +4451,7 @@
         {
           "default": "",
           "document": "Prepaid billing attributes of a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "LBChargePrepaid",
           "name": "PrepaidAttributes",
           "required": false,
@@ -4400,6 +4461,7 @@
         {
           "default": "",
           "document": "Logset ID of CLB Log Service (CLS)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "c32fc818-e984-414a-b8f5-3985b4c5xxxx",
           "member": "string",
           "name": "LogSetId",
           "required": false,
@@ -4409,6 +4471,7 @@
         {
           "default": "",
           "document": "Log topic ID of CLB Log Service (CLS)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "c32fc818-e984-414a-b8f5-3985b4c5xxxx",
           "member": "string",
           "name": "LogTopicId",
           "required": false,
@@ -4418,6 +4481,7 @@
         {
           "default": "",
           "document": "IPv6 address of a CLB instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2402:4e00:1000:4e00:0:920b:5519:d96d",
           "member": "string",
           "name": "AddressIPv6",
           "required": false,
@@ -4427,6 +4491,7 @@
         {
           "default": "",
           "document": "Reserved field which can be ignored generally.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ExtraInfo",
           "name": "ExtraInfo",
           "required": false,
@@ -4436,6 +4501,7 @@
         {
           "default": "",
           "document": "Whether an Anti-DDoS Pro instance can be bound\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "IsDDos",
           "required": false,
@@ -4445,6 +4511,7 @@
         {
           "default": "",
           "document": "Custom configuration ID at the CLB instance level\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pz-5itmxxxxx",
           "member": "string",
           "name": "ConfigId",
           "required": false,
@@ -4454,6 +4521,7 @@
         {
           "default": "",
           "document": "Whether a real server opens the traffic from a CLB instance to the internet\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "LoadBalancerPassToTarget",
           "required": false,
@@ -4463,6 +4531,7 @@
         {
           "default": "",
           "document": "Private network dedicated cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ExclusiveCluster",
           "name": "ExclusiveCluster",
           "required": false,
@@ -4472,6 +4541,7 @@
         {
           "default": "",
           "document": "This field is meaningful only when the IP address version is `ipv6`. Valid values: IPv6Nat64, IPv6FullChain\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "IPv6FullChain",
           "member": "string",
           "name": "IPv6Mode",
           "required": false,
@@ -4481,6 +4551,7 @@
         {
           "default": "",
           "document": "Whether to enable SnatPro.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "SnatPro",
           "required": false,
@@ -4490,6 +4561,7 @@
         {
           "default": "",
           "document": "`SnatIp` list after SnatPro load balancing is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
           "required": false,
@@ -4499,6 +4571,7 @@
         {
           "default": "",
           "document": "Performance guarantee specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": " null",
           "member": "string",
           "name": "SlaType",
           "required": false,
@@ -4508,6 +4581,7 @@
         {
           "default": "",
           "document": "Whether VIP is blocked\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "IsBlock",
           "required": false,
@@ -4517,6 +4591,7 @@
         {
           "default": "",
           "document": "Time blocked or unblocked\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:15:08",
           "member": "string",
           "name": "IsBlockTime",
           "required": false,
@@ -4526,6 +4601,7 @@
         {
           "default": "",
           "document": "Whether the IP type is the local BGP",
+          "example": "false",
           "member": "bool",
           "name": "LocalBgp",
           "required": false,
@@ -4535,6 +4611,7 @@
         {
           "default": "",
           "document": "Dedicated layer-7 tag.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "FOR_TEST",
           "member": "string",
           "name": "ClusterTag",
           "required": false,
@@ -4544,6 +4621,7 @@
         {
           "default": "",
           "document": "If the layer-7 listener of an IPv6FullChain CLB instance is enabled, the CLB instance can be bound with an IPv4 and an IPv6 CVM instance simultaneously.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "MixIpTarget",
           "required": false,
@@ -4553,6 +4631,7 @@
         {
           "default": "",
           "document": "Availability zone of a VPC-based private network CLB instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "string",
           "name": "Zones",
           "required": false,
@@ -4562,8 +4641,29 @@
         {
           "default": "",
           "document": "Whether it is an NFV CLB instance. No returned information: no; l7nfv: yes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "string",
           "name": "NfvInfo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Health check logset ID of CLB CLS\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "c32fc818-e984-414a-b8f5-3985b4c51111",
+          "member": "string",
+          "name": "HealthLogSetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Health check log topic ID of CLB CLS\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "c32fc818-e984-414a-b8f5-3985b4c52222",
+          "member": "string",
+          "name": "HealthLogTopicId",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6554,6 +6654,7 @@
         {
           "default": "",
           "document": "CLB instance ID",
+          "example": "lb-cuxw2r00",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -6562,6 +6663,7 @@
         {
           "default": "",
           "document": "CLS logset ID",
+          "example": "xxxx-xx-xx-xx-xxxxxxxx",
           "member": "string",
           "name": "LogSetId",
           "required": true,
@@ -6570,9 +6672,19 @@
         {
           "default": "",
           "document": "CLS log topic ID",
+          "example": "xxxx-xx-xx-xx-yyyyyyyy",
           "member": "string",
           "name": "LogTopicId",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).",
+          "example": "ACCESS",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
           "type": "string"
         }
       ],
