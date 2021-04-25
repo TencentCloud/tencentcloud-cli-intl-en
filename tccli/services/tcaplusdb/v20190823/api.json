@@ -24,6 +24,12 @@
       "name": "Creates cluster",
       "output": "CreateClusterResponse"
     },
+    "CreateSnapshots": {
+      "document": "This API is used to create one or more table snapshots at specific points in time in the past.",
+      "input": "CreateSnapshotsRequest",
+      "name": "Creates table snapshots",
+      "output": "CreateSnapshotsResponse"
+    },
     "CreateTableGroup": {
       "document": "This API is used to create a table group in a TcaplusDB cluster.",
       "input": "CreateTableGroupRequest",
@@ -47,6 +53,12 @@
       "input": "DeleteIdlFilesRequest",
       "name": "Deletes IDL description file",
       "output": "DeleteIdlFilesResponse"
+    },
+    "DeleteSnapshots": {
+      "document": "This API is used to delete one or more table snapshots.",
+      "input": "DeleteSnapshotsRequest",
+      "name": "Deletes table snapshots",
+      "output": "DeleteSnapshotsResponse"
     },
     "DeleteTableGroup": {
       "document": "This API is used to delete a table group.",
@@ -95,6 +107,12 @@
       "input": "DescribeRegionsRequest",
       "name": "Queries region list",
       "output": "DescribeRegionsResponse"
+    },
+    "DescribeSnapshots": {
+      "document": "This API is used to query the list of table snapshots.",
+      "input": "DescribeSnapshotsRequest",
+      "name": "Queries the list of snapshots",
+      "output": "DescribeSnapshotsResponse"
     },
     "DescribeTableGroupTags": {
       "document": "This API is used to get the associated tag list of a table group.",
@@ -150,6 +168,12 @@
       "name": "Enables the RESTful API",
       "output": "EnableRestProxyResponse"
     },
+    "ImportSnapshots": {
+      "document": "This API is used to import a snapshot into a new table or the original table from which the snapshot was created.",
+      "input": "ImportSnapshotsRequest",
+      "name": "Imports a snapshot",
+      "output": "ImportSnapshotsResponse"
+    },
     "ModifyClusterMachine": {
       "document": "This API is used to modify the machines of a dedicated cluster.",
       "input": "ModifyClusterMachineRequest",
@@ -173,6 +197,12 @@
       "input": "ModifyClusterTagsRequest",
       "name": "Modifies cluster tags",
       "output": "ModifyClusterTagsResponse"
+    },
+    "ModifySnapshots": {
+      "document": "This API is used to modify the expiration time of one or more table snapshots.",
+      "input": "ModifySnapshotsRequest",
+      "name": "Modifies table snapshots",
+      "output": "ModifySnapshotsResponse"
     },
     "ModifyTableGroupName": {
       "document": "This API is used to rename a TcaplusDB table group.",
@@ -718,6 +748,60 @@
       ],
       "type": "object"
     },
+    "CreateSnapshotsRequest": {
+      "document": "CreateSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the table resides",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot list",
+          "example": "无",
+          "member": "SnapshotInfo",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSnapshotsResponse": {
+      "document": "CreateSnapshots response structure.",
+      "members": [
+        {
+          "document": "The number of snapshots created in batches",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result list of snapshots created in batches",
+          "example": "无",
+          "member": "SnapshotResult",
+          "name": "TableResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateTableGroupRequest": {
       "document": "CreateTableGroup request structure.",
       "members": [
@@ -908,6 +992,60 @@
           "document": "Deletion result",
           "member": "IdlFileInfoWithoutContent",
           "name": "IdlFileInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSnapshotsRequest": {
+      "document": "DeleteSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the table resides",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of snapshots to delete",
+          "example": "无",
+          "member": "SnapshotInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSnapshotsResponse": {
+      "document": "DeleteSnapshots response structure.",
+      "members": [
+        {
+          "document": "The number of snapshots deleted in batches",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result list of snapshots deleted in batches",
+          "example": "无",
+          "member": "SnapshotResult",
+          "name": "TableResults",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1246,7 +1384,7 @@
       "members": [
         {
           "default": "",
-          "document": "Whether to filter the resources supporting IPv6 access",
+          "document": "If this parameter is not `0`, machines supporting IPv6 will be queried.",
           "member": "int64",
           "name": "Ipv6Enable",
           "required": false,
@@ -1293,6 +1431,78 @@
           "document": "List of AZ query results",
           "member": "RegionInfo",
           "name": "RegionInfos",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotsRequest": {
+      "document": "DescribeSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the table resides",
+          "example": "18685341856",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID of the table group where the table resides",
+          "example": "1",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "cl_generic",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot name",
+          "example": "SnapshotName",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotsResponse": {
+      "document": "DescribeSnapshots response structure.",
+      "members": [
+        {
+          "document": "The number of snapshots",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result list of snapshots",
+          "example": "无",
+          "member": "SnapshotResult",
+          "name": "TableResults",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2011,6 +2221,138 @@
       ],
       "usage": "out"
     },
+    "ImportSnapshotsRequest": {
+      "document": "ImportSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the original table (from which the snapshot was created) resides",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The information of the snapshot to import",
+          "example": "无",
+          "member": "SnapshotInfo",
+          "name": "Snapshots",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).",
+          "example": "无",
+          "member": "string",
+          "name": "ImportSpecialKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).",
+          "example": "无",
+          "member": "string",
+          "name": "ImportOriginTable",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The file of the keys of the partial data",
+          "example": "无",
+          "member": "KeyFile",
+          "name": "KeyFile",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`",
+          "example": "无",
+          "member": "string",
+          "name": "NewTableGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.",
+          "example": "无",
+          "member": "string",
+          "name": "NewTableName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportSnapshotsResponse": {
+      "document": "ImportSnapshots response structure.",
+      "members": [
+        {
+          "document": "`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "KeyFile": {
+      "document": "The file of keys used to import partial snapshot data",
+      "members": [
+        {
+          "default": "",
+          "document": "Key file name",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key file extension",
+          "member": "string",
+          "name": "FileExtType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key file content",
+          "member": "string",
+          "name": "FileContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key file size",
+          "member": "int64",
+          "name": "FileSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "MachineInfo": {
       "document": "Machine type and quantity",
       "members": [
@@ -2223,6 +2565,60 @@
           "name": "TaskId",
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySnapshotsRequest": {
+      "document": "ModifySnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the table resides",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot list",
+          "example": "无",
+          "member": "SnapshotInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySnapshotsResponse": {
+      "document": "ModifySnapshots response structure.",
+      "members": [
+        {
+          "document": "The number of snapshots modified in batches",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result list of snapshots modified in batches",
+          "example": "无",
+          "member": "SnapshotResult",
+          "name": "TableResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3328,6 +3724,205 @@
         }
       ],
       "type": "object"
+    },
+    "SnapshotInfo": {
+      "document": "Snapshot list",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the table group where the table resides",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot name",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time of the data from which the snapshot was created",
+          "member": "datetime",
+          "name": "SnapshotTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot expiration time",
+          "member": "datetime",
+          "name": "SnapshotDeadTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SnapshotInfoNew": {
+      "document": "New expiration time of a snapshot",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the table group where the table resides",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot name",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot expiration time",
+          "member": "datetime",
+          "name": "SnapshotDeadTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SnapshotResult": {
+      "document": "The result of snapshot creation",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the table group where the table resides\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID, which is valid for the API that creates one task at a time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error information\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Snapshot name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The time of the data from which the snapshot was created\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "datetime",
+          "name": "SnapshotTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "When the snapshot expires\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "datetime",
+          "name": "SnapshotDeadTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "When the snapshot was created\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "datetime",
+          "name": "SnapshotCreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Snapshot size\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SnapshotSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Snapshot status. Valid values: `0` (creating), `1` (normal), `2` (deleting), `3` (expired), `4` (rolling back).\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SnapshotStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "TableGroupInfo": {
       "document": "Table group details",
