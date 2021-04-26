@@ -936,6 +936,12 @@
       "name": "Modifies the attributes of a bandwidth package",
       "output": "ModifyBandwidthPackageAttributeResponse"
     },
+    "ModifyCcnAttachedInstancesAttribute": {
+      "document": "This API is used to modify CCN-associated instance attributes. Currently, only the `description` can be modified.",
+      "input": "ModifyCcnAttachedInstancesAttributeRequest",
+      "name": "Modifies CCN-associated instance attributes",
+      "output": "ModifyCcnAttachedInstancesAttributeResponse"
+    },
     "ModifyCcnAttribute": {
       "document": "This API (ModifyCcnAttribute) is used to modify CCN attributes.",
       "input": "ModifyCcnAttributeRequest",
@@ -2591,6 +2597,7 @@
         {
           "default": "",
           "document": "The ID of a CCN instance.",
+          "example": "ccn-31zf3vib",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -2600,6 +2607,7 @@
         {
           "default": "",
           "document": "The type of associated instances:\n<li>`VPC`: VPC</li>\n<li>`DIRECTCONNECT`: Direct Connect</li>\n<li>`BMVPC`: BM VPC</li>",
+          "example": "VPC",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -2609,6 +2617,7 @@
         {
           "default": "",
           "document": "The ID of the associated instance.",
+          "example": "vpc-lt6ork07",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2618,6 +2627,7 @@
         {
           "default": "",
           "document": "The name of the associated instance.",
+          "example": "test",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -2627,6 +2637,7 @@
         {
           "default": "",
           "document": "The region to which the associated instance belongs, such as `ap-guangzhou`.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "InstanceRegion",
           "required": true,
@@ -2636,6 +2647,7 @@
         {
           "default": "",
           "document": "The UIN (root account) to which the associated instance belongs.",
+          "example": "100000072292",
           "member": "string",
           "name": "InstanceUin",
           "required": true,
@@ -2645,6 +2657,7 @@
         {
           "default": "",
           "document": "The CIDR of the associated instance.",
+          "example": "10.1.0.0/16",
           "member": "string",
           "name": "CidrBlock",
           "required": true,
@@ -2654,6 +2667,7 @@
         {
           "default": "",
           "document": "The status of the associated instance:\n<li>`PENDING`: In application</li>\n<li>`ACTIVE`: Connected</li>\n<li>`EXPIRED`: Expired</li>\n<li>`REJECTED`: Rejected</li>\n<li>`DELETED`: Deleted</li>\n<li>`FAILED`: Failed (it will be asynchronously unbound after 2 hours)</li>\n<li>`ATTACHING`: binding</li>\n<li>`DETACHING`: Unbinding</li>\n<li>`DETACHFAILED`: The unbinding failed (it will be asynchronously unbound after 2 hours)</li>",
+          "example": "ACTIVE",
           "member": "string",
           "name": "State",
           "required": true,
@@ -2663,6 +2677,7 @@
         {
           "default": "",
           "document": "Association Time.",
+          "example": "2021-03-03 16:19:44",
           "member": "datetime",
           "name": "AttachedTime",
           "required": true,
@@ -2672,6 +2687,7 @@
         {
           "default": "",
           "document": "The UIN (root account) to which the CCN belongs.",
+          "example": "100000072292",
           "member": "string",
           "name": "CcnUin",
           "required": true,
@@ -2681,8 +2697,19 @@
         {
           "default": "",
           "document": "General location of the associated instance, such as CHINA_MAINLAND.",
+          "example": " CHINA_MAINLAND",
           "member": "string",
           "name": "InstanceArea",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "remark",
+          "member": "string",
+          "name": "Description",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2756,6 +2783,7 @@
         {
           "default": "",
           "document": "The ID of the associated instance.",
+          "example": "vpc-lt6ork07",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2765,6 +2793,7 @@
         {
           "default": "",
           "document": "The region to which the associated instance ID belongs, such as `ap-guangzhou`.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "InstanceRegion",
           "required": true,
@@ -2774,8 +2803,19 @@
         {
           "default": "",
           "document": "The type of the associated instance. Available values are:\n<li>`VPC`: VPC</li>\n<li>`DIRECTCONNECT`: Direct Connect</li>\n<li>`BMVPC`: BM VPC</li>",
+          "example": "VPC",
           "member": "string",
           "name": "InstanceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "remark",
+          "member": "string",
+          "name": "Description",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -4688,6 +4728,7 @@
         {
           "default": "",
           "document": "The ID of the VPC instance to be operated on. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.",
+          "example": "vpc-m3ul053f",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4696,6 +4737,7 @@
         {
           "default": "",
           "document": "The subnet name. The maximum length is 60 bytes.",
+          "example": "TestSubnet",
           "member": "string",
           "name": "SubnetName",
           "required": true,
@@ -4704,6 +4746,7 @@
         {
           "default": "",
           "document": "The subnet IP address range. It must be within the VPC IP address range. Subnet IP address ranges cannot overlap with each other within the same VPC.",
+          "example": "10.8.0.0/16",
           "member": "string",
           "name": "CidrBlock",
           "required": true,
@@ -4712,6 +4755,7 @@
         {
           "default": "",
           "document": "The ID of the availability zone in which the subnet resides. You can set up disaster recovery across availability zones by choosing different availability zones for different subnets.",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -4720,10 +4764,20 @@
         {
           "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4753,6 +4807,7 @@
         {
           "default": "",
           "document": "The `ID` of the `VPC` instance, such as `vpc-6v2ht8q5`.",
+          "example": "vpc-6v2ht8q5",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4761,6 +4816,7 @@
         {
           "default": "",
           "document": "The subnet object list.",
+          "example": "无",
           "member": "SubnetInput",
           "name": "Subnets",
           "required": true,
@@ -4769,10 +4825,20 @@
         {
           "default": "",
           "document": "Bound tags. Note that the collection of tags here is shared by all subnet objects in the list. You cannot specify tags for each subnet. Example: [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the CDC instance to which the subnets will be created",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -11557,6 +11623,42 @@
       ],
       "type": "object"
     },
+    "ModifyCcnAttachedInstancesAttributeRequest": {
+      "document": "ModifyCcnAttachedInstancesAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN instance ID in the format of `ccn-f49l6u0z`",
+          "example": "ccn-gree226l",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of associated network instances",
+          "example": "无",
+          "member": "CcnInstance",
+          "name": "Instances",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCcnAttachedInstancesAttributeResponse": {
+      "document": "ModifyCcnAttachedInstancesAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCcnAttributeRequest": {
       "document": "ModifyCcnAttribute request structure.",
       "members": [
@@ -13484,6 +13586,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the CDC instance associated with the ENI\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -13948,6 +14060,24 @@
     "ReplaceRoutesResponse": {
       "document": "ReplaceRoutes response structure.",
       "members": [
+        {
+          "document": "Old routing policy",
+          "example": "无",
+          "member": "Route",
+          "name": "OldRouteSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "New routing policy",
+          "example": "无",
+          "member": "Route",
+          "name": "NewRouteSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -14617,7 +14747,7 @@
         },
         {
           "default": "",
-          "document": "Type of the next hop. Currently supported types are:\nCVM: CVM of the public gateway type;\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nSSLVPN: sslvpn gateway;\nNAT: NAT gateway; \nNORMAL_CVM: normal CVM;\nEIP: public IP address of the CVM;\nCCN: Cloud Connect Network.",
+          "document": "Type of the next hop. Valid values:\nCVM: public gateway CVM;\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nSSLVPN: SSL VPN gateway;\nNAT: NAT Gateway; \nNORMAL_CVM: normal CVM;\nEIP: public IP address of the CVM;\nCCN: Cloud Connect Network;\nLOCAL_GATEWAY: local gateway.",
           "example": "-",
           "member": "string",
           "name": "GatewayType",
@@ -15390,6 +15520,7 @@
         {
           "default": "",
           "document": "The `ID` of the `VPC` instance.",
+          "example": "vpc-m0c2kcun",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -15399,6 +15530,7 @@
         {
           "default": "",
           "document": "Subnet instance `ID`, such as `subnet-bthucmmy`.",
+          "example": "-",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -15408,6 +15540,7 @@
         {
           "default": "",
           "document": "Subnet name.",
+          "example": "-",
           "member": "string",
           "name": "SubnetName",
           "required": true,
@@ -15417,6 +15550,7 @@
         {
           "default": "",
           "document": "The `IPv4` `CIDR` of the subnet.",
+          "example": "-",
           "member": "string",
           "name": "CidrBlock",
           "required": true,
@@ -15426,6 +15560,7 @@
         {
           "default": "",
           "document": "Whether it is the default subnet.",
+          "example": "-",
           "member": "bool",
           "name": "IsDefault",
           "required": true,
@@ -15435,6 +15570,7 @@
         {
           "default": "",
           "document": "Whether to enable broadcast.",
+          "example": "-",
           "member": "bool",
           "name": "EnableBroadcast",
           "required": true,
@@ -15444,6 +15580,7 @@
         {
           "default": "",
           "document": "Availability Zone.",
+          "example": "-",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -15453,6 +15590,7 @@
         {
           "default": "",
           "document": "The route table instance ID, such as `rtb-l2h8d7c2`.",
+          "example": "-",
           "member": "string",
           "name": "RouteTableId",
           "required": true,
@@ -15462,6 +15600,7 @@
         {
           "default": "",
           "document": "Creation Time.",
+          "example": "-",
           "member": "string",
           "name": "CreatedTime",
           "required": false,
@@ -15471,6 +15610,7 @@
         {
           "default": "",
           "document": "The number of available IPv4 addresses",
+          "example": "-",
           "member": "uint64",
           "name": "AvailableIpAddressCount",
           "required": true,
@@ -15480,6 +15620,7 @@
         {
           "default": "",
           "document": "The `IPv6` `CIDR` of the subnet.",
+          "example": "-",
           "member": "string",
           "name": "Ipv6CidrBlock",
           "required": true,
@@ -15489,6 +15630,7 @@
         {
           "default": "",
           "document": "The associated `ACL`ID",
+          "example": "-",
           "member": "string",
           "name": "NetworkAclId",
           "required": true,
@@ -15498,6 +15640,7 @@
         {
           "default": "",
           "document": "Whether it is a `SNAT` address pool subnet.",
+          "example": "-",
           "member": "bool",
           "name": "IsRemoteVpcSnat",
           "required": true,
@@ -15507,6 +15650,7 @@
         {
           "default": "",
           "document": "The total number of IPv4 addresses in the subnet.",
+          "example": "-",
           "member": "uint64",
           "name": "TotalIpAddressCount",
           "required": true,
@@ -15516,11 +15660,32 @@
         {
           "default": "",
           "document": "Tag key-value pairs",
+          "example": "-",
           "member": "Tag",
           "name": "TagSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a CDC subnet. Valid values: 0: no; 1: yes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsCdcSubnet",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
