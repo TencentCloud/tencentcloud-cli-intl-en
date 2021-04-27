@@ -139,10 +139,16 @@
       "output": "DescribeZonesResponse"
     },
     "DestroyDBInstance": {
-      "document": "This API is used to terminate a pay-as-you-go instance by specifying the `DBInstanceId` parameter.",
+      "document": "This API is used to eliminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an eliminated instance will be deleted and cannot be recovered.",
       "input": "DestroyDBInstanceRequest",
-      "name": "Terminates instance",
+      "name": "Eliminates an instance",
       "output": "DestroyDBInstanceResponse"
+    },
+    "DisIsolateDBInstances": {
+      "document": "This API is used to remove one or more instances from isolation.",
+      "input": "DisIsolateDBInstancesRequest",
+      "name": "Removes instances from isolation",
+      "output": "DisIsolateDBInstancesResponse"
     },
     "InitDBInstances": {
       "document": "This API is used to initialize a TencentDB for PostgreSQL instance.",
@@ -167,6 +173,12 @@
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries the upgrade price of instance",
       "output": "InquiryPriceUpgradeDBInstanceResponse"
+    },
+    "IsolateDBInstances": {
+      "document": "This API is used to isolate one or more instances.",
+      "input": "IsolateDBInstancesRequest",
+      "name": "Isolates instances",
+      "output": "IsolateDBInstancesResponse"
     },
     "ModifyAccountRemark": {
       "document": "This API is used to modify account remarks.",
@@ -2466,7 +2478,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the instance to be deleted",
+          "document": "The ID of the instance to be eliminated",
+          "example": "postgres-19nmz2xb",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -2477,6 +2490,60 @@
     },
     "DestroyDBInstanceResponse": {
       "document": "DestroyDBInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisIsolateDBInstancesRequest": {
+      "document": "DisIsolateDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource ID list",
+          "example": "[\"postgres-xxxxxxx\"]",
+          "member": "string",
+          "name": "DBInstanceIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specify the valid period (in months) of the monthly-subscribed instance when removing it from isolation",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to use vouchers",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID list",
+          "example": "[\"a\"]",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisIsolateDBInstancesResponse": {
+      "document": "DisIsolateDBInstances response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2799,6 +2866,33 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstancesRequest": {
+      "document": "IsolateDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID set",
+          "example": "[\"postgres-xxxxxxxx\"]",
+          "member": "string",
+          "name": "DBInstanceIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstancesResponse": {
+      "document": "IsolateDBInstances response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
