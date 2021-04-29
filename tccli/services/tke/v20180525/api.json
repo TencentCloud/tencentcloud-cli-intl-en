@@ -4457,7 +4457,7 @@
         },
         {
           "default": "",
-          "document": "Status",
+          "document": "The lifecycle state of the current node pool. Valid values: `creating`, `normal`, `updating`, `deleting`, and `deleted`.",
           "example": "normal",
           "member": "string",
           "name": "LifeState",

@@ -186,6 +186,12 @@
       "name": "Creates the HAVIP",
       "output": "CreateHaVipResponse"
     },
+    "CreateLocalGateway": {
+      "document": "This API is used to create a local gateway for a CDC instance.",
+      "input": "CreateLocalGatewayRequest",
+      "name": "Creates a local gateway",
+      "output": "CreateLocalGatewayResponse"
+    },
     "CreateNatGateway": {
       "document": "This API (CreateNatGateway) is used to create a NAT gateway.",
       "input": "CreateNatGatewayRequest",
@@ -282,6 +288,24 @@
       "name": "Creates a VPC",
       "output": "CreateVpcResponse"
     },
+    "CreateVpcEndPoint": {
+      "document": "This API is used to create an endpoint.",
+      "input": "CreateVpcEndPointRequest",
+      "name": "Creates an endpoint",
+      "output": "CreateVpcEndPointResponse"
+    },
+    "CreateVpcEndPointService": {
+      "document": "This API is used to create an endpoint service.",
+      "input": "CreateVpcEndPointServiceRequest",
+      "name": "Creates an endpoint service",
+      "output": "CreateVpcEndPointServiceResponse"
+    },
+    "CreateVpcEndPointServiceWhiteList": {
+      "document": "This API is used to create the endpoint service allowlist.",
+      "input": "CreateVpcEndPointServiceWhiteListRequest",
+      "name": "Creates the endpoint service allowlist",
+      "output": "CreateVpcEndPointServiceWhiteListResponse"
+    },
     "CreateVpnConnection": {
       "document": "This API (CreateVpnConnection) is used to create VPN tunnel.",
       "input": "CreateVpnConnectionRequest",
@@ -353,6 +377,12 @@
       "input": "DeleteHaVipRequest",
       "name": "Deletes an HAVIP",
       "output": "DeleteHaVipResponse"
+    },
+    "DeleteLocalGateway": {
+      "document": "This API is used to delete the local gateway of a CDC instance.",
+      "input": "DeleteLocalGatewayRequest",
+      "name": "Deletes a local gateway",
+      "output": "DeleteLocalGatewayResponse"
     },
     "DeleteNatGateway": {
       "document": "This API (DeleteNatGateway) is used to delete a NAT gateway.\nAfter the deletion of a NAT gateway, the system will automatically delete the routing entry that contains the NAT gateway from the route table. It will also unbind the Elastic IP.",
@@ -437,6 +467,24 @@
       "input": "DeleteVpcRequest",
       "name": "Deletes a VPC",
       "output": "DeleteVpcResponse"
+    },
+    "DeleteVpcEndPoint": {
+      "document": "This API is used to delete an endpoint.",
+      "input": "DeleteVpcEndPointRequest",
+      "name": "Deletes an endpoint",
+      "output": "DeleteVpcEndPointResponse"
+    },
+    "DeleteVpcEndPointService": {
+      "document": "This API is used to delete an endpoint service.\n\n",
+      "input": "DeleteVpcEndPointServiceRequest",
+      "name": "Deletes an endpoint service",
+      "output": "DeleteVpcEndPointServiceResponse"
+    },
+    "DeleteVpcEndPointServiceWhiteList": {
+      "document": "This API is used to delete the endpoint service allowlist.",
+      "input": "DeleteVpcEndPointServiceWhiteListRequest",
+      "name": "Deletes the endpoint service allowlist",
+      "output": "DeleteVpcEndPointServiceWhiteListResponse"
     },
     "DeleteVpnConnection": {
       "document": "This API (DeleteVpnConnection) is used to delete VPN tunnels.",
@@ -612,6 +660,12 @@
       "name": "Queries IP location",
       "output": "DescribeIpGeolocationInfosResponse"
     },
+    "DescribeLocalGateway": {
+      "document": "This API is used to query local gateways of a CDC instance.",
+      "input": "DescribeLocalGatewayRequest",
+      "name": "Queries local gateways",
+      "output": "DescribeLocalGatewayResponse"
+    },
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
       "document": "This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.",
       "input": "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest",
@@ -713,6 +767,24 @@
       "input": "DescribeTaskResultRequest",
       "name": "Queries the async job execution results",
       "output": "DescribeTaskResultResponse"
+    },
+    "DescribeVpcEndPoint": {
+      "document": "This API is used to query the endpoint list.",
+      "input": "DescribeVpcEndPointRequest",
+      "name": "Queries the endpoint list",
+      "output": "DescribeVpcEndPointResponse"
+    },
+    "DescribeVpcEndPointService": {
+      "document": "This API is used to query the endpoint service list.",
+      "input": "DescribeVpcEndPointServiceRequest",
+      "name": "Queries the endpoint service list",
+      "output": "DescribeVpcEndPointServiceResponse"
+    },
+    "DescribeVpcEndPointServiceWhiteList": {
+      "document": "This API is used to query the endpoint service allowlist.",
+      "input": "DescribeVpcEndPointServiceWhiteListRequest",
+      "name": "Queries the endpoint service allowlist",
+      "output": "DescribeVpcEndPointServiceWhiteListResponse"
     },
     "DescribeVpcInstances": {
       "document": " This API (DescribeVpcInstances) is used to query a list of VCM instances on VPC.",
@@ -822,6 +894,12 @@
       "name": "Detaches a security group from an ENI.",
       "output": "DisassociateNetworkInterfaceSecurityGroupsResponse"
     },
+    "DisassociateVpcEndPointSecurityGroups": {
+      "document": "This API is used to unbind an endpoint from a security group.",
+      "input": "DisassociateVpcEndPointSecurityGroupsRequest",
+      "name": "Unbinds an endpoint from a security group",
+      "output": "DisassociateVpcEndPointSecurityGroupsResponse"
+    },
     "DownloadCustomerGatewayConfiguration": {
       "document": "This API (DownloadCustomerGatewayConfiguration) is used to download a VPN tunnel configuration.",
       "input": "DownloadCustomerGatewayConfigurationRequest",
@@ -839,6 +917,12 @@
       "input": "EnableGatewayFlowMonitorRequest",
       "name": "Enables gateway traffic monitoring",
       "output": "EnableGatewayFlowMonitorResponse"
+    },
+    "EnableVpcEndPointConnect": {
+      "document": "This API is used to determine whether to accept the request of connecting with an endpoint.",
+      "input": "EnableVpcEndPointConnectRequest",
+      "name": "Determines whether to accept the request of connecting with an endpoint",
+      "output": "EnableVpcEndPointConnectResponse"
     },
     "GetCcnRegionBandwidthLimits": {
       "document": "This API is used to query the bandwidth limits of a CCN instance. Monthly-subscribed CCNs only support Inter-region Bandwidth Limits, while the pay-as-you-go CCNs support both the Inter-region Bandwidth Limits and Region Outbound Bandwidth Limits. ",
@@ -990,6 +1074,12 @@
       "name": "Modifies the IPv6 address attributes of an ENI",
       "output": "ModifyIpv6AddressesAttributeResponse"
     },
+    "ModifyLocalGateway": {
+      "document": "This API is used to modify the local gateway of a CDC instance.",
+      "input": "ModifyLocalGatewayRequest",
+      "name": "Modifies a local gateway",
+      "output": "ModifyLocalGatewayResponse"
+    },
     "ModifyNatGatewayAttribute": {
       "document": "This API (ModifyNatGatewayAttribute) is used to modify the attributes of a NAT gateway.",
       "input": "ModifyNatGatewayAttributeRequest",
@@ -1079,6 +1169,24 @@
       "input": "ModifyVpcAttributeRequest",
       "name": "Modifies VPC attributes",
       "output": "ModifyVpcAttributeResponse"
+    },
+    "ModifyVpcEndPointAttribute": {
+      "document": "This API is used to modify endpoint attributes.",
+      "input": "ModifyVpcEndPointAttributeRequest",
+      "name": "Modifies endpoint attributes",
+      "output": "ModifyVpcEndPointAttributeResponse"
+    },
+    "ModifyVpcEndPointServiceAttribute": {
+      "document": "This API is used to modify endpoint service attributes.\n\n",
+      "input": "ModifyVpcEndPointServiceAttributeRequest",
+      "name": "Modifies endpoint service attributes",
+      "output": "ModifyVpcEndPointServiceAttributeResponse"
+    },
+    "ModifyVpcEndPointServiceWhiteList": {
+      "document": "This API is used to modify the attributes of the endpoint service allowlist.",
+      "input": "ModifyVpcEndPointServiceWhiteListRequest",
+      "name": "Modifies the attributes of the endpoint service allowlist",
+      "output": "ModifyVpcEndPointServiceWhiteListResponse"
     },
     "ModifyVpnConnectionAttribute": {
       "document": "This API (ModifyVpnConnectionAttribute) is used to modify VPN tunnels.",
@@ -4012,6 +4120,60 @@
       ],
       "type": "object"
     },
+    "CreateLocalGatewayRequest": {
+      "document": "CreateLocalGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Local gateway name",
+          "example": "test",
+          "member": "string",
+          "name": "LocalGatewayName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC instance ID",
+          "example": "vpc-m0c2kcun",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLocalGatewayResponse": {
+      "document": "CreateLocalGateway response structure.",
+      "members": [
+        {
+          "document": "Local gateway information",
+          "example": "无",
+          "member": "LocalGateway",
+          "name": "LocalGateway",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest": {
       "document": "CreateNatGatewayDestinationIpPortTranslationNatRule request structure.",
       "members": [
@@ -4853,6 +5015,204 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpcEndPointRequest": {
+      "document": "CreateVpcEndPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC instance ID",
+          "example": "vpc-q26u781x。",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet instance ID",
+          "example": "subnet-qmqye6ew。",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint name",
+          "example": "示例名称。",
+          "member": "string",
+          "name": "EndPointName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpcsvc-ettmyyrn。",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint VIP. You can apply for a specified IP.",
+          "example": "10.0.0.0/16。",
+          "member": "string",
+          "name": "EndPointVip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "sg-123456。",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpcEndPointResponse": {
+      "document": "CreateVpcEndPoint response structure.",
+      "members": [
+        {
+          "document": "Endpoint details",
+          "example": "无。",
+          "member": "EndPoint",
+          "name": "EndPoint",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpcEndPointServiceRequest": {
+      "document": "CreateVpcEndPointService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC instance ID",
+          "example": "vpc-ihwh81fr。",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service name",
+          "example": "终端服务测试001。",
+          "member": "string",
+          "name": "EndPointServiceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically accept",
+          "example": "True。",
+          "member": "bool",
+          "name": "AutoAcceptFlag",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Real server ID, such as `lb-xxx`.",
+          "example": "lb-7xwasqqy。",
+          "member": "string",
+          "name": "ServiceInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is of the type `PassService`. Valid values: true: yes; false: no. Default value: false",
+          "example": "True",
+          "member": "bool",
+          "name": "IsPassService",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpcEndPointServiceResponse": {
+      "document": "CreateVpcEndPointService response structure.",
+      "members": [
+        {
+          "document": "Endpoint service details",
+          "example": "无。",
+          "member": "EndPointService",
+          "name": "EndPointService",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpcEndPointServiceWhiteListRequest": {
+      "document": "CreateVpcEndPointServiceWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN",
+          "example": "123",
+          "member": "string",
+          "name": "UserUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpcsvc-b2mrmmx7",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Allowlist description",
+          "example": "测试",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpcEndPointServiceWhiteListResponse": {
+      "document": "CreateVpcEndPointServiceWhiteList response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -5839,6 +6199,51 @@
       ],
       "type": "object"
     },
+    "DeleteLocalGatewayRequest": {
+      "document": "DeleteLocalGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Local gateway instance ID",
+          "example": "lgw-1234rfgt",
+          "member": "string",
+          "name": "LocalGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC instance ID",
+          "example": "vpc-m0c2kcun",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLocalGatewayResponse": {
+      "document": "DeleteLocalGateway response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest": {
       "document": "DeleteNatGatewayDestinationIpPortTranslationNatRule request structure.",
       "members": [
@@ -6216,6 +6621,96 @@
       ],
       "type": "object"
     },
+    "DeleteVpcEndPointRequest": {
+      "document": "DeleteVpcEndPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVpcEndPointResponse": {
+      "document": "DeleteVpcEndPoint response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVpcEndPointServiceRequest": {
+      "document": "DeleteVpcEndPointService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVpcEndPointServiceResponse": {
+      "document": "DeleteVpcEndPointService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVpcEndPointServiceWhiteListRequest": {
+      "document": "DeleteVpcEndPointServiceWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of user UINs",
+          "example": "['123']",
+          "member": "string",
+          "name": "UserUin",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpcsvc-b2mrmmx7",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVpcEndPointServiceWhiteListResponse": {
+      "document": "DeleteVpcEndPointServiceWhiteList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteVpcRequest": {
       "document": "DeleteVpc request structure.",
       "members": [
@@ -6475,7 +6970,7 @@
         },
         {
           "default": "",
-          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> `address-id` - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>\n<li> `address-name` - String - Required: No - (Filter condition) Filter by EIP name. Fuzzy filtering is not supported. </li>\n<li> `address-ip` - String - Required: No - (Filter condition) Filter by the IP address of EIP.</li>\n<li> address-status - String - Required: no - (Filter condition) Filter by the EIP state. Possible EIP states are: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.</li>\n<li> `instance-id` - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>\n<li> `private-ip-address` - String - Required: No - (Filter condition) Filter by the private IP bound to the EIP.</li>\n<li> `network-interface-id` - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>\n<li> `is-arrears` - String - Required: No - (Filter condition) Filter by whether the EIP is overdue. (TRUE: The EIP is overdue | FALSE: The EIP billing status is normal)</li>\n<li> `address-type` - String - Required: No - (Filter condition) Filter by the IP type. Optional values: 'EIP'，'AnycastEIP'，'HighQualityEIP'</li>\n<li> `address-isp` - String - Required: No - (Filter condition) Filter by the ISP type. Optional values: 'BGP'，'CMCC'，'CUCC', 'CTCC'</li>",
+          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>\n<li> address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.</li>\n<li> address-ip - String - Required: No - (Filter condition) Filter by EIP.</li>\n<li> address-status - String - Required: No - (Filter condition) Filter by the EIP state. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>\n<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>\n<li> private-ip-address - String - Required: No - (Filter condition) Filter by the private IP address bound to the EIP.</li>\n<li> network-interface-id - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>\n<li> is-arrears - String - Required: No - (Filter condition) Whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>\n<li> address-type - String - Required: No - (Filter condition) Filter by the IP type. Valid values: `EIP`, `AnycastEIP`, and `HighQualityEIP`.</li>\n<li> address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>\n<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID in the format of `cluster-11112222`.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -7971,6 +8466,69 @@
       ],
       "type": "object"
     },
+    "DescribeLocalGatewayRequest": {
+      "document": "DescribeLocalGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query criteria:\nvpc-id: filter by VPC ID; local-gateway-name: filter by local gateway name (fuzzy search is supported); local-gateway-id: filter by local gateway instance ID; cdc-id: filter by CDC instance ID.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLocalGatewayResponse": {
+      "document": "DescribeLocalGateway response structure.",
+      "members": [
+        {
+          "document": "Information set of local gateways",
+          "example": "无",
+          "member": "LocalGateway",
+          "name": "LocalGatewaySet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of local gateways",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest": {
       "document": "DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.",
       "members": [
@@ -8907,6 +9465,213 @@
           "member": "string",
           "name": "Result",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcEndPointRequest": {
+      "document": "DescribeVpcEndPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter condition\n<li> end-point-service-id - String - (Filter condition) Endpoint service ID.</li>\n<li>end-point-name - String - (Filter condition) Endpoint instance name.</li>\n<li> end-point-id - String - (Filter condition) Endpoint instance ID.</li>\n<li> vpc-id - String - (Filter condition) VPC instance ID.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page; default value: 20; maximum value: 100.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Endpoint ID list",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcEndPointResponse": {
+      "document": "DescribeVpcEndPoint response structure.",
+      "members": [
+        {
+          "document": "Endpoint",
+          "example": "无",
+          "member": "EndPoint",
+          "name": "EndPointSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of matched endpoints",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcEndPointServiceRequest": {
+      "document": "DescribeVpcEndPointService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter condition\n<li> service-id - String - (Filter condition) Unique endpoint service ID.</li>\n<li>service-name - String - (Filter condition) Endpoint service instance name.</li>\n<li>service-instance-id - String - (Filter condition) Unique real server ID in the format of `lb-xxx`.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page; default value: 20; maximum value: 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointServiceIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcEndPointServiceResponse": {
+      "document": "DescribeVpcEndPointService response structure.",
+      "members": [
+        {
+          "document": "Array of endpoint services",
+          "example": "无",
+          "member": "EndPointService",
+          "name": "EndPointServiceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of matched results",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcEndPointServiceWhiteListRequest": {
+      "document": "DescribeVpcEndPointServiceWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page; default value: 20; maximum value: 100.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter condition\n<li> user-uin - String - (Filter condition) UIN.</li>\n<li> end-point-service-id - String - (Filter condition) Endpoint service ID.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcEndPointServiceWhiteListResponse": {
+      "document": "DescribeVpcEndPointServiceWhiteList response structure.",
+      "members": [
+        {
+          "document": "Array of allowed endpoint services",
+          "example": "无",
+          "member": "VpcEndPointServiceUser",
+          "name": "VpcEndpointServiceUserSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of matched allowlists",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -9941,6 +10706,42 @@
       ],
       "type": "object"
     },
+    "DisassociateVpcEndPointSecurityGroupsRequest": {
+      "document": "DisassociateVpcEndPointSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of security group IDs",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Endpoint ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateVpcEndPointSecurityGroupsResponse": {
+      "document": "DisassociateVpcEndPointSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DownloadCustomerGatewayConfigurationRequest": {
       "document": "DownloadCustomerGatewayConfiguration request structure.",
       "members": [
@@ -10057,6 +10858,283 @@
         }
       ],
       "type": "object"
+    },
+    "EnableVpcEndPointConnectRequest": {
+      "document": "EnableVpcEndPointConnect request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpcsvc-8gdaqxi0",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint ID",
+          "example": "[\"vpce-8gdaqxi0\"]",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to accept the request of connecting with an endpoint",
+          "example": "True",
+          "member": "bool",
+          "name": "AcceptFlag",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableVpcEndPointConnectResponse": {
+      "document": "EnableVpcEndPointConnect response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EndPoint": {
+      "document": "Endpoint details",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "APP ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointOwner",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint name",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint service VPC ID",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint service VIP",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint VIP",
+          "example": "无",
+          "member": "string",
+          "name": "EndPointVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint status. Valid values: `ACTIVE` (available), `PENDING` (to be accepted), `ACCEPTING` (being accepted), `REJECTED` (rejected), and `FAILED` (failed).",
+          "example": "无",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID list of security group instances bound with endpoints",
+          "example": "无",
+          "member": "string",
+          "name": "GroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint service name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EndPointService": {
+      "document": "Endpoint service",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "APP ID",
+          "member": "string",
+          "name": "ServiceOwner",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint service name",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Real server VIP",
+          "member": "string",
+          "name": "ServiceVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Real server ID in the format of `lb-xxx`.",
+          "member": "string",
+          "name": "ServiceInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically accept",
+          "member": "bool",
+          "name": "AutoAcceptFlag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of associated endpoints\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "EndPointCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Array of endpoints\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EndPoint",
+          "name": "EndPointSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Filter": {
       "document": "Filter",
@@ -11215,6 +12293,72 @@
       ],
       "usage": "out"
     },
+    "LocalGateway": {
+      "document": "Local gateway information",
+      "members": [
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC instance ID",
+          "example": "vpc-m0c2kcun",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Local gateway instance ID",
+          "example": "lgw-1234erty",
+          "member": "string",
+          "name": "UniqLocalGwId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Local gateway name",
+          "example": "test",
+          "member": "string",
+          "name": "LocalGatewayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Local gateway IP",
+          "example": "192.168.15.55",
+          "member": "string",
+          "name": "LocalGwIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the local gateway",
+          "example": "2021-03-24 15:31:56",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MigrateNetworkInterfaceRequest": {
       "document": "MigrateNetworkInterface request structure.",
       "members": [
@@ -11979,6 +13123,60 @@
       ],
       "type": "object"
     },
+    "ModifyLocalGatewayRequest": {
+      "document": "ModifyLocalGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Local gateway name",
+          "example": "test",
+          "member": "string",
+          "name": "LocalGatewayName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Local gateway instance ID",
+          "example": "lgw-1234ceww",
+          "member": "string",
+          "name": "LocalGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC instance ID",
+          "example": "vpc-m0c2kcun",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLocalGatewayResponse": {
+      "document": "ModifyLocalGateway response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyNatGatewayAttributeRequest": {
       "document": "ModifyNatGatewayAttribute request structure.",
       "members": [
@@ -12626,6 +13824,159 @@
     },
     "ModifyVpcAttributeResponse": {
       "document": "ModifyVpcAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpcEndPointAttributeRequest": {
+      "document": "ModifyVpcEndPointAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint ID",
+          "example": "vpce-8gdaqxi0。",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint name",
+          "example": "名称示例。",
+          "member": "string",
+          "name": "EndPointName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of security group IDs",
+          "example": "sg-123456。",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpcEndPointAttributeResponse": {
+      "document": "ModifyVpcEndPointAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpcEndPointServiceAttributeRequest": {
+      "document": "ModifyVpcEndPointServiceAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpces-hhth8n9j",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-a2oj00df",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service name",
+          "example": "测试",
+          "member": "string",
+          "name": "EndPointServiceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically accept",
+          "example": "False",
+          "member": "bool",
+          "name": "AutoAcceptFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Real server ID in the format of `lb-xxx`.",
+          "example": "lb-75d88uw8",
+          "member": "string",
+          "name": "ServiceInstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpcEndPointServiceAttributeResponse": {
+      "document": "ModifyVpcEndPointServiceAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpcEndPointServiceWhiteListRequest": {
+      "document": "ModifyVpcEndPointServiceWhiteList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User UIN",
+          "example": "123",
+          "member": "string",
+          "name": "UserUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpcsvc-b2mrmmx7",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Allowlist description",
+          "example": "测试",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpcEndPointServiceWhiteListResponse": {
+      "document": "ModifyVpcEndPointServiceWhiteList response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -16037,6 +17388,62 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "VpcEndPointServiceUser": {
+      "document": "Details of allowed endpoint services",
+      "members": [
+        {
+          "default": "",
+          "document": "APP ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "Owner",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User UIN",
+          "example": "123",
+          "member": "string",
+          "name": "UserUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "测试",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-01-14 15:58:40",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Endpoint service ID",
+          "example": "vpcsvc-b2mrmmx7",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

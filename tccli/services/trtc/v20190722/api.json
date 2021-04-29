@@ -1,10 +1,22 @@
 {
   "actions": {
+    "CreatePicture": {
+      "document": "This API is used to upload an image.",
+      "input": "CreatePictureRequest",
+      "name": "Uploads an image",
+      "output": "CreatePictureResponse"
+    },
     "CreateTroubleInfo": {
       "document": "This API is used to create exception information.",
       "input": "CreateTroubleInfoRequest",
       "name": "Creates exception information",
       "output": "CreateTroubleInfoResponse"
+    },
+    "DeletePicture": {
+      "document": "This API is used to delete an image.",
+      "input": "DeletePictureRequest",
+      "name": "Deletes an image",
+      "output": "DeletePictureResponse"
     },
     "DescribeAbnormalEvent": {
       "document": "This API is used to query exception occurrences under a specified `SDKAppID` and return the exception IDs and possible causes. It queries data in last 15 days, and the query period is up to 1 hour, which can start and end on different days. For more information about exceptions, please see the exception event ID mapping table: https://intl.cloud.tencent.com/document/product/647/37906.",
@@ -29,6 +41,12 @@
       "input": "DescribeHistoryScaleRequest",
       "name": "Queries the number of historical rooms and users",
       "output": "DescribeHistoryScaleResponse"
+    },
+    "DescribePicture": {
+      "document": "This API is used to query the parameters of an image.",
+      "input": "DescribePictureRequest",
+      "name": "Queries image parameters",
+      "output": "DescribePictureResponse"
     },
     "DescribeRealtimeNetwork": {
       "document": "This API is used to query the network conditions of an `SDKAppID`, including upstream and downstream packet loss, in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.",
@@ -71,6 +89,12 @@
       "input": "DismissRoomByStrRoomIdRequest",
       "name": "Closes a room (by room ID in string type)",
       "output": "DismissRoomByStrRoomIdResponse"
+    },
+    "ModifyPicture": {
+      "document": "This API is used to modify the parameters of an image.",
+      "input": "ModifyPictureRequest",
+      "name": "Modifies image parameters",
+      "output": "ModifyPictureResponse"
     },
     "RemoveUser": {
       "document": "This API is used to remove a user from a room. It is applicable to scenarios where the anchor, room owner, or admin wants to kick out a user. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.",
@@ -190,6 +214,96 @@
       ],
       "usage": "out"
     },
+    "CreatePictureRequest": {
+      "document": "CreatePicture request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1234567",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded image content",
+          "example": "abcde",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image file extension",
+          "example": "jpg",
+          "member": "string",
+          "name": "Suffix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image height",
+          "example": "15",
+          "member": "uint64",
+          "name": "Height",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Image width",
+          "example": "15",
+          "member": "uint64",
+          "name": "Width",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "X-axis value of the image’s position",
+          "example": "15",
+          "member": "uint64",
+          "name": "XPosition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Y-axis value of the image’s position",
+          "example": "15",
+          "member": "uint64",
+          "name": "YPosition",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePictureResponse": {
+      "document": "CreatePicture response structure.",
+      "members": [
+        {
+          "document": "Image ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "PictureId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateTroubleInfoRequest": {
       "document": "CreateTroubleInfo request structure.",
       "members": [
@@ -262,6 +376,42 @@
     },
     "CreateTroubleInfoResponse": {
       "document": "CreateTroubleInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePictureRequest": {
+      "document": "DeletePicture request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "PictureId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePictureResponse": {
+      "document": "DeletePicture response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -550,6 +700,78 @@
           "name": "ScaleList",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePictureRequest": {
+      "document": "DescribePicture request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1234567",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Image ID. If it is not passed in, the IDs of all images under the application are returned.",
+          "example": "123",
+          "member": "uint64",
+          "name": "PictureId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of records per page",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePictureResponse": {
+      "document": "DescribePicture response structure.",
+      "members": [
+        {
+          "document": "Number of records returned",
+          "example": "2",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image information list",
+          "example": "无",
+          "member": "PictureInfo",
+          "name": "PictureInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1254,6 +1476,78 @@
       ],
       "usage": "in"
     },
+    "ModifyPictureRequest": {
+      "document": "ModifyPicture request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "PictureId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Image height",
+          "example": "12",
+          "member": "uint64",
+          "name": "Height",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Image width",
+          "example": "15",
+          "member": "uint64",
+          "name": "Width",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "X-axis value of the image’s position",
+          "example": "15",
+          "member": "uint64",
+          "name": "XPosition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Y-axis value of the image’s position",
+          "example": "16",
+          "member": "uint64",
+          "name": "YPosition",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPictureResponse": {
+      "document": "ModifyPicture response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "OutputParams": {
       "document": "MCU On-Cloud MixTranscoding output parameters",
       "members": [
@@ -1289,7 +1583,7 @@
         },
         {
           "default": "",
-          "document": "Value range: [0, 1]. If it is 0, the recording template configured in the console will be used; if it is 1, streams are recorded as .mp3 files.",
+          "document": "Whether to record audio only. Valid values: 0, 1. `0`: no meaning; `1`: records into MP3 files. This parameter is not recommended. Instead, you are advised to create an audio-only recording template in the TRTC console.",
           "example": "0",
           "member": "uint64",
           "name": "RecordAudioOnly",
@@ -1299,6 +1593,72 @@
         }
       ],
       "usage": "in"
+    },
+    "PictureInfo": {
+      "document": "Image information list",
+      "members": [
+        {
+          "default": "",
+          "document": "Image height",
+          "example": "15",
+          "member": "uint64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image width",
+          "example": "15",
+          "member": "uint64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "X-axis value of the image’s position",
+          "example": "36",
+          "member": "uint64",
+          "name": "XPosition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Y-axis value of the image’s position",
+          "example": "36",
+          "member": "uint64",
+          "name": "YPosition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1234567",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "PictureId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PresetLayoutConfig": {
       "document": "Valid in custom template, used to specify the video image position of a user in mixed streams.",
