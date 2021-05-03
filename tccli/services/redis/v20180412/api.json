@@ -49,7 +49,7 @@
       "output": "DescribeBackupUrlResponse"
     },
     "DescribeCommonDBInstances": {
-      "document": "This API is used to query information of the Redis instance list.",
+      "document": "(Disused) Queries the list of instances",
       "input": "DescribeCommonDBInstancesRequest",
       "name": "Queries information of the Redis instance list",
       "output": "DescribeCommonDBInstancesResponse"
@@ -347,6 +347,12 @@
       "input": "UpgradeInstanceVersionRequest",
       "name": "Upgrades instance version or architecture",
       "output": "UpgradeInstanceVersionResponse"
+    },
+    "UpgradeVersionToMultiAvailabilityZones": {
+      "document": "This API is used to upgrade an instance to support multi-AZ deployment.",
+      "input": "UpgradeVersionToMultiAvailabilityZonesRequest",
+      "name": "Upgrades an instance to support multi-AZ deployment",
+      "output": "UpgradeVersionToMultiAvailabilityZonesResponse"
     }
   },
   "metadata": {
@@ -6491,6 +6497,42 @@
           "member": "string",
           "name": "DealId",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeVersionToMultiAvailabilityZonesRequest": {
+      "document": "UpgradeVersionToMultiAvailabilityZones request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-rhlppeye",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeVersionToMultiAvailabilityZonesResponse": {
+      "document": "UpgradeVersionToMultiAvailabilityZones response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "140171780",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {

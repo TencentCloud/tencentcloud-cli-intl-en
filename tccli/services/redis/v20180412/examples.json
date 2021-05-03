@@ -43,7 +43,7 @@
         "document": "",
         "input": "https://redis.tencentcloudapi.com/?Action=CreateInstances\n&ZoneId=200002\n&TypeId=9\n&MemSize=2048\n&GoodsNum=1\n&Period=3\n&BillingMode=1\n&VpcId=vpc-fmh*****\n&SubnetId=subnet-680c****\n&RedisShardNum=3\n&RedisReplicasNum=1\n&NoAuth=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"154494263\",\n        \"InstanceIds\": [\n            \"crs-h9sn****\"\n        ],\n        \"RequestId\": \"d39baee1-e34f-4685-a810-5d27c510acb3\"\n    }\n}",
-        "title": "Sample request: purchasing a monthly subscription Memory Edition (standard architecture) TencentDB for Redis v5.0 instance "
+        "title": "Sample request: purchasing a monthly-subscribed Memory Edition (cluster architecture) TencentDB for Redis v5.0 instance"
       }
     ],
     "DeleteInstanceAccount": [
@@ -73,7 +73,7 @@
     "DescribeCommonDBInstances": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeCommonDBInstances\n&PayMode=0\n&InstanceIds=[\"crs-nh47ubwr\"]\n&<Common request parameters>",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeCommonDBInstances\n&PayMode=0\n&InstanceIds.0=crs-nh47ubwr\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceDetails\": [\n            {\n                \"AppId\": 251006366,\n                \"Createtime\": \"2020-05-06 19:38:19\",\n                \"InstanceId\": \"crs-nh47ubwr\",\n                \"InstanceName\": \"crs-nh47ubwr\",\n                \"NetType\": 1,\n                \"PayMode\": 1,\n                \"ProjectId\": 1075668,\n                \"Region\": \"ap-guangzhou\",\n                \"Status\": \"1\",\n                \"SubnetId\": 1210162,\n                \"Vips\": [\n                    \"172.16.1.84\"\n                ],\n                \"VpcId\": \"79963\",\n                \"Vport\": 6379,\n                \"Zone\": \"\"\n            }\n        ],\n        \"RequestId\": \"e306be36-f01b-477a-bdfb-e63d9b16d0a5\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Sample request"
       }
@@ -186,7 +186,7 @@
       {
         "document": "",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceNodeInfo\n&InstanceId=crs-asdasdas\n&<Common request parameters>",
-        "output": "{\r\n    \"code\":0,\r\n    \"msg\":\"xxx\",\r\n    \"data\":{\r\n        \"ProxyCount\": 10,\r\n        \"RedisCount\": 10,\r\n        \"Proxy\":[\r\n            {\r\n                \"NodeId\":\"6abb7c308ed3d65930599d6f3d978971864cec77\"\r\n            }],\r\n        \"Redis\":[\r\n            {\r\n                \"ClusterId\":0,\r\n                \"NodeId\":\"0f2ce0f969c4f43bc338bc1d6f60597d654bb3e4\",\r\n                \"NodeRole\":\"slave\"\r\n            }]\r\n    }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"ProxyCount\": 10,\n        \"RedisCount\": 10,\n        \"TendisCount\": 5,\n        \"Proxy\": [\n            {\n                \"NodeId\": \"6abb7c308ed3d65930599d6f3d978971864cec77\"\n            }\n        ],\n        \"Redis\": [\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"0f2ce0f969c4f43bc338bc1d6f60597d654bb3e4\",\n                \"NodeRole\": \"slave\"\n            }\n        ],\n        \"Tendis\": [\n            {\n                \"NodeId\": \"54dc6b83093359783abd2f0b07da61d3\",\n                \"NodeRole\": \"master\"\n            }\n        ]\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -273,8 +273,8 @@
     "DescribeProxySlowLog": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-0812:12:41\n&EndTime=2019-09-0912:12:41\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"TotalCount\": 106980\n    }\n}",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-08 12:12:41\n&EndTime=2019-09-09 12:12:41\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 106980,\n        \"InstanceProxySlowLogDetail\": [\n            {\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Client\": \"172.16.21.78\",\n                \"Command\": \"hget\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -315,7 +315,7 @@
         "document": "",
         "input": "https://redis.tencentcloudapi.com/?Action=DestroyPrepaidInstance\r\n&InstanceId=crs-5a4py64p\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"DealId\": \"6977675\"\n    }\n}",
-        "title": "Returning a monthly subscription instance"
+        "title": "Returning a monthly-subscribed instance"
       }
     ],
     "DisableReplicaReadonly": [
@@ -468,6 +468,14 @@
         "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstanceVersion\n&InstanceId=crs-5qlrlhux\n&SwitchOption=2\n&TargetInstanceType=6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample"
+      }
+    ],
+    "UpgradeVersionToMultiAvailabilityZones": [
+      {
+        "document": "",
+        "input": "https://redis.tencentcloudapi.com/?Action=UpgradeVersionToMultiAvailabilityZones\n&InstanceId=crs-5qlrlhux\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": \"140171780\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
+        "title": "Sample request"
       }
     ]
   },
