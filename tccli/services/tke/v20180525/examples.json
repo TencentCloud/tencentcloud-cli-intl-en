@@ -199,8 +199,8 @@
     "DescribeClusterEndpointStatus": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpointStatus\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Status\": \"Created\"\n    }\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpointStatus\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Status\": \"Created\",\n        \"ErrorMsg\": \"xx\"\n    }\n}",
         "title": "Querying the status of the cluster access port"
       }
     ],

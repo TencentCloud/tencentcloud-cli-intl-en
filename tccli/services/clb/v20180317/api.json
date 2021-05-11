@@ -2982,7 +2982,8 @@
       "members": [
         {
           "default": "",
-          "document": "CLB instance ID.",
+          "document": "CLB instance ID",
+          "example": "无",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": false,
@@ -2991,6 +2992,7 @@
         {
           "default": "",
           "document": "CLB instance network type:\nOPEN: public network; INTERNAL: private network.",
+          "example": "无",
           "member": "string",
           "name": "LoadBalancerType",
           "required": false,
@@ -2999,6 +3001,7 @@
         {
           "default": "",
           "document": "CLB instance type. 1: generic CLB instance; 0: classic CLB instance",
+          "example": "无",
           "member": "int64",
           "name": "Forward",
           "required": false,
@@ -3007,6 +3010,7 @@
         {
           "default": "",
           "document": "CLB instance name.",
+          "example": "无",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -3015,6 +3019,7 @@
         {
           "default": "",
           "document": "Domain name assigned to a CLB instance by Tencent Cloud. This parameter is meaningful only for the public network classic CLB.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -3023,6 +3028,7 @@
         {
           "default": "",
           "document": "VIP address of a CLB instance (there can be multiple addresses)",
+          "example": "无",
           "member": "string",
           "name": "LoadBalancerVips",
           "required": false,
@@ -3031,6 +3037,7 @@
         {
           "default": "",
           "document": "Public IP of the real server bound to a CLB.",
+          "example": "无",
           "member": "string",
           "name": "BackendPublicIps",
           "required": false,
@@ -3039,6 +3046,7 @@
         {
           "default": "",
           "document": "Private IP of the real server bound to a CLB.",
+          "example": "无",
           "member": "string",
           "name": "BackendPrivateIps",
           "required": false,
@@ -3047,6 +3055,7 @@
         {
           "default": "",
           "document": "Data offset. Default value: 0.",
+          "example": "无",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3055,6 +3064,7 @@
         {
           "default": "",
           "document": "Number of returned CLB instances. Default value: 20. Maximum value: 100.",
+          "example": "无",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3063,6 +3073,7 @@
         {
           "default": "",
           "document": "Sort by parameter. Value range: LoadBalancerName, CreateTime, Domain, LoadBalancerType.",
+          "example": "无",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -3071,6 +3082,7 @@
         {
           "default": "",
           "document": "1: reverse; 0: sequential. Default value: reverse by creation time |",
+          "example": "无",
           "member": "int64",
           "name": "OrderType",
           "required": false,
@@ -3079,6 +3091,7 @@
         {
           "default": "",
           "document": "Search field which fuzzy matches name, domain name, or VIP.",
+          "example": "无",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -3087,6 +3100,7 @@
         {
           "default": "",
           "document": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API.",
+          "example": "无",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -3095,6 +3109,7 @@
         {
           "default": "",
           "document": "Whether a CLB instance is bound to a real server. 0: no; 1: yes; -1: query all.",
+          "example": "无",
           "member": "int64",
           "name": "WithRs",
           "required": false,
@@ -3103,6 +3118,7 @@
         {
           "default": "",
           "document": "VPC where a CLB instance resides, such as vpc-bhqkbhdx.\nBasic network does not support queries by VpcId.",
+          "example": "无",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -3110,7 +3126,8 @@
         },
         {
           "default": "",
-          "document": "Security group ID, such as sg-m1cc9123",
+          "document": "Security group ID, e.g., `sg-m1cc****`.",
+          "example": "无",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -3118,7 +3135,8 @@
         },
         {
           "default": "",
-          "document": "Master AZ, such as \"100001\" (Guangzhou Zone 1)",
+          "document": "Primary AZ ID, e.g., `100001` (Guangzhou Zone 1).",
+          "example": "无",
           "member": "string",
           "name": "MasterZone",
           "required": false,
@@ -3127,6 +3145,7 @@
         {
           "default": "",
           "document": "Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:\n<li> internet-charge-type - Type: String - Required: No - Filter by CLB network billing mode, including `TRAFFIC_POSTPAID_BY_HOUR`</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,

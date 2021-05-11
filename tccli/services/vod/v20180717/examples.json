@@ -670,6 +670,14 @@
         "title": "Getting transcoding templates"
       }
     ],
+    "DescribeVodDomains": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=DescribeVodDomains\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"DomainSet\": [\n            {\n                \"Domain\": \"myexample.com\",\n                \"AccelerateAreaInfos\": [\n                    {\n                        \"Area\": \"Internation\",\n                        \"TencentEdgeDomain\": \"myexmample.com.dnsv1.com\"\n                    }\n                ],\n                \"RefererAuthPolicy\": {\n                    \"Status\": \"Disabled\",\n                    \"AuthType\": \"\",\n                    \"BlankRefererAllowed\": \"No\",\n                    \"Referers\": []\n                },\n                \"DeployStatus\": \"Deploying\",\n                \"HTTPSConfig\": {\n                    \"CertExpireTime\": \"2030-01-23T07:25:52Z\"\n                },\n                \"UrlSignatureAuthPolicy\": {\n                    \"Status\": \"Enabled\",\n                    \"EncryptedKey\": \"acmowmeomeo13432a\"\n                },\n                \"CreateTime\": \"2019-12-23T07:25:52Z\"\n            }\n        ],\n        \"RequestId\": \"aeomo-133w3-amomow-22\"\n    }\n}",
+        "title": "Querying all domain names"
+      }
+    ],
     "DescribeWatermarkTemplates": [
       {
         "document": "",

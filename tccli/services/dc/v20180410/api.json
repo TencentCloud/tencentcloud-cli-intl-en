@@ -1046,6 +1046,7 @@
         {
           "default": "",
           "document": "Connection ID.",
+          "example": "dc-psjiehij",
           "member": "string",
           "name": "DirectConnectId",
           "required": true,
@@ -1055,6 +1056,7 @@
         {
           "default": "",
           "document": "Connection name.",
+          "example": "test",
           "member": "string",
           "name": "DirectConnectName",
           "required": true,
@@ -1064,6 +1066,7 @@
         {
           "default": "",
           "document": "Access point ID of a connection.",
+          "example": "ap-beijing-c-jxq",
           "member": "string",
           "name": "AccessPointId",
           "required": true,
@@ -1073,6 +1076,7 @@
         {
           "default": "",
           "document": "Connection status.\nPENDING: Applying. \nREJECTED: Application rejected.   \nTOPAY: Payment pending. \nPAID: Paid. \nALLOCATED: Constructing.   \nAVAILABLE: Available.  \nDELETING: Deleting.\nDELETED: Deleted.",
+          "example": "PENDINGPAY",
           "member": "string",
           "name": "State",
           "required": true,
@@ -1082,6 +1086,7 @@
         {
           "default": "",
           "document": "Connection creation time.",
+          "example": "2020-12-08 16:57:43",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -1091,6 +1096,7 @@
         {
           "default": "",
           "document": "Connection activation time.",
+          "example": "2021-01-06 10:39:41",
           "member": "datetime_iso",
           "name": "EnabledTime",
           "required": true,
@@ -1100,6 +1106,7 @@
         {
           "default": "",
           "document": "ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).",
+          "example": "In-houseWiring",
           "member": "string",
           "name": "LineOperator",
           "required": true,
@@ -1109,6 +1116,7 @@
         {
           "default": "",
           "document": "Location of a local IDC.",
+          "example": "test",
           "member": "string",
           "name": "Location",
           "required": true,
@@ -1118,6 +1126,7 @@
         {
           "default": "",
           "document": "Connection port bandwidth in Mbps.",
+          "example": "1000",
           "member": "int64",
           "name": "Bandwidth",
           "required": true,
@@ -1127,6 +1136,7 @@
         {
           "default": "",
           "document": "User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).",
+          "example": "1000Base-LX",
           "member": "string",
           "name": "PortType",
           "required": true,
@@ -1136,6 +1146,7 @@
         {
           "default": "",
           "document": "Circuit code of a connection, which is provided by the ISP or service provider.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1111",
           "member": "string",
           "name": "CircuitCode",
           "required": true,
@@ -1145,6 +1156,7 @@
         {
           "default": "",
           "document": "ID of a redundant connection.",
+          "example": "dc-1234",
           "member": "string",
           "name": "RedundantDirectConnectId",
           "required": true,
@@ -1154,6 +1166,7 @@
         {
           "default": "",
           "document": "VLAN for connection debugging, which is enabled and automatically assigned by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
           "member": "int64",
           "name": "Vlan",
           "required": true,
@@ -1163,6 +1176,7 @@
         {
           "default": "",
           "document": "Tencent-side IP address for connection debugging.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "192.168.1.2",
           "member": "string",
           "name": "TencentAddress",
           "required": true,
@@ -1172,6 +1186,7 @@
         {
           "default": "",
           "document": "User-side IP address for connection debugging.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "192.168.1.1",
           "member": "string",
           "name": "CustomerAddress",
           "required": true,
@@ -1181,6 +1196,7 @@
         {
           "default": "",
           "document": "Name of the connection applicant, which is obtained from the account system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "CustomerName",
           "required": true,
@@ -1190,6 +1206,7 @@
         {
           "default": "",
           "document": "Email address of the connection applicant, which is obtained from the account system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "274907341@qq.com",
           "member": "string",
           "name": "CustomerContactMail",
           "required": true,
@@ -1199,6 +1216,7 @@
         {
           "default": "",
           "document": "Contact number of the connection applicant, which is obtained from the account system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "15802738654",
           "member": "string",
           "name": "CustomerContactNumber",
           "required": true,
@@ -1208,6 +1226,7 @@
         {
           "default": "",
           "document": "Connection expiration time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2040-01-06 10:39:41",
           "member": "datetime_iso",
           "name": "ExpiredTime",
           "required": true,
@@ -1217,6 +1236,7 @@
         {
           "default": "",
           "document": "Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NON_RECURRING_CHARGE",
           "member": "string",
           "name": "ChargeType",
           "required": true,
@@ -1226,6 +1246,7 @@
         {
           "default": "",
           "document": "Fault reporting contact person.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "FaultReportContactPerson",
           "required": true,
@@ -1235,6 +1256,7 @@
         {
           "default": "",
           "document": "Fault reporting contact number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "15802738654",
           "member": "string",
           "name": "FaultReportContactNumber",
           "required": true,
@@ -1244,6 +1266,7 @@
         {
           "default": "",
           "document": "Tag key-value pair\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "Tag",
           "name": "TagSet",
           "required": true,
@@ -1253,6 +1276,7 @@
         {
           "default": "",
           "document": "Access point type of a connection.",
+          "example": "VXLAN",
           "member": "string",
           "name": "AccessPointType",
           "required": true,
@@ -1262,6 +1286,7 @@
         {
           "default": "",
           "document": "IDC city.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "成都",
           "member": "string",
           "name": "IdcCity",
           "required": true,
@@ -1271,6 +1296,7 @@
         {
           "default": "",
           "document": "Billing status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
           "member": "string",
           "name": "ChargeState",
           "required": true,
@@ -1280,6 +1306,7 @@
         {
           "default": "",
           "document": "Connection activation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-12-08 16:57:43",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -1289,10 +1316,51 @@
         {
           "default": "",
           "document": "Whether the connection has the service agreement signed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "true",
           "member": "bool",
           "name": "SignLaw",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the connection is an edge zone.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "LocalZone",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of dedicated tunnels with disabled VLAN in the connection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "VlanZeroDirectConnectTunnelCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of dedicated tunnels with enabled VLAN in the connection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "OtherVlanDirectConnectTunnelCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum bandwidth of the connection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "MinBandwidth",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

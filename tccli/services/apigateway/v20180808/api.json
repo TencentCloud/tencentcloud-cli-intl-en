@@ -24,6 +24,18 @@
       "name": "Binds custom domain name to service",
       "output": "BindSubDomainResponse"
     },
+    "BuildAPIDoc": {
+      "document": "This API is used to build an API document.",
+      "input": "BuildAPIDocRequest",
+      "name": "Builds API document",
+      "output": "BuildAPIDocResponse"
+    },
+    "CreateAPIDoc": {
+      "document": "This API is used to create an API document.",
+      "input": "CreateAPIDocRequest",
+      "name": "Creates API document",
+      "output": "CreateAPIDocResponse"
+    },
     "CreateApi": {
       "document": "This API is used to create an API. Before creating an API, you need to create a service, as each API belongs to a certain service.",
       "input": "CreateApiRequest",
@@ -53,6 +65,12 @@
       "input": "CreateUsagePlanRequest",
       "name": "Creates usage plan",
       "output": "CreateUsagePlanResponse"
+    },
+    "DeleteAPIDoc": {
+      "document": "This API is used to delete an API document.",
+      "input": "DeleteAPIDocRequest",
+      "name": "Deletes API document",
+      "output": "DeleteAPIDocResponse"
     },
     "DeleteApi": {
       "document": "This API is used to delete a created API.",
@@ -95,6 +113,18 @@
       "input": "DemoteServiceUsagePlanRequest",
       "name": "Demotes usage plan at service level",
       "output": "DemoteServiceUsagePlanResponse"
+    },
+    "DescribeAPIDocDetail": {
+      "document": "This API is used to query the details of an API document.",
+      "input": "DescribeAPIDocDetailRequest",
+      "name": "Queries the details of API document",
+      "output": "DescribeAPIDocDetailResponse"
+    },
+    "DescribeAPIDocs": {
+      "document": "This API is used to query the list of API documents.",
+      "input": "DescribeAPIDocsRequest",
+      "name": "Queries the list of API documents",
+      "output": "DescribeAPIDocsResponse"
     },
     "DescribeApi": {
       "document": "This API (`DescribeApi`) is used to query the details of the APIs users manage via Tencent Cloud API Gateway.",
@@ -252,6 +282,12 @@
       "name": "Generates documents and SDKs",
       "output": "GenerateApiDocumentResponse"
     },
+    "ModifyAPIDoc": {
+      "document": "This API is used to modify an API document.",
+      "input": "ModifyAPIDocRequest",
+      "name": "Modifies API document",
+      "output": "ModifyAPIDocResponse"
+    },
     "ModifyApi": {
       "document": "This API is used to modify an API. You can call this API to edit/modify a configured API. The modified API takes effect only after its service is published to the corresponding environment again.",
       "input": "ModifyApiRequest",
@@ -306,6 +342,12 @@
       "name": "Publishes service",
       "output": "ReleaseServiceResponse"
     },
+    "ResetAPIDocPassword": {
+      "document": "This API is used to reset the password of an API document.",
+      "input": "ResetAPIDocPasswordRequest",
+      "name": "Resets the password of API document",
+      "output": "ResetAPIDocPasswordResponse"
+    },
     "UnBindEnvironment": {
       "document": "This API is used to unbind a usage plan from a specified environment.",
       "input": "UnBindEnvironmentRequest",
@@ -355,6 +397,214 @@
     "serviceShortName": "apigateway"
   },
   "objects": {
+    "APIDoc": {
+      "document": "Basic information of API document",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "doc-1fa3rs3s",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document name",
+          "example": "test",
+          "member": "string",
+          "name": "ApiDocName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document build status",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "ApiDocStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "APIDocInfo": {
+      "document": "API document details",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "apidoc-a7ragqam",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document name",
+          "example": "test",
+          "member": "string",
+          "name": "ApiDocName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document build status",
+          "example": "COMPLETED",
+          "member": "string",
+          "name": "ApiDocStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of API documents",
+          "example": "1",
+          "member": "int64",
+          "name": "ApiCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of views of API document",
+          "example": "2",
+          "member": "int64",
+          "name": "ViewCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of releases of API document",
+          "example": "3",
+          "member": "int64",
+          "name": "ReleaseCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document access URI",
+          "example": "https://apidoc-a7ragqam-apigw.doc.coding.io",
+          "member": "string",
+          "name": "ApiDocUri",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document password for sharing",
+          "example": "000000",
+          "member": "string",
+          "name": "SharePassword",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API document update time",
+          "example": "2021-01-25T05:46:25Z",
+          "member": "datetime",
+          "name": "UpdatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "service-2nuhovb7",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Environment information",
+          "example": "release",
+          "member": "string",
+          "name": "Environment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the API for which to generate the API document",
+          "example": "[api-d2sdvxd]",
+          "member": "string",
+          "name": "ApiIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service name",
+          "example": "service",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the API for which to generate the API document",
+          "example": "[api]",
+          "member": "string",
+          "name": "ApiNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "APIDocs": {
+      "document": "API document list",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of API documents",
+          "example": "7",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Basic information of API document",
+          "example": "无",
+          "member": "APIDoc",
+          "name": "APIDocSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ApiEnvironmentStrategy": {
       "document": "API environment binding policy",
       "members": [
@@ -1653,6 +1903,42 @@
       ],
       "type": "object"
     },
+    "BuildAPIDocRequest": {
+      "document": "BuildAPIDoc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "doc-v8tsladd",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BuildAPIDocResponse": {
+      "document": "BuildAPIDoc response structure.",
+      "members": [
+        {
+          "document": "Whether the operation succeeded",
+          "example": "True",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ConstantParameter": {
       "document": "Constant parameter",
       "members": [
@@ -1694,6 +1980,69 @@
         }
       ],
       "usage": "in"
+    },
+    "CreateAPIDocRequest": {
+      "document": "CreateAPIDoc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "API document name",
+          "example": "ApiGateWay Doc",
+          "member": "string",
+          "name": "ApiDocName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service name",
+          "example": "service-2nuhovb7",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment name",
+          "example": "release",
+          "member": "string",
+          "name": "Environment",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of APIs for which to generate documents",
+          "example": "[api-2dvasde2,api-zewq23]",
+          "member": "string",
+          "name": "ApiIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAPIDocResponse": {
+      "document": "CreateAPIDoc response structure.",
+      "members": [
+        {
+          "document": "Basic information of API document",
+          "example": "无",
+          "member": "APIDoc",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateApiKeyRequest": {
       "document": "CreateApiKey request structure.",
@@ -1758,6 +2107,7 @@
         {
           "default": "",
           "document": "Unique service ID of API.",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -1766,6 +2116,7 @@
         {
           "default": "",
           "document": "API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).",
+          "example": "MOCK",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -1774,6 +2125,7 @@
         {
           "default": "",
           "document": "API backend service timeout period in seconds.",
+          "example": "15",
           "member": "int64",
           "name": "ServiceTimeout",
           "required": true,
@@ -1782,6 +2134,7 @@
         {
           "default": "",
           "document": "API frontend request protocol. Valid values: HTTPS, WEBSOCKET.",
+          "example": "HTTP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -1790,6 +2143,7 @@
         {
           "default": "",
           "document": "Request frontend configuration.",
+          "example": "无",
           "member": "ApiRequestConfig",
           "name": "RequestConfig",
           "required": true,
@@ -1798,6 +2152,7 @@
         {
           "default": "",
           "document": "Custom API name.",
+          "example": "name",
           "member": "string",
           "name": "ApiName",
           "required": false,
@@ -1806,6 +2161,7 @@
         {
           "default": "",
           "document": "Custom API description.",
+          "example": "desc",
           "member": "string",
           "name": "ApiDesc",
           "required": false,
@@ -1814,6 +2170,7 @@
         {
           "default": "",
           "document": "API type. Valid values: NORMAL (general API), TSF (microservice API). Default value: NORMAL.",
+          "example": "NORMAL",
           "member": "string",
           "name": "ApiType",
           "required": false,
@@ -1821,7 +2178,8 @@
         },
         {
           "default": "",
-          "document": "API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH. Default value: NONE.",
+          "document": "API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH, APP (application authentication). Default value: NONE.",
+          "example": "NONE",
           "member": "string",
           "name": "AuthType",
           "required": false,
@@ -1830,6 +2188,7 @@
         {
           "default": "",
           "document": "Whether to enable CORS.",
+          "example": "false",
           "member": "bool",
           "name": "EnableCORS",
           "required": false,
@@ -1838,6 +2197,7 @@
         {
           "default": "",
           "document": "Constant parameter.",
+          "example": "无",
           "member": "ConstantParameter",
           "name": "ConstantParameters",
           "required": false,
@@ -1846,6 +2206,7 @@
         {
           "default": "",
           "document": "Frontend request parameter.",
+          "example": "无",
           "member": "RequestParameter",
           "name": "RequestParameters",
           "required": false,
@@ -1854,6 +2215,7 @@
         {
           "default": "",
           "document": "This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.",
+          "example": "NORMAL",
           "member": "string",
           "name": "ApiBusinessType",
           "required": false,
@@ -1862,6 +2224,7 @@
         {
           "default": "",
           "document": "Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.",
+          "example": "mock",
           "member": "string",
           "name": "ServiceMockReturnMessage",
           "required": false,
@@ -1870,6 +2233,7 @@
         {
           "default": "",
           "document": "List of microservices bound to API.",
+          "example": "无",
           "member": "MicroServiceReq",
           "name": "MicroServices",
           "required": false,
@@ -1878,6 +2242,7 @@
         {
           "default": "",
           "document": "Load balancing configuration of microservice.",
+          "example": "无",
           "member": "TsfLoadBalanceConfResp",
           "name": "ServiceTsfLoadBalanceConf",
           "required": false,
@@ -1886,6 +2251,7 @@
         {
           "default": "",
           "document": "Health check configuration of microservice.",
+          "example": "无",
           "member": "HealthCheckConf",
           "name": "ServiceTsfHealthCheckConf",
           "required": false,
@@ -1894,6 +2260,7 @@
         {
           "default": "",
           "document": "`target` type backend resource information (in beta test).",
+          "example": "无",
           "member": "TargetServicesReq",
           "name": "TargetServices",
           "required": false,
@@ -1902,6 +2269,7 @@
         {
           "default": "",
           "document": "`target` type load balancing configuration (in beta test).",
+          "example": "0",
           "member": "int64",
           "name": "TargetServicesLoadBalanceConf",
           "required": false,
@@ -1910,6 +2278,7 @@
         {
           "default": "",
           "document": "`target` health check configuration (in beta test).",
+          "example": "无",
           "member": "HealthCheckConf",
           "name": "TargetServicesHealthCheckConf",
           "required": false,
@@ -1918,6 +2287,7 @@
         {
           "default": "",
           "document": "SCF function name, which takes effect if the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceScfFunctionName",
           "required": false,
@@ -1926,6 +2296,7 @@
         {
           "default": "",
           "document": "SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionName",
           "required": false,
@@ -1934,6 +2305,7 @@
         {
           "default": "",
           "document": "SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionName",
           "required": false,
@@ -1942,6 +2314,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionName",
           "required": false,
@@ -1950,6 +2323,7 @@
         {
           "default": "",
           "document": "SCF function namespace, which takes effect if the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceScfFunctionNamespace",
           "required": false,
@@ -1958,6 +2332,7 @@
         {
           "default": "",
           "document": "SCF function version, which takes effect if the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceScfFunctionQualifier",
           "required": false,
@@ -1966,6 +2341,7 @@
         {
           "default": "",
           "document": "SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionNamespace",
           "required": false,
@@ -1974,6 +2350,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionQualifier",
           "required": false,
@@ -1982,6 +2359,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionNamespace",
           "required": false,
@@ -1990,6 +2368,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionQualifier",
           "required": false,
@@ -1998,6 +2377,7 @@
         {
           "default": "",
           "document": "SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionNamespace",
           "required": false,
@@ -2006,6 +2386,7 @@
         {
           "default": "",
           "document": "SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionQualifier",
           "required": false,
@@ -2014,6 +2395,7 @@
         {
           "default": "",
           "document": "Whether to enable response integration, which takes effect if the backend type is `SCF`.",
+          "example": "false",
           "member": "bool",
           "name": "ServiceScfIsIntegratedResponse",
           "required": false,
@@ -2022,6 +2404,7 @@
         {
           "default": "",
           "document": "Billing after debugging starts (reserved field for marketplace).",
+          "example": "false",
           "member": "bool",
           "name": "IsDebugAfterCharge",
           "required": false,
@@ -2030,6 +2413,7 @@
         {
           "default": "",
           "document": "Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.",
+          "example": "false",
           "member": "bool",
           "name": "IsDeleteResponseErrorCodes",
           "required": false,
@@ -2038,6 +2422,7 @@
         {
           "default": "",
           "document": "Return type.",
+          "example": "html",
           "member": "string",
           "name": "ResponseType",
           "required": false,
@@ -2046,6 +2431,7 @@
         {
           "default": "",
           "document": "Sample response for successful custom response configuration.",
+          "example": "xxx",
           "member": "string",
           "name": "ResponseSuccessExample",
           "required": false,
@@ -2054,6 +2440,7 @@
         {
           "default": "",
           "document": "Sample response for failed custom response configuration.",
+          "example": "xxx",
           "member": "string",
           "name": "ResponseFailExample",
           "required": false,
@@ -2062,6 +2449,7 @@
         {
           "default": "",
           "document": "API backend service configuration.",
+          "example": "无",
           "member": "ServiceConfig",
           "name": "ServiceConfig",
           "required": false,
@@ -2070,6 +2458,7 @@
         {
           "default": "",
           "document": "Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.",
+          "example": "api-xxx",
           "member": "string",
           "name": "AuthRelationApiId",
           "required": false,
@@ -2078,6 +2467,7 @@
         {
           "default": "",
           "document": "API backend service parameter.",
+          "example": "无",
           "member": "ServiceParameter",
           "name": "ServiceParameters",
           "required": false,
@@ -2086,6 +2476,7 @@
         {
           "default": "",
           "document": "OAuth configuration, which takes effect if `AuthType` is `OAUTH`.",
+          "example": "无",
           "member": "OauthConfig",
           "name": "OauthConfig",
           "required": false,
@@ -2094,6 +2485,7 @@
         {
           "default": "",
           "document": "Custom error code configuration.",
+          "example": "无",
           "member": "ResponseErrorCodeReq",
           "name": "ResponseErrorCodes",
           "required": false,
@@ -2102,6 +2494,7 @@
         {
           "default": "",
           "document": "TSF Serverless namespace ID (in beta test).",
+          "example": "xxx",
           "member": "string",
           "name": "TargetNamespaceId",
           "required": false,
@@ -2110,6 +2503,7 @@
         {
           "default": "",
           "document": "User type.",
+          "example": "xxx",
           "member": "string",
           "name": "UserType",
           "required": false,
@@ -2118,6 +2512,7 @@
         {
           "default": "",
           "document": "Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.",
+          "example": "false",
           "member": "bool",
           "name": "IsBase64Encoded",
           "required": false,
@@ -2193,6 +2588,7 @@
         {
           "default": "",
           "document": "Unique service ID.",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -2201,6 +2597,7 @@
         {
           "default": "",
           "document": "Custom policy name.",
+          "example": "xx",
           "member": "string",
           "name": "StrategyName",
           "required": true,
@@ -2209,6 +2606,7 @@
         {
           "default": "",
           "document": "Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).",
+          "example": "WHITE",
           "member": "string",
           "name": "StrategyType",
           "required": true,
@@ -2216,7 +2614,8 @@
         },
         {
           "default": "",
-          "document": "Policy details.",
+          "document": "Policy details. Multiple IPs are separated with \\n.",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "StrategyData",
           "required": true,
@@ -2250,6 +2649,7 @@
         {
           "default": "",
           "document": "Custom service name.",
+          "example": "test_https",
           "member": "string",
           "name": "ServiceName",
           "required": true,
@@ -2258,6 +2658,7 @@
         {
           "default": "",
           "document": "Service frontend request type, such as `http`, `https`, and `http&https`.",
+          "example": "https",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -2266,6 +2667,7 @@
         {
           "default": "",
           "document": "Custom service description.",
+          "example": "https",
           "member": "string",
           "name": "ServiceDesc",
           "required": false,
@@ -2274,6 +2676,7 @@
         {
           "default": "",
           "document": "Dedicated cluster name, which is used to specify the dedicated cluster where the service is to be created.",
+          "example": "xxx",
           "member": "string",
           "name": "ExclusiveSetName",
           "required": false,
@@ -2282,6 +2685,7 @@
         {
           "default": "",
           "document": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.",
+          "example": "xxx",
           "member": "string",
           "name": "NetTypes",
           "required": false,
@@ -2290,6 +2694,7 @@
         {
           "default": "",
           "document": "IP version number. Valid values: IPv4, IPv6. Default value: IPv4.",
+          "example": "xxxx",
           "member": "string",
           "name": "IpVersion",
           "required": false,
@@ -2298,6 +2703,7 @@
         {
           "default": "",
           "document": "Cluster name, which is reserved and used by the `tsf serverless` type.",
+          "example": "xxxx",
           "member": "string",
           "name": "SetServerName",
           "required": false,
@@ -2306,6 +2712,7 @@
         {
           "default": "",
           "document": "User type, which is reserved and can be used by `serverless` users.",
+          "example": "xxxx",
           "member": "string",
           "name": "AppIdType",
           "required": false,
@@ -2314,10 +2721,20 @@
         {
           "default": "",
           "document": "Tag information.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Dedicated instance ID",
+          "example": "instance-12345",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2437,6 +2854,42 @@
           "name": "Result",
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAPIDocRequest": {
+      "document": "DeleteAPIDoc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "doc-v8tsladd",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAPIDocResponse": {
+      "document": "DeleteAPIDoc response structure.",
+      "members": [
+        {
+          "document": "Whether the operation succeeded",
+          "example": "True",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2902,6 +3355,87 @@
         }
       ],
       "usage": "out"
+    },
+    "DescribeAPIDocDetailRequest": {
+      "document": "DescribeAPIDocDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "doc-2dfa4v",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAPIDocDetailResponse": {
+      "document": "DescribeAPIDocDetail response structure.",
+      "members": [
+        {
+          "document": "API document details",
+          "example": "无",
+          "member": "APIDocInfo",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAPIDocsRequest": {
+      "document": "DescribeAPIDocs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAPIDocsResponse": {
+      "document": "DescribeAPIDocs response structure.",
+      "members": [
+        {
+          "document": "API document list information",
+          "example": " 无",
+          "member": "APIDocs",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeApiEnvironmentStrategyRequest": {
       "document": "DescribeApiEnvironmentStrategy request structure.",
@@ -3718,149 +4252,218 @@
       "members": [
         {
           "document": "Unique service ID.",
+          "example": "service-rypiqi13",
           "member": "string",
           "name": "ServiceId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Service environment list.",
+          "example": "[\"release\"]",
           "member": "string",
           "name": "AvailableEnvironments",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Service name.",
+          "example": "dd",
           "member": "string",
           "name": "ServiceName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Service description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
           "member": "string",
           "name": "ServiceDesc",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Protocol supported by service. Valid values: http, https, http&https.",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Service creation time.",
+          "example": "2020-04-15T11:03:41Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Service modification time.",
+          "example": "2020-04-15T11:03:42Z",
           "member": "datetime_iso",
           "name": "ModifiedTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Dedicated cluster name.",
+          "example": "xxxx",
           "member": "string",
           "name": "ExclusiveSetName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Network type list. INNER: private network access; OUTER: public network access.",
+          "example": "[\"OUTER\"]",
           "member": "string",
           "name": "NetTypes",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Subdomain name for private network access.",
+          "example": "xxxx",
           "member": "string",
           "name": "InternalSubDomain",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Subdomain name for public network access.",
+          "example": "service-rypiqi13-1259027407.bj.apigw.tencentcs.com",
           "member": "string",
           "name": "OuterSubDomain",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Service port number for HTTP access over private network.",
+          "example": "0",
           "member": "int64",
           "name": "InnerHttpPort",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Port number for HTTPS access over private network.",
+          "example": "0",
           "member": "int64",
           "name": "InnerHttpsPort",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total number of APIs.",
+          "example": "1",
           "member": "int64",
           "name": "ApiTotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "API list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ApiIdStatus",
           "name": "ApiIdStatusSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "document": "Total number of usage plans.",
+          "example": "0",
           "member": "int64",
           "name": "UsagePlanTotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Usage plan array.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "UsagePlan",
           "name": "UsagePlanList",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "document": "IP version.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "IPv4",
           "member": "string",
           "name": "IpVersion",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Service user type.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
           "member": "string",
           "name": "UserType",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Reserved field.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "SetId",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Tags bound to a service.\nNote: this field may return null, indicating that no valid values found.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
+          "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Dedicated instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "InstanceId-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Dedicated instance name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "SetType",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -4017,6 +4620,7 @@
         {
           "default": "",
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4025,6 +4629,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "1",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4032,7 +4637,8 @@
         },
         {
           "default": "",
-          "document": "Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion.",
+          "document": "Filter. Valid values: ServiceId, ServiceName, NotUsagePlanId, Environment, IpVersion, InstanceId",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -4470,6 +5076,7 @@
         {
           "default": "",
           "document": "Environment name",
+          "example": "x x",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -4479,11 +5086,22 @@
         {
           "default": "",
           "document": "Throttling value",
+          "example": "1",
           "member": "int64",
           "name": "Quota",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum quota value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxQuota",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4957,6 +5575,78 @@
       ],
       "usage": "in"
     },
+    "ModifyAPIDocRequest": {
+      "document": "ModifyAPIDoc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "doc-v8tsladd",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "API document name",
+          "example": "ApiGateWay Doc",
+          "member": "string",
+          "name": "ApiDocName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service name",
+          "example": "service-2nuhovb7",
+          "member": "string",
+          "name": "ServiceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment name",
+          "example": "release",
+          "member": "string",
+          "name": "Environment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of APIs for which to generate documents",
+          "example": "[api-2dvasde2,api-zewq23]",
+          "member": "string",
+          "name": "ApiIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAPIDocResponse": {
+      "document": "ModifyAPIDoc response structure.",
+      "members": [
+        {
+          "document": "Basic information of API document",
+          "example": "无",
+          "member": "APIDoc",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyApiEnvironmentStrategyRequest": {
       "document": "ModifyApiEnvironmentStrategy request structure.",
       "members": [
@@ -5078,6 +5768,7 @@
         {
           "default": "",
           "document": "Unique service ID of API.",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5086,6 +5777,7 @@
         {
           "default": "",
           "document": "API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).",
+          "example": "MOCK",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -5094,6 +5786,7 @@
         {
           "default": "",
           "document": "Request frontend configuration.",
+          "example": "无",
           "member": "RequestConfig",
           "name": "RequestConfig",
           "required": true,
@@ -5102,6 +5795,7 @@
         {
           "default": "",
           "document": "Unique API ID.",
+          "example": "api-lqd35zzq",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -5110,6 +5804,7 @@
         {
           "default": "",
           "document": "Custom API name.",
+          "example": "xxx",
           "member": "string",
           "name": "ApiName",
           "required": false,
@@ -5118,6 +5813,7 @@
         {
           "default": "",
           "document": "Custom API description.",
+          "example": "xxx",
           "member": "string",
           "name": "ApiDesc",
           "required": false,
@@ -5126,6 +5822,7 @@
         {
           "default": "",
           "document": "API type. Valid values: NORMAL, TSF. Default value: NORMAL.",
+          "example": "NORMAL",
           "member": "string",
           "name": "ApiType",
           "required": false,
@@ -5133,7 +5830,8 @@
         },
         {
           "default": "",
-          "document": "API authentication type. Valid values: SECRET, NONE, OAUTH. Default value: NONE.",
+          "document": "API authentication type. Valid values: SECRET, NONE, OAUTH, APP. Default value: NONE.",
+          "example": "NONE",
           "member": "string",
           "name": "AuthType",
           "required": false,
@@ -5142,6 +5840,7 @@
         {
           "default": "",
           "document": "Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.",
+          "example": "False",
           "member": "bool",
           "name": "AuthRequired",
           "required": false,
@@ -5150,6 +5849,7 @@
         {
           "default": "",
           "document": "API backend service timeout period in seconds.",
+          "example": "15",
           "member": "int64",
           "name": "ServiceTimeout",
           "required": false,
@@ -5158,6 +5858,7 @@
         {
           "default": "",
           "document": "API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.",
+          "example": "HTTP",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -5166,6 +5867,7 @@
         {
           "default": "",
           "document": "Whether to enable CORS. True: yes; False: no.",
+          "example": "False",
           "member": "bool",
           "name": "EnableCORS",
           "required": false,
@@ -5174,6 +5876,7 @@
         {
           "default": "",
           "document": "Constant parameter.",
+          "example": "无",
           "member": "ConstantParameter",
           "name": "ConstantParameters",
           "required": false,
@@ -5182,6 +5885,7 @@
         {
           "default": "",
           "document": "Frontend request parameter.",
+          "example": "无",
           "member": "ReqParameter",
           "name": "RequestParameters",
           "required": false,
@@ -5190,6 +5894,7 @@
         {
           "default": "",
           "document": "This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.",
+          "example": "NORMAL",
           "member": "string",
           "name": "ApiBusinessType",
           "required": false,
@@ -5198,6 +5903,7 @@
         {
           "default": "",
           "document": "Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.",
+          "example": "test",
           "member": "string",
           "name": "ServiceMockReturnMessage",
           "required": false,
@@ -5206,6 +5912,7 @@
         {
           "default": "",
           "document": "List of microservices bound to API.",
+          "example": "无",
           "member": "MicroServiceReq",
           "name": "MicroServices",
           "required": false,
@@ -5214,6 +5921,7 @@
         {
           "default": "",
           "document": "Load balancing configuration of microservice.",
+          "example": "无",
           "member": "TsfLoadBalanceConfResp",
           "name": "ServiceTsfLoadBalanceConf",
           "required": false,
@@ -5222,6 +5930,7 @@
         {
           "default": "",
           "document": "Health check configuration of microservice.",
+          "example": "无",
           "member": "HealthCheckConf",
           "name": "ServiceTsfHealthCheckConf",
           "required": false,
@@ -5230,6 +5939,7 @@
         {
           "default": "",
           "document": "`target` type load balancing configuration (in beta test).",
+          "example": "0",
           "member": "int64",
           "name": "TargetServicesLoadBalanceConf",
           "required": false,
@@ -5238,6 +5948,7 @@
         {
           "default": "",
           "document": "`target` health check configuration (in beta test).",
+          "example": "无",
           "member": "HealthCheckConf",
           "name": "TargetServicesHealthCheckConf",
           "required": false,
@@ -5246,6 +5957,7 @@
         {
           "default": "",
           "document": "SCF function name, which takes effect if the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceScfFunctionName",
           "required": false,
@@ -5254,6 +5966,7 @@
         {
           "default": "",
           "document": "SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionName",
           "required": false,
@@ -5262,6 +5975,7 @@
         {
           "default": "",
           "document": "SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionName",
           "required": false,
@@ -5270,6 +5984,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionName",
           "required": false,
@@ -5278,6 +5993,7 @@
         {
           "default": "",
           "document": "SCF function namespace, which takes effect if the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceScfFunctionNamespace",
           "required": false,
@@ -5286,6 +6002,7 @@
         {
           "default": "",
           "document": "SCF function version, which takes effect if the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceScfFunctionQualifier",
           "required": false,
@@ -5294,6 +6011,7 @@
         {
           "default": "",
           "document": "SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionNamespace",
           "required": false,
@@ -5302,6 +6020,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionQualifier",
           "required": false,
@@ -5310,6 +6029,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionNamespace",
           "required": false,
@@ -5318,6 +6038,7 @@
         {
           "default": "",
           "document": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionQualifier",
           "required": false,
@@ -5326,6 +6047,7 @@
         {
           "default": "",
           "document": "SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionNamespace",
           "required": false,
@@ -5334,6 +6056,7 @@
         {
           "default": "",
           "document": "SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.",
+          "example": "xxx",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionQualifier",
           "required": false,
@@ -5342,6 +6065,7 @@
         {
           "default": "",
           "document": "Whether to enable response integration, which takes effect if the backend type is `SCF`.",
+          "example": "False",
           "member": "bool",
           "name": "ServiceScfIsIntegratedResponse",
           "required": false,
@@ -5350,6 +6074,7 @@
         {
           "default": "",
           "document": "Billing after debugging starts (reserved field for marketplace).",
+          "example": "False",
           "member": "bool",
           "name": "IsDebugAfterCharge",
           "required": false,
@@ -5358,6 +6083,7 @@
         {
           "default": "",
           "document": "Tag.",
+          "example": "无",
           "member": "Tag",
           "name": "TagSpecifications",
           "required": false,
@@ -5366,6 +6092,7 @@
         {
           "default": "",
           "document": "Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.",
+          "example": "False",
           "member": "bool",
           "name": "IsDeleteResponseErrorCodes",
           "required": false,
@@ -5374,6 +6101,7 @@
         {
           "default": "",
           "document": "Return type.",
+          "example": "html",
           "member": "string",
           "name": "ResponseType",
           "required": false,
@@ -5382,6 +6110,7 @@
         {
           "default": "",
           "document": "Sample response for successful custom response configuration.",
+          "example": "xxx",
           "member": "string",
           "name": "ResponseSuccessExample",
           "required": false,
@@ -5390,6 +6119,7 @@
         {
           "default": "",
           "document": "Sample response for failed custom response configuration.",
+          "example": "xxx",
           "member": "string",
           "name": "ResponseFailExample",
           "required": false,
@@ -5398,6 +6128,7 @@
         {
           "default": "",
           "document": "API backend service configuration.",
+          "example": "无",
           "member": "ServiceConfig",
           "name": "ServiceConfig",
           "required": false,
@@ -5406,6 +6137,7 @@
         {
           "default": "",
           "document": "Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.",
+          "example": "api-xxx",
           "member": "string",
           "name": "AuthRelationApiId",
           "required": false,
@@ -5414,6 +6146,7 @@
         {
           "default": "",
           "document": "API backend service parameter.",
+          "example": "无",
           "member": "ServiceParameter",
           "name": "ServiceParameters",
           "required": false,
@@ -5422,6 +6155,7 @@
         {
           "default": "",
           "document": "OAuth configuration, which takes effect if `AuthType` is `OAUTH`.",
+          "example": "无",
           "member": "OauthConfig",
           "name": "OauthConfig",
           "required": false,
@@ -5430,6 +6164,7 @@
         {
           "default": "",
           "document": "Custom error code configuration.",
+          "example": "无",
           "member": "ResponseErrorCodeReq",
           "name": "ResponseErrorCodes",
           "required": false,
@@ -5438,6 +6173,7 @@
         {
           "default": "",
           "document": "Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.",
+          "example": "False",
           "member": "bool",
           "name": "IsBase64Encoded",
           "required": false,
@@ -5446,6 +6182,7 @@
         {
           "default": "",
           "document": "Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.",
+          "example": "False",
           "member": "bool",
           "name": "IsBase64Trigger",
           "required": false,
@@ -5454,6 +6191,7 @@
         {
           "default": "",
           "document": "Header trigger rules. The number of rules cannot exceed 10.",
+          "example": "无",
           "member": "Base64EncodedTriggerRule",
           "name": "Base64EncodedTriggerRules",
           "required": false,
@@ -6066,6 +6804,42 @@
       ],
       "usage": "in"
     },
+    "ResetAPIDocPasswordRequest": {
+      "document": "ResetAPIDocPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "API document ID",
+          "example": "apidoc-d2sdvx3s",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetAPIDocPasswordResponse": {
+      "document": "ResetAPIDocPassword response structure.",
+      "members": [
+        {
+          "document": "Basic information of API document",
+          "example": "无",
+          "member": "APIDoc",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResponseErrorCodeReq": {
       "document": "Error code input parameter",
       "members": [
@@ -6123,6 +6897,7 @@
         {
           "default": "",
           "document": "Port for HTTPS access over private network.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "int64",
           "name": "InnerHttpsPort",
           "required": true,
@@ -6132,6 +6907,7 @@
         {
           "default": "",
           "document": "Custom service description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "ServiceDesc",
           "required": true,
@@ -6141,6 +6917,7 @@
         {
           "default": "",
           "document": "Service frontend request type, such as `http`, `https`, and `http&https`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -6150,6 +6927,7 @@
         {
           "default": "",
           "document": "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
           "member": "datetime_iso",
           "name": "ModifiedTime",
           "required": true,
@@ -6159,6 +6937,7 @@
         {
           "default": "",
           "document": "Network types supported by service.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
           "member": "string",
           "name": "NetTypes",
           "required": true,
@@ -6168,6 +6947,7 @@
         {
           "default": "",
           "document": "Dedicated cluster name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
           "member": "string",
           "name": "ExclusiveSetName",
           "required": true,
@@ -6177,6 +6957,7 @@
         {
           "default": "",
           "document": "Unique service ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6186,6 +6967,7 @@
         {
           "default": "",
           "document": "IP version.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "IpVersion",
           "required": true,
@@ -6195,6 +6977,7 @@
         {
           "default": "",
           "document": "List of published environments, such as test, prepub, and release.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
           "member": "string",
           "name": "AvailableEnvironments",
           "required": true,
@@ -6204,6 +6987,7 @@
         {
           "default": "",
           "document": "Custom service name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "ServiceName",
           "required": true,
@@ -6213,6 +6997,7 @@
         {
           "default": "",
           "document": "Public domain name assigned by the system for this service.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "OuterSubDomain",
           "required": true,
@@ -6222,6 +7007,7 @@
         {
           "default": "",
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -6231,6 +7017,7 @@
         {
           "default": "",
           "document": "Port for HTTP access over private network.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "uint64",
           "name": "InnerHttpPort",
           "required": true,
@@ -6240,6 +7027,7 @@
         {
           "default": "",
           "document": "Private domain name automatically assigned by the system for this service.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "InnerSubDomain",
           "required": true,
@@ -6249,6 +7037,7 @@
         {
           "default": "",
           "document": "Billing status of service.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "int64",
           "name": "TradeIsolateStatus",
           "required": true,
@@ -6258,10 +7047,31 @@
         {
           "default": "",
           "document": "Tags bound to a service.\nNote: this field may return null, indicating that no valid values found.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dedicated instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "x x",
+          "member": "string",
+          "name": "SetType",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -6348,6 +7158,7 @@
         {
           "default": "",
           "document": "Environment name.",
+          "example": "x x",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -6357,6 +7168,7 @@
         {
           "default": "",
           "document": "Access service environment URL.",
+          "example": "x x",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -6366,6 +7178,7 @@
         {
           "default": "",
           "document": "Release status.",
+          "example": "x x",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -6375,6 +7188,7 @@
         {
           "default": "",
           "document": "Published version number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "x x",
           "member": "string",
           "name": "VersionName",
           "required": true,
@@ -6384,11 +7198,22 @@
         {
           "default": "",
           "document": "Throttling value.",
+          "example": "1",
           "member": "int64",
           "name": "Strategy",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum quota value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxStrategy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

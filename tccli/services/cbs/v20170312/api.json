@@ -7,7 +7,7 @@
       "output": "ApplySnapshotResponse"
     },
     "AttachDisks": {
-      "document": "This API (AttachDisks) is used to mount cloud disks.\n \n* Batch operations are supported. Multiple cloud disks can be mounted to a CVM. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.\n* This API is an asynchronous API. If the request for mounting the cloud disk successfully returns results, the operation of mounting cloud disk has been initiated at the background. You can use the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) to query the cloud disk status. If the status changes from \"ATTACHING\" to \"ATTACHED\", the cloud disk is mounted.",
+      "document": "This API is used to mount one or more cloud disks.\n \n* Batch operation is supported. You can mount multiple cloud disks to one CVM in a single request. If any of these cloud disks cannot be mounted, the operation fails and a specific error code returns.\n* This is an async API. A successful request indicates that the mounting is initiated. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query the status of cloud disks. If the status changes from `ATTACHING` to `ATTACHED`, the mounting is successful.",
       "input": "AttachDisksRequest",
       "name": "Mounting Cloud Disks",
       "output": "AttachDisksResponse"
@@ -103,9 +103,9 @@
       "output": "DescribeSnapshotsResponse"
     },
     "DetachDisks": {
-      "document": "This API (DetachDisks) is used to unmount cloud disks.\n\n* Batch operations are supported. Multiple cloud disks mounted to the same CVM can be unmounted in batch. If there is a cloud disk that does not allow this operation, the operation is not performed and a specific error code is returned.\n* This API is an asynchronous API. When the request successfully returns results, the cloud disk is not unmounted from the CVM immediately. You can use the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) to query the cloud disk status. If the status changes from \"ATTACHED\" to \"UNATTACHED\", the cloud disk is unmounted.",
+      "document": "This API is used to unmount one or more cloud disks.\n\n* Batch operation is supported. You can unmount multiple cloud disks from the same CVM in a single request. If any of these cloud disks cannot be unmounted, the operation fails and a specific error code returns.\n* This is an async API. A successful request does not mean that the cloud disks have been unmounted successfully. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query the status of cloud disks. When the status changes from `ATTACHED` to `UNATTACHED`, the unmounting is successful.",
       "input": "DetachDisksRequest",
-      "name": "Unmounts a cloud disk",
+      "name": "Unmounts cloud disks",
       "output": "DetachDisksResponse"
     },
     "GetSnapOverview": {
@@ -113,6 +113,12 @@
       "input": "GetSnapOverviewRequest",
       "name": "Gets snapshot overview information",
       "output": "GetSnapOverviewResponse"
+    },
+    "InquirePriceModifyDiskExtraPerformance": {
+      "document": "This API is used to query the price for adjusting the cloud disk’s extra performance.",
+      "input": "InquirePriceModifyDiskExtraPerformanceRequest",
+      "name": "Queries the price for adjusting the cloud disk’s extra performance",
+      "output": "InquirePriceModifyDiskExtraPerformanceResponse"
     },
     "InquiryPriceCreateDisks": {
       "document": "This API (InquiryPriceCreateDisks) is used to inquire the price for cloud disk creation.\n\n* It supports inquiring the price for the creation of multiple cloud disks. The total price for the creation is returned.",
@@ -137,6 +143,12 @@
       "input": "ModifyDiskAttributesRequest",
       "name": "Modifies cloud disk attributes",
       "output": "ModifyDiskAttributesResponse"
+    },
+    "ModifyDiskExtraPerformance": {
+      "document": "This API is used to adjust the cloud disk’s extra performance.\n\n* Currently, only Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD) support extra performance adjustment.",
+      "input": "ModifyDiskExtraPerformanceRequest",
+      "name": "Adjusts the cloud disk’s extra performance",
+      "output": "ModifyDiskExtraPerformanceResponse"
     },
     "ModifySnapshotAttribute": {
       "document": "This API (ModifySnapshotAttribute) is used to modify the attributes of a specified snapshot.\n\n* Currently, you can only modify snapshot name and change non-permanent snapshots into permanent snapshots.\n* \"Snapshot name\" is only used by users for their management. Tencent Cloud does not use the name as the basis for ticket submission or snapshot management.",
@@ -1270,7 +1282,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the cloud disk to be unmounted, which can be queried through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). A maximum of 10 elastic cloud disks can be unmounted in a single request.",
+          "document": "IDs of the cloud disks to be unmounted, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API. Up to 10 elastic cloud disks can be unmounted in a single request.",
+          "example": "[\"disk-l7mxexxc\"]",
           "member": "string",
           "name": "DiskIds",
           "required": true,
@@ -1278,7 +1291,8 @@
         },
         {
           "default": "",
-          "document": "For a cloud disk that is not shared, this parameter is ignored. For a shared cloud disk, this parameter indicates which CVM instance the cloud disk is to be unmounted from.",
+          "document": "Indicates the CVM from which you want to unmount the disks. This parameter is only available for shared cloud disks.",
+          "example": "ins-arxix3xm",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -1624,7 +1638,7 @@
         },
         {
           "default": "",
-          "document": "Indicates whether a snapshot should be created for backup when the cloud disk is terminated due to arrears or expiration. `True`: create a snapshot to backup the disk upon termination. `False`: terminate the disk without backup",
+          "document": "Specifies whether to create a snapshot when the cloud disk is terminated due to overdue payment or expiration. `true`: create snapshot; `false`: do not create snapshot.",
           "example": "true",
           "member": "bool",
           "name": "BackupDisk",
@@ -1916,6 +1930,47 @@
       ],
       "usage": "out"
     },
+    "InquirePriceModifyDiskExtraPerformanceRequest": {
+      "document": "InquirePriceModifyDiskExtraPerformance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk ID, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The extra throughput to purchase, in MB/s",
+          "member": "uint64",
+          "name": "ThroughputPerformance",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceModifyDiskExtraPerformanceResponse": {
+      "document": "InquirePriceModifyDiskExtraPerformance response structure.",
+      "members": [
+        {
+          "document": "Price for purchasing the extra performance",
+          "member": "Price",
+          "name": "DiskPrice",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InquiryPriceCreateDisksRequest": {
       "document": "InquiryPriceCreateDisks request structure.",
       "members": [
@@ -2168,6 +2223,40 @@
     },
     "ModifyDiskAttributesResponse": {
       "document": "ModifyDiskAttributes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDiskExtraPerformanceRequest": {
+      "document": "ModifyDiskExtraPerformance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cloud disk to create a snapshot, which can be obtained via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The extra throughput to purchase, in MB/s",
+          "member": "uint64",
+          "name": "ThroughputPerformance",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDiskExtraPerformanceResponse": {
+      "document": "ModifyDiskExtraPerformance response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

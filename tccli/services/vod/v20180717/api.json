@@ -372,6 +372,12 @@
       "name": "Gets the list of transcoding templates",
       "output": "DescribeTranscodeTemplatesResponse"
     },
+    "DescribeVodDomains": {
+      "document": "This API is used to query the list of VOD domain names.",
+      "input": "DescribeVodDomainsRequest",
+      "name": "Queries the list of VOD domain names",
+      "output": "DescribeVodDomainsResponse"
+    },
     "DescribeWatermarkTemplates": {
       "document": "This API is used to query custom watermarking templates and supports paged queries by filters.",
       "input": "DescribeWatermarkTemplatesRequest",
@@ -817,6 +823,42 @@
       ],
       "usage": "out"
     },
+    "AccelerateAreaInfo": {
+      "document": "Acceleration region information of the domain name",
+      "members": [
+        {
+          "default": "",
+          "document": "Acceleration region. Valid values:\n<li>Chinese Mainland</li>\n<li>Outside Chinese Mainland</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reason why acceleration is disabled by Tencent Cloud. Valid values:\n<li>ForLegalReasons: legal reasons</li>\n<li>ForOverdueBills: overdue payment</li>",
+          "example": "无",
+          "member": "string",
+          "name": "TencentDisableReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CNAME of the acceleration domain name",
+          "example": "无",
+          "member": "string",
+          "name": "TencentEdgeDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AdaptiveDynamicStreamingInfoItem": {
       "document": "Adaptive bitrate streaming information",
       "members": [
@@ -865,6 +907,7 @@
         {
           "default": "",
           "document": "Adaptive bitrate streaming template ID.",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -874,8 +917,19 @@
         {
           "default": "",
           "document": "List of up to 10 image or text watermarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of subtitle IDs (maximum: 10)",
+          "example": "[]",
+          "member": "string",
+          "name": "SubtitleSet",
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -5473,7 +5527,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.",
           "example": "example",
           "member": "string",
           "name": "SessionContext",
@@ -5483,7 +5537,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.",
           "example": "example",
           "member": "string",
           "name": "SessionId",
@@ -9772,6 +9826,78 @@
       ],
       "type": "object"
     },
+    "DescribeVodDomainsRequest": {
+      "document": "DescribeVodDomains request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of domain names. If this parameter is left empty, all domain names will be listed.\n<li>Maximum number of domain names listed: 20</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Domains",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Maximum results to return for pulling paginated queries. Default value: 20",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number offset from the beginning of paginated queries. Default value: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVodDomainsResponse": {
+      "document": "DescribeVodDomains response structure.",
+      "members": [
+        {
+          "document": "Total number of domain names",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain name information list",
+          "example": "无",
+          "member": "DomainDetailInfo",
+          "name": "DomainSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeWatermarkTemplatesRequest": {
       "document": "DescribeWatermarkTemplates request structure.",
       "members": [
@@ -9923,6 +10049,98 @@
         }
       ],
       "type": "object"
+    },
+    "DomainDetailInfo": {
+      "document": "Domain name information",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Acceleration region information\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "AccelerateAreaInfo",
+          "name": "AccelerateAreaInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployment status. Valid values:\n<li>Online</li>\n<li>Deploying</li>\n<li>Locked: you cannot change the deployment status of locked domain names</li>",
+          "example": "无",
+          "member": "string",
+          "name": "DeployStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTPS configuration information\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "DomainHTTPSConfig",
+          "name": "HTTPSConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "[Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986) configuration\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "UrlSignatureAuthPolicy",
+          "name": "UrlSignatureAuthPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "[Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/33985) configuration\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "RefererAuthPolicy",
+          "name": "RefererAuthPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The time when the domain name was added in the VOD system\n<li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DomainHTTPSConfig": {
+      "document": "HTTPS configuration information of the domain name",
+      "members": [
+        {
+          "default": "",
+          "document": "Time when the certificate expires\n<li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>",
+          "example": "无",
+          "member": "string",
+          "name": "CertExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DrmStreamingsInfo": {
       "document": "DRM-protected adaptive bitstream playback information",
@@ -11789,6 +12007,7 @@
         {
           "default": "",
           "document": "Media filename.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -11798,6 +12017,7 @@
         {
           "default": "",
           "document": "Media file description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -11807,6 +12027,7 @@
         {
           "default": "",
           "document": "Creation time of media file in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -11816,6 +12037,7 @@
         {
           "default": "",
           "document": "Last update time of media file (by an operation that triggers updating of media file information such as modifying video attributes or initiating video processing) in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -11825,6 +12047,7 @@
         {
           "default": "",
           "document": "Expiration time of media file in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). After the expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. `9999-12-31T23:59:59Z` means \"never expire\".\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -11834,6 +12057,7 @@
         {
           "default": "",
           "document": "Category ID of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "ClassId",
           "required": true,
@@ -11843,6 +12067,7 @@
         {
           "default": "",
           "document": "Category name of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ClassName",
           "required": true,
@@ -11852,6 +12077,7 @@
         {
           "default": "",
           "document": "Category path to media file separated by \"-\", such as \"new first-level category - new second-level category\".\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ClassPath",
           "required": true,
@@ -11861,6 +12087,7 @@
         {
           "default": "",
           "document": "Cover image address of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CoverUrl",
           "required": true,
@@ -11870,6 +12097,7 @@
         {
           "default": "",
           "document": "Media file container, such as mp4 and flv.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -11879,6 +12107,7 @@
         {
           "default": "",
           "document": "URL of source media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "MediaUrl",
           "required": true,
@@ -11888,6 +12117,7 @@
         {
           "default": "",
           "document": "Source information of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaSourceData",
           "name": "SourceInfo",
           "required": true,
@@ -11896,7 +12126,8 @@
         },
         {
           "default": "",
-          "document": "Storage region of media file, such as ap-guangzhou. For more information, please see [Region List](https://intl.cloud.tencent.com/document/api/213/15692?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Regions where media files are stored, such as `ap-chongqing`. For more regions, see [Storage Region](https://intl.cloud.tencent.com/document/product/266/9760).",
+          "example": "无",
           "member": "string",
           "name": "StorageRegion",
           "required": true,
@@ -11906,6 +12137,7 @@
         {
           "default": "",
           "document": "Tag information of media file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "TagSet",
           "required": true,
@@ -11915,6 +12147,7 @@
         {
           "default": "",
           "document": "Unique ID of an LVB recording file.",
+          "example": "无",
           "member": "string",
           "name": "Vid",
           "required": true,
@@ -11924,6 +12157,7 @@
         {
           "default": "",
           "document": "File type:\n<li>Video: video file</li>\n<li>Audio: audio file</li>\n<li>Image: image file</li>",
+          "example": "无",
           "member": "string",
           "name": "Category",
           "required": true,
@@ -11933,8 +12167,19 @@
         {
           "default": "",
           "document": "File status. Valid values: Normal, Forbidden.\n\n*Note: this field is not supported yet.",
+          "example": "无",
           "member": "string",
           "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "STANDARD",
+          "member": "string",
+          "name": "StorageClass",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -12401,6 +12646,7 @@
         {
           "default": "",
           "document": "Basic information, such as video name, category, playback address, and cover image.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaBasicInfo",
           "name": "BasicInfo",
           "required": true,
@@ -12410,6 +12656,7 @@
         {
           "default": "",
           "document": "Metadata, such as size, duration, video stream information, and audio stream information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
           "required": true,
@@ -12419,6 +12666,7 @@
         {
           "default": "",
           "document": "Result information of transcoding, such as address, specification, bitrate, and resolution of the videos in various bitrates generated by transcoding a video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaTranscodeInfo",
           "name": "TranscodeInfo",
           "required": true,
@@ -12428,6 +12676,7 @@
         {
           "default": "",
           "document": "Result information of animated image generating, i.e., relevant information of an animated image (such as .gif) generated from a video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaAnimatedGraphicsInfo",
           "name": "AnimatedGraphicsInfo",
           "required": true,
@@ -12437,6 +12686,7 @@
         {
           "default": "",
           "document": "Sampled screenshot information, i.e., relevant information of a sampled screenshot generated from a video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaSampleSnapshotInfo",
           "name": "SampleSnapshotInfo",
           "required": true,
@@ -12446,6 +12696,7 @@
         {
           "default": "",
           "document": "Image sprite information, i.e., relevant information of image sprite generated from video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaImageSpriteInfo",
           "name": "ImageSpriteInfo",
           "required": true,
@@ -12455,6 +12706,7 @@
         {
           "default": "",
           "document": "Time point screenshot information, i.e., information of each time point screenshot generated from a video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaSnapshotByTimeOffsetInfo",
           "name": "SnapshotByTimeOffsetInfo",
           "required": true,
@@ -12464,6 +12716,7 @@
         {
           "default": "",
           "document": "Timestamp information, i.e., information of each timestamp set for a video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaKeyFrameDescInfo",
           "name": "KeyFrameDescInfo",
           "required": true,
@@ -12473,6 +12726,7 @@
         {
           "default": "",
           "document": "Adaptive bitrate streaming information, such as specification, encryption type, and container format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaAdaptiveDynamicStreamingInfo",
           "name": "AdaptiveDynamicStreamingInfo",
           "required": true,
@@ -12482,6 +12736,7 @@
         {
           "default": "",
           "document": "WeChat Mini Program audit information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaMiniProgramReviewInfo",
           "name": "MiniProgramReviewInfo",
           "required": true,
@@ -12490,7 +12745,18 @@
         },
         {
           "default": "",
+          "document": "Subtitle information\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "MediaSubtitleInfo",
+          "name": "SubtitleInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Unique ID of media file.",
+          "example": "无",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -13547,6 +13813,22 @@
       ],
       "usage": "out"
     },
+    "MediaSubtitleInfo": {
+      "document": "Subtitle information",
+      "members": [
+        {
+          "default": "",
+          "document": "Subtitle information list",
+          "example": "无",
+          "member": "MediaSubtitleItem",
+          "name": "SubtitleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MediaSubtitleInput": {
       "document": "Input parameters of subtile information",
       "members": [
@@ -13604,11 +13886,11 @@
       "usage": "in"
     },
     "MediaSubtitleItem": {
-      "document": "",
+      "document": "Subtitle information",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Unique subtitle ID",
           "example": "无",
           "member": "string",
           "name": "Id",
@@ -13618,7 +13900,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Subtitle name",
           "example": "无",
           "member": "string",
           "name": "Name",
@@ -13628,7 +13910,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Subtitle language. Common values:\n<li>`cn`: Chinese</li>\n<li>`ja`: Japanese</li>\n<li>`en-US`: English</li>\nFor other values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).",
           "example": "无",
           "member": "string",
           "name": "Language",
@@ -13638,7 +13920,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Subtitle format. Valid value:\n<li>vtt</li>",
           "example": "vtt",
           "member": "string",
           "name": "Format",
@@ -13648,7 +13930,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Subtitle URL",
           "example": "无",
           "member": "string",
           "name": "Url",
@@ -17523,6 +17805,52 @@
       ],
       "type": "object"
     },
+    "RefererAuthPolicy": {
+      "document": "Referer hotlink protection configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "[Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/33985) status. Valid values:\n<li>Enabled</li>\n<li>Disabled</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Referer authentication method. Valid values:\n<li>`Black`: blocklist</li>\n<li>`White`: allowlist</li>",
+          "example": "无",
+          "member": "string",
+          "name": "AuthType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List for referer authentication",
+          "example": "无",
+          "member": "string",
+          "name": "Referers",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to allow requests with empty referer to access this domain name. Valid values:\n<li>Yes</li>\n<li>No</li>",
+          "example": "无",
+          "member": "string",
+          "name": "BlankRefererAllowed",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ResetProcedureTemplateRequest": {
       "document": "ResetProcedureTemplate request structure.",
       "members": [
@@ -19785,6 +20113,32 @@
           "document": "Transition type. Valid values:\n<ul>\n<li>Video image transition operation, which is used for transition with video image between two video segments:\n<ul>\n<li>ImageFadeInFadeOut: video image fade-in/fade-out.</li>\n<li>BowTieHorizontal: horizontal bow.</li>\n<li>BowTieVertical: vertical bow.</li>\n<li>ButterflyWaveScrawler: waggling.</li>\n<li>Cannabisleaf: maple leaf.</li>\n<li> Circle: curved circling.</li>\n<li>CircleCrop: circle gathering.</li>\n<li>Circleopen: elliptic gathering.</li>\n<li>Crosswarp: horizontal warping.</li>\n<li>Cube: cube.</li>\n<li>DoomScreenTransition: curtain.</li>\n<li>Doorway: doorway.</li>\n<li>Dreamy: wave.</li>\n<li>DreamyZoom: horizontal gathering.</li>\n<li>FilmBurn: evening glow.</li>\n<li>GlitchMemories: joggling.</li>\n<li>Heart: heart.</li>\n<li>InvertedPageCurl: page turning.</li>\n<li>Luma: corroding.</li>\n<li>Mosaic: grid.</li>\n<li>Pinwheel: pinwheel.</li>\n<li>PolarFunction: elliptic diffusing.</li>\n<li>PolkaDotsCurtain: curved diffusing.</li>\n<li>Radial: radar scan.</li>\n<li>RotateScaleFade: vertical rotating.</li>\n<li>Squeeze: vertical gathering.</li>\n<li>Swap: zooming in.</li>\n<li>Swirl: swirling.</li>\n<li>UndulatingBurnOutSwirl: water spreading.</li>\n<li>Windowblinds: blinds.</li>\n<li>WipeDown: collapsing down.</li>\n<li>WipeLeft: collapsing to the left.</li>\n<li>WipeRight: collapsing to the right.</li>\n<li>WipeUp: collapsing up.</li>\n<li>ZoomInCircles: ripples.</li>\n</ul>\n</li>\n<li>Audio transition operation, which is used for transition between two audio segments:\n<ul>\n<li>AudioFadeInFadeOut: audio fade-in/fade-out.</li>\n</ul>\n</li>\n</ul>",
           "member": "string",
           "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UrlSignatureAuthPolicy": {
+      "document": "Key hotlink protection information for generating the signature",
+      "members": [
+        {
+          "default": "",
+          "document": "[Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986) status. Valid values:\n<li>Enabled</li>\n<li>Disabled</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The key for generating the signature of [key hotlink protection](https://intl.cloud.tencent.com/document/product/266/33986)",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptedKey",
           "required": true,
           "type": "string",
           "value_allowed_null": false

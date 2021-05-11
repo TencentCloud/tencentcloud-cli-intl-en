@@ -1320,6 +1320,7 @@
         {
           "default": "",
           "document": "Value range: [0,1]. \nIf 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.",
+          "example": "0",
           "member": "int64",
           "name": "UseMixCropCenter",
           "required": false,
@@ -1329,8 +1330,19 @@
         {
           "default": "",
           "document": "Value range: [0,1].\nIf this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.",
+          "example": "0",
           "member": "int64",
           "name": "AllowCopy",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: 0, 1\nIf you set this parameter to 1, SEI (Supplemental Enhanced Information) of the input streams will be passed through.",
+          "example": "0",
+          "member": "int64",
+          "name": "PassInputSei",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -4048,6 +4060,7 @@
         {
           "default": "",
           "document": "Page number to get. Default value: 1.",
+          "example": "1",
           "member": "int64",
           "name": "PageNum",
           "required": false,
@@ -4056,10 +4069,20 @@
         {
           "default": "",
           "document": "Number of entries per page. Maximum value: 100. \nValue: any integer between 1 and 100.\nDefault value: 10.",
+          "example": "10",
           "member": "int64",
           "name": "PageSize",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The stream name to search for",
+          "example": "stream_2021",
+          "member": "string",
+          "name": "StreamName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

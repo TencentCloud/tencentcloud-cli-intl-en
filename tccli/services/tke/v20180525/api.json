@@ -2541,8 +2541,19 @@
       "members": [
         {
           "document": "Queries cluster access port status (Created = successfully enabled; Creating = in the process of being enabled; NotFound = not enabled).",
+          "example": "Created",
           "member": "string",
           "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Details of the error occurred while opening the access port\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
