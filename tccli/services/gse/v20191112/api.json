@@ -123,7 +123,7 @@
   },
   "metadata": {
     "apiVersion": "2019-11-12",
-    "serviceNameCN": "游戏服务器引擎",
+    "serviceNameCN": "游戏服务器伸缩",
     "serviceShortName": "gse"
   },
   "objects": {
@@ -132,7 +132,7 @@
       "members": [
         {
           "default": "",
-          "document": "CCN account",
+          "document": "Account of the CCN instance owner",
           "example": "13734*",
           "member": "string",
           "name": "AccountId",
@@ -275,7 +275,7 @@
         },
         {
           "default": "",
-          "document": "Whether to select CCN: CCN_SELECTED_BEFORE_CREATE (associated before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (not associated); CCN_UNSELECTED by default",
+          "document": "Whether to associate the fleet with a CCN instance: CCN_SELECTED_BEFORE_CREATE (associate before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (do not associate); CCN_UNSELECTED by default",
           "example": "CCN_UNSELECTED",
           "member": "string",
           "name": "SelectedCcnType",
@@ -320,12 +320,21 @@
         },
         {
           "default": "",
-          "document": "CCN information, including the corresponding CCN account and ID.",
+          "document": "Information of the CCN instance, including the owner account and the instance ID.",
           "example": "无",
           "member": "CcnInfo",
           "name": "CcnInfos",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1134,12 +1143,22 @@
         },
         {
           "default": "",
-          "document": "CCN information\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "CCN instance information\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "RelatedCcnInfo",
           "name": "RelatedCcnInfos",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -2039,11 +2058,11 @@
       "type": "object"
     },
     "RelatedCcnInfo": {
-      "document": "CCN information description",
+      "document": "Information of the associated CCN instance",
       "members": [
         {
           "default": "",
-          "document": "CCN account",
+          "document": "Account of the CCN instance owner",
           "example": "13734*",
           "member": "string",
           "name": "AccountId",
@@ -2053,7 +2072,7 @@
         },
         {
           "default": "",
-          "document": "CCN ID",
+          "document": "CCN instance ID",
           "example": "ccn-f0jyb*",
           "member": "string",
           "name": "CcnId",
@@ -2063,7 +2082,7 @@
         },
         {
           "default": "",
-          "document": "Status of associated CCN",
+          "document": "Status of associated CCN instance",
           "example": "CCN_SELECTED_BEFORE_CREATE",
           "member": "string",
           "name": "AttachType",
