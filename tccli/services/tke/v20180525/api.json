@@ -264,6 +264,12 @@
       "name": "Removes a node from a node pool but retains it in the cluster.",
       "output": "RemoveNodeFromNodePoolResponse"
     },
+    "SetNodePoolNodeProtection": {
+      "document": "This API is used to enable removal protection for the nodes automatically created by the scaling group in a node pool.",
+      "input": "SetNodePoolNodeProtectionRequest",
+      "name": "Enabling removal protection for the nodes in a node pool",
+      "output": "SetNodePoolNodeProtectionResponse"
+    },
     "UpdateClusterVersion": {
       "document": "This API is used to upgrade the master component of the cluster to the specified version.",
       "input": "UpdateClusterVersionRequest",
@@ -332,7 +338,7 @@
         },
         {
           "default": "",
-          "document": "Additional parameter to be set for the instance",
+          "document": "Detailed information of the instance",
           "example": "{}",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
@@ -3030,6 +3036,7 @@
         {
           "default": "",
           "document": "Cluster ID. Enter the `ClusterId` field returned when you call the DescribeClusters API (Only VPC ID obtained through `ClusterId` need filtering conditions. When comparing statuses, the nodes on all clusters in this region will be used for comparison. You cannot specify `InstanceIds` and `ClusterId` at the same time.)",
+          "example": "cls-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": false,
@@ -3038,6 +3045,7 @@
         {
           "default": "",
           "document": "Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.",
+          "example": "[\"ins-xxxxxxxx\",\"ins-yyyyyyyy\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3046,6 +3054,7 @@
         {
           "default": "",
           "document": "Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3054,6 +3063,7 @@
         {
           "default": "",
           "document": "Filter by instance IP (Supports both private and public IPs)",
+          "example": "10.0.0.1",
           "member": "string",
           "name": "VagueIpAddress",
           "required": false,
@@ -3062,6 +3072,7 @@
         {
           "default": "",
           "document": "Filter by instance name",
+          "example": "worker",
           "member": "string",
           "name": "VagueInstanceName",
           "required": false,
@@ -3070,6 +3081,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3078,10 +3090,20 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by multiple instance IPs",
+          "example": "[\"10.0.0.1\",\"10.0.0.2\"]",
+          "member": "string",
+          "name": "IpAddresses",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4947,6 +4969,23 @@
         }
       ],
       "usage": "both"
+    },
+    "SetNodePoolNodeProtectionRequest": {
+      "document": "SetNodePoolNodeProtection request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "SetNodePoolNodeProtectionResponse": {
+      "document": "SetNodePoolNodeProtection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Tag": {
       "document": "The type of resource the label is bound to. Type currently supported is **cluster**.",

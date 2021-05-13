@@ -13,7 +13,7 @@
       "output": "AddLiveDomainResponse"
     },
     "AddLiveWatermark": {
-      "document": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API and bind the watermark ID to the stream.",
+      "document": "After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API to bind the watermark ID to a stream.\nAfter the number of watermarks exceeds the upper limit of 100, to add a new watermark, you must delete an old one first.",
       "input": "AddLiveWatermarkRequest",
       "name": "Adds watermark",
       "output": "AddLiveWatermarkResponse"
@@ -2355,6 +2355,7 @@
         {
           "default": "",
           "document": "Template name, such as “900p”. This can be only a combination of letters and digits.\nLength limit:\n  Standard transcoding: 1-10 characters\n  Top speed codec transcoding: 3-10 characters",
+          "example": "无",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -2363,6 +2364,7 @@
         {
           "default": "",
           "document": "Video bitrate in Kbps. Value range: 100-8000.\nNote: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.",
+          "example": "无",
           "member": "int64",
           "name": "VideoBitrate",
           "required": true,
@@ -2371,6 +2373,7 @@
         {
           "default": "",
           "document": "Audio codec. Default value: aac.\nNote: this parameter is unsupported now.",
+          "example": "无",
           "member": "string",
           "name": "Acodec",
           "required": false,
@@ -2379,6 +2382,7 @@
         {
           "default": "",
           "document": "Audio bitrate. Default value: 0.\nValue range: 0-500.",
+          "example": "无",
           "member": "int64",
           "name": "AudioBitrate",
           "required": false,
@@ -2387,6 +2391,7 @@
         {
           "default": "",
           "document": "Video codec. Valid values: h264, h265, origin (default)\n\norigin: original codec as the output codec",
+          "example": "无",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -2395,6 +2400,7 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -2402,15 +2408,8 @@
         },
         {
           "default": "",
-          "document": "Width. Default value: 0.\nValue range: 0-3000\nIt must be a multiple of 2. The original width is 0.",
-          "member": "int64",
-          "name": "Width",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
           "document": "Whether to keep the video. 0: no; 1: yes. Default value: 1.",
+          "example": "无",
           "member": "int64",
           "name": "NeedVideo",
           "required": false,
@@ -2418,7 +2417,17 @@
         },
         {
           "default": "",
+          "document": "Width. Default value: 0.\nValue range: 0-3000\nIt must be a multiple of 2. The original width is 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "Whether to keep the audio. 0: no; 1: yes. Default value: 1.",
+          "example": "无",
           "member": "int64",
           "name": "NeedAudio",
           "required": false,
@@ -2426,7 +2435,8 @@
         },
         {
           "default": "",
-          "document": "Height. Default value: 0.\nValue range: 0-3000\nIt must be a multiple of 2. The original height is 0.",
+          "document": "Height. Default value: 0.\nValue range: [0,3000]\nThe value must be a multiple of 2, and 0 is the original height.",
+          "example": "无",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -2435,6 +2445,7 @@
         {
           "default": "",
           "document": "Frame rate. Default value: 0.\nValue range: 0-60",
+          "example": "无",
           "member": "int64",
           "name": "Fps",
           "required": false,
@@ -2443,6 +2454,7 @@
         {
           "default": "",
           "document": "Keyframe interval in seconds. Default value: original interval\nValue range: 2-6",
+          "example": "无",
           "member": "int64",
           "name": "Gop",
           "required": false,
@@ -2451,6 +2463,7 @@
         {
           "default": "",
           "document": "Rotation angle. Default value: 0.\nValid values: 0, 90, 180, 270",
+          "example": "无",
           "member": "int64",
           "name": "Rotate",
           "required": false,
@@ -2459,6 +2472,7 @@
         {
           "default": "",
           "document": "Encoding quality:\nbaseline/main/high. Default value: baseline.",
+          "example": "无",
           "member": "string",
           "name": "Profile",
           "required": false,
@@ -2467,6 +2481,7 @@
         {
           "default": "",
           "document": "Whether to use the original bitrate when the set bitrate is larger than the original bitrate.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "无",
           "member": "int64",
           "name": "BitrateToOrig",
           "required": false,
@@ -2475,6 +2490,7 @@
         {
           "default": "",
           "document": "Whether to use the original height when the set height is higher than the original height.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "无",
           "member": "int64",
           "name": "HeightToOrig",
           "required": false,
@@ -2483,6 +2499,7 @@
         {
           "default": "",
           "document": "Whether to use the original frame rate when the set frame rate is larger than the original frame rate.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "无",
           "member": "int64",
           "name": "FpsToOrig",
           "required": false,
@@ -2491,6 +2508,7 @@
         {
           "default": "",
           "document": "Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.",
+          "example": "无",
           "member": "int64",
           "name": "AiTransCode",
           "required": false,
@@ -2499,6 +2517,7 @@
         {
           "default": "",
           "document": "Bitrate compression ratio of top speed codec video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5.",
+          "example": "无",
           "member": "float",
           "name": "AdaptBitratePercent",
           "required": false,
@@ -2507,6 +2526,7 @@
         {
           "default": "",
           "document": "Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.",
+          "example": "无",
           "member": "int64",
           "name": "ShortEdgeAsHeight",
           "required": false,
@@ -3259,10 +3279,20 @@
         {
           "default": "",
           "document": "Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.",
+          "example": "2019-12-12 10:00:00",
           "member": "string",
           "name": "QueryTime",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Playback domain name list. If this parameter is left empty, full data will be queried.",
+          "example": "[\"5000.playdomain.com\\n\"]",
+          "member": "string",
+          "name": "PlayDomains",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -5722,6 +5752,22 @@
           "name": "PageSize",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values:\nMainland: query data for Mainland China,\nOversea: query data for regions outside Mainland China,\nDefault: query data for all regions.",
+          "member": "string",
+          "name": "MainlandOrOversea",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5818,7 +5864,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.",
           "member": "string",
           "name": "ServiceName",
           "required": false,

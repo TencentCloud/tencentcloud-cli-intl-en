@@ -12,6 +12,12 @@
       "name": "Creates a health report generation task",
       "output": "CreateDBDiagReportTaskResponse"
     },
+    "CreateDBDiagReportUrl": {
+      "document": "This API is used to create a URL for a health report.",
+      "input": "CreateDBDiagReportUrlRequest",
+      "name": "Creates a URL for a health report",
+      "output": "CreateDBDiagReportUrlResponse"
+    },
     "CreateMailProfile": {
       "document": "This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of regularly generated health report). Select Guangzhou for Region, regardless of the region where the instance belongs.",
       "input": "CreateMailProfileRequest",
@@ -47,6 +53,12 @@
       "input": "DescribeDBDiagHistoryRequest",
       "name": "Gets instance diagnosis history",
       "output": "DescribeDBDiagHistoryResponse"
+    },
+    "DescribeDBDiagReportTasks": {
+      "document": "This API is used to query the list of health report generation tasks.",
+      "input": "DescribeDBDiagReportTasksRequest",
+      "name": "Queries the list of health report generation tasks",
+      "output": "DescribeDBDiagReportTasksResponse"
     },
     "DescribeDBSpaceStatus": {
       "document": "This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.",
@@ -84,6 +96,24 @@
       "name": "Queries slow log statistics in specified time period by SQL template",
       "output": "DescribeSlowLogTopSqlsResponse"
     },
+    "DescribeSlowLogUserHostStats": {
+      "document": "This API is used to obtain the statistical distribution chart of slow log source addresses.",
+      "input": "DescribeSlowLogUserHostStatsRequest",
+      "name": "Obtains the statistical distribution chart of slow log source addresses.",
+      "output": "DescribeSlowLogUserHostStatsResponse"
+    },
+    "DescribeTopSpaceSchemaTimeSeries": {
+      "document": "This API is used to query the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.",
+      "input": "DescribeTopSpaceSchemaTimeSeriesRequest",
+      "name": "Obtains daily space statistics of top databases during a specified time period",
+      "output": "DescribeTopSpaceSchemaTimeSeriesResponse"
+    },
+    "DescribeTopSpaceSchemas": {
+      "document": "This API is used to query real-time space statistics of top databases. The return results are sorted by size by default.",
+      "input": "DescribeTopSpaceSchemasRequest",
+      "name": "Obtains the space statistics of top databases",
+      "output": "DescribeTopSpaceSchemasResponse"
+    },
     "DescribeTopSpaceTableTimeSeries": {
       "document": "This API is used to query the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.",
       "input": "DescribeTopSpaceTableTimeSeriesRequest",
@@ -95,6 +125,12 @@
       "input": "DescribeTopSpaceTablesRequest",
       "name": "Queries space statistics of top tables",
       "output": "DescribeTopSpaceTablesResponse"
+    },
+    "DescribeUserSqlAdvice": {
+      "document": "This API is used to obtain SQL statement optimization suggestions.",
+      "input": "DescribeUserSqlAdviceRequest",
+      "name": "Obtains SQL statement optimization suggestions",
+      "output": "DescribeUserSqlAdviceResponse"
     },
     "ModifyDiagDBInstanceConf": {
       "document": "This API is used to enable/disable instance inspection.",
@@ -277,6 +313,69 @@
       ],
       "type": "object"
     },
+    "CreateDBDiagReportUrlRequest": {
+      "document": "CreateDBDiagReportUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The health report task ID, which can be queried through `DescribeDBDiagReportTasks`.",
+          "example": "63452",
+          "member": "int64",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBDiagReportUrlResponse": {
+      "document": "CreateDBDiagReportUrl response structure.",
+      "members": [
+        {
+          "document": "The URL of the health report.",
+          "example": "https://dbbrain-sh-1256569818.cos.ap-guangzhou.myqcloud.com",
+          "member": "string",
+          "name": "ReportUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The expiration timestamp of the health report URL (in seconds).",
+          "example": "1618890295",
+          "member": "int64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateMailProfileRequest": {
       "document": "CreateMailProfile request structure.",
       "members": [
@@ -327,7 +426,7 @@
         },
         {
           "default": "",
-          "document": "Instance ID bound to the configuration, which is set when the configuration level is \"Instance\". Only one instance can be bound at a time.",
+          "document": "Instance ID bound with the configuration, which is set when the configuration level is \"Instance\". Only one instance can be bound at a time. When the configuration level is “User”, leave this parameter empty.",
           "example": "[\"cdb-test\"]",
           "member": "string",
           "name": "BindInstanceIds",
@@ -676,6 +775,123 @@
           "document": "Event description.",
           "member": "DiagHistoryEventItem",
           "name": "Events",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagReportTasksRequest": {
+      "document": "DescribeDBDiagReportTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time of the first task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of the last task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID array, which is used to filter the task list of a specified instance.",
+          "example": "[\"cdb-c1nl9rpv\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).",
+          "example": "[\"DAILY_INSPECTION\"]",
+          "member": "string",
+          "name": "Sources",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).",
+          "example": "[\"HEALTH\"]",
+          "member": "string",
+          "name": "HealthLevels",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).",
+          "example": "[\"finished\"]",
+          "member": "string",
+          "name": "TaskStatuses",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagReportTasksResponse": {
+      "document": "DescribeDBDiagReportTasks response structure.",
+      "members": [
+        {
+          "document": "Total number of tasks.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task list.",
+          "example": "-",
+          "member": "HealthReportTask",
+          "name": "Tasks",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1176,12 +1392,13 @@
       ],
       "type": "object"
     },
-    "DescribeTopSpaceTableTimeSeriesRequest": {
-      "document": "DescribeTopSpaceTableTimeSeries request structure.",
+    "DescribeSlowLogUserHostStatsRequest": {
+      "document": "DescribeSlowLogUserHostStats request structure.",
       "members": [
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1189,7 +1406,80 @@
         },
         {
           "default": "",
-          "document": "Number of returned top tables. Default value: 20. Maximum value: 20.",
+          "document": "Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogUserHostStatsResponse": {
+      "document": "DescribeSlowLogUserHostStats response structure.",
+      "members": [
+        {
+          "document": "Total number of source addresses.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed list of the proportion of slow logs from each source address.",
+          "example": "-",
+          "member": "SlowLogHost",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceSchemaTimeSeriesRequest": {
+      "document": "DescribeTopSpaceSchemaTimeSeries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned top databases. Maximum value: 100. Default value: 20.",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -1197,7 +1487,8 @@
         },
         {
           "default": "",
-          "document": "Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.",
+          "document": "Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.",
+          "example": "TableRows",
           "member": "string",
           "name": "SortBy",
           "required": false,
@@ -1206,6 +1497,7 @@
         {
           "default": "",
           "document": "Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.",
+          "example": "2021-01-01",
           "member": "date",
           "name": "StartDate",
           "required": false,
@@ -1214,6 +1506,7 @@
         {
           "default": "",
           "document": "End date. It can be as early as 29 days before the current date, and defaults to the current date.",
+          "example": "2021-01-01",
           "member": "date",
           "name": "EndDate",
           "required": false,
@@ -1222,6 +1515,160 @@
         {
           "default": "",
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceSchemaTimeSeriesResponse": {
+      "document": "DescribeTopSpaceSchemaTimeSeries response structure.",
+      "members": [
+        {
+          "document": "Time series list of the returned space statistics of top databases.",
+          "example": "无",
+          "member": "SchemaSpaceTimeSeries",
+          "name": "TopSpaceSchemaTimeSeries",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceSchemasRequest": {
+      "document": "DescribeTopSpaceSchemas request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned top databases. Maximum value: 100. Default value: 20.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.",
+          "example": "TableRows",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceSchemasResponse": {
+      "document": "DescribeTopSpaceSchemas response structure.",
+      "members": [
+        {
+          "document": "List of the returned space statistics of top databases.",
+          "example": "无",
+          "member": "SchemaSpaceData",
+          "name": "TopSpaceSchemas",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Timestamp (in seconds) of database space data collect points",
+          "example": "1603819881",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopSpaceTableTimeSeriesRequest": {
+      "document": "DescribeTopSpaceTableTimeSeries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-test",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned top tables. Maximum value: 100. Default value: 20.",
+          "example": "2",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.",
+          "example": "TableRows",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.",
+          "example": "2020-01-01",
+          "member": "date",
+          "name": "StartDate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End date. It can be as early as 29 days before the current date, and defaults to the current date.",
+          "example": "2020-01-01",
+          "member": "date",
+          "name": "EndDate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.",
+          "example": "mysql",
           "member": "string",
           "name": "Product",
           "required": false,
@@ -1255,6 +1702,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "cdb-test",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1262,7 +1710,8 @@
         },
         {
           "default": "",
-          "document": "Number of returned top tables. Default value: 20. Maximum value: 20.",
+          "document": "Number of returned top tables. Maximum value: 100. Default value: 20.",
+          "example": "2",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -1270,7 +1719,8 @@
         },
         {
           "default": "",
-          "document": "Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.",
+          "document": "Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (only supported by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is PhysicalFileSize; for other database instances, the default value is `TotalLength`.",
+          "example": "TableRows",
           "member": "string",
           "name": "SortBy",
           "required": false,
@@ -1279,6 +1729,7 @@
         {
           "default": "",
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.",
+          "example": "mysql",
           "member": "string",
           "name": "Product",
           "required": false,
@@ -1302,6 +1753,114 @@
           "member": "int64",
           "name": "Timestamp",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserSqlAdviceRequest": {
+      "document": "DescribeUserSqlAdvice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SQL statement.",
+          "example": "select * from t1",
+          "member": "string",
+          "name": "SqlText",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name.",
+          "example": "test",
+          "member": "string",
+          "name": "Schema",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserSqlAdviceResponse": {
+      "document": "DescribeUserSqlAdvice response structure.",
+      "members": [
+        {
+          "document": "SQL statement optimization suggestions, which can be parsed into JSON arrays.",
+          "example": "PossibleKeys",
+          "member": "string",
+          "name": "Advices",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Notes of SQL statement optimization suggestions, which can be parsed into String arrays.",
+          "example": "SQL解析不通过",
+          "member": "string",
+          "name": "Comments",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SQL statement.",
+          "example": "select * from t1",
+          "member": "string",
+          "name": "SqlText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name.",
+          "example": "test",
+          "member": "string",
+          "name": "Schema",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DDL information of related tables, which can be parsed into JSON arrays.",
+          "example": "TableDDL",
+          "member": "string",
+          "name": "Tables",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SQL execution plan, which can be parsed into JSON.",
+          "example": "Before",
+          "member": "string",
+          "name": "SqlPlan",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cost saving details after SQL statement optimization, which can be parsed into JSON.",
+          "example": "After",
+          "member": "string",
+          "name": "Cost",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1538,6 +2097,92 @@
       ],
       "usage": "out"
     },
+    "HealthReportTask": {
+      "document": "Details of health report tasks.",
+      "members": [
+        {
+          "default": "",
+          "document": "Async task request ID.",
+          "example": "63452",
+          "member": "int64",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).",
+          "example": "DAILY_INSPECTION",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task progress in %.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task creation time.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task start time.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task end time.",
+          "example": "2019-09-10 12:13:14",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Basic information about the instance to which the task belongs.",
+          "example": "-",
+          "member": "InstanceBasicInfo",
+          "name": "InstanceInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health information in a health report.",
+          "example": "-",
+          "member": "HealthStatus",
+          "name": "HealthStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "HealthScoreInfo": {
       "document": "Obtain the details of the health score and deduction.",
       "members": [
@@ -1577,6 +2222,118 @@
           "example": "RISK",
           "member": "string",
           "name": "HealthLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "HealthStatus": {
+      "document": "Instance health status.",
+      "members": [
+        {
+          "default": "",
+          "document": "Health score out of 100 points.",
+          "example": "100",
+          "member": "int64",
+          "name": "HealthScore",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).",
+          "example": "HEALTH",
+          "member": "string",
+          "name": "HealthLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total scores deducted.",
+          "example": "0",
+          "member": "int64",
+          "name": "ScoreLost",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Deduction details.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "ScoreDetail",
+          "name": "ScoreDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceBasicInfo": {
+      "document": "Basic information of instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name.",
+          "example": "test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of the instance.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network port of the instance.",
+          "example": "3600",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance product.",
+          "example": "MySQL",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance engine version.",
+          "example": "5.6",
+          "member": "string",
+          "name": "EngineVersion",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2191,12 +2948,263 @@
       ],
       "usage": "in"
     },
+    "SchemaSpaceData": {
+      "document": "Database space statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name.",
+          "example": "test",
+          "member": "string",
+          "name": "TableSchema",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data space in MB.",
+          "example": "2.2",
+          "member": "float",
+          "name": "DataLength",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index space in MB.",
+          "example": "1.0",
+          "member": "float",
+          "name": "IndexLength",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Fragmented space in MB.",
+          "example": "0",
+          "member": "float",
+          "name": "DataFree",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total space usage in MB.",
+          "example": "3.2",
+          "member": "float",
+          "name": "TotalLength",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Fragmented rate (%).",
+          "example": "0",
+          "member": "float",
+          "name": "FragRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of rows.",
+          "example": "10",
+          "member": "int64",
+          "name": "TableRows",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total size of the independent physical files corresponding to all the database tables (MB).\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0.2",
+          "member": "float",
+          "name": "PhysicalFileSize",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SchemaSpaceTimeSeries": {
+      "document": "Time series of database space data",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "TableSchema",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monitoring metric data in a unit of time interval.",
+          "example": "无",
+          "member": "MonitorMetricSeriesData",
+          "name": "SeriesData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ScoreDetail": {
+      "document": "Deduction details.",
+      "members": [
+        {
+          "default": "",
+          "document": "Deduction item types. Valid values: availability, maintainability, performance, and reliability.",
+          "example": "性能",
+          "member": "string",
+          "name": "IssueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total scores deducted.",
+          "example": "-20",
+          "member": "int64",
+          "name": "ScoreLost",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Upper limit of the deducted scores.",
+          "example": "-30",
+          "member": "int64",
+          "name": "ScoreLostMax",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Deduction item list.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "ScoreItem",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScoreItem": {
+      "document": "Diagnosis deduction item.",
+      "members": [
+        {
+          "default": "",
+          "document": "Exception diagnosis item name.",
+          "example": "慢SQL",
+          "member": "string",
+          "name": "DiagItem",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Diagnosis item types. Valid values: availability, maintainability, performance, and reliability.",
+          "example": "性能",
+          "member": "string",
+          "name": "IssueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health level. Valid values: information, reminder, alarm, serious, fatal.",
+          "example": "严重",
+          "member": "string",
+          "name": "TopSeverity",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of occurrences of this exception diagnosis item.",
+          "example": "2",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scores deducted.",
+          "example": "-30",
+          "member": "int64",
+          "name": "ScoreLost",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogHost": {
+      "document": "Details of slow log source addresses.",
+      "members": [
+        {
+          "default": "",
+          "document": "Source addresses.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "UserHost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The proportion (in %) of slow logs from this source address to the total number of slow logs",
+          "example": "50.0",
+          "member": "float",
+          "name": "Ratio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of slow logs from this source address.",
+          "example": "30",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SlowLogTopSqlItem": {
       "document": "Top slow SQL statements",
       "members": [
         {
           "default": "",
           "document": "Total SQL lock wait time",
+          "example": "0.00008",
           "member": "float",
           "name": "LockTime",
           "required": true,
@@ -2206,6 +3214,7 @@
         {
           "default": "",
           "document": "Maximum lock wait time",
+          "example": "0.000096",
           "member": "float",
           "name": "LockTimeMax",
           "required": true,
@@ -2215,6 +3224,7 @@
         {
           "default": "",
           "document": "Minimum lock wait time",
+          "example": "0.000041",
           "member": "float",
           "name": "LockTimeMin",
           "required": true,
@@ -2224,6 +3234,7 @@
         {
           "default": "",
           "document": "Total number of scanned rows",
+          "example": "584832",
           "member": "int64",
           "name": "RowsExamined",
           "required": true,
@@ -2233,6 +3244,7 @@
         {
           "default": "",
           "document": "Maximum number of scanned rows",
+          "example": "101782",
           "member": "int64",
           "name": "RowsExaminedMax",
           "required": true,
@@ -2242,6 +3254,7 @@
         {
           "default": "",
           "document": "Minimum number of scanned rows",
+          "example": "584832",
           "member": "int64",
           "name": "RowsExaminedMin",
           "required": true,
@@ -2251,6 +3264,7 @@
         {
           "default": "",
           "document": "Total duration",
+          "example": "0.513363",
           "member": "float",
           "name": "QueryTime",
           "required": true,
@@ -2260,6 +3274,7 @@
         {
           "default": "",
           "document": "Maximum execution time",
+          "example": "0.765213",
           "member": "float",
           "name": "QueryTimeMax",
           "required": true,
@@ -2269,6 +3284,7 @@
         {
           "default": "",
           "document": "Minimum execution time",
+          "example": "0.629921",
           "member": "float",
           "name": "QueryTimeMin",
           "required": true,
@@ -2278,6 +3294,7 @@
         {
           "default": "",
           "document": "Total number of returned rows",
+          "example": "292416",
           "member": "int64",
           "name": "RowsSent",
           "required": true,
@@ -2287,6 +3304,7 @@
         {
           "default": "",
           "document": "Maximum number of returned rows",
+          "example": "292416",
           "member": "int64",
           "name": "RowsSentMax",
           "required": true,
@@ -2296,6 +3314,7 @@
         {
           "default": "",
           "document": "Minimum number of returned rows",
+          "example": "292416",
           "member": "int64",
           "name": "RowsSentMin",
           "required": true,
@@ -2305,6 +3324,7 @@
         {
           "default": "",
           "document": "Number of executions",
+          "example": "37",
           "member": "int64",
           "name": "ExecTimes",
           "required": true,
@@ -2314,6 +3334,7 @@
         {
           "default": "",
           "document": "SQL template",
+          "example": "select * from t;",
           "member": "string",
           "name": "SqlTemplate",
           "required": true,
@@ -2323,6 +3344,7 @@
         {
           "default": "",
           "document": "SQL with parameter (random)",
+          "example": "SELECT * FROM t;",
           "member": "string",
           "name": "SqlText",
           "required": true,
@@ -2332,6 +3354,7 @@
         {
           "default": "",
           "document": "Database name",
+          "example": "test_center",
           "member": "string",
           "name": "Schema",
           "required": true,
@@ -2341,6 +3364,7 @@
         {
           "default": "",
           "document": "Ratio of total duration",
+          "example": "2.44",
           "member": "float",
           "name": "QueryTimeRatio",
           "required": true,
@@ -2350,6 +3374,7 @@
         {
           "default": "",
           "document": "Ratio of total SQL lock wait time",
+          "example": "1.92",
           "member": "float",
           "name": "LockTimeRatio",
           "required": true,
@@ -2359,6 +3384,7 @@
         {
           "default": "",
           "document": "Ratio of total number of scanned rows",
+          "example": "2.3",
           "member": "float",
           "name": "RowsExaminedRatio",
           "required": true,
@@ -2368,8 +3394,49 @@
         {
           "default": "",
           "document": "Ratio of total number of returned rows",
+          "example": "18.67",
           "member": "float",
           "name": "RowsSentRatio",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average execution time",
+          "example": "0.513363",
+          "member": "float",
+          "name": "QueryTimeAvg",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average number of rows returned",
+          "example": "26518.0",
+          "member": "float",
+          "name": "RowsSentAvg",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average lock wait time",
+          "example": "0.000096",
+          "member": "float",
+          "name": "LockTimeAvg",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average number of rows scanned",
+          "example": "584832.0",
+          "member": "float",
+          "name": "RowsExaminedAvg",
           "required": true,
           "type": "float",
           "value_allowed_null": false

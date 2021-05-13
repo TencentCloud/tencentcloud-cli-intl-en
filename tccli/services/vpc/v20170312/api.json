@@ -247,7 +247,7 @@
       "output": "CreateSecurityGroupResponse"
     },
     "CreateSecurityGroupPolicies": {
-      "document": "This API is used to create security group policies (SecurityGroupPolicy).\n\nFor parameters of SecurityGroupPolicySet,\n<ul>\n<li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>\n<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don't need to change it manually.</li>\n<li>`Port`: a single port number such as 80, or a port range in the format of '8000-8010'. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: only allows `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>\n</ul></li></ul>",
+      "document": "This API is used to create a security group policy (SecurityGroupPolicy).\n\nFor parameters of SecurityGroupPolicySet,\n<ul>\n<li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` policies,<ul>\n<li>`Protocol`: allows `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, or `ALL`.</li>\n<li>`CidrBlock`: a CIDR block in the correct format. In the classic network, if a `CidrBlock` contains private IPs of devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of another security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: only allows `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>\n</ul></li></ul>",
       "input": "CreateSecurityGroupPoliciesRequest",
       "name": "Adds policies to a security group",
       "output": "CreateSecurityGroupPoliciesResponse"
@@ -1812,6 +1812,7 @@
         {
           "default": "",
           "document": "The number of EIPs. Default: 1.",
+          "example": "1",
           "member": "int64",
           "name": "AddressCount",
           "required": false,
@@ -1820,6 +1821,7 @@
         {
           "default": "",
           "document": "The EIP line type. Default: BGP.\n<ul style=\"margin:0\"><li>For a user who has activated the static single-line IP allowlist, possible values are:<ul><li>CMCC: China Mobile</li>\n<li>CTCC: China Telecom</li>\n<li>CUCC: China Unicom</li></ul>Note: Only certain regions support static single-line IP addresses.</li></ul>",
+          "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
           "required": false,
@@ -1828,6 +1830,7 @@
         {
           "default": "",
           "document": "The EIP billing method.\n<ul style=\"margin:0\"><li>For bill-by-IP account beta users, valid values: <ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)(who must also be bandwidth package beta users)</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: billed by hourly bandwidth on a pay-as-you-go basis</li>\n<li>BANDWIDTH_PREPAID_BY_MONTH: monthly bandwidth subscription</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: billed by hourly traffic on a pay-as-you-go basis</li></ul>Default value: TRAFFIC_POSTPAID_BY_HOUR</li>\n<li>If you are not a bill-by-IP account beta user, the EIP billing is the same as that for the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>",
+          "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
           "required": false,
@@ -1836,6 +1839,7 @@
         {
           "default": "",
           "document": "The EIP outbound bandwidth cap, in Mbps.\n<ul style=\"margin:0\"><li>For bill-by-IP account beta users, valid values:<ul><li>BANDWIDTH_PACKAGE: 1 Mbps to 1000 Mbps</li>\n<li>BANDWIDTH_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li>\n<li>BANDWIDTH_PREPAID_BY_MONTH: 1 Mbps to 200 Mbps</li>\n<li>TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps</li></ul>Default value: 1 Mbps</li>\n<li>If you are not a bill-by-IP account beta user, the EIP outbound bandwidth cap is subject to that of the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>",
+          "example": "10",
           "member": "int64",
           "name": "InternetMaxBandwidthOut",
           "required": false,
@@ -1844,6 +1848,7 @@
         {
           "default": "",
           "document": "A required billing parameter for an EIP billed by monthly bandwidth subscription. For EIPs using other billing modes, it can be ignored.",
+          "example": "无",
           "member": "AddressChargePrepaid",
           "name": "AddressChargePrepaid",
           "required": false,
@@ -1851,7 +1856,8 @@
         },
         {
           "default": "",
-          "document": "The EIP type. Default: EIP.\n<ul style=\"margin:0\"><li>For a user who has activated the AIA allowlist, possible values are:<ul><li>AnycastEIP: an Anycast EIP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Only certain regions support Anycast EIPs.</li></ul>",
+          "document": "The EIP type. Default: `EIP`.\n<ul style=\"margin:0\"><li>For AIA beta users, the value should be:<ul><li>`AnycastEIP`: an AIA IP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Anycast EIPs are only supported in some of the regions.</li></ul>\n<ul style=\"margin:0\"><li>For high-quality IP beta users, the value should be: <ul><li>`HighQualityEIP`: high-quality IP</li></ul>Note: High-quality IPs are only supported in some of the regions.</li></ul>",
+          "example": "AnycastEIP",
           "member": "string",
           "name": "AddressType",
           "required": false,
@@ -1860,6 +1866,7 @@
         {
           "default": "",
           "document": "Anycast publishing region\n<ul style=\"margin:0\"><li>Valid for users who have activated AIA. Values:<ul><li>ANYCAST_ZONE_GLOBAL: global publishing region </li><li>ANYCAST_ZONE_OVERSEAS: overseas publishing region</li><li><b>**[Disused]**</b> ANYCAST_ZONE_A: publishing region A (updated to ANYCAST_ZONE_GLOBAL)</li><li><b>**[Disused]**</b> ANYCAST_ZONE_B: publishing region B (updated to ANYCAST_ZONE_GLOBAL)</li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>",
+          "example": "ANYCAST_ZONE_A",
           "member": "string",
           "name": "AnycastZone",
           "required": false,
@@ -1868,6 +1875,7 @@
         {
           "default": "",
           "document": "<b>**[Disused]**</b>\nWhether the Anycast EIP can be bound to CLB instances.\n<ul style=\"margin:0\"><li>Valid for users who have activated the AIA. Values:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>\n<li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HAVIPs.</li></ul>Default: FALSE.</li></ul>",
+          "example": "False",
           "member": "bool",
           "name": "ApplicableForCLB",
           "required": false,
@@ -1876,6 +1884,7 @@
         {
           "default": "",
           "document": "List of tags to be bound.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -1884,8 +1893,18 @@
         {
           "default": "",
           "document": "The unique ID of a BGP bandwidth package. If you configure this parameter and set InternetChargeType as BANDWIDTH_PACKAGE, the new EIP is added to this package and billed by the bandwidth package mode.",
+          "example": "bwp-6jnvlsv4",
           "member": "string",
           "name": "BandwidthPackageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIP name, which is the custom EIP name given by the user when applying for the EIP. Default: not named",
+          "example": "test",
+          "member": "string",
+          "name": "AddressName",
           "required": false,
           "type": "string"
         }

@@ -468,7 +468,7 @@
         },
         {
           "default": "",
-          "document": "Number of API documents",
+          "document": "Number of APIs with API documents",
           "example": "1",
           "member": "int64",
           "name": "ApiCount",
