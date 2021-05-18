@@ -72,6 +72,12 @@
       "name": "Queries the sync mode",
       "output": "DescribeDBSyncModeResponse"
     },
+    "DescribeDCDBInstanceNodeInfo": {
+      "document": "This API is used to query the information of instance nodes.",
+      "input": "DescribeDCDBInstanceNodeInfoRequest",
+      "name": "Queries instance node information",
+      "output": "DescribeDCDBInstanceNodeInfoResponse"
+    },
     "DescribeDCDBInstances": {
       "document": "This API is used to query the list of TencentDB instances. It supports filtering instances by project ID, instance ID, private network address, and instance name.\nIf no filter is specified, 10 instances will be returned by default. Up to 100 instances can be returned for a single request.",
       "input": "DescribeDCDBInstancesRequest",
@@ -222,6 +228,39 @@
         }
       ],
       "type": "object"
+    },
+    "BriefNodeInfo": {
+      "document": "Node information of a sharded database",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role. Valid values: `master`, `slave`",
+          "member": "string",
+          "name": "Role",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the shard where the node resides",
+          "member": "string",
+          "name": "ShardId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CloneAccountRequest": {
       "document": "CloneAccount request structure.",
@@ -1792,6 +1831,69 @@
           "name": "CurrentSyncMode",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDCDBInstanceNodeInfoRequest": {
+      "document": "DescribeDCDBInstanceNodeInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsqlshard-8upuqubt",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned at a time. Value range: `(0-100]`. Default value: `100`.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset of the returned results. Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDCDBInstanceNodeInfoResponse": {
+      "document": "DescribeDCDBInstanceNodeInfo response structure.",
+      "members": [
+        {
+          "document": "Total number of nodes",
+          "example": "4",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Node information",
+          "example": "无",
+          "member": "BriefNodeInfo",
+          "name": "NodesInfo",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {

@@ -1,0 +1,205 @@
+{
+  "actions": {
+    "CreateAccount": {
+      "document": "On the partner platform, create a Tencent Cloud account. After the sub-customer is registered, it will be automatically bound to the partner account.\n\nNotes: <br>\n1. Create a Tencent Cloud account and enter the email address , Mobile phone number, the partner needs to verify the validity.<br>\n2, the customer needs to add personal information for the first login",
+      "input": "CreateAccountRequest",
+      "name": "Create customer interface",
+      "output": "CreateAccountResponse"
+    },
+    "GetCountryCodes": {
+      "document": "Get country and region code",
+      "input": "GetCountryCodesRequest",
+      "name": "Get area code",
+      "output": "GetCountryCodesResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-04-09",
+    "serviceNameCN": "国际合作伙伴",
+    "serviceShortName": "ip"
+  },
+  "objects": {
+    "CountryCodeItem": {
+      "document": "Get an element type of the country code interface",
+      "members": [
+        {
+          "default": "",
+          "document": "Country English Name",
+          "example": "Albania",
+          "member": "string",
+          "name": "EnName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country Chinese Name",
+          "example": "阿尔巴尼亚",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IOS2 standard country/region code",
+          "example": "AL",
+          "member": "string",
+          "name": "IOS2",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IOS3 standard country/region code",
+          "example": "ALB",
+          "member": "string",
+          "name": "IOS3",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Phone Code",
+          "example": "355",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateAccountRequest": {
+      "document": "CreateAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The account type identification of the newly created customer. The value of this interface is: business",
+          "example": "business",
+          "member": "string",
+          "name": "AccountType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Registered email address. The caller needs to ensure the validity and correctness of the email address.\nThe email format must be met. For example: account@qq.com",
+          "example": "account@qq.com",
+          "member": "string",
+          "name": "Mail",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account password.\nLength limit: [8,20].\nIt must also contain numbers, letters and special symbols (!@#$%^&*() and other non-spaces)",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reconfirm the password. It must be the same as the Password value",
+          "example": "无",
+          "member": "string",
+          "name": "ConfirmPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Customer's mobile phone number. The caller is required to ensure the validity and correctness of the mobile phone number.\nLength limit: [1,32]. Global mobile phone numbers are supported. For example, 18888888888",
+          "example": "18888888888",
+          "member": "string",
+          "name": "PhoneNum",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The country code of the customer. For the value, please refer to the GetCountryCodes interface GetCountryCodes. Such as 86",
+          "example": "86",
+          "member": "string",
+          "name": "CountryCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Customer's IOS2 standard country code. Refer to the GetCountryCodes interface for obtaining country codes. It needs to correspond to the CountryCode value. Such as CN",
+          "example": "CN",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Extension field, default is empty",
+          "example": "**********",
+          "member": "string",
+          "name": "Extended",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccountResponse": {
+      "document": "CreateAccount response structure.",
+      "members": [
+        {
+          "document": "The uin of the account",
+          "example": "无",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCountryCodesRequest": {
+      "document": "GetCountryCodes request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetCountryCodesResponse": {
+      "document": "GetCountryCodes response structure.",
+      "members": [
+        {
+          "document": "List of Country Codes",
+          "example": "[]",
+          "member": "CountryCodeItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

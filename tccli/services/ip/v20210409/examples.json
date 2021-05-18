@@ -1,0 +1,21 @@
+{
+  "actions": {
+    "CreateAccount": [
+      {
+        "document": "",
+        "input": "https://ip.tencentcloudapi.com/?Action=CreateAccount\n&AccountType=business\n&Mail=account@qq.com\n&Password=111111\n&ConfirmPassword=111111\n&PhoneNum=18888888888\n&CountryCode=86\n&Area= CN\n&Extended=11111111\n&<Public request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Uin\": \"200000123456\",\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
+        "title": "Apply to create an agent client account and bind it to the agent account"
+      }
+    ],
+    "GetCountryCodes": [
+      {
+        "document": "",
+        "input": "https://ip.tencentcloudapi.com/?Action=GetCountryCodes\n&<public request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"EnName\": \"Albania\",\n                \"Name\": \"Albania\",\n                \"IOS2\": \"AL\",\n                \"IOS3\": \"ALB\",\n                \"Code\": \"355\"\n            },\n            {\n                \"EnName\": \"Algeria\",\n                \"Name\": \"Algeria\",\n                \"IOS2\": \"DZ\",\n                \"Code\": \"213\"\n            }\n        ],\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
+        "title": "Get country and area code"
+      }
+    ]
+  },
+  "version": "1.0"
+}
