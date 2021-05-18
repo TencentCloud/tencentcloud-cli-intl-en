@@ -1,15 +1,15 @@
 {
   "actions": {
     "CreateAccount": {
-      "document": "On the partner platform, create a Tencent Cloud account. After the sub-customer is registered, it will be automatically bound to the partner account.\n\nNotes: <br>\n1. Create a Tencent Cloud account and enter the email address , Mobile phone number, the partner needs to verify the validity.<br>\n2, the customer needs to add personal information for the first login",
+      "document": "This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.\n\nNotes:<br>\n1. To create the Tencent Cloud account, the partner should enter and verify the customer’s email address and mobile number.<br>\n2. The customer needs to complete personal information after the first login.",
       "input": "CreateAccountRequest",
-      "name": "Create customer interface",
+      "name": "Creates a Tencent Cloud account on behalf of a customer",
       "output": "CreateAccountResponse"
     },
     "GetCountryCodes": {
-      "document": "Get country and region code",
+      "document": "This API is used to obtain country and region codes.",
       "input": "GetCountryCodesRequest",
-      "name": "Get area code",
+      "name": "Obtains country and region codes",
       "output": "GetCountryCodesResponse"
     }
   },
@@ -20,11 +20,11 @@
   },
   "objects": {
     "CountryCodeItem": {
-      "document": "Get an element type of the country code interface",
+      "document": "Country/region code list",
       "members": [
         {
           "default": "",
-          "document": "Country English Name",
+          "document": "Country/region name in English",
           "example": "Albania",
           "member": "string",
           "name": "EnName",
@@ -34,7 +34,7 @@
         },
         {
           "default": "",
-          "document": "Country Chinese Name",
+          "document": "Country/region name in Chinese",
           "example": "阿尔巴尼亚",
           "member": "string",
           "name": "Name",
@@ -64,7 +64,7 @@
         },
         {
           "default": "",
-          "document": "Phone Code",
+          "document": "Phone code",
           "example": "355",
           "member": "string",
           "name": "Code",
@@ -80,7 +80,7 @@
       "members": [
         {
           "default": "",
-          "document": "The account type identification of the newly created customer. The value of this interface is: business",
+          "document": "Account type of a new customer. Valid value: `business`.",
           "example": "business",
           "member": "string",
           "name": "AccountType",
@@ -89,7 +89,7 @@
         },
         {
           "default": "",
-          "document": "Registered email address. The caller needs to ensure the validity and correctness of the email address.\nThe email format must be met. For example: account@qq.com",
+          "document": "Registered email address, which should be valid and correct.\nFor example, account@qq.com.",
           "example": "account@qq.com",
           "member": "string",
           "name": "Mail",
@@ -98,7 +98,7 @@
         },
         {
           "default": "",
-          "document": "Account password.\nLength limit: [8,20].\nIt must also contain numbers, letters and special symbols (!@#$%^&*() and other non-spaces)",
+          "document": "Account password\nLength limit: 8-20 characters\nA password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.",
           "example": "无",
           "member": "string",
           "name": "Password",
@@ -107,7 +107,7 @@
         },
         {
           "default": "",
-          "document": "Reconfirm the password. It must be the same as the Password value",
+          "document": "Confirm the password. It must be the same as the `Password` field.",
           "example": "无",
           "member": "string",
           "name": "ConfirmPassword",
@@ -116,7 +116,7 @@
         },
         {
           "default": "",
-          "document": "Customer's mobile phone number. The caller is required to ensure the validity and correctness of the mobile phone number.\nLength limit: [1,32]. Global mobile phone numbers are supported. For example, 18888888888",
+          "document": "Customer mobile number, which should be valid and correct.\nA global mobile number within 1-32 digits is allowed, such as 18888888888.",
           "example": "18888888888",
           "member": "string",
           "name": "PhoneNum",
@@ -125,7 +125,7 @@
         },
         {
           "default": "",
-          "document": "The country code of the customer. For the value, please refer to the GetCountryCodes interface GetCountryCodes. Such as 86",
+          "document": "Country code, which can be obtained via the `GetCountryCodes` API, such as `86`.",
           "example": "86",
           "member": "string",
           "name": "CountryCode",
@@ -134,7 +134,7 @@
         },
         {
           "default": "",
-          "document": "Customer's IOS2 standard country code. Refer to the GetCountryCodes interface for obtaining country codes. It needs to correspond to the CountryCode value. Such as CN",
+          "document": "ISO2 standard country code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field.",
           "example": "CN",
           "member": "string",
           "name": "Area",
@@ -143,7 +143,7 @@
         },
         {
           "default": "",
-          "document": "Extension field, default is empty",
+          "document": "Expanded field, which is left empty by default.",
           "example": "**********",
           "member": "string",
           "name": "Extended",
@@ -157,7 +157,7 @@
       "document": "CreateAccount response structure.",
       "members": [
         {
-          "document": "The uin of the account",
+          "document": "Account UIN",
           "example": "无",
           "member": "string",
           "name": "Uin",
@@ -183,7 +183,7 @@
       "document": "GetCountryCodes response structure.",
       "members": [
         {
-          "document": "List of Country Codes",
+          "document": "List of country/region codes",
           "example": "[]",
           "member": "CountryCodeItem",
           "name": "Data",
