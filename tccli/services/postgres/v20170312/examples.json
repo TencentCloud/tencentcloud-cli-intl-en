@@ -5,7 +5,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=AddDBInstanceToReadOnlyGroup\n&DBInstanceId=\"postgres-k95qzetn\"\n&ReadOnlyGroupId=\"pgrogrp-test\"\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912\n    }\n}",
-        "title": "Adding the \"postgres-k95qzetn\" read-only replica to the \"pgrogrp-test\" RO group"
+        "title": "Adding the \"postgres-k95qzetn\" instance to the \"pgrogrp-test\" RO group"
       }
     ],
     "CloseDBExtranetAccess": [
@@ -161,7 +161,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=DescribeProductConfig\n&Zone=ap-guangzhou-2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eaa0a364-08c9-42f6-888e-4e3b7e99b50d\",\n        \"SpecInfoList\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"SpecItemInfoList\": [\n                    {\n                        \"SpecCode\": \"cdb.pg.z1.2g\",\n                        \"Version\": \"9.5.4\",\n                        \"VersionName\": \"PostgreSQL 9.5.4\",\n                        \"Cpu\": 1,\n                        \"Memory\": 2048,\n                        \"MaxStorage\": 1000,\n                        \"MinStorage\": 10,\n                        \"Qps\": 2100,\n                        \"Pid\": 11004,\n                        \"Type\": \"TS85\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying the purchasable specification information in an availability zone in a region"
+        "title": "Querying the purchasable specification information in an AZ in a region"
       }
     ],
     "DescribeReadOnlyGroups": [
@@ -193,7 +193,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=DescribeZones\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"59c438d4-95ab-4865-993d-dc388d2660d8\",\n        \"TotalCount\": 3,\n        \"ZoneSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"ZoneId\": 100002,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"ZoneId\": 100003,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"ZoneId\": 100004,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0\n            }\n        ]\n    }\n}",
-        "title": "Querying availability zones in a specified region"
+        "title": "Querying AZs in a specified region"
       }
     ],
     "DestroyDBInstance": [
@@ -217,7 +217,7 @@
         "document": "This example shows you how to initialize the instance whose ID is \"postgres-6fego161\".",
         "input": "https://postgres.tencentcloudapi.com/?Action=InitDBInstances\n&DBInstanceIdSet.0=postgres-6fego161\n&AdminName=testuser\n&AdminPassword=testuser%40123\n&Charset=UTF8\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"98fe67de-f7a7-4285-b1f2-40c2a2a3495e\",\n        \"DBInstanceIdSet\": [\n            \"postgres-6fego161\"\n        ]\n    }\n}",
-        "title": "Initializing one instance"
+        "title": "Initializing single instance"
       },
       {
         "document": "This example shows you how to simultaneously initialize two instances whose IDs are \"postgres-6fego161\" and \"postgres-lnp6j617\" respectively.",
@@ -337,7 +337,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=RebalanceReadOnlyGroup\n&ReadOnlyGroupId=\"pgrogrp-e0tfm161\"\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
-        "title": "Rebalancing the traffic load of read-only replicas in an RO group"
+        "title": "Rebalancing the traffic load of instances in an RO group"
       }
     ],
     "RemoveDBInstanceFromReadOnlyGroup": [
@@ -345,7 +345,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=RemoveDBInstanceFromReadOnlyGroup\n&DBInstanceId=\"pgro-k95qzetn\"\n&ReadOnlyGroupId=\"pgrogrp-k95qzetn\"\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912\n    }\n}",
-        "title": "Removing a read-only replica from an RO group"
+        "title": "Removing an instance from an RO group"
       }
     ],
     "RenewInstance": [

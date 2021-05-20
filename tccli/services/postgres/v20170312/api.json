@@ -2514,7 +2514,7 @@
         },
         {
           "default": "",
-          "document": "Specify the valid period (in months) of the monthly-subscribed instance when removing it from isolation",
+          "document": "The valid period (in months) of the monthly-subscribed instance when removing it from isolation",
           "example": "1",
           "member": "int64",
           "name": "Period",

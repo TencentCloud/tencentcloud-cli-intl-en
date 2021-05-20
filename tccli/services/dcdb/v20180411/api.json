@@ -1856,7 +1856,7 @@
         },
         {
           "default": "",
-          "document": "The maximum number of results returned at a time. Value range: `(0-100]`. Default value: `100`.",
+          "document": "The maximum number of results returned at a time. Value range: (0-100]. Default value: `100`.",
           "example": "100",
           "member": "uint64",
           "name": "Limit",

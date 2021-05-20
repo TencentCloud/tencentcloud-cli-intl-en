@@ -25,7 +25,7 @@
       "output": "CreateClusterResponse"
     },
     "CreateSnapshots": {
-      "document": "This API is used to create one or more table snapshots at specific points in time in the past.",
+      "document": "This API is used to create one or more table snapshots at a specified past time point.",
       "input": "CreateSnapshotsRequest",
       "name": "Creates table snapshots",
       "output": "CreateSnapshotsResponse"

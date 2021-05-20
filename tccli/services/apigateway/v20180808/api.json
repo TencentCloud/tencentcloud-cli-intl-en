@@ -3021,10 +3021,20 @@
         {
           "default": "",
           "document": "Unique ID of the service to be deleted.",
+          "example": "service-kaghtzi4",
           "member": "string",
           "name": "ServiceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A parameter which is specified to skip the deletion precondition verification (only supported for services on dedicated instances).",
+          "example": "0",
+          "member": "int64",
+          "name": "SkipVerification",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
