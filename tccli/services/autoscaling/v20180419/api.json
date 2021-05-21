@@ -169,7 +169,7 @@
       "output": "DescribeScheduledActionsResponse"
     },
     "DetachInstances": {
-      "document": "This API is used to remove CVM instances from a scaling group. Instances removed via this API will not be terminated.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, an error will be reported.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.",
+      "document": "This API is used to remove CVM instances from a scaling group. Instances removed via this API will not be terminated.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, this API will return an error.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.\n\nThis removal will unassociate the CVM from the CLB instance that has been configured for the scaling group.\n ",
       "input": "DetachInstancesRequest",
       "name": "Detaches CVM instances from an auto scaling group",
       "output": "DetachInstancesResponse"
@@ -241,7 +241,7 @@
       "output": "PreviewPaiDomainNameResponse"
     },
     "RemoveInstances": {
-      "document": "This API is used to remove CVM instances from a scaling group. Instances that are automatically created through AS will be terminated, while those manually added to the scaling group will be removed and retained.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, an error will be reported.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.",
+      "document": "This API is used to remove CVM instances from a scaling group. Instances that are automatically created through AS will be terminated, while those manually added to the scaling group will be removed and retained.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, this API will return an error.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.\n\nThis removal will unassociate the CVM from the CLB instance that has been configured for the scaling group.\n ",
       "input": "RemoveInstancesRequest",
       "name": "Removes CVM instances from an auto scaling group",
       "output": "RemoveInstancesResponse"
@@ -1286,7 +1286,7 @@
         },
         {
           "default": "",
-          "document": "Settings of CVM instance names.",
+          "document": "Settings of CVM instance names\nIf this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.",
           "example": "无",
           "member": "InstanceNameSettings",
           "name": "InstanceNameSettings",
@@ -1339,6 +1339,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID",
+          "example": "asg-8fbozqja",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -1347,6 +1348,7 @@
         {
           "default": "",
           "document": "Lifecycle hook name, which can contain Chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 bytes.",
+          "example": "one-hook-default",
           "member": "string",
           "name": "LifecycleHookName",
           "required": true,
@@ -1355,6 +1357,7 @@
         {
           "default": "",
           "document": "Scenario for the lifecycle hook. Valid values: \"INSTANCE_LAUNCHING\" and \"INSTANCE_TERMINATING\"",
+          "example": "INSTANCE_LAUNCHING",
           "member": "string",
           "name": "LifecycleTransition",
           "required": true,
@@ -1363,6 +1366,7 @@
         {
           "default": "",
           "document": "Defined actions when lifecycle hook times out. Valid values: \"CONTINUE\" and \"ABANDON\". Default value: \"CONTINUE\"",
+          "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
           "required": false,
@@ -1370,7 +1374,8 @@
         },
         {
           "default": "",
-          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-3,600. Default value: 300",
+          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7,200. Default value: 300",
+          "example": "300",
           "member": "int64",
           "name": "HeartbeatTimeout",
           "required": false,
@@ -1379,6 +1384,7 @@
         {
           "default": "",
           "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default. Up to 1024 characters are allowed.",
+          "example": "\"\"",
           "member": "string",
           "name": "NotificationMetadata",
           "required": false,
@@ -1387,6 +1393,7 @@
         {
           "default": "",
           "document": "Notification target",
+          "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
           "required": false,
@@ -1395,6 +1402,7 @@
         {
           "default": "",
           "document": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. ",
+          "example": "NORMAL",
           "member": "string",
           "name": "LifecycleTransitionType",
           "required": false,
@@ -2859,7 +2867,8 @@
       "members": [
         {
           "default": "",
-          "document": "Host name of a CVM.\n<br><li> A period (.) and hyphen (-) cannot be used as the first and the last characters of HostName, and multiple consecutive hyphens (-) or periods (.) are not allowed.\n<br><li> No support for Windows instances.\n<br><li> Other types of instances (such as Linux): the name should be a combination of 2 to 40 characters, supports multiple periods (.). The string between two periods can be composed of letters (case insensitive), numbers, and hyphens (-).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hostname of a CVM\n<br><li>The `HostName` cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.\n<br><li>This field is unavailable to CVM instances.\n<br><li>Other types of instances (such as Linux): the name contains 2 to 40 characters, and supports multiple periods (.). The string between two periods can consist of letters (case insensitive), numbers, and hyphens (-), and cannot be all numbers.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "aaa",
           "member": "string",
           "name": "HostName",
           "required": true,
@@ -2869,6 +2878,7 @@
         {
           "default": "",
           "document": "Type of CVM host name. Valid values: \"ORIGINAL\" and \"UNIQUE\". Default value: \"ORIGINAL\"\n<br><li> ORIGINAL. Auto Scaling transfers the HostName set in input parameters to the CVM directly. CVM may adds serial numbers for the HostName. The HostName of instances within the auto scaling group may conflict.\n<br><li> UNIQUE. The HostName set in input parameters is the prefix of a host name. Auto Scaling and CVM expand it. The HostName of an instance in the auto scaling group is unique.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ORIGINAL",
           "member": "string",
           "name": "HostNameStyle",
           "required": false,
@@ -3054,7 +3064,8 @@
       "members": [
         {
           "default": "",
-          "document": "CVM instance name.\n\nThe InstanceName cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.\n\nOther types (such as Linux) of instances: The name should be a combination of 2 to 40 characters, supporting multiple periods (.). The piece between two periods is composed of letters (case insensitive), numbers, and hyphens (-).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "CVM instance name\n\nThe `InstanceName` cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.\n\nOther types of instances (such as Linux): the name contains 2 to 40 characters, and supports multiple periods (.). The string between two periods can consist of letters (case insensitive), numbers, and hyphens (-), and cannot be all numbers.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "aaa",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -3064,6 +3075,7 @@
         {
           "default": "",
           "document": "Type of CVM instance name. Valid values: \"ORIGINAL\" and \"UNIQUE\". Default value: \"ORIGINAL\".\n\nORIGINAL: Auto Scaling transfers the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the auto scaling group may conflict.\n\nUNIQUE: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the auto scaling group is unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ORIGINAL",
           "member": "string",
           "name": "InstanceNameStyle",
           "required": false,
@@ -3145,6 +3157,7 @@
         {
           "default": "",
           "document": "Project ID of the instance.",
+          "example": "无",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -3154,6 +3167,7 @@
         {
           "default": "",
           "document": "Launch configuration ID.",
+          "example": "无",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -3163,6 +3177,7 @@
         {
           "default": "",
           "document": "Launch configuration name.",
+          "example": "无",
           "member": "string",
           "name": "LaunchConfigurationName",
           "required": true,
@@ -3172,6 +3187,7 @@
         {
           "default": "",
           "document": "Instance model.",
+          "example": "无",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -3181,6 +3197,7 @@
         {
           "default": "",
           "document": "Information of the instance's system disk configuration.",
+          "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
           "required": true,
@@ -3190,6 +3207,7 @@
         {
           "default": "",
           "document": "Information of the instance's data disk configuration.",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": true,
@@ -3199,6 +3217,7 @@
         {
           "default": "",
           "document": "Instance login settings.",
+          "example": "无",
           "member": "LimitedLoginSettings",
           "name": "LoginSettings",
           "required": true,
@@ -3208,6 +3227,7 @@
         {
           "default": "",
           "document": "Information of the public network bandwidth configuration.",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
           "required": true,
@@ -3217,6 +3237,7 @@
         {
           "default": "",
           "document": "Security group of the instance.",
+          "example": "无",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": true,
@@ -3226,6 +3247,7 @@
         {
           "default": "",
           "document": "Auto scaling group associated with the launch configuration.",
+          "example": "无",
           "member": "AutoScalingGroupAbstract",
           "name": "AutoScalingGroupAbstractSet",
           "required": true,
@@ -3235,6 +3257,7 @@
         {
           "default": "",
           "document": "Custom data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "UserData",
           "required": true,
@@ -3244,6 +3267,7 @@
         {
           "default": "",
           "document": "Creation time of the launch configuration.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -3253,6 +3277,7 @@
         {
           "default": "",
           "document": "Conditions of enhancement services for the instance and their settings.",
+          "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
           "required": true,
@@ -3262,6 +3287,7 @@
         {
           "default": "",
           "document": "Image ID.",
+          "example": "无",
           "member": "string",
           "name": "ImageId",
           "required": true,
@@ -3271,6 +3297,7 @@
         {
           "default": "",
           "document": "Current status of the launch configuration. Value range: <br><li>NORMAL: normal <br><li>IMAGE_ABNORMAL: Exception with the image of the launch configuration <br><li>CBS_SNAP_ABNORMAL: Exception with the data disk snapshot of the launch configuration <br><li>SECURITY_GROUP_ABNORMAL: Exception with the security group of the launch configuration<br>",
+          "example": "无",
           "member": "string",
           "name": "LaunchConfigurationStatus",
           "required": true,
@@ -3280,6 +3307,7 @@
         {
           "default": "",
           "document": "Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.\n<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis\n<br><li>SPOTPAID: Bidding",
+          "example": "无",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
@@ -3289,6 +3317,7 @@
         {
           "default": "",
           "document": "Market-related options of the instance, such as the parameters related to stop instances. If the billing method of instance is specified as bidding, this parameter must be passed in.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
           "required": true,
@@ -3298,6 +3327,7 @@
         {
           "default": "",
           "document": "List of instance models.",
+          "example": "无",
           "member": "string",
           "name": "InstanceTypes",
           "required": true,
@@ -3307,6 +3337,7 @@
         {
           "default": "",
           "document": "List of tags.",
+          "example": "无",
           "member": "InstanceTag",
           "name": "InstanceTags",
           "required": true,
@@ -3316,6 +3347,7 @@
         {
           "default": "",
           "document": "Version number.",
+          "example": "无",
           "member": "int64",
           "name": "VersionNumber",
           "required": true,
@@ -3325,6 +3357,7 @@
         {
           "default": "",
           "document": "Update time.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "UpdatedTime",
           "required": true,
@@ -3334,6 +3367,7 @@
         {
           "default": "",
           "document": "CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.",
+          "example": "无",
           "member": "string",
           "name": "CamRoleName",
           "required": true,
@@ -3343,6 +3377,7 @@
         {
           "default": "",
           "document": "Value of InstanceTypesCheckPolicy upon the last operation.",
+          "example": "无",
           "member": "string",
           "name": "LastOperationInstanceTypesCheckPolicy",
           "required": true,
@@ -3352,6 +3387,7 @@
         {
           "default": "",
           "document": "CVM HostName settings.",
+          "example": "无",
           "member": "HostNameSettings",
           "name": "HostNameSettings",
           "required": true,
@@ -3361,6 +3397,7 @@
         {
           "default": "",
           "document": "Settings of CVM instance names.",
+          "example": "无",
           "member": "InstanceNameSettings",
           "name": "InstanceNameSettings",
           "required": true,
@@ -3370,10 +3407,21 @@
         {
           "default": "",
           "document": "Sets prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.",
+          "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone",
+          "example": "无",
+          "member": "string",
+          "name": "DiskTypePolicy",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -5039,6 +5087,7 @@
         {
           "default": "",
           "document": "Lifecycle hook ID",
+          "example": "ash-8azjzxj9",
           "member": "string",
           "name": "LifecycleHookId",
           "required": true,
@@ -5047,6 +5096,7 @@
         {
           "default": "",
           "document": "Lifecycle hook name",
+          "example": "hook-updated",
           "member": "string",
           "name": "LifecycleHookName",
           "required": true,
@@ -5055,6 +5105,7 @@
         {
           "default": "",
           "document": "Scenario for the lifecycle hook. Value range: \"INSTANCE_LAUNCHING\", \"INSTANCE_TERMINATING\"",
+          "example": "INSTANCE_LAUNCHING",
           "member": "string",
           "name": "LifecycleTransition",
           "required": true,
@@ -5063,6 +5114,7 @@
         {
           "default": "",
           "document": "Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: \"CONTINUE\", \"ABANDON\". Default value: \"CONTINUE\"",
+          "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
           "required": false,
@@ -5070,7 +5122,8 @@
         },
         {
           "default": "",
-          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-3,600. Default value: 300",
+          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7,200. Default value: 300",
+          "example": "240",
           "member": "int64",
           "name": "HeartbeatTimeout",
           "required": false,
@@ -5079,6 +5132,7 @@
         {
           "default": "",
           "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default.",
+          "example": "\"\"",
           "member": "string",
           "name": "NotificationMetadata",
           "required": false,
@@ -5087,6 +5141,7 @@
         {
           "default": "",
           "document": "Notification target",
+          "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
           "required": false,
@@ -5095,6 +5150,7 @@
         {
           "default": "",
           "document": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. ",
+          "example": "NORMAL",
           "member": "string",
           "name": "LifecycleTransitionType",
           "required": false,

@@ -926,7 +926,7 @@
         },
         {
           "default": "",
-          "document": "List of subtitle IDs (maximum: 10)",
+          "document": "List of subtitle IDs (maximum: 16)",
           "example": "[]",
           "member": "string",
           "name": "SubtitleSet",
@@ -4844,6 +4844,15 @@
           "name": "SubtitleIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access the resources in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -9672,14 +9681,16 @@
         {
           "default": "",
           "document": "Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).",
+          "example": "FINISH",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
           "document": "Filter: file ID.",
+          "example": "528xxx",
           "member": "string",
           "name": "FileId",
           "required": false,
@@ -9687,7 +9698,35 @@
         },
         {
           "default": "",
+          "document": "Filter: task creation time.",
+          "example": "无",
+          "member": "TimeRange",
+          "name": "CreateTime",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Filter: task end time.",
+          "example": "无",
+          "member": "TimeRange",
+          "name": "FinishTime",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Sort field. Valid values:\n<li> CreateTime: task creation time</li>\n<li>FinishTime: task end time</li>",
+          "example": "无",
+          "member": "SortBy",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "Number of entries to be returned. Default value: 10. Maximum value: 100.",
+          "example": "5",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -9696,6 +9735,7 @@
         {
           "default": "",
           "document": "Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.",
+          "example": "taskId6",
           "member": "string",
           "name": "ScrollToken",
           "required": false,
@@ -9704,6 +9744,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "145xxx",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -12176,7 +12217,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Storage class of a media file:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>",
           "example": "STANDARD",
           "member": "string",
           "name": "StorageClass",
@@ -19317,6 +19358,24 @@
           "document": "Task ID.",
           "member": "string",
           "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. Valid values: `WAITING` (waiting), `PROCESSING` (processing), `FINISH` (completed)",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video ID",
+          "member": "string",
+          "name": "FileId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
