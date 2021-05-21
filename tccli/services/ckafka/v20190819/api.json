@@ -66,6 +66,12 @@
       "name": "Queries user list",
       "output": "DescribeAppInfoResponse"
     },
+    "DescribeCkafkaZone": {
+      "document": "This API is used to view the availability zone (AZ) list of Ckafka.",
+      "input": "DescribeCkafkaZoneRequest",
+      "name": "Views the AZ list",
+      "output": "DescribeCkafkaZoneResponse"
+    },
     "DescribeConsumerGroup": {
       "document": "This API is used to query consumer group information.",
       "input": "DescribeConsumerGroupRequest",
@@ -107,6 +113,12 @@
       "input": "DescribeInstancesDetailRequest",
       "name": "Gets instance list details",
       "output": "DescribeInstancesDetailResponse"
+    },
+    "DescribeRegion": {
+      "document": "This API is used to enumerate regions, only including Guangzhou.",
+      "input": "DescribeRegionRequest",
+      "name": "Enumerates regions",
+      "output": "DescribeRegionResponse"
     },
     "DescribeRoute": {
       "document": "This API is used to view route information.",
@@ -294,6 +306,84 @@
           "document": "Topic information list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "GroupInfoTopics",
           "name": "Topics",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterInfo": {
+      "document": "Cluster information entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "int64",
+          "name": "ClusterId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The cluster’s maximum disk capacity in GB\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaxDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The cluster’s maximum bandwidth in MB/s\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaxBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The cluster’s available disk capacity in GB\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AvailableDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The cluster’s available bandwidth in MB/s\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "AvailableBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The AZ which the cluster belongs to\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The AZ which the cluster nodes belong to. If the cluster is a multi-AZ cluster, this field means multiple AZs which the cluster nodes belong to.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ZoneIds",
           "required": true,
           "type": "list",
           "value_allowed_null": true
@@ -1193,6 +1283,32 @@
       ],
       "type": "object"
     },
+    "DescribeCkafkaZoneRequest": {
+      "document": "DescribeCkafkaZone request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCkafkaZoneResponse": {
+      "document": "DescribeCkafkaZone response structure.",
+      "members": [
+        {
+          "document": "The entity of query result complex objects",
+          "example": "无",
+          "member": "ZoneResponse",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeConsumerGroupRequest": {
       "document": "DescribeConsumerGroup request structure.",
       "members": [
@@ -1630,6 +1746,60 @@
           "name": "Result",
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionRequest": {
+      "document": "DescribeRegion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The offset value",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned",
+          "example": "50",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Business field, which can be ignored.",
+          "example": "10",
+          "member": "string",
+          "name": "Business",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionResponse": {
+      "document": "DescribeRegion response structure.",
+      "members": [
+        {
+          "document": "List of the returned results of enumerated regions\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Region",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3334,6 +3504,116 @@
       ],
       "usage": "out"
     },
+    "Price": {
+      "document": "Message price entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Discounted price",
+          "member": "float",
+          "name": "RealTotalCost",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original price",
+          "member": "float",
+          "name": "TotalCost",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Region": {
+      "document": "Region entity object",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "广州",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Area name",
+          "example": "华南地区",
+          "member": "string",
+          "name": "AreaName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region code\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "gz",
+          "member": "string",
+          "name": "RegionCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region code (V3)\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionCodeV3",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "NONE: no special models are supported by default.\\nCVM: the CVM type is supported.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "profession",
+          "member": "string",
+          "name": "Support",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether ipv6 is supported. `0` indicates no, and `1` indicates yes.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Ipv6",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether multi-zone clusters are supported.`0` indicates no, and `1` indicates yes.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "MultiZone",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Route": {
       "document": "Route entity object",
       "members": [
@@ -3918,6 +4198,180 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneInfo": {
+      "document": "Zone information entity",
+      "members": [
+        {
+          "default": "",
+          "document": "Zone ID",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an internal App.",
+          "member": "int64",
+          "name": "IsInternalApp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "app id",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Identifier",
+          "member": "bool",
+          "name": "Flag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Zone name",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Zone status",
+          "member": "int64",
+          "name": "ZoneStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extra identifier",
+          "member": "string",
+          "name": "Exflag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.",
+          "member": "string",
+          "name": "SoldOut",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneResponse": {
+      "document": "The entity returned for the query of Kafka’s zone information",
+      "members": [
+        {
+          "default": "",
+          "document": "Zone list",
+          "member": "ZoneInfo",
+          "name": "ZoneList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of instances to be purchased",
+          "member": "int64",
+          "name": "MaxBuyInstanceNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum bandwidth in MB/S",
+          "member": "int64",
+          "name": "MaxBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pay-as-you-go unit price",
+          "member": "Price",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pay-as-you-go unit message price",
+          "member": "Price",
+          "name": "MessagePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster information dedicated to a user\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "ClusterInfo",
+          "name": "ClusterInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchase of Standard Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Standard",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchase of Standard S2 Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StandardS2",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchase of Pro Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Profession",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchase of Physical Dedicated Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Physical",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
