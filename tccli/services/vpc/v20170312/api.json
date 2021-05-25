@@ -3934,6 +3934,7 @@
         {
           "default": "",
           "document": "The name of the direct connect gateway.",
+          "example": "test",
           "member": "string",
           "name": "DirectConnectGatewayName",
           "required": true,
@@ -3942,6 +3943,7 @@
         {
           "default": "",
           "document": "The type of the associated network. Valid values:\n<li>VPC</li>\n<li>CCN</li>",
+          "example": "VPC",
           "member": "string",
           "name": "NetworkType",
           "required": true,
@@ -3950,6 +3952,7 @@
         {
           "default": "",
           "document": "<li>When the NetworkType is VPC, this value is the VPC instance ID</li>\n<li>When the NetworkType is CCN, this value is the CCN instance ID</li>",
+          "example": "vpc-m7sr81gh",
           "member": "string",
           "name": "NetworkInstanceId",
           "required": true,
@@ -3958,6 +3961,7 @@
         {
           "default": "",
           "document": "The type of the gateway. Valid values:\n<li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>\n<li>NAT - NAT type</li>NAT gateway supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway",
+          "example": "NAT",
           "member": "string",
           "name": "GatewayType",
           "required": false,
@@ -3966,8 +3970,18 @@
         {
           "default": "",
           "document": "CCN route publishing method. Valid values: `standard` and `exquisite`. This parameter is only valid for the CCN direct connect gateway.",
+          "example": "standard",
           "member": "string",
           "name": "ModeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Availability zone where the direct connect gateway resides.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
           "required": false,
           "type": "string"
         }
@@ -9041,7 +9055,7 @@
       "members": [
         {
           "default": "",
-          "document": "Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.\n<li>route-table-id - String - (Filter condition) Route table instance ID.</li>\n<li>route-table-name - String - (Filter condition) Route table name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>association.main - String - (Filter condition) Whether it is the main route table.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>\n<li>is-need-router-info - String - (Filter condition) Whether to obtain routing policies. It defaults to `false`. To obtain routing policies, change the parameter value to `true`.</li>",
+          "document": "Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.\n<li>route-table-id - String - (Filter condition) Route table instance ID.</li>\n<li>route-table-name - String - (Filter condition) Route table name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>association.main - String - (Filter condition) Whether it is the main route table.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>",
           "example": "[{\"Name\":\"route-table-id\", \"Values\": [\"rtb-3yuu2t62\"]},{\"Name\":\"",
           "member": "Filter",
           "name": "Filters",
@@ -10312,6 +10326,7 @@
         {
           "default": "",
           "document": "Direct Connect `ID`.",
+          "example": "dcg-e6mxyyvj",
           "member": "string",
           "name": "DirectConnectGatewayId",
           "required": true,
@@ -10321,6 +10336,7 @@
         {
           "default": "",
           "document": "Direct Connect gateway name.",
+          "example": "test",
           "member": "string",
           "name": "DirectConnectGatewayName",
           "required": true,
@@ -10330,6 +10346,7 @@
         {
           "default": "",
           "document": "The `ID` of the `VPC` instance associated with the Direct Connect gateway.",
+          "example": "vpc-hm2okght",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -10339,6 +10356,7 @@
         {
           "default": "",
           "document": "The associated network type:\n<li>`VPC` - VPC</li>\n<li>`CCN` - CCN</li>",
+          "example": "CCN",
           "member": "string",
           "name": "NetworkType",
           "required": true,
@@ -10348,6 +10366,7 @@
         {
           "default": "",
           "document": "The `ID` of the associated network instance:\n<li>When the NetworkType is `VPC`, this value is the VPC instance `ID`</li>\n<li>When the NetworkType is `CCN`, this value is the CCN instance `ID`</li>",
+          "example": "ccn-4rukgymd",
           "member": "string",
           "name": "NetworkInstanceId",
           "required": true,
@@ -10357,6 +10376,7 @@
         {
           "default": "",
           "document": "Gateway type:\n<li>NORMAL - Standard type. Note: CCN only supports the standard type</li>\n<li>NAT - NAT type</li>\nNAT type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway",
+          "example": "NORMAL",
           "member": "string",
           "name": "GatewayType",
           "required": true,
@@ -10366,6 +10386,7 @@
         {
           "default": "",
           "document": "Creation Time.",
+          "example": "2020-02-01 12:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -10375,6 +10396,7 @@
         {
           "default": "",
           "document": "Direct Connect gateway IP.",
+          "example": "10.212.253.59",
           "member": "string",
           "name": "DirectConnectGatewayIp",
           "required": true,
@@ -10384,6 +10406,7 @@
         {
           "default": "",
           "document": "The `ID` of the `CCN` instance associated with the Direct Connect gateway.",
+          "example": "ccn-4rukgymd",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -10393,6 +10416,7 @@
         {
           "default": "",
           "document": "The route-learning type of the CCN:\n<li>`BGP` - Automatic learning.</li>\n<li>`STATIC` - Static, that is, user-configured.</li>",
+          "example": "BGP",
           "member": "string",
           "name": "CcnRouteType",
           "required": true,
@@ -10402,6 +10426,7 @@
         {
           "default": "",
           "document": "Whether BGP is enabled.",
+          "example": "true",
           "member": "bool",
           "name": "EnableBGP",
           "required": true,
@@ -10411,6 +10436,7 @@
         {
           "default": "",
           "document": "Whether to enable BGP's `community` attribute. Valid values: enable, disable",
+          "example": "false",
           "member": "bool",
           "name": "EnableBGPCommunity",
           "required": true,
@@ -10420,6 +10446,7 @@
         {
           "default": "",
           "document": "ID of the NAT gateway bound.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "NAT-TEST",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -10429,6 +10456,7 @@
         {
           "default": "",
           "document": "Whether the direct connect gateway supports the VXLAN architecture.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "VXLANSupport",
           "required": true,
@@ -10438,8 +10466,29 @@
         {
           "default": "",
           "document": "CCN route publishing mode. Valid values: `standard` and `exquisite`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "standard",
           "member": "string",
           "name": "ModeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the direct connect gateway is for an edge zone.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "LocalZone",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone where the direct connect gateway resides.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -11657,8 +11706,9 @@
       "document": "Internet Key Exchange (IKE) configuration. IKE has a self-protection mechanism. The network security protocol is configured by the user.",
       "members": [
         {
-          "default": "IKEV1",
-          "document": "Encryption algorithm. Available values: '3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', and 'DES-CBC'. Default is 3DES-CBC.",
+          "default": "",
+          "document": "Encryption algorithm. Valid values: `3DES-CBC`, `AES-CBC-128`, `AES-CBS-192`, `AES-CBC-256`, `DES-CBC`, and `SM4`; default value: `3DES-CBC`.",
+          "example": "3DES-CBC",
           "member": "string",
           "name": "PropoEncryAlgorithm",
           "required": false,
@@ -11667,7 +11717,8 @@
         },
         {
           "default": "",
-          "document": "Verification algorithm. Available value: 'MD5' and 'SHA1'. Default is MD5.",
+          "document": "Authentication algorithm. Valid values: `MD5`, `SHA1` and `SHA-256`; default value: `MD5`.",
+          "example": "MD5",
           "member": "string",
           "name": "PropoAuthenAlgorithm",
           "required": false,
@@ -11677,6 +11728,7 @@
         {
           "default": "",
           "document": "Negotiation mode. Available values: 'AGGRESSIVE' and 'MAIN'. Default is MAIN.",
+          "example": "MAIN",
           "member": "string",
           "name": "ExchangeMode",
           "required": false,
@@ -11686,6 +11738,7 @@
         {
           "default": "",
           "document": "Type of local identity. Available values: 'ADDRESS' and 'FQDN'. Default is ADDRESS.",
+          "example": "ADDRESS",
           "member": "string",
           "name": "LocalIdentity",
           "required": false,
@@ -11695,6 +11748,7 @@
         {
           "default": "",
           "document": "Type of remote identity. Available values: 'ADDRESS' and 'FQDN'. Default is ADDRESS.",
+          "example": "ADDRESS",
           "member": "string",
           "name": "RemoteIdentity",
           "required": false,
@@ -11704,6 +11758,7 @@
         {
           "default": "",
           "document": "Local identity. When ADDRESS is selected for LocalIdentity, LocalAddress is required. The default LocalAddress is the public IP of the VPN gateway.",
+          "example": "1.2.3.4",
           "member": "string",
           "name": "LocalAddress",
           "required": false,
@@ -11713,6 +11768,7 @@
         {
           "default": "",
           "document": "Remote identity. When ADDRESS is selected for RemoteIdentity, RemoteAddress is required.",
+          "example": "4.3.2.1",
           "member": "string",
           "name": "RemoteAddress",
           "required": false,
@@ -11722,6 +11778,7 @@
         {
           "default": "",
           "document": "Local identity. When FQDN is selected for LocalIdentity, LocalFqdnName is required.",
+          "example": "LocalName",
           "member": "string",
           "name": "LocalFqdnName",
           "required": false,
@@ -11731,6 +11788,7 @@
         {
           "default": "",
           "document": "Remote identity. When FQDN is selected for RemoteIdentity, RemoteFqdnName is required.",
+          "example": "RemoteName",
           "member": "string",
           "name": "RemoteFqdnName",
           "required": false,
@@ -11740,6 +11798,7 @@
         {
           "default": "",
           "document": "DH group. Specify the DH group used for exchanging the key via IKE. Available values: 'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', and 'GROUP24'.",
+          "example": "GOURP1",
           "member": "string",
           "name": "DhGroupName",
           "required": false,
@@ -11749,6 +11808,7 @@
         {
           "default": "",
           "document": "IKE SA lifetime (in sec). Value range: 60-604800",
+          "example": "60",
           "member": "uint64",
           "name": "IKESaLifetimeSeconds",
           "required": false,
@@ -11758,6 +11818,7 @@
         {
           "default": "",
           "document": "IKE version",
+          "example": "1",
           "member": "string",
           "name": "IKEVersion",
           "required": false,
@@ -15723,7 +15784,8 @@
       "members": [
         {
           "default": "",
-          "document": "Vpc instance ID, e.g. vpc-f1xjkw1b.",
+          "document": "VPC instance ID, such as `vpc-bq4bzxpj`.",
+          "example": "vpc-bq4bzxpj",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -15733,6 +15795,7 @@
         {
           "default": "",
           "document": "Subnet instance ID, such as subnet-bthucmmy.",
+          "example": "subnet-bthucmmy",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -15742,6 +15805,7 @@
         {
           "default": "",
           "document": "Classiclink.",
+          "example": "0",
           "member": "uint64",
           "name": "Classiclink",
           "required": true,
@@ -15751,6 +15815,7 @@
         {
           "default": "",
           "document": "Direct Connect gateway.",
+          "example": "1",
           "member": "uint64",
           "name": "Dcg",
           "required": true,
@@ -15760,6 +15825,7 @@
         {
           "default": "",
           "document": "Peering connection.",
+          "example": "0",
           "member": "uint64",
           "name": "Pcx",
           "required": true,
@@ -15768,7 +15834,8 @@
         },
         {
           "default": "",
-          "document": "The total number of used IP addresses.",
+          "document": "Total number of used IPs except for CVM IP, EIP and network probe IP. The three IP types will be independently counted.",
+          "example": "0",
           "member": "uint64",
           "name": "Ip",
           "required": true,
@@ -15778,6 +15845,7 @@
         {
           "default": "",
           "document": "NAT gateway.",
+          "example": "1",
           "member": "uint64",
           "name": "Nat",
           "required": true,
@@ -15787,6 +15855,7 @@
         {
           "default": "",
           "document": "VPN gateway.",
+          "example": "0",
           "member": "uint64",
           "name": "Vpngw",
           "required": true,
@@ -15796,6 +15865,7 @@
         {
           "default": "",
           "document": "Flow log.",
+          "example": "0",
           "member": "uint64",
           "name": "FlowLog",
           "required": true,
@@ -15805,6 +15875,7 @@
         {
           "default": "",
           "document": "Network probing.",
+          "example": "0",
           "member": "uint64",
           "name": "NetworkDetect",
           "required": true,
@@ -15814,6 +15885,7 @@
         {
           "default": "",
           "document": "Network ACL.",
+          "example": "0",
           "member": "uint64",
           "name": "NetworkACL",
           "required": true,
@@ -15823,6 +15895,7 @@
         {
           "default": "",
           "document": "Cloud Virtual Machine.",
+          "example": "2",
           "member": "uint64",
           "name": "CVM",
           "required": true,
@@ -15832,6 +15905,7 @@
         {
           "default": "",
           "document": "Load balancer.",
+          "example": "0",
           "member": "uint64",
           "name": "LB",
           "required": true,
@@ -15841,6 +15915,7 @@
         {
           "default": "",
           "document": "Relational database.",
+          "example": "0",
           "member": "uint64",
           "name": "CDB",
           "required": true,
@@ -15850,6 +15925,7 @@
         {
           "default": "",
           "document": "TencentDB for Memcached.",
+          "example": "0",
           "member": "uint64",
           "name": "Cmem",
           "required": true,
@@ -15859,6 +15935,7 @@
         {
           "default": "",
           "document": "Cloud time series database.",
+          "example": "0",
           "member": "uint64",
           "name": "CTSDB",
           "required": true,
@@ -15868,6 +15945,7 @@
         {
           "default": "",
           "document": "TencentDB for MariaDB (TDSQL).",
+          "example": "0",
           "member": "uint64",
           "name": "MariaDB",
           "required": true,
@@ -15877,6 +15955,7 @@
         {
           "default": "",
           "document": "TencentDB for SQL Server.",
+          "example": "0",
           "member": "uint64",
           "name": "SQLServer",
           "required": true,
@@ -15886,6 +15965,7 @@
         {
           "default": "",
           "document": "TencentDB for PostgreSQL.",
+          "example": "0",
           "member": "uint64",
           "name": "Postgres",
           "required": true,
@@ -15895,6 +15975,7 @@
         {
           "default": "",
           "document": "Network attached storage.",
+          "example": "0",
           "member": "uint64",
           "name": "NAS",
           "required": true,
@@ -15904,6 +15985,7 @@
         {
           "default": "",
           "document": "Snova data warehouse.",
+          "example": "0",
           "member": "uint64",
           "name": "Greenplumn",
           "required": true,
@@ -15913,6 +15995,7 @@
         {
           "default": "",
           "document": "Cloud Kafka (CKafka).",
+          "example": "0",
           "member": "uint64",
           "name": "Ckafka",
           "required": true,
@@ -15922,6 +16005,7 @@
         {
           "default": "",
           "document": "Grocery.",
+          "example": "0",
           "member": "uint64",
           "name": "Grocery",
           "required": true,
@@ -15931,6 +16015,7 @@
         {
           "default": "",
           "document": "Data encryption service.",
+          "example": "0",
           "member": "uint64",
           "name": "HSM",
           "required": true,
@@ -15940,6 +16025,7 @@
         {
           "default": "",
           "document": "Game storage - Tcaplus.",
+          "example": "0",
           "member": "uint64",
           "name": "Tcaplus",
           "required": true,
@@ -15949,6 +16035,7 @@
         {
           "default": "",
           "document": "Cnas.",
+          "example": "0",
           "member": "uint64",
           "name": "Cnas",
           "required": true,
@@ -15958,6 +16045,7 @@
         {
           "default": "",
           "document": "HTAP database - TiDB.",
+          "example": "0",
           "member": "uint64",
           "name": "TiDB",
           "required": true,
@@ -15967,6 +16055,7 @@
         {
           "default": "",
           "document": "EMR cluster.",
+          "example": "0",
           "member": "uint64",
           "name": "Emr",
           "required": true,
@@ -15976,6 +16065,7 @@
         {
           "default": "",
           "document": "SEAL.",
+          "example": "0",
           "member": "uint64",
           "name": "SEAL",
           "required": true,
@@ -15985,6 +16075,7 @@
         {
           "default": "",
           "document": "Cloud file storage - CFS.",
+          "example": "0",
           "member": "uint64",
           "name": "CFS",
           "required": true,
@@ -15994,6 +16085,7 @@
         {
           "default": "",
           "document": "Oracle.",
+          "example": "0",
           "member": "uint64",
           "name": "Oracle",
           "required": true,
@@ -16003,6 +16095,7 @@
         {
           "default": "",
           "document": "ElasticSearch Service.",
+          "example": "0",
           "member": "uint64",
           "name": "ElasticSearch",
           "required": true,
@@ -16012,6 +16105,7 @@
         {
           "default": "",
           "document": "Blockchain service.",
+          "example": "0",
           "member": "uint64",
           "name": "TBaaS",
           "required": true,
@@ -16021,6 +16115,7 @@
         {
           "default": "",
           "document": "Itop.",
+          "example": "0",
           "member": "uint64",
           "name": "Itop",
           "required": true,
@@ -16030,6 +16125,7 @@
         {
           "default": "",
           "document": "Cloud database audit.",
+          "example": "0",
           "member": "uint64",
           "name": "DBAudit",
           "required": true,
@@ -16039,6 +16135,7 @@
         {
           "default": "",
           "document": "Enterprise TencentDB - CynosDB for Postgres.",
+          "example": "0",
           "member": "uint64",
           "name": "CynosDBPostgres",
           "required": true,
@@ -16048,6 +16145,7 @@
         {
           "default": "",
           "document": "TencentDB for Redis.",
+          "example": "0",
           "member": "uint64",
           "name": "Redis",
           "required": true,
@@ -16057,6 +16155,7 @@
         {
           "default": "",
           "document": "TencentDB for MongoDB.",
+          "example": "0",
           "member": "uint64",
           "name": "MongoDB",
           "required": true,
@@ -16066,6 +16165,7 @@
         {
           "default": "",
           "document": "A distributed cloud database - TencentDB for TDSQL.",
+          "example": "0",
           "member": "uint64",
           "name": "DCDB",
           "required": true,
@@ -16075,6 +16175,7 @@
         {
           "default": "",
           "document": "An enterprise-grade TencentDB - CynosDB for MySQL.",
+          "example": "0",
           "member": "uint64",
           "name": "CynosDBMySQL",
           "required": true,
@@ -16084,6 +16185,7 @@
         {
           "default": "",
           "document": "Subnets.",
+          "example": "1",
           "member": "uint64",
           "name": "Subnet",
           "required": true,
@@ -16093,6 +16195,7 @@
         {
           "default": "",
           "document": "Route table.",
+          "example": "1",
           "member": "uint64",
           "name": "RouteTable",
           "required": true,
