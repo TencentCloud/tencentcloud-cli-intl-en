@@ -67,8 +67,8 @@
     "DeleteNamespace": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=DeleteNamespace\r\n&Namespace=test\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
+        "input": "https://scf.tencentcloudapi.com/?Action=DeleteNamespace\n&Namespace=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Deleting namespace"
       }
     ],
@@ -171,7 +171,7 @@
     "Invoke": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=Invoke\r\n&FunctionName=xxxx\r\n&<Common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=Invoke\n&FunctionName=xxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"MemUsage\": 3207168,\n            \"Log\": \"\",\n            \"RetMsg\": \"hello from scf\",\n            \"BillDuration\": 100,\n            \"FunctionRequestId\": \"6add56fa-58f1-11e8-89a9-5254005d5fdb\",\n            \"Duration\": 0.826,\n            \"ErrMsg\": \"\",\n            \"InvokeResult\": 0\n        },\n        \"RequestId\": \"c2af8a64-c922-4d55-aee0-bd86a5c2cd12\"\n    }\n}",
         "title": "Running function"
       }

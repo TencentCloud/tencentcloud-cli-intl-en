@@ -12,6 +12,12 @@
       "name": "Creates instance backups",
       "output": "CreateBackupDBInstanceResponse"
     },
+    "CreateBackupDownloadTask": {
+      "document": "This API is used to create a backup download task.",
+      "input": "CreateBackupDownloadTaskRequest",
+      "name": "Creates a backup download task",
+      "output": "CreateBackupDownloadTaskResponse"
+    },
     "CreateDBInstance": {
       "document": "This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.",
       "input": "CreateDBInstanceRequest",
@@ -31,10 +37,16 @@
       "output": "DescribeAsyncRequestInfoResponse"
     },
     "DescribeBackupAccess": {
-      "document": "This API is used to get the permission to download a backup file. The specific backup file information can be obtained through the DescribeDBBackups API.",
+      "document": "备份下载功能已调整，此接口即将下线\n\nTencentDB will soon stop supporting this API, as the backup download feature has been modified.\n\nThis API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.",
       "input": "DescribeBackupAccessRequest",
       "name": "Gets the permission to download an instance backup",
       "output": "DescribeBackupAccessResponse"
+    },
+    "DescribeBackupDownloadTask": {
+      "document": "This API is used to query backup download task information.",
+      "input": "DescribeBackupDownloadTaskRequest",
+      "name": "Queries backup download task information",
+      "output": "DescribeBackupDownloadTaskResponse"
     },
     "DescribeClientConnections": {
       "document": "This API is used to query the client connection information of an instance, including the IP and number of connections. Currently, only instances of MongoDB 3.2 are supported.",
@@ -59,6 +71,12 @@
       "input": "DescribeDBInstancesRequest",
       "name": "Queries the list of TencentDB instances",
       "output": "DescribeDBInstancesResponse"
+    },
+    "DescribeSecurityGroup": {
+      "document": "This API is used to query the security groups associated with an instance.",
+      "input": "DescribeSecurityGroupRequest",
+      "name": "Queries the security groups associated with an instance",
+      "output": "DescribeSecurityGroupResponse"
     },
     "DescribeSlowLogPatterns": {
       "document": "This API is used to get the slow log statistics of a database instance.",
@@ -185,6 +203,118 @@
         }
       ],
       "type": "object"
+    },
+    "BackupDownloadTask": {
+      "document": "Backup download task information",
+      "members": [
+        {
+          "default": "",
+          "document": "Task creation time",
+          "example": "2021-01-02 15:04:05",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup name",
+          "example": "cmgo-74sjf5mt_2021-03-24 15:40",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard name",
+          "example": "cmgo-74sjf5mt_0",
+          "member": "string",
+          "name": "ReplicaSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup size in bytes",
+          "example": "102400",
+          "member": "int64",
+          "name": "BackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task progress in terms of percentage",
+          "example": "20",
+          "member": "int64",
+          "name": "Percent",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task duration in seconds",
+          "example": "60",
+          "member": "int64",
+          "name": "TimeSpend",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup download address",
+          "example": "http://a.b.c/d.tar?e",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BackupDownloadTaskStatus": {
+      "document": "The result of the created backup download task",
+      "members": [
+        {
+          "default": "",
+          "document": "Shard name",
+          "example": "cmgo-74sjf5mt_0",
+          "member": "string",
+          "name": "ReplicaSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "BackupFile": {
       "document": "Storage information of a backup file",
@@ -370,12 +500,67 @@
       ],
       "type": "object"
     },
+    "CreateBackupDownloadTaskRequest": {
+      "document": "CreateBackupDownloadTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console",
+          "example": "cmgo-f555zzzz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API",
+          "example": "cmgo-74sjf5mt_2021-03-24 15:40",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of shards whose backups will be downloaded",
+          "example": "无",
+          "member": "ReplicaSetInfo",
+          "name": "BackupSets",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupDownloadTaskResponse": {
+      "document": "CreateBackupDownloadTask response structure.",
+      "members": [
+        {
+          "document": "Download task status",
+          "example": "无",
+          "member": "BackupDownloadTaskStatus",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateDBInstanceHourRequest": {
       "document": "CreateDBInstanceHour request structure.",
       "members": [
         {
           "default": "",
           "document": "Instance memory size in GB",
+          "example": "4",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -384,6 +569,7 @@
         {
           "default": "",
           "document": "Instance disk size in GB",
+          "example": "250",
           "member": "uint64",
           "name": "Volume",
           "required": true,
@@ -392,6 +578,7 @@
         {
           "default": "",
           "document": "Number of replica sets. When a replica set instance is created, this parameter must be set to 1. When a sharding instance is created, please see the parameters returned by the DescribeSpecInfo API",
+          "example": "1",
           "member": "uint64",
           "name": "ReplicateSetNum",
           "required": true,
@@ -400,6 +587,7 @@
         {
           "default": "",
           "document": "Number of nodes in each replica set. Currently, the number of nodes in a replica set is fixed at 3, while the number of shards is customizable. For more information, please see the parameter returned by the DescribeSpecInfo API",
+          "example": "2",
           "member": "uint64",
           "name": "NodeNum",
           "required": true,
@@ -408,6 +596,7 @@
         {
           "default": "",
           "document": "Version number. For the specific purchasable versions supported, please see the return result of the DescribeSpecInfo API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition",
+          "example": "MONGO_3_WT",
           "member": "string",
           "name": "MongoVersion",
           "required": true,
@@ -416,6 +605,7 @@
         {
           "default": "",
           "document": "Server type. HIO: high IO; HIO10G: 10-Gigabit high IO",
+          "example": "TGIO",
           "member": "string",
           "name": "MachineCode",
           "required": true,
@@ -424,6 +614,7 @@
         {
           "default": "",
           "document": "Number of instances. Minimum value: 1. Maximum value: 10",
+          "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
           "required": true,
@@ -432,6 +623,7 @@
         {
           "default": "",
           "document": "AZ information in the format of ap-guangzhou-2",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -440,6 +632,7 @@
         {
           "default": "",
           "document": "Instance type. REPLSET: replica set; SHARD: sharding cluster",
+          "example": "REPLSET",
           "member": "string",
           "name": "ClusterType",
           "required": true,
@@ -448,6 +641,7 @@
         {
           "default": "",
           "document": "VPC ID. If this parameter is not set, the basic network will be selected by default",
+          "example": "无",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -456,6 +650,7 @@
         {
           "default": "",
           "document": "VPC subnet ID. If VpcId is set, then SubnetId will be required",
+          "example": "无",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -463,7 +658,8 @@
         },
         {
           "default": "",
-          "document": "Instance password. If this parameter is not set, you need to set an instance password through the password setting API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()` |",
+          "document": "Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\".",
+          "example": "无",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -472,6 +668,7 @@
         {
           "default": "",
           "document": "Project ID. If this parameter is not set, the default project will be used",
+          "example": "无",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -480,6 +677,7 @@
         {
           "default": "",
           "document": "Instance tag information",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": false,
@@ -488,6 +686,7 @@
         {
           "default": "",
           "document": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).",
+          "example": "1",
           "member": "int64",
           "name": "Clone",
           "required": false,
@@ -496,6 +695,7 @@
         {
           "default": "",
           "document": "Parent instance ID. It is required if the `Clone` is 3 or 4.",
+          "example": "无",
           "member": "string",
           "name": "Father",
           "required": false,
@@ -504,6 +704,7 @@
         {
           "default": "",
           "document": "Security group.",
+          "example": "无",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -544,6 +745,7 @@
         {
           "default": "",
           "document": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.",
+          "example": "3",
           "member": "uint64",
           "name": "NodeNum",
           "required": true,
@@ -552,6 +754,7 @@
         {
           "default": "",
           "document": "Instance memory size in GB.",
+          "example": "4",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -560,6 +763,7 @@
         {
           "default": "",
           "document": "Instance disk size in GB.",
+          "example": "250",
           "member": "uint64",
           "name": "Volume",
           "required": true,
@@ -568,6 +772,7 @@
         {
           "default": "",
           "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.",
+          "example": "MONGO_3_WT",
           "member": "string",
           "name": "MongoVersion",
           "required": true,
@@ -576,6 +781,7 @@
         {
           "default": "",
           "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
+          "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
           "required": true,
@@ -584,6 +790,7 @@
         {
           "default": "",
           "document": "Instance region name in the format of ap-guangzhou-2.",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -592,6 +799,7 @@
         {
           "default": "",
           "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -600,6 +808,7 @@
         {
           "default": "",
           "document": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).",
+          "example": "TGIO",
           "member": "string",
           "name": "MachineCode",
           "required": true,
@@ -608,6 +817,7 @@
         {
           "default": "",
           "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
+          "example": "REPLSET",
           "member": "string",
           "name": "ClusterType",
           "required": true,
@@ -616,6 +826,7 @@
         {
           "default": "",
           "document": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.",
+          "example": "1",
           "member": "uint64",
           "name": "ReplicateSetNum",
           "required": true,
@@ -624,6 +835,7 @@
         {
           "default": "",
           "document": "Project ID. If this parameter is not set, the default project will be used.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -632,6 +844,7 @@
         {
           "default": "",
           "document": "VPC ID. If this parameter is not set, the classic network will be used. Please use the `DescribeVpcs` API to query the VPC list.",
+          "example": "vpc-0akbol5v",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -640,6 +853,7 @@
         {
           "default": "",
           "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.",
+          "example": "subnet-fyrtjbqw",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -647,7 +861,8 @@
         },
         {
           "default": "",
-          "document": "Instance password. If this parameter is not set, you need to set an instance password through the `SetPassword` API after creating an instance. The password can only contain 8-16 characters and must contain at least two of the following types of characters: letters, digits, and special characters `!@#%^*()`.",
+          "document": "Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\".",
+          "example": "pwd123456",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -656,6 +871,7 @@
         {
           "default": "",
           "document": "Instance tag information.",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "required": false,
@@ -664,6 +880,7 @@
         {
           "default": "",
           "document": "Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.",
+          "example": "1",
           "member": "uint64",
           "name": "AutoRenewFlag",
           "required": false,
@@ -672,6 +889,7 @@
         {
           "default": "",
           "document": "Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0.",
+          "example": "1",
           "member": "uint64",
           "name": "AutoVoucher",
           "required": false,
@@ -680,6 +898,7 @@
         {
           "default": "",
           "document": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).",
+          "example": "1",
           "member": "int64",
           "name": "Clone",
           "required": false,
@@ -688,6 +907,7 @@
         {
           "default": "",
           "document": "Primary instance ID. It is required for read-only and disaster recovery instances.",
+          "example": "无",
           "member": "string",
           "name": "Father",
           "required": false,
@@ -696,6 +916,7 @@
         {
           "default": "",
           "document": "Security group.",
+          "example": "无",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -863,6 +1084,123 @@
           "document": "Storage information of a backup file",
           "member": "BackupFile",
           "name": "Files",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadTaskRequest": {
+      "document": "DescribeBackupDownloadTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console",
+          "example": "cmgo-74sjf5mt",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The name of a backup file whose download tasks will be queried",
+          "example": "cmgo-74sjf5mt_2021-03-24 15:40",
+          "member": "string",
+          "name": "BackupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.",
+          "example": "2021-01-02 15:04:05",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the end time can be any time later than the start time.",
+          "example": "2021-01-02 15:04:05",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 1-100. Default value: `20`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset for pagination. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The field used to sort the results. Valid values: `createTime` (default), `finishTime`.",
+          "example": "finishTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort order. Valid values: `asc`, `desc` (default).",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The status of the tasks to be queried. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry). If it is left empty, tasks in any status will be returned.",
+          "example": "[2]",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadTaskResponse": {
+      "document": "DescribeBackupDownloadTask response structure.",
+      "members": [
+        {
+          "document": "Total number of results",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The list of download tasks",
+          "example": "无",
+          "member": "BackupDownloadTask",
+          "name": "Tasks",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1181,6 +1519,42 @@
           "document": "List of instance details",
           "member": "InstanceDetail",
           "name": "InstanceDetails",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityGroupRequest": {
+      "document": "DescribeSecurityGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of \"cmgo-p8vnipr5\"",
+          "example": "cmgo-p8vnipr5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityGroupResponse": {
+      "document": "DescribeSecurityGroup response structure.",
+      "members": [
+        {
+          "document": "Security groups associated with the instance",
+          "example": "无",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2200,6 +2574,22 @@
       ],
       "type": "object"
     },
+    "ReplicaSetInfo": {
+      "document": "Shard information",
+      "members": [
+        {
+          "default": "",
+          "document": "Shard name",
+          "example": "cmgo_ih8uido9_0",
+          "member": "string",
+          "name": "ReplicaSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ResetDBInstancePasswordRequest": {
       "document": "ResetDBInstancePassword request structure.",
       "members": [
@@ -2248,6 +2638,128 @@
         }
       ],
       "type": "object"
+    },
+    "SecurityGroup": {
+      "document": "Security group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-01-02 15:04:05",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Inbound rule",
+          "example": "无",
+          "member": "SecurityGroupBound",
+          "name": "Inbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Outbound rule",
+          "example": "无",
+          "member": "SecurityGroupBound",
+          "name": "Outbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "sg-lxdvbitn",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group name",
+          "example": "全放通",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group remarks",
+          "example": "暴露全部端口到公网和内网，有一定安全风险",
+          "member": "string",
+          "name": "SecurityGroupRemark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroupBound": {
+      "document": "Security group rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy. Valid values: `ACCEPT`, `DROP`",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP range",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "CidrIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port range",
+          "example": "80,443",
+          "member": "string",
+          "name": "PortRange",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`",
+          "example": "tcp",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ShardInfo": {
       "document": "Details of an instance shard",
@@ -2375,6 +2887,7 @@
         {
           "default": "",
           "document": "Specification information identifier",
+          "example": "mongo.HIO10G.128g",
           "member": "string",
           "name": "SpecCode",
           "required": true,
@@ -2384,6 +2897,7 @@
         {
           "default": "",
           "document": "Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
           "required": true,
@@ -2392,7 +2906,8 @@
         },
         {
           "default": "",
-          "document": "Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)",
+          "document": "Computing resource specification in terms of CPU core",
+          "example": "2",
           "member": "uint64",
           "name": "Cpu",
           "required": true,
@@ -2402,6 +2917,7 @@
         {
           "default": "",
           "document": "Memory size in MB",
+          "example": "4096",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -2411,6 +2927,7 @@
         {
           "default": "",
           "document": "Default disk size in MB",
+          "example": "3072000",
           "member": "uint64",
           "name": "DefaultStorage",
           "required": true,
@@ -2420,6 +2937,7 @@
         {
           "default": "",
           "document": "Maximum disk size in MB",
+          "example": "5120000",
           "member": "uint64",
           "name": "MaxStorage",
           "required": true,
@@ -2429,6 +2947,7 @@
         {
           "default": "",
           "document": "Minimum disk size in MB",
+          "example": "1536000",
           "member": "uint64",
           "name": "MinStorage",
           "required": true,
@@ -2438,6 +2957,7 @@
         {
           "default": "",
           "document": "Maximum QPS",
+          "example": "36000",
           "member": "uint64",
           "name": "Qps",
           "required": true,
@@ -2447,6 +2967,7 @@
         {
           "default": "",
           "document": "Maximum number of connections",
+          "example": "20000",
           "member": "uint64",
           "name": "Conns",
           "required": true,
@@ -2456,6 +2977,7 @@
         {
           "default": "",
           "document": "MongoDB version information of an instance",
+          "example": "MONGO_36_WT",
           "member": "string",
           "name": "MongoVersionCode",
           "required": true,
@@ -2465,6 +2987,7 @@
         {
           "default": "",
           "document": "MongoDB version number of an instance",
+          "example": "4",
           "member": "uint64",
           "name": "MongoVersionValue",
           "required": true,
@@ -2474,6 +2997,7 @@
         {
           "default": "",
           "document": "MongoDB version number of an instance (short)",
+          "example": "3.6",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -2483,6 +3007,7 @@
         {
           "default": "",
           "document": "Storage engine",
+          "example": "WiredTiger",
           "member": "string",
           "name": "EngineName",
           "required": true,
@@ -2492,6 +3017,7 @@
         {
           "default": "",
           "document": "Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)",
+          "example": "1",
           "member": "uint64",
           "name": "ClusterType",
           "required": true,
@@ -2501,6 +3027,7 @@
         {
           "default": "",
           "document": "Minimum number of secondary nodes in a replica set",
+          "example": "3",
           "member": "uint64",
           "name": "MinNodeNum",
           "required": true,
@@ -2510,6 +3037,7 @@
         {
           "default": "",
           "document": "Maximum number of secondary nodes in a replica set",
+          "example": "7",
           "member": "uint64",
           "name": "MaxNodeNum",
           "required": true,
@@ -2519,6 +3047,7 @@
         {
           "default": "",
           "document": "Minimum number of shards",
+          "example": "2",
           "member": "uint64",
           "name": "MinReplicateSetNum",
           "required": true,
@@ -2528,6 +3057,7 @@
         {
           "default": "",
           "document": "Maximum number of shards",
+          "example": "20",
           "member": "uint64",
           "name": "MaxReplicateSetNum",
           "required": true,
@@ -2537,6 +3067,7 @@
         {
           "default": "",
           "document": "Minimum number of secondary nodes in a shard",
+          "example": "3",
           "member": "uint64",
           "name": "MinReplicateSetNodeNum",
           "required": true,
@@ -2546,6 +3077,7 @@
         {
           "default": "",
           "document": "Maximum number of secondary nodes in a shard",
+          "example": "7",
           "member": "uint64",
           "name": "MaxReplicateSetNodeNum",
           "required": true,
@@ -2555,6 +3087,7 @@
         {
           "default": "",
           "document": "Server type. Valid values: 0 (HIO), 4 (HIO10G)",
+          "example": "4-HIO10G",
           "member": "string",
           "name": "MachineType",
           "required": true,

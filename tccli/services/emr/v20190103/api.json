@@ -1425,6 +1425,7 @@
         {
           "default": "",
           "document": "Time unit of scale-out. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
+          "example": "s",
           "member": "string",
           "name": "TimeUnit",
           "required": true,
@@ -1433,6 +1434,7 @@
         {
           "default": "",
           "document": "Duration of scale-out, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
+          "example": "3600",
           "member": "uint64",
           "name": "TimeSpan",
           "required": true,
@@ -1441,6 +1443,7 @@
         {
           "default": "",
           "document": "ID of the AZ where an instance resides.",
+          "example": "100003",
           "member": "uint64",
           "name": "ZoneId",
           "required": true,
@@ -1449,6 +1452,7 @@
         {
           "default": "",
           "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "example": "0",
           "member": "uint64",
           "name": "PayMode",
           "required": true,
@@ -1457,6 +1461,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "emr-3ida6zmi",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1465,6 +1470,7 @@
         {
           "default": "",
           "document": "Number of core nodes added.",
+          "example": "1",
           "member": "uint64",
           "name": "CoreCount",
           "required": true,
@@ -1473,6 +1479,7 @@
         {
           "default": "",
           "document": "Number of task nodes added.",
+          "example": "0",
           "member": "uint64",
           "name": "TaskCount",
           "required": true,
@@ -1481,6 +1488,7 @@
         {
           "default": "",
           "document": "Currency.",
+          "example": "CNY",
           "member": "string",
           "name": "Currency",
           "required": true,
@@ -1489,8 +1497,18 @@
         {
           "default": "",
           "document": "Number of router nodes added.",
+          "example": "0",
           "member": "uint64",
           "name": "RouterCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of master nodes to add",
+          "example": "0",
+          "member": "uint64",
+          "name": "MasterCount",
           "required": false,
           "type": "int"
         }

@@ -169,7 +169,7 @@
       "output": "DescribeScheduledActionsResponse"
     },
     "DetachInstances": {
-      "document": "This API is used to remove CVM instances from a scaling group. Instances removed via this API will not be terminated.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, this API will return an error.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.\n\nThis removal will unassociate the CVM from the CLB instance that has been configured for the scaling group.\n ",
+      "document": "This API is used to remove CVM instances from a scaling group. Instances removed via this API will not be terminated.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, this API will return an error.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.\n\nThe CVM will be associated from the CLB instance (if any).\n ",
       "input": "DetachInstancesRequest",
       "name": "Detaches CVM instances from an auto scaling group",
       "output": "DetachInstancesResponse"
@@ -241,7 +241,7 @@
       "output": "PreviewPaiDomainNameResponse"
     },
     "RemoveInstances": {
-      "document": "This API is used to remove CVM instances from a scaling group. Instances that are automatically created through AS will be terminated, while those manually added to the scaling group will be removed and retained.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, this API will return an error.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.\n\nThis removal will unassociate the CVM from the CLB instance that has been configured for the scaling group.\n ",
+      "document": "This API is used to delete CVM instances from a scaling group. Instances that are automatically created through AS will be terminated, while those manually added to the scaling group will be removed and retained.\n* If the number of remaining `IN_SERVICE` instances in the scaling group is less than the minimum capacity, this API will return an error.\n* However, if the scaling group is in `DISABLED` status, the removal will not verify the relationship between the number of `IN_SERVICE` instances and the minimum capacity.\n\nThis removal will unassociate the CVM from the CLB instance that has been configured for the scaling group.\n ",
       "input": "RemoveInstancesRequest",
       "name": "Removes CVM instances from an auto scaling group",
       "output": "RemoveInstancesResponse"
@@ -1374,7 +1374,7 @@
         },
         {
           "default": "",
-          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7,200. Default value: 300",
+          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300",
           "example": "300",
           "member": "int64",
           "name": "HeartbeatTimeout",
@@ -3416,7 +3416,7 @@
         },
         {
           "default": "",
-          "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone",
+          "document": "Specifies how to select the cloud disk type. \n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone",
           "example": "无",
           "member": "string",
           "name": "DiskTypePolicy",
@@ -5122,7 +5122,7 @@
         },
         {
           "default": "",
-          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7,200. Default value: 300",
+          "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300",
           "example": "240",
           "member": "int64",
           "name": "HeartbeatTimeout",

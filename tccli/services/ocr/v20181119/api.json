@@ -533,7 +533,8 @@
       "members": [
         {
           "default": "",
-          "document": "Base64-encoded value of an image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.",
+          "document": "Base64-encoded value of an image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.",
+          "example": "无",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -541,7 +542,8 @@
         },
         {
           "default": "",
-          "document": "URL address of an image. (This field is not supported outside Mainland China)\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nIt is recommended to store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "URL of an image. (This field is not supported outside the Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -550,6 +552,7 @@
         {
           "default": "",
           "document": "Whether to return an image",
+          "example": "无",
           "member": "bool",
           "name": "RetImage",
           "required": false,
@@ -563,64 +566,82 @@
       "members": [
         {
           "document": "Identity card number",
+          "example": "710716-08-6085",
           "member": "string",
           "name": "ID",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Name",
+          "example": "KAVIN ONG KHI MN",
           "member": "string",
           "name": "Name",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Address",
+          "example": "NO 11 PERSIARN PERAJRIT 4 TAMA PERAK 31400 IPOH ERAK",
           "member": "string",
           "name": "Address",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Gender",
+          "example": "LEAKI",
           "member": "string",
           "name": "Sex",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Alarm code\n-9103\tAlarm for photographed document\n-9102\tAlarm for photocopied document\n-9106       Alarm for covered card",
+          "example": "[]",
           "member": "int64",
           "name": "Warn",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Identity photo",
+          "example": "无",
           "member": "string",
           "name": "Image",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
+          "example": "{\"ID\":{\"Confidence\":\"1.0000\"},\"Name\":{\"Confidence\":\"0.9996\"},\"Address\":{\"Confidence\":\"0.9997\"},\"Sex\":{\"Confidence\":\"0.9999\"}}",
           "member": "string",
           "name": "AdvancedInfo",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Certificate types\nMyKad: Malaysian Identity Card\nMyPR: Malaysia Permanent Resident Identity Card\nMyTentera: Malaysian Armed Forces Identity Card\nMyKAS: Malaysian Temporary Resident Identity Card\nPOLIS: Royal Malaysia Police Identity Card\nIKAD: Malaysia Temporary Employment Visit Pass",
+          "document": "Certificate type\nMyKad  ID card\nMyPR    Permanent resident card\nMyTentera   Military identity card\nMyKAS    Temporary ID card\nPOLIS  Police card\nIKAD   Work permit\nMyKid   Kid card",
+          "example": "MyKad",
           "member": "string",
           "name": "Type",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Date of birth (currently, this field is only supported for IKAD).",
+          "example": "无",
           "member": "string",
           "name": "Birthday",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },

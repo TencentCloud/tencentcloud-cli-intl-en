@@ -724,7 +724,7 @@
         },
         {
           "default": "",
-          "document": "Image ID. If it is not passed in, the IDs of all images under the application are returned.",
+          "document": "Image ID. If it is left empty, the IDs of all images under the application are returned.",
           "example": "123",
           "member": "uint64",
           "name": "PictureId",
@@ -733,7 +733,7 @@
         },
         {
           "default": "",
-          "document": "Number of records per page",
+          "document": "Number of records per page. `10` is used if it is left empty.",
           "example": "10",
           "member": "uint64",
           "name": "PageSize",
@@ -742,7 +742,7 @@
         },
         {
           "default": "",
-          "document": "Page number",
+          "document": "Page number. `1` is used if it is left empty.",
           "example": "1",
           "member": "uint64",
           "name": "PageNo",
@@ -1666,6 +1666,7 @@
         {
           "default": "",
           "document": "Used to assign users to preset positions; if not assigned, users will occupy the positions set in `PresetLayoutConfig` in room entry sequence.",
+          "example": "user1",
           "member": "string",
           "name": "UserId",
           "required": false,
@@ -1675,6 +1676,7 @@
         {
           "default": "",
           "document": "Stream type of the user when a specified user is assigned to the image. 0: camera; 1: screen sharing. Set this parameter to 0 when the small image is occupied by a web user.",
+          "example": "0",
           "member": "uint64",
           "name": "StreamType",
           "required": false,
@@ -1684,6 +1686,7 @@
         {
           "default": "",
           "document": "Width of the output image in pixels. If this parameter is not set, 0 is used by default.",
+          "example": "640",
           "member": "uint64",
           "name": "ImageWidth",
           "required": false,
@@ -1693,6 +1696,7 @@
         {
           "default": "",
           "document": "Height of the output image in pixels. If this parameter is not set, 0 is used by default.",
+          "example": "480",
           "member": "uint64",
           "name": "ImageHeight",
           "required": false,
@@ -1702,6 +1706,7 @@
         {
           "default": "",
           "document": "X offset of the output image in pixels. The sum of `LocationX` and `ImageWidth` cannot exceed the total width of the mixed stream. If this parameter is not set, 0 is used by default.",
+          "example": "0",
           "member": "uint64",
           "name": "LocationX",
           "required": false,
@@ -1711,6 +1716,7 @@
         {
           "default": "",
           "document": "Y offset of the output image in pixels. The sum of `LocationY` and `ImageHeight` cannot exceed the total height of the mixed stream. If this parameter is not set, 0 is used by default.",
+          "example": "0",
           "member": "uint64",
           "name": "LocationY",
           "required": false,
@@ -1719,7 +1725,8 @@
         },
         {
           "default": "",
-          "document": "Z-order of the image in pixels. If this parameter is not set, 0 is used by default.",
+          "document": "Output order of the image. `0` is used if it is left empty.",
+          "example": "0",
           "member": "uint64",
           "name": "ZOrder",
           "required": false,
@@ -1729,6 +1736,7 @@
         {
           "default": "",
           "document": "Render mode of the output image. 0: cropping; 1: scaling; 2: scaling on a black background. If this parameter is not set, 0 is used by default.",
+          "example": "0",
           "member": "uint64",
           "name": "RenderMode",
           "required": false,
@@ -1738,6 +1746,7 @@
         {
           "default": "",
           "document": "Media type of the mixed stream of the user occupying the current position. 0 (default): audio and video; 1: audio; 2: video. You are advised to specify a user ID when using this parameter.",
+          "example": "0",
           "member": "uint64",
           "name": "MixInputType",
           "required": false,
@@ -1747,6 +1756,7 @@
         {
           "default": "",
           "document": "ID of the placeholder image. If the placeholding feature is enabled, and a user for whom an image position is reserved is not sending video data, the position will show the placeholder image. The ID is generated after the placeholder image is uploaded in the TRTC console. https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1",
+          "example": "0",
           "member": "uint64",
           "name": "PlaceImageId",
           "required": false,

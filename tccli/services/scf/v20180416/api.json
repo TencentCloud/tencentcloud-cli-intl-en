@@ -49,7 +49,7 @@
       "output": "DeleteLayerVersionResponse"
     },
     "DeleteNamespace": {
-      "document": "This API is used to create a namespace based on the input parameters.",
+      "document": "This API is used to delete the specific namespace according to the parameters passed in.",
       "input": "DeleteNamespaceRequest",
       "name": "Deletes a namespace",
       "output": "DeleteNamespaceResponse"
@@ -548,7 +548,7 @@
         },
         {
           "default": "",
-          "document": "It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.",
+          "document": "This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded",
           "example": "base64编码",
           "member": "string",
           "name": "ZipFile",
@@ -823,6 +823,7 @@
         {
           "default": "",
           "document": "Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.",
+          "example": "helloworld",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -831,6 +832,7 @@
         {
           "default": "",
           "document": "Function code. Note: `COS`, `ZipFile`, and `DemoId` cannot be specified at the same time.",
+          "example": "无",
           "member": "Code",
           "name": "Code",
           "required": true,
@@ -839,6 +841,7 @@
         {
           "default": "",
           "document": "Function handler name. It supports the format of \"file name.handler name\" where the file name and handler name are separated with a \".\" (for Java, it is in the format of \"package name.class name::handler name\"). File and handler names can contain 2–60 letters, digits, underscores, and dashes and must start and end with letters",
+          "example": "index.main_handler",
           "member": "string",
           "name": "Handler",
           "required": false,
@@ -847,6 +850,7 @@
         {
           "default": "",
           "document": "Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
+          "example": "hello world!",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -855,6 +859,7 @@
         {
           "default": "",
           "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB",
+          "example": "128",
           "member": "int64",
           "name": "MemorySize",
           "required": false,
@@ -863,6 +868,7 @@
         {
           "default": "",
           "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
+          "example": "3",
           "member": "int64",
           "name": "Timeout",
           "required": false,
@@ -871,6 +877,7 @@
         {
           "default": "",
           "document": "Function environment variable",
+          "example": "无",
           "member": "Environment",
           "name": "Environment",
           "required": false,
@@ -879,6 +886,7 @@
         {
           "default": "",
           "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7",
+          "example": "Python3.6",
           "member": "string",
           "name": "Runtime",
           "required": false,
@@ -887,6 +895,7 @@
         {
           "default": "",
           "document": "Function VPC configuration",
+          "example": "无",
           "member": "VpcConfig",
           "name": "VpcConfig",
           "required": false,
@@ -895,6 +904,7 @@
         {
           "default": "",
           "document": "Function namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -903,6 +913,7 @@
         {
           "default": "",
           "document": "Role bound to the function",
+          "example": "SCF_ExecuteRole",
           "member": "string",
           "name": "Role",
           "required": false,
@@ -911,6 +922,7 @@
         {
           "default": "",
           "document": "CLS Logset ID to which the function logs are shipped",
+          "example": "xxxxx",
           "member": "string",
           "name": "ClsLogsetId",
           "required": false,
@@ -919,6 +931,7 @@
         {
           "default": "",
           "document": "CLS Topic ID to which the function logs are shipped",
+          "example": "xxxxx",
           "member": "string",
           "name": "ClsTopicId",
           "required": false,
@@ -927,6 +940,7 @@
         {
           "default": "",
           "document": "Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.",
+          "example": "Event",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -935,6 +949,7 @@
         {
           "default": "",
           "document": "Code source. Valid values: ZipFile, Cos, Demo",
+          "example": "xxxxx",
           "member": "string",
           "name": "CodeSource",
           "required": false,
@@ -943,6 +958,7 @@
         {
           "default": "",
           "document": "List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.",
+          "example": "无",
           "member": "LayerVersionSimple",
           "name": "Layers",
           "required": false,
@@ -951,6 +967,7 @@
         {
           "default": "",
           "document": "Dead letter queue parameter",
+          "example": "无",
           "member": "DeadLetterConfig",
           "name": "DeadLetterConfig",
           "required": false,
@@ -959,6 +976,7 @@
         {
           "default": "",
           "document": "Public network access configuration",
+          "example": "无",
           "member": "PublicNetConfigIn",
           "name": "PublicNetConfig",
           "required": false,
@@ -967,6 +985,7 @@
         {
           "default": "",
           "document": "File system configuration parameter, which is used for the function to mount the file system",
+          "example": "无",
           "member": "CfsConfig",
           "name": "CfsConfig",
           "required": false,
@@ -975,6 +994,7 @@
         {
           "default": "",
           "document": "Timeout period for function initialization",
+          "example": "3",
           "member": "int64",
           "name": "InitTimeout",
           "required": false,
@@ -983,10 +1003,29 @@
         {
           "default": "",
           "document": "Tag parameter of the function. It is an array of key-value pairs.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the async attribute. TRUE: yes; FALSE: no",
+          "example": "FALSE",
+          "member": "string",
+          "name": "AsyncRunEnable",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable event tracking. TRUE: yes; FALSE: no",
+          "example": "FALSE",
+          "member": "string",
+          "name": "TraceEnable",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2742,6 +2781,7 @@
         {
           "default": "",
           "document": "Function name",
+          "example": "helloworld",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -2750,6 +2790,7 @@
         {
           "default": "",
           "document": "The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.",
+          "example": "RequestResponse",
           "member": "string",
           "name": "InvocationType",
           "required": false,
@@ -2757,7 +2798,8 @@
         },
         {
           "default": "",
-          "document": "Version number of the triggered function",
+          "document": "Version number or name of the triggered function",
+          "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
           "required": false,
@@ -2766,6 +2808,7 @@
         {
           "default": "",
           "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.",
+          "example": "{\\\"key\\\":\\\"value\\\"}",
           "member": "string",
           "name": "ClientContext",
           "required": false,
@@ -2773,7 +2816,8 @@
         },
         {
           "default": "",
-          "document": "If this field is specified for a synchronous invocation, the return value will contain a 4-KB log. The value is `None` (default) or `Tail`. If the value is `Tail`, `logMsg` in the return parameter will contain the corresponding function execution log.",
+          "document": "If this field is specified during sync invocation, the returned value will contain 4 KB of logs. Valid values: None, Tail. Default value: None. If the value is `Tail`, the `Log` field in the returned parameter will contain the corresponding function execution log",
+          "example": "Tail",
           "member": "string",
           "name": "LogType",
           "required": false,
@@ -2782,6 +2826,7 @@
         {
           "default": "",
           "document": "Namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -2790,6 +2835,7 @@
         {
           "default": "",
           "document": "Traffic routing config in json format, e.g., {\"k\":\"v\"}. Please note that both \"k\" and \"v\" must be strings. Up to 1024 bytes allowed.",
+          "example": "{\\\"key\\\":\\\"value\\\"}",
           "member": "string",
           "name": "RoutingKey",
           "required": false,
