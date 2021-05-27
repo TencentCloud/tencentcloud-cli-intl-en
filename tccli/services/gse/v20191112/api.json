@@ -36,6 +36,12 @@
       "name": "Queries game server session list",
       "output": "DescribeGameServerSessionsResponse"
     },
+    "DescribeInstanceTypes": {
+      "document": "This API is used to obtain the list of CVM types in the specified region.",
+      "input": "DescribeInstanceTypesRequest",
+      "name": "Obtains the list of CVM types in the specified region",
+      "output": "DescribeInstanceTypesResponse"
+    },
     "DescribePlayerSessions": {
       "document": "This API is used to get the list of player sessions.",
       "input": "DescribePlayerSessionsRequest",
@@ -718,6 +724,30 @@
           "name": "NextToken",
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceTypesRequest": {
+      "document": "DescribeInstanceTypes request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeInstanceTypesResponse": {
+      "document": "DescribeInstanceTypes response structure.",
+      "members": [
+        {
+          "document": "List of server types",
+          "member": "InstanceTypeInfo",
+          "name": "InstanceTypeList",
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1741,6 +1771,57 @@
           "name": "OperatingSystem",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceTypeInfo": {
+      "document": "The server instance type information",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the server type, such as `Standard SA1`",
+          "member": "string",
+          "name": "TypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specification of the server type, such as `SA1.SMALL1`",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CPU, in core",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory, in GB",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The packet sending and receiving capability, in 10k PPS. ",
+          "member": "uint64",
+          "name": "NetworkCard",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

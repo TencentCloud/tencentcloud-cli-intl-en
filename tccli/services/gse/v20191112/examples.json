@@ -48,6 +48,14 @@
         "title": "Querying game session list"
       }
     ],
+    "DescribeInstanceTypes": [
+      {
+        "document": "This example shows you how to obtain the list of CVM types in the specified region.",
+        "input": "https://gse.tencentcloudapi.com/?Action=DescribeInstanceTypes\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceTypeList\": [\n            {\n                \"TypeName\": \"Standard S3\",\n                \"InstanceType\": \"S3.LARGE8\",\n                \"Cpu\": 4,\n                \"Memory\": 8,\n                \"NetworkCard\": 45\n            }\n        ],\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
+        "title": "Obtaining the list of CVM types in the specified region"
+      }
+    ],
     "DescribePlayerSessions": [
       {
         "document": "This example shows you how to query the list of player sessions.",

@@ -1,0 +1,1939 @@
+{
+  "actions": {
+    "CreateCosTokenV2": {
+      "document": "This API is used to generate a COS temporary key.",
+      "input": "CreateCosTokenV2Request",
+      "name": "Generates COS temporary key (v2)",
+      "output": "CreateCosTokenV2Response"
+    },
+    "CreateNamespace": {
+      "document": "This API is used to create an environment.",
+      "input": "CreateNamespaceRequest",
+      "name": "Creates environment",
+      "output": "CreateNamespaceResponse"
+    },
+    "CreateResource": {
+      "document": "This API is used to bind a cloud resource.",
+      "input": "CreateResourceRequest",
+      "name": "Binds cloud resource",
+      "output": "CreateResourceResponse"
+    },
+    "CreateServiceV2": {
+      "document": "This API is used to create a service.",
+      "input": "CreateServiceV2Request",
+      "name": "Creates service",
+      "output": "CreateServiceV2Response"
+    },
+    "DeleteIngress": {
+      "document": "This API is used to delete an ingress rule.",
+      "input": "DeleteIngressRequest",
+      "name": "Deletes ingress rule",
+      "output": "DeleteIngressResponse"
+    },
+    "DeployServiceV2": {
+      "document": "This API is used to deploy a service.",
+      "input": "DeployServiceV2Request",
+      "name": "Deploys service",
+      "output": "DeployServiceV2Response"
+    },
+    "DescribeIngress": {
+      "document": "This API is used to query an ingress rule.",
+      "input": "DescribeIngressRequest",
+      "name": "Queries ingress rule",
+      "output": "DescribeIngressResponse"
+    },
+    "DescribeIngresses": {
+      "document": "This API is used to query the list of ingress rules.",
+      "input": "DescribeIngressesRequest",
+      "name": "Queries the list of ingress rules",
+      "output": "DescribeIngressesResponse"
+    },
+    "DescribeNamespaces": {
+      "document": "This API is used to get the list of tenant environments.",
+      "input": "DescribeNamespacesRequest",
+      "name": "Gets the list of tenant environments",
+      "output": "DescribeNamespacesResponse"
+    },
+    "DescribeServiceRunPodListV2": {
+      "document": "This API is used to get the list of running pods under a service.",
+      "input": "DescribeServiceRunPodListV2Request",
+      "name": "Gets the list of running pods under service",
+      "output": "DescribeServiceRunPodListV2Response"
+    },
+    "ModifyIngress": {
+      "document": "This API is used to create or update an ingress rule.",
+      "input": "ModifyIngressRequest",
+      "name": "Creates or updates ingress rule",
+      "output": "ModifyIngressResponse"
+    },
+    "ModifyNamespace": {
+      "document": "This API is used to edit an environment.",
+      "input": "ModifyNamespaceRequest",
+      "name": "Edits environment",
+      "output": "ModifyNamespaceResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-12-21",
+    "serviceNameCN": "弹性微服务",
+    "serviceShortName": "tem"
+  },
+  "objects": {
+    "CosToken": {
+      "document": "Cos token",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique request ID",
+          "member": "string",
+          "name": "RequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bucket name",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bucket region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`SecretId` of temporary key",
+          "member": "string",
+          "name": "TmpSecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`SecretKey` of temporary key",
+          "member": "string",
+          "name": "TmpSecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`sessionToken` of temporary key",
+          "member": "string",
+          "name": "SessionToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`StartTime` of temporary key acquisition",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`ExpiredTime` of temporary key",
+          "member": "string",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Full package path",
+          "member": "string",
+          "name": "FullPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateCosTokenV2Request": {
+      "document": "CreateCosTokenV2 request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "1",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Package name",
+          "example": "1",
+          "member": "string",
+          "name": "PkgName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "optType. 1: upload; 2: query",
+          "example": "1",
+          "member": "int64",
+          "name": "OptType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosTokenV2Response": {
+      "document": "CreateCosTokenV2 response structure.",
+      "members": [
+        {
+          "document": "`CosToken` object in case of success and `null` in case of failure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "CosToken",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNamespaceRequest": {
+      "document": "CreateNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "namespace-a",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC name",
+          "example": "vpc-1n5javez",
+          "member": "string",
+          "name": "Vpc",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet list",
+          "example": "{",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Namespace description",
+          "example": "命名空间名",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "K8s version",
+          "example": "1.16.9",
+          "member": "string",
+          "name": "K8sVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNamespaceResponse": {
+      "document": "CreateNamespace response structure.",
+      "members": [
+        {
+          "document": "Namespace ID in case of success and `null` in case of failure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "namespace-36pm4p8r",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateResourceRequest": {
+      "document": "CreateResource request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace ID",
+          "example": "env-xxx",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource type. Valid values: CFS (file system), CLS (log service), TSE_SRE (registry)",
+          "example": "CLS",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource ID",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateResourceResponse": {
+      "document": "CreateResource response structure.",
+      "members": [
+        {
+          "document": "Success or failure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceV2Request": {
+      "document": "CreateServiceV2 request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service name",
+          "example": "service-a",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "服务a",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to use the default image service. 1: yes; 0: no",
+          "example": "0",
+          "member": "int64",
+          "name": "UseDefaultImageService",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition",
+          "example": "0",
+          "member": "int64",
+          "name": "RepoType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID of Enterprise Edition image service",
+          "example": "tr-123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Address of the bound image server",
+          "example": "tcr.tencent.com",
+          "member": "string",
+          "name": "RepoServer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the bound image repository",
+          "example": "tem-test/repo_te",
+          "member": "string",
+          "name": "RepoName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Service subnet",
+          "example": "['s1', 's2']",
+          "member": "string",
+          "name": "SubnetList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Programming language \n- JAVA\n- OTHER",
+          "example": "1",
+          "member": "string",
+          "name": "CodingLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Deployment mode \n- IMAGE\n- JAR\n- WAR",
+          "example": "1",
+          "member": "string",
+          "name": "DeployMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceV2Response": {
+      "document": "CreateServiceV2 response structure.",
+      "members": [
+        {
+          "document": "Service code",
+          "example": "service-3gn56p6v",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIngressRequest": {
+      "document": "DeleteIngress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "tem NamespaceId",
+          "example": "env-xxx",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EKS namespace name",
+          "example": "default",
+          "member": "string",
+          "name": "EksNamespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Ingress rule name",
+          "example": "xxxxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIngressResponse": {
+      "document": "DeleteIngress response structure.",
+      "members": [
+        {
+          "document": "Whether deletion succeeded",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeployServiceV2Request": {
+      "document": "DeployServiceV2 request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "1",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Container port",
+          "example": "1",
+          "member": "uint64",
+          "name": "ContainerPort",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of initialized pods",
+          "example": "1",
+          "member": "uint64",
+          "name": "InitPodNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CPU specification",
+          "example": "1",
+          "member": "float",
+          "name": "CpuSpec",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "Memory specification",
+          "example": "1",
+          "member": "float",
+          "name": "MemorySpec",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image repository",
+          "example": "1",
+          "member": "string",
+          "name": "ImgRepo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version description",
+          "example": "1",
+          "member": "string",
+          "name": "VersionDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Launch parameters",
+          "example": "1",
+          "member": "string",
+          "name": "JvmOpts",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Auto scaling configuration. If this parameter is left empty, auto scaling will not be enabled",
+          "example": "1",
+          "member": "EsInfo",
+          "name": "EsInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Environment variable configuration",
+          "example": "1",
+          "member": "Pair",
+          "name": "EnvConf",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Log configuration",
+          "example": "1",
+          "member": "string",
+          "name": "LogConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Data volume configuration",
+          "example": "1",
+          "member": "StorageConf",
+          "name": "StorageConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Data volume mount configuration",
+          "example": "1",
+          "member": "StorageMountConf",
+          "name": "StorageMountConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Deployment type.\n- JAR: deployment through JAR package\n- WAR: deployment through WAR package\n- IMAGE: deployment through image",
+          "example": "1",
+          "member": "string",
+          "name": "DeployMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "When the deployment type is `IMAGE`, this parameter indicates the image tag.\nWhen the deployment type is `JAR` or `WAR`, this parameter indicates the package version number.",
+          "example": "1",
+          "member": "string",
+          "name": "DeployVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Package name, which is required when using JAR or WAR packages for deployment.",
+          "example": "1",
+          "member": "string",
+          "name": "PkgName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JDK version.\n- KONA: use KONA JDK.\n- OPEN: use open JDK.",
+          "example": "1",
+          "member": "string",
+          "name": "JdkVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group IDs",
+          "example": "1",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Log output configuration",
+          "example": "1",
+          "member": "LogOutputConf",
+          "name": "LogOutputConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Version description",
+          "example": "1",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image command",
+          "example": "cd",
+          "member": "string",
+          "name": "ImageCommand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image command parameters",
+          "example": "/home",
+          "member": "string",
+          "name": "ImageArgs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeployServiceV2Response": {
+      "document": "DeployServiceV2 response structure.",
+      "members": [
+        {
+          "document": "Version ID (which can be ignored for the frontend)",
+          "example": "1",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIngressRequest": {
+      "document": "DescribeIngress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "tem namespaceId",
+          "example": "env-xxx",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EKS namespace name",
+          "example": "default",
+          "member": "string",
+          "name": "EksNamespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Ingress rule name",
+          "example": "xxxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIngressResponse": {
+      "document": "DescribeIngress response structure.",
+      "members": [
+        {
+          "document": "Ingress rule configuration",
+          "example": "ingressInfo",
+          "member": "IngressInfo",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIngressesRequest": {
+      "document": "DescribeIngresses request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "namespace id",
+          "example": "111",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "namespace",
+          "example": "default",
+          "member": "string",
+          "name": "EksNamespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIngressesResponse": {
+      "document": "DescribeIngresses response structure.",
+      "members": [
+        {
+          "document": "Ingress array\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "IngressInfo",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNamespacesRequest": {
+      "document": "DescribeNamespaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of items per page",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNamespacesResponse": {
+      "document": "DescribeNamespaces response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "1",
+          "member": "NamespacePage",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRunPodPage": {
+      "document": "Version pod list",
+      "members": [
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of items per page",
+          "example": "11",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number",
+          "example": "111",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Request ID",
+          "example": "ssss",
+          "member": "string",
+          "name": "RequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of items",
+          "example": "{name:key}",
+          "member": "RunVersionPod",
+          "name": "PodList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeServiceRunPodListV2Request": {
+      "document": "DescribeServiceRunPodListV2 request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "namespace-a",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service name ID",
+          "example": "service-a",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. Default value: 20",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 0",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pod status \n- Running \n- Pending \n- Error",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pod name",
+          "example": "pod-a",
+          "member": "string",
+          "name": "PodName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceRunPodListV2Response": {
+      "document": "DescribeServiceRunPodListV2 response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "page",
+          "member": "DescribeRunPodPage",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EsInfo": {
+      "document": "Auto scaling configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum number of instances",
+          "example": "1",
+          "member": "int64",
+          "name": "MinAliveInstances",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of instances",
+          "example": "5",
+          "member": "int64",
+          "name": "MaxAliveInstances",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto scaling policy. 1: CPU; 2: memory",
+          "example": "1",
+          "member": "int64",
+          "name": "EsStrategy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto scaling condition value",
+          "example": "50",
+          "member": "uint64",
+          "name": "Threshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version ID",
+          "example": "version-test",
+          "member": "string",
+          "name": "VersionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IngressInfo": {
+      "document": "Ingress configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "tem namespaceId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "env-xxx",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "eks namespace",
+          "example": "default",
+          "member": "string",
+          "name": "EksNamespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ip version",
+          "example": "IPV4",
+          "member": "string",
+          "name": "AddressIPVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ingress name",
+          "example": "ingress name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rules configuration",
+          "example": "rules 配置",
+          "member": "IngressRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "clb ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "clb-xxx",
+          "member": "string",
+          "name": "ClbId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TLS configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "tls 配置",
+          "member": "IngressTls",
+          "name": "Tls",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "eks clusterId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "clb ip\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10.10.10.10",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IngressRule": {
+      "document": "Ingress rule configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "ingress rule value",
+          "example": "ingress rule value",
+          "member": "IngressRuleValue",
+          "name": "Http",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Host address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx.com",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IngressRuleBackend": {
+      "document": "Ingress rule backend configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "EKS service name",
+          "example": "serviceA",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EKS service port",
+          "example": "8080",
+          "member": "int64",
+          "name": "ServicePort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IngressRulePath": {
+      "document": "Ingress rule path configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Path information",
+          "example": "/xxx",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backend configuration",
+          "example": "{\"ServiceName\": \"serviceA\", \"ServicePort\": 8080}}",
+          "member": "IngressRuleBackend",
+          "name": "Backend",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IngressRuleValue": {
+      "document": "Ingress rule value configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Overall rule configuration",
+          "example": "rulePaths 数组",
+          "member": "IngressRulePath",
+          "name": "Paths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IngressTls": {
+      "document": "Ingress TLS configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Host array",
+          "example": "[\"xx.com\", \"yyy.com\"]",
+          "member": "string",
+          "name": "Hosts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "secret name",
+          "example": "secret",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LogOutputConf": {
+      "document": "Log output configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Log consumer type",
+          "example": "cls、kafka",
+          "member": "string",
+          "name": "OutputType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLS logset",
+          "example": "1",
+          "member": "string",
+          "name": "ClsLogsetName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLS log topic",
+          "example": "1",
+          "member": "string",
+          "name": "ClsLogTopicId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLS logset ID",
+          "example": "1",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLS log topic name",
+          "example": "1",
+          "member": "string",
+          "name": "ClsLogTopicName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyIngressRequest": {
+      "document": "ModifyIngress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Ingress rule configuration",
+          "example": "无",
+          "member": "IngressInfo",
+          "name": "Ingress",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIngressResponse": {
+      "document": "ModifyIngress response structure.",
+      "members": [
+        {
+          "document": "Created successfully\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNamespaceRequest": {
+      "document": "ModifyNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "namespace-36pm4p8r",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "namespace-a",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace description",
+          "example": "命名空间",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC name",
+          "example": "vpc-1n5javez",
+          "member": "string",
+          "name": "Vpc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet",
+          "example": "subnet-m48cb76m",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNamespaceResponse": {
+      "document": "ModifyNamespace response structure.",
+      "members": [
+        {
+          "document": "Namespace ID in case of success and `null` in case of failure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NamespacePage": {
+      "document": "Namespace pagination",
+      "members": [
+        {
+          "default": "",
+          "document": "Records",
+          "member": "TemNamespaceInfo",
+          "name": "Records",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of items",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of pages",
+          "member": "int64",
+          "name": "Pages",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Pair": {
+      "document": "Key-Value pair",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RunVersionPod": {
+      "document": "Pod",
+      "members": [
+        {
+          "default": "",
+          "document": "Shell address",
+          "example": "sss",
+          "member": "string",
+          "name": "Webshell",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pod ID",
+          "example": "aaa",
+          "member": "string",
+          "name": "PodId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2010-11-11 22:21:11",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pod IP",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "PodIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StorageConf": {
+      "document": "Storage volume configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage volume name",
+          "example": "1",
+          "member": "string",
+          "name": "StorageVolName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage volume path",
+          "example": "1",
+          "member": "string",
+          "name": "StorageVolPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage volume IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "StorageVolIp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "StorageMountConf": {
+      "document": "Data volume mount information",
+      "members": [
+        {
+          "default": "",
+          "document": "Data volume name",
+          "member": "string",
+          "name": "VolumeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data volume binding path",
+          "member": "string",
+          "name": "MountPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TemNamespaceInfo": {
+      "document": "Namespace object",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace ID",
+          "example": "1",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel",
+          "example": "1",
+          "member": "string",
+          "name": "Channel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "1",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "1",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status. 1: terminated; 0: normal",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC",
+          "example": "1",
+          "member": "string",
+          "name": "Vpc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "1",
+          "member": "string",
+          "name": "CreateDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "1",
+          "member": "string",
+          "name": "ModifyDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modifier",
+          "example": "1",
+          "member": "string",
+          "name": "Modifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator",
+          "example": "1",
+          "member": "string",
+          "name": "Creator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of services",
+          "example": "1",
+          "member": "int64",
+          "name": "ServiceNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of running instances",
+          "example": "1",
+          "member": "int64",
+          "name": "RunInstancesNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet",
+          "example": "1",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TCB environment status",
+          "example": "1",
+          "member": "string",
+          "name": "TcbEnvStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "eks cluster status",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable TSW",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableTswTraceService",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

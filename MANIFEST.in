@@ -105,6 +105,8 @@ include tccli/services/tag/v20180813/api.json
 include tccli/services/tag/v20180813/examples.json
 include tccli/services/tcaplusdb/v20190823/api.json
 include tccli/services/tcaplusdb/v20190823/examples.json
+include tccli/services/tem/v20201221/api.json
+include tccli/services/tem/v20201221/examples.json
 include tccli/services/tiw/v20190919/api.json
 include tccli/services/tiw/v20190919/examples.json
 include tccli/services/tke/v20180525/api.json

@@ -1,0 +1,101 @@
+{
+  "actions": {
+    "CreateCosTokenV2": [
+      {
+        "document": "This example shows you how to generate a COS temporary key for an uploaded JAR or WAR package.",
+        "input": "https://tem.tencentcloudapi.com/?Action=CreateCosTokenV2\n&ServiceId=\"service-xxxxx\"\n&PkgName=\"test-demo.jar\"\n&OptType=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": {}\n    }\n}",
+        "title": "Generating COS temporary key"
+      }
+    ],
+    "CreateNamespace": [
+      {
+        "document": "This example shows you how to create an environment (namespace).",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateNamespace\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"xx\",\n    \"K8sVersion\": \"1.16.9\",\n    \"SubnetIds\": [\n        \"xx\"\n    ],\n    \"Description\": \"xx\",\n    \"Vpc\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": \"env-xxxx\"\n    }\n}",
+        "title": "Creating environment (namespace)"
+      }
+    ],
+    "CreateResource": [
+      {
+        "document": "This example shows you how to create an environment (namespace).",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateResource\n<Common request parameters>\n\n{\n    \"NamespaceId\": \"env-xx\",\n    \"ResourceType\": \"VPC\",\n    \"ResourceId\": \"vpc-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Creating environment (namespace)"
+      }
+    ],
+    "CreateServiceV2": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateServiceV2\n<Common request parameters>\n\n{\n    \"SubnetList\": [\n        \"xx\"\n    ],\n    \"Description\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"DeployMode\": \"xx\",\n    \"RepoServer\": \"xx\",\n    \"SourceChannel\": 0,\n    \"ServiceName\": \"xx\",\n    \"RepoType\": 0,\n    \"RepoName\": \"xx\",\n    \"UseDefaultImageService\": 0,\n    \"CodingLanguage\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating service"
+      }
+    ],
+    "DeleteIngress": [
+      {
+        "document": "This example shows you how to query an ingress rule.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIngress\n<Common request parameters>\n\n{\n    \"NamespaceId\": \"cls-xxx\",\n    \"EksNamespace\": \"default\",\n    \"Name\": \"xxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Querying ingress rule"
+      }
+    ],
+    "DeployServiceV2": [
+      {
+        "document": "This example shows you how to deploy a service version.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeployServiceV2\n<Common request parameters>\n\n{\n    \"JvmOpts\": \"xx\",\n    \"StorageConfs\": [\n        {\n            \"StorageVolName\": \"xx\",\n            \"StorageVolPath\": \"xx\"\n        }\n    ],\n    \"ImgRepo\": \"xx\",\n    \"EnvConf\": [\n        {\n            \"Value\": \"xx\",\n            \"Key\": \"xx\"\n        }\n    ],\n    \"Description\": \"xx\",\n    \"JdkVersion\": \"xx\",\n    \"ContainerPort\": 1,\n    \"LogOutputConf\": {\n        \"ClsLogTopicId\": \"xx\",\n        \"ClsLogsetName\": \"xx\",\n        \"OutputType\": \"xx\"\n    },\n    \"CpuSpec\": 0.0,\n    \"DeployMode\": \"xx\",\n    \"SecurityGroupIds\": [\n        \"xx\"\n    ],\n    \"SourceChannel\": 0,\n    \"DeployVersion\": \"xx\",\n    \"InitPodNum\": 1,\n    \"VersionDesc\": \"xx\",\n    \"MemorySpec\": 0.0,\n    \"LogConfs\": [\n        \"xx\"\n    ],\n    \"PkgName\": \"xx\",\n    \"StorageMountConfs\": [\n        {\n            \"VolumeName\": \"xx\",\n            \"MountPath\": \"xx\"\n        }\n    ],\n    \"EsInfo\": {\n        \"MinAliveInstances\": 0,\n        \"EsStrategy\": 0,\n        \"VersionId\": \"xx\",\n        \"Threshold\": 1,\n        \"MaxAliveInstances\": 2\n    },\n    \"ServiceId\": \"xx\",\n    \"NamespaceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": \"version-xxx\"\n    }\n}",
+        "title": "Deploying service version"
+      }
+    ],
+    "DescribeIngress": [
+      {
+        "document": "This example shows you how to query an ingress rule.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIngress\n<Common request parameters>\n\n{\n    \"NamespaceId\": \"env-xxx\",\n    \"EksNamespace\": \"default\",\n    \"Name\": \"xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": {\n            \"ClusterId\": \"cls-9lxt9ic2\",\n            \"NamespaceId\": null,\n            \"EksNamespace\": \"default\",\n            \"AddressIPVersion\": \"IPV4\",\n            \"ClbId\": \"clb-xxxx\",\n            \"Name\": \"test-ingress-1\",\n            \"Rules\": [\n                {\n                    \"Host\": \"\",\n                    \"Http\": {\n                        \"Paths\": [\n                            {\n                                \"Path\": \"/\",\n                                \"Backend\": {\n                                    \"ServiceName\": \"kubernetes\",\n                                    \"ServicePort\": 443\n                                }\n                            }\n                        ]\n                    }\n                }\n            ],\n            \"Tls\": [\n                {\n                    \"Hosts\": [\n                        \"xxx.com\"\n                    ],\n                    \"SecretName\": \"xxx\"\n                }\n            ]\n        }\n    }\n}",
+        "title": "Querying ingress rule"
+      }
+    ],
+    "DescribeIngresses": [
+      {
+        "document": "This example shows you how to get the list of ingress rules.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIngresses\n<Common request parameters>\n\n{\n    \"NamespaceId\": \"env-xxx\",\n    \"EksNamespace\": \"default\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": [\n            {\n                \"ClusterId\": \"cls-9lxt9ic2\",\n                \"NamespaceId\": null,\n                \"EksNamespace\": \"default\",\n                \"AddressIPVersion\": \"IPV4\",\n                \"ClbId\": \"clb-xxxx\",\n                \"Vip\": \"10.10.10.10\",\n                \"Name\": \"test-ingress-1\",\n                \"Rules\": [\n                    {\n                        \"Host\": \"\",\n                        \"Http\": {\n                            \"Paths\": [\n                                {\n                                    \"Path\": \"/\",\n                                    \"Backend\": {\n                                        \"ServiceName\": \"kubernetes\",\n                                        \"ServicePort\": 443\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                ],\n                \"Tls\": [\n                    {\n                        \"Hosts\": [\n                            \"xxx.com\"\n                        ],\n                        \"SecretName\": \"xxx\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Getting the list of ingress rules"
+      }
+    ],
+    "DescribeNamespaces": [
+      {
+        "document": "This example shows you how to get the list of tenant namespaces.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeNamespaces\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Records\": [\n                {\n                    \"Status\": 0,\n                    \"ModifyDate\": \"xx\",\n                    \"Description\": \"xx\",\n                    \"Creator\": \"xx\",\n                    \"CreateDate\": \"xx\",\n                    \"NamespaceName\": \"xx\",\n                    \"Region\": \"xx\",\n                    \"TcbEnvStatus\": \"xx\",\n                    \"ServiceNum\": 0,\n                    \"RunInstancesNum\": 0,\n                    \"Vpc\": \"xx\",\n                    \"SubnetId\": \"xx\",\n                    \"ClusterStatus\": \"xx\",\n                    \"Modifier\": \"xx\",\n                    \"NamespaceId\": \"xx\",\n                    \"Channel\": \"xx\"\n                }\n            ],\n            \"Total\": 0,\n            \"Pages\": 0,\n            \"Size\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of tenant namespaces"
+      }
+    ],
+    "DescribeServiceRunPodListV2": [
+      {
+        "document": "This example shows you how to get the list of running pods under a version.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServiceRunPodListV2\n<Common request parameters>\n\n{\n    \"PodName\": \"xx\",\n    \"ServiceId\": \"xx\",\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"NamespaceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 0,\n            \"Limit\": 0,\n            \"RequestId\": \"xx\",\n            \"PodList\": [\n                {\n                    \"Webshell\": \"xx\",\n                    \"Status\": \"xx\",\n                    \"PodId\": \"xx\",\n                    \"PodIp\": \"xx\",\n                    \"CreateTime\": \"xx\"\n                }\n            ],\n            \"Offset\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of running pods under version"
+      }
+    ],
+    "ModifyIngress": [
+      {
+        "document": "This example shows you how to create or update an ingress rule.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIngress\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"Ingress\": {\n        \"Tls\": [\n            {\n                \"Hosts\": [\n                    \"xxx.com\"\n                ],\n                \"SecretName\": \"xx\"\n            }\n        ],\n        \"EksNamespace\": \"xx\",\n        \"Name\": \"xx\",\n        \"Rules\": [\n            {\n                \"Host\": \"xx\",\n                \"Http\": {\n                    \"Paths\": [\n                        {\n                            \"Path\": \"xx\",\n                            \"Backend\": {\n                                \"ServiceName\": \"xx\",\n                                \"ServicePort\": 443\n                            }\n                        }\n                    ]\n                }\n            }\n        ],\n        \"ClbId\": \"xx\",\n        \"ClusterId\": \"xx\",\n        \"Vip\": \"xx\",\n        \"AddressIPVersion\": \"xx\",\n        \"NamespaceId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Creating or updating ingress rule"
+      }
+    ],
+    "ModifyNamespace": [
+      {
+        "document": "This example shows you how to edit a namespace.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNamespace\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"xx\",\n    \"SubnetIds\": [\n        \"xx\"\n    ],\n    \"Description\": \"xx\",\n    \"Vpc\": \"xx\",\n    \"NamespaceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Editing namespace"
+      }
+    ]
+  },
+  "version": "1.0"
+}
