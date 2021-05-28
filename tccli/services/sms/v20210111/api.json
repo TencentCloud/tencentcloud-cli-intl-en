@@ -1,0 +1,166 @@
+{
+  "actions": {
+    "SmsPackagesStatistics": {
+      "document": "This API is used to collect statistics on a user's packages.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "SmsPackagesStatisticsRequest",
+      "name": "Collects statistics on packages",
+      "output": "SmsPackagesStatisticsResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-01-11",
+    "serviceNameCN": "短信",
+    "serviceShortName": "sms"
+  },
+  "objects": {
+    "SmsPackagesStatistics": {
+      "document": "Package message statistics response body",
+      "members": [
+        {
+          "default": "",
+          "document": "The creation time of the package in seconds in the format of UNIX timestamp.",
+          "example": "1617206400",
+          "member": "uint64",
+          "name": "PackageCreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The effective time of the package in seconds in the format of UNIX timestamp.",
+          "example": "1617206400",
+          "member": "uint64",
+          "name": "PackageEffectiveTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time of the package in seconds in the format of UNIX timestamp.",
+          "example": "1619798400",
+          "member": "uint64",
+          "name": "PackageExpiredTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of SMS messages in the package",
+          "example": "1000",
+          "member": "uint64",
+          "name": "PackageAmount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package type. 0: gifted package; 1: purchased package.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PackageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package ID.",
+          "example": "1000791745",
+          "member": "uint64",
+          "name": "PackageId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current number of used messages in the package.",
+          "example": "100",
+          "member": "uint64",
+          "name": "CurrentUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SmsPackagesStatisticsRequest": {
+      "document": "SmsPackagesStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006879",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upper limit (number of packages to be pulled)",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).\nNote: the creation time of a pulled package should not be earlier than the start time.",
+          "example": "2021050113",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be later than `BeginTime`. The creation time of a pulled package should not be later than the end time.",
+          "example": "2021050123",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SmsPackagesStatisticsResponse": {
+      "document": "SmsPackagesStatistics response structure.",
+      "members": [
+        {
+          "document": "Delivery statistics response packet body.",
+          "example": "\"SmsPackagesStatisticsSet\": [       {         \"PackageCreateT",
+          "member": "SmsPackagesStatistics",
+          "name": "SmsPackagesStatisticsSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}
