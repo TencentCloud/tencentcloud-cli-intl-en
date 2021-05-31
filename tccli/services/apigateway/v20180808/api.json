@@ -3029,7 +3029,7 @@
         },
         {
           "default": "",
-          "document": "A parameter which is specified to skip the deletion precondition verification (only supported for services on dedicated instances).",
+          "document": "A parameter used to set to skip the deletion precondition verification (only supported for services on dedicated instances).",
           "example": "0",
           "member": "int64",
           "name": "SkipVerification",

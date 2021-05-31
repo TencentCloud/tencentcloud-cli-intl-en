@@ -37,7 +37,7 @@
       "output": "DescribeAsyncRequestInfoResponse"
     },
     "DescribeBackupAccess": {
-      "document": "备份下载功能已调整，此接口即将下线\n\nTencentDB will soon stop supporting this API, as the backup download feature has been modified.\n\nThis API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.",
+      "document": "备份下载功能已调整，此接口即将下线\n\nTencentDB will soon stop supporting this API as the backup download feature has been modified.\n\nThis API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.",
       "input": "DescribeBackupAccessRequest",
       "name": "Gets the permission to download an instance backup",
       "output": "DescribeBackupAccessResponse"
@@ -259,7 +259,7 @@
         },
         {
           "default": "",
-          "document": "Task progress in terms of percentage",
+          "document": "Task progress in percentage",
           "example": "20",
           "member": "int64",
           "name": "Percent",
@@ -523,7 +523,7 @@
         },
         {
           "default": "",
-          "document": "The list of shards whose backups will be downloaded",
+          "document": "The list of shards with backups to be downloaded",
           "example": "无",
           "member": "ReplicaSetInfo",
           "name": "BackupSets",
@@ -1110,7 +1110,7 @@
         },
         {
           "default": "",
-          "document": "The name of a backup file whose download tasks will be queried",
+          "document": "The name of a backup file with download tasks to be queried",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
           "name": "BackupName",
@@ -2720,7 +2720,7 @@
       "members": [
         {
           "default": "",
-          "document": "Policy. Valid values: `ACCEPT`, `DROP`",
+          "document": "Execution rule. Valid values: `ACCEPT`, `DROP`",
           "example": "ACCEPT",
           "member": "string",
           "name": "Action",
@@ -2754,6 +2754,46 @@
           "example": "tcp",
           "member": "string",
           "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "AddressModule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceModule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Desc",
           "required": true,
           "type": "string",
           "value_allowed_null": false

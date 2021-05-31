@@ -67,7 +67,7 @@
       "output": "DescribeAppInfoResponse"
     },
     "DescribeCkafkaZone": {
-      "document": "This API is used to view the availability zone (AZ) list of Ckafka.",
+      "document": "This API is used to view the AZ list of Ckafka.",
       "input": "DescribeCkafkaZoneRequest",
       "name": "Views the AZ list",
       "output": "DescribeCkafkaZoneResponse"
@@ -115,7 +115,7 @@
       "output": "DescribeInstancesDetailResponse"
     },
     "DescribeRegion": {
-      "document": "This API is used to enumerate regions, only including Guangzhou.",
+      "document": "This API is used to enumerate regions, and can be called only in Guangzhou.",
       "input": "DescribeRegionRequest",
       "name": "Enumerates regions",
       "output": "DescribeRegionResponse"
@@ -372,7 +372,7 @@
         },
         {
           "default": "",
-          "document": "The AZ which the cluster belongs to\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "The AZ where the cluster resides\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -381,7 +381,7 @@
         },
         {
           "default": "",
-          "document": "The AZ which the cluster nodes belong to. If the cluster is a multi-AZ cluster, this field means multiple AZs which the cluster nodes belong to.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "The AZ where the cluster nodes reside. If the cluster is a multi-AZ cluster, this field means multiple AZs where the cluster nodes reside.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ZoneIds",
           "required": true,
@@ -1292,7 +1292,7 @@
       "document": "DescribeCkafkaZone response structure.",
       "members": [
         {
-          "document": "The entity of query result complex objects",
+          "document": "Returned results for the query",
           "example": "无",
           "member": "ZoneResponse",
           "name": "Result",
@@ -3573,7 +3573,7 @@
         },
         {
           "default": "",
-          "document": "Region code (V3)\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "Region code (v3)\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "RegionCodeV3",
@@ -3593,7 +3593,7 @@
         },
         {
           "default": "",
-          "document": "Whether ipv6 is supported. `0` indicates no, and `1` indicates yes.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "Whether IPv6 is supported. `0` indicates no, and `1` indicates yes.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Ipv6",
@@ -3603,7 +3603,7 @@
         },
         {
           "default": "",
-          "document": "Whether multi-zone clusters are supported.`0` indicates no, and `1` indicates yes.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "Whether cross-AZ clusters are supported.`0` indicates no, and `1` indicates yes.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "MultiZone",
@@ -4216,7 +4216,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is an internal App.",
+          "document": "Whether it is an internal application.",
           "member": "int64",
           "name": "IsInternalApp",
           "required": true,
@@ -4225,7 +4225,7 @@
         },
         {
           "default": "",
-          "document": "app id",
+          "document": "Application ID",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -4234,7 +4234,7 @@
         },
         {
           "default": "",
-          "document": "Identifier",
+          "document": "Flag",
           "member": "bool",
           "name": "Flag",
           "required": true,
@@ -4261,7 +4261,7 @@
         },
         {
           "default": "",
-          "document": "Extra identifier",
+          "document": "Extra flag",
           "member": "string",
           "name": "Exflag",
           "required": true,
