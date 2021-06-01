@@ -1559,6 +1559,15 @@
           "name": "EndPort",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.",
+          "example": "False",
+          "member": "bool",
+          "name": "DeregisterTargetRst",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3910,6 +3919,7 @@
         {
           "default": "",
           "document": "CLB listener ID",
+          "example": "lbl-odt45qxx",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -3919,6 +3929,7 @@
         {
           "default": "",
           "document": "Listener protocol",
+          "example": "HTTP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -3928,6 +3939,7 @@
         {
           "default": "",
           "document": "Listener port",
+          "example": "80",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -3937,6 +3949,7 @@
         {
           "default": "",
           "document": "Information of certificates bound to the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateOutput",
           "name": "Certificate",
           "required": true,
@@ -3946,6 +3959,7 @@
         {
           "default": "",
           "document": "Health check information of the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
           "required": true,
@@ -3955,6 +3969,7 @@
         {
           "default": "",
           "document": "Request scheduling method\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "WRR",
           "member": "string",
           "name": "Scheduler",
           "required": true,
@@ -3964,6 +3979,7 @@
         {
           "default": "",
           "document": "Session persistence time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": true,
@@ -3973,6 +3989,7 @@
         {
           "default": "",
           "document": "Whether to enable the SNI feature (this parameter is only meaningful for HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "SniSwitch",
           "required": true,
@@ -3982,6 +3999,7 @@
         {
           "default": "",
           "document": "All forwarding rules under a listener (this parameter is meaningful only for HTTP/HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RuleOutput",
           "name": "Rules",
           "required": true,
@@ -3991,6 +4009,7 @@
         {
           "default": "",
           "document": "Listener name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "name",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -4000,6 +4019,7 @@
         {
           "default": "",
           "document": "Listener creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-01 15:27:04",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -4009,6 +4029,7 @@
         {
           "default": "",
           "document": "End port of a port range\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "EndPort",
           "required": true,
@@ -4018,6 +4039,7 @@
         {
           "default": "",
           "document": "Real server type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NODE",
           "member": "string",
           "name": "TargetType",
           "required": true,
@@ -4027,6 +4049,7 @@
         {
           "default": "",
           "document": "Basic information of a bound target group. This field will be returned when a target group is bound to a listener.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroup",
           "required": true,
@@ -4036,6 +4059,7 @@
         {
           "default": "",
           "document": "Session persistence type. Valid values: Normal: the default session persistence type; QUIC_CID: session persistence by QUIC connection ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
           "required": true,
@@ -4045,6 +4069,7 @@
         {
           "default": "",
           "document": "Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
           "required": true,
@@ -4054,8 +4079,19 @@
         {
           "default": "",
           "document": "Only the NAT64 CLB TCP listeners are supported.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "Toa",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeregisterTargetRst",
           "required": true,
           "type": "bool",
           "value_allowed_null": true
@@ -5418,6 +5454,15 @@
           "name": "KeepaliveEnable",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.",
+          "example": "False",
+          "member": "bool",
+          "name": "DeregisterTargetRst",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
