@@ -1,10 +1,94 @@
 {
   "actions": {
-    "SmsPackagesStatistics": {
-      "document": "This API is used to collect statistics on a user's packages.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
-      "input": "SmsPackagesStatisticsRequest",
-      "name": "Collects statistics on packages",
-      "output": "SmsPackagesStatisticsResponse"
+    "AddSmsSign": {
+      "document": "1. This API is used to add an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the console to apply for SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "input": "AddSmsSignRequest",
+      "name": "Adds SMS signature",
+      "output": "AddSmsSignResponse"
+    },
+    "AddSmsTemplate": {
+      "document": "1. This API is used to add an SMS template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to apply for SMS body templates.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "input": "AddSmsTemplateRequest",
+      "name": "Adds SMS template",
+      "output": "AddSmsTemplateResponse"
+    },
+    "CallbackStatusStatistics": {
+      "document": "This API is used to collect statistics on user receipts.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "input": "CallbackStatusStatisticsRequest",
+      "name": "Collects statistics on receipts",
+      "output": "CallbackStatusStatisticsResponse"
+    },
+    "DeleteSmsSign": {
+      "document": "⚠️ Note: individual users cannot use this API to delete SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). Please log in to the [console](https://console.cloud.tencent.com/smsv2) to delete SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "input": "DeleteSmsSignRequest",
+      "name": "Deletes SMS signature",
+      "output": "DeleteSmsSignResponse"
+    },
+    "DeleteSmsTemplate": {
+      "document": "⚠️ Note: individual users cannot use this API to delete SMS body templates. Please log in to the [console](https://console.cloud.tencent.com/smsv2) to do so. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "input": "DeleteSmsTemplateRequest",
+      "name": "Deletes SMS template",
+      "output": "DeleteSmsTemplateResponse"
+    },
+    "DescribeSmsSignList": {
+      "document": "⚠️ Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to query SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "DescribeSmsSignListRequest",
+      "name": "Queries SMS signature status",
+      "output": "DescribeSmsSignListResponse"
+    },
+    "DescribeSmsTemplateList": {
+      "document": "⚠️ Note: individual users cannot use this API to query SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "DescribeSmsTemplateListRequest",
+      "name": "Queries SMS template status",
+      "output": "DescribeSmsTemplateListResponse"
+    },
+    "ModifySmsSign": {
+      "document": "1. This API is used to modify an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before making a modification.\n2. ⚠️ Note: individual users cannot use this API to modify SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS signatures.\n3. Modifications can be made only if the signature status is **Pending Review** or **Rejected**. **Approved** signatures cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "input": "ModifySmsSignRequest",
+      "name": "Modifies SMS signature",
+      "output": "ModifySmsSignResponse"
+    },
+    "ModifySmsTemplate": {
+      "document": "1. This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before making a modification.\n2. ⚠️ Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS body templates.\n3. Modifications can be made only if the body template status is **Pending Review** or **Rejected**. **Approved** body templates cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "ModifySmsTemplateRequest",
+      "name": "Modifies SMS template",
+      "output": "ModifySmsTemplateResponse"
+    },
+    "PullSmsReplyStatus": {
+      "document": "This API is used to pull SMS reply status.\nCurrently, you can also [configure the reply callback](https://intl.cloud.tencent.com/document/product/382/42907?from_cn_redirect=1) to get replies.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "PullSmsReplyStatusRequest",
+      "name": "Pulls SMS reply status",
+      "output": "PullSmsReplyStatusResponse"
+    },
+    "PullSmsReplyStatusByPhoneNumber": {
+      "document": "This API is used to pull SMS reply status for one single number.\nCurrently, you can also [configure the reply callback](https://intl.cloud.tencent.com/document/product/382/42907?from_cn_redirect=1) to get replies.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "PullSmsReplyStatusByPhoneNumberRequest",
+      "name": "Pulls SMS reply status for one single number",
+      "output": "PullSmsReplyStatusByPhoneNumberResponse"
+    },
+    "PullSmsSendStatus": {
+      "document": "This API is used to pull SMS delivery status.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: you need to contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) to activate this API.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "PullSmsSendStatusRequest",
+      "name": "Pulls SMS delivery status",
+      "output": "PullSmsSendStatusResponse"
+    },
+    "PullSmsSendStatusByPhoneNumber": {
+      "document": "This API is used to pull SMS delivery status for one single number.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11\n&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "PullSmsSendStatusByPhoneNumberRequest",
+      "name": "Pulls SMS delivery status for one single number",
+      "output": "PullSmsSendStatusByPhoneNumberResponse"
+    },
+    "SendSms": {
+      "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "SendSmsRequest",
+      "name": "Sends SMS messages",
+      "output": "SendSmsResponse"
+    },
+    "SendStatusStatistics": {
+      "document": "This API is used to collect statistics on SMS messages sent by users.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "input": "SendStatusStatisticsRequest",
+      "name": "Collects statistics on SMS delivery",
+      "output": "SendStatusStatisticsResponse"
     }
   },
   "metadata": {
@@ -13,75 +97,15 @@
     "serviceShortName": "sms"
   },
   "objects": {
-    "SmsPackagesStatistics": {
-      "document": "Package message statistics response body",
+    "AddSignStatus": {
+      "document": "Signature addition response ",
       "members": [
         {
           "default": "",
-          "document": "The creation time of the package in seconds in the format of UNIX timestamp.",
-          "example": "1617206400",
+          "document": "Signature ID.",
+          "example": "1110",
           "member": "uint64",
-          "name": "PackageCreateTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The effective time of the package in seconds in the format of UNIX timestamp.",
-          "example": "1617206400",
-          "member": "uint64",
-          "name": "PackageEffectiveTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The expiration time of the package in seconds in the format of UNIX timestamp.",
-          "example": "1619798400",
-          "member": "uint64",
-          "name": "PackageExpiredTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of SMS messages in the package",
-          "example": "1000",
-          "member": "uint64",
-          "name": "PackageAmount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Package type. 0: gifted package; 1: purchased package.",
-          "example": "1",
-          "member": "uint64",
-          "name": "PackageType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Package ID.",
-          "example": "1000791745",
-          "member": "uint64",
-          "name": "PackageId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Current number of used messages in the package.",
-          "example": "100",
-          "member": "uint64",
-          "name": "CurrentUsage",
+          "name": "SignId",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -89,13 +113,305 @@
       ],
       "usage": "out"
     },
-    "SmsPackagesStatisticsRequest": {
-      "document": "SmsPackagesStatistics request structure.",
+    "AddSmsSignRequest": {
+      "document": "AddSmsSign request structure.",
       "members": [
         {
           "default": "",
+          "document": "Signature name.",
+          "example": "test",
+          "member": "string",
+          "name": "SignName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0, 1, 2, and 3.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account or WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SignType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\nNote: the corresponding `DocumentType` must be selected according to `SignType`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DocumentType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Signature purpose:\n0: for personal use.\n1: for others.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SignPurpose",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "You should Base64-encode the image of the identity certificate corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ProofImage",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Power of attorney, which should be submitted if `SignPurpose` is for use by others.\nYou should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.\nNote: this field will take effect only when `SignPurpose` is 1 (for user by others).",
+          "example": "xxx",
+          "member": "string",
+          "name": "CommissionImage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature application remarks.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddSmsSignResponse": {
+      "document": "AddSmsSign response structure.",
+      "members": [
+        {
+          "document": "Signature addition response",
+          "example": "\"AddSignStatus\": {       \"SignId\": 1110,       \"SignApplyId\"",
+          "member": "AddSignStatus",
+          "name": "AddSignStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddSmsTemplateRequest": {
+      "document": "AddSmsTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template name.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Template content.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TemplateContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SMS type. 0: regular SMS, 1: marketing SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SmsType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Template remarks, such as reason for application and use case.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddSmsTemplateResponse": {
+      "document": "AddSmsTemplate response structure.",
+      "members": [
+        {
+          "document": "SMS template addition response body",
+          "example": "   \"AddTemplateStatus\": {       \"TemplateId\": 1110,       \"Reque",
+          "member": "AddTemplateStatus",
+          "name": "AddTemplateStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddTemplateStatus": {
+      "document": "Template parameter addition response ",
+      "members": [
+        {
+          "default": "",
+          "document": "Template ID.",
+          "example": "1110",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CallbackStatusStatistics": {
+      "document": "Receipt statistics response body",
+      "members": [
+        {
+          "default": "",
+          "document": "Messages with receipt.",
+          "member": "uint64",
+          "name": "CallbackCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Successfully submitted SMS messages.",
+          "member": "uint64",
+          "name": "RequestSuccessCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Failed receipts.",
+          "member": "uint64",
+          "name": "CallbackFailCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Successful receipts.",
+          "member": "uint64",
+          "name": "CallbackSuccessCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Carrier's internal error.",
+          "member": "uint64",
+          "name": "InternalErrorCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Invalid numbers.",
+          "member": "uint64",
+          "name": "InvalidNumberCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Errors such as out-of-service or power-off.",
+          "member": "uint64",
+          "name": "ShutdownErrorCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Blocked mobile numbers.",
+          "member": "uint64",
+          "name": "BlackListCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Carrier rate limit hits.",
+          "member": "uint64",
+          "name": "FrequencyLimitCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CallbackStatusStatisticsRequest": {
+      "document": "CallbackStatusStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).",
+          "example": "2016090800",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be after `BeginTime`, and the difference should not exceed 32 days.",
+          "example": "2016090823",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
-          "example": "1400006879",
+          "example": "1400006874",
           "member": "string",
           "name": "SmsSdkAppId",
           "required": true,
@@ -103,8 +419,8 @@
         },
         {
           "default": "",
-          "document": "Upper limit (number of packages to be pulled)",
-          "example": "2",
+          "document": "Upper limit.\nNote: this parameter is currently fixed at 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -112,7 +428,701 @@
         },
         {
           "default": "",
-          "document": "Offset.",
+          "document": "Offset.\nNote: this parameter is currently fixed at 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CallbackStatusStatisticsResponse": {
+      "document": "CallbackStatusStatistics response structure.",
+      "members": [
+        {
+          "document": "Receipt statistics response body.",
+          "example": "  \"CallbackStatusStatistics\": {       \"CallbackCount\": 1745,  ",
+          "member": "CallbackStatusStatistics",
+          "name": "CallbackStatusStatistics",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSignStatus": {
+      "document": "Signature deletion response",
+      "members": [
+        {
+          "default": "",
+          "document": "Deletion status information.",
+          "member": "string",
+          "name": "DeleteStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Deleted time in seconds in the format of UNIX timestamp.",
+          "member": "uint64",
+          "name": "DeleteTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DeleteSmsSignRequest": {
+      "document": "DeleteSmsSign request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the signature to be deleted.",
+          "example": "12345",
+          "member": "uint64",
+          "name": "SignId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSmsSignResponse": {
+      "document": "DeleteSmsSign response structure.",
+      "members": [
+        {
+          "document": "Signature deletion response",
+          "example": " \"DeleteTemplateStatus\": {       \"DeleteTime\": 1578988506,   ",
+          "member": "DeleteSignStatus",
+          "name": "DeleteSignStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSmsTemplateRequest": {
+      "document": "DeleteSmsTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the template to be deleted.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSmsTemplateResponse": {
+      "document": "DeleteSmsTemplate response structure.",
+      "members": [
+        {
+          "document": "Template deletion response",
+          "example": "  \"DeleteTemplateStatus\": {       \"DeleteTime\": 1578988506,     ",
+          "member": "DeleteTemplateStatus",
+          "name": "DeleteTemplateStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTemplateStatus": {
+      "document": "Template deletion response",
+      "members": [
+        {
+          "default": "",
+          "document": "Deletion status information.",
+          "member": "string",
+          "name": "DeleteStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Deleted time in seconds in the format of UNIX timestamp.",
+          "member": "uint64",
+          "name": "DeleteTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeSignListStatus": {
+      "document": "Response for getting SMS signature information",
+      "members": [
+        {
+          "default": "",
+          "document": "Signature ID.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "SignId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS. 0: Mainland China SMS; 1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Signature application status. Valid values: 0: approved; 1: under review.\n-1: application rejected or failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "StatusCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ReviewReply",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Signature name.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "SignName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application submission time in the format of UNIX timestamp in seconds.",
+          "example": "1620734188",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeSmsSignListRequest": {
+      "document": "DescribeSmsSignList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Signature ID array.\nNote: the maximum length of the array is 100 by default.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "SignIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSmsSignListResponse": {
+      "document": "DescribeSmsSignList response structure.",
+      "members": [
+        {
+          "document": "Response for getting signature information",
+          "example": "\"DescribeSignListStatusSet\": [       {         \"SignId\": 111",
+          "member": "DescribeSignListStatus",
+          "name": "DescribeSignListStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSmsTemplateListRequest": {
+      "document": "DescribeSmsTemplateList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template ID array.\nNote: the maximum length of the array is 100 by default.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "TemplateIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSmsTemplateListResponse": {
+      "document": "DescribeSmsTemplateList response structure.",
+      "members": [
+        {
+          "document": "Response for getting SMS template information",
+          "example": "\"DescribeTemplateStatusSet\": [       {         \"TemplateId\":",
+          "member": "DescribeTemplateListStatus",
+          "name": "DescribeTemplateStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTemplateListStatus": {
+      "document": "Response for getting SMS template information",
+      "members": [
+        {
+          "default": "",
+          "document": "Template ID.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS. 0: Mainland China SMS; 1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template application status. Valid values: 0: approved; 1: under review; -1: application rejected or failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "StatusCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ReviewReply",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application submission time in the format of UNIX timestamp in seconds.",
+          "example": "1620640474",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template content.",
+          "example": "验证码是{1}",
+          "member": "string",
+          "name": "TemplateContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifySignStatus": {
+      "document": "Signature modification response ",
+      "members": [
+        {
+          "default": "",
+          "document": "Signature ID.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "SignId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifySmsSignRequest": {
+      "document": "ModifySmsSign request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the signature to be modified.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "SignId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Signature name.",
+          "example": "test",
+          "member": "string",
+          "name": "SignName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0, 1, 2, and 3.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account or WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SignType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\nNote: the corresponding `DocumentType` must be selected according to `SignType`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DocumentType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Signature purpose:\n0: for personal use.\n1: for others.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SignPurpose",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "You should Base64-encode the image of the identity certificate corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "ProofImage",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Power of attorney, which should be submitted if `SignPurpose` is for use by others.\nYou should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.\nNote: this field will take effect only when `SignPurpose` is 1 (for user by others).",
+          "example": "xxxx",
+          "member": "string",
+          "name": "CommissionImage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature application remarks.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySmsSignResponse": {
+      "document": "ModifySmsSign response structure.",
+      "members": [
+        {
+          "document": "Signature modification response",
+          "example": "   \"ModifySignStatus\": {       \"SignId\": 1110,       \"SignApplyI",
+          "member": "ModifySignStatus",
+          "name": "ModifySignStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySmsTemplateRequest": {
+      "document": "ModifySmsTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the template to be modified.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "New template name.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New template content.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TemplateContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SMS type. 0: regular SMS, 1: marketing SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SmsType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "International",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Template remarks, such as reason for application and use case.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySmsTemplateResponse": {
+      "document": "ModifySmsTemplate response structure.",
+      "members": [
+        {
+          "document": "Template parameter modification response",
+          "example": "\"ModifyTemplateStatus\": {       \"TemplateId\": 1110     }",
+          "member": "ModifyTemplateStatus",
+          "name": "ModifyTemplateStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTemplateStatus": {
+      "document": "Template parameter modification response ",
+      "members": [
+        {
+          "default": "",
+          "document": "Template ID.",
+          "example": "1110",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PullSmsReplyStatus": {
+      "document": "SMS reply status",
+      "members": [
+        {
+          "default": "",
+          "document": "SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "example": "11",
+          "member": "string",
+          "name": "ExtendCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country (or region) code.",
+          "example": "86",
+          "member": "string",
+          "name": "CountryCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "example": "+8613711112222",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SMS signature name.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "SignName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User reply.",
+          "example": "test",
+          "member": "string",
+          "name": "ReplyContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reply time in seconds in the format of UNIX timestamp.",
+          "example": "1620734188",
+          "member": "uint64",
+          "name": "ReplyTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's mobile number in a common format such as 13711112222.",
+          "example": "13711112222",
+          "member": "string",
+          "name": "SubscriberNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PullSmsReplyStatusByPhoneNumberRequest": {
+      "document": "PullSmsReplyStatusByPhoneNumber request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Pull start time in seconds in the format of UNIX timestamp.\nNote: the data for the last 7 days can be pulled at most.",
+          "example": "1464624000",
+          "member": "uint64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.\nNote: this parameter is currently fixed at 0.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -121,8 +1131,526 @@
         },
         {
           "default": "",
-          "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).\nNote: the creation time of a pulled package should not be earlier than the start time.",
-          "example": "2021050113",
+          "document": "Maximum number of pulled entries. Maximum value: 100.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Target mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "example": "+8615291996666",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006874",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pull end time in seconds in the format of UNIX timestamp.",
+          "example": "1464624123",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsReplyStatusByPhoneNumberResponse": {
+      "document": "PullSmsReplyStatusByPhoneNumber response structure.",
+      "members": [
+        {
+          "document": "Reply status response set.",
+          "example": "    \"PullSmsReplyStatusSet\": [       {         \"ExtendCode\": \"11",
+          "member": "PullSmsReplyStatus",
+          "name": "PullSmsReplyStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsReplyStatusRequest": {
+      "document": "PullSmsReplyStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Maximum number of pulled entries. Maximum value: 100.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006874",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsReplyStatusResponse": {
+      "document": "PullSmsReplyStatus response structure.",
+      "members": [
+        {
+          "document": "Reply status response set.",
+          "example": " \"PullSmsReplyStatusSet\": [       {         \"ExtendCode\": \"11",
+          "member": "PullSmsReplyStatus",
+          "name": "PullSmsReplyStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsSendStatus": {
+      "document": "SMS delivery status details",
+      "members": [
+        {
+          "default": "",
+          "document": "Actual time of SMS receipt by user in seconds in the format of UNIX timestamp.",
+          "example": "1620734188",
+          "member": "uint64",
+          "name": "UserReceiveTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country (or region) code.",
+          "example": "86",
+          "member": "string",
+          "name": "CountryCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's mobile number in a common format such as 13711112222.",
+          "example": "13711112222",
+          "member": "string",
+          "name": "SubscriberNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "example": "+8613711112222",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the current delivery.",
+          "example": "14:19325917feb3914eb78b50d6182d7e452e",
+          "member": "string",
+          "name": "SerialNo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the SMS message is actually received. Valid values: SUCCESS (success), FAIL (failure).",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "ReportStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of SMS receipt by user.",
+          "example": "DELIVRD",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PullSmsSendStatusByPhoneNumberRequest": {
+      "document": "PullSmsSendStatusByPhoneNumber request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Pull start time in seconds in the format of UNIX timestamp.\nNote: the data for the last 7 days can be pulled at most.",
+          "example": "1464624000",
+          "member": "uint64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.\nNote: this parameter is currently fixed at 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of pulled entries. Maximum value: 100.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Target mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "example": "+8615291996666",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006874",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pull end time in seconds in the format of UNIX timestamp.",
+          "example": "1464624123",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsSendStatusByPhoneNumberResponse": {
+      "document": "PullSmsSendStatusByPhoneNumber response structure.",
+      "members": [
+        {
+          "document": "Delivery status response set.",
+          "example": "\"PullSmsSendStatusSet\": [       {         \"UserReceiveTime\": \"20",
+          "member": "PullSmsSendStatus",
+          "name": "PullSmsSendStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsSendStatusRequest": {
+      "document": "PullSmsSendStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Maximum number of pulled entries. Maximum value: 100.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006874",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PullSmsSendStatusResponse": {
+      "document": "PullSmsSendStatus response structure.",
+      "members": [
+        {
+          "document": "Delivery status response set.",
+          "example": "\"PullSmsSendStatusSet\": [       {         \"UserReceiveTime\": \"20",
+          "member": "PullSmsSendStatus",
+          "name": "PullSmsSendStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendSmsRequest": {
+      "document": "SendSms request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).\nExample: +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "example": "+8618511122233",
+          "member": "string",
+          "name": "PhoneNumberSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006666",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2). If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.",
+          "example": "1234",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2).\nNote: this parameter is required for Mainland China SMS.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "SignName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Template parameter. If there is no template parameter, leave this parameter blank.",
+          "example": "12345",
+          "member": "string",
+          "name": "TemplateParamSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "example": "1400006666",
+          "member": "string",
+          "name": "ExtendCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User session content, which can carry context information such as user-side ID and will be returned as-is by the server.",
+          "example": "test",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is not required for Mainland China SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "example": "test",
+          "member": "string",
+          "name": "SenderId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendSmsResponse": {
+      "document": "SendSms response structure.",
+      "members": [
+        {
+          "document": "SMS delivery status.",
+          "example": "\"SendStatusSet\": [       {         \"SerialNo\": \"5000:10457106691",
+          "member": "SendStatus",
+          "name": "SendStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendStatus": {
+      "document": "SMS delivery status",
+      "members": [
+        {
+          "default": "",
+          "document": "Delivery serial number.",
+          "example": "5000:1045710669157053657849499619",
+          "member": "string",
+          "name": "SerialNo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "example": "+8618511122233",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of billable SMS messages. For billing rules, please see [Billing Policy](https://intl.cloud.tencent.com/document/product/382/36135?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Fee",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User session content.",
+          "example": "test",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SMS request error code. For specific meanings, please see [Error Codes](https://intl.cloud.tencent.com/document/product/382/49316?from_cn_redirect=1).",
+          "example": "Ok",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SMS request error message.",
+          "example": "send success",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region code, such as CN and US. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).",
+          "example": "CN",
+          "member": "string",
+          "name": "IsoCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SendStatusStatistics": {
+      "document": "Delivery statistics response body",
+      "members": [
+        {
+          "default": "",
+          "document": "Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 ones are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.",
+          "member": "uint64",
+          "name": "FeeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Submitted SMS messages.",
+          "member": "uint64",
+          "name": "RequestCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Successfully submitted SMS messages.",
+          "member": "uint64",
+          "name": "RequestSuccessCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SendStatusStatisticsRequest": {
+      "document": "SendStatusStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).",
+          "example": "2016090800",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -130,26 +1658,53 @@
         },
         {
           "default": "",
-          "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be later than `BeginTime`. The creation time of a pulled package should not be later than the end time.",
-          "example": "2021050123",
+          "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be after `BeginTime`.",
+          "example": "2016090823",
           "member": "string",
           "name": "EndTime",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
+          "example": "1400006874",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upper limit.\nNote: this parameter is currently fixed at 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.\nNote: this parameter is currently fixed at 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
         }
       ],
       "type": "object"
     },
-    "SmsPackagesStatisticsResponse": {
-      "document": "SmsPackagesStatistics response structure.",
+    "SendStatusStatisticsResponse": {
+      "document": "SendStatusStatistics response structure.",
       "members": [
         {
-          "document": "Delivery statistics response packet body.",
-          "example": "\"SmsPackagesStatisticsSet\": [       {         \"PackageCreateT",
-          "member": "SmsPackagesStatistics",
-          "name": "SmsPackagesStatisticsSet",
+          "document": "Delivery statistics response body.",
+          "example": "\"SendStatusStatistics\": {       \"FeeCount\": 1880,       \"Requ",
+          "member": "SendStatusStatistics",
+          "name": "SendStatusStatistics",
           "required": true,
-          "type": "list",
+          "type": "object",
           "value_allowed_null": false
         },
         {
