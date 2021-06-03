@@ -19,10 +19,16 @@
       "output": "CloseServerlessDBExtranetAccessResponse"
     },
     "CreateDBInstances": {
-      "document": "This API is used to create one or more TencentDB for PostgreSQL instances.",
+      "document": "This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances.",
       "input": "CreateDBInstancesRequest",
-      "name": "Creates database instance",
+      "name": "Creates instances (deprecated soon)",
       "output": "CreateDBInstancesResponse"
+    },
+    "CreateInstances": {
+      "document": "This API is used to create and initialize one or more TencentDB for PostgreSQL instances.",
+      "input": "CreateInstancesRequest",
+      "name": "Creates instances (recommended)",
+      "output": "CreateInstancesResponse"
     },
     "CreateReadOnlyDBInstance": {
       "document": "This API is used to create read-only replicas.",
@@ -465,7 +471,7 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL kernel version. Currently, only two versions are supported: 9.3.5 and 9.5.4.",
+          "document": "PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.",
           "example": "无",
           "member": "string",
           "name": "DBVersion",
@@ -640,6 +646,240 @@
           "document": "ID set of instances which have been created successfully. The parameter value will be returned only when the billing mode is postpaid.",
           "member": "string",
           "name": "DBInstanceIdSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancesRequest": {
+      "document": "CreateInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "example": "无",
+          "member": "string",
+          "name": "SpecCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.",
+          "example": "无",
+          "member": "string",
+          "name": "DBVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB",
+          "example": "无",
+          "member": "uint64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instances purchased at a time. Value range: 1-10.",
+          "example": "无",
+          "member": "uint64",
+          "name": "InstanceCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance character set. Valid values: `UTF8`, `LATIN1`.",
+          "example": "UTF8",
+          "member": "string",
+          "name": "Charset",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance root account name",
+          "example": "无",
+          "member": "string",
+          "name": "AdminName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance root account password",
+          "example": "无",
+          "member": "string",
+          "name": "AdminPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID list. Currently, you can specify only one voucher.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of a subnet in the VPC specified by `VpcId`",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
+          "example": "无",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Campaign ID",
+          "example": "无",
+          "member": "int64",
+          "name": "ActivityId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).",
+          "example": "无",
+          "member": "uint64",
+          "name": "NeedSupportIpv6",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The information of tags to be associated with instances. This parameter is left empty by default.",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Security group IDs",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancesResponse": {
+      "document": "CreateInstances response structure.",
+      "members": [
+        {
+          "document": "Order number list. Each instance corresponds to an order number.",
+          "example": "无",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bill ID of frozen fees",
+          "example": "无",
+          "member": "string",
+          "name": "BillId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.",
+          "example": "无",
+          "member": "string",
+          "name": "DBInstanceIdSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2523,7 +2763,7 @@
         },
         {
           "default": "",
-          "document": "Whether to use vouchers",
+          "document": "Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.",
           "example": "true",
           "member": "bool",
           "name": "AutoVoucher",
