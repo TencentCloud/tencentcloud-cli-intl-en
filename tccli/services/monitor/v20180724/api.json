@@ -55,7 +55,7 @@
       "output": "DescribeAlarmEventsResponse"
     },
     "DescribeAlarmHistories": {
-      "document": "This API is used to query the alarm records.",
+      "document": "This API is used to query the alarm records.\n\nNote: **If you query the alarm records as a sub-user, you can only query those of authorized projects** or those of products which are not categorized by projects. For information on how to grant a sub-account the project permission, see [Project & Tag](https://intl.cloud.tencent.com/document/product/598/32738?from_cn_redirect=1).",
       "input": "DescribeAlarmHistoriesRequest",
       "name": "Queries alarm records",
       "output": "DescribeAlarmHistoriesResponse"
@@ -2239,7 +2239,7 @@
         },
         {
           "default": "",
-          "document": "Start time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the timestamp of a day earlier.",
+          "document": "Start time, which is the timestamp one day ago by default and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is later than the `StartTime`.",
           "example": "1611600000",
           "member": "int64",
           "name": "StartTime",
@@ -2248,7 +2248,7 @@
         },
         {
           "default": "",
-          "document": "End time, which corresponds to `FirstOccurTime` (time when an alarm first occurred). The default value is the current timestamp.",
+          "document": "End time, which is the current timestamp and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is earlier than the `EndTime`.",
           "example": "1611650000",
           "member": "int64",
           "name": "EndTime",
@@ -2257,7 +2257,7 @@
         },
         {
           "default": "",
-          "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "document": "Filter by monitoring type. Valid value: `MT_QCE` (Tencent Cloud service monitoring). If this parameter is left empty, all types will be queried by default.",
           "example": "MT_QCE",
           "member": "string",
           "name": "MonitorTypes",
@@ -2284,7 +2284,7 @@
         },
         {
           "default": "",
-          "document": "Filter by project ID. Valid values: -1 (no project), 0 (default project)",
+          "document": "Filter by project ID. Valid values: `-1` (no project), `0` (default project)\nYou can query [Project Management](https://console.cloud.tencent.com/project) on this page.",
           "example": "无",
           "member": "int64",
           "name": "ProjectIds",
@@ -2302,8 +2302,8 @@
         },
         {
           "default": "",
-          "document": "Filter by policy type",
-          "example": "cvm_device",
+          "document": "Filter by policy type. Monitoring type and policy type are first-level and second-level filters respectively and both need to be passed in. For example, `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]`\nThis parameter can be queried with the API [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1).",
+          "example": "[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]",
           "member": "MonitorTypeNamespace",
           "name": "Namespaces",
           "required": false,
@@ -2338,7 +2338,7 @@
         },
         {
           "default": "",
-          "document": "Search by recipient",
+          "document": "Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.",
           "example": "无",
           "member": "int64",
           "name": "ReceiverUids",
@@ -2347,7 +2347,7 @@
         },
         {
           "default": "",
-          "document": "Search by recipient group",
+          "document": "Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.",
           "example": "无",
           "member": "int64",
           "name": "ReceiverGroups",
@@ -2661,7 +2661,7 @@
         {
           "default": "",
           "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
-          "example": "[MT_QCE]",
+          "example": "[\"MT_QCE\"]",
           "member": "string",
           "name": "MonitorTypes",
           "required": false,
@@ -2670,7 +2670,7 @@
         {
           "default": "",
           "document": "Filter by namespace. For the values of different policy types, please see:\n[Policy Type List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)",
-          "example": "[cvm]",
+          "example": "[\"cvm_device\"]",
           "member": "string",
           "name": "Namespaces",
           "required": false,
@@ -2678,8 +2678,8 @@
         },
         {
           "default": "",
-          "document": "Alarm object list. The outer array corresponds to multiple instances.\nEach inner array corresponds to one instance, where `object` corresponds to the dimension information of the instance. The format is as follows:\n[\n\t[{\"name\":\"unInstanceId\",\"value\":\"ins-qr888845g\"}],\n\t[{\"name\":\"unInstanceId\",\"value\":\"ins-qr8d555g\"}]\n\t...\n]\nFor the samples for different Tencent Cloud services, please see:\n[Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)",
-          "example": "Region",
+          "document": "The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object. For example, “CVM - Basic Monitor” can be written as:\n`[ {\"Dimensions\": {\"unInstanceId\": \"ins-qr8d555g\"}}, {\"Dimensions\": {\"unInstanceId\": \"ins-qr8d555h\"}} ]`\nYou can also refer to the “Example 2” below.\n\nFor more information on the parameter samples of different Tencent Cloud services, see [Product Policy Type and Dimension Information](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1).",
+          "example": "[[{\"name\":\"unInstanceId\",\"value\":\"ins-qr888845g\"}]]",
           "member": "string",
           "name": "Dimensions",
           "required": false,
@@ -2687,7 +2687,7 @@
         },
         {
           "default": "",
-          "document": "Search by recipient `uid`, which should be queried by calling the CAM API. For more information, please see:\n[ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1)",
+          "document": "Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.",
           "example": "[9989]",
           "member": "int64",
           "name": "ReceiverUids",
@@ -2696,7 +2696,7 @@
         },
         {
           "default": "",
-          "document": "Search by recipient group `uid`, which should be queried by calling the CAM API. For more information, please see:\n[ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1)",
+          "document": "Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.",
           "example": "[1112]",
           "member": "int64",
           "name": "ReceiverGroups",
@@ -2741,7 +2741,7 @@
         },
         {
           "default": "",
-          "document": "ID list of the notification template, which can be obtained by querying the notification template list.\n[DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)",
+          "document": "ID list of the notification template, which can be obtained by querying the notification template list.\nIt can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1).",
           "example": "[1,2]",
           "member": "string",
           "name": "NoticeIds",
@@ -5711,6 +5711,7 @@
         {
           "default": "",
           "document": "Namespace, such as QCE/CVM. For more information on the namespaces of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1)",
+          "example": "QCE/CVM",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -5718,7 +5719,8 @@
         },
         {
           "default": "",
-          "document": "Metric name, such as `CPUUsage`. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is the `MetricName`",
+          "document": "Metric name, such as `CPUUsage`. Only one monitoring metric can be pulled at a time. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is `MetricName`.",
+          "example": "CPUUsage",
           "member": "string",
           "name": "MetricName",
           "required": true,
@@ -5727,6 +5729,7 @@
         {
           "default": "",
           "document": "Dimension combination of instance object in the format of `key-value` pair, such as [{\"Name\":\"InstanceId\",\"Value\":\"ins-j0hk02zo\"}]. For more information on the dimensions of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The value in the dimension column is the `key` in the dimension combination, and the value corresponding to the `key` is the `value` in the combination",
+          "example": "无",
           "member": "Instance",
           "name": "Instances",
           "required": true,
@@ -5735,6 +5738,7 @@
         {
           "default": "",
           "document": "Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods",
+          "example": "300",
           "member": "uint64",
           "name": "Period",
           "required": false,
@@ -5743,6 +5747,7 @@
         {
           "default": "",
           "document": "Start time such as 2018-09-22T19:51:23+08:00",
+          "example": "2019-03-24T10:51:23+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
           "required": false,
@@ -5751,6 +5756,7 @@
         {
           "default": "",
           "document": "End time, which is the current time by default, such as 2018-09-22T20:51:23+08:00. `EndTime` cannot be earlier than `StartTime`",
+          "example": "2019-03-24T20:51:23+08:00",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": false,

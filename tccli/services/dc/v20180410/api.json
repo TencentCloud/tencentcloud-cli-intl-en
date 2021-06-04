@@ -1335,7 +1335,7 @@
         },
         {
           "default": "",
-          "document": "Number of dedicated tunnels with disabled VLAN in the connection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Number of dedicated tunnels with disabled VLAN in the connection\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "0",
           "member": "uint64",
           "name": "VlanZeroDirectConnectTunnelCount",

@@ -25,7 +25,7 @@
       "output": "CloseWanServiceResponse"
     },
     "CreateAccounts": {
-      "document": "This API (CreateAccounts) is used to create TencentDB accounts. The new account names, domain names, and passwords need to be specified, and account remarks can also be added.",
+      "document": "This API is used to create one or more TencentDB instance accounts. The account names, host addresses, and passwords are required, and account remarks and the maximum connections are optional.",
       "input": "CreateAccountsRequest",
       "name": "Creates TencentDB accounts",
       "output": "CreateAccountsResponse"
@@ -396,6 +396,12 @@
       "name": "Modifies the remarks of a TencentDB instance account",
       "output": "ModifyAccountDescriptionResponse"
     },
+    "ModifyAccountMaxUserConnections": {
+      "document": "This API is used to modify the maximum connections of one or more TencentDB instance accounts.",
+      "input": "ModifyAccountMaxUserConnectionsRequest",
+      "name": "Modifies the maximum connections of one or more TencentDB instance accounts",
+      "output": "ModifyAccountMaxUserConnectionsResponse"
+    },
     "ModifyAccountPassword": {
       "document": "This API (ModifyAccountPassword) is used to modify the password of a TencentDB instance account.",
       "input": "ModifyAccountPasswordRequest",
@@ -617,50 +623,72 @@
         {
           "default": "",
           "document": "Account remarks",
+          "example": "your note",
           "member": "string",
           "name": "Notes",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Account domain name",
+          "example": "%",
           "member": "string",
           "name": "Host",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Account name",
+          "example": "root",
           "member": "string",
           "name": "User",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Account information modification time",
+          "example": "2020-09-09 16:40:30",
           "member": "datetime",
           "name": "ModifyTime",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Password modification time",
+          "example": "2020-09-09 16:40:30",
           "member": "datetime",
           "name": "ModifyPasswordTime",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Account creation time",
+          "document": "This parameter is no longer supported.",
+          "example": "''",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum number of instance connections supported by an account",
+          "example": "10240",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1405,6 +1433,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1413,6 +1442,7 @@
         {
           "default": "",
           "document": "TencentDB account.",
+          "example": "无",
           "member": "Account",
           "name": "Accounts",
           "required": true,
@@ -1421,6 +1451,7 @@
         {
           "default": "",
           "document": "Password of the new account",
+          "example": "fsdgfdgfd",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -1429,10 +1460,20 @@
         {
           "default": "",
           "document": "Remarks",
+          "example": "test description",
           "member": "string",
           "name": "Description",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of instance connections supported by the new account",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2690,16 +2731,29 @@
       "members": [
         {
           "document": "Number of eligible accounts.",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Details of eligible accounts.",
+          "example": "无",
           "member": "AccountInfo",
           "name": "Items",
+          "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The maximum number of instance connections (set by the MySQL parameter `max_connections`)",
+          "example": "10240",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -3640,6 +3694,7 @@
         {
           "default": "",
           "document": "Project ID. You can use the [project list querying API](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) to query the project ID.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -3648,6 +3703,7 @@
         {
           "default": "",
           "document": "Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only).",
+          "example": "1",
           "member": "uint64",
           "name": "InstanceTypes",
           "required": false,
@@ -3656,6 +3712,7 @@
         {
           "default": "",
           "document": "Private IP address of the instance.",
+          "example": "\"\"",
           "member": "string",
           "name": "Vips",
           "required": false,
@@ -3664,6 +3721,7 @@
         {
           "default": "",
           "document": "Instance status. Value range: <br>0 - creating <br>1 - running <br>4 - isolating <br>5 - isolated (the instance can be restored and started in the recycle bin)",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
           "required": false,
@@ -3672,6 +3730,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3680,6 +3739,7 @@
         {
           "default": "",
           "document": "Number of results to be returned for a single request. Default value: 20. Maximum value: 2,000.",
+          "example": "1",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3688,6 +3748,7 @@
         {
           "default": "",
           "document": "Security group ID. When it is used as a filter, the `WithSecurityGroup` parameter should be set to 1.",
+          "example": "\"\"",
           "member": "string",
           "name": "SecurityGroupId",
           "required": false,
@@ -3696,6 +3757,7 @@
         {
           "default": "",
           "document": "Billing method. Value range: 0 (monthly subscribed), 1 (hourly).",
+          "example": "1",
           "member": "uint64",
           "name": "PayTypes",
           "required": false,
@@ -3704,6 +3766,7 @@
         {
           "default": "",
           "document": "Instance name.",
+          "example": "\"\"",
           "member": "string",
           "name": "InstanceNames",
           "required": false,
@@ -3712,6 +3775,7 @@
         {
           "default": "",
           "document": "Instance task status. Valid values: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - enabling secondary instance access <br>4 - enabling public network access <br>5 - batch operation in progress <br>6 - rolling back <br>7 - disabling public network access <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built database <br>13 - dropping tables <br>14 - Disaster recovery instance creating sync task <br>15 - waiting for switch <br>16 - switching <br>17 - upgrade and switch completed <br>19 - parameter settings to be executed",
+          "example": "0",
           "member": "uint64",
           "name": "TaskStatus",
           "required": false,
@@ -3720,6 +3784,7 @@
         {
           "default": "",
           "document": "Version of the instance database engine. Value range: 5.1, 5.5, 5.6, 5.7.",
+          "example": "\"5.6\"",
           "member": "string",
           "name": "EngineVersions",
           "required": false,
@@ -3728,6 +3793,7 @@
         {
           "default": "",
           "document": "VPC ID.",
+          "example": "0",
           "member": "uint64",
           "name": "VpcIds",
           "required": false,
@@ -3736,6 +3802,7 @@
         {
           "default": "",
           "document": "AZ ID.",
+          "example": "720001",
           "member": "uint64",
           "name": "ZoneIds",
           "required": false,
@@ -3744,6 +3811,7 @@
         {
           "default": "",
           "document": "Subnet ID.",
+          "example": "0",
           "member": "uint64",
           "name": "SubnetIds",
           "required": false,
@@ -3752,6 +3820,7 @@
         {
           "default": "",
           "document": "Lock flag.",
+          "example": "0",
           "member": "int64",
           "name": "CdbErrors",
           "required": false,
@@ -3760,6 +3829,7 @@
         {
           "default": "",
           "document": "Sort by field of the returned result set. Currently, supported values include \"InstanceId\", \"InstanceName\", \"CreateTime\", and \"DeadlineTime\".",
+          "example": "\"\"",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -3768,6 +3838,7 @@
         {
           "default": "",
           "document": "Sorting method of the returned result set. Currently, \"ASC\" or \"DESC\" is supported.",
+          "example": "\"DESC\"",
           "member": "string",
           "name": "OrderDirection",
           "required": false,
@@ -3776,6 +3847,7 @@
         {
           "default": "",
           "document": "Whether security group ID is used as a filter",
+          "example": "0",
           "member": "int64",
           "name": "WithSecurityGroup",
           "required": false,
@@ -3784,6 +3856,7 @@
         {
           "default": "",
           "document": "Whether dedicated cluster details are included. Value range: 0 (not included), 1 (included)",
+          "example": "0",
           "member": "int64",
           "name": "WithExCluster",
           "required": false,
@@ -3792,6 +3865,7 @@
         {
           "default": "",
           "document": "Exclusive cluster ID.",
+          "example": "\"\"",
           "member": "string",
           "name": "ExClusterId",
           "required": false,
@@ -3800,6 +3874,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "[\"cdb-70zdmgg1\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3808,6 +3883,7 @@
         {
           "default": "",
           "document": "Initialization flag. Value range: 0 (not initialized), 1 (initialized).",
+          "example": "0",
           "member": "int64",
           "name": "InitFlag",
           "required": false,
@@ -3816,6 +3892,7 @@
         {
           "default": "",
           "document": "Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a primary instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MasterInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it.",
+          "example": "0",
           "member": "int64",
           "name": "WithDr",
           "required": false,
@@ -3824,6 +3901,7 @@
         {
           "default": "",
           "document": "Whether read-only instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.",
+          "example": "0",
           "member": "int64",
           "name": "WithRo",
           "required": false,
@@ -3832,6 +3910,7 @@
         {
           "default": "",
           "document": "Whether primary instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.",
+          "example": "0",
           "member": "int64",
           "name": "WithMaster",
           "required": false,
@@ -3840,8 +3919,18 @@
         {
           "default": "",
           "document": "Placement group ID list.",
+          "example": "\"\"",
           "member": "string",
           "name": "DeployGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to use the tag key as a filter condition",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "TagKeysForSearch",
           "required": false,
           "type": "list"
         }
@@ -6398,6 +6487,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of tags\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "TagInfoItem",
+          "name": "TagList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6712,6 +6811,60 @@
       ],
       "type": "object"
     },
+    "ModifyAccountMaxUserConnectionsRequest": {
+      "document": "ModifyAccountMaxUserConnections request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of TencentDB accounts",
+          "example": "无",
+          "member": "Account",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of instance connections supported by an account",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountMaxUserConnectionsResponse": {
+      "document": "ModifyAccountMaxUserConnections response structure.",
+      "members": [
+        {
+          "document": "Async task request ID, which can be used to query the execution result of an async task",
+          "example": "256117ed-efa08b54-61784d44-91781bbd",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyAccountPasswordRequest": {
       "document": "ModifyAccountPassword request structure.",
       "members": [
@@ -6767,6 +6920,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6775,6 +6929,7 @@
         {
           "default": "",
           "document": "Database account, including username and domain name.",
+          "example": "无",
           "member": "Account",
           "name": "Accounts",
           "required": true,
@@ -6783,6 +6938,7 @@
         {
           "default": "",
           "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "example": "[\"SELECT\\n\"]",
           "member": "string",
           "name": "GlobalPrivileges",
           "required": false,
@@ -6791,6 +6947,7 @@
         {
           "default": "",
           "document": "Database permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \t\"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "example": "无",
           "member": "DatabasePrivilege",
           "name": "DatabasePrivileges",
           "required": false,
@@ -6799,6 +6956,7 @@
         {
           "default": "",
           "document": "Table permission in the database. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \t\"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE VIEW\", \"SHOW VIEW\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "example": "无",
           "member": "TablePrivilege",
           "name": "TablePrivileges",
           "required": false,
@@ -6807,10 +6965,20 @@
         {
           "default": "",
           "document": "Column permission in table. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"REFERENCES\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "example": "无",
           "member": "ColumnPrivilege",
           "name": "ColumnPrivileges",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "If this parameter is specified, permissions are modified in batches. Valid values: `grant`, `revoke`.",
+          "example": "无",
+          "member": "string",
+          "name": "ModifyAction",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -9673,6 +9841,32 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TagInfoItem": {
+      "document": "Tag information",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "‘’",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "‘’",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
