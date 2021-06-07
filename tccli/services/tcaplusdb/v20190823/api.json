@@ -78,6 +78,12 @@
       "name": "Drops table",
       "output": "DeleteTablesResponse"
     },
+    "DescribeApplications": {
+      "document": "This API is used to query the list of cluster operation applications.",
+      "input": "DescribeApplicationsRequest",
+      "name": "Queries the list of cluster operation applications",
+      "output": "DescribeApplicationsResponse"
+    },
     "DescribeClusterTags": {
       "document": "This API is used to get the associated tag list of a cluster.",
       "input": "DescribeClusterTagsRequest",
@@ -174,6 +180,18 @@
       "name": "Imports a snapshot",
       "output": "ImportSnapshotsResponse"
     },
+    "MergeTablesData": {
+      "document": "This API is used to merge tables.",
+      "input": "MergeTablesDataRequest",
+      "name": "Merges tables",
+      "output": "MergeTablesDataResponse"
+    },
+    "ModifyCensorship": {
+      "document": "This API is used to enable or disable the cluster operation approval feature.",
+      "input": "ModifyCensorshipRequest",
+      "name": "Enables or disables the cluster operation approval feature",
+      "output": "ModifyCensorshipResponse"
+    },
     "ModifyClusterMachine": {
       "document": "This API is used to modify the machines of a dedicated cluster.",
       "input": "ModifyClusterMachineRequest",
@@ -258,6 +276,12 @@
       "name": "Creates a global index for a table",
       "output": "SetTableIndexResponse"
     },
+    "UpdateApply": {
+      "document": "This API is used to update the application status.",
+      "input": "UpdateApplyRequest",
+      "name": "Updates the application status",
+      "output": "UpdateApplyResponse"
+    },
     "VerifyIdlFiles": {
       "document": "This API is used to upload and verify a table creation file and return the definition of tables that are verified to be valid.",
       "input": "VerifyIdlFilesRequest",
@@ -271,6 +295,284 @@
     "serviceShortName": "tcaplusdb"
   },
   "objects": {
+    "Application": {
+      "document": "Cluster operation application",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "10001",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application type",
+          "example": "表格合并",
+          "member": "int64",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "1822112",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "example": "Test",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table group name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "db_user",
+          "member": "string",
+          "name": "TableGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "db_user_info",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Applicant",
+          "example": "yuxinfan",
+          "member": "string",
+          "name": "Applicant",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time of the application",
+          "example": "2021-01-18 20:10:21",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplicationStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table group ID",
+          "example": "222",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the submitted task (if the application is not approved, this parameter is `0`)",
+          "example": "222",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Globally unique table ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "tcaplus_dsdfsdf",
+          "member": "string",
+          "name": "TableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "2021-01-18 20:10:21",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Approver\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "yuxinfan",
+          "member": "string",
+          "name": "ExecuteUser",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Execution status\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ExecuteStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the application can be approved by the API caller\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "bool",
+          "name": "CanCensor",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the application can be canceled by the API caller\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "bool",
+          "name": "CanWithdrawal",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplyResult": {
+      "document": "Application update results",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "10001",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application type",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplicationStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the submitted task\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Error information\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplyStatus": {
+      "document": "Application ID and status",
+      "members": [
+        {
+          "default": "",
+          "document": "Value format: cluster ID-application ID",
+          "example": "1-10001",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected). Only applications in the pending approval status can be updated.",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplicationStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application type",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "10001",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ClearTablesRequest": {
       "document": "ClearTables request structure.",
       "members": [
@@ -325,6 +627,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "0",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -334,6 +637,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "0",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -343,6 +647,7 @@
         {
           "default": "",
           "document": "Cluster region",
+          "example": "0",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -352,6 +657,7 @@
         {
           "default": "",
           "document": "Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`",
+          "example": "0",
           "member": "string",
           "name": "IdlType",
           "required": true,
@@ -361,6 +667,7 @@
         {
           "default": "",
           "document": "Network type",
+          "example": "0",
           "member": "string",
           "name": "NetworkType",
           "required": true,
@@ -370,6 +677,7 @@
         {
           "default": "",
           "document": "ID of the VPC instance with which a cluster is associated",
+          "example": "0",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -379,6 +687,7 @@
         {
           "default": "",
           "document": "ID of the subnet instance with which a cluster is associated",
+          "example": "0",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -388,6 +697,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "0",
           "member": "datetime",
           "name": "CreatedTime",
           "required": true,
@@ -397,6 +707,7 @@
         {
           "default": "",
           "document": "Cluster password",
+          "example": "0",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -406,6 +717,7 @@
         {
           "default": "",
           "document": "Password status",
+          "example": "0",
           "member": "string",
           "name": "PasswordStatus",
           "required": true,
@@ -415,6 +727,7 @@
         {
           "default": "",
           "document": "TcaplusDB SDK connection parameter: access ID",
+          "example": "0",
           "member": "string",
           "name": "ApiAccessId",
           "required": true,
@@ -424,6 +737,7 @@
         {
           "default": "",
           "document": "TcaplusDB SDK connection parameter: access address",
+          "example": "0",
           "member": "string",
           "name": "ApiAccessIp",
           "required": true,
@@ -433,6 +747,7 @@
         {
           "default": "",
           "document": "TcaplusDB SDK connection parameter: access port",
+          "example": "0",
           "member": "int64",
           "name": "ApiAccessPort",
           "required": true,
@@ -442,6 +757,7 @@
         {
           "default": "",
           "document": "If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "OldPasswordExpireTime",
           "required": true,
@@ -451,6 +767,7 @@
         {
           "default": "",
           "document": "TcaplusDB SDK connection parameter for accessing IPv6 addresses\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "ApiAccessIpv6",
           "required": true,
@@ -460,6 +777,7 @@
         {
           "default": "",
           "document": "Cluster type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ClusterType",
           "required": true,
@@ -469,6 +787,7 @@
         {
           "default": "",
           "document": "Cluster status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ClusterStatus",
           "required": true,
@@ -478,6 +797,7 @@
         {
           "default": "",
           "document": "Read CU\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ReadCapacityUnit",
           "required": true,
@@ -487,6 +807,7 @@
         {
           "default": "",
           "document": "Write CU\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "WriteCapacityUnit",
           "required": true,
@@ -496,6 +817,7 @@
         {
           "default": "",
           "document": "Disk capacity\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "DiskVolume",
           "required": true,
@@ -505,6 +827,7 @@
         {
           "default": "",
           "document": "Information of the machine at the storage layer (tcapsvr) in a dedicated cluster\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "ServerDetailInfo",
           "name": "ServerList",
           "required": true,
@@ -514,8 +837,29 @@
         {
           "default": "",
           "document": "Information of the machine at the access layer (tcaproxy) in a dedicated cluster\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "ProxyDetailInfo",
           "name": "ProxyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)",
+          "example": "0",
+          "member": "int64",
+          "name": "Censorship",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Approver UIN list\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "DbaUins",
           "required": true,
           "type": "list",
           "value_allowed_null": true
@@ -594,6 +938,84 @@
       ],
       "type": "object"
     },
+    "CompareTablesInfo": {
+      "document": "Compare the meta information of two tables",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID of the source table",
+          "member": "string",
+          "name": "SrcTableClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table group ID of the source table",
+          "member": "string",
+          "name": "SrcTableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source table name",
+          "member": "string",
+          "name": "SrcTableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster ID of the target table",
+          "member": "string",
+          "name": "DstTableClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table group ID of the target table",
+          "member": "string",
+          "name": "DstTableGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target table name",
+          "member": "string",
+          "name": "DstTableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source table ID",
+          "member": "string",
+          "name": "SrcTableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target table ID",
+          "member": "string",
+          "name": "DstTableInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "CreateBackupRequest": {
       "document": "CreateBackup request structure.",
       "members": [
@@ -628,11 +1050,22 @@
       "document": "CreateBackup response structure.",
       "members": [
         {
-          "document": "List of IDs of created backup tasks",
+          "document": "List of backup creation task IDs\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TaskIds",
+          "required": true,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of backup creation application IDs\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ApplicationIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1184,6 +1617,114 @@
           "member": "TableResultNew",
           "name": "TableResults",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationsRequest": {
+      "document": "DescribeApplications request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster whose applications will be queried",
+          "example": "10001",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "12",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application status used as a filter condition",
+          "example": "0",
+          "member": "int64",
+          "name": "CensorStatus",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Table group ID used as a filter condition",
+          "example": "xx",
+          "member": "string",
+          "name": "TableGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table name used as a filter condition",
+          "example": "xx",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Applicant UIN used as a filter condition",
+          "example": "xx",
+          "member": "string",
+          "name": "Applicant",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application type used as a filter condition",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplyType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationsResponse": {
+      "document": "DescribeApplications response structure.",
+      "members": [
+        {
+          "document": "Application list",
+          "example": "无",
+          "member": "Application",
+          "name": "Applications",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of applications",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -2083,6 +2624,7 @@
         {
           "default": "",
           "document": "Filter field name",
+          "example": "\"name\"",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2092,10 +2634,21 @@
         {
           "default": "",
           "document": "Filter field value",
+          "example": "\"value\"",
           "member": "string",
           "name": "Value",
-          "required": true,
+          "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter field value",
+          "example": "[\"value1\", \"value2\"]",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2376,6 +2929,193 @@
         }
       ],
       "usage": "in"
+    },
+    "MergeTableResult": {
+      "document": "Table merging results",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "If table merging is successful, `null` will be returned\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "ErrorInfo",
+          "name": "Error",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Comparison results of tables",
+          "example": "0",
+          "member": "CompareTablesInfo",
+          "name": "Table",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MergeTablesDataRequest": {
+      "document": "MergeTablesData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tables to be merged",
+          "example": "无",
+          "member": "MergeTablesInfo",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `true` (only compare), `false` (compare and merge)",
+          "example": "无",
+          "member": "bool",
+          "name": "IsOnlyCompare",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "MergeTablesDataResponse": {
+      "document": "MergeTablesData response structure.",
+      "members": [
+        {
+          "document": "Table merging results",
+          "example": "无",
+          "member": "MergeTableResult",
+          "name": "Results",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MergeTablesInfo": {
+      "document": "Request parameters used to merge tables",
+      "members": [
+        {
+          "default": "",
+          "document": "Information of tables to be merged",
+          "member": "CompareTablesInfo",
+          "name": "MergeTables",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to check indexes",
+          "member": "bool",
+          "name": "CheckIndex",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyCensorshipRequest": {
+      "document": "ModifyCensorship request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "2143435",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the operation approval feature for this cluster. Valid values: `0` (disable), `1` (enable)",
+          "example": "0",
+          "member": "int64",
+          "name": "Censorship",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Approver UIN list",
+          "example": "54654,4544564",
+          "member": "string",
+          "name": "Uins",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCensorshipResponse": {
+      "document": "ModifyCensorship response structure.",
+      "members": [
+        {
+          "document": "Cluster ID",
+          "example": "10001",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Approver UIN list\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "Uins",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the operation approval feature is enabled for this cluster. Valid values: `0` (disabled), `1` (enabled)",
+          "example": "0",
+          "member": "int64",
+          "name": "Censorship",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyClusterMachineRequest": {
       "document": "ModifyClusterMachine request structure.",
@@ -4230,6 +4970,7 @@
         {
           "default": "",
           "document": "Table instance ID in the format of `tcaplus-3be64cbb`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TableInstanceId",
           "required": true,
@@ -4239,6 +4980,7 @@
         {
           "default": "",
           "document": "Task ID, which is valid for the API that creates one task\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -4248,6 +4990,7 @@
         {
           "default": "",
           "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TableName",
           "required": true,
@@ -4257,6 +5000,7 @@
         {
           "default": "",
           "document": "Table data structure type, such as `GENERIC` or `LIST`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TableType",
           "required": true,
@@ -4266,6 +5010,7 @@
         {
           "default": "",
           "document": "Table data interface description language (IDL) type, such as `PROTO` or `TDR`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TableIdlType",
           "required": true,
@@ -4275,6 +5020,7 @@
         {
           "default": "",
           "document": "ID of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -4284,6 +5030,7 @@
         {
           "default": "",
           "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "ErrorInfo",
           "name": "Error",
           "required": true,
@@ -4293,10 +5040,21 @@
         {
           "default": "",
           "document": "Task ID list, which is valid for the API that creates multiple tasks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "string",
           "name": "TaskIds",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster operation application ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -4652,6 +5410,51 @@
         }
       ],
       "usage": "out"
+    },
+    "UpdateApplyRequest": {
+      "document": "UpdateApply request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application status",
+          "example": "无",
+          "member": "ApplyStatus",
+          "name": "ApplyStatus",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateApplyResponse": {
+      "document": "UpdateApply response structure.",
+      "members": [
+        {
+          "document": "List of updated applications\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApplyResult",
+          "name": "ApplyResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of updated applications",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "VerifyIdlFilesRequest": {
       "document": "VerifyIdlFiles request structure.",

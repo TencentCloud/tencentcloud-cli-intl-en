@@ -9716,7 +9716,7 @@
         },
         {
           "default": "",
-          "document": "Sort field. Valid values:\n<li> CreateTime: task creation time</li>\n<li>FinishTime: task end time</li>",
+          "document": "(Not supported now)\nSort field. Valid values:\n<li>`CreateTime`: task creation time</li>\n<li>`FinishTime`: task end time</li>",
           "example": "无",
           "member": "SortBy",
           "name": "Sort",
@@ -11156,6 +11156,22 @@
         }
       ],
       "usage": "in"
+    },
+    "HeadTailTaskInput": {
+      "document": "Input parameters for a video opening/closing credits generation task",
+      "members": [
+        {
+          "default": "",
+          "document": "Video opening/closing credits configuration template ID",
+          "example": "10000",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "HighlightSegmentItem": {
       "document": "List of intelligently generated highlights.",
@@ -19996,6 +20012,7 @@
         {
           "default": "",
           "document": "Video transcoding template ID.",
+          "example": "10000",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -20005,6 +20022,7 @@
         {
           "default": "",
           "document": "List of up to 10 image or text watermarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
           "required": false,
@@ -20014,6 +20032,7 @@
         {
           "default": "",
           "document": "List of blurs. Up to 10 ones can be supported.",
+          "example": "无",
           "member": "MosaicInput",
           "name": "MosaicSet",
           "required": false,
@@ -20022,7 +20041,18 @@
         },
         {
           "default": "",
+          "document": "List of video opening/closing credits configuration template IDs. You can enter up to 10 IDs.",
+          "example": "无",
+          "member": "HeadTailTaskInput",
+          "name": "HeadTailSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Start time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>",
+          "example": "2",
           "member": "float",
           "name": "StartTimeOffset",
           "required": false,
@@ -20032,6 +20062,7 @@
         {
           "default": "",
           "document": "End time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>",
+          "example": "3",
           "member": "float",
           "name": "EndTimeOffset",
           "required": false,

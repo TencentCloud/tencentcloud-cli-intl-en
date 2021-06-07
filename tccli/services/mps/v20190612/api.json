@@ -3316,6 +3316,7 @@
         {
           "default": "",
           "document": "Score of the detected terrorism information in a video from 0 to 100.",
+          "example": "20",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3325,6 +3326,7 @@
         {
           "default": "",
           "document": "Suggestion for the detected terrorism information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "pass",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3333,7 +3335,8 @@
         },
         {
           "default": "",
-          "document": "Tag of the detected terrorism information in a video. Valid values:\n<li>guns: Weapons and guns.</li>\n<li>crowd: Crowd.</li>\n<li>police: Police force.</li>\n<li>bloody: Bloody scenes.</li>\n<li>banners: Terrorism flags.</li>\n<li>militant: Militants.</li>\n<li>explosion: Explosions and fires.</li>\n<li>terrorists: Terrorists.</li>",
+          "document": "Tags for detected terrorism information in a video. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`police`: police forces</li>\n<li>`bloody`: bloodiness</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "example": "crowd",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -3343,6 +3346,7 @@
         {
           "default": "",
           "document": "List of video segments that contain the detected terrorism information.",
+          "example": "[]",
           "member": "MediaContentReviewSegmentItem",
           "name": "SegmentSet",
           "required": true,
@@ -12147,6 +12151,7 @@
         {
           "default": "",
           "document": "Input content of watermark image. JPEG and PNG images are supported.",
+          "example": "{}",
           "member": "MediaInputInfo",
           "name": "ImageContent",
           "required": true,
@@ -12156,6 +12161,7 @@
         {
           "default": "",
           "document": "Watermark width. % and px formats are supported:\n<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>\n<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>\nDefault value: 10%.",
+          "example": "10%",
           "member": "string",
           "name": "Width",
           "required": false,
@@ -12165,8 +12171,19 @@
         {
           "default": "",
           "document": "Watermark height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.</li>\nDefault value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
+          "example": "10%",
           "member": "string",
           "name": "Height",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Repeat type of an animated watermark. Valid values:\n<li>`once`: no longer appears after watermark playback ends.</li>\n<li>`repeat_last_frame`: stays on the last frame after watermark playback ends.</li>\n<li>`repeat` (default): repeats the playback until the video ends.</li>",
+          "example": "repeat",
+          "member": "string",
+          "name": "RepeatType",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -13045,6 +13062,7 @@
         {
           "default": "",
           "document": "Switch of a terrorism information detection in image task. Valid values:\n<li>ON: Enables a terrorism information detection in image task;</li>\n<li>OFF: Disables a terrorism information detection in image task.</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -13053,7 +13071,8 @@
         },
         {
           "default": "",
-          "document": "Filter tag for terrorism information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>guns: Weapons and guns;</li>\n<li>crowd: Crowd;</li>\n<li>bloody: Bloody scenes;</li>\n<li>police: Police force;</li>\n<li>banners: Terrorism flags;</li>\n<li>militant: Militants;</li>\n<li>explosion: Explosions and fires;</li>\n<li>terrorists: Terrorists.</li>",
+          "document": "Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`bloody`: bloodiness</li>\n<li>`police`: police forces</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "example": "bloody",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -13063,6 +13082,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.",
+          "example": "95",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -13072,6 +13092,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.",
+          "example": "80",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -13087,6 +13108,7 @@
         {
           "default": "",
           "document": "Switch of a terrorism information detection in image task. Valid values:\n<li>ON: Enables a terrorism information detection in image task;</li>\n<li>OFF: Disables a terrorism information detection in image task.</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -13095,7 +13117,8 @@
         },
         {
           "default": "",
-          "document": "Filter tag for terrorism information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>guns: Weapons and guns;</li>\n<li>crowd: Crowd;</li>\n<li>bloody: Bloody scenes;</li>\n<li>police: Police force;</li>\n<li>banners: Terrorism flags;</li>\n<li>militant: Militants;</li>\n<li>explosion: Explosions and fires;</li>\n<li>terrorists: Terrorists.</li>",
+          "document": "Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`bloody`: bloodiness</li>\n<li>`police`: police forces</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "example": "guns",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -13105,6 +13128,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
+          "example": "95",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -13114,6 +13138,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
+          "example": "80",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,

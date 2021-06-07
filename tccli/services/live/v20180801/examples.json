@@ -402,6 +402,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeLiveDomainReferer": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveDomainReferer\n&DomainName=5000.liveplay.myqcloud.com\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RefererAuthConfig\": {\n            \"DomainName\": \"5000.liveplay.myqcloud.com\",\n            \"Enable\": 1,\n            \"Type\": 0,\n            \"AllowEmpty\": 1,\n            \"Rules\": \"xxx.com;yyy.com\"\n        },\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeLiveDomains": [
       {
         "document": "",
@@ -517,7 +525,7 @@
     "DescribeLiveStreamState": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveStreamState\r\n&DomainName=5000.livepush.myqcloud.com\r\n&AppName=live\r\n&StreamName=stream1\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveStreamState\n&DomainName=5000.livepush.myqcloud.com\n&AppName=live\n&StreamName=stream1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"StreamState\": \"active\",\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
@@ -719,6 +727,14 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveDomainCert\r\n&DomainName=5000.livepush.myqcloud.com\r\n&CertId=1000\r\n&Status=0\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyLiveDomainReferer": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveDomainReferer\n&DomainName=5000.liveplay.myqcloud.com\n&Enable=1\n&Type=0\n&AllowEmpty=1\n&Rules=aaa.com;bbb.com\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
     ],

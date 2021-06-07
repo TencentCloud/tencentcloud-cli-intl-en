@@ -288,6 +288,12 @@
       "name": "Queries the real-time downstream playback data at domain name level",
       "output": "DescribeLiveDomainPlayInfoListResponse"
     },
+    "DescribeLiveDomainReferer": {
+      "document": "This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
+      "input": "DescribeLiveDomainRefererRequest",
+      "name": "Queries referer allowlist/blocklist configuration of a live streaming domain name",
+      "output": "DescribeLiveDomainRefererResponse"
+    },
     "DescribeLiveDomains": {
       "document": "This API is used to query domain names by domain name status and type.",
       "input": "DescribeLiveDomainsRequest",
@@ -527,6 +533,12 @@
       "input": "ModifyLiveDomainCertRequest",
       "name": "Modifies domain name and certificate binding information",
       "output": "ModifyLiveDomainCertResponse"
+    },
+    "ModifyLiveDomainReferer": {
+      "document": "This API is used to configure referer allowlist/blocklist of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
+      "input": "ModifyLiveDomainRefererRequest",
+      "name": "Configures referer allowlist/blocklist of a live streaming domain name",
+      "output": "ModifyLiveDomainRefererResponse"
     },
     "ModifyLivePlayAuthKey": {
       "document": "This API is used to modify the playback authentication key.",
@@ -3971,6 +3983,42 @@
       ],
       "type": "object"
     },
+    "DescribeLiveDomainRefererRequest": {
+      "document": "DescribeLiveDomainReferer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Playback domain name",
+          "example": "5000.liveplay.myqcloud.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLiveDomainRefererResponse": {
+      "document": "DescribeLiveDomainReferer response structure.",
+      "members": [
+        {
+          "document": "Referer allowlist/blocklist configuration of a domain name",
+          "example": "无",
+          "member": "RefererAuthConfig",
+          "name": "RefererAuthConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLiveDomainRequest": {
       "document": "DescribeLiveDomain request structure.",
       "members": [
@@ -7091,6 +7139,69 @@
       ],
       "type": "object"
     },
+    "ModifyLiveDomainRefererRequest": {
+      "document": "ModifyLiveDomainReferer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Playback domain name",
+          "example": "5000.liveplay.myqcloud.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable referer allowlist/blocklist authentication for the current domain name",
+          "example": "1",
+          "member": "int64",
+          "name": "Enable",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List type. Valid values: `0` (blocklist), `1` (allowlist)",
+          "example": "0",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to allow empty referer. Valid values: `0` (no), `1` (yes)",
+          "example": "1",
+          "member": "int64",
+          "name": "AllowEmpty",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Referer list. Separate items in it with semicolons (;).",
+          "example": "aaa.com;bbb.com",
+          "member": "string",
+          "name": "Rules",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLiveDomainRefererResponse": {
+      "document": "ModifyLiveDomainReferer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyLivePlayAuthKeyRequest": {
       "document": "ModifyLivePlayAuthKey request structure.",
       "members": [
@@ -8533,6 +8644,57 @@
           "name": "Mp3Param",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RefererAuthConfig": {
+      "document": "Referer allowlist/blocklist configuration of a live streaming domain name",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable referer. Valid values: `0` (no), `1` (yes)",
+          "member": "int64",
+          "name": "Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List type. Valid values: `0` (blocklist), `1` (allowlist)",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to allow empty referer. Valid values: `0` (no), `1` (yes)",
+          "member": "int64",
+          "name": "AllowEmpty",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Referer list. Separate items in it with semicolons (;).",
+          "member": "string",
+          "name": "Rules",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
