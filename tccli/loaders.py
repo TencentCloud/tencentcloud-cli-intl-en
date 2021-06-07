@@ -2,6 +2,7 @@
 import os
 import json
 from tccli import __version__
+from tccli.services import SERVICE_VERSIONS
 from collections import OrderedDict
 
 BASE_TYPE = ["int64", "uint64", "string", "float", "bool", "date", "datetime", "datetime_iso", "binary"]
@@ -67,6 +68,9 @@ class Loader(object):
             "secretKey": {
                 "help": "specify a SecretKey",
             },
+            "token": {
+                "help": "temporary certificate token",
+            },
             "version": {
                 "help": "specify a DescribeRegions api version",
                 "metavar": "version_name"
@@ -93,21 +97,7 @@ class Loader(object):
         return version[1:5] + "-" + version[5:7] + "-" + version[7:9]
 
     def get_available_services(self):
-        services = {}
-        services_path = self.get_services_path()
-        for module in sorted(os.listdir(services_path)):
-            if module.startswith("_"):
-                continue
-            module_path = os.path.join(services_path, module)
-            if not os.path.isdir(module_path):
-                continue
-            services[module] = []
-            for version in sorted(os.listdir(module_path), reverse=True):
-                version_path = os.path.join(module_path, version)
-                if os.path.isdir(version_path) and version.startswith('v'):
-                    version = self._version_transform(version)
-                    services[module].append(version)
-        return services
+        return SERVICE_VERSIONS
 
     def get_service_default_version(self, service):
         return self.get_available_services()[service][0]
@@ -174,8 +164,7 @@ class Loader(object):
         for version in version_action_params:
             for action in version_action_params[version]:
                 if action in action_params:
-                    action_params[action] = list(set(action_params[action] +
-                                                     version_action_params[version][action]))
+                    action_params[action] = list(set(action_params[action] + version_action_params[version][action]))
                 else:
                     action_params[action] = version_action_params[version][action]
         return action_params
@@ -192,6 +181,7 @@ class Loader(object):
             "--profile": "specify a profile name",
             "--secretId": "specify a SecretId",
             "--secretKey": "specify a SecretKey",
+            "--token": "temporary certificate token",
             "--region": "identify the region to which the instance you want to work with belongs.",
             "--endpoint": "specify an access point domain name",
             "--version": "specify a %s api version" % action,
