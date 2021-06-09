@@ -1461,6 +1461,7 @@
         {
           "default": "",
           "document": "`EIP` `ID`, the unique ID of the `EIP`.",
+          "example": "eip-ip9ongec",
           "member": "string",
           "name": "AddressId",
           "required": false,
@@ -1470,6 +1471,7 @@
         {
           "default": "",
           "document": "The `EIP` name.",
+          "example": "未命名",
           "member": "string",
           "name": "AddressName",
           "required": false,
@@ -1479,6 +1481,7 @@
         {
           "default": "",
           "document": "Possible `EIP` states are 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.",
+          "example": "UNBIND",
           "member": "string",
           "name": "AddressStatus",
           "required": false,
@@ -1488,6 +1491,7 @@
         {
           "default": "",
           "document": "The public IP address",
+          "example": "100.10.1.1",
           "member": "string",
           "name": "AddressIp",
           "required": false,
@@ -1497,6 +1501,7 @@
         {
           "default": "",
           "document": "The ID of the bound resource instance. This can be a `CVM` or `NAT`.",
+          "example": "ins-xxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -1506,6 +1511,7 @@
         {
           "default": "",
           "document": "The creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.",
+          "example": "2021-05-19T08:37:53Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": false,
@@ -1515,6 +1521,7 @@
         {
           "default": "",
           "document": "The ID of the bound ENI",
+          "example": "null",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": true,
@@ -1524,6 +1531,7 @@
         {
           "default": "",
           "document": "The private IP of the bound resources",
+          "example": "null",
           "member": "string",
           "name": "PrivateAddressIp",
           "required": true,
@@ -1533,6 +1541,7 @@
         {
           "default": "",
           "document": "The isolation status of the resource. `True` indicates the EIP is isolated. `False` indicates that the resource is not isolated.",
+          "example": "false",
           "member": "bool",
           "name": "IsArrears",
           "required": true,
@@ -1542,6 +1551,7 @@
         {
           "default": "",
           "document": "The block status of the resource. `True` indicates the EIP is blocked. `False` indicates that the EIP is not blocked.",
+          "example": "false",
           "member": "bool",
           "name": "IsBlocked",
           "required": true,
@@ -1551,6 +1561,7 @@
         {
           "default": "",
           "document": "Whether the EIP supports direct connection mode. `True` indicates the EIP supports direct connection. `False` indicates that the resource does not support direct connection.",
+          "example": "false",
           "member": "bool",
           "name": "IsEipDirectConnection",
           "required": true,
@@ -1560,6 +1571,7 @@
         {
           "default": "",
           "document": "The resource type of the EIP. This includes `CalcIP`, `WanIP`, `EIP`, and `AnycastEIP`. Among these, `CalcIP` indicates the device IP, `WanIP` indicates the common public IP, `EIP` indicates Elastic IP, and `AnycastEip` indicates accelerated EIP.",
+          "example": "EIP",
           "member": "string",
           "name": "AddressType",
           "required": true,
@@ -1569,6 +1581,7 @@
         {
           "default": "",
           "document": "Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.",
+          "example": "false",
           "member": "bool",
           "name": "CascadeRelease",
           "required": true,
@@ -1578,6 +1591,7 @@
         {
           "default": "",
           "document": "Type of the protocol used in EIP ALG",
+          "example": "无",
           "member": "AlgType",
           "name": "EipAlgType",
           "required": true,
@@ -1587,6 +1601,7 @@
         {
           "default": "",
           "document": "The ISP of an EIP/Elastic IP, with possible return values currently including \"CMCC\", \"CTCC\", \"CUCC\" and \"BGP\"",
+          "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
           "required": true,
@@ -1596,6 +1611,7 @@
         {
           "default": "",
           "document": "Whether the EIP is in a local BGP.",
+          "example": "false",
           "member": "bool",
           "name": "LocalBgp",
           "required": true,
@@ -1605,6 +1621,7 @@
         {
           "default": "",
           "document": "Bandwidth value of EIP. The EIP for the bill-by-CVM account will return `null`.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "1",
           "member": "uint64",
           "name": "Bandwidth",
           "required": true,
@@ -1614,10 +1631,21 @@
         {
           "default": "",
           "document": "Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of tags associated with the EIP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -2450,6 +2478,7 @@
         {
           "default": "",
           "document": "The ID of the ENI instance, such as `eni-m6dyj72l`.",
+          "example": "eni-m6dyj72l",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": true,
@@ -2458,10 +2487,20 @@
         {
           "default": "",
           "document": "The ID of the CVM instance, such as `ins-r8hr2upy`.",
+          "example": "ins-r8hr2upy",
           "member": "string",
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ENI mounting type. Valid values: `0` (standard); `1` (extension); default value: `0`",
+          "example": "0",
+          "member": "uint64",
+          "name": "AttachType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3512,6 +3551,7 @@
         {
           "default": "",
           "document": "The ID of the VPC instance. You can obtain the parameter value from the `VpcId` field in the returned result of the `DescribeVpcs` API.",
+          "example": "vpc-m0c2kcun",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -3520,6 +3560,7 @@
         {
           "default": "",
           "document": "The name of the ENI. The maximum length is 60 bytes.",
+          "example": "eni-ed3452de",
           "member": "string",
           "name": "NetworkInterfaceName",
           "required": true,
@@ -3528,6 +3569,7 @@
         {
           "default": "",
           "document": "The subnet instance ID of the ENI, such as 'subnet-0ap8nwca'.",
+          "example": "subnet-76r802pg",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -3536,6 +3578,7 @@
         {
           "default": "",
           "document": "CVM instance ID.",
+          "example": "ins-12345678",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3544,6 +3587,7 @@
         {
           "default": "",
           "document": "The information of the specified private IPs. You can specify a maximum of 10 IPs each time.",
+          "example": "10.0.0.0",
           "member": "PrivateIpAddressSpecification",
           "name": "PrivateIpAddresses",
           "required": false,
@@ -3552,6 +3596,7 @@
         {
           "default": "",
           "document": "The number of private IP addresses you can apply for. The total number of private IP addresses cannot exceed the quota.",
+          "example": "10.0.0.2",
           "member": "uint64",
           "name": "SecondaryPrivateIpAddressCount",
           "required": false,
@@ -3560,6 +3605,7 @@
         {
           "default": "",
           "document": "The security group to be bound with, such as ['sg-1dd51d'].",
+          "example": "--",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -3568,6 +3614,7 @@
         {
           "default": "",
           "document": "The ENI description. You can enter any information within 60 characters.",
+          "example": "uiui",
           "member": "string",
           "name": "NetworkInterfaceDescription",
           "required": false,
@@ -3576,10 +3623,20 @@
         {
           "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "--",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ENI mounting type. Valid values: `0` (standard); `1` (extension); default value: `0`",
+          "example": "0",
+          "member": "uint64",
+          "name": "AttachType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4385,6 +4442,7 @@
         {
           "default": "",
           "document": "The `ID` of a `VPC` instance, such as `vpc-12345678`.",
+          "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4393,6 +4451,7 @@
         {
           "default": "",
           "document": "The ID of a subnet instance, such as subnet-12345678.",
+          "example": "subnet-12345678",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -4401,6 +4460,7 @@
         {
           "default": "",
           "document": "The name of a network detection instance. The maximum length is 60 characters.",
+          "example": "test",
           "member": "string",
           "name": "NetDetectName",
           "required": true,
@@ -4409,6 +4469,7 @@
         {
           "default": "",
           "document": "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
+          "example": "[\"10.0.0.2\\r\\n\",\"10.0.0.3\\r\\n\"]",
           "member": "string",
           "name": "DetectDestinationIp",
           "required": true,
@@ -4416,23 +4477,26 @@
         },
         {
           "default": "",
-          "document": "The type of the next hop. Currently supported types are:\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nNAT: NAT gateway;\nNORMAL_CVM: normal CVM.",
+          "document": "Type of the next hop. Valid values:\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: direct connect gateway;\n`PEERCONNECTION`: peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: normal CVM;\n`CCN`: CCN gateway.",
+          "example": "NORMAL_CVM",
           "member": "string",
           "name": "NextHopType",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "The next-hop destination gateway. The value is related to NextHopType.\nIf NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.\nIf NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.\nIf NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.\nIf NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.\nIf NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.",
+          "document": "Next-hop destination gateway. Its value is determined by `NextHopType`.\nIf `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.\nIf `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.\nIf `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.\nIf `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.\nIf `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.\nIf `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.",
+          "example": "10.0.0.4",
           "member": "string",
           "name": "NextHopDestination",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
           "document": "Network detection description.",
+          "example": "test",
           "member": "string",
           "name": "NetDetectDescription",
           "required": false,
@@ -7003,7 +7067,7 @@
         },
         {
           "default": "",
-          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID in the format of `eip-11112222`.</li>\n<li> address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.</li>\n<li> address-ip - String - Required: No - (Filter condition) Filter by EIP.</li>\n<li> address-status - String - Required: No - (Filter condition) Filter by the EIP state. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>\n<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP in the format of `ins-11112222`.</li>\n<li> private-ip-address - String - Required: No - (Filter condition) Filter by the private IP address bound to the EIP.</li>\n<li> network-interface-id - String - Required: No - (Filter condition) Filter by the ID of the ENI bound to the EIP in the format of `eni-11112222`.</li>\n<li> is-arrears - String - Required: No - (Filter condition) Whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>\n<li> address-type - String - Required: No - (Filter condition) Filter by the IP type. Valid values: `EIP`, `AnycastEIP`, and `HighQualityEIP`.</li>\n<li> address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>\n<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID in the format of `cluster-11112222`.</li>",
+          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID, such as `eip-11112222`.</li>\n<li> address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.</li>\n<li> address-ip - String - Required: No - (Filter condition) Filter by EIP.</li>\n<li> address-status - String - Required: No - (Filter condition) Filter by the EIP state. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>\n<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>\n<li> private-ip-address - String - Required: No - (Filter condition) Filter by the private IP address bound to the EIP.</li>\n<li> network-interface-id - String - Required: No - (Filter condition) Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>\n<li> is-arrears - String - Required: No - (Filter condition) Whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>\n<li> address-type - String - Required: No - (Filter condition) Filter by the IP type. Valid values: `EIP`, `AnycastEIP`, and `HighQualityEIP`.</li>\n<li> address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>\n<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID, such as `cluster-11112222`.</li>\n<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -7248,6 +7312,7 @@
         {
           "default": "",
           "document": "The unique ID list of bandwidth packages.",
+          "example": "bwp-ofoubyyt",
           "member": "string",
           "name": "BandwidthPackageIds",
           "required": false,
@@ -7255,7 +7320,8 @@
         },
         {
           "default": "",
-          "document": "Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>\n<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>\n<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Types include 'BGP', 'SINGLEISP', and 'ANYCAST'.</li>\n<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Billing modes include 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.</li>\n<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Resource types include 'Address' and 'LoadBalance'.</li>\n<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as 'eip-xxxx' and 'lb-xxxx'.</li>\n<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>",
+          "document": "Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>\n<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>\n<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.</li>\n<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Valid values: `TOP5_POSTPAID_BY_MONTH` and `PERCENT95_POSTPAID_BY_MONTH`.</li>\n<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Valid values: `Address` and `LoadBalance`.</li>\n<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as `eip-xxxx` and `lb-xxxx`.</li>\n<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>\n<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -7264,6 +7330,7 @@
         {
           "default": "",
           "document": "Offset of the query results",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -7272,6 +7339,7 @@
         {
           "default": "",
           "document": "Max number of the bandwidth packages to be returned.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -8964,18 +9032,40 @@
       "document": "DescribeNetworkInterfaceLimit response structure.",
       "members": [
         {
-          "document": "ENI quota",
+          "document": "Quota of ENIs mounted to a CVM instance in a standard way",
+          "example": "32",
           "member": "int64",
           "name": "EniQuantity",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Quota of IP addresses that can be allocated to each ENI.",
+          "document": "Quota of IP addresses that can be allocated to each standard-mounted ENI",
+          "example": "20",
           "member": "int64",
           "name": "EniPrivateIpAddressQuantity",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Quota of ENIs mounted to a CVM instance as an extension\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "400",
+          "member": "int64",
+          "name": "ExtendEniQuantity",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Quota of IP addresses that can be allocated to each extension-mounted ENI.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "int64",
+          "name": "ExtendEniPrivateIpAddressQuantity",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -9403,6 +9493,7 @@
         {
           "default": "",
           "document": "Queries the ID of the subnet instance, such as `subnet-pxir56ns`. Each request can have a maximum of 100 instances. `SubnetIds` and `Filters` cannot be specified at the same time.",
+          "example": "subnet-pxir56ns",
           "member": "string",
           "name": "SubnetIds",
           "required": false,
@@ -9410,7 +9501,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `SubnetIds` and `Filters` cannot be specified at the same time.\n<li>subnet-id - String - (Filter condition) Subnet instance name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>cidr-block - String - (Filter condition) The subnet IP range, such as 192.168.1.0.</li>\n<li>is-default - Boolean - (Filter condition) Whether it is the default subnet.</li>\n<li>is-remote-vpc-snat - Boolean - (Filter condition) Whether it is a VPC SNAT address pool subnet.</li>\n<li>subnet-name - String - (Filter condition) Subnet name.</li>\n<li>zone - String - (Filter condition) Availability zone.</li>\n<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key is replaced with the specific tag key. For usage, refer to case 2.</li>",
+          "document": "Filter condition. `SubnetIds` and `Filters` cannot be specified at the same time.\n<li>subnet-id - String - (Filter condition) Subnet instance name.</li>\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>cidr-block - String - (Filter condition) Subnet IP range, such as `192.168.1.0`.</li>\n<li>is-default - Boolean - (Filter condition) Whether it is the default subnet.</li>\n<li>is-remote-vpc-snat - Boolean - (Filter condition) Whether it is a VPC SNAT address pool subnet.</li>\n<li>subnet-name - String - (Filter condition) Subnet name.</li>\n<li>zone - String - (Filter condition) Availability zone.</li>\n<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`. For its usage, see example 2.</li>\n<li>cdc-id - String - Required: No - (Filter condition) Filter by CDC ID to obtain subnets in the specified CDC.</li>\n<li>is-cdc-subnet - String - Required: No - (Filter condition) Whether it is a CDC subnet. Valid values: `0` (no); `1` (yes).</li>",
+          "example": "vpc-pxir56ns",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9419,6 +9511,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "string",
           "name": "Offset",
           "required": false,
@@ -9427,6 +9520,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
           "member": "string",
           "name": "Limit",
           "required": false,
@@ -12445,6 +12539,7 @@
         {
           "default": "",
           "document": "The ID of the ENI instance, such as `eni-m6dyj72l`.",
+          "example": "--",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": true,
@@ -12453,6 +12548,7 @@
         {
           "default": "",
           "document": "The ID of the CVM bound to the ENI, such as `ins-r8hr2upy`.",
+          "example": "--",
           "member": "string",
           "name": "SourceInstanceId",
           "required": true,
@@ -12461,10 +12557,20 @@
         {
           "default": "",
           "document": "ID of the destination CVM instance to be migrated.",
+          "example": "--",
           "member": "string",
           "name": "DestinationInstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ENI mount method. Valid values: 0: standard; 1: extension; default value: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "AttachType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -14500,6 +14606,7 @@
         {
           "default": "",
           "document": "The ID of a VPC instance, such as `vpc-12345678`.",
+          "example": "无",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -14509,6 +14616,7 @@
         {
           "default": "",
           "document": "The name of a VPC instance.",
+          "example": "无",
           "member": "string",
           "name": "VpcName",
           "required": true,
@@ -14518,6 +14626,7 @@
         {
           "default": "",
           "document": "The ID of a subnet instance, such as subnet-12345678.",
+          "example": "无",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -14527,6 +14636,7 @@
         {
           "default": "",
           "document": "The name of a subnet instance.",
+          "example": "无",
           "member": "string",
           "name": "SubnetName",
           "required": true,
@@ -14536,6 +14646,7 @@
         {
           "default": "",
           "document": "The ID of a network detection instance, such as netd-12345678.",
+          "example": "无",
           "member": "string",
           "name": "NetDetectId",
           "required": true,
@@ -14545,6 +14656,7 @@
         {
           "default": "",
           "document": "The name of a network detection instance. The maximum length is 60 characters.",
+          "example": "无",
           "member": "string",
           "name": "NetDetectName",
           "required": true,
@@ -14554,6 +14666,7 @@
         {
           "default": "",
           "document": "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
+          "example": "无",
           "member": "string",
           "name": "DetectDestinationIp",
           "required": true,
@@ -14563,6 +14676,7 @@
         {
           "default": "",
           "document": "The array of detection source IPv4 addresses automatically allocated by the system. The length is 2.",
+          "example": "无",
           "member": "string",
           "name": "DetectSourceIp",
           "required": true,
@@ -14571,7 +14685,8 @@
         },
         {
           "default": "",
-          "document": "Type of the next hop. Currently supported types are:\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nNAT: NAT gateway;\nNORMAL_CVM: normal CVM.",
+          "document": "Type of the next hop. Valid values:\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nNAT: NAT gateway;\nNORMAL_CVM: normal CVM.\nCCN: CCN gateway.",
+          "example": "无",
           "member": "string",
           "name": "NextHopType",
           "required": true,
@@ -14580,7 +14695,8 @@
         },
         {
           "default": "",
-          "document": "Next-hop destination gateway. The value is related to NextHopType.\nIf NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.\nIf NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.\nIf NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.\nIf NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.\nIf NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.",
+          "document": "Next-hop destination gateway. Its value is determined by `NextHopType`.\nIf `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.\nIf `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.\nIf `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.\nIf `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.\nIf `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.\nIf `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.",
+          "example": "无",
           "member": "string",
           "name": "NextHopDestination",
           "required": true,
@@ -14590,6 +14706,7 @@
         {
           "default": "",
           "document": "The name of the next-hop gateway.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "NextHopName",
           "required": true,
@@ -14599,6 +14716,7 @@
         {
           "default": "",
           "document": "Network detection description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "NetDetectDescription",
           "required": true,
@@ -14608,6 +14726,7 @@
         {
           "default": "",
           "document": "The creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -15026,6 +15145,16 @@
           "name": "CdcId",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ENI type. Valid values: `0` (standard); `1` (extension). Default value: `0`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AttachType",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -16872,6 +17001,7 @@
         {
           "default": "",
           "document": "The CCN instance ID, such as `ccn-f49l6u0z`.",
+          "example": "ccn-f49l6u0z",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -16880,10 +17010,20 @@
         {
           "default": "",
           "document": "The outbound bandwidth cap of each CCN region.",
+          "example": "无",
           "member": "CcnRegionBandwidthLimit",
           "name": "CcnRegionBandwidthLimits",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.",
+          "example": "true",
+          "member": "bool",
+          "name": "SetDefaultLimitFlag",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
