@@ -24,6 +24,14 @@
         "title": "Moving nodes in a cluster to a node pool"
       }
     ],
+    "AddVpcCniSubnets": [
+      {
+        "document": "When you create a cluster in VPC-CNI mode, the IP resources of the subnets selected on creation may become insufficient. This example shows how to add subnets in this case.",
+        "input": "https://tke.tencentcloudapi.com/?Action=AddVpcCniSubnets\n&VpcId=vpc-xxxx\n&ClusterId=cls-xxxx\n&SubnetIds.0=subnet-xxxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Adding subnets for cluster in VPC-CNI mode"
+      }
+    ],
     "CheckInstancesUpgradeAble": [
       {
         "document": "",

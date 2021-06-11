@@ -114,6 +114,12 @@
       "name": "Queries database list",
       "output": "DescribeDatabasesResponse"
     },
+    "DescribeDcnDetail": {
+      "document": "This API is used to query the disaster recovery details of an instance.",
+      "input": "DescribeDcnDetailRequest",
+      "name": "Queries the disaster recovery details of an instance",
+      "output": "DescribeDcnDetailResponse"
+    },
     "DescribeFlow": {
       "document": "This API is used to query flow status.",
       "input": "DescribeFlowRequest",
@@ -679,6 +685,7 @@
         {
           "default": "",
           "document": "Instance ID, which uniquely identifies a TDSQL instance",
+          "example": "暂无",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -688,6 +695,7 @@
         {
           "default": "",
           "document": "Customizable instance name",
+          "example": "暂无",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -697,6 +705,7 @@
         {
           "default": "",
           "document": "Application ID of instance",
+          "example": "暂无",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -706,6 +715,7 @@
         {
           "default": "",
           "document": "Project ID of instance",
+          "example": "暂无",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -715,6 +725,7 @@
         {
           "default": "",
           "document": "Instance region name, such as ap-shanghai",
+          "example": "暂无",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -724,6 +735,7 @@
         {
           "default": "",
           "document": "Instance AZ name, such as ap-guangzhou-1",
+          "example": "暂无",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -733,6 +745,7 @@
         {
           "default": "",
           "document": "VPC ID, which is 0 if the basic network is used",
+          "example": "暂无",
           "member": "int64",
           "name": "VpcId",
           "required": true,
@@ -742,6 +755,7 @@
         {
           "default": "",
           "document": "Subnet ID, which is 0 if the basic network is used",
+          "example": "暂无",
           "member": "int64",
           "name": "SubnetId",
           "required": true,
@@ -750,7 +764,8 @@
         },
         {
           "default": "",
-          "document": "Instance status. 0: creating, 1: processing, 2: running, 3: instance not initialized, -1: instance isolated, -2: instance deleted",
+          "document": "Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `-2` (eliminated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)",
+          "example": "暂无",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -760,6 +775,7 @@
         {
           "default": "",
           "document": "Private IP address",
+          "example": "暂无",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -769,6 +785,7 @@
         {
           "default": "",
           "document": "Private network port",
+          "example": "暂无",
           "member": "int64",
           "name": "Vport",
           "required": true,
@@ -778,6 +795,7 @@
         {
           "default": "",
           "document": "Domain name for public network access, which can be resolved by the public network",
+          "example": "暂无",
           "member": "string",
           "name": "WanDomain",
           "required": true,
@@ -787,6 +805,7 @@
         {
           "default": "",
           "document": "Public IP address, which can be accessed over the public network",
+          "example": "暂无",
           "member": "string",
           "name": "WanVip",
           "required": true,
@@ -796,6 +815,7 @@
         {
           "default": "",
           "document": "Public network port",
+          "example": "暂无",
           "member": "int64",
           "name": "WanPort",
           "required": true,
@@ -805,6 +825,7 @@
         {
           "default": "",
           "document": "Instance creation time in the format of `2006-01-02 15:04:05`",
+          "example": "暂无",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -814,6 +835,7 @@
         {
           "default": "",
           "document": "Last updated time of instance in the format of `2006-01-02 15:04:05`",
+          "example": "暂无",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -823,6 +845,7 @@
         {
           "default": "",
           "document": "Auto-renewal flag. 0: no, 1: yes",
+          "example": "暂无",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": true,
@@ -832,6 +855,7 @@
         {
           "default": "",
           "document": "Instance expiration time in the format of `2006-01-02 15:04:05`",
+          "example": "暂无",
           "member": "datetime",
           "name": "PeriodEndTime",
           "required": true,
@@ -841,6 +865,7 @@
         {
           "default": "",
           "document": "Instance account",
+          "example": "暂无",
           "member": "string",
           "name": "Uin",
           "required": true,
@@ -850,6 +875,7 @@
         {
           "default": "",
           "document": "TDSQL version information",
+          "example": "暂无",
           "member": "string",
           "name": "TdsqlVersion",
           "required": true,
@@ -859,6 +885,7 @@
         {
           "default": "",
           "document": "Instance memory size in GB",
+          "example": "暂无",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -868,6 +895,7 @@
         {
           "default": "",
           "document": "Instance storage capacity in GB",
+          "example": "暂无",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -877,6 +905,7 @@
         {
           "default": "",
           "document": "VPC ID in string type",
+          "example": "暂无",
           "member": "string",
           "name": "UniqueVpcId",
           "required": true,
@@ -886,6 +915,7 @@
         {
           "default": "",
           "document": "VPC subnet ID in string type",
+          "example": "暂无",
           "member": "string",
           "name": "UniqueSubnetId",
           "required": true,
@@ -895,6 +925,7 @@
         {
           "default": "",
           "document": "Original ID of instance (this field is obsolete and should not be depended on)",
+          "example": "暂无",
           "member": "string",
           "name": "OriginSerialId",
           "required": true,
@@ -904,6 +935,7 @@
         {
           "default": "",
           "document": "Number of nodes. 2: one master and one slave, 3: one master and two slaves",
+          "example": "暂无",
           "member": "uint64",
           "name": "NodeCount",
           "required": true,
@@ -913,6 +945,7 @@
         {
           "default": "",
           "document": "Whether it is a temp instance. 0: no, non-zero value: yes",
+          "example": "暂无",
           "member": "uint64",
           "name": "IsTmp",
           "required": true,
@@ -922,6 +955,7 @@
         {
           "default": "",
           "document": "Dedicated cluster ID. If this parameter is empty, the instance is a general instance",
+          "example": "暂无",
           "member": "string",
           "name": "ExclusterId",
           "required": true,
@@ -931,6 +965,7 @@
         {
           "default": "",
           "document": "Numeric ID of instance (this field is obsolete and should not be depended on)",
+          "example": "暂无",
           "member": "uint64",
           "name": "Id",
           "required": true,
@@ -940,6 +975,7 @@
         {
           "default": "",
           "document": "Product type ID",
+          "example": "暂无",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -949,6 +985,7 @@
         {
           "default": "",
           "document": "Maximum QPS value",
+          "example": "暂无",
           "member": "int64",
           "name": "Qps",
           "required": true,
@@ -958,6 +995,7 @@
         {
           "default": "",
           "document": "Billing mode\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "string",
           "name": "Paymode",
           "required": true,
@@ -967,6 +1005,7 @@
         {
           "default": "",
           "document": "Async task flow ID when an async task is in progress on an instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "int64",
           "name": "Locker",
           "required": true,
@@ -976,6 +1015,7 @@
         {
           "default": "",
           "document": "Current instance running status description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
@@ -985,6 +1025,7 @@
         {
           "default": "",
           "document": "Public network access status. 0: not enabled, 1: enabled, 2: disabled, 3: enabling",
+          "example": "暂无",
           "member": "int64",
           "name": "WanStatus",
           "required": true,
@@ -994,6 +1035,7 @@
         {
           "default": "",
           "document": "Whether the instance supports audit. 1: yes, 0: no",
+          "example": "暂无",
           "member": "uint64",
           "name": "IsAuditSupported",
           "required": true,
@@ -1003,6 +1045,7 @@
         {
           "default": "",
           "document": "Model",
+          "example": "暂无",
           "member": "string",
           "name": "Machine",
           "required": true,
@@ -1012,6 +1055,7 @@
         {
           "default": "",
           "document": "Whether data encryption is supported. 1: yes, 0: no",
+          "example": "暂无",
           "member": "int64",
           "name": "IsEncryptSupported",
           "required": true,
@@ -1021,6 +1065,7 @@
         {
           "default": "",
           "document": "Number of CPU cores of instance",
+          "example": "暂无",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -1030,6 +1075,7 @@
         {
           "default": "",
           "document": "Indicates whether the instance uses IPv6\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "uint64",
           "name": "Ipv6Flag",
           "required": true,
@@ -1039,6 +1085,7 @@
         {
           "default": "",
           "document": "Private network IPv6 address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "string",
           "name": "Vipv6",
           "required": true,
@@ -1048,6 +1095,7 @@
         {
           "default": "",
           "document": "Public network IPv6 address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "string",
           "name": "WanVipv6",
           "required": true,
@@ -1057,6 +1105,7 @@
         {
           "default": "",
           "document": "Public network IPv6 port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "uint64",
           "name": "WanPortIpv6",
           "required": true,
@@ -1066,6 +1115,7 @@
         {
           "default": "",
           "document": "Public network IPv6 status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "uint64",
           "name": "WanStatusIpv6",
           "required": true,
@@ -1075,6 +1125,7 @@
         {
           "default": "",
           "document": "Database engine\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "string",
           "name": "DbEngine",
           "required": true,
@@ -1084,6 +1135,7 @@
         {
           "default": "",
           "document": "Database version\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "string",
           "name": "DbVersion",
           "required": true,
@@ -1093,6 +1145,7 @@
         {
           "default": "",
           "document": "DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "int64",
           "name": "DcnFlag",
           "required": true,
@@ -1102,6 +1155,7 @@
         {
           "default": "",
           "document": "DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "int64",
           "name": "DcnStatus",
           "required": true,
@@ -1111,6 +1165,7 @@
         {
           "default": "",
           "document": "The number of DCN disaster recovery instances\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "int64",
           "name": "DcnDstNum",
           "required": true,
@@ -1120,6 +1175,7 @@
         {
           "default": "",
           "document": "Instance type. Valid values: `1` (dedicated primary instance), `2` (primary instance), `3` (disaster recovery instance), and `4` (dedicated disaster recovery instance).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
           "member": "int64",
           "name": "InstanceType",
           "required": true,
@@ -1161,6 +1217,111 @@
           "name": "DbName",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DcnDetailItem": {
+      "document": "DCN details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region where the instance resides",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone where the instance resides",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance IP address",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance IPv6 address",
+          "member": "string",
+          "name": "Vipv6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance port",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status description",
+          "member": "string",
+          "name": "StatusDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DCN flag. Valid values: `1` (primary), `2` (replica)",
+          "member": "int64",
+          "name": "DcnFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DCN status. Valid values: `0` (null), `1` (creating), `2` (syncing), `3` (disconnected)",
+          "member": "int64",
+          "name": "DcnStatus",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1396,6 +1557,7 @@
         {
           "default": "",
           "document": "Queries by instance ID or IDs. Instance ID is in the format of `tdsql-ow728lmc`. Up to 100 instances can be queried in one request.",
+          "example": "[\"tdsql-722d255z\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -1404,6 +1566,7 @@
         {
           "default": "",
           "document": "Search field name. Valid values: instancename (search by instance name), vip (search by private IP), all (search by instance ID, instance name, and private IP).",
+          "example": "无",
           "member": "string",
           "name": "SearchName",
           "required": false,
@@ -1412,6 +1575,7 @@
         {
           "default": "",
           "document": "Search keyword. Fuzzy search is supported. Multiple keywords should be separated by line breaks (`\\n`).",
+          "example": "无",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -1420,6 +1584,7 @@
         {
           "default": "",
           "document": "Queries by project ID",
+          "example": "无",
           "member": "int64",
           "name": "ProjectIds",
           "required": false,
@@ -1428,6 +1593,7 @@
         {
           "default": "",
           "document": "Whether to search by VPC",
+          "example": "无",
           "member": "bool",
           "name": "IsFilterVpc",
           "required": false,
@@ -1436,6 +1602,7 @@
         {
           "default": "",
           "document": "VPC ID, which is valid when `IsFilterVpc` is 1",
+          "example": "无",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1444,6 +1611,7 @@
         {
           "default": "",
           "document": "VPC subnet ID, which is valid when `IsFilterVpc` is 1",
+          "example": "无",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -1452,6 +1620,7 @@
         {
           "default": "",
           "document": "Sort by field. Valid values: projectId, createtime, instancename",
+          "example": "无",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -1460,6 +1629,7 @@
         {
           "default": "",
           "document": "Sorting order. Valid values: desc, asc",
+          "example": "无",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -1468,6 +1638,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0",
+          "example": "无",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -1476,6 +1647,7 @@
         {
           "default": "",
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
+          "example": "无",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -1484,6 +1656,7 @@
         {
           "default": "",
           "document": "Queries by `OriginSerialId`",
+          "example": "无",
           "member": "string",
           "name": "OriginSerialIds",
           "required": false,
@@ -1492,6 +1665,7 @@
         {
           "default": "",
           "document": "Identifies whether to use the `ExclusterType` field. false: no, true: yes",
+          "example": "无",
           "member": "bool",
           "name": "IsFilterExcluster",
           "required": false,
@@ -1500,6 +1674,7 @@
         {
           "default": "",
           "document": "Instance cluster type. 1: non-dedicated cluster, 2: dedicated cluster, 0: all",
+          "example": "无",
           "member": "int64",
           "name": "ExclusterType",
           "required": false,
@@ -1508,6 +1683,7 @@
         {
           "default": "",
           "document": "Filters instances by dedicated cluster ID in the format of `dbdc-4ih6uct9`",
+          "example": "无",
           "member": "string",
           "name": "ExclusterIds",
           "required": false,
@@ -1516,6 +1692,7 @@
         {
           "default": "",
           "document": "Tag key used in queries",
+          "example": "无",
           "member": "string",
           "name": "TagKeys",
           "required": false,
@@ -1524,10 +1701,29 @@
         {
           "default": "",
           "document": "Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.",
+          "example": "无",
           "member": "string",
           "name": "FilterInstanceType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Use this filter to include instances in specific statuses",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Use this filter to exclude instances in specific statuses",
+          "example": "无",
+          "member": "int64",
+          "name": "ExcludeStatus",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2231,6 +2427,42 @@
           "member": "string",
           "name": "InstanceId",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDcnDetailRequest": {
+      "document": "DescribeDcnDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-2rn9lmpx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDcnDetailResponse": {
+      "document": "DescribeDcnDetail response structure.",
+      "members": [
+        {
+          "document": "DCN synchronization details",
+          "example": "无",
+          "member": "DcnDetailItem",
+          "name": "DcnDetails",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {

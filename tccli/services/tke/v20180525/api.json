@@ -18,6 +18,12 @@
       "name": "Moves nodes in a cluster to a node pool",
       "output": "AddNodeToNodePoolResponse"
     },
+    "AddVpcCniSubnets": {
+      "document": "This API is used to add subnets in the container network for a VPC-CNI cluster.",
+      "input": "AddVpcCniSubnetsRequest",
+      "name": "Adds the cluster subnets",
+      "output": "AddVpcCniSubnetsResponse"
+    },
     "CheckInstancesUpgradeAble": {
       "document": "This API is used to check which nodes can be upgraded in the given node list. ",
       "input": "CheckInstancesUpgradeAbleRequest",
@@ -474,6 +480,51 @@
     },
     "AddNodeToNodePoolResponse": {
       "document": "AddNodeToNodePool response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddVpcCniSubnetsRequest": {
+      "document": "AddVpcCniSubnets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The subnets added for the cluster container network",
+          "example": "[\"subnet-xxxxx\\n\"]",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the VPC where the cluster resides",
+          "example": "vpc-xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddVpcCniSubnetsResponse": {
+      "document": "AddVpcCniSubnets response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1393,6 +1444,7 @@
         {
           "default": "",
           "document": "CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC.",
+          "example": "10.0.0.0/24",
           "member": "string",
           "name": "ClusterCIDR",
           "required": true,
@@ -1402,6 +1454,7 @@
         {
           "default": "",
           "document": "Whether to ignore ClusterCIDR conflict errors. It defaults to not ignore.",
+          "example": "false",
           "member": "bool",
           "name": "IgnoreClusterCIDRConflict",
           "required": false,
@@ -1411,6 +1464,7 @@
         {
           "default": "",
           "document": "Maximum number of pods on each node in the cluster. Default value: 256",
+          "example": "256",
           "member": "uint64",
           "name": "MaxNodePodNum",
           "required": false,
@@ -1420,6 +1474,7 @@
         {
           "default": "",
           "document": "Maximum number of cluster services. Default value: 256",
+          "example": "256",
           "member": "uint64",
           "name": "MaxClusterServiceNum",
           "required": false,
@@ -1429,6 +1484,7 @@
         {
           "default": "",
           "document": "Whether IPVS is enabled. Default value: disabled",
+          "example": "false",
           "member": "bool",
           "name": "Ipvs",
           "required": false,
@@ -1438,6 +1494,7 @@
         {
           "default": "",
           "document": "Cluster VPC ID, which is required when you create an empty cluster; otherwise, it is automatically set to be consistent with that of the nodes in the cluster",
+          "example": "vpc-aaa",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1447,14 +1504,45 @@
         {
           "default": "",
           "document": "Whether CNI is enabled for network plugin(s). Default value: enabled",
+          "example": "false",
           "member": "bool",
           "name": "Cni",
           "required": false,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The network mode of service. This parameter is only applicable to ipvs+bpf mode.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "ipvs-bpf",
+          "member": "string",
+          "name": "KubeProxyMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The IP range for service assignment. It cannot conflict with the VPC’s CIDR block nor the CIDR blocks of other clusters in the same VPC.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "10.0.0.0/25",
+          "member": "string",
+          "name": "ServiceCIDR",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The container subnet associated with the cluster\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[\"subnet-aa\",\"subnet-bb\"]",
+          "member": "string",
+          "name": "Subnets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
-      "usage": "both"
+      "usage": "out"
     },
     "ClusterVersion": {
       "document": "Cluster version information",
