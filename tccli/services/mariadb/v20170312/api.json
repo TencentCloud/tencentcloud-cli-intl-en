@@ -1308,7 +1308,7 @@
         },
         {
           "default": "",
-          "document": "DCN flag. Valid values: `1` (primary), `2` (replica)",
+          "document": "DCN flag. Valid values: `1` (primary), `2` (disaster recovery)",
           "member": "int64",
           "name": "DcnFlag",
           "required": true,
@@ -1317,7 +1317,7 @@
         },
         {
           "default": "",
-          "document": "DCN status. Valid values: `0` (null), `1` (creating), `2` (syncing), `3` (disconnected)",
+          "document": "DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)",
           "member": "int64",
           "name": "DcnStatus",
           "required": true,
