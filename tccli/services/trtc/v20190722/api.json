@@ -1,7 +1,7 @@
 {
   "actions": {
     "CreatePicture": {
-      "document": "This API is used to upload an image.",
+      "document": "This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).",
       "input": "CreatePictureRequest",
       "name": "Uploads an image",
       "output": "CreatePictureResponse"
@@ -13,7 +13,7 @@
       "output": "CreateTroubleInfoResponse"
     },
     "DeletePicture": {
-      "document": "This API is used to delete an image.",
+      "document": "This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).",
       "input": "DeletePictureRequest",
       "name": "Deletes an image",
       "output": "DeletePictureResponse"
@@ -43,7 +43,7 @@
       "output": "DescribeHistoryScaleResponse"
     },
     "DescribePicture": {
-      "document": "This API is used to query the parameters of an image.",
+      "document": "This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).",
       "input": "DescribePictureRequest",
       "name": "Queries image parameters",
       "output": "DescribePictureResponse"
@@ -91,7 +91,7 @@
       "output": "DismissRoomByStrRoomIdResponse"
     },
     "ModifyPicture": {
-      "document": "This API is used to modify the parameters of an image.",
+      "document": "This API is no longer used, and an error will occur if you call it. To use the feature provided by this API, please see [Console Guide > Application Management > Material Management](https://intl.cloud.tencent.com/document/product/647/50769?from_cn_redirect=1).",
       "input": "ModifyPictureRequest",
       "name": "Modifies image parameters",
       "output": "ModifyPictureResponse"
@@ -1472,6 +1472,16 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark parameters",
+          "example": "WaterMarkParams",
+          "member": "WaterMarkParams",
+          "name": "WaterMarkParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -2403,6 +2413,62 @@
         }
       ],
       "usage": "out"
+    },
+    "WaterMarkParams": {
+      "document": "Watermark parameters for On-Cloud MixTranscoding",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID of the watermark, which is generated after the image is uploaded to the TRTC console",
+          "example": "51",
+          "member": "uint64",
+          "name": "WaterMarkId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Width (px) of the watermark for On-Cloud MixTranscoding",
+          "example": "64",
+          "member": "uint64",
+          "name": "WaterMarkWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Height (px) of the watermark for On-Cloud MixTranscoding",
+          "example": "64",
+          "member": "uint64",
+          "name": "WaterMarkHeight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Horizontal offset (px) of the watermark",
+          "example": "10",
+          "member": "uint64",
+          "name": "LocationX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Vertical offset (px) of the watermark",
+          "example": "10",
+          "member": "uint64",
+          "name": "LocationY",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     }
   },
   "version": "1.0"

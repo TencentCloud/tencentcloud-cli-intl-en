@@ -343,7 +343,7 @@
       "output": "DescribeStorageDetailsResponse"
     },
     "DescribeSubAppIds": {
-      "document": "This API is used to get the list of subapplications to which the current account has permissions, including primary applications. If the subapplication feature has not been enabled, this API will return. \n `FailedOperation`.",
+      "document": "This API is used to query the list of the primary application and subapplications of the current account.",
       "input": "DescribeSubAppIdsRequest",
       "name": "Queries the list of subapplications",
       "output": "DescribeSubAppIdsResponse"
@@ -547,7 +547,7 @@
       "output": "ProcessMediaByUrlResponse"
     },
     "PullEvents": {
-      "document": "* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948?lang=en&pg=).\n* The API gets event data through long polling. That is, if there is any unconsumed event on the server, the event notification will be returned to the requester immediately. If there is no unconsumed event on the server, the request will be suspended in the backend until a new event is generated.\n* The request can be suspended for up to 5 seconds. It’s recommended to set the request timeout period to 10 seconds.\n* Event notifications not being pulled will be retained for up to 4 days and may be cleared after this period.\n* After the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/34184) API within <font color=\"red\">30 seconds</font> to confirm that the event notification has been processed. Otherwise, the event notification will be pulled again after <font color=\"red\">30 seconds</font>.",
+      "document": "* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948).\n* The API gets event data through long polling. That is, if there is any unconsumed event on the server, the event notification will be returned to the requester immediately. If there is no unconsumed event on the server, the request will be suspended in the backend until a new event is generated.\n* The request can be suspended for up to 5 seconds. It’s recommended to set the request timeout period to 10 seconds.\n* Event notifications not pulled will be retained for up to 4 days and may be cleared after this period.\n* After the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/34184) API within <font color=\"red\">30 seconds</font> to confirm that the event notification has been processed. Otherwise, the event notification will be pulled again after <font color=\"red\">30 seconds</font>.\n* This API can get up to 16 event notifications at a time.",
       "input": "PullEventsRequest",
       "name": "Pulls event notifications",
       "output": "PullEventsResponse"
@@ -8309,7 +8309,8 @@
       "members": [
         {
           "default": "",
-          "document": "Metrics to query. Valid values:\n<li>Traffic: traffic in bytes.</li>\n<li>Bandwidth: bandwidth in bps.</li>",
+          "document": "Metrics to query. Valid values:\n<li>`Traffic`: traffic in bytes</li>\n<li>`Bandwidth`: bandwidth in bps</li>\n<li>`Requests`: the number of requests</li>",
+          "example": "无",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -8318,6 +8319,7 @@
         {
           "default": "",
           "document": "Start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "无",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -8326,6 +8328,7 @@
         {
           "default": "",
           "document": "End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "无",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -8334,6 +8337,7 @@
         {
           "default": "",
           "document": "List of domain names. The usage data of up to 20 domain names can be queried at a time. The usage data of all domain names is returned by default.",
+          "example": "无",
           "member": "string",
           "name": "DomainNames",
           "required": false,
@@ -8342,6 +8346,7 @@
         {
           "default": "",
           "document": "Service region. Valid values:\n<li>Chinese Mainland</li>\n<li>Asia Pacific Region 1: Hong Kong (China), Macao (China), Singapore, Vietnam, and Thailand</li>\n<li>Asia Pacific Region 2: Taiwan (China), Japan, Malaysia, Indonesia, and South Korea</li>\n<li>Asia Pacific Region 3: Philippines, India, Australia, and other Asia Pacific countries and regions</li>\n<li>Middle East</li>\n<li>Europe</li>\n<li>North America</li>\n<li>South America</li>\n<li>Africa</li>\nDefault value: Chinese Mainland",
+          "example": "无",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -8350,6 +8355,7 @@
         {
           "default": "",
           "document": "District where users are located. When `Area` is `Chinese Mainland`, valid values for `Districts` are as follows. Otherwise, `Districts` can be ignored.\n<li>Beijing</li>\n<li>Inner Mongolia</li>\n<li>Shanxi</li>\n<li>Hebei</li>\n<li>Tianjin</li>\n<li>Ningxia</li>\n<li>Shaanxi</li>\n<li>Gansu</li>\n<li>Qinghai</li>\n<li>Xinjiang</li>\n<li>Heilongjiang</li>\n<li>Jilin</li>\n<li>Liaoning</li>\n<li>Fujian</li>\n<li>Jiangsu</li>\n<li>Anhui</li>\n<li>Shandong</li>\n<li>Shanghai</li>\n<li>Zhejiang</li>\n<li>Henan</li>\n<li>Hubei</li>\n<li>Jiangxi</li>\n<li>Hunan</li>\n<li>Guizhou</li>\n<li>Yunnan</li>\n<li>Chongqing</li>\n<li>Sichuan</li>\n<li>Tibet</li>\n<li>Guangdong</li>\n<li>Guangxi</li>\n<li>Hainan</li>\n<li>Hong Kong, Macao and Taiwan</li>\n<li>Outside Chinese Mainland</li>\n<li>Other</li>",
+          "example": "无",
           "member": "string",
           "name": "Districts",
           "required": false,
@@ -8358,6 +8364,7 @@
         {
           "default": "",
           "document": "ISP of users. When `Area` is `Chinese Mainland`, valid values for `Isps` are as follows. Otherwise, `Isps` can be ignored.\n<li>China Telecom</li>\n<li>China Unicom</li>\n<li>CERNET</li>\n<li>Great Wall Broadband Network</li>\n<li>China Mobile</li>\n<li>China Mobile Tietong</li>\n<li>ISPs outside Chinese Mainland</li>\n<li>Other ISPs</li>",
+          "example": "无",
           "member": "string",
           "name": "Isps",
           "required": false,
@@ -8366,6 +8373,7 @@
         {
           "default": "",
           "document": "Time granularity of every piece of data in minutes. Valid values:\n<li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>\n<li>1440: 1-day granularity. The data at 1-day granularity in the query period will be returned. If the query period is larger than 24 hours, only data at 1-day granularity can be queried.</li>\nIf the difference between `StartTime` and `EndTime` is larger than 24 hours, the default value of `DataInterval` is 1440.",
+          "example": "无",
           "member": "uint64",
           "name": "DataInterval",
           "required": false,
@@ -8374,6 +8382,7 @@
         {
           "default": "",
           "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -9319,6 +9328,7 @@
         {
           "default": "",
           "document": "Start time in ISO 8601 format. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -9327,6 +9337,7 @@
         {
           "default": "",
           "document": "End time in ISO 8601 format, which should be larger than the start time. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-07T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -9335,6 +9346,7 @@
         {
           "default": "",
           "document": "Time granularity. Valid values:\n<li>Minute: 5-minute granularity</li>\n<li>Day: 1-day granularity</li>\nThe value is set according to query period length by default. 5-minute granularity is set for periods no longer than 1 day, and 1-day granularity is set for periods longer than 1 day.",
+          "example": "Minute",
           "member": "string",
           "name": "Interval",
           "required": false,
@@ -9342,7 +9354,8 @@
         },
         {
           "default": "",
-          "document": "Storage class to be queried. Valid values:\n<li>TotalStorage: total storage capacity.</li>\n<li>StandardStorage: Standard storage.</li>\n<li>InfrequentStorage: Standard_IA storage.</li>\nDefault value: TotalStorage.",
+          "document": "Storage class to query. Valid values:\n<li>`TotalStorage`: total storage usage in classes of STANDARD, STANDARD_IA, ARCHIVE, and DEEP ARCHIVE, excluding the storage usage for data deleted in advance.</li>\n<li>`StandardStorage`: STANDARD</li>\n<li>`InfrequentStorage`: STANDARD_IA</li>\n<li>`ArchiveStorage`: ARCHIVE</li>\n<li>`DeepArchiveStorage`: DEEP ARCHIVE</li>\n<li>`DeletedArchiveStorage`: ARCHIVE data deleted in advance</li>\n<li>`DeletedDeepArchiveStorage`: DEEP ARCHIVE data deleted in advance</li>\n<li>`ArchiveStandardRetrieval`: ARCHIVE data retrieved using standard retrievals</li>\n<li>`ArchiveExpeditedRetrieval`: ARCHIVE data retrieved using expedited retrievals</li>\n<li>`ArchiveBulkRetrieval`: ARCHIVE data retrieved using bulk retrievals</li>\n<li>`DeepArchiveStandardRetrieval`: DEEP ARCHIVE data retrieved using standard retrievals</li>\n<li>`DeepArchiveBulkRetrieval`: DEEP ARCHIVE data retrieved using bulk retrievals</li>\nDefault value: `TotalStorage`",
+          "example": "StandardStorage",
           "member": "string",
           "name": "StorageType",
           "required": false,
@@ -9351,6 +9364,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.\nWhen the value of this field is 1, the total usage of all subapplications (including primary application) are queried by an admin.",
+          "example": "1450001234",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -9359,6 +9373,7 @@
         {
           "default": "",
           "document": "Storage region to query. Valid values:\n<li>Chinese Mainland</li>\n<li>Outside Chinese Mainland</li>\nDefault value: Chinese Mainland",
+          "example": "Chinese Mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -9716,7 +9731,7 @@
         },
         {
           "default": "",
-          "document": "(Not supported now)\nSort field. Valid values:\n<li>`CreateTime`: task creation time</li>\n<li>`FinishTime`: task end time</li>",
+          "document": "Sort field. Valid values:\n<li>`CreateTime`: task creation time</li>\n<li>`FinishTime`: task end time</li>",
           "example": "无",
           "member": "SortBy",
           "name": "Sort",
@@ -19120,6 +19135,7 @@
         {
           "default": "",
           "document": "VOD storage billing region. Valid values:\n<li>Chinese Mainland</li>\n<li>Outside Chinese Mainland</li>",
+          "example": "Chinese Mainland",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -19129,6 +19145,7 @@
         {
           "default": "",
           "document": "Current total storage capacity in bytes.",
+          "example": "40000",
           "member": "uint64",
           "name": "TotalStorage",
           "required": true,
@@ -19138,6 +19155,7 @@
         {
           "default": "",
           "document": "Current STANDARD_IA storage capacity in bytes.",
+          "example": "10000",
           "member": "uint64",
           "name": "InfrequentStorage",
           "required": true,
@@ -19147,8 +19165,29 @@
         {
           "default": "",
           "document": "Current STANDARD storage capacity in bytes.",
+          "example": "10000",
           "member": "uint64",
           "name": "StandardStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current ARCHIVE storage usage in bytes",
+          "example": "10000",
+          "member": "uint64",
+          "name": "ArchiveStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current DEEP ARCHIVE storage usage in bytes",
+          "example": "10000",
+          "member": "uint64",
+          "name": "DeepArchiveStorage",
           "required": true,
           "type": "int",
           "value_allowed_null": false

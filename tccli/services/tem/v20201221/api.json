@@ -54,6 +54,12 @@
       "name": "Gets the list of tenant environments",
       "output": "DescribeNamespacesResponse"
     },
+    "DescribeRelatedIngresses": {
+      "document": "This API is used to query the list of ingress rules associated with the service.",
+      "input": "DescribeRelatedIngressesRequest",
+      "name": "Queries the list of ingress rules associated with the service",
+      "output": "DescribeRelatedIngressesResponse"
+    },
     "DescribeServiceRunPodListV2": {
       "document": "This API is used to get the list of running pods under a service.",
       "input": "DescribeServiceRunPodListV2Request",
@@ -71,6 +77,18 @@
       "input": "ModifyNamespaceRequest",
       "name": "Edits environment",
       "output": "ModifyNamespaceResponse"
+    },
+    "ModifyServiceInfo": {
+      "document": "This API is used to modify a service’s basic information.",
+      "input": "ModifyServiceInfoRequest",
+      "name": "Modifies a service’s basic information",
+      "output": "ModifyServiceInfoResponse"
+    },
+    "RestartServiceRunPod": {
+      "document": "This API is used to restart an instance.",
+      "input": "RestartServiceRunPodRequest",
+      "name": "Restarts an instance",
+      "output": "RestartServiceRunPodResponse"
     }
   },
   "metadata": {
@@ -285,6 +303,15 @@
           "name": "SourceChannel",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the TSW service.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableTswTraceService",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -780,6 +807,42 @@
           "name": "ImageArgs",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Service port mapping.",
+          "example": "1",
+          "member": "PortMapping",
+          "name": "PortMappings",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to add the registry’s default configurations.",
+          "example": "true",
+          "member": "bool",
+          "name": "UseRegistryDefaultConfig",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[]",
+          "member": "MountedSettingConf",
+          "name": "SettingConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "EksService",
+          "name": "EksService",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -897,6 +960,15 @@
           "name": "SourceChannel",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Ingress rule name list.",
+          "example": "[\"aa\"]",
+          "member": "string",
+          "name": "Names",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -966,6 +1038,69 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRelatedIngressesRequest": {
+      "document": "DescribeRelatedIngresses request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Environment ID.",
+          "example": "111",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EKS namespace.",
+          "example": "default",
+          "member": "string",
+          "name": "EksNamespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel.",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Service ID.",
+          "example": "svc-xxxx",
+          "member": "string",
+          "name": "ServiceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRelatedIngressesResponse": {
+      "document": "DescribeRelatedIngresses response structure.",
+      "members": [
+        {
+          "document": "Ingress array.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[]",
+          "member": "IngressInfo",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1122,6 +1257,122 @@
       ],
       "type": "object"
     },
+    "EksService": {
+      "document": "eks service info",
+      "members": [
+        {
+          "default": "",
+          "document": "service name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[1,2]",
+          "member": "int64",
+          "name": "Ports",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "Yaml",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "xxx",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "xxxx",
+          "member": "string",
+          "name": "VersionName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterIp",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "ExternalIp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "LoadBalanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "PortMapping",
+          "name": "PortMappings",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "EsInfo": {
       "document": "Auto scaling configuration",
       "members": [
@@ -1270,6 +1521,26 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2010-11-11 22:21:11",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.",
+          "example": "false",
+          "member": "bool",
+          "name": "Mixed",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1296,6 +1567,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Protocol. Options include HTTP and HTTPS. The default option is HTTP.",
+          "example": "protocol",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1373,7 +1654,7 @@
       "members": [
         {
           "default": "",
-          "document": "Host array",
+          "document": "Host array. An empty array indicates the default certificate for all domain names.",
           "example": "[\"xx.com\", \"yyy.com\"]",
           "member": "string",
           "name": "Hosts",
@@ -1383,11 +1664,21 @@
         },
         {
           "default": "",
-          "document": "secret name",
+          "document": "Secret name. If a certificate is used, this field is left empty.",
           "example": "secret",
           "member": "string",
           "name": "SecretName",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SSL Certificate Id",
+          "example": "CertificateId",
+          "member": "string",
+          "name": "CertificateId",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1576,6 +1867,96 @@
       ],
       "type": "object"
     },
+    "ModifyServiceInfoRequest": {
+      "document": "ModifyServiceInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID.",
+          "example": "service-a",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "example": "服务a",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel.",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyServiceInfoResponse": {
+      "document": "ModifyServiceInfo response structure.",
+      "members": [
+        {
+          "document": "Results.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MountedSettingConf": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "ConfigDataName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "MountedPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[]",
+          "member": "Pair",
+          "name": "Data",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "NamespacePage": {
       "document": "Namespace pagination",
       "members": [
@@ -1642,6 +2023,132 @@
       ],
       "usage": "in"
     },
+    "PortMapping": {
+      "document": "Service port mapping",
+      "members": [
+        {
+          "default": "",
+          "document": "Port.",
+          "example": "1",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mapped port.",
+          "example": "1",
+          "member": "int64",
+          "name": "TargetPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TCP/UDP protocol stack.",
+          "example": "1",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RestartServiceRunPodRequest": {
+      "document": "RestartServiceRunPod request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Environment ID.",
+          "example": "namespace-a",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service ID.",
+          "example": "service-a",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pod name.",
+          "example": "pod-a",
+          "member": "string",
+          "name": "PodName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pod status.",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel.",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartServiceRunPodResponse": {
+      "document": "RestartServiceRunPod response structure.",
+      "members": [
+        {
+          "document": "Returned results.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RunVersionPod": {
       "document": "Pod",
       "members": [
@@ -1687,13 +2194,33 @@
         },
         {
           "default": "",
-          "document": "Pod IP",
+          "document": "Pod IP.",
           "example": "127.0.0.1",
           "member": "string",
           "name": "PodIp",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployed version.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DeployVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
