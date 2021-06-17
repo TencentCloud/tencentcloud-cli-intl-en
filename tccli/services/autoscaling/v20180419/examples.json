@@ -417,7 +417,7 @@
     "PreviewPaiDomainName": [
       {
         "document": "This example shows you how to query domain name that can be used to create a PAI instance.",
-        "input": "https://as.tencentcloudapi.com/?Action=PreviewPaiDomainName\r\n&DomainNameType=tcb\r\n<Common request parameters>",
+        "input": "https://as.tencentcloudapi.com/?Action=PreviewPaiDomainName\n&DomainNameType=tcb\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DomainName\": \"salmonberry-ey5t3l0k.pai.tcloudbase.com\",\n        \"RequestId\": \"cea75193-a9fb-4811-aa0b-b4d2096ef0d9\"\n    }\n}",
         "title": "Previewing a PAI instance domain name"
       }
@@ -428,6 +428,22 @@
         "input": "https://as.tencentcloudapi.com/?Action=RemoveInstances\n&AutoScalingGroupId=asg-boz1qhnk\n&InstanceIds.0=ins-cri8d02t\n&InstanceIds.1=ins-osckfnm7\n<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ActivityId\": \"asa-dne04cxp\",\n        \"RequestId\": \"5b039ee6-e8ff-4605-bb24-b45337747431\"\n    }\n}",
         "title": "Removing instances from a scaling group"
+      }
+    ],
+    "ScaleInInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ScaleInInstances\n&<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-12yqet78\",\n    \"ScaleInNumber\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"ActivityId\": \"asa-n6w01f6m\",\n        \"RequestId\": \"c0bb46ea-2b47-471c-9099-e20bf7a23078\"\n    }\n}",
+        "title": "This example shows you how to reduce one instance from the scaling group."
+      }
+    ],
+    "ScaleOutInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ScaleOutInstances\n&<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-12yqet78\",\n    \"ScaleOutNumber\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"ActivityId\": \"asa-k1q8oaz6\",\n        \"RequestId\": \"6af368fd-35ff-4dcc-b302-35c378f2cccb\"\n    }\n}",
+        "title": "This example shows you how to add one instance to the scaling group"
       }
     ],
     "SetInstancesProtection": [
