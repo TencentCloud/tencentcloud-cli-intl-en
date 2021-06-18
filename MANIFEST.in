@@ -27,6 +27,8 @@ include tccli/services/cmq/v20190304/api.json
 include tccli/services/cmq/v20190304/examples.json
 include tccli/services/cvm/v20170312/api.json
 include tccli/services/cvm/v20170312/examples.json
+include tccli/services/cynosdb/v20190107/api.json
+include tccli/services/cynosdb/v20190107/examples.json
 include tccli/services/dayu/v20180709/api.json
 include tccli/services/dayu/v20180709/examples.json
 include tccli/services/dbbrain/v20191016/api.json
