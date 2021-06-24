@@ -114,6 +114,12 @@
       "name": "Queries the disaster recovery details of an instance",
       "output": "DescribeDcnDetailResponse"
     },
+    "DescribeFlow": {
+      "document": "This API is used to query task status.",
+      "input": "DescribeFlowRequest",
+      "name": "Queries task status",
+      "output": "DescribeFlowResponse"
+    },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group details of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
@@ -125,6 +131,18 @@
       "input": "DescribeProjectsRequest",
       "name": "Queries the project list",
       "output": "DescribeProjectsResponse"
+    },
+    "DestroyDCDBInstance": {
+      "document": "This API is used to terminate an isolated monthly-subscribed instance.",
+      "input": "DestroyDCDBInstanceRequest",
+      "name": "Terminates an isolated monthly-subscribed instance",
+      "output": "DestroyDCDBInstanceResponse"
+    },
+    "DestroyHourDCDBInstance": {
+      "document": "This API is used to terminate a pay-as-you-go instance.",
+      "input": "DestroyHourDCDBInstanceRequest",
+      "name": "Terminates a pay-as-you-go instance",
+      "output": "DestroyHourDCDBInstanceResponse"
     },
     "DisassociateSecurityGroups": {
       "document": "This API is used to unassociate security groups from instances in batches.",
@@ -2567,6 +2585,42 @@
       ],
       "type": "object"
     },
+    "DescribeFlowRequest": {
+      "document": "DescribeFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID returned by an async request API.",
+          "example": "无",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFlowResponse": {
+      "document": "DescribeFlow response structure.",
+      "members": [
+        {
+          "document": "Task status. Valid values: `0` (succeeded), `1` (failed), `2` (running)",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeProjectSecurityGroupsRequest": {
       "document": "DescribeProjectSecurityGroups request structure.",
       "members": [
@@ -2621,6 +2675,96 @@
           "member": "Project",
           "name": "Projects",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyDCDBInstanceRequest": {
+      "document": "DestroyDCDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsqlshard-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "tdsqlshard-f35wr6wj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyDCDBInstanceResponse": {
+      "document": "DestroyDCDBInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID, which is the same as the request parameter `InstanceId`.",
+          "example": "tdsqlshard-f35wr6wj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.",
+          "example": "100",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyHourDCDBInstanceRequest": {
+      "document": "DestroyHourDCDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsqlshard-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "tdsqlshard-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyHourDCDBInstanceResponse": {
+      "document": "DestroyHourDCDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.",
+          "example": "100",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID, which is the same as the request parameter `InstanceId`.",
+          "example": "tdsqlshard-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {

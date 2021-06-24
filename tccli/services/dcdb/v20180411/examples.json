@@ -152,6 +152,14 @@
         "title": "N/A"
       }
     ],
+    "DescribeFlow": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeFlow\n&FlowId=3340\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f63a9e3a-cfe9-4fa3-a690-9671ebdf6bd8\",\n        \"Status\": 1\n    }\n}",
+        "title": "Querying task status"
+      }
+    ],
     "DescribeProjectSecurityGroups": [
       {
         "document": "",
@@ -166,6 +174,22 @@
         "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeProjects\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Projects\": [\n            {\n                \"AppId\": 0,\n                \"CreateTime\": \"0000-00-00 00:00:00\",\n                \"CreatorUin\": 0,\n                \"Info\": \"Default project\",\n                \"IsDefault\": 1,\n                \"Name\": \"Default project\",\n                \"OwnerUin\": 0,\n                \"ProjectId\": 0,\n                \"SrcAppId\": 0,\n                \"SrcPlat\": \"qcloud\",\n                \"Status\": 3\n            },\n            {\n                \"AppId\": 1251966477,\n                \"CreateTime\": \"2019-09-17 15:47:05\",\n                \"CreatorUin\": 3374998458,\n                \"Info\": \"\",\n                \"IsDefault\": 0,\n                \"Name\": \"ryanforredis\",\n                \"OwnerUin\": 3374998458,\n                \"ProjectId\": 1159121,\n                \"SrcAppId\": 0,\n                \"SrcPlat\": \"qcloud\",\n                \"Status\": 0\n            }\n        ],\n        \"RequestId\": \"31666e3c-f5bf-4862-8876-68f81131eef1\"\n    }\n}",
         "title": "Pulling the projects under an account"
+      }
+    ],
+    "DestroyDCDBInstance": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=DestroyDCDBInstance\n&InstanceId=tdsqlshard-avw0207d\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"FlowId\": 100,\n        \"InstanceId\": \"tdsqlshard-avw0207d\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DestroyHourDCDBInstance": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=DestroyHourDCDBInstance\n&InstanceId=tdsqlshard-avw0207d\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"FlowId\": 100,\n        \"InstanceId\": \"tdsqlshard-avw0207d\"\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DisassociateSecurityGroups": [

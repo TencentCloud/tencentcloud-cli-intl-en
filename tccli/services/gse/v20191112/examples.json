@@ -72,6 +72,14 @@
         "title": "Querying the timer list"
       }
     ],
+    "EndGameServerSessionAndProcess": [
+      {
+        "document": "",
+        "input": "https://gse.tencentcloudapi.com/?Action=EndGameServerSessionAndProcess\n&GameServerSessionId=qcs::gse:ap-shanghai:uin/1112222:gameserversession/fleet-qp3ga-pxxx/xxx\n&IpAddress=0.0.0.0\n&Port=8888\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"84708eb1-0247-43f8-834e-c7edfdsfdgd53\"\n    }\n}",
+        "title": "Terminating the process of the game server session"
+      }
+    ],
     "GetGameServerSessionLogUrl": [
       {
         "document": "This example shows you how to get the log URL of a game session.",

@@ -54,6 +54,12 @@
       "name": "Queries the list of scheduled scaling policies",
       "output": "DescribeTimerScalingPoliciesResponse"
     },
+    "EndGameServerSessionAndProcess": {
+      "document": "This API is used to terminate the game server session and the corresponding process, which is applicable to time-limited protection and no protection.",
+      "input": "EndGameServerSessionAndProcessRequest",
+      "name": "Terminates the game server session and the corresponding process",
+      "output": "EndGameServerSessionAndProcessResponse"
+    },
     "GetGameServerSessionLogUrl": {
       "document": "This API is used to get the log URL of a game server session.",
       "input": "GetGameServerSessionLogUrlRequest",
@@ -977,6 +983,51 @@
         }
       ],
       "usage": "both"
+    },
+    "EndGameServerSessionAndProcessRequest": {
+      "document": "EndGameServerSessionAndProcess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Game server session ID. If a game server session ID is passed in, its corresponding processes, game server sessions, and player sessions will be terminated.",
+          "example": "qcs::gse:ap-shanghai:uin/1112222:gameserversession/fleet-qp3ga-p",
+          "member": "string",
+          "name": "GameServerSessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The public IP of the CVM. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.",
+          "example": "0.0.0.0",
+          "member": "string",
+          "name": "IpAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Port number. Value range: 1025 - 60000. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions (if any exists) and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.",
+          "example": "8888",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "EndGameServerSessionAndProcessResponse": {
+      "document": "EndGameServerSessionAndProcess response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "FleetAttributes": {
       "document": "Service deployment attributes",
