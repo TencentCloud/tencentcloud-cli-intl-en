@@ -192,6 +192,14 @@
         "title": "Sample 1. Querying the security group details of a project"
       }
     ],
+    "DestroyHourDBInstance": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DestroyHourDBInstance\n&InstanceId=tdsql-avw0207d\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"FlowId\": 100,\n        \"InstanceId\": \"tdsql-avw0207d\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DisassociateSecurityGroups": [
       {
         "document": "",
@@ -222,6 +230,14 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyAccountDescription\r\n&InstanceId=tdsql-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&Description=Test account\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"aef9be24-4d49-4358-8022-3405a361fd3b\"\n    }\n}",
         "title": "Modifying the remarks of a TencentDB account"
+      }
+    ],
+    "ModifyAccountPrivileges": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyAccountPrivileges\n&InstanceId=tdsql-f35wr6wj\n&Accounts.0.User=ajnnw\n&GlobalPrivileges.0=SELECT\n&Accounts.0.Host=127.0.0.1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FlowId\": 145623\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "ModifyBackupTime": [

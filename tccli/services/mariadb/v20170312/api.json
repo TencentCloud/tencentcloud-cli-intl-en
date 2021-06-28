@@ -144,6 +144,12 @@
       "name": "Queries the security group details of a project",
       "output": "DescribeProjectSecurityGroupsResponse"
     },
+    "DestroyHourDBInstance": {
+      "document": "This API is used to terminate a pay-as-you-go instance.",
+      "input": "DestroyHourDBInstanceRequest",
+      "name": "Terminates a pay-as-you-go instance",
+      "output": "DestroyHourDBInstanceResponse"
+    },
     "DisassociateSecurityGroups": {
       "document": "This API is used to unassociate security groups from instances in batches.",
       "input": "DisassociateSecurityGroupsRequest",
@@ -167,6 +173,12 @@
       "input": "ModifyAccountDescriptionRequest",
       "name": "Modifies account remarks",
       "output": "ModifyAccountDescriptionResponse"
+    },
+    "ModifyAccountPrivileges": {
+      "document": "This API is used to modify the permissions of a TencentDB instance account.\n\n**Notes**\n- Only the SELECT permission (that is, set the permission parameter to `[\"SELECT\"]`) of the system database `mysql` can be granted.\n- An error will be reported if read-write permissions are granted to a read-only account.\n- If the parameter of permissions at a level is left empty, no change will be made to the permissions at the level that have been granted. To clear granted permissions at a level, set `GlobalPrivileges.N` or `Privileges` to an empty array.",
+      "input": "ModifyAccountPrivilegesRequest",
+      "name": "Modifies the permissions of a TencentDB instance account",
+      "output": "ModifyAccountPrivilegesResponse"
     },
     "ModifyBackupTime": {
       "document": "This API is used to set the backup time of a TencentDB instance. The backend system will perform instance backup regularly according to this configuration.",
@@ -223,6 +235,32 @@
     "serviceShortName": "mariadb"
   },
   "objects": {
+    "Account": {
+      "document": "TencentDB account information",
+      "members": [
+        {
+          "default": "",
+          "document": "Account name",
+          "example": "test",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Host address",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "AssociateSecurityGroupsRequest": {
       "document": "AssociateSecurityGroups request structure.",
       "members": [
@@ -378,6 +416,52 @@
         }
       ],
       "type": "object"
+    },
+    "ColumnPrivilege": {
+      "document": "Column permission information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "test",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Column name",
+          "example": "test",
+          "member": "string",
+          "name": "Column",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ConstraintRange": {
       "document": "Range of constraint type values",
@@ -1221,6 +1305,32 @@
         }
       ],
       "usage": "out"
+    },
+    "DatabasePrivilege": {
+      "document": "Database permission",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "DcnDetailItem": {
       "document": "DCN details",
@@ -2651,6 +2761,51 @@
       ],
       "type": "object"
     },
+    "DestroyHourDBInstanceRequest": {
+      "document": "DestroyHourDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsql-avw0207d. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "tdsql-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyHourDBInstanceResponse": {
+      "document": "DestroyHourDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.",
+          "example": "100",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID, which is the same as the request parameter `InstanceId`.",
+          "example": "tdsql-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisassociateSecurityGroupsRequest": {
       "document": "DisassociateSecurityGroups request structure.",
       "members": [
@@ -2692,6 +2847,42 @@
         }
       ],
       "type": "object"
+    },
+    "FunctionPrivilege": {
+      "document": "Function permission information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Function name",
+          "example": "test",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "GrantAccountPrivilegesRequest": {
       "document": "GrantAccountPrivileges request structure.",
@@ -2906,6 +3097,114 @@
     "ModifyAccountDescriptionResponse": {
       "document": "ModifyAccountDescription response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountPrivilegesRequest": {
+      "document": "ModifyAccountPrivileges request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database account, including username and host address.",
+          "example": "无",
+          "member": "Account",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Global permission. Valid values of `GlobalPrivileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"DELETE\"`, `\"CREATE\"`, `\"PROCESS\"`, `\"DROP\"`, `\"REFERENCES\"`, `\"INDEX\"`, `\"ALTER\"`, `\"SHOW DATABASES\"`, `\"CREATE TEMPORARY TABLES\"`, `\"LOCK TABLES\"`, `\"EXECUTE\"`, `\"CREATE VIEW\"`, `\"SHOW VIEW\"`, `\"CREATE ROUTINE\"`, `\"ALTER ROUTINE\"`, `\"EVENT\"`, `\"TRIGGER\"`.\nNote: if the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.",
+          "example": "无",
+          "member": "string",
+          "name": "GlobalPrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database permission. Valid values of `Privileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"DELETE\"`, `\"CREATE\"`, `\"DROP\"`, `\"REFERENCES\"`, `\"INDEX\"`, `\"ALTER\"`, `\"CREATE TEMPORARY TABLES\"`, `\"LOCK TABLES\"`, `\"EXECUTE\"`, `\"CREATE VIEW\"`, `\"SHOW VIEW\"`, `\"CREATE ROUTINE\"`, `\"ALTER ROUTINE\"`, `\"EVENT\"`, `\"TRIGGER\"`.\nNote: if the parameter is left empty, no change will be made to the granted database permissions. To clear the granted database permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "DatabasePrivilege",
+          "name": "DatabasePrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Table permission. Valid values of `Privileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"DELETE\"`, `\"CREATE\"`, `\"DROP\"`, `\"REFERENCES\"`, `\"INDEX\"`, `\"ALTER\"`, `\"CREATE VIEW\"`, `\"SHOW VIEW\"`, `\"TRIGGER\"`.\nNote: if the parameter is left empty, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "TablePrivilege",
+          "name": "TablePrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Column permission. Valid values of `Privileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"REFERENCES\"`.\nNote: if the parameter is left empty, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "ColumnPrivilege",
+          "name": "ColumnPrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "View permission. Valid values of `Privileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"DELETE\"`, `\"CREATE\"`, `\"DROP\"`, `\"REFERENCES\"`, `\"INDEX\"`, `\"ALTER\"`, `\"CREATE VIEW\"`, `\"SHOW VIEW\"`, `\"TRIGGER\"`.\nNote: if the parameter is left empty, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "ViewPrivileges",
+          "name": "ViewPrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Function permissions. Valid values of `Privileges`: `\"ALTER ROUTINE\"`, `\"EXECUTE\"`.\nNote: if the parameter is left empty, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "FunctionPrivilege",
+          "name": "FunctionPrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Stored procedure permission. Valid values of `Privileges`: `\"ALTER ROUTINE\"`, `\"EXECUTE\"`.\nNote: if the parameter is left empty, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "ProcedurePrivilege",
+          "name": "ProcedurePrivileges",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountPrivilegesResponse": {
+      "document": "ModifyAccountPrivileges response structure.",
+      "members": [
+        {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.",
+          "example": "无",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3477,6 +3776,42 @@
       ],
       "usage": "out"
     },
+    "ProcedurePrivilege": {
+      "document": "Stored procedure permission information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stored procedure name",
+          "example": "test",
+          "member": "string",
+          "name": "Procedure",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ResetAccountPasswordRequest": {
       "document": "ResetAccountPassword request structure.",
       "members": [
@@ -3847,6 +4182,78 @@
         }
       ],
       "usage": "out"
+    },
+    "TablePrivilege": {
+      "document": "Table permission",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "test",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ViewPrivileges": {
+      "document": "View permission information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "View name",
+          "example": "test",
+          "member": "string",
+          "name": "View",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     }
   },
   "version": "1.0"
