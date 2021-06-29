@@ -37,7 +37,7 @@
       "output": "DescribeBillingDataResponse"
     },
     "DescribeCdnData": {
-      "document": "This API (DescribeCdnData) is used to query CDN real-time access monitoring data and supports the following metrics:\n\n+ Traffic (in bytes)\n+ Bandwidth (in bps)\n+ Number of requests\n+ Traffic hit rate (in % with two decimal digits)\n+ Aggregate list of 2xx status codes and the details of status codes starting with 2 (in entries)\n+ Aggregate list of 3xx status codes and the details of status codes starting with 3 (in entries)\n+ Aggregate list of 4xx status codes and the details of status codes starting with 4 (in entries)\n+ Aggregate list of 5xx status codes and the details of status codes starting with 5 (in entries)",
+      "document": "This API (DescribeCdnData) is used to query CDN real-time access monitoring data and supports the following metrics:\n\n+ Traffic (in bytes)\n+ Bandwidth (in bps)\n+ Number of requests\n+ Number of hit requests\n+ Request hit rate (in %)\n+ Hit traffic (in bytes)\n+ Traffic hit rate (in %)\n+ Aggregate list of 2xx status codes and the details of status codes starting with 2 (in entries)\n+ Aggregate list of 3xx status codes and the details of status codes starting with 3 (in entries)\n+ Aggregate list of 4xx status codes and the details of status codes starting with 4 (in entries)\n+ Aggregate list of 5xx status codes and the details of status codes starting with 5 (in entries)",
       "input": "DescribeCdnDataRequest",
       "name": "Queries access data",
       "output": "DescribeCdnDataResponse"
@@ -1273,6 +1273,7 @@
         {
           "default": "",
           "document": "The key for signature calculation\nOnly digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
           "member": "string",
           "name": "SecretKey",
           "required": true,
@@ -1282,6 +1283,7 @@
         {
           "default": "",
           "document": "Signature parameter name\nOnly upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
+          "example": "-",
           "member": "string",
           "name": "SignParam",
           "required": true,
@@ -1290,7 +1292,8 @@
         },
         {
           "default": "",
-          "document": "Signature expiration time\nUnit: second. The maximum value is 31536000.",
+          "document": "Signature expiration time\nUnit: second. The maximum value is 630720000.",
+          "example": "123",
           "member": "int64",
           "name": "ExpireTime",
           "required": true,
@@ -1300,6 +1303,7 @@
         {
           "default": "",
           "document": "File extension list settings determining if authentication should be performed\nIf it contains an asterisk (*), this indicates all files.",
+          "example": "[\"*\"]",
           "member": "string",
           "name": "FileExtensions",
           "required": true,
@@ -1309,6 +1313,7 @@
         {
           "default": "",
           "document": "allowlist: indicates that all file types apart from the FileExtensions list are authenticated\nblacklist: indicates that only the file types in the FileExtensions list are authenticated",
+          "example": "whitelist",
           "member": "string",
           "name": "FilterType",
           "required": true,
@@ -1324,6 +1329,7 @@
         {
           "default": "",
           "document": "The key for signature calculation\nOnly digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
           "member": "string",
           "name": "SecretKey",
           "required": true,
@@ -1332,7 +1338,8 @@
         },
         {
           "default": "",
-          "document": "Signature expiration time\nUnit: second. The maximum value is 31536000.",
+          "document": "Signature expiration time\nUnit: second. The maximum value is 630720000.",
+          "example": "123",
           "member": "int64",
           "name": "ExpireTime",
           "required": true,
@@ -1342,6 +1349,7 @@
         {
           "default": "",
           "document": "File extension list settings determining if authentication should be performed\nIf it contains an asterisk (*), this indicates all files.",
+          "example": "[\"*\"]",
           "member": "string",
           "name": "FileExtensions",
           "required": true,
@@ -1351,6 +1359,7 @@
         {
           "default": "",
           "document": "allowlist: indicates that all file types apart from the FileExtensions list are authenticated\nblacklist: indicates that only the file types in the FileExtensions list are authenticated",
+          "example": "whitelist",
           "member": "string",
           "name": "FilterType",
           "required": true,
@@ -1366,6 +1375,7 @@
         {
           "default": "",
           "document": "The key for signature calculation\nOnly digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
           "member": "string",
           "name": "SecretKey",
           "required": true,
@@ -1374,7 +1384,8 @@
         },
         {
           "default": "",
-          "document": "Signature expiration time\nUnit: second. The maximum value is 31536000.",
+          "document": "Signature expiration time\nUnit: second. The maximum value is 630720000.",
+          "example": "123",
           "member": "int64",
           "name": "ExpireTime",
           "required": true,
@@ -1384,6 +1395,7 @@
         {
           "default": "",
           "document": "File extension list settings determining if authentication should be performed\nIf it contains an asterisk (*), this indicates all files.",
+          "example": "[\"*\"]",
           "member": "string",
           "name": "FileExtensions",
           "required": true,
@@ -1393,6 +1405,7 @@
         {
           "default": "",
           "document": "allowlist: indicates that all file types apart from the FileExtensions list are authenticated\nblacklist: indicates that only the file types in the FileExtensions list are authenticated",
+          "example": "whitelist",
           "member": "string",
           "name": "FilterType",
           "required": true,
@@ -1402,6 +1415,7 @@
         {
           "default": "",
           "document": "Timestamp settings\ndec: decimal\nhex: hexadecimal\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "dec",
           "member": "string",
           "name": "TimeFormat",
           "required": false,
@@ -1417,6 +1431,7 @@
         {
           "default": "",
           "document": "The key for signature calculation\nOnly digits, upper and lower-case letters are allowed. Length limit: 6-32 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
           "member": "string",
           "name": "SecretKey",
           "required": true,
@@ -1425,7 +1440,8 @@
         },
         {
           "default": "",
-          "document": "Signature expiration time\nUnit: second. The maximum value is 31536000.",
+          "document": "Signature expiration time\nUnit: second. The maximum value is 630720000.",
+          "example": "123",
           "member": "int64",
           "name": "ExpireTime",
           "required": true,
@@ -1435,6 +1451,7 @@
         {
           "default": "",
           "document": "File extension list settings determining if authentication should be performed\nIf it contains an asterisk (*), this indicates all files.",
+          "example": "[\"*\"]",
           "member": "string",
           "name": "FileExtensions",
           "required": true,
@@ -1444,6 +1461,7 @@
         {
           "default": "",
           "document": "allowlist: indicates that all file types apart from the FileExtensions list are authenticated\nblacklist: indicates that only the file types in the FileExtensions list are authenticated",
+          "example": "whitelist",
           "member": "string",
           "name": "FilterType",
           "required": true,
@@ -1453,6 +1471,7 @@
         {
           "default": "",
           "document": "Signature parameter name\nOnly upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
+          "example": "-",
           "member": "string",
           "name": "SignParam",
           "required": true,
@@ -1462,6 +1481,7 @@
         {
           "default": "",
           "document": "Timestamp parameter name\nOnly upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.",
+          "example": "tp",
           "member": "string",
           "name": "TimeParam",
           "required": true,
@@ -1471,6 +1491,7 @@
         {
           "default": "",
           "document": "Timestamp settings\ndec: decimal\nhex: hexadecimal",
+          "example": "dec",
           "member": "string",
           "name": "TimeFormat",
           "required": true,
@@ -1837,6 +1858,7 @@
         {
           "default": "",
           "document": "Cache configuration switch\non: enable\noff: disable\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -1846,6 +1868,7 @@
         {
           "default": "",
           "document": "Cache expiration time settings\nUnit: second. The maximum value is 365 days.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "600",
           "member": "int64",
           "name": "CacheTime",
           "required": true,
@@ -1855,6 +1878,7 @@
         {
           "default": "",
           "document": "Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node.\non: enable\noff: disable\nThis is disabled by default.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "off",
           "member": "string",
           "name": "CompareMaxAge",
           "required": true,
@@ -1864,6 +1888,7 @@
         {
           "default": "",
           "document": "Force cache\non: enable\noff: disable\nThis is disabled by default. If enabled, the `no-store` and `no-cache` resources returned from the origin server will be cached according to `CacheRules` rules.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "off",
           "member": "string",
           "name": "IgnoreCacheControl",
           "required": true,
@@ -1872,7 +1897,8 @@
         },
         {
           "default": "",
-          "document": "Ignore the Set-Cookie header of an origin server.\non: enable\noff: disable\nThis is disabled by default.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Whether to ignore the header and body on cache nodes if the origin server returns the header `Set-Cookie`.\n`on`: Ignore; do not cache the header and body.\n`off`: Do not ignore; follow the custom cache rules of cache nodes.\nIt is disabled by default.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "IgnoreSetCookie",
           "required": true,
@@ -2718,6 +2744,7 @@
         {
           "default": "",
           "document": "Queries start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.\nAccording to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.\nThe gap between the start time and end time should be less than or equal to 90 days.",
+          "example": "2021-02-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -2726,6 +2753,7 @@
         {
           "default": "",
           "document": "Queries end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.\nAccording to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.\nThe gap between the start time and end time should be less than or equal to 90 days.",
+          "example": "2021-02-01 00:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -2733,7 +2761,8 @@
         },
         {
           "default": "",
-          "document": "Specifies the query metric, which can be:\nflux: traffic (in bytes)\nbandwidth: bandwidth (in bps)\nrequest: number of requests\nfluxHitRate: traffic hit rate (in %)\nstatusCode: status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)\n2xx: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)\n3xx: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)\n4xx: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)\n5xx: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)\nIt is supported to specify a status code for query. The return will be empty if the status code has never been generated.",
+          "document": "Specifies the query metric, which can be:\n`flux`: traffic (in bytes)\n`bandwidth`: bandwidth (in bps)\n`request`: number of requests\n`hitRequest`: number of hit requests\n`requestHitRate`: request hit rate (in % with two decimal digits)\n`hitFlux`: hit traffic (in bytes)\n`fluxHitRate`: traffic hit rate (in % with two decimal digits)\n`statusCode`: status code. Number of 2xx, 3xx, 4xx, and 5xx status codes returned during the queried period.\n`2xx`: lists the number of all status codes starting with **2** returned during the queried period based on the specified interval (if any)\n`3xx`: lists the number of all status codes starting with **3** returned during the queried period based on the specified interval (if any)\n`4xx`: lists the number of all status codes starting with **4** returned during the queried period based on the specified interval (if any)\n`5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)\nIt is supported to specify a status code for query. The return will be empty if the status code has never been generated.",
+          "example": "flux",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -2742,6 +2771,7 @@
         {
           "default": "",
           "document": "Specifies the list of domain names to be queried\nUp to 30 domain names can be queried at a time",
+          "example": "无",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -2750,6 +2780,7 @@
         {
           "default": "",
           "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nPlease note that if domain names are specified, this parameter will be ignored.",
+          "example": "0",
           "member": "int64",
           "name": "Project",
           "required": false,
@@ -2758,6 +2789,7 @@
         {
           "default": "",
           "document": "Time granularity; valid values:\n`min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;\n`5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;\n`hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;\n`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.",
+          "example": "day",
           "member": "string",
           "name": "Interval",
           "required": false,
@@ -2766,6 +2798,7 @@
         {
           "default": "",
           "document": "The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.\nYou can set it to true to return the details for each Domain (the statusCode metric is currently not supported)",
+          "example": "false",
           "member": "bool",
           "name": "Detail",
           "required": false,
@@ -2774,6 +2807,7 @@
         {
           "default": "",
           "document": "Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified an ISP, you cannot specify a province or an IP protocol for the same query.",
+          "example": "无",
           "member": "int64",
           "name": "Isp",
           "required": false,
@@ -2782,6 +2816,7 @@
         {
           "default": "",
           "document": "Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query.",
+          "example": "无",
           "member": "int64",
           "name": "District",
           "required": false,
@@ -2790,6 +2825,7 @@
         {
           "default": "",
           "document": "Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.\nall: All protocols\nhttp: specifies the HTTP metric to be queried\nhttps: specifies the HTTPS metric to be queried",
+          "example": "无",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -2798,6 +2834,7 @@
         {
           "default": "",
           "document": "Specifies the data source to be queried, which can be seen as the allowlist function.",
+          "example": "无",
           "member": "string",
           "name": "DataSource",
           "required": false,
@@ -2806,6 +2843,7 @@
         {
           "default": "",
           "document": "Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried\nall: all protocols\nipv4: specifies to query IPv4 metrics\nipv6: specifies to query IPv6 metrics\nIf the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time\nNote: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query",
+          "example": "无",
           "member": "string",
           "name": "IpProtocol",
           "required": false,
@@ -2814,6 +2852,7 @@
         {
           "default": "",
           "document": "Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.\n`mainland`: specifies to query CDN data within Mainland China;\n`overseas`: specifies to query CDN data outside Mainland China.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -2822,6 +2861,7 @@
         {
           "default": "",
           "document": "Specifies a region type for your query on CDN data outside Mainland China. If this parameter is left blank, data on the service region will be queried. This parameter is valid only when `Area` is `overseas`.\n`server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;\n`client`: specifies to query data on the client region where the request devices are located.",
+          "example": "无",
           "member": "string",
           "name": "AreaType",
           "required": false,
@@ -3174,6 +3214,7 @@
         {
           "default": "",
           "document": "Acceleration domain name",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -3182,6 +3223,7 @@
         {
           "default": "",
           "document": "Node type.\nedge: edge server\nlast: intermediate server\nIf this parameter is left empty, edge server information will be returned by default",
+          "example": "edge",
           "member": "string",
           "name": "Layer",
           "required": false,
@@ -3190,10 +3232,20 @@
         {
           "default": "",
           "document": "Region to be queried.\nmainland: domestic nodes\noverseas: overseas nodes\nglobal: global nodes",
+          "example": "last",
           "member": "string",
           "name": "Area",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return a value as an IP range",
+          "example": "true/false",
+          "member": "bool",
+          "name": "Segment",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -4686,10 +4738,20 @@
         {
           "default": "",
           "document": "List of unblocked URLs",
+          "example": "[\"http:\\/\\/example.com\\/path\\/to.jpg\\r\\n\"]",
           "member": "string",
           "name": "Urls",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "URL blocking date",
+          "example": "2021-06-01",
+          "member": "date",
+          "name": "Date",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5026,7 +5088,8 @@
       "members": [
         {
           "default": "",
-          "document": "HTTP header setting methods\n`add`: add header. If a header already exists, then there will be a duplicated header.\n`del`: delete header.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "HTTP header setting methods\n`set`: sets a value for an existing header parameter, a new header parameter, or multiple header parameters. Multiple header parameters will be merged into one.\n`del`: deletes a header parameter.\n`add`: adds a header parameter. By default, you can repeat the same action to add the same header parameter, which may affect browser response. Please consider the set operation first.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "set",
           "member": "string",
           "name": "HeaderMode",
           "required": true,
@@ -5036,6 +5099,7 @@
         {
           "default": "",
           "document": "HTTP header name. Up to 100 characters can be set.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "name",
           "member": "string",
           "name": "HeaderName",
           "required": true,
@@ -5045,6 +5109,7 @@
         {
           "default": "",
           "document": "HTTP header value. Up to 1000 characters can be set.\nNot required when Mode is del\nRequired when Mode is add/set\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "value",
           "member": "string",
           "name": "HeaderValue",
           "required": true,
@@ -5054,6 +5119,7 @@
         {
           "default": "",
           "document": "Rule types:\n`all`: effective for all files\n`file`: effective for specified file suffixes\n`directory`: effective for specified paths\n`path`: effective for specified absolute paths\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "all",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -5063,6 +5129,7 @@
         {
           "default": "",
           "document": "Content for each RuleType:\nFor `all`, enter an asterisk (*).\nFor `file`, enter the suffix, such as jpg, txt.\nFor `directory`, enter the path, such as /xxx/test/.\nFor `path`, enter the corresponding absolute path, such as /xxx/test.html.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "RulePaths",
           "required": true,
@@ -7486,7 +7553,8 @@
       "members": [
         {
           "default": "",
-          "document": "Content for each `CacheType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter the suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter the path, e.g., `/xxx/test/`.\nFor `path`, enter the absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.\nFor `default`, enter `no max-age`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Content for each `CacheType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter the suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter the path, e.g., `/xxx/test/`.\nFor `path`, enter the absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "*",
           "member": "string",
           "name": "RulePaths",
           "required": true,
@@ -7495,7 +7563,8 @@
         },
         {
           "default": "",
-          "document": "Rule types:\n`all`: effective for all files.\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`index`: homepage.\n`default`: effective when the origin server does not have the `max-age` value.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Rule types:\n`all`: effective for all files.\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`index`: homepage.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "all",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -7505,6 +7574,7 @@
         {
           "default": "",
           "document": "Cache configuration\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "{\"Cache\":{\"CacheTime\":86400,\"CompareMaxAge\":\"off\",\"IgnoreCacheCo",
           "member": "RuleCacheConfig",
           "name": "CacheConfig",
           "required": true,
@@ -9335,7 +9405,7 @@
       "usage": "out"
     },
     "WafSubRuleStatus": {
-      "document": "WAF sub-rule status",
+      "document": "WAF sub-rule switch status",
       "members": [
         {
           "default": "",
