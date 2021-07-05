@@ -8,6 +8,14 @@
         "title": "Sample request"
       }
     ],
+    "ChangeReplicaToMaster": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeReplicaToMaster\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"GroupId\": 301524\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "CleanUpInstance": [
       {
         "document": "",

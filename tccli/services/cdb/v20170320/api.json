@@ -10078,6 +10078,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in output parameters.",
+          "example": "\"cdb-c1nl9rpv\"",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -10086,6 +10087,7 @@
         {
           "default": "",
           "document": "Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the memory that can be upgraded to.",
+          "example": "8000",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -10094,6 +10096,7 @@
         {
           "default": "",
           "document": "Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the disk that can be upgraded to.",
+          "example": "200",
           "member": "int64",
           "name": "Volume",
           "required": true,
@@ -10102,6 +10105,7 @@
         {
           "default": "",
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "0",
           "member": "int64",
           "name": "ProtectMode",
           "required": false,
@@ -10110,6 +10114,7 @@
         {
           "default": "",
           "document": "Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "0",
           "member": "int64",
           "name": "DeployMode",
           "required": false,
@@ -10118,6 +10123,7 @@
         {
           "default": "",
           "document": "AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the supported AZs.",
+          "example": "\"\"",
           "member": "string",
           "name": "SlaveZone",
           "required": false,
@@ -10126,6 +10132,7 @@
         {
           "default": "",
           "document": "Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.",
+          "example": "\"5.7\"",
           "member": "string",
           "name": "EngineVersion",
           "required": false,
@@ -10134,6 +10141,7 @@
         {
           "default": "",
           "document": "Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.",
+          "example": "0",
           "member": "int64",
           "name": "WaitSwitch",
           "required": false,
@@ -10142,6 +10150,7 @@
         {
           "default": "",
           "document": "AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.",
+          "example": "\"\"",
           "member": "string",
           "name": "BackupZone",
           "required": false,
@@ -10150,10 +10159,29 @@
         {
           "default": "",
           "document": "Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.",
+          "example": "\"master\"",
           "member": "string",
           "name": "InstanceRole",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.",
+          "example": "\"UNIVERSAL\"",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of CPU cores after the instance is upgraded. If this parameter is left empty, the number of CPU cores will be automatically filled in according to the `Memory` value.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

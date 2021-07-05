@@ -67,7 +67,7 @@
     "DescribeAlarmEvents": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmEvents\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"Namespace\": \"cvm_device\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmEvents\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"Namespace\": \"cvm_device\",\n    \"MonitorType\": \"MT_QCE\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"92hg92hj1-2h352h25hj-2h235h\",\n        \"Events\": [\n            {\n                \"EventName\": \"ping_unreachable\",\n                \"Description\": \"Unreachable by ping\",\n                \"Namespace\": \"cvm_device\"\n            }\n        ]\n    }\n}",
         "title": "Querying event list"
       }

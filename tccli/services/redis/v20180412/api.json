@@ -6,6 +6,12 @@
       "name": "Associates security groups with instances",
       "output": "AssociateSecurityGroupsResponse"
     },
+    "ChangeReplicaToMaster": {
+      "document": "This API is used to promote a replica node group of a multi-AZ deployed instance to master node group.",
+      "input": "ChangeReplicaToMasterRequest",
+      "name": "Promotes a replica node group to master node group",
+      "output": "ChangeReplicaToMasterResponse"
+    },
     "CleanUpInstance": {
       "document": "This API is used to deactivate an instance in the recycle bin immediately.",
       "input": "CleanUpInstanceRequest",
@@ -555,6 +561,51 @@
         }
       ],
       "usage": "out"
+    },
+    "ChangeReplicaToMasterRequest": {
+      "document": "ChangeReplicaToMaster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-cdbdbncd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replica ID",
+          "example": "354266",
+          "member": "int64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ChangeReplicaToMasterResponse": {
+      "document": "ChangeReplicaToMaster response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "626515",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CleanUpInstanceRequest": {
       "document": "CleanUpInstance request structure.",
@@ -5467,6 +5518,7 @@
         {
           "default": "",
           "document": "The number of keys on a node",
+          "example": "1",
           "member": "int64",
           "name": "Keys",
           "required": true,
@@ -5476,6 +5528,7 @@
         {
           "default": "",
           "document": "Distribution of node slots",
+          "example": "0-5460",
           "member": "string",
           "name": "Slot",
           "required": true,
@@ -5485,6 +5538,7 @@
         {
           "default": "",
           "document": "Node ID",
+          "example": "b69eda124a34c1b713e81f7cb947161b06214328",
           "member": "string",
           "name": "NodeId",
           "required": true,
@@ -5494,8 +5548,19 @@
         {
           "default": "",
           "document": "Node status",
+          "example": "Normal",
           "member": "string",
           "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role",
+          "example": "master",
+          "member": "string",
+          "name": "Role",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5542,6 +5607,7 @@
         {
           "default": "",
           "document": "Node ID",
+          "example": "edcfcc21cef97eabbbeeb52067de8eddffc85772",
           "member": "string",
           "name": "NodeId",
           "required": true,
@@ -5551,6 +5617,7 @@
         {
           "default": "",
           "document": "Node role",
+          "example": "master",
           "member": "string",
           "name": "NodeRole",
           "required": true,
@@ -5560,8 +5627,19 @@
         {
           "default": "",
           "document": "Shard ID",
+          "example": "1",
           "member": "int64",
           "name": "ClusterId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "example": "100002",
+          "member": "int64",
+          "name": "ZoneId",
           "required": true,
           "type": "int",
           "value_allowed_null": false

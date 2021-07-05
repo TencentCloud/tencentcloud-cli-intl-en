@@ -266,9 +266,19 @@
         {
           "default": "",
           "document": "Data migration task ID",
+          "example": "dts-1kl0iy0v",
           "member": "string",
           "name": "JobId",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The way to complete the task, which is supported only for legacy MySQL migration task. waitForSync: wait for the source-replica lag to become 0 before stopping; immediately: complete immediately without waiting for source-replica sync. Default value: waitForSync",
+          "example": "waitForSync",
+          "member": "string",
+          "name": "CompleteMode",
+          "required": false,
           "type": "string"
         }
       ],

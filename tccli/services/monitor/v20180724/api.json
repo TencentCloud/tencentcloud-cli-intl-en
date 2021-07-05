@@ -157,7 +157,7 @@
       "output": "DescribeStatisticDataResponse"
     },
     "GetMonitorData": {
-      "document": "This API is used to get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can obtain the data of up to 10 instances and up to 1,440 data points.\nThis API may fail due to the rate limit if you need to call a lot of metrics and objects. We recommended that you spread the call requests over time.",
+      "document": "This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, please use the API [DescribeStatisticData](https://intl.cloud.tencent.com/document/product/248/51845?from_cn_redirect=1).\nYou can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances at up to 1,440 data points.\nIf you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.",
       "input": "GetMonitorDataRequest",
       "name": "Pulls metric monitoring data",
       "output": "GetMonitorDataResponse"
@@ -1541,6 +1541,24 @@
           "name": "TriggerTasks",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Global filter.",
+          "example": "无",
+          "member": "AlarmPolicyFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Aggregation dimension list, which is used to specify which dimension keys data is grouped by.",
+          "example": "[\"service_name\"]",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2163,6 +2181,7 @@
         {
           "default": "",
           "document": "Module name, which is fixed at \"monitor\"",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -2171,9 +2190,19 @@
         {
           "default": "",
           "document": "Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API",
+          "example": "cvm_device",
           "member": "string",
           "name": "Namespace",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Monitoring type, such as `MT_QCE`, which is set to default.",
+          "example": "MT_QCE",
+          "member": "string",
+          "name": "MonitorType",
+          "required": false,
           "type": "string"
         }
       ],
@@ -5728,7 +5757,7 @@
         },
         {
           "default": "",
-          "document": "Dimension combination of instance object in the format of `key-value` pair, such as [{\"Name\":\"InstanceId\",\"Value\":\"ins-j0hk02zo\"}]. For more information on the dimensions of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The value in the dimension column is the `key` in the dimension combination, and the value corresponding to the `key` is the `value` in the combination",
+          "document": "The dimension combination for instance objects, which is in the form of a set of key-value pairs. The dimension fields for instances of different Tencent Cloud services are completely different. For example, the field is [{\"Name\":\"InstanceId\",\"Value\":\"ins-j0hk02zo\"}] for CVM instances, [{\"Name\":\"instanceId\",\"Value\":\"ckafka-l49k54dd\"}] for CKafka instances, and [{\"Name\":\"appid\",\"Value\":\"1258344699\"},{\"Name\":\"bucket\",\"Value\":\"rig-1258344699\"}] for COS instances. For more information on the dimensions of various Tencent Cloud services, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). In each document, the dimension column displays a dimension combination’s key, which has a corresponding value. A single request can get the data of up to 10 instances.",
           "example": "无",
           "member": "Instance",
           "name": "Instances",
@@ -5737,7 +5766,7 @@
         },
         {
           "default": "",
-          "document": "Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods",
+          "document": "Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods. A single request can get data at up to 1,440 data points.",
           "example": "300",
           "member": "uint64",
           "name": "Period",
@@ -6314,6 +6343,24 @@
           "name": "EventCondition",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Global filter.",
+          "example": "无",
+          "member": "AlarmPolicyFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Aggregation dimension list, which is used to specify which dimension keys data is grouped by.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
