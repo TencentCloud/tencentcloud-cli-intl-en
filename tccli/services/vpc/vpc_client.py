@@ -1147,6 +1147,60 @@ def doModifyVpcEndPointAttribute(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeVpnGatewayRoutes(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeVpnGatewayRoutesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeVpnGatewayRoutes(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyVpnGatewayRoutes(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyVpnGatewayRoutesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyVpnGatewayRoutes(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDisassociateVpcEndPointSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2686,7 +2740,7 @@ def doDeleteAssistantCidr(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBandwidthPackageBillUsage(args, parsed_globals):
+def doDeleteVpnGatewayRoutes(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -2702,9 +2756,9 @@ def doDescribeBandwidthPackageBillUsage(args, parsed_globals):
     client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBandwidthPackageBillUsageRequest()
+    model = models.DeleteVpnGatewayRoutesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeBandwidthPackageBillUsage(model)
+    rsp = client.DeleteVpnGatewayRoutes(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -5629,6 +5683,33 @@ def doUnassignIpv6SubnetCidrBlock(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeBandwidthPackageBillUsage(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBandwidthPackageBillUsageRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeBandwidthPackageBillUsage(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeIpGeolocationDatabaseUrl(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -5810,6 +5891,33 @@ def doTransformAddress(args, parsed_globals):
     model = models.TransformAddressRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.TransformAddress(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateVpnGatewayRoutes(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VpcClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateVpnGatewayRoutesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateVpnGatewayRoutes(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -6060,6 +6168,8 @@ ACTION_MAP = {
     "ModifyServiceTemplateAttribute": doModifyServiceTemplateAttribute,
     "AssociateNatGatewayAddress": doAssociateNatGatewayAddress,
     "ModifyVpcEndPointAttribute": doModifyVpcEndPointAttribute,
+    "DescribeVpnGatewayRoutes": doDescribeVpnGatewayRoutes,
+    "ModifyVpnGatewayRoutes": doModifyVpnGatewayRoutes,
     "DisassociateVpcEndPointSecurityGroups": doDisassociateVpcEndPointSecurityGroups,
     "DeleteRouteTable": doDeleteRouteTable,
     "RemoveBandwidthPackageResources": doRemoveBandwidthPackageResources,
@@ -6117,7 +6227,7 @@ ACTION_MAP = {
     "DetachNetworkInterface": doDetachNetworkInterface,
     "CreateVpnConnection": doCreateVpnConnection,
     "DeleteAssistantCidr": doDeleteAssistantCidr,
-    "DescribeBandwidthPackageBillUsage": doDescribeBandwidthPackageBillUsage,
+    "DeleteVpnGatewayRoutes": doDeleteVpnGatewayRoutes,
     "DescribeBandwidthPackageResources": doDescribeBandwidthPackageResources,
     "ModifyCcnAttachedInstancesAttribute": doModifyCcnAttachedInstancesAttribute,
     "DeleteNatGatewaySourceIpTranslationNatRule": doDeleteNatGatewaySourceIpTranslationNatRule,
@@ -6226,6 +6336,7 @@ ACTION_MAP = {
     "InquirePriceCreateDirectConnectGateway": doInquirePriceCreateDirectConnectGateway,
     "DescribeSecurityGroupAssociationStatistics": doDescribeSecurityGroupAssociationStatistics,
     "UnassignIpv6SubnetCidrBlock": doUnassignIpv6SubnetCidrBlock,
+    "DescribeBandwidthPackageBillUsage": doDescribeBandwidthPackageBillUsage,
     "DescribeIpGeolocationDatabaseUrl": doDescribeIpGeolocationDatabaseUrl,
     "DescribeAddressTemplates": doDescribeAddressTemplates,
     "CreateAddressTemplate": doCreateAddressTemplate,
@@ -6233,6 +6344,7 @@ ACTION_MAP = {
     "DescribeAddressTemplateGroups": doDescribeAddressTemplateGroups,
     "CreateVpcEndPoint": doCreateVpcEndPoint,
     "TransformAddress": doTransformAddress,
+    "CreateVpnGatewayRoutes": doCreateVpnGatewayRoutes,
     "CreateSecurityGroupPolicies": doCreateSecurityGroupPolicies,
     "ModifyNetworkAclAttribute": doModifyNetworkAclAttribute,
     "ResetNatGatewayConnection": doResetNatGatewayConnection,

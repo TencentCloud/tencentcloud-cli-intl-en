@@ -701,6 +701,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -710,6 +711,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "集群",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -719,6 +721,7 @@
         {
           "default": "",
           "document": "Cluster description",
+          "example": "示例集群",
           "member": "string",
           "name": "ClusterDescription",
           "required": true,
@@ -728,6 +731,7 @@
         {
           "default": "",
           "document": "Cluster version. The default value is 1.10.5.",
+          "example": "1.20.6",
           "member": "string",
           "name": "ClusterVersion",
           "required": true,
@@ -737,6 +741,7 @@
         {
           "default": "",
           "document": "Cluster operating system. centOS 7.2x86_64 or ubuntu 16.04.1 LTSx86_64. Default value: ubuntu 16.04.1 LTSx86_64",
+          "example": "ubuntu16.04.1 LTSx86_64",
           "member": "string",
           "name": "ClusterOs",
           "required": true,
@@ -746,6 +751,7 @@
         {
           "default": "",
           "document": "Cluster type. Managed cluster: MANAGED_CLUSTER; Self-deployed cluster: INDEPENDENT_CLUSTER.",
+          "example": "INDEPENDENT_CLUSTER",
           "member": "string",
           "name": "ClusterType",
           "required": true,
@@ -755,6 +761,7 @@
         {
           "default": "",
           "document": "Cluster network-related parameters",
+          "example": "无",
           "member": "ClusterNetworkSettings",
           "name": "ClusterNetworkSettings",
           "required": true,
@@ -764,6 +771,7 @@
         {
           "default": "",
           "document": "Current number of nodes in the cluster",
+          "example": "3",
           "member": "uint64",
           "name": "ClusterNodeNum",
           "required": true,
@@ -773,6 +781,7 @@
         {
           "default": "",
           "document": "ID of the project to which the cluster belongs",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -782,6 +791,7 @@
         {
           "default": "",
           "document": "Tag description list.",
+          "example": "无",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": true,
@@ -791,6 +801,7 @@
         {
           "default": "",
           "document": "Cluster status (Running, Creating, or Abnormal)",
+          "example": "Running",
           "member": "string",
           "name": "ClusterStatus",
           "required": true,
@@ -800,6 +811,7 @@
         {
           "default": "",
           "document": "Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))",
+          "example": "{\\\"NodeNameType\\\":\\\"lan-ip\\\",\\\"NetworkType\\\":\\\"GR\\\"}",
           "member": "string",
           "name": "Property",
           "required": true,
@@ -809,6 +821,7 @@
         {
           "default": "",
           "document": "Number of primary nodes currently in the cluster",
+          "example": "1",
           "member": "uint64",
           "name": "ClusterMaterNodeNum",
           "required": true,
@@ -818,6 +831,7 @@
         {
           "default": "",
           "document": "ID of the image used by the cluster\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "ImageId",
           "required": true,
@@ -827,6 +841,7 @@
         {
           "default": "",
           "document": "Container image tag\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "GENERAL",
           "member": "string",
           "name": "OsCustomizeType",
           "required": true,
@@ -836,6 +851,7 @@
         {
           "default": "",
           "document": "Runtime environment of the cluster. Values can be `docker` or `containerd`.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "docker",
           "member": "string",
           "name": "ContainerRuntime",
           "required": true,
@@ -845,6 +861,7 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "2021-06-16T07:42:57Z",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -854,8 +871,19 @@
         {
           "default": "",
           "document": "Whether Deletion Protection is enabled\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "false",
           "member": "bool",
           "name": "DeletionProtection",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether the cluster supports external nodes.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableExternalNode",
           "required": true,
           "type": "bool",
           "value_allowed_null": true
@@ -1024,6 +1052,16 @@
           "name": "BasePodNumber",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable Cilium. If it’s left empty, Cilium is not enabled. If `clusterIP` is passed in, it means to enable Cilium to support the clusterIP service type.",
+          "example": "clusterIP",
+          "member": "string",
+          "name": "CiliumMode",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

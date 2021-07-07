@@ -496,6 +496,14 @@
         "title": "Creating a monthly-subscribed gateway"
       }
     ],
+    "CreateVpnGatewayRoutes": [
+      {
+        "document": "",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateVpnGatewayRoutes\n&VpnGatewayId=vpn-ngenl4az\n&Routes.0.DestinationCidrBlock=192.241.0.0/24\n&Routes.0.Status=ENABLE\n&Routes.0.InstanceType=VPNCONN\n&Routes.0.InstanceId=vpnx-ng2asdew\n&Routes.0.Priority=100\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Routes\": [\n            {\n                \"DestinationCidrBlock\": \"192.241.0.0/24\",\n                \"Status\": \"ENABLE\",\n                \"InstanceId\": \"vpnx-ng2asdew\",\n                \"InstanceType\": \"VPNCONN\",\n                \"Priority\": 100\n            }\n        ],\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
+        "title": "Creating destination routes of a VPN gateway"
+      }
+    ],
     "DeleteAddressTemplate": [
       {
         "document": "",
@@ -752,6 +760,14 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=DeleteVpnGateway\r\n&Version=2017-03-12\r\n&VpnGatewayId=vpngw-12345678\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Deleting a VPN gateway"
+      }
+    ],
+    "DeleteVpnGatewayRoutes": [
+      {
+        "document": "",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteVpnGatewayRoutes\n&VpnGatewayId=vpngw-12345678\n&RouteIds.0=xxx-xxxx\n&RouteIds.1=xxx-xxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
+        "title": "Deleting routes of a specified VPN gateway"
       }
     ],
     "DescribeAccountAttributes": [
@@ -1276,6 +1292,14 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=DescribeVpnGatewayCcnRoutes\r\n&Version=2017-03-12\r\n&VpnGatewayId=vpngw-12345678\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RouteSet\": [\n            {\n                \"RouteId\": \"xxx-xxxxxx\",\n                \"Status\": \"ENABLE\"\n            },\n            {\n                \"RouteId\": \"xxx-xxxxxx\",\n                \"Status\": \"ENABLE\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
         "title": "Querying VPN gateway-based CCN routes"
+      }
+    ],
+    "DescribeVpnGatewayRoutes": [
+      {
+        "document": "",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeVpnGatewayRoutes\n&VpnGatewayId=vpn-ngenl4az\n&Offset=0\n&Limit=2\n&Filters.0.Name=DestinationCidr\n&Filters.0.Values.0=192.241.0.0/24\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Routes\": [\n            {\n                \"DestinationCidrBlock\": \"192.241.0.0/24\",\n                \"Status\": \"ENABLE\",\n                \"InstanceId\": \"vpnx-ng2asdew\",\n                \"InstanceType\": \"VPNCONN\",\n                \"Priority\": 100\n            }\n        ],\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
+        "title": "Querying destination routes of a VPN gateway"
       }
     ],
     "DescribeVpnGateways": [
@@ -1816,6 +1840,14 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=ModifyVpnGatewayCcnRoutes\r\n&VpnGatewayId=vpngw-qol17bjx\r\n&Routes.0.RouteId=xxx-xxxxxxxx\r\n&Routes.0.DestinationCidrBlock=10.2.2.0/24\r\n&Routes.0.Status=ENABLE\r\n&Routes.1.RouteId=xxx-xxxxxxxx\r\n&Routes.1.DestinationCidrBlock=10.2.3.0/24\r\n&Routes.1.Status=DISABLE\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
         "title": "Modifying VPN gateway-based CCN routes"
+      }
+    ],
+    "ModifyVpnGatewayRoutes": [
+      {
+        "document": "This example shows you how to disable a route of a VPN gateway.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyVpnGatewayRoutes\n&VpnGatewayId=vpn-ngenl4az\n&Routes.0.RouteId=vpnr-7t3tknmg\n&Routes.0.Status=DISABLE\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Routes\": [\n            {\n                \"DestinationCidrBlock\": \"192.241.0.0/24\",\n                \"Status\": \"ENABLE\",\n                \"InstanceId\": \"vpnx-ng2asdew\",\n                \"InstanceType\": \"VPNCONN\",\n                \"Priority\": 100\n            }\n        ],\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
+        "title": "Disabling a route of a VPN gateway"
       }
     ],
     "NotifyRoutes": [

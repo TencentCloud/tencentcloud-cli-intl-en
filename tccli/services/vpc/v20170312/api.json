@@ -318,6 +318,12 @@
       "name": "Creates a VPN gateway",
       "output": "CreateVpnGatewayResponse"
     },
+    "CreateVpnGatewayRoutes": {
+      "document": "This API is used to create destination routes of a route-based VPN gateway.",
+      "input": "CreateVpnGatewayRoutesRequest",
+      "name": "Creates routes of a VPN gateway",
+      "output": "CreateVpnGatewayRoutesResponse"
+    },
     "DeleteAddressTemplate": {
       "document": "This API (DeleteAddressTemplate) is used to delete an IP address template.",
       "input": "DeleteAddressTemplateRequest",
@@ -497,6 +503,12 @@
       "input": "DeleteVpnGatewayRequest",
       "name": "Deletes a VPN gateway",
       "output": "DeleteVpnGatewayResponse"
+    },
+    "DeleteVpnGatewayRoutes": {
+      "document": "This API is used to delete routes of a VPN gateway.",
+      "input": "DeleteVpnGatewayRoutesRequest",
+      "name": "Deletes routes of a VPN gateway",
+      "output": "DeleteVpnGatewayRoutesResponse"
     },
     "DescribeAccountAttributes": {
       "document": "This API (DescribeAccountAttributes) is used to query your account attributes.",
@@ -827,6 +839,12 @@
       "input": "DescribeVpnGatewayCcnRoutesRequest",
       "name": "Querying VPN gateway-based CCN routes",
       "output": "DescribeVpnGatewayCcnRoutesResponse"
+    },
+    "DescribeVpnGatewayRoutes": {
+      "document": "This API is used to query destination routes of a route-based VPN gateway.",
+      "input": "DescribeVpnGatewayRoutesRequest",
+      "name": "Queries routes of a VPN gateway",
+      "output": "DescribeVpnGatewayRoutesResponse"
     },
     "DescribeVpnGateways": {
       "document": "This API (DescribeVpnGateways) is used to query the VPN gateway list.",
@@ -1205,6 +1223,12 @@
       "input": "ModifyVpnGatewayCcnRoutesRequest",
       "name": "Modifying VPN gateway-based CCN routes",
       "output": "ModifyVpnGatewayCcnRoutesResponse"
+    },
+    "ModifyVpnGatewayRoutes": {
+      "document": "This API is used to modify the route status of a VPN gateway.",
+      "input": "ModifyVpnGatewayRoutesRequest",
+      "name": "Modifies the route status of a VPN gateway",
+      "output": "ModifyVpnGatewayRoutesResponse"
     },
     "NotifyRoutes": {
       "document": "This API is used to publish a route to CCN. This can also be done by clicking the **Publish to CCN** button on the route table page.",
@@ -5602,6 +5626,51 @@
       ],
       "type": "object"
     },
+    "CreateVpnGatewayRoutesRequest": {
+      "document": "CreateVpnGatewayRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPN gateway ID",
+          "example": "vpn-ngenl4az",
+          "member": "string",
+          "name": "VpnGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination route list of a VPN gateway",
+          "example": "无",
+          "member": "VpnGatewayRoute",
+          "name": "Routes",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVpnGatewayRoutesResponse": {
+      "document": "CreateVpnGatewayRoutes response structure.",
+      "members": [
+        {
+          "document": "Destination routes of a VPN gateway",
+          "example": "无",
+          "member": "VpnGatewayRoute",
+          "name": "Routes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CrossBorderCompliance": {
       "document": "Compliance review request",
       "members": [
@@ -6894,6 +6963,42 @@
       ],
       "type": "object"
     },
+    "DeleteVpnGatewayRoutesRequest": {
+      "document": "DeleteVpnGatewayRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID of the VPN gateway",
+          "example": "vpngw-12345678",
+          "member": "string",
+          "name": "VpnGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of route IDs",
+          "example": "[\"xxx-xxxx\\n\",\"xxx-xxxx\\n\"]",
+          "member": "string",
+          "name": "RouteIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVpnGatewayRoutesResponse": {
+      "document": "DeleteVpnGatewayRoutes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAccountAttributesRequest": {
       "document": "DescribeAccountAttributes request structure.",
       "members": [],
@@ -7701,6 +7806,7 @@
         {
           "default": "",
           "document": "(Exact match) Service provider. Valid values: `UNICOM`.",
+          "example": "UNICOM",
           "member": "string",
           "name": "ServiceProvider",
           "required": false,
@@ -7709,6 +7815,7 @@
         {
           "default": "",
           "document": "(Exact match) ID of compliance review request.",
+          "example": "10002",
           "member": "uint64",
           "name": "ComplianceId",
           "required": false,
@@ -7717,6 +7824,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Company name.",
+          "example": "腾讯科技（广州）有限公司",
           "member": "string",
           "name": "Company",
           "required": false,
@@ -7725,6 +7833,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Unified Social Credit Code.",
+          "example": "91440101327598294H",
           "member": "string",
           "name": "UniformSocialCreditCode",
           "required": false,
@@ -7733,6 +7842,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Legal person.",
+          "example": "张颖",
           "member": "string",
           "name": "LegalPerson",
           "required": false,
@@ -7741,6 +7851,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Issuing authority.",
+          "example": "广州市海珠区市场监督管理局",
           "member": "string",
           "name": "IssuingAuthority",
           "required": false,
@@ -7749,6 +7860,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Business address.",
+          "example": "广州市海珠区新港中路397号自编72号(商业街F5-1)",
           "member": "string",
           "name": "BusinessAddress",
           "required": false,
@@ -7757,6 +7869,7 @@
         {
           "default": "",
           "document": "(Exact match) Zip code.",
+          "example": "510320",
           "member": "uint64",
           "name": "PostCode",
           "required": false,
@@ -7765,6 +7878,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Operator.",
+          "example": "李四",
           "member": "string",
           "name": "Manager",
           "required": false,
@@ -7773,6 +7887,7 @@
         {
           "default": "",
           "document": "(Exact match) Operator ID card number.",
+          "example": "360732199007108888",
           "member": "string",
           "name": "ManagerId",
           "required": false,
@@ -7781,6 +7896,7 @@
         {
           "default": "",
           "document": "(Fuzzy match) Operator address.",
+          "example": "广州市海珠区新港中路8888号",
           "member": "string",
           "name": "ManagerAddress",
           "required": false,
@@ -7789,6 +7905,7 @@
         {
           "default": "",
           "document": "(Exact match) Operator phone number.",
+          "example": "020-81167888",
           "member": "string",
           "name": "ManagerTelephone",
           "required": false,
@@ -7797,6 +7914,7 @@
         {
           "default": "",
           "document": "(Exact match) Email.",
+          "example": "test@tencent.com",
           "member": "string",
           "name": "Email",
           "required": false,
@@ -7805,6 +7923,7 @@
         {
           "default": "",
           "document": "(Exact match) Service start date, such as `2020-07-28`.",
+          "example": "2020-07-29",
           "member": "string",
           "name": "ServiceStartDate",
           "required": false,
@@ -7813,6 +7932,7 @@
         {
           "default": "",
           "document": "(Exact match) Service end date, such as `2020-07-28`.",
+          "example": "2021-07-29",
           "member": "string",
           "name": "ServiceEndDate",
           "required": false,
@@ -7821,10 +7941,29 @@
         {
           "default": "",
           "document": "(Exact match) Status. Valid values: `PENDING`, `APPROVED`, and `DENY`.",
+          "example": "PENDING",
           "member": "string",
           "name": "State",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The offset value",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Quantity of returned items",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -10188,6 +10327,69 @@
       ],
       "type": "object"
     },
+    "DescribeVpnGatewayRoutesRequest": {
+      "document": "DescribeVpnGatewayRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPN gateway ID",
+          "example": "vpn-ngenl4az",
+          "member": "string",
+          "name": "VpnGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter condition. Valid values: `DestinationCidr`, `InstanceId`, and `InstanceType`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results per page. Default value: 20; maximum value: 100",
+          "example": "2",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpnGatewayRoutesResponse": {
+      "document": "DescribeVpnGatewayRoutes response structure.",
+      "members": [
+        {
+          "document": "Destination routes of the VPN gateway",
+          "example": "无",
+          "member": "VpnGatewayRoute",
+          "name": "Routes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeVpnGatewaysRequest": {
       "document": "DescribeVpnGateways request structure.",
       "members": [
@@ -11926,8 +12128,9 @@
       "document": "IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.",
       "members": [
         {
-          "default": "AES-CBC-128",
-          "document": "Encryption algorithm. Available values: '3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', and 'NULL'. Default is AES-CBC-128.",
+          "default": "",
+          "document": "Encryption algorithm. Valid values: `3DES-CBC`, `AES-CBC-128`, `AES-CBC-192`, `AES-CBC-256`, `DES-CBC`, `SM4`, and `NULL`; default value: `AES-CBC-128`.",
+          "example": "AES-CBC-128",
           "member": "string",
           "name": "EncryptAlgorithm",
           "required": false,
@@ -11935,8 +12138,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "MD5",
-          "document": "Verification algorithm. Available value: 'MD5' and 'SHA1'. Default is:",
+          "default": "",
+          "document": "Authentication algorithm. Valid values: `MD5`, `SHA1` and `SHA-256`; default value: `SHA1`.",
+          "example": "SHA1",
           "member": "string",
           "name": "IntegrityAlgorith",
           "required": false,
@@ -11946,6 +12150,7 @@
         {
           "default": "",
           "document": "IPsec SA lifetime (in sec). Value range: 180-604800",
+          "example": "180",
           "member": "uint64",
           "name": "IPSECSaLifetimeSeconds",
           "required": false,
@@ -11953,8 +12158,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "NULL",
+          "default": "",
           "document": "PFS. Available value: 'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', and 'DH-GROUP24'. Default is NULL.",
+          "example": "NULL",
           "member": "string",
           "name": "PfsDhGroup",
           "required": false,
@@ -11964,6 +12170,7 @@
         {
           "default": "",
           "document": "IPsec SA lifetime (in KB). Value range: 2560-604800",
+          "example": "2560",
           "member": "uint64",
           "name": "IPSECSaLifetimeTraffic",
           "required": false,
@@ -14339,6 +14546,51 @@
       ],
       "type": "object"
     },
+    "ModifyVpnGatewayRoutesRequest": {
+      "document": "ModifyVpnGatewayRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPN gateway ID",
+          "example": "vpn-ngenl4az",
+          "member": "string",
+          "name": "VpnGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Route parameters to modify",
+          "example": "无",
+          "member": "VpnGatewayRouteModify",
+          "name": "Routes",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVpnGatewayRoutesResponse": {
+      "document": "ModifyVpnGatewayRoutes response structure.",
+      "members": [
+        {
+          "document": "Route information of the VPN gateway\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "VpnGatewayRoute",
+          "name": "Routes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "NatGateway": {
       "document": "NAT gateway object.",
       "members": [
@@ -16349,7 +16601,7 @@
         },
         {
           "default": "",
-          "document": "Type of the next hop. Valid values:\nCVM: public gateway CVM;\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nSSLVPN: SSL VPN gateway;\nNAT: NAT Gateway; \nNORMAL_CVM: normal CVM;\nEIP: public IP address of the CVM;\nCCN: Cloud Connect Network;\nLOCAL_GATEWAY: local gateway.",
+          "document": "Type of the next hop. Valid values:\n`CVM`: public gateway CVM;\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: direct connect gateway;\n`PEERCONNECTION`: peering connection;\n`HAVIP`: HAVIP;\n`NAT`: NAT Gateway; \n`NORMAL_CVM`: normal CVM;\n`EIP`: public IP address of the CVM;\n`LOCAL_GATEWAY`: local gateway.",
           "example": "-",
           "member": "string",
           "name": "GatewayType",
@@ -17018,7 +17270,7 @@
         },
         {
           "default": "",
-          "document": "Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.",
+          "document": "Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1 Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.",
           "example": "true",
           "member": "bool",
           "name": "SetDefaultLimitFlag",
@@ -18171,6 +18423,117 @@
         }
       ],
       "usage": "out"
+    },
+    "VpnGatewayRoute": {
+      "document": "Destination routes of a VPN gateway",
+      "members": [
+        {
+          "default": "",
+          "document": "Destination IDC IP range",
+          "member": "string",
+          "name": "DestinationCidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Next hop type (type of the associated instance). Valid values: `VPNCONN` (VPN tunnel) and `CCN` (CCN instance)",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID of the next hop",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Priority. Valid values: `0` and `100`",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: `ENABLE` and `DISABLE`",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route ID",
+          "member": "string",
+          "name": "RouteId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route type. Valid values: `VPC`, `CCN` (CCN-propagated route), `Static`, and `BGP`.",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VpnGatewayRouteModify": {
+      "document": "Modify route status of the VPN gateway",
+      "members": [
+        {
+          "default": "",
+          "document": "Route ID of the VPN gateway",
+          "member": "string",
+          "name": "RouteId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route status of the VPN gateway. Valid values: `ENABLE`, and `DISABLE`.",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "VpngwCcnRoutes": {
       "document": "Information on VPN gateway-based CCN routes.",
