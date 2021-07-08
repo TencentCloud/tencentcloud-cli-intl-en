@@ -55,6 +55,7 @@
         {
           "default": "",
           "document": "Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
+          "example": "无",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -63,6 +64,7 @@
         {
           "default": "",
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -71,6 +73,7 @@
         {
           "default": "",
           "document": "Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`",
+          "example": "false",
           "member": "bool",
           "name": "RetBorderCutImage",
           "required": false,
@@ -79,6 +82,7 @@
         {
           "default": "",
           "document": "Whether to return the card number image data after slicing. Default value: `false`",
+          "example": "false",
           "member": "bool",
           "name": "RetCardNoImage",
           "required": false,
@@ -87,6 +91,7 @@
         {
           "default": "",
           "document": "Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`",
+          "example": "false",
           "member": "bool",
           "name": "EnableCopyCheck",
           "required": false,
@@ -95,6 +100,7 @@
         {
           "default": "",
           "document": "Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`",
+          "example": "false",
           "member": "bool",
           "name": "EnableReshootCheck",
           "required": false,
@@ -103,8 +109,18 @@
         {
           "default": "",
           "document": "Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`",
+          "example": "false",
           "member": "bool",
           "name": "EnableBorderCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the image quality value, which measures how clear an image is. Default value: `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableQualityValue",
           "required": false,
           "type": "bool"
         }
@@ -116,58 +132,83 @@
       "members": [
         {
           "document": "Card number",
+          "example": "6225768888888888",
           "member": "string",
           "name": "CardNo",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Bank information",
+          "example": "招商银行(03080000)",
           "member": "string",
           "name": "BankInfo",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Expiration date. Format: 07/2023",
+          "example": "07/2023",
           "member": "string",
           "name": "ValidDate",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Card type",
+          "example": "贷记卡",
           "member": "string",
           "name": "CardType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Card name",
+          "example": "招商银行信用卡",
           "member": "string",
           "name": "CardName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Sliced image data\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "BorderCutImage",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Card number image data\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CardNoImage",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Warning code:\n-9110: the bank card date is invalid. \n-9111: the bank card border is incomplete. \n-9112: the bank card image is reflective.\n-9113: the bank card image is a photocopy.\n-9114: the bank card image is a photograph.\nMultiple warning codes may be returned at a time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[-9110]",
           "member": "int64",
           "name": "WarningCode",
+          "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "90",
+          "member": "int64",
+          "name": "QualityValue",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         },
         {
@@ -203,12 +244,55 @@
       ],
       "usage": "out"
     },
+    "DetectedWordCoordPoint": {
+      "document": "Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner",
+      "members": [
+        {
+          "default": "",
+          "document": "Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner",
+          "example": "无",
+          "member": "Coord",
+          "name": "WordCoordinate",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DetectedWords": {
+      "document": "Information about a character detected, including the character itself and its confidence",
+      "members": [
+        {
+          "default": "",
+          "document": "Confidence. Value range: 0–100",
+          "example": "无",
+          "member": "int64",
+          "name": "Confidence",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A possible character",
+          "example": "无",
+          "member": "string",
+          "name": "Character",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "GeneralAccurateOCRRequest": {
       "document": "GeneralAccurateOCR request structure.",
       "members": [
         {
           "default": "",
           "document": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "example": "无",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -217,10 +301,20 @@
         {
           "default": "",
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nThe image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the character information. Default value: `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "IsWords",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -257,6 +351,7 @@
         {
           "default": "",
           "document": "Base64-encoded value of image/PDF.\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.",
+          "example": "无",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -265,6 +360,7 @@
         {
           "default": "",
           "document": "URL address of image/PDF. (This field is not supported outside Chinese mainland)\nThe image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -273,6 +369,7 @@
         {
           "default": "",
           "document": "Reserved field.",
+          "example": "无",
           "member": "string",
           "name": "Scene",
           "required": false,
@@ -281,6 +378,7 @@
         {
           "default": "",
           "document": "Language to be recognized.\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\nzh\\auto\\jap\\kor\\\nspa\\fre\\ger\\por\\\nvie\\may\\rus\\ita\\\nhol\\swe\\fin\\dan\\\nnor\\hun\\tha\\lat\\ara\nValue meanings:\nChinese-English mix, automatic recognition, Japanese, Korean,\nSpanish, French, German, Portuguese,\nVietnamese, Malay, Russian, Italian,\nDutch, Swedish, Finnish, Danish,\nNorwegian, Hungarian, Thai, Latin,\nArabic.",
+          "example": "无",
           "member": "string",
           "name": "LanguageType",
           "required": false,
@@ -289,6 +387,7 @@
         {
           "default": "",
           "document": "Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.",
+          "example": "无",
           "member": "bool",
           "name": "IsPdf",
           "required": false,
@@ -297,10 +396,20 @@
         {
           "default": "",
           "document": "Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.",
+          "example": "无",
           "member": "uint64",
           "name": "PdfPageNumber",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the character information. Default value: `false`",
+          "example": "无",
+          "member": "bool",
+          "name": "IsWords",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -812,6 +921,7 @@
         {
           "default": "",
           "document": "Recognized text line content.",
+          "example": "无",
           "member": "string",
           "name": "DetectedText",
           "required": true,
@@ -821,6 +931,7 @@
         {
           "default": "",
           "document": "Confidence. Value range: 0–100.",
+          "example": "无",
           "member": "int64",
           "name": "Confidence",
           "required": true,
@@ -830,6 +941,7 @@
         {
           "default": "",
           "document": "Text line coordinates, which are represented as 4 vertex coordinates.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Coord",
           "name": "Polygon",
           "required": true,
@@ -839,6 +951,7 @@
         {
           "default": "",
           "document": "Extended field.\nThe paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.",
+          "example": "无",
           "member": "string",
           "name": "AdvancedInfo",
           "required": true,
@@ -848,10 +961,31 @@
         {
           "default": "",
           "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
+          "example": "无",
           "member": "ItemCoord",
           "name": "ItemPolygon",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`",
+          "example": "无",
+          "member": "DetectedWords",
+          "name": "Words",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`",
+          "example": "无",
+          "member": "DetectedWordCoordPoint",
+          "name": "WordCoordPoint",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
