@@ -2131,6 +2131,7 @@
         {
           "default": "",
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -2140,6 +2141,7 @@
         {
           "default": "",
           "document": "File system (ext3/ext4/xfs)\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ext4",
           "member": "string",
           "name": "FileSystem",
           "required": true,
@@ -2149,6 +2151,7 @@
         {
           "default": "",
           "document": "Disk size (G)\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "50",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -2158,6 +2161,7 @@
         {
           "default": "",
           "document": "Whether the disk is auto-formatted and mounted\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "true",
           "member": "bool",
           "name": "AutoFormatAndMount",
           "required": true,
@@ -2167,9 +2171,20 @@
         {
           "default": "",
           "document": "Mounting directory\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "/var/lib/docker",
           "member": "string",
           "name": "MountTarget",
           "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The name of the device or partition to mount\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "/dev/vdb",
+          "member": "string",
+          "name": "DiskPartition",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -3937,7 +3952,7 @@
         },
         {
           "default": "",
-          "document": "Mounting information of multiple data disks. Ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks, for example `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API. You can refer to the example of adding a cluster node with multiple data disks in the CreateClusterInstances API. This parameter does not take effect when the AddExistedInstances API is called.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Mounting information of multiple data disks. When you create a node, ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. For example, the `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API should be configured accordingly (Referto document of CreateClusterInstances API). When you add an existing node, ensure that the specified partition exists in the node.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
@@ -3953,6 +3968,16 @@
           "name": "ExtraArgs",
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "16",
+          "member": "int64",
+          "name": "DesiredPodNumber",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

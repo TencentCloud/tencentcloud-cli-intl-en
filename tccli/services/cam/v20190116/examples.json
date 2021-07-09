@@ -3,9 +3,9 @@
     "AddUser": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=AddUser\r\n&Name=test124\r\n&Remark=test\r\n&ConsoleLogin=1\r\n&UseApi=1\r\n&Password=test123456\r\n&NeedResetPassword=0\r\n&PhoneNum=10086\r\n&CountryCode=86\r\n&Email=123%40qq.com\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=AddUser\n&Name=test124\n&Remark=test\n&ConsoleLogin=1\n&UseApi=1\n&Password=test123456\n&NeedResetPassword=0\n&PhoneNum=10086\n&CountryCode=86\n&Email=123%40qq.com\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Uid\": 5648765,\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Password\": \"test123456\",\n        \"SecretId\": \"faweffewagwaegawe\",\n        \"SecretKey\": \"fawef23rjhiuaefhuaifhiuawef\",\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Adding sub-user"
+        "title": "Adding sub-users"
       }
     ],
     "AddUserToGroup": [
@@ -276,6 +276,14 @@
         "input": "https://cam.tencentcloudapi.com/?Action=GetSAMLProvider\r\n&Name=okta\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Name\": \"okta\",\n        \"Description\": \"okta\",\n        \"CreateTime\": \"2018-09-17 17:18:03\",\n        \"ModifyTime\": \"2018-09-17 17:18:03\",\n        \"SAMLMetadata\": \"U0FNTE1ldGFkYXRh\"\n    }\n}",
         "title": "Querying IdP details"
+      }
+    ],
+    "GetSecurityLastUsed": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSecurityLastUsed\n<Common request parameters>\n\n{\n    \"SecretIdList\": [\n        \"xxxxxxxxx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SecretIdLastUsedRows\": [\n            {\n                \"SecretId\": \"xxxxxxxxx\",\n                \"LastUsedDate\": \"2021-03-20\"\n            }\n        ],\n        \"RequestId\": \"15a763ee-c2da-446a-9b21-25632d7cecb5\"\n    }\n}",
+        "title": "Getting a key’s recent usage details"
       }
     ],
     "GetServiceLinkedRoleDeletionStatus": [

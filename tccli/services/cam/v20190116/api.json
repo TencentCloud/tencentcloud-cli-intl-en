@@ -204,6 +204,12 @@
       "name": "Queries SAML Identity provider details",
       "output": "GetSAMLProviderResponse"
     },
+    "GetSecurityLastUsed": {
+      "document": "This API is used to get a key’s recent usage details.",
+      "input": "GetSecurityLastUsedRequest",
+      "name": "Gets a key’s recent usage details",
+      "output": "GetSecurityLastUsedResponse"
+    },
     "GetServiceLinkedRoleDeletionStatus": {
       "document": "This API is used to get the status of the service-linked role deletion based on the `TaskId`",
       "input": "GetServiceLinkedRoleDeletionStatusRequest",
@@ -2130,6 +2136,42 @@
       ],
       "type": "object"
     },
+    "GetSecurityLastUsedRequest": {
+      "document": "GetSecurityLastUsed request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "A parameter used to query the key ID list.",
+          "example": "[\"id1\",\"id2\"]",
+          "member": "string",
+          "name": "SecretIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSecurityLastUsedResponse": {
+      "document": "GetSecurityLastUsed response structure.",
+      "members": [
+        {
+          "document": "List of key ID’s recent usage records.",
+          "example": "无",
+          "member": "SecretIdLastUsed",
+          "name": "SecretIdLastUsedRows",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetServiceLinkedRoleDeletionStatusRequest": {
       "document": "GetServiceLinkedRoleDeletionStatus request structure.",
       "members": [
@@ -3550,6 +3592,32 @@
         }
       ],
       "usage": "both"
+    },
+    "SecretIdLastUsed": {
+      "document": "The last time the key was used.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key ID.",
+          "example": "Key",
+          "member": "string",
+          "name": "SecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The date when the key ID was last used (the value is obtained one day later).\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2021-03-20",
+          "member": "date",
+          "name": "LastUsedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "SetDefaultPolicyVersionRequest": {
       "document": "SetDefaultPolicyVersion request structure.",

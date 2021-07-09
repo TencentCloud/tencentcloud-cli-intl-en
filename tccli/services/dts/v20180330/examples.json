@@ -68,7 +68,7 @@
     ],
     "CreateSyncJob": [
       {
-        "document": "After purchasing a disaster recovery instance for your master instance, you need to create a disaster recovery sync task first before proceeding to next steps.",
+        "document": "After purchasing a disaster recovery instance for your source instance, you need to create a disaster recovery sync task first before proceeding to next steps.",
         "input": "https://dts.tencentcloudapi.com/?Action=CreateSyncJob\r\n&JobName=testname\r\n&SrcDatabaseType=mysql\r\n&SrcAccessType=cdb\r\n&DstDatabaseType=mysql\r\n&DstAccessType=cdb\r\n&SyncOption.SyncObject=1\r\n&SrcInfo.Region=ap-shanghai\r\n&SrcInfo.InstanceId=cdb-e28hhsjt\r\n&DstInfo.Region=ap-shanghai\r\n&DstInfo.InstanceId=cdb-mdgezf4d\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"sync-blj8wnt1\",\n        \"RequestId\": \"f26f7628-7dad-457d-993e-2f03f0ff518d\"\n    }\n}",
         "title": "Creating disaster recovery sync task"
