@@ -1092,6 +1092,7 @@
         {
           "default": "",
           "document": "Access (acceleration) region of the connection. The value can be obtained via the DescribeAccessRegionsByDestRegion API.",
+          "example": "EastChina",
           "member": "string",
           "name": "AccessRegion",
           "required": true,
@@ -1100,6 +1101,7 @@
         {
           "default": "",
           "document": "Origin server region of the connection. The value can be obtained via the DescribeDestRegions API.",
+          "example": "SouthChina",
           "member": "string",
           "name": "RealServerRegion",
           "required": true,
@@ -1108,6 +1110,7 @@
         {
           "default": "",
           "document": "Connection bandwidth cap. Unit: Mbps.",
+          "example": "10",
           "member": "uint64",
           "name": "Bandwidth",
           "required": true,
@@ -1116,6 +1119,7 @@
         {
           "default": "",
           "document": "Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.",
+          "example": "2",
           "member": "uint64",
           "name": "Concurrent",
           "required": true,
@@ -1124,8 +1128,18 @@
         {
           "default": "",
           "document": "Connection group ID that needs to be entered when a connection is created in a connection group",
+          "example": "\"\"",
           "member": "string",
           "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPAddressVersion",
           "required": false,
           "type": "string"
         }
@@ -1737,6 +1751,7 @@
         {
           "default": "",
           "document": "Project ID of connection group",
+          "example": "1000",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -1745,6 +1760,7 @@
         {
           "default": "",
           "document": "Alias of connection group",
+          "example": "test",
           "member": "string",
           "name": "GroupName",
           "required": true,
@@ -1753,6 +1769,7 @@
         {
           "default": "",
           "document": "Origin server region; Reference API: DescribeDestRegions; It returnes the `RegionId` of the parameter `RegionDetail`.",
+          "example": "EastChina",
           "member": "string",
           "name": "RealServerRegion",
           "required": true,
@@ -1761,6 +1778,7 @@
         {
           "default": "",
           "document": "Tag list",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": false,
@@ -1769,10 +1787,20 @@
         {
           "default": "",
           "document": "List of acceleration regions, including their names, bandwidth, and concurrence configuration.",
+          "example": "无",
           "member": "AccessConfiguration",
           "name": "AccessRegionSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.",
+          "example": "IPV4",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1802,6 +1830,7 @@
         {
           "default": "",
           "document": "Project ID of connection.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -1810,6 +1839,7 @@
         {
           "default": "",
           "document": "Connection name.",
+          "example": "test",
           "member": "string",
           "name": "ProxyName",
           "required": true,
@@ -1818,6 +1848,7 @@
         {
           "default": "",
           "document": "Access region.",
+          "example": "SouthChina",
           "member": "string",
           "name": "AccessRegion",
           "required": true,
@@ -1826,6 +1857,7 @@
         {
           "default": "",
           "document": "Connection bandwidth cap. Unit: Mbps.",
+          "example": "10",
           "member": "uint64",
           "name": "Bandwidth",
           "required": true,
@@ -1834,6 +1866,7 @@
         {
           "default": "",
           "document": "Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.",
+          "example": "2",
           "member": "uint64",
           "name": "Concurrent",
           "required": true,
@@ -1842,6 +1875,7 @@
         {
           "default": "",
           "document": "Origin server region. If GroupId exists, the origin server region is the one of connection group, and this field is not required. If GroupId does not exist, this field is reuqired.",
+          "example": "无",
           "member": "string",
           "name": "RealServerRegion",
           "required": false,
@@ -1850,6 +1884,7 @@
         {
           "default": "",
           "document": "A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
+          "example": "\"\"",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -1858,6 +1893,7 @@
         {
           "default": "",
           "document": "Connection group ID. This parameter is required when the connection is created in the connection group. Otherwise, this field is ignored.",
+          "example": "lg-xxxx",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -1866,6 +1902,7 @@
         {
           "default": "",
           "document": "List of tags to be added for connection.",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": false,
@@ -1874,6 +1911,7 @@
         {
           "default": "",
           "document": "ID of the replicated connection. Only a running connection can be replicated.\nThe connection is to be replicated if this parameter is set.",
+          "example": "\"\"",
           "member": "string",
           "name": "ClonedProxyId",
           "required": false,
@@ -1882,10 +1920,20 @@
         {
           "default": "",
           "document": "Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)",
+          "example": "0",
           "member": "int64",
           "name": "BillingType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2204,6 +2252,24 @@
           "example": "0",
           "member": "int64",
           "name": "FailoverSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.",
+          "example": "5",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
           "required": false,
           "type": "int"
         }
@@ -2617,9 +2683,19 @@
         {
           "default": "",
           "document": "Origin server region: the DescribeDestRegions API returns the value of `RegionId` field of `DestRegionSet`.",
+          "example": "SouthChina",
           "member": "string",
           "name": "DestRegion",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": false,
           "type": "string"
         }
       ],
@@ -3311,6 +3387,7 @@
         {
           "default": "",
           "document": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's an old parameter, please switch to ProxyIds.",
+          "example": "无",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3319,6 +3396,7 @@
         {
           "default": "",
           "document": "Offset. The default value is 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3327,6 +3405,7 @@
         {
           "default": "",
           "document": "Number of results to be returned. The default value is 20, and the maximum value is 100.",
+          "example": "1",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3334,7 +3413,8 @@
         },
         {
           "default": "",
-          "document": "Filter conditions.   \nThe upper limit on Filters for each request is 10, and the upper limit on Filter.Values is 5. This parameter does not support specifying InstanceIds and Filters at the same time. \nProjectId - String - Required: No - Filter by a project ID.    \nAccessRegion - String - Required: No - Filter by an access region.    \nRealServerRegion - String - Required: No - Filter by an origin server region.\nGroupId - String - Required: No - Filter by a connection group ID.",
+          "document": "Filter condition   \nThe upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` with this parameter. \nProjectId - String - Required: No - Filter by project ID.   \nAccessRegion - String - Required: No - Filter by access region.    \nRealServerRegion - String - Required: No - Filter by origin server region.\nGroupId - String - Required: No - Filter by connection group ID.\nIPAddressVersion - String - Required: No - Filter by IP version.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3343,6 +3423,7 @@
         {
           "default": "",
           "document": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds.",
+          "example": "[]",
           "member": "string",
           "name": "ProxyIds",
           "required": false,
@@ -3351,6 +3432,7 @@
         {
           "default": "",
           "document": "Tag list. If this field exists, the list of the resources with the tag will be pulled.\nIt supports up to 5 tags. If there are two or more tags, the connections tagged any of them will be pulled.",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": false,
@@ -3359,6 +3441,7 @@
         {
           "default": "",
           "document": "When this field is 1, only not-grouped connections are pulled.\nWhen this field is 0, only grouped connections are pulled.\nWhen this field does not exist, all connections are pulled, including both not-grouped and grouped connections.",
+          "example": "1",
           "member": "int64",
           "name": "Independent",
           "required": false,
@@ -3959,7 +4042,17 @@
     },
     "DescribeRegionAndPriceRequest": {
       "document": "DescribeRegionAndPrice request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "DescribeRegionAndPriceResponse": {
@@ -5159,6 +5252,7 @@
         {
           "default": "",
           "document": "Acceleration region name.",
+          "example": "EastChina",
           "member": "string",
           "name": "AccessRegion",
           "required": true,
@@ -5167,6 +5261,7 @@
         {
           "default": "",
           "document": "Connection bandwidth cap. Unit: Mbps.",
+          "example": "10",
           "member": "int64",
           "name": "Bandwidth",
           "required": true,
@@ -5175,6 +5270,7 @@
         {
           "default": "",
           "document": "Origin server region name. It's an old parameter, please switch to RealServerRegion.",
+          "example": "\"\"",
           "member": "string",
           "name": "DestRegion",
           "required": false,
@@ -5183,6 +5279,7 @@
         {
           "default": "",
           "document": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's an old parameter, please switch to Concurrent.",
+          "example": "2",
           "member": "int64",
           "name": "Concurrency",
           "required": false,
@@ -5191,6 +5288,7 @@
         {
           "default": "",
           "document": "Origin server region name; It's a new parameter.",
+          "example": "SouthChina",
           "member": "string",
           "name": "RealServerRegion",
           "required": false,
@@ -5199,6 +5297,7 @@
         {
           "default": "",
           "document": "Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's a new parameter.",
+          "example": "10",
           "member": "int64",
           "name": "Concurrent",
           "required": false,
@@ -5207,10 +5306,20 @@
         {
           "default": "",
           "document": "Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic.",
+          "example": "0",
           "member": "int64",
           "name": "BillingType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6132,6 +6241,24 @@
           "name": "FailoverSwitch",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.",
+          "example": "5",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 -10.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -6553,6 +6680,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6674,6 +6811,7 @@
         {
           "default": "",
           "document": "Connection instance ID; It's an old parameter, please switch to ProxyId.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6683,6 +6821,7 @@
         {
           "default": "",
           "document": "Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).",
+          "example": "1619166542",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -6692,6 +6831,7 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -6701,6 +6841,7 @@
         {
           "default": "",
           "document": "Connection name.",
+          "example": "\"test\"",
           "member": "string",
           "name": "ProxyName",
           "required": true,
@@ -6710,6 +6851,7 @@
         {
           "default": "",
           "document": "Access region.",
+          "example": "\"EastChina\"",
           "member": "string",
           "name": "AccessRegion",
           "required": true,
@@ -6719,6 +6861,7 @@
         {
           "default": "",
           "document": "Origin server region.",
+          "example": "\"SouthChina\"",
           "member": "string",
           "name": "RealServerRegion",
           "required": true,
@@ -6728,6 +6871,7 @@
         {
           "default": "",
           "document": "Bandwidth. Unit: Mbps.",
+          "example": "10",
           "member": "int64",
           "name": "Bandwidth",
           "required": true,
@@ -6737,6 +6881,7 @@
         {
           "default": "",
           "document": "Concurrence. Unit: requests/second.",
+          "example": "2",
           "member": "int64",
           "name": "Concurrent",
           "required": true,
@@ -6746,6 +6891,7 @@
         {
           "default": "",
           "document": "Connection status:\nRUNNING: running;\nCREATING: creating;\nDESTROYING: terminating;\nOPENING: enabling;\nCLOSING: disabling;\nCLOSED: disabled;\nADJUSTING: adjusting configuration\nISOLATING: isolating (it's triggered when the account is in arrears);\nISOLATED: isolated (it's triggered when the account is in arrears);\nUNKNOWN: unknown status.",
+          "example": "\"RUNNING\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -6755,6 +6901,7 @@
         {
           "default": "",
           "document": "Accessed domain name.",
+          "example": "\"link-xxx.gaapqcloud.com\"",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -6764,6 +6911,7 @@
         {
           "default": "",
           "document": "Accessed IP.",
+          "example": "159.75.1.1",
           "member": "string",
           "name": "IP",
           "required": true,
@@ -6773,6 +6921,7 @@
         {
           "default": "",
           "document": "Connection versions: 1.0, 2.0, 3.0.",
+          "example": "\"3.0\"",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -6782,6 +6931,7 @@
         {
           "default": "",
           "document": "Connection instance ID; It's a new parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"link-xxx\"",
           "member": "string",
           "name": "ProxyId",
           "required": true,
@@ -6791,6 +6941,7 @@
         {
           "default": "",
           "document": "1: this connection is expandable; 0: this connection is not expandable.",
+          "example": "1",
           "member": "int64",
           "name": "Scalarable",
           "required": true,
@@ -6800,6 +6951,7 @@
         {
           "default": "",
           "document": "Supported protocol types.",
+          "example": "[\"TCP\",\"UDP\"]",
           "member": "string",
           "name": "SupportProtocols",
           "required": true,
@@ -6809,6 +6961,7 @@
         {
           "default": "",
           "document": "Connection group ID. This field exists if a connection belongs to a connection group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -6818,6 +6971,7 @@
         {
           "default": "",
           "document": "Security policy ID. This field exists if security policies are configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"sp-xxx\"",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -6827,6 +6981,7 @@
         {
           "default": "",
           "document": "Access region details, including region ID and region name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RegionDetail",
           "name": "AccessRegionInfo",
           "required": true,
@@ -6836,6 +6991,7 @@
         {
           "default": "",
           "document": "Origin server region details, including region ID and region name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RegionDetail",
           "name": "RealServerRegionInfo",
           "required": true,
@@ -6845,6 +7001,7 @@
         {
           "default": "",
           "document": "Forwarding IP of the connection",
+          "example": "”1.1.1.1;1.1.1.2\"",
           "member": "string",
           "name": "ForwardIP",
           "required": true,
@@ -6854,6 +7011,7 @@
         {
           "default": "",
           "document": "Tag list. This field is an empty list if no tags exist.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": true,
@@ -6863,6 +7021,7 @@
         {
           "default": "",
           "document": "Whether security groups are supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "SupportSecurity",
           "required": true,
@@ -6872,6 +7031,7 @@
         {
           "default": "",
           "document": "Billing mode. 0: bill-by-bandwidth; 1: bill-by-traffic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "BillingType",
           "required": true,
@@ -6881,6 +7041,7 @@
         {
           "default": "",
           "document": "List of domain names associated with resolution record\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "string",
           "name": "RelatedGlobalDomains",
           "required": true,
@@ -6890,6 +7051,7 @@
         {
           "default": "",
           "document": "Configuration change time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1617265920",
           "member": "uint64",
           "name": "ModifyConfigTime",
           "required": true,
@@ -6899,6 +7061,7 @@
         {
           "default": "",
           "document": "Connection type. 104: SILVER connection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "100",
           "member": "uint64",
           "name": "ProxyType",
           "required": true,
@@ -6908,10 +7071,21 @@
         {
           "default": "",
           "document": "Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ClientIPMethod",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP version. Valid values: `IPv4`, `IPv6`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"IPV4\"",
+          "member": "string",
+          "name": "IPAddressVersion",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -7604,6 +7778,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "link-bjkpdum1",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -7613,6 +7788,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "test",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -7622,6 +7798,7 @@
         {
           "default": "",
           "document": "Listener port",
+          "example": "443",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -7631,6 +7808,7 @@
         {
           "default": "",
           "document": "Origin server port, which is only valid for the connections of version 1.0.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "332",
           "member": "uint64",
           "name": "RealServerPort",
           "required": true,
@@ -7640,6 +7818,7 @@
         {
           "default": "",
           "document": "Type of the origin server bound to listeners",
+          "example": "IP",
           "member": "string",
           "name": "RealServerType",
           "required": true,
@@ -7649,6 +7828,7 @@
         {
           "default": "",
           "document": "Listener protocol: TCP.",
+          "example": "TCP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -7658,6 +7838,7 @@
         {
           "default": "",
           "document": "Listener status. Valid values:\n0: running;\n1: creating;\n2: terminating;\n3: adjusting origin server;\n4: adjusting configuration.",
+          "example": "1",
           "member": "uint64",
           "name": "ListenerStatus",
           "required": true,
@@ -7667,6 +7848,7 @@
         {
           "default": "",
           "document": "Origin server access policy of listener. Valid values:\nrr: round robin;\nwrr: weighted round robin;\nlc: least connection.",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
           "required": true,
@@ -7676,6 +7858,7 @@
         {
           "default": "",
           "document": "Response timeout of origin server health check (unit: seconds).",
+          "example": "2",
           "member": "uint64",
           "name": "ConnectTimeout",
           "required": true,
@@ -7685,6 +7868,7 @@
         {
           "default": "",
           "document": "Time interval of origin server health check (unit: seconds).",
+          "example": "5",
           "member": "uint64",
           "name": "DelayLoop",
           "required": true,
@@ -7694,6 +7878,7 @@
         {
           "default": "",
           "document": "Whether health check is enabled for listener. Valid values:\n0: disabled;\n1: enabled",
+          "example": "1",
           "member": "uint64",
           "name": "HealthCheck",
           "required": true,
@@ -7703,6 +7888,7 @@
         {
           "default": "",
           "document": "Status of origin server bound to listener. Valid values:\n0: exceptional;\n1: normal.",
+          "example": "1",
           "member": "uint64",
           "name": "BindStatus",
           "required": true,
@@ -7712,6 +7898,7 @@
         {
           "default": "",
           "document": "Information of the origin server bound to listeners\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "BindRealServer",
           "name": "RealServerSet",
           "required": true,
@@ -7721,6 +7908,7 @@
         {
           "default": "",
           "document": "Listener creation time; using UNIX timestamp.",
+          "example": "1607071157",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -7730,8 +7918,29 @@
         {
           "default": "",
           "document": "Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "ClientIPMethod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
           "required": true,
           "type": "int",
           "value_allowed_null": true

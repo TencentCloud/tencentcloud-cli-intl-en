@@ -106,14 +106,6 @@
         "title": "Creating notifications for successful and failed scale-out events"
       }
     ],
-    "CreatePaiInstance": [
-      {
-        "document": "This example shows you how to create a PAI instance with specified parameters such as domain name.",
-        "input": "https://as.tencentcloudapi.com/?Action=CreatePaiInstance\n&DomainName=apple-gz012345.pai.tcloudbase.com\n&InitScript=IyEvYmluL2Jhc2gKZWNobyAiaGVsbG8iCg==\n&Zones.0=ap-guangzhou-2\n&InstanceChargeType=POSTPAID_BY_HOUR\n&InstanceTypes.0=S4.SMALL2\n&InternetAccessible.InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\n&InternetAccessible.InternetMaxBandwidthOut=10\n&InstanceName=PAI-TEST\n&LoginSettings.Password=PAI@Test123\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-bmmk7d75\"\n        ],\n        \"RequestId\": \"843518b0-43bb-4066-a00b-d95b338b3142\"\n    }\n}",
-        "title": "Creating one PAI instance"
-      }
-    ],
     "CreateScalingPolicy": [
       {
         "document": "",
@@ -278,14 +270,6 @@
         "title": "Querying notifications"
       }
     ],
-    "DescribePaiInstances": [
-      {
-        "document": "This example shows you how to query PAI instances by IDs.",
-        "input": "https://as.tencentcloudapi.com/?Action=DescribePaiInstances\n&InstanceIds.0=ins-6he2sztp\n&InstanceIds.1=ins-0xdrree5\n<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"PaiInstanceSet\": [\n            {\n                \"InstanceId\": \"ins-6he2sztp\",\n                \"PaiMateUrl\": \"https://plumcot-j99466wb.pai.tcloudbase.com:5523\",\n                \"DomainName\": \"plumcot-j99466wb.pai.tcloudbase.com\"\n            },\n            {\n                \"InstanceId\": \"ins-0xdrree5\",\n                \"PaiMateUrl\": \"https://berry-kotucbu9.pai.tcloudbase.com:5523\",\n                \"DomainName\": \"berry-kotucbu9.pai.tcloudbase.com\"\n            }\n        ],\n        \"RequestId\": \"61a4c56f-c216-42f0-8238-eeabe338633e\"\n    }\n}",
-        "title": "Querying PAI instances"
-      }
-    ],
     "DescribeScalingPolicies": [
       {
         "document": "",
@@ -412,14 +396,6 @@
         "input": "https://as.tencentcloudapi.com/?Action=ModifyScheduledAction\n&ScheduledActionId=asst-chwbkq4c\n&ScheduledActionName=scheduled-action-0\n&MaxSize=5\n&MinSize=0\n&DesiredCapacity=3\n&StartTime=2018-08-28T23:00:00+08:00\n<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5f6f0f95-216f-4745-a2e6-617897e9cedb\"\n    }\n}",
         "title": "Modifying a scheduled action"
-      }
-    ],
-    "PreviewPaiDomainName": [
-      {
-        "document": "This example shows you how to query domain name that can be used to create a PAI instance.",
-        "input": "https://as.tencentcloudapi.com/?Action=PreviewPaiDomainName\n&DomainNameType=tcb\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DomainName\": \"salmonberry-ey5t3l0k.pai.tcloudbase.com\",\n        \"RequestId\": \"cea75193-a9fb-4811-aa0b-b4d2096ef0d9\"\n    }\n}",
-        "title": "Previewing a PAI instance domain name"
       }
     ],
     "RemoveInstances": [
