@@ -121,6 +121,7 @@
         {
           "default": "",
           "document": "Availability Zone",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -128,7 +129,8 @@
         },
         {
           "default": "",
-          "document": "Instance version (\"5.6.4\", \"6.4.3\", \"6.8.2\", or \"7.5.1\")",
+          "document": "Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`",
+          "example": "6.4.3",
           "member": "string",
           "name": "EsVersion",
           "required": true,
@@ -137,6 +139,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-xxxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -145,6 +148,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "subnet-xxxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -153,6 +157,7 @@
         {
           "default": "",
           "document": "Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]",
+          "example": "xxxxxx",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -161,6 +166,7 @@
         {
           "default": "",
           "document": "Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)",
+          "example": "es_test",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -169,6 +175,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)",
+          "example": "3",
           "member": "uint64",
           "name": "NodeNum",
           "required": false,
@@ -177,6 +184,7 @@
         {
           "default": "",
           "document": "Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
           "required": false,
@@ -185,6 +193,7 @@
         {
           "default": "",
           "document": "This parameter is not used on the global website",
+          "example": "12",
           "member": "uint64",
           "name": "ChargePeriod",
           "required": false,
@@ -193,6 +202,7 @@
         {
           "default": "",
           "document": "This parameter is not used on the global website",
+          "example": "RENEW_FLAG_AUTO",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
@@ -201,6 +211,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "example": "ES.S1.4XLARGE64",
           "member": "string",
           "name": "NodeType",
           "required": false,
@@ -209,6 +220,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD",
+          "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
           "required": false,
@@ -217,6 +229,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode disk size in GB",
+          "example": "500",
           "member": "uint64",
           "name": "DiskSize",
           "required": false,
@@ -225,6 +238,7 @@
         {
           "default": "",
           "document": "This parameter is not used on the global website",
+          "example": "m",
           "member": "string",
           "name": "TimeUnit",
           "required": false,
@@ -233,6 +247,7 @@
         {
           "default": "",
           "document": "Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -241,6 +256,7 @@
         {
           "default": "",
           "document": "List of voucher IDs (only one voucher can be specified at a time currently)",
+          "example": "[]",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -249,6 +265,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nWhether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false",
+          "example": "false",
           "member": "bool",
           "name": "EnableDedicatedMaster",
           "required": false,
@@ -257,6 +274,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)",
+          "example": "3",
           "member": "uint64",
           "name": "MasterNodeNum",
           "required": false,
@@ -265,6 +283,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
+          "example": "ES.S1.4XLARGE64",
           "member": "string",
           "name": "MasterNodeType",
           "required": false,
@@ -273,6 +292,7 @@
         {
           "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently",
+          "example": "100",
           "member": "uint64",
           "name": "MasterNodeDiskSize",
           "required": false,
@@ -281,6 +301,7 @@
         {
           "default": "",
           "document": "ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized",
+          "example": "无",
           "member": "string",
           "name": "ClusterNameInConf",
           "required": false,
@@ -289,6 +310,7 @@
         {
           "default": "",
           "document": "Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "DeployMode",
           "required": false,
@@ -297,6 +319,7 @@
         {
           "default": "",
           "document": "Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)",
+          "example": "无",
           "member": "ZoneDetail",
           "name": "MultiZoneInfo",
           "required": false,
@@ -305,6 +328,7 @@
         {
           "default": "",
           "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
+          "example": "platinum",
           "member": "string",
           "name": "LicenseType",
           "required": false,
@@ -313,6 +337,7 @@
         {
           "default": "",
           "document": "Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size",
+          "example": "无",
           "member": "NodeInfo",
           "name": "NodeInfoList",
           "required": false,
@@ -321,6 +346,7 @@
         {
           "default": "",
           "document": "Node tag information list",
+          "example": "无",
           "member": "TagInfo",
           "name": "TagList",
           "required": false,
@@ -329,6 +355,7 @@
         {
           "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
+          "example": "2",
           "member": "uint64",
           "name": "BasicSecurityType",
           "required": false,
@@ -337,10 +364,20 @@
         {
           "default": "",
           "document": "Scenario template type. 0: not enabled; 1: general; 2: log; 3: search",
+          "example": "0",
           "member": "int64",
           "name": "SceneType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Visual node configuration",
+          "example": "无",
+          "member": "WebNodeTypeInfo",
+          "name": "WebNodeTypeInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -833,6 +870,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "es-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -842,6 +880,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "实例名称",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -851,6 +890,7 @@
         {
           "default": "",
           "document": "Region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -860,6 +900,7 @@
         {
           "default": "",
           "document": "Availability Zone",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -869,6 +910,7 @@
         {
           "default": "",
           "document": "User ID",
+          "example": "123456789",
           "member": "uint64",
           "name": "AppId",
           "required": true,
@@ -878,6 +920,7 @@
         {
           "default": "",
           "document": "User UIN",
+          "example": "123456789",
           "member": "string",
           "name": "Uin",
           "required": true,
@@ -887,6 +930,7 @@
         {
           "default": "",
           "document": "UID of the VPC where the instance resides",
+          "example": "vpc-xxxxxxx",
           "member": "string",
           "name": "VpcUid",
           "required": true,
@@ -896,6 +940,7 @@
         {
           "default": "",
           "document": "UID of the subnet where the instance resides",
+          "example": "subnet-xxxxxxx",
           "member": "string",
           "name": "SubnetUid",
           "required": true,
@@ -905,6 +950,7 @@
         {
           "default": "",
           "document": "Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -914,6 +960,7 @@
         {
           "default": "",
           "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)",
+          "example": "PREPAID",
           "member": "string",
           "name": "ChargeType",
           "required": true,
@@ -923,6 +970,7 @@
         {
           "default": "",
           "document": "This parameter is not used on the global website",
+          "example": "6",
           "member": "uint64",
           "name": "ChargePeriod",
           "required": true,
@@ -932,6 +980,7 @@
         {
           "default": "",
           "document": "This parameter is not used on the global website",
+          "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": true,
@@ -941,6 +990,7 @@
         {
           "default": "",
           "document": "Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "example": "ES.S1.SMALL2",
           "member": "string",
           "name": "NodeType",
           "required": true,
@@ -950,6 +1000,7 @@
         {
           "default": "",
           "document": "Number of nodes",
+          "example": "3",
           "member": "uint64",
           "name": "NodeNum",
           "required": true,
@@ -959,6 +1010,7 @@
         {
           "default": "",
           "document": "Number of CPU cores of the node",
+          "example": "4",
           "member": "uint64",
           "name": "CpuNum",
           "required": true,
@@ -968,6 +1020,7 @@
         {
           "default": "",
           "document": "Node memory size in GB",
+          "example": "8",
           "member": "uint64",
           "name": "MemSize",
           "required": true,
@@ -977,6 +1030,7 @@
         {
           "default": "",
           "document": "Node disk type",
+          "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -986,6 +1040,7 @@
         {
           "default": "",
           "document": "Node disk size in GB",
+          "example": "100",
           "member": "uint64",
           "name": "DiskSize",
           "required": true,
@@ -995,6 +1050,7 @@
         {
           "default": "",
           "document": "ES domain name",
+          "example": "http://es-xxxxxxxx",
           "member": "string",
           "name": "EsDomain",
           "required": true,
@@ -1004,6 +1060,7 @@
         {
           "default": "",
           "document": "ES VIP",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "EsVip",
           "required": true,
@@ -1013,6 +1070,7 @@
         {
           "default": "",
           "document": "ES port",
+          "example": "9200",
           "member": "uint64",
           "name": "EsPort",
           "required": true,
@@ -1022,6 +1080,7 @@
         {
           "default": "",
           "document": "Kibana access URL",
+          "example": "http://es-xxxxxxxx",
           "member": "string",
           "name": "KibanaUrl",
           "required": true,
@@ -1031,6 +1090,7 @@
         {
           "default": "",
           "document": "ES version number",
+          "example": "5.6.4",
           "member": "string",
           "name": "EsVersion",
           "required": true,
@@ -1040,6 +1100,7 @@
         {
           "default": "",
           "document": "ES configuration item",
+          "example": "\"{}\"",
           "member": "string",
           "name": "EsConfig",
           "required": true,
@@ -1049,6 +1110,7 @@
         {
           "default": "",
           "document": "Kibana access control configuration",
+          "example": "无",
           "member": "EsAcl",
           "name": "EsAcl",
           "required": true,
@@ -1058,6 +1120,7 @@
         {
           "default": "",
           "document": "Instance creation time",
+          "example": "2021-03-01 10:00:00",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -1067,6 +1130,7 @@
         {
           "default": "",
           "document": "Last modified time of the instance",
+          "example": "2021-03-01 10:00:00",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -1076,6 +1140,7 @@
         {
           "default": "",
           "document": "This parameter is not used on the global website",
+          "example": "2021-03-01 10:00:00",
           "member": "string",
           "name": "Deadline",
           "required": true,
@@ -1085,6 +1150,7 @@
         {
           "default": "",
           "document": "Instance type (instance type identifier, which can be only 1 or 2 currently)",
+          "example": "1",
           "member": "uint64",
           "name": "InstanceType",
           "required": true,
@@ -1094,6 +1160,7 @@
         {
           "default": "",
           "document": "IK analyzer configuration",
+          "example": "无",
           "member": "EsDictionaryInfo",
           "name": "IkConfig",
           "required": true,
@@ -1103,6 +1170,7 @@
         {
           "default": "",
           "document": "Dedicated primary node configuration",
+          "example": "无",
           "member": "MasterNodeInfo",
           "name": "MasterNodeInfo",
           "required": true,
@@ -1112,6 +1180,7 @@
         {
           "default": "",
           "document": "Auto-backup to COS configuration",
+          "example": "无",
           "member": "CosBackup",
           "name": "CosBackup",
           "required": true,
@@ -1121,6 +1190,7 @@
         {
           "default": "",
           "document": "Whether to allow auto-backup to COS",
+          "example": "true",
           "member": "bool",
           "name": "AllowCosBackup",
           "required": true,
@@ -1130,6 +1200,7 @@
         {
           "default": "",
           "document": "List of tags owned by the instance",
+          "example": "无",
           "member": "TagInfo",
           "name": "TagList",
           "required": true,
@@ -1139,6 +1210,7 @@
         {
           "default": "",
           "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
+          "example": "platinum",
           "member": "string",
           "name": "LicenseType",
           "required": true,
@@ -1148,6 +1220,7 @@
         {
           "default": "",
           "document": "Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "EnableHotWarmMode",
           "required": true,
@@ -1157,6 +1230,7 @@
         {
           "default": "",
           "document": "Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ES.S1.SMALL2",
           "member": "string",
           "name": "WarmNodeType",
           "required": true,
@@ -1166,6 +1240,7 @@
         {
           "default": "",
           "document": "Number of warm nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
           "member": "uint64",
           "name": "WarmNodeNum",
           "required": true,
@@ -1175,6 +1250,7 @@
         {
           "default": "",
           "document": "Number of warm node CPU cores\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "uint64",
           "name": "WarmCpuNum",
           "required": true,
@@ -1184,6 +1260,7 @@
         {
           "default": "",
           "document": "Warm node memory size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4",
           "member": "uint64",
           "name": "WarmMemSize",
           "required": true,
@@ -1193,6 +1270,7 @@
         {
           "default": "",
           "document": "Warm node disk type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "WarmDiskType",
           "required": true,
@@ -1202,6 +1280,7 @@
         {
           "default": "",
           "document": "Warm node disk size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
           "member": "uint64",
           "name": "WarmDiskSize",
           "required": true,
@@ -1211,6 +1290,7 @@
         {
           "default": "",
           "document": "Cluster node information list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "NodeInfo",
           "name": "NodeInfoList",
           "required": true,
@@ -1220,6 +1300,7 @@
         {
           "default": "",
           "document": "ES public IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://es-xxxxxxxx",
           "member": "string",
           "name": "EsPublicUrl",
           "required": true,
@@ -1229,6 +1310,7 @@
         {
           "default": "",
           "document": "Multi-AZ network information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ZoneDetail",
           "name": "MultiZoneInfo",
           "required": true,
@@ -1238,6 +1320,7 @@
         {
           "default": "",
           "document": "Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "DeployMode",
           "required": true,
@@ -1247,6 +1330,7 @@
         {
           "default": "",
           "document": "ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
           "member": "string",
           "name": "PublicAccess",
           "required": true,
@@ -1256,6 +1340,7 @@
         {
           "default": "",
           "document": "ES public access control configuration",
+          "example": "无",
           "member": "EsAcl",
           "name": "EsPublicAcl",
           "required": true,
@@ -1265,6 +1350,7 @@
         {
           "default": "",
           "document": "Kibana private IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://es-xxxxxxxx",
           "member": "string",
           "name": "KibanaPrivateUrl",
           "required": true,
@@ -1274,6 +1360,7 @@
         {
           "default": "",
           "document": "Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
           "member": "string",
           "name": "KibanaPublicAccess",
           "required": true,
@@ -1283,6 +1370,7 @@
         {
           "default": "",
           "document": "Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
           "member": "string",
           "name": "KibanaPrivateAccess",
           "required": true,
@@ -1292,6 +1380,7 @@
         {
           "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "SecurityType",
           "required": true,
@@ -1301,6 +1390,7 @@
         {
           "default": "",
           "document": "Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "SceneType",
           "required": true,
@@ -1310,10 +1400,21 @@
         {
           "default": "",
           "document": "Kibana configuration item.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"{}\"",
           "member": "string",
           "name": "KibanaConfig",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Kibana node information\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "KibanaNodeInfo",
+          "name": "KibanaNodeInfo",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -1380,6 +1481,72 @@
           "name": "Value",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "KibanaNodeInfo": {
+      "document": "Kibana node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Kibana node specification",
+          "example": "ES.S1.SMALL2",
+          "member": "string",
+          "name": "KibanaNodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of Kibana nodes",
+          "example": "1",
+          "member": "uint64",
+          "name": "KibanaNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of Kibana node's CPUs",
+          "example": "2",
+          "member": "uint64",
+          "name": "KibanaNodeCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana node's memory in GB",
+          "example": "4",
+          "member": "uint64",
+          "name": "KibanaNodeMemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana node's disk type",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "KibanaNodeDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Kibana node's disk size",
+          "example": "50",
+          "member": "uint64",
+          "name": "KibanaNodeDiskSize",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1493,6 +1660,7 @@
         {
           "default": "",
           "document": "Number of nodes",
+          "example": "3",
           "member": "uint64",
           "name": "NodeNum",
           "required": true,
@@ -1502,6 +1670,7 @@
         {
           "default": "",
           "document": "Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
+          "example": "ES.S1.4XLARGE64",
           "member": "string",
           "name": "NodeType",
           "required": true,
@@ -1510,7 +1679,8 @@
         },
         {
           "default": "",
-          "document": "Node type <li>hotData: hot data node</li>\n<li>warmData: warm data node</li>\n<li>dedicatedMaster: dedicated primary node</li>\nDefault value: hotData",
+          "document": "Node type<li>`hotData`: hot data node</li>\n<li>`warmData`: warm data node</li>\n<li>`dedicatedMaster`: dedicated master node</li>\n<li>`kibana`: Kibana node</li>\nDefault value: `hotData`",
+          "example": "dedicatedMaster",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -1520,6 +1690,7 @@
         {
           "default": "",
           "document": "Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD",
+          "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
           "required": false,
@@ -1529,6 +1700,7 @@
         {
           "default": "",
           "document": "Node disk size in GB",
+          "example": "50",
           "member": "uint64",
           "name": "DiskSize",
           "required": false,
@@ -1538,6 +1710,7 @@
         {
           "default": "",
           "document": "Local disk information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "LocalDiskInfo",
           "name": "LocalDiskInfo",
           "required": false,
@@ -1547,6 +1720,7 @@
         {
           "default": "",
           "document": "Number of node disks",
+          "example": "1",
           "member": "uint64",
           "name": "DiskCount",
           "required": false,
@@ -1556,6 +1730,7 @@
         {
           "default": "",
           "document": "Whether to encrypt node disk. 0: no (default); 1: yes.",
+          "example": "0",
           "member": "uint64",
           "name": "DiskEncrypt",
           "required": false,
@@ -2337,6 +2512,32 @@
         }
       ],
       "type": "object"
+    },
+    "WebNodeTypeInfo": {
+      "document": "Visual node configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of visual nodes. The value is always `1`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Visual node specification",
+          "example": "ES.S1.SMALL2",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ZoneDetail": {
       "document": "Details of AZs in multi-AZ deployment mode",

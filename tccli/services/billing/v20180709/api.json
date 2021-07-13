@@ -1107,6 +1107,7 @@
         {
           "default": "",
           "document": "Offset",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -1115,6 +1116,7 @@
         {
           "default": "",
           "document": "Quantity, maximum is 1000",
+          "example": "1",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -1123,6 +1125,7 @@
         {
           "default": "",
           "document": "The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
+          "example": "byPayTime",
           "member": "string",
           "name": "PeriodType",
           "required": true,
@@ -1131,6 +1134,7 @@
         {
           "default": "",
           "document": "Month; format: yyyy-mm. This value cannot be earlier than the month when Bill 2.0 is enabled. Last 24 months data are available.",
+          "example": "2018-08",
           "member": "string",
           "name": "Month",
           "required": true,
@@ -1139,6 +1143,7 @@
         {
           "default": "",
           "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
+          "example": "无",
           "member": "int64",
           "name": "NeedRecordNum",
           "required": false,
@@ -1147,8 +1152,27 @@
         {
           "default": "",
           "document": "",
+          "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance to be queried",
+          "example": "ins-1op7g2iz",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)",
+          "example": "prePay",
+          "member": "string",
+          "name": "PayMode",
           "required": false,
           "type": "string"
         }

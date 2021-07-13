@@ -1,0 +1,160 @@
+{
+  "actions": {
+    "CreateMultipleSecurityPolicy": {
+      "document": "This API is used to create multiple public network access allowlist policies of the TCR instance.",
+      "input": "CreateMultipleSecurityPolicyRequest",
+      "name": "Creates multiple public network access allowlist policies of the instance",
+      "output": "CreateMultipleSecurityPolicyResponse"
+    },
+    "DeleteMultipleSecurityPolicy": {
+      "document": "This API is used to delete multiple public network access allowlist policies of the instance.",
+      "input": "DeleteMultipleSecurityPolicyRequest",
+      "name": "Deletes multiple public network access allowlist policies of the instance",
+      "output": "DeleteMultipleSecurityPolicyResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2019-09-24",
+    "serviceNameCN": "容器镜像服务",
+    "serviceShortName": "tcr"
+  },
+  "objects": {
+    "CreateMultipleSecurityPolicyRequest": {
+      "document": "CreateMultipleSecurityPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group policy",
+          "example": "192.168.0.0/24",
+          "member": "SecurityPolicy",
+          "name": "SecurityGroupPolicySet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMultipleSecurityPolicyResponse": {
+      "document": "CreateMultipleSecurityPolicy response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMultipleSecurityPolicyRequest": {
+      "document": "DeleteMultipleSecurityPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group policy",
+          "example": "无",
+          "member": "SecurityPolicy",
+          "name": "SecurityGroupPolicySet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMultipleSecurityPolicyResponse": {
+      "document": "DeleteMultipleSecurityPolicy response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SecurityPolicy": {
+      "document": "Security policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy index",
+          "example": "0",
+          "member": "int64",
+          "name": "PolicyIndex",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "mytest",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The public network IP address of the access source",
+          "example": "192.168.1.0/24",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The version of the security policy",
+          "example": "0",
+          "member": "string",
+          "name": "PolicyVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}

@@ -504,6 +504,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1016,6 +1025,7 @@
         {
           "default": "",
           "document": "Software information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"\"]",
           "member": "string",
           "name": "SoftInfo",
           "required": true,
@@ -1025,6 +1035,7 @@
         {
           "default": "",
           "document": "Number of master nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "MasterNodeSize",
           "required": true,
@@ -1034,6 +1045,7 @@
         {
           "default": "",
           "document": "Number of core nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
           "member": "int64",
           "name": "CoreNodeSize",
           "required": true,
@@ -1043,6 +1055,7 @@
         {
           "default": "",
           "document": "Number of task nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "4",
           "member": "int64",
           "name": "TaskNodeSize",
           "required": true,
@@ -1052,6 +1065,7 @@
         {
           "default": "",
           "document": "Number of common nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
           "member": "int64",
           "name": "ComNodeSize",
           "required": true,
@@ -1061,6 +1075,7 @@
         {
           "default": "",
           "document": "Master node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "OutterResource",
           "name": "MasterResource",
           "required": true,
@@ -1070,6 +1085,7 @@
         {
           "default": "",
           "document": "Core node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "OutterResource",
           "name": "CoreResource",
           "required": true,
@@ -1079,6 +1095,7 @@
         {
           "default": "",
           "document": "Task node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "OutterResource",
           "name": "TaskResource",
           "required": true,
@@ -1088,6 +1105,7 @@
         {
           "default": "",
           "document": "Common node resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "OutterResource",
           "name": "ComResource",
           "required": true,
@@ -1097,6 +1115,7 @@
         {
           "default": "",
           "document": "Whether COS is used\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "OnCos",
           "required": true,
@@ -1106,6 +1125,7 @@
         {
           "default": "",
           "document": "Billing mode\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "ChargeType",
           "required": true,
@@ -1115,6 +1135,7 @@
         {
           "default": "",
           "document": "Number of router nodes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
           "member": "int64",
           "name": "RouterNodeSize",
           "required": true,
@@ -1124,6 +1145,7 @@
         {
           "default": "",
           "document": "Whether HA is supported\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "SupportHA",
           "required": true,
@@ -1133,6 +1155,7 @@
         {
           "default": "",
           "document": "Whether secure mode is supported\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "SecurityOn",
           "required": true,
@@ -1142,6 +1165,7 @@
         {
           "default": "",
           "document": "Security group name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"111\"",
           "member": "string",
           "name": "SecurityGroup",
           "required": true,
@@ -1151,10 +1175,31 @@
         {
           "default": "",
           "document": "Whether to enable CBS encryption\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "CbsEncrypt",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom application role\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"123\"",
+          "member": "string",
+          "name": "ApplicationRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security groups\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[\"sg-3xxx\"]",
+          "member": "string",
+          "name": "SecurityGroups",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
