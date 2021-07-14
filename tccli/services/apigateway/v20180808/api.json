@@ -4927,6 +4927,7 @@
         {
           "default": "",
           "document": "Domain name.",
+          "example": "www.xx.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -4936,6 +4937,7 @@
         {
           "default": "",
           "document": "Domain name resolution status. True: success; False: failure.",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -4945,6 +4947,7 @@
         {
           "default": "",
           "document": "Certificate ID.",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -4954,6 +4957,7 @@
         {
           "default": "",
           "document": "Whether the default path mapping is used.",
+          "example": "true",
           "member": "bool",
           "name": "IsDefaultMapping",
           "required": true,
@@ -4963,6 +4967,7 @@
         {
           "default": "",
           "document": "Custom domain name protocol type.",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -4972,10 +4977,31 @@
         {
           "default": "",
           "document": "Network type. Valid values: INNER, OUTER.",
+          "example": "OUTER",
           "member": "string",
           "name": "NetType",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsForcedHttps",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ICP filing status",
+          "example": "true",
+          "member": "bool",
+          "name": "RegistrationStatus",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],

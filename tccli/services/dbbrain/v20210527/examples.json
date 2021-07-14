@@ -1,0 +1,235 @@
+{
+  "actions": {
+    "AddUserContact": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=AddUserContact\n&Name=John Smith\n&ContactInfo=test@qq.com\n&Product=mysql\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Id\": 1,\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
+        "title": "Adding email recipient"
+      }
+    ],
+    "CreateDBDiagReportTask": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateDBDiagReportTask\n&InstanceId=test\n&StartTime=2019-01-01T00:00:00+08:00\n&EndTime=2019-01-02T00:00:00+08:00\n&SendMailFlag=1\n&ContactPerson.0=1\n&ContactGroup.0=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": 129632,\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
+        "title": "Creating health report and sending it via email (optional)"
+      }
+    ],
+    "CreateDBDiagReportUrl": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateDBDiagReportUrl\n&Product=mysql\n&InstanceId=cdb-c1nl9rpv\n&AsyncRequestId=63452\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ReportUrl\": \"https://dbbrain-sh-1256569818.cos.ap-guangzhou.myqcloud.com/report_cdb-c1nl9rpv_10947711_1618851196690.pdf?sign=q-sign-algorithm\",\n        \"ExpireTime\": 1618890295,\n        \"RequestId\": \"24665720-8c93-11eb-bee6-e98cea0e6794\"\n    }\n}",
+        "title": "Creating URL for health report"
+      }
+    ],
+    "CreateMailProfile": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateMailProfile\n&Product=mysql\n&ProfileLevel=Instance\n&ProfileName=scheduler_cdb-test\n&ProfileType= scheduler_mail_configuration\n&BindInstanceIds.0=cdb-test\n&ProfileInfo.Language=zh\n&ProfileInfo.MailConfiguration.SendMail=1\n&ProfileInfo.MailConfiguration.Region.0=ap-guangzhou\n&ProfileInfo.MailConfiguration.HealthStatus.0=HEALTH\n&ProfileInfo.MailConfiguration.ContactPerson.0=1\n&ProfileInfo.MailConfiguration.ContactGroup.0=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
+        "title": "Creating email sending template for scheduled task emails/database inspection emails"
+      }
+    ],
+    "CreateSchedulerMailProfile": [
+      {
+        "document": "This example shows you how to create the regular generation time of health reports and the regular email sending configuration. Please pass in the regular generation time of health reports as a parameter (Monday to Sunday) to set the regular generation time, and save the corresponding regular email sending configuration.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateSchedulerMailProfile\n&WeekConfiguration.0=1\n&Product=mysql\n&ProfileName=scheduler_cdb-test\n&BindInstanceId=cdb-test\n&ProfileInfo.Language=zh\n&ProfileInfo.MailConfiguration.SendMail=1\n&ProfileInfo.MailConfiguration.Region.0=ap-guangzhou\n&ProfileInfo.MailConfiguration.HealthStatus.0=HEALTH\n&ProfileInfo.MailConfiguration.ContactPerson.0=1\n&ProfileInfo.MailConfiguration.ContactGroup.0=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
+        "title": "Creating scheduled task email sending configuration"
+      }
+    ],
+    "CreateSecurityAuditLogExportTask": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateSecurityAuditLogExportTask\n&SecAuditGroupId=sag-01z37k3f\n&Product=mysql\n&StartTime=2019-01-01T00:00:00+00:00\n&EndTime=2019-01-02T00:00:00+00:00\n&DangerLevels.0=1\n&DangerLevels.1=2\n&DangerLevels.2=3\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": 1,\n        \"RequestId\": \"0c4959d0-5abb-11eb-862f-653dd83af000\"\n    }\n}",
+        "title": "Creating security audit log export task"
+      }
+    ],
+    "DeleteSecurityAuditLogExportTasks": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DeleteSecurityAuditLogExportTasks\n&SecAuditGroupId=sag-01z37k3f\n&AsyncRequestIds.0=1\n&Product=mysql\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5fdab910-5c9e-11eb-a610-8717ee1b1000\"\n    }\n}",
+        "title": "Deleting security audit log export task"
+      }
+    ],
+    "DescribeAllUserContact": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeAllUserContact\n&Product=mysql\n&Names.0=zhangsan\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"Contacts\": [\n            {\n                \"Mail\": \"zhangsan@qq.com\",\n                \"Id\": 1,\n                \"Name\": \"zhangsan\"\n            },\n            {\n                \"Mail\": \"zhangsan2@qq.com\",\n                \"Id\": 2,\n                \"Name\": \"zhangsan2\"\n            }\n        ],\n        \"RequestId\": \"b2d08895-1cfe-48bc-b7f7-87fd7cb5d6f1\"\n    }\n}",
+        "title": "Getting contact information"
+      }
+    ],
+    "DescribeAllUserGroup": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeAllUserGroup\n&Product=mysql\n&Names.0=group1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"31dd9325-792f-4d76-89ad-ca8902cbe4d9\",\n        \"Groups\": [\n            {\n                \"MemberCount\": 0,\n                \"Id\": 1,\n                \"Name\": \"group1\"\n            },\n            {\n                \"MemberCount\": 2,\n                \"Id\": 2,\n                \"Name\": \"group11\"\n            }\n        ]\n    }\n}",
+        "title": "Getting contact group information"
+      }
+    ],
+    "DescribeDBDiagEvent": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeDBDiagEvent\n&InstanceId=test\n&EventId=5\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Suggestions\": \"[]\",\n        \"DiagType\": \"Database snapshot\",\n        \"EndTime\": \"2019-11-06 12:05:50\",\n        \"RequestId\": \"78cf7bb1-0608-11ea-a9ef-2736f0f7f829\",\n        \"Explanation\": \"[]\",\n        \"StartTime\": \"2019-11-06 12:05:40\",\n        \"Severity\": 4,\n        \"EventId\": 5,\n        \"Outline\": \"1 problem found during database health check\",\n        \"Problem\": \"[{\\\"DataType\\\":\\\"title\\\",\\\"Data\\\":{\\\"Name\\\":\\\"Session snapshot\\\"}},{\\\"DataType\\\":\\\"title\\\",\\\"Data\\\":{\\\"Name\\\":\\\"Transaction snapshot\\\"}},{\\\"DataType\\\":\\\"title\\\",\\\"Data\\\":{\\\"Name\\\":\\\"InnoDB status snapshot\\\"}}]\",\n        \"Metric\": \"\",\n        \"DiagItem\": \"Health check\"\n    }\n}",
+        "title": "Getting diagnosis event details"
+      }
+    ],
+    "DescribeDBDiagHistory": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeDBDiagHistory\n&StartTime=2019-01-01 00:00:00\n&EndTime=2019-01-01 01:00:00\n&InstanceId=cdb-test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed279d8b-a9d9-48d6-9429-e0fde000994a\",\n        \"Events\": [\n            {\n                \"DiagType\": \"Row lock\",\n                \"StartTime\": \"2019-01-01 00:00:20\",\n                \"EndTime\": \"2019-01-01 00:00:30\",\n                \"InstanceId\": \"cdb-test\",\n                \"Region\": \"ap-beijing\",\n                \"Metric\": \"\",\n                \"EventId\": 5,\n                \"Severity\": 4,\n                \"Outline\": \"Monitoring metric \\\"innodb_row_lock_waits\\\" triggered an alarm. Current value: 131\",\n                \"DiagItem\": \"UPDATE statement row lock wait\"\n            }\n        ]\n    }\n}",
+        "title": "Getting instance diagnosis event list"
+      }
+    ],
+    "DescribeDBDiagReportTasks": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeDBDiagReportTasks\n&Product=mysql\n&StartTime=2020-09-21T00:00:00+00:00\n&EndTime=2020-09-22T00:00:00+00:00\n&Sources.0=DAILY_INSPECTION\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Tasks\": [\n            {\n                \"AsyncRequestId\": 63452,\n                \"Source\": \"DAILY_INSPECTION\",\n                \"Progress\": 100,\n                \"CreateTime\": \"2020-09-21 00:00:00\",\n                \"StartTime\": \"2020-09-21 00:00:00\",\n                \"EndTime\": \"2020-09-21 00:00:00\",\n                \"InstanceInfo\": {\n                    \"InstanceId\": \"cdb-c9orjpes\",\n                    \"InstanceName\": \"dbbrain-test\",\n                    \"EngineVersion\": \"5.7\",\n                    \"Vip\": \"10.207.0.10\",\n                    \"Vport\": 3306,\n                    \"Product\": \"MySQL\"\n                },\n                \"HealthStatus\": {\n                    \"HealthScore\": 100,\n                    \"HealthLevel\": \"HEALTH\",\n                    \"ScoreLost\": 0,\n                    \"ScoreDetails\": []\n                }\n            }\n        ],\n        \"RequestId\": \"24665720-8c93-11eb-bee6-e98cea0e6794\"\n    }\n}",
+        "title": "Querying the list of health report generation tasks"
+      }
+    ],
+    "DescribeDBSpaceStatus": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeDBSpaceStatus\n&InstanceId=cdb-test\n&RangeDays=5\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Remain\": 23224,\n        \"RequestId\": \"78cf7bb1-0608-11ea-a9ef-2736f0f7f829\",\n        \"Growth\": 231,\n        \"Total\": 50000,\n        \"AvailableDays\": 35\n    }\n}",
+        "title": "Getting the overview of instance space usage during specified time period"
+      }
+    ],
+    "DescribeDiagDBInstances": [
+      {
+        "document": "This example shows you how to get the instance information list. You can query instance-related information by instance ID, instance name, and region.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeDiagDBInstances\n&IsSupported=true\n&Offset=0\n&Limit=50\n&Product=mysql\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"DbScanStatus\": 1,\n        \"Items\": [\n            {\n                \"GroupName\": \"4 regions as a group\",\n                \"EventCount\": 0,\n                \"Memory\": 4000,\n                \"Product\": \"MySQL\",\n                \"Cpu\": 2,\n                \"Source\": \"TENCENT_CLOUD\",\n                \"UniqSubnetId\": \"subnet-test\",\n                \"DeployMode\": \"CUSTOM\",\n                \"InstanceType\": 1,\n                \"AuditRunningStatus\": \"normal\",\n                \"Status\": 1,\n                \"EngineVersion\": \"5.6\",\n                \"InstanceId\": \"cdb-test\",\n                \"Vport\": 63492,\n                \"InitFlag\": 1,\n                \"TaskStatus\": 0,\n                \"UniqVpcId\": \"vpc-fstest\",\n                \"GroupId\": \"dg-0ttest\",\n                \"InstanceName\": \"Long-Term monitoring\",\n                \"HealthScore\": 100,\n                \"InstanceConf\": {\n                    \"OverviewDisplay\": \"Yes\",\n                    \"DailyInspection\": \"Yes\"\n                },\n                \"AuditPolicyStatus\": \"UNBOUND\",\n                \"Volume\": 100,\n                \"DeadlineTime\": \"2021-02-25 16:33:26\",\n                \"SecAuditStatus\": \"ON\",\n                \"Region\": \"ap-guangzhou\",\n                \"Vip\": \"10.5.0.9\",\n                \"IsSupported\": true\n            }\n        ],\n        \"RequestId\": \"b2d08895-1cfe-48bc-b7f7-87fd7cb5d6f1\"\n    }\n}",
+        "title": "Getting instance information list"
+      }
+    ],
+    "DescribeHealthScore": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dbbrain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHealthScore\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-8jawylhf\",\n    \"Product\": \"mysql\",\n    \"Time\": \"2021-02-01T14:30:00+00:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0736b315-a9be-4991-92e6-28eccf3d31e3\",\n        \"Data\": {\n            \"IssueTypes\": [\n                {\n                    \"TotalCount\": 0,\n                    \"Events\": [],\n                    \"IssueType\": \"AVAILABILITY\"\n                },\n                {\n                    \"TotalCount\": 0,\n                    \"Events\": [],\n                    \"IssueType\": \"MAINTAINABILITY\"\n                },\n                {\n                    \"TotalCount\": 0,\n                    \"Events\": [],\n                    \"IssueType\": \"PERFORMANCE\"\n                },\n                {\n                    \"TotalCount\": 0,\n                    \"Events\": [],\n                    \"IssueType\": \"RELIABILITY\"\n                }\n            ],\n            \"HealthScore\": 100,\n            \"EventsTotalCount\": 0,\n            \"HealthLevel\": \"HEALTH\"\n        }\n    }\n}",
+        "title": "Requesting health score"
+      }
+    ],
+    "DescribeMailProfile": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeMailProfile\n&Product=mysql\n&ProfileType=scheduler_mail_configuration\n&Offset=0\n&Limit=20\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"c7324330-5fc8-11eb-a3f4-96666666\",\n        \"ProfileList\": [\n            {\n                \"ProfileId\": \"12345\",\n                \"ProfileType\": \"dbScan_mail_configuration\",\n                \"ProfileLevel\": \"User\",\n                \"ProfileName\": \"Test uin\",\n                \"ProfileInfo\": {\n                    \"MailConfiguration\": {\n                        \"HealthStatus\": [\n                            \"HEALTH\",\n                            \"SUB_HEALTH\",\n                            \"RISK\",\n                            \"HIGH_RISK\"\n                        ],\n                        \"Region\": [\n                            \"eu-moscow\"\n                        ],\n                        \"ContactGroup\": [],\n                        \"SendMail\": 0,\n                        \"ContactPerson\": [\n                            123\n                        ]\n                    },\n                    \"Language\": \"zh\"\n                }\n            }\n        ]\n    }\n}",
+        "title": "Getting email configuration"
+      }
+    ],
+    "DescribeMySqlProcessList": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeMySqlProcessList\n&Product=mysql\n&InstanceId=cdb-test\n&User=root\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"24665720-8c93-11eb-bee6-e98cea0e6794\",\n        \"ProcessList\": [\n            {\n                \"Host\": \"127.0.0.1:42036\",\n                \"State\": \"\",\n                \"Command\": \"Sleep\",\n                \"Time\": \"1179\",\n                \"ID\": \"171588317\",\n                \"User\": \"root\",\n                \"Info\": \"\",\n                \"DB\": \"test\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of real-time threads"
+      }
+    ],
+    "DescribeSecurityAuditLogDownloadUrls": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSecurityAuditLogDownloadUrls\n&SecAuditGroupId=sag-01z37k3f\n&Product=mysql\n&AsyncRequestId=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ad536b0-5ee2-11eb-bc9a-9357e9eb1000\",\n        \"Urls\": [\n            \"https://xxx\"\n        ]\n    }\n}",
+        "title": "Querying the download link of security audit log export file"
+      }
+    ],
+    "DescribeSecurityAuditLogExportTasks": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSecurityAuditLogExportTasks\n&SecAuditGroupId=sag-01z37k3f\n&Product=mysql\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Tasks\": [\n            {\n                \"Status\": \"finished\",\n                \"LogStartTime\": \"2021-01-21 00:00:00\",\n                \"Progress\": 100,\n                \"AsyncRequestId\": 1,\n                \"DangerLevels\": [\n                    1,\n                    2,\n                    3\n                ],\n                \"EndTime\": \"2021-01-22 08:39:22\",\n                \"CreateTime\": \"2021-01-22 08:39:21\",\n                \"StartTime\": \"2021-01-22 08:39:22\",\n                \"LogEndTime\": \"2021-01-21 23:59:59\",\n                \"TotalSize\": 1\n            }\n        ],\n        \"RequestId\": \"5fdab910-5c9e-11eb-a610-8717ee1b1000\"\n    }\n}",
+        "title": "Querying the list of security audit log export tasks"
+      }
+    ],
+    "DescribeSlowLogTimeSeriesStats": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSlowLogTimeSeriesStats\n&InstanceId=test\n&StartTime=2019-01-01 00:00:00\n&EndTime=2019-01-01 01:00:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TimeSeries\": [\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568113800\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568191680\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568269560\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568347440\n            },\n            {\n                \"Count\": 2,\n                \"Timestamp\": 1568425320\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568503200\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568581080\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568658960\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568736840\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568814720\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568892600\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1568970480\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569048360\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569126240\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569204120\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569282000\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569359880\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569437760\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569515640\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569593520\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569671400\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569749280\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569827160\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569905040\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1569982920\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1570060800\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1570138680\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1570216560\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1570294440\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1570372320\n            },\n            {\n                \"Count\": 0,\n                \"Timestamp\": 1570450200\n            }\n        ],\n        \"SeriesData\": {\n            \"Series\": [\n                {\n                    \"Values\": [\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1,\n                        -1\n                    ],\n                    \"Metric\": \"cpu_use_rate\",\n                    \"Unit\": \"%\"\n                }\n            ],\n            \"Timestamp\": [\n                1568113800,\n                1568191680,\n                1568269560,\n                1568347440,\n                1568425320,\n                1568503200,\n                1568581080,\n                1568658960,\n                1568736840,\n                1568814720,\n                1568892600,\n                1568970480,\n                1569048360,\n                1569126240,\n                1569204120,\n                1569282000,\n                1569359880,\n                1569437760,\n                1569515640,\n                1569593520,\n                1569671400,\n                1569749280,\n                1569827160,\n                1569905040,\n                1569982920,\n                1570060800,\n                1570138680,\n                1570216560,\n                1570294440,\n                1570372320,\n                1570450200\n            ]\n        },\n        \"RequestId\": \"b445f8ee-9357-4d93-83c2-3596f9d1f27e\",\n        \"Period\": 77880\n    }\n}",
+        "title": "Getting slow log statistics histogram"
+      }
+    ],
+    "DescribeSlowLogTopSqls": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSlowLogTopSqls\n&InstanceId=test\n&SortBy=QueryTime\n&OrderBy=ASC\n&Limit=10\n&Offset=0\n&StartTime=2019-01-01 00:00:00\n&EndTime=2019-01-01 01:00:00\n&SchemaList.0.Schema=dbName\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed279d8b-a9d9-48d6-9429-e0fde000994a\",\n        \"TotalCount\": 1,\n        \"Rows\": [\n            {\n                \"QueryTimeMin\": 0.0,\n                \"LockTimeMin\": 0.0,\n                \"QueryTimeMax\": 14.086705,\n                \"QueryTimeRatio\": 0.0,\n                \"RowsSentRatio\": 0.0,\n                \"RowsSentMax\": 0,\n                \"RowsExaminedMin\": 0,\n                \"RowsSentMin\": 0,\n                \"SqlText\": \"xx\",\n                \"Schema\": \"xx\",\n                \"LockTimeMax\": 0.0,\n                \"LockTimeRatio\": 0.0,\n                \"ExecTimes\": 2,\n                \"LockTimeAvg\": 0.0,\n                \"RowsExamined\": 0,\n                \"RowsSentAvg\": 0.0,\n                \"QueryTime\": 28.17341,\n                \"RowsExaminedAvg\": 0.0,\n                \"RowsExaminedMax\": 0,\n                \"RowsSent\": 0,\n                \"RowsExaminedRatio\": 0.0,\n                \"QueryTimeAvg\": 0.0,\n                \"SqlTemplate\": \"xx\",\n                \"LockTime\": 0.0\n            }\n        ]\n    }\n}",
+        "title": "Querying slow log statistics in specified time period by SQL template"
+      }
+    ],
+    "DescribeSlowLogUserHostStats": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeSlowLogUserHostStats\n&Product=mysql\n&InstanceId=cdb-c1nl9rpv\n&StartTime=2020-09-21T00:00:00+00:00\n&EndTime=2020-09-22T00:00:00+00:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"e2a51350-8c9f-11eb-bc0f-c9f5ab88d057\",\n        \"Items\": [\n            {\n                \"UserHost\": \"10.3.1.1\",\n                \"Ratio\": 50,\n                \"Count\": 29\n            },\n            {\n                \"UserHost\": \"10.3.1.2\",\n                \"Ratio\": 50,\n                \"Count\": 29\n            }\n        ]\n    }\n}",
+        "title": "Getting the statistical distribution chart of slow log source addresses"
+      }
+    ],
+    "DescribeTopSpaceSchemaTimeSeries": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeTopSpaceSchemaTimeSeries\n&InstanceId=cdb-test\n&Limit=2\n&StartDate=2021-01-01\n&EndDate=2021-01-01\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d97eacb0-cebd-40b6-963b-579092454f05\",\n        \"TopSpaceSchemaTimeSeries\": [\n            {\n                \"TableSchema\": \"test_bak\",\n                \"SeriesData\": {\n                    \"Series\": [\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"DataFree\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"DataLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"IndexLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"TotalLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"FragRatio\",\n                            \"Unit\": \"%\"\n                        },\n                        {\n                            \"Values\": [\n                                9\n                            ],\n                            \"Metric\": \"TableRows\",\n                            \"Unit\": \"\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"PhysicalFileSize\",\n                            \"Unit\": \"MB\"\n                        }\n                    ],\n                    \"Timestamp\": [\n                        1588089600\n                    ]\n                }\n            },\n            {\n                \"TableSchema\": \"test_bak\",\n                \"SeriesData\": {\n                    \"Series\": [\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"DataFree\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"DataLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"IndexLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"TotalLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"FragRatio\",\n                            \"Unit\": \"%\"\n                        },\n                        {\n                            \"Values\": [\n                                6\n                            ],\n                            \"Metric\": \"TableRows\",\n                            \"Unit\": \"\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"PhysicalFileSize\",\n                            \"Unit\": \"MB\"\n                        }\n                    ],\n                    \"Timestamp\": [\n                        1588089600\n                    ]\n                }\n            }\n        ]\n    }\n}",
+        "title": "Getting the daily space statistics of top databases during specified time period"
+      }
+    ],
+    "DescribeTopSpaceSchemas": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeTopSpaceSchemas\n&InstanceId=cdb-test\n&Limit=2\n&SortBy=TableRows\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed279d8b-a9d9-48d6-9429-e0fde000994a\",\n        \"Timestamp\": 1603819881,\n        \"TopSpaceSchemas\": [\n            {\n                \"DataFree\": 0,\n                \"TotalLength\": 0.1,\n                \"TableSchema\": \"test_bak\",\n                \"FragRatio\": 0,\n                \"DataLength\": 0.1,\n                \"PhysicalFileSize\": 0.1,\n                \"TableRows\": 9,\n                \"IndexLength\": 0\n            },\n            {\n                \"DataFree\": 0,\n                \"TotalLength\": 0.1,\n                \"TableSchema\": \"test_bak\",\n                \"FragRatio\": 0,\n                \"DataLength\": 0.1,\n                \"PhysicalFileSize\": 0.1,\n                \"TableRows\": 9,\n                \"IndexLength\": 0\n            }\n        ]\n    }\n}",
+        "title": "Getting the space statistics of top databases"
+      }
+    ],
+    "DescribeTopSpaceTableTimeSeries": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeTopSpaceTableTimeSeries\n&InstanceId=cdb-test\n&Limit=2\n&StartDate=2020-01-01\n&EndDate=2020-01-01\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d97eacb0-cebd-40b6-963b-579092454f05\",\n        \"TopSpaceTableTimeSeries\": [\n            {\n                \"TableName\": \"test\",\n                \"TableSchema\": \"test_bak\",\n                \"SeriesData\": {\n                    \"Series\": [\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"DataFree\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"DataLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"IndexLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"TotalLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"FragRatio\",\n                            \"Unit\": \"%\"\n                        },\n                        {\n                            \"Values\": [\n                                9\n                            ],\n                            \"Metric\": \"TableRows\",\n                            \"Unit\": \"\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"PhysicalFileSize\",\n                            \"Unit\": \"MB\"\n                        }\n                    ],\n                    \"Timestamp\": [\n                        1588089600\n                    ]\n                },\n                \"Engine\": \"InnoDB\"\n            },\n            {\n                \"TableName\": \"test22\",\n                \"TableSchema\": \"test_bak\",\n                \"SeriesData\": {\n                    \"Series\": [\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"DataFree\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"DataLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"IndexLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"TotalLength\",\n                            \"Unit\": \"MB\"\n                        },\n                        {\n                            \"Values\": [\n                                0\n                            ],\n                            \"Metric\": \"FragRatio\",\n                            \"Unit\": \"%\"\n                        },\n                        {\n                            \"Values\": [\n                                6\n                            ],\n                            \"Metric\": \"TableRows\",\n                            \"Unit\": \"\"\n                        },\n                        {\n                            \"Values\": [\n                                0.1\n                            ],\n                            \"Metric\": \"PhysicalFileSize\",\n                            \"Unit\": \"MB\"\n                        }\n                    ],\n                    \"Timestamp\": [\n                        1588089600\n                    ]\n                },\n                \"Engine\": \"InnoDB\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the daily space statistics of top tables during specified time period"
+      }
+    ],
+    "DescribeTopSpaceTables": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeTopSpaceTables\n&InstanceId=cdb-test\n&Limit=2\n&SortBy=TableRows\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed279d8b-a9d9-48d6-9429-e0fde000994a\",\n        \"Timestamp\": 1603819881,\n        \"TopSpaceTables\": [\n            {\n                \"DataFree\": 0,\n                \"TableName\": \"test\",\n                \"TotalLength\": 0.1,\n                \"TableSchema\": \"test_bak\",\n                \"FragRatio\": 0,\n                \"DataLength\": 0.1,\n                \"PhysicalFileSize\": 0.1,\n                \"TableRows\": 9,\n                \"Engine\": \"InnoDB\",\n                \"IndexLength\": 0\n            },\n            {\n                \"DataFree\": 0,\n                \"TableName\": \"test\",\n                \"TotalLength\": 0.1,\n                \"TableSchema\": \"test_bak\",\n                \"FragRatio\": 0,\n                \"DataLength\": 0.1,\n                \"PhysicalFileSize\": 0.1,\n                \"TableRows\": 9,\n                \"Engine\": \"InnoDB\",\n                \"IndexLength\": 0\n            }\n        ]\n    }\n}",
+        "title": "Getting the space statistics of top tables"
+      }
+    ],
+    "DescribeUserSqlAdvice": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeUserSqlAdvice\n&InstanceId=cdb-c1nl9rpv\n&SqlText=select * from t1 where id in ( ? )\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e2a51350-8c9f-11eb-bc0f-c9f5ab88d057\",\n        \"Advices\": \"[{\\\"TableName\\\": \\\"t1\\\", \\\"TableSchema\\\": \\\"test\\\", \\\"Keys\\\": [{\\\"SqlText\\\": \\\"alter table `test`.`t1` add index index_0(`id`);\\\"}]}]\",\n        \"Comments\": \"[]\",\n        \"Schema\": \"test\",\n        \"Tables\": \"[{\\\"TableName\\\": \\\"t1\\\", \\\"TableSchema\\\": \\\"test\\\", \\\"TableDDL\\\": \\\"CREATE TABLE `test` (\\n  `id` varchar(36) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC\\\"}]\",\n        \"SqlText\": \"select * from t1 where id in ( ? )\",\n        \"SqlPlan\": \"{\\\"Before\\\": [{\\\"Format\\\": \\\"Table\\\", \\\"Data\\\": {\\\"Names\\\": [\\\"id\\\", \\\"select_type\\\", \\\"table\\\", \\\"partitions\\\", \\\"type\\\", \\\"possible_keys\\\", \\\"key\\\", \\\"key_len\\\", \\\"ref\\\", \\\"rows\\\", \\\"filtered\\\", \\\"Extra\\\"], \\\"Data\\\": [ [1, \\\"SIMPLE\\\", \\\"t1\\\", null, \\\"ALL\\\", null, null, null, null, 1530, 10, \\\"Using where\\\" ]]}}], \\\"After\\\": [{ \\\"Format\\\": \\\"Table\\\", \\\"Data\\\": {\\\"Names\\\": [\\\"id\\\", \\\"select_type\\\", \\\"table\\\", \\\"partitions\\\", \\\"type\\\", \\\"possible_keys\\\", \\\"key\\\", \\\"key_len\\\", \\\"ref\\\", \\\"rows\\\", \\\"filtered\\\", \\\"Extra\\\"], \\\"Data\\\": [[1, \\\"SIMPLE\\\", \\\"t1\\\", null, \\\"ref\\\", \\\"index_0\\\", \\\"index_0\\\", 1056, \\\"const\\\", 51, 100.00, null]]}}]}\",\n        \"Cost\": \"{\\\"Before\\\": 0.1, \\\"After\\\": 0.03, \\\"Ratio\\\": 90.61}\"\n    }\n}",
+        "title": "Getting SQL statement optimization suggestions"
+      },
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeUserSqlAdvice\n&InstanceId=cdb-c1nl9rpv\n&SqlText=select * from t1 where id = ?\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e2a51350-8c9f-11eb-bc0f-c9f5ab88d057\",\n        \"Advices\": \"\",\n        \"Comments\": \"\",\n        \"Schema\": \"test\",\n        \"Tables\": \"[{\\\"TableName\\\": \\\"t1\\\", \\\"TableSchema\\\": \\\"test\\\", \\\"TableDDL\\\": \\\"CREATE TABLE `test` (\\n  `id` varchar(36) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC\\\"}]\",\n        \"SqlText\": \"select * from t1 where id in ( ? )\",\n        \"SqlPlan\": \"\",\n        \"Cost\": \"\"\n    }\n}",
+        "title": "Getting a suggestion that there is no need to optimize SQL statements"
+      }
+    ],
+    "ModifyDiagDBInstanceConf": [
+      {
+        "document": "",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=ModifyDiagDBInstanceConf\n&InstanceIds.0=cdb-fyclrp7r\n&InstanceConfs.DailyInspection=Yes\n&Regions=All\n&Product=mysql\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
+        "title": "Modifying the inspection configuration of instance"
+      }
+    ]
+  },
+  "version": "1.0"
+}

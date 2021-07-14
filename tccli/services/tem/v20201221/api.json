@@ -66,6 +66,12 @@
       "name": "Gets the list of running pods under service",
       "output": "DescribeServiceRunPodListV2Response"
     },
+    "GenerateDownloadUrl": {
+      "document": "Generate the pre-signed download URL for the specified package",
+      "input": "GenerateDownloadUrlRequest",
+      "name": "Generate the pre-signed download URL for the specified package",
+      "output": "GenerateDownloadUrlResponse"
+    },
     "ModifyIngress": {
       "document": "This API is used to create or update an ingress rule.",
       "input": "ModifyIngressRequest",
@@ -222,6 +228,15 @@
           "name": "SourceChannel",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Input parameter of `deployVersion`",
+          "example": "sss",
+          "member": "string",
+          "name": "TimeVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -828,7 +843,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Mounting configurations",
           "example": "[]",
           "member": "MountedSettingConf",
           "name": "SettingConfs",
@@ -837,12 +852,21 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "EKS access configuration",
           "example": "1",
           "member": "EksService",
           "name": "EksService",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "ID of the version that you want to roll back to",
+          "example": "version-123",
+          "member": "string",
+          "name": "VersionId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1258,11 +1282,11 @@
       "type": "object"
     },
     "EksService": {
-      "document": "eks service info",
+      "document": "EKS service information",
       "members": [
         {
           "default": "",
-          "document": "service name",
+          "document": "Service name",
           "example": "xxx",
           "member": "string",
           "name": "Name",
@@ -1272,7 +1296,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Available ports",
           "example": "[1,2]",
           "member": "int64",
           "name": "Ports",
@@ -1282,7 +1306,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Yaml contents",
           "example": "1",
           "member": "string",
           "name": "Yaml",
@@ -1292,7 +1316,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Service name\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "xxx",
           "member": "string",
           "name": "ServiceName",
@@ -1302,7 +1326,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Version name\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "xxxx",
           "member": "string",
           "name": "VersionName",
@@ -1312,7 +1336,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Private IP\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
           "name": "ClusterIp",
@@ -1322,7 +1346,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Public IP\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
           "name": "ExternalIp",
@@ -1332,7 +1356,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The access type. Valid values:\n- EXTERNAL (internet access)\n- VPC（Intra-VPC access)\n- CLUSTER (Intra-cluster access)\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
           "name": "Type",
@@ -1342,7 +1366,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Subnet ID. It is filled when the access type is `VPC`.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "string",
           "name": "SubnetId",
@@ -1352,7 +1376,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "string",
           "name": "LoadBalanceId",
@@ -1362,7 +1386,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Port Mapping\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "PortMapping",
           "name": "PortMappings",
@@ -1428,6 +1452,69 @@
         }
       ],
       "usage": "both"
+    },
+    "GenerateDownloadUrlRequest": {
+      "document": "GenerateDownloadUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "1",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Package Name",
+          "example": "1",
+          "member": "string",
+          "name": "PkgName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version of the package to download",
+          "example": "asss",
+          "member": "string",
+          "name": "DeployVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GenerateDownloadUrlResponse": {
+      "document": "GenerateDownloadUrl response structure.",
+      "members": [
+        {
+          "document": "Temp download URL for the package\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "http://download.demo",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "IngressInfo": {
       "document": "Ingress configuration",
@@ -1922,11 +2009,11 @@
       "type": "object"
     },
     "MountedSettingConf": {
-      "document": "",
+      "document": "Mounting configuration information ",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Configuration Name",
           "example": "1",
           "member": "string",
           "name": "ConfigDataName",
@@ -1936,7 +2023,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Mount point path",
           "example": "1",
           "member": "string",
           "name": "MountedPath",
@@ -1946,7 +2033,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Configuration Content",
           "example": "[]",
           "member": "Pair",
           "name": "Data",
