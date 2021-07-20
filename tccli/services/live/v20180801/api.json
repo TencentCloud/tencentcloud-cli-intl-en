@@ -4924,6 +4924,7 @@
         {
           "default": "",
           "document": "Push domain name.",
+          "example": "test.push.com",
           "member": "string",
           "name": "PushDomain",
           "required": false,
@@ -4932,6 +4933,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "streamtest",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -4939,7 +4941,8 @@
         },
         {
           "default": "",
-          "document": "Start time (Beijing time).\nIn the format of `yyyymmdd`.\nNote: details for a specified day in the last month can be queried.",
+          "document": "Query date (UTC+8)\nFormat: yyyymmdd\nNote: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.",
+          "example": "20190307",
           "member": "string",
           "name": "DayTime",
           "required": false,
@@ -4948,6 +4951,7 @@
         {
           "default": "",
           "document": "Number of pages. Default value: 1.\nUp to 100 pages.",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -4956,6 +4960,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Default value: 20,\nValue range: [10,1000].",
+          "example": "20",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -4964,6 +4969,7 @@
         {
           "default": "",
           "document": "Start day time (Beijing time),\nIn the format of `yyyymmdd`.\nNote: details for the last month can be queried.",
+          "example": "20190307",
           "member": "string",
           "name": "StartDayTime",
           "required": false,
@@ -4971,7 +4977,8 @@
         },
         {
           "default": "",
-          "document": "End day time (Beijing time),\nIn the format of `yyyymmdd`.\nNote: detailed data for the last month can be queried. Either `DayTime` or `(StartDayTime,EndDayTime)` must be passed in. If both are passed in, `DayTime` shall prevail.",
+          "document": "End date (UTC+8)\nFormat: yyyymmdd\nNote: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.",
+          "example": "20190307",
           "member": "string",
           "name": "EndDayTime",
           "required": false,
@@ -8507,7 +8514,8 @@
       "members": [
         {
           "default": "",
-          "document": "Recording interval.\nIn seconds. Default value: 1800.\nValue range: 300-7200.\nThis parameter is not valid for HLS, and a file will be generated from push start to interruption during HLS recording.",
+          "document": "Max recording time per file\nDefault value: `1800` (seconds)\nValue range: 60-7200\nThis parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.",
+          "example": "400",
           "member": "int64",
           "name": "RecordInterval",
           "required": false,
@@ -8516,7 +8524,8 @@
         },
         {
           "default": "",
-          "document": "Recording storage period.\nIn seconds. Value range: 0-93312000.\n0: permanent storage.",
+          "document": "Storage duration of the recording file\nValue range: 0-129600000 seconds (0-1500 days)\n`0`: permanent",
+          "example": "123",
           "member": "int64",
           "name": "StorageTime",
           "required": false,
@@ -8526,6 +8535,7 @@
         {
           "default": "",
           "document": "Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.",
+          "example": "0",
           "member": "int64",
           "name": "Enable",
           "required": false,
@@ -8535,6 +8545,7 @@
         {
           "default": "",
           "document": "VOD subapplication ID.",
+          "example": "1",
           "member": "int64",
           "name": "VodSubAppId",
           "required": false,
@@ -8544,11 +8555,42 @@
         {
           "default": "",
           "document": "Recording filename.\nSupported special placeholders include:\n{StreamID}: stream ID\n{StartYear}: start time - year\n{StartMonth}: start time - month\n{StartDay}: start time - day\n{StartHour}: start time - hour\n{StartMinute}: start time - minute\n{StartSecond}: start time - second\n{StartMillisecond}: start time - millisecond\n{EndYear}: end time - year\n{EndMonth}: end time - month\n{EndDay}: end time - day\n{EndHour}: end time - hour\n{EndMinute}: end time - minute\n{EndSecond}: end time - second\n{EndMillisecond}: end time - millisecond\n\nIf this parameter is not set, the recording filename will be `{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}` by default",
+          "example": "{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{Star",
           "member": "string",
           "name": "VodFileName",
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task flow\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "liu",
+          "member": "string",
+          "name": "Procedure",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Video storage class. Valid values:\n`normal`: STANDARD\n`cold`: STANDARD_IA\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "StorageMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VOD subapplication category\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "123",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
