@@ -144,6 +144,12 @@
       "name": "Queries security settings",
       "output": "DescribeSafeAuthFlagCollResponse"
     },
+    "DescribeSafeAuthFlagIntl": {
+      "document": "This API is used to query security settings.",
+      "input": "DescribeSafeAuthFlagIntlRequest",
+      "name": "Queries security settings",
+      "output": "DescribeSafeAuthFlagIntlResponse"
+    },
     "DescribeSubAccounts": {
       "document": "This API is used to query sub-users through the sub-user UIN list.",
       "input": "DescribeSubAccountsRequest",
@@ -167,6 +173,12 @@
       "input": "DetachUserPolicyRequest",
       "name": "Unassociates a policy and a user",
       "output": "DetachUserPolicyResponse"
+    },
+    "GetAccountSummary": {
+      "document": "This API is used to query account summary. ",
+      "input": "GetAccountSummaryRequest",
+      "name": "Queries account summary",
+      "output": "GetAccountSummaryResponse"
     },
     "GetCustomMFATokenInfo": {
       "document": "This API is used to get information associated with a custom multi-factor Token",
@@ -1618,6 +1630,50 @@
       ],
       "type": "object"
     },
+    "DescribeSafeAuthFlagIntlRequest": {
+      "document": "DescribeSafeAuthFlagIntl request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeSafeAuthFlagIntlResponse": {
+      "document": "DescribeSafeAuthFlagIntl response structure.",
+      "members": [
+        {
+          "document": "Login protection settings",
+          "example": "无",
+          "member": "LoginActionFlagIntl",
+          "name": "LoginFlag",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sensitive operation protection settings",
+          "example": "无",
+          "member": "LoginActionFlagIntl",
+          "name": "ActionFlag",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Suspicious login location protection settings",
+          "example": "无",
+          "member": "OffsiteFlag",
+          "name": "OffsiteFlag",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSafeAuthFlagRequest": {
       "document": "DescribeSafeAuthFlag request structure.",
       "members": [],
@@ -1801,6 +1857,77 @@
     "DetachUserPolicyResponse": {
       "document": "DetachUserPolicy response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAccountSummaryRequest": {
+      "document": "GetAccountSummary request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetAccountSummaryResponse": {
+      "document": "GetAccountSummary response structure.",
+      "members": [
+        {
+          "document": "Number of policies",
+          "example": "1",
+          "member": "uint64",
+          "name": "Policies",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of roles",
+          "example": "1",
+          "member": "uint64",
+          "name": "Roles",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of identity providers",
+          "example": "1",
+          "member": "uint64",
+          "name": "Idps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of sub-accounts",
+          "example": "1",
+          "member": "uint64",
+          "name": "User",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of groups",
+          "example": "1",
+          "member": "uint64",
+          "name": "Group",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of grouped users",
+          "example": "1",
+          "member": "uint64",
+          "name": "Member",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3194,6 +3321,72 @@
       ],
       "usage": "both"
     },
+    "LoginActionFlagIntl": {
+      "document": "Login and sensitive operation flag",
+      "members": [
+        {
+          "default": "",
+          "document": "Mobile number",
+          "example": "0",
+          "member": "uint64",
+          "name": "Phone",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Hard token",
+          "example": "0",
+          "member": "uint64",
+          "name": "Token",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Soft token",
+          "example": "0",
+          "member": "uint64",
+          "name": "Stoken",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "WeChat",
+          "example": "0",
+          "member": "uint64",
+          "name": "Wechat",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom",
+          "example": "0",
+          "member": "uint64",
+          "name": "Custom",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Email",
+          "example": "0",
+          "member": "uint64",
+          "name": "Mail",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "LoginActionMfaFlag": {
       "document": "Login and sensitive operation flag",
       "members": [
@@ -3952,7 +4145,7 @@
         {
           "default": "",
           "document": "User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)",
-          "example": "1",
+          "example": "2",
           "member": "uint64",
           "name": "UserType",
           "required": true,
