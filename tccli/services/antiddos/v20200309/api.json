@@ -1,0 +1,4428 @@
+{
+  "actions": {
+    "AssociateDDoSEipAddress": {
+      "document": "This API is used to bind an EIP to an Anti-DDoS Advanced instance or a specified private IP of an ENI.",
+      "input": "AssociateDDoSEipAddressRequest",
+      "name": "Binds EIPs",
+      "output": "AssociateDDoSEipAddressResponse"
+    },
+    "CreateBlackWhiteIpList": {
+      "document": "This API is used to add an Anti-DDoS IP blocklist/allowlist.",
+      "input": "CreateBlackWhiteIpListRequest",
+      "name": "Adds an Anti-DDoS IP blocklist/allowlist",
+      "output": "CreateBlackWhiteIpListResponse"
+    },
+    "CreateBoundIP": {
+      "document": "This API is used to bind an IP to an Anti-DDoS Pro instance Both single IP instances and multi-IP instances are available. Note that you should wait until the current binding or unbinding completes before using this async API for new operations.",
+      "input": "CreateBoundIPRequest",
+      "name": "Binds an IP to an Anti-DDoS Pro instance",
+      "output": "CreateBoundIPResponse"
+    },
+    "CreateDDoSAI": {
+      "document": "This API is used to set Anti-DDoS AI protection switches.",
+      "input": "CreateDDoSAIRequest",
+      "name": "Sets Anti-DDoS AI protection switches",
+      "output": "CreateDDoSAIResponse"
+    },
+    "CreateDDoSGeoIPBlockConfig": {
+      "document": "This API is used to add an Anti-DDoS region blocking configuration.",
+      "input": "CreateDDoSGeoIPBlockConfigRequest",
+      "name": "Adds Anti-DDoS region blocking configurations",
+      "output": "CreateDDoSGeoIPBlockConfigResponse"
+    },
+    "CreateDDoSSpeedLimitConfig": {
+      "document": "This API is used to add Anti-DDoS access rate limit configurations.",
+      "input": "CreateDDoSSpeedLimitConfigRequest",
+      "name": "Adds Anti-DDoS access rate limit configurations",
+      "output": "CreateDDoSSpeedLimitConfigResponse"
+    },
+    "CreateDefaultAlarmThreshold": {
+      "document": "This API is used to set the default alarm threshold of an IP.",
+      "input": "CreateDefaultAlarmThresholdRequest",
+      "name": "Sets the default alarm threshold of an IP",
+      "output": "CreateDefaultAlarmThresholdResponse"
+    },
+    "CreateIPAlarmThresholdConfig": {
+      "document": "This API is used to set the default alarm threshold of an IP.",
+      "input": "CreateIPAlarmThresholdConfigRequest",
+      "name": "Sets the alarm threshold of an IP",
+      "output": "CreateIPAlarmThresholdConfigResponse"
+    },
+    "CreateL7RuleCerts": {
+      "document": "This API is used to configure certificates with layer-7 forwarding rules in a batch for SSL testing.",
+      "input": "CreateL7RuleCertsRequest",
+      "name": "Configures certificates with layer-7 forwarding rules in a batch",
+      "output": "CreateL7RuleCertsResponse"
+    },
+    "CreatePacketFilterConfig": {
+      "document": "This API is used to add Anti-DDoS feature filtering rules.",
+      "input": "CreatePacketFilterConfigRequest",
+      "name": "Adds Anti-DDoS feature filtering rules",
+      "output": "CreatePacketFilterConfigResponse"
+    },
+    "CreateProtocolBlockConfig": {
+      "document": "This API is used to set Anti-DDoS protocol blocking configurations.",
+      "input": "CreateProtocolBlockConfigRequest",
+      "name": "Sets Anti-DDoS protocol blocking configurations",
+      "output": "CreateProtocolBlockConfigResponse"
+    },
+    "CreateSchedulingDomain": {
+      "document": "This API is used to create a domain name for IP scheduling and switching.",
+      "input": "CreateSchedulingDomainRequest",
+      "name": "Creates a domain name for IP scheduling and switching",
+      "output": "CreateSchedulingDomainResponse"
+    },
+    "CreateWaterPrintConfig": {
+      "document": "This API is used to add Anti-DDoS watermark configurations.",
+      "input": "CreateWaterPrintConfigRequest",
+      "name": "Adds Anti-DDoS watermark configurations",
+      "output": "CreateWaterPrintConfigResponse"
+    },
+    "CreateWaterPrintKey": {
+      "document": "This API is used to add Anti-DDoS watermark keys.",
+      "input": "CreateWaterPrintKeyRequest",
+      "name": "Adds Anti-DDoS watermark keys",
+      "output": "CreateWaterPrintKeyResponse"
+    },
+    "DeleteBlackWhiteIpList": {
+      "document": "This API is used to delete an Anti-DDoS IP blocklist/allowlist.",
+      "input": "DeleteBlackWhiteIpListRequest",
+      "name": "Deletes an Anti-DDoS IP blocklist/allowlist",
+      "output": "DeleteBlackWhiteIpListResponse"
+    },
+    "DeleteDDoSGeoIPBlockConfig": {
+      "document": "This API is used to delete Anti-DDoS region blocking configurations.",
+      "input": "DeleteDDoSGeoIPBlockConfigRequest",
+      "name": "Deletes Anti-DDoS region blocking configurations",
+      "output": "DeleteDDoSGeoIPBlockConfigResponse"
+    },
+    "DeleteDDoSSpeedLimitConfig": {
+      "document": "This API is used to delete Anti-DDoS access rate limit configurations.",
+      "input": "DeleteDDoSSpeedLimitConfigRequest",
+      "name": "Deletes Anti-DDoS access rate limit configurations",
+      "output": "DeleteDDoSSpeedLimitConfigResponse"
+    },
+    "DeletePacketFilterConfig": {
+      "document": "This API is used to delete Anti-DDoS feature filtering rules.",
+      "input": "DeletePacketFilterConfigRequest",
+      "name": "Deletes Anti-DDoS feature filtering rules",
+      "output": "DeletePacketFilterConfigResponse"
+    },
+    "DeleteWaterPrintConfig": {
+      "document": "This API is used to delete Anti-DDoS watermark configurations.",
+      "input": "DeleteWaterPrintConfigRequest",
+      "name": "Deletes Anti-DDoS watermark configurations",
+      "output": "DeleteWaterPrintConfigResponse"
+    },
+    "DeleteWaterPrintKey": {
+      "document": "This API is used to delete Anti-DDoS watermark keys.",
+      "input": "DeleteWaterPrintKeyRequest",
+      "name": "Deletes Anti-DDoS watermark keys",
+      "output": "DeleteWaterPrintKeyResponse"
+    },
+    "DescribeBlackWhiteIpList": {
+      "document": "This API is used to get an Anti-DDoS IP blocklist/allowlist.",
+      "input": "DescribeBlackWhiteIpListRequest",
+      "name": "Gets an Anti-DDoS IP blocklist/allowlist",
+      "output": "DescribeBlackWhiteIpListResponse"
+    },
+    "DescribeDefaultAlarmThreshold": {
+      "document": "This API is used to get the default alarm threshold of an IP.",
+      "input": "DescribeDefaultAlarmThresholdRequest",
+      "name": "Gets the default alarm threshold of an IP",
+      "output": "DescribeDefaultAlarmThresholdResponse"
+    },
+    "DescribeL7RulesBySSLCertId": {
+      "document": "This API is used to query layer-7 rules matched with certificate IDs.",
+      "input": "DescribeL7RulesBySSLCertIdRequest",
+      "name": "Queries layer-7 rules matched with certificate IDs",
+      "output": "DescribeL7RulesBySSLCertIdResponse"
+    },
+    "DescribeListBGPIPInstances": {
+      "document": "This API is used to get a list of Anti-DDoS Advanced instances.\n",
+      "input": "DescribeListBGPIPInstancesRequest",
+      "name": "Gets a list of Anti-DDoS Advanced instances",
+      "output": "DescribeListBGPIPInstancesResponse"
+    },
+    "DescribeListBGPInstances": {
+      "document": "This API is used to get a list of Anti-DDoS Pro instances.\n",
+      "input": "DescribeListBGPInstancesRequest",
+      "name": "Gets a list of Anti-DDoS Pro instances",
+      "output": "DescribeListBGPInstancesResponse"
+    },
+    "DescribeListBlackWhiteIpList": {
+      "document": "This API is used to get a list of Anti-DDoS IP blocklists/allowlists.",
+      "input": "DescribeListBlackWhiteIpListRequest",
+      "name": "Gets a list of Anti-DDoS IP blocklists/allowlists",
+      "output": "DescribeListBlackWhiteIpListResponse"
+    },
+    "DescribeListDDoSAI": {
+      "document": "This API is used to get a list of Anti-DDoS AI protection switches.",
+      "input": "DescribeListDDoSAIRequest",
+      "name": "Gets a list of Anti-DDoS AI protection switches",
+      "output": "DescribeListDDoSAIResponse"
+    },
+    "DescribeListDDoSGeoIPBlockConfig": {
+      "document": "This API is used to get a list of Anti-DDoS region blocking configurations.",
+      "input": "DescribeListDDoSGeoIPBlockConfigRequest",
+      "name": "Gets a list of Anti-DDoS region blocking configurations",
+      "output": "DescribeListDDoSGeoIPBlockConfigResponse"
+    },
+    "DescribeListDDoSSpeedLimitConfig": {
+      "document": "This API is used to get a list of Anti-DDoS access rate limit configurations.",
+      "input": "DescribeListDDoSSpeedLimitConfigRequest",
+      "name": "Gets a list of Anti-DDoS access rate limit configurations",
+      "output": "DescribeListDDoSSpeedLimitConfigResponse"
+    },
+    "DescribeListIPAlarmConfig": {
+      "document": "This API is used to get a list of IP alarm threshold configurations.",
+      "input": "DescribeListIPAlarmConfigRequest",
+      "name": "Gets a list of IP alarm threshold configurations",
+      "output": "DescribeListIPAlarmConfigResponse"
+    },
+    "DescribeListListener": {
+      "document": "This API is used to get a list of forwarding listeners.",
+      "input": "DescribeListListenerRequest",
+      "name": "Gets a list of forwarding listeners",
+      "output": "DescribeListListenerResponse"
+    },
+    "DescribeListPacketFilterConfig": {
+      "document": "This API is used to get a list of Anti-DDoS feature filtering rules.",
+      "input": "DescribeListPacketFilterConfigRequest",
+      "name": "Gets a list of Anti-DDoS feature filtering rules",
+      "output": "DescribeListPacketFilterConfigResponse"
+    },
+    "DescribeListProtectThresholdConfig": {
+      "document": "This API is used to get a list of protection threshold configurations for AI protection switch, protection level, and CC threshold switch.",
+      "input": "DescribeListProtectThresholdConfigRequest",
+      "name": "Gets a list of protection threshold configurations",
+      "output": "DescribeListProtectThresholdConfigResponse"
+    },
+    "DescribeListProtocolBlockConfig": {
+      "document": "This API is used to get a list of Anti-DDoS protocol blocking configurations.",
+      "input": "DescribeListProtocolBlockConfigRequest",
+      "name": "Gets a list of Anti-DDoS protocol blocking configurations",
+      "output": "DescribeListProtocolBlockConfigResponse"
+    },
+    "DescribeListSchedulingDomain": {
+      "document": "This API is used to get a list of intelligent scheduling domain names.",
+      "input": "DescribeListSchedulingDomainRequest",
+      "name": "Gets a list of intelligent scheduling domain names",
+      "output": "DescribeListSchedulingDomainResponse"
+    },
+    "DescribeListWaterPrintConfig": {
+      "document": "This API is used to get a list of Anti-DDoS watermark configurations.",
+      "input": "DescribeListWaterPrintConfigRequest",
+      "name": "Gets a list of Anti-DDoS watermark configurations",
+      "output": "DescribeListWaterPrintConfigResponse"
+    },
+    "DisassociateDDoSEipAddress": {
+      "document": "This API is used to unbind an Anti-DDoS EIP.",
+      "input": "DisassociateDDoSEipAddressRequest",
+      "name": "Unbinds an Anti-DDoS EIP",
+      "output": "DisassociateDDoSEipAddressResponse"
+    },
+    "ModifyDDoSGeoIPBlockConfig": {
+      "document": "This API is used to modify Anti-DDoS region blocking configurations.",
+      "input": "ModifyDDoSGeoIPBlockConfigRequest",
+      "name": "Modifies Anti-DDoS region blocking configurations",
+      "output": "ModifyDDoSGeoIPBlockConfigResponse"
+    },
+    "ModifyDDoSSpeedLimitConfig": {
+      "document": "This API is used to modify Anti-DDoS access rate limit configurations.",
+      "input": "ModifyDDoSSpeedLimitConfigRequest",
+      "name": "Modifies Anti-DDoS access rate limit configurations",
+      "output": "ModifyDDoSSpeedLimitConfigResponse"
+    },
+    "ModifyDomainUsrName": {
+      "document": "This API is used to modify intelligent scheduling domain names.",
+      "input": "ModifyDomainUsrNameRequest",
+      "name": "Modifies intelligent scheduling domain names",
+      "output": "ModifyDomainUsrNameResponse"
+    },
+    "ModifyPacketFilterConfig": {
+      "document": "This API is used to modify Anti-DDoS feature filtering rules.",
+      "input": "ModifyPacketFilterConfigRequest",
+      "name": "Modifies Anti-DDoS feature filtering rules",
+      "output": "ModifyPacketFilterConfigResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-03-09",
+    "serviceNameCN": "DDoS 防护",
+    "serviceShortName": "antiddos"
+  },
+  "objects": {
+    "AssociateDDoSEipAddressRequest": {
+      "document": "AssociateDDoSEipAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIP of the Anti-DDoS instance ID",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Eip",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID to bind. For example, `ins-11112222`. It can be queried in the console or obtained from `InstanceId` returned by `DescribeInstances`.",
+          "example": "ins-11112222",
+          "member": "string",
+          "name": "CvmInstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the CVM instance. For example, `ap-hongkong`.",
+          "example": "ap-hongkong",
+          "member": "string",
+          "name": "CvmRegion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateDDoSEipAddressResponse": {
+      "document": "AssociateDDoSEipAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BGPIPInstance": {
+      "document": "Anti-DDoS Advanced instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance details",
+          "example": "无",
+          "member": "InstanceRelation",
+          "name": "InstanceDetail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance specifications",
+          "example": "无",
+          "member": "BGPIPInstanceSpecification",
+          "name": "SpecificationLimit",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance usage statistics",
+          "example": "无",
+          "member": "BGPIPInstanceUsages",
+          "name": "Usage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the Anti-DDoS instance",
+          "example": "无",
+          "member": "RegionInfo",
+          "name": "Region",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the Anti-DDoS instance. Valid values:\n`idle`: running\n`attacking`: under attacks\n`blocking`: blocked\n`creating`: creating\n`deblocking`: unblocking\n`isolate`: reprocessed and isolated",
+          "example": "idle",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchase time",
+          "example": "2020-06-09 23:12:23",
+          "member": "datetime",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expired At",
+          "example": "2020-05-09 23:12:23",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the Anti-DDoS instance",
+          "example": "Test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "PackInfo",
+          "name": "PackInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Non-BGP package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a non-BGP package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "StaticPackRelation",
+          "name": "StaticPackRelation",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Used to differentiate Anti-DDoS Advanced lines outside the Chinese mainland\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Used to differentiate clusters\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Tgw",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "EIP states: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`. The EIP must be bound to an Anti-DDoS Advanced instance.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "UNBIND",
+          "member": "string",
+          "name": "EipAddressStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is an Anti-DDoS EIP instance. `1`: Yes; `0`: No.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "EipFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "EIP package details of the Anti-DDoS Advanced instance.\nNote: This field is `null` for an Anti-DDoS Advanced instance without using an EIP package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "EipAddressPackRelation",
+          "name": "EipAddressPackRelation",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details of the Anti-DDoS Advanced instance bound to the EIP.\nNote: This field is `null` if the EIP is not bound to an Anti-DDoS Advanced instance.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "EipAddressRelation",
+          "name": "EipAddressInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPIPInstanceSpecification": {
+      "document": "Anti-DDoS Advanced instance specifications",
+      "members": [
+        {
+          "default": "",
+          "document": "Base protection bandwidth (in Gbps)",
+          "member": "uint64",
+          "name": "ProtectBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection bandwidth (in QPS)",
+          "member": "uint64",
+          "name": "ProtectCCQPS",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Normal application bandwidth (in Mbps)",
+          "member": "uint64",
+          "name": "NormalBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of forwarding rules",
+          "member": "uint64",
+          "name": "ForwardRulesLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal status. Valid values:\n`0`: disabled\n`1`: enabled\n]",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS Advanced line. Valid values:\n`1`: BGP\n`2`: China Telecom\n`3`: China Unicom\n`4`: China Mobile\n`99`: third-party line\n]",
+          "member": "uint64",
+          "name": "Line",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Elastic protection bandwidth (in Gbps)",
+          "member": "uint64",
+          "name": "ElasticBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPIPInstanceUsages": {
+      "document": "Anti-DDoS Advanced instance usage statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of used port rules",
+          "member": "uint64",
+          "name": "PortRulesUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of used domain name rules",
+          "member": "uint64",
+          "name": "DomainRulesUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of attack times in the last 7 days",
+          "member": "uint64",
+          "name": "Last7DayAttackCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPInstance": {
+      "document": "Anti-DDoS Pro instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance details",
+          "example": "{\"EipList\":[\"175.27.164.158\"],\"InstanceId\":\"bgp-0000015a\"}",
+          "member": "InstanceRelation",
+          "name": "InstanceDetail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance specifications",
+          "example": "{\"ProtectBandwidth\":30000,\"ProtectCountLimit\":10,\"ProtectIPNumbe",
+          "member": "BGPInstanceSpecification",
+          "name": "SpecificationLimit",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance usage statistics",
+          "example": "{\"ProtectCountUsage\":0,\"ProtectIPNumberUsage\":1,\"Last7DayAttackC",
+          "member": "BGPInstanceUsages",
+          "name": "Usage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the Anti-DDoS instance",
+          "example": "{\"Region\":\"ap-nanjing\"}",
+          "member": "RegionInfo",
+          "name": "Region",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the Anti-DDoS instance. Valid values:\n`idle`: running\n`attacking`: under attacks\n`blocking`: blocked\n`creating`: creating\n`deblocking`: unblocked\n`isolate`: isolated",
+          "example": "idle",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchase Time",
+          "example": "2021-04-25 23:04:10",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "example": "2021-07-25 23:04:10",
+          "member": "datetime",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the Anti-DDoS instance",
+          "example": "“”",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "null",
+          "member": "PackInfo",
+          "name": "PackInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details of the cloud product used by the EIP bound to the Anti-DDoS Pro instance",
+          "example": "[{\"Ip\":\"175.27.164.158\",\"BizType\":\"public\",\"DeviceType\":\"cvm\",\"I",
+          "member": "EipProductInfo",
+          "name": "EipProductInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Binding status of the Anti-DDoS Pro instance\n`idle`: the instance is bound.\n `bounding`: the instance is in binding.\n`failed`: the binding failed.\n]",
+          "example": "idle",
+          "member": "string",
+          "name": "BoundStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Layer-4 protection level",
+          "example": "defalut",
+          "member": "string",
+          "name": "DDoSLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection switch",
+          "example": "1",
+          "member": "int64",
+          "name": "CCEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPInstanceSpecification": {
+      "document": "Anti-DDoS Pro instance specifications",
+      "members": [
+        {
+          "default": "",
+          "document": "Base protection bandwidth (in Gbps)",
+          "member": "uint64",
+          "name": "ProtectBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of protection chances",
+          "member": "uint64",
+          "name": "ProtectCountLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of protection IPs",
+          "member": "uint64",
+          "name": "ProtectIPNumberLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal status. Valid values:\n`0`: disabled\n`1`: enabled\n]",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPInstanceUsages": {
+      "document": "Anti-DDoS Pro instance usage statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of used protection chances",
+          "member": "uint64",
+          "name": "ProtectCountUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of protected IPs",
+          "member": "uint64",
+          "name": "ProtectIPNumberUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of attack times in the last 7 days",
+          "member": "uint64",
+          "name": "Last7DayAttackCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BlackWhiteIpRelation": {
+      "document": "IP blocklist/allowlist",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address",
+          "example": "1.1.2.1",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
+          "example": "black",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "example": "无",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP mask. `0` indicates a 32-bit IP.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Mask",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BoundIpInfo": {
+      "document": "IP bound to the Anti-DDoS Pro instance",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Category of product that can be bound. Valid values: `public` (CVM and CLB), `bm` (BM), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), and `other` (hosted IP).",
+          "example": "public",
+          "member": "string",
+          "name": "BizType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID of the IP. This field is required if the instance ID is bound to a new IP. For example, this field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance ID to bind to a hosted IP.",
+          "example": "none",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP).",
+          "example": "cvm",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISP. Valid values: `0` (China Telecom), `1` (China Unicom), `2` (China Mobile),`5` (BGP).",
+          "example": "5",
+          "member": "uint64",
+          "name": "IspCode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CertIdInsL7Rules": {
+      "document": "Set of rules configured for certificates",
+      "members": [
+        {
+          "default": "",
+          "document": "List of rules configured for certificates",
+          "example": "无",
+          "member": "InsL7Rules",
+          "name": "L7Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateBlackWhiteIpListRequest": {
+      "document": "CreateBlackWhiteIpList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-00001001",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IPs",
+          "example": "[\"1.1.1.1\\r\\n\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
+          "example": "black",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBlackWhiteIpListResponse": {
+      "document": "CreateBlackWhiteIpList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBoundIPRequest": {
+      "document": "CreateBoundIP request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)",
+          "example": "bgp",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgp-000000xe",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of IPs to bind to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, the array contains only one IP. If there are no IPs to bind, it is empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty.",
+          "example": "无",
+          "member": "BoundIpInfo",
+          "name": "BoundDevList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of IPs to unbind from the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, the array contains only one IP; if there are no IPs to unbind, it is empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty.",
+          "example": "无",
+          "member": "BoundIpInfo",
+          "name": "UnBoundDevList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Disused",
+          "example": "yes",
+          "member": "string",
+          "name": "CopyPolicy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBoundIPResponse": {
+      "document": "CreateBoundIP response structure.",
+      "members": [
+        {
+          "document": "Success code",
+          "example": "无",
+          "member": "SuccessCode",
+          "name": "Success",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDDoSAIRequest": {
+      "document": "CreateDDoSAI request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of Anti-DDoS instance IDs",
+          "example": "[\"bgpip-0000011x\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIdList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "AI protection switch. Valid values:\n`on`: enabled\n`off`: disabled\n]",
+          "example": "on",
+          "member": "string",
+          "name": "DDoSAI",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDDoSAIResponse": {
+      "document": "CreateDDoSAI response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDDoSGeoIPBlockConfigRequest": {
+      "document": "CreateDDoSGeoIPBlockConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region blocking configuration. The configuration ID should be cleared when you set this parameter.",
+          "example": "无",
+          "member": "DDoSGeoIPBlockConfig",
+          "name": "DDoSGeoIPBlockConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDDoSGeoIPBlockConfigResponse": {
+      "document": "CreateDDoSGeoIPBlockConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDDoSSpeedLimitConfigRequest": {
+      "document": "CreateDDoSSpeedLimitConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access rate limit configuration. The configuration ID should be cleared when you set this parameter.",
+          "example": "无",
+          "member": "DDoSSpeedLimitConfig",
+          "name": "DDoSSpeedLimitConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDDoSSpeedLimitConfigResponse": {
+      "document": "CreateDDoSSpeedLimitConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDefaultAlarmThresholdRequest": {
+      "document": "CreateDefaultAlarmThreshold request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Default alarm threshold configuration",
+          "example": "无",
+          "member": "DefaultAlarmThreshold",
+          "name": "DefaultAlarmConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Product category. Valid values:\n`bgp`: Anti-DDoS Pro\n`bgpip`: Anti-DDoS Advanced\n]",
+          "example": "bgp",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDefaultAlarmThresholdResponse": {
+      "document": "CreateDefaultAlarmThreshold response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIPAlarmThresholdConfigRequest": {
+      "document": "CreateIPAlarmThresholdConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IP alarm threshold configurations",
+          "example": "无",
+          "member": "IPAlarmThresholdRelation",
+          "name": "IpAlarmThresholdConfigList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIPAlarmThresholdConfigResponse": {
+      "document": "CreateIPAlarmThresholdConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL7RuleCertsRequest": {
+      "document": "CreateL7RuleCerts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SSL certificate ID",
+          "example": "cMgC0TpV",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of Layer-7 domain name forwarding rules",
+          "example": "无",
+          "member": "InsL7Rules",
+          "name": "L7Rules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL7RuleCertsResponse": {
+      "document": "CreateL7RuleCerts response structure.",
+      "members": [
+        {
+          "document": "Success code",
+          "example": "无",
+          "member": "SuccessCode",
+          "name": "Success",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePacketFilterConfigRequest": {
+      "document": "CreatePacketFilterConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Feature filtering rules",
+          "example": "无",
+          "member": "PacketFilterConfig",
+          "name": "PacketFilterConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePacketFilterConfigResponse": {
+      "document": "CreatePacketFilterConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProtocolBlockConfigRequest": {
+      "document": "CreateProtocolBlockConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol blocking configuration",
+          "example": "无",
+          "member": "ProtocolBlockConfig",
+          "name": "ProtocolBlockConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProtocolBlockConfigResponse": {
+      "document": "CreateProtocolBlockConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSchedulingDomainRequest": {
+      "document": "CreateSchedulingDomain request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "CreateSchedulingDomainResponse": {
+      "document": "CreateSchedulingDomain response structure.",
+      "members": [
+        {
+          "document": "Created domain name",
+          "example": "test123.anever.cn",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWaterPrintConfigRequest": {
+      "document": "CreateWaterPrintConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark configuration",
+          "example": "无",
+          "member": "WaterPrintConfig",
+          "name": "WaterPrintConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWaterPrintConfigResponse": {
+      "document": "CreateWaterPrintConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWaterPrintKeyRequest": {
+      "document": "CreateWaterPrintKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWaterPrintKeyResponse": {
+      "document": "CreateWaterPrintKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DDoSAIRelation": {
+      "document": "Anti-DDoS AI protection switch",
+      "members": [
+        {
+          "default": "",
+          "document": "AI protection switch. Valid values:\n`on`: enabled\n`off`: disabled\n]",
+          "member": "string",
+          "name": "DDoSAI",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DDoSGeoIPBlockConfig": {
+      "document": "Anti-DDoS region blocking configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Region type. Valid values:\noversea: outside the Chinese mainland\n`china`: the Chinese mainland\n`customized`: custom region\n]",
+          "example": "oversea",
+          "member": "string",
+          "name": "RegionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Blocking action. Valid values:\n`drop`: the request is blocked.\n`trans`: the request is allowed.\n]",
+          "example": "drop",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration ID, which is generated after a configuration is added. This field is only required to modify or delete a configuration.",
+          "example": "0",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "When `RegionType = customized`, AreaList is required and contains up to 128 areas.",
+          "example": "100025",
+          "member": "int64",
+          "name": "AreaList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DDoSGeoIPBlockConfigRelation": {
+      "document": "Anti-DDoS region blocking configuration details",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS region blocking configuration",
+          "member": "DDoSGeoIPBlockConfig",
+          "name": "GeoIPBlockConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DDoSSpeedLimitConfig": {
+      "document": "Anti-DDoS access rate limit configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Rate limit mode. Valid values:\n`1`: rate limit based on the real server IP\n`2`: rate limit based on the destination port\n]",
+          "member": "uint64",
+          "name": "Mode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rate limit value. This field contains at least one valid rate limit type. Note that only up to one value of each type is supported.",
+          "member": "SpeedValue",
+          "name": "SpeedValues",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is replaced with a new field DstPortList.",
+          "member": "PortSegment",
+          "name": "DstPortScopes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP protocol number. Valid values:\n`ALL`: all protocols\n`TCP`: TCP protocol\n`UDP`: UDP protocol\n`SMP`: SMP protocol\n`1;2–100`: user-defined protocol with up to 8 ranges\n]\nNote: For custom protocol ranges, only protocol number is supported. Multiple ranges are separated by \";\". If the value is `ALL`, any other protocol or protocol number should be excluded.",
+          "member": "string",
+          "name": "ProtocolList",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port range list, which contains up to 8 ranges. Use \";\" to separate multiple ports and \"–\" to indicate a range of ports, as described in the following formats: `0–65535`, `80;443;1000–2000`.",
+          "member": "string",
+          "name": "DstPortList",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DDoSSpeedLimitConfigRelation": {
+      "document": "DDoS access rate limit configuration details",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS access rate limit configuration",
+          "member": "DDoSSpeedLimitConfig",
+          "name": "SpeedLimitConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DefaultAlarmThreshold": {
+      "document": "Default alarm threshold configuration of an IP",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm threshold type. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
+          "member": "uint64",
+          "name": "AlarmType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm threshold (Mbps). The value should be greater than or equal to 0. Note that the alarm threshold configuration will be removed if you pass the parameter for input and set it to 0.",
+          "member": "uint64",
+          "name": "AlarmThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DeleteBlackWhiteIpListRequest": {
+      "document": "DeleteBlackWhiteIpList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-00001001",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IPs",
+          "example": "[\"1.1.1.1\\r\\n\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
+          "example": "black",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBlackWhiteIpListResponse": {
+      "document": "DeleteBlackWhiteIpList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDDoSGeoIPBlockConfigRequest": {
+      "document": "DeleteDDoSGeoIPBlockConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region blocking configuration. The configuration ID cannot be empty when you set this parameter.",
+          "example": "无",
+          "member": "DDoSGeoIPBlockConfig",
+          "name": "DDoSGeoIPBlockConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDDoSGeoIPBlockConfigResponse": {
+      "document": "DeleteDDoSGeoIPBlockConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDDoSSpeedLimitConfigRequest": {
+      "document": "DeleteDDoSSpeedLimitConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access rate limit configuration. The configuration ID cannot be empty when you set this parameter.",
+          "example": "无",
+          "member": "DDoSSpeedLimitConfig",
+          "name": "DDoSSpeedLimitConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDDoSSpeedLimitConfigResponse": {
+      "document": "DeleteDDoSSpeedLimitConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePacketFilterConfigRequest": {
+      "document": "DeletePacketFilterConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Feature filtering configuration",
+          "example": "无",
+          "member": "PacketFilterConfig",
+          "name": "PacketFilterConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePacketFilterConfigResponse": {
+      "document": "DeletePacketFilterConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWaterPrintConfigRequest": {
+      "document": "DeleteWaterPrintConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWaterPrintConfigResponse": {
+      "document": "DeleteWaterPrintConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWaterPrintKeyRequest": {
+      "document": "DeleteWaterPrintKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark key ID",
+          "example": "000000f8",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWaterPrintKeyResponse": {
+      "document": "DeleteWaterPrintKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlackWhiteIpListRequest": {
+      "document": "DescribeBlackWhiteIpList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-00001001",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlackWhiteIpListResponse": {
+      "document": "DescribeBlackWhiteIpList response structure.",
+      "members": [
+        {
+          "document": "IP blocklist",
+          "example": "[\"123.123.123.1\"]",
+          "member": "string",
+          "name": "BlackIpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IP allowlist",
+          "example": "[\"123.123.123.2\"]",
+          "member": "string",
+          "name": "WhiteIpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDefaultAlarmThresholdRequest": {
+      "document": "DescribeDefaultAlarmThreshold request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product category. Valid values:\n`bgp`: Anti-DDoS Pro\n`bgpip`: Anti-DDoS Advanced\n]",
+          "example": "bgp",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm threshold type filter. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
+          "example": "1",
+          "member": "int64",
+          "name": "FilterAlarmType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDefaultAlarmThresholdResponse": {
+      "document": "DescribeDefaultAlarmThreshold response structure.",
+      "members": [
+        {
+          "document": "Default alarm threshold configuration",
+          "example": "无",
+          "member": "DefaultAlarmThreshold",
+          "name": "DefaultAlarmConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL7RulesBySSLCertIdRequest": {
+      "document": "DescribeL7RulesBySSLCertId request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name status. Valid values: `bindable`, `binded`, `opened`, `closed`, `all` (all states).",
+          "example": "bindable",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of certificate IDs",
+          "example": "[\"cMgC0TpV\", \"kmLKvJiD\", \"kmCL9Kv7\",\"kneSCNrZ\"]",
+          "member": "string",
+          "name": "CertIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL7RulesBySSLCertIdResponse": {
+      "document": "DescribeL7RulesBySSLCertId response structure.",
+      "members": [
+        {
+          "document": "Certificate rule set",
+          "example": "无",
+          "member": "CertIdInsL7Rules",
+          "name": "CertSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBGPIPInstancesRequest": {
+      "document": "DescribeListBGPIPInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. For example, you can filter the Anti-DDoS Advanced instance ID by `bgpip-00000001`.",
+          "example": "bgpip-00000001",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS Advanced line filter. Valid values:\n`1`: BGP line\n`2`: China Telecom\n`3`: China Unicom\n`4`: China Mobile\n`99`: third-party line\n]",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterLine",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Region filter. For example, `ap-guangzhou`.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "FilterRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name filter",
+          "example": "test",
+          "member": "string",
+          "name": "FilterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to obtain only Anti-DDoS EIP instances. `1`: Yes; `0`: No.",
+          "example": "1",
+          "member": "int64",
+          "name": "FilterEipType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS Advanced instance binding status filter. Valid values: `BINDING`, `BIND`, `UNBINDING`, `UNBIND`. This filter is only valid when `FilterEipType = 1`.",
+          "example": "无",
+          "member": "string",
+          "name": "FilterEipEipAddressStatus",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBGPIPInstancesResponse": {
+      "document": "DescribeListBGPIPInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "2",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of Anti-DDoS Advanced instances",
+          "example": "无",
+          "member": "BGPIPInstance",
+          "name": "InstanceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBGPInstancesRequest": {
+      "document": "DescribeListBGPInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. For example, `bgp-00000001`.",
+          "example": "bgp-00000001",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region filter. For example, `ap-guangzhou`.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "FilterRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name filter",
+          "example": "test",
+          "member": "string",
+          "name": "FilterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Line filter. Valid values: 1: BGP; 2: Non-BGP.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterLine",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBGPInstancesResponse": {
+      "document": "DescribeListBGPInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of Anti-DDoS Pro instances",
+          "example": "无",
+          "member": "BGPInstance",
+          "name": "InstanceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBlackWhiteIpListRequest": {
+      "document": "DescribeListBlackWhiteIpList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
+          "example": "25",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBlackWhiteIpListResponse": {
+      "document": "DescribeListBlackWhiteIpList response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "2",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IP blocklist/allowlist",
+          "example": "无",
+          "member": "BlackWhiteIpRelation",
+          "name": "IpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListDDoSAIRequest": {
+      "document": "DescribeListDDoSAI request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
+          "example": "25",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListDDoSAIResponse": {
+      "document": "DescribeListDDoSAI response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of AI protection switches",
+          "example": "无",
+          "member": "DDoSAIRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListDDoSGeoIPBlockConfigRequest": {
+      "document": "DescribeListDDoSGeoIPBlockConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-*",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListDDoSGeoIPBlockConfigResponse": {
+      "document": "DescribeListDDoSGeoIPBlockConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of Anti-DDoS region blocking configurations",
+          "example": "无",
+          "member": "DDoSGeoIPBlockConfigRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListDDoSSpeedLimitConfigRequest": {
+      "document": "DescribeListDDoSSpeedLimitConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-*",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListDDoSSpeedLimitConfigResponse": {
+      "document": "DescribeListDDoSSpeedLimitConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of access rate limit configurations",
+          "example": "无",
+          "member": "DDoSSpeedLimitConfigRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListIPAlarmConfigRequest": {
+      "document": "DescribeListIPAlarmConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
+          "example": "25",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm threshold type filter. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
+          "example": "1",
+          "member": "int64",
+          "name": "FilterAlarmType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListIPAlarmConfigResponse": {
+      "document": "DescribeListIPAlarmConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "2",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of IP alarm threshold configurations",
+          "example": "无",
+          "member": "IPAlarmThresholdRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListListenerRequest": {
+      "document": "DescribeListListener request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeListListenerResponse": {
+      "document": "DescribeListListener response structure.",
+      "members": [
+        {
+          "document": "List of layer-4 forwarding listeners",
+          "example": "无",
+          "member": "Layer4Rule",
+          "name": "Layer4Listeners",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of layer-7 forwarding listeners",
+          "example": "无",
+          "member": "Layer7Rule",
+          "name": "Layer7Listeners",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListPacketFilterConfigRequest": {
+      "document": "DescribeListPacketFilterConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
+          "example": "25",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListPacketFilterConfigResponse": {
+      "document": "DescribeListPacketFilterConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Feature filtering configuration",
+          "example": "无",
+          "member": "PacketFilterRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListProtectThresholdConfigRequest": {
+      "document": "DescribeListProtectThresholdConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name filter for querying CC protection thresholds of domain names and protocols",
+          "example": "无",
+          "member": "string",
+          "name": "FilterDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol filter for querying CC protection thresholds of domain names and protocols",
+          "example": "无",
+          "member": "string",
+          "name": "FilterProtocol",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListProtectThresholdConfigResponse": {
+      "document": "DescribeListProtectThresholdConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of protection threshold configurations",
+          "example": "无",
+          "member": "ProtectThresholdRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListProtocolBlockConfigRequest": {
+      "document": "DescribeListProtocolBlockConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListProtocolBlockConfigResponse": {
+      "document": "DescribeListProtocolBlockConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Protocol blocking configuration",
+          "example": "无",
+          "member": "ProtocolBlockRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListSchedulingDomainRequest": {
+      "document": "DescribeListSchedulingDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Scheduling domain name filter",
+          "example": "test.com",
+          "member": "string",
+          "name": "FilterDomain",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListSchedulingDomainResponse": {
+      "document": "DescribeListSchedulingDomain response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of scheduling domain names",
+          "example": "无",
+          "member": "SchedulingDomainInfo",
+          "name": "DomainList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListWaterPrintConfigRequest": {
+      "document": "DescribeListWaterPrintConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListWaterPrintConfigResponse": {
+      "document": "DescribeListWaterPrintConfig response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of watermark configurations",
+          "example": "无",
+          "member": "WaterPrintRelation",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateDDoSEipAddressRequest": {
+      "document": "DisassociateDDoSEipAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIP of the Anti-DDoS instance ID",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Eip",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateDDoSEipAddressResponse": {
+      "document": "DisassociateDDoSEipAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EipAddressPackRelation": {
+      "document": "Details of the Anycast package",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of package IPs",
+          "example": "1",
+          "member": "uint64",
+          "name": "IpCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current expiration time",
+          "example": "2021-03-17 12:32:12",
+          "member": "datetime",
+          "name": "CurDeadline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EipAddressRelation": {
+      "document": "EIP association details",
+      "members": [
+        {
+          "default": "",
+          "document": "Region of the Anti-DDoS instance bound to the EIP. For example, hk indicates Hong Kong.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "hk",
+          "member": "string",
+          "name": "EipAddressRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the bound resource. For example, an ID may be bound to an CVM instance.\nNote: This is field may return `null`, indicating that no valid value can be obtained.",
+          "example": "ins-xx",
+          "member": "string",
+          "name": "EipBoundRscIns",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the bound ENI\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "eni-xx",
+          "member": "string",
+          "name": "EipBoundRscEni",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private IP of the bound resource\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "x.x.x.x",
+          "member": "string",
+          "name": "EipBoundRscVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Modification time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2021-01-01 00:00:00",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EipProductInfo": {
+      "document": "Details of the cloud product used by the EIP",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud product category. Valid values:\n`public`: CVM\n`bm`: BM\n`eni`: ENI\n`vpngw`: VPN gateway\n `natgw`: NAT gateway\n`waf`: WAF\n`fpc`: financial products\n`gaap`: GAAP \n`other`: hosted IP\n]",
+          "member": "string",
+          "name": "BizType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP).",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud instance ID of the IP. This field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance ID to bind to a hosted IP.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ForwardListener": {
+      "document": "Forwarding listener",
+      "members": [
+        {
+          "default": "",
+          "document": "Forwarding listening port. Value range: 1–65535.",
+          "example": "80",
+          "member": "int64",
+          "name": "FrontendPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding protocol. Valid values:\n`TCP`\n`UDP`\n]",
+          "example": "TCP",
+          "member": "string",
+          "name": "ForwardProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "8080",
+          "member": "int64",
+          "name": "FrontendPortEnd",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IPAlarmThresholdRelation": {
+      "document": "Single IP alarm threshold configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm threshold type. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
+          "member": "uint64",
+          "name": "AlarmType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm threshold (Mbps). The value should be greater than or equal to 0. Note that the alarm threshold configuration will be removed if you pass the parameter for input and set it to 0.",
+          "member": "uint64",
+          "name": "AlarmThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IPLineInfo": {
+      "document": "IP line information",
+      "members": [
+        {
+          "default": "",
+          "document": "IP line type. Valid values:\n`bgp`: BGP IP\n`ctcc`: CTCC IP\n`cucc`: CUCC IP\n`cmcc`: CMCC IP\n`abroad`: IP outside the Chinese mainland\n]",
+          "example": "bgp",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Eip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InsL7Rules": {
+      "document": "Layer-7 instance rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule status. Valid values: `0` (the rule is working), `1` (the rule goes into effect), `2` (rule configuration failed), `3` (the rule is being deleted), `5` (rule deletion failed), `6` (waiting to add rules), `7` (waiting to delete rules), `8` (waiting to upload certificates), `9` (resources for the rule not found), `10` (waiting to modify rules), `11` (the rule is being modifying).",
+          "example": "8",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name",
+          "example": "www.xxx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol",
+          "example": "https",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "bgpip-000001eo",
+          "member": "string",
+          "name": "InsId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User App ID",
+          "example": "251008915",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "High-defense port",
+          "example": "443",
+          "member": "string",
+          "name": "VirtualPort",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate ID",
+          "example": "kneSCNrZ",
+          "member": "string",
+          "name": "SSLId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InstanceRelation": {
+      "document": "Instance IP information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance IP",
+          "member": "string",
+          "name": "EipList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Layer4Rule": {
+      "document": "Layer-4 forwarding rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Real server port. Value range: 1–65535.",
+          "member": "uint64",
+          "name": "BackendPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding port. Value range: 1–65535.",
+          "member": "uint64",
+          "name": "FrontendPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding rule. Valid values:\nTCP\nUDP\n]",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of real servers",
+          "member": "SourceServer",
+          "name": "RealServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Layer7Rule": {
+      "document": "Layer-7 forwarding rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of forwarding types",
+          "member": "ProxyTypeInfo",
+          "name": "ProxyTypeList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of real servers",
+          "member": "SourceServer",
+          "name": "RealServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ListenerCcThreholdConfig": {
+      "document": "CC protection thresholds of the domain name and protocol",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol. Value: htttps",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: `0` (disabled), `1` (enabled).",
+          "member": "int64",
+          "name": "CCEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection threshold",
+          "member": "int64",
+          "name": "CCThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyDDoSGeoIPBlockConfigRequest": {
+      "document": "ModifyDDoSGeoIPBlockConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region blocking configuration. The configuration ID cannot be empty when you set this parameter.",
+          "example": "无",
+          "member": "DDoSGeoIPBlockConfig",
+          "name": "DDoSGeoIPBlockConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDDoSGeoIPBlockConfigResponse": {
+      "document": "ModifyDDoSGeoIPBlockConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDDoSSpeedLimitConfigRequest": {
+      "document": "ModifyDDoSSpeedLimitConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access rate limit configuration. The configuration ID cannot be empty when you set this parameter.",
+          "example": "无",
+          "member": "DDoSSpeedLimitConfig",
+          "name": "DDoSSpeedLimitConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDDoSSpeedLimitConfigResponse": {
+      "document": "ModifyDDoSSpeedLimitConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainUsrNameRequest": {
+      "document": "ModifyDomainUsrName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User CNAME",
+          "example": "test.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name",
+          "example": "test",
+          "member": "string",
+          "name": "DomainUserName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainUsrNameResponse": {
+      "document": "ModifyDomainUsrName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPacketFilterConfigRequest": {
+      "document": "ModifyPacketFilterConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Feature filtering configuration",
+          "example": "无",
+          "member": "PacketFilterConfig",
+          "name": "PacketFilterConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPacketFilterConfigResponse": {
+      "document": "ModifyPacketFilterConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PackInfo": {
+      "document": "Package information",
+      "members": [
+        {
+          "default": "",
+          "document": "Package type. Valid values:\n`staticpack`: non-BGP package\n`insurance`: guarantee package\n]",
+          "member": "string",
+          "name": "PackType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package ID",
+          "member": "string",
+          "name": "PackId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PacketFilterConfig": {
+      "document": "Feature filtering configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `tcp`, `udp`, `icmp`, `all`.",
+          "example": "tcp",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start source port. Value range: 0–65535.",
+          "example": "1000",
+          "member": "int64",
+          "name": "SportStart",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End source port. Value range: 0–65535. The value also should be greater than or equal to that of the start source port.",
+          "example": "1001",
+          "member": "int64",
+          "name": "SportEnd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start destination port",
+          "example": "1000",
+          "member": "int64",
+          "name": "DportStart",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End destination port. Value range: 1–65535. The value also should be greater than or equal to that of the start source port.",
+          "example": "1001",
+          "member": "int64",
+          "name": "DportEnd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum message length. Value range: 1–1500.",
+          "example": "300",
+          "member": "int64",
+          "name": "PktlenMin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum message length. Value range: 1–1500. The value also should be greater than or equal to that of the minimum message length.",
+          "example": "500",
+          "member": "int64",
+          "name": "PktlenMax",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values:\n`drop`: discards the request.\n`transmit`: allows the request.\n`drop_black`: discards the request and adds the IP to blocklist.\n`drop_rst`: blocks the request.\n`drop_black_rst`: blocks the request and adds the IP to blocklist.\n`forward`: continues protection.\n]",
+          "example": "drop",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection location:\n`begin_l3`: IP header\n`begin_l4`: TCP/UDP header\n`begin_l5`: T load\n`no_match`: no match\n]",
+          "example": "begin_l5",
+          "member": "string",
+          "name": "MatchBegin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection type:\n`sunday`: keyword\n`pcre`: regular expression\n]",
+          "example": "sunday",
+          "member": "string",
+          "name": "MatchType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection value. Should be in key string or regular expression.\nFor `sunday`, enter a string or a string in hexadecimal byte code representation starting with `\\x`. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nFor `pcre`, enter a regular expression.\n]",
+          "example": "\\x313233",
+          "member": "string",
+          "name": "Str",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection depth starting from the detection position. Value range: [0, 1500].",
+          "example": "500",
+          "member": "int64",
+          "name": "Depth",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset starting from the detection position. Value range: [0, Depth].",
+          "example": "100",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the detection value is included:\n`0`: included\n`1`: excluded\n]",
+          "example": "0",
+          "member": "int64",
+          "name": "IsNot",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Relationship between the first and second detection conditions:\n`and`: under both the first and second detection conditions\n`none`: under only the first detection condition\n]",
+          "example": "none",
+          "member": "string",
+          "name": "MatchLogic",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The second detection position:\n`begin_l5`: load\n`no_match`: no match\n]",
+          "example": "begin_l5",
+          "member": "string",
+          "name": "MatchBegin2",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The second detection type:\n`sunday`: keyword\n`pcre`: regular expression\n]",
+          "example": "sunday",
+          "member": "string",
+          "name": "MatchType2",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The second detection value. Should be in key string or regular expression.\nFor `sunday`, enter a string or a string in hexadecimal byte code representation starting with `\\x`. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nFor `pcre`, enter a regular expression.\n]",
+          "example": "\\x313233",
+          "member": "string",
+          "name": "Str2",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection depth starting from the second detection position. Value range: [0, 1500].",
+          "example": "500",
+          "member": "int64",
+          "name": "Depth2",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset starting from the second detection position. Value range: [0, Depth2].",
+          "example": "200",
+          "member": "int64",
+          "name": "Offset2",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the second detection value is included:\n`0`: included\n`1`: excluded\n]",
+          "example": "0",
+          "member": "int64",
+          "name": "IsNot2",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A rule ID is generated after a feature filtering configuration is added successfully. Leave this field empty when adding a new feature filtering configuration.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PacketFilterRelation": {
+      "document": "Feature filtering information",
+      "members": [
+        {
+          "default": "",
+          "document": "Feature filtering configuration",
+          "member": "PacketFilterConfig",
+          "name": "PacketFilterConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PortSegment": {
+      "document": "Port range information",
+      "members": [
+        {
+          "default": "",
+          "document": "Start port. Value range: 1–65535.",
+          "member": "uint64",
+          "name": "BeginPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End port. The value should be in the range 1–65535 and cannot be less than that of the start port.",
+          "member": "uint64",
+          "name": "EndPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ProtectThresholdRelation": {
+      "document": "Protection threshold configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "DDoS protection level:\n`low`: loose protection\n`middle`: medium protection\n`high`: strict protection\n]",
+          "member": "string",
+          "name": "DDoSLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DDoS cleansing threshold (in Mbps)",
+          "member": "uint64",
+          "name": "DDoSThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DDoS AI protection switch:\n`on`: enabled\n`off`: disabled\n]",
+          "member": "string",
+          "name": "DDoSAI",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC cleansing switch\n`0`: disabled\n`1`: enabled\n]",
+          "member": "uint64",
+          "name": "CCEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC cleansing threshold (in QPS)",
+          "member": "uint64",
+          "name": "CCThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name and protocol protection thresholds",
+          "member": "ListenerCcThreholdConfig",
+          "name": "ListenerCcThresholdList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProtocolBlockConfig": {
+      "document": "Protocol blocking configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "TCP blocking. Valid values: `0` (disabled), `1`(enabled).",
+          "member": "int64",
+          "name": "DropTcp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UDP blocking. Valid values: `0` (disabled), `1`(enabled).",
+          "member": "int64",
+          "name": "DropUdp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ICMP blocking. Valid values: `0` (disabled), `1`(enabled).",
+          "member": "int64",
+          "name": "DropIcmp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Other protocol blocking. Valid values: `0` (disabled), `1`(enabled).",
+          "member": "int64",
+          "name": "DropOther",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Null connection protection. Valid values: `0` (disabled), `1` (enabled).",
+          "member": "int64",
+          "name": "CheckExceptNullConnect",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ProtocolBlockRelation": {
+      "document": "Protocol blocking information",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol blocking configuration",
+          "member": "ProtocolBlockConfig",
+          "name": "ProtocolBlockConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProxyTypeInfo": {
+      "document": "Forwarding type",
+      "members": [
+        {
+          "default": "",
+          "document": "List of forwarding listening ports. Value range: 1–65535.",
+          "member": "int64",
+          "name": "ProxyPorts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding protocol:\n`http`: HTTP protocol\n`https`: HTTPS protocol\n]",
+          "member": "string",
+          "name": "ProxyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RegionInfo": {
+      "document": "Region information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name, such as `ap-guangzhou`",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SchedulingDomainInfo": {
+      "document": "Scheduling domain name details",
+      "members": [
+        {
+          "default": "",
+          "document": "Scheduling domain name",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of line IPs",
+          "member": "IPLineInfo",
+          "name": "LineIPList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scheduling mode. Valid value: `priority` (priority scheduling).",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TTL value recorded from the scheduling domain name resolution",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Running status. Valid values:\n`0`: not running\n`1`: running\n`2`: abnormal\n]",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modification time",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "UsrDomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SourceServer": {
+      "document": "Real server details",
+      "members": [
+        {
+          "default": "",
+          "document": "Types of the real server address, such as IP or domain name.",
+          "member": "string",
+          "name": "RealServer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Types of the real server address:\n`1`: domain name\n`2`: IP\n]",
+          "member": "int64",
+          "name": "RsType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forward weight of the real server. Value range: 1–100.",
+          "member": "int64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpeedValue": {
+      "document": "Rate limit value types, such as pps and bps.",
+      "members": [
+        {
+          "default": "",
+          "document": "Rate limit value types:\n`1`: packets per second (pps)\n`2`: bits per second (bps)\n]",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "member": "uint64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StaticPackRelation": {
+      "document": "Non-BGP package details",
+      "members": [
+        {
+          "default": "",
+          "document": "Base protection bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "member": "uint64",
+          "name": "ProtectBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "member": "uint64",
+          "name": "NormalBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Forwarding rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "member": "uint64",
+          "name": "ForwardRulesLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "CurDeadline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SuccessCode": {
+      "document": "Return code, only used to report success.",
+      "members": [
+        {
+          "default": "",
+          "document": "Description",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Success/Error code",
+          "example": "无",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WaterPrintConfig": {
+      "document": "Watermark configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark offset. Value range: [0, 100).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start status. Valid values:\n`0`: manual start\n`1`: instant start\n]",
+          "example": "0",
+          "member": "int64",
+          "name": "OpenStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of forwarding listeners configured",
+          "example": "[{80,TCP}]",
+          "member": "ForwardListener",
+          "name": "Listeners",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A list of watermark keys is generated after a watermark is added successfully. Each watermark can have up to 2 keys. When there is only one valid key, it cannot be deleted.",
+          "example": "[]",
+          "member": "WaterPrintKey",
+          "name": "Keys",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "checkall",
+          "member": "string",
+          "name": "Verify",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "WaterPrintKey": {
+      "document": "Created watermark key",
+      "members": [
+        {
+          "default": "",
+          "document": "Key version",
+          "example": "无",
+          "member": "string",
+          "name": "KeyVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key content",
+          "example": "无",
+          "member": "string",
+          "name": "KeyContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key ID",
+          "example": "无",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key status. Valid value: `1` (enabled).",
+          "example": "无",
+          "member": "int64",
+          "name": "KeyOpenStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key creation time",
+          "example": "无",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "WaterPrintRelation": {
+      "document": "Watermark configuration details",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark configuration",
+          "member": "WaterPrintConfig",
+          "name": "WaterPrintConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance configured",
+          "member": "InstanceRelation",
+          "name": "InstanceDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

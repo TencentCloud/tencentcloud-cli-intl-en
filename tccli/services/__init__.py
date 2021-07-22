@@ -11,6 +11,9 @@ def action_caller(service):
 
 
 SERVICE_VERSIONS = {
+    "antiddos": [
+        "2020-03-09"
+    ],
     "apigateway": [
         "2018-08-08"
     ],

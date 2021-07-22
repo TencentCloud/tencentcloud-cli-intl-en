@@ -1,4 +1,6 @@
 LICENSE
+include tccli/services/antiddos/v20200309/api.json
+include tccli/services/antiddos/v20200309/examples.json
 include tccli/services/apigateway/v20180808/api.json
 include tccli/services/apigateway/v20180808/examples.json
 include tccli/services/autoscaling/v20180419/api.json
