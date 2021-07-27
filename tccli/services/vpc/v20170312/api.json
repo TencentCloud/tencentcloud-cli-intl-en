@@ -14597,6 +14597,7 @@
         {
           "default": "",
           "document": "NAT gateway ID.",
+          "example": "\"nat-12345678\"",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -14606,6 +14607,7 @@
         {
           "default": "",
           "document": "NAT gateway name.",
+          "example": "\"test\"",
           "member": "string",
           "name": "NatGatewayName",
           "required": true,
@@ -14615,6 +14617,7 @@
         {
           "default": "",
           "document": "NAT gateway creation time.",
+          "example": "\"2021-05-24 19:28:31\"",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -14624,6 +14627,7 @@
         {
           "default": "",
           "document": "The status of the NAT gateway.\n 'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,\n‘FAILED’: Failed.",
+          "example": "\"AVAILABLE\"",
           "member": "string",
           "name": "State",
           "required": true,
@@ -14633,6 +14637,7 @@
         {
           "default": "",
           "document": "The maximum outbound bandwidth of the gateway. Unit: Mbps.",
+          "example": "10",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
           "required": true,
@@ -14642,6 +14647,7 @@
         {
           "default": "",
           "document": "The concurrent connections cap of the gateway.",
+          "example": "10000000",
           "member": "uint64",
           "name": "MaxConcurrentConnection",
           "required": true,
@@ -14651,6 +14657,7 @@
         {
           "default": "",
           "document": "The public IP object array of the bound NAT gateway.",
+          "example": " 无",
           "member": "NatGatewayAddress",
           "name": "PublicIpAddressSet",
           "required": true,
@@ -14660,6 +14667,7 @@
         {
           "default": "",
           "document": "The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Account is in arrears and the service is suspended.",
+          "example": "\"AVAILABLE\"",
           "member": "string",
           "name": "NetworkState",
           "required": true,
@@ -14669,6 +14677,7 @@
         {
           "default": "",
           "document": "The port forwarding rules of the NAT gateway.",
+          "example": "无",
           "member": "DestinationIpPortTranslationNatRule",
           "name": "DestinationIpPortTranslationNatRuleSet",
           "required": true,
@@ -14678,6 +14687,7 @@
         {
           "default": "",
           "document": "VPC instance ID.",
+          "example": "\"vpc-12345678\"",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -14687,6 +14697,7 @@
         {
           "default": "",
           "document": "The availability zone in which the NAT gateway is located.",
+          "example": "\"ap-guangzhou-2\"",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -14696,6 +14707,7 @@
         {
           "default": "",
           "document": "IDs of direct connect gateway associated.",
+          "example": "[\"dcg-12345678\"]",
           "member": "string",
           "name": "DirectConnectGatewayIds",
           "required": true,
@@ -14705,6 +14717,7 @@
         {
           "default": "",
           "document": "Subnet ID.",
+          "example": "\"subnet-12345678\"",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -14714,6 +14727,7 @@
         {
           "default": "",
           "document": "Tag key-value pair.",
+          "example": "无",
           "member": "Tag",
           "name": "TagSet",
           "required": true,
@@ -14723,10 +14737,41 @@
         {
           "default": "",
           "document": "The list of the security groups bound to the NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"sg-12345678\"]",
           "member": "string",
           "name": "SecurityGroupSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "SNAT forwarding rule of the NAT Gateway.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SourceIpTranslationNatRule",
+          "name": "SourceIpTranslationNatRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the NAT Gateway is dedicated.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsExclusive",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "50000",
+          "member": "uint64",
+          "name": "ExclusiveGatewayBandwidth",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -16621,7 +16666,7 @@
         },
         {
           "default": "",
-          "document": "Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.",
+          "document": "Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.\nThis field is required when you want to delete a routing policy.",
           "example": "-",
           "member": "uint64",
           "name": "RouteId",

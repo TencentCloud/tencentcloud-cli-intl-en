@@ -34,22 +34,22 @@
     ],
     "CreateDisks": [
       {
-        "document": "This example shows you how to purchase a 50-GB HDD cloud disk in Guangzhou Zone 2 for one month with upfront payment, assign it to the project “0”, get a notification upon expiration and configure it for automatic renewal.",
+        "document": "This example shows you how to purchase a 50-GB HDD cloud disk in Guangzhou Zone 2 for one month with upfront payment, assign it to the project “0”, get a notification upon expiration and enable automatic renewal for it.",
         "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_HSSD\n&DiskCount=1\n&DiskSize=500\n&Placement.Zone=ap-guangzhou-2\n&Placement.ProjectId=0\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&DiskChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&ThroughputPerformance=100\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-lzrg2pwi\"\n        ],\n        \"RequestId\": \"6a57da9a-2049-7182-2de3-5a1f8014ccfd\"\n    }\n}",
         "title": "Purchasing a cloud disk with basic parameters"
       },
       {
-        "document": "This example shows you how to create a cloud disk by specifying a snapshot without specifying `DiskSize`. In this example, the size of the new cloud disk will be the same as that of the snapshot, and the snapshot data will be copied to the new cloud disk.",
+        "document": "This example shows you how to create a 100-GB pay-as-you-go premium cloud disk billed on an hourly basis in Guangzhou Zone 3.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskCount=1\n&Placement.Zone=ap-guangzhou-3\n&Placement.ProjectId=0\n&DiskChargeType=POSTPAID_BY_HOUR\n&DiskName=postPayDisk\n&DiskSize=100\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-ecjc4cpw\"\n        ],\n        \"RequestId\": \"fe2274fa-eaec-4009-807b-6ffc00963fec\"\n    }\n}",
+        "title": "Creating a pay-as-you-go cloud disk billed hourly"
+      },
+      {
+        "document": "This example shows you how to create a cloud disk by specifying a snapshot without specifying `DiskSize`. In this example, the size of the new cloud disk is the same as that of the snapshot, and the snapshot data will be copied to the new cloud disk.",
         "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_BASIC\n&DiskCount=1\n&SnapshotId=snap-iepc4w3h\n&Placement.Zone=ap-guangzhou-2\n&Placement.ProjectId=0\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&DiskChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-6rz0ilvu\"\n        ],\n        \"RequestId\": \"5e93a212-ca01-0fdc-eedd-5a1fce5e83e6\"\n    }\n}",
         "title": "Creating a cloud disk using a snapshot"
-      },
-      {
-        "document": "This example shows you how to create a pay-as-you-go 100 GB premium cloud disk billed hourly in Guangzhou Zone 3.",
-        "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskCount=1\n&Placement.Zone=ap-guangzhou-3\n&Placement.ProjectId=0\n&DiskChargeType=POSTPAID_BY_HOUR\n&DiskName=postPayDisk\n&DiskSize=100\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-ecjc4cpw\"\n        ],\n        \"RequestId\": \"fe2274fa-eaec-4009-807b-6ffc00963fec\"\n    }\n}",
-        "title": "Creating a hourly-billed cloud disk"
       }
     ],
     "CreateSnapshot": [
@@ -159,7 +159,7 @@
         "document": "",
         "input": "https://cbs.tencentcloudapi.com/?Action=DetachDisks\n&DiskIds.0=disk-lzrg2pwi\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"aafa71a0-ed62-0fac-3ebf-5a1f808d1085\"\n    }\n}",
-        "title": "Unmounting a single cloud disk"
+        "title": "Detaching a single cloud disk"
       }
     ],
     "GetSnapOverview": [

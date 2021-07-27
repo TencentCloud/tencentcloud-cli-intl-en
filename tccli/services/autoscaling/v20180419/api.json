@@ -471,6 +471,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID",
+          "example": "asg-30wif85u",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -480,6 +481,7 @@
         {
           "default": "",
           "document": "Auto scaling group name",
+          "example": "test-asg",
           "member": "string",
           "name": "AutoScalingGroupName",
           "required": true,
@@ -489,6 +491,7 @@
         {
           "default": "",
           "document": "Current status of the auto scaling group. Value range: <br><li>NORMAL: normal <br><li>CVM_ABNORMAL: Exception with the launch configuration <br><li>LB_ABNORMAL: exception with the load balancer <br><li>VPC_ABNORMAL: exception with the VPC <br><li>INSUFFICIENT_BALANCE: insufficient balance <br><li>LB_BACKEND_REGION_NOT_MATCH: the backend region of the CLB instance is not the same as the one of AS service.<br>",
+          "example": "NORMAL",
           "member": "string",
           "name": "AutoScalingGroupStatus",
           "required": true,
@@ -498,6 +501,7 @@
         {
           "default": "",
           "document": "Creation time in UTC format",
+          "example": "2021-05-31T12:38:35Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -507,6 +511,7 @@
         {
           "default": "",
           "document": "Default cooldown period in seconds",
+          "example": "300",
           "member": "int64",
           "name": "DefaultCooldown",
           "required": true,
@@ -516,6 +521,7 @@
         {
           "default": "",
           "document": "Desired number of instances",
+          "example": "0",
           "member": "int64",
           "name": "DesiredCapacity",
           "required": true,
@@ -525,6 +531,7 @@
         {
           "default": "",
           "document": "Enabled status. Value range: `ENABLED`, `DISABLED`",
+          "example": "ENABLED",
           "member": "string",
           "name": "EnabledStatus",
           "required": true,
@@ -534,6 +541,7 @@
         {
           "default": "",
           "document": "List of application load balancers",
+          "example": "[]",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancerSet",
           "required": true,
@@ -543,6 +551,7 @@
         {
           "default": "",
           "document": "Number of instances",
+          "example": "0",
           "member": "int64",
           "name": "InstanceCount",
           "required": true,
@@ -552,6 +561,7 @@
         {
           "default": "",
           "document": "Number of instances in `IN_SERVICE` status",
+          "example": "0",
           "member": "int64",
           "name": "InServiceInstanceCount",
           "required": true,
@@ -561,6 +571,7 @@
         {
           "default": "",
           "document": "Launch configuration ID",
+          "example": "asc-966b7fk2",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -570,6 +581,7 @@
         {
           "default": "",
           "document": "Launch configuration name",
+          "example": "test-lc",
           "member": "string",
           "name": "LaunchConfigurationName",
           "required": true,
@@ -579,6 +591,7 @@
         {
           "default": "",
           "document": "List of Classic load balancer IDs",
+          "example": "[]",
           "member": "string",
           "name": "LoadBalancerIdSet",
           "required": true,
@@ -588,6 +601,7 @@
         {
           "default": "",
           "document": "Maximum number of instances",
+          "example": "10",
           "member": "int64",
           "name": "MaxSize",
           "required": true,
@@ -597,6 +611,7 @@
         {
           "default": "",
           "document": "Minimum number of instances",
+          "example": "0",
           "member": "int64",
           "name": "MinSize",
           "required": true,
@@ -606,6 +621,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -615,6 +631,7 @@
         {
           "default": "",
           "document": "List of subnet IDs",
+          "example": "[\"subnet-rdm629r2\"]",
           "member": "string",
           "name": "SubnetIdSet",
           "required": true,
@@ -624,6 +641,7 @@
         {
           "default": "",
           "document": "Termination policy",
+          "example": "OLDEST_INSTANCE",
           "member": "string",
           "name": "TerminationPolicySet",
           "required": true,
@@ -633,6 +651,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-h3cd5td5",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -642,6 +661,7 @@
         {
           "default": "",
           "document": "List of availability zones",
+          "example": "[]",
           "member": "string",
           "name": "ZoneSet",
           "required": true,
@@ -651,6 +671,7 @@
         {
           "default": "",
           "document": "Retry policy",
+          "example": "NO_RETRY",
           "member": "string",
           "name": "RetryPolicy",
           "required": true,
@@ -660,6 +681,7 @@
         {
           "default": "",
           "document": "Whether the auto scaling group is performing a scaling activity. `IN_ACTIVITY` indicates yes, and `NOT_IN_ACTIVITY` indicates no.",
+          "example": "IN_ACTIVITY",
           "member": "string",
           "name": "InActivityStatus",
           "required": true,
@@ -669,6 +691,7 @@
         {
           "default": "",
           "document": "List of auto scaling group tags",
+          "example": "[]",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -678,6 +701,7 @@
         {
           "default": "",
           "document": "Service settings",
+          "example": "null",
           "member": "ServiceSettings",
           "name": "ServiceSettings",
           "required": true,
@@ -687,6 +711,7 @@
         {
           "default": "",
           "document": "The number of IPv6 addresses that an instance has.",
+          "example": "0",
           "member": "int64",
           "name": "Ipv6AddressCount",
           "required": true,
@@ -696,10 +721,61 @@
         {
           "default": "",
           "document": "The policy applied when there are multiple availability zones/subnets\n<br><li> PRIORITY: when creating instances, choose the availability zone/subnet based on the order in the list from top to bottom. If the first instance is successfully created in the availability zone/subnet of the highest priority, all instances will be created in this availability zone/subnet.\n<br><li> EQUALITY: chooses the availability zone/subnet with the least instances for scale-out. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.",
+          "example": "PRIORITY",
           "member": "string",
           "name": "MultiZoneSubnetPolicy",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).",
+          "example": "CLB",
+          "member": "string",
+          "name": "HealthCheckType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Grace period of the CLB health check",
+          "example": "300",
+          "member": "uint64",
+          "name": "LoadBalancerHealthCheckGracePeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "LAUNCH_CONFIGURATION",
+          "member": "string",
+          "name": "InstanceAllocationPolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "SpotMixedAllocationPolicy",
+          "name": "SpotMixedAllocationPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "CapacityRebalance",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -789,6 +865,24 @@
           "example": "false",
           "member": "bool",
           "name": "ClearDataDisks",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to clear the CVM hostname settings. This parameter is optional and the default value is `false`.\nSetting it to `true` will clear the hostname settings, which means that CVM newly created on this launch configuration will have no hostname.",
+          "example": "false",
+          "member": "bool",
+          "name": "ClearHostNameSettings",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.\nSetting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the “as-{{AutoScalingGroupName}} format.",
+          "example": "false",
+          "member": "bool",
+          "name": "ClearInstanceNameSettings",
           "required": false,
           "type": "bool"
         }
@@ -1685,7 +1779,8 @@
       "members": [
         {
           "default": "",
-          "document": "Data disk type. For more information on limits of data disk types, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Value range: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
           "required": false,
@@ -1695,6 +1790,7 @@
         {
           "default": "",
           "document": "Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "DiskSize",
           "required": false,
@@ -1704,6 +1800,7 @@
         {
           "default": "",
           "document": "Data disk snapshot ID, such as `snap-l8psqwnt`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "snap-l8psqwnt",
           "member": "string",
           "name": "SnapshotId",
           "required": false,
@@ -3782,7 +3879,7 @@
         },
         {
           "default": "",
-          "document": "List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. After `InstanceTypes` is successfully specified for the launch configuration, the original `InstanceType` will be automatically invalidated.",
+          "document": "List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.",
           "example": "S5.SMALL2",
           "member": "string",
           "name": "InstanceTypes",
@@ -3809,7 +3906,7 @@
         },
         {
           "default": "",
-          "document": "Base64-encoded custom data of up to 16 KB. If you want to clear UserData, specify it as an empty string",
+          "document": "Base64-encoded custom data of up to 16 KB. If you want to clear `UserData`, set it to an empty string.",
           "example": "\"\"",
           "member": "string",
           "name": "UserData",
@@ -3827,7 +3924,7 @@
         },
         {
           "default": "",
-          "document": "Information of the public network bandwidth configuration.\nTo modify it or even its subfield, you should specify all the subfields again.",
+          "document": "Information of the public network bandwidth configuration.\nWhen the public outbound network bandwidth is 0 Mbps, assigning a public IP is not allowed. Accordingly, if a public IP is assigned, the new public network outbound bandwidth must be greater than 0 Mbps.",
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
@@ -3845,7 +3942,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set the auto-renewal, and other attributes of the monthly-subscribed instances.\nThis parameter is required when changing the instance billing mode to monthly subscription. It will be automatically discarded after you choose another billing mode.\nThis field requires passing in the `Period` field. Other fields that are not passed in will use their default values.\nThis field can be modified only when the current billing mode is monthly subscription.",
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
@@ -3854,7 +3951,7 @@
         },
         {
           "default": "",
-          "document": "Market-related options for instances, such as parameters related to spot instances.\nThis parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after the spot instance is changed to another instance billing mode.\nTo modify it or even its subfield, you should specify all the subfields again.",
+          "document": "Market-related options for instances, such as parameters related to spot instances.\nThis parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after you choose another instance billing mode.\nThis field requires passing in the `MaxPrice` field under the `SpotOptions`. Other fields that are not passed in will use their default values.\nThis field can be modified only when the current billing mode is spot instance.",
           "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
@@ -3881,12 +3978,30 @@
         },
         {
           "default": "",
-          "document": "Instance data disk configurations. Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.",
+          "document": "Configuration information of instance data disks.\nUp to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.\nThe default data disk should be the same as the system disk.",
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CVM hostname settings.\nThis field is not supported for Windows instances.\nThis field requires passing the `HostName` field. Other fields that are not passed in will use their default values.",
+          "example": "无",
+          "member": "HostNameSettings",
+          "name": "HostNameSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Settings of CVM instance names. \nIf this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.\nThis field requires passing in the `InstanceName` field. Other fields that are not passed in will use their default values.",
+          "example": "无",
+          "member": "InstanceNameSettings",
+          "name": "InstanceNameSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4628,6 +4743,52 @@
       ],
       "usage": "both"
     },
+    "SpotMixedAllocationPolicy": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "BaseCapacity",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "OnDemandPercentageAboveBaseCapacity",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "COST_OPTIMIZED",
+          "member": "string",
+          "name": "SpotAllocationStrategy",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "CompensateWithBaseInstance",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "StartAutoScalingInstancesRequest": {
       "document": "StartAutoScalingInstances request structure.",
       "members": [
@@ -4723,7 +4884,8 @@
       "members": [
         {
           "default": "",
-          "document": "System disk type. For more information on limits of system disk types, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Value range: <br><li>LOCAL_BASIC: Local disk <br><li>LOCAL_SSD: Local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium cloud disk <br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: LOCAL_BASIC.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: CLOUD_PREMIUM.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
           "required": false,
@@ -4733,6 +4895,7 @@
         {
           "default": "",
           "document": "System disk size in GB. Default value: 50\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "50",
           "member": "uint64",
           "name": "DiskSize",
           "required": false,

@@ -132,6 +132,12 @@
       "name": "Runs a function",
       "output": "InvokeResponse"
     },
+    "InvokeFunction": {
+      "document": " This API is used to invoke functions synchronously.",
+      "input": "InvokeFunctionRequest",
+      "name": "Invokes functions synchronously",
+      "output": "InvokeFunctionResponse"
+    },
     "ListAliases": {
       "document": "This API is used to return the list of all aliases under a function. You can filter them by the specific function version.",
       "input": "ListAliasesRequest",
@@ -2765,6 +2771,87 @@
           "name": "ReservedMem",
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InvokeFunctionRequest": {
+      "document": "InvokeFunction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "example": "helloworld",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version number or alias of the triggered function",
+          "example": "$LATEST",
+          "member": "string",
+          "name": "Qualifier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.",
+          "example": "{\\\"key\\\":\\\"value\\\"}",
+          "member": "string",
+          "name": "Event",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If this field is specified for a synchronous invocation, the return value will contain a 4 KB log. Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the return parameter will contain the corresponding function execution log.",
+          "example": "Tail",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Traffic routing config in json format, e.g., {\"k\":\"v\"}. Please note that both \"k\" and \"v\" must be strings. Up to 1024 bytes allowed.",
+          "example": "{\\\"key\\\":\\\"value\\\"}",
+          "member": "string",
+          "name": "RoutingKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InvokeFunctionResponse": {
+      "document": "InvokeFunction response structure.",
+      "members": [
+        {
+          "document": "Function execution result",
+          "example": "无",
+          "member": "Result",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
