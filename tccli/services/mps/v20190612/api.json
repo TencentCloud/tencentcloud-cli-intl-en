@@ -6758,12 +6758,29 @@
       ],
       "usage": "both"
     },
+    "EditMediaOutputConfig": {
+      "document": "Configuration for output files of video editing",
+      "members": [
+        {
+          "default": "",
+          "document": "Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`",
+          "example": "无",
+          "member": "string",
+          "name": "Container",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "EditMediaRequest": {
       "document": "EditMedia request structure.",
       "members": [
         {
           "default": "",
           "document": "Information of input video file.",
+          "example": "无",
           "member": "EditMediaFileInfo",
           "name": "FileInfos",
           "required": true,
@@ -6772,6 +6789,7 @@
         {
           "default": "",
           "document": "Target storage of video processing output file.",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": true,
@@ -6780,6 +6798,7 @@
         {
           "default": "",
           "document": "Target path of video processing output file.",
+          "example": "/clip_result/clip_WildAnimal.{format}",
           "member": "string",
           "name": "OutputObjectPath",
           "required": true,
@@ -6787,7 +6806,17 @@
         },
         {
           "default": "",
+          "document": "Configuration for output files of video editing",
+          "example": "无",
+          "member": "EditMediaOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "Event notification information of task. If this parameter is left empty, no event notifications will be obtained.",
+          "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
           "required": false,
@@ -6796,6 +6825,7 @@
         {
           "default": "",
           "document": "Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.",
+          "example": "无",
           "member": "int64",
           "name": "TasksPriority",
           "required": false,
@@ -6804,6 +6834,7 @@
         {
           "default": "",
           "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
+          "example": "无",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -6812,6 +6843,7 @@
         {
           "default": "",
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "无",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -7011,6 +7043,7 @@
         {
           "default": "",
           "document": "Switch of a face recognition task. Valid values:\n<li>ON: Enables an intelligent face recognition task;</li>\n<li>OFF: Disables an intelligent face recognition task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -7020,6 +7053,7 @@
         {
           "default": "",
           "document": "Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.",
+          "example": "无",
           "member": "float",
           "name": "Score",
           "required": false,
@@ -7029,6 +7063,7 @@
         {
           "default": "",
           "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: Entertainment celebrity;</li>\n<li>sport: Sports celebrity;</li>\n<li>politician: Politically sensitive figure.</li>",
+          "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
           "required": false,
@@ -7037,7 +7072,8 @@
         },
         {
           "default": "",
-          "document": "Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the custom figures will be returned. Valid values:\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.\nUp to 100 tags are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "UserDefineLibraryLabelSet",
           "required": false,
@@ -7047,6 +7083,7 @@
         {
           "default": "",
           "document": "Figure library. Valid values:\n<li>Default: Default figure library;</li>\n<li>UserDefine: Custom figure library.</li>\n<li>All: Both default and custom figure libraries will be used.</li>\nDefault value: All (both default and custom figure libraries will be used.)",
+          "example": "无",
           "member": "string",
           "name": "FaceLibrary",
           "required": false,
@@ -7062,6 +7099,7 @@
         {
           "default": "",
           "document": "Switch of a face recognition task. Valid values:\n<li>ON: Enables an intelligent face recognition task;</li>\n<li>OFF: Disables an intelligent face recognition task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -7071,6 +7109,7 @@
         {
           "default": "",
           "document": "Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100.",
+          "example": "无",
           "member": "float",
           "name": "Score",
           "required": false,
@@ -7080,6 +7119,7 @@
         {
           "default": "",
           "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: Entertainment celebrity;</li>\n<li>sport: Sports celebrity;</li>\n<li>politician: Politically sensitive figure.</li>",
+          "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
           "required": false,
@@ -7088,7 +7128,8 @@
         },
         {
           "default": "",
-          "document": "Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the custom figures will be returned. Valid values:\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.\nUp to 100 tags are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "UserDefineLibraryLabelSet",
           "required": false,
@@ -7098,6 +7139,7 @@
         {
           "default": "",
           "document": "Figure library. Valid values:\n<li>Default: Default figure library;</li>\n<li>UserDefine: Custom figure library.</li>\n<li>All: Both default and custom figure libraries will be used.</li>",
+          "example": "无",
           "member": "string",
           "name": "FaceLibrary",
           "required": false,

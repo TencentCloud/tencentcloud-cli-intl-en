@@ -23,13 +23,13 @@
     "CreateAIRecognitionTemplate": [
       {
         "document": "This example shows you how to create a custom video content recognition template with face recognition enabled. The default face library is used, and the face recognition filter score is 90.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\r\n&Name=Intelligent content recognition template\r\n&Comment=Template 2\r\n&FaceConfigure.Switch=ON\r\n&FaceConfigure.FaceLibrary=Default\r\n&FaceConfigure.Score=90\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 2\n&FaceConfigure.Switch=ON\n&FaceConfigure.FaceLibrary=Default\n&FaceConfigure.Score=90\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a template for multiple video content recognition tasks"
       },
       {
         "document": "This example shows you how to create a custom video content recognition template with face recognition enabled. The default and custom face libraries are used, and the face recognition filter score is 90.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\r\n&Name=Intelligent content recognition template\r\n&Comment=Template 3\r\n&FaceConfigure.Switch=ON\r\n&FaceConfigure.FaceLibrary=All\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 3\n&FaceConfigure.Switch=ON\n&FaceConfigure.FaceLibrary=All\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a template for multiple recognition tasks, with the frame capturing interval specified"
       }
@@ -489,7 +489,7 @@
     "ModifyAIRecognitionTemplate": [
       {
         "document": "This example shows you how to modify a custom video content recognition template to disable full text recognition and enable text keyword recognition.",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\r\n&Definition=30\r\n&OcrFullTextConfigure.Switch=OFF\r\n&OcrWordsConfigure.Switch=ON\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\n&Definition=30\n&OcrFullTextConfigure.Switch=OFF\n&OcrWordsConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling a content recognition task and disabling another"
       }

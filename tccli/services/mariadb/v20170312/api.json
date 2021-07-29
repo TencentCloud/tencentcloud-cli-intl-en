@@ -848,7 +848,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `-2` (eliminated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)",
+          "document": "Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)",
           "example": "暂无",
           "member": "int64",
           "name": "Status",
@@ -1338,6 +1338,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "暂无",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1347,6 +1348,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "暂无",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -1356,6 +1358,7 @@
         {
           "default": "",
           "document": "Region where the instance resides",
+          "example": "暂无",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -1365,6 +1368,7 @@
         {
           "default": "",
           "document": "Availability zone where the instance resides",
+          "example": "暂无",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -1374,6 +1378,7 @@
         {
           "default": "",
           "document": "Instance IP address",
+          "example": "暂无",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -1383,6 +1388,7 @@
         {
           "default": "",
           "document": "Instance IPv6 address",
+          "example": "暂无",
           "member": "string",
           "name": "Vipv6",
           "required": true,
@@ -1392,6 +1398,7 @@
         {
           "default": "",
           "document": "Instance port",
+          "example": "暂无",
           "member": "int64",
           "name": "Vport",
           "required": true,
@@ -1401,6 +1408,7 @@
         {
           "default": "",
           "document": "Instance status",
+          "example": "暂无",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -1410,6 +1418,7 @@
         {
           "default": "",
           "document": "Instance status description",
+          "example": "暂无",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
@@ -1419,6 +1428,7 @@
         {
           "default": "",
           "document": "DCN flag. Valid values: `1` (primary), `2` (disaster recovery)",
+          "example": "暂无",
           "member": "int64",
           "name": "DcnFlag",
           "required": true,
@@ -1428,8 +1438,79 @@
         {
           "default": "",
           "document": "DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)",
+          "example": "暂无",
           "member": "int64",
           "name": "DcnStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores of the instance",
+          "example": "暂无",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance memory capacity in GB",
+          "example": "暂无",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB",
+          "example": "暂无",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode",
+          "example": "暂无",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the instance in the format of 2006-01-02 15:04:05",
+          "example": "暂无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the instance in the format of 2006-01-02 15:04:05",
+          "example": "暂无",
+          "member": "string",
+          "name": "PeriodEndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), `4` (dedicated disaster recovery instance)",
+          "example": "暂无",
+          "member": "int64",
+          "name": "InstanceType",
           "required": true,
           "type": "int",
           "value_allowed_null": false
