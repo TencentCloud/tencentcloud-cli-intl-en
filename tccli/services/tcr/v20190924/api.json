@@ -1,16 +1,46 @@
 {
   "actions": {
+    "CheckInstance": {
+      "document": "This API is used to verify the information of the Enterprise Edition instance.",
+      "input": "CheckInstanceRequest",
+      "name": "Verifies instance information",
+      "output": "CheckInstanceResponse"
+    },
+    "CreateImmutableTagRules": {
+      "document": "This API is used to create the tag immutability rule.",
+      "input": "CreateImmutableTagRulesRequest",
+      "name": "Creates tag immutability rule",
+      "output": "CreateImmutableTagRulesResponse"
+    },
     "CreateMultipleSecurityPolicy": {
       "document": "This API is used to create multiple public network access allowlist policies of the TCR instance.",
       "input": "CreateMultipleSecurityPolicyRequest",
       "name": "Creates multiple public network access allowlist policies of the instance",
       "output": "CreateMultipleSecurityPolicyResponse"
     },
+    "DeleteImmutableTagRules": {
+      "document": " This API is used to delete the tag immutability rule.",
+      "input": "DeleteImmutableTagRulesRequest",
+      "name": "Deletes tag immutability rule",
+      "output": "DeleteImmutableTagRulesResponse"
+    },
     "DeleteMultipleSecurityPolicy": {
       "document": "This API is used to delete multiple public network access allowlist policies of the instance.",
       "input": "DeleteMultipleSecurityPolicyRequest",
       "name": "Deletes multiple public network access allowlist policies of the instance",
       "output": "DeleteMultipleSecurityPolicyResponse"
+    },
+    "DescribeImmutableTagRules": {
+      "document": "This API is used to list the tag immutability rule.",
+      "input": "DescribeImmutableTagRulesRequest",
+      "name": "Lists tag immutability rule",
+      "output": "DescribeImmutableTagRulesResponse"
+    },
+    "ModifyImmutableTagRules": {
+      "document": "This API is used to update the tag immutability rule.",
+      "input": "ModifyImmutableTagRulesRequest",
+      "name": "Updates tag immutability rule",
+      "output": "ModifyImmutableTagRulesResponse"
     }
   },
   "metadata": {
@@ -19,6 +49,96 @@
     "serviceShortName": "tcr"
   },
   "objects": {
+    "CheckInstanceRequest": {
+      "document": "CheckInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be verified.",
+          "example": "test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckInstanceResponse": {
+      "document": "CheckInstance response structure.",
+      "members": [
+        {
+          "document": "Verification result. true: valid, false: invalid",
+          "example": "true",
+          "member": "bool",
+          "name": "IsValidated",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the region where the instance is located.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateImmutableTagRulesRequest": {
+      "document": "CreateImmutableTagRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "library",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule",
+          "example": "无",
+          "member": "ImmutableTagRule",
+          "name": "Rule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateImmutableTagRulesResponse": {
+      "document": "CreateImmutableTagRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateMultipleSecurityPolicyRequest": {
       "document": "CreateMultipleSecurityPolicy request structure.",
       "members": [
@@ -64,6 +184,51 @@
       ],
       "type": "object"
     },
+    "DeleteImmutableTagRulesRequest": {
+      "document": "DeleteImmutableTagRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "library",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "123",
+          "member": "int64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImmutableTagRulesResponse": {
+      "document": "DeleteImmutableTagRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteMultipleSecurityPolicyRequest": {
       "document": "DeleteMultipleSecurityPolicy request structure.",
       "members": [
@@ -100,6 +265,190 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImmutableTagRulesRequest": {
+      "document": "DescribeImmutableTagRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImmutableTagRulesResponse": {
+      "document": "DescribeImmutableTagRules response structure.",
+      "members": [
+        {
+          "document": "Rule list\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImmutableTagRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Namespace with no rules created\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EmptyNs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total rules",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImmutableTagRule": {
+      "document": "Tag immutability rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Repository matching rule",
+          "example": "**",
+          "member": "string",
+          "name": "RepositoryPattern",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag matching rule",
+          "example": "**",
+          "member": "string",
+          "name": "TagPattern",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "repoMatches or repoExcludes",
+          "example": "repoMatches",
+          "member": "string",
+          "name": "RepositoryDecoration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "matches or excludes",
+          "example": "matches",
+          "member": "string",
+          "name": "TagDecoration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disabling rule",
+          "example": "false",
+          "member": "bool",
+          "name": "Disabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "123",
+          "member": "int64",
+          "name": "RuleId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "library",
+          "member": "string",
+          "name": "NsName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyImmutableTagRulesRequest": {
+      "document": "ModifyImmutableTagRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "library",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "123",
+          "member": "int64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule",
+          "example": "无",
+          "member": "ImmutableTagRule",
+          "name": "Rule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyImmutableTagRulesResponse": {
+      "document": "ModifyImmutableTagRules response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
