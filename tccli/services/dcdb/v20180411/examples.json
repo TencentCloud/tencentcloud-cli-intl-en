@@ -8,6 +8,14 @@
         "title": " "
       }
     ],
+    "CancelDcnJob": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=CancelDcnJob\n&InstanceId=tdsql-2rn9lmpx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 11211,\n        \"RequestId\": \"cbca1c8e-e123-11ea-a777-525400542aa6\"\n    }\n}",
+        "title": "N/A"
+      }
+    ],
     "CloneAccount": [
       {
         "document": "",
