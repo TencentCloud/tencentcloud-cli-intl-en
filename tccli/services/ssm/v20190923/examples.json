@@ -1,123 +1,179 @@
 {
   "actions": {
+    "CreateProductSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=CreateProductSecret\n&SecretName=testName\n&UserNamePrefix=testPrefix\n&ProductName=Mysql\n&InstanceID=cdb-vosgis\n&Description=test\n&KmsKeyId=2609a8fd-4584-4f89-98be-8c7ae1b81ef4\n&RotationBeginTime=2006-01-02 15:04:05\n&EnableRotation=true\n&RotationFrequency=35\n&Domains.0=%\n&Tags.0.TagKey=tagKey\n&Tags.0.TagValue=tagVal\n&PrivilegesList.0.PrivilegeName=object\n&PrivilegesList.0.Privileges.0=read\n&PrivilegesList.0.Database=testdb\n&PrivilegesList.0.TableName=testtable\n&PrivilegesList.0.ColumnName=testColumn\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\n        \"SecretName\": \"testName\",\n        \"TagCode\": 0,\n        \"TagMsg\": \"success\",\n        \"FlowID\": 123\n    }\n}",
+        "title": "Creating Tencent Cloud service credential"
+      }
+    ],
     "CreateSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=CreateSecret\r\n&SecretName=test_secret\r\n&VersionId=v1.0\r\n&Description=test create secret\r\n&SecretString=test\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"9debf284-eff9-465a-97b7-163a8b1cccaf\",\r\n        \"SecretName\": \"test_secret\",\r\n        \"VersionId\": \"v1.0\"\r\n    }\r\n}",
-        "title": "Creating a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=CreateSecret\r\n&SecretName=test_secret\r\n&VersionId=v1.0\r\n&Description=test create secret\r\n&SecretString=test\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9debf284-eff9-465a-97b7-163a8b1cccaf\",\n        \"SecretName\": \"test_secret\",\n        \"VersionId\": \"v1.0\"\n    }\n}",
+        "title": "Creating new credential information"
       }
     ],
     "DeleteSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=DeleteSecret\r\n&SecretName=test\r\n&RecoveryWindowInDays=1\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\r\n        \"SecretName\": \"test\",\r\n        \"DeleteTime\": 1574247268\r\n    }\r\n}",
-        "title": "Deleting a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=DeleteSecret\n&SecretName=test\n&RecoveryWindowInDays=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\n        \"SecretName\": \"test\",\n        \"DeleteTime\": 1574247268\n    }\n}",
+        "title": "Deleting credential information"
       }
     ],
     "DeleteSecretVersion": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=DeleteSecretVersion\r\n&SecretName=test\r\n&VersionId=v1.0\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"c701cf6d-4199-4822-8630-d48ee953f485\",\r\n        \"SecretName\": \"test\",\r\n        \"VersionId\": \"v1.0\"\r\n    }\r\n}",
-        "title": "Deleting a Secret version"
+        "input": "https://ssm.tencentcloudapi.com/?Action=DeleteSecretVersion\n&SecretName=test\n&VersionId=v1.0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c701cf6d-4199-4822-8630-d48ee953f485\",\n        \"SecretName\": \"test\",\n        \"VersionId\": \"v1.0\"\n    }\n}",
+        "title": "Deleting specified credential version"
+      }
+    ],
+    "DescribeAsyncRequestInfo": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeAsyncRequestInfo\n&FlowID=123\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Description\": \"task is processing\",\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\n        \"TaskStatus\": 0\n    }\n}",
+        "title": "Querying the execution result of async task"
+      }
+    ],
+    "DescribeRotationDetail": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeRotationDetail\n&SecretName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\n        \"EnableRotation\": true,\n        \"Frequency\": 35,\n        \"LatestRotateTime\": \"2021-01-02 15:04:05\",\n        \"NextRotateBeginTime\": \"2021-02-02 15:04:05\"\n    }\n}",
+        "title": "Querying credential rotation details"
+      }
+    ],
+    "DescribeRotationHistory": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeRotationHistory\n&SecretName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"VersionIDs\": [\n            \"testId\"\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\"\n    }\n}",
+        "title": "Querying the historical versions of rotated credential"
       }
     ],
     "DescribeSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"92ad8e05-8eee-475b-9cc9-48035f6310e1\",\r\n        \"SecretName\": \"test\",\r\n        \"Description\": \"description\",\r\n        \"KmsKeyId\": \"13437ab9-e002-11e9-9936-5254006d0810\",\r\n        \"CreateUin\": 3350000000,\r\n        \"Status\": \"Disabled\",\r\n        \"DeleteTime\": 0,\r\n        \"CreateTime\": 1574160561\r\n    }\r\n}",
-        "title": "Obtaining detailed information of a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeSecret\n&SecretName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"Description\": \"xx\",\n        \"CreateUin\": 1,\n        \"ResourceID\": \"xx\",\n        \"ProductName\": \"xx\",\n        \"RotationStatus\": true,\n        \"KmsKeyId\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"SecretType\": 0,\n        \"SecretName\": \"xx\",\n        \"RotationFrequency\": 1,\n        \"DeleteTime\": 1,\n        \"CreateTime\": 1\n    }\n}",
+        "title": "Getting credential details"
+      }
+    ],
+    "DescribeSupportedProducts": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=DescribeSupportedProducts\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Products\": [\n            \"Mysql\"\n        ],\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\"\n    }\n}",
+        "title": "Querying the list of supported Tencent Cloud services"
       }
     ],
     "DisableSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=DisableSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
-        "output": "{\r\n\"Response\" : {\r\n  \"SecretName\" : \"test\",\r\n  \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\r\n  }\r\n}",
-        "title": "Disabling a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=DisableSecret\n&SecretName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"SecretName\": \"test\",\n        \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\n    }\n}",
+        "title": "Disabling specified credential"
       }
     ],
     "EnableSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=EnableSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
-        "output": "{\r\n\"Response\" : {\r\n  \"SecretName\" : \"test\",\r\n  \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\r\n  }\r\n}",
-        "title": "Enabling a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=EnableSecret\n&SecretName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"SecretName\": \"test\",\n        \"RequestId\": \"1b580852-1e38-11e9-b129-5cb9019b4b00\"\n    }\n}",
+        "title": "Enabling credential"
       }
     ],
     "GetRegions": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=GetRegions\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"d1f030f9-35ea-4727-9867-f7b0e214feea\",\r\n        \"Regions\": [\r\n            \"ap-guangzhou\",\r\n            \"ap-hongkong\"\r\n        ]\r\n    }\r\n}",
-        "title": "Obtaining the list of regions displayed on Console"
+        "input": "https://ssm.tencentcloudapi.com/?Action=GetRegions\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d1f030f9-35ea-4727-9867-f7b0e214feea\",\n        \"Regions\": [\n            \"ap-guangzhou\",\n            \"ap-hongkong\"\n        ]\n    }\n}",
+        "title": "Getting the list of regions displayed in console"
       }
     ],
     "GetSecretValue": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=GetSecretValue\r\n&SecretName=test_secret\r\n&VersionId=v1.0\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"b8e6b67f-3ca7-4341-b4fa-a372bdf4e11c\",\r\n        \"SecretName\": \"test_secret\",\r\n        \"VersionId\": \"v1.0\",\r\n        \"SecretBinary\": \"\",\r\n        \"SecretString\": \"test\"\r\n    }\r\n}",
-        "title": "Obtaining the plaintext of a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=GetSecretValue\n&SecretName=test_secret\n&VersionId=v1.0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8e6b67f-3ca7-4341-b4fa-a372bdf4e11c\",\n        \"SecretName\": \"test_secret\",\n        \"VersionId\": \"v1.0\",\n        \"SecretBinary\": \"\",\n        \"SecretString\": \"test\"\n    }\n}",
+        "title": "Getting the plaintext information of credential"
       }
     ],
     "GetServiceStatus": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=GetServiceStatus\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"1a327ad8-5fef-41d5-b1a1-73d58af83d66\",\r\n        \"ServiceEnabled\": true,\r\n        \"InvalidType\": 1\r\n    }\r\n}",
-        "title": "Obtaining service status"
+        "input": "https://ssm.tencentcloudapi.com/?Action=GetServiceStatus\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a327ad8-5fef-41d5-b1a1-73d58af83d66\",\n        \"ServiceEnabled\": true,\n        \"InvalidType\": 1\n    }\n}",
+        "title": "Getting service status"
       }
     ],
     "ListSecretVersionIds": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=ListSecretVersionIds\r\n&SecretName=test\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"56fe436b-16ca-402e-a9bb-83c14e9cc9e8\",\r\n        \"SecretName\": \"test\",\r\n        \"Versions\": [\r\n            {\r\n                \"VersionId\": \"v2.0\",\r\n                \"CreateTime\": 1574161372\r\n            },\r\n            {\r\n                \"VersionId\": \"v1.0\",\r\n                \"CreateTime\": 1574161748\r\n            }\r\n        ]\r\n    }\r\n}",
-        "title": "Obtaining the list of versions of a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=ListSecretVersionIds\r\n&SecretName=test\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"56fe436b-16ca-402e-a9bb-83c14e9cc9e8\",\n        \"SecretName\": \"test\",\n        \"Versions\": [\n            {\n                \"VersionId\": \"v2.0\",\n                \"CreateTime\": 1574161372\n            },\n            {\n                \"VersionId\": \"v1.0\",\n                \"CreateTime\": 1574161748\n            }\n        ]\n    }\n}",
+        "title": "Getting the version list information of specified credential"
       }
     ],
     "ListSecrets": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=ListSecrets\r\n&Limit=2\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"3586bdc7-c8a5-4ccd-883f-9f256a96533a\",\r\n        \"TotalCount\": 8,\r\n        \"SecretMetadatas\": [\r\n            {\r\n                \"SecretName\": \"test\",\r\n                \"Description\": \"test version 1.0\",\r\n                \"KmsKeyId\": \"13437ab9-e002-11e9-9936-5254006d0810\",\r\n                \"KmsKeyType\": \"DEFAULT\",\r\n                \"CreateUin\": 3350000000,\r\n                \"Status\": \"Enabled\",\r\n                \"DeleteTime\": 0,\r\n                \"CreateTime\": 1574160561\r\n            },\r\n            {\r\n                \"SecretName\": \"test2\",\r\n                \"Description\": \"test desc 2\",\r\n                \"KmsKeyId\": \"13437ab9-e002-11e9-9936-5254006d0810\",\r\n                \"KmsKeyType\": \"DEFAULT\",\r\n                \"CreateUin\": 3350000000,\r\n                \"Status\": \"Enabled\",\r\n                \"DeleteTime\": 0,\r\n                \"CreateTime\": 1574067178\r\n            }\r\n        ]\r\n    }\r\n}",
-        "title": "Obtaining the detailed information list of Secrets"
+        "input": "https://ssm.tencentcloudapi.com/?Action=ListSecrets\n&Limit=2\n&SecretType=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SecretMetadatas\": [\n            {\n                \"Status\": \"xx\",\n                \"Description\": \"xx\",\n                \"CreateUin\": 1,\n                \"ProductName\": \"xx\",\n                \"SecretType\": 0,\n                \"KmsKeyId\": \"xx\",\n                \"KmsKeyType\": \"xx\",\n                \"SecretName\": \"xx\",\n                \"DeleteTime\": 1,\n                \"CreateTime\": 1,\n                \"NextRotationTime\": 1\n            },\n            {\n                \"Status\": \"xx\",\n                \"Description\": \"xx\",\n                \"CreateUin\": 1,\n                \"KmsKeyType\": \"xx\",\n                \"ProductName\": \"xx\",\n                \"KmsKeyId\": \"xx\",\n                \"SecretType\": 0,\n                \"SecretName\": \"xx\",\n                \"DeleteTime\": 1,\n                \"CreateTime\": 1,\n                \"NextRotationTime\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of credential details"
       }
     ],
     "PutSecretValue": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=PutSecretValue\r\n&SecretName=test\r\n&VersionId=v2.0\r\n&SecretString=test v2\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"6764f1f5-8229-4033-a831-46180aee30cf\",\r\n        \"SecretName\": \"test\",\r\n        \"VersionId\": \"v2.0\"\r\n    }\r\n}",
-        "title": "Adding a new Secret version"
+        "input": "https://ssm.tencentcloudapi.com/?Action=PutSecretValue\n&SecretName=test\n&VersionId=v2.0\n&SecretString=test v2\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6764f1f5-8229-4033-a831-46180aee30cf\",\n        \"SecretName\": \"test\",\n        \"VersionId\": \"v2.0\"\n    }\n}",
+        "title": "Adding new credential version"
       }
     ],
     "RestoreSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=RestoreSecret\r\n&SecretName=test\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"bf199317-0d31-4dba-a5e7-217dc37df2d4\",\r\n        \"SecretName\": \"test\"\r\n    }\r\n}",
-        "title": "Restoring a `PendingDelete` Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=RestoreSecret\r\n&SecretName=test\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bf199317-0d31-4dba-a5e7-217dc37df2d4\",\n        \"SecretName\": \"test\"\n    }\n}",
+        "title": "Restoring credential scheduled for deletion"
+      }
+    ],
+    "RotateProductSecret": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=RotateProductSecret\n&SecretName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\",\n        \"FlowID\": 123\n    }\n}",
+        "title": "Rotating Tencent Cloud service credential"
       }
     ],
     "UpdateDescription": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateDescription\r\n&SecretName=test\r\n&Description=new desc\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"dfa4908b-a586-4d44-8f76-3fad156c1be2\",\r\n        \"SecretName\": \"test\"\r\n    }\r\n}",
-        "title": "Updating the description of a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateDescription\r\n&SecretName=test\r\n&Description=new desc\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dfa4908b-a586-4d44-8f76-3fad156c1be2\",\n        \"SecretName\": \"test\"\n    }\n}",
+        "title": "Updating credential description"
+      }
+    ],
+    "UpdateRotationStatus": [
+      {
+        "document": "",
+        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateRotationStatus\n&SecretName=test\n&EnableRotation=true\n&Frequency=35\n&RotationBeginTime=2006-01-02 15:04:05\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2609a8fd-4584-4f89-98be-8c7ae1b81ef4\"\n    }\n}",
+        "title": "Setting Tencent Cloud service credential rotation policy"
       }
     ],
     "UpdateSecret": [
       {
         "document": "",
-        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateSecret\r\n&SecretName=test\r\n&VersionId=v1.0\r\n&SecretString=new value\r\n&<Common Request Parameters>",
-        "output": "{\r\n    \"Response\": {\r\n        \"RequestId\": \"e6993612-6922-4f2d-bb36-37348f36eba5\",\r\n        \"SecretName\": \"test\",\r\n        \"VersionId\": \"v2.0\"\r\n    }\r\n}",
-        "title": "Updating the content of a Secret"
+        "input": "https://ssm.tencentcloudapi.com/?Action=UpdateSecret\n&SecretName=test\n&VersionId=v1.0\n&SecretString=new value\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e6993612-6922-4f2d-bb36-37348f36eba5\",\n        \"SecretName\": \"test\",\n        \"VersionId\": \"v2.0\"\n    }\n}",
+        "title": "Updating credential content"
       }
     ]
   },

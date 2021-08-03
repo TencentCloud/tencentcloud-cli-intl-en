@@ -1,5 +1,11 @@
 {
   "actions": {
+    "CreateProductSecret": {
+      "document": "This API is used to create a Tencent Cloud service credential.",
+      "input": "CreateProductSecretRequest",
+      "name": "Creates Tencent Cloud service credential",
+      "output": "CreateProductSecretResponse"
+    },
     "CreateSecret": {
       "document": "This API is used to create a KMS-encrypted Secret. You can create and store up to 1,000 Secrets in each region.",
       "input": "CreateSecretRequest",
@@ -13,16 +19,40 @@
       "output": "DeleteSecretResponse"
     },
     "DeleteSecretVersion": {
-      "document": "This API is used to delete a version of a Secret. The deletion takes effect immediately. Secret versions in any status can be deleted.",
+      "document": "This API is used to directly delete a single credential version under the specified credential. The deletion takes effect immediately, and the credential version in all status can be deleted.\nThis API is only applicable to user-defined credentials but not Tencent Cloud service credentials.",
       "input": "DeleteSecretVersionRequest",
       "name": "Deletes a Secret version",
       "output": "DeleteSecretVersionResponse"
+    },
+    "DescribeAsyncRequestInfo": {
+      "document": "This API is used to query the execution result of an async task.",
+      "input": "DescribeAsyncRequestInfoRequest",
+      "name": "Queries the execution result of async task",
+      "output": "DescribeAsyncRequestInfoResponse"
+    },
+    "DescribeRotationDetail": {
+      "document": "This API is used to query the details of a credential rotation policy.\nThis API is only applicable to Tencent Cloud service credentials.",
+      "input": "DescribeRotationDetailRequest",
+      "name": "Queries credential rotation details",
+      "output": "DescribeRotationDetailResponse"
+    },
+    "DescribeRotationHistory": {
+      "document": "This API is used to query the historical versions of a rotated credential.\nThis API is only applicable to Tencent Cloud service credentials.",
+      "input": "DescribeRotationHistoryRequest",
+      "name": "Queries the historical versions of rotated credential",
+      "output": "DescribeRotationHistoryResponse"
     },
     "DescribeSecret": {
       "document": "This API is used to obtain the detailed attribute information of a Secret.",
       "input": "DescribeSecretRequest",
       "name": "Obtains the detailed information of a Secret",
       "output": "DescribeSecretResponse"
+    },
+    "DescribeSupportedProducts": {
+      "document": "This API is used to query the list of supported Tencent Cloud services.",
+      "input": "DescribeSupportedProductsRequest",
+      "name": "Queries the list of supported Tencent Cloud services",
+      "output": "DescribeSupportedProductsResponse"
     },
     "DisableSecret": {
       "document": "This API is used to disable a Secret and will change its status to `Disabled`. The plaintext of a disabled Secret cannot be obtained through APIs.",
@@ -43,7 +73,7 @@
       "output": "GetRegionsResponse"
     },
     "GetSecretValue": {
-      "document": "This API is used to obtain the plaintext of a specified Secret and version. Only plaintext of an enabled Secret can be obtained.",
+      "document": "For user-defined credentials, this API is used to get the plaintext information of a credential by specifying the credential name and version.\nFor Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.",
       "input": "GetSecretValueRequest",
       "name": "Obtains the plaintext of a Secret",
       "output": "GetSecretValueResponse"
@@ -67,7 +97,7 @@
       "output": "ListSecretsResponse"
     },
     "PutSecretValue": {
-      "document": "This API is used to add a new version to a specified Secret. Each Secret supports up to 10 versions. You can only add versions to Secrets in `Enabled` or `Disabled` status.",
+      "document": "This API adds the new version of the credential content under the specified credential. One credential can have up to 10 versions. New versions can be added to credentials only in `Enabled` or `Disabled` status.\nThis API is only applicable to user-defined credentials but not Tencent Cloud service credentials.",
       "input": "PutSecretValueRequest",
       "name": "Adds a new Secret version",
       "output": "PutSecretValueResponse"
@@ -78,14 +108,26 @@
       "name": "Restores a `PendingDelete` Secret",
       "output": "RestoreSecretResponse"
     },
+    "RotateProductSecret": {
+      "document": "This API is used to rotate a Tencent Cloud service credential. It is only applicable to Tencent Cloud service credentials in `Enabled` status but not Tencent Cloud service credentials in other status or user-defined credentials.",
+      "input": "RotateProductSecretRequest",
+      "name": "Rotates Tencent Cloud service credential",
+      "output": "RotateProductSecretResponse"
+    },
     "UpdateDescription": {
       "document": "This API is used to update the description of a Secret. This API can only update Secrets in `Enabled` or `Disabled` status.",
       "input": "UpdateDescriptionRequest",
       "name": "Updates the description of a Secret",
       "output": "UpdateDescriptionResponse"
     },
+    "UpdateRotationStatus": {
+      "document": "This API is used to set a Tencent Cloud service credential rotation policy, including the following parameters:\nSpecifies whether to enable rotation\nRotation frequency\nRotation start time",
+      "input": "UpdateRotationStatusRequest",
+      "name": "Sets Tencent Cloud service credential rotation policy",
+      "output": "UpdateRotationStatusResponse"
+    },
     "UpdateSecret": {
-      "document": "This API is used to update the name and version ID of a Secret. Calling this API encrypts the new Secret content and overwrites the old content. This API can only update Secrets in `Enabled` or `Disabled` status.",
+      "document": "This API is used to update the credential content of the specified credential name and version number. Calling this API will encrypt the content of the new credential and overwrite the old content. Only credentials in `Enabled` or `Disabled` status can be updated.\nThis API is only applicable to user-defined credentials but not Tencent Cloud service credentials.",
       "input": "UpdateSecretRequest",
       "name": "Updates the content of a Secret",
       "output": "UpdateSecretResponse"
@@ -97,6 +139,168 @@
     "serviceShortName": "ssm"
   },
   "objects": {
+    "CreateProductSecretRequest": {
+      "document": "CreateProductSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Credential name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens, and underscores and must begin with a letter or digit.",
+          "example": "test_name",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prefix of the user account name, which is specified by you and can contain up to 8 characters.\nSupported character sets include:\nDigits: [0, 9].\nLowercase letters: [a, z].\nUppercase letters: [A, Z].\nSpecial symbols: underscore.\nThe prefix must begin with a letter.",
+          "example": "test_prefix",
+          "member": "string",
+          "name": "UserNamePrefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the Tencent Cloud service bound to the credential, such as `Mysql`. The `DescribeSupportedProducts` API can be used to get the names of the supported Tencent Cloud services.",
+          "example": "Mysql",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tencent Cloud service instance ID.",
+          "example": "cdb-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name of the account in the form of IP. You can enter `%`.",
+          "example": "[\"%\",\"192.168.0.%\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of permissions that need to be granted when the credential is bound to a Tencent Cloud service.",
+          "example": "无",
+          "member": "ProductPrivilegeUnit",
+          "name": "PrivilegesList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Description, which is used to describe the purpose in detail and can contain up to 2,048 bytes.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the KMS CMK that encrypts the credential.\nIf this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.\nYou can also specify a custom KMS CMK created in the same region for encryption.",
+          "example": "无",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "User-Defined rotation start time in the format of 2006-01-02 15:04:05.\nWhen `EnableRotation` is `True`, this parameter is required.",
+          "example": "2006-01-02 15:04:05",
+          "member": "string",
+          "name": "RotationBeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable rotation\nTrue - enable\nFalse - do not enable\nIf this parameter is not specified, `False` will be used by default.",
+          "example": "True",
+          "member": "bool",
+          "name": "EnableRotation",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Rotation frequency in days. Default value: 1 day.",
+          "example": "1",
+          "member": "int64",
+          "name": "RotationFrequency",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProductSecretResponse": {
+      "document": "CreateProductSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the created credential.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag operation return code. 0: success; 1: internal error; 2: business processing error.\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TagCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tag operation return message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TagMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the created Tencent Cloud service credential async task.",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSecretRequest": {
       "document": "CreateSecret request structure.",
       "members": [
@@ -295,6 +499,159 @@
       ],
       "type": "object"
     },
+    "DescribeAsyncRequestInfoRequest": {
+      "document": "DescribeAsyncRequestInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Async task ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAsyncRequestInfoResponse": {
+      "document": "DescribeAsyncRequestInfo response structure.",
+      "members": [
+        {
+          "document": "0: processing, 1: processing succeeded, 2: processing failed",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task description.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRotationDetailRequest": {
+      "document": "DescribeRotationDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies the name of the credential for which to get the credential rotation details.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRotationDetailResponse": {
+      "document": "DescribeRotationDetail response structure.",
+      "members": [
+        {
+          "document": "Specifies whether to allow rotation. True: yes; False: no.",
+          "example": "False",
+          "member": "bool",
+          "name": "EnableRotation",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Rotation frequency in days. Default value: 1 day.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Frequency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Last rotation time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-02 15:04:05",
+          "member": "string",
+          "name": "LatestRotateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Next rotation start time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-02 15:04:05",
+          "member": "string",
+          "name": "NextRotateBeginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRotationHistoryRequest": {
+      "document": "DescribeRotationHistory request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies the name of the credential for which to get the credential rotation records.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRotationHistoryResponse": {
+      "document": "DescribeRotationHistory response structure.",
+      "members": [
+        {
+          "document": "List of version numbers.",
+          "example": "无",
+          "member": "string",
+          "name": "VersionIDs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of version numbers. The maximum number of version numbers that can be shown to users is 10.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSecretRequest": {
       "document": "DescribeSecret request structure.",
       "members": [
@@ -314,50 +671,144 @@
       "members": [
         {
           "document": "Name of the Secret.",
+          "example": "test",
           "member": "string",
           "name": "SecretName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Description of the Secret.",
+          "example": "description",
           "member": "string",
           "name": "Description",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "ID of the KMS CMK used for encryption.",
+          "example": "13437ab9-e002-11e9-9936-5254006d0810",
           "member": "string",
           "name": "KmsKeyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Creator UIN.",
+          "example": "3350000000",
           "member": "uint64",
           "name": "CreateUin",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Secret status, which can be `Enabled`, `Disabled`, or `PendingDelete`.",
+          "document": "Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.",
+          "example": "Disabled",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Deletion time, formatted as a Unix timestamp. For a Secret that is not in `PendingDelete` status, this value is 0.",
+          "example": "1",
           "member": "uint64",
           "name": "DeleteTime",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Creation time.",
+          "example": "1574160561",
           "member": "uint64",
           "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "0: user-defined credential; 1: Tencent Cloud service credential.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "SecretType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tencent Cloud service name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "Mysql",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tencent Cloud service instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "cdb-xxxxxxx",
+          "member": "string",
+          "name": "ResourceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to enable rotation. True: yes; False: no.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "True",
+          "member": "bool",
+          "name": "RotationStatus",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Rotation frequency in days by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "RotationFrequency",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSupportedProductsRequest": {
+      "document": "DescribeSupportedProducts request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeSupportedProductsResponse": {
+      "document": "DescribeSupportedProducts response structure.",
+      "members": [
+        {
+          "document": "List of supported services.",
+          "example": "[\"Mysql\"]",
+          "member": "string",
+          "name": "Products",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of supported services",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -466,6 +917,7 @@
         {
           "default": "",
           "document": "Name of a Secret.",
+          "example": "test_secret",
           "member": "string",
           "name": "SecretName",
           "required": true,
@@ -473,7 +925,8 @@
         },
         {
           "default": "",
-          "document": "ID of the Secret version.",
+          "document": "Specifies the version number of the corresponding credential.\nFor Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.",
+          "example": "v1.0",
           "member": "string",
           "name": "VersionId",
           "required": true,
@@ -487,29 +940,37 @@
       "members": [
         {
           "document": "Name of the Secret.",
+          "example": "test_secret",
           "member": "string",
           "name": "SecretName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "ID of the Secret version.",
+          "example": "v1.0",
           "member": "string",
           "name": "VersionId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "If the `SecretBinary` field in the request body is specified in the `CreateSecret` call, this field is returned and base64-encoded. The caller needs to perform base64 decoding to obtain the original data. Either `SecretBinary` or `SecretString` will be returned.",
+          "document": "When creating a credential (CreateSecret), if you specify binary data, this field will be the Base64-encoded returned result. The application needs to Base64-decode the result to get the original data.\nEither `SecretBinary` or `SecretString` cannot be empty.",
+          "example": "test",
           "member": "string",
           "name": "SecretBinary",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "If the `SecretString` field in the request body is specified in the `CreateSecret` call, this field is returned. Either `SecretBinary` or `SecretString` will be returned.",
+          "document": "When creating a credential (CreateSecret), if you specify general text data, this field will be the returned result.\nEither `SecretBinary` or `SecretString` cannot be empty.",
+          "example": "test",
           "member": "string",
           "name": "SecretString",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -599,6 +1060,7 @@
         {
           "default": "",
           "document": "Starting position of the list, starting at 0. If not specified, 0 is used by default.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -607,6 +1069,7 @@
         {
           "default": "",
           "document": "Maximum number of returned Secrets in a query. If not set or set to 0, 20 is used by default.",
+          "example": "2",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -615,6 +1078,7 @@
         {
           "default": "",
           "document": "Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.",
+          "example": "0",
           "member": "uint64",
           "name": "OrderType",
           "required": false,
@@ -622,7 +1086,8 @@
         },
         {
           "default": "",
-          "document": "Filter according to Secret statuses. `0` (default): all Secrets; `1`: Secrets in `Enabled` status; `2`: Secrets in `Disabled` status; `3`: Secrets in `PendingDelete` status.",
+          "document": "Filter based on credential status.\nThe default value is 0, indicating to query all.\n1: query the list of credentials in `Enabled` status.\n2: query the list of credentials in `Disabled` status.\n3: query the list of credentials in `PendingDelete` status.\n4: query the list of credentials in `PendingCreate` status.\n5: query the list of credentials in `CreateFailed` status.\nThe `PendingCreate` and `CreateFailed` status only take effect when `SecretType` is Tencent Cloud service credential",
+          "example": "0",
           "member": "uint64",
           "name": "State",
           "required": false,
@@ -631,6 +1096,7 @@
         {
           "default": "",
           "document": "Filter according to Secret names. If left empty, this filter is not applied.",
+          "example": "testName",
           "member": "string",
           "name": "SearchSecretName",
           "required": false,
@@ -638,11 +1104,21 @@
         },
         {
           "default": "",
-          "document": "Tag filter condition.",
+          "document": "Tag filter.",
+          "example": "无",
           "member": "TagFilter",
           "name": "TagFilters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "0: user-defined credential (default value).\n1: Tencent Cloud service credential.\nEither 1 or 0 can be selected for this parameter.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SecretType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -673,12 +1149,69 @@
       ],
       "type": "object"
     },
+    "ProductPrivilegeUnit": {
+      "document": "Permission granted when the credential is associated with the service",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission name. Valid values:\nGlobalPrivileges\nDatabasePrivileges\nTablePrivileges\nColumnPrivileges\n\nWhen the permission is `DatabasePrivileges`, the database name must be specified by the `Database` parameter;\n\nWhen the permission is `TablePrivileges`, the database name and the table name in the database must be specified by the `Database` and `TableName` parameters;\n\nWhen the permission is `ColumnPrivileges`, the database name, table name in the database, and column name in the table must be specified by the `Database`, `TableName`, and `ColumnName` parameters.",
+          "example": "GlobalPrivileges",
+          "member": "string",
+          "name": "PrivilegeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission list.\nFor the `Mysql` service, optional permission values are:\n\n1. Valid values of `GlobalPrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"DELETE\",\"CREATE\", \"PROCESS\", \"DROP\",\"REFERENCES\",\"INDEX\",\"ALTER\",\"SHOW DATABASES\",\"CREATE TEMPORARY TABLES\",\"LOCK TABLES\",\"EXECUTE\",\"CREATE VIEW\",\"SHOW VIEW\",\"CREATE ROUTINE\",\"ALTER ROUTINE\",\"EVENT\",\"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.\n\n2. Valid values of `DatabasePrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"DELETE\",\"CREATE\", \"DROP\",\"REFERENCES\",\"INDEX\",\"ALTER\",\"CREATE TEMPORARY TABLES\",\"LOCK TABLES\",\"EXECUTE\",\"CREATE VIEW\",\"SHOW VIEW\",\"CREATE ROUTINE\",\"ALTER ROUTINE\",\"EVENT\",\"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.\n\n3. Valid values of `TablePrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"DELETE\",\"CREATE\", \"DROP\",\"REFERENCES\",\"INDEX\",\"ALTER\",\"CREATE VIEW\",\"SHOW VIEW\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.\n\n4. Valid values of `ColumnPrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"REFERENCES\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "example": "无",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This value takes effect only when `PrivilegeName` is `DatabasePrivileges`.",
+          "example": "无",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This value takes effect only when `PrivilegeName` is `TablePrivileges`, and the `Database` parameter is required in this case to explicitly indicate the database instance.",
+          "example": "无",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This value takes effect only when `PrivilegeName` is `ColumnPrivileges`, and the following parameters are required in this case:\nDatabase: explicitly indicate the database instance.\nTableName: explicitly indicate the table",
+          "example": "无",
+          "member": "string",
+          "name": "ColumnName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "PutSecretValueRequest": {
       "document": "PutSecretValue request structure.",
       "members": [
         {
           "default": "",
           "document": "Name of a Secret where the version is added to.",
+          "example": "test",
           "member": "string",
           "name": "SecretName",
           "required": true,
@@ -687,6 +1220,7 @@
         {
           "default": "",
           "document": "ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
+          "example": "v2.0",
           "member": "string",
           "name": "VersionId",
           "required": true,
@@ -694,7 +1228,8 @@
         },
         {
           "default": "",
-          "document": "Binary Secret information that is base64-encoded. Either `SecretBinary` or `SecretString` must be set.",
+          "document": "Base64-encoded binary credential information.\nEither `SecretBinary` or `SecretString` must be set.",
+          "example": "test",
           "member": "string",
           "name": "SecretBinary",
           "required": false,
@@ -703,6 +1238,7 @@
         {
           "default": "",
           "document": "Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.",
+          "example": "test v2",
           "member": "string",
           "name": "SecretString",
           "required": false,
@@ -770,12 +1306,49 @@
       ],
       "type": "object"
     },
+    "RotateProductSecretRequest": {
+      "document": "RotateProductSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the credential to be rotated.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RotateProductSecretResponse": {
+      "document": "RotateProductSecret response structure.",
+      "members": [
+        {
+          "document": "Async rotation task ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SecretMetadata": {
       "document": "Basic information of the Secret.",
       "members": [
         {
           "default": "",
-          "document": "Name of the Secret.",
+          "document": "Credential name",
+          "example": "testName",
           "member": "string",
           "name": "SecretName",
           "required": true,
@@ -784,7 +1357,8 @@
         },
         {
           "default": "",
-          "document": "Description of the Secret.",
+          "document": "Credential description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -793,7 +1367,8 @@
         },
         {
           "default": "",
-          "document": "KMS Key ID used for Secret encryption.",
+          "document": "KMS `KeyId` used to encrypt the credential",
+          "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "KmsKeyId",
           "required": true,
@@ -802,7 +1377,8 @@
         },
         {
           "default": "",
-          "document": "Creator UIN.",
+          "document": "Creator UIN",
+          "example": "12345",
           "member": "uint64",
           "name": "CreateUin",
           "required": true,
@@ -811,7 +1387,8 @@
         },
         {
           "default": "",
-          "document": "Secret status, which can be `Enabled`, `Disabled`, or `PendingDelete`.",
+          "document": "Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.",
+          "example": "Initializing",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -820,7 +1397,8 @@
         },
         {
           "default": "",
-          "document": "Secret deletion time, formatted as a Unix timestamp. This parameter is only applicable for Secrets in `PendingDelete` status.",
+          "document": "Credential deletion date, which takes effect for credentials in `PendingDelete` status and is in UNIX timestamp format",
+          "example": "1234",
           "member": "uint64",
           "name": "DeleteTime",
           "required": true,
@@ -829,7 +1407,8 @@
         },
         {
           "default": "",
-          "document": "Secret creation time, formatted as a Unix timestamp.",
+          "document": "Credential creation time in UNIX timestamp format",
+          "example": "1234",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -838,12 +1417,53 @@
         },
         {
           "default": "",
-          "document": "Type of KMS CMK used for Secret encryption. `DEFAULT`: default key created by SecretsManager; `CUSTOMER`: user-specified key.",
+          "document": "Type of the KMS CMK used to encrypt the credential. `DEFAULT` represents the default key created by Secrets Manager, and `CUSTOMER` represents the user-specified key",
+          "example": "DEFAULT",
           "member": "string",
           "name": "KmsKeyType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "1: enable rotation; 0: disable rotation\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "Enabled",
+          "member": "int64",
+          "name": "RotationStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time of the next rotation in UNIX timestamp format\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1574160561",
+          "member": "uint64",
+          "name": "NextRotationTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "0: user-defined credential; 1: Tencent Cloud service credential.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "CloudProduct",
+          "member": "int64",
+          "name": "SecretType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -937,12 +1557,67 @@
       ],
       "type": "object"
     },
+    "UpdateRotationStatusRequest": {
+      "document": "UpdateRotationStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tencent Cloud service credential name.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable rotation.\nTrue: enable rotation.\nFalse: disable rotation.",
+          "example": "True",
+          "member": "bool",
+          "name": "EnableRotation",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Rotation frequency in days. Value range: 30–365.",
+          "example": "30",
+          "member": "int64",
+          "name": "Frequency",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User-Defined rotation start time in the format of 2006-01-02 15:04:05.\nWhen `EnableRotation` is `True`, if `RotationBeginTime` is left empty, the current time will be entered by default.",
+          "example": "2006-01-02 15:04:05",
+          "member": "string",
+          "name": "RotationBeginTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRotationStatusResponse": {
+      "document": "UpdateRotationStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpdateSecretRequest": {
       "document": "UpdateSecret request structure.",
       "members": [
         {
           "default": "",
           "document": "Name of a Secret whose content is to be updated.",
+          "example": "test",
           "member": "string",
           "name": "SecretName",
           "required": true,
@@ -951,6 +1626,7 @@
         {
           "default": "",
           "document": "ID of the Secret version whose content is to be updated.",
+          "example": "v1.0",
           "member": "string",
           "name": "VersionId",
           "required": true,
@@ -958,7 +1634,8 @@
         },
         {
           "default": "",
-          "document": "Use this field if the new Secret content is in binary format, and base64-encoded. Either `SecretBinary` or `SecretString` is set.",
+          "document": "This field should be used and Base64-encoded if the content of the new credential is binary.\nEither `SecretBinary` or `SecretString` cannot be empty.",
+          "example": "test",
           "member": "string",
           "name": "SecretBinary",
           "required": false,
@@ -966,7 +1643,8 @@
         },
         {
           "default": "",
-          "document": "Use this field if the new Secret content is in text format, and base64-encoding is not required. Either `SecretBinary` or `SecretString` is set.",
+          "document": "This field should be used without being Base64-encoded if the content of the new credential is text. Either `SecretBinary` or `SecretString` cannot be empty.",
+          "example": "new value",
           "member": "string",
           "name": "SecretString",
           "required": false,

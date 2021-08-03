@@ -19,7 +19,7 @@
       "output": "AllocateAddressesResponse"
     },
     "AssignIpv6Addresses": {
-      "document": "This API (AssignIpv6Addresses) is used to apply for an IPv6 address for the ENI.<br />\nThis API is completed asynchronously. If you need to query the async execution results, use the `RequestId` returned by this API to query the `QueryTask` API.\n* An ENI can only be bound with a limited number of IPs. For more information about resource limits, see<a href=\"/document/product/576/18527\">ENI use limits</a>.\n* You can specify the `IPv6` address when applying. The address type cannot be the primary `IP`. Currently, `IPv6` can only be supported as the secondary `IP`.\n* The address must be unoccupied and is in the subnet to which the ENI belongs.\n* When applying for one to multiple secondary `IPv6` addresses on ENI, the API will return the specified number of secondary `IPv6` addresses in the subnet range where the ENI is located.",
+      "document": "This API is used to apply for an IPv6 address for the ENI. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.\n* The number of IPs bound with an ENI is limited. For more information, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can apply for a specified IPv6 address. Currently, the IPv6 address can only be used as a secondary IP, instead of the primary IP.\n* The address must be an idle IP in the subnet to which the ENI belongs.\n* When applying for one or more secondary IPv6 addresses for an ENI, the API will return the specified number of secondary IPv6 addresses in the subnet range where the ENI is located.",
       "input": "AssignIpv6AddressesRequest",
       "name": "Assigns an IPv6 address",
       "output": "AssignIpv6AddressesResponse"
@@ -85,7 +85,7 @@
       "output": "AttachClassicLinkVpcResponse"
     },
     "AttachNetworkInterface": {
-      "document": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound with multiple ENIs, but only one primary ENI. For more information about the limits, please see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only the running or shutdown CVMs can be bound with ENIs. For more information about the CVM status, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">InstanceStatus</a> in the Data Types.\n* An ENI can only be bound to a VPC-based CVM under the same availability zone as the ENI subnet.",
+      "document": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound with multiple ENIs, but only one primary ENI. * For more information about the limits, see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only the running or shutdown CVMs can be bound with ENIs. For more information about the CVM status, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">InstanceStatus</a> in the Data Types.\n* An ENI can only be bound to a VPC-based CVM under the same availability zone as the ENI subnet.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "AttachNetworkInterfaceRequest",
       "name": "Binds an ENI to a CVM",
       "output": "AttachNetworkInterfaceResponse"
@@ -379,7 +379,7 @@
       "output": "DeleteFlowLogResponse"
     },
     "DeleteHaVip": {
-      "document": "This API (DeleteHaVip) is used to delete Highly Available Virtual IP (HAVIP)<br />\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API.",
+      "document": "This API is used to delete an HAVIP. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "DeleteHaVipRequest",
       "name": "Deletes an HAVIP",
       "output": "DeleteHaVipResponse"
@@ -421,7 +421,7 @@
       "output": "DeleteNetworkAclResponse"
     },
     "DeleteNetworkInterface": {
-      "document": "This API (DeleteNetworkInterface) is used to delete ENIs.\n* An ENI that has been bound to a CVM cannot be deleted.\n* An ENI can be deleted only after being unbound from the server. After the deletion, all private IP addresses associated with the ENI will be released.",
+      "document": "This API is used to delete an ENI.\n* An ENI cannot be deleted when it’s bound to a CVM.\n * After the deletion, all of its private IP addresses will be released.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "DeleteNetworkInterfaceRequest",
       "name": "Deletes an ENI",
       "output": "DeleteNetworkInterfaceResponse"
@@ -822,6 +822,12 @@
       "name": "Views VPC resources.",
       "output": "DescribeVpcResourceDashboardResponse"
     },
+    "DescribeVpcTaskResult": {
+      "document": "This API is used to query the execution result of a VPC task.",
+      "input": "DescribeVpcTaskResultRequest",
+      "name": "Queries the execution result of an async task",
+      "output": "DescribeVpcTaskResultResponse"
+    },
     "DescribeVpcs": {
       "document": "This API (DescribeVpcs) is used to query the VPC list.",
       "input": "DescribeVpcsRequest",
@@ -865,7 +871,7 @@
       "output": "DetachClassicLinkVpcResponse"
     },
     "DetachNetworkInterface": {
-      "document": "This API is used to unbind an ENI from a CVM.",
+      "document": "This API is used to unbind an ENI from a CVM.\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "DetachNetworkInterfaceRequest",
       "name": "Unbinds an ENI from a CVM",
       "output": "DetachNetworkInterfaceResponse"
@@ -949,13 +955,13 @@
       "output": "GetCcnRegionBandwidthLimitsResponse"
     },
     "HaVipAssociateAddressIp": {
-      "document": "This API (HaVipAssociateAddressIp) is used to bind an EIP to an HAVIP.<br />\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API.",
+      "document": "This API is used to bind an EIP to an HAVIP. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "HaVipAssociateAddressIpRequest",
       "name": "Binds an EIP to an HAVIP",
       "output": "HaVipAssociateAddressIpResponse"
     },
     "HaVipDisassociateAddressIp": {
-      "document": "This API (HaVipDisassociateAddressIp) is used to unbind an EIP which has been bound to an HAVIP.<br />\nThis API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to query the `QueryTask` API.",
+      "document": "This API is used to unbind an EIP from an HAVIP. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "HaVipDisassociateAddressIpRequest",
       "name": "Unbinds an EIP from HAVIP",
       "output": "HaVipDisassociateAddressIpResponse"
@@ -985,13 +991,13 @@
       "output": "InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse"
     },
     "MigrateNetworkInterface": {
-      "document": "This API (MigrateNetworkInterface) is used to migrate ENIs.",
+      "document": "This API is used to migrate ENIs.\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "MigrateNetworkInterfaceRequest",
       "name": "Migrates an ENI",
       "output": "MigrateNetworkInterfaceResponse"
     },
     "MigratePrivateIpAddress": {
-      "document": " This API (MigratePrivateIpAddress) is used to migrate the private IPs of ENIs.\n\n* This API is used to migrate a private IP from one ENI to another. Primary IPs cannot be migrated.\n* The ENIs before and after migration must belong to the same subnet.",
+      "document": " This API is used to migrate the private IPs between ENIs.\n* This API is used to migrate a private IP from one ENI to another. Primary IPs cannot be migrated.\n* The source and destination ENIs must be in the same subnet.  \n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "MigratePrivateIpAddressRequest",
       "name": "Migrates private IPs of an ENI",
       "output": "MigratePrivateIpAddressResponse"
@@ -1159,7 +1165,7 @@
       "output": "ModifySecurityGroupAttributeResponse"
     },
     "ModifySecurityGroupPolicies": {
-      "document": "This API is used to reset the egress and ingress policies (SecurityGroupPolicy) of a security group.\n\n<ul>\n<li>This API deletes all the existing egress and ingress policies, and then adds Egress and Ingress policies. It does not support custom indexes `PolicyIndex`.</li>\n<li>For parameters of SecurityGroupPolicySet,<ul>\n\t<li>If `SecurityGroupPolicySet.Version` is set to 0, all policies will be cleared, and `Egress` and `Ingress` will be ignored.</li>\n\t<li>If `SecurityGroupPolicySet.Version` is not set to 0, add `Egress` and `Ingress` policies:<ul>\n\t\t<li>`Protocol`: allows TCP, UDP, ICMP, ICMPV6, GRE, or ALL.</li>\n\t\t<li>`CidrBlock`: a CIDR block in the correct format. In a classic network, if a `CidrBlock` contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n\t\t<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n\t\t<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don't need to change it manually.</li>\n\t\t<li>`Port`: a single port number such as 80, or a port range in the format of '8000-8010'. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`.</li>\n\t\t<li>`Action`: only allows ACCEPT or DROP.</li>\n\t\t<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n</ul></li></ul></li>\n</ul>",
+      "document": "This API is used to reset the `Egress` and `Ingress` rules (SecurityGroupPolicy) of a security group.\n\n<ul>\n<li>This API does not support custom indexes <code>PolicyIndex</code>. </li>\n<li>For <code>SecurityGroupPolicySet</code> parameter,<ul> <ul>\n\t<li>If <code>SecurityGroupPolicySet.Version</code> is set to `0`, all policies will be cleared, and <code>Egress</code> and <code>Ingress</code> will be ignored. </li>\n\t<li>If <code>SecurityGroupPolicySet.Version</code> is not set to `0`, add <code>Egress</code> and <code>Ingress</code> policies: <ul>\n\t\t<li><code>Protocol</code>: <code>TCP</code>, <code>UDP</code>, <code>ICMP</code>, <code>ICMPV6</code>, <code>GRE</code>, or <code>ALL</code>. </li>\n\t\t<li><code>CidrBlock</code>: a CIDR block in the correct format. In the classic network, even if the CIDR block specified in <code>CidrBlock</code> contains the Tencent Cloud private IPs that are not using for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups. </li>\n\t\t<li><code>Ipv6CidrBlock</code>: an IPv6 CIDR block in the correct format. In the classic network, even if the CIDR block specified in <code>Ipv6CidrBlock</code> contains the Tencent Cloud private IPv6 addresses that are not using for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups. </li>\n\t\t<li><code>SecurityGroupId</code>: ID of the security group. It can be the ID of a security group to be modified, or the ID of another security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don't need to change it manually. </li>\n\t\t<li><code>Port</code>: a single port number such as 80, or a port range in the format of '8000-8010'.  You may use this field only if the <code>Protocol</code> field takes the value <code>TCP</code> or <code>UDP</code>. </li>\n\t\t<li><code>Action</code>: only allows <code>ACCEPT</code> or <code>DROP</code>. </li>\n\t\t<li><code>CidrBlock</code>, <code>Ipv6CidrBlock</code>, <code>SecurityGroupId</code>, and <code>AddressTemplate</code> are mutually exclusive. <code>Protocol</code> + <code>Port</code> and <code>ServiceTemplate</code> are mutually exclusive.</li> </li>\n</ul></li></ul></li>\n</ul>",
       "input": "ModifySecurityGroupPoliciesRequest",
       "name": "Modifies the outbound and inbound policies of a security group",
       "output": "ModifySecurityGroupPoliciesResponse"
@@ -1327,7 +1333,7 @@
       "output": "TransformAddressResponse"
     },
     "UnassignIpv6Addresses": {
-      "document": "This API (UnassignIpv6Addresses) is used to release ENI `IPv6` addresses.<br />\nThis API is completed asynchronously. If you need to query the async execution results, use the `RequestId` returned by this API to query the `QueryTask` API.",
+      "document": "This API is used to release the IPv6 addresses of an ENI. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "UnassignIpv6AddressesRequest",
       "name": "Releases IPv6 addresses",
       "output": "UnassignIpv6AddressesResponse"
@@ -1345,7 +1351,7 @@
       "output": "UnassignIpv6SubnetCidrBlockResponse"
     },
     "UnassignPrivateIpAddresses": {
-      "document": "This API (UnassignPrivateIpAddresses) is used to return the private IPs of ENI.\n* To return the secondary private IPs of an ENI, the API will automatically unbind the IPs of an ENI. The primary private IP of the ENI cannot be returned.",
+      "document": "This API is used to return the private IP addresses of an ENI.\n* If a secondary private IP of an ENI is returned, the EIP will be automatically unassociated as well. The primary private IP of the ENI cannot be returned.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "UnassignPrivateIpAddressesRequest",
       "name": "Returns the private IPs of an ENI",
       "output": "UnassignPrivateIpAddressesResponse"
@@ -2209,6 +2215,7 @@
         {
           "default": "",
           "document": "The unique ID of the EIP, such as `eip-11112222`.",
+          "example": "eip-ek0cdz1g",
           "member": "string",
           "name": "AddressId",
           "required": true,
@@ -2217,6 +2224,7 @@
         {
           "default": "",
           "document": "The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.",
+          "example": "ins-1bmpb9tu",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -2225,6 +2233,7 @@
         {
           "default": "",
           "document": "The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.",
+          "example": "eni-jyhoxx61",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": false,
@@ -2233,10 +2242,20 @@
         {
           "default": "",
           "document": "The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.",
+          "example": "10.0.0.120",
           "member": "string",
           "name": "PrivateIpAddress",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable direct access when binding a specified EIP. For more information, see [EIP Direct Access](https://intl.cloud.tencent.com/document/product/1199/41709?from_cn_redirect=1). Valid values: `True` and `False`; default value: `False`. You can set this parameter to `True` when binding an EIP to a CVM instance or an EKS elastic cluster. This parameter is currently in beta. To use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2).",
+          "example": "False",
+          "member": "bool",
+          "name": "EipDirectConnection",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -10132,6 +10151,51 @@
           "member": "ResourceDashboard",
           "name": "ResourceDashboardSet",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcTaskResultRequest": {
+      "document": "DescribeVpcTaskResult request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`RequestId` returned by an async task",
+          "example": "481e9b6e-81d1-4859-b8cf-a673e010b388",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcTaskResultResponse": {
+      "document": "DescribeVpcTaskResult response structure.",
+      "members": [
+        {
+          "document": "Execution result of an async task Valid values: `SUCCESS`: the task has been successfully executed; `FAILED`: the job execution failed; `RUNNING`: the job is executing.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Output of the async task execution result",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Output",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {

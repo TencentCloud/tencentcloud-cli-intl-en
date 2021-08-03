@@ -6,6 +6,12 @@
       "name": "Associates security groups in batches",
       "output": "AssociateSecurityGroupsResponse"
     },
+    "CancelDcnJob": {
+      "document": "This API is used to cancel DCN synchronization.",
+      "input": "CancelDcnJobRequest",
+      "name": "Cancels DCN synchronization",
+      "output": "CancelDcnJobResponse"
+    },
     "CloneAccount": {
       "document": "This API is used to clone an instance account.",
       "input": "CloneAccountRequest",
@@ -294,6 +300,42 @@
     "AssociateSecurityGroupsResponse": {
       "document": "AssociateSecurityGroups response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelDcnJobRequest": {
+      "document": "CancelDcnJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Disaster recovery instance ID",
+          "example": "tdsql-2rn9lmpx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelDcnJobResponse": {
+      "document": "CancelDcnJob response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "11211",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

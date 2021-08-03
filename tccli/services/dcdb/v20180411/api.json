@@ -7,9 +7,9 @@
       "output": "AssociateSecurityGroupsResponse"
     },
     "CancelDcnJob": {
-      "document": "This API is used to cancel CDN synchronization.",
+      "document": "This API is used to cancel DCN synchronization.",
       "input": "CancelDcnJobRequest",
-      "name": "Cancels CDN synchronization",
+      "name": "Cancels DCN synchronization",
       "output": "CancelDcnJobResponse"
     },
     "CloneAccount": {
