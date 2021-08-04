@@ -204,6 +204,14 @@
         "title": "Querying the list of cluster-associated scaling groups"
       }
     ],
+    "DescribeClusterCommonNames": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterCommonNames\n&ClusterId=cls-65r1c5nu\n&SubaccountUins.0=123456\n&SubaccountUins.1=123457\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"CommonNames\": [\n            {\n                \"SubaccountUin\": \"123456\",\n                \"CN\": \"123456-1588769189\"\n            }\n        ],\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
+        "title": "Obtaining the CommomName for the sub-account to access the cluster"
+      }
+    ],
     "DescribeClusterEndpointStatus": [
       {
         "document": "",
@@ -284,6 +292,14 @@
         "title": "Querying the cluster list"
       }
     ],
+    "DescribeEnableVpcCniProgress": [
+      {
+        "document": "This API is used to query the process of the async task created when the user calls EnableVpcCniNetworkType to enable VPC-CNI network mode for GR cluster. ",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnableVpcCniProgress\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"ErrorMessage\": \"xxxx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the task progress of enabling VPC-CNI mode"
+      }
+    ],
     "DescribeExistedInstances": [
       {
         "document": "This example shows you how to query whether the specified existing nodes can be added to a cluster.",
@@ -314,6 +330,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeRouteTableConflicts\n&RouteTableCidrBlock=10.4.0.0/16\n&VpcId=vpc-xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"HasConflict\": false,\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Querying whether there are conflict route tables"
+      }
+    ],
+    "EnableVpcCniNetworkType": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableVpcCniNetworkType\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"EnableStaticIp\": false,\n    \"VpcCniType\": \"tke-route-eni\",\n    \"Subnets\": [\n        \"xxx\",\n        \"yyy\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Enabling VPC-CNI network mode"
       }
     ],
     "GetUpgradeInstanceProgress": [
@@ -374,9 +398,9 @@
     ],
     "SetNodePoolNodeProtection": [
       {
-        "document": "When the scaling in is triggered, the nodes automatically created by the scaling group will not be removed from the cluster.",
+        "document": "When scale-in is triggered, the nodes automatically created by the scaling group will not be removed from the cluster.",
         "input": "https://tke.tencentcloudapi.com/?Action=SetNodePoolNodeProtection\n&ClusterId=cls-xxx\n&NodePoolId=np-xxx\n&InstanceIds.0=ins-xxx\n&ProtectedFromScaleIn=true\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxxxx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"SucceedInstanceIds\": [\n            \"ins-xxx\"\n        ],\n        \"FailedInstanceIds\": [\n            \"xx\"\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Setting removal protection for the node in a node pool"
       }
     ],

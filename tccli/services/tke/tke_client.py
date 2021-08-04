@@ -202,6 +202,60 @@ def doDeleteClusterEndpoint(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateClusterEndpoint(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateClusterEndpointRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateClusterEndpoint(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doEnableVpcCniNetworkType(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.EnableVpcCniNetworkTypeRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.EnableVpcCniNetworkType(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateClusterInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -437,6 +491,33 @@ def doDeleteCluster(args, parsed_globals):
     model = models.DeleteClusterRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DeleteCluster(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeClusterCommonNames(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeClusterCommonNamesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeClusterCommonNames(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -769,7 +850,7 @@ def doCreateClusterNodePool(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateClusterEndpoint(args, parsed_globals):
+def doDescribeEnableVpcCniProgress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -785,9 +866,9 @@ def doCreateClusterEndpoint(args, parsed_globals):
     client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateClusterEndpointRequest()
+    model = models.DescribeEnableVpcCniProgressRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateClusterEndpoint(model)
+    rsp = client.DescribeEnableVpcCniProgress(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1327,6 +1408,8 @@ ACTION_MAP = {
     "ModifyClusterAsGroupOptionAttribute": doModifyClusterAsGroupOptionAttribute,
     "ModifyClusterAsGroupAttribute": doModifyClusterAsGroupAttribute,
     "DeleteClusterEndpoint": doDeleteClusterEndpoint,
+    "CreateClusterEndpoint": doCreateClusterEndpoint,
+    "EnableVpcCniNetworkType": doEnableVpcCniNetworkType,
     "CreateClusterInstances": doCreateClusterInstances,
     "ModifyClusterAttribute": doModifyClusterAttribute,
     "DeleteClusterAsGroups": doDeleteClusterAsGroups,
@@ -1336,6 +1419,7 @@ ACTION_MAP = {
     "DescribeClusterEndpointVipStatus": doDescribeClusterEndpointVipStatus,
     "AddVpcCniSubnets": doAddVpcCniSubnets,
     "DeleteCluster": doDeleteCluster,
+    "DescribeClusterCommonNames": doDescribeClusterCommonNames,
     "CreateClusterAsGroup": doCreateClusterAsGroup,
     "AcquireClusterAdminRole": doAcquireClusterAdminRole,
     "DescribeExistedInstances": doDescribeExistedInstances,
@@ -1348,7 +1432,7 @@ ACTION_MAP = {
     "ModifyClusterNodePool": doModifyClusterNodePool,
     "DescribeClusterNodePools": doDescribeClusterNodePools,
     "CreateClusterNodePool": doCreateClusterNodePool,
-    "CreateClusterEndpoint": doCreateClusterEndpoint,
+    "DescribeEnableVpcCniProgress": doDescribeEnableVpcCniProgress,
     "CreateClusterNodePoolFromExistingAsg": doCreateClusterNodePoolFromExistingAsg,
     "DescribeClusterRouteTables": doDescribeClusterRouteTables,
     "DescribeRegions": doDescribeRegions,

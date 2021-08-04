@@ -144,6 +144,12 @@
       "name": "Cluster-associated scaling group list",
       "output": "DescribeClusterAsGroupsResponse"
     },
+    "DescribeClusterCommonNames": {
+      "document": "This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode. ",
+      "input": "DescribeClusterCommonNamesRequest",
+      "name": "Obtains the CommomName for the sub-account to access the cluster",
+      "output": "DescribeClusterCommonNamesResponse"
+    },
     "DescribeClusterEndpointStatus": {
       "document": "Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
       "input": "DescribeClusterEndpointStatusRequest",
@@ -204,6 +210,12 @@
       "name": "Queries clusters list.",
       "output": "DescribeClustersResponse"
     },
+    "DescribeEnableVpcCniProgress": {
+      "document": "This API is used to query the task progress of enabling VPC-CNI mode.",
+      "input": "DescribeEnableVpcCniProgressRequest",
+      "name": "Queries the async task progress of enabling VPC-CNI mode",
+      "output": "DescribeEnableVpcCniProgressResponse"
+    },
     "DescribeExistedInstances": {
       "document": "This API is used to query one or more existing node and determine whether they can be added to a cluster.",
       "input": "DescribeExistedInstancesRequest",
@@ -227,6 +239,12 @@
       "input": "DescribeRouteTableConflictsRequest",
       "name": "Queries the list of route table conflicts.",
       "output": "DescribeRouteTableConflictsResponse"
+    },
+    "EnableVpcCniNetworkType": {
+      "document": "This API is used to enable the VPC-CNI network mode for GR clusters.",
+      "input": "EnableVpcCniNetworkTypeRequest",
+      "name": "Enables the VPC-CNI network mode",
+      "output": "EnableVpcCniNetworkTypeResponse"
     },
     "GetUpgradeInstanceProgress": {
       "document": "This API is used to obtain the current progress of the node upgrade. ",
@@ -402,6 +420,15 @@
           "example": "[]",
           "member": "string",
           "name": "SkipValidateOptions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to customize the configuration of an instance, which corresponds to the `InstanceIds` one-to-one in sequence. If this parameter is passed in, the default parameter `InstanceAdvancedSettings` will be overwritten and will not take effect. If this parameter is not passed in, the `InstanceAdvancedSettings` will take effect for each instance.\n\nThe array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.",
+          "example": "[]",
+          "member": "InstanceAdvancedSettings",
+          "name": "InstanceAdvancedSettingsOverrides",
           "required": false,
           "type": "list"
         }
@@ -1606,6 +1633,30 @@
       ],
       "usage": "out"
     },
+    "CommonName": {
+      "document": "The CommonName in the certificate of the client corresponding to the user UIN",
+      "members": [
+        {
+          "default": "",
+          "document": "User UIN",
+          "member": "string",
+          "name": "SubaccountUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The CommonName in the certificate of the client corresponding to the sub-account",
+          "member": "string",
+          "name": "CN",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateClusterAsGroupRequest": {
       "document": "CreateClusterAsGroup request structure.",
       "members": [
@@ -2661,6 +2712,60 @@
       ],
       "type": "object"
     },
+    "DescribeClusterCommonNamesRequest": {
+      "document": "DescribeClusterCommonNames request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-65r1c5nu",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sub-account. Up to 50 sub-accounts can be passed in at a time.",
+          "example": "[\"123457\"]",
+          "member": "string",
+          "name": "SubaccountUins",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Role ID. Up to 50 role IDs can be passed in at a time.",
+          "example": "[\"4611686231212124138\"]",
+          "member": "string",
+          "name": "RoleIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterCommonNamesResponse": {
+      "document": "DescribeClusterCommonNames response structure.",
+      "members": [
+        {
+          "document": "The CommonName in the certificate of the client corresponding to the sub-account UIN",
+          "example": "无",
+          "member": "CommonName",
+          "name": "CommonNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClusterEndpointStatusRequest": {
       "document": "DescribeClusterEndpointStatus request structure.",
       "members": [
@@ -2687,7 +2792,7 @@
       "document": "DescribeClusterEndpointStatus response structure.",
       "members": [
         {
-          "document": "Queries cluster access port status (Created = successfully enabled; Creating = in the process of being enabled; NotFound = not enabled).",
+          "document": "The status of cluster access port. It can be `Created` (enabled); `Creating` (enabling) and `NotFound` (not enabled)\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "Created",
           "member": "string",
           "name": "Status",
@@ -3171,6 +3276,51 @@
       ],
       "type": "object"
     },
+    "DescribeEnableVpcCniProgressRequest": {
+      "document": "DescribeEnableVpcCniProgress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cluster for which you want to enable the VPC-CNI mode",
+          "example": "\"cls-xxx\"",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnableVpcCniProgressResponse": {
+      "document": "DescribeEnableVpcCniProgress response structure.",
+      "members": [
+        {
+          "document": "Task status, which can be `Running`, `Succeed`, or `Failed`.",
+          "example": "\"Running\"",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The description for the task status when the task status is “Failed”, for example, failed to install the IPAMD component.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"xxx\"",
+          "member": "string",
+          "name": "ErrorMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeExistedInstancesRequest": {
       "document": "DescribeExistedInstances request structure.",
       "members": [
@@ -3385,6 +3535,69 @@
       ],
       "type": "object"
     },
+    "EnableVpcCniNetworkTypeRequest": {
+      "document": "EnableVpcCniNetworkType request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The VPC-CNI mode. `tke-route-eni`: Multi-IP ENI, `tke-direct-eni`: Independent ENI",
+          "example": "tke-route-eni;tke-direct-eni",
+          "member": "string",
+          "name": "VpcCniType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable static IP address",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableStaticIp",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The container subnet being used",
+          "example": "[\"subnet-aaa\",\"subnet-bbb\"]",
+          "member": "string",
+          "name": "Subnets",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specifies when to release the IP after the Pod termination in static IP mode. It must be longer than 300 seconds. If this parameter is left empty, the IP address will never be released.",
+          "example": "300",
+          "member": "uint64",
+          "name": "ExpiredSeconds",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableVpcCniNetworkTypeResponse": {
+      "document": "EnableVpcCniNetworkType response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "EnhancedService": {
       "document": "Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.",
       "members": [
@@ -3547,6 +3760,7 @@
         {
           "default": "",
           "document": "Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).",
+          "example": "worker",
           "member": "string",
           "name": "NodeRole",
           "required": true,
@@ -3556,6 +3770,7 @@
         {
           "default": "",
           "document": "Reinstallation parameter of existing instances",
+          "example": "无",
           "member": "ExistedInstancesPara",
           "name": "ExistedInstancesPara",
           "required": true,
@@ -3565,10 +3780,21 @@
         {
           "default": "",
           "document": "Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)",
+          "example": "无",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettingsOverride",
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.",
+          "example": "[16,32]",
+          "member": "int64",
+          "name": "DesiredPodNumbers",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3972,7 +4198,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "16",
           "member": "int64",
           "name": "DesiredPodNumber",
@@ -5123,12 +5349,67 @@
     },
     "SetNodePoolNodeProtectionRequest": {
       "document": "SetNodePoolNodeProtection request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "example": "np-xxx",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node ID",
+          "example": "[\"ins-xxx\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether the node needs removal protection",
+          "example": "true",
+          "member": "bool",
+          "name": "ProtectedFromScaleIn",
+          "required": true,
+          "type": "bool"
+        }
+      ],
       "type": "object"
     },
     "SetNodePoolNodeProtectionResponse": {
       "document": "SetNodePoolNodeProtection response structure.",
       "members": [
+        {
+          "document": "ID of the node that has successfully set the removal protection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"ins-xxx\"]",
+          "member": "string",
+          "name": "SucceedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the node that fails to set the removal protection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
