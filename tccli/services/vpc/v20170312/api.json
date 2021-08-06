@@ -2701,6 +2701,7 @@
         {
           "default": "",
           "document": "The unique ID of the CCN",
+          "example": "-",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -2710,6 +2711,7 @@
         {
           "default": "",
           "document": "The name of the CCN",
+          "example": "-",
           "member": "string",
           "name": "CcnName",
           "required": true,
@@ -2719,6 +2721,7 @@
         {
           "default": "",
           "document": "The detailed information of the CCN",
+          "example": "-",
           "member": "string",
           "name": "CcnDescription",
           "required": true,
@@ -2728,6 +2731,7 @@
         {
           "default": "",
           "document": "The number of associated instances",
+          "example": "-",
           "member": "uint64",
           "name": "InstanceCount",
           "required": true,
@@ -2737,6 +2741,7 @@
         {
           "default": "",
           "document": "The creation time",
+          "example": "-",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -2746,6 +2751,7 @@
         {
           "default": "",
           "document": "The instance status. 'ISOLATED': Being isolated (instance is in arrears and service is suspended). 'AVAILABLE': Operating.",
+          "example": "ISOLATED",
           "member": "string",
           "name": "State",
           "required": true,
@@ -2755,6 +2761,7 @@
         {
           "default": "",
           "document": "The instance service quality. ’PT’: Platinum , 'AU': Gold, 'AG': Silver.",
+          "example": "PT",
           "member": "string",
           "name": "QosLevel",
           "required": true,
@@ -2764,6 +2771,7 @@
         {
           "default": "",
           "document": "The billing method. POSTPAID indicates postpaid.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
@@ -2773,6 +2781,7 @@
         {
           "default": "",
           "document": "The limit type. INTER_REGION_LIMIT is the limit between regions. OUTER_REGION_LIMIT is a region egress limit.\nNote: This field may return null, indicating no valid value.",
+          "example": "INTER_REGION_LIMIT",
           "member": "string",
           "name": "BandwidthLimitType",
           "required": true,
@@ -2782,6 +2791,7 @@
         {
           "default": "",
           "document": "Tag key-value pairs.",
+          "example": "-",
           "member": "Tag",
           "name": "TagSet",
           "required": true,
@@ -2791,11 +2801,32 @@
         {
           "default": "",
           "document": "Whether the CCN route priority feature is supported. Valid values: False: do not support; True: support.",
+          "example": "True",
           "member": "bool",
           "name": "RoutePriorityFlag",
           "required": true,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of route tables associated with the instance.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RouteTableCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the multiple route tables feature is enabled for the CCN instance. Valid values: `False`: no; `True`: yes. Default value: `False`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "True",
+          "member": "bool",
+          "name": "RouteTableFlag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2922,6 +2953,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Route table ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ccnrtb-1234edfr",
+          "member": "string",
+          "name": "RouteTableId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Route table name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "RouteTableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3028,6 +3079,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the route table associated with the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ccnrtb-1234edfr",
+          "member": "string",
+          "name": "RouteTableId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -7251,6 +7312,7 @@
         {
           "default": "",
           "document": "The ID of a VPC instance set, such as `vpc-6v2ht8q5`.",
+          "example": "vpc-6v2ht8q5",
           "member": "string",
           "name": "VpcIds",
           "required": false,
@@ -7258,7 +7320,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>",
+          "document": "Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -7267,6 +7330,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -7275,6 +7339,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,

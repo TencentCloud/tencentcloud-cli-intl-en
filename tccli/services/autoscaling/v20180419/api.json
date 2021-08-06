@@ -750,7 +750,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.\n<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.\n<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.",
           "example": "LAUNCH_CONFIGURATION",
           "member": "string",
           "name": "InstanceAllocationPolicy",
@@ -760,7 +760,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies how to assign pay-as-you-go instances and spot instances.\nA valid value will be returned only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.",
           "example": "无",
           "member": "SpotMixedAllocationPolicy",
           "name": "SpotMixedAllocationPolicy",
@@ -770,7 +770,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:\n<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.\n<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.",
           "example": "false",
           "member": "bool",
           "name": "CapacityRebalance",
@@ -1221,6 +1221,24 @@
           "name": "LoadBalancerHealthCheckGracePeriod",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`; default value: `LAUNCH_CONFIGURATION`.\n<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.\n<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.",
+          "example": "LAUNCH_CONFIGURATION",
+          "member": "string",
+          "name": "InstanceAllocationPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies how to assign pay-as-you-go instances and spot instances.\nThis parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MIXED`.",
+          "example": "无",
+          "member": "SpotMixedAllocationPolicy",
+          "name": "SpotMixedAllocationPolicy",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1779,7 +1797,7 @@
       "members": [
         {
           "default": "",
-          "document": "Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Data disk type. For more information on limits of data disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
@@ -3015,8 +3033,8 @@
       "members": [
         {
           "default": "",
-          "document": "CVM instance name\n\nThe `InstanceName` cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.\n\nOther types of instances (such as Linux): the name contains 2 to 40 characters, and supports multiple periods (.). The string between two periods can consist of letters (case insensitive), numbers, and hyphens (-), and cannot be all numbers.\nNote: this field may return `null`, indicating that no valid value is obtained.",
-          "example": "aaa",
+          "document": "CVM instance name\n\nThe `InstanceName` cannot start or end with a dot (.) or hyphen (-), and cannot contain consecutive dots and hyphens.\nThe name contains 2 to 40 characters, and supports multiple dots (.). The string between two dots can consist of letters (case-insensitive), numbers, and hyphens (-), and cannot be all numbers.",
+          "example": "test",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -3025,7 +3043,7 @@
         },
         {
           "default": "",
-          "document": "Type of CVM instance name. Valid values: \"ORIGINAL\" and \"UNIQUE\". Default value: \"ORIGINAL\".\n\nORIGINAL: Auto Scaling transfers the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the auto scaling group may conflict.\n\nUNIQUE: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the auto scaling group is unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Type of CVM instance name. Valid values: `ORIGINAL` and `UNIQUE`. Default value: `ORIGINAL`.\n\n`ORIGINAL`: Auto Scaling sends the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the scaling group may conflict.\n\n`UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.",
           "example": "ORIGINAL",
           "member": "string",
           "name": "InstanceNameStyle",
@@ -3806,6 +3824,24 @@
           "name": "LoadBalancerHealthCheckGracePeriod",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.\n<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.\n<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.",
+          "example": "LAUNCH_CONFIGURATION",
+          "member": "string",
+          "name": "InstanceAllocationPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies how to assign pay-as-you-go instances and spot instances.\nThis parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.",
+          "example": "无",
+          "member": "SpotMixedAllocationPolicy",
+          "name": "SpotMixedAllocationPolicy",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4744,11 +4780,11 @@
       "usage": "both"
     },
     "SpotMixedAllocationPolicy": {
-      "document": "",
+      "document": "Specifies how to assign pay-as-you-go instances and spot instances in a mixed instance mode.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The minimum number of the scaling group’s capacity that must be fulfilled by pay-as-you-go instances. It defaults to 0 if not specified. Its value cannot exceed the max capacity of the scaling group.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "BaseCapacity",
@@ -4758,7 +4794,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Controls the percentage of pay-as-you-go instances for the additional capacity beyond `BaseCapacity`. Valid range: 0-100. The value 0 indicates that only spot instances are provisioned, while the value 100 indicates that only pay-as-you-go instances are provisioned. It defaults to 70 if not specified. The number of pay-as-you-go instances calculated on the percentage should be rounded up.\nFor example, if the desired capacity is 3, the `BaseCapacity` is set to 1, and the `OnDemandPercentageAboveBaseCapacity` is set to 1, the scaling group will have 2 pay-as-you-go instance (one comes from the base capacity, and the other comes from the rounded up value of the proportion), and 1 spot instance.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "OnDemandPercentageAboveBaseCapacity",
@@ -4768,7 +4804,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies how to assign spot instances in a mixed instance mode. Valid values: `COST_OPTIMIZED` and `CAPACITY_OPTIMIZED`; default value: `COST_OPTIMIZED`.\n<br><li>`COST_OPTIMIZED`: the lowest cost policy. For each model in the launch configuration, AS tries to purchase it based on the lowest unit price per core in each availability zone. If the purchase failed, try the second-lowest unit price.\n<br><li>`CAPACITY_OPTIMIZED`: the optimal capacity policy. For each model in the launch configuration, AS tries to purchase it based on the largest stock in each availability zone, minimizing the automatic repossession probability of spot instances.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "COST_OPTIMIZED",
           "member": "string",
           "name": "SpotAllocationStrategy",
@@ -4778,7 +4814,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to replace with pay-as-you go instances. Valid values:\n<br><li>`TRUE`: yes. After the purchase of spot instances failed due to insufficient stock and other reasons, purchase pay-as-you-go instances.\n<br><li>`FALSE`: no. The scaling group only tries the configured model of spot instances when it needs to add spot instances.\n\nDefault value: `TRUE`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "CompensateWithBaseInstance",
@@ -4884,7 +4920,7 @@
       "members": [
         {
           "default": "",
-          "document": "System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>LOCAL_BASIC: local disk <br><li>LOCAL_SSD: local SSD disk <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: premium cloud storage<br><li>CLOUD_SSD: SSD cloud disk <br><br>Default value: CLOUD_PREMIUM.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>Default value: `CLOUD_PREMIUM`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",

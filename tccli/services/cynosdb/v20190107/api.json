@@ -159,7 +159,7 @@
   },
   "metadata": {
     "apiVersion": "2019-01-07",
-    "serviceNameCN": "云数据库 CynosDB",
+    "serviceNameCN": "云原生数据库 TDSQL-C",
     "serviceShortName": "cynosdb"
   },
   "objects": {
@@ -575,6 +575,7 @@
         {
           "default": "",
           "document": "AZ",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -583,6 +584,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-1ptuei0b",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -591,6 +593,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "subnet-1tmw9t4o",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -599,6 +602,7 @@
         {
           "default": "",
           "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": true,
@@ -607,6 +611,7 @@
         {
           "default": "",
           "document": "Database version. Valid values: \n<li> Valid values for `MYSQL`: 5.7 </li>",
+          "example": "5.7",
           "member": "string",
           "name": "DbVersion",
           "required": true,
@@ -615,6 +620,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -623,6 +629,7 @@
         {
           "default": "",
           "document": "Number of CPU cores of normal instance",
+          "example": "1",
           "member": "int64",
           "name": "Cpu",
           "required": false,
@@ -630,7 +637,8 @@
         },
         {
           "default": "",
-          "document": "Memory of normal instance",
+          "document": "Memory of a non-serverless instance in GB",
+          "example": "4",
           "member": "int64",
           "name": "Memory",
           "required": false,
@@ -638,7 +646,8 @@
         },
         {
           "default": "",
-          "document": "Storage",
+          "document": "Storage capacity in GB",
+          "example": "100",
           "member": "int64",
           "name": "Storage",
           "required": false,
@@ -647,6 +656,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "MyClusterName",
           "member": "string",
           "name": "ClusterName",
           "required": false,
@@ -654,7 +664,8 @@
         },
         {
           "default": "",
-          "document": "Account password, which can contain 8–64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()~)",
+          "document": "Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\\(){}[]:;'<>,.?/).)",
+          "example": "passwd@admin",
           "member": "string",
           "name": "AdminPassword",
           "required": false,
@@ -663,6 +674,7 @@
         {
           "default": "",
           "document": "Port. Default value: 5432",
+          "example": "3306",
           "member": "int64",
           "name": "Port",
           "required": false,
@@ -671,6 +683,7 @@
         {
           "default": "",
           "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "PayMode",
           "required": false,
@@ -679,6 +692,7 @@
         {
           "default": "",
           "document": "Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.",
+          "example": "1",
           "member": "int64",
           "name": "Count",
           "required": false,
@@ -687,6 +701,7 @@
         {
           "default": "",
           "document": "Rollback type:\nnoneRollback: no rollback\nsnapRollback: rollback by snapshot\ntimeRollback: rollback by time point",
+          "example": "noneRollback",
           "member": "string",
           "name": "RollbackStrategy",
           "required": false,
@@ -695,6 +710,7 @@
         {
           "default": "",
           "document": "`snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid",
+          "example": "0",
           "member": "uint64",
           "name": "RollbackId",
           "required": false,
@@ -703,6 +719,7 @@
         {
           "default": "",
           "document": "Pass in the source cluster ID during rollback to find the source `poolId`",
+          "example": "cynosdbmysql-xxxxxxxx",
           "member": "string",
           "name": "OriginalClusterId",
           "required": false,
@@ -711,6 +728,7 @@
         {
           "default": "",
           "document": "Specified time for time point rollback or snapshot time for snapshot rollback",
+          "example": "2021-04-26 18:13:10",
           "member": "string",
           "name": "ExpectTime",
           "required": false,
@@ -719,6 +737,7 @@
         {
           "default": "",
           "document": "Specified allowed time range for time point rollback",
+          "example": "0",
           "member": "uint64",
           "name": "ExpectTimeThresh",
           "required": false,
@@ -726,7 +745,8 @@
         },
         {
           "default": "",
-          "document": "Storage upper limit of normal instance in GB",
+          "document": "The maximum storage of a non-serverless instance in GB\nIf `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.",
+          "example": "100",
           "member": "int64",
           "name": "StorageLimit",
           "required": false,
@@ -735,6 +755,7 @@
         {
           "default": "",
           "document": "Number of instances",
+          "example": "1",
           "member": "int64",
           "name": "InstanceCount",
           "required": false,
@@ -743,6 +764,7 @@
         {
           "default": "",
           "document": "Purchase duration of monthly subscription plan",
+          "example": "1",
           "member": "int64",
           "name": "TimeSpan",
           "required": false,
@@ -751,6 +773,7 @@
         {
           "default": "",
           "document": "Purchase duration unit of monthly subscription plan",
+          "example": "m",
           "member": "string",
           "name": "TimeUnit",
           "required": false,
@@ -759,6 +782,7 @@
         {
           "default": "",
           "document": "Whether auto-renewal is enabled for monthly subscription plan",
+          "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": false,
@@ -767,6 +791,7 @@
         {
           "default": "",
           "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -775,6 +800,7 @@
         {
           "default": "",
           "document": "Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)",
+          "example": "1",
           "member": "int64",
           "name": "HaCount",
           "required": false,
@@ -783,6 +809,7 @@
         {
           "default": "",
           "document": "Order source",
+          "example": "MyOrderSource",
           "member": "string",
           "name": "OrderSource",
           "required": false,
@@ -791,6 +818,7 @@
         {
           "default": "",
           "document": "Array of tags to be bound to the created cluster",
+          "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
           "required": false,
@@ -799,6 +827,7 @@
         {
           "default": "",
           "document": "Database type\nValid values when `DbType` is `MYSQL` (default value: NORMAL):\n<li>NORMAL</li>\n<li>SERVERLESS</li>",
+          "example": "NORMAL",
           "member": "string",
           "name": "DbMode",
           "required": false,
@@ -807,6 +836,7 @@
         {
           "default": "",
           "document": "This parameter is required if `DbMode` is `SERVERLESS`\nMinimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`",
+          "example": "1.0",
           "member": "float",
           "name": "MinCpu",
           "required": false,
@@ -815,6 +845,7 @@
         {
           "default": "",
           "document": "This parameter is required if `DbMode` is `SERVERLESS`:\nMaximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`",
+          "example": "2.0",
           "member": "float",
           "name": "MaxCpu",
           "required": false,
@@ -823,6 +854,7 @@
         {
           "default": "",
           "document": "This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:\n<li>yes</li>\n<li>no</li>\nDefault value: yes",
+          "example": "yes",
           "member": "string",
           "name": "AutoPause",
           "required": false,
@@ -831,8 +863,18 @@
         {
           "default": "",
           "document": "This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]\nDefault value: 600",
+          "example": "600",
           "member": "int64",
           "name": "AutoPauseDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.\nIf `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.\nClusters with storage billed in prepaid mode cannot be cloned or rolled back.",
+          "example": "0",
+          "member": "int64",
+          "name": "StoragePayMode",
           "required": false,
           "type": "int"
         }
@@ -892,6 +934,7 @@
         {
           "default": "",
           "document": "Cluster status",
+          "example": "running",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -901,6 +944,7 @@
         {
           "default": "",
           "document": "Update time",
+          "example": "2021-05-08 14:29:25",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -910,6 +954,7 @@
         {
           "default": "",
           "document": "AZ",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -919,6 +964,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "MyClusterName",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -928,6 +974,7 @@
         {
           "default": "",
           "document": "Region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -937,6 +984,7 @@
         {
           "default": "",
           "document": "Database version",
+          "example": "5.7",
           "member": "string",
           "name": "DbVersion",
           "required": true,
@@ -946,6 +994,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosmysql-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -955,6 +1004,7 @@
         {
           "default": "",
           "document": "Number of instances",
+          "example": "1",
           "member": "int64",
           "name": "InstanceNum",
           "required": true,
@@ -964,6 +1014,7 @@
         {
           "default": "",
           "document": "User `uin`",
+          "example": "111111",
           "member": "string",
           "name": "Uin",
           "required": true,
@@ -973,6 +1024,7 @@
         {
           "default": "",
           "document": "Engine type",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": true,
@@ -982,6 +1034,7 @@
         {
           "default": "",
           "document": "User `appid`",
+          "example": "111111",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -991,6 +1044,7 @@
         {
           "default": "",
           "document": "Cluster status description",
+          "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
@@ -1000,6 +1054,7 @@
         {
           "default": "",
           "document": "Cluster creation time",
+          "example": "2021-05-08 14:29:25",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -1009,6 +1064,7 @@
         {
           "default": "",
           "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription",
+          "example": "1",
           "member": "int64",
           "name": "PayMode",
           "required": true,
@@ -1018,6 +1074,7 @@
         {
           "default": "",
           "document": "End time",
+          "example": "2021-06-08 14:29:25",
           "member": "string",
           "name": "PeriodEndTime",
           "required": true,
@@ -1027,6 +1084,7 @@
         {
           "default": "",
           "document": "Cluster read-write VIP",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -1036,6 +1094,7 @@
         {
           "default": "",
           "document": "Cluster read-write vport",
+          "example": "3306",
           "member": "int64",
           "name": "Vport",
           "required": true,
@@ -1045,6 +1104,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectID",
           "required": true,
@@ -1054,6 +1114,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1063,6 +1124,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -1072,6 +1134,7 @@
         {
           "default": "",
           "document": "TDSQL-C kernel version",
+          "example": "2.0.12",
           "member": "string",
           "name": "CynosVersion",
           "required": false,
@@ -1081,6 +1144,7 @@
         {
           "default": "",
           "document": "Storage capacity",
+          "example": "1000",
           "member": "int64",
           "name": "StorageLimit",
           "required": false,
@@ -1090,6 +1154,7 @@
         {
           "default": "",
           "document": "Renewal flag",
+          "example": "1",
           "member": "int64",
           "name": "RenewFlag",
           "required": false,
@@ -1099,6 +1164,7 @@
         {
           "default": "",
           "document": "Task in progress",
+          "example": "ProcessingTask",
           "member": "string",
           "name": "ProcessingTask",
           "required": false,
@@ -1108,6 +1174,7 @@
         {
           "default": "",
           "document": "Array of tasks in cluster",
+          "example": "无",
           "member": "ObjectTask",
           "name": "Tasks",
           "required": false,
@@ -1117,6 +1184,7 @@
         {
           "default": "",
           "document": "Array of tags bound to cluster",
+          "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
           "required": false,
@@ -1126,6 +1194,7 @@
         {
           "default": "",
           "document": "Database type (`NORMAL` or `SERVERLESS`)",
+          "example": "SERVERLESS",
           "member": "string",
           "name": "DbMode",
           "required": false,
@@ -1135,10 +1204,61 @@
         {
           "default": "",
           "document": "Serverless cluster status when the database type is `SERVERLESS`. Valid values:\nresume\npause",
+          "example": "resume",
           "member": "string",
           "name": "ServerlessStatus",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Prepaid cluster storage",
+          "example": "1000",
+          "member": "int64",
+          "name": "Storage",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster storage ID used in prepaid storage modification",
+          "example": "cynosmysql-xxxxxxxx",
+          "member": "string",
+          "name": "StorageId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid)",
+          "example": "1",
+          "member": "int64",
+          "name": "StoragePayMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The minimum storage corresponding to the compute specifications of the cluster",
+          "example": "10",
+          "member": "int64",
+          "name": "MinStorageSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum storage corresponding to the compute specifications of the cluster",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxStorageSize",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1396,6 +1516,7 @@
         {
           "default": "",
           "document": "User `Uin`",
+          "example": "11111111",
           "member": "string",
           "name": "Uin",
           "required": true,
@@ -1405,6 +1526,7 @@
         {
           "default": "",
           "document": "User `AppId`",
+          "example": "11111111",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -1414,6 +1536,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosmysql-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1423,6 +1546,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "MyClusterName",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -1432,6 +1556,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "cynosmysql-ins-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1441,6 +1566,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "MyInstanceName",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -1450,6 +1576,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -1459,6 +1586,7 @@
         {
           "default": "",
           "document": "Region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -1468,6 +1596,7 @@
         {
           "default": "",
           "document": "AZ",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -1477,6 +1606,7 @@
         {
           "default": "",
           "document": "Instance status",
+          "example": "running",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1486,6 +1616,7 @@
         {
           "default": "",
           "document": "Instance status description",
+          "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
@@ -1495,6 +1626,7 @@
         {
           "default": "",
           "document": "Database type",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": true,
@@ -1504,6 +1636,7 @@
         {
           "default": "",
           "document": "Database version",
+          "example": "5.7",
           "member": "string",
           "name": "DbVersion",
           "required": true,
@@ -1513,6 +1646,7 @@
         {
           "default": "",
           "document": "Number of CPU cores",
+          "example": "1",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -1522,6 +1656,7 @@
         {
           "default": "",
           "document": "Memory in GB",
+          "example": "1",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -1531,6 +1666,7 @@
         {
           "default": "",
           "document": "Storage capacity in GB",
+          "example": "1000",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -1540,6 +1676,7 @@
         {
           "default": "",
           "document": "Instance type",
+          "example": "master",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -1549,6 +1686,7 @@
         {
           "default": "",
           "document": "Current instance role",
+          "example": "master",
           "member": "string",
           "name": "InstanceRole",
           "required": true,
@@ -1558,6 +1696,7 @@
         {
           "default": "",
           "document": "Update time",
+          "example": "2021-06-08 14:29:25",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -1567,6 +1706,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "2021-06-08 14:29:25",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -1576,6 +1716,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -1585,6 +1726,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -1594,6 +1736,7 @@
         {
           "default": "",
           "document": "Private IP of instance",
+          "example": "1.2.3.4",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -1603,6 +1746,7 @@
         {
           "default": "",
           "document": "Private port of instance",
+          "example": "3306",
           "member": "int64",
           "name": "Vport",
           "required": true,
@@ -1612,6 +1756,7 @@
         {
           "default": "",
           "document": "Billing mode",
+          "example": "1",
           "member": "int64",
           "name": "PayMode",
           "required": true,
@@ -1621,6 +1766,7 @@
         {
           "default": "",
           "document": "Instance expiration time",
+          "example": "2021-07-08 14:29:25",
           "member": "datetime",
           "name": "PeriodEndTime",
           "required": true,
@@ -1630,6 +1776,7 @@
         {
           "default": "",
           "document": "Termination deadline",
+          "example": "0 天",
           "member": "string",
           "name": "DestroyDeadlineText",
           "required": true,
@@ -1639,6 +1786,7 @@
         {
           "default": "",
           "document": "Isolation time",
+          "example": "2021-07-08 14:29:25",
           "member": "datetime",
           "name": "IsolateTime",
           "required": true,
@@ -1648,6 +1796,7 @@
         {
           "default": "",
           "document": "Network type",
+          "example": "无",
           "member": "int64",
           "name": "NetType",
           "required": true,
@@ -1657,6 +1806,7 @@
         {
           "default": "",
           "document": "Public domain name",
+          "example": "无",
           "member": "string",
           "name": "WanDomain",
           "required": true,
@@ -1666,6 +1816,7 @@
         {
           "default": "",
           "document": "Public IP",
+          "example": "2.3.4.5",
           "member": "string",
           "name": "WanIP",
           "required": true,
@@ -1675,6 +1826,7 @@
         {
           "default": "",
           "document": "Public port",
+          "example": "7654",
           "member": "int64",
           "name": "WanPort",
           "required": true,
@@ -1684,6 +1836,7 @@
         {
           "default": "",
           "document": "Public network status",
+          "example": "无",
           "member": "string",
           "name": "WanStatus",
           "required": true,
@@ -1693,6 +1846,7 @@
         {
           "default": "",
           "document": "Instance termination time",
+          "example": "无",
           "member": "string",
           "name": "DestroyTime",
           "required": true,
@@ -1702,6 +1856,7 @@
         {
           "default": "",
           "document": "TDSQL-C kernel version",
+          "example": "2.0.12",
           "member": "string",
           "name": "CynosVersion",
           "required": true,
@@ -1711,6 +1866,7 @@
         {
           "default": "",
           "document": "Task in progress",
+          "example": "ProcessingTask",
           "member": "string",
           "name": "ProcessingTask",
           "required": true,
@@ -1720,6 +1876,7 @@
         {
           "default": "",
           "document": "Renewal flag",
+          "example": "1",
           "member": "int64",
           "name": "RenewFlag",
           "required": true,
@@ -1729,6 +1886,7 @@
         {
           "default": "",
           "document": "Minimum number of CPU cores for serverless instance",
+          "example": "1",
           "member": "float",
           "name": "MinCpu",
           "required": true,
@@ -1738,6 +1896,7 @@
         {
           "default": "",
           "document": "Maximum number of CPU cores for serverless instance",
+          "example": "2",
           "member": "float",
           "name": "MaxCpu",
           "required": true,
@@ -1747,11 +1906,32 @@
         {
           "default": "",
           "document": "Serverless instance status. Valid values:\nresume\npause",
+          "example": "resume",
           "member": "string",
           "name": "ServerlessStatus",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage billing mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "StoragePayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prepaid storage ID\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "cynosmysql-xxxxxxxx",
+          "member": "string",
+          "name": "StorageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2037,6 +2217,33 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The minimum number of CPU cores for a serverless instance",
+          "member": "float",
+          "name": "MinCpu",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum number of CPU cores for a serverless instance",
+          "member": "float",
+          "name": "MaxCpu",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Serverless instance status. Valid values:\nresume\npause",
+          "member": "string",
+          "name": "ServerlessStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2298,6 +2505,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosdbpg-ilgo90hu",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2306,6 +2514,7 @@
         {
           "default": "",
           "document": "Backup file list offset",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -2314,10 +2523,20 @@
         {
           "default": "",
           "document": "Backup file list start",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "DbType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2781,7 +3000,8 @@
       "members": [
         {
           "default": "",
-          "document": "Billing order ID",
+          "document": "Order ID. (If the cluster is not delivered yet, the `DescribeResourcesByDealName` API may return the `InvalidParameterValue.DealNameNotFound` error. Please call the API again until it succeeds.)",
+          "example": "1000000001111",
           "member": "string",
           "name": "DealName",
           "required": true,
