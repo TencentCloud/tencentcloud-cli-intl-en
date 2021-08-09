@@ -512,6 +512,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dimension information of an instance that triggered alarms.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"cluster_name\":\"es-dnxsssss\"}",
+          "member": "string",
+          "name": "Dimensions",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2879,7 +2889,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filter by use case. Valid values: ST_DASHBOARD (Dashboard type), ST_ALARM (alarm type)",
+          "document": "Filter by use case. Currently, the only valid value is `ST_ALARM` (alarm type).",
+          "example": "ST_ALARM",
           "member": "string",
           "name": "SceneType",
           "required": true,
@@ -2888,6 +2899,7 @@
         {
           "default": "",
           "document": "Value fixed at \"monitor\"",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -2896,6 +2908,7 @@
         {
           "default": "",
           "document": "Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default",
+          "example": "[\"MT_QCE\"]",
           "member": "string",
           "name": "MonitorTypes",
           "required": false,
@@ -2904,6 +2917,7 @@
         {
           "default": "",
           "document": "Filter by namespace ID. If this parameter is left empty, all will be queried",
+          "example": "cvm_device",
           "member": "string",
           "name": "Ids",
           "required": false,
@@ -3493,6 +3507,7 @@
         {
           "default": "",
           "document": "The value is fixed to monitor.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -3500,7 +3515,8 @@
         },
         {
           "default": "",
-          "document": "Policy group ID.",
+          "document": "Policy group ID. If the ID is in the format of “policy-xxxx”, please enter it in the `PolicyId` field. Enter 0 in this field.",
+          "example": "11111",
           "member": "int64",
           "name": "GroupId",
           "required": true,
@@ -3508,7 +3524,17 @@
         },
         {
           "default": "",
-          "document": "Number of parameters that can be returned on each page. Value range: 1 - 100. Default value: 20.",
+          "document": "Alarm policy ID in the format of “policy-xxxx”. If a value has been entered in this field, you can enter 0 in the `GroupId` field.",
+          "example": "policy-xxxxx",
+          "member": "string",
+          "name": "PolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of alarm objects returned each time. Value range: 1-100. Default value: 20.",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3516,7 +3542,8 @@
         },
         {
           "default": "",
-          "document": "Parameter offset on each page. The value starts from 0 and the default value is 0.",
+          "document": "Offset, which starts from 0 and is set to 0 by default. For example, the parameter `Offset=0&Limit=20` returns the zeroth to 19th alarm objects, and `Offset=20&Limit=20` returns the 20th to 39th alarm objects, and so on.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3525,6 +3552,7 @@
         {
           "default": "",
           "document": "Dimensions of filtering objects.",
+          "example": "无",
           "member": "DescribeBindingPolicyObjectListDimension",
           "name": "Dimensions",
           "required": false,

@@ -74,28 +74,28 @@
     ],
     "CreateAIRecognitionTemplate": [
       {
-        "document": "This example shows you how to create a custom video content recognition template to enable only a video opening and ending credits recognition task.",
-        "input": "https://vod.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\r\n&Name=Video opening and ending credits recognition task template\r\n&Comment=Template 1\r\n&HeadTailConfigure.Switch=ON\r\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video content recognition template to enable only a video opening and closing credits recognition task.",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Video opening and closing credits recognition task template\n&Comment=Template 1\n&HeadTailConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 30,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a task template that supports only video opening and ending credits recognition"
+        "title": "Creating a task template that supports only video opening and closing credits recognition"
       },
       {
         "document": "This example shows you how to create a custom video content recognition template to enable a splitting task and a face recognition task. The default face library is used, and the face recognition filter score is 90.",
-        "input": "https://vod.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\r\n&Name=Intelligent recognition template\r\n&Comment=Template 2\r\n&SegmentConfigure.Switch=ON\r\n&FaceConfigure.Switch=ON\r\n&FaceConfigure.FaceLibrary=Default\r\n&FaceConfigure.Score=90\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 2\n&SegmentConfigure.Switch=ON\n&FaceConfigure.Switch=ON\n&FaceConfigure.FaceLibrary=Default\n&FaceConfigure.Score=90\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a template that supports multiple video content recognition tasks"
       },
       {
         "document": "This example shows you how to create a custom video content recognition template to enable a splitting task and a face recognition task. The default and custom face libraries are used, the face recognition filter score is 90, and the frame capturing interval is 1.0 second.",
-        "input": "https://vod.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\r\n&Name=Intelligent recognition template\r\n&Comment=Template 3\r\n&SegmentConfigure.Switch=ON\r\n&FaceConfigure.Switch=ON\r\n&FaceConfigure.FaceLibrary=All\r\n&ScreenshotInterval=1.0\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 3\n&SegmentConfigure.Switch=ON\n&FaceConfigure.Switch=ON\n&FaceConfigure.FaceLibrary=All\n&ScreenshotInterval=1.0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a template that supports multiple recognition tasks and specifies the frame capturing interval"
+        "title": "Creating a template for multiple recognition tasks, with the frame capturing interval specified"
       }
     ],
     "CreateAdaptiveDynamicStreamingTemplate": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=CreateAdaptiveDynamicStreamingTemplate\r\n&Name=Adaptive bitrate streaming template 1\r\n&Format=HLS\r\n&StreamInfos.0.Video.Codec=libx264\r\n&StreamInfos.0.Video.Bitrate=2000\r\n&StreamInfos.0.Audio.Codec=flac\r\n&StreamInfos.0.Audio.SampleRate=44100\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateAdaptiveDynamicStreamingTemplate\n&Name=Adaptive bitrate streaming template 1\n&Format=HLS\n&StreamInfos.0.Video.Codec=libx264\n&StreamInfos.0.Video.Bitrate=2000\n&StreamInfos.0.Video.Fps=25\n&StreamInfos.0.Audio.Codec=flac\n&StreamInfos.0.Audio.SampleRate=44100\n&StreamInfos.0.Audio.Bitrate=1024\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 30018,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating an adaptive bitrate streaming template"
       }
@@ -277,7 +277,7 @@
     "DeleteAdaptiveDynamicStreamingTemplate": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=DeleteAdaptiveDynamicStreamingTemplate\r\n&Definition=10001\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=DeleteAdaptiveDynamicStreamingTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting an adaptive bitrate streaming template"
       }
@@ -810,20 +810,20 @@
     ],
     "ModifyAIRecognitionTemplate": [
       {
-        "document": "This example shows you how to modify a custom video content recognition template to disable a video opening and ending credits recognition task.",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\r\n&Definition=30\r\n&HeadTailConfigure.Switch=OFF\r\n&<Common request parameters>",
+        "document": "This example shows you how to modify a custom video content recognition template to disable a video opening and closing credits recognition task.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\n&Definition=30\n&HeadTailConfigure.Switch=OFF\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Disabling a video opening and ending credits recognition task"
+        "title": "Disabling a video opening and closing credits recognition task"
       },
       {
-        "document": "This example shows you how to modify a custom video content recognition template to disable a video opening and ending credits recognition task and enable a video splitting task.",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\r\n&Definition=30\r\n&HeadTailConfigure.Switch=OFF\r\n&SegmentConfigure.Switch=ON\r\n&<Common request parameters>",
+        "document": "This example shows you how to modify a custom video content recognition template to disable a video opening and closing credits recognition task and enable a video splitting task.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\n&Definition=30\n&HeadTailConfigure.Switch=OFF\n&SegmentConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Disabling a recognition task while enabling another one"
       },
       {
         "document": "This example shows you how to modify a custom intelligent recognition template to change the frame capturing interval to 0.5 seconds.",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\r\n&Definition=30\r\n&ScreenshotInterval=0.5\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\n&Definition=30\n&ScreenshotInterval=0.5\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying the frame capturing interval of content recognition"
       }
@@ -831,7 +831,7 @@
     "ModifyAdaptiveDynamicStreamingTemplate": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAdaptiveDynamicStreamingTemplate\r\n&Definition=10038\r\n&Name=Adaptive bitrate streaming template 2\r\n&Format=HLS\r\n&StreamInfos.0.Video.Codec=libx264\r\n&StreamInfos.0.Video.Bitrate=2000\r\n&StreamInfos.0.Audio.Codec=flac\r\n&StreamInfos.0.Audio.SampleRate=44100\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAdaptiveDynamicStreamingTemplate\n&Definition=10038\n&Name=Adaptive bitrate streaming template 2\n&Format=HLS\n&StreamInfos.0.Video.Codec=libx264\n&StreamInfos.0.Video.Bitrate=2000\n&StreamInfos.0.Video.Fps=25\n&StreamInfos.0.Audio.Codec=flac\n&StreamInfos.0.Audio.SampleRate=44100\n&StreamInfos.0.Audio.Bitrate=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an adaptive bitrate streaming template"
       }

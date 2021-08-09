@@ -7179,6 +7179,32 @@
       ],
       "usage": "in"
     },
+    "HeadTailParameter": {
+      "document": "Opening and closing credits parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Opening credits list",
+          "example": "[   {     \"Type\": \"URL\",     \"UrlInputInfo\": {       \"Url\": \"htt",
+          "member": "MediaInputInfo",
+          "name": "HeadSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Closing credits list",
+          "example": "[   {     \"Type\": \"URL\",     \"UrlInputInfo\": {       \"Url\": \"htt",
+          "member": "MediaInputInfo",
+          "name": "TailSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ImageSpriteTaskInput": {
       "document": "Input parameter type of an image sprite generating task",
       "members": [
@@ -12930,6 +12956,7 @@
         {
           "default": "",
           "document": "CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.",
+          "example": "Queue ",
           "member": "string",
           "name": "CmqModel",
           "required": true,
@@ -12939,6 +12966,7 @@
         {
           "default": "",
           "document": "CMQ region, such as `sh` and `bj`.",
+          "example": "sh",
           "member": "string",
           "name": "CmqRegion",
           "required": true,
@@ -12948,6 +12976,7 @@
         {
           "default": "",
           "document": "This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.",
+          "example": "test",
           "member": "string",
           "name": "QueueName",
           "required": false,
@@ -12957,6 +12986,7 @@
         {
           "default": "",
           "document": "This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.",
+          "example": "test",
           "member": "string",
           "name": "TopicName",
           "required": false,
@@ -12966,8 +12996,29 @@
         {
           "default": "",
           "document": "Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.",
+          "example": "Finish ",
           "member": "string",
           "name": "NotifyMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notification type, `CMQ` by default. If `URL` is passed in, HTTP callbacks are sent to the URL specified by `NotifyUrl`.",
+          "example": "URL",
+          "member": "string",
+          "name": "NotifyType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP callback URL, required if `NotifyType` is set to `URL`",
+          "example": "http://www.qq.com/callback",
+          "member": "string",
+          "name": "NotifyUrl",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -13346,6 +13397,7 @@
         {
           "default": "",
           "document": "ID of a video transcoding template.",
+          "example": "20",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -13355,6 +13407,7 @@
         {
           "default": "",
           "document": "Custom video transcoding parameter, which is valid if `Definition` is 0.\nThis parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.",
+          "example": "null",
           "member": "RawTranscodeParameter",
           "name": "RawParameter",
           "required": false,
@@ -13364,6 +13417,7 @@
         {
           "default": "",
           "document": "Video transcoding custom parameter, which is valid when `Definition` is not 0.\nWhen any parameters in this structure are entered, they will be used to override corresponding parameters in templates.\nThis parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "null",
           "member": "OverrideTranscodeParameter",
           "name": "OverrideParameter",
           "required": false,
@@ -13373,6 +13427,7 @@
         {
           "default": "",
           "document": "List of up to 10 image or text watermarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
           "required": false,
@@ -13382,6 +13437,7 @@
         {
           "default": "",
           "document": "List of blurs. Up to 10 ones can be supported.",
+          "example": "null",
           "member": "MosaicInput",
           "name": "MosaicSet",
           "required": false,
@@ -13391,6 +13447,7 @@
         {
           "default": "",
           "document": "Start time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>",
+          "example": "null",
           "member": "float",
           "name": "StartTimeOffset",
           "required": false,
@@ -13400,6 +13457,7 @@
         {
           "default": "",
           "document": "End time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>",
+          "example": "null",
           "member": "float",
           "name": "EndTimeOffset",
           "required": false,
@@ -13409,6 +13467,7 @@
         {
           "default": "",
           "document": "Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": false,
@@ -13418,6 +13477,7 @@
         {
           "default": "",
           "document": "Path to a primary output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.",
+          "example": "null",
           "member": "string",
           "name": "OutputObjectPath",
           "required": false,
@@ -13427,6 +13487,7 @@
         {
           "default": "",
           "document": "Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.",
+          "example": "null",
           "member": "string",
           "name": "SegmentObjectName",
           "required": false,
@@ -13436,8 +13497,19 @@
         {
           "default": "",
           "document": "Rule of the `{number}` variable in the output path after transcoding.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "NumberFormat",
           "name": "ObjectNumberFormat",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Opening and closing credits parameters\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "{   \"HeadSet\": [     {       \"Type\": \"URL\",       \"UrlInputInfo\"",
+          "member": "HeadTailParameter",
+          "name": "HeadTailParameter",
           "required": false,
           "type": "object",
           "value_allowed_null": true

@@ -16,9 +16,17 @@ from tencentcloud.mdl.v20200326 import models as models_v20200326
 def doCreateMediaLiveInputSecurityGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -44,9 +52,17 @@ def doCreateMediaLiveInputSecurityGroup(args, parsed_globals):
 def doDescribeMediaLiveChannelLogs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -72,9 +88,17 @@ def doDescribeMediaLiveChannelLogs(args, parsed_globals):
 def doDescribeMediaLiveChannelOutputStatistics(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -100,9 +124,17 @@ def doDescribeMediaLiveChannelOutputStatistics(args, parsed_globals):
 def doDeleteMediaLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -128,9 +160,17 @@ def doDeleteMediaLiveInput(args, parsed_globals):
 def doModifyMediaLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -156,9 +196,17 @@ def doModifyMediaLiveInput(args, parsed_globals):
 def doDescribeMediaLiveInputSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -184,9 +232,17 @@ def doDescribeMediaLiveInputSecurityGroups(args, parsed_globals):
 def doDescribeMediaLiveInputs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -212,9 +268,17 @@ def doDescribeMediaLiveInputs(args, parsed_globals):
 def doDeleteMediaLiveInputSecurityGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -240,9 +304,17 @@ def doDeleteMediaLiveInputSecurityGroup(args, parsed_globals):
 def doCreateMediaLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -268,9 +340,17 @@ def doCreateMediaLiveChannel(args, parsed_globals):
 def doDescribeMediaLiveChannelAlerts(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -296,9 +376,17 @@ def doDescribeMediaLiveChannelAlerts(args, parsed_globals):
 def doDescribeMediaLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -324,9 +412,17 @@ def doDescribeMediaLiveChannel(args, parsed_globals):
 def doModifyMediaLiveInputSecurityGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -352,9 +448,17 @@ def doModifyMediaLiveInputSecurityGroup(args, parsed_globals):
 def doCreateMediaLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -380,9 +484,17 @@ def doCreateMediaLiveInput(args, parsed_globals):
 def doStartMediaLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -408,9 +520,17 @@ def doStartMediaLiveChannel(args, parsed_globals):
 def doModifyMediaLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -436,9 +556,17 @@ def doModifyMediaLiveChannel(args, parsed_globals):
 def doDeleteMediaLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -464,9 +592,17 @@ def doDeleteMediaLiveChannel(args, parsed_globals):
 def doDescribeMediaLiveChannelInputStatistics(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -492,9 +628,17 @@ def doDescribeMediaLiveChannelInputStatistics(args, parsed_globals):
 def doDescribeMediaLiveChannels(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -520,9 +664,17 @@ def doDescribeMediaLiveChannels(args, parsed_globals):
 def doDescribeMediaLiveInputSecurityGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -548,9 +700,17 @@ def doDescribeMediaLiveInputSecurityGroup(args, parsed_globals):
 def doDescribeMediaLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -576,9 +736,17 @@ def doDescribeMediaLiveInput(args, parsed_globals):
 def doStopMediaLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -682,19 +850,26 @@ def parse_global_arg(parsed_globals):
 
         if os.environ.get(OptionsDefine.ENV_REGION):
             conf[OptionsDefine.Region] = os.environ.get(OptionsDefine.ENV_REGION)
+            
+        if os.environ.get(OptionsDefine.ENV_ROLE_ARN) and os.environ.get(OptionsDefine.ENV_ROLE_SESSION_NAME):
+            cred[OptionsDefine.RoleArn] = os.environ.get(OptionsDefine.ENV_ROLE_ARN)
+            cred[OptionsDefine.RoleSessionName] = os.environ.get(OptionsDefine.ENV_ROLE_SESSION_NAME)
 
     for param in g_param.keys():
         if g_param[param] is None:
             if param in [OptionsDefine.SecretKey, OptionsDefine.SecretId, OptionsDefine.Token]:
                 if param in cred:
                     g_param[param] = cred[param]
-                else:
+                elif not g_param[OptionsDefine.UseCVMRole]:
                     raise ConfigurationError("%s is invalid" % param)
             elif param in [OptionsDefine.Region, OptionsDefine.Output]:
                 if param in conf:
                     g_param[param] = conf[param]
                 else:
                     raise ConfigurationError("%s is invalid" % param)
+            elif param in [OptionsDefine.RoleArn, OptionsDefine.RoleSessionName]:
+                if param in cred:
+                    g_param[param] = cred[param]
 
     try:
         if g_param[OptionsDefine.ServiceVersion]:

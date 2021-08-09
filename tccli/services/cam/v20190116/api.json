@@ -3894,6 +3894,7 @@
         {
           "default": "",
           "document": "Policy ID",
+          "example": "1",
           "member": "uint64",
           "name": "PolicyId",
           "required": true,
@@ -3903,6 +3904,7 @@
         {
           "default": "",
           "document": "Policy name",
+          "example": "AdministratorAccess",
           "member": "string",
           "name": "PolicyName",
           "required": true,
@@ -3912,6 +3914,7 @@
         {
           "default": "",
           "document": "Time policy created\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "2016-06-02 19:40:09",
           "member": "datetime",
           "name": "AddTime",
           "required": true,
@@ -3921,6 +3924,7 @@
         {
           "default": "",
           "document": "Policy type. 1: Custom policy; 2: Preset policy",
+          "example": "1",
           "member": "uint64",
           "name": "Type",
           "required": true,
@@ -3930,6 +3934,7 @@
         {
           "default": "",
           "document": "Policy description\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "该策略允许您管理账户内所有用户及其权限、财务相关的信息、云服务资产。",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -3939,6 +3944,7 @@
         {
           "default": "",
           "document": "How the policy was created: 1: Via console; 2: Via syntax",
+          "example": "1",
           "member": "uint64",
           "name": "CreateMode",
           "required": true,
@@ -3948,6 +3954,7 @@
         {
           "default": "",
           "document": "Number of associated users",
+          "example": "1",
           "member": "uint64",
           "name": "Attachments",
           "required": true,
@@ -3957,6 +3964,7 @@
         {
           "default": "",
           "document": "Product associated with the policy\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "cam",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -3966,6 +3974,7 @@
         {
           "default": "",
           "document": "This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated",
+          "example": "1",
           "member": "uint64",
           "name": "IsAttached",
           "required": true,
@@ -3975,6 +3984,7 @@
         {
           "default": "",
           "document": "Queries if the policy has been deactivated\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "Deactived",
           "required": true,
@@ -3984,6 +3994,7 @@
         {
           "default": "",
           "document": "List of deprecated products\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "string",
           "name": "DeactivedDetail",
           "required": true,
@@ -3993,10 +4004,41 @@
         {
           "default": "",
           "document": "The deletion task identifier used to check the deletion status of the service-linked role\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "IsServiceLinkedPolicy",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of entities associated with the policy.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "AttachEntityCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of entities associated with the permission boundary.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "AttachEntityBoundaryCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last editted time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2016-06-02 19:40:09",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

@@ -216,6 +216,12 @@
       "name": "Modifies RO group configuration",
       "output": "ModifyReadOnlyGroupConfigResponse"
     },
+    "ModifySwitchTimePeriod": {
+      "document": "This API is used to perform a primary-standby switch for an instance waiting for the switch after it is upgraded.",
+      "input": "ModifySwitchTimePeriodRequest",
+      "name": "Modifies the switch time after configuration upgrade",
+      "output": "ModifySwitchTimePeriodResponse"
+    },
     "OpenDBExtranetAccess": {
       "document": "This API is used to enable public network access.",
       "input": "OpenDBExtranetAccessRequest",
@@ -265,9 +271,9 @@
       "output": "SetAutoRenewFlagResponse"
     },
     "UpgradeDBInstance": {
-      "document": "This API is used to upgrade an instance.",
+      "document": "This API is used to upgrade instance configurations.",
       "input": "UpgradeDBInstanceRequest",
-      "name": "Upgrades instance",
+      "name": "Upgrades instance configurations",
       "output": "UpgradeDBInstanceResponse"
     }
   },
@@ -825,7 +831,7 @@
         },
         {
           "default": "",
-          "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).",
+          "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no). Default value: `0`",
           "example": "无",
           "member": "uint64",
           "name": "NeedSupportIpv6",
@@ -2166,7 +2172,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filter condition. Valid values: db-instance-id, db-instance-name, db-project-id, db-pay-mode, db-tag-key.",
+          "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: filter by instance ID (the filter value is a string)\ndb-instance-name: filter by instance name (the filter value is a string)\ndb-project-id: filter by project ID (the filter value is an integer)\ndb-pay-mode: filter by billing mode (the filter value is a string)\ndb-tag-key: filter by tag key (the filter value is a string)",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2174,7 +2181,8 @@
         },
         {
           "default": "",
-          "document": "Number of entries returned per page. Default value: 10.",
+          "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2182,15 +2190,8 @@
         },
         {
           "default": "",
-          "document": "Data offset which starts from 0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
           "document": "Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime",
+          "example": "CreateTime",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -2198,7 +2199,17 @@
         },
         {
           "default": "",
-          "document": "In ascending or descending order",
+          "document": "Pagination offset, starting from 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending)",
+          "example": "desc",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -3403,6 +3414,42 @@
       ],
       "type": "object"
     },
+    "ModifySwitchTimePeriodRequest": {
+      "document": "ModifySwitchTimePeriod request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the instance waiting for a switch",
+          "example": "postgres-19nmz2xb",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid value: `0` (switch immediately)",
+          "example": "0:立即切换",
+          "member": "uint64",
+          "name": "SwitchTag",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySwitchTimePeriodResponse": {
+      "document": "ModifySwitchTimePeriod response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "NormalQueryItem": {
       "document": "Information of one SlowQuery",
       "members": [
@@ -4553,6 +4600,7 @@
         {
           "default": "",
           "document": "Instance memory size in GB after upgrade",
+          "example": "2",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -4561,6 +4609,7 @@
         {
           "default": "",
           "document": "Instance disk size in GB after upgrade",
+          "example": "200",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -4569,6 +4618,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of postgres-lnp6j617",
+          "example": "postgres-6bwgamo3",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4577,6 +4627,7 @@
         {
           "default": "",
           "document": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: no",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -4585,6 +4636,7 @@
         {
           "default": "",
           "document": "Voucher ID list (only one voucher can be specified currently)",
+          "example": "无",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -4593,10 +4645,38 @@
         {
           "default": "",
           "document": "Activity ID",
+          "example": "无",
           "member": "int64",
           "name": "ActivityId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (specify a time to switch). Default value: `0`",
+          "example": "0",
+          "member": "int64",
+          "name": "SwitchTag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The earliest time to start a switch",
+          "example": "8:30:00",
+          "member": "string",
+          "name": "SwitchStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The latest time to start a switch",
+          "example": "8:30:00",
+          "member": "string",
+          "name": "SwitchEndTime",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

@@ -16,9 +16,17 @@ from tencentcloud.gse.v20191112 import models as models_v20191112
 def doUpdateBucketCORSOpt(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -44,9 +52,17 @@ def doUpdateBucketCORSOpt(args, parsed_globals):
 def doDescribeGameServerSessionPlacement(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -72,9 +88,17 @@ def doDescribeGameServerSessionPlacement(args, parsed_globals):
 def doDescribeGameServerSessionDetails(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -100,9 +124,17 @@ def doDescribeGameServerSessionDetails(args, parsed_globals):
 def doSearchGameServerSessions(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -128,9 +160,17 @@ def doSearchGameServerSessions(args, parsed_globals):
 def doEndGameServerSessionAndProcess(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -156,9 +196,17 @@ def doEndGameServerSessionAndProcess(args, parsed_globals):
 def doGetGameServerSessionLogUrl(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -184,9 +232,17 @@ def doGetGameServerSessionLogUrl(args, parsed_globals):
 def doUpdateBucketAccelerateOpt(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -212,9 +268,17 @@ def doUpdateBucketAccelerateOpt(args, parsed_globals):
 def doDescribeTimerScalingPolicies(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -240,9 +304,17 @@ def doDescribeTimerScalingPolicies(args, parsed_globals):
 def doCopyFleet(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -268,9 +340,17 @@ def doCopyFleet(args, parsed_globals):
 def doDescribeGameServerSessions(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -296,9 +376,17 @@ def doDescribeGameServerSessions(args, parsed_globals):
 def doJoinGameServerSession(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -324,9 +412,17 @@ def doJoinGameServerSession(args, parsed_globals):
 def doJoinGameServerSessionBatch(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -352,9 +448,17 @@ def doJoinGameServerSessionBatch(args, parsed_globals):
 def doDeleteTimerScalingPolicy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -380,9 +484,17 @@ def doDeleteTimerScalingPolicy(args, parsed_globals):
 def doStartGameServerSessionPlacement(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -408,9 +520,17 @@ def doStartGameServerSessionPlacement(args, parsed_globals):
 def doDescribePlayerSessions(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -436,9 +556,17 @@ def doDescribePlayerSessions(args, parsed_globals):
 def doCreateGameServerSession(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -464,9 +592,17 @@ def doCreateGameServerSession(args, parsed_globals):
 def doStopGameServerSessionPlacement(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -492,9 +628,17 @@ def doStopGameServerSessionPlacement(args, parsed_globals):
 def doGetInstanceAccess(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -520,9 +664,17 @@ def doGetInstanceAccess(args, parsed_globals):
 def doUpdateGameServerSession(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -548,9 +700,17 @@ def doUpdateGameServerSession(args, parsed_globals):
 def doSetServerReserved(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -576,9 +736,17 @@ def doSetServerReserved(args, parsed_globals):
 def doDescribeInstanceTypes(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -604,9 +772,17 @@ def doDescribeInstanceTypes(args, parsed_globals):
 def doPutTimerScalingPolicy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
+    if g_param[OptionsDefine.UseCVMRole]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn] and g_param[OptionsDefine.RoleSessionName]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn],
+            g_param[OptionsDefine.RoleSessionName]
+        )
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
     http_profile = HttpProfile(
         reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
         reqMethod="POST",
@@ -711,19 +887,26 @@ def parse_global_arg(parsed_globals):
 
         if os.environ.get(OptionsDefine.ENV_REGION):
             conf[OptionsDefine.Region] = os.environ.get(OptionsDefine.ENV_REGION)
+            
+        if os.environ.get(OptionsDefine.ENV_ROLE_ARN) and os.environ.get(OptionsDefine.ENV_ROLE_SESSION_NAME):
+            cred[OptionsDefine.RoleArn] = os.environ.get(OptionsDefine.ENV_ROLE_ARN)
+            cred[OptionsDefine.RoleSessionName] = os.environ.get(OptionsDefine.ENV_ROLE_SESSION_NAME)
 
     for param in g_param.keys():
         if g_param[param] is None:
             if param in [OptionsDefine.SecretKey, OptionsDefine.SecretId, OptionsDefine.Token]:
                 if param in cred:
                     g_param[param] = cred[param]
-                else:
+                elif not g_param[OptionsDefine.UseCVMRole]:
                     raise ConfigurationError("%s is invalid" % param)
             elif param in [OptionsDefine.Region, OptionsDefine.Output]:
                 if param in conf:
                     g_param[param] = conf[param]
                 else:
                     raise ConfigurationError("%s is invalid" % param)
+            elif param in [OptionsDefine.RoleArn, OptionsDefine.RoleSessionName]:
+                if param in cred:
+                    g_param[param] = cred[param]
 
     try:
         if g_param[OptionsDefine.ServiceVersion]:

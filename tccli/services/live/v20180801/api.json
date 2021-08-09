@@ -1021,6 +1021,7 @@
         {
           "default": "",
           "document": "Template ID.",
+          "example": "1",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -1030,6 +1031,7 @@
         {
           "default": "",
           "document": "Template name.",
+          "example": "aaa",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -1039,6 +1041,7 @@
         {
           "default": "",
           "document": "Description.",
+          "example": "xxx",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -1048,6 +1051,7 @@
         {
           "default": "",
           "document": "Stream starting callback URL.",
+          "example": "http://abc.com/abc",
           "member": "string",
           "name": "StreamBeginNotifyUrl",
           "required": true,
@@ -1056,16 +1060,8 @@
         },
         {
           "default": "",
-          "document": "Interruption callback URL.",
-          "member": "string",
-          "name": "StreamEndNotifyUrl",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Stream mixing callback URL.",
+          "document": "Stream mixing callback URL (disused)",
+          "example": "无",
           "member": "string",
           "name": "StreamMixNotifyUrl",
           "required": true,
@@ -1074,7 +1070,18 @@
         },
         {
           "default": "",
+          "document": "Interruption callback URL.",
+          "example": "http://abc.com/abc",
+          "member": "string",
+          "name": "StreamEndNotifyUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Recording callback URL.",
+          "example": "http://abc.com/abc",
           "member": "string",
           "name": "RecordNotifyUrl",
           "required": true,
@@ -1084,6 +1091,7 @@
         {
           "default": "",
           "document": "Screencapturing callback URL.",
+          "example": "http://abc.com/abc",
           "member": "string",
           "name": "SnapshotNotifyUrl",
           "required": true,
@@ -1093,6 +1101,7 @@
         {
           "default": "",
           "document": "Porn detection callback URL.",
+          "example": "http://abc.com/abc",
           "member": "string",
           "name": "PornCensorshipNotifyUrl",
           "required": true,
@@ -1102,6 +1111,7 @@
         {
           "default": "",
           "document": "Callback authentication key.",
+          "example": "def",
           "member": "string",
           "name": "CallbackKey",
           "required": true,
@@ -1732,6 +1742,7 @@
         {
           "default": "",
           "document": "Template name.\nMaximum length: 255 bytes.\nOnly letters, digits, underscores, and hyphens can be contained.",
+          "example": "testName",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -1740,6 +1751,7 @@
         {
           "default": "",
           "document": "Description.\nMaximum length: 1,024 bytes.\nOnly letters, digits, underscores, and hyphens can be contained.",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -1748,6 +1760,7 @@
         {
           "default": "",
           "document": "Stream starting callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "example": "无",
           "member": "string",
           "name": "StreamBeginNotifyUrl",
           "required": false,
@@ -1756,6 +1769,7 @@
         {
           "default": "",
           "document": "Interruption callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "example": "无",
           "member": "string",
           "name": "StreamEndNotifyUrl",
           "required": false,
@@ -1764,6 +1778,7 @@
         {
           "default": "",
           "document": "Recording callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "example": "无",
           "member": "string",
           "name": "RecordNotifyUrl",
           "required": false,
@@ -1772,6 +1787,7 @@
         {
           "default": "",
           "document": "Screencapturing callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "example": "无",
           "member": "string",
           "name": "SnapshotNotifyUrl",
           "required": false,
@@ -1780,6 +1796,7 @@
         {
           "default": "",
           "document": "Porn detection callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1).",
+          "example": "无",
           "member": "string",
           "name": "PornCensorshipNotifyUrl",
           "required": false,
@@ -1788,6 +1805,7 @@
         {
           "default": "",
           "document": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "example": "adasda131312",
           "member": "string",
           "name": "CallbackKey",
           "required": false,
@@ -1795,7 +1813,8 @@
         },
         {
           "default": "",
-          "document": "Stream mixing callback URL,\nProtocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "document": "Disused",
+          "example": "asdsad",
           "member": "string",
           "name": "StreamMixNotifyUrl",
           "required": false,
@@ -9588,9 +9607,19 @@
         {
           "default": "",
           "document": "Playback domain name.",
+          "example": "5000.livepush.myqcloud.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values:\n`gray`: unbind the canary certificate\n`formal` (default): unbind the formal certificate\n\n`formal` will be used if no value is passed in",
+          "example": "\"gray\"",
+          "member": "string",
+          "name": "Type",
+          "required": false,
           "type": "string"
         }
       ],

@@ -10484,6 +10484,16 @@
         },
         {
           "default": "",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "“”",
           "member": "string",
@@ -10890,8 +10900,9 @@
       "document": "Control parameter of face recognition task",
       "members": [
         {
-          "default": "OFF",
+          "default": "",
           "document": "Switch of face recognition task. Valid values:\n<li>ON: enables intelligent face recognition task;</li>\n<li>OFF: disables intelligent face recognition task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -10899,8 +10910,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "90.0",
+          "default": "",
           "document": "Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100. Default value: 95.",
+          "example": "无",
           "member": "float",
           "name": "Score",
           "required": false,
@@ -10910,6 +10922,7 @@
         {
           "default": "",
           "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports celebrity;</li>\n<li>politician: politically sensitive figure.</li>",
+          "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
           "required": false,
@@ -10918,7 +10931,8 @@
         },
         {
           "default": "",
-          "document": "Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the custom figures will be returned. Valid values:\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Custom face labels for filtering. After you specify a label, callbacks of face images without this label will be returned. If this parameter is not specified or left empty, callbacks of all face images will be returned.\nYou can specify up to 100 labels, with each containing up to 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "UserDefineLibraryLabelSet",
           "required": false,
@@ -10926,8 +10940,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "All",
+          "default": "",
           "document": "Figure library. Valid values:\n<li>Default: default figure library;</li>\n<li>UserDefine: custom figure library.</li>\n<li>All: both default and custom figure libraries will be used.</li>\nDefault value: All (both default and custom figure libraries will be used.)",
+          "example": "无",
           "member": "string",
           "name": "FaceLibrary",
           "required": false,
@@ -10943,6 +10958,7 @@
         {
           "default": "",
           "document": "Switch of face recognition task. Valid values:\n<li>ON: enables intelligent face recognition task;</li>\n<li>OFF: disables intelligent face recognition task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -10952,6 +10968,7 @@
         {
           "default": "",
           "document": "Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0–100.",
+          "example": "无",
           "member": "float",
           "name": "Score",
           "required": false,
@@ -10961,6 +10978,7 @@
         {
           "default": "",
           "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports celebrity;</li>\n<li>politician: politically sensitive figure.</li>",
+          "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
           "required": false,
@@ -10969,7 +10987,8 @@
         },
         {
           "default": "",
-          "document": "Custom figure filter tag, which specifies the custom figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the custom figures will be returned. Valid values:\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Custom face labels for filtering. After you specify a label, callbacks of face images without this label will be returned. If this parameter is not specified or left empty, callbacks of all face images will be returned.\nYou can specify up to 100 labels, with each containing up to 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "UserDefineLibraryLabelSet",
           "required": false,
@@ -10979,6 +10998,7 @@
         {
           "default": "",
           "document": "Figure library. Valid values:\n<li>Default: default figure library;</li>\n<li>UserDefine: custom figure library.</li>\n<li>All: both default and custom figure libraries will be used.</li>",
+          "example": "无",
           "member": "string",
           "name": "FaceLibrary",
           "required": false,
