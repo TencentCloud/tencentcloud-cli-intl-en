@@ -1,7 +1,7 @@
 {
   "actions": {
     "AddUserContact": {
-      "document": "This API is used to add the contact name and email. The returned value is the ID of the successfully added contact. Please always select Guangzhou for `Region`.",
+      "document": "This API is used to add the recipient name and email. The returned value is the ID of the successfully added recipient.",
       "input": "AddUserContactRequest",
       "name": "Adds contact information",
       "output": "AddUserContactResponse"
@@ -91,7 +91,7 @@
       "output": "DescribeHealthScoreResponse"
     },
     "DescribeMailProfile": {
-      "document": "This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports. Please always select Guangzhou for `Region`.",
+      "document": "This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports.",
       "input": "DescribeMailProfileRequest",
       "name": "Gets email configuration",
       "output": "DescribeMailProfileResponse"
@@ -180,7 +180,7 @@
       "members": [
         {
           "default": "",
-          "document": "Contact name, which must be unique, can contain 2–60 letters, digits, and underscores, and cannot start with an underscore.",
+          "document": "Recipient name, which can contain up to 20 letters, digits, spaces, and special symbols `!@#$%^&*()_+-=()` and cannot begin with an underscore.",
           "example": "张三",
           "member": "string",
           "name": "Name",
@@ -189,7 +189,7 @@
         },
         {
           "default": "",
-          "document": "Email address, which can contain letters, digits, and underscores and cannot start with an underscore.",
+          "document": "Email address, which can contain letters, digits, underscores, and the @ symbol, cannot begin with an underscore, and must be unique.",
           "example": "test@qq.com",
           "member": "string",
           "name": "ContactInfo",
@@ -842,7 +842,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Event details.",
+          "document": "Diagnosis event details. If there is no additional explanation information, the output will be empty.",
           "example": "[]",
           "member": "string",
           "name": "Explanation",
@@ -851,7 +851,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Summary.",
+          "document": "Diagnosis summary.",
           "example": "数据库健康检查，发现1个问题",
           "member": "string",
           "name": "Outline",
@@ -887,7 +887,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Suggestion.",
+          "document": "Suggestions. If there are no suggestions, the output will be empty.",
           "example": "[]",
           "member": "string",
           "name": "Suggestions",
@@ -1305,7 +1305,7 @@
         },
         {
           "default": "",
-          "document": "Time to get the health score.",
+          "document": "Time to get the health score in the format of `2019-09-10 12:13:14`.",
           "example": "2019-01-01T00:00:00+08:00",
           "member": "datetime_iso",
           "name": "Time",
@@ -1923,6 +1923,15 @@
           "name": "Product",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "MD5 value of SOL template",
+          "example": "AD7651E51E8C6FBA",
+          "member": "string",
+          "name": "Md5",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2300,7 +2309,7 @@
       "document": "DescribeUserSqlAdvice response structure.",
       "members": [
         {
-          "document": "SQL statement optimization suggestions, which can be parsed into JSON arrays.",
+          "document": "SQL statement optimization suggestions, which can be parsed into JSON arrays. If there is no need for optimization, the output will be empty.",
           "example": "PossibleKeys",
           "member": "string",
           "name": "Advices",
@@ -2309,7 +2318,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Notes of SQL statement optimization suggestions, which can be parsed into String arrays.",
+          "document": "Notes of SQL statement optimization suggestions, which can be parsed into String arrays. If there is no need for optimization, the output will be empty.",
           "example": "SQL解析不通过",
           "member": "string",
           "name": "Comments",
@@ -2345,7 +2354,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "SQL execution plan, which can be parsed into JSON.",
+          "document": "SQL execution plan, which can be parsed into JSON arrays. If there is no need for optimization, the output will be empty.",
           "example": "Before",
           "member": "string",
           "name": "SqlPlan",
@@ -2354,7 +2363,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Cost saving details after SQL statement optimization, which can be parsed into JSON.",
+          "document": "Cost saving details after SQL statement optimization, which can be parsed into JSON arrays. If there is no need for optimization, the output will be empty.",
           "example": "After",
           "member": "string",
           "name": "Cost",
@@ -2406,7 +2415,7 @@
         },
         {
           "default": "",
-          "document": "Event ID.",
+          "document": "Unique event ID.",
           "example": "1",
           "member": "int64",
           "name": "EventId",
@@ -2426,7 +2435,7 @@
         },
         {
           "default": "",
-          "document": "Summary.",
+          "document": "Diagnosis summary.",
           "example": "无",
           "member": "string",
           "name": "Outline",
@@ -2436,7 +2445,7 @@
         },
         {
           "default": "",
-          "document": "Diagnosis item.",
+          "document": "Diagnosis item description.",
           "example": "无",
           "member": "string",
           "name": "DiagItem",
@@ -2446,7 +2455,7 @@
         },
         {
           "default": "",
-          "document": "Instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance ID.",
           "example": "cdb-test",
           "member": "string",
           "name": "InstanceId",
@@ -2456,7 +2465,7 @@
         },
         {
           "default": "",
-          "document": "Reserved field\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Reserved field.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Metric",
@@ -2466,7 +2475,7 @@
         },
         {
           "default": "",
-          "document": "Region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Region.",
           "example": "无",
           "member": "string",
           "name": "Region",
@@ -4161,6 +4170,16 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MD5 value of SOL template",
+          "example": "AD7651E51E8C6FBA",
+          "member": "string",
+          "name": "Md5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4358,7 +4377,7 @@
         },
         {
           "default": "",
-          "document": "Configuration type.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Configuration type. Valid values: \"dbScan_mail_configuration\" (email configuration of database inspection report), \"scheduler_mail_configuration\" (email configuration of scheduled task report).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "dbScan_mail_configuration",
           "member": "string",
           "name": "ProfileType",
@@ -4368,7 +4387,7 @@
         },
         {
           "default": "",
-          "document": "Configuration level. Valid values: User, Instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Configuration level. Valid values: User (user-level), Instance (instance-level). For database inspection emails, it should be `User`. For scheduled task emails, it should be `Instance`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "User",
           "member": "string",
           "name": "ProfileLevel",
