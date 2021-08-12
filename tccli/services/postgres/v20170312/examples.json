@@ -323,7 +323,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=ModifySwitchTimePeriod\n&DBInstanceId=postgres-19nmz2xb\n&SwitchTag=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\"\n    }\n}",
-        "title": "Switching now"
+        "title": "Performing immediate switch"
       }
     ],
     "OpenDBExtranetAccess": [

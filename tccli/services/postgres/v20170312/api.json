@@ -2172,7 +2172,7 @@
       "members": [
         {
           "default": "",
-          "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: filter by instance ID (the filter value is a string)\ndb-instance-name: filter by instance name (the filter value is a string)\ndb-project-id: filter by project ID (the filter value is an integer)\ndb-pay-mode: filter by billing mode (the filter value is a string)\ndb-tag-key: filter by tag key (the filter value is a string)",
+          "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: filter by instance ID (in string format)\ndb-instance-name: filter by instance name (in string format)\ndb-project-id: filter by project ID (in integer format)\ndb-pay-mode: filter by billing mode (in string format)\ndb-tag-key: filter by tag key (in string format)",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -4653,7 +4653,7 @@
         },
         {
           "default": "",
-          "document": "Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (specify a time to switch). Default value: `0`",
+          "document": "Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at specified time). Default value: `0`",
           "example": "0",
           "member": "int64",
           "name": "SwitchTag",

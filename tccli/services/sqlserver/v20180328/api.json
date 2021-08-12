@@ -126,6 +126,12 @@
       "name": "Queries the list of databases",
       "output": "DescribeDBsResponse"
     },
+    "DescribeDBsNormal": {
+      "document": "This API is used to query database configurations. It does not return information of the accounts that have permissions to operate the database.",
+      "input": "DescribeDBsNormalRequest",
+      "name": "Queries database configurations",
+      "output": "DescribeDBsNormalResponse"
+    },
     "DescribeFlowStatus": {
       "document": "This API is used to query flow status.",
       "input": "DescribeFlowStatusRequest",
@@ -137,6 +143,18 @@
       "input": "DescribeIncrementalMigrationRequest",
       "name": "Queries incremental backup import tasks",
       "output": "DescribeIncrementalMigrationResponse"
+    },
+    "DescribeInstanceParamRecords": {
+      "document": "This API is used to query the parameter modification records of an instance.",
+      "input": "DescribeInstanceParamRecordsRequest",
+      "name": "Queries instance parameter modification records",
+      "output": "DescribeInstanceParamRecordsResponse"
+    },
+    "DescribeInstanceParams": {
+      "document": "This API is used to query the parameter list of an instance.",
+      "input": "DescribeInstanceParamsRequest",
+      "name": "Queries the configurable parameter list of an instance",
+      "output": "DescribeInstanceParamsResponse"
     },
     "DescribeMigrationDetail": {
       "document": "This API is used to query migration task details.",
@@ -258,11 +276,35 @@
       "name": "Modifies database remarks",
       "output": "ModifyDBRemarkResponse"
     },
+    "ModifyDatabaseCDC": {
+      "document": "This API is used to enable or disable the change data capture (CDC) feature.",
+      "input": "ModifyDatabaseCDCRequest",
+      "name": "Enables/disables CDC",
+      "output": "ModifyDatabaseCDCResponse"
+    },
+    "ModifyDatabaseCT": {
+      "document": "This API is used to enable or disable the change tracking (CT) feature.",
+      "input": "ModifyDatabaseCTRequest",
+      "name": "Enables/disables CT",
+      "output": "ModifyDatabaseCTResponse"
+    },
+    "ModifyDatabaseMdf": {
+      "document": "This API is used to shrink database MDF files.",
+      "input": "ModifyDatabaseMdfRequest",
+      "name": "Shrinks database MDF files",
+      "output": "ModifyDatabaseMdfResponse"
+    },
     "ModifyIncrementalMigration": {
       "document": "This API is used to modify an incremental backup import task.",
       "input": "ModifyIncrementalMigrationRequest",
       "name": "Modifies incremental backup import tasks.",
       "output": "ModifyIncrementalMigrationResponse"
+    },
+    "ModifyInstanceParam": {
+      "document": "This API is used to modify instance parameters.\n<b>Note</b>: if <b>the instance needs to be restarted</b> for the modified parameter to take effect, <b>it will be restarted</b> immediately or during the maintenance time according to the `WaitSwitch` parameter.\nBefore you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.",
+      "input": "ModifyInstanceParamRequest",
+      "name": "Modifies instance parameters",
+      "output": "ModifyInstanceParamResponse"
     },
     "ModifyMigration": {
       "document": "This API is used to modify an existing migration task.",
@@ -1814,6 +1856,192 @@
       ],
       "usage": "in"
     },
+    "DbNormalDetail": {
+      "document": "Database configurations",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is subscribed. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsSubscribed",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database collation",
+          "example": "Chinese_PRC_CI_AS",
+          "member": "string",
+          "name": "CollationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the cleanup task is enabled to automatically remove old change tracking information when CT is enabled. Valid values: `0` (no), `1` (yes)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "IsAutoCleanupOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether SQL Server Service Broker is enabled. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsBrokerEnabled",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether CDC is enabled. Valid values: `0` (disabled), `1` (enabled)",
+          "example": "0",
+          "member": "string",
+          "name": "IsCdcEnabled",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether CT is enabled. Valid values: `0` (disabled), `1` (enabled)",
+          "example": "0",
+          "member": "string",
+          "name": "IsDbChainingOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is encrypted. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsEncrypted",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether full-text indexes are enabled. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsFulltextEnabled",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a mirror database. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsMirroring",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is published. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsPublished",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether snapshots are enabled. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsReadCommittedSnapshotOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is trustworthy. Valid values: `0` (no), `1` (yes)",
+          "example": "0",
+          "member": "string",
+          "name": "IsTrustworthyOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mirroring state",
+          "example": "SYNCHRONIZED",
+          "member": "string",
+          "name": "MirroringState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "mirror_test37",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recovery model",
+          "example": "FULL",
+          "member": "string",
+          "name": "RecoveryModelDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retention period (in days) of change tracking information",
+          "example": "\"\"",
+          "member": "string",
+          "name": "RetentionPeriod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database status",
+          "example": "ONLINE",
+          "member": "string",
+          "name": "StateDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User type",
+          "example": "MULTI_USER",
+          "member": "string",
+          "name": "UserAccessDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DbRollbackTimeInfo": {
       "document": "Information of time range available for database rollback",
       "members": [
@@ -2029,6 +2257,7 @@
         {
           "default": "",
           "document": "Target instance ID.",
+          "example": "mssql-rdc0gajn",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2036,7 +2265,8 @@
         },
         {
           "default": "",
-          "document": "Backup import task ID",
+          "document": "Backup import task ID, which is returned through the `CreateBackupMigration` API",
+          "example": "mssql-backup-migration-cg0ffgqt",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -2044,7 +2274,8 @@
         },
         {
           "default": "",
-          "document": "ID of an incremental backup import task",
+          "document": "Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API",
+          "example": "mssql-incremental-migration-67q4wy87",
           "member": "string",
           "name": "IncrementalMigrationId",
           "required": true,
@@ -2217,6 +2448,7 @@
         {
           "default": "",
           "document": "ID of imported target instance",
+          "example": "mssql-rdc0gajn",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2225,6 +2457,7 @@
         {
           "default": "",
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration.",
+          "example": "mssql-backup-migration-kpl74n9l",
           "member": "string",
           "name": "BackupMigrationId",
           "required": false,
@@ -2233,6 +2466,7 @@
         {
           "default": "",
           "document": "Import task name",
+          "example": "字符串",
           "member": "string",
           "name": "MigrationName",
           "required": false,
@@ -2241,6 +2475,7 @@
         {
           "default": "",
           "document": "Backup file name",
+          "example": "db1",
           "member": "string",
           "name": "BackupFileName",
           "required": false,
@@ -2249,6 +2484,7 @@
         {
           "default": "",
           "document": "Status set of import tasks",
+          "example": "[\"2\\n\"]",
           "member": "int64",
           "name": "StatusSet",
           "required": false,
@@ -2257,6 +2493,7 @@
         {
           "default": "",
           "document": "Import task restoration type: FULL,FULL_LOG,FULL_DIFF",
+          "example": "FULL",
           "member": "string",
           "name": "RecoveryType",
           "required": false,
@@ -2265,6 +2502,7 @@
         {
           "default": "",
           "document": "COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "example": "COS_UPLOAD",
           "member": "string",
           "name": "UploadType",
           "required": false,
@@ -2272,7 +2510,8 @@
         },
         {
           "default": "",
-          "document": "Paging. Page size",
+          "document": "The maximum number of results returned per page. Default value: `100`.",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2280,7 +2519,8 @@
         },
         {
           "default": "",
-          "document": "Paging. Number of pages",
+          "document": "Page number. Default value: `0`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2288,7 +2528,8 @@
         },
         {
           "default": "",
-          "document": "Field for order: name,createTime,startTime,endTime",
+          "document": "Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.",
+          "example": "createTime",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -2296,7 +2537,8 @@
         },
         {
           "default": "",
-          "document": "Type of order: desc,asc",
+          "document": "Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.",
+          "example": "desc",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -2672,6 +2914,51 @@
       ],
       "type": "object"
     },
+    "DescribeDBsNormalRequest": {
+      "document": "DescribeDBsNormal request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-7vfv3rk3",
+          "example": "mssql-7vfv3rk3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBsNormalResponse": {
+      "document": "DescribeDBsNormal response structure.",
+      "members": [
+        {
+          "document": "Total number of databases of the instance",
+          "example": "77",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed database configurations, such as whether CDC or CT is enabled for the database",
+          "example": "无",
+          "member": "DbNormalDetail",
+          "name": "DBList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBsRequest": {
       "document": "DescribeDBs request structure.",
       "members": [
@@ -2767,6 +3054,7 @@
         {
           "default": "",
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "mssql-backup-migration-cg0ffgqt",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -2775,6 +3063,7 @@
         {
           "default": "",
           "document": "ID of imported target instance",
+          "example": "mssql-rdc0gajn",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2783,6 +3072,7 @@
         {
           "default": "",
           "document": "Backup file name",
+          "example": "cvm",
           "member": "string",
           "name": "BackupFileName",
           "required": false,
@@ -2791,6 +3081,7 @@
         {
           "default": "",
           "document": "Status set of import tasks",
+          "example": "[\"2\\n\"]",
           "member": "int64",
           "name": "StatusSet",
           "required": false,
@@ -2798,7 +3089,8 @@
         },
         {
           "default": "",
-          "document": "Paging. Page size",
+          "document": "The maximum number of results returned per page. Default value: `100`.",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2806,7 +3098,8 @@
         },
         {
           "default": "",
-          "document": "Paging. Number of pages",
+          "document": "Page number. Default value: `0`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2814,7 +3107,8 @@
         },
         {
           "default": "",
-          "document": "Field for order: name,createTime,startTime,endTime",
+          "document": "Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.",
+          "example": "createTime",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -2822,7 +3116,8 @@
         },
         {
           "default": "",
-          "document": "Type of order: desc,asc",
+          "document": "Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.",
+          "example": "desc",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -2830,7 +3125,8 @@
         },
         {
           "default": "",
-          "document": "ID of an incremental backup import task",
+          "document": "Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.",
+          "example": "mssql-incremental-migration-kp7bgv8p",
           "member": "string",
           "name": "IncrementalMigrationId",
           "required": false,
@@ -2853,6 +3149,114 @@
           "document": "Incremental import task set",
           "member": "Migration",
           "name": "IncrementalMigrationSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamRecordsRequest": {
+      "document": "DescribeInstanceParamRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Maximum value: `100`. Default value: `20`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamRecordsResponse": {
+      "document": "DescribeInstanceParamRecords response structure.",
+      "members": [
+        {
+          "document": "Number of eligible records",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter modification records",
+          "example": "无",
+          "member": "ParamRecord",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamsRequest": {
+      "document": "DescribeInstanceParams request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamsResponse": {
+      "document": "DescribeInstanceParams response structure.",
+      "members": [
+        {
+          "document": "Total number of instance parameters",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter details",
+          "example": "无",
+          "member": "ParameterDetail",
+          "name": "Items",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4614,12 +5018,175 @@
       ],
       "type": "object"
     },
+    "ModifyDatabaseCDCRequest": {
+      "document": "ModifyDatabaseCDC request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of database names",
+          "example": "[db_test]",
+          "member": "string",
+          "name": "DBNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enable or disable CDC. Valid values: `enable`, `disable`",
+          "example": "enable",
+          "member": "string",
+          "name": "ModifyType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseCDCResponse": {
+      "document": "ModifyDatabaseCDC response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "99999",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseCTRequest": {
+      "document": "ModifyDatabaseCT request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of database names",
+          "example": "[db_test]",
+          "member": "string",
+          "name": "DBNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enable or disable CT. Valid values: `enable`, `disable`",
+          "example": "enable",
+          "member": "string",
+          "name": "ModifyType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention period (in days) of change tracking information when CT is enabled. Value range: 3-30. Default value: `3`",
+          "example": "3",
+          "member": "int64",
+          "name": "ChangeRetentionDay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseCTResponse": {
+      "document": "ModifyDatabaseCT response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "9999",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseMdfRequest": {
+      "document": "ModifyDatabaseMdf request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of database names",
+          "example": "[db_test]",
+          "member": "string",
+          "name": "DBNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseMdfResponse": {
+      "document": "ModifyDatabaseMdf response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "99999",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyIncrementalMigrationRequest": {
       "document": "ModifyIncrementalMigration request structure.",
       "members": [
         {
           "default": "",
           "document": "ID of imported target instance",
+          "example": "mssql-rdc0gajn",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -4628,6 +5195,7 @@
         {
           "default": "",
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "mssql-backup-migration-cg0ffgqt",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -4635,7 +5203,8 @@
         },
         {
           "default": "",
-          "document": "Incremental import task ID",
+          "document": "Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.",
+          "example": "mssql-incremental-migration-kp7bgv8p",
           "member": "string",
           "name": "IncrementalMigrationId",
           "required": true,
@@ -4643,7 +5212,8 @@
         },
         {
           "default": "",
-          "document": "Whether restoration is required. No: not required. Yes: required.",
+          "document": "Whether to restore backups. Valid values: `NO`, `YES`. If this parameter is not specified, whether to restore incremental backups will not change.",
+          "example": "YES",
           "member": "string",
           "name": "IsRecovery",
           "required": false,
@@ -4652,6 +5222,7 @@
         {
           "default": "",
           "document": "If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "example": "[\"db_cvm_1_20200927204209_2log2_2reconvery2.bak\\n\"]",
           "member": "string",
           "name": "BackupFiles",
           "required": false,
@@ -4670,6 +5241,51 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceParamRequest": {
+      "document": "ModifyInstanceParam request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of modified parameters. Each list element has two fields: `Name` and `CurrentValue`. Set `Name` to the parameter name and `CurrentValue` to the new value after modification. <b>Note</b>: if the instance needs to be <b>restarted</b> for the modified parameter to take effect, it will be <b>restarted</b> immediately or during the maintenance time. Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.",
+          "example": "无",
+          "member": "Parameter",
+          "name": "ParamList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "When to execute the parameter modification task. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "WaitSwitch",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceParamResponse": {
+      "document": "ModifyInstanceParam response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4759,6 +5375,204 @@
         }
       ],
       "type": "object"
+    },
+    "ParamRecord": {
+      "document": "Instance parameter modification record",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-hbr4jy7i",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "fill factor (%)",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter value before modification",
+          "example": "2",
+          "member": "string",
+          "name": "OldValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter value after modification",
+          "example": "100",
+          "member": "string",
+          "name": "NewValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter modification status. Valid values: `1` (initializing and waiting for modification), `2` (modification succeed), `3` (modification failed), `4` (modifying)",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Parameter": {
+      "document": "Database instance parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "fill factor (%)",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter value",
+          "example": "1",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ParameterDetail": {
+      "document": "Instance parameter details",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "fill factor (%)",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the parameter. Valid values: `integer`, `enum`",
+          "example": "INT",
+          "member": "string",
+          "name": "ParamType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter",
+          "example": "0",
+          "member": "string",
+          "name": "Default",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "example": "The fill-factor option is provided for fine-tuning index data st",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current value of the parameter",
+          "example": "5",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedReboot",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum value of the parameter",
+          "example": "100",
+          "member": "int64",
+          "name": "Max",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum value of the parameter",
+          "example": "0",
+          "member": "int64",
+          "name": "Min",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enumerated values of the parameter",
+          "example": "[\"YES\", \"NO\"]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter status. Valid values: `0` (normal), `1` (modifying)",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RecycleDBInstanceRequest": {
       "document": "RecycleDBInstance request structure.",

@@ -186,6 +186,14 @@
         "title": "Querying the list of databases"
       }
     ],
+    "DescribeDBsNormal": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeDBsNormal\n&InstanceId=mssql-njj2mtpl\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DBList\": [\n            {\n                \"IsFulltextEnabled\": \"0\",\n                \"UserAccessDesc\": \"MULTI_USER\",\n                \"IsMirroring\": \"1\",\n                \"CollationName\": \"Chinese_PRC_CI_AS\",\n                \"RecoveryModelDesc\": \"FULL\",\n                \"IsSubscribed\": \"1\",\n                \"StateDesc\": \"ONLINE\",\n                \"IsCdcEnabled\": \"1\",\n                \"MirroringState\": \"SYNCHRONIZED\",\n                \"IsPublished\": \"1\",\n                \"RetentionPeriod\": \"20\",\n                \"IsDbChainingOn\": \"1\",\n                \"IsEncrypted\": \"0\",\n                \"IsTrustworthyOn\": \"1\",\n                \"IsReadCommittedSnapshotOn\": \"0\",\n                \"IsBrokerEnabled\": \"1\",\n                \"IsAutoCleanupOn\": \"1\",\n                \"Name\": \"db_test\"\n            }\n        ],\n        \"RequestId\": \"9607d890-db08-11eb-9f54-a9df121c01af\"\n    }\n}",
+        "title": "Querying detailed database configurations"
+      }
+    ],
     "DescribeFlowStatus": [
       {
         "document": "",
@@ -199,7 +207,23 @@
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeIncrementalMigration\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&BackupFileName=cvm\n&Limit=100\n&Offset=0\n&OrderBy=createTime\n&OrderByType=desc\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&StatusSet.0=2\n&InstanceId=mssql-rdc0gajn\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"IncrementalMigrationSet\": [\n            {\n                \"Action\": {\n                    \"AllAction\": [\n                        \"start\",\n                        \"delete\",\n                        \"incremental\",\n                        \"modify\",\n                        \"view\",\n                        \"upload\"\n                    ],\n                    \"AllowedAction\": [\n                        \"view\",\n                        \"modify\",\n                        \"delete\",\n                        \"upload\",\n                        \"start\"\n                    ]\n                },\n                \"AppId\": 251006279,\n                \"BackupFiles\": [\n                    \"db_cvm_1_20200927204209_2log2_2noreconvery2.bak\"\n                ],\n                \"CreateTime\": \"2020-09-27 20:44:59\",\n                \"Detail\": {\n                    \"Progress\": 0,\n                    \"StepAll\": 0,\n                    \"StepInfo\": [],\n                    \"StepNow\": 0\n                },\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"InstanceId\": \"mssql-rdc0gajn\",\n                \"IsRecovery\": \"NO\",\n                \"Message\": \"\",\n                \"MigrationId\": \"mssql-incremental-migration-kp7bgv8p\",\n                \"MigrationName\": \"\",\n                \"RecoveryType\": \"FULL_LOG\",\n                \"Region\": \"ap-guangzhou\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"Status\": 2,\n                \"UploadType\": \"COS_UPLOAD\"\n            }\n        ],\n        \"RequestId\": \"6dc136cb-e2e8-42b7-babc-2fc3b6f50d3d\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying an incremental migration task"
+        "title": "Querying incremental backup import tasks"
+      }
+    ],
+    "DescribeInstanceParamRecords": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeInstanceParamRecords\n&InstanceId=mssql-bm5e51kb\n&Offset=0\n&Limit=100\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"InstanceId\": \"mssql-bm5e51kb\",\n                \"ModifyTime\": \"2021-04-09 19:04:12\",\n                \"NewValue\": \"60\",\n                \"OldValue\": \"80\",\n                \"ParamName\": \"fill factor(%)\",\n                \"Status\": 3\n            },\n            {\n                \"InstanceId\": \"mssql-bm5e51kb\",\n                \"ModifyTime\": \"2021-04-09 20:26:57\",\n                \"NewValue\": \"60\",\n                \"OldValue\": \"80\",\n                \"ParamName\": \"fill factor(%)\",\n                \"Status\": 3\n            }\n        ],\n        \"RequestId\": \"10684c55-95b7-40de-b070-23f02c6746d2\",\n        \"TotalCount\": 2\n    }\n}",
+        "title": "Querying instance parameter modification records"
+      }
+    ],
+    "DescribeInstanceParams": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeInstanceParams\n&InstanceId=mssql-bm5e51kb\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CurrentValue\": \"24\",\n                \"Default\": \"0\",\n                \"Description\": \"The fill-factor option is provided for fine-tuning index data storage and performance.\",\n                \"EnumValue\": [],\n                \"Max\": 100,\n                \"Min\": 0,\n                \"Name\": \"fill factor(%)\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"integer\",\n                \"Status\": 0\n            },\n            {\n                \"CurrentValue\": \"0\",\n                \"Default\": \"0\",\n                \"Description\": \"The max worker threads option configures the number of worker threads that are available SQL Server-wide to process query requests, login, logout, and similar application requests.\",\n                \"EnumValue\": [\n                    \"0\"\n                ],\n                \"Max\": 32767,\n                \"Min\": 336,\n                \"Name\": \"max worker threads\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"integer\",\n                \"Status\": 0\n            },\n            {\n                \"CurrentValue\": \"30000\",\n                \"Default\": \"5\",\n                \"Description\": \"The cost threshold for parallelism option specifies the threshold at which SQL Server creates and runs parallel plans for queries.\",\n                \"EnumValue\": [],\n                \"Max\": 32767,\n                \"Min\": 0,\n                \"Name\": \"cost threshold for parallelism\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"integer\",\n                \"Status\": 0\n            },\n            {\n                \"CurrentValue\": \"1024\",\n                \"Default\": \"0\",\n                \"Description\": \"The degree of parallelism sets the number of processors employed to run a single statement, for each parallel plan execution. \",\n                \"EnumValue\": [],\n                \"Max\": 1024,\n                \"Min\": 0,\n                \"Name\": \"max degree of parallelism\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"integer\",\n                \"Status\": 0\n            },\n            {\n                \"CurrentValue\": \"0\",\n                \"Default\": \"0\",\n                \"Description\": \"The optimize for ad hoc workloads option is used to improve the efficiency of the plan cache for workloads that contain many single use ad hoc batches.\",\n                \"EnumValue\": [\n                    \"0\",\n                    \"1\"\n                ],\n                \"Max\": 0,\n                \"Min\": 0,\n                \"Name\": \"optimize for ad hoc workloads\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"enum\",\n                \"Status\": 0\n            },\n            {\n                \"CurrentValue\": \"1024\",\n                \"Default\": \"0\",\n                \"Description\": \"This option changes the amount of memory the SQL Server Memory Manager can allocate to a SQL Server process.\",\n                \"EnumValue\": [],\n                \"Max\": 2560,\n                \"Min\": 0,\n                \"Name\": \"min server memory(MB)\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"integer\",\n                \"Status\": 0\n            },\n            {\n                \"CurrentValue\": \"23\",\n                \"Default\": \"0\",\n                \"Description\": \"Use the blocked process threshold option to specify the threshold, in seconds, at which blocked process reports are generated.\",\n                \"EnumValue\": [],\n                \"Max\": 86400,\n                \"Min\": 0,\n                \"Name\": \"blocked process threshold(s)\",\n                \"NeedReboot\": 1,\n                \"ParamType\": \"integer\",\n                \"Status\": 0\n            }\n        ],\n        \"RequestId\": \"8c2fa1ec-7e13-4a2b-ba20-4d5ef93047ad\",\n        \"TotalCount\": 7\n    }\n}",
+        "title": "Querying the configurable parameter list of an instance"
       }
     ],
     "DescribeMigrationDetail": [
@@ -362,12 +386,44 @@
         "title": "Modifying database remarks"
       }
     ],
+    "ModifyDatabaseCDC": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDatabaseCDC\n&InstanceId=mssql-j8kv137v\n&DBNames.0=test_db\n&ModifyType=enable\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 9999,\n        \"RequestId\": \"a928d733-109a-4f44-84ad-991da182d0s3\"\n    }\n}",
+        "title": "Enabling or disabling CDC"
+      }
+    ],
+    "ModifyDatabaseCT": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDatabaseCT\n&InstanceId=mssql-j8kv137v\n&DBNames.0=test_db\n&ModifyType=enable\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 9999,\n        \"RequestId\": \"a928d733-1099-4f44-84ad-991da182d0s3\"\n    }\n}",
+        "title": "Enabling or disabling CT"
+      }
+    ],
+    "ModifyDatabaseMdf": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDatabaseMdf\n&InstanceId=mssql-j8kv137v\n&DBNames.0=test_db\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 9999,\n        \"RequestId\": \"a989d733-1099-4f44-84ad-991da182d0w3\"\n    }\n}",
+        "title": "Shrinking database MDF files"
+      }
+    ],
     "ModifyIncrementalMigration": [
       {
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&IsRecovery=YES\n&BackupFiles.0=db_cvm_1_20200927204209_2log2_2reconvery2.bak\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"IncrementalMigrationId\": \"mssql-incremental-migration-kp7bgv8p\",\n        \"RequestId\": \"dab70669-594b-4610-981b-5bfeef7182bb\"\n    }\n}",
         "title": "Modifying an incremental migration task"
+      }
+    ],
+    "ModifyInstanceParam": [
+      {
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyInstanceParam\n&WaitSwitch=0\n&InstanceIds.0=mssql-bm5e51kb\n&InstanceIds.1=mssql-p2yli7gv\n&InstanceIds.2=mssql-9ahw2qp9\n&ParamList.0.Name=fill factor(%)\n&ParamList.0.CurrentValue=50\n&ParamList.1.Name=cost threshold for parallelism\n&ParamList.1.CurrentValue=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"74172b7e-139c-4eed-b237-856f56e67f48\"\n    }\n}",
+        "title": "Modifying instance parameters"
       }
     ],
     "ModifyMigration": [
