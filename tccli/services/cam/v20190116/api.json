@@ -4033,7 +4033,7 @@
         },
         {
           "default": "",
-          "document": "The last editted time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The last edited time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2016-06-02 19:40:09",
           "member": "datetime",
           "name": "UpdateTime",
