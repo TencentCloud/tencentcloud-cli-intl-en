@@ -642,6 +642,24 @@
           "name": "Quic",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Access authentication for S3 origin",
+          "example": "无",
+          "member": "AwsPrivateAccess",
+          "name": "AwsPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Access authentication for OSS origin",
+          "example": "无",
+          "member": "OssPrivateAccess",
+          "name": "OssPrivateAccess",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1702,6 +1720,7 @@
         {
           "default": "",
           "document": "Domain name ID",
+          "example": "cdn-123",
           "member": "string",
           "name": "ResourceId",
           "required": false,
@@ -1711,6 +1730,7 @@
         {
           "default": "",
           "document": "Tencent Cloud account ID",
+          "example": "1234567",
           "member": "int64",
           "name": "AppId",
           "required": false,
@@ -1720,6 +1740,7 @@
         {
           "default": "",
           "document": "Acceleration domain name",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -1729,6 +1750,7 @@
         {
           "default": "",
           "document": "CNAME address of domain name",
+          "example": "www.test.com.cdn.dnsv1.com",
           "member": "string",
           "name": "Cname",
           "required": false,
@@ -1738,6 +1760,7 @@
         {
           "default": "",
           "document": "Acceleration service status\nrejected: the domain name is rejected due to expiration/deregistration of its ICP filing\nprocessing: deploying\nonline: activated\noffline: disabled",
+          "example": "online",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -1747,6 +1770,7 @@
         {
           "default": "",
           "document": "Project ID, which can be viewed on the Tencent Cloud project management page",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1756,6 +1780,7 @@
         {
           "default": "",
           "document": "Domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming VOD acceleration",
+          "example": "web",
           "member": "string",
           "name": "ServiceType",
           "required": false,
@@ -1765,6 +1790,7 @@
         {
           "default": "",
           "document": "Domain name creation time",
+          "example": "2021-04-01 00:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": false,
@@ -1774,6 +1800,7 @@
         {
           "default": "",
           "document": "Last modified time of domain name",
+          "example": "2021-04-01 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
           "required": false,
@@ -1783,6 +1810,7 @@
         {
           "default": "",
           "document": "Origin server configuration details",
+          "example": "8.8.8.8",
           "member": "Origin",
           "name": "Origin",
           "required": false,
@@ -1792,6 +1820,7 @@
         {
           "default": "",
           "document": "Domain name block status\nnormal: normal\noverdue: the domain name has been disabled due to account arrears. The acceleration service can be resumed after the account is topped up.\nmalicious: the acceleration service has been forcibly disabled due to detection of malicious behavior.\nddos: the acceleration service has been disabled due to large-scale DDoS attacks to the domain name\nidle: no operations or data has been detected for more than 90 days. The domain name is determined to be inactive which automatically disables the acceleration service. You can restart the service.\nunlicensed: the acceleration service has been automatically disabled as the domain name has no ICP filing or its ICP filing is deregistered. Service can be resumed after an ICP filing is obtained.\ncapping: the configured upper limit for bandwidth has been reached.\nreadonly: the domain name has a special configuration and has been locked.",
+          "example": "normal",
           "member": "string",
           "name": "Disable",
           "required": true,
@@ -1801,6 +1830,7 @@
         {
           "default": "",
           "document": "Acceleration region\nmainland: acceleration in Mainland China\noverseas: acceleration outside Mainland China\nglobal: global acceleration",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -1810,8 +1840,19 @@
         {
           "default": "",
           "document": "Domain name lock status\nnormal: not locked\nmainland: locked in Mainland China\noverseas: locked outside Mainland China\nglobal: locked globally",
+          "example": "normal",
           "member": "string",
           "name": "Readonly",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product of the domain name, either `cdn` or `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Product",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2648,6 +2689,7 @@
         {
           "default": "",
           "document": "Query start time, e.g., 2018-09-04 10:40:00. The returned result will be later than or equal to the specified time\nThe time will be rounded forward based on the granularity parameter `Interval`. For example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the first returned entry will be 2018-09-04 10:00:00\nThe range between the start time and end time should be less than or equal to 90 days",
+          "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -2656,6 +2698,7 @@
         {
           "default": "",
           "document": "Query end time, e.g. 2018-09-04 10:40:00. The returned result will be earlier than or equal to the specified time\nThe time will be rounded forward based on the granularity parameter `Interval`. For example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the last returned entry will be 2018-09-04 10:00:00\nThe range between the start time and end time should be less than or equal to 90 days",
+          "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -2664,6 +2707,7 @@
         {
           "default": "",
           "document": "Time granularity, which can be:\nmin: 1-minute. The query range should be less than or equal to 24 hours\n5min: 5-minute. The query range should be less than or equal to 31 days\nhour: 1-hour. The query range should be less than or equal to 31 days\nday: 1-day. The query period should be greater than 31 days\n\nCurrently, data query at 1-minute granularity is not supported if the `Area` field is `overseas`",
+          "example": "5min",
           "member": "string",
           "name": "Interval",
           "required": false,
@@ -2672,6 +2716,7 @@
         {
           "default": "",
           "document": "Domain name whose billing data is to be queried",
+          "example": "www.test.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -2680,6 +2725,7 @@
         {
           "default": "",
           "document": "Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf the `Domain` parameter is populated with specific domain name information, then the billing data of this domain name instead of the specified project will be returned",
+          "example": "0",
           "member": "int64",
           "name": "Project",
           "required": false,
@@ -2688,6 +2734,7 @@
         {
           "default": "",
           "document": "Acceleration region whose billing data is to be queried:\nmainland: in the mainland of China\noverseas: outside the mainland of China\nIf this parameter is left empty, `mainland` will be used by default",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -2696,6 +2743,7 @@
         {
           "default": "",
           "document": "Country/region to be queried if `Area` is `overseas`\nFor district or country/region codes, please see [District Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)\nIf this parameter is left empty, all countries/regions will be queried",
+          "example": "10",
           "member": "int64",
           "name": "District",
           "required": false,
@@ -2704,8 +2752,18 @@
         {
           "default": "",
           "document": "Billing statistics type\nflux: bill-by-traffic\nbandwidth: bill-by-bandwidth\nDefault value: `bandwidth`",
+          "example": "bandwidth",
           "member": "string",
           "name": "Metric",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the product to query, either `cdn` (default) or `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Product",
           "required": false,
           "type": "string"
         }
@@ -2761,7 +2819,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the query metric, which can be:\n`flux`: traffic (in bytes)\n`bandwidth`: bandwidth (in bps)\n`request`: number of requests\n`hitRequest`: number of hit requests\n`requestHitRate`: request hit rate (in % with two decimal digits)\n`hitFlux`: hit traffic (in bytes)\n`fluxHitRate`: traffic hit rate (in % with two decimal digits)\n`statusCode`: status code. Number of 2xx, 3xx, 4xx, and 5xx status codes returned during the queried period.\n`2xx`: lists the number of all status codes starting with **2** returned during the queried period based on the specified interval (if any)\n`3xx`: lists the number of all status codes starting with **3** returned during the queried period based on the specified interval (if any)\n`4xx`: lists the number of all status codes starting with **4** returned during the queried period based on the specified interval (if any)\n`5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)\nIt is supported to specify a status code for query. The return will be empty if the status code has never been generated.",
+          "document": "Specifies the metric to query, which can be:\n`flux`: traffic (in bytes)\n`fluxIn`: upstream traffic (in bytes), only used for the `ecdn` product\n`fluxOut`: downstream traffic (in bytes), only used for the `ecdn` product\n`bandwidth`: bandwidth (in bps)\n`bandwidthIn`: upstream bandwidth (in bps), only used for the `ecdn` product\n`bandwidthOut`: downstream bandwidth (in bps), only used for the `ecdn` product\n`request`: number of requests\n`hitRequest`: number of hit requests\n`requestHitRate`: request hit rate (in % with two decimal digits)\n`hitFlux`: hit traffic (in bytes)\n`fluxHitRate`: traffic hit rate (in % with two decimal digits)\n`statusCode`: status code. Number of 2xx, 3xx, 4xx, and 5xx status codes returned during the queried period.\n`2xx`: lists the number of all status codes starting with **2** returned during the queried period based on the specified interval (if any)\n`3xx`: lists the number of all status codes starting with **3** returned during the queried period based on the specified interval (if any)\n`4xx`: lists the number of all status codes starting with **4** returned during the queried period based on the specified interval (if any)\n`5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)\nSpecifies the status code to query. The return will be empty if the status code has never been generated.",
           "example": "flux",
           "member": "string",
           "name": "Metric",
@@ -2864,6 +2922,15 @@
           "example": "无",
           "member": "string",
           "name": "AreaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the product to query, either `cdn` (default) or `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Product",
           "required": false,
           "type": "string"
         }
@@ -3054,9 +3121,28 @@
         {
           "default": "",
           "document": "Base64-encoded string of certificate in PEM format",
+          "example": "\"\\u65e0\"",
           "member": "string",
           "name": "Cert",
-          "required": true,
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Managed certificate ID. `Cert` and `CertId` cannot be both empty. If they’re both filled in, `CerID` prevails.",
+          "example": "证书ID",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Product of the domain name, either `cdn` (default) or `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Product",
+          "required": false,
           "type": "string"
         }
       ],
@@ -3497,8 +3583,18 @@
         {
           "default": "",
           "document": "Specifies a service region.\n`mainland`: queries billing methods within Mainland China;\n`overseas`: queries billing methods outside Mainland China.\nDefault value: `mainland`.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the product to query, either `cdn` (default) or `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Product",
           "required": false,
           "type": "string"
         }
@@ -3509,37 +3605,47 @@
       "document": "DescribePayType response structure.",
       "members": [
         {
-          "document": "Billing modes:\n`flux`: bill-by-traffic\n`bandwidth`: bill-by-bandwidth\nWhen you switch the billing mode for a daily-billing-cycle account, if there is bandwidth usage on the day, this field indicates the billing mode that will take effect on the next day; otherwise, it indicates the billing mode that has already taken effect",
+          "document": "Billing modes:\n`flux`: bill-by-traffic\n`bandwidth`: bill-by-bandwidth\n`request`: bill-by-request\nIn case the billing mode is changed in the day, if there is bandwidth consumption occurred in the current day, the billing mode returned is the new billing mode for the next day. If no bandwidth consumption occurs, it indicates the current billing mode.",
+          "example": "flux",
           "member": "string",
           "name": "PayType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Billing cycle:\nday: daily settlement\nmonth: monthly settlement",
+          "example": "day",
           "member": "string",
           "name": "BillingCycle",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Billing method:\nmonthMax: billed by the monthly average of daily peak traffic (monthly settlement)\nday95: billed by the daily 95th percentile bandwidth (monthly settlement)\nmonth95: billed by the monthly 95th percentile bandwidth (monthly settlement)\nsum: billed by the total traffic (daily or monthly settlement)\nmax: billed by the peak bandwidth (daily settlement)",
+          "document": "`monthMax`: billed by the monthly average of daily peak traffic (monthly settlement)\n`day95`: billed by the daily 95th percentile bandwidth (monthly settlement)\n`month95`: billed by the monthly 95th percentile bandwidth (monthly settlement)\n`sum`: billed by the total traffic/total requests (daily or monthly settlement)\n`max`: billed by the peak bandwidth (daily settlement)",
+          "example": "sum",
           "member": "string",
           "name": "StatType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Billing method outside Mainland China:\n`all`: unified billing for all regions\n`multiple`: separate billing for different regions",
+          "example": "all",
           "member": "string",
           "name": "RegionType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Currently billing mode in effect:\n`flux`: bill-by-traffic\n`bandwidth`: bill-by-bandwidth",
+          "document": "The current billing mode in effect:\n`flux`: bill-by-traffic\n`bandwidth`: bill-by-bandwidth\n`request`: bill-by-request",
+          "example": "flux",
           "member": "string",
           "name": "CurrentPayType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4520,6 +4626,26 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Access authentication for OSS origin\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OssPrivateAccess",
+          "name": "OssPrivateAccess",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "WebSocket configuration.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WebSocket",
+          "name": "WebSocket",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4544,9 +4670,20 @@
       "members": [
         {
           "document": "Submission result\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CacheOptResult",
           "name": "CacheOptResult",
+          "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Task ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -4629,7 +4766,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filter field name, the list supported is as follows:\n- origin: primary origin server.\n- domain: domain name.\n- resourceId: domain name id.\n- status: domain name status. Values include `online`, `offline`, or `processing`.\n- serviceType: service type. Values include `web`, `download`, or `media`.\n- projectId: project ID.\n- domainType: primary origin server type, `cname` indicates external origin, `COS` indicates COS origin.\n- fullUrlCache: full-path cache, which can be on or off.\n- https: whether to configure HTTPS, which can be on, off or processing.\n- originPullProtocol: origin-pull protocol type. HTTP, follow, or HTTPS are supported.\n- tagKey: tag key.",
+          "document": "Filters field name, which includes:\n- `origin`: primary origin server.\n- `domain`: domain name.\n- `resourceId`: domain name ID.\n- `status`: domain name status. Valid values: `online`, `offline`, and `processing`.\n- `serviceType`: service type. Valid values: `web`, `download`, and `media`.\n- projectId: project ID.\n- `domainType`: primary origin server type. Valid values: `cname` (external origin), `COS` (COS origin), and `third_party` (3rd-party object storage origin).\n- `fullUrlCache`: whether to enable full-path cache, which can be `on` or `off`.\n- `https`: whether to configure HTTPS, which can be `on`, `off` or `processing`.\n- `originPullProtocol`: origin-pull protocol type, which can be `http`, `follow`, or `https`.\n- `tagKey`: tag key.",
+          "example": "domainType",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4639,6 +4777,7 @@
         {
           "default": "",
           "document": "Filter field value.",
+          "example": "cname",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -4648,6 +4787,7 @@
         {
           "default": "",
           "document": "Whether to enable fuzzy query. Only `origin` or `domain` is supported for the filter field name.\nWhen fuzzy query is enabled, the maximum Value length is 1. When fuzzy query is disabled, the maximum Value length is 5.",
+          "example": "false",
           "member": "bool",
           "name": "Fuzzy",
           "required": false,
@@ -4936,23 +5076,8 @@
       "members": [
         {
           "default": "",
-          "document": "Starting time, such as `2018-12-12 10:24:00`",
-          "member": "datetime",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time, such as 2018-12-14 10:24:00",
-          "member": "datetime",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "Specifies the URL to be queried",
+          "example": "http://www.test.com/1.txt",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -4960,7 +5085,26 @@
         },
         {
           "default": "",
+          "document": "Starting time, such as `2018-12-12 10:24:00`",
+          "example": "2021-02-01 00:00:00",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time, such as 2018-12-14 10:24:00",
+          "example": "2021-02-01 23:59:59",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Current URL status\ndisable: The URL remains disabled, and accessing it will return an error 403\nenable: The URL is enabled (unblocked) and can be normally accessed",
+          "example": "disable",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -4969,6 +5113,7 @@
         {
           "default": "",
           "document": "Offset for paginated queries. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4977,10 +5122,20 @@
         {
           "default": "",
           "document": "Limit on paged queries. Default value: 20",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Task ID. The task ID and start time cannot be both left empty.",
+          "example": "364332106815435411",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5773,6 +5928,15 @@
           "name": "AreaType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the product to query, either `cdn` (default) or `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6468,6 +6632,42 @@
           "name": "ReceiveTimeout",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OssPrivateAccess": {
+      "document": "Access authentication configuration for OSS origin ",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable access authentication. Valid values: `on`, `off`.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "AccessKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Key.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "SecretKey",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -7689,6 +7889,7 @@
         {
           "default": "",
           "document": "Rule name",
+          "example": "123",
           "member": "string",
           "name": "RuleName",
           "required": true,
@@ -7698,6 +7899,7 @@
         {
           "default": "",
           "document": "Specific configurations",
+          "example": "无",
           "member": "ScdnAclRule",
           "name": "Configure",
           "required": true,
@@ -7706,7 +7908,8 @@
         },
         {
           "default": "",
-          "document": "Rule action, which is generally `refuse`.",
+          "document": "Rule action, which can be `refuse` or `redirect`.",
+          "example": "refuse",
           "member": "string",
           "name": "Result",
           "required": true,
@@ -7716,11 +7919,22 @@
         {
           "default": "",
           "document": "Whether the rule is effective. Valid values: `active` and `inactive`.",
+          "example": "active",
           "member": "string",
           "name": "Status",
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error page configuration.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScdnErrorPage",
+          "name": "ErrorPage",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8619,6 +8833,7 @@
         {
           "default": "",
           "document": "Topic ID",
+          "example": "xxxx",
           "member": "string",
           "name": "TopicId",
           "required": true,
@@ -8628,6 +8843,7 @@
         {
           "default": "",
           "document": "Topic name",
+          "example": "cdn-topic1",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -8637,6 +8853,7 @@
         {
           "default": "",
           "document": "Whether to enable publishing",
+          "example": "1",
           "member": "int64",
           "name": "Enabled",
           "required": true,
@@ -8646,8 +8863,19 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "YYYY-MM-DD HH:mm:ss",
           "member": "datetime",
           "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Either `cdn` or `ecdn`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Channel",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -9030,6 +9258,24 @@
           "example": "无",
           "member": "Quic",
           "name": "Quic",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Access authentication for OSS origin",
+          "example": "无",
+          "member": "OssPrivateAccess",
+          "name": "OssPrivateAccess",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "WebSocket configuration.",
+          "example": "无",
+          "member": "WebSocket",
+          "name": "WebSocket",
           "required": false,
           "type": "object"
         }
@@ -9426,6 +9672,32 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "WebSocket": {
+      "document": "WebSocket configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.\n\n* WebSocket is now only available for beta users. To use it, please submit a ticket.",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sets the timeout period in seconds. Maximum value: 65.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

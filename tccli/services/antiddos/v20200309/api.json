@@ -245,6 +245,12 @@
       "input": "ModifyPacketFilterConfigRequest",
       "name": "Modifies Anti-DDoS feature filtering rules",
       "output": "ModifyPacketFilterConfigResponse"
+    },
+    "SwitchWaterPrintConfig": {
+      "document": "This API is used to enable or disable Anti-DDoS watermark configurations.",
+      "input": "SwitchWaterPrintConfigRequest",
+      "name": "Enables/Disables Anti-DDoS watermark configurations",
+      "output": "SwitchWaterPrintConfigResponse"
     }
   },
   "metadata": {
@@ -3125,7 +3131,7 @@
       "members": [
         {
           "default": "",
-          "document": "Forwarding listening port. Value range: 1–65535.",
+          "document": "The starting port for listener forwarding. Value range: 1 to 65535.",
           "example": "80",
           "member": "int64",
           "name": "FrontendPort",
@@ -3145,7 +3151,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The ending port for listener forwarding. Value range: 1 to 65535.",
           "example": "8080",
           "member": "int64",
           "name": "FrontendPortEnd",
@@ -3723,7 +3729,7 @@
         },
         {
           "default": "",
-          "document": "Detection value. Should be in key string or regular expression.\nFor `sunday`, enter a string or a string in hexadecimal byte code representation starting with `\\x`. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nFor `pcre`, enter a regular expression.\n]",
+          "document": "Detection value. Should be in key string or regular expression. \nWhen the `MatchType` is `sunday`, enter a string or a string in hexadecimal byte code representation. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nWhen the `MatchType` is `pcre`, enter a regular expression.\n]",
           "example": "\\x313233",
           "member": "string",
           "name": "Str",
@@ -3793,7 +3799,7 @@
         },
         {
           "default": "",
-          "document": "The second detection value. Should be in key string or regular expression.\nFor `sunday`, enter a string or a string in hexadecimal byte code representation starting with `\\x`. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nFor `pcre`, enter a regular expression.\n]",
+          "document": "The second detection value. Should be in key string or regular expression.\nWhen the `MatchType` is `sunday`, enter a string or a string in hexadecimal byte code representation. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nWhen the `MatchType` is `pcre`, enter a regular expression.\n]",
           "example": "\\x313233",
           "member": "string",
           "name": "Str2",
@@ -4287,6 +4293,42 @@
       ],
       "usage": "out"
     },
+    "SwitchWaterPrintConfigRequest": {
+      "document": "SwitchWaterPrintConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark status. `1`: enabled; `0`: disabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "OpenStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchWaterPrintConfigResponse": {
+      "document": "SwitchWaterPrintConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "WaterPrintConfig": {
       "document": "Watermark configuration",
       "members": [
@@ -4332,7 +4374,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Watermark checking mode, which can be:\n`checkall`: normal mode\n`shortfpcheckall`: compact mode\n]",
           "example": "checkall",
           "member": "string",
           "name": "Verify",

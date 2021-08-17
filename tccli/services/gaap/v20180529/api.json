@@ -48,6 +48,12 @@
       "name": "Creates a certificate.",
       "output": "CreateCertificateResponse"
     },
+    "CreateCustomHeader": {
+      "document": "This API is used to create a custom header of the HTTP/HTTPS listener. When client requests reach the listener, they will be forwarded to the origin with this custom hearer.",
+      "input": "CreateCustomHeaderRequest",
+      "name": "Creates a custom header",
+      "output": "CreateCustomHeaderResponse"
+    },
     "CreateDomain": {
       "document": "This API (CreateDomain) is used to create the access domain name for the HTTP/HTTPS listener. Clients request the backend data by accessing this domain.\nThis API only supports connections of version 3.0.",
       "input": "CreateDomainRequest",
@@ -180,6 +186,12 @@
       "name": "Queries available acceleration regions based on the origin server region.",
       "output": "DescribeAccessRegionsByDestRegionResponse"
     },
+    "DescribeBlackHeader": {
+      "document": "This API is used to query names of blocked custom headers.",
+      "input": "DescribeBlackHeaderRequest",
+      "name": "Queries the list of blocked custom headers",
+      "output": "DescribeBlackHeaderResponse"
+    },
     "DescribeCertificateDetail": {
       "document": "This API (DescribeCertificateDetail) is used to query certificate details, including the certificate ID, name, type, content, key, and other information.",
       "input": "DescribeCertificateDetailRequest",
@@ -197,6 +209,12 @@
       "input": "DescribeCountryAreaMappingRequest",
       "name": "Obtains country/region code mapping table.",
       "output": "DescribeCountryAreaMappingResponse"
+    },
+    "DescribeCustomHeader": {
+      "document": "This API is used to query the list of custom headers.",
+      "input": "DescribeCustomHeaderRequest",
+      "name": "Queries a list of custom headers",
+      "output": "DescribeCustomHeaderResponse"
     },
     "DescribeDestRegions": {
       "document": "This API (DescribeDestRegions) is used to query an origin server region (i.e., the region in which the origin server locates).",
@@ -1410,6 +1428,42 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCustomHeaderRequest": {
+      "document": "CreateCustomHeader request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-18vhg67",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom header name and content list. `‘’$remote_addr‘’` will be resolved and replaced with the client IP. Other values will be directly passed to the origin server.",
+          "example": "[{\"HeaderName\":\"X-REAL_IP\",\"HeaderValue\":\"$remote_addr\"}]",
+          "member": "HttpHeaderParam",
+          "name": "Headers",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCustomHeaderResponse": {
+      "document": "CreateCustomHeader response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2758,6 +2812,32 @@
       ],
       "type": "object"
     },
+    "DescribeBlackHeaderRequest": {
+      "document": "DescribeBlackHeader request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeBlackHeaderResponse": {
+      "document": "DescribeBlackHeader response structure.",
+      "members": [
+        {
+          "document": "List of blocked custom headers\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[{\"X-REAL_IP\",\"remote_addr\"}]",
+          "member": "string",
+          "name": "BlackHeaders",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCertificateDetailRequest": {
       "document": "DescribeCertificateDetail request structure.",
       "members": [
@@ -2861,6 +2941,41 @@
           "name": "CountryAreaMappingList",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomHeaderRequest": {
+      "document": "DescribeCustomHeader request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCustomHeaderResponse": {
+      "document": "DescribeCustomHeader response structure.",
+      "members": [
+        {
+          "document": "Rule ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "rule-18vhg67",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of custom headers\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[{\"HeaderName\":\"X-REAL_IP\",\"HeaderValue\":\"$remote_addr\"}]",
+          "member": "HttpHeaderParam",
+          "name": "Headers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

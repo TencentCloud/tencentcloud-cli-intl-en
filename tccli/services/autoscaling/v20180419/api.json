@@ -1239,6 +1239,15 @@
           "name": "SpotMixedAllocationPolicy",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:\n<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.\n<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.\n\nDefault value: `False`.",
+          "example": "false",
+          "member": "bool",
+          "name": "CapacityRebalance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3842,6 +3851,15 @@
           "name": "SpotMixedAllocationPolicy",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:\n<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.\n<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.",
+          "example": "false",
+          "member": "bool",
+          "name": "CapacityRebalance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

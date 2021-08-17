@@ -1,5 +1,21 @@
 {
   "actions": {
+    "AttachPlugin": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=AttachPlugin\n&ServiceId=Service-3fasdgrg\n&PluginId=Plugin-3datbg1f\n&EnvironmentName=release\n&ApiIds.0=api-gesv1rfa\n&ApiIds.1=api-9ads3g\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"bb85842c-c0d2-4543-8f4d-396a193babe8\"\n    }\n}",
+        "title": "AttachPlugin"
+      }
+    ],
+    "BindApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=BindApiApp\n&ApiAppId=app-kzofrjbl\n&Environment=test\n&ServiceId=service-ody35h5e\n&ApiId=api-c6piso8y\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"a6c567f9-7a55-43b9-81d2-f721da5e271a\"\n    }\n}",
+        "title": "BindApiApp"
+      }
+    ],
     "BindEnvironment": [
       {
         "document": "",
@@ -52,8 +68,16 @@
       {
         "document": "",
         "input": "https://apigateway.tencentcloudapi.com/?Action=CreateApi\n&ServiceId=service-ody35h5e\n&ApiName=name\n&ApiDesc=desc\n&ApiType=NORMAL\n&AuthType=NONE\n&ServiceType=MOCK\n&ServiceTimeout=15\n&Protocol=HTTP\n&RequestConfig.Path=/test\n&RequestConfig.Method=GET\n&EnableCORS=false\n&ApiBusinessType=NORMAL\n&ServiceMockReturnMessage=mock\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ApiId\": \"api-61jyuvg6\",\n            \"Path\": \"test\",\n            \"Method\": \"GET\",\n            \"CreatedTime\": \"2020-03-23T08:59:18Z\"\n        },\n        \"RequestId\": \"96026454-d916-4035-ba88-0e900214d0f6\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {},\n        \"RequestId\": \"d617a773-cfbd-47a7-8762-b213dcb681f0\"\n    }\n}",
         "title": "CreateApi"
+      }
+    ],
+    "CreateApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=CreateApiApp\n&ApiAppName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ApiAppName\": \"testapp\",\n            \"ApiAppId\": \"app-kzofrjbl\",\n            \"ApiAppKey\": \"XXX\",\n            \"ApiAppSecret\": \"XXX\",\n            \"CreatedTime\": \"2020-12-01T10:44:55Z\",\n            \"ModifiedTime\": \"2020-12-01T10:44:55Z\",\n            \"ApiAppDesc\": \"first app\"\n        },\n        \"RequestId\": \"ad5218b4-edc3-4195-ba4d-a0ef176783ba\"\n    }\n}",
+        "title": "CreateApiApp"
       }
     ],
     "CreateApiKey": [
@@ -70,6 +94,14 @@
         "input": "https://apigateway.tencentcloudapi.com/?Action=CreateIPStrategy\n&ServiceId=service-ody35h5e\n&StrategyName=xx\n&StrategyType=WHITE\n&StrategyData=1.1.1.1\\n2.2.2.2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ServiceId\": \"service-ody35h5e\",\n            \"StrategyId\": \"IPStrategy-4xj4r1ou\",\n            \"StrategyName\": \"xx\",\n            \"StrategyType\": \"WHITE\",\n            \"StrategyData\": \"1.1.1.1\\n2.2.2.2\",\n            \"CreatedTime\": \"2020-02-24T19:02:00Z\",\n            \"ModifiedTime\": \"2020-02-24T19:02:00Z\",\n            \"BindApiTotalCount\": null,\n            \"BindApis\": null\n        },\n        \"RequestId\": \"4336cff4-1d75-433b-8823-bcf8fa8773c6\"\n    }\n}",
         "title": "CreateIPStrategy"
+      }
+    ],
+    "CreatePlugin": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=CreatePlugin\n&PluginName=mytestPlugin\n&PluginType=IPControl\n&Description=IPControl\n&PluginData={\"blocks\":\"1.1.1.12\",\"type\":\"black_list\"}\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"PluginId\": \"plugin-qrboebt1\",\n            \"PluginName\": \"mytestPlugin\",\n            \"PluginType\": \"IPControl\",\n            \"Description\": \"IPControl\",\n            \"PluginData\": \"{\\\"blocks\\\":\\\"1.1.1.12\\\",\\\"type\\\":\\\"black_list\\\"}\",\n            \"CreatedTime\": \"2021-01-25T05:46:25Z\",\n            \"ModifiedTime\": \"2021-01-25T05:46:25Z\",\n            \"AttachedApiTotalCount\": null,\n            \"AttachedApis\": null\n        },\n        \"RequestId\": \"b4ffe46b-ae2c-4ff1-911b-57fe15f3d95b\"\n    }\n}",
+        "title": "CreatePlugin"
       }
     ],
     "CreateService": [
@@ -104,6 +136,14 @@
         "title": "DeleteApi"
       }
     ],
+    "DeleteApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteApiApp\n&ApiAppId=app-e92i2jds\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7787aa0e-be74-43c0-b6f6-7bf56995ce2d\"\n    }\n}",
+        "title": "DeleteApiApp"
+      }
+    ],
     "DeleteApiKey": [
       {
         "document": "",
@@ -120,6 +160,14 @@
         "title": "DeleteIPStrategy"
       }
     ],
+    "DeletePlugin": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DeletePlugin\n&PluginId=Plugin-3datbg1f\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"bb85842c-c0d2-4543-8f4d-396a193babe8\"\n    }\n}",
+        "title": "DeletePlugin"
+      }
+    ],
     "DeleteService": [
       {
         "document": "",
@@ -131,9 +179,9 @@
     "DeleteServiceSubDomainMapping": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteServiceSubDomainMapping\r\n&ServiceId=service-19c5fnhy\r\n&SubDomain=xxxxxxx\r\n&Environment=test\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteServiceSubDomainMapping\n&ServiceId=service-19c5fnhy\n&SubDomain=xxxxxxx\n&Environment=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"1ab681ab-545a-4e71-91f1-8f1ea8ef13ad\"\n    }\n}",
-        "title": "Deleting the path mapping of custom domain name"
+        "title": "Deleting the path mapping of a custom domain name"
       }
     ],
     "DeleteUsagePlan": [
@@ -168,6 +216,14 @@
         "title": "DescribeAPIDocs"
       }
     ],
+    "DescribeAllPluginApis": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeAllPluginApis\n&PluginId=Plugin-23sdcda\n&EnvironmentName=release\n&ServiceId=service-jzo37opy\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 2,\n            \"ApiSet\": [\n                {\n                    \"ApiId\": \"api-hjqpe4dg\",\n                    \"ApiName\": \"notbind\",\n                    \"ApiType\": \"NORMAL\",\n                    \"Path\": \"/notbind\",\n                    \"Method\": \"GET\",\n                    \"IsAttached\": false,\n                    \"AttachedOtherPlugin\": false\n                },\n                {\n                    \"ApiId\": \"api-1clczx66\",\n                    \"ApiName\": \"mock2\",\n                    \"ApiType\": \"NORMAL\",\n                    \"Path\": \"/mock2\",\n                    \"Method\": \"GET\",\n                    \"IsAttached\": false,\n                    \"AttachedOtherPlugin\": true\n                }\n            ]\n        },\n        \"RequestId\": \"5aaeb03a-8f00-4644-95e8-6307b1690aa2\"\n    }\n}",
+        "title": "DescribeAllPluginApis"
+      }
+    ],
     "DescribeApi": [
       {
         "document": "",
@@ -176,12 +232,52 @@
         "title": "Querying API details"
       }
     ],
+    "DescribeApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiApp\n&ApiAppId=app-kzofrjbl\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiAppSet\": [\n                {\n                    \"ApiAppName\": \"testapp\",\n                    \"ApiAppId\": \"app-kzofrjbl\",\n                    \"ApiAppKey\": \"\",\n                    \"ApiAppSecret\": \"\",\n                    \"CreatedTime\": \"2020-12-01T10:44:55Z\",\n                    \"ModifiedTime\": \"2020-12-01T10:44:55Z\",\n                    \"ApiAppDesc\": \"\"\n                }\n            ]\n        },\n        \"RequestId\": \"98f5e9a5-c31d-470c-a7a9-325dcbb41d5b\"\n    }\n}",
+        "title": "DescribeApiApp"
+      }
+    ],
+    "DescribeApiAppBindApisStatus": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiAppBindApisStatus\n&ApiAppId=app-kzofrjbl\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiAppApiSet\": [\n                {\n                    \"ApiAppId\": \"app-kzofrjbl\",\n                    \"ApiAppName\": \"testapp\",\n                    \"ApiId\": \"api-c6piso8y\",\n                    \"ApiName\": \"dsadasd\",\n                    \"ServiceId\": \"service-j0fmd8x0\",\n                    \"ApiRegion\": \"chongqing\",\n                    \"EnvironmentName\": \"release\",\n                    \"AuthorizedTime\": \"2020-12-03 14:58:04\"\n                }\n            ]\n        },\n        \"RequestId\": \"98f5e9a5-c31d-470c-a7a9-325dcbb41d5b\"\n    }\n}",
+        "title": "DescribeApiAppBindApisStatus"
+      }
+    ],
+    "DescribeApiAppsStatus": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiAppsStatus\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiAppSet\": [\n                {\n                    \"ApiAppName\": \"testapp\",\n                    \"ApiAppId\": \"app-kzofrjbl\",\n                    \"ApiAppKey\": \"xxx\",\n                    \"ApiAppSecret\": \"xxx\",\n                    \"CreatedTime\": \"2020-12-01T10:44:55Z\",\n                    \"ModifiedTime\": \"2020-12-01T10:44:55Z\",\n                    \"ApiAppDesc\": \"first app\"\n                }\n            ]\n        },\n        \"RequestId\": \"98f5e9a5-c31d-470c-a7a9-325dcbb41d5b\"\n    }\n}",
+        "title": "DescribeApiAppsStatus"
+      }
+    ],
+    "DescribeApiBindApiAppsStatus": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiBindApiAppsStatus\n&ApiIds.0=api-3v4tzy3u\n&ApiIds.1=api-59xzaum4\n&ServiceId=service-miqoaf3c\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiAppApiSet\": [\n                {\n                    \"ApiAppId\": \"app-kzofrjbl\",\n                    \"ApiAppName\": \"testapp\",\n                    \"ApiId\": \"api-c6piso8y\",\n                    \"ApiName\": \"dsadasd\",\n                    \"ServiceId\": \"service-j0fmd8x0\",\n                    \"ApiRegion\": \"chongqing\",\n                    \"EnvironmentName\": \"release\",\n                    \"AuthorizedTime\": \"2020-12-03 14:58:04\"\n                }\n            ]\n        },\n        \"RequestId\": \"98f5e9a5-c31d-470c-a7a9-325dcbb41d5b\"\n    }\n}",
+        "title": "DescribeApiBindApiAppsStatus"
+      }
+    ],
     "DescribeApiEnvironmentStrategy": [
       {
         "document": "",
         "input": "https://apigateway.tencentcloudapi.com/?Action= DescribeApiEnvironmentStrategy\r\n&ServiceId=service-ody35h5e\r\n&EnvironmentNames.0=test\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 12,\n            \"ApiEnvironmentStrategySet\": [\n                {\n                    \"ApiId\": \"api-ne9wyb30\",\n                    \"ApiName\": \"hadongtestapi_ed3f0c\",\n                    \"Path\": \"/pathtest03\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-k3ezsaoi\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/lkjdszfhbgv\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-04h0i7z0\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/lkjhbgv\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-qsmlelcu\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/cfgvbhjgfdn\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-g0wgjcz8\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/ghkjhbhvb\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-c6d2x8fk\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/testxxx\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-gsd5bks6\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/tsf\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-jmh3naag\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/mytest\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-7kcivknq\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/bsdbsddd\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-4beu85p0\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/xxxxxx\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-qctp0evy\",\n                    \"ApiName\": \"name\",\n                    \"Path\": \"/\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": []\n                },\n                {\n                    \"ApiId\": \"api-e92i2jds\",\n                    \"ApiName\": \"test2\",\n                    \"Path\": \"/users\",\n                    \"Method\": \"POST\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                },\n                {\n                    \"ApiId\": \"api-3v4tzy3u\",\n                    \"ApiName\": \"test1\",\n                    \"Path\": \"/users/{name}\",\n                    \"Method\": \"GET\",\n                    \"EnvironmentStrategySet\": [\n                        {\n                            \"EnvironmentName\": \"test\",\n                            \"Quota\": -1\n                        }\n                    ]\n                }\n            ]\n        },\n        \"RequestId\": \"6b191d6c-dbdd-4214-b464-b7385ff01e15\"\n    }\n}",
         "title": "DescribeApiEnvironmentStrategy"
+      }
+    ],
+    "DescribeApiForApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiForApiApp\n&ServiceId=service-ody35h5e\n&ApiId=api-3v4tzy3u\n&ApiRegion=ap-guangzhou\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"EnableCORS\": false,\n            \"ServiceDesc\": \"xx\",\n            \"RequestParameters\": [\n                {\n                    \"Name\": \"xx\",\n                    \"DefaultValue\": \"xx\",\n                    \"Required\": true,\n                    \"Position\": \"xx\",\n                    \"Type\": \"xx\",\n                    \"Desc\": \"xx\"\n                }\n            ],\n            \"InternalDomain\": \"xx\",\n            \"RequestConfig\": {\n                \"Path\": \"xx\",\n                \"Method\": \"xx\"\n            },\n            \"ServiceWebsocketRegisterFunctionQualifier\": \"xx\",\n            \"MicroServices\": [\n                {\n                    \"MicroServiceName\": \"xx\",\n                    \"ClusterId\": \"xx\",\n                    \"NamespaceId\": \"xx\"\n                }\n            ],\n            \"ServiceWebsocketRegisterFunctionNamespace\": \"xx\",\n            \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n            \"ConstantParameters\": [\n                {\n                    \"Position\": \"xx\",\n                    \"DefaultValue\": \"xx\",\n                    \"Name\": \"xx\",\n                    \"Desc\": \"xx\"\n                }\n            ],\n            \"ServiceTsfLoadBalanceConf\": {\n                \"SessionStickRequired\": true,\n                \"IsLoadBalance\": true,\n                \"SessionStickTimeout\": 0,\n                \"Method\": \"xx\"\n            },\n            \"ServiceWebsocketTransportFunctionNamespace\": \"xx\",\n            \"ServiceScfFunctionQualifier\": \"xx\",\n            \"ServiceScfIsIntegratedResponse\": true,\n            \"ServiceWebsocketTransportFunctionName\": \"xx\",\n            \"ResponseSuccessExample\": \"xx\",\n            \"ServiceConfig\": {\n                \"Product\": \"xx\",\n                \"UniqVpcId\": \"xx\",\n                \"Url\": \"xx\",\n                \"Path\": \"xx\",\n                \"Method\": \"xx\"\n            },\n            \"Tags\": [\n                {\n                    \"Value\": \"xx\",\n                    \"Key\": \"xx\"\n                }\n            ],\n            \"ServiceParameters\": [\n                {\n                    \"RelevantRequestParameterPosition\": \"xx\",\n                    \"Name\": \"xx\",\n                    \"RelevantRequestParameterDesc\": \"xx\",\n                    \"DefaultValue\": \"xx\",\n                    \"RelevantRequestParameterType\": \"xx\",\n                    \"RelevantRequestParameterName\": \"xx\",\n                    \"Position\": \"xx\"\n                }\n            ],\n            \"ServiceScfFunctionNamespace\": \"xx\",\n            \"ServiceWebsocketRegisterFunctionName\": \"xx\",\n            \"ServiceWebsocketTransportFunctionQualifier\": \"xx\",\n            \"IsDebugAfterCharge\": false,\n            \"ApiBusinessType\": \"xx\",\n            \"ApiName\": \"xx\",\n            \"Base64EncodedTriggerRules\": [\n                {\n                    \"Name\": \"xx\",\n                    \"Value\": [\n                        \"xx\"\n                    ]\n                },\n                {\n                    \"Name\": \"xx\",\n                    \"Value\": [\n                        \"xx\"\n                    ]\n                }\n            ],\n            \"ResponseFailExample\": \"xx\",\n            \"ResponseType\": \"xx\",\n            \"AuthType\": \"xx\",\n            \"ServiceTimeout\": 15,\n            \"ServiceName\": \"xx\",\n            \"ApiDesc\": \"xx\",\n            \"ServiceWebsocketCleanupFunctionQualifier\": \"xx\",\n            \"OauthConfig\": {\n                \"PublicKey\": \"xx\",\n                \"LoginRedirectUrl\": \"xx\",\n                \"TokenLocation\": \"xx\"\n            },\n            \"IsBase64Trigger\": false,\n            \"ServiceScfFunctionName\": \"xx\",\n            \"ServiceTsfHealthCheckConf\": {\n                \"RequestVolumeThreshold\": 0,\n                \"SleepWindowInMilliseconds\": 0,\n                \"ErrorThresholdPercentage\": 0,\n                \"IsHealthCheck\": true\n            },\n            \"ServiceMockReturnMessage\": \"xx\",\n            \"ResponseErrorCodes\": [\n                {\n                    \"Msg\": \"xx\",\n                    \"NeedConvert\": true,\n                    \"Code\": 0,\n                    \"ConvertedCode\": 0,\n                    \"Desc\": \"xx\"\n                }\n            ],\n            \"ServiceType\": \"xx\",\n            \"AuthRelationApiId\": \"xx\",\n            \"ModifiedTime\": \"2020-09-22T00:00:00+00:00\",\n            \"MicroServicesInfo\": [\n                0\n            ],\n            \"ApiId\": \"xx\",\n            \"Environments\": [\n                \"xx\"\n            ],\n            \"ApiType\": \"xx\",\n            \"ServiceId\": \"xx\",\n            \"ServiceWebsocketCleanupFunctionName\": \"xx\",\n            \"Protocol\": \"xx\",\n            \"IsBase64Encoded\": false,\n            \"ServiceWebsocketCleanupFunctionNamespace\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "DescribeApiForApiApp"
       }
     ],
     "DescribeApiKey": [
@@ -254,6 +350,22 @@
         "title": "Request failed"
       }
     ],
+    "DescribePlugin": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribePlugin\n&PluginId=plugin-5xzwu9vh\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"PluginId\": \"plugin-5xzwu9vh\",\n            \"PluginName\": \"mynewplugins\",\n            \"PluginType\": \"IPControl\",\n            \"Description\": \"newmodify\",\n            \"PluginData\": \"{\\\"blocks\\\":\\\"1.1.1.1\\\",\\\"type\\\":\\\"black_list\\\"}\",\n            \"CreatedTime\": \"2021-01-26T03:00:34Z\",\n            \"ModifiedTime\": \"2021-01-26T04:14:01Z\",\n            \"AttachedApiTotalCount\": 1,\n            \"AttachedApis\": [\n                {\n                    \"ServiceId\": \"service-2mvp5cwi\",\n                    \"ServiceName\": \"clarescftest2\",\n                    \"ServiceDesc\": \"\",\n                    \"ApiId\": \"api-6wn5mmfq\",\n                    \"ApiName\": \"eee\",\n                    \"ApiDesc\": \"\",\n                    \"Environment\": \"release\",\n                    \"AttachedTime\": \"2021-01-26T04:17:41Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"d1f768f4-ef4f-49e7-8117-4e12f720e355\"\n    }\n}",
+        "title": "DescribePlugin"
+      }
+    ],
+    "DescribePluginApis": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribePluginApis\n&PluginId=Plugin-23sdcda\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 2,\n            \"AttachedApis\": [\n                {\n                    \"ServiceId\": \"service-jzo37opy\",\n                    \"ServiceName\": \"clareplugin\",\n                    \"ServiceDesc\": \"\",\n                    \"ApiId\": \"api-1vkzehtw\",\n                    \"ApiName\": \"mock3\",\n                    \"ApiDesc\": \"\",\n                    \"Environment\": \"release\",\n                    \"AttachedTime\": \"2021-01-25T07:14:27Z\"\n                },\n                {\n                    \"ServiceId\": \"service-jzo37opy\",\n                    \"ServiceName\": \"clareplugin\",\n                    \"ServiceDesc\": \"\",\n                    \"ApiId\": \"api-buz84890\",\n                    \"ApiName\": \"mock\",\n                    \"ApiDesc\": \"\",\n                    \"Environment\": \"release\",\n                    \"AttachedTime\": \"2021-01-25T06:56:58Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"f373cf5c-dddf-4263-98af-834fd0b773cf\"\n    }\n}",
+        "title": "DescribePluginApis"
+      }
+    ],
     "DescribeService": [
       {
         "document": "",
@@ -286,6 +398,14 @@
         "title": "DescribeServiceEnvironmentStrategy"
       }
     ],
+    "DescribeServiceForApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeServiceForApiApp\n&ServiceId=service-rypiqi13\n&ApiRegion=ap-guangzhou\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ServiceDesc\": \"xx\",\n        \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n        \"SetId\": 1,\n        \"InnerHttpsPort\": 0,\n        \"InnerHttpPort\": 0,\n        \"Tags\": [\n            {\n                \"Value\": \"xx\",\n                \"Key\": \"xx\"\n            }\n        ],\n        \"NetTypes\": [\n            \"OUTER\"\n        ],\n        \"IpVersion\": \"xx\",\n        \"UserType\": \"xx\",\n        \"UsagePlanList\": [\n            {\n                \"MaxRequestNumPreSec\": 0,\n                \"UsagePlanId\": \"xx\",\n                \"ModifiedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"UsagePlanDesc\": \"xx\",\n                \"Environment\": \"xx\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"UsagePlanName\": \"xx\"\n            }\n        ],\n        \"OuterSubDomain\": \"xx\",\n        \"UsagePlanTotalCount\": 0,\n        \"ApiIdStatusSet\": [\n            {\n                \"AuthType\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"UniqVpcId\": \"xx\",\n                \"ModifiedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"OauthConfig\": {\n                    \"PublicKey\": \"xx\",\n                    \"LoginRedirectUrl\": \"xx\",\n                    \"TokenLocation\": \"xx\"\n                },\n                \"ApiId\": \"xx\",\n                \"AuthRelationApiId\": \"xx\",\n                \"ApiDesc\": \"xx\",\n                \"ApiType\": \"xx\",\n                \"ApiBusinessType\": \"xx\",\n                \"ServiceId\": \"xx\",\n                \"ApiName\": \"xx\",\n                \"Path\": \"xx\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"RelationBuniessApiIds\": [\n                    \"xx\"\n                ],\n                \"IsDebugAfterCharge\": false,\n                \"Method\": \"xx\",\n                \"TokenLocation\": \"xx\"\n            }\n        ],\n        \"ServiceName\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"Protocol\": \"xx\",\n        \"ApiTotalCount\": 1,\n        \"ModifiedTime\": \"2020-09-22T00:00:00+00:00\",\n        \"ExclusiveSetName\": \"xx\",\n        \"AvailableEnvironments\": [\n            \"release\"\n        ],\n        \"ServiceId\": \"xx\",\n        \"InternalSubDomain\": \"xx\"\n    }\n}",
+        "title": "DescribeServiceForApiApp"
+      }
+    ],
     "DescribeServiceReleaseVersion": [
       {
         "document": "",
@@ -297,16 +417,16 @@
     "DescribeServiceSubDomainMappings": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeServiceSubDomainMappings\r\n&ServiceId=service-19c5fnhy\r\n&SubDomain=xxxxxx\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeServiceSubDomainMappings\n&ServiceId=service-19c5fnhy\n&SubDomain=xxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"IsDefaultMapping\": false,\n            \"PathMappingSet\": [\n                {\n                    \"Path\": \"/\",\n                    \"Environment\": \"release\"\n                }\n            ]\n        },\n        \"RequestId\": \"01c56ec2-6a40-46bc-bdf6-8b273d4bec93\"\n    }\n}",
-        "title": "Querying the path mappings of custom domain name"
+        "title": "Querying the path mapping of a custom domain name"
       }
     ],
     "DescribeServiceSubDomains": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeServiceSubDomains\r\n&ServiceId=service-19c5fnhy\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"DomainSet\": [\n                {\n                    \"DomainName\": \"xxxxxxxxx\",\n                    \"Status\": 1,\n                    \"CertificateId\": \"\",\n                    \"IsDefaultMapping\": false,\n                    \"Protocol\": \"http\",\n                    \"NetType\": \"OUTER\"\n                }\n            ]\n        },\n        \"RequestId\": \"01c56ec2-6a40-46bc-bdf6-8b273d4bec93\"\n    }\n}",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeServiceSubDomains\n&ServiceId=service-19c5fnhy\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"DomainSet\": [\n                {\n                    \"Status\": 1,\n                    \"CertificateId\": \"xx\",\n                    \"Protocol\": \"xx\",\n                    \"IsDefaultMapping\": false,\n                    \"DomainName\": \"xx\",\n                    \"IsForcedHttps\": true,\n                    \"NetType\": \"xx\",\n                    \"RegistrationStatus\": true\n                }\n            ]\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying the custom domain name list of service"
       }
     ],
@@ -358,6 +478,14 @@
         "title": "DescribeUsagePlansStatus"
       }
     ],
+    "DetachPlugin": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DetachPlugin\n&ServiceId=Service-3fasdgrg\n&PluginId=Plugin-3datbg1f\n&EnvironmentName=release\n&ApiId=api-gesv1rfa\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"bb85842c-c0d2-4543-8f4d-396a193babe8\"\n    }\n}",
+        "title": "DetachPlugin"
+      }
+    ],
     "DisableApiKey": [
       {
         "document": "",
@@ -398,6 +526,14 @@
         "title": "ModifyApi"
       }
     ],
+    "ModifyApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=ModifyApiApp\n&ApiAppId=app-e92i2jds\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7787aa0e-be74-43c0-b6f6-7bf56995ce2d\"\n    }\n}",
+        "title": "ModifyApiApp"
+      }
+    ],
     "ModifyApiEnvironmentStrategy": [
       {
         "document": "",
@@ -422,10 +558,18 @@
         "title": "ModifyIPStrategy"
       }
     ],
+    "ModifyPlugin": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=ModifyPlugin\n&PluginName=newplugin\n&PluginId=plugin-3datbg1f\n&Description=Modify a plugin\n&PluginData={\"type\":\"white_list\",\"blocks\":\"172.3.1.4\"}\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"bb85842c-c0d2-4543-8f4d-396a193babe8\"\n    }\n}",
+        "title": "ModifyPlugin"
+      }
+    ],
     "ModifyService": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=ModifyService\r\n&ServiceId=service-0c96l2bo\r\n&ServiceName=test_https\r\n&ServiceDesc=https\r\n&Protocol=https\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=ModifyService\n&ServiceId=service-0c96l2bo\n&ServiceName=test_https\n&ServiceDesc=https\n&Protocol=https\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e3705d00-bfe0-4fde-942c-cebd6b12431b\"\n    }\n}",
         "title": "Modifying service"
       }
@@ -457,7 +601,7 @@
     "ReleaseService": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=ReleaseService\r\n&ServiceId=service-ody35h5e\r\n&EnvironmentName=prepub\r\n&ReleaseDesc=xx\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=ReleaseService\n&ServiceId=service-ody35h5e\n&EnvironmentName=prepub\n&ReleaseDesc=xx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ReleaseDesc\": \"xx\",\n            \"ReleaseVersion\": \"2020022502411672fae6e9-9726-4caa-8867-6366cd3f1ba5\"\n        },\n        \"RequestId\": \"c5b4711b-8044-43eb-97cc-e755c5df1420\"\n    }\n}",
         "title": "ReleaseService"
       }
@@ -497,9 +641,9 @@
     "UnBindSubDomain": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=UnBindSubDomain\r\n&ServiceId=service-19c5fnhy\r\n&SubDomain=xxxxxxxx\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UnBindSubDomain\n&ServiceId=service-19c5fnhy\n&SubDomain=xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"b3197c48-53fb-46df-b721-df4424cf8be9\"\n    }\n}",
-        "title": "Unbinding custom domain name"
+        "title": "Unbinding a custom domain name"
       }
     ],
     "UnReleaseService": [
@@ -508,6 +652,22 @@
         "input": "https://apigateway.tencentcloudapi.com/?Action=UnReleaseService\r\n&ServiceId=service-ody35h5e\r\n&EnvironmentName=prepub\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"42aafae4-3023-4211-a10a-109163118bb0\"\n    }\n}",
         "title": "UnReleaseService"
+      }
+    ],
+    "UnbindApiApp": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UnbindApiApp\n&ApiAppId=app-kzofrjbl\n&Environment=test\n&ServiceId=service-ody35h5e\n&ApiId=api-c6piso8y\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"a6c567f9-7a55-43b9-81d2-f721da5e271a\"\n    }\n}",
+        "title": "UnbindApiApp"
+      }
+    ],
+    "UpdateApiAppKey": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateApiAppKey\n&ApiAppId=app-e92i2jds\n&ApiAppKey=xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7787aa0e-be74-43c0-b6f6-7bf56995ce2d\"\n    }\n}",
+        "title": "UpdateApiAppKey"
       }
     ],
     "UpdateApiKey": [
@@ -521,7 +681,7 @@
     "UpdateService": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateService\r\n&ServiceId=service-ody35h5e\r\n&EnvironmentName=test\r\n&VersionName=202002161926124aa59df4-7198-4f7a-acc7-887ab7ee0215\r\n&UpdateDesc=test\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateService\n&ServiceId=service-ody35h5e\n&EnvironmentName=test\n&VersionName=202002161926124aa59df4-7198-4f7a-acc7-887ab7ee0215\n&UpdateDesc=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7787aa0e-be74-43c0-b6f6-7bf56995ce2d\"\n    }\n}",
         "title": "UpdateService"
       }

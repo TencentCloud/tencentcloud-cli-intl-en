@@ -19,7 +19,7 @@
     "CreateBoundIP": [
       {
         "document": "",
-        "input": "https://antiddos.tencentcloudapi.com/?Action=CreateBoundIP\n&Business=bgp\n&Id=bgp-000000xe\n&BoundDevList.0.Ip=1.1.1.1\n&BoundDevList.0.BizType=public\n&BoundDevList.0.DeviceType=cvm\n&BoundDevList.0.InstanceId=ins-f2f9ssbo\n&CopyPolicy=yes\n&<Common request parameters>",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=CreateBoundIP\n&Business=bgp\n&Id=bgp-000000xe\n&BoundDevList.0.Ip=1.1.1.1\n&BoundDevList.0.BizType=public\n&BoundDevList.0.DeviceType=cvm\n&BoundDevList.0.InstanceId=ins-f2f9ssbo\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Success\": {\n            \"Code\": \"Success\",\n            \"Message\": \"Success\"\n        }\n    }\n}",
         "title": "Binding IP to Anti-DDoS Pro instance"
       }
@@ -326,6 +326,14 @@
         "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPacketFilterConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"PacketFilterConfig\": {\n        \"MatchType2\": \"xx\",\n        \"MatchBegin2\": \"xx\",\n        \"Str2\": \"xx\",\n        \"SportEnd\": 0,\n        \"IsNot\": 0,\n        \"PktlenMax\": 0,\n        \"MatchLogic\": \"xx\",\n        \"MatchBegin\": \"xx\",\n        \"Offset\": 0,\n        \"SportStart\": 0,\n        \"DportStart\": 0,\n        \"PktlenMin\": 0,\n        \"IsNot2\": 0,\n        \"Depth\": 0,\n        \"Str\": \"xx\",\n        \"Action\": \"xx\",\n        \"Protocol\": \"xx\",\n        \"MatchType\": \"xx\",\n        \"DportEnd\": 0,\n        \"Offset2\": 0,\n        \"Depth2\": 0,\n        \"Id\": \"xx\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
         "title": "Modifying Anti-DDoS feature filtering rules"
+      }
+    ],
+    "SwitchWaterPrintConfig": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=SwitchWaterPrintConfig\n&InstanceId=bgpip-0000011x\n&OpenStatus=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"512b8c34-3df9-448a-ae90-c28643d351bf\"\n    }\n}",
+        "title": "Enabling/Disabling Anti-DDoS watermark configurations"
       }
     ]
   },

@@ -1,5 +1,17 @@
 {
   "actions": {
+    "AttachPlugin": {
+      "document": "This API is used to bind a plugin to an API.",
+      "input": "AttachPluginRequest",
+      "name": "Binds a plugin to an API",
+      "output": "AttachPluginResponse"
+    },
+    "BindApiApp": {
+      "document": "This API is used to bind an application to an API.",
+      "input": "BindApiAppRequest",
+      "name": "Binds application to API",
+      "output": "BindApiAppResponse"
+    },
     "BindEnvironment": {
       "document": "This API is used to bind a usage plan to a service or API.\nAfter you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.\nCurrently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to degrade it.",
       "input": "BindEnvironmentRequest",
@@ -42,6 +54,12 @@
       "name": "Creates API",
       "output": "CreateApiResponse"
     },
+    "CreateApiApp": {
+      "document": "This API is used to create an application.",
+      "input": "CreateApiAppRequest",
+      "name": "Creates application",
+      "output": "CreateApiAppResponse"
+    },
     "CreateApiKey": {
       "document": "This API is used to create an API key pair.",
       "input": "CreateApiKeyRequest",
@@ -53,6 +71,12 @@
       "input": "CreateIPStrategyRequest",
       "name": "Creates service IP policy",
       "output": "CreateIPStrategyResponse"
+    },
+    "CreatePlugin": {
+      "document": "This API is used to create an API Gateway plugin.",
+      "input": "CreatePluginRequest",
+      "name": "Creates a plugin",
+      "output": "CreatePluginResponse"
     },
     "CreateService": {
       "document": "This API is used to create a service.\nThe maximum unit in API Gateway is service. Multiple APIs can be created in one service, and each service has a default domain name for users to call. You can also bind your own custom domain name to a service.",
@@ -78,6 +102,12 @@
       "name": "Deletes API",
       "output": "DeleteApiResponse"
     },
+    "DeleteApiApp": {
+      "document": "This API is used to delete a created application.",
+      "input": "DeleteApiAppRequest",
+      "name": "Deletes application",
+      "output": "DeleteApiAppResponse"
+    },
     "DeleteApiKey": {
       "document": "This API is used to delete an API key pair.",
       "input": "DeleteApiKeyRequest",
@@ -89,6 +119,12 @@
       "input": "DeleteIPStrategyRequest",
       "name": "Deletes service IP policy",
       "output": "DeleteIPStrategyResponse"
+    },
+    "DeletePlugin": {
+      "document": "This API is used to delete an API Gateway plugin.",
+      "input": "DeletePluginRequest",
+      "name": "Deletes a plugin",
+      "output": "DeletePluginResponse"
     },
     "DeleteService": {
       "document": "This API is used to delete a service in API Gateway.",
@@ -126,17 +162,53 @@
       "name": "Queries the list of API documents",
       "output": "DescribeAPIDocsResponse"
     },
+    "DescribeAllPluginApis": {
+      "document": "This API is used to list all APIs that can use this plugin, no matter whether the API is bound with the plugin.",
+      "input": "DescribeAllPluginApisRequest",
+      "name": "Lists all APIs that can use this plugin",
+      "output": "DescribeAllPluginApisResponse"
+    },
     "DescribeApi": {
       "document": "This API (`DescribeApi`) is used to query the details of the APIs users manage via Tencent Cloud API Gateway.",
       "input": "DescribeApiRequest",
       "name": "Queries API details",
       "output": "DescribeApiResponse"
     },
+    "DescribeApiApp": {
+      "document": "This API is used to search for an application by application ID.",
+      "input": "DescribeApiAppRequest",
+      "name": "Searches for application",
+      "output": "DescribeApiAppResponse"
+    },
+    "DescribeApiAppBindApisStatus": {
+      "document": "This API is used to query the list of APIs bound to an application.",
+      "input": "DescribeApiAppBindApisStatusRequest",
+      "name": "Queries the list of APIs bound to application",
+      "output": "DescribeApiAppBindApisStatusResponse"
+    },
+    "DescribeApiAppsStatus": {
+      "document": "This API is used to query the application list.",
+      "input": "DescribeApiAppsStatusRequest",
+      "name": "Queries application list",
+      "output": "DescribeApiAppsStatusResponse"
+    },
+    "DescribeApiBindApiAppsStatus": {
+      "document": "This API is used to query the list of applications bound to an API.",
+      "input": "DescribeApiBindApiAppsStatusRequest",
+      "name": "Queries the list of applications bound to API",
+      "output": "DescribeApiBindApiAppsStatusResponse"
+    },
     "DescribeApiEnvironmentStrategy": {
       "document": "This API is used to display the throttling policies bound to an API.",
       "input": "DescribeApiEnvironmentStrategyRequest",
       "name": "Displays throttling policies bound to API",
       "output": "DescribeApiEnvironmentStrategyResponse"
+    },
+    "DescribeApiForApiApp": {
+      "document": "This API is used to query the details of an API deployed at API Gateway.",
+      "input": "DescribeApiForApiAppRequest",
+      "name": "Queries API details",
+      "output": "DescribeApiForApiAppResponse"
     },
     "DescribeApiKey": {
       "document": "This API is used to query the details of a key.\nAfter creating an API key, you can query its details by using this API.",
@@ -186,6 +258,18 @@
       "name": "Searches for logs",
       "output": "DescribeLogSearchResponse"
     },
+    "DescribePlugin": {
+      "document": "This API is used to query the plugin details by plugin ID.",
+      "input": "DescribePluginRequest",
+      "name": "Queries details of a plugin",
+      "output": "DescribePluginResponse"
+    },
+    "DescribePluginApis": {
+      "document": "This API is used to query APIs bound with a specified plugin.",
+      "input": "DescribePluginApisRequest",
+      "name": "Queries APIs bound with a plugin",
+      "output": "DescribePluginApisResponse"
+    },
     "DescribeService": {
       "document": "This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases.",
       "input": "DescribeServiceRequest",
@@ -209,6 +293,12 @@
       "input": "DescribeServiceEnvironmentStrategyRequest",
       "name": "Displays service throttling policy",
       "output": "DescribeServiceEnvironmentStrategyResponse"
+    },
+    "DescribeServiceForApiApp": {
+      "document": "This API is used to query the details of a service, such as its description, domain name, and protocol.",
+      "input": "DescribeServiceForApiAppRequest",
+      "name": "Queries service details",
+      "output": "DescribeServiceForApiAppResponse"
     },
     "DescribeServiceReleaseVersion": {
       "document": "This API is used to query the list of all published versions under a service.\nA service is generally published on several versions. This API can be used to query the published versions.",
@@ -264,6 +354,12 @@
       "name": "Queries usage plan list",
       "output": "DescribeUsagePlansStatusResponse"
     },
+    "DetachPlugin": {
+      "document": "This API is used to unbind an API from the plugin.",
+      "input": "DetachPluginRequest",
+      "name": "Unbinds an API from a plugin",
+      "output": "DetachPluginResponse"
+    },
     "DisableApiKey": {
       "document": "This API is used to disable an API key.",
       "input": "DisableApiKeyRequest",
@@ -294,6 +390,12 @@
       "name": "Modifies API",
       "output": "ModifyApiResponse"
     },
+    "ModifyApiApp": {
+      "document": "This API is used to modify a created API.",
+      "input": "ModifyApiAppRequest",
+      "name": "Modifies application",
+      "output": "ModifyApiAppResponse"
+    },
     "ModifyApiEnvironmentStrategy": {
       "document": "This API is used to modify an API throttling policy.",
       "input": "ModifyApiEnvironmentStrategyRequest",
@@ -311,6 +413,12 @@
       "input": "ModifyIPStrategyRequest",
       "name": "Modifies service IP policy",
       "output": "ModifyIPStrategyResponse"
+    },
+    "ModifyPlugin": {
+      "document": "This API is used to modify a plugin.",
+      "input": "ModifyPluginRequest",
+      "name": "Modifies a plugin",
+      "output": "ModifyPluginResponse"
     },
     "ModifyService": {
       "document": "This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type can be modified.",
@@ -377,6 +485,18 @@
       "input": "UnReleaseServiceRequest",
       "name": "Deactivates service",
       "output": "UnReleaseServiceResponse"
+    },
+    "UnbindApiApp": {
+      "document": "This API is used to unbind an application from an API.",
+      "input": "UnbindApiAppRequest",
+      "name": "Unbinds application from API",
+      "output": "UnbindApiAppResponse"
+    },
+    "UpdateApiAppKey": {
+      "document": "This API is used to update an application key.",
+      "input": "UpdateApiAppKeyRequest",
+      "name": "Updates application key",
+      "output": "UpdateApiAppKeyResponse"
     },
     "UpdateApiKey": {
       "document": "This API is used to update a created API key pair.",
@@ -601,6 +721,201 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApiAppApiInfo": {
+      "document": "Information of the API bound to the application",
+      "members": [
+        {
+          "default": "",
+          "document": "Application name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "API name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Binding authorization time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "AuthorizedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "API region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authorized binding environment\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EnvironmentName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApiAppApiInfos": {
+      "document": "Application information set",
+      "members": [
+        {
+          "default": "",
+          "document": "Quantity",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information array of the API bound to the application\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ApiAppApiInfo",
+          "name": "ApiAppApiSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApiAppInfo": {
+      "document": "Application information",
+      "members": [
+        {
+          "default": "",
+          "document": "Application name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application SECRET\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAppSecret",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAppDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "ModifiedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application KEY\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiAppKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApiAppInfos": {
+      "document": "Application information set",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of applications",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application information array\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "ApiAppInfo",
+          "name": "ApiAppSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1313,6 +1628,32 @@
       ],
       "usage": "out"
     },
+    "ApiInfoSummary": {
+      "document": "Information of the APIs that can use this plugin",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of APIs that can use this plugin",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the APIs that can use this plugin",
+          "example": "无",
+          "member": "AvailableApiInfo",
+          "name": "ApiSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ApiKey": {
       "document": "Key details",
       "members": [
@@ -1619,6 +1960,247 @@
       ],
       "usage": "out"
     },
+    "AttachPluginRequest": {
+      "document": "AttachPlugin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the plugin to be bound",
+          "example": "plugin-2nuhovb7",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "service-jzo37opy",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "API environment",
+          "example": "release",
+          "member": "string",
+          "name": "EnvironmentName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of APIs bound with the plugin",
+          "example": "['api-buz84890','api-9nb6hd46']",
+          "member": "string",
+          "name": "ApiIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachPluginResponse": {
+      "document": "AttachPlugin response structure.",
+      "members": [
+        {
+          "document": "Whether binding succeeded.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachedApiInfo": {
+      "document": "Information of the API bound with the plugin",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the service to which the API belongs",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the service to which the API belongs",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of the service to which the API belongs\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ServiceDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "API ID",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API name",
+          "member": "string",
+          "name": "ApiName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ApiDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Environment of the API bound with the plugin",
+          "member": "string",
+          "name": "Environment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time when the plugin was bound to the API",
+          "member": "datetime_iso",
+          "name": "AttachedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachedApiSummary": {
+      "document": "List of APIs bound with the plugin",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of APIs bound with the plugin",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the API bound with the plugin",
+          "member": "AttachedApiInfo",
+          "name": "AttachedApis",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AvailableApiInfo": {
+      "document": "Information of the APIs that can use this plugin",
+      "members": [
+        {
+          "default": "",
+          "document": "API ID",
+          "example": "api-d2sdvx",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API name",
+          "example": "helloapi",
+          "member": "string",
+          "name": "ApiName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API type",
+          "example": "Normal",
+          "member": "string",
+          "name": "ApiType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API path",
+          "example": "/happy",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API method",
+          "example": "GET",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the API is bound with another plugin\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AttachedOtherPlugin",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the API is bound with the current plugin\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAttached",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Base64EncodedTriggerRule": {
       "document": "Header trigger rule for Base64 encoding.",
       "members": [
@@ -1642,6 +2224,69 @@
         }
       ],
       "usage": "both"
+    },
+    "BindApiAppRequest": {
+      "document": "BindApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the application to be bound.",
+          "example": "app-kzofrjbl",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment to be bound.",
+          "example": "test",
+          "member": "string",
+          "name": "Environment",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the service to be bound.",
+          "example": "service-ody35h5e",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the API to be bound.",
+          "example": "api-c6piso8y",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindApiAppResponse": {
+      "document": "BindApiApp response structure.",
+      "members": [
+        {
+          "document": "Whether binding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BindEnvironmentRequest": {
       "document": "BindEnvironment request structure.",
@@ -2034,6 +2679,51 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApiAppRequest": {
+      "document": "CreateApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom application name.",
+          "example": "test",
+          "member": "string",
+          "name": "ApiAppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application description",
+          "example": "test",
+          "member": "string",
+          "name": "ApiAppDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApiAppResponse": {
+      "document": "CreateApiApp response structure.",
+      "members": [
+        {
+          "document": "New application details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApiAppInfo",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2517,6 +3207,15 @@
           "name": "IsBase64Encoded",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.",
+          "example": "EVENT",
+          "member": "string",
+          "name": "ServiceScfFunctionType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2633,6 +3332,69 @@
           "name": "Result",
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePluginRequest": {
+      "document": "CreatePlugin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom plugin name. A plugin name contain up to 50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.",
+          "example": "myplugin",
+          "member": "string",
+          "name": "PluginName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plugin type. Valid value: `IPControl`.",
+          "example": "IPControl",
+          "member": "string",
+          "name": "PluginType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plugin definition statement in json format",
+          "example": "无",
+          "member": "string",
+          "name": "PluginData",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plugin description within 200 characters",
+          "example": "myPlugin",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePluginResponse": {
+      "document": "CreatePlugin response structure.",
+      "members": [
+        {
+          "document": "Details of the new plugin",
+          "example": "无",
+          "member": "Plugin",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2900,6 +3662,42 @@
       ],
       "type": "object"
     },
+    "DeleteApiAppRequest": {
+      "document": "DeleteApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique application ID.",
+          "example": "app-e92i2jds",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApiAppResponse": {
+      "document": "DeleteApiApp response structure.",
+      "members": [
+        {
+          "document": "Whether deletion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteApiKeyRequest": {
       "document": "DeleteApiKey request structure.",
       "members": [
@@ -3005,6 +3803,42 @@
           "name": "Result",
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePluginRequest": {
+      "document": "DeletePlugin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the plugin to be deleted",
+          "example": "plugin-2nuhovb7",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePluginResponse": {
+      "document": "DeletePlugin response structure.",
+      "members": [
+        {
+          "document": "Result of the deletion action",
+          "example": "无",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3195,6 +4029,7 @@
         {
           "default": "",
           "document": "Unique service ID.",
+          "example": "service-2nuhovb7",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -3204,6 +4039,7 @@
         {
           "default": "",
           "document": "Unique API ID.",
+          "example": "api-d2sdvx",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -3213,6 +4049,7 @@
         {
           "default": "",
           "document": "Custom API description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "API",
           "member": "string",
           "name": "ApiDesc",
           "required": true,
@@ -3222,6 +4059,7 @@
         {
           "default": "",
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -3231,6 +4069,7 @@
         {
           "default": "",
           "document": "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedTime",
           "required": true,
@@ -3240,6 +4079,7 @@
         {
           "default": "",
           "document": "API name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "apiname",
           "member": "string",
           "name": "ApiName",
           "required": true,
@@ -3249,6 +4089,7 @@
         {
           "default": "",
           "document": "VPC ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "-1",
           "member": "int64",
           "name": "VpcId",
           "required": true,
@@ -3258,6 +4099,7 @@
         {
           "default": "",
           "document": "Unique VPC ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "UniqVpcId",
           "required": true,
@@ -3267,6 +4109,7 @@
         {
           "default": "",
           "document": "API type. Valid values: NORMAL (general API), TSF (microservice API).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
           "member": "string",
           "name": "ApiType",
           "required": true,
@@ -3276,6 +4119,7 @@
         {
           "default": "",
           "document": "API protocol.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "HTTP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -3285,6 +4129,7 @@
         {
           "default": "",
           "document": "Whether to enable debugging after purchase (reserved field for the marketplace)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "False",
           "member": "bool",
           "name": "IsDebugAfterCharge",
           "required": true,
@@ -3293,7 +4138,8 @@
         },
         {
           "default": "",
-          "document": "API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "EIAM",
           "member": "string",
           "name": "AuthType",
           "required": true,
@@ -3303,6 +4149,7 @@
         {
           "default": "",
           "document": "OAuth API type, which is valid if `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "OAUTH",
           "member": "string",
           "name": "ApiBusinessType",
           "required": true,
@@ -3312,6 +4159,7 @@
         {
           "default": "",
           "document": "Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "api-dd3acs",
           "member": "string",
           "name": "AuthRelationApiId",
           "required": true,
@@ -3321,6 +4169,7 @@
         {
           "default": "",
           "document": "OAuth configuration information, which takes effect if `AuthType` is `OAUTH`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OauthConfig",
           "name": "OauthConfig",
           "required": true,
@@ -3330,6 +4179,7 @@
         {
           "default": "",
           "document": "List of business APIs associated with authorization API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "string",
           "name": "RelationBuniessApiIds",
           "required": true,
@@ -3339,6 +4189,7 @@
         {
           "default": "",
           "document": "Information of tags associated with API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "string",
           "name": "Tags",
           "required": true,
@@ -3348,6 +4199,7 @@
         {
           "default": "",
           "document": "API path, such as `/path`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "/hello",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -3357,6 +4209,7 @@
         {
           "default": "",
           "document": "API request method, such as `GET`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "GET",
           "member": "string",
           "name": "Method",
           "required": true,
@@ -3447,6 +4300,303 @@
       ],
       "type": "object"
     },
+    "DescribeAllPluginApisRequest": {
+      "document": "DescribeAllPluginApis request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the service to be queried",
+          "example": "service-o5as3moe",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the plugin to be queried",
+          "example": "plugin-ca5k53id",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment information",
+          "example": "release",
+          "member": "string",
+          "name": "EnvironmentName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllPluginApisResponse": {
+      "document": "DescribeAllPluginApis response structure.",
+      "members": [
+        {
+          "document": "List of APIs that ca use this plugin",
+          "example": " 无",
+          "member": "ApiInfoSummary",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiAppBindApisStatusRequest": {
+      "document": "DescribeApiAppBindApisStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "app-kzofrjbl",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: ApiId, ApiName, ServiceId, Environment, KeyWord (match with `name` or ID).",
+          "example": "[{\"Name\":\"ServiceId\",\"Values\":\"service-l29qasn8\"}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiAppBindApisStatusResponse": {
+      "document": "DescribeApiAppBindApisStatus response structure.",
+      "members": [
+        {
+          "document": "List of APIs bound to the application.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{     \"Response\": {         \"Result\": {             \"TotalCount\"",
+          "member": "ApiAppApiInfos",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiAppRequest": {
+      "document": "DescribeApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "app-kzofrjbl",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiAppResponse": {
+      "document": "DescribeApiApp response structure.",
+      "members": [
+        {
+          "document": "Application details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApiAppInfos",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiAppsStatusRequest": {
+      "document": "DescribeApiAppsStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: ApiAppId, ApiAppName, KeyWord (match with `name` or ID).",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiAppsStatusResponse": {
+      "document": "DescribeApiAppsStatus response structure.",
+      "members": [
+        {
+          "document": "Application list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApiAppInfos",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiBindApiAppsStatusRequest": {
+      "document": "DescribeApiBindApiAppsStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "service-l29qasn8",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of API IDs",
+          "example": "[\"api-l29qasn8\"]",
+          "member": "string",
+          "name": "ApiIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter. Valid values: ApiAppId, Environment, KeyWord (match with `name` or ID).",
+          "example": "[{\"Name\":\"ApiAppId\",\"Value\":\"app-l29qasn8\"}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiBindApiAppsStatusResponse": {
+      "document": "DescribeApiBindApiAppsStatus response structure.",
+      "members": [
+        {
+          "document": "List of APIs bound to the application.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{     \"Response\": {         \"Result\": {             \"TotalCount\"",
+          "member": "ApiAppApiInfos",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeApiEnvironmentStrategyRequest": {
       "document": "DescribeApiEnvironmentStrategy request structure.",
       "members": [
@@ -3502,6 +4652,60 @@
           "name": "Result",
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiForApiAppRequest": {
+      "document": "DescribeApiForApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique service ID of the API",
+          "example": "service-ody35h5e",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique API ID",
+          "example": "api-3v4tzy3u",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "API region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "ApiRegion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiForApiAppResponse": {
+      "document": "DescribeApiForApiApp response structure.",
+      "members": [
+        {
+          "document": "API details.",
+          "example": "{             \"ServiceId\": \"service-miqoaf3c\",             \"Serv",
+          "member": "ApiInfo",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4039,6 +5243,114 @@
       ],
       "type": "object"
     },
+    "DescribePluginApisRequest": {
+      "document": "DescribePluginApis request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the plugin to be queried",
+          "example": "plugin-2nuhovb7",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePluginApisResponse": {
+      "document": "DescribePluginApis response structure.",
+      "members": [
+        {
+          "document": "List of APIs bound with the plugin",
+          "example": "无",
+          "member": "AttachedApiSummary",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePluginRequest": {
+      "document": "DescribePlugin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the plugin to be queried",
+          "example": "plugin-ca5k53id",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePluginResponse": {
+      "document": "DescribePlugin response structure.",
+      "members": [
+        {
+          "document": "Plugin details",
+          "example": "无",
+          "member": "Plugin",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeServiceEnvironmentListRequest": {
       "document": "DescribeServiceEnvironmentList request structure.",
       "members": [
@@ -4183,6 +5495,231 @@
           "member": "ServiceEnvironmentStrategyStatus",
           "name": "Result",
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceForApiAppRequest": {
+      "document": "DescribeServiceForApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the service to be queried.",
+          "example": "service-rypiqi13",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "ApiRegion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceForApiAppResponse": {
+      "document": "DescribeServiceForApiApp response structure.",
+      "members": [
+        {
+          "document": "Unique service ID.",
+          "example": "service-rypiqi13",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Service environment list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"release\"]",
+          "member": "string",
+          "name": "AvailableEnvironments",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Service name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "dd",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Service description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "ServiceDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Protocol supported by service. Valid values: http, https, http&https.",
+          "example": "http",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Service creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-04-15T11:03:41Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Service modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-04-15T11:03:42Z",
+          "member": "datetime_iso",
+          "name": "ModifiedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Self-Deployed cluster name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "ExclusiveSetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Network type list. INNER: private network access; OUTER: public network access.",
+          "example": "[\"OUTER\"]",
+          "member": "string",
+          "name": "NetTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subdomain name for private network access.",
+          "example": "service-rypiqi13-1259027407.bj-in.apigw.tencentcs.com",
+          "member": "string",
+          "name": "InternalSubDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subdomain name for public network access.",
+          "example": "service-rypiqi13-1259027407.bj.apigw.tencentcs.com",
+          "member": "string",
+          "name": "OuterSubDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Service port number for HTTP access over private network.",
+          "example": "0",
+          "member": "int64",
+          "name": "InnerHttpPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Port number for HTTPS access over private network.",
+          "example": "0",
+          "member": "int64",
+          "name": "InnerHttpsPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of APIs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ApiTotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "API list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApiIdStatus",
+          "name": "ApiIdStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of usage plans.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "UsagePlanTotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Usage plan array.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UsagePlan",
+          "name": "UsagePlanList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IP version.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IpVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Service user type.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Reserved field.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "SetId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Tag bound to the service.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -4854,6 +6391,69 @@
           "name": "Result",
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachPluginRequest": {
+      "document": "DetachPlugin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the plugin to be unbound",
+          "example": "plugin-2nuhovb7",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "service-jzo37opy",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "API environment",
+          "example": "release",
+          "member": "string",
+          "name": "EnvironmentName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the API to unbind from the plugin",
+          "example": "['api-1clczx66']",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachPluginResponse": {
+      "document": "DetachPlugin response structure.",
+      "members": [
+        {
+          "document": "Whether unbinding succeeded.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5683,6 +7283,60 @@
       ],
       "type": "object"
     },
+    "ModifyApiAppRequest": {
+      "document": "ModifyApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique application ID.",
+          "example": "app-e92i2jds",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Modified application name",
+          "example": "test",
+          "member": "string",
+          "name": "ApiAppName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Modified application description",
+          "example": "test",
+          "member": "string",
+          "name": "ApiAppDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApiAppResponse": {
+      "document": "ModifyApiApp response structure.",
+      "members": [
+        {
+          "document": "Whether modification succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyApiEnvironmentStrategyRequest": {
       "document": "ModifyApiEnvironmentStrategy request structure.",
       "members": [
@@ -6297,6 +7951,69 @@
       ],
       "type": "object"
     },
+    "ModifyPluginRequest": {
+      "document": "ModifyPlugin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the plugin to be modified",
+          "example": "plugin-9l0d4sdf",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plugin name to be modified. A plugin name can contain up to 50 characters out of `a-z`, `A-Z`, `0-9`, and `_`, which must begin with a letter and end with a letter or a number.",
+          "example": "myplugin",
+          "member": "string",
+          "name": "PluginName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plugin description to be modified. A description is within 200 characters.",
+          "example": "newmodify",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Plugin definition statement to be modified. The json format is supported.",
+          "example": "{\"blocks\":\"1.1.1.1\",\"type\":\"black_list\"}",
+          "member": "string",
+          "name": "PluginData",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPluginResponse": {
+      "document": "ModifyPlugin response structure.",
+      "members": [
+        {
+          "document": "Whether modification succeeded.",
+          "example": "无",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyServiceEnvironmentStrategyRequest": {
       "document": "ModifyServiceEnvironmentStrategy request structure.",
       "members": [
@@ -6614,6 +8331,102 @@
         }
       ],
       "usage": "in"
+    },
+    "Plugin": {
+      "document": "Details of the API Gateway plugin",
+      "members": [
+        {
+          "default": "",
+          "document": "Plugin ID",
+          "example": "plugin-2nuhovb7",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin name",
+          "example": "myplugin",
+          "member": "string",
+          "name": "PluginName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin type",
+          "example": "IPControl",
+          "member": "string",
+          "name": "PluginType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin definition statement",
+          "example": "{\\",
+          "member": "string",
+          "name": "PluginData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "IPControl",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Plugin creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
+          "example": "2021-01-25T10:15:21Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used",
+          "example": "2021-01-25T10:15:21Z",
+          "member": "datetime_iso",
+          "name": "ModifiedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of APIs bound with the plugin\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "AttachedApiTotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of the API bound with the plugin\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AttachedApiInfo",
+          "name": "AttachedApis",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ReleaseService": {
       "document": "Returned result of service publishing",
@@ -7114,11 +8927,12 @@
       "usage": "out"
     },
     "ServiceConfig": {
-      "document": "ServiceConfig",
+      "document": "ServiceConfig information",
       "members": [
         {
           "default": "",
-          "document": "Backend type, which takes effect when VPC is enabled. Currently, only `clb` is supported.",
+          "document": "Backend type, which takes effect when VPC is enabled. Valid values: `clb` and `upstream` (VPC channel)",
+          "example": "clb",
           "member": "string",
           "name": "Product",
           "required": false,
@@ -7128,6 +8942,7 @@
         {
           "default": "",
           "document": "Unique VPC ID.",
+          "example": "vpc-ssaasd",
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
@@ -7137,6 +8952,7 @@
         {
           "default": "",
           "document": "API backend service URL, which is required if `ServiceType` is `HTTP`.",
+          "example": "172.17.0.16",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -7146,6 +8962,7 @@
         {
           "default": "",
           "document": "API backend service path, such as `/path`, which is required if `ServiceType` is `HTTP`. The frontend and backend paths can be different.",
+          "example": "/",
           "member": "string",
           "name": "Path",
           "required": false,
@@ -7155,6 +8972,7 @@
         {
           "default": "",
           "document": "API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different",
+          "example": "GET",
           "member": "string",
           "name": "Method",
           "required": false,
@@ -7858,6 +9676,123 @@
           "document": "Whether deactivation succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "Result",
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindApiAppRequest": {
+      "document": "UnbindApiApp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the application to be bound.",
+          "example": "app-kzofrjbl",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment to be bound.",
+          "example": "test",
+          "member": "string",
+          "name": "Environment",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the service to be bound.",
+          "example": "service-ody35h5e",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the API to be bound.",
+          "example": "api-c6piso8y",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindApiAppResponse": {
+      "document": "UnbindApiApp response structure.",
+      "members": [
+        {
+          "document": "Whether unbinding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateApiAppKeyRequest": {
+      "document": "UpdateApiAppKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique application ID.",
+          "example": "app-e92i2jds",
+          "member": "string",
+          "name": "ApiAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application Key.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ApiAppKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application Secret.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ApiAppSecret",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateApiAppKeyResponse": {
+      "document": "UpdateApiAppKey response structure.",
+      "members": [
+        {
+          "document": "Whether update succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
