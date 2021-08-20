@@ -1,0 +1,1773 @@
+{
+  "actions": {
+    "CreateDevice": {
+      "document": "This API is used to create an IoT Hub device. ",
+      "input": "CreateDeviceRequest",
+      "name": "Creates a device",
+      "output": "CreateDeviceResponse"
+    },
+    "CreatePrivateCA": {
+      "document": "This API is used to create a private CA certificate.",
+      "input": "CreatePrivateCARequest",
+      "name": "Creates a private CA certificate",
+      "output": "CreatePrivateCAResponse"
+    },
+    "DeleteDevice": {
+      "document": "This API is used to delete an IoT Hub device. ",
+      "input": "DeleteDeviceRequest",
+      "name": "Deletes a device",
+      "output": "DeleteDeviceResponse"
+    },
+    "DeletePrivateCA": {
+      "document": "This API is used to delete a private CA certificate.",
+      "input": "DeletePrivateCARequest",
+      "name": "Deletes a private CA certificate",
+      "output": "DeletePrivateCAResponse"
+    },
+    "DeleteProduct": {
+      "document": "This API is used to delete an IoT Hub product.",
+      "input": "DeleteProductRequest",
+      "name": "Deletes a product",
+      "output": "DeleteProductResponse"
+    },
+    "DescribeDevice": {
+      "document": "This API is used to query device details.",
+      "input": "DescribeDeviceRequest",
+      "name": "Queries device details",
+      "output": "DescribeDeviceResponse"
+    },
+    "DescribeDevices": {
+      "document": "This API is used to get the list of IoT Hub devices. ",
+      "input": "DescribeDevicesRequest",
+      "name": "Gets the device list",
+      "output": "DescribeDevicesResponse"
+    },
+    "DescribePrivateCA": {
+      "document": "This API is used to query private CA certificate details.",
+      "input": "DescribePrivateCARequest",
+      "name": "Queries private CA certificate details",
+      "output": "DescribePrivateCAResponse"
+    },
+    "DescribePrivateCABindedProducts": {
+      "document": "This API is used to query the products bound to a private CA certificate.",
+      "input": "DescribePrivateCABindedProductsRequest",
+      "name": "Queries the products bound to a private CA certificate",
+      "output": "DescribePrivateCABindedProductsResponse"
+    },
+    "DescribePrivateCAs": {
+      "document": "This API is used to get the list of private CA certificates.",
+      "input": "DescribePrivateCAsRequest",
+      "name": "Gets the list of private CA certificates",
+      "output": "DescribePrivateCAsResponse"
+    },
+    "DescribeProduct": {
+      "document": "This API is used to query product details.",
+      "input": "DescribeProductRequest",
+      "name": "Queries product details",
+      "output": "DescribeProductResponse"
+    },
+    "DescribeProductCA": {
+      "document": "This API is used to query the CA certificates bound to a product.",
+      "input": "DescribeProductCARequest",
+      "name": "Queries the CA certificates bound to a product",
+      "output": "DescribeProductCAResponse"
+    },
+    "UpdateDeviceLogLevel": {
+      "document": "This API is used to set the device log level.  ",
+      "input": "UpdateDeviceLogLevelRequest",
+      "name": "Sets the device log level",
+      "output": "UpdateDeviceLogLevelResponse"
+    },
+    "UpdateDevicesEnableState": {
+      "document": "This API is used to enable or disable multiple devices. ",
+      "input": "UpdateDevicesEnableStateRequest",
+      "name": "Enables or disables multiple devices",
+      "output": "UpdateDevicesEnableStateResponse"
+    },
+    "UpdatePrivateCA": {
+      "document": "This API is used to update a private CA certificate.",
+      "input": "UpdatePrivateCARequest",
+      "name": "Updates a private CA certificate",
+      "output": "UpdatePrivateCAResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-04-08",
+    "serviceNameCN": "物联网通信",
+    "serviceShortName": "iotcloud"
+  },
+  "objects": {
+    "Attribute": {
+      "document": "Device attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "Attribute list",
+          "example": "无",
+          "member": "DeviceTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BindProductInfo": {
+      "document": "Sub-product information",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product name",
+          "example": "ABCD",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CertInfo": {
+      "document": "X.509 certificate information",
+      "members": [
+        {
+          "default": "",
+          "document": "Certificate name",
+          "example": "IotHub",
+          "member": "string",
+          "name": "CertName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Hex sequence number of a certificate",
+          "example": "5ff69e4c8afce5d6de8d395b34672944f5b4765a",
+          "member": "string",
+          "name": "CertSN",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate issuer",
+          "example": "CN=AAA,O=AAA,L=shenzhen,ST=guangdong,C=CN",
+          "member": "string",
+          "name": "IssuerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate subject",
+          "example": "CN=AAA,O=AAA,L=shenzhen,ST=guangdong,C=CN",
+          "member": "string",
+          "name": "Subject",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate creation time (timestamp in milliseconds)",
+          "example": "1622619674",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate effective time (timestamp in milliseconds)",
+          "example": "1622448592",
+          "member": "uint64",
+          "name": "EffectiveTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate expiration time (timestamp in milliseconds)",
+          "example": "1653984592",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "X.509 certificate content",
+          "example": "-----BEGIN CERTIFICATE-----\\nBz4FQdeV1+Xyf+Eg==\\n-----END CERTIF",
+          "member": "string",
+          "name": "CertText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateDeviceRequest": {
+      "document": "CreateDevice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID, globally unique ID assigned by Tencent Cloud during product creation",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device name. It is a string of 1 to 48 characters. Letters, digits, and :_- are allowed.",
+          "example": "test_device",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device attribute",
+          "example": "无",
+          "member": "Attribute",
+          "name": "Attribute",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to use custom PSK, no by default",
+          "example": "ABC",
+          "member": "string",
+          "name": "DefinedPsk",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP, required for a NB-IoT product. `1`: China Telecom; `2`: China Mobile; `3`: China Unicom",
+          "example": "Isp",
+          "member": "uint64",
+          "name": "Isp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IMEI, required for a NB-IoT product",
+          "example": "Imsi",
+          "member": "string",
+          "name": "Imei",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "DevEUI of a LoRa device, required when you create a LoRa device",
+          "example": "Eui",
+          "member": "string",
+          "name": "LoraDevEui",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "MoteType of a LoRa device",
+          "example": "Type",
+          "member": "uint64",
+          "name": "LoraMoteType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Skey, required when you create a LoRa device",
+          "example": "skey",
+          "member": "string",
+          "name": "Skey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AppKey of a LoRa device",
+          "example": "key",
+          "member": "string",
+          "name": "LoraAppKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Private CA certificate",
+          "example": "-----BEGIN CERTIFICATE----- MIIFGjCCBAKgAwIBAgIQCgRw0Ja8ihLIkKbf",
+          "member": "string",
+          "name": "TlsCrt",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDeviceResponse": {
+      "document": "CreateDevice response structure.",
+      "members": [
+        {
+          "document": "Device name",
+          "example": "test_device",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Base64-encoded symmetric encryption key, which is returned if symmetric encryption is used",
+          "example": "xxxxxxxxxxxxx",
+          "member": "string",
+          "name": "DevicePsk",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device certificate, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used",
+          "example": "-----BEGIN CERTIFICATE----- MIIFGjCCBAKgAwIBAgIQCgRw0Ja8ihLIkKbf",
+          "member": "string",
+          "name": "DeviceCert",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device private key, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used. Tencent Cloud does not store the key. Please store it by yourself properly.",
+          "example": "-----BEGIN PRIVATE KEY----- MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgw",
+          "member": "string",
+          "name": "DevicePrivateKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DevEUI of a LoRa device, which is returned for a LoRa device",
+          "example": "xxx",
+          "member": "string",
+          "name": "LoraDevEui",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "MoteType of a LoRa device, which is returned for a LoRa device",
+          "example": "xxx",
+          "member": "uint64",
+          "name": "LoraMoteType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "AppKey of a LoRa device, which is returned for a LoRa device",
+          "example": "xxx",
+          "member": "string",
+          "name": "LoraAppKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "NwkKey of a LoRa device, which is returned for a LoRa device",
+          "example": "xxx",
+          "member": "string",
+          "name": "LoraNwkKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrivateCARequest": {
+      "document": "CreatePrivateCA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CA certificate name",
+          "example": "Cert_dev",
+          "member": "string",
+          "name": "CertName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CA certificate content",
+          "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
+          "member": "string",
+          "name": "CertText",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Content verifying the CA certificate",
+          "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
+          "member": "string",
+          "name": "VerifyCertText",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrivateCAResponse": {
+      "document": "CreatePrivateCA response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceRequest": {
+      "document": "DeleteDevice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the product to which the device belongs",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the device to delete",
+          "example": "abc",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Skey, which is required to delete a LoRa device or LoRa gateway device",
+          "example": "xxx",
+          "member": "string",
+          "name": "Skey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceResponse": {
+      "document": "DeleteDevice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrivateCARequest": {
+      "document": "DeletePrivateCA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Private CA certificate name",
+          "example": "certname",
+          "member": "string",
+          "name": "CertName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrivateCAResponse": {
+      "document": "DeletePrivateCA response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProductRequest": {
+      "document": "DeleteProduct request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the product to delete",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Skey, which is required to delete a LoRa product",
+          "example": "xxx",
+          "member": "string",
+          "name": "Skey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProductResponse": {
+      "document": "DeleteProduct response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceRequest": {
+      "document": "DescribeDevice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device name",
+          "example": "abc",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceResponse": {
+      "document": "DescribeDevice response structure.",
+      "members": [
+        {
+          "document": "Device name",
+          "example": "ABCD",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the device is online. `0`: offline; `1`: online",
+          "example": "1",
+          "member": "uint64",
+          "name": "Online",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device login time",
+          "example": "1",
+          "member": "uint64",
+          "name": "LoginTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device firmware version",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Last updated time of the device",
+          "example": "1",
+          "member": "uint64",
+          "name": "LastUpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device certificate",
+          "example": "-----BEGIN CERTIFICATE-----IIDS...Fw==-----END CERTIFICATE-----",
+          "member": "string",
+          "name": "DeviceCert",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device key",
+          "example": "PSK",
+          "member": "string",
+          "name": "DevicePsk",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device attribute",
+          "example": "无",
+          "member": "DeviceTag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device type",
+          "example": "3",
+          "member": "uint64",
+          "name": "DeviceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "International Mobile Equipment Identity (IMEI)",
+          "example": "imei",
+          "member": "string",
+          "name": "Imei",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ISP",
+          "example": "1",
+          "member": "uint64",
+          "name": "Isp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IP address",
+          "example": "1",
+          "member": "uint64",
+          "name": "ConnIP",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Device ID at the NB-IoT ISP",
+          "example": "1233445",
+          "member": "string",
+          "name": "NbiotDeviceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DevEUI of a LoRa device",
+          "example": "eui",
+          "member": "string",
+          "name": "LoraDevEui",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "MoteType of a LoRa device",
+          "example": "1",
+          "member": "uint64",
+          "name": "LoraMoteType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "SDK log level of the device\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LogLevel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The first time when the device went online\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "FirstOnlineTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The last time when the device went offline\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "LastOfflineTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Device creation time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the device certificate has been obtained. `0`: no; `1`: yes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "-----BEGIN CERTIFICATE----- MIIFGjCCBAKgAwIBAgIQCgRw0Ja8ihLIkKbf",
+          "member": "uint64",
+          "name": "CertState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the device is enabled\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "EnableState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Device tags\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "DeviceLabel",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "IP address of the MQTT client\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "ClientIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Firmware update time of the device\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "FirmwareUpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "CreateUserId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDevicesRequest": {
+      "document": "DescribeDevices request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the product whose devices are queried",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset, which starts from 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size. Value range: 10-250",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Device firmware version. If no value is passed in, devices of all firmware versions are returned. If `None-FirmwareVersion` is passed in, devices without version numbers are returned.",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "FirmwareVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device name to query",
+          "example": "ABCD",
+          "member": "string",
+          "name": "DeviceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to query enabled or disabled devices. `0`: disabled devices; `1`: enabled devices. By default, both enabled and disabled devices are queried.",
+          "example": "1",
+          "member": "uint64",
+          "name": "EnableState",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDevicesResponse": {
+      "document": "DescribeDevices response structure.",
+      "members": [
+        {
+          "document": "Total number of the devices returned",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of device details",
+          "example": "无",
+          "member": "DeviceInfo",
+          "name": "Devices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateCABindedProductsRequest": {
+      "document": "DescribePrivateCABindedProducts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Certificate name",
+          "example": "ABCDE2345",
+          "member": "string",
+          "name": "CertName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset for query",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of records to return, which is 20 by default and cannot exceed 200",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateCABindedProductsResponse": {
+      "document": "DescribePrivateCABindedProducts response structure.",
+      "members": [
+        {
+          "document": "List of the products bound to the private CA certificate",
+          "example": "无",
+          "member": "BindProductInfo",
+          "name": "Products",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateCARequest": {
+      "document": "DescribePrivateCA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the private CA certificate to query",
+          "example": "IotHub",
+          "member": "string",
+          "name": "CertName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateCAResponse": {
+      "document": "DescribePrivateCA response structure.",
+      "members": [
+        {
+          "document": "Details of the private CA certificate",
+          "example": "无",
+          "member": "CertInfo",
+          "name": "CA",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateCAsRequest": {
+      "document": "DescribePrivateCAs request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribePrivateCAsResponse": {
+      "document": "DescribePrivateCAs response structure.",
+      "members": [
+        {
+          "document": "List of private CA certificates",
+          "example": "无",
+          "member": "CertInfo",
+          "name": "CAs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductCARequest": {
+      "document": "DescribeProductCA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE2345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductCAResponse": {
+      "document": "DescribeProductCA response structure.",
+      "members": [
+        {
+          "document": "List of CA certificates bound to the product",
+          "example": "无",
+          "member": "CertInfo",
+          "name": "CAs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductRequest": {
+      "document": "DescribeProduct request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductResponse": {
+      "document": "DescribeProduct response structure.",
+      "members": [
+        {
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product name",
+          "example": "Test_1",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product metadata",
+          "example": "无",
+          "member": "ProductMetadata",
+          "name": "ProductMetadata",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product properties",
+          "example": "无",
+          "member": "ProductProperties",
+          "name": "ProductProperties",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeviceInfo": {
+      "document": "Device details",
+      "members": [
+        {
+          "default": "",
+          "document": "Device name",
+          "example": "ABCD",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the device is online. `0`: offline; `1`: online",
+          "example": "1",
+          "member": "uint64",
+          "name": "Online",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device login time",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "LoginTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device version",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device certificate, which is returned for devices that use certificates for authentication",
+          "example": "-----BEGIN CERTIFICATE----- MIIFGjCCBAKgAwIBAgIQCgRw0Ja8ihLIkKbf",
+          "member": "string",
+          "name": "DeviceCert",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device key, which is returned for devices that use keys for authentication",
+          "example": "PSK",
+          "member": "string",
+          "name": "DevicePsk",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device attribute",
+          "example": "无",
+          "member": "DeviceTag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device type",
+          "example": "5",
+          "member": "uint64",
+          "name": "DeviceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "International Mobile Equipment Identity (IMEI)",
+          "example": "imei",
+          "member": "string",
+          "name": "Imei",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "isp",
+          "member": "uint64",
+          "name": "Isp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device ID at the NB-IoT ISP",
+          "example": "12345",
+          "member": "string",
+          "name": "NbiotDeviceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address",
+          "example": "123124121",
+          "member": "uint64",
+          "name": "ConnIP",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last updated time of the device",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "LastUpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DevEUI of a LoRa device",
+          "example": "eui",
+          "member": "string",
+          "name": "LoraDevEui",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MoteType of a LoRa device",
+          "example": "2",
+          "member": "uint64",
+          "name": "LoraMoteType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The first time when the device went online\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "FirstOnlineTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last time when the device went offline\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "LastOfflineTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Device creation time\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "CreateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Device log level\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LogLevel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the device certificate has been obtained. `0`: no; `1`: yes\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CertState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the device is enabled. `0`: disabled; `1`: enabled\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "EnableState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Device tags\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
+          "member": "DeviceLabel",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP address of the MQTT client\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "ClientIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time of last OTA update\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "1617801604",
+          "member": "uint64",
+          "name": "FirmwareUpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeviceLabel": {
+      "document": "Device tags",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "example": "key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "example": "value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DeviceTag": {
+      "document": "Device attribute",
+      "members": [
+        {
+          "default": "",
+          "document": "Attribute name",
+          "example": "tagkey",
+          "member": "string",
+          "name": "Tag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attribute value type. `1`: integer; `2`: string",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attribute value",
+          "example": "123",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attribute description\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "xyz",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ProductMetadata": {
+      "document": "Product metadata",
+      "members": [
+        {
+          "default": "",
+          "document": "Product creation time",
+          "example": "12345",
+          "member": "uint64",
+          "name": "CreationDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProductProperties": {
+      "document": "Product properties",
+      "members": [
+        {
+          "default": "",
+          "document": "Product description",
+          "example": "IotHub",
+          "member": "string",
+          "name": "ProductDescription",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Authentication type. `1` (default): certificate; `2`: signature",
+          "example": "2",
+          "member": "string",
+          "name": "EncryptionType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product region. Valid value: `gz` (Guangzhou)",
+          "example": "gz",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product type. Valid values:\n`0` (default): general; `2`: NB-IoT; `3`: LoRa gateway; `4`: LoRa; `5`: general gateway",
+          "example": "5",
+          "member": "uint64",
+          "name": "ProductType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data format. Valid values: `json` (default), `custom`",
+          "example": "json",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Platform of the product. Default value: `0`",
+          "example": "0",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AppEUI at the LoRa product operator, required only for LoRa products",
+          "example": "appeui",
+          "member": "string",
+          "name": "Appeui",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the Thing Specification Language (TSL) model bound to the product. `-1` means no models are bound.",
+          "example": "123",
+          "member": "string",
+          "name": "ModelId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the TSL model bound to the product",
+          "example": "xxx",
+          "member": "string",
+          "name": "ModelName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product key, which is specific to suite products",
+          "example": "xxxxx",
+          "member": "string",
+          "name": "ProductKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dynamic registration type. `0`: disable; `1`: preset device names; `2`: generate device names dynamically",
+          "example": "0",
+          "member": "uint64",
+          "name": "RegisterType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dynamic registration product key",
+          "example": "key",
+          "member": "string",
+          "name": "ProductSecret",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum number of devices that can be dynamically created when `RegisterType` is set to `2`",
+          "example": "1000",
+          "member": "uint64",
+          "name": "RegisterLimit",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original product ID of a transferred product. This parameter is empty for products that are not transferred.",
+          "example": "ABCDE2345",
+          "member": "string",
+          "name": "OriginProductId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private CA certificate name",
+          "example": "caname",
+          "member": "string",
+          "name": "PrivateCAName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original user ID of a transferred product. This parameter is empty for products that are not transferred.",
+          "example": "12345",
+          "member": "uint64",
+          "name": "OriginUserId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpdateDeviceLogLevelRequest": {
+      "document": "UpdateDeviceLogLevel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device name",
+          "example": "abc",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level. `0`: disable; `1`: error; `2`: warning; `3`: information; `4`: debugging",
+          "example": "1",
+          "member": "uint64",
+          "name": "LogLevel",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDeviceLogLevelResponse": {
+      "document": "UpdateDeviceLogLevel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDevicesEnableStateRequest": {
+      "document": "UpdateDevicesEnableState request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the product to which the device belongs",
+          "example": "SB9OJFCJ1C",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device names",
+          "example": "[\"test123\\n\"]",
+          "member": "string",
+          "name": "DeviceNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "New status of the devices. `0`: disabled; `1`: enabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDevicesEnableStateResponse": {
+      "document": "UpdateDevicesEnableState response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrivateCARequest": {
+      "document": "UpdatePrivateCA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CA certificate name",
+          "example": "Cert_dev",
+          "member": "string",
+          "name": "CertName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CA certificate content",
+          "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
+          "member": "string",
+          "name": "CertText",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Content verifying the CA certificate",
+          "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
+          "member": "string",
+          "name": "VerifyCertText",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrivateCAResponse": {
+      "document": "UpdatePrivateCA response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

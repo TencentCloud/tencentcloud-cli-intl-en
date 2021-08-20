@@ -83,7 +83,7 @@
     "CreateParamTemplate": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=CreateParamTemplate\r\n&EngineVersion=5.7\r\n&Name=test\r\n&ParamList.0.Name=auto_increment_increment\r\n&ParamList.0.Value=1\r\n&ParamList.1.Name=binlog_format\r\n&ParamList.2.Value=MIXED\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=CreateParamTemplate\n&EngineVersion=5.7\n&Name=test\n&ParamList.0.Name=auto_increment_increment\n&ParamList.0.CurrentValue=1\n&ParamList.1.Name=binlog_format\n&ParamList.1.CurrentValue=MIXED\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"756bb037-a44a-4b4f-abe0-6efd34a6c792\",\n        \"TemplateId\": 2333\n    }\n}",
         "title": "Creating a parameter template"
       }
@@ -123,7 +123,7 @@
     "DeleteParamTemplate": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DeleteParamTemplate\r\n&TemplateId=1234\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DeleteParamTemplate\n&TemplateId=1234\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Deleting a parameter template"
       }
@@ -627,7 +627,7 @@
     "ModifyParamTemplate": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyParamTemplate\r\n&TemplateId=11231\r\n&ParamList.0.Name=auto_increment_increment\r\n&ParamList.0.Value=1\r\n&ParamList.1.Name=binlog_format\r\n&ParamList.2.Value=MIXED\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyParamTemplate\n&TemplateId=11231\n&ParamList.0.Name=auto_increment_increment\n&ParamList.0.CurrentValue=1\n&ParamList.1.Name=binlog_format\n&ParamList.1.CurrentValue=MIXED\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"756bb037-a44a-4b4f-abe0-6efd34a6c792\"\n    }\n}",
         "title": "Modifying a parameter template"
       }

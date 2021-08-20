@@ -1,5 +1,11 @@
 {
   "actions": {
+    "ApplyParamsTemplate": {
+      "document": "This API is used to apply a parameter template to instances.",
+      "input": "ApplyParamsTemplateRequest",
+      "name": "Applies a parameter template",
+      "output": "ApplyParamsTemplateResponse"
+    },
     "AssociateSecurityGroups": {
       "document": "This API is used to associate a security group with instances in batches.",
       "input": "AssociateSecurityGroupsRequest",
@@ -36,11 +42,23 @@
       "name": "Creates a Redis instance",
       "output": "CreateInstancesResponse"
     },
+    "CreateParamTemplate": {
+      "document": "This API is used to create a parameter template.",
+      "input": "CreateParamTemplateRequest",
+      "name": "Creates a parameter template",
+      "output": "CreateParamTemplateResponse"
+    },
     "DeleteInstanceAccount": {
       "document": "This API is used to delete an instance sub-account.",
       "input": "DeleteInstanceAccountRequest",
       "name": "Deletes an instance sub-account",
       "output": "DeleteInstanceAccountResponse"
+    },
+    "DeleteParamTemplate": {
+      "document": "This API is used to delete a parameter template.",
+      "input": "DeleteParamTemplateRequest",
+      "name": "Deletes a parameter template",
+      "output": "DeleteParamTemplateResponse"
     },
     "DescribeAutoBackupConfig": {
       "document": "This API is used to get the backup configuration.",
@@ -186,6 +204,18 @@
       "name": "Queries instance maintenance window",
       "output": "DescribeMaintenanceWindowResponse"
     },
+    "DescribeParamTemplateInfo": {
+      "document": "This API is used to query parameter template details.",
+      "input": "DescribeParamTemplateInfoRequest",
+      "name": "Queries parameter template details",
+      "output": "DescribeParamTemplateInfoResponse"
+    },
+    "DescribeParamTemplates": {
+      "document": "This API is used to query the list of parameter templates.",
+      "input": "DescribeParamTemplatesRequest",
+      "name": "Queries the list of parameter templates",
+      "output": "DescribeParamTemplatesResponse"
+    },
     "DescribeProductInfo": {
       "document": "This API is used to query the purchasable capacity specifications of Redis instances in the specified AZ and instance type. If you are not in the allowlist for the AZ or instance type, you cannot view the details of the capacity specifications. To apply for the eligibility, please submit a ticket.",
       "input": "DescribeProductInfoRequest",
@@ -228,6 +258,12 @@
       "name": "Queries the list of tasks",
       "output": "DescribeTaskListResponse"
     },
+    "DescribeTendisSlowLog": {
+      "document": "This API is used to query slow queries of a TencentDB for Tendis instance.",
+      "input": "DescribeTendisSlowLogRequest",
+      "name": "Queries slow queries of a TencentDB for Tendis instance",
+      "output": "DescribeTendisSlowLogResponse"
+    },
     "DestroyPostpaidInstance": {
       "document": "This API is used to terminate a pay-as-you-go instance.",
       "input": "DestroyPostpaidInstanceRequest",
@@ -257,6 +293,18 @@
       "input": "EnableReplicaReadonlyRequest",
       "name": "Enables read/write separation",
       "output": "EnableReplicaReadonlyResponse"
+    },
+    "InquiryPriceCreateInstance": {
+      "document": "This API is used to query the price for purchasing an instance.",
+      "input": "InquiryPriceCreateInstanceRequest",
+      "name": "Queries the price for purchasing an instance",
+      "output": "InquiryPriceCreateInstanceResponse"
+    },
+    "InquiryPriceUpgradeInstance": {
+      "document": "This API is used to query the price for scaling an instance.",
+      "input": "InquiryPriceUpgradeInstanceRequest",
+      "name": "Queries the price for scaling an instance",
+      "output": "InquiryPriceUpgradeInstanceResponse"
     },
     "KillMasterGroup": {
       "document": "This API is used to perform a failure simulation.",
@@ -317,6 +365,12 @@
       "input": "ModifyNetworkConfigRequest",
       "name": "Modifies the network configuration of an instance",
       "output": "ModifyNetworkConfigResponse"
+    },
+    "ModifyParamTemplate": {
+      "document": "This API is used to modify a parameter template.",
+      "input": "ModifyParamTemplateRequest",
+      "name": "Modifies a parameter template",
+      "output": "ModifyParamTemplateResponse"
     },
     "RenewInstance": {
       "document": "This API is used to renew an instance.",
@@ -433,6 +487,51 @@
       ],
       "usage": "out"
     },
+    "ApplyParamsTemplateRequest": {
+      "document": "ApplyParamsTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The ID of the parameter template to be applied",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyParamsTemplateResponse": {
+      "document": "ApplyParamsTemplate response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "无",
+          "member": "int64",
+          "name": "TaskIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AssociateSecurityGroupsRequest": {
       "document": "AssociateSecurityGroups request structure.",
       "members": [
@@ -474,6 +573,52 @@
         }
       ],
       "type": "object"
+    },
+    "BackupDownloadInfo": {
+      "document": "Backup download information",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup file name",
+          "example": "1.rdb",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file size in bytes. If the parameter value is `0`, the backup file size is unknown.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Address (valid for 6 hours) used to download the backup file over a public network",
+          "example": "https://redis-database-backup-1251937656.cos.ap-chengdu.myqcl",
+          "member": "string",
+          "name": "DownloadUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Address (valid for 6 hours) used to download the backup file over a private network",
+          "example": "https://redis-database-backup-1251937656.cos.ap-chengdu.myqcl",
+          "member": "string",
+          "name": "InnerDownloadUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "BigKeyInfo": {
       "document": "Big key details",
@@ -795,15 +940,8 @@
       "members": [
         {
           "default": "",
-          "document": "Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
-          "member": "uint64",
-          "name": "ZoneId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
           "document": "Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).",
+          "example": "6",
           "member": "uint64",
           "name": "TypeId",
           "required": true,
@@ -812,6 +950,7 @@
         {
           "default": "",
           "document": "Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
+          "example": "4096",
           "member": "uint64",
           "name": "MemSize",
           "required": true,
@@ -820,6 +959,7 @@
         {
           "default": "",
           "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
+          "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
           "required": true,
@@ -828,6 +968,7 @@
         {
           "default": "",
           "document": "Purchased usage period in months. which is required when creating an instance. For pay-as-you-go instances, the valid value is 1; for monthly subscription instances, the value range is [1,2,3,4,5,6,7,8,9,10,11,12,24,36].",
+          "example": "1",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -836,6 +977,7 @@
         {
           "default": "",
           "document": "Billing method. 0: pay as you go",
+          "example": "0",
           "member": "int64",
           "name": "BillingMode",
           "required": true,
@@ -843,7 +985,17 @@
         },
         {
           "default": "",
+          "document": "Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
+          "example": "100002",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.\nIf the instance type parameter `TypeId` indicates Redis 2.8, 4.0, or 5.0, the password cannot start with \"/\" and must contain 8-30 characters which are comprised of at least two of the following: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).\nIf the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.",
+          "example": "123456MyP@ssword",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -852,6 +1004,7 @@
         {
           "default": "",
           "document": "VPC ID, such as \"vpc-sad23jfdfk\". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.",
+          "example": "vpc-pxyzim13",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -860,6 +1013,7 @@
         {
           "default": "",
           "document": "In a classic network, `subnetId` is invalid. In a VPC subnet, the value can be queried by the `DescribeSubnets` API, such as \"subnet-fdj24n34j2\".",
+          "example": "subnet-7jbabche",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -868,6 +1022,7 @@
         {
           "default": "",
           "document": "Project ID. The value is subject to the `projectId` returned by the `DescribeProject` API.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -876,6 +1031,7 @@
         {
           "default": "",
           "document": "Auto-renewal flag. Valid values: 0 (default status, indicating manual renewal), 1 (auto-renewal enabled), 2 (auto-renewal disabled)",
+          "example": "0",
           "member": "uint64",
           "name": "AutoRenew",
           "required": false,
@@ -884,6 +1040,7 @@
         {
           "default": "",
           "document": "Array of security group IDs",
+          "example": "[\"sg-bmadczm1\"]",
           "member": "string",
           "name": "SecurityGroupIdList",
           "required": false,
@@ -892,6 +1049,7 @@
         {
           "default": "",
           "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024, 65535].",
+          "example": "6378",
           "member": "uint64",
           "name": "VPort",
           "required": false,
@@ -900,6 +1058,7 @@
         {
           "default": "",
           "document": "Number of shards in an instance. This parameter is required for instances in cluster architecture. Value range: [3,5,8,12,16,24,32,64,96,128].",
+          "example": "1",
           "member": "int64",
           "name": "RedisShardNum",
           "required": false,
@@ -908,6 +1067,7 @@
         {
           "default": "",
           "document": "Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.",
+          "example": "1",
           "member": "int64",
           "name": "RedisReplicasNum",
           "required": false,
@@ -916,6 +1076,7 @@
         {
           "default": "",
           "document": "Whether to support read-only replicas. Neither Redis 2.8 in standard architecture nor CKV in standard architecture supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on the replica nodes. To enable read-only replicas, we recommend that you create 2 or more replicas.",
+          "example": "true",
           "member": "bool",
           "name": "ReplicasReadonly",
           "required": false,
@@ -924,6 +1085,7 @@
         {
           "default": "",
           "document": "Instance name. It contains only letters, digits, and symbols (-_) with a length of up to 60 characters.",
+          "example": "MyInstanceName",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -932,6 +1094,7 @@
         {
           "default": "",
           "document": "Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.",
+          "example": "false",
           "member": "bool",
           "name": "NoAuth",
           "required": false,
@@ -940,6 +1103,7 @@
         {
           "default": "",
           "document": "Node information of an instance. Currently, information about the node type (master or replica) and node availability zone can be passed in. This parameter is not required for instances deployed in a single availability zone.",
+          "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
           "required": false,
@@ -948,10 +1112,29 @@
         {
           "default": "",
           "document": "The tag bound with the instance to be purchased",
+          "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "ZoneName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the parameter template applied to the created instance. If this parameter is left blank, the default parameter template will be applied.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -975,6 +1158,78 @@
           "name": "InstanceIds",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateParamTemplateRequest": {
+      "document": "CreateParamTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template name.",
+          "example": "自定义参数模板",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter template description.",
+          "example": "参数模板描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.",
+          "example": "6",
+          "member": "uint64",
+          "name": "ProductType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the source parameter template. You can create a template by copying the source parameter template.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter list.",
+          "example": "无",
+          "member": "InstanceParam",
+          "name": "ParamList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateParamTemplateResponse": {
+      "document": "CreateParamTemplate response structure.",
+      "members": [
+        {
+          "document": "Parameter template ID.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1060,6 +1315,33 @@
       ],
       "type": "object"
     },
+    "DeleteParamTemplateRequest": {
+      "document": "DeleteParamTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteParamTemplateResponse": {
+      "document": "DeleteParamTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAutoBackupConfigRequest": {
       "document": "DescribeAutoBackupConfig request structure.",
       "members": [
@@ -1134,17 +1416,39 @@
       "members": [
         {
           "document": "Download address on the public network (valid for 6 hours)",
+          "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
           "name": "DownloadUrl",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Download address on the private network (valid for 6 hours)",
+          "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
           "name": "InnerDownloadUrl",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "File name (only valid for TencentDB for Tendis instances)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"1.rdb\"]",
+          "member": "string",
+          "name": "Filenames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of backup file information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BackupDownloadInfo",
+          "name": "BackupInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2582,6 +2886,150 @@
       ],
       "type": "object"
     },
+    "DescribeParamTemplateInfoRequest": {
+      "document": "DescribeParamTemplateInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParamTemplateInfoResponse": {
+      "document": "DescribeParamTemplateInfo response structure.",
+      "members": [
+        {
+          "document": "Number of instance parameters",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter template ID",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter template name",
+          "example": "CustomParamTemplate",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)",
+          "example": "6",
+          "member": "uint64",
+          "name": "ProductType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter template description",
+          "example": "MyCustomParamTemplate",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter details",
+          "example": "无",
+          "member": "ParameterDetail",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParamTemplatesRequest": {
+      "document": "DescribeParamTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of instance types. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).",
+          "example": "无",
+          "member": "int64",
+          "name": "ProductTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of template names.",
+          "example": "无",
+          "member": "string",
+          "name": "TemplateNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of template IDs.",
+          "example": "无",
+          "member": "string",
+          "name": "TemplateIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParamTemplatesResponse": {
+      "document": "DescribeParamTemplates response structure.",
+      "members": [
+        {
+          "document": "Number of parameter templates of the user.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter template details.",
+          "example": "无",
+          "member": "ParamTemplateInfo",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeProductInfoRequest": {
       "document": "DescribeProductInfo request structure.",
       "members": [],
@@ -3044,6 +3492,96 @@
       ],
       "type": "object"
     },
+    "DescribeTendisSlowLogRequest": {
+      "document": "DescribeTendisSlowLog request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of crs-ngvou0i1",
+          "example": "crs-asdasdas",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time in the format of 2019-09-08 12:12:41",
+          "example": "2019-09-08 12:12:41",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time in the format of 2019-09-09 12:12:41",
+          "example": "2019-09-09 12:12:41",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Slow query threshold in ms",
+          "example": "10",
+          "member": "int64",
+          "name": "MinQueryTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Default value: `20`",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit`",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTendisSlowLogResponse": {
+      "document": "DescribeTendisSlowLog response structure.",
+      "members": [
+        {
+          "document": "Total number of slow queries",
+          "example": "106980",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow query details",
+          "example": "无",
+          "member": "TendisSlowLogDetail",
+          "name": "TendisSlowLogDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DestroyPostpaidInstanceRequest": {
       "document": "DestroyPostpaidInstance request structure.",
       "members": [
@@ -3336,6 +3874,180 @@
         }
       ],
       "usage": "out"
+    },
+    "InquiryPriceCreateInstanceRequest": {
+      "document": "InquiryPriceCreateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).",
+          "example": "6",
+          "member": "uint64",
+          "name": "TypeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).\nIf `TypeId` indicates the standard architecture, `MemSize` indicates the total memory capacity of an instance; if `TypeId` indicates the cluster architecture, `MemSize` indicates the memory capacity per shard.",
+          "example": "4096",
+          "member": "uint64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Length of purchase in months, which is required when creating a monthly-subscribed instance. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).",
+          "example": "1",
+          "member": "int64",
+          "name": "BillingMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
+          "example": "100002",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instance shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, Redis 2.8 in standalone architecture, and Redis 4.0 in standard architecture.",
+          "example": "1",
+          "member": "int64",
+          "name": "RedisShardNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instance replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "example": "1",
+          "member": "int64",
+          "name": "RedisReplicasNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to support read-only replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReplicasReadonly",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "ZoneName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceCreateInstanceResponse": {
+      "document": "InquiryPriceCreateInstance response structure.",
+      "members": [
+        {
+          "document": "Price. Unit: USD\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "30400",
+          "member": "float",
+          "name": "Price",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceUpgradeInstanceRequest": {
+      "document": "InquiryPriceUpgradeInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shard size in MB.",
+          "member": "uint64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "member": "uint64",
+          "name": "RedisShardNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "member": "uint64",
+          "name": "RedisReplicasNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceUpgradeInstanceResponse": {
+      "document": "InquiryPriceUpgradeInstance response structure.",
+      "members": [
+        {
+          "document": "Price. Unit: USD\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "Price",
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "InstanceClusterNode": {
       "document": "Instance node type",
@@ -5176,6 +5888,60 @@
       ],
       "type": "object"
     },
+    "ModifyParamTemplateRequest": {
+      "document": "ModifyParamTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the parameter template to be modified.",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New name of the parameter template.",
+          "example": "自定义参数模板",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New description of the parameter template.",
+          "example": "参数模板描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of new parameters.",
+          "example": "无",
+          "member": "InstanceParam",
+          "name": "ParamList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyParamTemplateResponse": {
+      "document": "ModifyParamTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Outbound": {
       "document": "Security group outbound rule",
       "members": [
@@ -5250,6 +6016,148 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamTemplateInfo": {
+      "document": "Parameter template information",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "crs-cfg-rhlppeye",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template name",
+          "example": "CustomParamTemplate",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template description",
+          "example": "MyCustomParamTemplate",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)",
+          "example": "6",
+          "member": "uint64",
+          "name": "ProductType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ParameterDetail": {
+      "document": "Details of the parameters in a parameter template",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "slowlog-log-slower-than",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the parameter",
+          "example": "integer",
+          "member": "string",
+          "name": "ParamType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter",
+          "example": "10",
+          "member": "string",
+          "name": "Default",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "example": "Over this time the command is recorded in us.a negative number d",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current value of the parameter",
+          "example": "5",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)",
+          "example": "0",
+          "member": "int64",
+          "name": "NeedReboot",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum value of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum value of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5660,6 +6568,7 @@
         {
           "default": "",
           "document": "Node type. Valid values: `0` (master node), `1` (replica node)",
+          "example": "1",
           "member": "int64",
           "name": "NodeType",
           "required": true,
@@ -5668,20 +6577,32 @@
         },
         {
           "default": "",
-          "document": "ID of the availability zone of the master or replica node",
-          "member": "uint64",
-          "name": "ZoneId",
-          "required": true,
+          "document": "ID of the master or replica node, which is not required upon creation of the instance",
+          "example": "1",
+          "member": "int64",
+          "name": "NodeId",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "ID of the master or replica node, which is not required upon creation of the instance",
-          "member": "int64",
-          "name": "NodeId",
+          "document": "ID of the availability zone of the master or replica node",
+          "example": "100001",
+          "member": "uint64",
+          "name": "ZoneId",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the availability zone of the master or replica node",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "ZoneName",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -6437,6 +7358,57 @@
           "document": "Node role",
           "member": "string",
           "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TendisSlowLogDetail": {
+      "document": "Tendis slow query details",
+      "members": [
+        {
+          "default": "",
+          "document": "Execution time",
+          "member": "string",
+          "name": "ExecuteTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration of the slow query (ms)",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Command line details",
+          "member": "string",
+          "name": "CommandLine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "Node",
           "required": true,
           "type": "string",
           "value_allowed_null": false
