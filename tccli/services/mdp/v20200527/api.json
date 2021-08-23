@@ -1,58 +1,58 @@
 {
   "actions": {
-    "CreateMediaPackageChannel": {
-      "document": "This API is used to create a media package channel.",
-      "input": "CreateMediaPackageChannelRequest",
+    "CreateStreamPackageChannel": {
+      "document": "This API is used to create a StreamPackage channel.",
+      "input": "CreateStreamPackageChannelRequest",
       "name": "Creates a channel",
-      "output": "CreateMediaPackageChannelResponse"
+      "output": "CreateStreamPackageChannelResponse"
     },
-    "CreateMediaPackageChannelEndpoint": {
-      "document": "This API is used to create an endpoint of a media package channel.",
-      "input": "CreateMediaPackageChannelEndpointRequest",
+    "CreateStreamPackageChannelEndpoint": {
+      "document": "This API is used to create an endpoint on a StreamPackage channel.",
+      "input": "CreateStreamPackageChannelEndpointRequest",
       "name": "Creates a channel endpoint",
-      "output": "CreateMediaPackageChannelEndpointResponse"
+      "output": "CreateStreamPackageChannelEndpointResponse"
     },
-    "DeleteMediaPackageChannelEndpoints": {
-      "document": "This API is used to delete endpoints from a media package channel in batches.",
-      "input": "DeleteMediaPackageChannelEndpointsRequest",
+    "DeleteStreamPackageChannelEndpoints": {
+      "document": "This API is used to delete endpoints from a StreamPackage channel in batches.",
+      "input": "DeleteStreamPackageChannelEndpointsRequest",
       "name": "Deletes channel endpoints in batches",
-      "output": "DeleteMediaPackageChannelEndpointsResponse"
+      "output": "DeleteStreamPackageChannelEndpointsResponse"
     },
-    "DeleteMediaPackageChannels": {
-      "document": "This API is used to delete media package channels in batches.",
-      "input": "DeleteMediaPackageChannelsRequest",
+    "DeleteStreamPackageChannels": {
+      "document": "This API is used to delete StreamPackage channels in batches.",
+      "input": "DeleteStreamPackageChannelsRequest",
       "name": "Deletes channels in batches",
-      "output": "DeleteMediaPackageChannelsResponse"
+      "output": "DeleteStreamPackageChannelsResponse"
     },
-    "DescribeMediaPackageChannel": {
-      "document": "This API is used to query the information of a media package channel.",
-      "input": "DescribeMediaPackageChannelRequest",
+    "DescribeStreamPackageChannel": {
+      "document": "This API is used to query the information of a StreamPackage channel.",
+      "input": "DescribeStreamPackageChannelRequest",
       "name": "Queries a channel",
-      "output": "DescribeMediaPackageChannelResponse"
+      "output": "DescribeStreamPackageChannelResponse"
     },
-    "DescribeMediaPackageChannels": {
-      "document": "This API is used to query the information list of media package channels.",
-      "input": "DescribeMediaPackageChannelsRequest",
-      "name": "Queries the channel list",
-      "output": "DescribeMediaPackageChannelsResponse"
+    "DescribeStreamPackageChannels": {
+      "document": "This API is used to query the information of multiple StreamPackage channels.",
+      "input": "DescribeStreamPackageChannelsRequest",
+      "name": "Queries multiple channels",
+      "output": "DescribeStreamPackageChannelsResponse"
     },
-    "ModifyMediaPackageChannel": {
-      "document": "This API is used to modify the information of a media package channel.",
-      "input": "ModifyMediaPackageChannelRequest",
+    "ModifyStreamPackageChannel": {
+      "document": "This API is used to modify a StreamPackage channel.",
+      "input": "ModifyStreamPackageChannelRequest",
       "name": "Modifies a channel",
-      "output": "ModifyMediaPackageChannelResponse"
+      "output": "ModifyStreamPackageChannelResponse"
     },
-    "ModifyMediaPackageChannelEndpoint": {
-      "document": "This API is used to modify an endpoint of a media package channel.",
-      "input": "ModifyMediaPackageChannelEndpointRequest",
+    "ModifyStreamPackageChannelEndpoint": {
+      "document": "This API is used to modify an endpoint of a StreamPackage channel.",
+      "input": "ModifyStreamPackageChannelEndpointRequest",
       "name": "Modifies a channel endpoint",
-      "output": "ModifyMediaPackageChannelEndpointResponse"
+      "output": "ModifyStreamPackageChannelEndpointResponse"
     },
-    "ModifyMediaPackageChannelInputAuthInfo": {
-      "document": "This API is used to modify the input authentication information of a media package channel.",
-      "input": "ModifyMediaPackageChannelInputAuthInfoRequest",
-      "name": "Modifies the channel input authentication information",
-      "output": "ModifyMediaPackageChannelInputAuthInfoResponse"
+    "ModifyStreamPackageChannelInputAuthInfo": {
+      "document": "This API is used to modify the input authentication information of a StreamPackage channel.",
+      "input": "ModifyStreamPackageChannelInputAuthInfoRequest",
+      "name": "Modifies the input authentication information of a channel",
+      "output": "ModifyStreamPackageChannelInputAuthInfoResponse"
     }
   },
   "metadata": {
@@ -61,6 +61,45 @@
     "serviceShortName": "mdp"
   },
   "objects": {
+    "CacheInfo": {
+      "document": "Cache configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "List of timeout parameter configuration\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "CacheInfoInfo",
+          "name": "Info",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheInfoInfo": {
+      "document": "Timeout information for cache configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Timeout period (ms), which must be an integer multiple of 1000\n.m3u8/.mpd: [1000, 60000]\n.ts/.m4s/.mp4: [10000, 1800000]",
+          "member": "int64",
+          "name": "Timeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File extension. Valid values: .m3u8, .ts, .mpd, .m4s, .mp4\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Ext",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ChannelInfo": {
       "document": "Channel information.",
       "members": [
@@ -99,16 +138,26 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cache configuration\nNote: this field may return `null`, indicating that no valid value was found.",
+          "member": "CacheInfo",
+          "name": "CacheInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
     },
-    "CreateMediaPackageChannelEndpointRequest": {
-      "document": "CreateMediaPackageChannelEndpoint request structure.",
+    "CreateStreamPackageChannelEndpointRequest": {
+      "document": "CreateStreamPackageChannelEndpoint request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "XXX",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -116,7 +165,8 @@
         },
         {
           "default": "",
-          "document": "Channel name.",
+          "document": "Channel name",
+          "example": "XXX",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -124,7 +174,8 @@
         },
         {
           "default": "",
-          "document": "Authentication information.",
+          "document": "Authentication information",
+          "example": "无",
           "member": "EndpointAuthInfo",
           "name": "AuthInfo",
           "required": true,
@@ -133,13 +184,15 @@
       ],
       "type": "object"
     },
-    "CreateMediaPackageChannelEndpointResponse": {
-      "document": "CreateMediaPackageChannelEndpoint response structure.",
+    "CreateStreamPackageChannelEndpointResponse": {
+      "document": "CreateStreamPackageChannelEndpoint response structure.",
       "members": [
         {
-          "document": "The information of the created channel endpoint.",
+          "document": "Information of the created channel endpoint",
+          "example": "无",
           "member": "EndpointInfo",
           "name": "Info",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -152,12 +205,13 @@
       ],
       "type": "object"
     },
-    "CreateMediaPackageChannelRequest": {
-      "document": "CreateMediaPackageChannel request structure.",
+    "CreateStreamPackageChannelRequest": {
+      "document": "CreateStreamPackageChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel name.",
+          "document": "Channel name",
+          "example": "xxx",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -165,25 +219,28 @@
         },
         {
           "default": "",
-          "document": "Channel protocol. Valid values: HLS, DASH.",
+          "document": "Channel protocol. Valid values: HLS, DASH",
+          "example": "HLS",
           "member": "string",
           "name": "Protocol",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cache configuration",
+          "example": "无",
+          "member": "CacheInfo",
+          "name": "CacheInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
     },
-    "CreateMediaPackageChannelResponse": {
-      "document": "CreateMediaPackageChannel response structure.",
+    "CreateStreamPackageChannelResponse": {
+      "document": "CreateStreamPackageChannel response structure.",
       "members": [
-        {
-          "document": "Channel information.",
-          "member": "ChannelInfo",
-          "name": "Info",
-          "type": "object",
-          "value_allowed_null": false
-        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -193,12 +250,13 @@
       ],
       "type": "object"
     },
-    "DeleteMediaPackageChannelEndpointsRequest": {
-      "document": "DeleteMediaPackageChannelEndpoints request structure.",
+    "DeleteStreamPackageChannelEndpointsRequest": {
+      "document": "DeleteStreamPackageChannelEndpoints request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "xxx",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -206,7 +264,8 @@
         },
         {
           "default": "",
-          "document": "The list of endpoint URLs.",
+          "document": "List of the URLs of the endpoints to delete",
+          "example": "[\"xxx\\r\\n\"]",
           "member": "string",
           "name": "Urls",
           "required": true,
@@ -215,8 +274,8 @@
       ],
       "type": "object"
     },
-    "DeleteMediaPackageChannelEndpointsResponse": {
-      "document": "DeleteMediaPackageChannelEndpoints response structure.",
+    "DeleteStreamPackageChannelEndpointsResponse": {
+      "document": "DeleteStreamPackageChannelEndpoints response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -227,12 +286,13 @@
       ],
       "type": "object"
     },
-    "DeleteMediaPackageChannelsRequest": {
-      "document": "DeleteMediaPackageChannels request structure.",
+    "DeleteStreamPackageChannelsRequest": {
+      "document": "DeleteStreamPackageChannels request structure.",
       "members": [
         {
           "default": "",
-          "document": "The ID list of channels to be deleted.",
+          "document": "List of the IDs of the channels to delete",
+          "example": "[\"xxx\\r\\n\"]",
           "member": "string",
           "name": "Ids",
           "required": true,
@@ -241,20 +301,24 @@
       ],
       "type": "object"
     },
-    "DeleteMediaPackageChannelsResponse": {
-      "document": "DeleteMediaPackageChannels response structure.",
+    "DeleteStreamPackageChannelsResponse": {
+      "document": "DeleteStreamPackageChannels response structure.",
       "members": [
         {
-          "document": "The information list of channels that have been deleted.",
+          "document": "List of the information of successfully deleted channels",
+          "example": "无",
           "member": "ChannelInfo",
           "name": "SuccessInfos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The information list of channels that failed to be deleted.",
+          "document": "List of the information of the channels that failed to be deleted",
+          "example": "无",
           "member": "ChannelInfo",
           "name": "FailInfos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -267,12 +331,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaPackageChannelRequest": {
-      "document": "DescribeMediaPackageChannel request structure.",
+    "DescribeStreamPackageChannelRequest": {
+      "document": "DescribeStreamPackageChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "xxx",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -281,13 +346,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaPackageChannelResponse": {
-      "document": "DescribeMediaPackageChannel response structure.",
+    "DescribeStreamPackageChannelResponse": {
+      "document": "DescribeStreamPackageChannel response structure.",
       "members": [
         {
-          "document": "Channel information.",
+          "document": "Channel information",
+          "example": "无",
           "member": "ChannelInfo",
           "name": "Info",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -300,12 +367,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaPackageChannelsRequest": {
-      "document": "DescribeMediaPackageChannels request structure.",
+    "DescribeStreamPackageChannelsRequest": {
+      "document": "DescribeStreamPackageChannels request structure.",
       "members": [
         {
           "default": "",
-          "document": "Page number. Value range: [1, 1000].",
+          "document": "Page number. Value range: [1, 1000]",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -313,7 +381,8 @@
         },
         {
           "default": "",
-          "document": "The size of each page. Value range: [1, 1000].",
+          "document": "Number of entries per page. Value range: [1, 1000]",
+          "example": "10",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -322,41 +391,51 @@
       ],
       "type": "object"
     },
-    "DescribeMediaPackageChannelsResponse": {
-      "document": "DescribeMediaPackageChannels response structure.",
+    "DescribeStreamPackageChannelsResponse": {
+      "document": "DescribeStreamPackageChannels response structure.",
       "members": [
         {
-          "document": "The list of channel outputs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of channel information\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
           "member": "ChannelInfo",
           "name": "Infos",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "Page number.",
+          "document": "Page number",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The size of each page.",
+          "document": "Number of entries per page",
+          "example": "10",
           "member": "uint64",
           "name": "PageSize",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Total number.",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "uint64",
           "name": "TotalNum",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of pages.",
+          "document": "Total number of pages",
+          "example": "1",
           "member": "uint64",
           "name": "TotalPage",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -483,12 +562,13 @@
       ],
       "usage": "out"
     },
-    "ModifyMediaPackageChannelEndpointRequest": {
-      "document": "ModifyMediaPackageChannelEndpoint request structure.",
+    "ModifyStreamPackageChannelEndpointRequest": {
+      "document": "ModifyStreamPackageChannelEndpoint request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "XXX",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -496,7 +576,8 @@
         },
         {
           "default": "",
-          "document": "Channel endpoint URL.",
+          "document": "Channel endpoint URL",
+          "example": "XXX",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -504,7 +585,8 @@
         },
         {
           "default": "",
-          "document": "The channel name after modification.",
+          "document": "New endpoint name",
+          "example": "XXX",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -512,7 +594,8 @@
         },
         {
           "default": "",
-          "document": "The channel authentication after modification.",
+          "document": "New channel authentication information",
+          "example": "无",
           "member": "EndpointAuthInfo",
           "name": "AuthInfo",
           "required": true,
@@ -521,8 +604,8 @@
       ],
       "type": "object"
     },
-    "ModifyMediaPackageChannelEndpointResponse": {
-      "document": "ModifyMediaPackageChannelEndpoint response structure.",
+    "ModifyStreamPackageChannelEndpointResponse": {
+      "document": "ModifyStreamPackageChannelEndpoint response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -533,12 +616,13 @@
       ],
       "type": "object"
     },
-    "ModifyMediaPackageChannelInputAuthInfoRequest": {
-      "document": "ModifyMediaPackageChannelInputAuthInfo request structure.",
+    "ModifyStreamPackageChannelInputAuthInfoRequest": {
+      "document": "ModifyStreamPackageChannelInputAuthInfo request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "xxx",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -546,7 +630,8 @@
         },
         {
           "default": "",
-          "document": "Channel input URL.",
+          "document": "Channel input URL",
+          "example": "xxx",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -554,7 +639,8 @@
         },
         {
           "default": "",
-          "document": "Authentication configuration type. Valid values: CLOSE, UPDATE.\nCLOSE: disable authentication.\nUPDATE: update authentication.",
+          "document": "Authentication configuration. Valid values: `CLOSE`, `UPDATE`\n`CLOSE`: disable authentication\n`UPDATE`: update authentication information",
+          "example": "UPDATE",
           "member": "string",
           "name": "ActionType",
           "required": true,
@@ -563,13 +649,15 @@
       ],
       "type": "object"
     },
-    "ModifyMediaPackageChannelInputAuthInfoResponse": {
-      "document": "ModifyMediaPackageChannelInputAuthInfo response structure.",
+    "ModifyStreamPackageChannelInputAuthInfoResponse": {
+      "document": "ModifyStreamPackageChannelInputAuthInfo response structure.",
       "members": [
         {
-          "document": "Channel input authentication information.",
+          "document": "Channel input authentication information",
+          "example": "无",
           "member": "InputAuthInfo",
           "name": "AuthInfo",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -582,12 +670,13 @@
       ],
       "type": "object"
     },
-    "ModifyMediaPackageChannelRequest": {
-      "document": "ModifyMediaPackageChannel request structure.",
+    "ModifyStreamPackageChannelRequest": {
+      "document": "ModifyStreamPackageChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "xxx",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -595,7 +684,8 @@
         },
         {
           "default": "",
-          "document": "The channel name after modification.",
+          "document": "New channel name",
+          "example": "xxx",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -603,17 +693,27 @@
         },
         {
           "default": "",
-          "document": "The channel protocol after modification. Valid values: HLS, DASH.",
+          "document": "New channel protocol. Valid values: HLS, DASH",
+          "example": "HLS",
           "member": "string",
           "name": "Protocol",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cache configuration",
+          "example": "无",
+          "member": "CacheInfo",
+          "name": "CacheInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
     },
-    "ModifyMediaPackageChannelResponse": {
-      "document": "ModifyMediaPackageChannel response structure.",
+    "ModifyStreamPackageChannelResponse": {
+      "document": "ModifyStreamPackageChannel response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

@@ -1,130 +1,142 @@
 {
   "actions": {
-    "CreateMediaLiveChannel": {
-      "document": "This API is used to create a media channel.",
-      "input": "CreateMediaLiveChannelRequest",
-      "name": "Creates media channel",
-      "output": "CreateMediaLiveChannelResponse"
+    "CreateStreamLiveChannel": {
+      "document": "This API is used to create a StreamLive channel.",
+      "input": "CreateStreamLiveChannelRequest",
+      "name": "Creates a StreamLive channel",
+      "output": "CreateStreamLiveChannelResponse"
     },
-    "CreateMediaLiveInput": {
-      "document": "This API is used to create a media input.",
-      "input": "CreateMediaLiveInputRequest",
-      "name": "Creates media input",
-      "output": "CreateMediaLiveInputResponse"
+    "CreateStreamLiveInput": {
+      "document": "This API is used to create a StreamLive input.",
+      "input": "CreateStreamLiveInputRequest",
+      "name": "Creates a StreamLive input",
+      "output": "CreateStreamLiveInputResponse"
     },
-    "CreateMediaLiveInputSecurityGroup": {
-      "document": "This API is used to create an input security group. Up to 5 ones can be created.",
-      "input": "CreateMediaLiveInputSecurityGroupRequest",
-      "name": "Creates input security group",
-      "output": "CreateMediaLiveInputSecurityGroupResponse"
+    "CreateStreamLiveInputSecurityGroup": {
+      "document": "This API is used to create an input security group. Up to 5 security groups are allowed.",
+      "input": "CreateStreamLiveInputSecurityGroupRequest",
+      "name": "Creates an input security group",
+      "output": "CreateStreamLiveInputSecurityGroupResponse"
     },
-    "DeleteMediaLiveChannel": {
-      "document": "This API is used to delete a MediaLive channel.",
-      "input": "DeleteMediaLiveChannelRequest",
-      "name": "Deletes MediaLive channel",
-      "output": "DeleteMediaLiveChannelResponse"
+    "CreateStreamLivePlan": {
+      "document": "This API is used to create an event in the plan.",
+      "input": "CreateStreamLivePlanRequest",
+      "name": "Creates an event in the plan",
+      "output": "CreateStreamLivePlanResponse"
     },
-    "DeleteMediaLiveInput": {
-      "document": "This API is used to delete a media input.",
-      "input": "DeleteMediaLiveInputRequest",
-      "name": "Deletes media input",
-      "output": "DeleteMediaLiveInputResponse"
+    "DeleteStreamLiveChannel": {
+      "document": "This API is used to delete a StreamLive channel.",
+      "input": "DeleteStreamLiveChannelRequest",
+      "name": "Deletes a StreamLive channel",
+      "output": "DeleteStreamLiveChannelResponse"
     },
-    "DeleteMediaLiveInputSecurityGroup": {
+    "DeleteStreamLiveInput": {
+      "document": "This API is used to delete a StreamLive input.",
+      "input": "DeleteStreamLiveInputRequest",
+      "name": "Deletes a StreamLive input",
+      "output": "DeleteStreamLiveInputResponse"
+    },
+    "DeleteStreamLiveInputSecurityGroup": {
       "document": "This API is used to delete an input security group.",
-      "input": "DeleteMediaLiveInputSecurityGroupRequest",
-      "name": "Deletes input security group",
-      "output": "DeleteMediaLiveInputSecurityGroupResponse"
+      "input": "DeleteStreamLiveInputSecurityGroupRequest",
+      "name": "Deletes an input security group",
+      "output": "DeleteStreamLiveInputSecurityGroupResponse"
     },
-    "DescribeMediaLiveChannel": {
-      "document": "This API is used to query the information of a MediaLive channel.",
-      "input": "DescribeMediaLiveChannelRequest",
-      "name": "Queries MediaLive channel",
-      "output": "DescribeMediaLiveChannelResponse"
+    "DescribeStreamLiveChannel": {
+      "document": "This API is used to query a StreamLive channel.",
+      "input": "DescribeStreamLiveChannelRequest",
+      "name": "Queries a StreamLive channel",
+      "output": "DescribeStreamLiveChannelResponse"
     },
-    "DescribeMediaLiveChannelAlerts": {
-      "document": "This API is used to query the channel alarm information.",
-      "input": "DescribeMediaLiveChannelAlertsRequest",
-      "name": "Queries channel alarm information",
-      "output": "DescribeMediaLiveChannelAlertsResponse"
+    "DescribeStreamLiveChannelAlerts": {
+      "document": "This API is used to query the alarm information of a StreamLive channel.",
+      "input": "DescribeStreamLiveChannelAlertsRequest",
+      "name": "Queries the alarm information of a StreamLive channel",
+      "output": "DescribeStreamLiveChannelAlertsResponse"
     },
-    "DescribeMediaLiveChannelInputStatistics": {
-      "document": "This API is used to query the input statistics.",
-      "input": "DescribeMediaLiveChannelInputStatisticsRequest",
+    "DescribeStreamLiveChannelInputStatistics": {
+      "document": "This API is used to query input statistics.",
+      "input": "DescribeStreamLiveChannelInputStatisticsRequest",
       "name": "Queries input statistics",
-      "output": "DescribeMediaLiveChannelInputStatisticsResponse"
+      "output": "DescribeStreamLiveChannelInputStatisticsResponse"
     },
-    "DescribeMediaLiveChannelLogs": {
-      "document": "This API is used to query MediaLive channel logs, such as push event logs.",
-      "input": "DescribeMediaLiveChannelLogsRequest",
-      "name": "Queries MediaLive channel logs",
-      "output": "DescribeMediaLiveChannelLogsResponse"
+    "DescribeStreamLiveChannelLogs": {
+      "document": "This API is used to query StreamLive channel logs, such as push event logs.",
+      "input": "DescribeStreamLiveChannelLogsRequest",
+      "name": "Queries StreamLive channel logs",
+      "output": "DescribeStreamLiveChannelLogsResponse"
     },
-    "DescribeMediaLiveChannelOutputStatistics": {
-      "document": "This API is used to query the output statistics of a channel.",
-      "input": "DescribeMediaLiveChannelOutputStatisticsRequest",
-      "name": "Queries the output statistics of a channel",
-      "output": "DescribeMediaLiveChannelOutputStatisticsResponse"
+    "DescribeStreamLiveChannelOutputStatistics": {
+      "document": "This API is used to query the output statistics of a StreamLive channel.",
+      "input": "DescribeStreamLiveChannelOutputStatisticsRequest",
+      "name": "Queries the output statistics of a StreamLive channel",
+      "output": "DescribeStreamLiveChannelOutputStatisticsResponse"
     },
-    "DescribeMediaLiveChannels": {
-      "document": "This API is used to query the information of MediaLive channels in batches.",
-      "input": "DescribeMediaLiveChannelsRequest",
-      "name": "Queries MediaLive channels in batches",
-      "output": "DescribeMediaLiveChannelsResponse"
+    "DescribeStreamLiveChannels": {
+      "document": "This API is used to query StreamLive channels in batches.",
+      "input": "DescribeStreamLiveChannelsRequest",
+      "name": "Queries StreamLive channels in batches",
+      "output": "DescribeStreamLiveChannelsResponse"
     },
-    "DescribeMediaLiveInput": {
-      "document": "This API is used to query a media input.",
-      "input": "DescribeMediaLiveInputRequest",
-      "name": "Queries media input.",
-      "output": "DescribeMediaLiveInputResponse"
+    "DescribeStreamLiveInput": {
+      "document": "This API is used to query a StreamLive input.",
+      "input": "DescribeStreamLiveInputRequest",
+      "name": "Queries a StreamLive input",
+      "output": "DescribeStreamLiveInputResponse"
     },
-    "DescribeMediaLiveInputSecurityGroup": {
+    "DescribeStreamLiveInputSecurityGroup": {
       "document": "This API is used to query an input security group.",
-      "input": "DescribeMediaLiveInputSecurityGroupRequest",
-      "name": "Queries input security group",
-      "output": "DescribeMediaLiveInputSecurityGroupResponse"
+      "input": "DescribeStreamLiveInputSecurityGroupRequest",
+      "name": "Queries an input security group",
+      "output": "DescribeStreamLiveInputSecurityGroupResponse"
     },
-    "DescribeMediaLiveInputSecurityGroups": {
-      "document": "This API is used to query the information of input security groups in batches.",
-      "input": "DescribeMediaLiveInputSecurityGroupsRequest",
-      "name": "Queries the information of input security groups in batches",
-      "output": "DescribeMediaLiveInputSecurityGroupsResponse"
+    "DescribeStreamLiveInputSecurityGroups": {
+      "document": "This API is used to query input security groups in batches.",
+      "input": "DescribeStreamLiveInputSecurityGroupsRequest",
+      "name": "Queries input security groups in batches",
+      "output": "DescribeStreamLiveInputSecurityGroupsResponse"
     },
-    "DescribeMediaLiveInputs": {
-      "document": "This API is used to query the information of media inputs in batches.",
-      "input": "DescribeMediaLiveInputsRequest",
-      "name": "Queries the information of media inputs in batches",
-      "output": "DescribeMediaLiveInputsResponse"
+    "DescribeStreamLiveInputs": {
+      "document": "This API is used to query StreamLive inputs in batches.",
+      "input": "DescribeStreamLiveInputsRequest",
+      "name": "Queries StreamLive inputs in batches",
+      "output": "DescribeStreamLiveInputsResponse"
     },
-    "ModifyMediaLiveChannel": {
-      "document": "This API is used to modify the information of a MediaLive channel.",
-      "input": "ModifyMediaLiveChannelRequest",
-      "name": "Modifies MediaLive channel",
-      "output": "ModifyMediaLiveChannelResponse"
+    "DescribeStreamLivePlans": {
+      "document": "This API is used to query the events in the plan in batches.",
+      "input": "DescribeStreamLivePlansRequest",
+      "name": "Queries events in batches",
+      "output": "DescribeStreamLivePlansResponse"
     },
-    "ModifyMediaLiveInput": {
-      "document": "This API is used to update a media input.",
-      "input": "ModifyMediaLiveInputRequest",
-      "name": "Updates media input",
-      "output": "ModifyMediaLiveInputResponse"
+    "ModifyStreamLiveChannel": {
+      "document": "This API is used to modify a StreamLive channel.",
+      "input": "ModifyStreamLiveChannelRequest",
+      "name": "Modifies a StreamLive channel",
+      "output": "ModifyStreamLiveChannelResponse"
     },
-    "ModifyMediaLiveInputSecurityGroup": {
-      "document": "This API is used to update an input security group.",
-      "input": "ModifyMediaLiveInputSecurityGroupRequest",
-      "name": "Updates input security group",
-      "output": "ModifyMediaLiveInputSecurityGroupResponse"
+    "ModifyStreamLiveInput": {
+      "document": "This API is used to modify a StreamLive input.",
+      "input": "ModifyStreamLiveInputRequest",
+      "name": "Modifies a StreamLive input",
+      "output": "ModifyStreamLiveInputResponse"
     },
-    "StartMediaLiveChannel": {
-      "document": "This API is used to start a MediaLive channel.",
-      "input": "StartMediaLiveChannelRequest",
-      "name": "Starts MediaLive channel",
-      "output": "StartMediaLiveChannelResponse"
+    "ModifyStreamLiveInputSecurityGroup": {
+      "document": "This API is used to modify an input security group.",
+      "input": "ModifyStreamLiveInputSecurityGroupRequest",
+      "name": "Modifies an input security group",
+      "output": "ModifyStreamLiveInputSecurityGroupResponse"
     },
-    "StopMediaLiveChannel": {
-      "document": "This API is used to stop a MediaLive channel.",
-      "input": "StopMediaLiveChannelRequest",
-      "name": "Stops MediaLive channel",
-      "output": "StopMediaLiveChannelResponse"
+    "StartStreamLiveChannel": {
+      "document": "This API is used to start a StreamLive channel.",
+      "input": "StartStreamLiveChannelRequest",
+      "name": "Starts a StreamLive channel",
+      "output": "StartStreamLiveChannelResponse"
+    },
+    "StopStreamLiveChannel": {
+      "document": "This API is used to stop a StreamLive channel.",
+      "input": "StopStreamLiveChannelRequest",
+      "name": "Stops a StreamLive channel",
+      "output": "StopStreamLiveChannelResponse"
     }
   },
   "metadata": {
@@ -133,12 +145,149 @@
     "serviceShortName": "mdl"
   },
   "objects": {
-    "AttachedInputInfo": {
-      "document": "Media input associated with media channel.",
+    "AVTemplate": {
+      "document": "Audio/Video transcoding template",
       "members": [
         {
           "default": "",
-          "document": "Media input ID.",
+          "document": "Name of an audio/video transcoding template, which can contain 1-20 case-sensitive letters and digits",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether video is needed. `0`: not needed; `1`: needed",
+          "example": "1",
+          "member": "uint64",
+          "name": "NeedVideo",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.",
+          "example": "H264",
+          "member": "string",
+          "name": "Vcodec",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video width. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video width will be used.",
+          "example": "1920",
+          "member": "uint64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video height. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video height will be used.",
+          "example": "1080",
+          "member": "uint64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.",
+          "example": "30",
+          "member": "uint64",
+          "name": "Fps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable top speed codec transcoding. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`",
+          "example": "OPEN",
+          "member": "string",
+          "name": "TopSpeed",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Compression ratio for top speed codec transcoding. Value range: [0, 50]. The lower the compression ratio, the higher the image quality.",
+          "example": "0",
+          "member": "uint64",
+          "name": "BitrateCompressionRatio",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether audio is needed. `0`: not needed; `1`: needed",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedAudio",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio codec. Valid value: `AAC` (default)",
+          "example": "AAC",
+          "member": "string",
+          "name": "Acodec",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio bitrate. If this parameter is left empty, the original bitrate will be used.\nValid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000`, `24000`, `28000`, `32000`, `40000`, `48000`, `56000`, `64000`, `80000`, `96000`, `112000`, `128000`, `160000`, `192000`, `224000`, `256000`, `288000`, `320000`, `384000`, `448000`, `512000`, `576000`, `640000`, `768000`, `896000`, `1024000`",
+          "example": "128000",
+          "member": "uint64",
+          "name": "AudioBitrate",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.",
+          "example": "1000000",
+          "member": "uint64",
+          "name": "VideoBitrate",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default)",
+          "example": "ABR",
+          "member": "string",
+          "name": "RateControlMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AttachedInput": {
+      "document": "Channel-associated input",
+      "members": [
+        {
+          "default": "",
+          "document": "Input ID",
+          "example": "AB342ED131CE",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -147,11 +296,32 @@
         },
         {
           "default": "",
-          "document": "Audio selector for media input. Quantity limit: [0,20]\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Audio selector for the input. There can be 0 to 20 audio selectors.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
           "member": "AudioSelectorInfo",
           "name": "AudioSelectors",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Pull mode. If the input type is `HLS_PULL` or `MP4_PULL`, you can set this parameter to `LOOP` or `ONCE`. `LOOP` is the default value.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "LOOP",
+          "member": "string",
+          "name": "PullBehavior",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Input failover configuration\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "FailOverSettings",
+          "name": "FailOverSettings",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -304,75 +474,6 @@
       ],
       "usage": "out"
     },
-    "ChannelInfo": {
-      "document": "Channel information.",
-      "members": [
-        {
-          "default": "",
-          "document": "Channel ID.",
-          "member": "string",
-          "name": "Id",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Channel status.",
-          "member": "string",
-          "name": "State",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Information of associated input.",
-          "member": "AttachedInputInfo",
-          "name": "AttachedInputs",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Information of output group.",
-          "member": "OutputGroupsInfo",
-          "name": "OutputGroups",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Channel name.",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Audio transcoding template array.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "AudioTemplateInfo",
-          "name": "AudioTemplates",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Video transcoding template array.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "VideoTemplateInfo",
-          "name": "VideoTemplates",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "ChannelInputStatistics": {
       "document": "Channel output statistics.",
       "members": [
@@ -463,12 +564,13 @@
       ],
       "usage": "out"
     },
-    "CreateMediaLiveChannelRequest": {
-      "document": "CreateMediaLiveChannel request structure.",
+    "CreateStreamLiveChannelRequest": {
+      "document": "CreateStreamLiveChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.",
+          "document": "Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
+          "example": "channel",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -476,23 +578,26 @@
         },
         {
           "default": "",
-          "document": "Associated media input. Quantity limit: [1,1].",
-          "member": "AttachedInputInfo",
+          "document": "Inputs to attach. You can attach 1-5 inputs.",
+          "example": "无",
+          "member": "AttachedInput",
           "name": "AttachedInputs",
           "required": true,
           "type": "list"
         },
         {
           "default": "",
-          "document": "Configuration information of channel output groups. Quantity limit: [1,10].",
-          "member": "OutputGroupsInfo",
+          "document": "Configuration information of the channel’s output groups. Quantity: [1, 10]",
+          "example": "无",
+          "member": "StreamLiveOutputGroupsInfo",
           "name": "OutputGroups",
           "required": true,
           "type": "list"
         },
         {
           "default": "",
-          "document": "Audio transcoding template array. Quantity limit: [1,20].",
+          "document": "Audio transcoding templates. Quantity: [1, 20]",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplates",
           "required": false,
@@ -500,22 +605,34 @@
         },
         {
           "default": "",
-          "document": "Video transcoding template array. Quantity limit: [1,10].",
+          "document": "Video transcoding templates. Quantity: [1, 10]",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplates",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Audio/Video transcoding templates. Quantity: [1, 10]",
+          "example": "无",
+          "member": "AVTemplate",
+          "name": "AVTemplates",
           "required": false,
           "type": "list"
         }
       ],
       "type": "object"
     },
-    "CreateMediaLiveChannelResponse": {
-      "document": "CreateMediaLiveChannel response structure.",
+    "CreateStreamLiveChannelResponse": {
+      "document": "CreateStreamLiveChannel response structure.",
       "members": [
         {
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "sda",
           "member": "string",
           "name": "Id",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -528,12 +645,13 @@
       ],
       "type": "object"
     },
-    "CreateMediaLiveInputRequest": {
-      "document": "CreateMediaLiveInput request structure.",
+    "CreateStreamLiveInputRequest": {
+      "document": "CreateStreamLiveInput request structure.",
       "members": [
         {
           "default": "",
-          "document": "Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.",
+          "document": "Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
+          "example": "sdad",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -541,7 +659,8 @@
         },
         {
           "default": "",
-          "document": "Media input type.\nValid values: RTMP_PUSH/RTP_PUSH/UDP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.",
+          "document": "Input type\nValid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`",
+          "example": "RTMP_PUSH",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -549,7 +668,8 @@
         },
         {
           "default": "",
-          "document": "ID of the input security group to be bound.\nOnly one security group can be associated.",
+          "document": "ID of the input security group to attach\nYou can attach only one security group to an input.",
+          "example": "[\"123\\r\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -557,7 +677,8 @@
         },
         {
           "default": "",
-          "document": "Input settings information, one or two sets of which need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.",
+          "document": "Input settings. For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.",
+          "example": "无",
           "member": "InputSettingInfo",
           "name": "InputSettings",
           "required": false,
@@ -566,13 +687,15 @@
       ],
       "type": "object"
     },
-    "CreateMediaLiveInputResponse": {
-      "document": "CreateMediaLiveInput response structure.",
+    "CreateStreamLiveInputResponse": {
+      "document": "CreateStreamLiveInput response structure.",
       "members": [
         {
-          "document": "Media input ID.",
+          "document": "Input ID",
+          "example": "111",
           "member": "string",
           "name": "Id",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -585,12 +708,13 @@
       ],
       "type": "object"
     },
-    "CreateMediaLiveInputSecurityGroupRequest": {
-      "document": "CreateMediaLiveInputSecurityGroup request structure.",
+    "CreateStreamLiveInputSecurityGroupRequest": {
+      "document": "CreateStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
           "default": "",
-          "document": "Input security group name, which can contain letters, digits, and underscores and must be unique at the region level.",
+          "document": "Input security group name, which can contain case-sensitive letters, digits, and underscores and must be unique at the region level",
+          "example": "xxx",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -598,7 +722,8 @@
         },
         {
           "default": "",
-          "document": "List of allowlist entries. Quantity limit: [1,10].",
+          "document": "Allowlist entries. Quantity: [1, 10]",
+          "example": "[\"1.1.1.1\\/1\\r\\n\"]",
           "member": "string",
           "name": "Whitelist",
           "required": true,
@@ -607,16 +732,54 @@
       ],
       "type": "object"
     },
-    "CreateMediaLiveInputSecurityGroupResponse": {
-      "document": "CreateMediaLiveInputSecurityGroup response structure.",
+    "CreateStreamLiveInputSecurityGroupResponse": {
+      "document": "CreateStreamLiveInputSecurityGroup response structure.",
       "members": [
         {
-          "document": "Security group ID.",
+          "document": "Security group ID",
+          "example": "1111",
           "member": "string",
           "name": "Id",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamLivePlanRequest": {
+      "document": "CreateStreamLivePlan request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the channel for which you want to configure an event",
+          "example": "AAAAAA",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event configuration",
+          "example": "无",
+          "member": "PlanReq",
+          "name": "Plan",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamLivePlanResponse": {
+      "document": "CreateStreamLivePlan response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -659,12 +822,13 @@
       ],
       "usage": "both"
     },
-    "DeleteMediaLiveChannelRequest": {
-      "document": "DeleteMediaLiveChannel request structure.",
+    "DeleteStreamLiveChannelRequest": {
+      "document": "DeleteStreamLiveChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "12312",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -673,8 +837,8 @@
       ],
       "type": "object"
     },
-    "DeleteMediaLiveChannelResponse": {
-      "document": "DeleteMediaLiveChannel response structure.",
+    "DeleteStreamLiveChannelResponse": {
+      "document": "DeleteStreamLiveChannel response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -685,12 +849,13 @@
       ],
       "type": "object"
     },
-    "DeleteMediaLiveInputRequest": {
-      "document": "DeleteMediaLiveInput request structure.",
+    "DeleteStreamLiveInputRequest": {
+      "document": "DeleteStreamLiveInput request structure.",
       "members": [
         {
           "default": "",
-          "document": "Media input ID.",
+          "document": "Input ID",
+          "example": "111",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -699,8 +864,8 @@
       ],
       "type": "object"
     },
-    "DeleteMediaLiveInputResponse": {
-      "document": "DeleteMediaLiveInput response structure.",
+    "DeleteStreamLiveInputResponse": {
+      "document": "DeleteStreamLiveInput response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -711,12 +876,13 @@
       ],
       "type": "object"
     },
-    "DeleteMediaLiveInputSecurityGroupRequest": {
-      "document": "DeleteMediaLiveInputSecurityGroup request structure.",
+    "DeleteStreamLiveInputSecurityGroupRequest": {
+      "document": "DeleteStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
           "default": "",
-          "document": "Input security group ID.",
+          "document": "Input security group ID",
+          "example": "1111",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -725,8 +891,8 @@
       ],
       "type": "object"
     },
-    "DeleteMediaLiveInputSecurityGroupResponse": {
-      "document": "DeleteMediaLiveInputSecurityGroup response structure.",
+    "DeleteStreamLiveInputSecurityGroupResponse": {
+      "document": "DeleteStreamLiveInputSecurityGroup response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -737,12 +903,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelAlertsRequest": {
-      "document": "DescribeMediaLiveChannelAlerts request structure.",
+    "DescribeStreamLiveChannelAlertsRequest": {
+      "document": "DescribeStreamLiveChannelAlerts request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "1111",
           "member": "string",
           "name": "ChannelId",
           "required": true,
@@ -751,13 +918,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelAlertsResponse": {
-      "document": "DescribeMediaLiveChannelAlerts response structure.",
+    "DescribeStreamLiveChannelAlertsResponse": {
+      "document": "DescribeStreamLiveChannelAlerts response structure.",
       "members": [
         {
-          "document": "Alarm information of two pipelines under this channel.",
+          "document": "Alarm information of the channel’s two pipelines",
+          "example": "无",
           "member": "ChannelAlertInfos",
           "name": "Infos",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -770,12 +939,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelInputStatisticsRequest": {
-      "document": "DescribeMediaLiveChannelInputStatistics request structure.",
+    "DescribeStreamLiveChannelInputStatisticsRequest": {
+      "document": "DescribeStreamLiveChannelInputStatistics request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "AEAE83719CE",
           "member": "string",
           "name": "ChannelId",
           "required": true,
@@ -783,7 +953,8 @@
         },
         {
           "default": "",
-          "document": "Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`.",
+          "document": "Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2020-01-01T12:00:00Z",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -791,7 +962,8 @@
         },
         {
           "default": "",
-          "document": "Statistics end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`.",
+          "document": "End time for query, which is 1 hour after `StartTime` by default\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2020-01-01T14:00:00Z",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -799,7 +971,8 @@
         },
         {
           "default": "",
-          "document": "Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.",
+          "document": "Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`",
+          "example": "1min",
           "member": "string",
           "name": "Period",
           "required": false,
@@ -808,13 +981,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelInputStatisticsResponse": {
-      "document": "DescribeMediaLiveChannelInputStatistics response structure.",
+    "DescribeStreamLiveChannelInputStatisticsResponse": {
+      "document": "DescribeStreamLiveChannelInputStatistics response structure.",
       "members": [
         {
-          "document": "Channel input statistics array.",
+          "document": "Channel input statistics",
+          "example": "无",
           "member": "ChannelInputStatistics",
           "name": "Infos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -827,12 +1002,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelLogsRequest": {
-      "document": "DescribeMediaLiveChannelLogs request structure.",
+    "DescribeStreamLiveChannelLogsRequest": {
+      "document": "DescribeStreamLiveChannelLogs request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "AEAE83719CE",
           "member": "string",
           "name": "ChannelId",
           "required": true,
@@ -840,7 +1016,8 @@
         },
         {
           "default": "",
-          "document": "Log start time, which is one hour ago by default. Maximum value: the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`.",
+          "document": "Start time for query, which is 1 hour ago by default. You can query logs in the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2020-01-01T12:00:00Z",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -848,7 +1025,8 @@
         },
         {
           "default": "",
-          "document": "Log end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`.",
+          "document": "End time for query, which is 1 hour after `StartTime` by default\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2020-01-01T14:00:00Z",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -857,13 +1035,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelLogsResponse": {
-      "document": "DescribeMediaLiveChannelLogs response structure.",
+    "DescribeStreamLiveChannelLogsResponse": {
+      "document": "DescribeStreamLiveChannelLogs response structure.",
       "members": [
         {
-          "document": "Pipeline push information.",
+          "document": "Pipeline push information",
+          "example": "无",
           "member": "PipelineLogInfo",
           "name": "Infos",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -876,12 +1056,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelOutputStatisticsRequest": {
-      "document": "DescribeMediaLiveChannelOutputStatistics request structure.",
+    "DescribeStreamLiveChannelOutputStatisticsRequest": {
+      "document": "DescribeStreamLiveChannelOutputStatistics request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "AEAE83719CE",
           "member": "string",
           "name": "ChannelId",
           "required": true,
@@ -889,7 +1070,8 @@
         },
         {
           "default": "",
-          "document": "Statistics start time, which is one hour ago by default. Maximum value: the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`.",
+          "document": "Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2020-01-01T12:00:00Z",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -897,7 +1079,8 @@
         },
         {
           "default": "",
-          "document": "Statistics end time, which is one hour after `StartTime` by default.\nUTC time, such as `2020-01-01T12:00:00Z`.",
+          "document": "End time for query, which is 1 hour after `StartTime` by default\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2020-01-01T14:00:00Z",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -905,7 +1088,8 @@
         },
         {
           "default": "",
-          "document": "Data interval. Valid values: 5s, 1min, 5min, 15min. Default value: 1min.",
+          "document": "Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`",
+          "example": "1min",
           "member": "string",
           "name": "Period",
           "required": false,
@@ -914,13 +1098,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelOutputStatisticsResponse": {
-      "document": "DescribeMediaLiveChannelOutputStatistics response structure.",
+    "DescribeStreamLiveChannelOutputStatisticsResponse": {
+      "document": "DescribeStreamLiveChannelOutputStatistics response structure.",
       "members": [
         {
-          "document": "Channel output information.",
+          "document": "Channel output information",
+          "example": "无",
           "member": "ChannelOutputsStatistics",
           "name": "Infos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -933,12 +1119,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelRequest": {
-      "document": "DescribeMediaLiveChannel request structure.",
+    "DescribeStreamLiveChannelRequest": {
+      "document": "DescribeStreamLiveChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "AB458E",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -947,13 +1134,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelResponse": {
-      "document": "DescribeMediaLiveChannel response structure.",
+    "DescribeStreamLiveChannelResponse": {
+      "document": "DescribeStreamLiveChannel response structure.",
       "members": [
         {
-          "document": "Channel information.",
-          "member": "ChannelInfo",
+          "document": "Channel information",
+          "example": "无",
+          "member": "StreamLiveChannelInfo",
           "name": "Info",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -966,18 +1155,20 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveChannelsRequest": {
-      "document": "DescribeMediaLiveChannels request structure.",
+    "DescribeStreamLiveChannelsRequest": {
+      "document": "DescribeStreamLiveChannels request structure.",
       "members": [],
       "type": "object"
     },
-    "DescribeMediaLiveChannelsResponse": {
-      "document": "DescribeMediaLiveChannels response structure.",
+    "DescribeStreamLiveChannelsResponse": {
+      "document": "DescribeStreamLiveChannels response structure.",
       "members": [
         {
-          "document": "Channel list information.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "ChannelInfo",
+          "document": "List of channel information\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "StreamLiveChannelInfo",
           "name": "Infos",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -990,12 +1181,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveInputRequest": {
-      "document": "DescribeMediaLiveInput request structure.",
+    "DescribeStreamLiveInputRequest": {
+      "document": "DescribeStreamLiveInput request structure.",
       "members": [
         {
           "default": "",
-          "document": "Media input ID.",
+          "document": "Input ID",
+          "example": "1111",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1004,13 +1196,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveInputResponse": {
-      "document": "DescribeMediaLiveInput response structure.",
+    "DescribeStreamLiveInputResponse": {
+      "document": "DescribeStreamLiveInput response structure.",
       "members": [
         {
-          "document": "MediaLive input information.",
+          "document": "Input information",
+          "example": "无",
           "member": "InputInfo",
           "name": "Info",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1023,12 +1217,13 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveInputSecurityGroupRequest": {
-      "document": "DescribeMediaLiveInputSecurityGroup request structure.",
+    "DescribeStreamLiveInputSecurityGroupRequest": {
+      "document": "DescribeStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
           "default": "",
-          "document": "Input security group ID.",
+          "document": "Input security group ID",
+          "example": "1111",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1037,13 +1232,15 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveInputSecurityGroupResponse": {
-      "document": "DescribeMediaLiveInputSecurityGroup response structure.",
+    "DescribeStreamLiveInputSecurityGroupResponse": {
+      "document": "DescribeStreamLiveInputSecurityGroup response structure.",
       "members": [
         {
-          "document": "Input security group information.",
+          "document": "Input security group information",
+          "example": "无",
           "member": "InputSecurityGroupInfo",
           "name": "Info",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1056,18 +1253,20 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveInputSecurityGroupsRequest": {
-      "document": "DescribeMediaLiveInputSecurityGroups request structure.",
+    "DescribeStreamLiveInputSecurityGroupsRequest": {
+      "document": "DescribeStreamLiveInputSecurityGroups request structure.",
       "members": [],
       "type": "object"
     },
-    "DescribeMediaLiveInputSecurityGroupsResponse": {
-      "document": "DescribeMediaLiveInputSecurityGroups response structure.",
+    "DescribeStreamLiveInputSecurityGroupsResponse": {
+      "document": "DescribeStreamLiveInputSecurityGroups response structure.",
       "members": [
         {
-          "document": "Input security group information list.",
+          "document": "List of input security group information",
+          "example": "无",
           "member": "InputSecurityGroupInfo",
           "name": "Infos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1080,18 +1279,56 @@
       ],
       "type": "object"
     },
-    "DescribeMediaLiveInputsRequest": {
-      "document": "DescribeMediaLiveInputs request structure.",
+    "DescribeStreamLiveInputsRequest": {
+      "document": "DescribeStreamLiveInputs request structure.",
       "members": [],
       "type": "object"
     },
-    "DescribeMediaLiveInputsResponse": {
-      "document": "DescribeMediaLiveInputs response structure.",
+    "DescribeStreamLiveInputsResponse": {
+      "document": "DescribeStreamLiveInputs response structure.",
       "members": [
         {
-          "document": "MediaLive input information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of input information\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
           "member": "InputInfo",
           "name": "Infos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLivePlansRequest": {
+      "document": "DescribeStreamLivePlans request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the channel whose events you want to query",
+          "example": "无",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLivePlansResponse": {
+      "document": "DescribeStreamLivePlans response structure.",
+      "members": [
+        {
+          "document": "List of event information\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "PlanResp",
+          "name": "Infos",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1193,7 +1430,8 @@
       "members": [
         {
           "default": "",
-          "document": "Whether to enable DRM encryption. Valid value: CLOSE/OPEN. Default value: CLOSE.\nCurrently, this is supported only for HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE.",
+          "document": "Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`\nDRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.",
+          "example": "OPEN",
           "member": "string",
           "name": "State",
           "required": false,
@@ -1202,16 +1440,8 @@
         },
         {
           "default": "",
-          "document": "When `Scheme` is set to TencentDRM, this parameter should be set to the `ContentId` of DRM encryption, and if this parameter is left empty, a `ContentId` will be automatically created. For more information, please see [here](https://intl.cloud.tencent.com/document/product/1000/40960?from_cn_redirect=1).\nWhen `Scheme` is set to CustomDRMKeys, this parameter is required and should be specified by the user.",
-          "member": "string",
-          "name": "ContentId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Valid values: TencentDRM, CustomDRMKeys. If this parameter is left empty, TencentDRM will be used by default.\nTencentDRM refers to Tencent digital rights management (DRM) encryption. For more information, please see [here](https://intl.cloud.tencent.com/solution/drm?from_cn_redirect=1).\nCustomDRMKeys refers to an encryption key customized by the user.",
+          "document": "This parameter can be set to `CustomDRMKeys` or left empty.\nCustomDRMKeys means encryption keys customized by users.",
+          "example": "CustomDRMKeys",
           "member": "string",
           "name": "Scheme",
           "required": false,
@@ -1220,12 +1450,111 @@
         },
         {
           "default": "",
+          "document": "If `Scheme` is set to `CustomDRMKeys`, this parameter is required and should be specified by the user.",
+          "example": "contentid",
+          "member": "string",
+          "name": "ContentId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "DrmKey",
           "name": "Keys",
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EventSettingsReq": {
+      "document": "Configuration information of an event in the plan",
+      "members": [
+        {
+          "default": "",
+          "document": "Only `INPUT_SWITCH` is supported currently. If you do not specify this parameter, `INPUT_SWITCH` will be used.",
+          "example": "INPUT_SWITCH",
+          "member": "string",
+          "name": "EventType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`",
+          "example": "AAAAAAAA",
+          "member": "string",
+          "name": "InputAttachment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "EventSettingsResp": {
+      "document": "Configuration information of an event in the plan",
+      "members": [
+        {
+          "default": "",
+          "document": "Only `INPUT_SWITCH` is supported currently.",
+          "example": "INPUT_SWITCH",
+          "member": "string",
+          "name": "EventType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`",
+          "example": "AAAAAAAA",
+          "member": "string",
+          "name": "InputAttachment",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "FailOverSettings": {
+      "document": "Input failover settings",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the backup input\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "SecondaryInputId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The wait time (ms) for triggering failover after the primary input becomes unavailable. Value range: [1000, 86400000]. Default value: `3000`",
+          "example": "1000",
+          "member": "int64",
+          "name": "LossThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Failover policy. Valid values: `CURRENT_PREFERRED` (default), `PRIMARY_PREFERRED`",
+          "example": "CURRENT_PREFERRED",
+          "member": "string",
+          "name": "RecoverBehavior",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1236,6 +1565,7 @@
         {
           "default": "",
           "document": "Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.",
+          "example": "4000",
           "member": "uint64",
           "name": "SegmentDuration",
           "required": false,
@@ -1245,6 +1575,7 @@
         {
           "default": "",
           "document": "Number of segments. Value range: [1,30]. Default value: 5.",
+          "example": "5",
           "member": "uint64",
           "name": "SegmentNumber",
           "required": false,
@@ -1254,6 +1585,7 @@
         {
           "default": "",
           "document": "Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.",
+          "example": "CLOSE",
           "member": "string",
           "name": "PdtInsertion",
           "required": false,
@@ -1263,10 +1595,21 @@
         {
           "default": "",
           "document": "PDT duration in seconds. Value range: (0,3000]. Default value: 600.",
+          "example": "600",
           "member": "uint64",
           "name": "PdtDuration",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`",
+          "example": "SEPARATE",
+          "member": "string",
+          "name": "Scheme",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1398,6 +1741,7 @@
         {
           "default": "",
           "document": "Application name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -1407,6 +1751,7 @@
         {
           "default": "",
           "document": "Stream name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "streamid",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -1416,6 +1761,7 @@
         {
           "default": "",
           "document": "Origin-pull URL, which is used for RTMP_PULL/HLS_PULL/MP4_PULL. Length limit: [1,512].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "http://www.domain.com/path/source.mp4",
           "member": "string",
           "name": "SourceUrl",
           "required": false,
@@ -1425,8 +1771,19 @@
         {
           "default": "",
           "document": "RTP/UDP input address, which does not need to be entered for the input parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "rtp://1.1.1.1:1",
           "member": "string",
           "name": "InputAddress",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "TencentCOS",
+          "member": "string",
+          "name": "SourceType",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1506,27 +1863,13 @@
       ],
       "usage": "out"
     },
-    "MediaPackageSettingsInfo": {
-      "document": "Configuration information related to associating with the media packaging service.",
+    "ModifyStreamLiveChannelRequest": {
+      "document": "ModifyStreamLiveChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Media packaging ID.",
-          "member": "string",
-          "name": "Id",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "ModifyMediaLiveChannelRequest": {
-      "document": "ModifyMediaLiveChannel request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "ESASD13437",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1534,7 +1877,8 @@
         },
         {
           "default": "",
-          "document": "Channel name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.",
+          "document": "Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
+          "example": "channel",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1542,23 +1886,26 @@
         },
         {
           "default": "",
-          "document": "Associated media input. Quantity limit: [1,1].",
-          "member": "AttachedInputInfo",
+          "document": "Inputs to attach. You can attach 1-5 inputs.",
+          "example": "无",
+          "member": "AttachedInput",
           "name": "AttachedInputs",
           "required": true,
           "type": "list"
         },
         {
           "default": "",
-          "document": "Configuration information of channel output groups. Quantity limit: [1,10].",
-          "member": "OutputGroupsInfo",
+          "document": "Configuration information of the channel’s output groups. Quantity: [1, 10]",
+          "example": "无",
+          "member": "StreamLiveOutputGroupsInfo",
           "name": "OutputGroups",
           "required": true,
           "type": "list"
         },
         {
           "default": "",
-          "document": "Audio transcoding template array. Quantity limit: [1,20].",
+          "document": "Audio transcoding templates. Quantity: [1, 20]",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplates",
           "required": false,
@@ -1566,17 +1913,27 @@
         },
         {
           "default": "",
-          "document": "Video transcoding template array. Quantity limit: [1,10].",
+          "document": "Video transcoding templates. Quantity: [1, 10]",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplates",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Audio/Video transcoding templates. Quantity: [1, 10]",
+          "example": "无",
+          "member": "AVTemplate",
+          "name": "AVTemplates",
           "required": false,
           "type": "list"
         }
       ],
       "type": "object"
     },
-    "ModifyMediaLiveChannelResponse": {
-      "document": "ModifyMediaLiveChannel response structure.",
+    "ModifyStreamLiveChannelResponse": {
+      "document": "ModifyStreamLiveChannel response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1587,12 +1944,13 @@
       ],
       "type": "object"
     },
-    "ModifyMediaLiveInputRequest": {
-      "document": "ModifyMediaLiveInput request structure.",
+    "ModifyStreamLiveInputRequest": {
+      "document": "ModifyStreamLiveInput request structure.",
       "members": [
         {
           "default": "",
-          "document": "Media input ID.",
+          "document": "Input ID",
+          "example": "111",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1600,7 +1958,8 @@
         },
         {
           "default": "",
-          "document": "Media input name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.",
+          "document": "Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
+          "example": "sddd",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -1608,7 +1967,8 @@
         },
         {
           "default": "",
-          "document": "List of IDs of bound security groups.",
+          "document": "List of the IDs of the security groups to attach",
+          "example": "[\"1111\\r\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -1616,7 +1976,8 @@
         },
         {
           "default": "",
-          "document": "Input settings information.\nOne or two sets of settings need to be configured for RTMP_PUSH/RTMP_PULL/HLS_PULL/MP4_PULL.\nThis parameter can be left empty for RTP_PUSH and UDP_PUSH.\nNote: if it is left empty or the array is empty, the original `InputSettings` value will be used.",
+          "document": "Input settings\nFor the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.\nThis parameter can be left empty for RTP_PUSH and UDP_PUSH inputs.\nNote: If this parameter is not specified or empty, the original input settings will be used.",
+          "example": "无",
           "member": "InputSettingInfo",
           "name": "InputSettings",
           "required": false,
@@ -1625,8 +1986,8 @@
       ],
       "type": "object"
     },
-    "ModifyMediaLiveInputResponse": {
-      "document": "ModifyMediaLiveInput response structure.",
+    "ModifyStreamLiveInputResponse": {
+      "document": "ModifyStreamLiveInput response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1637,12 +1998,13 @@
       ],
       "type": "object"
     },
-    "ModifyMediaLiveInputSecurityGroupRequest": {
-      "document": "ModifyMediaLiveInputSecurityGroup request structure.",
+    "ModifyStreamLiveInputSecurityGroupRequest": {
+      "document": "ModifyStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
           "default": "",
-          "document": "Input security group ID.",
+          "document": "Input security group ID",
+          "example": " 1111",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1650,7 +2012,8 @@
         },
         {
           "default": "",
-          "document": "Input security group name, which can contain 1-32 letters, digits, and underscores and must be unique at the region level.",
+          "document": "Input security group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
+          "example": "xxxx",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -1658,7 +2021,8 @@
         },
         {
           "default": "",
-          "document": "List of allowlist entries. Up to 10 entries are allowed.",
+          "document": "Allowlist entries (max: 10)",
+          "example": "0.0.0.0/0",
           "member": "string",
           "name": "Whitelist",
           "required": false,
@@ -1667,8 +2031,8 @@
       ],
       "type": "object"
     },
-    "ModifyMediaLiveInputSecurityGroupResponse": {
-      "document": "ModifyMediaLiveInputSecurityGroup response structure.",
+    "ModifyStreamLiveInputSecurityGroupResponse": {
+      "document": "ModifyStreamLiveInputSecurityGroup response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1679,90 +2043,13 @@
       ],
       "type": "object"
     },
-    "OutputGroupsInfo": {
-      "document": "Channel output group information.",
-      "members": [
-        {
-          "default": "",
-          "document": "Channel output group name, which can contain 1–32 letters, digits, and underscores and must be unique at the channel level.",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Output protocol type.\nValid values: HLS, DASH, HLS_ARCHIVE, HLS_MEDIA_PACKAGE, DASH_MEDIA_PACKAGE.",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Output information.\nQuantity limit: [1,1] for RTMP/RTP; [1,10] for HLS/DASH.",
-          "member": "OutputInfo",
-          "name": "Outputs",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Relay destination address. Quantity limit: [1,2].",
-          "member": "DestinationInfo",
-          "name": "Destinations",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE.",
-          "member": "HlsRemuxSettingsInfo",
-          "name": "HlsRemuxSettings",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "DASH protocol configuration information, which takes effect only for DASH/DSAH_ARCHIVE.",
-          "member": "DashRemuxSettingsInfo",
-          "name": "DashRemuxSettings",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "DRM configuration information.",
-          "member": "DrmSettingsInfo",
-          "name": "DrmSettings",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Configuration information of media packaging, which is required when `Type` is set to MediaPackage.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "MediaPackageSettingsInfo",
-          "name": "MediaPackageSettings",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
     "OutputInfo": {
       "document": "Output information.",
       "members": [
         {
           "default": "",
           "document": "Output name.",
+          "example": "name",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1772,6 +2059,7 @@
         {
           "default": "",
           "document": "Audio transcoding template name array.\nQuantity limit: [0,1] for RTMP; [0,20] for others.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "AudioTemplateNames",
           "required": false,
@@ -1781,6 +2069,7 @@
         {
           "default": "",
           "document": "Video transcoding template name array. Quantity limit: [0,1].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "VideoTemplateNames",
           "required": false,
@@ -1790,11 +2079,22 @@
         {
           "default": "",
           "document": "SCTE-35 information configuration.",
+          "example": "无",
           "member": "Scte35SettingsInfo",
           "name": "Scte35Settings",
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "AVTemplateNames",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1913,6 +2213,78 @@
       ],
       "usage": "out"
     },
+    "PlanReq": {
+      "document": "Event configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Event name",
+          "example": "EventName",
+          "member": "string",
+          "name": "EventName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event trigger time settings",
+          "example": "无",
+          "member": "TimingSettingsReq",
+          "name": "TimingSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event configuration",
+          "example": "无",
+          "member": "EventSettingsReq",
+          "name": "EventSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PlanResp": {
+      "document": "Event configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Event name",
+          "example": "EventName",
+          "member": "string",
+          "name": "EventName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event trigger time settings",
+          "example": "无",
+          "member": "TimingSettingsResp",
+          "name": "TimingSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event configuration",
+          "example": "无",
+          "member": "EventSettingsResp",
+          "name": "EventSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "Scte35SettingsInfo": {
       "document": "SCTE-35 configuration information.",
       "members": [
@@ -1928,12 +2300,13 @@
       ],
       "usage": "both"
     },
-    "StartMediaLiveChannelRequest": {
-      "document": "StartMediaLiveChannel request structure.",
+    "StartStreamLiveChannelRequest": {
+      "document": "StartStreamLiveChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "AB458E",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1942,8 +2315,8 @@
       ],
       "type": "object"
     },
-    "StartMediaLiveChannelResponse": {
-      "document": "StartMediaLiveChannel response structure.",
+    "StartStreamLiveChannelResponse": {
+      "document": "StartStreamLiveChannel response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1954,12 +2327,13 @@
       ],
       "type": "object"
     },
-    "StopMediaLiveChannelRequest": {
-      "document": "StopMediaLiveChannel request structure.",
+    "StopStreamLiveChannelRequest": {
+      "document": "StopStreamLiveChannel request structure.",
       "members": [
         {
           "default": "",
-          "document": "Channel ID.",
+          "document": "Channel ID",
+          "example": "AB458E",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1968,8 +2342,8 @@
       ],
       "type": "object"
     },
-    "StopMediaLiveChannelResponse": {
-      "document": "StopMediaLiveChannel response structure.",
+    "StopStreamLiveChannelResponse": {
+      "document": "StopStreamLiveChannel response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2073,6 +2447,194 @@
       ],
       "usage": "out"
     },
+    "StreamLiveChannelInfo": {
+      "document": "Channel information",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel status",
+          "example": "无",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of attached inputs",
+          "example": "无",
+          "member": "AttachedInput",
+          "name": "AttachedInputs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of output groups",
+          "example": "无",
+          "member": "StreamLiveOutputGroupsInfo",
+          "name": "OutputGroups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio transcoding templates\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "AudioTemplateInfo",
+          "name": "AudioTemplates",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Video transcoding templates\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "VideoTemplateInfo",
+          "name": "VideoTemplates",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Audio/Video transcoding templates\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "AVTemplate",
+          "name": "AVTemplates",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "StreamLiveOutputGroupsInfo": {
+      "document": "Channel output group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Output information\nIf the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.",
+          "example": "无",
+          "member": "OutputInfo",
+          "name": "Outputs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Relay destinations. Quantity: [1, 2]",
+          "example": "无",
+          "member": "DestinationInfo",
+          "name": "Destinations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE outputs\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "HlsRemuxSettingsInfo",
+          "name": "HlsRemuxSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DRM configuration information\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "DrmSettingsInfo",
+          "name": "DrmSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "DashRemuxSettingsInfo",
+          "name": "DashRemuxSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "StreamPackage configuration information, which is required if the output type is StreamPackage\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "StreamPackageSettingsInfo",
+          "name": "StreamPackageSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "StreamPackageSettingsInfo": {
+      "document": "StreamPackage settings when the output type is StreamPackage",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID in StreamPackage",
+          "example": "1",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "StreamScte35Info": {
       "document": "SCTE-35 information.",
       "members": [
@@ -2148,6 +2710,58 @@
       ],
       "usage": "out"
     },
+    "TimingSettingsReq": {
+      "document": "Event trigger time settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`",
+          "example": "FIXED_TIME",
+          "member": "string",
+          "name": "StartType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Required if `StartType` is `FIXED_TIME`\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2021-06-25T00:00:00Z",
+          "member": "string",
+          "name": "Time",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TimingSettingsResp": {
+      "document": "Event trigger time settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Event trigger type",
+          "example": "FIXED_TIME",
+          "member": "string",
+          "name": "StartType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Not empty if `StartType` is `FIXED_TIME`\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "example": "2021-06-25T00:00:00Z",
+          "member": "string",
+          "name": "Time",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "VideoPipelineInputStatistics": {
       "document": "Pipeline input video statistics.",
       "members": [
@@ -2187,6 +2801,7 @@
         {
           "default": "",
           "document": "Video transcoding template name, which can contain 1-20 letters and digits.",
+          "example": "name",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2196,6 +2811,7 @@
         {
           "default": "",
           "document": "Video codec. Valid values: H264/H265. If this parameter is left empty, the original value will be used.",
+          "example": "H264",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -2205,6 +2821,7 @@
         {
           "default": "",
           "document": "Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.",
+          "example": "1000000",
           "member": "uint64",
           "name": "VideoBitrate",
           "required": false,
@@ -2214,6 +2831,7 @@
         {
           "default": "",
           "document": "Video width. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.",
+          "example": "1920",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -2223,6 +2841,7 @@
         {
           "default": "",
           "document": "Video height. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.",
+          "example": "1080",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -2232,6 +2851,7 @@
         {
           "default": "",
           "document": "Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.",
+          "example": "30",
           "member": "uint64",
           "name": "Fps",
           "required": false,
@@ -2241,6 +2861,7 @@
         {
           "default": "",
           "document": "Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.",
+          "example": "OPEN",
           "member": "string",
           "name": "TopSpeed",
           "required": false,
@@ -2250,10 +2871,21 @@
         {
           "default": "",
           "document": "Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.",
+          "example": "0",
           "member": "uint64",
           "name": "BitrateCompressionRatio",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default)",
+          "example": "ABR",
+          "member": "string",
+          "name": "RateControlMode",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

@@ -13,7 +13,7 @@ from tencentcloud.mdl.v20200326 import mdl_client as mdl_client_v20200326
 from tencentcloud.mdl.v20200326 import models as models_v20200326
 
 
-def doCreateMediaLiveInputSecurityGroup(args, parsed_globals):
+def doDescribeStreamLiveChannelAlerts(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -29,9 +29,9 @@ def doCreateMediaLiveInputSecurityGroup(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaLiveInputSecurityGroupRequest()
+    model = models.DescribeStreamLiveChannelAlertsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaLiveInputSecurityGroup(model)
+    rsp = client.DescribeStreamLiveChannelAlerts(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -40,7 +40,7 @@ def doCreateMediaLiveInputSecurityGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveChannelLogs(args, parsed_globals):
+def doDescribeStreamLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -56,9 +56,9 @@ def doDescribeMediaLiveChannelLogs(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveChannelLogsRequest()
+    model = models.DescribeStreamLiveChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveChannelLogs(model)
+    rsp = client.DescribeStreamLiveChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -67,7 +67,7 @@ def doDescribeMediaLiveChannelLogs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveChannelOutputStatistics(args, parsed_globals):
+def doCreateStreamLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -83,9 +83,9 @@ def doDescribeMediaLiveChannelOutputStatistics(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveChannelOutputStatisticsRequest()
+    model = models.CreateStreamLiveInputRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveChannelOutputStatistics(model)
+    rsp = client.CreateStreamLiveInput(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -94,7 +94,7 @@ def doDescribeMediaLiveChannelOutputStatistics(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaLiveInput(args, parsed_globals):
+def doDescribeStreamLiveChannelLogs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -110,9 +110,9 @@ def doDeleteMediaLiveInput(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaLiveInputRequest()
+    model = models.DescribeStreamLiveChannelLogsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaLiveInput(model)
+    rsp = client.DescribeStreamLiveChannelLogs(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -121,7 +121,7 @@ def doDeleteMediaLiveInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaLiveInput(args, parsed_globals):
+def doDescribeStreamLiveInputSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -137,9 +137,9 @@ def doModifyMediaLiveInput(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaLiveInputRequest()
+    model = models.DescribeStreamLiveInputSecurityGroupsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaLiveInput(model)
+    rsp = client.DescribeStreamLiveInputSecurityGroups(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -148,7 +148,7 @@ def doModifyMediaLiveInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveInputSecurityGroups(args, parsed_globals):
+def doDescribeStreamLiveChannelInputStatistics(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -164,9 +164,9 @@ def doDescribeMediaLiveInputSecurityGroups(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveInputSecurityGroupsRequest()
+    model = models.DescribeStreamLiveChannelInputStatisticsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveInputSecurityGroups(model)
+    rsp = client.DescribeStreamLiveChannelInputStatistics(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -175,7 +175,7 @@ def doDescribeMediaLiveInputSecurityGroups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveInputs(args, parsed_globals):
+def doDeleteStreamLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -191,9 +191,9 @@ def doDescribeMediaLiveInputs(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveInputsRequest()
+    model = models.DeleteStreamLiveChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveInputs(model)
+    rsp = client.DeleteStreamLiveChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -202,7 +202,7 @@ def doDescribeMediaLiveInputs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaLiveInputSecurityGroup(args, parsed_globals):
+def doCreateStreamLivePlan(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -218,9 +218,9 @@ def doDeleteMediaLiveInputSecurityGroup(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaLiveInputSecurityGroupRequest()
+    model = models.CreateStreamLivePlanRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaLiveInputSecurityGroup(model)
+    rsp = client.CreateStreamLivePlan(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -229,7 +229,7 @@ def doDeleteMediaLiveInputSecurityGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateMediaLiveChannel(args, parsed_globals):
+def doCreateStreamLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -245,9 +245,9 @@ def doCreateMediaLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaLiveChannelRequest()
+    model = models.CreateStreamLiveChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaLiveChannel(model)
+    rsp = client.CreateStreamLiveChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -256,7 +256,7 @@ def doCreateMediaLiveChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveChannelAlerts(args, parsed_globals):
+def doModifyStreamLiveInputSecurityGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -272,9 +272,9 @@ def doDescribeMediaLiveChannelAlerts(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveChannelAlertsRequest()
+    model = models.ModifyStreamLiveInputSecurityGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveChannelAlerts(model)
+    rsp = client.ModifyStreamLiveInputSecurityGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -283,7 +283,7 @@ def doDescribeMediaLiveChannelAlerts(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveChannel(args, parsed_globals):
+def doModifyStreamLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -299,9 +299,9 @@ def doDescribeMediaLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveChannelRequest()
+    model = models.ModifyStreamLiveChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveChannel(model)
+    rsp = client.ModifyStreamLiveChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -310,7 +310,7 @@ def doDescribeMediaLiveChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaLiveInputSecurityGroup(args, parsed_globals):
+def doDescribeStreamLiveChannels(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -326,9 +326,9 @@ def doModifyMediaLiveInputSecurityGroup(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaLiveInputSecurityGroupRequest()
+    model = models.DescribeStreamLiveChannelsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaLiveInputSecurityGroup(model)
+    rsp = client.DescribeStreamLiveChannels(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -337,7 +337,7 @@ def doModifyMediaLiveInputSecurityGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateMediaLiveInput(args, parsed_globals):
+def doDescribeStreamLivePlans(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -353,9 +353,9 @@ def doCreateMediaLiveInput(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaLiveInputRequest()
+    model = models.DescribeStreamLivePlansRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaLiveInput(model)
+    rsp = client.DescribeStreamLivePlans(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -364,7 +364,7 @@ def doCreateMediaLiveInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStartMediaLiveChannel(args, parsed_globals):
+def doDescribeStreamLiveInputs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -380,9 +380,9 @@ def doStartMediaLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartMediaLiveChannelRequest()
+    model = models.DescribeStreamLiveInputsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.StartMediaLiveChannel(model)
+    rsp = client.DescribeStreamLiveInputs(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -391,7 +391,7 @@ def doStartMediaLiveChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaLiveChannel(args, parsed_globals):
+def doStartStreamLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -407,9 +407,9 @@ def doModifyMediaLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaLiveChannelRequest()
+    model = models.StartStreamLiveChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaLiveChannel(model)
+    rsp = client.StartStreamLiveChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -418,7 +418,7 @@ def doModifyMediaLiveChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaLiveChannel(args, parsed_globals):
+def doDescribeStreamLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -434,9 +434,9 @@ def doDeleteMediaLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaLiveChannelRequest()
+    model = models.DescribeStreamLiveInputRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaLiveChannel(model)
+    rsp = client.DescribeStreamLiveInput(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -445,7 +445,7 @@ def doDeleteMediaLiveChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveChannelInputStatistics(args, parsed_globals):
+def doModifyStreamLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -461,9 +461,9 @@ def doDescribeMediaLiveChannelInputStatistics(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveChannelInputStatisticsRequest()
+    model = models.ModifyStreamLiveInputRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveChannelInputStatistics(model)
+    rsp = client.ModifyStreamLiveInput(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -472,7 +472,7 @@ def doDescribeMediaLiveChannelInputStatistics(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveChannels(args, parsed_globals):
+def doDescribeStreamLiveInputSecurityGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -488,9 +488,9 @@ def doDescribeMediaLiveChannels(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveChannelsRequest()
+    model = models.DescribeStreamLiveInputSecurityGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveChannels(model)
+    rsp = client.DescribeStreamLiveInputSecurityGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -499,7 +499,7 @@ def doDescribeMediaLiveChannels(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveInputSecurityGroup(args, parsed_globals):
+def doDeleteStreamLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -515,9 +515,9 @@ def doDescribeMediaLiveInputSecurityGroup(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveInputSecurityGroupRequest()
+    model = models.DeleteStreamLiveInputRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveInputSecurityGroup(model)
+    rsp = client.DeleteStreamLiveInput(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -526,7 +526,7 @@ def doDescribeMediaLiveInputSecurityGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaLiveInput(args, parsed_globals):
+def doDescribeStreamLiveChannelOutputStatistics(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -542,9 +542,9 @@ def doDescribeMediaLiveInput(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaLiveInputRequest()
+    model = models.DescribeStreamLiveChannelOutputStatisticsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaLiveInput(model)
+    rsp = client.DescribeStreamLiveChannelOutputStatistics(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -553,7 +553,7 @@ def doDescribeMediaLiveInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStopMediaLiveChannel(args, parsed_globals):
+def doStopStreamLiveChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -569,9 +569,63 @@ def doStopMediaLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StopMediaLiveChannelRequest()
+    model = models.StopStreamLiveChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.StopMediaLiveChannel(model)
+    rsp = client.StopStreamLiveChannel(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteStreamLiveInputSecurityGroup(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteStreamLiveInputSecurityGroupRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteStreamLiveInputSecurityGroup(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateStreamLiveInputSecurityGroup(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateStreamLiveInputSecurityGroupRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateStreamLiveInputSecurityGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -591,27 +645,29 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "CreateMediaLiveInputSecurityGroup": doCreateMediaLiveInputSecurityGroup,
-    "DescribeMediaLiveChannelLogs": doDescribeMediaLiveChannelLogs,
-    "DescribeMediaLiveChannelOutputStatistics": doDescribeMediaLiveChannelOutputStatistics,
-    "DeleteMediaLiveInput": doDeleteMediaLiveInput,
-    "ModifyMediaLiveInput": doModifyMediaLiveInput,
-    "DescribeMediaLiveInputSecurityGroups": doDescribeMediaLiveInputSecurityGroups,
-    "DescribeMediaLiveInputs": doDescribeMediaLiveInputs,
-    "DeleteMediaLiveInputSecurityGroup": doDeleteMediaLiveInputSecurityGroup,
-    "CreateMediaLiveChannel": doCreateMediaLiveChannel,
-    "DescribeMediaLiveChannelAlerts": doDescribeMediaLiveChannelAlerts,
-    "DescribeMediaLiveChannel": doDescribeMediaLiveChannel,
-    "ModifyMediaLiveInputSecurityGroup": doModifyMediaLiveInputSecurityGroup,
-    "CreateMediaLiveInput": doCreateMediaLiveInput,
-    "StartMediaLiveChannel": doStartMediaLiveChannel,
-    "ModifyMediaLiveChannel": doModifyMediaLiveChannel,
-    "DeleteMediaLiveChannel": doDeleteMediaLiveChannel,
-    "DescribeMediaLiveChannelInputStatistics": doDescribeMediaLiveChannelInputStatistics,
-    "DescribeMediaLiveChannels": doDescribeMediaLiveChannels,
-    "DescribeMediaLiveInputSecurityGroup": doDescribeMediaLiveInputSecurityGroup,
-    "DescribeMediaLiveInput": doDescribeMediaLiveInput,
-    "StopMediaLiveChannel": doStopMediaLiveChannel,
+    "DescribeStreamLiveChannelAlerts": doDescribeStreamLiveChannelAlerts,
+    "DescribeStreamLiveChannel": doDescribeStreamLiveChannel,
+    "CreateStreamLiveInput": doCreateStreamLiveInput,
+    "DescribeStreamLiveChannelLogs": doDescribeStreamLiveChannelLogs,
+    "DescribeStreamLiveInputSecurityGroups": doDescribeStreamLiveInputSecurityGroups,
+    "DescribeStreamLiveChannelInputStatistics": doDescribeStreamLiveChannelInputStatistics,
+    "DeleteStreamLiveChannel": doDeleteStreamLiveChannel,
+    "CreateStreamLivePlan": doCreateStreamLivePlan,
+    "CreateStreamLiveChannel": doCreateStreamLiveChannel,
+    "ModifyStreamLiveInputSecurityGroup": doModifyStreamLiveInputSecurityGroup,
+    "ModifyStreamLiveChannel": doModifyStreamLiveChannel,
+    "DescribeStreamLiveChannels": doDescribeStreamLiveChannels,
+    "DescribeStreamLivePlans": doDescribeStreamLivePlans,
+    "DescribeStreamLiveInputs": doDescribeStreamLiveInputs,
+    "StartStreamLiveChannel": doStartStreamLiveChannel,
+    "DescribeStreamLiveInput": doDescribeStreamLiveInput,
+    "ModifyStreamLiveInput": doModifyStreamLiveInput,
+    "DescribeStreamLiveInputSecurityGroup": doDescribeStreamLiveInputSecurityGroup,
+    "DeleteStreamLiveInput": doDeleteStreamLiveInput,
+    "DescribeStreamLiveChannelOutputStatistics": doDescribeStreamLiveChannelOutputStatistics,
+    "StopStreamLiveChannel": doStopStreamLiveChannel,
+    "DeleteStreamLiveInputSecurityGroup": doDeleteStreamLiveInputSecurityGroup,
+    "CreateStreamLiveInputSecurityGroup": doCreateStreamLiveInputSecurityGroup,
 
 }
 

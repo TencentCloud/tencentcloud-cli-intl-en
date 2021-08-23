@@ -13,7 +13,7 @@ from tencentcloud.mdp.v20200527 import mdp_client as mdp_client_v20200527
 from tencentcloud.mdp.v20200527 import models as models_v20200527
 
 
-def doModifyMediaPackageChannelEndpoint(args, parsed_globals):
+def doDeleteStreamPackageChannels(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -29,9 +29,9 @@ def doModifyMediaPackageChannelEndpoint(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaPackageChannelEndpointRequest()
+    model = models.DeleteStreamPackageChannelsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaPackageChannelEndpoint(model)
+    rsp = client.DeleteStreamPackageChannels(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -40,7 +40,7 @@ def doModifyMediaPackageChannelEndpoint(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaPackageChannels(args, parsed_globals):
+def doModifyStreamPackageChannelEndpoint(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -56,9 +56,9 @@ def doDeleteMediaPackageChannels(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaPackageChannelsRequest()
+    model = models.ModifyStreamPackageChannelEndpointRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaPackageChannels(model)
+    rsp = client.ModifyStreamPackageChannelEndpoint(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -67,7 +67,7 @@ def doDeleteMediaPackageChannels(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaPackageChannel(args, parsed_globals):
+def doCreateStreamPackageChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -83,9 +83,9 @@ def doModifyMediaPackageChannel(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaPackageChannelRequest()
+    model = models.CreateStreamPackageChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaPackageChannel(model)
+    rsp = client.CreateStreamPackageChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -94,7 +94,7 @@ def doModifyMediaPackageChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaPackageChannelInputAuthInfo(args, parsed_globals):
+def doDeleteStreamPackageChannelEndpoints(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -110,9 +110,9 @@ def doModifyMediaPackageChannelInputAuthInfo(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaPackageChannelInputAuthInfoRequest()
+    model = models.DeleteStreamPackageChannelEndpointsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaPackageChannelInputAuthInfo(model)
+    rsp = client.DeleteStreamPackageChannelEndpoints(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -121,7 +121,7 @@ def doModifyMediaPackageChannelInputAuthInfo(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaPackageChannelEndpoints(args, parsed_globals):
+def doModifyStreamPackageChannelInputAuthInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -137,9 +137,9 @@ def doDeleteMediaPackageChannelEndpoints(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaPackageChannelEndpointsRequest()
+    model = models.ModifyStreamPackageChannelInputAuthInfoRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaPackageChannelEndpoints(model)
+    rsp = client.ModifyStreamPackageChannelInputAuthInfo(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -148,7 +148,7 @@ def doDeleteMediaPackageChannelEndpoints(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaPackageChannels(args, parsed_globals):
+def doDescribeStreamPackageChannels(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -164,9 +164,9 @@ def doDescribeMediaPackageChannels(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaPackageChannelsRequest()
+    model = models.DescribeStreamPackageChannelsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaPackageChannels(model)
+    rsp = client.DescribeStreamPackageChannels(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -175,7 +175,7 @@ def doDescribeMediaPackageChannels(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateMediaPackageChannel(args, parsed_globals):
+def doDescribeStreamPackageChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -191,9 +191,9 @@ def doCreateMediaPackageChannel(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaPackageChannelRequest()
+    model = models.DescribeStreamPackageChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaPackageChannel(model)
+    rsp = client.DescribeStreamPackageChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -202,7 +202,7 @@ def doCreateMediaPackageChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateMediaPackageChannelEndpoint(args, parsed_globals):
+def doModifyStreamPackageChannel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -218,9 +218,9 @@ def doCreateMediaPackageChannelEndpoint(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaPackageChannelEndpointRequest()
+    model = models.ModifyStreamPackageChannelRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaPackageChannelEndpoint(model)
+    rsp = client.ModifyStreamPackageChannel(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -229,7 +229,7 @@ def doCreateMediaPackageChannelEndpoint(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaPackageChannel(args, parsed_globals):
+def doCreateStreamPackageChannelEndpoint(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -245,9 +245,9 @@ def doDescribeMediaPackageChannel(args, parsed_globals):
     client = mod.MdpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaPackageChannelRequest()
+    model = models.CreateStreamPackageChannelEndpointRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaPackageChannel(model)
+    rsp = client.CreateStreamPackageChannelEndpoint(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -267,15 +267,15 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "ModifyMediaPackageChannelEndpoint": doModifyMediaPackageChannelEndpoint,
-    "DeleteMediaPackageChannels": doDeleteMediaPackageChannels,
-    "ModifyMediaPackageChannel": doModifyMediaPackageChannel,
-    "ModifyMediaPackageChannelInputAuthInfo": doModifyMediaPackageChannelInputAuthInfo,
-    "DeleteMediaPackageChannelEndpoints": doDeleteMediaPackageChannelEndpoints,
-    "DescribeMediaPackageChannels": doDescribeMediaPackageChannels,
-    "CreateMediaPackageChannel": doCreateMediaPackageChannel,
-    "CreateMediaPackageChannelEndpoint": doCreateMediaPackageChannelEndpoint,
-    "DescribeMediaPackageChannel": doDescribeMediaPackageChannel,
+    "DeleteStreamPackageChannels": doDeleteStreamPackageChannels,
+    "ModifyStreamPackageChannelEndpoint": doModifyStreamPackageChannelEndpoint,
+    "CreateStreamPackageChannel": doCreateStreamPackageChannel,
+    "DeleteStreamPackageChannelEndpoints": doDeleteStreamPackageChannelEndpoints,
+    "ModifyStreamPackageChannelInputAuthInfo": doModifyStreamPackageChannelInputAuthInfo,
+    "DescribeStreamPackageChannels": doDescribeStreamPackageChannels,
+    "DescribeStreamPackageChannel": doDescribeStreamPackageChannel,
+    "ModifyStreamPackageChannel": doModifyStreamPackageChannel,
+    "CreateStreamPackageChannelEndpoint": doCreateStreamPackageChannelEndpoint,
 
 }
 
