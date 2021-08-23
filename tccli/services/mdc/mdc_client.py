@@ -13,7 +13,7 @@ from tencentcloud.mdc.v20200828 import mdc_client as mdc_client_v20200828
 from tencentcloud.mdc.v20200828 import models as models_v20200828
 
 
-def doModifyMediaConnectOutput(args, parsed_globals):
+def doDescribeStreamLinkFlows(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -29,9 +29,9 @@ def doModifyMediaConnectOutput(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaConnectOutputRequest()
+    model = models.DescribeStreamLinkFlowsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaConnectOutput(model)
+    rsp = client.DescribeStreamLinkFlows(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -40,7 +40,7 @@ def doModifyMediaConnectOutput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMediaConnectFlow(args, parsed_globals):
+def doStopStreamLinkFlow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -56,9 +56,9 @@ def doDescribeMediaConnectFlow(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaConnectFlowRequest()
+    model = models.StopStreamLinkFlowRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaConnectFlow(model)
+    rsp = client.StopStreamLinkFlow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -67,7 +67,7 @@ def doDescribeMediaConnectFlow(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaConnectInput(args, parsed_globals):
+def doDescribeStreamLinkFlow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -83,9 +83,9 @@ def doModifyMediaConnectInput(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaConnectInputRequest()
+    model = models.DescribeStreamLinkFlowRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaConnectInput(model)
+    rsp = client.DescribeStreamLinkFlow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -94,7 +94,7 @@ def doModifyMediaConnectInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateMediaConnectFlow(args, parsed_globals):
+def doDeleteStreamLinkFlow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -110,9 +110,9 @@ def doCreateMediaConnectFlow(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaConnectFlowRequest()
+    model = models.DeleteStreamLinkFlowRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaConnectFlow(model)
+    rsp = client.DeleteStreamLinkFlow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -121,7 +121,7 @@ def doCreateMediaConnectFlow(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMediaConnectFlow(args, parsed_globals):
+def doStartStreamLinkFlow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -137,9 +137,9 @@ def doModifyMediaConnectFlow(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMediaConnectFlowRequest()
+    model = models.StartStreamLinkFlowRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyMediaConnectFlow(model)
+    rsp = client.StartStreamLinkFlow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -148,7 +148,7 @@ def doModifyMediaConnectFlow(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaConnectFlow(args, parsed_globals):
+def doCreateStreamLinkFlow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -164,9 +164,9 @@ def doDeleteMediaConnectFlow(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaConnectFlowRequest()
+    model = models.CreateStreamLinkFlowRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaConnectFlow(model)
+    rsp = client.CreateStreamLinkFlow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -175,7 +175,7 @@ def doDeleteMediaConnectFlow(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStopMediaConnectFlow(args, parsed_globals):
+def doDeleteStreamLinkOutput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -191,9 +191,9 @@ def doStopMediaConnectFlow(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StopMediaConnectFlowRequest()
+    model = models.DeleteStreamLinkOutputRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.StopMediaConnectFlow(model)
+    rsp = client.DeleteStreamLinkOutput(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -202,7 +202,7 @@ def doStopMediaConnectFlow(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMediaConnectOutput(args, parsed_globals):
+def doModifyStreamLinkFlow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -218,90 +218,9 @@ def doDeleteMediaConnectOutput(args, parsed_globals):
     client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMediaConnectOutputRequest()
+    model = models.ModifyStreamLinkFlowRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMediaConnectOutput(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doStartMediaConnectFlow(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartMediaConnectFlowRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.StartMediaConnectFlow(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateMediaConnectOutput(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateMediaConnectOutputRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateMediaConnectOutput(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeMediaConnectFlows(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MdcClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMediaConnectFlowsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMediaConnectFlows(model)
+    rsp = client.ModifyStreamLinkFlow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -321,17 +240,14 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "ModifyMediaConnectOutput": doModifyMediaConnectOutput,
-    "DescribeMediaConnectFlow": doDescribeMediaConnectFlow,
-    "ModifyMediaConnectInput": doModifyMediaConnectInput,
-    "CreateMediaConnectFlow": doCreateMediaConnectFlow,
-    "ModifyMediaConnectFlow": doModifyMediaConnectFlow,
-    "DeleteMediaConnectFlow": doDeleteMediaConnectFlow,
-    "StopMediaConnectFlow": doStopMediaConnectFlow,
-    "DeleteMediaConnectOutput": doDeleteMediaConnectOutput,
-    "StartMediaConnectFlow": doStartMediaConnectFlow,
-    "CreateMediaConnectOutput": doCreateMediaConnectOutput,
-    "DescribeMediaConnectFlows": doDescribeMediaConnectFlows,
+    "DescribeStreamLinkFlows": doDescribeStreamLinkFlows,
+    "StopStreamLinkFlow": doStopStreamLinkFlow,
+    "DescribeStreamLinkFlow": doDescribeStreamLinkFlow,
+    "DeleteStreamLinkFlow": doDeleteStreamLinkFlow,
+    "StartStreamLinkFlow": doStartStreamLinkFlow,
+    "CreateStreamLinkFlow": doCreateStreamLinkFlow,
+    "DeleteStreamLinkOutput": doDeleteStreamLinkOutput,
+    "ModifyStreamLinkFlow": doModifyStreamLinkFlow,
 
 }
 

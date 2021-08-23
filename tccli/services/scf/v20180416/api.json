@@ -349,6 +349,7 @@
         {
           "default": "",
           "document": "Invocation request ID",
+          "example": "xxxx-yyyy-zzzz",
           "member": "string",
           "name": "InvokeRequestId",
           "required": true,
@@ -358,6 +359,7 @@
         {
           "default": "",
           "document": "Invocation type",
+          "example": "TRIGGER_TIMER",
           "member": "string",
           "name": "InvokeType",
           "required": true,
@@ -367,6 +369,7 @@
         {
           "default": "",
           "document": "Function version",
+          "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
           "required": true,
@@ -375,7 +378,8 @@
         },
         {
           "default": "",
-          "document": "Event status",
+          "document": "Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)",
+          "example": "FINISHED ",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -385,6 +389,7 @@
         {
           "default": "",
           "document": "Invocation start time in the format of \"%Y-%m-%d %H:%M:%S.%f\"",
+          "example": "2021-01-01 00:00:00.001",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -394,6 +399,7 @@
         {
           "default": "",
           "document": "Invocation end time in the format of \"%Y-%m-%d %H:%M:%S.%f\"",
+          "example": "2021-01-01 00:00:00.002",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -2300,282 +2306,380 @@
       "members": [
         {
           "document": "Latest modification time of the function",
+          "example": "2018-06-07 09:52:23",
           "member": "datetime",
           "name": "ModTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function code",
+          "example": "无",
           "member": "string",
           "name": "CodeInfo",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function description",
+          "example": "这是一个云函数",
           "member": "string",
           "name": "Description",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function trigger list",
+          "example": "无",
           "member": "Trigger",
           "name": "Triggers",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Function entry",
+          "example": "scfredis.main_handler",
           "member": "string",
           "name": "Handler",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function code size",
+          "example": "0",
           "member": "int64",
           "name": "CodeSize",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Function timeout",
+          "example": "3",
           "member": "int64",
           "name": "Timeout",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Function version",
+          "example": "$LATEST",
           "member": "string",
           "name": "FunctionVersion",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Maximum available memory of the function",
+          "example": "128",
           "member": "int64",
           "name": "MemorySize",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Function running environment",
+          "example": "Python2.7",
           "member": "string",
           "name": "Runtime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function name",
+          "example": "ledDummyAPITest",
           "member": "string",
           "name": "FunctionName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function VPC",
+          "example": "无",
           "member": "VpcConfig",
           "name": "VpcConfig",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "document": "Whether to use GPU",
+          "example": "FALSE",
           "member": "string",
           "name": "UseGpu",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function environment variable",
+          "example": "无",
           "member": "Environment",
           "name": "Environment",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "document": "Whether the code is correct",
+          "example": "failed",
           "member": "string",
           "name": "CodeResult",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Code error information",
+          "example": "无",
           "member": "string",
           "name": "CodeError",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Error code",
+          "example": "0",
           "member": "int64",
           "name": "ErrNo",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Function namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Role bound to the function",
+          "example": "无",
           "member": "string",
           "name": "Role",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Whether to install dependencies automatically",
+          "example": "FALSE",
           "member": "string",
           "name": "InstallDependency",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)",
+          "example": "Active",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Status description",
+          "example": "无",
           "member": "string",
           "name": "StatusDesc",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "CLS logset to which logs are shipped",
+          "example": "5354061a-dcaa-46be-8359-fe5gt56075c0",
           "member": "string",
           "name": "ClsLogsetId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "CLS Topic to which logs are shipped",
+          "example": "5354061a-dcaa-46be-jydw-fe51e56075c0",
           "member": "string",
           "name": "ClsTopicId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function ID",
+          "example": "lam-bcrxav2w",
           "member": "string",
           "name": "FunctionId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Function tag list",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "EipConfig configuration",
+          "example": "无",
           "member": "EipOutConfig",
           "name": "EipConfig",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "document": "Domain name information",
+          "example": "无",
           "member": "AccessInfo",
           "name": "AccessInfo",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "document": "Function type. The value is `HTTP` or `Event`.",
+          "example": "无",
           "member": "string",
           "name": "Type",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Whether to enable L5",
+          "example": "无",
           "member": "string",
           "name": "L5Enable",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Version information of a layer associated with a function",
+          "example": "无",
           "member": "LayerVersionInfo",
           "name": "Layers",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Information of a dead letter queue associated with a function",
+          "example": "无",
           "member": "DeadLetterConfig",
           "name": "DeadLetterConfig",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "document": "Function creation time",
+          "example": "无",
           "member": "datetime",
           "name": "AddTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Public network access configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "PublicNetConfigOut",
           "name": "PublicNetConfig",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Whether Ons is enabled\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "string",
           "name": "OnsEnable",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "File system configuration parameter, which is used for the function to mount the file system\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CfsConfig",
           "name": "CfsConfig",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "Available",
           "member": "string",
           "name": "AvailableStatus",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Function version\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Timeout period for function initialization",
+          "example": "无",
           "member": "int64",
           "name": "InitTimeout",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Cause of function failure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "StatusReason",
           "name": "StatusReasons",
+          "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Specifies whether to enable asynchronization \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AsyncRunEnable",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Specifies whether to enable event tracking\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TraceEnable",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
