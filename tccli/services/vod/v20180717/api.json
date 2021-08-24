@@ -1614,7 +1614,8 @@
       "members": [
         {
           "default": "",
-          "document": "Task type. Valid values:\n<li>Porn: porn information detection in image</li>\n<li>Terrorism: terrorism information detection in image</li>\n<li>Political: politically sensitive information detection in image</li>\n<li>Porn.Asr: ASR-based porn information detection in speech</li>\n<li>Porn.Ocr: OCR-based porn information detection in text</li>\n<li>Political.Asr: ASR-based politically sensitive information detection in speech</li>\n<li>Political.Ocr: OCR-based politically sensitive information detection in text</li>\n<li>Terrorism.Ocr: OCR-based terrorism information in text</li>\n<li>Prohibited.Asr: ASR-based prohibited information detection in speech</li>\n<li>Prohibited.Ocr: OCR-based prohibited information detection in text</li>",
+          "document": "Task type. Valid values:\n<li>`Porn`: porn information recognition in images</li>\n<li>`Terrorism`: terrorism information recognition in images</li>\n<li>`Political`: politically sensitive information recognition in images</li>\n<li>`Porn.Asr`: ASR-based porn information recognition in speech</li>\n<li>`Porn.Ocr`: OCR-based porn information recognition in text</li>\n<li>`Political.Asr`: ASR-based politically sensitive information recognition in speech</li>\n<li>`Political.Ocr`: OCR-based politically sensitive information recognition in text</li>\n<li>`Terrorism.Ocr`: OCR-based terrorism information recognition in text</li>\n<li>`Prohibited.Asr`: ASR-based prohibited information recognition in speech</li>\n<li>`Prohibited.Ocr`: OCR-based prohibited information recognition in text</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1624,6 +1625,7 @@
         {
           "default": "",
           "document": "Query result of intelligent porn information detection in video image task in video content audit, which is valid when task type is `Porn`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskPornResult",
           "name": "PornTask",
           "required": true,
@@ -1633,6 +1635,7 @@
         {
           "default": "",
           "document": "Query result of intelligent terrorism information detection in video image task in video content audit, which is valid when task type is `Terrorism`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskTerrorismResult",
           "name": "TerrorismTask",
           "required": true,
@@ -1642,6 +1645,7 @@
         {
           "default": "",
           "document": "Query result of intelligent politically sensitive information detection in video image task in video content audit, which is valid when task type is `Political`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskPoliticalResult",
           "name": "PoliticalTask",
           "required": true,
@@ -1651,6 +1655,7 @@
         {
           "default": "",
           "document": "Query result of ASR-based porn information detection in speech task in video content audit, which is valid when task type is `Porn.Asr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskPornAsrResult",
           "name": "PornAsrTask",
           "required": true,
@@ -1660,6 +1665,7 @@
         {
           "default": "",
           "document": "Query result of OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskPornOcrResult",
           "name": "PornOcrTask",
           "required": true,
@@ -1669,6 +1675,7 @@
         {
           "default": "",
           "document": "Query result of ASR-based politically sensitive information detection in speech task in video content audit, which is valid when task type is `Political.Asr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskPoliticalAsrResult",
           "name": "PoliticalAsrTask",
           "required": true,
@@ -1678,6 +1685,7 @@
         {
           "default": "",
           "document": "Query result of OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskPoliticalOcrResult",
           "name": "PoliticalOcrTask",
           "required": true,
@@ -1687,6 +1695,7 @@
         {
           "default": "",
           "document": "Query result of OCR-based terrorism information detection in text task in video content audit, which is valid when task type is `Terrorism.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskTerrorismOcrResult",
           "name": "TerrorismOcrTask",
           "required": true,
@@ -1696,6 +1705,7 @@
         {
           "default": "",
           "document": "Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid when task type is `Prohibited.Asr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskProhibitedAsrResult",
           "name": "ProhibitedAsrTask",
           "required": true,
@@ -1705,6 +1715,7 @@
         {
           "default": "",
           "document": "Query result of OCR-based prohibited information detection in text task in video content audit, which is valid when task type is `Prohibited.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiReviewTaskProhibitedOcrResult",
           "name": "ProhibitedOcrTask",
           "required": true,
@@ -1896,7 +1907,8 @@
       "members": [
         {
           "default": "",
-          "document": "List of full speech recognition segments.",
+          "document": "List of full-text speech recognition segments\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskAsrFullTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
@@ -1905,7 +1917,28 @@
         },
         {
           "default": "",
+          "document": "URL to the file of the list for full-text speech recognition segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://123xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of the list for full-text speech recognition segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Subtitles file URL.",
+          "example": "http://123xxx",
           "member": "string",
           "name": "SubtitleUrl",
           "required": true,
@@ -2061,11 +2094,32 @@
       "members": [
         {
           "default": "",
-          "document": "Speech keyword recognition result set.",
+          "document": "Speech keyword recognition result set\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskAsrWordsResultItem",
           "name": "ResultSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file of the speech keyword recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "htttp://12xxx",
+          "member": "string",
+          "name": "ResultSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of the speech keyword recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "ResultSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2226,11 +2280,32 @@
       "members": [
         {
           "default": "",
-          "document": "Intelligent face recognition result set.",
+          "document": "Intelligent face recognition result set\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskFaceResultItem",
           "name": "ResultSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file of the intelligent face recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://123xxx",
+          "member": "string",
+          "name": "ResultSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of the intelligent face recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "ResultSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2514,11 +2589,32 @@
       "members": [
         {
           "default": "",
-          "document": "Result set of intelligent object recognition.",
+          "document": "Intelligent object recognition result set\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskObjectResultItem",
           "name": "ResultSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file of the object recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "ResultSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the object recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "ResultSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2646,11 +2742,32 @@
       "members": [
         {
           "default": "",
-          "document": "Full text recognition result set.",
+          "document": "Full-text recognition result set\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskOcrFullTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file of the full-text recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of the full-text recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2826,11 +2943,32 @@
       "members": [
         {
           "default": "",
-          "document": "Text keyword recognition result set.",
+          "document": "Text keyword recognition result set\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskOcrWordsResultItem",
           "name": "ResultSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file of the text keyword recognition result set. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "ResultSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of the text keyword recognition result set, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "ResultSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2958,11 +3096,32 @@
       "members": [
         {
           "default": "",
-          "document": "List of split video segments.",
+          "document": "List of split video segments\n<font color=red>Note</font>: this list displays up to the first 100 results. You can get all the results from the file whose URL is `SegmentSetFileUrl`.",
+          "example": "null",
           "member": "AiRecognitionTaskSegmentSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file of the list for split video segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://123xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of the list for split video segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -9354,7 +9513,7 @@
         },
         {
           "default": "",
-          "document": "Storage class to query. Valid values:\n<li>`TotalStorage`: total storage usage in classes of STANDARD, STANDARD_IA, ARCHIVE, and DEEP ARCHIVE, excluding the storage usage for data deleted in advance.</li>\n<li>`StandardStorage`: STANDARD</li>\n<li>`InfrequentStorage`: STANDARD_IA</li>\n<li>`ArchiveStorage`: ARCHIVE</li>\n<li>`DeepArchiveStorage`: DEEP ARCHIVE</li>\n<li>`DeletedArchiveStorage`: ARCHIVE data deleted in advance</li>\n<li>`DeletedDeepArchiveStorage`: DEEP ARCHIVE data deleted in advance</li>\n<li>`ArchiveStandardRetrieval`: ARCHIVE data retrieved using standard retrievals</li>\n<li>`ArchiveExpeditedRetrieval`: ARCHIVE data retrieved using expedited retrievals</li>\n<li>`ArchiveBulkRetrieval`: ARCHIVE data retrieved using bulk retrievals</li>\n<li>`DeepArchiveStandardRetrieval`: DEEP ARCHIVE data retrieved using standard retrievals</li>\n<li>`DeepArchiveBulkRetrieval`: DEEP ARCHIVE data retrieved using bulk retrievals</li>\nDefault value: `TotalStorage`",
+          "document": "Storage class to query. Valid values:\n<li>`TotalStorage`: total storage usage in classes of STANDARD, STANDARD_IA, ARCHIVE, and DEEP ARCHIVE, excluding the storage usage for data deleted in advance.</li>\n<li>`StandardStorage`: STANDARD</li>\n<li>`InfrequentStorage`: STANDARD_IA</li>\n<li>`ArchiveStorage`: ARCHIVE</li>\n<li>`DeepArchiveStorage`: DEEP ARCHIVE</li>\n<li>`DeletedInfrequentStorage`: STANDARD_IA data deleted in advance</li>\n<li>`DeletedArchiveStorage`: ARCHIVE data deleted in advance</li>\n<li>`DeletedDeepArchiveStorage`: DEEP ARCHIVE data deleted in advance</li>\n<li>`ArchiveStandardRetrieval`: ARCHIVE data retrieved using standard retrievals</li>\n<li>`ArchiveExpeditedRetrieval`: ARCHIVE data retrieved using expedited retrievals</li>\n<li>`ArchiveBulkRetrieval`: ARCHIVE data retrieved using bulk retrievals</li>\n<li>`DeepArchiveStandardRetrieval`: DEEP ARCHIVE data retrieved using standard retrievals</li>\n<li>`DeepArchiveBulkRetrieval`: DEEP ARCHIVE data retrieved using bulk retrievals</li>\nDefault value: `TotalStorage`",
           "example": "StandardStorage",
           "member": "string",
           "name": "StorageType",
@@ -11456,7 +11615,8 @@
       "members": [
         {
           "default": "",
-          "document": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.",
+          "document": "The [Base64](https://tools.ietf.org/html/rfc4648) encoded string of a watermark image. Only JPEG, PNG, and GIF images are supported.",
+          "example": "无",
           "member": "string",
           "name": "ImageContent",
           "required": true,
@@ -11466,6 +11626,7 @@
         {
           "default": "",
           "document": "Watermark width. % and px formats are supported:\n<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>\n<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>\nDefault value: 10%.",
+          "example": "无",
           "member": "string",
           "name": "Width",
           "required": false,
@@ -11475,6 +11636,7 @@
         {
           "default": "",
           "document": "Watermark height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px. Valid values: 0 or [8,4096].</li>\nDefault value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
+          "example": "无",
           "member": "string",
           "name": "Height",
           "required": false,
@@ -11484,6 +11646,7 @@
         {
           "default": "",
           "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
+          "example": "无",
           "member": "string",
           "name": "RepeatType",
           "required": false,
@@ -12268,7 +12431,7 @@
         },
         {
           "default": "",
-          "document": "Storage class of a media file:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>",
+          "document": "Storage class of a media file:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>\n<li>ARCHIVE</li>\n<li>DEEP_ARCHIVE</li>",
           "example": "STANDARD",
           "member": "string",
           "name": "StorageClass",
@@ -13680,6 +13843,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -13689,6 +13853,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -13698,6 +13863,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -13707,6 +13873,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -13716,6 +13883,7 @@
         {
           "default": "",
           "document": "Input of transcoding task.",
+          "example": "无",
           "member": "TranscodeTaskInput",
           "name": "Input",
           "required": true,
@@ -13725,6 +13893,7 @@
         {
           "default": "",
           "document": "Output of transcoding task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaTranscodeItem",
           "name": "Output",
           "required": true,
@@ -13734,10 +13903,31 @@
         {
           "default": "",
           "document": "Transcoding progress. Value range: 0-100.",
+          "example": "无",
           "member": "int64",
           "name": "Progress",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transcoding task start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "无",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transcoding task end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "example": "无",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -18316,6 +18506,15 @@
         },
         {
           "default": "",
+          "document": "Files whose expiration time points are within the specified time range will be returned. Expired files will not be returned.\n<li>The files whose expiration time points are on the start or end time of the specified range will also be returned.</li>",
+          "example": "无",
+          "member": "TimeRange",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "Sorting order.\n<li>Valid value of `Sort.Field`: CreateTime.</li>\n<li>If `Text`, `Names`, or `Descriptions` is not empty, the `Sort.Field` field will not take effect, and the search results will be sorted by match rate.</li>",
           "example": "无",
           "member": "SortBy",
@@ -18367,6 +18566,15 @@
           "name": "SubAppId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "An array of storage classes. Valid values:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>\n<li>ARCHIVE</li>\n<li>DEEP_ARCHIVE</li>",
+          "example": "无",
+          "member": "string",
+          "name": "StorageClasses",
+          "required": false,
+          "type": "list"
         },
         {
           "default": "",
