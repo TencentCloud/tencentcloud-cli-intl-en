@@ -8586,6 +8586,7 @@
         {
           "default": "",
           "document": "Bitrate of an audio stream in bps.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8000",
           "member": "int64",
           "name": "Bitrate",
           "required": true,
@@ -8595,6 +8596,7 @@
         {
           "default": "",
           "document": "Sample rate of an audio stream in Hz.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8000",
           "member": "int64",
           "name": "SamplingRate",
           "required": true,
@@ -8604,11 +8606,22 @@
         {
           "default": "",
           "document": "Audio stream codec, such as aac.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "aac",
           "member": "string",
           "name": "Codec",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of sound channels, e.g., 2\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "2",
+          "member": "int64",
+          "name": "Channel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9840,6 +9853,7 @@
         {
           "default": "",
           "document": "Bitrate of a video stream in bps.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100000",
           "member": "int64",
           "name": "Bitrate",
           "required": true,
@@ -9849,6 +9863,7 @@
         {
           "default": "",
           "document": "Height of a video stream in px.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1920",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -9858,6 +9873,7 @@
         {
           "default": "",
           "document": "Width of a video stream in px.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1080",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -9867,6 +9883,7 @@
         {
           "default": "",
           "document": "Video stream codec, such as h264.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "h264",
           "member": "string",
           "name": "Codec",
           "required": true,
@@ -9876,11 +9893,42 @@
         {
           "default": "",
           "document": "Frame rate in Hz.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "30",
           "member": "int64",
           "name": "Fps",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Color primaries\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "bt470bg",
+          "member": "string",
+          "name": "ColorPrimaries",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Color space\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "gbr",
+          "member": "string",
+          "name": "ColorSpace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Color transfer\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "bt709",
+          "member": "string",
+          "name": "ColorTransfer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
