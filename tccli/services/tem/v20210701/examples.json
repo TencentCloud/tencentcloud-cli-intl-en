@@ -1,0 +1,133 @@
+{
+  "actions": {
+    "CreateApplication": [
+      {
+        "document": "This example shows you how to create an application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplication\n<Common request parameters>\n\n{\n    \"ApplicationName\": \"xx\",\n    \"SubnetList\": [\n        \"xx\"\n    ],\n    \"Description\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"DeployMode\": \"xx\",\n    \"RepoServer\": \"xx\",\n    \"SourceChannel\": 0,\n    \"RepoType\": 0,\n    \"RepoName\": \"xx\",\n    \"UseDefaultImageService\": 0,\n    \"CodingLanguage\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating an application"
+      }
+    ],
+    "CreateCosToken": [
+      {
+        "document": "This example shows you how to generate a COS temporary key for an uploaded JAR or WAR package.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosToken\n<Common request parameters>\n\n{\n    \"PkgName\": \"xx\",\n    \"TimeVersion\": \"xx\",\n    \"ApplicationId\": \"xx\",\n    \"SourceChannel\": 0,\n    \"OptType\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": {}\n    }\n}",
+        "title": "Generating a COS temporary key"
+      }
+    ],
+    "CreateEnvironment": [
+      {
+        "document": "This example shows you how to create an environment.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEnvironment\n<Common request parameters>\n\n{\n    \"EnvironmentName\": \"xx\",\n    \"Description\": \"xx\",\n    \"K8sVersion\": \"xx\",\n    \"SubnetIds\": [\n        \"xx\"\n    ],\n    \"EnableTswTraceService\": true,\n    \"SourceChannel\": 0,\n    \"Vpc\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": \"env-xxxx\"\n    }\n}",
+        "title": "Creating an environment"
+      }
+    ],
+    "CreateResource": [
+      {
+        "document": "This example shows you how to bind a cloud resource.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateResource\n<Common request parameters>\n\n{\n    \"ResourceType\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"SourceChannel\": 0,\n    \"ResourceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Binding a cloud resource"
+      }
+    ],
+    "DeleteIngress": [
+      {
+        "document": "This example shows you how to delete an ingress rule.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIngress\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"xx\",\n    \"ClusterNamespace\": \"xx\",\n    \"SourceChannel\": 0,\n    \"IngressName\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Deleting an ingress rule"
+      }
+    ],
+    "DeployApplication": [
+      {
+        "document": "This example shows you how to deploy an application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeployApplication\n<Common request parameters>\n\n{\n    \"Service\": {\n        \"ApplicationName\": \"xx\",\n        \"ExternalIp\": \"xx\",\n        \"Name\": \"xx\",\n        \"PortMappings\": [\n            {\n                \"Protocol\": \"xx\",\n                \"TargetPort\": 0,\n                \"Port\": 0\n            }\n        ],\n        \"Yaml\": \"xx\",\n        \"LoadBalanceId\": \"xx\",\n        \"VersionName\": \"xx\",\n        \"ClusterIp\": [\n            \"xx\"\n        ],\n        \"SubnetId\": \"xx\",\n        \"Type\": \"xx\",\n        \"Ports\": [\n            0\n        ]\n    },\n    \"JvmOpts\": \"xx\",\n    \"StorageConfs\": [\n        {\n            \"StorageVolName\": \"xx\",\n            \"StorageVolIp\": \"xx\",\n            \"StorageVolPath\": \"xx\"\n        }\n    ],\n    \"ImgRepo\": \"xx\",\n    \"EnvConf\": [\n        {\n            \"Value\": \"xx\",\n            \"Key\": \"xx\"\n        }\n    ],\n    \"ImageCommand\": \"xx\",\n    \"Description\": \"xx\",\n    \"JdkVersion\": \"xx\",\n    \"ApplicationId\": \"xx\",\n    \"LogOutputConf\": {\n        \"ClsLogTopicId\": \"xx\",\n        \"ClsLogsetName\": \"xx\",\n        \"ClsLogsetId\": \"xx\",\n        \"ClsLogTopicName\": \"xx\",\n        \"OutputType\": \"xx\"\n    },\n    \"UseRegistryDefaultConfig\": true,\n    \"CpuSpec\": 0.0,\n    \"DeployMode\": \"xx\",\n    \"SecurityGroupIds\": [\n        \"xx\"\n    ],\n    \"SourceChannel\": 0,\n    \"DeployVersion\": \"xx\",\n    \"InitPodNum\": 1,\n    \"VersionDesc\": \"xx\",\n    \"ImageArgs\": [\n        \"xx\"\n    ],\n    \"MemorySpec\": 0.0,\n    \"EnvironmentId\": \"xx\",\n    \"LogConfs\": [\n        \"xx\"\n    ],\n    \"PkgName\": \"xx\",\n    \"StorageMountConfs\": [\n        {\n            \"VolumeName\": \"xx\",\n            \"MountPath\": \"xx\"\n        }\n    ],\n    \"EsInfo\": {\n        \"MinAliveInstances\": 0,\n        \"EsStrategy\": 0,\n        \"VersionId\": \"xx\",\n        \"Threshold\": 1,\n        \"MaxAliveInstances\": 2\n    },\n    \"VersionId\": \"xx\",\n    \"SettingConfs\": [\n        {\n            \"ConfigDataName\": \"xx\",\n            \"MountedPath\": \"xx\"\n            \"Data\": [\n                {\n                    \"Value\": \"xx\",\n                    \"Key\": \"xx\"\n                }\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": \"version-xxx\"\n    }\n}",
+        "title": "Deploying an application"
+      }
+    ],
+    "DescribeApplicationPods": [
+      {
+        "document": "This example shows you how to get the list of application pods.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationPods\n<Common request parameters>\n\n{\n    \"Status\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"Offset\": 0,\n    \"SourceChannel\": 0,\n    \"Limit\": 0,\n    \"PodName\": \"xx\",\n    \"ApplicationId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 0,\n            \"Limit\": 0,\n            \"RequestId\": \"xx\",\n            \"PodList\": [\n                {\n                    \"Webshell\": \"xx\",\n                    \"Status\": \"xx\",\n                    \"RestartCount\": 0,\n                    \"Zone\": \"xx\",\n                    \"PodId\": \"xx\",\n                    \"DeployVersion\": \"xx\",\n                    \"PodIp\": \"xx\",\n                    \"ContainerState\": \"xx\",\n                    \"Ready\": true,\n                    \"CreateTime\": \"xx\"\n                }\n            ],\n            \"Offset\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of application pods"
+      }
+    ],
+    "DescribeEnvironments": [
+      {
+        "document": "This example shows you how to get the list of tenant environments.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnvironments\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Records\": [\n                {\n                    \"Status\": 0,\n                    \"EnvironmentId\": \"xx\",\n                    \"ModifyDate\": \"xx\",\n                    \"Description\": \"xx\",\n                    \"EnvironmentName\": \"xx\",\n                    \"Region\": \"xx\",\n                    \"Creator\": \"xx\",\n                    \"EnableTswTraceService\": true,\n                    \"RunInstancesNum\": 0,\n                    \"Vpc\": \"xx\",\n                    \"SubnetId\": \"xx\",\n                    \"ClusterStatus\": \"xx\",\n                    \"Modifier\": \"xx\",\n                    \"ApplicationNum\": 0,\n                    \"CreateDate\": \"xx\",\n                    \"Channel\": \"xx\"\n                }\n            ],\n            \"Total\": 0,\n            \"Pages\": 0,\n            \"Size\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Getting the list of tenant environments"
+      }
+    ],
+    "DescribeIngress": [
+      {
+        "document": "This example shows you how to query an ingress rule.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIngress\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"xx\",\n    \"ClusterNamespace\": \"xx\",\n    \"SourceChannel\": 0,\n    \"IngressName\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Tls\": [\n                {\n                    \"CertificateId\": \"xx\",\n                    \"Hosts\": [\n                        \"xxx.com\"\n                    ],\n                    \"SecretName\": \"xx\"\n                }\n            ],\n            \"EnvironmentId\": \"xx\",\n            \"ClusterNamespace\": \"xx\",\n            \"Rules\": [\n                {\n                    \"Protocol\": \"xx\",\n                    \"Host\": \"xx\",\n                    \"Http\": {\n                        \"Paths\": [\n                            {\n                                \"Path\": \"xx\",\n                                \"Backend\": {\n                                    \"ServiceName\": \"xx\",\n                                    \"ServicePort\": 443\n                                }\n                            }\n                        ]\n                    }\n                }\n            ],\n            \"ClbId\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"IngressName\": \"xx\",\n            \"Vip\": \"xx\",\n            \"Mixed\": true,\n            \"AddressIPVersion\": \"xx\",\n            \"CreateTime\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying an ingress rule"
+      }
+    ],
+    "DescribeIngresses": [
+      {
+        "document": "This example shows you how to query the list of ingress rules.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIngresses\n<Common request parameters>\n\n{\n    \"ClusterNamespace\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"IngressNames\": [\n        \"xx\"\n    ],\n    \"SourceChannel\": 0,\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": [\n            {\n                \"ClusterId\": \"cls-9lxt9ic2\",\n                \"AddressIPVersion\": \"IPV4\",\n                \"ClbId\": \"clb-xxxx\",\n                \"Vip\": \"10.10.10.10\",\n                \"Rules\": [\n                    {\n                        \"Host\": \"\",\n                        \"Http\": {\n                            \"Paths\": [\n                                {\n                                    \"Path\": \"/\",\n                                    \"Backend\": {\n                                        \"ServiceName\": \"kubernetes\",\n                                        \"ServicePort\": 443\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                ],\n                \"Tls\": [\n                    {\n                        \"Hosts\": [\n                            \"xxx.com\"\n                        ],\n                        \"SecretName\": \"xxx\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of ingress rules"
+      }
+    ],
+    "DescribeRelatedIngresses": [
+      {
+        "document": "This example shows you how to query the list of ingress rules associated with the application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRelatedIngresses\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"xx\",\n    \"ClusterNamespace\": \"xx\",\n    \"ApplicationId\": \"xx\",\n    \"SourceChannel\": 0,\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": [\n            {\n                \"ClusterId\": \"cls-9lxt9ic2\",\n                \"AddressIPVersion\": \"IPV4\",\n                \"ClbId\": \"clb-xxxx\",\n                \"Vip\": \"10.10.10.10\",\n                \"Mixed\": true,\n                \"Rules\": [\n                    {\n                        \"Host\": \"\",\n                        \"Http\": {\n                            \"Paths\": [\n                                {\n                                    \"Path\": \"/\",\n                                    \"Backend\": {\n                                        \"ServiceName\": \"kubernetes\",\n                                        \"ServicePort\": 443\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                ],\n                \"Tls\": [\n                    {\n                        \"Hosts\": [\n                            \"xxx.com\"\n                        ],\n                        \"SecretName\": \"xxx\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of ingress rules associated with the application"
+      }
+    ],
+    "GenerateApplicationPackageDownloadUrl": [
+      {
+        "document": "This example shows you how to generate the pre-signed download URL for the specified application package.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateApplicationPackageDownloadUrl\n<Common request parameters>\n\n{\n    \"PkgName\": \"xx\",\n    \"DeployVersion\": \"xx\",\n    \"ApplicationId\": \"xx\",\n    \"SourceChannel\": 0,\n}",
+        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\r\n    \"Result\": {\r\n\r\n      }\r\n  }\r\n}",
+        "title": "Generating the pre-signed download URL for the specified application package"
+      }
+    ],
+    "ModifyApplicationInfo": [
+      {
+        "document": "This example shows you how to modify the basic information of an application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationInfo\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"Description\": \"xx\",\n    \"EnableTracing\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xx\",\n        \"RequestId\": \"true\"\n    }\n}",
+        "title": "Modifying the basic information of an application"
+      }
+    ],
+    "ModifyEnvironment": [
+      {
+        "document": "This example shows you how to edit an environment.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyEnvironment\n<Common request parameters>\n\n{\n    \"EnvironmentName\": \"xx\",\n    \"Description\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"SubnetIds\": [\n        \"xx\"\n    ],\n    \"SourceChannel\": 0,\n    \"Vpc\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Editing an environment"
+      }
+    ],
+    "ModifyIngress": [
+      {
+        "document": "This example shows you how to create or update an ingress rule.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIngress\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"Ingress\": {\n        \"Tls\": [\n            {\n                \"CertificateId\": \"xx\",\n                \"Hosts\": [\n                    \"xxx.com\"\n                ],\n                \"SecretName\": \"xx\"\n            }\n        ],\n        \"EnvironmentId\": \"xx\",\n        \"ClusterNamespace\": \"xx\",\n        \"Rules\": [\n            {\n                \"Protocol\": \"xx\",\n                \"Host\": \"xx\",\n                \"Http\": {\n                    \"Paths\": [\n                        {\n                            \"Path\": \"xx\",\n                            \"Backend\": {\n                                \"ServiceName\": \"xx\",\n                                \"ServicePort\": 443\n                            }\n                        }\n                    ]\n                }\n            }\n        ],\n        \"ClbId\": \"xx\",\n        \"ClusterId\": \"xx\",\n        \"IngressName\": \"xx\",\n        \"Vip\": \"xx\",\n        \"Mixed\": true,\n        \"AddressIPVersion\": \"xx\",\n        \"CreateTime\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Creating or updating an ingress rule"
+      }
+    ],
+    "RestartApplicationPod": [
+      {
+        "document": "This example shows you how to restart an application pod.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartApplicationPod\n<Common request parameters>\n\n{\n    \"Status\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"Offset\": 0,\n    \"SourceChannel\": 0,\n    \"Limit\": 0,\n    \"PodName\": \"xx\",\n    \"ApplicationId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Restarting an application pod"
+      }
+    ]
+  },
+  "version": "1.0"
+}
