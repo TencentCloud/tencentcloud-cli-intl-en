@@ -150,6 +150,12 @@
       "name": "Queries user information",
       "output": "DescribeUserResponse"
     },
+    "FetchMessageByOffset": {
+      "document": "This API is used to query messages based on a specified offset position.",
+      "input": "FetchMessageByOffsetRequest",
+      "name": "Querying messages",
+      "output": "FetchMessageByOffsetResponse"
+    },
     "ModifyGroupOffsets": {
       "document": "This API is used to set the consumer group (Groups) offset.",
       "input": "ModifyGroupOffsetsRequest",
@@ -582,6 +588,66 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumerRecord": {
+      "document": "Message record",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Partition ID",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message key\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message timestamp\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2096,6 +2162,69 @@
         }
       ],
       "usage": "both"
+    },
+    "FetchMessageByOffsetRequest": {
+      "document": "FetchMessageByOffset request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Partition ID",
+          "example": "1",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset information",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "FetchMessageByOffsetResponse": {
+      "document": "FetchMessageByOffset response structure.",
+      "members": [
+        {
+          "document": "Returned results",
+          "example": "无",
+          "member": "ConsumerRecord",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Filter": {
       "document": "Query filter\n>Key-value pair filters for conditional filtering queries, such as filter ID, name, and status\n> * If there are multiple `Filter`, the relationship among them is logical `AND`.\n> * If there are multiple `Values` in the same `Filter`, the relationship among them is logical `OR`.\n>\n",

@@ -19,7 +19,7 @@
     "CreateTopic": [
       {
         "document": "",
-        "input": "https://ckafka.tencentcloudapi.com/?Action=CreateTopic\r\n&InstanceId=xxx\r\n&TopicName=xxx\r\n&PartitionNum=1\r\n&ReplicaNum=2\r\n&<Common request parameters>",
+        "input": "https://ckafka.tencentcloudapi.com/?Action=CreateTopic\n&InstanceId=xxx\n&TopicName=xxx\n&PartitionNum=1\n&ReplicaNum=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TopicId\": \"topic-k766ruye\"\n        },\n        \"RequestId\": \"1305a410-b030-476d-acdf-eba0dfd5323b\"\n    }\n}",
         "title": "Creating a topic"
       }
@@ -198,6 +198,14 @@
         "input": "https://ckafka.tencentcloudapi.com/?Action=DescribeUser\r\n&InstanceId=xxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Users\": [\n                {\n                    \"UserId\": 41,\n                    \"Name\": \"ANONYMOUS\",\n                    \"CreateTime\": \"2019-09-05 00:53:28\",\n                    \"UpdateTime\": \"2019-09-05 00:53:28\"\n                },\n                {\n                    \"UserId\": 40,\n                    \"Name\": \"test\",\n                    \"CreateTime\": \"2019-09-05 00:20:36\",\n                    \"UpdateTime\": \"2019-09-05 00:20:36\"\n                }\n            ],\n            \"TotalCount\": 2\n        },\n        \"RequestId\": \"26f6afd4-2966-43f5-a7a2-d506de3e881f\"\n    }\n}",
         "title": "Querying user information"
+      }
+    ],
+    "FetchMessageByOffset": [
+      {
+        "document": "",
+        "input": "https://ckafka.tencentcloudapi.com/?Action=FetchMessageByOffset\n&InstanceId=xxx\n&Topic=xxx\n&Partition=1\n&Offset=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Timestamp\": 0,\n            \"Topic\": \"xxx\",\n            \"Partition\": 2,\n            \"Offset\": 2,\n            \"Key\": \"xxx\",\n            \"Value\": \"xxx\"\n        },\n        \"RequestId\": \"62d589e0-53d5-47e0-95ff-237c48b8fb77\"\n    }\n}",
+        "title": "Querying messages"
       }
     ],
     "ModifyGroupOffsets": [
