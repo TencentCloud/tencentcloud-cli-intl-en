@@ -78,6 +78,12 @@
       "name": "Creates a cluster route table.",
       "output": "CreateClusterRouteTableResponse"
     },
+    "CreatePrometheusAlertRule": {
+      "document": "This API is used to create an alarm rule.",
+      "input": "CreatePrometheusAlertRuleRequest",
+      "name": "Creates an alarm rule",
+      "output": "CreatePrometheusAlertRuleResponse"
+    },
     "DeleteCluster": {
       "document": "This API is used to delete a cluster. (Cloud API v3).",
       "input": "DeleteClusterRequest",
@@ -125,6 +131,12 @@
       "input": "DeleteClusterRouteTableRequest",
       "name": "Deletes a cluster route table.",
       "output": "DeleteClusterRouteTableResponse"
+    },
+    "DeletePrometheusAlertRule": {
+      "document": "This API is used to delete an alarm rule.",
+      "input": "DeletePrometheusAlertRuleRequest",
+      "name": "Deletes an alarm rule",
+      "output": "DeletePrometheusAlertRuleResponse"
     },
     "DescribeAvailableClusterVersion": {
       "document": "This API is used to obtain all versions that the cluster can upgrade to.",
@@ -228,6 +240,12 @@
       "name": "Gets image information",
       "output": "DescribeImagesResponse"
     },
+    "DescribePrometheusInstance": {
+      "document": "This API is used to obtain the instance details.",
+      "input": "DescribePrometheusInstanceRequest",
+      "name": "Obtains the instance details",
+      "output": "DescribePrometheusInstanceResponse"
+    },
     "DescribeRegions": {
       "document": "This API is used to obtain all regions supported by TKE.",
       "input": "DescribeRegionsRequest",
@@ -239,6 +257,18 @@
       "input": "DescribeRouteTableConflictsRequest",
       "name": "Queries the list of route table conflicts.",
       "output": "DescribeRouteTableConflictsResponse"
+    },
+    "DescribeVersions": {
+      "document": "This API is used to query cluster version information.",
+      "input": "DescribeVersionsRequest",
+      "name": "Cluster version information",
+      "output": "DescribeVersionsResponse"
+    },
+    "DescribeVpcCniPodLimits": {
+      "document": "This API is used to query the maximum number of Pods in the VPC-CNI network mode supported by the models in the specified availability zone of the current user and region.",
+      "input": "DescribeVpcCniPodLimitsRequest",
+      "name": "Queries the maximum number of Pods in the VPC-CNI mode supported by the model",
+      "output": "DescribeVpcCniPodLimitsResponse"
     },
     "EnableVpcCniNetworkType": {
       "document": "This API is used to enable the VPC-CNI network mode for GR clusters.",
@@ -281,6 +311,12 @@
       "input": "ModifyClusterNodePoolRequest",
       "name": "Edits a node pool",
       "output": "ModifyClusterNodePoolResponse"
+    },
+    "ModifyPrometheusAlertRule": {
+      "document": "This API is used to modify an alarm rule. ",
+      "input": "ModifyPrometheusAlertRuleRequest",
+      "name": "Modifies an alarm rule",
+      "output": "ModifyPrometheusAlertRuleResponse"
     },
     "RemoveNodeFromNodePool": {
       "document": "This API is used to remove a node from a node pool but retain it in the cluster.",
@@ -2176,6 +2212,51 @@
       ],
       "type": "object"
     },
+    "CreatePrometheusAlertRuleRequest": {
+      "document": "CreatePrometheusAlertRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm configurations",
+          "example": "参考复杂类型",
+          "member": "PrometheusAlertRuleDetail",
+          "name": "AlertRule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusAlertRuleResponse": {
+      "document": "CreatePrometheusAlertRule response structure.",
+      "members": [
+        {
+          "document": "Alarm ID",
+          "example": "alert-xx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DataDisk": {
       "document": "Described the configuration and information of k8s node data disk.",
       "members": [
@@ -2567,6 +2648,42 @@
       ],
       "type": "object"
     },
+    "DeletePrometheusAlertRuleRequest": {
+      "document": "DeletePrometheusAlertRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID list of alarm rules",
+          "example": "[\"alert-xx\"]",
+          "member": "string",
+          "name": "AlertIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrometheusAlertRuleResponse": {
+      "document": "DeletePrometheusAlertRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAvailableClusterVersionRequest": {
       "document": "DescribeAvailableClusterVersion request structure.",
       "members": [
@@ -2900,6 +3017,14 @@
           "name": "InstanceRole",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters include `nodepool-id` and `nodepool-instance-type` (how the instance is added to the pool). For `nodepool-instance-type`, the values can be `MANUALLY_ADDED`, `AUTOSCALING_ADDED` and `ALL`.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3456,6 +3581,105 @@
       ],
       "type": "object"
     },
+    "DescribePrometheusInstanceRequest": {
+      "document": "DescribePrometheusInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusInstanceResponse": {
+      "document": "DescribePrometheusInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "prom-test",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPC ID",
+          "example": "vpcId-xx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subnet ID",
+          "example": "sub-xx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "COS bucket name",
+          "example": "xxx",
+          "member": "string",
+          "name": "COSBucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data query address",
+          "example": "xxx",
+          "member": "string",
+          "name": "QueryAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The grafana related information in the instance\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "PrometheusGrafanaInfo",
+          "name": "Grafana",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Custom alertmanager\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "http://1.1.1.1",
+          "member": "string",
+          "name": "AlertManagerUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRegionsRequest": {
       "document": "DescribeRegions request structure.",
       "members": [],
@@ -3523,6 +3747,104 @@
           "document": "Route table conflict list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "RouteTableConflict",
           "name": "RouteTableConflictSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVersionsRequest": {
+      "document": "DescribeVersions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeVersionsResponse": {
+      "document": "DescribeVersions response structure.",
+      "members": [
+        {
+          "document": "Number of versions\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Version list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VersionInstance",
+          "name": "VersionInstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcCniPodLimitsRequest": {
+      "document": "DescribeVpcCniPodLimits request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The availability zone of the model to query, for example, `ap-guangzhou-3`. This field is left empty by default, that is, do not filter by the availability zone.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The instance family to query, for example, `S5`. This field is left empty by default, that is, do not filter by the instance family.",
+          "example": "S5",
+          "member": "string",
+          "name": "InstanceFamily",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The instance model to query, for example, `S5.LARGE8`. This field is empty by default, that is, do not filter by instance type.",
+          "example": "S5.LARGE8",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcCniPodLimitsResponse": {
+      "document": "DescribeVpcCniPodLimits response structure.",
+      "members": [
+        {
+          "document": "The number of the models\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "4",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The model information and the maximum supported number of Pods in the VPC-CNI mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "PodLimitsInstance",
+          "name": "PodLimitsInstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4808,6 +5130,42 @@
       ],
       "type": "object"
     },
+    "ModifyPrometheusAlertRuleRequest": {
+      "document": "ModifyPrometheusAlertRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alarm configurations",
+          "example": "无",
+          "member": "PrometheusAlertRuleDetail",
+          "name": "AlertRule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPrometheusAlertRuleResponse": {
+      "document": "ModifyPrometheusAlertRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "NodeCountSummary": {
       "document": "Node statistics list",
       "members": [
@@ -5051,6 +5409,412 @@
       ],
       "usage": "in"
     },
+    "PodLimitsByType": {
+      "document": "The maximum number of Pods in VPC-CNI mode supported by a model",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of Pods supported by a TKE shared ENI in non-static IP address mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "int64",
+          "name": "TKERouteENINonStaticIP",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of Pods supported by a TKE shared ENI in static IP address mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "int64",
+          "name": "TKERouteENIStaticIP",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of Pods supported by TKE independent ENI mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "int64",
+          "name": "TKEDirectENI",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PodLimitsInstance": {
+      "document": "The model information and the maximum supported number of Pods in the VPC-CNI mode",
+      "members": [
+        {
+          "default": "",
+          "document": "The availability zone where the model is located\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The instance family to which the model belongs\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "InstanceFamily",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance type\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum number of Pods in the VPC-CNI mode supported by the model\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "PodLimitsByType",
+          "name": "PodLimits",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusAlertRule": {
+      "document": "PROM instance alarm rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "example",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "PromQL contents",
+          "example": "example",
+          "member": "string",
+          "name": "Rule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Additional labels",
+          "example": "Name=a,Value=b",
+          "member": "Label",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm delivery template",
+          "example": "temp-xxx",
+          "member": "string",
+          "name": "Template",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration",
+          "example": "1s",
+          "member": "string",
+          "name": "For",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "example-describe",
+          "member": "string",
+          "name": "Describe",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Refer to annotations in prometheus rule\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "Name=a,Value=b",
+          "member": "Label",
+          "name": "Annotations",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PrometheusAlertRuleDetail": {
+      "document": "The alarm configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "实例告警",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule list",
+          "example": "无",
+          "member": "PrometheusAlertRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modification time",
+          "example": "无",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm delivery methods",
+          "example": "无",
+          "member": "PrometheusNotification",
+          "name": "Notification",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm rule ID",
+          "example": "alert-xxx",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If the alarm is delivered via a template, the TemplateId is the template ID.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "temp-xxx",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm interval\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "30s",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PrometheusGrafanaInfo": {
+      "document": "The grafana information in the managed PROM instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name. It will be effective only when the public network access is enabled.",
+          "example": "http://grafana.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The private network or public network address",
+          "example": "http://1.1.1.1",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the public network access is enabled.\n`close`: the public network access is not enabled\n`opening`: the public network access is being enabled\n`open`: the public network access is enabled",
+          "example": "open",
+          "member": "string",
+          "name": "Internet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The user name of the grafana admin",
+          "example": "admin",
+          "member": "string",
+          "name": "AdminUser",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusNotification": {
+      "document": "amp alarm channel configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Convergence time",
+          "member": "string",
+          "name": "RepeatInterval",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "member": "string",
+          "name": "TimeRangeStart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "member": "string",
+          "name": "TimeRangeEnd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm delivery method. Valid values: `SMS`, `EMAIL`, `CALL`, and `WECHAT`\nIt respectively represents SMS, email, phone calls, and WeChat.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "NotifyWay",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The alarm recipient group (user group)\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "uint64",
+          "name": "ReceiverGroups",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The alarm sequence of phone calls\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "uint64",
+          "name": "PhoneNotifyOrder",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of phone call alarms\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "int64",
+          "name": "PhoneCircleTimes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dialing interval in seconds within one polling\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "int64",
+          "name": "PhoneInnerInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Polling interval in seconds\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "int64",
+          "name": "PhoneCircleInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Phone call alarm arrival notification\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "bool",
+          "name": "PhoneArriveNotice",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Channel type. Default value: `amp`. The following channels are supported:\namp\nwebhook\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This parameter is required if `Type` is `webhook`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "WebHook",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "RegionInstance": {
       "document": "Region information",
       "members": [
@@ -5117,6 +5881,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -5125,6 +5890,7 @@
         {
           "default": "",
           "document": "Node pool ID",
+          "example": "np-xxxxxxxx",
           "member": "string",
           "name": "NodePoolId",
           "required": true,
@@ -5132,7 +5898,8 @@
         },
         {
           "default": "",
-          "document": "Node ID list",
+          "document": "The node ID list. Up to 100 nodes can be removed at a time.",
+          "example": "[\"ins-xxxxxxxx\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5762,6 +6529,39 @@
         }
       ],
       "usage": "in"
+    },
+    "VersionInstance": {
+      "document": "Version Info",
+      "members": [
+        {
+          "default": "",
+          "document": "Version name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Version Info\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remark\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

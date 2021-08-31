@@ -150,6 +150,9 @@ SERVICE_VERSIONS = {
     "postgres": [
         "2017-03-12"
     ],
+    "privatedns": [
+        "2020-10-28"
+    ],
     "redis": [
         "2018-04-12"
     ],
