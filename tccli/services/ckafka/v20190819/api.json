@@ -144,6 +144,12 @@
       "name": "Gets topic list details",
       "output": "DescribeTopicDetailResponse"
     },
+    "DescribeTopicSubscribeGroup": {
+      "document": "This API is used to search and subscribe the message group information of a topic.",
+      "input": "DescribeTopicSubscribeGroupRequest",
+      "name": "Searches and subscribes the message group information of a topic",
+      "output": "DescribeTopicSubscribeGroupResponse"
+    },
     "DescribeUser": {
       "document": "This API is used to query user information.",
       "input": "DescribeUserRequest",
@@ -2054,6 +2060,69 @@
           "name": "Result",
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicSubscribeGroupRequest": {
+      "document": "DescribeTopicSubscribeGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ckafka-kmex0nvv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "test",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Starting position of paging",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicSubscribeGroupResponse": {
+      "document": "DescribeTopicSubscribeGroup response structure.",
+      "members": [
+        {
+          "document": "Returned results",
+          "example": "无",
+          "member": "TopicSubscribeGroup",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4234,6 +4303,48 @@
           "document": "Last modified time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ModTimeStamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicSubscribeGroup": {
+      "document": "`DescribeTopicSubscribeGroup` output parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of consumer group status",
+          "member": "string",
+          "name": "StatusCountInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Consumer group information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "GroupInfoResponse",
+          "name": "GroupsInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether a request is asynchronous. If there are fewer consumer groups in the instances, the result will be returned directly, and status code is 1. When there are many consumer groups in the instances, cache will be updated asynchronously. When status code is 0, grouping information will not be returned until cache update is completed and status code becomes 1.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Status",
           "required": true,
           "type": "int",
           "value_allowed_null": true
