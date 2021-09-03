@@ -2645,6 +2645,7 @@
         {
           "default": "",
           "document": "User group ID",
+          "example": "3349",
           "member": "uint64",
           "name": "TargetGroupId",
           "required": true,
@@ -2653,6 +2654,7 @@
         {
           "default": "",
           "document": "Page number, which starts from 1. Default is 1",
+          "example": "1",
           "member": "uint64",
           "name": "Page",
           "required": false,
@@ -2661,10 +2663,20 @@
         {
           "default": "",
           "document": "Number of entries per page; 20 by default",
+          "example": "10",
           "member": "uint64",
           "name": "Rp",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search by keyword",
+          "example": "searchKey",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2701,6 +2713,7 @@
         {
           "default": "",
           "document": "Page number, beginning from 1",
+          "example": "1",
           "member": "uint64",
           "name": "Page",
           "required": true,
@@ -2709,6 +2722,7 @@
         {
           "default": "",
           "document": "Number of lines per page, no more than 200",
+          "example": "10",
           "member": "uint64",
           "name": "Rp",
           "required": true,
@@ -2717,6 +2731,7 @@
         {
           "default": "",
           "document": "Role ID, used to specify a role. Input either `RoleId` or `RoleName`",
+          "example": "4611686018427397905",
           "member": "string",
           "name": "RoleId",
           "required": false,
@@ -2725,6 +2740,7 @@
         {
           "default": "",
           "document": "Role name, used to specify a role. Input either `RoleId` or `RoleName`",
+          "example": "role_data",
           "member": "string",
           "name": "RoleName",
           "required": false,
@@ -2733,8 +2749,18 @@
         {
           "default": "",
           "document": "Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only",
+          "example": "1",
           "member": "string",
           "name": "PolicyType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search by keyword",
+          "example": "searchKey",
+          "member": "string",
+          "name": "Keyword",
           "required": false,
           "type": "string"
         }

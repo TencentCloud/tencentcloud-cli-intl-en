@@ -1015,7 +1015,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies whether to enable logging. `1`: enable; `0`: do not enable",
           "example": "1",
           "member": "int64",
           "name": "LogEnable",
