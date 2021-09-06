@@ -2422,6 +2422,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "example": "cmgo-p8vnipr5",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2430,6 +2431,7 @@
         {
           "default": "",
           "document": "Memory size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously",
+          "example": "4",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -2438,6 +2440,7 @@
         {
           "default": "",
           "document": "Disk size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously. For degradation, the new disk capacity must be greater than 1.2 times the used disk capacity",
+          "example": "250",
           "member": "uint64",
           "name": "Volume",
           "required": true,
@@ -2446,8 +2449,36 @@
         {
           "default": "",
           "document": "Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default",
+          "example": "25",
           "member": "uint64",
           "name": "OplogSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity won't change.",
+          "example": "3",
+          "member": "uint64",
+          "name": "NodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity won't change.",
+          "example": "3",
+          "member": "uint64",
+          "name": "ReplicateSetNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Switch time. Valid values: `0` (upon modification completion), `1` (during maintenance time). Default value: `0`. If the node quantity or the shard quantity is modified, `1` is invalid.",
+          "example": "0",
+          "member": "uint64",
+          "name": "InMaintenance",
           "required": false,
           "type": "int"
         }

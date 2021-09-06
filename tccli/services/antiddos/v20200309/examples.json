@@ -8,6 +8,14 @@
         "title": "Binding EIPs to Anti-DDoS Advanced instances"
       }
     ],
+    "AssociateDDoSEipLoadBalancer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateDDoSEipLoadBalancer\n<Common request parameters>\n\n{\n    \"InstanceId\": \"bgpip-0000011x\",\n    \"Eip\": \"1.1.1.1\",\n    \"LoadBalancerID\": \"lb-0000002i\",\n    \"LoadBalancerRegion\": \"ap-hongkong\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Binding an Anti-DDoS EIPs to a CLB instance"
+      }
+    ],
     "CreateBlackWhiteIpList": [
       {
         "document": "",
@@ -158,6 +166,14 @@
         "input": "https://antiddos.tencentcloudapi.com/?Action=DeleteWaterPrintKey\n&InstanceId=bgpip-0000011x\n&KeyId=000000f8\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"512b8c34-3df9-448a-ae90-c28643d351bf\"\n    }\n}",
         "title": "Deleting Anti-DDoS watermark keys"
+      }
+    ],
+    "DescribeBasicDeviceStatus": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeBasicDeviceStatus\n&IpList.0=‘1.1.1.1’\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"1.1.1.1\",\n                \"Value\": \"1\"\n            }\n        ],\n        \"RequestId\": \"8f7a9451-2372-4a88-a69d-9868b8991076\"\n    }\n}",
+        "title": "Querying the status of an Anti-DDoS IP"
       }
     ],
     "DescribeBlackWhiteIpList": [

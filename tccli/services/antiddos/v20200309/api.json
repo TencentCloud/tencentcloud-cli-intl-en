@@ -6,6 +6,12 @@
       "name": "Binds EIPs",
       "output": "AssociateDDoSEipAddressResponse"
     },
+    "AssociateDDoSEipLoadBalancer": {
+      "document": "This API is used to bind an Anti-DDoS EIP to the specified private IP of a CLB instance.",
+      "input": "AssociateDDoSEipLoadBalancerRequest",
+      "name": "Binds an Anti-DDoS EIP to a CLB instance",
+      "output": "AssociateDDoSEipLoadBalancerResponse"
+    },
     "CreateBlackWhiteIpList": {
       "document": "This API is used to add an Anti-DDoS IP blocklist/allowlist.",
       "input": "CreateBlackWhiteIpListRequest",
@@ -119,6 +125,12 @@
       "input": "DeleteWaterPrintKeyRequest",
       "name": "Deletes Anti-DDoS watermark keys",
       "output": "DeleteWaterPrintKeyResponse"
+    },
+    "DescribeBasicDeviceStatus": {
+      "document": "This API is used to querying the status of Anti-DDoS IP.",
+      "input": "DescribeBasicDeviceStatusRequest",
+      "name": "Gets the Anti-DDoS protection status",
+      "output": "DescribeBasicDeviceStatusResponse"
     },
     "DescribeBlackWhiteIpList": {
       "document": "This API is used to get an Anti-DDoS IP blocklist/allowlist.",
@@ -313,6 +325,60 @@
       ],
       "type": "object"
     },
+    "AssociateDDoSEipLoadBalancerRequest": {
+      "document": "AssociateDDoSEipLoadBalancer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIP of the Anti-DDoS instance ID.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Eip",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the CLB to bind, such as `lb-0000002i`. It can be queried in the console or obtained from `LoadBalancerId` returned by the `DescribeLoadBalancers` API.",
+          "example": "lb-0000002i",
+          "member": "string",
+          "name": "LoadBalancerID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the CLB instance, such as `ap-hongkong`.",
+          "example": "ap-hongkong",
+          "member": "string",
+          "name": "LoadBalancerRegion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateDDoSEipLoadBalancerResponse": {
+      "document": "AssociateDDoSEipLoadBalancer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "BGPIPInstance": {
       "document": "Anti-DDoS Advanced instance details",
       "members": [
@@ -418,7 +484,7 @@
         },
         {
           "default": "",
-          "document": "Used to differentiate Anti-DDoS Advanced lines outside the Chinese mainland\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Specifies the ISP. `0`: Chinese mainland ISPs (default); `1`：Radware；`2`: Tencent; `3`: NSFOCUS. Note that `1`, `2` and `3` are used for services outside the Chinese mainland.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "ZoneId",
@@ -475,6 +541,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Recommended domain name for clients to access.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "www.8cname.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -484,7 +560,8 @@
       "members": [
         {
           "default": "",
-          "document": "Base protection bandwidth (in Gbps)",
+          "document": "Base protection bandwidth (in Mbps)",
+          "example": "2000",
           "member": "uint64",
           "name": "ProtectBandwidth",
           "required": true,
@@ -494,6 +571,7 @@
         {
           "default": "",
           "document": "CC protection bandwidth (in QPS)",
+          "example": "2000",
           "member": "uint64",
           "name": "ProtectCCQPS",
           "required": true,
@@ -503,6 +581,7 @@
         {
           "default": "",
           "document": "Normal application bandwidth (in Mbps)",
+          "example": "2000",
           "member": "uint64",
           "name": "NormalBandwidth",
           "required": true,
@@ -512,6 +591,7 @@
         {
           "default": "",
           "document": "Number of forwarding rules",
+          "example": "50",
           "member": "uint64",
           "name": "ForwardRulesLimit",
           "required": true,
@@ -521,6 +601,7 @@
         {
           "default": "",
           "document": "Auto-renewal status. Valid values:\n`0`: disabled\n`1`: enabled\n]",
+          "example": "1",
           "member": "uint64",
           "name": "AutoRenewFlag",
           "required": true,
@@ -530,6 +611,7 @@
         {
           "default": "",
           "document": "Anti-DDoS Advanced line. Valid values:\n`1`: BGP\n`2`: China Telecom\n`3`: China Unicom\n`4`: China Mobile\n`99`: third-party line\n]",
+          "example": "1",
           "member": "uint64",
           "name": "Line",
           "required": true,
@@ -538,7 +620,8 @@
         },
         {
           "default": "",
-          "document": "Elastic protection bandwidth (in Gbps)",
+          "document": "Elastic protection bandwidth (in Mbps)",
+          "example": "1000",
           "member": "uint64",
           "name": "ElasticBandwidth",
           "required": true,
@@ -1823,6 +1906,42 @@
     "DeleteWaterPrintKeyResponse": {
       "document": "DeleteWaterPrintKey response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBasicDeviceStatusRequest": {
+      "document": "DescribeBasicDeviceStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IP resources",
+          "example": "[\"\\u20181.1.1.1\\u2019\\r\\n\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBasicDeviceStatusResponse": {
+      "document": "DescribeBasicDeviceStatus response structure.",
+      "members": [
+        {
+          "document": "The resource and status is returned.",
+          "example": "无",
+          "member": "KeyValue",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3320,6 +3439,32 @@
         }
       ],
       "usage": "both"
+    },
+    "KeyValue": {
+      "document": "Status of the IP",
+      "members": [
+        {
+          "default": "",
+          "document": "IP",
+          "example": "无",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the IP. Values: `1` (blocked); `2` (normal); `3` (being attacked)",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Layer4Rule": {
       "document": "Layer-4 forwarding rule",

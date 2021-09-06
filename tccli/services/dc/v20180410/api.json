@@ -243,6 +243,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "VXLAN",
+          "member": "string",
+          "name": "AccessPointType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
