@@ -13,19 +13,19 @@
       "output": "AutoRewriteResponse"
     },
     "BatchDeregisterTargets": {
-      "document": "This API is used to unbind layer-4/layer-7 real servers in batches.",
+      "document": "This API is used to unbind layer-4 and layer-7 real servers in batches. Up to 500 servers can be unbound in a batch.",
       "input": "BatchDeregisterTargetsRequest",
       "name": "Unbinds layer-4/layer-7 real servers in batches",
       "output": "BatchDeregisterTargetsResponse"
     },
     "BatchModifyTargetWeight": {
-      "document": "This API is used to modify the forwarding weights of real servers bound to a CLB listener in batches. It supports layer-4 and layer-7 CLB listeners but not Classic CLB.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.",
+      "document": "This API is used to modify forwarding weights of real servers bound to CLB listeners in batches. Up to 500 servers can be unbound in a batch. As this API is async, you should check whether the task is successful by passing the RequestId returned to the API call `DescribeTaskStatus`.<br/> This API is supported by CLB layer-4 and layer-7 listeners, but not Classis CLB counterparts.\n",
       "input": "BatchModifyTargetWeightRequest",
       "name": "Batch modifies the forwarding weights of real servers bound to a listener",
       "output": "BatchModifyTargetWeightResponse"
     },
     "BatchRegisterTargets": {
-      "document": "This API is used to bind CVM instances or ENIs in batches. It supports cross-region binding and layer-4 and layer-7 (TCP, UDP, HTTP, HTTPS) protocols.",
+      "document": "This API is used to bind CVM instances or ENIs in batches. Up to 500 servers can be bound in a batch. It supports cross-region binding, and layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols.",
       "input": "BatchRegisterTargetsRequest",
       "name": "Binds CVM instances or ENIs in batches",
       "output": "BatchRegisterTargetsResponse"
@@ -175,7 +175,7 @@
       "output": "DescribeClsLogSetResponse"
     },
     "DescribeListeners": {
-      "document": "This API is used to get the list of listeners by CLB instance ID, listener protocol, or port. If no filter is specified, all listeners under the CLB instance will be returned.",
+      "document": "This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.",
       "input": "DescribeListenersRequest",
       "name": "Queries the list of CLB listeners",
       "output": "DescribeListenersResponse"
@@ -796,7 +796,8 @@
       "members": [
         {
           "default": "",
-          "document": "Listener ID",
+          "document": "Listener ID.",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -805,7 +806,8 @@
         },
         {
           "default": "",
-          "document": "Binding port",
+          "document": "The port to Bind",
+          "example": "80",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -814,7 +816,8 @@
         },
         {
           "default": "",
-          "document": "CVM instance ID. Indicating binding the primary IP of the primary ENI.",
+          "document": "CVM instance ID. The primary IP of the primary ENI will be bound.",
+          "example": "ins-1vfj****",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -823,7 +826,8 @@
         },
         {
           "default": "",
-          "document": "ENI IP or other private IP. This parameter is required for binding a dual-stack IPv6 CVM instance.",
+          "document": "It is required for binding an IP. It supports an ENI IP or any other private IP. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.\nNote: either `InstanceId` or `EniIp` must be passed in, which is required for binding a dual-stack IPv6 CVM instance.",
+          "example": "10.0.X.X",
           "member": "string",
           "name": "EniIp",
           "required": false,
@@ -832,7 +836,8 @@
         },
         {
           "default": "",
-          "document": "CVM instance weight. Value range: [0, 100]. If it is not specified when binding the instance, 10 will be used by default.",
+          "document": "Weight of the CVM instance. Value range: [0, 100]. If it is not specified for binding the instance, 10 will be used by default.",
+          "example": "10",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -841,7 +846,8 @@
         },
         {
           "default": "",
-          "document": "Layer-7 rule ID",
+          "document": "Layer-7 rule ID.",
+          "example": "lbl-4apy****",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -2067,7 +2073,7 @@
         },
         {
           "default": "",
-          "document": "Array of IDs of the listeners to be deleted. If this parameter is left empty, all listeners of the CLB instance will be deleted.",
+          "document": "Array of listener IDs to delete (20 IDs at most). If this parameter is left empty, all listeners of the CLB instance will be deleted.",
           "example": "无",
           "member": "string",
           "name": "ListenerIds",
@@ -2774,7 +2780,7 @@
       "members": [
         {
           "default": "",
-          "document": "CLB instance ID",
+          "document": "CLB instance ID.",
           "example": "lb-aniq****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -2783,7 +2789,7 @@
         },
         {
           "default": "",
-          "document": "Array of IDs of the CLB listeners to be queried",
+          "document": "Array of CLB listener IDs to query (100 IDs at most).",
           "example": "无",
           "member": "string",
           "name": "ListenerIds",
@@ -3515,7 +3521,7 @@
       "members": [
         {
           "default": "",
-          "document": "CLB instance ID",
+          "document": "CLB instance ID.",
           "example": "lb-10iq9lou",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3524,7 +3530,7 @@
         },
         {
           "default": "",
-          "document": "Listener ID list",
+          "document": "List of listener IDs (20 IDs at most).",
           "example": "无",
           "member": "string",
           "name": "ListenerIds",
@@ -4732,6 +4738,7 @@
         {
           "default": "",
           "document": "CLB instance ID.",
+          "example": "lb-12345678",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -4741,6 +4748,7 @@
         {
           "default": "",
           "document": "CLB instance name.",
+          "example": "test",
           "member": "string",
           "name": "LoadBalancerName",
           "required": true,
@@ -4750,6 +4758,7 @@
         {
           "default": "",
           "document": "CLB instance network type:\nPublic: public network; Private: private network.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
           "required": true,
@@ -4759,6 +4768,7 @@
         {
           "default": "",
           "document": "CLB instance status, including:\n0: creating; 1: running.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
           "required": true,
@@ -4768,6 +4778,7 @@
         {
           "default": "",
           "document": "CLB instance VIP.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Address",
           "required": true,
@@ -4777,6 +4788,7 @@
         {
           "default": "",
           "document": "IPv6 VIP address of the CLB instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "string",
           "name": "AddressIPv6",
           "required": true,
@@ -4786,6 +4798,7 @@
         {
           "default": "",
           "document": "IP version of the CLB instance. Valid values: IPv4, IPv6.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "IPv4",
           "member": "string",
           "name": "AddressIPVersion",
           "required": true,
@@ -4795,6 +4808,7 @@
         {
           "default": "",
           "document": "IPv6 address type of the CLB instance. Valid values: IPv6Nat64, IPv6FullChain.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "string",
           "name": "IPv6Mode",
           "required": true,
@@ -4804,6 +4818,7 @@
         {
           "default": "",
           "document": "Availability zone where the CLB instance resides.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -4813,6 +4828,7 @@
         {
           "default": "",
           "document": "ISP to which the CLB IP address belongs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "CMCC",
           "member": "string",
           "name": "AddressIsp",
           "required": true,
@@ -4822,6 +4838,7 @@
         {
           "default": "",
           "document": "ID of the VPC instance to which the CLB instance belongs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4831,6 +4848,7 @@
         {
           "default": "",
           "document": "ID of the project to which the CLB instance belongs. 0: default project.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -4840,6 +4858,7 @@
         {
           "default": "",
           "document": "CLB instance creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-01-01 00:00:00",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -4849,6 +4868,7 @@
         {
           "default": "",
           "document": "CLB instance billing mode.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
           "required": true,
@@ -4858,6 +4878,7 @@
         {
           "default": "",
           "document": "CLB instance network attribute.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "InternetAccessible",
           "name": "NetworkAttributes",
           "required": true,
@@ -4867,6 +4888,7 @@
         {
           "default": "",
           "document": "Pay-as-you-go attribute of the CLB instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "LBChargePrepaid",
           "name": "PrepaidAttributes",
           "required": true,
@@ -4876,6 +4898,7 @@
         {
           "default": "",
           "document": "Reserved field, which can be ignored generally.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ZhitTong\":false,\"TgwGroupName\":null}",
           "member": "ExtraInfo",
           "name": "ExtraInfo",
           "required": true,
@@ -4885,6 +4908,7 @@
         {
           "default": "",
           "document": "Custom configuration ID at the CLB instance level.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "pz-12345678",
           "member": "string",
           "name": "ConfigId",
           "required": true,
@@ -4894,6 +4918,7 @@
         {
           "default": "",
           "document": "CLB instance tag information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"TagKey\":\"1\",\"TagValue\":\"2\"}]",
           "member": "TagInfo",
           "name": "Tags",
           "required": true,
@@ -4903,6 +4928,7 @@
         {
           "default": "",
           "document": "CLB listener ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "lbl-12345678",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -4912,6 +4938,7 @@
         {
           "default": "",
           "document": "Listener protocol.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "tcp",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -4921,6 +4948,7 @@
         {
           "default": "",
           "document": "Listener port.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -4930,6 +4958,7 @@
         {
           "default": "",
           "document": "Forwarding rule ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "loc-12345678",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -4939,6 +4968,7 @@
         {
           "default": "",
           "document": "Domain name of the forwarding rule.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -4948,6 +4978,7 @@
         {
           "default": "",
           "document": "Forwarding rule path.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "/",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -4957,6 +4988,7 @@
         {
           "default": "",
           "document": "ID of target real servers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ins-12345678",
           "member": "string",
           "name": "TargetId",
           "required": true,
@@ -4966,6 +4998,7 @@
         {
           "default": "",
           "document": "Address of target real servers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "172.16.0.2",
           "member": "string",
           "name": "TargetAddress",
           "required": true,
@@ -4975,6 +5008,7 @@
         {
           "default": "",
           "document": "Listening port of target real servers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "80",
           "member": "uint64",
           "name": "TargetPort",
           "required": true,
@@ -4984,6 +5018,7 @@
         {
           "default": "",
           "document": "Forwarding weight of target real servers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "uint64",
           "name": "TargetWeight",
           "required": true,
@@ -4993,6 +5028,7 @@
         {
           "default": "",
           "document": "0: not isolated; 1: isolated.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "Isolation",
           "required": true,
@@ -5002,6 +5038,7 @@
         {
           "default": "",
           "document": "List of the security groups bound to the CLB instance.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"sg-12345678\"]",
           "member": "string",
           "name": "SecurityGroup",
           "required": true,
@@ -5011,10 +5048,21 @@
         {
           "default": "",
           "document": "Whether the CLB instance is billed by IP.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "LoadBalancerPassToTarget",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Health status of the target real server.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Alive",
+          "member": "string",
+          "name": "TargetHealth",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -6255,7 +6303,8 @@
       "members": [
         {
           "default": "",
-          "document": "CLB listener ID",
+          "document": "CLB listener ID.",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -6264,7 +6313,8 @@
         },
         {
           "default": "",
-          "document": "List of real servers for which to modify the weight",
+          "document": "List of real servers whose weights to modify.",
+          "example": "无",
           "member": "Target",
           "name": "Targets",
           "required": true,
@@ -6273,7 +6323,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding rule ID",
+          "document": "Forwarding rule ID, which is required only for layer-7 rules.",
+          "example": "loc-o8cn****",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -6283,6 +6334,7 @@
         {
           "default": "",
           "document": "Target rule domain name. This parameter does not take effect if LocationId is specified",
+          "example": "www.demo.example.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -6292,6 +6344,7 @@
         {
           "default": "",
           "document": "Target rule URL. This parameter does not take effect if LocationId is specified",
+          "example": "/index",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -6300,7 +6353,8 @@
         },
         {
           "default": "",
-          "document": "New forwarding weight of a real server. Value range: 0-100.",
+          "document": "The new forwarding weight of the real server. Value range: [0, 100]. This parameter takes lower precedence than `Weight` in [`Targets`](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#Target), which means that this parameter only takes effect when the `Weight` in `RsWeightRule` is left empty.",
+          "example": "10",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -6896,6 +6950,7 @@
         {
           "default": "",
           "document": "Listening port of a real server\nNote: this parameter is required when binding a CVM or ENI.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "80",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -6905,6 +6960,7 @@
         {
           "default": "",
           "document": "Real server type. Value range: CVM (Cloud Virtual Machine), ENI (Elastic Network Interface). This parameter does not take effect currently as an input parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CVM",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -6914,6 +6970,7 @@
         {
           "default": "",
           "document": "Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API. It indicates binding the primary IP of the primary ENI.\nNote: either `InstanceId` or `EniIp` must be passed in.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "lb-cuxw****",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -6922,7 +6979,8 @@
         },
         {
           "default": "",
-          "document": "Forwarding weight of a real server. Value range: [0, 100]. Default value: 10.",
+          "document": "The new forwarding weight of the real server. Value range: [0, 100]. Default: 10. This parameter takes priority over `Weight` in [`RsWeightRule`](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#RsWeightRule). If it’s left empty, the value of `Weight` in `RsWeightRule` will be used.",
+          "example": "10",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -6932,6 +6990,7 @@
         {
           "default": "",
           "document": "It is required when binding an IP. ENI IPs and other private IPs are supported. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.\nNote: either `InstanceId` or `EniIp` must be passed in. It is required when binding a dual-stack IPv6 CVM instance.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ip6-199z****",
           "member": "string",
           "name": "EniIp",
           "required": false,

@@ -279,13 +279,13 @@
     "ModifyDatabaseCDC": {
       "document": "This API is used to enable or disable the change data capture (CDC) feature.",
       "input": "ModifyDatabaseCDCRequest",
-      "name": "Enables/disables CDC",
+      "name": "Enables/Disables CDC",
       "output": "ModifyDatabaseCDCResponse"
     },
     "ModifyDatabaseCT": {
       "document": "This API is used to enable or disable the change tracking (CT) feature.",
       "input": "ModifyDatabaseCTRequest",
-      "name": "Enables/disables CT",
+      "name": "Enables/Disables CT",
       "output": "ModifyDatabaseCTResponse"
     },
     "ModifyDatabaseMdf": {
@@ -5212,7 +5212,7 @@
         },
         {
           "default": "",
-          "document": "Whether to restore backups. Valid values: `NO`, `YES`. If this parameter is not specified, whether to restore incremental backups will not change.",
+          "document": "Whether to restore backups. Valid values: `NO`, `YES`. If this parameter is not specified, current settings will be applied.",
           "example": "YES",
           "member": "string",
           "name": "IsRecovery",

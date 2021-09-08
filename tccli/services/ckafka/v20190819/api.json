@@ -150,6 +150,12 @@
       "name": "Searches and subscribes the message group information of a topic",
       "output": "DescribeTopicSubscribeGroupResponse"
     },
+    "DescribeTopicSyncReplica": {
+      "document": "This API is used to get the details of a synced topic replica.",
+      "input": "DescribeTopicSyncReplicaRequest",
+      "name": "Gets the information of a synced topic replica",
+      "output": "DescribeTopicSyncReplicaResponse"
+    },
     "DescribeUser": {
       "document": "This API is used to query user information.",
       "input": "DescribeUserRequest",
@@ -1660,8 +1666,10 @@
       "members": [
         {
           "document": "Returned result object of instance attributes",
+          "example": "无",
           "member": "InstanceAttributesResponse",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2119,6 +2127,78 @@
           "document": "Returned results",
           "example": "无",
           "member": "TopicSubscribeGroup",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicSyncReplicaRequest": {
+      "document": "DescribeTopicSyncReplica request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ckafka-gt2ty",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "example": "message-tp",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters unsynced replicas only",
+          "example": "true",
+          "member": "bool",
+          "name": "OutOfSyncReplicaOnly",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicSyncReplicaResponse": {
+      "document": "DescribeTopicSyncReplica response structure.",
+      "members": [
+        {
+          "document": "Returns topic replica details",
+          "example": "无",
+          "member": "TopicInSyncReplicaResult",
           "name": "Result",
           "required": true,
           "type": "object",
@@ -2640,6 +2720,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "ckafka-gt2ty",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2649,6 +2730,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "ckafka-gt2ty",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -2658,6 +2740,7 @@
         {
           "default": "",
           "document": "VIP list information of access point",
+          "example": "无",
           "member": "VipEntity",
           "name": "VipList",
           "required": true,
@@ -2667,6 +2750,7 @@
         {
           "default": "",
           "document": "Virtual IP",
+          "example": "grp-gsg1",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -2676,6 +2760,7 @@
         {
           "default": "",
           "document": "Virtual port",
+          "example": "ckafka-gt2ty",
           "member": "string",
           "name": "Vport",
           "required": true,
@@ -2685,6 +2770,7 @@
         {
           "default": "",
           "document": "Instance status. 0: creating, 1: running, 2: deleting",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2694,6 +2780,7 @@
         {
           "default": "",
           "document": "Instance bandwidth in Mbps",
+          "example": "100",
           "member": "int64",
           "name": "Bandwidth",
           "required": true,
@@ -2703,6 +2790,7 @@
         {
           "default": "",
           "document": "Instance storage capacity in GB",
+          "example": "2344",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -2712,6 +2800,7 @@
         {
           "default": "",
           "document": "AZ",
+          "example": "19009",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -2721,6 +2810,7 @@
         {
           "default": "",
           "document": "VPC ID. If this parameter is empty, it means the basic network",
+          "example": "grp-gsg1",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -2730,6 +2820,7 @@
         {
           "default": "",
           "document": "Subnet ID. If this parameter is empty, it means the basic network",
+          "example": "topic-tsvs23is1",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -2739,6 +2830,7 @@
         {
           "default": "",
           "document": "Instance health status. 1: healthy, 2: alarmed, 3: exceptional",
+          "example": "12355",
           "member": "int64",
           "name": "Healthy",
           "required": true,
@@ -2748,6 +2840,7 @@
         {
           "default": "",
           "document": "Instance health information. Currently, the disk utilization is displayed with a maximum length of 256",
+          "example": "ckafka-gt2ty",
           "member": "string",
           "name": "HealthyMessage",
           "required": true,
@@ -2757,6 +2850,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "134",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -2766,6 +2860,7 @@
         {
           "default": "",
           "document": "Message retention period in minutes",
+          "example": "1235",
           "member": "int64",
           "name": "MsgRetentionTime",
           "required": true,
@@ -2775,6 +2870,7 @@
         {
           "default": "",
           "document": "Configuration for automatic topic creation. If this field is empty, it means that automatic creation is not enabled",
+          "example": "无",
           "member": "InstanceConfigDO",
           "name": "Config",
           "required": true,
@@ -2784,6 +2880,7 @@
         {
           "default": "",
           "document": "Number of remaining creatable partitions",
+          "example": "135",
           "member": "int64",
           "name": "RemainderPartitions",
           "required": true,
@@ -2793,6 +2890,7 @@
         {
           "default": "",
           "document": "Number of remaining creatable topics",
+          "example": "123",
           "member": "int64",
           "name": "RemainderTopics",
           "required": true,
@@ -2802,6 +2900,7 @@
         {
           "default": "",
           "document": "Number of partitions already created",
+          "example": "123",
           "member": "int64",
           "name": "CreatedPartitions",
           "required": true,
@@ -2811,6 +2910,7 @@
         {
           "default": "",
           "document": "Number of topics already created",
+          "example": "123",
           "member": "int64",
           "name": "CreatedTopics",
           "required": true,
@@ -2820,6 +2920,7 @@
         {
           "default": "",
           "document": "Tag array\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -2829,6 +2930,7 @@
         {
           "default": "",
           "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
           "member": "uint64",
           "name": "ExpireTime",
           "required": true,
@@ -2838,6 +2940,7 @@
         {
           "default": "",
           "document": "Cross-AZ\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "123123",
           "member": "int64",
           "name": "ZoneIds",
           "required": true,
@@ -2847,6 +2950,7 @@
         {
           "default": "",
           "document": "Kafka version information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "grp-gsg1",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -2856,6 +2960,7 @@
         {
           "default": "",
           "document": "Maximum number of groups\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1344",
           "member": "int64",
           "name": "MaxGroupNum",
           "required": true,
@@ -2865,6 +2970,7 @@
         {
           "default": "",
           "document": "Offering type. `0`: Standard Edition; `1`: Professional Edition\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "12351",
           "member": "int64",
           "name": "Cvm",
           "required": true,
@@ -2874,6 +2980,7 @@
         {
           "default": "",
           "document": "Type.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "ckafka-gt2ty",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -2883,6 +2990,7 @@
         {
           "default": "",
           "document": "Features supported by the instance. `FEATURE_SUBNET_ACL` indicates that the ACL policy supports setting subnets. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"sdgg\", \"sdgg\"]",
           "member": "string",
           "name": "Features",
           "required": true,
@@ -2892,10 +3000,41 @@
         {
           "default": "",
           "document": "Dynamic message retention policy\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DynamicRetentionTime",
           "name": "RetentionTimeConfig",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of connections\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxConnection",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PublicNetwork",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-08-21 11:15:54",
+          "member": "string",
+          "name": "DeleteRouteTimestamp",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3419,6 +3558,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "10",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3427,6 +3567,7 @@
         {
           "default": "",
           "document": "Maximum retention period in minutes for instance log, which can be up to 30 days. 0 indicates not to enable the log retention period policy",
+          "example": "无",
           "member": "int64",
           "name": "MsgRetentionTime",
           "required": false,
@@ -3435,6 +3576,7 @@
         {
           "default": "",
           "document": "Instance name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "example": "无",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -3443,6 +3585,7 @@
         {
           "default": "",
           "document": "Instance configuration",
+          "example": "无",
           "member": "ModifyInstanceAttributesConfig",
           "name": "Config",
           "required": false,
@@ -3451,6 +3594,7 @@
         {
           "default": "",
           "document": "Dynamic message retention policy configuration",
+          "example": "无",
           "member": "DynamicRetentionTime",
           "name": "DynamicRetentionConfig",
           "required": false,
@@ -3459,8 +3603,18 @@
         {
           "default": "",
           "document": "Modification of the rebalancing time after upgrade",
+          "example": "无",
           "member": "int64",
           "name": "RebalanceTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Timestamp",
+          "example": "无",
+          "member": "int64",
+          "name": "PublicNetwork",
           "required": false,
           "type": "int"
         }
@@ -3653,7 +3807,8 @@
       "members": [
         {
           "default": "",
-          "document": "FlowId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "FlowId11\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -3818,6 +3973,7 @@
         {
           "default": "",
           "document": "Instance connection method\n0: PLAINTEXT (plaintext method, which does not carry user information and is supported for legacy versions and Community Edition)\n1: SASL_PLAINTEXT (plaintext method, which authenticates the login through SASL before data start and is supported only for Community Edition)\n2: SSL (SSL-encrypted communication, which does not carry user information and is supported for legacy versions and Community Edition)\n3: SASL_SSL (SSL-encrypted communication, which authenticates the login through SASL before data start and is supported only for Community Edition)",
+          "example": "1",
           "member": "int64",
           "name": "AccessType",
           "required": true,
@@ -3827,6 +3983,7 @@
         {
           "default": "",
           "document": "Route ID",
+          "example": "1",
           "member": "int64",
           "name": "RouteId",
           "required": true,
@@ -3835,7 +3992,8 @@
         },
         {
           "default": "",
-          "document": "VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: Tencent Cloud-supported environment (generally used for internal instances); 5: SSL public network access; 6: BM VPC)",
+          "document": "VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: supporting network (Standard Edition); 5: SSL public network access; 6: BM VPC; 7: supporting network (Pro Edition))",
+          "example": "1",
           "member": "int64",
           "name": "VipType",
           "required": true,
@@ -3845,6 +4003,7 @@
         {
           "default": "",
           "document": "Virtual IP list",
+          "example": "1",
           "member": "VipEntity",
           "name": "VipList",
           "required": true,
@@ -3854,6 +4013,7 @@
         {
           "default": "",
           "document": "Domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -3863,10 +4023,21 @@
         {
           "default": "",
           "document": "Domain name port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "DomainPort",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-08-21 11:15:54",
+          "member": "string",
+          "name": "DeleteTimestamp",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -4203,6 +4374,118 @@
           "default": "",
           "document": "Number of all eligible topic details",
           "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicInSyncReplicaInfo": {
+      "document": "Topic replica and details",
+      "members": [
+        {
+          "default": "",
+          "document": "Partition name",
+          "example": "partition-1",
+          "member": "string",
+          "name": "Partition",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Leader ID",
+          "example": "0",
+          "member": "uint64",
+          "name": "Leader",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Replica set",
+          "example": "1,3,2",
+          "member": "string",
+          "name": "Replica",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISR",
+          "example": "1,2,3",
+          "member": "string",
+          "name": "InSyncReplica",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Starting offset\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12055",
+          "member": "uint64",
+          "name": "BeginOffset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Ending offset\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "13353",
+          "member": "uint64",
+          "name": "EndOffset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of messages\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "120045",
+          "member": "uint64",
+          "name": "MessageCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unsynced replica set\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1,2",
+          "member": "string",
+          "name": "OutOfSyncReplica",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TopicInSyncReplicaResult": {
+      "document": "Set of topic replicas and details",
+      "members": [
+        {
+          "default": "",
+          "document": "Set of topic details and replicas",
+          "example": "无",
+          "member": "TopicInSyncReplicaInfo",
+          "name": "TopicInSyncReplicaList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number",
+          "example": "0",
+          "member": "uint64",
           "name": "TotalCount",
           "required": true,
           "type": "int",

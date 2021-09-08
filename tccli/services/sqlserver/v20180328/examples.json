@@ -391,7 +391,7 @@
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDatabaseCDC\n&InstanceId=mssql-j8kv137v\n&DBNames.0=test_db\n&ModifyType=enable\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 9999,\n        \"RequestId\": \"a928d733-109a-4f44-84ad-991da182d0s3\"\n    }\n}",
-        "title": "Enabling or disabling CDC"
+        "title": "Enabling/Disabling CDC"
       }
     ],
     "ModifyDatabaseCT": [
@@ -399,7 +399,7 @@
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDatabaseCT\n&InstanceId=mssql-j8kv137v\n&DBNames.0=test_db\n&ModifyType=enable\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 9999,\n        \"RequestId\": \"a928d733-1099-4f44-84ad-991da182d0s3\"\n    }\n}",
-        "title": "Enabling or disabling CT"
+        "title": "Enabling/Disabling CT"
       }
     ],
     "ModifyDatabaseMdf": [
