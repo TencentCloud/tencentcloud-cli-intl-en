@@ -202,7 +202,7 @@ def doDescribeDBErrlogs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstanceAttribute(args, parsed_globals):
+def doRestartDBInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -218,9 +218,9 @@ def doDescribeDBInstanceAttribute(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstanceAttributeRequest()
+    model = models.RestartDBInstanceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDBInstanceAttribute(model)
+    rsp = client.RestartDBInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -472,7 +472,7 @@ def doSetAutoRenewFlag(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRestartDBInstance(args, parsed_globals):
+def doDescribeDBInstanceAttribute(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -488,9 +488,9 @@ def doRestartDBInstance(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RestartDBInstanceRequest()
+    model = models.DescribeDBInstanceAttributeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.RestartDBInstance(model)
+    rsp = client.DescribeDBInstanceAttribute(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -545,6 +545,33 @@ def doCreateDBInstances(args, parsed_globals):
     model = models.CreateDBInstancesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateDBInstances(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeReadOnlyGroups(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeReadOnlyGroupsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeReadOnlyGroups(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -796,7 +823,7 @@ def doDescribeRegions(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquiryPriceRenewDBInstance(args, parsed_globals):
+def doDescribeSlowQueryList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -812,9 +839,9 @@ def doInquiryPriceRenewDBInstance(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceRenewDBInstanceRequest()
+    model = models.DescribeSlowQueryListRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.InquiryPriceRenewDBInstance(model)
+    rsp = client.DescribeSlowQueryList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -896,6 +923,33 @@ def doAddDBInstanceToReadOnlyGroup(args, parsed_globals):
     model = models.AddDBInstanceToReadOnlyGroupRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.AddDBInstanceToReadOnlyGroup(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doInquiryPriceRenewDBInstance(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.InquiryPriceRenewDBInstanceRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.InquiryPriceRenewDBInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1066,7 +1120,7 @@ def doCreateReadOnlyDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeReadOnlyGroups(args, parsed_globals):
+def doDescribeSlowQueryAnalysis(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1082,9 +1136,9 @@ def doDescribeReadOnlyGroups(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeReadOnlyGroupsRequest()
+    model = models.DescribeSlowQueryAnalysisRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeReadOnlyGroups(model)
+    rsp = client.DescribeSlowQueryAnalysis(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1273,7 +1327,7 @@ ACTION_MAP = {
     "DescribeDBBackups": doDescribeDBBackups,
     "ResetAccountPassword": doResetAccountPassword,
     "DescribeDBErrlogs": doDescribeDBErrlogs,
-    "DescribeDBInstanceAttribute": doDescribeDBInstanceAttribute,
+    "RestartDBInstance": doRestartDBInstance,
     "ModifySwitchTimePeriod": doModifySwitchTimePeriod,
     "InquiryPriceCreateDBInstances": doInquiryPriceCreateDBInstances,
     "OpenDBExtranetAccess": doOpenDBExtranetAccess,
@@ -1283,9 +1337,10 @@ ACTION_MAP = {
     "ModifyAccountRemark": doModifyAccountRemark,
     "DescribeDBXlogs": doDescribeDBXlogs,
     "SetAutoRenewFlag": doSetAutoRenewFlag,
-    "RestartDBInstance": doRestartDBInstance,
+    "DescribeDBInstanceAttribute": doDescribeDBInstanceAttribute,
     "ModifyDBInstanceName": doModifyDBInstanceName,
     "CreateDBInstances": doCreateDBInstances,
+    "DescribeReadOnlyGroups": doDescribeReadOnlyGroups,
     "CreateServerlessDBInstance": doCreateServerlessDBInstance,
     "DescribeDBInstances": doDescribeDBInstances,
     "DescribeZones": doDescribeZones,
@@ -1295,17 +1350,18 @@ ACTION_MAP = {
     "InquiryPriceUpgradeDBInstance": doInquiryPriceUpgradeDBInstance,
     "CreateReadOnlyGroup": doCreateReadOnlyGroup,
     "DescribeRegions": doDescribeRegions,
-    "InquiryPriceRenewDBInstance": doInquiryPriceRenewDBInstance,
+    "DescribeSlowQueryList": doDescribeSlowQueryList,
     "ModifyDBInstanceReadOnlyGroup": doModifyDBInstanceReadOnlyGroup,
     "CloseDBExtranetAccess": doCloseDBExtranetAccess,
     "AddDBInstanceToReadOnlyGroup": doAddDBInstanceToReadOnlyGroup,
+    "InquiryPriceRenewDBInstance": doInquiryPriceRenewDBInstance,
     "DescribeAccounts": doDescribeAccounts,
     "DisIsolateDBInstances": doDisIsolateDBInstances,
     "DescribeServerlessDBInstances": doDescribeServerlessDBInstances,
     "RenewInstance": doRenewInstance,
     "DescribeDatabases": doDescribeDatabases,
     "CreateReadOnlyDBInstance": doCreateReadOnlyDBInstance,
-    "DescribeReadOnlyGroups": doDescribeReadOnlyGroups,
+    "DescribeSlowQueryAnalysis": doDescribeSlowQueryAnalysis,
     "UpgradeDBInstance": doUpgradeDBInstance,
     "RemoveDBInstanceFromReadOnlyGroup": doRemoveDBInstanceFromReadOnlyGroup,
     "DescribeProductConfig": doDescribeProductConfig,

@@ -138,6 +138,18 @@
       "name": "Queries the list of PostgreSQL for Serverless instances",
       "output": "DescribeServerlessDBInstancesResponse"
     },
+    "DescribeSlowQueryAnalysis": {
+      "document": "This API is used to analyze slow query statements with abstract parameter values and return aggregated statistical analysis results.",
+      "input": "DescribeSlowQueryAnalysisRequest",
+      "name": "Analyzes slow queries",
+      "output": "DescribeSlowQueryAnalysisResponse"
+    },
+    "DescribeSlowQueryList": {
+      "document": "This API is used to get the slow query list.",
+      "input": "DescribeSlowQueryListRequest",
+      "name": "Gets the slow query list",
+      "output": "DescribeSlowQueryListResponse"
+    },
     "DescribeZones": {
       "document": "This API is used to query the supported AZs.",
       "input": "DescribeZonesRequest",
@@ -387,6 +399,142 @@
         }
       ],
       "type": "object"
+    },
+    "AnalysisItems": {
+      "document": "Detailed analysis of a slow query statement with abstract parameter values, which is returned by the `DescribeSlowQueryAnalysis` API",
+      "members": [
+        {
+          "default": "",
+          "document": "The name of the database queried by the slow query statement",
+          "example": "postgres",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the user who executes the slow query statement",
+          "example": "postgres",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The slow query statement whose parameter values are abstracted",
+          "example": "select $1",
+          "member": "string",
+          "name": "NormalQuery",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address of the client that executes the slow query statement",
+          "example": "::1",
+          "member": "string",
+          "name": "ClientAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of executions of the slow query statement during the specified period of time",
+          "example": "1",
+          "member": "uint64",
+          "name": "CallNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ratio (in decimal form) of the number of executions of the slow query statement to that of all slow query statements during the specified period of time",
+          "example": "0.1",
+          "member": "float",
+          "name": "CallPercent",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total execution time of the slow query statement during the specified period of time",
+          "example": "1.1",
+          "member": "float",
+          "name": "CostTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ratio (in decimal form) of the total execution time of the slow query statement to that of all slow query statements during the specified period of time",
+          "example": "0.2",
+          "member": "float",
+          "name": "CostPercent",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The shortest execution time (in ms) of the slow query statement during the specified period of time",
+          "example": "0.01",
+          "member": "float",
+          "name": "MinCostTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The longest execution time (in ms) of the slow query statement during the specified period of time",
+          "example": "1",
+          "member": "float",
+          "name": "MaxCostTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The average execution time (in ms) of the slow query statement during the specified period of time",
+          "example": "0.2",
+          "member": "float",
+          "name": "AvgCostTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The timestamp when the slow query statement starts to execute for the first time during the specified period of time",
+          "example": "2020-01-01 01:01:01",
+          "member": "string",
+          "name": "FirstTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The timestamp when the slow query statement starts to execute for the last time during the specified period of time",
+          "example": "2020-01-01 01:01:01",
+          "member": "string",
+          "name": "LastTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CloseDBExtranetAccessRequest": {
       "document": "CloseDBExtranetAccess request structure.",
@@ -1527,7 +1675,7 @@
         },
         {
           "default": "",
-          "document": "Instance status",
+          "document": "Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`",
           "example": "applying",
           "member": "string",
           "name": "DBInstanceStatus",
@@ -2693,6 +2841,231 @@
       ],
       "type": "object"
     },
+    "DescribeSlowQueryAnalysisRequest": {
+      "document": "DescribeSlowQueryAnalysis request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "postgres-xxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\". The log is retained for seven days by default, so the start timestamp must fall within the retention period.",
+          "example": "2020-02-01 01:02:03",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\".",
+          "example": "2020-02-01 01:02:03",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by database name. This parameter is optional.",
+          "example": "postgres",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`.",
+          "example": "CallNum",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: [1,100].",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Value range: [0,INF).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryAnalysisResponse": {
+      "document": "DescribeSlowQueryAnalysis response structure.",
+      "members": [
+        {
+          "document": "The total number of query results.",
+          "example": "5",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Detailed analysis.",
+          "example": "无",
+          "member": "Detail",
+          "name": "Detail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryListRequest": {
+      "document": "DescribeSlowQueryList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "postgres-xx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\". The log is retained for seven days by default, so the start timestamp must fall within the retention period.",
+          "example": "2020-01-01 02:03:04",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\".",
+          "example": "2020-01-01 02:03:04",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by database name. This parameter is optional.",
+          "example": "postgres",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending). Default value: `desc`.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort by field. Valid values: `SessionStartTime` (default), `Duration`.",
+          "example": "SessionStartTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: [1,100]. Default value: `20`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Value range: [0,INF). Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryListResponse": {
+      "document": "DescribeSlowQueryList response structure.",
+      "members": [
+        {
+          "document": "The total number of slow query statements during the specified period of time.",
+          "example": "6",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Analysis of the execution time of slow query statements by classifying them to different time ranges. These slow query statements fall within the query range you specified in the request parameters.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DurationAnalysis",
+          "name": "DurationAnalysis",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The list of slow query details during the specified period of time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RawSlowQuery",
+          "name": "RawSlowQueryList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeZonesRequest": {
       "document": "DescribeZones request structure.",
       "members": [],
@@ -2751,6 +3124,42 @@
       ],
       "type": "object"
     },
+    "Detail": {
+      "document": "Details returned by the `DescribeSlowQueryAnalysis` API",
+      "members": [
+        {
+          "default": "",
+          "document": "The total execution time (in ms) of all slow query statements during the specified period of time",
+          "example": "0.1",
+          "member": "float",
+          "name": "TotalTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of all slow query statements during the specified period of time",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCallNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The statistical analysis list of slow queries\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalysisItems",
+          "name": "AnalysisItems",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DisIsolateDBInstancesRequest": {
       "document": "DisIsolateDBInstances request structure.",
       "members": [
@@ -2804,6 +3213,32 @@
         }
       ],
       "type": "object"
+    },
+    "DurationAnalysis": {
+      "document": "Analyze the execution time of slow query statements by classifying them to different time ranges",
+      "members": [
+        {
+          "default": "",
+          "document": "Time range",
+          "example": "“0-1s”",
+          "member": "string",
+          "name": "TimeSegment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of slow query statements whose execution time falls within the time range",
+          "example": "10",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ErrLogDetail": {
       "document": "Error log details",
@@ -3721,6 +4156,72 @@
           "name": "DBInstanceIdSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RawSlowQuery": {
+      "document": "The list of slow query details returned by the `DescribeSlowQueryList` API",
+      "members": [
+        {
+          "default": "",
+          "document": "Slow query statement",
+          "example": "select 1",
+          "member": "string",
+          "name": "RawQuery",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The database queried by the slow query statement",
+          "example": "postgres",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The execution time of the slow query statement",
+          "example": "1.1",
+          "member": "float",
+          "name": "Duration",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The client that executes the slow query statement",
+          "example": "::1",
+          "member": "string",
+          "name": "ClientAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the user who executes the slow query statement",
+          "example": "postgres",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the slow query statement starts to execute",
+          "example": "2020-02-01 01:02:03",
+          "member": "string",
+          "name": "SessionStartTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

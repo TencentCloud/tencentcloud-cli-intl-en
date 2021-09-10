@@ -292,6 +292,7 @@
         {
           "default": "",
           "document": "AZ name, such as \"ap-beijing-1\". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)",
+          "example": "ap-beijing-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -299,7 +300,8 @@
         },
         {
           "default": "",
-          "document": "Network type. Valid values: VPC (VPC), BASIC (basic network)",
+          "document": "Network type. Valid values: `VPC` (private network), `BASIC` (classic network), `CCN` (Cloud Connect Network). You must set this parameter to `CCN` if you use the Turbo series. Classic network will be phased out and is not recommended.",
+          "example": "VPC",
           "member": "string",
           "name": "NetInterface",
           "required": true,
@@ -307,7 +309,8 @@
         },
         {
           "default": "",
-          "document": "Permission group ID",
+          "document": "Permission group ID (required for Standard and High-Performance). For the Turbo series, set it to `pgroupbasic`.",
+          "example": "pgroupbasic",
           "member": "string",
           "name": "PGroupId",
           "required": true,
@@ -315,7 +318,8 @@
         },
         {
           "default": "",
-          "document": "File system protocol type. Valid values: NFS, CIFS. If this parameter is left empty, NFS will be used by default",
+          "document": "File system protocol. Valid values: `NFS`, `CIFS`, `TURBO`. If this parameter is left empty, `NFS` is used by default. For the Turbo series, you must set this parameter to `TURBO`.",
+          "example": "NFS",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -323,7 +327,8 @@
         },
         {
           "default": "",
-          "document": "File system storage class. Valid values: SD (standard), HP (high-performance)",
+          "document": "Storage class of the file system. Valid values: `SD` (Standard), `HP` (High-Performance), `TB` (Standard Turbo), `TP` (High-Performance Turbo)",
+          "example": "SD",
           "member": "string",
           "name": "StorageType",
           "required": false,
@@ -332,6 +337,7 @@
         {
           "default": "",
           "document": "VPC ID. This field is required if network type is VPC.",
+          "example": "123",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -340,6 +346,7 @@
         {
           "default": "",
           "document": "Subnet ID. This field is required if network type is VPC.",
+          "example": "234",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -347,7 +354,8 @@
         },
         {
           "default": "",
-          "document": "Specifies an IP address, which is supported only for VPC. If this parameter is left empty, a random IP will be assigned in the subnet",
+          "document": "IP address (this parameter supports only the VPC network type, and the Turbo series is not supported). If this parameter is left empty, a random IP in the subnet will be assigned.",
+          "example": "10.0.0.1",
           "member": "string",
           "name": "MountIP",
           "required": false,
@@ -356,6 +364,7 @@
         {
           "default": "",
           "document": "Custom file system name",
+          "example": "QcloudCfs",
           "member": "string",
           "name": "FsName",
           "required": false,
@@ -364,6 +373,7 @@
         {
           "default": "",
           "document": "File system tag",
+          "example": "[\"TagKey\":\"a\",\"TagValue\":1]",
           "member": "TagInfo",
           "name": "ResourceTags",
           "required": false,
@@ -372,10 +382,38 @@
         {
           "default": "",
           "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.",
+          "example": "QcloudCfs001",
           "member": "string",
           "name": "ClientToken",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CCN instance ID (required if the network type is CCN)",
+          "example": "ccn-12345",
+          "member": "string",
+          "name": "CcnId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CCN IP range used by the CFS (required if the network type is CCN), which cannot conflict with other IP ranges bound in CCN",
+          "example": "10.0.0.1/24",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system capacity, in GiB (required for the Turbo series). For Standard Turbo, the minimum purchase required is 40,960 GiB (40 TiB) and the expansion increment is 20,480 GiB (20 TiB). For High-Performance Turbo, the minimum purchase required is 20,480 GiB (20 TiB) and the expansion increment is 10,240 GiB (10 TiB).",
+          "example": "40960",
+          "member": "uint64",
+          "name": "Capacity",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -385,57 +423,73 @@
       "members": [
         {
           "document": "File system creation time",
+          "example": "2017-02-24 11:28:12",
           "member": "string",
           "name": "CreationTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Custom file system name",
+          "example": "QcloudCfs",
           "member": "string",
           "name": "CreationToken",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "File system ID",
+          "example": "cfs-abc",
           "member": "string",
           "name": "FileSystemId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "File system status",
+          "document": "File system status. Valid values: `creating`, `create_failed`, `available`, `unserviced`, `upgrading`, `deleting`",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "LifeCycleState",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Used file system capacity",
+          "document": "Storage used by the file system, in bytes",
+          "example": "1000",
           "member": "uint64",
           "name": "SizeByte",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "AZ ID",
+          "example": "800001",
           "member": "uint64",
           "name": "ZoneId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Custom file system name",
+          "example": "QcloudCfs",
           "member": "string",
           "name": "FsName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Whether a file system is encrypted",
+          "example": "False",
           "member": "bool",
           "name": "Encrypted",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -1065,6 +1119,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "无",
           "member": "string",
           "name": "CreationTime",
           "required": true,
@@ -1074,6 +1129,7 @@
         {
           "default": "",
           "document": "Custom name",
+          "example": "无",
           "member": "string",
           "name": "CreationToken",
           "required": true,
@@ -1083,6 +1139,7 @@
         {
           "default": "",
           "document": "File system ID",
+          "example": "无",
           "member": "string",
           "name": "FileSystemId",
           "required": true,
@@ -1092,6 +1149,7 @@
         {
           "default": "",
           "document": "File system status",
+          "example": "无",
           "member": "string",
           "name": "LifeCycleState",
           "required": true,
@@ -1101,6 +1159,7 @@
         {
           "default": "",
           "document": "Used file system capacity",
+          "example": "无",
           "member": "uint64",
           "name": "SizeByte",
           "required": true,
@@ -1110,6 +1169,7 @@
         {
           "default": "",
           "document": "Maximum storage limit of a file system",
+          "example": "无",
           "member": "uint64",
           "name": "SizeLimit",
           "required": true,
@@ -1119,6 +1179,7 @@
         {
           "default": "",
           "document": "Region ID",
+          "example": "无",
           "member": "uint64",
           "name": "ZoneId",
           "required": true,
@@ -1128,6 +1189,7 @@
         {
           "default": "",
           "document": "Region name",
+          "example": "无",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -1137,6 +1199,7 @@
         {
           "default": "",
           "document": "File system protocol type",
+          "example": "无",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -1146,6 +1209,7 @@
         {
           "default": "",
           "document": "File system storage class",
+          "example": "无",
           "member": "string",
           "name": "StorageType",
           "required": true,
@@ -1155,6 +1219,7 @@
         {
           "default": "",
           "document": "Prepaid storage pack bound with the file system",
+          "example": "无",
           "member": "string",
           "name": "StorageResourcePkg",
           "required": true,
@@ -1164,6 +1229,7 @@
         {
           "default": "",
           "document": "Prepaid bandwidth pack bound to a file system (not supported currently)",
+          "example": "无",
           "member": "string",
           "name": "BandwidthResourcePkg",
           "required": true,
@@ -1173,6 +1239,7 @@
         {
           "default": "",
           "document": "Information of permission groups bound to a file system",
+          "example": "无",
           "member": "PGroup",
           "name": "PGroup",
           "required": true,
@@ -1182,6 +1249,7 @@
         {
           "default": "",
           "document": "Custom name",
+          "example": "无",
           "member": "string",
           "name": "FsName",
           "required": true,
@@ -1191,6 +1259,7 @@
         {
           "default": "",
           "document": "Whether a file system is encrypted",
+          "example": "无",
           "member": "bool",
           "name": "Encrypted",
           "required": true,
@@ -1200,6 +1269,7 @@
         {
           "default": "",
           "document": "Key used for encryption, which can be the key ID or ARN",
+          "example": "无",
           "member": "string",
           "name": "KmsKeyId",
           "required": true,
@@ -1209,6 +1279,7 @@
         {
           "default": "",
           "document": "Application ID",
+          "example": "无",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -1218,10 +1289,21 @@
         {
           "default": "",
           "document": "The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput",
+          "example": "无",
           "member": "float",
           "name": "BandwidthLimit",
           "required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total capacity of the file system",
+          "example": "无",
+          "member": "uint64",
+          "name": "Capacity",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1233,6 +1315,7 @@
         {
           "default": "",
           "document": "File system ID",
+          "example": "cfs-hge16re9",
           "member": "string",
           "name": "FileSystemId",
           "required": true,
@@ -1242,6 +1325,7 @@
         {
           "default": "",
           "document": "Mount target ID",
+          "example": "mount-0ylt3o7o",
           "member": "string",
           "name": "MountTargetId",
           "required": true,
@@ -1251,6 +1335,7 @@
         {
           "default": "",
           "document": "Mount target IP",
+          "example": "10.1.0.7",
           "member": "string",
           "name": "IpAddress",
           "required": true,
@@ -1260,6 +1345,7 @@
         {
           "default": "",
           "document": "Mount root-directory",
+          "example": "fwsuvz0l",
           "member": "string",
           "name": "FSID",
           "required": true,
@@ -1269,6 +1355,7 @@
         {
           "default": "",
           "document": "Mount target status",
+          "example": "available",
           "member": "string",
           "name": "LifeCycleState",
           "required": true,
@@ -1278,6 +1365,7 @@
         {
           "default": "",
           "document": "Network type",
+          "example": "VPC",
           "member": "string",
           "name": "NetworkInterface",
           "required": true,
@@ -1287,6 +1375,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-hq13cw04",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -1296,6 +1385,7 @@
         {
           "default": "",
           "document": "VPC name",
+          "example": "qcloudtest",
           "member": "string",
           "name": "VpcName",
           "required": true,
@@ -1305,6 +1395,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "subnet-jdl08no5",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -1314,8 +1405,29 @@
         {
           "default": "",
           "document": "Subnet name",
+          "example": "qcloudtest",
           "member": "string",
           "name": "SubnetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CCN instance ID used by CFS Turbo",
+          "example": "ccn-1xhbcp41",
+          "member": "string",
+          "name": "CcnID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CCN IP range used by CFS Turbo",
+          "example": "10.0.0.0/24",
+          "member": "string",
+          "name": "CidrBlock",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1606,6 +1718,7 @@
         {
           "default": "",
           "document": "File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.",
+          "example": "1000",
           "member": "uint64",
           "name": "FsLimit",
           "required": true,
@@ -1613,7 +1726,8 @@
         },
         {
           "default": "",
-          "document": "File system ID",
+          "document": "File system ID. Currently, only Standard file systems are supported.",
+          "example": "cfs-12345",
           "member": "string",
           "name": "FileSystemId",
           "required": true,

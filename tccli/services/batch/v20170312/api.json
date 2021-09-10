@@ -2247,6 +2247,7 @@
         {
           "default": "",
           "document": "Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.",
+          "example": "TRUE",
           "member": "RunSecurityServiceEnabled",
           "name": "SecurityService",
           "required": false,
@@ -2256,8 +2257,19 @@
         {
           "default": "",
           "document": "Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.",
+          "example": "TRUE",
           "member": "RunMonitorServiceEnabled",
           "name": "MonitorService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.",
+          "example": "TRUE",
+          "member": "RunAutomationServiceEnabled",
+          "name": "AutomationService",
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -3881,6 +3893,22 @@
       ],
       "type": "object"
     },
+    "RunAutomationServiceEnabled": {
+      "document": "Describes the TAT service information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.",
+          "example": "TRUE",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RunMonitorServiceEnabled": {
       "document": "Describes information related to the Cloud Monitor service.",
       "members": [
@@ -4812,6 +4840,7 @@
         {
           "default": "",
           "document": "VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.",
+          "example": "vpc-2ij",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4821,6 +4850,7 @@
         {
           "default": "",
           "document": "VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.",
+          "example": "subnet-2ks",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -4829,7 +4859,8 @@
         },
         {
           "default": "",
-          "document": "Whether to use an instance as a public gateway. An instance can be used as a public gateway only when it has a public IP and resides in a VPC. Valid values: <br><li>TRUE: use the instance as a public gateway <br><li>FALSE: do not use the instance as a public gateway <br><br>Default value: FALSE.",
+          "document": "Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.",
+          "example": "FALSE",
           "member": "bool",
           "name": "AsVpcGateway",
           "required": false,
@@ -4839,6 +4870,7 @@
         {
           "default": "",
           "document": "Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.",
+          "example": "[]",
           "member": "string",
           "name": "PrivateIpAddresses",
           "required": false,
@@ -4848,6 +4880,7 @@
         {
           "default": "",
           "document": "Number of IPv6 addresses randomly generated for the ENI.",
+          "example": "1",
           "member": "uint64",
           "name": "Ipv6AddressCount",
           "required": false,
