@@ -139,7 +139,7 @@
       "output": "CreateAssistantCidrResponse"
     },
     "CreateBandwidthPackage": {
-      "document": "This API is used to create [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)",
+      "document": "This API is used to create a [device bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype) or an [IP bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype).",
       "input": "CreateBandwidthPackageRequest",
       "name": "Creates a bandwidth package",
       "output": "CreateBandwidthPackageResponse"
@@ -3810,7 +3810,8 @@
       "members": [
         {
           "default": "",
-          "document": "The type of the bandwidth package. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.",
+          "document": "The network type of the bandwidth package. Default value: `BGP`. Valid values:\n`BGP` \n`HIGH_QUALITY_BGP`",
+          "example": "BGP",
           "member": "string",
           "name": "NetworkType",
           "required": false,
@@ -3818,7 +3819,8 @@
         },
         {
           "default": "",
-          "document": "The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'.",
+          "document": "The billing mode of the bandwidth package. Default value: `TOP5_POSTPAID_BY_MONTH`. Valid values:\n<li>`TOP5_POSTPAID_BY_MONTH`: monthly top 5 </li>\n<li>`PERCENT95_POSTPAID_BY_MONTH`: monthly 95th percentile</li>\n<li>`FIXED_PREPAID_BY_MONTH`: monthly subscription</li>",
+          "example": "TOP5_POSTPAID_BY_MONTH",
           "member": "string",
           "name": "ChargeType",
           "required": false,
@@ -3827,6 +3829,7 @@
         {
           "default": "",
           "document": "The name of the bandwidth package.",
+          "example": "test",
           "member": "string",
           "name": "BandwidthPackageName",
           "required": false,
@@ -3834,7 +3837,8 @@
         },
         {
           "default": "",
-          "document": "The number of bandwidth packages (It can only be “1” for bill-by-CVM accounts)",
+          "document": "The number of bandwidth packages to create. Valid range: 1-20. It can only be “1” for bill-by-CVM accounts.",
+          "example": "1",
           "member": "uint64",
           "name": "BandwidthPackageCount",
           "required": false,
@@ -3843,6 +3847,7 @@
         {
           "default": "",
           "document": "The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit. This feature is currently in beta.",
+          "example": "1",
           "member": "int64",
           "name": "InternetMaxBandwidth",
           "required": false,
@@ -3851,6 +3856,7 @@
         {
           "default": "",
           "document": "The list of tags to be bound.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -3859,6 +3865,7 @@
         {
           "default": "",
           "document": "The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'. Default value: 'ipv4'.",
+          "example": "IPV4",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -3872,15 +3879,19 @@
       "members": [
         {
           "document": "The unique ID of the bandwidth package.",
+          "example": "bwp-8rolc8ec",
           "member": "string",
           "name": "BandwidthPackageId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "The unique ID list of the bandwidth package (effective only when you apply for more than 1 bandwidth packages).",
+          "example": "[\"bwp-8rolc8ec\"]",
           "member": "string",
           "name": "BandwidthPackageIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4173,15 +4184,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the VPC instance",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "The name of the flow log instance.",
+          "example": "test-flowlog",
           "member": "string",
           "name": "FlowLogName",
           "required": true,
@@ -4189,7 +4193,8 @@
         },
         {
           "default": "",
-          "document": "The type of resources to which the flow log belongs. Valid values: 'VPC', 'SUBNET' and 'NETWORKINTERFACE'.",
+          "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.",
+          "example": "NETWORKINTERFACE",
           "member": "string",
           "name": "ResourceType",
           "required": true,
@@ -4198,6 +4203,7 @@
         {
           "default": "",
           "document": "The unique ID of the resource.",
+          "example": "eni-12345678",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -4206,6 +4212,7 @@
         {
           "default": "",
           "document": "Type of the flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.",
+          "example": "ACCEPT",
           "member": "string",
           "name": "TrafficType",
           "required": true,
@@ -4214,6 +4221,7 @@
         {
           "default": "",
           "document": "The storage ID of the flow log.",
+          "example": "99991111-2222-4444-9999-222266663333",
           "member": "string",
           "name": "CloudLogId",
           "required": true,
@@ -4221,7 +4229,17 @@
         },
         {
           "default": "",
+          "document": "The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.",
+          "example": "vpc-12345678",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "The description of the flow log instance",
+          "example": "test",
           "member": "string",
           "name": "FlowLogDescription",
           "required": false,
@@ -4230,6 +4248,7 @@
         {
           "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -6390,18 +6409,20 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the VPC instance",
+          "document": "The unique ID of the flow log.",
+          "example": "fl-xxxxxx",
           "member": "string",
-          "name": "VpcId",
+          "name": "FlowLogId",
           "required": true,
           "type": "string"
         },
         {
           "default": "",
-          "document": "The unique ID of the flow log.",
+          "document": "The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless a CCN flow log is deleted.",
+          "example": "vpc-xxxxxx",
           "member": "string",
-          "name": "FlowLogId",
-          "required": true,
+          "name": "VpcId",
+          "required": false,
           "type": "string"
         }
       ],
@@ -7682,6 +7703,7 @@
         {
           "default": "",
           "document": "The CCN instance ID, such as `ccn-gree226l`.",
+          "example": "ccn-gree226l",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -7690,6 +7712,7 @@
         {
           "default": "",
           "document": "The unique ID of the CCN routing policy, such as `ccnr-f49l6u0z`.",
+          "example": "-",
           "member": "string",
           "name": "RouteIds",
           "required": false,
@@ -7697,7 +7720,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `RouteIds` and `Filters` cannot be specified at the same time.\n<li>route-id - String - (Filter condition) Routing policy ID.</li>\n<li>cidr-block - String - (Filter condition) Destination port.</li>\n<li>instance-type - String - (Filter condition) The next hop type.</li>\n<li>instance-region - String - (Filter condition) The next hop region.</li>\n<li>instance-type - String - (Filter condition) The instance ID of the next hop.</li>",
+          "document": "Filter condition. `RouteIds` and `Filters` cannot be specified at the same time.\n<li>route-id - String - (Filter condition) Routing policy ID.</li>\n<li>cidr-block - String - (Filter condition) Destination.</li>\n<li>instance-type - String - (Filter condition) The next hop type.</li>\n<li>instance-region - String - (Filter condition) The next hop region.</li>\n<li>instance-id - String - (Filter condition) The instance ID of the next hop.</li>\n<li>route-table-id - String - (Filter condition) The list of route table IDs in the format of `ccntr-1234edfr`. Filters by the route table ID.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -7706,6 +7730,7 @@
         {
           "default": "",
           "document": "Offset",
+          "example": "-",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -7714,6 +7739,7 @@
         {
           "default": "",
           "document": "The returned quantity",
+          "example": "-",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -11708,7 +11734,7 @@
         },
         {
           "default": "",
-          "document": "The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.",
+          "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.",
           "example": "NETWORKINTERFACE",
           "member": "string",
           "name": "ResourceType",
@@ -13490,15 +13516,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the VPC instance",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "The unique ID of the flow log.",
+          "example": "fl-xxxxxx",
           "member": "string",
           "name": "FlowLogId",
           "required": true,
@@ -13506,7 +13525,17 @@
         },
         {
           "default": "",
+          "document": "The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the attributes of a CCN flow log is modified.",
+          "example": "vpc-xxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "The name of the flow log.",
+          "example": "xxxxx",
           "member": "string",
           "name": "FlowLogName",
           "required": false,
@@ -13515,6 +13544,7 @@
         {
           "default": "",
           "document": "The description of the flow log.",
+          "example": "无",
           "member": "string",
           "name": "FlowLogDescription",
           "required": false,

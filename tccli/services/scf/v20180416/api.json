@@ -2899,7 +2899,7 @@
         },
         {
           "default": "",
-          "document": "Version number or alias of the triggered function",
+          "document": "Version or alias of the function. It defaults to `$DEFAULT`.",
           "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
@@ -2908,7 +2908,7 @@
         },
         {
           "default": "",
-          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.",
+          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB.",
           "example": "{\\\"key\\\":\\\"value\\\"}",
           "member": "string",
           "name": "Event",
@@ -2917,7 +2917,7 @@
         },
         {
           "default": "",
-          "document": "If this field is specified for a synchronous invocation, the return value will contain a 4 KB log. Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the return parameter will contain the corresponding function execution log.",
+          "document": "Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).",
           "example": "Tail",
           "member": "string",
           "name": "LogType",
@@ -2926,7 +2926,7 @@
         },
         {
           "default": "",
-          "document": "Namespace",
+          "document": "Namespace. `default` is used if it’s left empty.",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -3594,6 +3594,7 @@
         {
           "default": "",
           "document": "Return data length. The default value is `20`.",
+          "example": "1",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3602,6 +3603,7 @@
         {
           "default": "",
           "document": "Data offset. The default value is `0`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3610,6 +3612,7 @@
         {
           "default": "",
           "document": "It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.",
+          "example": "Name",
           "member": "string",
           "name": "Orderby",
           "required": false,
@@ -3618,10 +3621,20 @@
         {
           "default": "",
           "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
+          "example": "DESC",
           "member": "string",
           "name": "Order",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.",
+          "example": "无",
+          "member": "SearchKey",
+          "name": "SearchKey",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4517,6 +4530,30 @@
         }
       ],
       "usage": "both"
+    },
+    "SearchKey": {
+      "document": "Key-value condition for keyword search",
+      "members": [
+        {
+          "default": "",
+          "document": "Search range",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Keyword for search",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "StatusReason": {
       "document": "State reason description",

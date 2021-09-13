@@ -233,7 +233,7 @@
     "ListNamespaces": [
       {
         "document": "",
-        "input": "https://scf.tencentcloudapi.com/?Action=ListNamespaces\n&<Common request parameters>",
+        "input": "https://scf.tencentcloudapi.com/?Action=ListNamespaces\n&SearchKey.0.Key=Namespace\n&SearchKey.0.Value=dev\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Namespaces\": [\n            {\n                \"ModTime\": \"2020-09-22 00:00:00\",\n                \"AddTime\": \"2020-09-22 00:00:00\",\n                \"Type\": \"xx\",\n                \"Description\": \"xx\",\n                \"Name\": \"xx\"\n            }\n        ]\n    }\n}",
         "title": "Displaying a namespace list"
       }
