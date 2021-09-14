@@ -13,6 +13,33 @@ from tencentcloud.tke.v20180525 import tke_client as tke_client_v20180525
 from tencentcloud.tke.v20180525 import models as models_v20180525
 
 
+def doModifyNodePoolInstanceTypes(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyNodePoolInstanceTypesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyNodePoolInstanceTypes(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCheckInstancesUpgradeAble(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1563,6 +1590,7 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
+    "ModifyNodePoolInstanceTypes": doModifyNodePoolInstanceTypes,
     "CheckInstancesUpgradeAble": doCheckInstancesUpgradeAble,
     "CreateCluster": doCreateCluster,
     "DescribeClusterNodePoolDetail": doDescribeClusterNodePoolDetail,

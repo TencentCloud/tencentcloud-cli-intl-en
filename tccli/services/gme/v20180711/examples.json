@@ -2,23 +2,17 @@
   "actions": {
     "CreateApp": [
       {
-        "document": "This example shows you how to create a GME application with the default configurations.",
-        "input": "https://gme.tencentcloudapi.com/?Action=CreateApp\r\n&AppName=simple_gme_application\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
-        "title": "Creating a GME application using default configurations"
-      },
-      {
-        "document": "This example shows you how to enable voice chat and high sound quality, disable voice messaging and speech-to-text, and enable phrase filtering.",
-        "input": "https://gme.tencentcloudapi.com/?Action=CreateApp\r\n&AppName=simple_gme_application\r\n&ProjectId=10000，\r\n&RealtimeSpeechConf.Status=open\r\n&RealtimeSpecchConf.Quality=high\r\n&VoiceMessageConf.Status=close\r\n&VoiceFilterConf.Status=open\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
-        "title": "Creating a GME application by using custom configurations"
+        "document": "This example shows you how to enable high-quality voice chat and phrase filtering, and disable voice messaging for a project.",
+        "input": "https://gme.tencentcloudapi.com/?Action=CreateApp\n&AppName=simple_gme_application\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"AppName\": \"simple_gme_application\",\n            \"CreateTime\": 1568945078,\n            \"ProjectId\": 10000,\n            \"BizId\": 140000002,\n            \"SecretKey\": \"abcdefghijklmnop\",\n            \"RealtimeSpeechConf\": {\n                \"Status\": \"open\",\n                \"Quality\": \"high\"\n            },\n            \"VoiceMessageConf\": {\n                \"Status\": \"open\",\n                \"Language\": \"cnen\"\n            },\n            \"VoiceFilterConf\": {\n                \"Status\": \"open\"\n            }\n        },\n        \"RequestId\": \"d61be8ca-f010-11e9-af81-fa163ee00eb7\"\n    }\n}",
+        "title": "Creating a GME app by using custom configuration"
       }
     ],
     "DescribeAppStatistics": [
       {
         "document": "",
-        "input": "https://gme.tencentcloudapi.com/?Action=DescribeAppStatistics\r\n&BizId=140000001\r\n&StartDate=2019-08-01\r\n&EndDate=2019-08-03\r\n&Services.0=RealTimeSpeech\r\n&Services.1=VoiceMessage\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
+        "input": "https://gme.tencentcloudapi.com/?Action=DescribeAppStatistics\n&BizId=140000001\n&StartDate=2019-08-01\n&EndDate=2019-08-03\n&Services.0=RealTimeSpeech\n&Services.1=VoiceMessage\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"AppStatistics\": [\n                {\n                    \"Date\": \"2019-08-01\",\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandDau\": 10000,\n                        \"MainLandPcu\": 5000,\n                        \"MainLandDuration\": 1000000,\n                        \"OverseaDau\": 5000,\n                        \"OverseaPcu\": 2000,\n                        \"OverseaDuration\": 500000\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 68000\n                    },\n                    \"VoiceFilterStatisticsItem\": null\n                },\n                {\n                    \"Date\": \"2019-08-02\",\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandDau\": 10000,\n                        \"MainLandPcu\": 5000,\n                        \"MainLandDuration\": 1000000,\n                        \"OverseaDau\": 5000,\n                        \"OverseaPcu\": 2000,\n                        \"OverseaDuration\": 500000\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 68000\n                    },\n                    \"VoiceFilterStatisticsItem\": null\n                },\n                {\n                    \"Date\": \"2019-08-03\",\n                    \"RealtimeSpeechStatisticsItem\": {\n                        \"MainLandDau\": 10000,\n                        \"MainLandPcu\": 5000,\n                        \"MainLandDuration\": 1000000,\n                        \"OverseaDau\": 5000,\n                        \"OverseaPcu\": 2000,\n                        \"OverseaDuration\": 500000\n                    },\n                    \"VoiceMessageStatisticsItem\": {\n                        \"Dau\": 68000\n                    },\n                    \"VoiceFilterStatisticsItem\": null\n                }\n            ]\n        },\n        \"RequestId\": \"9b993045-9fa1-47f4-9d25-79160f305be8\"\n    }\n}",
         "title": "Querying the usage statistics of voice chat and voice messaging and speech-to-text between August 1 and August 3, 2019"
       }
     ],
@@ -41,9 +35,9 @@
     "ModifyAppStatus": [
       {
         "document": "",
-        "input": "https://gme.tencentcloudapi.com/?Action=ModifyAppStatus\r\n&BizId=140000001\r\n&Status=close\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
-        "title": "Turning off GME application 140000001"
+        "input": "https://gme.tencentcloudapi.com/?Action=ModifyAppStatus\n&BizId=140000001\n&Status=close\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"BizId\": 140000001,\n            \"Status\": \"close\"\n        },\n        \"RequestId\": \"e2900289-f21e-43a8-a3bf-0b439cdbbbb8\"\n    }\n}",
+        "title": "Turning off GME app 140000001"
       }
     ],
     "ScanVoice": [

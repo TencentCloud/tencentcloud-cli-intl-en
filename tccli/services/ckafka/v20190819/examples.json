@@ -48,6 +48,14 @@
         "title": "Deleting an ACL"
       }
     ],
+    "DeleteRouteTriggerTime": [
+      {
+        "document": "",
+        "input": "https://ckafka.tencentcloudapi.com/?Action=DeleteRouteTriggerTime\n&InstanceId='ckafka-xxx'\n&DelayTime='2020-08-21 11:15:54'\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"91b6b112-7f0a-4e18-b353-5202bcafd2c2\"\n    }\n}",
+        "title": "Modifying the route deletion trigger time"
+      }
+    ],
     "DeleteTopic": [
       {
         "document": "",

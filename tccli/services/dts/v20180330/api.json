@@ -802,6 +802,7 @@
         {
           "default": "",
           "document": "Data migration task ID",
+          "example": "dts-83i2usk2",
           "member": "string",
           "name": "JobId",
           "required": false,
@@ -810,42 +811,56 @@
         {
           "default": "",
           "document": "Data migration task name",
+          "example": "无",
           "member": "string",
           "name": "JobName",
           "required": false,
           "type": "string"
         },
         {
-          "default": "CreateTime",
+          "default": "",
           "document": "Sort by field. Value range: JobId, Status, JobName, MigrateType, RunMode, CreateTime",
+          "example": "CreateTime",
           "member": "string",
           "name": "Order",
           "required": false,
           "type": "string"
         },
         {
-          "default": "DESC",
+          "default": "",
           "document": "Sorting order. Value range: ASC (ascending), DESC (descending)",
+          "example": "DESC",
           "member": "string",
           "name": "OrderSeq",
           "required": false,
           "type": "string"
         },
         {
-          "default": "0",
+          "default": "",
           "document": "Offset. Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "default": "20",
+          "default": "",
           "document": "Number of the returned instances. Value range: [1, 100]. Default value: 20",
+          "example": "2",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag filter.",
+          "example": "无",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1724,6 +1739,15 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "TagItem",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

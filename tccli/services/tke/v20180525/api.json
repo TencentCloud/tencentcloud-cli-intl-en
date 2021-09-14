@@ -312,6 +312,12 @@
       "name": "Edits a node pool",
       "output": "ModifyClusterNodePoolResponse"
     },
+    "ModifyNodePoolInstanceTypes": {
+      "document": "This API is used to modify the model of instances in a node pool.",
+      "input": "ModifyNodePoolInstanceTypesRequest",
+      "name": "Modify the model of instances in a node pool",
+      "output": "ModifyNodePoolInstanceTypesResponse"
+    },
     "ModifyPrometheusAlertRule": {
       "document": "This API is used to modify an alarm rule. ",
       "input": "ModifyPrometheusAlertRuleRequest",
@@ -1430,6 +1436,7 @@
         {
           "default": "",
           "document": "CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC",
+          "example": "10.0.0.0/16",
           "member": "string",
           "name": "ClusterCIDR",
           "required": false,
@@ -1439,6 +1446,7 @@
         {
           "default": "",
           "document": "Whether to ignore ClusterCIDR conflict errors, which are not ignored by default",
+          "example": "false",
           "member": "bool",
           "name": "IgnoreClusterCIDRConflict",
           "required": false,
@@ -1448,6 +1456,7 @@
         {
           "default": "",
           "document": "Maximum number of pods on each node in the cluster",
+          "example": "256",
           "member": "uint64",
           "name": "MaxNodePodNum",
           "required": false,
@@ -1456,7 +1465,8 @@
         },
         {
           "default": "",
-          "document": "Maximum number of cluster services",
+          "document": "The maximum number of services in a cluster. The range is from 32 to 32768. When its power is not 2, it will round upward to the closest power of 2. Default value is 256.",
+          "example": "256",
           "member": "uint64",
           "name": "MaxClusterServiceNum",
           "required": false,
@@ -1466,6 +1476,7 @@
         {
           "default": "",
           "document": "The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.",
+          "example": "10.0.255.0/24",
           "member": "string",
           "name": "ServiceCIDR",
           "required": false,
@@ -1475,6 +1486,7 @@
         {
           "default": "",
           "document": "Subnet ID of the ENI in VPC-CNI network mode",
+          "example": "[\"subnet-aaa\"]",
           "member": "string",
           "name": "EniSubnetIds",
           "required": false,
@@ -1484,6 +1496,7 @@
         {
           "default": "",
           "document": "Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)",
+          "example": "120",
           "member": "int64",
           "name": "ClaimExpiredSeconds",
           "required": false,
@@ -3926,6 +3939,7 @@
         {
           "default": "",
           "document": "Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.",
+          "example": "TRUE",
           "member": "RunSecurityServiceEnabled",
           "name": "SecurityService",
           "required": false,
@@ -3935,8 +3949,19 @@
         {
           "default": "",
           "document": "Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.",
+          "example": "TRUE",
           "member": "RunMonitorServiceEnabled",
           "name": "MonitorService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.",
+          "example": "TRUE",
+          "member": "RunAutomationServiceEnabled",
+          "name": "AutomationService",
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -4526,6 +4551,16 @@
           "name": "DesiredPodNumber",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "#!/bin/sh echo \"hello world\"",
+          "member": "string",
+          "name": "PreStartUserScript",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -5120,6 +5155,51 @@
     },
     "ModifyClusterNodePoolResponse": {
       "document": "ModifyClusterNodePool response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNodePoolInstanceTypesRequest": {
+      "document": "ModifyNodePoolInstanceTypes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node pool ID",
+          "example": "np-xxx",
+          "member": "string",
+          "name": "NodePoolId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance types",
+          "example": "[\"ins-xxx\\n\"]",
+          "member": "string",
+          "name": "InstanceTypes",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNodePoolInstanceTypesResponse": {
+      "document": "ModifyNodePoolInstanceTypes response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6051,6 +6131,22 @@
         }
       ],
       "usage": "out"
+    },
+    "RunAutomationServiceEnabled": {
+      "document": "Describes the TAT service information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.",
+          "example": "TRUE",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RunInstancesForNode": {
       "document": "Node configuration parameters of different roles",

@@ -36,6 +36,12 @@
       "name": "Deletes ACL",
       "output": "DeleteAclResponse"
     },
+    "DeleteRouteTriggerTime": {
+      "document": "This API is used to modify the delayed trigger time of route deletion.",
+      "input": "DeleteRouteTriggerTimeRequest",
+      "name": "Modifies the route deletion trigger time",
+      "output": "DeleteRouteTriggerTimeResponse"
+    },
     "DeleteTopic": {
       "document": "This API is used to delete a CKafka topic.",
       "input": "DeleteTopicRequest",
@@ -729,6 +735,15 @@
           "name": "Principal",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The resource name list, which is in JSON string format. Only one of `ResourceName` and `resourceNameList` can be specified.",
+          "example": "[\\\"Topic1\\\",\\\"Topic2\\\"]",
+          "member": "string",
+          "name": "ResourceNameList",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1107,6 +1122,33 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRouteTriggerTimeRequest": {
+      "document": "DeleteRouteTriggerTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Modification time.",
+          "example": "2020-08-21 11:15:54",
+          "member": "string",
+          "name": "DelayTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRouteTriggerTimeResponse": {
+      "document": "DeleteRouteTriggerTime response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

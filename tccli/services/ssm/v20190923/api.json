@@ -6,6 +6,12 @@
       "name": "Creates Tencent Cloud service credential",
       "output": "CreateProductSecretResponse"
     },
+    "CreateSSHKeyPairSecret": {
+      "document": "This API is used to create a secret that hosts SSH keys.",
+      "input": "CreateSSHKeyPairSecretRequest",
+      "name": "Creates an SSH key secret",
+      "output": "CreateSSHKeyPairSecretResponse"
+    },
     "CreateSecret": {
       "document": "This API is used to create a KMS-encrypted Secret. You can create and store up to 1,000 Secrets in each region.",
       "input": "CreateSecretRequest",
@@ -71,6 +77,12 @@
       "input": "GetRegionsRequest",
       "name": "Obtains the list of regions displayed on Console",
       "output": "GetRegionsResponse"
+    },
+    "GetSSHKeyPairValue": {
+      "document": "This API is used to obtain the plaintext value of the SSH key secret.",
+      "input": "GetSSHKeyPairValueRequest",
+      "name": "Obtains the plaintext value of the SSH key secret",
+      "output": "GetSSHKeyPairValueResponse"
     },
     "GetSecretValue": {
       "document": "For user-defined credentials, this API is used to get the plaintext information of a credential by specifying the credential name and version.\nFor Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.",
@@ -301,6 +313,114 @@
       ],
       "type": "object"
     },
+    "CreateSSHKeyPairSecretRequest": {
+      "document": "CreateSSHKeyPairSecret request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Secret name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens and underscores and must begin with a letter or digit.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the project to which the created SSH key belongs.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Description, such as what it is used for. It contains up to 2,048 bytes.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies a KMS CMK to encrypt the secret.\nIf this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.\nYou can also specify a custom KMS CMK created in the same region for encryption.",
+          "example": "无",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSSHKeyPairSecretResponse": {
+      "document": "CreateSSHKeyPairSecret response structure.",
+      "members": [
+        {
+          "document": "Name of the created secret.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the created SSH key.",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name of the created SSH key.",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag return code. `0`: success; `1`: internal error; `2`: business processing error.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TagCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag return message.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TagMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSecretRequest": {
       "document": "CreateSecret request structure.",
       "members": [
@@ -409,6 +529,7 @@
         {
           "default": "",
           "document": "Name of the Secret to be deleted.",
+          "example": "testName",
           "member": "string",
           "name": "SecretName",
           "required": true,
@@ -416,11 +537,21 @@
         },
         {
           "default": "",
-          "document": "Scheduled deletion time, in days. If set to 0, the Secret is deleted immediately. A number in the range of 1 to 30 indicates the number of retention days. The Secret will be deleted after the set value.",
+          "document": "Scheduled deletion time (in days), indicating the number of retention days for the secret. Value range: 0-30. If it is `0`, the secret is deleted immediately.\nFor an SSH key secret, this field can only be `0`.",
+          "example": "1",
           "member": "uint64",
           "name": "RecoveryWindowInDays",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only valid for SSH key secrets. Valid values:\n`True`: deletes SSH key from both the secret and SSH key list in the CVM console. Note that the deletion will fail if the SSH key is already bound to a CVM instance.\n`False`: only deletes the SSH key information in the secret.",
+          "example": "False",
+          "member": "bool",
+          "name": "CleanSSHKey",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -563,7 +694,7 @@
       "document": "DescribeRotationDetail response structure.",
       "members": [
         {
-          "document": "Specifies whether to allow rotation. True: yes; False: no.",
+          "document": "Whether to enable rotation. `true`: enabled; `false`: disabled.",
           "example": "False",
           "member": "bool",
           "name": "EnableRotation",
@@ -733,7 +864,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "0: user-defined credential; 1: Tencent Cloud service credential.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "`0`: user-defined secret; `1`: database credential; `2`: SSH key secret.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "SecretType",
@@ -775,6 +906,33 @@
           "name": "RotationFrequency",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AssociatedInstanceIDs",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -900,6 +1058,96 @@
           "member": "string",
           "name": "Regions",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSSHKeyPairValueRequest": {
+      "document": "GetSSHKeyPairValue request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Secret name. This field is only valid for SSH key secrets.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSSHKeyPairValueResponse": {
+      "document": "GetSSHKeyPairValue response structure.",
+      "members": [
+        {
+          "document": "ID of the SSH key.",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Plaintext value of the Base64-encoded public key.",
+          "example": "无",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Plaintext value of the Base64-encoded private key.",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the project to which the SSH key belongs.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Description of the SSH key.\nThe description can be modified in the CVM console.",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name of the SSH key.\nThe name can be modified in the CVM console.",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1113,12 +1361,21 @@
         },
         {
           "default": "",
-          "document": "0: user-defined credential (default value).\n1: Tencent Cloud service credential.\nEither 1 or 0 can be selected for this parameter.",
+          "document": "`0` (default): user-defined secret.\n`1`: Tencent Cloud services secret.\n`2`: SSH key secret.",
           "example": "1",
           "member": "uint64",
           "name": "SecretType",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "Mysql",
+          "member": "string",
+          "name": "ProductName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1464,6 +1721,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AssociatedInstanceIDs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1571,7 +1858,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable rotation.\nTrue: enable rotation.\nFalse: disable rotation.",
+          "document": "Specifies whether to enable rotation.\n`true`: enables rotation.\n`false`: disables rotation.",
           "example": "True",
           "member": "bool",
           "name": "EnableRotation",
@@ -1589,7 +1876,7 @@
         },
         {
           "default": "",
-          "document": "User-Defined rotation start time in the format of 2006-01-02 15:04:05.\nWhen `EnableRotation` is `True`, if `RotationBeginTime` is left empty, the current time will be entered by default.",
+          "document": "User-defined rotation start time in the format of 2006-01-02 15:04:05.\nWhen `EnableRotation` is `true` and `RotationBeginTime` is left empty, the current time will be entered by default.",
           "example": "2006-01-02 15:04:05",
           "member": "string",
           "name": "RotationBeginTime",
