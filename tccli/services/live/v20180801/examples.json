@@ -11,9 +11,9 @@
     "AddLiveDomain": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=AddLiveDomain\r\n&DomainName=www.test.com\r\n&DomainType=0\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=AddLiveDomain\n&DomainName=www.test.com\n&DomainType=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Adding domain name"
+        "title": "Adding a domain name"
       }
     ],
     "AddLiveWatermark": [
@@ -173,7 +173,7 @@
     "DeleteLiveCallbackTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveCallbackTemplate\r\n&TemplateId=1000\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveCallbackTemplate\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -205,7 +205,7 @@
     "DeleteLiveRecordRule": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveRecordRule\r\n&DomainName=yourdomain.test.com\r\n&AppName=live\r\n&StreamName=stream\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveRecordRule\n&DomainName=yourdomain.test.com\n&AppName=live\n&StreamName=stream\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -213,7 +213,7 @@
     "DeleteLiveRecordTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveRecordTemplate\r\n&TemplateId=1000\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveRecordTemplate\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -229,7 +229,7 @@
     "DeleteLiveSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveSnapshotTemplate\r\n&TemplateId=1000\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveSnapshotTemplate\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -237,7 +237,7 @@
     "DeleteLiveTranscodeRule": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveTranscodeRule\r\n&DomainName=5000.livepush.myqcloud.com\r\n&AppName=live\r\n&StreamName=stream1\r\n&TemplateId=1000\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveTranscodeRule\n&DomainName=5000.livepush.myqcloud.com\n&AppName=live\n&StreamName=stream1\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -245,7 +245,7 @@
     "DeleteLiveTranscodeTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveTranscodeTemplate\r\n&TemplateId=1000\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveTranscodeTemplate\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -413,9 +413,9 @@
     "DescribeLiveDomains": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveDomains\r\n&DomainType=1\r\n&DomainStatus=1\r\n&PageSize=10\r\n&PageNum=1\r\n&IsDelayLive=0\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"AllCount\": 2,\n        \"DomainList\": [\n            {\n                \"Name\": \"abc.com\",\n                \"Type\": 1,\n                \"Status\": 1,\n                \"PlayType\": 1,\n                \"IsDelayLive\": 0,\n                \"CreateTime\": \"2018-08-29 10:00:00\",\n                \"BCName\": 1,\n                \"CurrentCName\": \"\",\n                \"TargetDomain\": \"abc.com.liveplay.myqcloud.com\",\n                \"RentTag\": 0,\n                \"RentExpireTime\": \"0000-00-00 00:00:00\"\n            }\n        ]\n    }\n}",
-        "title": "Querying domain name list"
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveDomains\n&DomainType=1\n&DomainStatus=1\n&PageSize=10\n&PageNum=1\n&IsDelayLive=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"AllCount\": 2,\n        \"CreateLimitCount\": 0,\n        \"DomainList\": [\n            {\n                \"Name\": \"abc.com\",\n                \"IsMiniProgramLive\": 0,\n                \"Type\": 1,\n                \"Status\": 1,\n                \"PlayType\": 1,\n                \"IsDelayLive\": 0,\n                \"CreateTime\": \"2018-08-29 10:00:00\",\n                \"BCName\": 1,\n                \"CurrentCName\": \"\",\n                \"TargetDomain\": \"abc.com.liveplay.myqcloud.com\",\n                \"RentTag\": 0,\n                \"RentExpireTime\": \"0000-00-00 00:00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the domain name list"
       }
     ],
     "DescribeLiveForbidStreamList": [
@@ -445,7 +445,7 @@
     "DescribeLiveRecordRules": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveRecordRules\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveRecordRules\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Rules\": [\n            {\n                \"CreateTime\": \"2018-09-12 15:52:01\",\n                \"UpdateTime\": \"2018-10-12 18:00:05\",\n                \"TemplateId\": 1000,\n                \"DomainName\": \"5000.livepush.myqcloud.com\",\n                \"AppName\": \"live\",\n                \"StreamName\": \"stream1\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -454,22 +454,22 @@
       {
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveRecordTemplate\n&TemplateId=10000\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Template\": {\n            \"TemplateId\": 1000,\n            \"TemplateName\": \"testName\",\n            \"Description\": \"test\",\n            \"FlvParam\": {\n                \"Enable\": 1,\n                \"RecordInterval\": 1800,\n                \"StorageTime\": 600\n            },\n            \"HlsParam\": {\n                \"Enable\": 0,\n                \"RecordInterval\": 1800,\n                \"StorageTime\": 600\n            },\n            \"IsDelayLive\": 0,\n            \"HlsSpecialParam\": {\n                \"FlowContinueDuration\": 60\n            }\n        },\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Template\": {\n            \"TemplateId\": 1000,\n            \"Mp4Param\": {\n                \"ClassId\": 0,\n                \"StorageMode\": \"xx\",\n                \"StorageTime\": 0,\n                \"VodSubAppId\": 0,\n                \"VodFileName\": \"xx\",\n                \"Enable\": 0,\n                \"RecordInterval\": 0,\n                \"Procedure\": \"xx\"\n            },\n            \"AacParam\": {\n                \"ClassId\": 0,\n                \"StorageMode\": \"xx\",\n                \"StorageTime\": 0,\n                \"VodSubAppId\": 0,\n                \"VodFileName\": \"xx\",\n                \"Enable\": 0,\n                \"RecordInterval\": 0,\n                \"Procedure\": \"xx\"\n            },\n            \"Mp3Param\": {\n                \"ClassId\": 0,\n                \"StorageMode\": \"xx\",\n                \"StorageTime\": 0,\n                \"VodSubAppId\": 0,\n                \"VodFileName\": \"xx\",\n                \"Enable\": 0,\n                \"RecordInterval\": 0,\n                \"Procedure\": \"xx\"\n            },\n            \"TemplateName\": \"testName\",\n            \"Description\": \"test\",\n            \"FlvParam\": {\n                \"Enable\": 1,\n                \"RecordInterval\": 1800,\n                \"StorageTime\": 600\n            },\n            \"HlsParam\": {\n                \"Enable\": 0,\n                \"RecordInterval\": 1800,\n                \"StorageTime\": 600\n            },\n            \"IsDelayLive\": 0,\n            \"HlsSpecialParam\": {\n                \"FlowContinueDuration\": 60\n            }\n        },\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeLiveRecordTemplates": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveRecordTemplates\r\n&IsDelayLive=1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"TemplateId\": 1000,\n                \"TemplateName\": \"testName\",\n                \"IsDelayLive\": 1,\n                \"Description\": \"test\",\n                \"FlvParam\": {\n                    \"Enable\": 0,\n                    \"RecordInterval\": 1800,\n                    \"StorageTime\": 6000,\n                    \"VodSubAppId\": 123456\n                },\n                \"HlsParam\": {\n                    \"Enable\": 1,\n                    \"RecordInterval\": 1800,\n                    \"StorageTime\": 600,\n                    \"VodSubAppId\": 123456\n                },\n                \"HlsSpecialParam\": {\n                    \"FlowContinueDuration\": 60\n                }\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveRecordTemplates\n&IsDelayLive=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"TemplateId\": 1000,\n                \"TemplateName\": \"testName\",\n                \"IsDelayLive\": 1,\n                \"Description\": \"test\",\n                \"FlvParam\": {\n                    \"Enable\": 0,\n                    \"RecordInterval\": 1800,\n                    \"StorageTime\": 6000,\n                    \"VodSubAppId\": 123456\n                },\n                \"Mp4Param\": {\n                    \"ClassId\": 0,\n                    \"StorageMode\": \"xx\",\n                    \"StorageTime\": 0,\n                    \"VodSubAppId\": 0,\n                    \"VodFileName\": \"xx\",\n                    \"Enable\": 0,\n                    \"RecordInterval\": 0,\n                    \"Procedure\": \"xx\"\n                },\n                \"AacParam\": {\n                    \"ClassId\": 0,\n                    \"StorageMode\": \"xx\",\n                    \"StorageTime\": 0,\n                    \"VodSubAppId\": 0,\n                    \"VodFileName\": \"xx\",\n                    \"Enable\": 0,\n                    \"RecordInterval\": 0,\n                    \"Procedure\": \"xx\"\n                },\n                \"Mp3Param\": {\n                    \"ClassId\": 0,\n                    \"StorageMode\": \"xx\",\n                    \"StorageTime\": 0,\n                    \"VodSubAppId\": 0,\n                    \"VodFileName\": \"xx\",\n                    \"Enable\": 0,\n                    \"RecordInterval\": 0,\n                    \"Procedure\": \"xx\"\n                },\n                \"HlsParam\": {\n                    \"Enable\": 1,\n                    \"RecordInterval\": 1800,\n                    \"StorageTime\": 600,\n                    \"VodSubAppId\": 123456\n                },\n                \"HlsSpecialParam\": {\n                    \"FlowContinueDuration\": 60\n                }\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
     "DescribeLiveSnapshotRules": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveSnapshotRules\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveSnapshotRules\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Rules\": [\n            {\n                \"CreateTime\": \"2018-09-12 15:52:01\",\n                \"UpdateTime\": \"2018-10-12 18:00:05\",\n                \"TemplateId\": 1000,\n                \"DomainName\": \"5000.livepush.myqcloud.com\",\n                \"AppName\": \"live\",\n                \"StreamName\": \"stream1\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -485,8 +485,8 @@
     "DescribeLiveSnapshotTemplates": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveSnapshotTemplates\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"TemplateId\": 1000,\n                \"TemplateName\": \"testName\",\n                \"Description\": \"test\",\n                \"SnapshotInterval\": 10,\n                \"Width\": 250,\n                \"Height\": 250,\n                \"PornFlag\": 0,\n                \"CosAppId\": 123,\n                \"CosBucket\": \"bucket\",\n                \"CosRegion\": \"beijing\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveSnapshotTemplates\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"TemplateId\": 1000,\n                \"TemplateName\": \"testName\",\n                \"Description\": \"test\",\n                \"SnapshotInterval\": 10,\n                \"Width\": 250,\n                \"Height\": 250,\n                \"PornFlag\": 0,\n                \"CosAppId\": 123,\n                \"CosBucket\": \"bucket\",\n                \"CosRegion\": \"beijing\",\n                \"CosPrefix\": \"xx\",\n                \"CosFileName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -550,7 +550,7 @@
       {
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveTranscodeTemplate\n&TemplateId=1000\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Template\": {\n            \"Vcodec\": \"h265\",\n            \"VideoBitrate\": 30,\n            \"Acodec\": \"aac\",\n            \"AudioBitrate\": 15,\n            \"Width\": 250,\n            \"Height\": 250,\n            \"Fps\": 30,\n            \"Gop\": 3,\n            \"Rotate\": 0,\n            \"Profile\": \"main\",\n            \"BitrateToOrig\": 0,\n            \"HeightToOrig\": 0,\n            \"NeedVideo\": 1,\n            \"NeedAudio\": 1,\n            \"TemplateId\": 1000,\n            \"TemplateName\": \"test\",\n            \"Description\": \"test\",\n            \"AiTransCode\": 0,\n            \"AdaptBitratePercent\": 0\n        },\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Template\": {\n            \"Profile\": \"xx\",\n            \"AudioBitrate\": 15,\n            \"Rotate\": 0,\n            \"BitrateToOrig\": 0,\n            \"TemplateName\": \"xx\",\n            \"VideoBitrate\": 30,\n            \"ShortEdgeAsHeight\": 0,\n            \"Vcodec\": \"xx\",\n            \"AdaptBitratePercent\": 0.0,\n            \"AiTransCode\": 0,\n            \"Height\": 250,\n            \"Width\": 250,\n            \"NeedAudio\": 1,\n            \"FpsToOrig\": 0,\n            \"Fps\": 30,\n            \"TemplateId\": 1000,\n            \"Description\": \"xx\",\n            \"HeightToOrig\": 0,\n            \"NeedVideo\": 1,\n            \"Gop\": 3,\n            \"Acodec\": \"xx\"\n        },\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -558,7 +558,7 @@
       {
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveTranscodeTemplates\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"Vcodec\": \"h265\",\n                \"VideoBitrate\": 30,\n                \"AudioBitrate\": 15,\n                \"Width\": 250,\n                \"Height\": 250,\n                \"Fps\": 30,\n                \"Gop\": 3,\n                \"Rotate\": 0,\n                \"Profile\": \"main\",\n                \"BitrateToOrig\": 0,\n                \"HeightToOrig\": 0,\n                \"NeedVideo\": 1,\n                \"NeedAudio\": 1,\n                \"TemplateId\": 1000,\n                \"TemplateName\": \"test\",\n                \"Description\": \"test\",\n                \"AiTransCode\": 0,\n                \"AdaptBitratePercent\": 0\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Templates\": [\n            {\n                \"Profile\": \"xx\",\n                \"AudioBitrate\": 15,\n                \"Rotate\": 0,\n                \"BitrateToOrig\": 0,\n                \"TemplateName\": \"xx\",\n                \"VideoBitrate\": 30,\n                \"ShortEdgeAsHeight\": 0,\n                \"Vcodec\": \"xx\",\n                \"AdaptBitratePercent\": 0.0,\n                \"AiTransCode\": 0,\n                \"Height\": 250,\n                \"Width\": 250,\n                \"NeedAudio\": 1,\n                \"FpsToOrig\": 0,\n                \"Fps\": 30,\n                \"TemplateId\": 1000,\n                \"Description\": \"xx\",\n                \"HeightToOrig\": 0,\n                \"NeedVideo\": 1,\n                \"Gop\": 3,\n                \"Acodec\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -685,9 +685,9 @@
     "EnableLiveDomain": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=EnableLiveDomain\r\n&DomainName=www.test.com\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=EnableLiveDomain\n&DomainName=www.test.com\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Enabling domain name"
+        "title": "Enabling a domain name"
       }
     ],
     "ForbidLiveDomain": [
@@ -749,7 +749,7 @@
     "ModifyLivePlayDomain": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLivePlayDomain\r\n&DomainName=www.test.com\r\n&PlayType=1\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=ModifyLivePlayDomain\n&DomainName=www.test.com\n&PlayType=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Sample request"
       }
@@ -773,7 +773,7 @@
     "ModifyLiveSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveSnapshotTemplate\r\n&TemplateId=1000\r\n&TemplateName=testName\r\n&Description=testDesc\r\n&SnapshotInterval=10\r\n&Width=250\r\n&Height=250\r\n&PornFlag=0\r\n&CosAppId=123\r\n&CosBucket=bucket\r\n&CosRegion=beijing\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveSnapshotTemplate\n&TemplateId=1000\n&TemplateName=testName\n&Description=testDesc\n&SnapshotInterval=10\n&Width=250\n&Height=250\n&PornFlag=0\n&CosAppId=123\n&CosBucket=bucket\n&CosRegion=beijing\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }

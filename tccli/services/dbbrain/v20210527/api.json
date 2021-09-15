@@ -162,6 +162,12 @@
       "name": "Gets SQL statement optimization suggestions",
       "output": "DescribeUserSqlAdviceResponse"
     },
+    "KillMySqlThreads": {
+      "document": "This API is used to interrupt the current session according to the session ID. It needs to be called twice to commit the session interruption task in two stages. In the pre-commit stage, the stage value is `Prepare`, and the returned value is `SqlExecId’. In the commit stage, the stage value is `Commit`, and `SqlExecId` will be passed in as a parameter. Then the session process will be terminated.",
+      "input": "KillMySqlThreadsRequest",
+      "name": "Kills MySQL threads",
+      "output": "KillMySqlThreadsResponse"
+    },
     "ModifyDiagDBInstanceConf": {
       "document": "This API is used to enable/disable instance inspection.",
       "input": "ModifyDiagDBInstanceConfRequest",
@@ -3209,6 +3215,87 @@
         }
       ],
       "usage": "out"
+    },
+    "KillMySqlThreadsRequest": {
+      "document": "KillMySqlThreads request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-test1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The stage of a session killing task. Valid values: Prepare (preparation stage), Commit (commit stage).",
+          "example": "Commit",
+          "member": "string",
+          "name": "Stage",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID list of MySQL sessions to be killed. This parameter is used in the “Prepare” stage.",
+          "example": "[\"4714056\"]",
+          "member": "int64",
+          "name": "Threads",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Execution ID. This parameter is used in the “Commit” stage.",
+          "example": "ItNrO0i3lvE3",
+          "member": "string",
+          "name": "SqlExecId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "KillMySqlThreadsResponse": {
+      "document": "KillMySqlThreads response structure.",
+      "members": [
+        {
+          "document": "The ID list of MySQL sessions that have been killed.",
+          "example": "[536284]",
+          "member": "int64",
+          "name": "Threads",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Execution ID, which is output in the “Prepare” stage and used to specify the ID of the session to be killed in the “Commit” stage.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"AEnnKexGijsX\"",
+          "member": "string",
+          "name": "SqlExecId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "MailConfiguration": {
       "document": "Email sending configuration",

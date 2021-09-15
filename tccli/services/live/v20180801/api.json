@@ -1419,7 +1419,8 @@
       "members": [
         {
           "default": "",
-          "document": "Input stream name of up to 80 bytes, which is a string containing letters, digits, and underscores.",
+          "document": "Input stream name, which can contain up to 80 bytes of letters, digits, and underscores.\nThe value should be the name of an input stream for stream mix when `LayoutParams.InputType` is set to `0` (audio and video), `4` (pure audio), or `5` (pure video).\nThe value can be a random name for identification, such as `Canvas1` or `Picture1`, when `LayoutParams.InputType` is set to `2` (image) or `3` (canvas).",
+          "example": "ExampleStreamName1",
           "member": "string",
           "name": "InputStreamName",
           "required": true,
@@ -1429,6 +1430,7 @@
         {
           "default": "",
           "document": "Input stream layout parameter.",
+          "example": "无",
           "member": "CommonMixLayoutParams",
           "name": "LayoutParams",
           "required": true,
@@ -1438,6 +1440,7 @@
         {
           "default": "",
           "document": "Input stream crop parameter.",
+          "example": "无",
           "member": "CommonMixCropParams",
           "name": "CropParams",
           "required": false,
@@ -2223,6 +2226,7 @@
         {
           "default": "",
           "document": "Template name.\nMaximum length: 255 bytes.\nOnly letters, digits, underscores, and hyphens can be contained.",
+          "example": "testName",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -2231,6 +2235,7 @@
         {
           "default": "",
           "document": "COS application ID.",
+          "example": "123",
           "member": "int64",
           "name": "CosAppId",
           "required": true,
@@ -2239,6 +2244,7 @@
         {
           "default": "",
           "document": "COS bucket name.\nNote: the value of `CosBucket` cannot contain `-[appid]`.",
+          "example": "bucket",
           "member": "string",
           "name": "CosBucket",
           "required": true,
@@ -2247,6 +2253,7 @@
         {
           "default": "",
           "document": "COS region.",
+          "example": "beijing",
           "member": "string",
           "name": "CosRegion",
           "required": true,
@@ -2255,6 +2262,7 @@
         {
           "default": "",
           "document": "Description.\nMaximum length: 1,024 bytes.\nOnly letters, digits, underscores, and hyphens can be contained.",
+          "example": "testDesc",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -2263,6 +2271,7 @@
         {
           "default": "",
           "document": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-300s.",
+          "example": "10",
           "member": "int64",
           "name": "SnapshotInterval",
           "required": false,
@@ -2270,7 +2279,8 @@
         },
         {
           "default": "",
-          "document": "Screenshot width. Default value: 0 (original width).",
+          "document": "Screenshot width. Default value: `0` (original width)\nValue range: 0-3000",
+          "example": "250",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -2278,7 +2288,8 @@
         },
         {
           "default": "",
-          "document": "Screenshot height. Default value: 0 (original height).",
+          "document": "Screenshot height. Default value: `0` (original height)\nValue range: 0-2000",
+          "example": "250",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -2287,6 +2298,7 @@
         {
           "default": "",
           "document": "Whether to enable porn detection. 0: no, 1: yes. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "PornFlag",
           "required": false,
@@ -2295,6 +2307,7 @@
         {
           "default": "",
           "document": "COS Bucket folder prefix.\nIf no value is entered, the default value\n`/{Year}-{Month}-{Day}`\nwill be used.",
+          "example": "12",
           "member": "string",
           "name": "CosPrefix",
           "required": false,
@@ -2303,6 +2316,7 @@
         {
           "default": "",
           "document": "COS filename.\nIf no value is entered, the default value \n`{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}`\nwill be used.",
+          "example": "abc",
           "member": "string",
           "name": "CosFileName",
           "required": false,
@@ -2641,6 +2655,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "livetest",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -2649,6 +2664,7 @@
         {
           "default": "",
           "document": "Push domain name.",
+          "example": "5000.live.push.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -2657,6 +2673,7 @@
         {
           "default": "",
           "document": "Push path.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -2664,7 +2681,8 @@
         },
         {
           "default": "",
-          "document": "Recording end time in UNIX timestamp format. “EndTime” should be later than “StartTime”, and the duration between “EndTime” and “StartTime” is up to 24 hours.",
+          "document": "Recording end time in UNIX timestamp format. `EndTime` should be later than `StartTime` and the current time, and the duration between `EndTime` and `StartTime` is up to 24 hours.",
+          "example": "1589904000",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -2672,7 +2690,8 @@
         },
         {
           "default": "",
-          "document": "Recording start time in UNIX timestamp format. If “StartTime” is not entered, recording will start immediately after the API is successfully called. “StartTime” should be within 6 days from the current time.",
+          "document": "Recording start time in UNIX timestamp format. Leaving this parameter empty means starting recording now. `StartTime` cannot be later than the current time plus 6 days.",
+          "example": "1589889600",
           "member": "uint64",
           "name": "StartTime",
           "required": false,
@@ -2681,6 +2700,7 @@
         {
           "default": "",
           "document": "Push type. Default value: 0. Valid values:\n0: LVB push.\n1: mixed stream, i.e., A + B = C mixed stream.",
+          "example": "0",
           "member": "uint64",
           "name": "StreamType",
           "required": false,
@@ -2689,6 +2709,7 @@
         {
           "default": "",
           "document": "Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.",
+          "example": "0",
           "member": "uint64",
           "name": "TemplateId",
           "required": false,
@@ -2697,6 +2718,7 @@
         {
           "default": "",
           "document": "Extension field which is not defined now. It is empty by default.",
+          "example": "\"\"",
           "member": "string",
           "name": "Extension",
           "required": false,
@@ -4130,17 +4152,30 @@
       "members": [
         {
           "document": "Total number of results.",
+          "example": "2",
           "member": "uint64",
           "name": "AllCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "List of domain name details.",
+          "example": "无",
           "member": "DomainInfo",
           "name": "DomainList",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The number of domain names that can be added\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "77",
+          "member": "int64",
+          "name": "CreateLimitCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8533,7 +8568,7 @@
       "members": [
         {
           "default": "",
-          "document": "Max recording time per file\nDefault value: `1800` (seconds)\nValue range: 60-7200\nThis parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.",
+          "document": "Max recording time per file\nDefault value: `1800` (seconds)\nValue range: 30-7200\nThis parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.",
           "example": "400",
           "member": "int64",
           "name": "RecordInterval",
