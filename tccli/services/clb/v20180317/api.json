@@ -174,6 +174,18 @@
       "name": "Gets the CLB exclusive logset",
       "output": "DescribeClsLogSetResponse"
     },
+    "DescribeCustomizedConfigAssociateList": {
+      "document": "This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.",
+      "input": "DescribeCustomizedConfigAssociateListRequest",
+      "name": "Queries the bound server or configured location",
+      "output": "DescribeCustomizedConfigAssociateListResponse"
+    },
+    "DescribeCustomizedConfigList": {
+      "document": "This API is used to pull custom configuration lists to return the user configuration of `AppId`.",
+      "input": "DescribeCustomizedConfigListRequest",
+      "name": "Querying configuration details",
+      "output": "DescribeCustomizedConfigListResponse"
+    },
     "DescribeListeners": {
       "document": "This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.",
       "input": "DescribeListenersRequest",
@@ -857,6 +869,93 @@
       ],
       "usage": "in"
     },
+    "BindDetailItem": {
+      "document": "Binding details including listener name, protocol, url and vport",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies the ID of CLB to be bound",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies the ID of listener to be bound\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies the domain name to be bound\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sets the bound rule.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LocationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Listener name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ListenerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Listener protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Listener port.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "URL of the location.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UconfigId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "BlockedIP": {
       "document": "IP added to blocklist 12306",
       "members": [
@@ -1394,6 +1493,66 @@
       ],
       "usage": "both"
     },
+    "ConfigListItem": {
+      "document": "Configuration content",
+      "members": [
+        {
+          "default": "",
+          "document": "Configuration ID.",
+          "member": "string",
+          "name": "UconfigId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration type.",
+          "member": "string",
+          "name": "ConfigType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ConfigName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration content.",
+          "member": "string",
+          "name": "ConfigContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creates configuration time.",
+          "member": "string",
+          "name": "CreateTimestamp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modifies configuration time.",
+          "member": "string",
+          "name": "UpdateTimestamp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateClsLogSetRequest": {
       "document": "CreateClsLogSet request structure.",
       "members": [
@@ -1631,7 +1790,7 @@
         },
         {
           "default": "",
-          "document": "Network ID of the backend target server of CLB, which can be obtained through the DescribeVpcEx API. If this parameter is not passed in, it will default to a basic network (\"0\").",
+          "document": "Network ID of the target CLB real server, such as `vpc-12345678`, which can be obtained through the [DescribeVpcEx](https://intl.cloud.tencent.com/document/product/215/1372?from_cn_redirect=1) API. If this parameter is not specified, it will default to `DefaultVPC`. This parameter is required for creating a CLB instance.",
           "example": "vpc-30xq****",
           "member": "string",
           "name": "VpcId",
@@ -1640,7 +1799,7 @@
         },
         {
           "default": "",
-          "document": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet.",
+          "document": "A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is required for creating a CLB instance.",
           "example": "subnet-dva8****",
           "member": "string",
           "name": "SubnetId",
@@ -1649,7 +1808,7 @@
         },
         {
           "default": "",
-          "document": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.",
+          "document": "Project ID of the CLB instance, which can be obtained through the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this parameter is not specified, it will default to the default project.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -1658,7 +1817,7 @@
         },
         {
           "default": "",
-          "document": "IP version. Valid values: IPv4, IPv6, IPv6FullChain. Default value: IPv4. This parameter is applicable only to public network CLB instances.",
+          "document": "IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). This parameter is only for public network CLB instances.",
           "example": "IPV4",
           "member": "string",
           "name": "AddressIPVersion",
@@ -1712,7 +1871,7 @@
         },
         {
           "default": "",
-          "document": "Tags a CLB instance when purchasing it",
+          "document": "Tags a CLB instance when purchasing it.",
           "example": "无",
           "member": "TagInfo",
           "name": "Tags",
@@ -1721,7 +1880,7 @@
         },
         {
           "default": "",
-          "document": "Applies for CLB instances for a specified VIP",
+          "document": "Specifies a VIP for the CLB instance.\n<ul><li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.</li>\n<li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.\n</li></ul>",
           "example": "139.X.X.X",
           "member": "string",
           "name": "Vip",
@@ -1739,12 +1898,21 @@
         },
         {
           "default": "",
-          "document": "Dedicated cluster information",
+          "document": "Exclusive cluster information. This parameter is required for creating exclusive clusters of CLB instances.",
           "example": "无",
           "member": "ExclusiveCluster",
           "name": "ExclusiveCluster",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "SlaType",
+          "required": false,
+          "type": "string"
         },
         {
           "default": "",
@@ -2764,6 +2932,168 @@
           "name": "HealthLogsetId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomizedConfigAssociateListRequest": {
+      "document": "DescribeCustomizedConfigAssociateList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Configuration ID.",
+          "example": "pz-fi018waq",
+          "member": "string",
+          "name": "UconfigId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start position of the binding list. Default: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of binding lists to pull. Default: 20.",
+          "example": "3",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Searches for the domain name.",
+          "example": "a.cc",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomizedConfigAssociateListResponse": {
+      "document": "DescribeCustomizedConfigAssociateList response structure.",
+      "members": [
+        {
+          "document": "List of bound resources",
+          "example": "无",
+          "member": "BindDetailItem",
+          "name": "BindList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of bound resources",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomizedConfigListRequest": {
+      "document": "DescribeCustomizedConfigList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Configuration type. Valid values: `CLB` (CLB-specific configs), `SERVER` (domain name-specific configs), and `LOCATION` (forwarding rule-specific configs).",
+          "example": "CLB",
+          "member": "string",
+          "name": "ConfigType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results per page. Default: 20.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies the name of configs to query. Fuzzy match is supported.",
+          "example": "custom",
+          "member": "string",
+          "name": "ConfigName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration ID.",
+          "example": "pz-12345678",
+          "member": "string",
+          "name": "UconfigIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The filters are:\n<li> loadbalancer-id - String - Required: no - (filter) CLB instance ID, such as \"lb-12345678\". </li>\n<li> vip - String - Required: no - (filter) CLB instance VIP, such as \"1.1.1.1\" and \"2204::22:3\". </li>",
+          "example": "[{\"Name\":\"loadbalancer-id\",\"Values\":[\"lb-12345678\"]}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomizedConfigListResponse": {
+      "document": "DescribeCustomizedConfigList response structure.",
+      "members": [
+        {
+          "document": "Configuration list.",
+          "example": "[{",
+          "member": "ConfigListItem",
+          "name": "ConfigList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of configurations.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5533,6 +5863,7 @@
         {
           "default": "",
           "document": "Unique CLB ID",
+          "example": "lb-6efswuxa",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5541,6 +5872,7 @@
         {
           "default": "",
           "document": "CLB instance name",
+          "example": "newlbname",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -5549,6 +5881,7 @@
         {
           "default": "",
           "document": "Region information of the real server bound to a CLB.",
+          "example": "无",
           "member": "TargetRegionInfo",
           "name": "TargetRegionInfo",
           "required": false,
@@ -5557,6 +5890,7 @@
         {
           "default": "",
           "document": "Network billing parameter",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetChargeInfo",
           "required": false,
@@ -5565,6 +5899,7 @@
         {
           "default": "",
           "document": "Whether the target opens traffic from CLB to the internet. If yes (true), only security groups on CLB will be verified; if no (false), security groups on both CLB and backend instance need to be verified.",
+          "example": "true",
           "member": "bool",
           "name": "LoadBalancerPassToTarget",
           "required": false,
@@ -5573,8 +5908,18 @@
         {
           "default": "",
           "document": "Whether to enable SnatPro",
+          "example": "false",
           "member": "bool",
           "name": "SnatPro",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable deletion protection.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeleteProtect",
           "required": false,
           "type": "bool"
         }

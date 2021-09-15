@@ -274,6 +274,22 @@
         "title": "Obtaining the CLB exclusive logset"
       }
     ],
+    "DescribeCustomizedConfigAssociateList": [
+      {
+        "document": "",
+        "input": "https://clb.tencentcloudapi.com/?Action=DescribeCustomizedConfigAssociateList\n&UconfigId=pz-fi018waq\n&Offset=0\n&Limit=3\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"BindList\": [\n            {\n                \"LoadBalancerId\": \"lb-az5a9oyo\",\n                \"ListenerId\": \"lbl-nppnktey\",\n                \"Domain\": \"www.aaa.com\",\n                \"LocationId\": \"loc-nppnktey\",\n                \"ListenerName\": \"test\",\n                \"Protocol\": \"http\",\n                \"Vport\": 80,\n                \"Url\": \"\",\n                \"UconfigId\": \"pz-n651fsue\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba11\"\n    }\n}",
+        "title": "Querying the bound server or configured location"
+      }
+    ],
+    "DescribeCustomizedConfigList": [
+      {
+        "document": "",
+        "input": "https://clb.tencentcloudapi.com/?Action=DescribeCustomizedConfigList\n&ConfigType=CLB\n&Offset=0\n&Limit=3\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ConfigList\": [\n            {\n                \"UconfigId\": \"pz-go2gs3d6\",\n                \"ConfigType\": \"CLB\",\n                \"ConfigContent\": \"client_max_body_size 1m;\",\n                \"ConfigName\": \"122222\",\n                \"CreateTimestamp\": \"2019-11-28 20:44:24\",\n                \"UpdateTimestamp\": \"2020-03-01 11:11:27\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"d6f74bc7-2b26-4f5f-9dd8-6f0c8e8e2cc2\"\n    }\n}",
+        "title": "Querying configuration details"
+      }
+    ],
     "DescribeListeners": [
       {
         "document": "",
