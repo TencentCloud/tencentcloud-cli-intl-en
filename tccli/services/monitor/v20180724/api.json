@@ -2560,6 +2560,7 @@
         {
           "default": "",
           "document": "Module name. Enter \"monitor\" here",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -2568,6 +2569,7 @@
         {
           "default": "",
           "document": "Page number. Minimum value: 1",
+          "example": "1",
           "member": "int64",
           "name": "PageNumber",
           "required": true,
@@ -2576,6 +2578,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Value range: 1–200",
+          "example": "20",
           "member": "int64",
           "name": "PageSize",
           "required": true,
@@ -2584,6 +2587,7 @@
         {
           "default": "",
           "document": "Sort by update time. Valid values: ASC (ascending), DESC (descending)",
+          "example": "DESC",
           "member": "string",
           "name": "Order",
           "required": true,
@@ -2592,6 +2596,7 @@
         {
           "default": "",
           "document": "Root account `uid`, which is used to create preset notifications",
+          "example": "1234567",
           "member": "int64",
           "name": "OwnerUid",
           "required": false,
@@ -2600,6 +2605,7 @@
         {
           "default": "",
           "document": "Alarm notification template name, which is used for fuzzy search",
+          "example": "模板",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -2608,6 +2614,7 @@
         {
           "default": "",
           "document": "Filter by recipient. The type of notified users should be selected for the alarm notification template. Valid values: USER (user), GROUP (user group). If this parameter is left empty, no filter by recipient will be performed",
+          "example": "USER",
           "member": "string",
           "name": "ReceiverType",
           "required": false,
@@ -2616,6 +2623,7 @@
         {
           "default": "",
           "document": "Recipient object list",
+          "example": "[]",
           "member": "int64",
           "name": "UserIds",
           "required": false,
@@ -2624,8 +2632,18 @@
         {
           "default": "",
           "document": "Recipient group list",
+          "example": "[]",
           "member": "int64",
           "name": "GroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by notification template ID. If an empty array is passed in or if this parameter is left empty, the filter operation will not be performed.",
+          "example": "[\"notice-ah28cv9d\"]",
+          "member": "string",
+          "name": "NoticeIds",
           "required": false,
           "type": "list"
         }

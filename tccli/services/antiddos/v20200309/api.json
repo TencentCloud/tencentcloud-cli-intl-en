@@ -132,11 +132,29 @@
       "name": "Gets the Anti-DDoS protection status",
       "output": "DescribeBasicDeviceStatusResponse"
     },
+    "DescribeBizTrend": {
+      "document": "This API is used to get the traffic flow data collected in the specified period.",
+      "input": "DescribeBizTrendRequest",
+      "name": "Gets the traffic flow data collected in the specified period",
+      "output": "DescribeBizTrendResponse"
+    },
     "DescribeBlackWhiteIpList": {
       "document": "This API is used to get an Anti-DDoS IP blocklist/allowlist.",
       "input": "DescribeBlackWhiteIpListRequest",
       "name": "Gets an Anti-DDoS IP blocklist/allowlist",
       "output": "DescribeBlackWhiteIpListResponse"
+    },
+    "DescribeCCTrend": {
+      "document": "This API is used to get CC attack data, including total peak requests (QPS) and attack requests (QPS).",
+      "input": "DescribeCCTrendRequest",
+      "name": "Gets CC attack data",
+      "output": "DescribeCCTrendResponse"
+    },
+    "DescribeDDoSTrend": {
+      "document": "This API is used to get DDoS attack traffic bandwidth and attack packet rate.",
+      "input": "DescribeDDoSTrendRequest",
+      "name": "Gets DDoS attack data",
+      "output": "DescribeDDoSTrendResponse"
     },
     "DescribeDefaultAlarmThreshold": {
       "document": "This API is used to get the default alarm threshold of an IP.",
@@ -1934,12 +1952,129 @@
       "document": "DescribeBasicDeviceStatus response structure.",
       "members": [
         {
-          "document": "The resource and status is returned.",
+          "document": "Status of the specified Anti-DDoS resource. Valid values:\n`1`: The IP is blocked.\n`2`: The P is normal.\n`3`: The IP is being attacked.",
           "example": "无",
           "member": "KeyValue",
           "name": "Data",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBizTrendRequest": {
+      "document": "DescribeBizTrend request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Statistical method. Valid values: `max`, `min`, `avg`, `sum`. It can only be `max` if the statistical dimension is traffic rate or packet rate.",
+          "example": "xx",
+          "member": "string",
+          "name": "Statistics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
+          "example": "xx",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sampling interval. Valid values: `300`, `1800`, `3600`, `21600`, `86400`",
+          "example": "1",
+          "member": "uint64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Beginning of the time range for the query, such as `2020-09-22 00:00:00`.",
+          "example": "2020-09-22 00:00:00",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End of the time range for the query, such as `2020-09-22 00:00:00`.",
+          "example": "2020-09-22 00:00:00",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metric. Valid values: `connum`, `new_conn`, `inactive_conn`, `intraffic`, `outtraffic`, `inpkg`, `outpkg`, `qps`",
+          "example": "xx",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "You can query data by specifying a domain name when the metric is `qps`.",
+          "example": "xx",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol and port list, which is valid when the metric is `connum`, `new_conn` or `inactive_conn`. Valid protocols: `TCP`, `UDP`, `HTTP`, `HTTPS`",
+          "example": "无",
+          "member": "ProtocolPort",
+          "name": "ProtoInfo",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBizTrendResponse": {
+      "document": "DescribeBizTrend response structure.",
+      "members": [
+        {
+          "document": "Value at a time point on the curve",
+          "example": "无",
+          "member": "float",
+          "name": "DataList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistical dimension",
+          "example": "intraffic",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1985,6 +2120,339 @@
           "name": "WhiteIpList",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCCTrendRequest": {
+      "document": "DescribeCCTrend request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic",
+          "example": "bgp",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance IP",
+          "example": "3.3.3.3",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)",
+          "example": "3600",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Beginning of the time range for the query",
+          "example": "2018-08-2715:05:10",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End of the time range for the query",
+          "example": "2018-08-2716:05:10",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests",
+          "example": "inqps",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Optional) Domain name",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID. Leave this field empty when `Business` is `basic`, as basic protection does not require an instance.",
+          "example": "bgp-00000010",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCCTrendResponse": {
+      "document": "DescribeCCTrend response structure.",
+      "members": [
+        {
+          "document": "Number of values returned",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic",
+          "example": "bgp",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance IP",
+          "example": "3.3.3.3",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)",
+          "example": "300",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Beginning of the time range for the query",
+          "example": "2018-08-27 15:05:10",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "End of the time range for the query",
+          "example": "2018-08-27 16:05:10",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Value array",
+          "example": "[1234]",
+          "member": "uint64",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "bgp-00000010",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests",
+          "example": "inqps",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDDoSTrendRequest": {
+      "document": "DescribeDDoSTrend request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic",
+          "example": "bgp",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance IP",
+          "example": "3.3.3.3",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)",
+          "example": "3600",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Beginning of the time range for the query",
+          "example": "2018-08-2715:05:10",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End of the time range for the query",
+          "example": "2018-08-2716:05:10",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metric. Valid values: `bps`: attack traffic bandwidth; `pps`: attack packet rate",
+          "example": "bps",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID. Leave this field empty when `Business` is `basic`, as basic protection does not require an instance.",
+          "example": "bgp-00000010",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDDoSTrendResponse": {
+      "document": "DescribeDDoSTrend response structure.",
+      "members": [
+        {
+          "document": "Number of values returned",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic",
+          "example": "bgp",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance IP",
+          "example": "3.3.3.3",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)",
+          "example": "3600",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Beginning of the time range for the query",
+          "example": "2018-08-27 15:05:10",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "End of the time range for the query",
+          "example": "2018-08-27 16:05:10",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Value array. The unit for attack traffic bandwidth is Mbps, and that for the packet rate is pps.",
+          "example": "[1234]",
+          "member": "uint64",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "bgp-00000010",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Metric. Valid values: `bps`: attack traffic bandwidth; `pps`: attack packet rate",
+          "example": "bps",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -4186,6 +4654,32 @@
         }
       ],
       "usage": "out"
+    },
+    "ProtocolPort": {
+      "document": "\"Protocol\" and \"Port\" parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `tcp`, `udp`",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port",
+          "example": "无",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ProxyTypeInfo": {
       "document": "Forwarding type",

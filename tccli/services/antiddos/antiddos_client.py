@@ -148,7 +148,7 @@ def doModifyDDoSSpeedLimitConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeL7RulesBySSLCertId(args, parsed_globals):
+def doDescribeBizTrend(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -164,9 +164,9 @@ def doDescribeL7RulesBySSLCertId(args, parsed_globals):
     client = mod.AntiddosClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeL7RulesBySSLCertIdRequest()
+    model = models.DescribeBizTrendRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeL7RulesBySSLCertId(model)
+    rsp = client.DescribeBizTrend(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -580,6 +580,33 @@ def doDescribeListDDoSAI(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCCTrend(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AntiddosClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCCTrendRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeCCTrend(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateIPAlarmThresholdConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -599,6 +626,33 @@ def doCreateIPAlarmThresholdConfig(args, parsed_globals):
     model = models.CreateIPAlarmThresholdConfigRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateIPAlarmThresholdConfig(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeL7RulesBySSLCertId(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AntiddosClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeL7RulesBySSLCertIdRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeL7RulesBySSLCertId(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -815,6 +869,33 @@ def doCreateBlackWhiteIpList(args, parsed_globals):
     model = models.CreateBlackWhiteIpListRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateBlackWhiteIpList(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDDoSTrend(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AntiddosClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDDoSTrendRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeDDoSTrend(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1217,7 +1298,7 @@ ACTION_MAP = {
     "DescribeListProtocolBlockConfig": doDescribeListProtocolBlockConfig,
     "DeleteDDoSSpeedLimitConfig": doDeleteDDoSSpeedLimitConfig,
     "ModifyDDoSSpeedLimitConfig": doModifyDDoSSpeedLimitConfig,
-    "DescribeL7RulesBySSLCertId": doDescribeL7RulesBySSLCertId,
+    "DescribeBizTrend": doDescribeBizTrend,
     "DeleteDDoSGeoIPBlockConfig": doDeleteDDoSGeoIPBlockConfig,
     "ModifyPacketFilterConfig": doModifyPacketFilterConfig,
     "CreatePacketFilterConfig": doCreatePacketFilterConfig,
@@ -1233,7 +1314,9 @@ ACTION_MAP = {
     "CreateWaterPrintConfig": doCreateWaterPrintConfig,
     "DescribeBlackWhiteIpList": doDescribeBlackWhiteIpList,
     "DescribeListDDoSAI": doDescribeListDDoSAI,
+    "DescribeCCTrend": doDescribeCCTrend,
     "CreateIPAlarmThresholdConfig": doCreateIPAlarmThresholdConfig,
+    "DescribeL7RulesBySSLCertId": doDescribeL7RulesBySSLCertId,
     "DescribeListPacketFilterConfig": doDescribeListPacketFilterConfig,
     "CreateDDoSGeoIPBlockConfig": doCreateDDoSGeoIPBlockConfig,
     "DescribeListProtectThresholdConfig": doDescribeListProtectThresholdConfig,
@@ -1242,6 +1325,7 @@ ACTION_MAP = {
     "DescribeListBGPInstances": doDescribeListBGPInstances,
     "AssociateDDoSEipLoadBalancer": doAssociateDDoSEipLoadBalancer,
     "CreateBlackWhiteIpList": doCreateBlackWhiteIpList,
+    "DescribeDDoSTrend": doDescribeDDoSTrend,
     "DeleteBlackWhiteIpList": doDeleteBlackWhiteIpList,
     "DescribeListDDoSSpeedLimitConfig": doDescribeListDDoSSpeedLimitConfig,
     "DeleteWaterPrintConfig": doDeleteWaterPrintConfig,

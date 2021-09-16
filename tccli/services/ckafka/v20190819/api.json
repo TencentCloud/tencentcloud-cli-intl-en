@@ -1,5 +1,11 @@
 {
   "actions": {
+    "BatchCreateAcl": {
+      "document": "This API is used to create ACL policies in batches.",
+      "input": "BatchCreateAclRequest",
+      "name": "Creates ACL policies in batches",
+      "output": "BatchCreateAclResponse"
+    },
     "CreateAcl": {
       "document": "This API is used to add an ACL policy.",
       "input": "CreateAclRequest",
@@ -289,6 +295,52 @@
       ],
       "usage": "out"
     },
+    "AclRuleInfo": {
+      "document": "Four pieces of information of ACL rules: source IP address, destination IP address, source port, and destination port",
+      "members": [
+        {
+          "default": "",
+          "document": "ACL operation types. Enumerated values: `All` (all operations), `Read` (read), `Write` (write).",
+          "example": "Read",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission types: `Deny`, `Allow`.",
+          "example": "Allow",
+          "member": "string",
+          "name": "PermissionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The default value is `*`, which means that any host can access the topic. Currently, CKafka does not support the host value being specified as * or IP range.",
+          "example": "*",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of users allowed to access the topic. Default value: `User:*`, which means all users. The current user must be in the user list. Add the prefix `User:` before the user name (`User:A`, for example).",
+          "example": "User:*",
+          "member": "string",
+          "name": "Principal",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "AppIdResponse": {
       "document": "`AppId` query result",
       "members": [
@@ -336,6 +388,69 @@
         }
       ],
       "usage": "out"
+    },
+    "BatchCreateAclRequest": {
+      "document": "BatchCreateAcl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "ckafka-*****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ACL resource type. Default value: `2` (topic).",
+          "example": "2",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Resource list array.",
+          "example": "[\"test1\",\"test2\"]",
+          "member": "string",
+          "name": "ResourceNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ACL rule list.",
+          "example": "无",
+          "member": "AclRuleInfo",
+          "name": "RuleList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchCreateAclResponse": {
+      "document": "BatchCreateAcl response structure.",
+      "members": [
+        {
+          "document": "Status code.",
+          "example": "0",
+          "member": "int64",
+          "name": "Result",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ClusterInfo": {
       "document": "Cluster information entity",
