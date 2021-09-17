@@ -19,6 +19,8 @@ include tccli/services/cdn/v20180606/api.json
 include tccli/services/cdn/v20180606/examples.json
 include tccli/services/cfs/v20190719/api.json
 include tccli/services/cfs/v20190719/examples.json
+include tccli/services/chdfs/v20201112/api.json
+include tccli/services/chdfs/v20201112/examples.json
 include tccli/services/ckafka/v20190819/api.json
 include tccli/services/ckafka/v20190819/examples.json
 include tccli/services/clb/v20180317/api.json

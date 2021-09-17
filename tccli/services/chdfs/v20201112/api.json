@@ -1,0 +1,1745 @@
+{
+  "actions": {
+    "AssociateAccessGroups": {
+      "document": "This API is used to bind multiple permission groups to a mount point.",
+      "input": "AssociateAccessGroupsRequest",
+      "name": "Binds permission group list",
+      "output": "AssociateAccessGroupsResponse"
+    },
+    "CreateAccessGroup": {
+      "document": "This API is used to create a permission group.",
+      "input": "CreateAccessGroupRequest",
+      "name": "Creates permission group",
+      "output": "CreateAccessGroupResponse"
+    },
+    "CreateAccessRules": {
+      "document": "This API is used to batch create permission rules. You don't need to enter the permission rule IDs and creation time.",
+      "input": "CreateAccessRulesRequest",
+      "name": "Batch creates permission rules",
+      "output": "CreateAccessRulesResponse"
+    },
+    "CreateFileSystem": {
+      "document": "This API is used to create a file system (asynchronously).",
+      "input": "CreateFileSystemRequest",
+      "name": "Creates file system",
+      "output": "CreateFileSystemResponse"
+    },
+    "CreateLifeCycleRules": {
+      "document": "This API is used to batch create lifecycle rules. You don't need to enter the lifecycle rule IDs and creation time.",
+      "input": "CreateLifeCycleRulesRequest",
+      "name": "Batch creates lifecycle rules",
+      "output": "CreateLifeCycleRulesResponse"
+    },
+    "CreateMountPoint": {
+      "document": "This API is used to create a mount point for a successfully created file system.",
+      "input": "CreateMountPointRequest",
+      "name": "Creates mount point",
+      "output": "CreateMountPointResponse"
+    },
+    "CreateRestoreTasks": {
+      "document": "This API is used to batch create restoration tasks. You don't need to enter the restoration task IDs, status, and creation time.",
+      "input": "CreateRestoreTasksRequest",
+      "name": "Batch creates restoration tasks",
+      "output": "CreateRestoreTasksResponse"
+    },
+    "DeleteAccessGroup": {
+      "document": "This API is used to delete a permission group.",
+      "input": "DeleteAccessGroupRequest",
+      "name": "Deletes permission group",
+      "output": "DeleteAccessGroupResponse"
+    },
+    "DeleteAccessRules": {
+      "document": "This API is used to batch delete permission rules.",
+      "input": "DeleteAccessRulesRequest",
+      "name": "Batch deletes permission rules",
+      "output": "DeleteAccessRulesResponse"
+    },
+    "DeleteFileSystem": {
+      "document": "This API is used to delete a file system. Non-empty file systems cannot be deleted.",
+      "input": "DeleteFileSystemRequest",
+      "name": "Deletes file system",
+      "output": "DeleteFileSystemResponse"
+    },
+    "DeleteLifeCycleRules": {
+      "document": "This API is used to batch delete lifecycle rules.",
+      "input": "DeleteLifeCycleRulesRequest",
+      "name": "Batch deletes lifecycle rules",
+      "output": "DeleteLifeCycleRulesResponse"
+    },
+    "DeleteMountPoint": {
+      "document": "This API is used to delete a mount point.",
+      "input": "DeleteMountPointRequest",
+      "name": "Deletes mount point",
+      "output": "DeleteMountPointResponse"
+    },
+    "DescribeAccessGroup": {
+      "document": "This API is used to view the details of a permission group.",
+      "input": "DescribeAccessGroupRequest",
+      "name": "Views permission group details",
+      "output": "DescribeAccessGroupResponse"
+    },
+    "DescribeAccessGroups": {
+      "document": "This API is used to view the list of permission groups.",
+      "input": "DescribeAccessGroupsRequest",
+      "name": "Views permission group list",
+      "output": "DescribeAccessGroupsResponse"
+    },
+    "DescribeAccessRules": {
+      "document": "This API is used to view the list of permission rules by permission group ID.",
+      "input": "DescribeAccessRulesRequest",
+      "name": "Views permission rule list",
+      "output": "DescribeAccessRulesResponse"
+    },
+    "DescribeFileSystem": {
+      "document": "This API is used to view the details of a file system.",
+      "input": "DescribeFileSystemRequest",
+      "name": "Views file system details",
+      "output": "DescribeFileSystemResponse"
+    },
+    "DescribeFileSystems": {
+      "document": "This API is used to view the list of file systems.",
+      "input": "DescribeFileSystemsRequest",
+      "name": "Views file system list",
+      "output": "DescribeFileSystemsResponse"
+    },
+    "DescribeLifeCycleRules": {
+      "document": "This API is used to view the list of lifecycle rules by file system ID.",
+      "input": "DescribeLifeCycleRulesRequest",
+      "name": "Views lifecycle rule list",
+      "output": "DescribeLifeCycleRulesResponse"
+    },
+    "DescribeMountPoint": {
+      "document": "This API is used to view the details of a mount point.",
+      "input": "DescribeMountPointRequest",
+      "name": "Views mount point details",
+      "output": "DescribeMountPointResponse"
+    },
+    "DescribeMountPoints": {
+      "document": "This API is used to view the list of mount points.",
+      "input": "DescribeMountPointsRequest",
+      "name": "Views mount point list",
+      "output": "DescribeMountPointsResponse"
+    },
+    "DescribeResourceTags": {
+      "document": "This API is used to view the list of resource tags by file system ID.",
+      "input": "DescribeResourceTagsRequest",
+      "name": "Views resource tag list",
+      "output": "DescribeResourceTagsResponse"
+    },
+    "DescribeRestoreTasks": {
+      "document": "This API is used to view the list of restoration tasks by file system ID.",
+      "input": "DescribeRestoreTasksRequest",
+      "name": "Views restoration task list",
+      "output": "DescribeRestoreTasksResponse"
+    },
+    "DisassociateAccessGroups": {
+      "document": "This API is used to unbind multiple permission groups from a mount point.",
+      "input": "DisassociateAccessGroupsRequest",
+      "name": "Unbinds permission group list",
+      "output": "DisassociateAccessGroupsResponse"
+    },
+    "ModifyAccessGroup": {
+      "document": "This API is used to modify the attributes of a permission group.",
+      "input": "ModifyAccessGroupRequest",
+      "name": "Modifies permission group attributes",
+      "output": "ModifyAccessGroupResponse"
+    },
+    "ModifyAccessRules": {
+      "document": "This API is used to batch modify the attributes of permission rules, such as address, access mode, and priority. You must specify the permission rule IDs.",
+      "input": "ModifyAccessRulesRequest",
+      "name": "Batch modifies the attributes of permission rules",
+      "output": "ModifyAccessRulesResponse"
+    },
+    "ModifyFileSystem": {
+      "document": "This API is used to modify the attributes of a successfully created file system.",
+      "input": "ModifyFileSystemRequest",
+      "name": "Modifies file system attributes",
+      "output": "ModifyFileSystemResponse"
+    },
+    "ModifyLifeCycleRules": {
+      "document": "This API is used to batch modify the attributes of lifecycle rules, such as name, path, transition list, and status. You must specify the lifecycle rule IDs.",
+      "input": "ModifyLifeCycleRulesRequest",
+      "name": "Batch modifies the attributes of lifecycle rules",
+      "output": "ModifyLifeCycleRulesResponse"
+    },
+    "ModifyMountPoint": {
+      "document": "This API is used to modify the attributes of a mount point.",
+      "input": "ModifyMountPointRequest",
+      "name": "Modifies mount point attributes",
+      "output": "ModifyMountPointResponse"
+    },
+    "ModifyResourceTags": {
+      "document": "This API is used to modify the list of resource tags by overwriting them all.",
+      "input": "ModifyResourceTagsRequest",
+      "name": "Modifies resource tag list",
+      "output": "ModifyResourceTagsResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-11-12",
+    "serviceNameCN": "云 HDFS",
+    "serviceShortName": "chdfs"
+  },
+  "objects": {
+    "AccessGroup": {
+      "document": "Permission group",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission group name",
+          "member": "string",
+          "name": "AccessGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission group description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC type (1: CVM; 2: BM 1.0)",
+          "member": "uint64",
+          "name": "VpcType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccessRule": {
+      "document": "Permission rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission rule ID",
+          "member": "uint64",
+          "name": "AccessRuleId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission rule address (IP range or IP)",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission rule access mode (1: read-only; 2: read-write)",
+          "member": "uint64",
+          "name": "AccessMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Priority (value range: 1–100. The smaller the value, the higher the priority)",
+          "member": "uint64",
+          "name": "Priority",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AssociateAccessGroupsRequest": {
+      "document": "AssociateAccessGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point ID",
+          "member": "string",
+          "name": "MountPointId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of permission group IDs",
+          "member": "string",
+          "name": "AccessGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateAccessGroupsResponse": {
+      "document": "AssociateAccessGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessGroupRequest": {
+      "document": "CreateAccessGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group name",
+          "member": "string",
+          "name": "AccessGroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC type (1: CVM; 2: BM 1.0)",
+          "member": "uint64",
+          "name": "VpcType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group description, which is an empty string by default",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessGroupResponse": {
+      "document": "CreateAccessGroup response structure.",
+      "members": [
+        {
+          "document": "Permission group",
+          "member": "AccessGroup",
+          "name": "AccessGroup",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessRulesRequest": {
+      "document": "CreateAccessRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Multiple permission rules (up to 10)",
+          "example": "无",
+          "member": "AccessRule",
+          "name": "AccessRules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "example": "ag-jwmfdcul",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessRulesResponse": {
+      "document": "CreateAccessRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFileSystemRequest": {
+      "document": "CreateFileSystem request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system name",
+          "member": "string",
+          "name": "FileSystemName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB",
+          "member": "uint64",
+          "name": "CapacityQuota",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to verify POSIX ACL",
+          "member": "bool",
+          "name": "PosixAcl",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "File system description, which is an empty string by default",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of superuser names, which is an empty array by default",
+          "member": "string",
+          "name": "SuperUsers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Username of the root directory Inode, which is `hadoop` by default",
+          "member": "string",
+          "name": "RootInodeUser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Group name of the root directory Inode, which is `supergroup` by default",
+          "member": "string",
+          "name": "RootInodeGroup",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFileSystemResponse": {
+      "document": "CreateFileSystem response structure.",
+      "members": [
+        {
+          "document": "File system",
+          "member": "FileSystem",
+          "name": "FileSystem",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLifeCycleRulesRequest": {
+      "document": "CreateLifeCycleRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "f4mhaqkciq0",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Multiple lifecycle rules (up to 10)",
+          "example": "无",
+          "member": "LifeCycleRule",
+          "name": "LifeCycleRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLifeCycleRulesResponse": {
+      "document": "CreateLifeCycleRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMountPointRequest": {
+      "document": "CreateMountPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point name",
+          "member": "string",
+          "name": "MountPointName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mount point status (1: enabled; 2: disabled)",
+          "member": "uint64",
+          "name": "MountPointStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMountPointResponse": {
+      "document": "CreateMountPoint response structure.",
+      "members": [
+        {
+          "document": "Mount point",
+          "member": "MountPoint",
+          "name": "MountPoint",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRestoreTasksRequest": {
+      "document": "CreateRestoreTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "f4mhaqkciq0",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Multiple restoration tasks (up to 10)",
+          "example": "无",
+          "member": "RestoreTask",
+          "name": "RestoreTasks",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRestoreTasksResponse": {
+      "document": "CreateRestoreTasks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccessGroupRequest": {
+      "document": "DeleteAccessGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "example": "ag-f8xoises",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccessGroupResponse": {
+      "document": "DeleteAccessGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccessRulesRequest": {
+      "document": "DeleteAccessRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Multiple permission rule IDs (up to 10)",
+          "example": "[13001, 13002]",
+          "member": "uint64",
+          "name": "AccessRuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccessRulesResponse": {
+      "document": "DeleteAccessRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFileSystemRequest": {
+      "document": "DeleteFileSystem request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "f4mhaqkciq0",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFileSystemResponse": {
+      "document": "DeleteFileSystem response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLifeCycleRulesRequest": {
+      "document": "DeleteLifeCycleRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Multiple lifecycle rule IDs (up to 10)",
+          "example": "[1, 2]",
+          "member": "uint64",
+          "name": "LifeCycleRuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLifeCycleRulesResponse": {
+      "document": "DeleteLifeCycleRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMountPointRequest": {
+      "document": "DeleteMountPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point ID",
+          "example": "f4mnvilzmdd-fj7A",
+          "member": "string",
+          "name": "MountPointId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMountPointResponse": {
+      "document": "DeleteMountPoint response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessGroupRequest": {
+      "document": "DescribeAccessGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessGroupResponse": {
+      "document": "DescribeAccessGroup response structure.",
+      "members": [
+        {
+          "document": "Permission group",
+          "member": "AccessGroup",
+          "name": "AccessGroup",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessGroupsRequest": {
+      "document": "DescribeAccessGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID\nNote: either `VpcId` or `OwnerUin` can be specified as the input parameter",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource owner `Uin`",
+          "member": "uint64",
+          "name": "OwnerUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessGroupsResponse": {
+      "document": "DescribeAccessGroups response structure.",
+      "members": [
+        {
+          "document": "List of permission groups",
+          "member": "AccessGroup",
+          "name": "AccessGroups",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessRulesRequest": {
+      "document": "DescribeAccessRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessRulesResponse": {
+      "document": "DescribeAccessRules response structure.",
+      "members": [
+        {
+          "document": "List of permission rules",
+          "member": "AccessRule",
+          "name": "AccessRules",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileSystemRequest": {
+      "document": "DescribeFileSystem request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileSystemResponse": {
+      "document": "DescribeFileSystem response structure.",
+      "members": [
+        {
+          "document": "File system",
+          "member": "FileSystem",
+          "name": "FileSystem",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Used capacity (in bytes), including STANDARD storage and ARCHIVE storage\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "CapacityUsed",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Used ARCHIVE storage capacity (in bytes)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "ArchiveCapacityUsed",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileSystemsRequest": {
+      "document": "DescribeFileSystems request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeFileSystemsResponse": {
+      "document": "DescribeFileSystems response structure.",
+      "members": [
+        {
+          "document": "List of file systems",
+          "member": "FileSystem",
+          "name": "FileSystems",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLifeCycleRulesRequest": {
+      "document": "DescribeLifeCycleRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "f4mhaqkciq0",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLifeCycleRulesResponse": {
+      "document": "DescribeLifeCycleRules response structure.",
+      "members": [
+        {
+          "document": "List of lifecycle rules",
+          "example": "无",
+          "member": "LifeCycleRule",
+          "name": "LifeCycleRules",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMountPointRequest": {
+      "document": "DescribeMountPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point ID",
+          "member": "string",
+          "name": "MountPointId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMountPointResponse": {
+      "document": "DescribeMountPoint response structure.",
+      "members": [
+        {
+          "document": "Mount point",
+          "member": "MountPoint",
+          "name": "MountPoint",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMountPointsRequest": {
+      "document": "DescribeMountPoints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID\nNote: only one of `AccessGroupId`, `FileSystemId`, and `OwnerUin` can be specified as the input parameter",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource owner `Uin`",
+          "member": "uint64",
+          "name": "OwnerUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMountPointsResponse": {
+      "document": "DescribeMountPoints response structure.",
+      "members": [
+        {
+          "document": "List of mount points",
+          "member": "MountPoint",
+          "name": "MountPoints",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsRequest": {
+      "document": "DescribeResourceTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "f4mhaqkciq0",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceTagsResponse": {
+      "document": "DescribeResourceTags response structure.",
+      "members": [
+        {
+          "document": "List of resource tags",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRestoreTasksRequest": {
+      "document": "DescribeRestoreTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "f4mhaqkciq0",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRestoreTasksResponse": {
+      "document": "DescribeRestoreTasks response structure.",
+      "members": [
+        {
+          "document": "List of restoration tasks",
+          "example": "无",
+          "member": "RestoreTask",
+          "name": "RestoreTasks",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateAccessGroupsRequest": {
+      "document": "DisassociateAccessGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point ID",
+          "member": "string",
+          "name": "MountPointId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of permission group IDs",
+          "member": "string",
+          "name": "AccessGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateAccessGroupsResponse": {
+      "document": "DisassociateAccessGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FileSystem": {
+      "document": "File system",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource owner `AppId`",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system name",
+          "member": "string",
+          "name": "FileSystemName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system block size (in bytes)",
+          "member": "uint64",
+          "name": "BlockSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system capacity (in bytes)",
+          "member": "uint64",
+          "name": "CapacityQuota",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system status (1: creating; 2: created successfully; 3: failed to create)",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of superuser names",
+          "member": "string",
+          "name": "SuperUsers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "POSIX permission control",
+          "member": "bool",
+          "name": "PosixAcl",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LifeCycleRule": {
+      "document": "Lifecycle rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Lifecycle rule ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "LifeCycleRuleId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Lifecycle rule name",
+          "example": "test",
+          "member": "string",
+          "name": "LifeCycleRuleName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Lifecycle rule path (directory or file)",
+          "example": "/test",
+          "member": "string",
+          "name": "Path",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of lifecycle rule transitions",
+          "example": "无",
+          "member": "Transition",
+          "name": "Transitions",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Lifecycle rule status (1: enabled; 2: disabled)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2019-07-30T16:24:38+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyAccessGroupRequest": {
+      "document": "ModifyAccessGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "AccessGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group name",
+          "member": "string",
+          "name": "AccessGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccessGroupResponse": {
+      "document": "ModifyAccessGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccessRulesRequest": {
+      "document": "ModifyAccessRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Multiple permission rules (up to 10)",
+          "example": "无",
+          "member": "AccessRule",
+          "name": "AccessRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccessRulesResponse": {
+      "document": "ModifyAccessRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFileSystemRequest": {
+      "document": "ModifyFileSystem request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system name",
+          "member": "string",
+          "name": "FileSystemName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB\nNote: the file system capacity after change cannot be smaller than the currently used capacity",
+          "member": "uint64",
+          "name": "CapacityQuota",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of superuser names, which can be an empty array",
+          "member": "string",
+          "name": "SuperUsers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to verify POSIX ACL",
+          "member": "bool",
+          "name": "PosixAcl",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFileSystemResponse": {
+      "document": "ModifyFileSystem response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLifeCycleRulesRequest": {
+      "document": "ModifyLifeCycleRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Multiple lifecycle rules (up to 10)",
+          "example": "无",
+          "member": "LifeCycleRule",
+          "name": "LifeCycleRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLifeCycleRulesResponse": {
+      "document": "ModifyLifeCycleRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMountPointRequest": {
+      "document": "ModifyMountPoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point ID",
+          "member": "string",
+          "name": "MountPointId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mount point name",
+          "member": "string",
+          "name": "MountPointName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mount point status",
+          "member": "uint64",
+          "name": "MountPointStatus",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMountPointResponse": {
+      "document": "ModifyMountPoint response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourceTagsRequest": {
+      "document": "ModifyResourceTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Multiple resource tags, which can be an empty array",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourceTagsResponse": {
+      "document": "ModifyResourceTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MountPoint": {
+      "document": "Mount point",
+      "members": [
+        {
+          "default": "",
+          "document": "Mount point ID",
+          "member": "string",
+          "name": "MountPointId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount point name",
+          "member": "string",
+          "name": "MountPointName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount point status (1: enabled; 2: disabled)",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the bound permission groups",
+          "member": "string",
+          "name": "AccessGroupIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RestoreTask": {
+      "document": "Restoration task",
+      "members": [
+        {
+          "default": "",
+          "document": "Restoration task ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "RestoreTaskId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Restoration task file path",
+          "example": "/test/file0",
+          "member": "string",
+          "name": "FilePath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Restoration task type (1: standard; 2: expedited; 3: bulk)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Validity period (in days) of the temporary copy generated during restoration",
+          "example": "7",
+          "member": "uint64",
+          "name": "Days",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Restoration task status (1: binding file; 2: file binding completed; 3: restoring file; 4: file restoration completed)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2019-07-30T16:24:38+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Resource tag.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Transition": {
+      "document": "Lifecycle rule transition attribute",
+      "members": [
+        {
+          "default": "",
+          "document": "Trigger time (in days)",
+          "example": "7",
+          "member": "uint64",
+          "name": "Days",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transition type (1: archive; 2: deletion)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}
