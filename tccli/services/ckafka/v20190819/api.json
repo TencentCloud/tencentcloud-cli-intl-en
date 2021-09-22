@@ -320,7 +320,7 @@
         },
         {
           "default": "",
-          "document": "The default value is `*`, which means that any host can access the topic. Currently, CKafka does not support the host value being specified as * or IP range.",
+          "document": "The default value is `*`, which means that any host can access the topic. CKafka currently does not support specifying a host value of * or an IP range.",
           "example": "*",
           "member": "string",
           "name": "Host",

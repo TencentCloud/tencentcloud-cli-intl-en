@@ -283,6 +283,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID.",
+          "example": "无",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -292,6 +293,7 @@
         {
           "default": "",
           "document": "Scaling activity ID.",
+          "example": "无",
           "member": "string",
           "name": "ActivityId",
           "required": true,
@@ -301,6 +303,7 @@
         {
           "default": "",
           "document": "Type of the scaling activity. Valid values:<br>\n<li>SCALE_OUT: scales out. <li>SCALE_IN: scales in. <li>ATTACH_INSTANCES: adds an instance. <li>REMOVE_INSTANCES: terminates an instance. <li>DETACH_INSTANCES: removes an instance. <li>TERMINATE_INSTANCES_UNEXPECTEDLY: terminates an instance in the CVM console. <li>REPLACE_UNHEALTHY_INSTANCE: replaces an unhealthy instance.\n<li>START_INSTANCES: starts an instance.\n<li>STOP_INSTANCES: stops an instance.",
+          "example": "无",
           "member": "string",
           "name": "ActivityType",
           "required": true,
@@ -310,6 +313,7 @@
         {
           "default": "",
           "document": "Scaling activity status. Value range:<br>\n<li>INIT: initializing\n<li>RUNNING: running\n<li>SUCCESSFUL: succeeded\n<li>PARTIALLY_SUCCESSFUL: partially succeeded\n<li>FAILED: failed\n<li>CANCELLED: canceled",
+          "example": "无",
           "member": "string",
           "name": "StatusCode",
           "required": true,
@@ -319,6 +323,7 @@
         {
           "default": "",
           "document": "Description of the scaling activity status.",
+          "example": "无",
           "member": "string",
           "name": "StatusMessage",
           "required": true,
@@ -328,6 +333,7 @@
         {
           "default": "",
           "document": "Cause of the scaling activity.",
+          "example": "无",
           "member": "string",
           "name": "Cause",
           "required": true,
@@ -337,6 +343,7 @@
         {
           "default": "",
           "document": "Description of the scaling activity.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -346,6 +353,7 @@
         {
           "default": "",
           "document": "Start time of the scaling activity.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "StartTime",
           "required": true,
@@ -355,6 +363,7 @@
         {
           "default": "",
           "document": "End time of the scaling activity.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": true,
@@ -364,6 +373,7 @@
         {
           "default": "",
           "document": "Creation time of the scaling activity.",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -373,6 +383,7 @@
         {
           "default": "",
           "document": "Information set of the instances related to the scaling activity.",
+          "example": "无",
           "member": "ActivtyRelatedInstance",
           "name": "ActivityRelatedInstanceSet",
           "required": true,
@@ -382,6 +393,7 @@
         {
           "default": "",
           "document": "Brief description of the scaling activity status.",
+          "example": "无",
           "member": "string",
           "name": "StatusMessageSimplified",
           "required": true,
@@ -391,8 +403,19 @@
         {
           "default": "",
           "document": "Result of the lifecycle hook action in the scaling activity",
+          "example": "无",
           "member": "LifecycleActionResultInfo",
           "name": "LifecycleActionResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed description of scaling activity status",
+          "example": "无",
+          "member": "DetailedStatusMessage",
+          "name": "DetailedStatusMessageSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -2639,6 +2662,82 @@
         }
       ],
       "type": "object"
+    },
+    "DetailedStatusMessage": {
+      "document": "Detailed description of scaling activity status",
+      "members": [
+        {
+          "default": "",
+          "document": "Error type",
+          "example": "InvalidInstanceType",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ information",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ins-yy23daou",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "example": "subnet-gz7j7r3k",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type",
+          "example": "IT5.8XLARGE128",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DisableAutoScalingGroupRequest": {
       "document": "DisableAutoScalingGroup request structure.",

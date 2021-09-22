@@ -97,6 +97,88 @@
     "serviceShortName": "privatedns"
   },
   "objects": {
+    "AccountVpcInfo": {
+      "document": "VPC information of a Private DNS account",
+      "members": [
+        {
+          "default": "",
+          "document": "VpcId: vpc-xadsafsdasd",
+          "example": "无",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC region: ap-guangzhou, ap-shanghai\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC account: 123456789\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "123456789",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC name: testname\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "testname",
+          "member": "string",
+          "name": "VpcName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AccountVpcInfoOutput": {
+      "document": "Output parameters of the associated VPC",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN of the VPC account",
+          "example": "12345678",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-wdskdss1",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AuditLog": {
       "document": "Operation log",
       "members": [
@@ -316,6 +398,15 @@
           "example": "无",
           "member": "VpcInfo",
           "name": "Vpcs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of authorized accounts' VPCs to associate with the private domain",
+          "example": "无",
+          "member": "AccountVpcInfo",
+          "name": "AccountVpcSet",
           "required": false,
           "type": "list"
         }
@@ -1090,6 +1181,15 @@
           "name": "VpcSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of authorized accounts' VPCs to associate with the private domain",
+          "example": "无",
+          "member": "AccountVpcInfo",
+          "name": "AccountVpcSet",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1111,6 +1211,15 @@
           "example": "无",
           "member": "VpcInfo",
           "name": "VpcSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of authorized accounts' VPCs associated with the private domain",
+          "example": "无",
+          "member": "AccountVpcInfoOutput",
+          "name": "AccountVpcSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -1236,6 +1345,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of authorized accounts' VPCs associated with the private domain\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccountVpcInfoOutput",
+          "name": "AccountVpcSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
