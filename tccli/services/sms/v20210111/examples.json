@@ -40,6 +40,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribePhoneNumberInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePhoneNumberInfo\n<Common request parameters>\n\n{\n    \"PhoneNumberSet\": [\n        \"+8618511122266\",\n        \"+8618511122233\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"PhoneNumberInfoSet\": [\n            {\n                \"SubscriberNumber\": \"18511122266\",\n                \"Message\": \"Describe success\",\n                \"Code\": \"Ok\",\n                \"PhoneNumber\": \"+8618511122266\",\n                \"IsoCode\": \"CN\",\n                \"IsoName\": \"China\",\n                \"NationCode\": \"86\"\n            },\n            {\n                \"SubscriberNumber\": \"18511122233\",\n                \"Message\": \"Describe success\",\n                \"Code\": \"Ok\",\n                \"PhoneNumber\": \"+8618511122233\",\n                \"IsoCode\": \"CN\",\n                \"IsoName\": \"China\",\n                \"NationCode\": \"86\"\n            }\n        ],\n        \"RequestId\": \"a0aabda6-cf91-4f3e-a81f-9198114a2279\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeSmsSignList": [
       {
         "document": "",
@@ -92,7 +100,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PullSmsSendStatus\n<Common request parameters>\n\n{\n    \"SmsSdkAppId\": \"1400006874\",\n    \"Limit\": 2\n}",
-        "output": "{\n    \"Response\": {\n        \"PullSmsSendStatusSet\": [\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990000\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990000\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e452e\",\n                \"UserReceiveTime\": 1620734188\n            },\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990001\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990001\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e452e\",\n                \"UserReceiveTime\": 1620734188\n            }\n        ],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"PullSmsSendStatusSet\": [\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990000\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990000\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e452e\",\n                \"UserReceiveTime\": 1620734188\n            },\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990001\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990001\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e462f\",\n                \"UserReceiveTime\": 1620734188\n            }\n        ],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -100,7 +108,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PullSmsSendStatusByPhoneNumber\n<Common request parameters>\n\n{\n    \"SmsSdkAppId\": \"1400006666\",\n    \"PhoneNumber\": \"+8615291996666\",\n    \"BeginTime\": 1464624000,\n    \"Offset\": 0,\n    \"Limit\": 2,\n    \"EndTime\": 1464624000\n}",
-        "output": "{\n    \"Response\": {\n        \"PullSmsSendStatusSet\": [\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990000\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990000\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e452e\",\n                \"UserReceiveTime\": 1620734188\n            },\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990001\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990001\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e452e\",\n                \"UserReceiveTime\": 1620734188\n            }\n        ],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"PullSmsSendStatusSet\": [\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990000\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990000\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e452e\",\n                \"UserReceiveTime\": 1620734188\n            },\n            {\n                \"Description\": \"DELIVRD\",\n                \"CountryCode\": \"86\",\n                \"SubscriberNumber\": \"15291990001\",\n                \"ReportStatus\": \"SUCCESS\",\n                \"PhoneNumber\": \"+8615291990001\",\n                \"SerialNo\": \"14:19325917feb3914eb78b50d6182d7e456f\",\n                \"UserReceiveTime\": 1620734188\n            }\n        ],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -108,7 +116,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendSms\n<Common request parameters>\n\n{\n    \"PhoneNumberSet\": [\n        \"+8618511122266\",\n        \"+8618511122233\"\n    ],\n    \"SmsSdkAppId\": \"1400006666\",\n    \"SignName\": \"Tencent Cloud\",\n    \"TemplateId\": \"1234\",\n    \"TemplateParamSet\": [\n        \"12345\"\n    ],\n    \"SessionContext\": \"test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"SendStatusSet\": [\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499619\",\n                \"PhoneNumber\": \"+8618511122233\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"CN\"\n            },\n            {\n                \"SerialNo\": \"5000:104571066915705365784949619\",\n                \"PhoneNumber\": \"+8618511122266\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"CN\"\n            }\n        ],\n        \"RequestId\": \"a0aabda6-cf91-4f3e-a81f-9198114a2279\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"SendStatusSet\": [\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499619\",\n                \"PhoneNumber\": \"+8618511122233\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"CN\"\n            },\n            {\n                \"SerialNo\": \"5000:1045710669157053657849499718\",\n                \"PhoneNumber\": \"+8618511122266\",\n                \"Fee\": 1,\n                \"SessionContext\": \"test\",\n                \"Code\": \"Ok\",\n                \"Message\": \"send success\",\n                \"IsoCode\": \"CN\"\n            }\n        ],\n        \"RequestId\": \"a0aabda6-cf91-4f3e-a81f-9198114a2279\"\n    }\n}",
         "title": "Sample request"
       }
     ],

@@ -30,6 +30,12 @@
       "name": "Deletes SMS template",
       "output": "DeleteSmsTemplateResponse"
     },
+    "DescribePhoneNumberInfo": {
+      "document": "This API is used to query mobile number information, such as the country/region code and the number in standardized E.164 format. For example, if you query the number +86018845720123, you can know that the country code is 86, and the standardized E. 164 number is +86018845720123.",
+      "input": "DescribePhoneNumberInfoRequest",
+      "name": "Queries mobile number information",
+      "output": "DescribePhoneNumberInfoResponse"
+    },
     "DescribeSmsSignList": {
       "document": "⚠️ Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to query SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "DescribeSmsSignListRequest",
@@ -73,7 +79,7 @@
       "output": "PullSmsSendStatusResponse"
     },
     "PullSmsSendStatusByPhoneNumber": {
-      "document": "This API is used to pull SMS delivery status for one single number.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11\n&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "document": "This API is used to pull SMS delivery status for one single number.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) to eliminate the need to calculate signatures. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
       "input": "PullSmsSendStatusByPhoneNumberRequest",
       "name": "Pulls SMS delivery status for one single number",
       "output": "PullSmsSendStatusByPhoneNumberResponse"
@@ -118,7 +124,7 @@
       "members": [
         {
           "default": "",
-          "document": "Signature name.",
+          "document": "Signature name.\nNote: you cannot apply for an approved or pending signature again.",
           "example": "test",
           "member": "string",
           "name": "SignName",
@@ -579,6 +585,42 @@
       ],
       "usage": "out"
     },
+    "DescribePhoneNumberInfoRequest": {
+      "document": "DescribePhoneNumberInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "A parameter used to query mobile numbers in E.164 format (+[country/region code][subscriber number]). Up to 200 mobile numbers can be queried at a time.\nTake the number +8613711112222 as an example. “86” is the country code (with a “+” sign in its front) and “13711112222” is the subscriber number.",
+          "example": "[\"+8618843210001\"]",
+          "member": "string",
+          "name": "PhoneNumberSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePhoneNumberInfoResponse": {
+      "document": "DescribePhoneNumberInfo response structure.",
+      "members": [
+        {
+          "document": "A parameter used to obtain mobile number information.",
+          "example": "无",
+          "member": "PhoneNumberInfo",
+          "name": "PhoneNumberInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSignListStatus": {
       "document": "Response for getting SMS signature information",
       "members": [
@@ -695,7 +737,7 @@
       "members": [
         {
           "default": "",
-          "document": "Template ID array.\nNote: the maximum length of the array is 100 by default.",
+          "document": "Template ID array.\n<dx-alert infotype=\"notice\" title=\"Note\">The max array length is 100 by default.</dx-alert>",
           "example": "1110",
           "member": "uint64",
           "name": "TemplateIdSet",
@@ -868,7 +910,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
+          "document": "A parameter used to specify whether it is Global SMS:\n`0`: Chinese mainland SMS.\n`1`: Global SMS.\nNote: the value of this parameter must be consistent with the `International` value of the signature to be modified. This parameter cannot be used to directly change a Chinese mainland signature to an international signature.",
           "example": "0",
           "member": "uint64",
           "name": "International",
@@ -1027,6 +1069,82 @@
           "name": "TemplateId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PhoneNumberInfo": {
+      "document": "Mobile number information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Error code for mobile number information query. `Ok` will be returned if the query is successful.",
+          "example": "Ok",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of the error code for mobile number information query.",
+          "example": "Describe success",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country (or region) code.",
+          "example": "86",
+          "member": "string",
+          "name": "NationCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subscriber number in normal format such as 13711112222, without any prefix (country or region code).",
+          "example": "13711112222",
+          "member": "string",
+          "name": "SubscriberNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The standardized mobile number in E.164 format after parsing, which is consistent with the parsed number for SMS message delivery. If the parsing fails, the original number will be returned.",
+          "example": "+8613711112222",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country or region code such as CN and US. If the country or region code cannot be identified, `DEF` will be returned by default.",
+          "example": "CN",
+          "member": "string",
+          "name": "IsoCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country code or region name such as China. For more information, see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)",
+          "example": "China",
+          "member": "string",
+          "name": "IsoName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1441,7 +1559,7 @@
       "members": [
         {
           "default": "",
-          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).\nExample: +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "document": "Target mobile number in E.164 format (+[country/region code][subscriber number]). Up to 200 numbers, all of which should be either Chinese mainland numbers or international numbers, are supported in a single request.\nTake the number +8613711112222 as an example. “86” is the country code (with a “+” sign in its front) and “13711112222” is the subscriber number.\nNote: 11-digit Chinese mainland numbers prefixed by 0086 or 86 or those without any country/region code are also supported. The default prefix is +86.",
           "example": "+8618511122233",
           "member": "string",
           "name": "PhoneNumberSet",
@@ -1468,7 +1586,7 @@
         },
         {
           "default": "",
-          "document": "Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2).\nNote: this parameter is required for Mainland China SMS.",
+          "document": "SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2).\n<dx-alert infotype=\"notice\" title=\"Note\">This parameter is required for Chinese mainland SMS.</dx-alert>",
           "example": "腾讯云",
           "member": "string",
           "name": "SignName",
@@ -1477,7 +1595,7 @@
         },
         {
           "default": "",
-          "document": "Template parameter. If there is no template parameter, leave this parameter blank.",
+          "document": "Template parameter. If there is no template parameter, leave this field empty.\n<dx-alert infotype=\"notice\" title=\"Note\">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>",
           "example": "12345",
           "member": "string",
           "name": "TemplateParamSet",
@@ -1580,7 +1698,7 @@
         },
         {
           "default": "",
-          "document": "SMS request error code. For specific meanings, please see [Error Codes](https://intl.cloud.tencent.com/document/product/382/49316?from_cn_redirect=1).",
+          "document": "SMS request error code. For details, see [Error Codes](https://intl.cloud.tencent.com/document/api/382/55981?from_cn_redirect=1#6.-.E9.94.99.E8.AF.AF.E7.A0.81). `Ok` will be returned if the request is successful.",
           "example": "Ok",
           "member": "string",
           "name": "Code",
