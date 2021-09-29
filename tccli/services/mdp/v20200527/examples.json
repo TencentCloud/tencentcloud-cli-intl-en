@@ -1,10 +1,18 @@
 {
   "actions": {
+    "BindNewLVBDomainWithChannel": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindNewLVBDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"5F61C341B92D6BE9225E\",\n    \"LVBDomain\": \"mdptest.domain.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LVBDomain\": \"mdptest.domain.com\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "CreateStreamPackageChannel": [
       {
         "document": "",
         "input": "https://mdp.tencentcloudapi.com/?Action=CreateStreamPackageChannel\n&Name=xxx\n&Protocol=HLS\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Points\": {\n                \"Inputs\": [\n                    {\n                        \"Url\": \"xx\",\n                        \"AuthInfo\": {\n                            \"Username\": \"xx\",\n                            \"Password\": \"xx\"\n                        }\n                    },\n                    {\n                        \"Url\": \"xx\",\n                        \"AuthInfo\": {\n                            \"Username\": \"xx\",\n                            \"Password\": \"xx\"\n                        }\n                    }\n                ],\n                \"Endpoints\": [\n                    {\n                        \"Url\": \"xx\",\n                        \"AuthInfo\": {\n                            \"AuthKey\": \"xx\",\n                            \"BlackIpList\": [\n                                \"xx\"\n                            ],\n                            \"WhiteIpList\": [\n                                \"xx\"\n                            ]\n                        },\n                        \"Name\": \"xx\"\n                    }\n                ]\n            },\n            \"Protocol\": \"xx\",\n            \"Name\": \"xx\",\n            \"CacheInfo\": {\n                \"Info\": [\n                    {\n                        \"Ext\": \"xx\",\n                        \"Timeout\": 0\n                    }\n                ]\n            },\n            \"Id\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],

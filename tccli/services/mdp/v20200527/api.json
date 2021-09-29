@@ -1,5 +1,11 @@
 {
   "actions": {
+    "BindNewLVBDomainWithChannel": {
+      "document": "This API is used to bind an LVB domain name to a channel.",
+      "input": "BindNewLVBDomainWithChannelRequest",
+      "name": "Binds an LVB domain name to a channel",
+      "output": "BindNewLVBDomainWithChannelResponse"
+    },
     "CreateStreamPackageChannel": {
       "document": "This API is used to create a StreamPackage channel.",
       "input": "CreateStreamPackageChannelRequest",
@@ -61,6 +67,51 @@
     "serviceShortName": "mdp"
   },
   "objects": {
+    "BindNewLVBDomainWithChannelRequest": {
+      "document": "BindNewLVBDomainWithChannel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID",
+          "example": "5F61C341B92D6BE9225E",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The LVB domain name to bind",
+          "example": "www.domain.com",
+          "member": "string",
+          "name": "LVBDomain",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindNewLVBDomainWithChannelResponse": {
+      "document": "BindNewLVBDomainWithChannel response structure.",
+      "members": [
+        {
+          "document": "The LVB domain name bound successfully",
+          "example": "www.domain.com",
+          "member": "string",
+          "name": "LVBDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CacheInfo": {
       "document": "Cache configuration",
       "members": [
@@ -241,6 +292,15 @@
     "CreateStreamPackageChannelResponse": {
       "document": "CreateStreamPackageChannel response structure.",
       "members": [
+        {
+          "document": "Channel information",
+          "example": "无",
+          "member": "ChannelInfo",
+          "name": "Info",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
