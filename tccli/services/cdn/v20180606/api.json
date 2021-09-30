@@ -145,7 +145,7 @@
       "output": "DescribeUrlViolationsResponse"
     },
     "DisableCaches": {
-      "document": "This API is used to block access to a specific URL on CDN. After a URL is blocked, a 403 error will be returned for the arrived access requests initiated from the Chinese mainland. This API is in beta and not fully available now.",
+      "document": "This API is used to block access to a specific URL on CDN. When a URL is blocked, error 403 will be returned for requests from the Chinese mainland. URL blocking is not permanent. Note that this API is only available to beta users now. ",
       "input": "DisableCachesRequest",
       "name": "Blocks URLs",
       "output": "DisableCachesResponse"
@@ -211,7 +211,7 @@
       "output": "PurgeUrlsCacheResponse"
     },
     "PushUrlsCache": {
-      "document": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1000 URLs can be prefetched per day either within or outside Chinese mainland, and up to 20 tasks can be submitted at a time.",
+      "document": "This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.\nBy default, a maximum of 1000 URLs can be prefetched per day either within or outside the Chinese mainland, and up to 20 tasks can be submitted at a time. Note that resources prefetched outside the Chinese mainland will be cached to CDN nodes outside the Chinese mainland and the traffic generated will incur costs.",
       "input": "PushUrlsCacheRequest",
       "name": "Prefetches URLs",
       "output": "PushUrlsCacheResponse"
@@ -1199,7 +1199,7 @@
       "usage": "both"
     },
     "AdvancedCache": {
-      "document": "Advanced cache expiration configuration (This feature is in beta and not generally available yet.)\nNote: this version does not support setting homepage cache rules.",
+      "document": "(Disused) Advanced cache validity configuration. You can use `RuleCache` instead.",
       "members": [
         {
           "default": "",
@@ -1557,7 +1557,8 @@
       "members": [
         {
           "default": "",
-          "document": "Bandwidth cap configuration switch\non: enabled\noff: disabled",
+          "document": "Specifies whether to enable the bandwidth cap\n`on`: enable\n`off`: disable",
+          "example": "off",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -1566,7 +1567,8 @@
         },
         {
           "default": "",
-          "document": "Bandwidth cap threshold (in bps)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The upper limit of bandwidth usage (in bps) or traffic usage (in bytes).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1000000",
           "member": "int64",
           "name": "BpsThreshold",
           "required": false,
@@ -1576,6 +1578,7 @@
         {
           "default": "",
           "document": "Action taken when threshold is reached\nRESOLVE_DNS_TO_ORIGIN: requests will be forwarded to the origin server. This is only supported for domain names of external origin.\nRETURN_404: a 404 error will be returned for all requests.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "RETURN_404",
           "member": "string",
           "name": "CounterMeasure",
           "required": false,
@@ -1584,9 +1587,50 @@
         },
         {
           "default": "",
-          "document": "The last time the bandwidth cap threshold was triggered\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The last time when the usage upper limit in the Chinese mainland was reached\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "LastTriggerTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Indicates whether to trigger alerts when the upper limit is reached\n`on`: enable\n`off`: disable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "off",
+          "member": "string",
+          "name": "AlertSwitch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Triggers alarms when the ratio of bandwidth or traffic usage to the usage upper limit reaches the specified value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "80",
+          "member": "int64",
+          "name": "AlertPercentage",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last time when the usage outside the Chinese mainland reached the upper limit\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime",
+          "name": "LastTriggerTimeOverseas",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dimension of the usage limit\n`bandwidth`: bandwidth\n`flux`: traffic\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "bandwith",
+          "member": "string",
+          "name": "Metric",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1866,6 +1910,7 @@
         {
           "default": "",
           "document": "Basic cache expiration time configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SimpleCache",
           "name": "SimpleCache",
           "required": false,
@@ -1874,7 +1919,8 @@
         },
         {
           "default": "",
-          "document": "Advanced cache expiration configuration (This feature is in beta and not generally available yet.)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "(Disused) Advanced cache validity configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AdvancedCache",
           "name": "AdvancedCache",
           "required": false,
@@ -1884,6 +1930,7 @@
         {
           "default": "",
           "document": "Advanced path cache configuration\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "RuleCache",
           "name": "RuleCache",
           "required": false,
@@ -1989,11 +2036,12 @@
       "usage": "both"
     },
     "CacheKey": {
-      "document": "Cache key configuration (filter parameter configuration)",
+      "document": "Cache key configuration (Ignore Query String configuration)",
       "members": [
         {
           "default": "",
-          "document": "Whether to enable full-path cache\non: enable full-path cache (i.e., disable parameter filter)\noff: disable full-path cache (i.e., enable parameter filter)",
+          "document": "Whether to enable full-path cache\n`on`: enables full-path cache (i.e., disables Ignore Query String)\n`off`: disables full-path cache (i.e., enables Ignore Query String)",
+          "example": "off",
           "member": "string",
           "name": "FullUrlCache",
           "required": false,
@@ -2003,6 +2051,7 @@
         {
           "default": "",
           "document": "Whether caches are case insensitive\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "IgnoreCase",
           "required": false,
@@ -2012,6 +2061,7 @@
         {
           "default": "",
           "document": "Request parameter contained in `CacheKey`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "QueryStringKey",
           "name": "QueryString",
           "required": false,
@@ -2021,6 +2071,7 @@
         {
           "default": "",
           "document": "Cookie contained in `CacheKey`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CookieKey",
           "name": "Cookie",
           "required": false,
@@ -2030,6 +2081,7 @@
         {
           "default": "",
           "document": "Request header contained in `CacheKey`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "HeaderKey",
           "name": "Header",
           "required": false,
@@ -2039,6 +2091,7 @@
         {
           "default": "",
           "document": "Custom string contained in `CacheKey`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CacheTagKey",
           "name": "CacheTag",
           "required": false,
@@ -2048,6 +2101,7 @@
         {
           "default": "",
           "document": "Request protocol contained in `CacheKey`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SchemeKey",
           "name": "Scheme",
           "required": false,
@@ -2057,6 +2111,7 @@
         {
           "default": "",
           "document": "Path-based cache key configuration\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "KeyRule",
           "name": "KeyRules",
           "required": false,
@@ -2706,7 +2761,7 @@
         },
         {
           "default": "",
-          "document": "Time granularity, which can be:\nmin: 1-minute. The query range should be less than or equal to 24 hours\n5min: 5-minute. The query range should be less than or equal to 31 days\nhour: 1-hour. The query range should be less than or equal to 31 days\nday: 1-day. The query period should be greater than 31 days\n\nCurrently, data query at 1-minute granularity is not supported if the `Area` field is `overseas`",
+          "document": "Time granularity, which can be:\n`min`: 1-minute granularity. The query period cannot exceed 24 hours.\n`5min`: 5-minute granularity. The query range cannot exceed 31 days.\n`hour`: 1-hour granularity. The query period cannot exceed 31 days.\n`day`: 1-day granularity. The query period cannot exceed 31 days.\n\nQuerying 1-minute granularity data is not supported if the `Area` field is `overseas`.",
           "example": "5min",
           "member": "string",
           "name": "Interval",
@@ -2828,7 +2883,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the list of domain names to be queried\nUp to 30 domain names can be queried at a time",
+          "document": "Queries the information of specified domain names\nSpecifies a domain name to query\nSpecifies multiple domain names to query (30 at most at a time)\nQueries all Specifies an account to query all domain names",
           "example": "无",
           "member": "string",
           "name": "Domains",
@@ -3823,6 +3878,7 @@
         {
           "default": "",
           "document": "Starting time, such as `2018-08-08 00:00:00`",
+          "example": "2018-08-08 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": false,
@@ -3831,6 +3887,7 @@
         {
           "default": "",
           "document": "End time, such as `2018-08-08 23:59:59`",
+          "example": "2018-08-08 23:59:59",
           "member": "datetime",
           "name": "EndTime",
           "required": false,
@@ -3839,6 +3896,7 @@
         {
           "default": "",
           "document": "Specifies a task ID for your query.\nYou must specify either a task ID or a starting time.",
+          "example": "abc123",
           "member": "string",
           "name": "TaskId",
           "required": false,
@@ -3847,6 +3905,7 @@
         {
           "default": "",
           "document": "Specifies a keyword for your query. Please enter a domain name or a complete URL beginning with `http(s)://`",
+          "example": "无",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -3855,6 +3914,7 @@
         {
           "default": "",
           "document": "Offset for paginated queries. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3863,6 +3923,7 @@
         {
           "default": "",
           "document": "Limit on paged queries. Default value: 20",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3871,6 +3932,7 @@
         {
           "default": "",
           "document": "Specifies a region for your query:\n`mainland`: within Mainland China\n`overseas`: outside Mainland China\n`global`: global",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -3878,7 +3940,8 @@
         },
         {
           "default": "",
-          "document": "Specifies a task state for your query:\n`fail`: prefetch failed\n`done`: prefetch succeeded\n`process`: prefetch in progress",
+          "document": "Queries the status of a specified task\n`fail`: prefetch failed\n`done`: prefetch succeeded\n`process`: prefetch in progress\n`invalid`: invalid prefetch with 4XX/5XX status code returned from the origin server",
+          "example": "done",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -4958,11 +5021,12 @@
       "type": "object"
     },
     "ErrorPage": {
-      "document": "Status code redirect configuration. This is disabled by default. (This feature is in beta and not generally available yet.)",
+      "document": "Status code redirect configuration, which is disabled by default.",
       "members": [
         {
           "default": "",
           "document": "Status code redirect configuration switch\non: enabled\noff: disabled\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -4972,6 +5036,7 @@
         {
           "default": "",
           "document": "Status code redirect rules configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ErrorPageRule",
           "name": "PageRules",
           "required": false,
@@ -5651,6 +5716,7 @@
         {
           "default": "",
           "document": "Content for each CacheType:\nFor `file`, enter the suffix, such as jpg, txt.\nFor `directory`, enter the path, such as /xxx/test/.\nFor `path`, enter the corresponding absolute path, such as /xxx/test.html.\nFor `index`, enter a backslash (/).\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "string",
           "name": "RulePaths",
           "required": true,
@@ -5660,6 +5726,7 @@
         {
           "default": "",
           "document": "Rule types:\n`file`: effective for specified file suffixes\n`directory`: effective for specified paths\n`path`: effective for specified absolute paths\n`index`: home page\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "file",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -5668,7 +5735,8 @@
         },
         {
           "default": "",
-          "document": "Whether to enable full-path cache\non: enable full-path cache (i.e., disable parameter filter)\noff: disable full-path cache (i.e., enable parameter filter)\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Whether full-path cache is enaled\n`on`: enables full-path cache (i.e., disables ignore query string)\n`off`: disables full-path cache (i.e., enables ignore query string)\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "FullUrlCache",
           "required": true,
@@ -5678,6 +5746,7 @@
         {
           "default": "",
           "document": "Whether caches are case insensitive\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "off",
           "member": "string",
           "name": "IgnoreCase",
           "required": true,
@@ -5687,6 +5756,7 @@
         {
           "default": "",
           "document": "Request parameter contained in `CacheKey`\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "RuleQueryString",
           "name": "QueryString",
           "required": true,
@@ -5696,6 +5766,7 @@
         {
           "default": "",
           "document": "Path cache key tag, the value \"user\" is passed.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "example": "user",
           "member": "string",
           "name": "RuleTag",
           "required": true,
@@ -6335,11 +6406,12 @@
       "usage": "out"
     },
     "MaxAge": {
-      "document": "Browser cache rule configuration. This is used to set the MaxAge default value and is disabled by default. (This feature is in beta and not generally available yet.)",
+      "document": "Browser cache rule configuration, which is used to set the default value of `MaxAge` and is disabled by default.",
       "members": [
         {
           "default": "",
           "document": "Browser cache configuration switch\non: enabled\noff: disabled\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -6349,6 +6421,7 @@
         {
           "default": "",
           "document": "MaxAge rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MaxAgeRule",
           "name": "MaxAgeRules",
           "required": false,
@@ -6934,6 +7007,7 @@
         {
           "default": "",
           "document": "Whether to enable wildcard match (`*`).\nfalse: disable\ntrue: enable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "Regex",
           "required": true,
@@ -6943,6 +7017,7 @@
         {
           "default": "",
           "document": "Matched URL. Only URLs are supported, while parameters are not. The exact match is used by default. If wildcard match is enabled, up to 5 wildcards are supported. The URL can contain up to 1,024 characters.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "/test",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -6952,6 +7027,7 @@
         {
           "default": "",
           "document": "Origin server when the path matches. COS origin with private read/write is not supported. The default origin server will be used by default when this field is left empty.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "8.8.8.8",
           "member": "string",
           "name": "Origin",
           "required": false,
@@ -6961,6 +7037,7 @@
         {
           "default": "",
           "document": "Origin server host header when the path matches. The default `ServerName` will be used by default when this field is left empty.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "www.test.com",
           "member": "string",
           "name": "ServerName",
           "required": false,
@@ -6970,6 +7047,7 @@
         {
           "default": "",
           "document": "Origin server region. Valid values: `CN` and `OV`.\nCN: the Chinese mainland\nOV: outside the Chinese mainland\nDefault value: `CN`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "CN",
           "member": "string",
           "name": "OriginArea",
           "required": false,
@@ -6979,6 +7057,7 @@
         {
           "default": "",
           "document": "Origin server URI path when the path matches, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the match path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "/demo",
           "member": "string",
           "name": "ForwardUri",
           "required": false,
@@ -6988,10 +7067,21 @@
         {
           "default": "",
           "document": "Origin-pull header setting when the path matches.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "无",
           "member": "HttpHeaderRule",
           "name": "RequestHeaders",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "When `Regex` is `false`, this parameter should be `true`.\n`false`: disabled\n`true`: enabled\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "FullMatch",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
@@ -7187,6 +7277,7 @@
         {
           "default": "",
           "document": "Prefetch task ID",
+          "example": "1234",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -7196,6 +7287,7 @@
         {
           "default": "",
           "document": "Prefetched URL",
+          "example": "http://www.test.com/1.txt",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -7204,7 +7296,8 @@
         },
         {
           "default": "",
-          "document": "Prefetch task status\n`fail`: prefetch failed\n`done`: prefetch succeeded\n`process`: prefetch in progress",
+          "document": "Prefetch task status\n`fail`: prefetch failed\n`done`: prefetch succeeded\n`process`: prefetch in progress\n`invalid`: invalid prefetch with 4XX/5XX status code returned from the origin server",
+          "example": "done",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -7214,6 +7307,7 @@
         {
           "default": "",
           "document": "Prefetch progress in percentage",
+          "example": "100",
           "member": "int64",
           "name": "Percent",
           "required": true,
@@ -7223,6 +7317,7 @@
         {
           "default": "",
           "document": "Prefetch task submission time",
+          "example": "2021-05-02 16:06:20",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -7232,6 +7327,7 @@
         {
           "default": "",
           "document": "Prefetch region\n`mainland`: within Mainland China\n`overseas`: outside Mainland China\n`global`: global",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -7241,6 +7337,7 @@
         {
           "default": "",
           "document": "Prefetch task update time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-05-02 16:06:20",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -7256,6 +7353,7 @@
         {
           "default": "",
           "document": "List of URLs. The protocol header such as \"http://\" or \"https://\" needs to be included.",
+          "example": "无",
           "member": "string",
           "name": "Urls",
           "required": true,
@@ -7264,6 +7362,7 @@
         {
           "default": "",
           "document": "Specifies the User-Agent header of an HTTP prefetch request when it is forwarded to the origin server\nDefault value: `TencentCdn`",
+          "example": "TencentCdn",
           "member": "string",
           "name": "UserAgent",
           "required": false,
@@ -7272,6 +7371,7 @@
         {
           "default": "",
           "document": "Destination region for the prefetch\n`mainland`: prefetches resources to nodes within Mainland China\n`overseas`: prefetches resources to nodes outside Mainland China\n`global`: prefetches resources to global nodes\nDefault value: `mainland`. You can prefetch a URL to nodes in a region provided that CDN service has been enabled for the domain name in the URL in the region.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": false,
@@ -7279,7 +7379,8 @@
         },
         {
           "default": "",
-          "document": "If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node",
+          "document": "If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node.\nNote: resources prefetched outside the Chinese mainland will be cached to CDN nodes outside the Chinese mainland and the traffic generated will incur costs.",
+          "example": "middle",
           "member": "string",
           "name": "Layer",
           "required": false,
@@ -7288,6 +7389,7 @@
         {
           "default": "",
           "document": "Whether to recursively resolve the M3U8 index file and prefetch the TS shards in it.\nNotes:\n1. This feature requires that the M3U8 index file can be directly requested and obtained.\n2. In the M3U8 index file, currently only the TS shards at the first to the third level can be recursively resolved.\n3. Prefetching the TS shards obtained through recursive resolution consumes the daily prefetch quota. If the usage exceeds the quota, the feature will be disabled and TS shards will not be prefetched.",
+          "example": "false",
           "member": "bool",
           "name": "ParseM3U8",
           "required": false,
@@ -7642,7 +7744,8 @@
       "members": [
         {
           "default": "",
-          "document": "Resource name, which is classified as follows based on different query conditions:\nA specific domain name: This indicates the details of this domain name\nmultiDomains: This indicates the aggregate details of multiple domain names\nProject ID: This displays the ID of the specifically queried project\nall: This indicates the details at the account level",
+          "document": "Resource name, which is classified as follows based on different query filters:\nA single domain name: queries domain name details by a domain name. The details of the domain name will be displayed when the passed parameter `detail` is `true` (the `detail` parameter defaults to `false`).\nMultiple domain names: queries domain name details by multiple domain names. The aggregated details of the domain names will be displayed.\nProject ID: queries domain name details by a project ID. The aggregated details of the domain names of the project will be displayed.\n`all`: account-level data, which is aggregated details of all domain names of an account.",
+          "example": "multiDomains",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -7652,6 +7755,7 @@
         {
           "default": "",
           "document": "Data details of a resource",
+          "example": "无",
           "member": "CdnData",
           "name": "CdnData",
           "required": true,
@@ -9444,11 +9548,12 @@
       "usage": "out"
     },
     "UrlRedirect": {
-      "document": "URL redirect configuration",
+      "document": "Configuration of URL rewriting",
       "members": [
         {
           "default": "",
-          "document": "URL redirect configuration switch\non: enabled\noff: disabled",
+          "document": "Whether URL rewriting is enabled\n`on`: enabled\n`off`: disabled",
+          "example": "off",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9457,7 +9562,8 @@
         },
         {
           "default": "",
-          "document": "URL redirect rule, which is required if `Switch` is `on`. There can be up to 10 rules.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Rule of URL rewriting rule, which is required if `Switch` is `on`. There can be up to 10 rules.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "UrlRedirectRule",
           "name": "PathRules",
           "required": false,

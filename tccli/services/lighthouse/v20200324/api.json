@@ -1,0 +1,4218 @@
+{
+  "actions": {
+    "ApplyInstanceSnapshot": {
+      "document": "This API is used to roll back the system disk snapshot of the specified instance.\n<li>Only rollback to the original system disk is supported.</li>\n<li>Only snapshots in `NORMAL` status can be used for rollback. To query the status of a snapshot, you can call the `DescribeSnapshots` API and see the `SnapshotState` field in the response.</li>\n<li>When a snapshot is rolled back, the status of the instance must be `STOPPED` or `RUNNING`. You can call the `DescribeInstances` API to query the instance status. Instances in `RUNNING` status will be forcibly shut down before snapshot rollback.</li>",
+      "input": "ApplyInstanceSnapshotRequest",
+      "name": "Rolls back instance snapshot",
+      "output": "ApplyInstanceSnapshotResponse"
+    },
+    "AssociateInstancesKeyPairs": {
+      "document": "This API is used to bind a user-specified key pair to an instance.\n* Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before binding.\n* If the public key of a key pair is written to the SSH configuration of the instance, you will be able to log in to the instance with the private key of the key pair.\n* If the instance is already associated with a key, the old key will become invalid.\n* If you currently use a password to log in, you will no longer be able to do so after you associate the instance with a key.\n* Batch operations are supported. The maximum number of instances in each request is 100. If instances not available for the operation are selected, you will get an error code.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "AssociateInstancesKeyPairsRequest",
+      "name": "Binds key pair",
+      "output": "AssociateInstancesKeyPairsResponse"
+    },
+    "AttachCcn": {
+      "document": "This API is used to associate a CCN instance.",
+      "input": "AttachCcnRequest",
+      "name": "Associates CCN instance",
+      "output": "AttachCcnResponse"
+    },
+    "CreateBlueprint": {
+      "document": "This API is used to create an image.",
+      "input": "CreateBlueprintRequest",
+      "name": "Creates image",
+      "output": "CreateBlueprintResponse"
+    },
+    "CreateFirewallRules": {
+      "document": "This API is used to add a firewall rule on an instance.\n\n\n* `FirewallVersion` is the firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the updated rule from expiring. If it is left empty, conflicts will not be considered.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
+      "input": "CreateFirewallRulesRequest",
+      "name": "Adds firewall rule",
+      "output": "CreateFirewallRulesResponse"
+    },
+    "CreateInstanceSnapshot": {
+      "document": "This API is used to create a system disk snapshot of the specified instance.",
+      "input": "CreateInstanceSnapshotRequest",
+      "name": "Creates instance snapshot",
+      "output": "CreateInstanceSnapshotResponse"
+    },
+    "CreateKeyPair": {
+      "document": "This API is used to create a key pair.",
+      "input": "CreateKeyPairRequest",
+      "name": "Creates key pair",
+      "output": "CreateKeyPairResponse"
+    },
+    "DeleteBlueprints": {
+      "document": "This API is used to delete an image.",
+      "input": "DeleteBlueprintsRequest",
+      "name": "Deletes image",
+      "output": "DeleteBlueprintsResponse"
+    },
+    "DeleteFirewallRules": {
+      "document": "This API is used to delete a firewall rule of an instance.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the specified rule will be deleted directly.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
+      "input": "DeleteFirewallRulesRequest",
+      "name": "Deletes firewall rule",
+      "output": "DeleteFirewallRulesResponse"
+    },
+    "DeleteKeyPairs": {
+      "document": "This API is used to delete a key pair.",
+      "input": "DeleteKeyPairsRequest",
+      "name": "Deletes key pair",
+      "output": "DeleteKeyPairsResponse"
+    },
+    "DeleteSnapshots": {
+      "document": "This API is used to delete a snapshot.\nThe snapshot must be in `NORMAL` status. To query the status of a snapshot, you can call the `DescribeSnapshots` API and see the `SnapshotState` field in the response.",
+      "input": "DeleteSnapshotsRequest",
+      "name": "Deletes snapshot",
+      "output": "DeleteSnapshotsResponse"
+    },
+    "DescribeBlueprintInstances": {
+      "document": "This API is used to query the information of an image instance.",
+      "input": "DescribeBlueprintInstancesRequest",
+      "name": "Queries image instance information",
+      "output": "DescribeBlueprintInstancesResponse"
+    },
+    "DescribeBlueprints": {
+      "document": "This API is used to query the information of an image.",
+      "input": "DescribeBlueprintsRequest",
+      "name": "Queries image information",
+      "output": "DescribeBlueprintsResponse"
+    },
+    "DescribeBundles": {
+      "document": "This API is used to query the information of a package.",
+      "input": "DescribeBundlesRequest",
+      "name": "Queries package",
+      "output": "DescribeBundlesResponse"
+    },
+    "DescribeCcnAttachedInstances": {
+      "document": "This API is used to query the information of instances associated with CCN.",
+      "input": "DescribeCcnAttachedInstancesRequest",
+      "name": "Queries the information of instances associated with CCN",
+      "output": "DescribeCcnAttachedInstancesResponse"
+    },
+    "DescribeFirewallRules": {
+      "document": "This API is used to query the firewall rules of an instance.",
+      "input": "DescribeFirewallRulesRequest",
+      "name": "Queries firewall rules",
+      "output": "DescribeFirewallRulesResponse"
+    },
+    "DescribeFirewallRulesTemplate": {
+      "document": "This API is used to query a firewall rule template.",
+      "input": "DescribeFirewallRulesTemplateRequest",
+      "name": "Queries firewall rule template",
+      "output": "DescribeFirewallRulesTemplateResponse"
+    },
+    "DescribeGeneralResourceQuotas": {
+      "document": "This API is used to query the quota information of general resources.",
+      "input": "DescribeGeneralResourceQuotasRequest",
+      "name": "Queries the quota information of general resources",
+      "output": "DescribeGeneralResourceQuotasResponse"
+    },
+    "DescribeInstanceLoginKeyPairAttribute": {
+      "document": "This API is used to query the attributes of the default login key of an instance.",
+      "input": "DescribeInstanceLoginKeyPairAttributeRequest",
+      "name": "Queries the attributes of default login key of instance",
+      "output": "DescribeInstanceLoginKeyPairAttributeResponse"
+    },
+    "DescribeInstanceVncUrl": {
+      "document": "This API is used to query the VNC URL of an instance, and the obtained address can be used for VNC login to the instance.\n\n* This feature is available to instances in `RUNNING` status.\n* A VNC URL is only valid for 15 seconds. If you do not access the URL within 15 seconds, it will become invalid, and you will have to query another one.\n* Once the VNC URL is accessed, it will become invalid, and you will have to query another one if needed.\n* If the connection is interrupted, up to 30 reconnection requests per minute are allowed.",
+      "input": "DescribeInstanceVncUrlRequest",
+      "name": "Queries the VNC URL of instance",
+      "output": "DescribeInstanceVncUrlResponse"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to query the details of one or multiple instances.\n\n* You can query the details of an instance according to its ID, name, or private IP.\n* For more information on filters, please see [Filters](https://intl.cloud.tencent.com/document/product/1207/47576?from_cn_redirect=1#Filter).\n* If no parameter is defined, the status of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.\n* The latest operation (LatestOperation) and the latest operation status (LatestOperationState) of the instance can be queried.",
+      "input": "DescribeInstancesRequest",
+      "name": "Views instance list",
+      "output": "DescribeInstancesResponse"
+    },
+    "DescribeInstancesDeniedActions": {
+      "document": "This API is used to query the list of operation limits of one or more instances.",
+      "input": "DescribeInstancesDeniedActionsRequest",
+      "name": "Views the list of operation limits of instances",
+      "output": "DescribeInstancesDeniedActionsResponse"
+    },
+    "DescribeInstancesReturnable": {
+      "document": "This API is used to query whether the specified instance can be returned.",
+      "input": "DescribeInstancesReturnableRequest",
+      "name": "Queries whether the specified instance can be returned",
+      "output": "DescribeInstancesReturnableResponse"
+    },
+    "DescribeInstancesTrafficPackages": {
+      "document": "This API is used to query the traffic package details of one or more instances.",
+      "input": "DescribeInstancesTrafficPackagesRequest",
+      "name": "Views the traffic package details of instances",
+      "output": "DescribeInstancesTrafficPackagesResponse"
+    },
+    "DescribeKeyPairs": {
+      "document": "This API is used to query key pairs.",
+      "input": "DescribeKeyPairsRequest",
+      "name": "Queries key pair list",
+      "output": "DescribeKeyPairsResponse"
+    },
+    "DescribeModifyInstanceBundles": {
+      "document": "This API is used to query the list of package options of an instance.",
+      "input": "DescribeModifyInstanceBundlesRequest",
+      "name": "Queries the list of package options of instance",
+      "output": "DescribeModifyInstanceBundlesResponse"
+    },
+    "DescribeRegions": {
+      "document": "This API is used to query the information of regions.",
+      "input": "DescribeRegionsRequest",
+      "name": "Queries region list",
+      "output": "DescribeRegionsResponse"
+    },
+    "DescribeResetInstanceBlueprints": {
+      "document": "This API is used to query the image information of a reset instance.",
+      "input": "DescribeResetInstanceBlueprintsRequest",
+      "name": "Queries the image information of reset instance",
+      "output": "DescribeResetInstanceBlueprintsResponse"
+    },
+    "DescribeSnapshots": {
+      "document": "This API is used to query the list of snapshots.",
+      "input": "DescribeSnapshotsRequest",
+      "name": "Queries snapshot list",
+      "output": "DescribeSnapshotsResponse"
+    },
+    "DescribeSnapshotsDeniedActions": {
+      "document": "This API is used to query the list of operation limits of one or more snapshots.",
+      "input": "DescribeSnapshotsDeniedActionsRequest",
+      "name": "Queries the list of operation limits of instances",
+      "output": "DescribeSnapshotsDeniedActionsResponse"
+    },
+    "DescribeZones": {
+      "document": "This API is used to query the list of AZs in a region.",
+      "input": "DescribeZonesRequest",
+      "name": "Queries AZ list",
+      "output": "DescribeZonesResponse"
+    },
+    "DetachCcn": {
+      "document": "This API is used to unassociate a CCN instance.",
+      "input": "DetachCcnRequest",
+      "name": "Unassociates CCN instance",
+      "output": "DetachCcnResponse"
+    },
+    "DisassociateInstancesKeyPairs": {
+      "document": "This API is used to unbind an instance from the specified key pair.\n\n* Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before unbinding.\n* After a key pair is unassociated from an instance, you can log in to the instance with password.\n* If no password was set, you cannot log in to the instance with SSH after unbinding. You can call the ResetInstancesPassword API to set a login password.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "DisassociateInstancesKeyPairsRequest",
+      "name": "Unbinds key pair",
+      "output": "DisassociateInstancesKeyPairsResponse"
+    },
+    "ImportKeyPair": {
+      "document": "This API is used to import the specified key pair.",
+      "input": "ImportKeyPairRequest",
+      "name": "Imports key pair",
+      "output": "ImportKeyPairResponse"
+    },
+    "InquirePriceCreateBlueprint": {
+      "document": "This API is used to query the price of a created image.",
+      "input": "InquirePriceCreateBlueprintRequest",
+      "name": "Queries the price of created image",
+      "output": "InquirePriceCreateBlueprintResponse"
+    },
+    "InquirePriceCreateInstances": {
+      "document": "This API is used to query the price of a created instance.",
+      "input": "InquirePriceCreateInstancesRequest",
+      "name": "Queries the price of created instance",
+      "output": "InquirePriceCreateInstancesResponse"
+    },
+    "InquirePriceRenewInstances": {
+      "document": "This API is used to query the price of renewed instance.",
+      "input": "InquirePriceRenewInstancesRequest",
+      "name": "Queries the price of renewed instance",
+      "output": "InquirePriceRenewInstancesResponse"
+    },
+    "ModifyBlueprintAttribute": {
+      "document": "This API is used to modify an image attribute.",
+      "input": "ModifyBlueprintAttributeRequest",
+      "name": "Modifies image attribute",
+      "output": "ModifyBlueprintAttributeResponse"
+    },
+    "ModifyFirewallRuleDescription": {
+      "document": "This API is used to modify the description of a single firewall rule.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the description of the specified rule will be modified directly.\n\nIn the `FirewallRule` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
+      "input": "ModifyFirewallRuleDescriptionRequest",
+      "name": "Modifies firewall rule description",
+      "output": "ModifyFirewallRuleDescriptionResponse"
+    },
+    "ModifyFirewallRules": {
+      "document": "This API is used to reset the firewall rules of an instance.\n\nThis API deletes all firewall rules of the current instance first and then adds new rules.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the specified rule will be reset directly.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
+      "input": "ModifyFirewallRulesRequest",
+      "name": "Modifies firewall rules",
+      "output": "ModifyFirewallRulesResponse"
+    },
+    "ModifyInstancesAttribute": {
+      "document": "This API is used to modify the attributes of instances.\n* The instance name is used only for users’ convenience.\n* Batch operations are supported. Each request can contain up to 100 instances at a time.\n* This API is async. A successful request will return a `RequestId`, it does not mean the operation is completed. You can call the `DescribeInstances` API to query the operation result. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "ModifyInstancesAttributeRequest",
+      "name": "Modifies instance attribute",
+      "output": "ModifyInstancesAttributeResponse"
+    },
+    "ModifyInstancesLoginKeyPairAttribute": {
+      "document": "This API is used to set the attributes of the default login key pair of an instance.\n\n",
+      "input": "ModifyInstancesLoginKeyPairAttributeRequest",
+      "name": "Modifies the attributes of default login key pair of instance",
+      "output": "ModifyInstancesLoginKeyPairAttributeResponse"
+    },
+    "ModifyInstancesRenewFlag": {
+      "document": "This API is used to modify the renewal flags of monthly subscribed instances.\n\n* Instances marked with \"auto-renewal\" will be automatically renewed for one month when they expire.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "ModifyInstancesRenewFlagRequest",
+      "name": "Modifies the renewal flags of instances",
+      "output": "ModifyInstancesRenewFlagResponse"
+    },
+    "ModifySnapshotAttribute": {
+      "document": "This API is used to modify the attributes of a snapshot.\n<li>The snapshot name is used only for users’ convenience.</li>",
+      "input": "ModifySnapshotAttributeRequest",
+      "name": "Modifies snapshot attribute",
+      "output": "ModifySnapshotAttributeResponse"
+    },
+    "RebootInstances": {
+      "document": "This API is used to restart instances.\n\n* You can only perform this operation on instances whose status is `RUNNING`.\n* The instance status will become `REBOOTING` when the API is called successfully and will become `RUNNING` when the instance is successfully restarted.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "RebootInstancesRequest",
+      "name": "Restarts instances",
+      "output": "RebootInstancesResponse"
+    },
+    "ResetAttachCcn": {
+      "document": "This API is used to apply for association again after a CCN instance association application expires.",
+      "input": "ResetAttachCcnRequest",
+      "name": "Applies for associating with CCN again",
+      "output": "ResetAttachCcnResponse"
+    },
+    "ResetInstance": {
+      "document": "This API is used to reinstall the image on the specified instance.\n\n* If you specify a `BlueprintId`, the specified image is used; otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* Currently, this API does not support switching the operating system between `LINUX_UNIX` and `WINDOWS` for instances.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "ResetInstanceRequest",
+      "name": "Resets application",
+      "output": "ResetInstanceResponse"
+    },
+    "ResetInstancesPassword": {
+      "document": "This API is used to reset the password of the instance OS to a user-specified password.\n* You can only use this API to modify the password of the admin account. The name of the admin account varies by OS (on Windows, it is `Administrator`; on Ubuntu, it is `ubuntu`; on other systems, it is `root`).\n* Batch operations are supported. You can reset the passwords of multiple instances to the same one. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "ResetInstancesPasswordRequest",
+      "name": "Resets instance password",
+      "output": "ResetInstancesPasswordResponse"
+    },
+    "StartInstances": {
+      "document": "This API is used to start one or more instances.\n\n* You can only perform this operation on instances whose status is `STOPPED`.\n* The instance status will become `STARTING` when the API is called successfully and will become `RUNNING` when the instance is successfully started.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "StartInstancesRequest",
+      "name": "Starts instances",
+      "output": "StartInstancesResponse"
+    },
+    "StopInstances": {
+      "document": "This API is used to shut down one or more instances.\n* You can only perform this operation on instances whose status is `RUNNING`.\n* The instance status will become `STOPPING` when the API is called successfully and will become `STOPPED` when the instance is successfully shut down.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "StopInstancesRequest",
+      "name": "Shuts down instances",
+      "output": "StopInstancesResponse"
+    },
+    "TerminateInstances": {
+      "document": "This API is used to return instances.\n\n* Instances in `SHUTDOWN` status can be terminated through this API and cannot be recovered.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "TerminateInstancesRequest",
+      "name": "Returns instances",
+      "output": "TerminateInstancesResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-03-24",
+    "serviceNameCN": "轻量应用服务器",
+    "serviceShortName": "lighthouse"
+  },
+  "objects": {
+    "ApplyInstanceSnapshotRequest": {
+      "document": "ApplyInstanceSnapshot request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-k31c771o",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot ID.",
+          "example": "lhsnap-nv6aqcv6",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyInstanceSnapshotResponse": {
+      "document": "ApplyInstanceSnapshot response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateInstancesKeyPairsRequest": {
+      "document": "AssociateInstancesKeyPairs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair ID list. Each request can contain up to 100 key pairs.",
+          "example": "[\"lhkp-f7rjie1q\\n\"]",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateInstancesKeyPairsResponse": {
+      "document": "AssociateInstancesKeyPairs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachCcnRequest": {
+      "document": "AttachCcn request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN instance ID.",
+          "example": "ccn-f49l6u0z",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachCcnResponse": {
+      "document": "AttachCcn response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Blueprint": {
+      "document": "Image information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID, which is the unique identifier of `Blueprint`.",
+          "example": "lhbp-5exe07sc",
+          "member": "string",
+          "name": "BlueprintId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image title to be displayed.",
+          "example": "Discuz! Q",
+          "member": "string",
+          "name": "DisplayTitle",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image version to be displayed.",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "DisplayVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image description information.",
+          "example": "discuzq",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS name.",
+          "example": "CentOS 7.6 64bit",
+          "member": "string",
+          "name": "OsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS type.",
+          "example": "CENTOS",
+          "member": "string",
+          "name": "Platform",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS type, such as LINUX_UNIX and WINDOWS.",
+          "example": "LINUX_UNIX",
+          "member": "string",
+          "name": "PlatformType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image type, such as APP_OS, PURE_OS, and PRIVATE.",
+          "example": "APP_OS",
+          "member": "string",
+          "name": "BlueprintType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image picture URL.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk size required by image in GB.",
+          "example": "20",
+          "member": "int64",
+          "name": "RequiredSystemDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image status.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "BlueprintState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-02T09:16:16Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Image name.",
+          "example": "discuzq",
+          "member": "string",
+          "name": "BlueprintName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the image supports automation tools.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportAutomationTools",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size required by image in GB.",
+          "example": "1",
+          "member": "int64",
+          "name": "RequiredMemorySize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the Lighthouse image shared from a CVM image\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "img-cs2rrmp0",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BlueprintInstance": {
+      "document": "Image instance information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image information.",
+          "member": "Blueprint",
+          "name": "Blueprint",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Software list.",
+          "member": "Software",
+          "name": "SoftwareSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BlueprintPrice": {
+      "document": "BlueprintPrice\tCustom image price parameter.",
+      "members": [
+        {
+          "default": "",
+          "document": "Original image unit price in USD.",
+          "example": "0.008",
+          "member": "float",
+          "name": "OriginalBlueprintPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original image total price in USD.",
+          "example": "0.008",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount.",
+          "example": "100",
+          "member": "int64",
+          "name": "Discount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discounted image total price in USD.",
+          "example": "0.008",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Bundle": {
+      "document": "Package information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Package ID.",
+          "example": "bundle_gen_01",
+          "member": "string",
+          "name": "BundleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB.",
+          "example": "1",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "SystemDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk size.",
+          "example": "40",
+          "member": "int64",
+          "name": "SystemDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monthly network traffic in Gb.",
+          "example": "300",
+          "member": "int64",
+          "name": "MonthlyTraffic",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether Linux/Unix is supported.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportLinuxUnixPlatform",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether Windows is supported.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportWindowsPlatform",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current package unit price information.",
+          "example": " {           \"InstancePrice\": {             \"OriginalBundlePrice",
+          "member": "Price",
+          "name": "Price",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores.",
+          "example": "1",
+          "member": "int64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peak bandwidth in Mbps.",
+          "example": "3",
+          "member": "uint64",
+          "name": "InternetMaxBandwidthOut",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network billing mode.",
+          "example": "TRAFFIC_POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InternetChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package sale status. Valid values: AVAILABLE, SOLD_OUT",
+          "example": "SOLD_OUT",
+          "member": "string",
+          "name": "BundleSalesState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package type.\nValid values:\n<li> GENERAL_BUNDLE: general</li><li> STORAGE_BUNDLE: Storage</li>",
+          "example": "GENERAL_BUNDLE",
+          "member": "string",
+          "name": "BundleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package tag.\nValid values:\n\"ACTIVITY\": promotional package\n\"NORMAL\": regular package\n\"CAREFREE\": carefree package",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "BundleDisplayLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CcnAttachedInstance": {
+      "document": "List of instances associated with the CCN instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN instance ID.",
+          "example": "ccn-f49l6u0z",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CIDR block of associated instance.",
+          "example": " [\"10.0.0.0/16\"]",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Associated instance status:\n\n•  PENDING: applying\n•  ACTIVE: connected\n•  EXPIRED: expired\n•  REJECTED: rejected\n•  DELETED: deleted\n•  FAILED: failed (it will be asynchronously unassociated after 2 hours)\n•  ATTACHING: associating\n•  DETACHING: unassociating\n•  DETACHFAILED: failed to unassociate (it will be asynchronously unassociated after 2 hours)",
+          "example": "PENDING",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Association time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-05-08 17:21:05",
+          "member": "datetime",
+          "name": "AttachedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "Lighthouse attach ccn instance",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateBlueprintRequest": {
+      "document": "CreateBlueprint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image name, which can contain up to 60 characters.",
+          "example": "test-blueprint",
+          "member": "string",
+          "name": "BlueprintName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image description, which can contain up to 60 characters.",
+          "example": "test-blueprint",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance for which to make an image.",
+          "example": "lhins-aaaabbbb",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBlueprintResponse": {
+      "document": "CreateBlueprint response structure.",
+      "members": [
+        {
+          "document": "Custom image ID.",
+          "example": "lhbp-xkeh87da",
+          "member": "string",
+          "name": "BlueprintId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFirewallRulesRequest": {
+      "document": "CreateFirewallRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-aglzynfg",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Firewall rule list.",
+          "example": "无",
+          "member": "FirewallRule",
+          "name": "FirewallRules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
+          "example": "无",
+          "member": "uint64",
+          "name": "FirewallVersion",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFirewallRulesResponse": {
+      "document": "CreateFirewallRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceSnapshotRequest": {
+      "document": "CreateInstanceSnapshot request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance for which to create a snapshot.",
+          "example": "lhins-k31c771o",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot name, which can contain up to 60 characters.",
+          "example": "snap_20200903",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceSnapshotResponse": {
+      "document": "CreateInstanceSnapshot response structure.",
+      "members": [
+        {
+          "document": "Snapshot ID.",
+          "example": "lhsnap-nv6aqcv6",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKeyPairRequest": {
+      "document": "CreateKeyPair request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair name, which can contain up to 25 digits, letters, and underscores.",
+          "example": "test_create_1",
+          "member": "string",
+          "name": "KeyName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKeyPairResponse": {
+      "document": "CreateKeyPair response structure.",
+      "members": [
+        {
+          "document": "Key pair information.",
+          "example": "无",
+          "member": "KeyPair",
+          "name": "KeyPair",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBlueprintsRequest": {
+      "document": "DeleteBlueprints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID list, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
+          "example": "[\"lhbp-aaaabbbb\"]",
+          "member": "string",
+          "name": "BlueprintIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBlueprintsResponse": {
+      "document": "DeleteBlueprints response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFirewallRulesRequest": {
+      "document": "DeleteFirewallRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-aglzynfg",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Firewall rule list.",
+          "example": "无",
+          "member": "FirewallRule",
+          "name": "FirewallRules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FirewallVersion",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFirewallRulesResponse": {
+      "document": "DeleteFirewallRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteKeyPairsRequest": {
+      "document": "DeleteKeyPairs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair ID list. Each request can contain up to 10 key pairs.",
+          "example": "[\"lhkp-1234abcd\\r\\n\"]",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteKeyPairsResponse": {
+      "document": "DeleteKeyPairs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSnapshotsRequest": {
+      "document": "DeleteSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of snapshots to be deleted, which can be queried through `DescribeSnapshots`.",
+          "example": "[\"lhsnap-nv6aqcv6\\n\"]",
+          "member": "string",
+          "name": "SnapshotIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSnapshotsResponse": {
+      "document": "DeleteSnapshots response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeniedAction": {
+      "document": "Restricted operation.",
+      "members": [
+        {
+          "default": "",
+          "document": "Restricted operation name.",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Restricted operation message code.",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Restricted operation message.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeBlueprintInstancesRequest": {
+      "document": "DescribeBlueprintInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list, which currently can contain only one instance.",
+          "example": "[\"lhins-f4s49nap\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlueprintInstancesResponse": {
+      "document": "DescribeBlueprintInstances response structure.",
+      "members": [
+        {
+          "document": "Number of eligible image instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image instance list information.",
+          "example": "无",
+          "member": "BlueprintInstance",
+          "name": "BlueprintInstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlueprintsRequest": {
+      "document": "DescribeBlueprints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID list.",
+          "example": "[\"lhbp-aaaabbbb\"]",
+          "member": "string",
+          "name": "BlueprintIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image; `SHARED`: shared image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
+          "example": " [         {             \"Name\": \"blueprint-type\",             \"",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlueprintsResponse": {
+      "document": "DescribeBlueprints response structure.",
+      "members": [
+        {
+          "document": "Number of eligible images.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image details list.",
+          "example": " [             {                 \"BlueprintId\": \"lhbp-5e8807sc\",",
+          "member": "Blueprint",
+          "name": "BlueprintSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBundlesRequest": {
+      "document": "DescribeBundles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Package ID list.",
+          "example": "bundle_ntp_small1_500",
+          "member": "string",
+          "name": "BundleIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter list.\n<li>bundle-id</li>Filter by **package ID**.\nType: String\nRequired: no\n<li>support-platform-type</li>Filter by **system type**.\nValid values: LINUX_UNIX (Linux/Unix), WINDOWS ( Windows)\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "AZ list, which contains all AZs by default.",
+          "example": "无",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBundlesResponse": {
+      "document": "DescribeBundles response structure.",
+      "members": [
+        {
+          "document": "List of package details.",
+          "example": "无",
+          "member": "Bundle",
+          "name": "BundleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of eligible packages, which is used for pagination.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcnAttachedInstancesRequest": {
+      "document": "DescribeCcnAttachedInstances request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCcnAttachedInstancesResponse": {
+      "document": "DescribeCcnAttachedInstances response structure.",
+      "members": [
+        {
+          "document": "List of instances associated with the CCN instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CcnAttachedInstance",
+          "name": "CcnAttachedInstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFirewallRulesRequest": {
+      "document": "DescribeFirewallRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-aglzynfg",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFirewallRulesResponse": {
+      "document": "DescribeFirewallRules response structure.",
+      "members": [
+        {
+          "document": "Number of eligible firewall rules.",
+          "example": "7",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Firewall rule details list.",
+          "example": "无",
+          "member": "FirewallRuleInfo",
+          "name": "FirewallRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Firewall version number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FirewallVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFirewallRulesTemplateRequest": {
+      "document": "DescribeFirewallRulesTemplate request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeFirewallRulesTemplateResponse": {
+      "document": "DescribeFirewallRulesTemplate response structure.",
+      "members": [
+        {
+          "document": "Number of eligible firewall rules.",
+          "example": "9",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Firewall rule details list.",
+          "example": "无",
+          "member": "FirewallRuleInfo",
+          "name": "FirewallRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralResourceQuotasRequest": {
+      "document": "DescribeGeneralResourceQuotas request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of resource names. Valid values: USER_KEY_PAIR, INSTANCE, SNAPSHOT.",
+          "example": "[\"INSTANCE\\n\"]",
+          "member": "string",
+          "name": "ResourceNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralResourceQuotasResponse": {
+      "document": "DescribeGeneralResourceQuotas response structure.",
+      "members": [
+        {
+          "document": "List of general resource quota details.",
+          "example": "无",
+          "member": "GeneralResourceQuota",
+          "name": "GeneralResourceQuotaSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceLoginKeyPairAttributeRequest": {
+      "document": "DescribeInstanceLoginKeyPairAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-j4liwha8",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceLoginKeyPairAttributeResponse": {
+      "document": "DescribeInstanceLoginKeyPairAttribute response structure.",
+      "members": [
+        {
+          "document": "Whether to allow login with the default key pair. Valid values: YES, NO.",
+          "example": "NO",
+          "member": "string",
+          "name": "PermitLogin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceVncUrlRequest": {
+      "document": "DescribeInstanceVncUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "lhins-ruy9d2tw",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceVncUrlResponse": {
+      "document": "DescribeInstanceVncUrl response structure.",
+      "members": [
+        {
+          "document": "Instance VNC URL.",
+          "example": "wss%3A%2F%2Fusevnc.qcloud.com%3A443%2Fvnc%3Fs%3D",
+          "member": "string",
+          "name": "InstanceVncUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesDeniedActionsRequest": {
+      "document": "DescribeInstancesDeniedActions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesDeniedActionsResponse": {
+      "document": "DescribeInstancesDeniedActions response structure.",
+      "members": [
+        {
+          "document": "List of instance operation limit details.",
+          "example": "无",
+          "member": "InstanceDeniedActions",
+          "name": "InstanceDeniedActionSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter list.\n<li>instance-name</li>Filter by **instance name**.\nType: String\nRequired: no\n<li>private-ip-address</li>Filter by **private IP of instance primary ENI**.\nType: String\nRequired: no\n<li>public-ip-address</li>Filter by **public IP of instance primary ENI**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance details.",
+          "example": "无",
+          "member": "Instance",
+          "name": "InstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesReturnableRequest": {
+      "document": "DescribeInstancesReturnable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\",\"lhins-xusdke45\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesReturnableResponse": {
+      "document": "DescribeInstancesReturnable response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of returnable instance details.",
+          "example": "无",
+          "member": "InstanceReturnable",
+          "name": "InstanceReturnableSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesTrafficPackagesRequest": {
+      "document": "DescribeInstancesTrafficPackages request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesTrafficPackagesResponse": {
+      "document": "DescribeInstancesTrafficPackages response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instance traffic package details.",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instance traffic package details.",
+          "member": "InstanceTrafficPackage",
+          "name": "InstanceTrafficPackageSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKeyPairsRequest": {
+      "document": "DescribeKeyPairs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair ID list.",
+          "example": "[\"lhkp-omd12oc1\\r\\n\"]",
+          "member": "string",
+          "name": "KeyIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter list\n<li>key-id</li>Filter by **key pair ID**.\nType: String\nRequired: no\n<li>key-name</li>Filter by **key pair name**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `KeyIds` and `Filters` cannot be specified at the same time.",
+          "example": "[{\"Name\":\"key-name\",\"Values\":[\"k1\"]}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKeyPairsResponse": {
+      "document": "DescribeKeyPairs response structure.",
+      "members": [
+        {
+          "document": "Number of eligible key pairs.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of key pair details.",
+          "example": "无",
+          "member": "KeyPair",
+          "name": "KeyPairSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeModifyInstanceBundlesRequest": {
+      "document": "DescribeModifyInstanceBundles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-f4s3n38h",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter list.\n<li>bundle-id</li>Filter by **package ID**.\nType: String\nRequired: no\n<li>support-platform-type</li>Filter by **system type**.\nValid values: LINUX_UNIX (Linux/Unix), WINDOWS ( Windows)\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeModifyInstanceBundlesResponse": {
+      "document": "DescribeModifyInstanceBundles response structure.",
+      "members": [
+        {
+          "document": "Number of matched instances.",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "New package details",
+          "example": "无",
+          "member": "ModifyBundle",
+          "name": "ModifyBundleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionsRequest": {
+      "document": "DescribeRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRegionsResponse": {
+      "document": "DescribeRegions response structure.",
+      "members": [
+        {
+          "document": "Number of regions.",
+          "example": "4",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Region information list.",
+          "example": "无",
+          "member": "RegionInfo",
+          "name": "RegionSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResetInstanceBlueprintsRequest": {
+      "document": "DescribeResetInstanceBlueprints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "lhins-383nzmm1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResetInstanceBlueprintsResponse": {
+      "document": "DescribeResetInstanceBlueprints response structure.",
+      "members": [
+        {
+          "document": "Number of eligible images.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image reset information list",
+          "example": "无",
+          "member": "ResetInstanceBlueprint",
+          "name": "ResetInstanceBlueprintSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotsDeniedActionsRequest": {
+      "document": "DescribeSnapshotsDeniedActions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot ID list, which can be queried through `DescribeSnapshots`.",
+          "example": "[\"lhsnap-nv6aqcv6\\n\"]",
+          "member": "string",
+          "name": "SnapshotIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotsDeniedActionsResponse": {
+      "document": "DescribeSnapshotsDeniedActions response structure.",
+      "members": [
+        {
+          "document": "List of snapshot operation limit details.",
+          "example": "无",
+          "member": "SnapshotDeniedActions",
+          "name": "SnapshotDeniedActionSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotsRequest": {
+      "document": "DescribeSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of snapshots to be queried.\nYou cannot specify `SnapshotIds` and `Filters` at the same time.",
+          "example": "[\"lhsnap-nv6aqcv6\"]",
+          "member": "string",
+          "name": "SnapshotIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter list.\n<li>snapshot-id</li>Filter by **snapshot ID**.\nType: String\nRequired: no\n<li>disk-id</li>Filter by **disk ID**.\nType: String\nRequired: no\n<li>snapshot-name</li>Filter by **snapshot name**.\nType: String\nRequired: no\n<li>instance-id</li>Filter by **instance ID**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `SnapshotIds` and `Filters` at the same time.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotsResponse": {
+      "document": "DescribeSnapshots response structure.",
+      "members": [
+        {
+          "document": "Number of snapshots.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of snapshot details.",
+          "example": "无",
+          "member": "Snapshot",
+          "name": "SnapshotSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZonesRequest": {
+      "document": "DescribeZones request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeZonesResponse": {
+      "document": "DescribeZones response structure.",
+      "members": [
+        {
+          "document": "Number of AZs",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of AZ details",
+          "example": "无",
+          "member": "ZoneInfo",
+          "name": "ZoneInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachCcnRequest": {
+      "document": "DetachCcn request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN instance ID.",
+          "example": "ccn-f49l6u0z",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachCcnResponse": {
+      "document": "DetachCcn response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateInstancesKeyPairsRequest": {
+      "document": "DisassociateInstancesKeyPairs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair ID list. Each request can contain up to 100 key pairs.",
+          "example": "[\"lhkp-f7rjie1q\\n\"]",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateInstancesKeyPairsResponse": {
+      "document": "DisassociateInstancesKeyPairs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": ">Key-Value pair filter for conditional filtering queries, such as filtering name\n> * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.\n> * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` is the logical `OR`.\n>\n> Taking the `Filter` in the `DescribeInstances` API as an example, you can use the following filters to query the instance whose name (`instance-name`) is `test` ***and*** private IP (`private-ip-address`) is 10.10.10.10:\n```\nFilters.0.Name=instance-name\n&Filters.0.Values.0=test\n&Filters.1.Name=private-ip-address\n&Filters.1.Values.0=10.10.10.10\n```",
+      "members": [
+        {
+          "default": "",
+          "document": "Field to be filtered.",
+          "example": "bundle-id",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter value of field.",
+          "example": "['bundle_ntp_small2_100']",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "FirewallRule": {
+      "document": "Firewall rule information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol. Valid values: TCP, UDP, ICMP, ALL.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port. Valid values: ALL, one single port, multiple ports separated by commas, or port range indicated by a minus sign",
+          "example": "80",
+          "member": "string",
+          "name": "Port",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP range or IP (mutually exclusive). Default value: 0.0.0.0/0, which indicates all sources.",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: ACCEPT, DROP. Default value: ACCEPT.",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Firewall rule description.",
+          "example": "''",
+          "member": "string",
+          "name": "FirewallRuleDescription",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "FirewallRuleInfo": {
+      "document": "Firewall rule details.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application type. Valid values: custom, HTTP (80), HTTPS (443), Linux login (22), Windows login (3389), MySQL (3306), SQL Server (1433), all TCP ports, all UDP ports, Ping-ICMP, ALL.",
+          "example": "HTTP(80)",
+          "member": "string",
+          "name": "AppType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol. Valid values: TCP, UDP, ICMP, ALL.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port. Valid values: ALL, one single port, multiple ports separated by commas, or port range indicated by a minus sign",
+          "example": "80",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP range or IP (mutually exclusive). Default value: 0.0.0.0/0, which indicates all sources.",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: ACCEPT, DROP. Default value: ACCEPT.",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Firewall rule description.",
+          "example": "''",
+          "member": "string",
+          "name": "FirewallRuleDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GeneralResourceQuota": {
+      "document": "General resource quota information.\n\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource name.",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of available resources.",
+          "member": "int64",
+          "name": "ResourceQuotaAvailable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of resources.",
+          "member": "int64",
+          "name": "ResourceQuotaTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ImportKeyPairRequest": {
+      "document": "ImportKeyPair request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair name, which can contain up to 25 digits, letters, and underscores.",
+          "example": "test_import",
+          "member": "string",
+          "name": "KeyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Public key content of the key pair, which is in the OpenSSH RSA format.",
+          "example": "<公钥内容>",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportKeyPairResponse": {
+      "document": "ImportKeyPair response structure.",
+      "members": [
+        {
+          "document": "Key pair ID.",
+          "example": "lhkp-2xsmy15f",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateBlueprintRequest": {
+      "document": "InquirePriceCreateBlueprint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of custom images. Default value: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "BlueprintCount",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateBlueprintResponse": {
+      "document": "InquirePriceCreateBlueprint response structure.",
+      "members": [
+        {
+          "document": "Custom image price.",
+          "example": "{              ",
+          "member": "BlueprintPrice",
+          "name": "BlueprintPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateInstancesRequest": {
+      "document": "InquirePriceCreateInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance package ID.",
+          "example": "bundle_ntp_small1_500",
+          "member": "string",
+          "name": "BundleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances to be created. Default value: 1.",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Application image ID, which is required if a paid application image is used and can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
+          "example": "lhbp-aaaabbbb",
+          "member": "string",
+          "name": "BlueprintId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateInstancesResponse": {
+      "document": "InquirePriceCreateInstances response structure.",
+      "members": [
+        {
+          "document": "Price query information.",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewInstancesRequest": {
+      "document": "InquirePriceRenewInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance to be renewed.",
+          "example": "[\"lhins-11110001\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewInstancesResponse": {
+      "document": "InquirePriceRenewInstances response structure.",
+      "members": [
+        {
+          "document": "Price query information.",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Instance": {
+      "document": "Instance information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BundleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BlueprintId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of instance CPU cores.",
+          "example": "无",
+          "member": "int64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance memory capacity in GB.",
+          "example": "无",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values: \nPREPAID: prepaid (i.e., monthly subscription).",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance system disk information.",
+          "example": "无",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private IP of instance primary ENI. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public IP of instance primary ENI. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PublicAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance bandwidth information.",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-Renewal flag. Valid values: \nNOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  \nNOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.",
+          "example": "无",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance login settings.",
+          "example": "无",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: \n<li>PENDING: creating</li><li>LAUNCH_FAILED: creation failed</li><li>RUNNING: running</li><li>STOPPED: shut down</li><li>STARTING: starting</li><li>STOPPING: shutting down</li><li>REBOOTING: rebooting</li><li>SHUTDOWN: shut down and to be terminated</li><li>TERMINATING: terminating</li>",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Globally unique ID of instance.",
+          "example": "无",
+          "member": "string",
+          "name": "Uuid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LatestOperation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last instance operation status. Valid values: \nSUCCESS: operation succeeded \nOPERATING: the operation is being executed \nFAILED: operation failed \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LatestOperationState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique request ID for the last operation of the instance. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LatestOperationRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Isolation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "IsolatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "OS type, such as LINUX_UNIX and WINDOWS.",
+          "example": "无",
+          "member": "string",
+          "name": "PlatformType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS type.",
+          "example": "无",
+          "member": "string",
+          "name": "Platform",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "OS name.",
+          "example": "无",
+          "member": "string",
+          "name": "OsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceChargePrepaid": {
+      "document": "Instance billing mode",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "InstanceDeniedActions": {
+      "document": "List of instance operation limits.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of operation limits.",
+          "member": "DeniedAction",
+          "name": "DeniedActions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstancePrice": {
+      "document": "Price information of Lighthouse instances",
+      "members": [
+        {
+          "default": "",
+          "document": "Original package unit price.",
+          "member": "float",
+          "name": "OriginalBundlePrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original price.",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount.",
+          "member": "int64",
+          "name": "Discount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discounted price.",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceReturnable": {
+      "document": "Whether the instance can be returned.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the instance can be returned.",
+          "member": "bool",
+          "name": "IsReturnable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code of instance return failure.",
+          "member": "int64",
+          "name": "ReturnFailCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message of instance return failure.",
+          "member": "string",
+          "name": "ReturnFailMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceTrafficPackage": {
+      "document": "Instance traffic package details",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of traffic package details.",
+          "member": "TrafficPackage",
+          "name": "TrafficPackageSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InternetAccessible": {
+      "document": "Public network accessibility of the instance created by the launch configuration, public network usage billing mode of the instance, maximum bandwidth, etc.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network billing mode. Valid values:\n<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>\n<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>",
+          "example": "BANDWIDTH_PREPAID",
+          "member": "string",
+          "name": "InternetChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public network outbound bandwidth cap in Mbps.",
+          "example": "20",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to assign a public IP.",
+          "example": "true",
+          "member": "bool",
+          "name": "PublicIpAssigned",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "KeyPair": {
+      "document": "Key pair information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key pair ID, which is the unique identifier of a key pair.",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key pair name.",
+          "member": "string",
+          "name": "KeyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public key (in plain text) of key pair.",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of IDs of instances associated with the key pair.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AssociatedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private key of key pair.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LoginSettings": {
+      "document": "Instance login configuration and information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyBlueprintAttributeRequest": {
+      "document": "ModifyBlueprintAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Image ID, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
+          "example": "lhbp-aaaabbbb",
+          "member": "string",
+          "name": "BlueprintId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New image name, which can contain up to 60 characters.",
+          "example": "test-blueprint",
+          "member": "string",
+          "name": "BlueprintName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New image description, which can contain up to 60 characters.",
+          "example": "test-blueprint",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBlueprintAttributeResponse": {
+      "document": "ModifyBlueprintAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBundle": {
+      "document": "Changeable packages for the instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Price difference that you need to pay for the new instance package after change.",
+          "member": "Price",
+          "name": "ModifyPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package change status. Valid values:\n<li>SOLD_OUT: packages are sold out</li>\n<li>AVAILABLE: packages can be changed</li>\n<li>UNAVAILABLE: packages cannot be changed currently</li>",
+          "member": "string",
+          "name": "ModifyBundleState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package information.",
+          "member": "Bundle",
+          "name": "Bundle",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyFirewallRuleDescriptionRequest": {
+      "document": "ModifyFirewallRuleDescription request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Firewall rule.",
+          "example": "无",
+          "member": "FirewallRule",
+          "name": "FirewallRule",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FirewallVersion",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFirewallRuleDescriptionResponse": {
+      "document": "ModifyFirewallRuleDescription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFirewallRulesRequest": {
+      "document": "ModifyFirewallRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Firewall rule list.",
+          "example": "无",
+          "member": "FirewallRule",
+          "name": "FirewallRules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FirewallVersion",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFirewallRulesResponse": {
+      "document": "ModifyFirewallRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesAttributeRequest": {
+      "document": "ModifyInstancesAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\",\"lhins-rusdke45\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance name, which is customizable and can contain up to 60 characters.",
+          "example": "test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesAttributeResponse": {
+      "document": "ModifyInstancesAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesLoginKeyPairAttributeRequest": {
+      "document": "ModifyInstancesLoginKeyPairAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
+          "example": "[\"lhins-ruy9d2tw\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to allow login with the default key pair. Valid values: YES: yes; NO: no.",
+          "example": "NO",
+          "member": "string",
+          "name": "PermitLogin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesLoginKeyPairAttributeResponse": {
+      "document": "ModifyInstancesLoginKeyPairAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesRenewFlagRequest": {
+      "document": "ModifyInstancesRenewFlag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.",
+          "example": "NOTIFY_AND_AUTO_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancesRenewFlagResponse": {
+      "document": "ModifyInstancesRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySnapshotAttributeRequest": {
+      "document": "ModifySnapshotAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot ID, which can be queried through `DescribeSnapshots`.",
+          "example": "lhsnap-nv6aqcv6",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New snapshot name, which can contain up to 60 characters.",
+          "example": "snap_20200903",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySnapshotAttributeResponse": {
+      "document": "ModifySnapshotAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Price": {
+      "document": "Price information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance price.",
+          "member": "InstancePrice",
+          "name": "InstancePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RebootInstancesRequest": {
+      "document": "RebootInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RebootInstancesResponse": {
+      "document": "RebootInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegionInfo": {
+      "document": "Region information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name, such as `ap-guangzhou`.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region description, such as South China (Guangzhou).",
+          "example": "北京",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region availability status. Its value can only be `AVAILABLE`.",
+          "example": "AVAILABLE",
+          "member": "string",
+          "name": "RegionState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the region is in the Chinese mainland",
+          "example": "true",
+          "member": "bool",
+          "name": "IsChinaMainland",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResetAttachCcnRequest": {
+      "document": "ResetAttachCcn request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CCN instance ID.",
+          "example": "ccn-f49l6u0z",
+          "member": "string",
+          "name": "CcnId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetAttachCcnResponse": {
+      "document": "ResetAttachCcn response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetInstanceBlueprint": {
+      "document": "Image reset information",
+      "members": [
+        {
+          "default": "",
+          "document": "Image details",
+          "member": "Blueprint",
+          "name": "BlueprintInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the image can be reset as the target image",
+          "member": "bool",
+          "name": "IsResettable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Non-Resettable flag. If the image is resettable, it will be \"\"",
+          "member": "string",
+          "name": "NonResettableMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResetInstanceRequest": {
+      "document": "ResetInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "lhins-ruy9d2tw",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image ID, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.",
+          "example": "lhbp-5e8807lo",
+          "member": "string",
+          "name": "BlueprintId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetInstanceResponse": {
+      "document": "ResetInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetInstancesPasswordRequest": {
+      "document": "ResetInstancesPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
+          "example": "[\"lhins-ruy9d2tw\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance login password. Different OS types have different limits on password complexity as detailed below:\nThe password of a `LINUX_UNIX` instance must contain 8–30 characters (above 12 characters preferably) in at least three of the following types and cannot begin with \"/\": <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/\nThe password of a `WINDOWS` instance must contain 12–30 characters in at least three of the following types and cannot begin with \"/\" or include the username: <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<br><li>If both `LINUX_UNIX` and `WINDOWS` instances exist, the requirements for password complexity of `WINDOWS` instances shall prevail.",
+          "example": "xxxxxxxxxxx",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS username of the instance for which you want to reset the password, which can contain up to 64 characters.",
+          "example": "root",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetInstancesPasswordResponse": {
+      "document": "ResetInstancesPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Snapshot": {
+      "document": "Snapshot information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot ID.",
+          "example": "无",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type of the disk for which the snapshot is created. Valid values: <li>SYSTEM_DISK: system disk</li>",
+          "example": "无",
+          "member": "string",
+          "name": "DiskUsage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the disk for which the snapshot is created.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of the disk in GB for which the snapshot is created.",
+          "example": "无",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot name, which is a custom snapshot alias.",
+          "example": "无",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot status. Valid values:\n<li>NORMAL: normal </li>\n<li>CREATING: creating</li>\n<li>ROLLBACKING: rolling back</li>",
+          "example": "无",
+          "member": "string",
+          "name": "SnapshotState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot creation or rollback progress in percentage. After success, the value of this field will become 100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Percent",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last snapshot operation. It is recorded only during snapshot creation and rollback.\nExample values: CreateInstanceSnapshot, RollbackInstanceSnapshot.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LatestOperation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last snapshot operation status. It is recorded only during snapshot creation and rollback.\nValid values:\n<li>SUCCESS: operation succeeded</li>\n<li>OPERATING: the operation is being executed</li>\n<li>FAILED: operation failed</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LatestOperationState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unique request ID for the last snapshot operation. It is recorded only during snapshot creation and rollback.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LatestOperationRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Snapshot creation time.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SnapshotDeniedActions": {
+      "document": "List of snapshot operation limits.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot ID.",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of operation limits.",
+          "member": "DeniedAction",
+          "name": "DeniedActions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Software": {
+      "document": "Image software information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Software name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Software version.",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Software picture URL.",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Software installation directory.",
+          "member": "string",
+          "name": "InstallDir",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of software details.",
+          "member": "SoftwareDetail",
+          "name": "DetailSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SoftwareDetail": {
+      "document": "Image software details.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique detail key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detail title.",
+          "member": "string",
+          "name": "Title",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detail value.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StartInstancesRequest": {
+      "document": "StartInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "StartInstancesResponse": {
+      "document": "StartInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopInstancesRequest": {
+      "document": "StopInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "StopInstancesResponse": {
+      "document": "StopInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SystemDisk": {
+      "document": "Information of the block device where the OS is installed, namely, the system disk.",
+      "members": [
+        {
+          "default": "",
+          "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk size in GB.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "System disk ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TerminateInstancesRequest": {
+      "document": "TerminateInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "[\"lhins-ruy9d2tw\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateInstancesResponse": {
+      "document": "TerminateInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TrafficPackage": {
+      "document": "Traffic package details.",
+      "members": [
+        {
+          "default": "",
+          "document": "Traffic package ID.",
+          "member": "string",
+          "name": "TrafficPackageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used traffic in bytes during traffic package validity period.",
+          "member": "int64",
+          "name": "TrafficUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total traffic in bytes during traffic package validity period.",
+          "member": "int64",
+          "name": "TrafficPackageTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remaining traffic in bytes during traffic package validity period.",
+          "member": "int64",
+          "name": "TrafficPackageRemaining",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic exceeding package amount in bytes during traffic package validity period.",
+          "member": "int64",
+          "name": "TrafficOverflow",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time of traffic package validity period according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time of traffic package validity period according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Traffic package expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "datetime_iso",
+          "name": "Deadline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Traffic package status:\n<li>NETWORK_NORMAL: normal</li>\n<li>OVERDUE_NETWORK_DISABLED: the network is disconnected due to overdue payments</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneInfo": {
+      "document": "AZ details",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Chinese name of AZ",
+          "example": "广州一区",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ tags on instance purchase page",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "InstanceDisplayLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

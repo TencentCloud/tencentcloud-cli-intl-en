@@ -30,6 +30,12 @@
       "name": "Creates TencentDB accounts",
       "output": "CreateAccountsResponse"
     },
+    "CreateAuditPolicy": {
+      "document": "This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.",
+      "input": "CreateAuditPolicyRequest",
+      "name": "Creates an audit policy",
+      "output": "CreateAuditPolicyResponse"
+    },
     "CreateBackup": {
       "document": "This API (CreateBackup) is used to create a TencentDB instance backup.",
       "input": "CreateBackupRequest",
@@ -868,6 +874,7 @@
         {
           "default": "",
           "document": "Backup filename",
+          "example": "XXX",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -877,6 +884,7 @@
         {
           "default": "",
           "document": "Backup file size in bytes",
+          "example": "1024",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -886,6 +894,7 @@
         {
           "default": "",
           "document": "Backup snapshot time in the format of yyyy-MM-dd HH:mm:ss, such as 2016-03-17 02:10:37",
+          "example": "2016-03-17 02:10:37",
           "member": "string",
           "name": "Date",
           "required": true,
@@ -894,7 +903,8 @@
         },
         {
           "default": "",
-          "document": "Download address on the private network",
+          "document": "Download address",
+          "example": "https://XXX",
           "member": "string",
           "name": "IntranetUrl",
           "required": true,
@@ -903,7 +913,8 @@
         },
         {
           "default": "",
-          "document": "Download address on the public network",
+          "document": "Download address",
+          "example": "https://XXX",
           "member": "string",
           "name": "InternetUrl",
           "required": true,
@@ -913,6 +924,7 @@
         {
           "default": "",
           "document": "Log type. Valid values: `logical` (logical cold backup), `physical` (physical cold backup).",
+          "example": "physical",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -922,6 +934,7 @@
         {
           "default": "",
           "document": "Backup subtask ID, which is used when backup files are deleted",
+          "example": "1000",
           "member": "int64",
           "name": "BackupId",
           "required": true,
@@ -931,6 +944,7 @@
         {
           "default": "",
           "document": "Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -940,6 +954,7 @@
         {
           "default": "",
           "document": "Backup task completion time",
+          "example": "2016-03-17 02:11:37",
           "member": "string",
           "name": "FinishTime",
           "required": true,
@@ -949,6 +964,7 @@
         {
           "default": "",
           "document": "(This field will be disused and is thus not recommended) backup creator. Valid values: `SYSTEM` (created by system), `Uin` (initiator's `Uin` value).",
+          "example": "SYSTEM",
           "member": "string",
           "name": "Creator",
           "required": true,
@@ -958,6 +974,7 @@
         {
           "default": "",
           "document": "Backup task start time",
+          "example": "2016-03-17 02:00:37",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -967,6 +984,7 @@
         {
           "default": "",
           "document": "Backup method. Valid values: `full` (full backup), `partial` (partial backup).",
+          "example": "full",
           "member": "string",
           "name": "Method",
           "required": true,
@@ -976,6 +994,7 @@
         {
           "default": "",
           "document": "Backup mode. Valid values: `manual` (manual backup), `automatic` (automatic backup).",
+          "example": "automatic",
           "member": "string",
           "name": "Way",
           "required": true,
@@ -1137,6 +1156,7 @@
         {
           "default": "",
           "document": "Binlog backup filename",
+          "example": "XXX",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1146,6 +1166,7 @@
         {
           "default": "",
           "document": "Backup file size in bytes",
+          "example": "1024",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -1155,6 +1176,7 @@
         {
           "default": "",
           "document": "File stored time in the format of 2016-03-17 02:10:37",
+          "example": "2016-03-17 02:11:37",
           "member": "datetime",
           "name": "Date",
           "required": true,
@@ -1163,7 +1185,8 @@
         },
         {
           "default": "",
-          "document": "Download address on the private network",
+          "document": "Download address",
+          "example": "https://XXX",
           "member": "string",
           "name": "IntranetUrl",
           "required": true,
@@ -1172,7 +1195,8 @@
         },
         {
           "default": "",
-          "document": "Download address on the public network",
+          "document": "Download address",
+          "example": "https://XXX",
           "member": "string",
           "name": "InternetUrl",
           "required": true,
@@ -1182,6 +1206,7 @@
         {
           "default": "",
           "document": "Log type. Value range: binlog",
+          "example": "binlog",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1191,6 +1216,7 @@
         {
           "default": "",
           "document": "Binlog file start file",
+          "example": "2016-03-17 02:08:37",
           "member": "string",
           "name": "BinlogStartTime",
           "required": true,
@@ -1200,6 +1226,7 @@
         {
           "default": "",
           "document": "Binlog file end time",
+          "example": "2016-03-17 02:10:37",
           "member": "string",
           "name": "BinlogFinishTime",
           "required": true,
@@ -1485,6 +1512,69 @@
           "document": "Async task request ID, which can be used to query the execution result of an async task.",
           "member": "string",
           "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditPolicyRequest": {
+      "document": "CreateAuditPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit policy name.",
+          "example": "audit_policy_1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Audit rule ID.",
+          "example": "cdbrule-asdfghjk",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-qwerasdf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention period of audit logs. Valid values:\n7: seven days (a week);\n30: 30 days (a month);\n180: 180 days (six months);\n365: 365 days (a year);\n1095: 1095 days (three years);\n1825: 1825 days (five years).\nThis parameter specifies the retention period (30 days by default) of audit logs, which is valid when you create the first audit policy for an instance. If the instance already has audit policies, this parameter is invalid, but you can use the `ModifyAuditConfig` API to modify the retention period.",
+          "example": "7",
+          "member": "int64",
+          "name": "LogExpireDay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditPolicyResponse": {
+      "document": "CreateAuditPolicy response structure.",
+      "members": [
+        {
+          "document": "Audit policy ID.",
+          "example": "cdbpolicy-asdfqwer",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8728,6 +8818,7 @@
         {
           "default": "",
           "document": "TencentDB instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "cdb_xxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8736,7 +8827,8 @@
         },
         {
           "default": "",
-          "document": "Rollback policy. Value range: table, db, full. Default value: full. Table: expedited rollback mode, where only the selected table-level backups and binlogs are imported; for cross-table rollback, if the associated tables are not selected simultaneously, the rollback will fail; the parameter `Databases` must be empty under this mode. db: fast rollback mode, where only the selected database-level backups and binlogs are imported; for cross-database rollback, if the associated databases are not selected simultaneously, the rollback will fail. full: ordinary rollback mode, which imports all the backups and binlogs of the instance at a relatively low speed.",
+          "document": "Rollback policy. Valid values: `table` (ultrafast mode), `db` (faster mode), and `full` (fast mode). Default value: `full`. In the ultrafast mode, only backups and binlogs of the tables specified by the `Tables` parameter are imported; if `Tables` does not include all of the tables involved in cross-table operations, the rollback may fail; and the `Database` parameter must be left empty. In the faster mode, only backups and binlogs of the databases specified by the `Databases` parameter are imported, and if `Databases` does not include all of the databases involved in cross-database operations, the rollback may fail. In the fast mode, backups and binlogs of the entire instance will be imported in a speed slower than the other modes.",
+          "example": "\"\"",
           "member": "string",
           "name": "Strategy",
           "required": true,
@@ -8746,6 +8838,7 @@
         {
           "default": "",
           "document": "Database rollback time in the format of yyyy-mm-dd hh:mm:ss",
+          "example": "\"\"",
           "member": "string",
           "name": "RollbackTime",
           "required": true,
@@ -8755,6 +8848,7 @@
         {
           "default": "",
           "document": "Information of the databases to be rolled back, which means rollback at the database level\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RollbackDBName",
           "name": "Databases",
           "required": false,
@@ -8764,6 +8858,7 @@
         {
           "default": "",
           "document": "Information of the tables to be rolled back, which means rollback at the table level\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RollbackTables",
           "name": "Tables",
           "required": false,
@@ -10185,7 +10280,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked: QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.",
+          "document": "Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.",
           "example": "1",
           "member": "int64",
           "name": "FastUpgrade",

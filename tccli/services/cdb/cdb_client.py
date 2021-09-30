@@ -67,7 +67,7 @@ def doCreateRoInstanceIp(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTimeWindow(args, parsed_globals):
+def doCreateAuditPolicy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -83,9 +83,9 @@ def doDescribeTimeWindow(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTimeWindowRequest()
+    model = models.CreateAuditPolicyRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeTimeWindow(model)
+    rsp = client.CreateAuditPolicy(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -248,6 +248,33 @@ def doModifyInstanceTag(args, parsed_globals):
     model = models.ModifyInstanceTagRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifyInstanceTag(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeTimeWindow(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeTimeWindowRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeTimeWindow(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -931,7 +958,7 @@ def doDescribeBackups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyAccountMaxUserConnections(args, parsed_globals):
+def doCreateParamTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -947,9 +974,9 @@ def doModifyAccountMaxUserConnections(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyAccountMaxUserConnectionsRequest()
+    model = models.CreateParamTemplateRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyAccountMaxUserConnections(model)
+    rsp = client.CreateParamTemplate(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1336,33 +1363,6 @@ def doCreateAccounts(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateParamTemplate(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateParamTemplateRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateParamTemplate(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doUpgradeDBInstanceEngineVersion(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1706,6 +1706,33 @@ def doModifyInstanceParam(args, parsed_globals):
     model = models.ModifyInstanceParamRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifyInstanceParam(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAccountMaxUserConnections(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAccountMaxUserConnectionsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyAccountMaxUserConnections(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2672,13 +2699,14 @@ MODELS_MAP = {
 ACTION_MAP = {
     "DescribeDBInstanceGTID": doDescribeDBInstanceGTID,
     "CreateRoInstanceIp": doCreateRoInstanceIp,
-    "DescribeTimeWindow": doDescribeTimeWindow,
+    "CreateAuditPolicy": doCreateAuditPolicy,
     "ModifyAccountDescription": doModifyAccountDescription,
     "DescribeDataBackupOverview": doDescribeDataBackupOverview,
     "BalanceRoGroupLoad": doBalanceRoGroupLoad,
     "IsolateDBInstance": doIsolateDBInstance,
     "DescribeAccounts": doDescribeAccounts,
     "ModifyInstanceTag": doModifyInstanceTag,
+    "DescribeTimeWindow": doDescribeTimeWindow,
     "DescribeBackupOverview": doDescribeBackupOverview,
     "ModifyDBInstanceName": doModifyDBInstanceName,
     "StopRollback": doStopRollback,
@@ -2704,7 +2732,7 @@ ACTION_MAP = {
     "SwitchForUpgrade": doSwitchForUpgrade,
     "DeleteParamTemplate": doDeleteParamTemplate,
     "DescribeBackups": doDescribeBackups,
-    "ModifyAccountMaxUserConnections": doModifyAccountMaxUserConnections,
+    "CreateParamTemplate": doCreateParamTemplate,
     "CreateDBInstanceHour": doCreateDBInstanceHour,
     "AddTimeWindow": doAddTimeWindow,
     "CreateBackup": doCreateBackup,
@@ -2719,7 +2747,6 @@ ACTION_MAP = {
     "DescribeDeployGroupList": doDescribeDeployGroupList,
     "StopDBImportJob": doStopDBImportJob,
     "CreateAccounts": doCreateAccounts,
-    "CreateParamTemplate": doCreateParamTemplate,
     "UpgradeDBInstanceEngineVersion": doUpgradeDBInstanceEngineVersion,
     "DescribeInstanceParamRecords": doDescribeInstanceParamRecords,
     "DescribeBackupSummaries": doDescribeBackupSummaries,
@@ -2733,6 +2760,7 @@ ACTION_MAP = {
     "DeleteBackup": doDeleteBackup,
     "DescribeRoMinScale": doDescribeRoMinScale,
     "ModifyInstanceParam": doModifyInstanceParam,
+    "ModifyAccountMaxUserConnections": doModifyAccountMaxUserConnections,
     "DescribeAsyncRequestInfo": doDescribeAsyncRequestInfo,
     "DescribeDBZoneConfig": doDescribeDBZoneConfig,
     "DescribeDBInstanceRebootTime": doDescribeDBInstanceRebootTime,
