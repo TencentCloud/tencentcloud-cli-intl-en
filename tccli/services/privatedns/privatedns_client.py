@@ -202,33 +202,6 @@ def doDescribePrivateZoneList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyPrivateZone(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyPrivateZoneRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyPrivateZone(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doSubscribePrivateZoneService(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -310,7 +283,7 @@ def doModifyPrivateZoneVpc(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeletePrivateZone(args, parsed_globals):
+def doDescribeRequestData(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -326,9 +299,9 @@ def doDeletePrivateZone(args, parsed_globals):
     client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePrivateZoneRequest()
+    model = models.DescribeRequestDataRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeletePrivateZone(model)
+    rsp = client.DescribeRequestData(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -364,7 +337,7 @@ def doDeletePrivateZoneRecord(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRequestData(args, parsed_globals):
+def doModifyPrivateZone(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -380,9 +353,63 @@ def doDescribeRequestData(args, parsed_globals):
     client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRequestDataRequest()
+    model = models.ModifyPrivateZoneRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeRequestData(model)
+    rsp = client.ModifyPrivateZone(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribePrivateDNSAccountList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribePrivateDNSAccountListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribePrivateDNSAccountList(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeletePrivateZone(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeletePrivateZoneRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeletePrivateZone(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -436,13 +463,14 @@ ACTION_MAP = {
     "CreatePrivateZoneRecord": doCreatePrivateZoneRecord,
     "CreatePrivateZone": doCreatePrivateZone,
     "DescribePrivateZoneList": doDescribePrivateZoneList,
-    "ModifyPrivateZone": doModifyPrivateZone,
     "SubscribePrivateZoneService": doSubscribePrivateZoneService,
     "DescribeDashboard": doDescribeDashboard,
     "ModifyPrivateZoneVpc": doModifyPrivateZoneVpc,
-    "DeletePrivateZone": doDeletePrivateZone,
-    "DeletePrivateZoneRecord": doDeletePrivateZoneRecord,
     "DescribeRequestData": doDescribeRequestData,
+    "DeletePrivateZoneRecord": doDeletePrivateZoneRecord,
+    "ModifyPrivateZone": doModifyPrivateZone,
+    "DescribePrivateDNSAccountList": doDescribePrivateDNSAccountList,
+    "DeletePrivateZone": doDeletePrivateZone,
     "DescribePrivateZoneService": doDescribePrivateZoneService,
 
 }
