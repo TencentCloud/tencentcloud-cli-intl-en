@@ -295,6 +295,142 @@
       ],
       "usage": "out"
     },
+    "AclRule": {
+      "document": "Output parameters of ACL rule list APIs",
+      "members": [
+        {
+          "default": "",
+          "document": "ACL rule name.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "testRule",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance ID.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "ckafka-****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Matching type. Currently, only prefix match is supported. Enumerated value list: PREFIXED\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "PREFIXED",
+          "member": "string",
+          "name": "PatternType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prefix value for prefix match.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Pattern",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ACL resource type. Only “Topic” is supported. Enumerated value list: Topic.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "Topic",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ACL information contained in the rule.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "string",
+          "name": "AclList",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time of the rule.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "Sat Apr 03 20:13:03 CST 2021",
+          "member": "string",
+          "name": "CreateTimeStamp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "A parameter used to specify whether the preset ACL rule is applied to new topics.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsApplied",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule update time.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "Sat Apr 03 20:13:03 CST 2021",
+          "member": "string",
+          "name": "UpdateTimeStamp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remarks of the rule.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Comment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "One of the corresponding topic names that is displayed.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of topics that apply this ACL rule.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TopicCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of rule type.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "PatternTypeTitle",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AclRuleInfo": {
       "document": "Four pieces of information of ACL rules: source IP address, destination IP address, source port, and destination port",
       "members": [
@@ -986,6 +1122,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "xxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -994,6 +1131,7 @@
         {
           "default": "",
           "document": "Topic name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "example": "xxx",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -1002,6 +1140,7 @@
         {
           "default": "",
           "document": "Number of partitions, which should be greater than 0",
+          "example": "1",
           "member": "int64",
           "name": "PartitionNum",
           "required": true,
@@ -1010,6 +1149,7 @@
         {
           "default": "",
           "document": "Number of replicas, which cannot be higher than the number of brokers. Maximum value: 3",
+          "example": "2",
           "member": "int64",
           "name": "ReplicaNum",
           "required": true,
@@ -1018,6 +1158,7 @@
         {
           "default": "",
           "document": "IP allowlist switch. 1: enabled, 0: disabled. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "EnableWhiteList",
           "required": false,
@@ -1026,6 +1167,7 @@
         {
           "default": "",
           "document": "IP allowlist list for quota limit, which is required if `enableWhileList` is 1",
+          "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
           "member": "string",
           "name": "IpWhiteList",
           "required": false,
@@ -1034,6 +1176,7 @@
         {
           "default": "",
           "document": "Log cleanup policy, which is `delete` by default. `delete`: logs will be deleted by save time; `compact`: logs will be compressed by key; `compact, delete`: logs will be compressed by key and deleted by save time.",
+          "example": "delete",
           "member": "string",
           "name": "CleanUpPolicy",
           "required": false,
@@ -1042,6 +1185,7 @@
         {
           "default": "",
           "document": "Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "example": "note",
           "member": "string",
           "name": "Note",
           "required": false,
@@ -1050,6 +1194,7 @@
         {
           "default": "",
           "document": "Default value: 1",
+          "example": "2",
           "member": "int64",
           "name": "MinInsyncReplicas",
           "required": false,
@@ -1058,6 +1203,7 @@
         {
           "default": "",
           "document": "Whether to allow an unsynced replica to be elected as leader. false: no, true: yes. Default value: false",
+          "example": "1",
           "member": "int64",
           "name": "UncleanLeaderElectionEnable",
           "required": false,
@@ -1066,6 +1212,7 @@
         {
           "default": "",
           "document": "Message retention period in ms, which is optional. The current minimum value is 60,000 ms",
+          "example": "60000",
           "member": "int64",
           "name": "RetentionMs",
           "required": false,
@@ -1074,10 +1221,29 @@
         {
           "default": "",
           "document": "Segment rolling duration in ms. The current minimum value is 3,600,000 ms",
+          "example": "360000",
           "member": "int64",
           "name": "SegmentMs",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableAclRule",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name of the preset ACL rule.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AclRuleName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2127,6 +2293,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "ckafka-xxooa0",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2135,6 +2302,7 @@
         {
           "default": "",
           "document": "(Filter) filter by `topicName`. Fuzzy search is supported",
+          "example": "xxx",
           "member": "string",
           "name": "SearchWord",
           "required": false,
@@ -2143,6 +2311,7 @@
         {
           "default": "",
           "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2151,10 +2320,20 @@
         {
           "default": "",
           "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20. This value must be greater than 0",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name of the preset ACL rule.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AclRuleName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2184,6 +2363,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "ckafka-xxooa0",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2192,6 +2372,7 @@
         {
           "default": "",
           "document": "Filter by `topicName`. Fuzzy search is supported",
+          "example": "TopicX",
           "member": "string",
           "name": "SearchWord",
           "required": false,
@@ -2200,6 +2381,7 @@
         {
           "default": "",
           "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2208,10 +2390,20 @@
         {
           "default": "",
           "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20",
+          "example": "50",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name of the preset ACL rule.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AclRuleName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3860,6 +4052,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "xxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3868,6 +4061,7 @@
         {
           "default": "",
           "document": "Topic name.",
+          "example": "xxx",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -3876,6 +4070,7 @@
         {
           "default": "",
           "document": "Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).",
+          "example": "xxx",
           "member": "string",
           "name": "Note",
           "required": false,
@@ -3884,6 +4079,7 @@
         {
           "default": "",
           "document": "IP allowlist switch. 1: enabled, 0: disabled.",
+          "example": "0",
           "member": "int64",
           "name": "EnableWhiteList",
           "required": false,
@@ -3892,6 +4088,7 @@
         {
           "default": "",
           "document": "Default value: 1.",
+          "example": "1",
           "member": "int64",
           "name": "MinInsyncReplicas",
           "required": false,
@@ -3900,6 +4097,7 @@
         {
           "default": "",
           "document": "0: false, 1: true. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "UncleanLeaderElectionEnable",
           "required": false,
@@ -3908,6 +4106,7 @@
         {
           "default": "",
           "document": "Message retention period in ms. The current minimum value is 60,000 ms.",
+          "example": "1000",
           "member": "int64",
           "name": "RetentionMs",
           "required": false,
@@ -3916,6 +4115,7 @@
         {
           "default": "",
           "document": "Segment rolling duration in ms. The current minimum value is 86,400,000 ms.",
+          "example": "86400000",
           "member": "int64",
           "name": "SegmentMs",
           "required": false,
@@ -3924,6 +4124,7 @@
         {
           "default": "",
           "document": "Maximum topic message length in bytes. The maximum value is 8,388,608 bytes (i.e., 8 MB).",
+          "example": "1",
           "member": "int64",
           "name": "MaxMessageBytes",
           "required": false,
@@ -3932,8 +4133,36 @@
         {
           "default": "",
           "document": "Message deletion policy. Valid values: delete, compact",
+          "example": "delete",
           "member": "string",
           "name": "CleanUpPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP allowlist, which is required if the value of `enableWhileList` is 1.",
+          "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
+          "member": "string",
+          "name": "IpWhiteList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableAclRule",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name of the preset ACL rule.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AclRuleName",
           "required": false,
           "type": "string"
         }
@@ -4320,6 +4549,7 @@
         {
           "default": "",
           "document": "Topic ID",
+          "example": "xxx",
           "member": "string",
           "name": "TopicId",
           "required": true,
@@ -4329,6 +4559,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "2021-7-26  4:16:58",
           "member": "int64",
           "name": "CreateTime",
           "required": true,
@@ -4338,6 +4569,7 @@
         {
           "default": "",
           "document": "Topic remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
           "member": "string",
           "name": "Note",
           "required": true,
@@ -4347,6 +4579,7 @@
         {
           "default": "",
           "document": "Number of partitions",
+          "example": "1",
           "member": "int64",
           "name": "PartitionNum",
           "required": true,
@@ -4356,6 +4589,7 @@
         {
           "default": "",
           "document": "IP allowlist switch. 1: enabled, 0: disabled",
+          "example": "1",
           "member": "int64",
           "name": "EnableWhiteList",
           "required": true,
@@ -4365,6 +4599,7 @@
         {
           "default": "",
           "document": "IP allowlist list",
+          "example": "xxx",
           "member": "string",
           "name": "IpWhiteList",
           "required": true,
@@ -4374,6 +4609,7 @@
         {
           "default": "",
           "document": "Topic configuration array",
+          "example": "xxx",
           "member": "Config",
           "name": "Config",
           "required": true,
@@ -4383,11 +4619,32 @@
         {
           "default": "",
           "document": "Partition details",
+          "example": "xxx",
           "member": "TopicPartitionDO",
           "name": "Partitions",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Switch of the preset ACL rule. `1`: enable, `0`: disable.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableAclRule",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Preset ACL rule list.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "AclRule",
+          "name": "AclRuleList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4398,6 +4655,7 @@
         {
           "default": "",
           "document": "Topic name",
+          "example": "lobo5",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -4407,6 +4665,7 @@
         {
           "default": "",
           "document": "Topic ID",
+          "example": "topic-k3pn5gfm",
           "member": "string",
           "name": "TopicId",
           "required": true,
@@ -4416,6 +4675,7 @@
         {
           "default": "",
           "document": "Number of partitions",
+          "example": "6",
           "member": "int64",
           "name": "PartitionNum",
           "required": true,
@@ -4425,6 +4685,7 @@
         {
           "default": "",
           "document": "Number of replicas",
+          "example": "2",
           "member": "int64",
           "name": "ReplicaNum",
           "required": true,
@@ -4434,6 +4695,7 @@
         {
           "default": "",
           "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "Note",
           "required": true,
@@ -4443,6 +4705,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "1627540967",
           "member": "int64",
           "name": "CreateTime",
           "required": true,
@@ -4452,6 +4715,7 @@
         {
           "default": "",
           "document": "Whether to enable IP authentication allowlist. true: yes, false: no",
+          "example": "false",
           "member": "bool",
           "name": "EnableWhiteList",
           "required": true,
@@ -4461,6 +4725,7 @@
         {
           "default": "",
           "document": "Number of IPs in IP allowlist",
+          "example": "0",
           "member": "int64",
           "name": "IpWhiteListCount",
           "required": true,
@@ -4470,6 +4735,7 @@
         {
           "default": "",
           "document": "COS bucket for data backup: address of the destination COS bucket\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "ForwardCosBucket",
           "required": true,
@@ -4479,6 +4745,7 @@
         {
           "default": "",
           "document": "Status of data backup to COS. 1: not enabled, 0: enabled",
+          "example": "1",
           "member": "int64",
           "name": "ForwardStatus",
           "required": true,
@@ -4488,6 +4755,7 @@
         {
           "default": "",
           "document": "Frequency of data backup to COS",
+          "example": "0",
           "member": "int64",
           "name": "ForwardInterval",
           "required": true,
@@ -4497,6 +4765,7 @@
         {
           "default": "",
           "document": "Advanced configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "Config: {Retention: 86400000, MinInsyncReplicas: 1, CleanUpPolic",
           "member": "Config",
           "name": "Config",
           "required": true,
@@ -4506,10 +4775,21 @@
         {
           "default": "",
           "document": "Message retention time configuration (for recording the latest retention time)\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "RetentionTimeConfig: {Expect: 1440, Current: 1440, ModTimeStamp:",
           "member": "TopicRetentionTimeConfigRsp",
           "name": "RetentionTimeConfig",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`0`: normal, `1`: deleted, `2`: deleting\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

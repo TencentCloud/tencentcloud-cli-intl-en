@@ -4998,6 +4998,7 @@
         {
           "default": "",
           "document": "Forwarding rule domain name.",
+          "example": "xx",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -5007,6 +5008,7 @@
         {
           "default": "",
           "document": "Forwarding rule list of the domain name.",
+          "example": "[]",
           "member": "RuleInfo",
           "name": "RuleSet",
           "required": true,
@@ -5016,6 +5018,7 @@
         {
           "default": "",
           "document": "Server certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -5025,6 +5028,7 @@
         {
           "default": "",
           "document": "Server certificate name of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "CertificateAlias",
           "required": true,
@@ -5034,6 +5038,7 @@
         {
           "default": "",
           "document": "Client certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "ClientCertificateId",
           "required": true,
@@ -5043,6 +5048,7 @@
         {
           "default": "",
           "document": "Client certificate name of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "ClientCertificateAlias",
           "required": true,
@@ -5052,6 +5058,7 @@
         {
           "default": "",
           "document": "Basic authentication configuration ID of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "BasicAuthConfId",
           "required": true,
@@ -5061,6 +5068,7 @@
         {
           "default": "",
           "document": "Basic authentication status:\n0: disabled;\n1: enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "BasicAuth",
           "required": true,
@@ -5070,6 +5078,7 @@
         {
           "default": "",
           "document": "Basic authentication configuration name of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "BasicAuthConfAlias",
           "required": true,
@@ -5079,6 +5088,7 @@
         {
           "default": "",
           "document": "Origin server authentication certificate ID of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "RealServerCertificateId",
           "required": true,
@@ -5088,6 +5098,7 @@
         {
           "default": "",
           "document": "Origin server authentication status:\n0: disabled;\n1: enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "RealServerAuth",
           "required": true,
@@ -5097,6 +5108,7 @@
         {
           "default": "",
           "document": "Origin server authentication certificate name of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "RealServerCertificateAlias",
           "required": true,
@@ -5106,6 +5118,7 @@
         {
           "default": "",
           "document": "Connection authentication certificate ID of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "GaapCertificateId",
           "required": true,
@@ -5115,6 +5128,7 @@
         {
           "default": "",
           "document": "Connection authentication status:\n0: disabled;\n1: enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "GaapAuth",
           "required": true,
@@ -5124,6 +5138,7 @@
         {
           "default": "",
           "document": "Connection authentication certificate name of the domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "GaapCertificateAlias",
           "required": true,
@@ -5133,6 +5148,7 @@
         {
           "default": "",
           "document": "Origin server authentication domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "RealServerCertificateDomain",
           "required": true,
@@ -5142,6 +5158,7 @@
         {
           "default": "",
           "document": "Returns IDs and aliases of multiple certificates when there are multiple client certificates.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateAliasInfo",
           "name": "PolyClientCertificateAliasInfo",
           "required": true,
@@ -5151,6 +5168,7 @@
         {
           "default": "",
           "document": "Returns IDs and aliases of multiple certificates when there are multiple origin certificates.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateAliasInfo",
           "name": "PolyRealServerCertificateAliasInfo",
           "required": true,
@@ -5160,10 +5178,21 @@
         {
           "default": "",
           "document": "Domain name status.\n0: running;\n1: changing;\n2: deleting.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "DomainStatus",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "RECOVER",
+          "member": "string",
+          "name": "BanStatus",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -7305,7 +7334,7 @@
         },
         {
           "default": "",
-          "document": "Connection type\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Connection type. `100`: THUNDER connection; `103`: Microsoft connection.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "100",
           "member": "uint64",
           "name": "ProxyType",
@@ -7349,6 +7378,16 @@
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "RECOVER",
+          "member": "string",
+          "name": "BanStatus",
           "required": true,
           "type": "string",
           "value_allowed_null": true

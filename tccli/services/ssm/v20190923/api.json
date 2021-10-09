@@ -1083,7 +1083,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID of the key pair, which is the unique identifier of the key pair in the CVM.",
           "example": "无",
           "member": "string",
           "name": "SSHKeyId",
@@ -1370,7 +1370,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "This parameter is valid only when SecretType is `1`.\n \nAn empty value indicates querying all types of Tencent Cloud service secrets.\n`Mysql`: queries MySQL database credentials.\n`Tdsql-mysql`: queries TDSQL MySQL database credentials.",
           "example": "Mysql",
           "member": "string",
           "name": "ProductName",

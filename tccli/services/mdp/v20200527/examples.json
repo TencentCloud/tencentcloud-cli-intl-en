@@ -79,6 +79,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\",\n        \"AuthInfo\": {\n            \"Username\": \"Sdsai3412y7\",\n            \"Password\": \"jsada54rhnj2SS\"\n        }\n    }\n}",
         "title": "Sample request"
       }
+    ],
+    "UnbindCdnDomainWithChannel": [
+      {
+        "document": "",
+        "input": "https://mdp.tencentcloudapi.com/?Action=UnbindCdnDomainWithChannel\n&ChannelId=AAAAA\n&CdnDomain=cdn.liveplay.myqcloud.com\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5532214ssffasdf\"\n    }\n}",
+        "title": "Sample request"
+      }
     ]
   },
   "version": "1.0"

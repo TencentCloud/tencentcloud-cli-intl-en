@@ -59,6 +59,12 @@
       "input": "ModifyStreamPackageChannelInputAuthInfoRequest",
       "name": "Modifies the input authentication information of a channel",
       "output": "ModifyStreamPackageChannelInputAuthInfoResponse"
+    },
+    "UnbindCdnDomainWithChannel": {
+      "document": "This API is used to unbind a CDN playback domain name from a channel.",
+      "input": "UnbindCdnDomainWithChannelRequest",
+      "name": "Unbinds a CDN playback domain name from a channel",
+      "output": "UnbindCdnDomainWithChannelResponse"
     }
   },
   "metadata": {
@@ -807,6 +813,40 @@
         }
       ],
       "usage": "out"
+    },
+    "UnbindCdnDomainWithChannelRequest": {
+      "document": "UnbindCdnDomainWithChannel request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CDN playback domain name",
+          "member": "string",
+          "name": "CdnDomain",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindCdnDomainWithChannelResponse": {
+      "document": "UnbindCdnDomainWithChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     }
   },
   "version": "1.0"

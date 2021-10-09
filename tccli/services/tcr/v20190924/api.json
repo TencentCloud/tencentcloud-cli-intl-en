@@ -41,6 +41,12 @@
       "input": "ModifyImmutableTagRulesRequest",
       "name": "Updates tag immutability rule",
       "output": "ModifyImmutableTagRulesResponse"
+    },
+    "ModifyInstance": {
+      "document": "This API is used to update instance information.",
+      "input": "ModifyInstanceRequest",
+      "name": "Updates instance information",
+      "output": "ModifyInstanceResponse"
     }
   },
   "metadata": {
@@ -448,6 +454,42 @@
     },
     "ModifyImmutableTagRulesResponse": {
       "document": "ModifyImmutableTagRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceRequest": {
+      "document": "ModifyInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-abc123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance specification",
+          "example": "premium",
+          "member": "string",
+          "name": "RegistryType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceResponse": {
+      "document": "ModifyInstance response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
