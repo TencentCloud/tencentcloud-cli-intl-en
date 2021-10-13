@@ -520,6 +520,7 @@
         {
           "default": "",
           "document": "Business return code",
+          "example": "0",
           "member": "int64",
           "name": "Code",
           "required": true,
@@ -529,6 +530,7 @@
         {
           "default": "",
           "document": "Unique data ID",
+          "example": "1234",
           "member": "string",
           "name": "DataId",
           "required": true,
@@ -538,6 +540,7 @@
         {
           "default": "",
           "document": "Detection completion timestamp",
+          "example": "1234",
           "member": "uint64",
           "name": "ScanFinishTime",
           "required": true,
@@ -547,6 +550,7 @@
         {
           "default": "",
           "document": "Whether non-compliant information is detected",
+          "example": "false",
           "member": "bool",
           "name": "HitFlag",
           "required": true,
@@ -556,6 +560,7 @@
         {
           "default": "",
           "document": "Whether it is a stream",
+          "example": "false",
           "member": "bool",
           "name": "Live",
           "required": true,
@@ -565,6 +570,7 @@
         {
           "default": "",
           "document": "Business return description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
           "member": "string",
           "name": "Msg",
           "required": true,
@@ -574,6 +580,7 @@
         {
           "default": "",
           "document": "Detection result, which will be returned if `Code` is 0\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "ScanPiece",
           "name": "ScanPiece",
           "required": true,
@@ -583,6 +590,7 @@
         {
           "default": "",
           "document": "Detection task submission timestamp",
+          "example": "1234",
           "member": "uint64",
           "name": "ScanStartTime",
           "required": true,
@@ -592,6 +600,7 @@
         {
           "default": "",
           "document": "Speech detection scenario, which corresponds to the `Scene` at the time of request",
+          "example": "[\"default\"]",
           "member": "string",
           "name": "Scenes",
           "required": true,
@@ -601,6 +610,7 @@
         {
           "default": "",
           "document": "Speech detection task ID, which is assigned by the backend",
+          "example": "abcdefgh",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -610,6 +620,7 @@
         {
           "default": "",
           "document": "File or stream address",
+          "example": "http://xx.mp3",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -619,10 +630,21 @@
         {
           "default": "",
           "document": "Detection task execution result task. Valid values:\n<li>Start: task started</li>\n<li>Success: task ended successfully</li>\n<li>Error: exceptional</li>",
+          "example": "Success",
           "member": "string",
           "name": "Status",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the application submitted for detection",
+          "example": "140011111",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
