@@ -6172,6 +6172,7 @@
         {
           "default": "",
           "document": "Namespace. Each Tencent Cloud product has a namespace",
+          "example": "QCE/CVM",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -6181,6 +6182,7 @@
         {
           "default": "",
           "document": "Metric Name",
+          "example": "AccOuttraffic",
           "member": "string",
           "name": "MetricName",
           "required": true,
@@ -6190,6 +6192,7 @@
         {
           "default": "",
           "document": "Unit used by the metric",
+          "example": "MB",
           "member": "string",
           "name": "Unit",
           "required": true,
@@ -6199,6 +6202,7 @@
         {
           "default": "",
           "document": "Unit used by the metric",
+          "example": "\"\"",
           "member": "string",
           "name": "UnitCname",
           "required": true,
@@ -6208,6 +6212,7 @@
         {
           "default": "",
           "document": "Statistical period in seconds supported by the metric, such as 60 and 300",
+          "example": "[10,60]",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -6217,6 +6222,7 @@
         {
           "default": "",
           "document": "Metric method during the statistical period",
+          "example": "无",
           "member": "PeriodsSt",
           "name": "Periods",
           "required": true,
@@ -6226,6 +6232,7 @@
         {
           "default": "",
           "document": "Meaning of the statistical metric",
+          "example": "无",
           "member": "MetricObjectMeaning",
           "name": "Meaning",
           "required": true,
@@ -6235,11 +6242,32 @@
         {
           "default": "",
           "document": "Dimension description",
+          "example": "无",
           "member": "DimensionsDesc",
           "name": "Dimensions",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric name (in Chinese).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "公网出流量面积",
+          "member": "string",
+          "name": "MetricCName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Metric name (in English).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "AccOuttraffic",
+          "member": "string",
+          "name": "MetricEName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

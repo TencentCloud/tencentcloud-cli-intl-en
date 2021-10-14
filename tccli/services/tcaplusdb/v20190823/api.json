@@ -60,6 +60,12 @@
       "name": "Deletes table snapshots",
       "output": "DeleteSnapshotsResponse"
     },
+    "DeleteTableDataFlow": {
+      "document": "This API is used to disable data subscription for tables.",
+      "input": "DeleteTableDataFlowRequest",
+      "name": "Disables data subscription for tables",
+      "output": "DeleteTableDataFlowResponse"
+    },
     "DeleteTableGroup": {
       "document": "This API is used to delete a table group.",
       "input": "DeleteTableGroupRequest",
@@ -269,6 +275,12 @@
       "input": "RollbackTablesRequest",
       "name": "Rolls back table data",
       "output": "RollbackTablesResponse"
+    },
+    "SetTableDataFlow": {
+      "document": "This API is used to enable data subscription for tables or modify the feature's configurations.",
+      "input": "SetTableDataFlowRequest",
+      "name": "Enables data subscription for tables or modifies the feature's configurations",
+      "output": "SetTableDataFlowResponse"
     },
     "SetTableIndex": {
       "document": "This API is used to create a global index for a table.",
@@ -863,6 +875,26 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether data subscription is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DataFlowStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CKafka information when data subscription is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KafkaInfo",
+          "name": "KafkaInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1082,6 +1114,7 @@
         {
           "default": "",
           "document": "Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`",
+          "example": "TDR",
           "member": "string",
           "name": "IdlType",
           "required": true,
@@ -1090,6 +1123,7 @@
         {
           "default": "",
           "document": "Cluster name, which can contain up to 32 letters and digits",
+          "example": "gz测试TDR",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -1098,6 +1132,7 @@
         {
           "default": "",
           "document": "ID of the VPC instance bound to a cluster in the format of `vpc-f49l6u0z`",
+          "example": "vpc-kppg4pm1",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -1106,6 +1141,7 @@
         {
           "default": "",
           "document": "ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`",
+          "example": "subnet-3sww53pa",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -1114,6 +1150,7 @@
         {
           "default": "",
           "document": "Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).",
+          "example": "84ea4cbf06573ED",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -1122,6 +1159,7 @@
         {
           "default": "",
           "document": "Cluster tag list",
+          "example": "无",
           "member": "TagInfoUnit",
           "name": "ResourceTags",
           "required": false,
@@ -1130,6 +1168,7 @@
         {
           "default": "",
           "document": "Whether to enable IPv6 address access for clusters",
+          "example": "0",
           "member": "int64",
           "name": "Ipv6Enable",
           "required": false,
@@ -1138,6 +1177,7 @@
         {
           "default": "",
           "document": "Information of the machine at the storage layer (tcapsvr) in a dedicated cluster",
+          "example": "无",
           "member": "MachineInfo",
           "name": "ServerList",
           "required": false,
@@ -1146,6 +1186,7 @@
         {
           "default": "",
           "document": "Information of the machine at the access layer (tcaproxy) in a dedicated cluster",
+          "example": "无",
           "member": "MachineInfo",
           "name": "ProxyList",
           "required": false,
@@ -1154,8 +1195,18 @@
         {
           "default": "",
           "document": "Cluster type. Valid values: `1` (standard), `2` (dedicated)",
+          "example": "1",
           "member": "int64",
           "name": "ClusterType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Authentication type. Valid values: `0` (static password), `1` (signature)",
+          "example": "1",
+          "member": "int64",
+          "name": "AuthType",
           "required": false,
           "type": "int"
         }
@@ -1477,6 +1528,60 @@
           "document": "The result list of snapshots deleted in batches",
           "example": "无",
           "member": "SnapshotResult",
+          "name": "TableResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTableDataFlowRequest": {
+      "document": "DeleteTableDataFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the tables reside",
+          "example": "5674209986",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of tables for which data subscription will be disabled",
+          "example": "无",
+          "member": "SelectedTableInfoNew",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTableDataFlowResponse": {
+      "document": "DeleteTableDataFlow response structure.",
+      "members": [
+        {
+          "document": "The number of tables for which data subscription has been disabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result list of tables for which data subscription has been disabled",
+          "example": "无",
+          "member": "TableResultNew",
           "name": "TableResults",
           "required": true,
           "type": "list",
@@ -2864,6 +2969,72 @@
       ],
       "type": "object"
     },
+    "KafkaInfo": {
+      "document": "CKafka address",
+      "members": [
+        {
+          "default": "",
+          "document": "CKafka address",
+          "example": "ckafka-3azrwxvw.ap-shanghai.ckafka.tencentcloudmq.com:6006",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka topic",
+          "example": "tcapstream",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka username",
+          "example": "ckafka-3azrwxvw#tcaplusDev",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka password",
+          "example": "tcaplusDev123321",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka instance",
+          "example": "ckafka-l4xpzgpz",
+          "member": "string",
+          "name": "Instance",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether VPC access is enabled",
+          "example": "0",
+          "member": "int64",
+          "name": "IsVpc",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "KeyFile": {
       "document": "The file of keys used to import partial snapshot data",
       "members": [
@@ -3960,6 +4131,7 @@
         {
           "default": "",
           "document": "Unique ID",
+          "example": "tcaproxy-123",
           "member": "string",
           "name": "ProxyUid",
           "required": true,
@@ -3969,10 +4141,21 @@
         {
           "default": "",
           "document": "Machine type",
+          "example": "T1",
           "member": "string",
           "name": "MachineType",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of proxy resources to be assigned",
+          "example": "1",
+          "member": "int64",
+          "name": "AvailableCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -4270,6 +4453,7 @@
         {
           "default": "",
           "document": "ID of the table group where the table resides",
+          "example": "101",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -4279,6 +4463,7 @@
         {
           "default": "",
           "document": "Table name",
+          "example": "tb_example",
           "member": "string",
           "name": "TableName",
           "required": true,
@@ -4288,6 +4473,7 @@
         {
           "default": "",
           "document": "Table ID",
+          "example": "tcaplus-1f224454",
           "member": "string",
           "name": "TableInstanceId",
           "required": false,
@@ -4297,6 +4483,7 @@
         {
           "default": "",
           "document": "Table description language. Valid values: `PROTO`, `TDR`",
+          "example": "PROTO",
           "member": "string",
           "name": "TableIdlType",
           "required": false,
@@ -4306,6 +4493,7 @@
         {
           "default": "",
           "document": "Table data structure. Valid values: `GENERIC`, `LIST`",
+          "example": "GENERIC",
           "member": "string",
           "name": "TableType",
           "required": false,
@@ -4314,7 +4502,8 @@
         },
         {
           "default": "",
-          "document": "The list of fields on which indexes need to be created",
+          "document": "The list of fields on which indexes will be created, table caching enabled, or data subscription enabled",
+          "example": "无",
           "member": "FieldInfo",
           "name": "SelectedFields",
           "required": false,
@@ -4324,10 +4513,21 @@
         {
           "default": "",
           "document": "The number of index shards",
+          "example": "3",
           "member": "uint64",
           "name": "ShardNum",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka instance information",
+          "example": "无",
+          "member": "KafkaInfo",
+          "name": "KafkaInfo",
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -4416,6 +4616,60 @@
         }
       ],
       "usage": "out"
+    },
+    "SetTableDataFlowRequest": {
+      "document": "SetTableDataFlow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the cluster where the tables reside",
+          "example": "5674209986",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of tables for which data subscription will be enabled",
+          "example": "无",
+          "member": "SelectedTableWithField",
+          "name": "SelectedTables",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SetTableDataFlowResponse": {
+      "document": "SetTableDataFlow response structure.",
+      "members": [
+        {
+          "document": "The number of tables for which data subscription has been enabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result list of tables for which data subscription has been enabled",
+          "example": "无",
+          "member": "TableResultNew",
+          "name": "TableResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SetTableIndexRequest": {
       "document": "SetTableIndex request structure.",
@@ -4721,6 +4975,7 @@
         {
           "default": "",
           "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "TableName",
           "required": true,
@@ -4730,6 +4985,7 @@
         {
           "default": "",
           "document": "Table instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "TableInstanceId",
           "required": true,
@@ -4739,6 +4995,7 @@
         {
           "default": "",
           "document": "Table data structure type, such as `GENERIC` or `LIST`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "TableType",
           "required": true,
@@ -4748,6 +5005,7 @@
         {
           "default": "",
           "document": "Table data interface description language (IDL) type, such as `PROTO` or `TDR`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "TableIdlType",
           "required": true,
@@ -4757,6 +5015,7 @@
         {
           "default": "",
           "document": "ID of the cluster where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -4766,6 +5025,7 @@
         {
           "default": "",
           "document": "Name of the cluster where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -4775,6 +5035,7 @@
         {
           "default": "",
           "document": "ID of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -4784,6 +5045,7 @@
         {
           "default": "",
           "document": "Name of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "TableGroupName",
           "required": true,
@@ -4793,6 +5055,7 @@
         {
           "default": "",
           "document": "JSON string of table's primary key field structure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "KeyStruct",
           "required": true,
@@ -4802,6 +5065,7 @@
         {
           "default": "",
           "document": "JSON string of table non-primary key field structure\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "ValueStruct",
           "required": true,
@@ -4811,6 +5075,7 @@
         {
           "default": "",
           "document": "Table shardkey set, which is valid for PROTO-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "ShardingKeySet",
           "required": true,
@@ -4820,6 +5085,7 @@
         {
           "default": "",
           "document": "Table index key field set, which is valid for PROTO-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "IndexStruct",
           "required": true,
@@ -4829,6 +5095,7 @@
         {
           "default": "",
           "document": "Number of LIST-type table elements\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "ListElementNum",
           "required": true,
@@ -4838,6 +5105,7 @@
         {
           "default": "",
           "document": "Information list of IDL files associated with table\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
           "required": true,
@@ -4847,6 +5115,7 @@
         {
           "default": "",
           "document": "Reserved table capacity in GB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ReservedVolume",
           "required": true,
@@ -4856,6 +5125,7 @@
         {
           "default": "",
           "document": "Reserved table read QPS\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ReservedReadQps",
           "required": true,
@@ -4865,6 +5135,7 @@
         {
           "default": "",
           "document": "Reserved table write QPS\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ReservedWriteQps",
           "required": true,
@@ -4874,6 +5145,7 @@
         {
           "default": "",
           "document": "Actual table data size in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "TableSize",
           "required": true,
@@ -4883,6 +5155,7 @@
         {
           "default": "",
           "document": "Table status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4892,6 +5165,7 @@
         {
           "default": "",
           "document": "Table creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -4901,6 +5175,7 @@
         {
           "default": "",
           "document": "Table's last modified time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "UpdatedTime",
           "required": true,
@@ -4910,6 +5185,7 @@
         {
           "default": "",
           "document": "Table remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Memo",
           "required": true,
@@ -4919,6 +5195,7 @@
         {
           "default": "",
           "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "ErrorInfo",
           "name": "Error",
           "required": true,
@@ -4928,6 +5205,7 @@
         {
           "default": "",
           "document": "TcaplusDB SDK data access ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "ApiAccessId",
           "required": true,
@@ -4937,6 +5215,7 @@
         {
           "default": "",
           "document": "Number of SORTLIST-type table sort fields\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "SortFieldNum",
           "required": true,
@@ -4946,6 +5225,7 @@
         {
           "default": "",
           "document": "Sort order of SORTLIST-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "SortRule",
           "required": true,
@@ -4954,7 +5234,8 @@
         },
         {
           "default": "",
-          "document": "Distributed index information of table",
+          "document": "Information about global indexes, table caching, or data subscription\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "DbClusterInfoStruct",
           "required": true,

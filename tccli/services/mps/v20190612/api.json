@@ -8267,6 +8267,7 @@
         {
           "default": "",
           "document": "CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.",
+          "example": "Queue",
           "member": "string",
           "name": "CmqModel",
           "required": true,
@@ -8276,6 +8277,7 @@
         {
           "default": "",
           "document": "CMQ region, such as `sh` and `bj`.",
+          "example": "sh",
           "member": "string",
           "name": "CmqRegion",
           "required": true,
@@ -8285,6 +8287,7 @@
         {
           "default": "",
           "document": "This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.",
+          "example": "test",
           "member": "string",
           "name": "QueueName",
           "required": false,
@@ -8294,8 +8297,29 @@
         {
           "default": "",
           "document": "This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.",
+          "example": "test",
           "member": "string",
           "name": "TopicName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.",
+          "example": "URL",
+          "member": "string",
+          "name": "NotifyType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP callback URL, required if `NotifyType` is set to `URL`",
+          "example": "http://www.qq.com/callback",
+          "member": "string",
+          "name": "NotifyUrl",
           "required": false,
           "type": "string",
           "value_allowed_null": false

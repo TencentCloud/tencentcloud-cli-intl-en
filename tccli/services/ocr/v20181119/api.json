@@ -203,7 +203,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "90",
           "member": "int64",
           "name": "QualityValue",
@@ -315,6 +315,15 @@
           "name": "IsWords",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableDetectSplit",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -377,7 +386,7 @@
         },
         {
           "default": "",
-          "document": "Language to be recognized.\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\nzh\\auto\\jap\\kor\\\nspa\\fre\\ger\\por\\\nvie\\may\\rus\\ita\\\nhol\\swe\\fin\\dan\\\nnor\\hun\\tha\\lat\\ara\nValue meanings:\nChinese-English mix, automatic recognition, Japanese, Korean,\nSpanish, French, German, Portuguese,\nVietnamese, Malay, Russian, Italian,\nDutch, Swedish, Finnish, Danish,\nNorwegian, Hungarian, Thai, Latin,\nArabic.",
+          "document": "Language to recognize\nThe language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.\nValid values:\n`zh`: Chinese-English mix\n`zh_rare`: supports letters, digits, rare Chinese characters, Traditional Chinese characters, special characters, etc.\n`auto`\n`mix`: language mix\n`jap`: Japanese\n`kor`: Korean\n`spa`: Spanish\n`fre`: French\n`ger`: German\n`por`: Portuguese\n`vie`: Vietnamese\n`may`: Malay\n`rus`: Russian\n`ita`: Italian\n`hol`: Dutch\n`swe`: Swedish\n`fin`: Finnish\n`dan`: Danish\n`nor`: Norwegian\n`hun`: Hungarian\n`tha`: Thai\n`hi`: Hindi\n`ara`: Arabic",
           "example": "无",
           "member": "string",
           "name": "LanguageType",
