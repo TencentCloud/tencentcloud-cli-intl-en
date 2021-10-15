@@ -18,6 +18,12 @@
       "name": "Creates multiple public network access allowlist policies of the instance",
       "output": "CreateMultipleSecurityPolicyResponse"
     },
+    "CreateReplicationInstance": {
+      "document": "This API is used to create a replication instance.",
+      "input": "CreateReplicationInstanceRequest",
+      "name": "Creates a replication instance",
+      "output": "CreateReplicationInstanceResponse"
+    },
     "DeleteImmutableTagRules": {
       "document": " This API is used to delete the tag immutability rule.",
       "input": "DeleteImmutableTagRulesRequest",
@@ -35,6 +41,30 @@
       "input": "DescribeImmutableTagRulesRequest",
       "name": "Lists tag immutability rule",
       "output": "DescribeImmutableTagRulesResponse"
+    },
+    "DescribeReplicationInstanceCreateTasks": {
+      "document": "This API is used to query the task status of creating a replication instance.",
+      "input": "DescribeReplicationInstanceCreateTasksRequest",
+      "name": "Queries the task status of creating a replication instance",
+      "output": "DescribeReplicationInstanceCreateTasksResponse"
+    },
+    "DescribeReplicationInstanceSyncStatus": {
+      "document": "This API is used to query the synchronization status of a replication instance.",
+      "input": "DescribeReplicationInstanceSyncStatusRequest",
+      "name": "Queries the synchronization status of a replication instance",
+      "output": "DescribeReplicationInstanceSyncStatusResponse"
+    },
+    "DescribeReplicationInstances": {
+      "document": "This API is used to query the list of replication instances.",
+      "input": "DescribeReplicationInstancesRequest",
+      "name": "Queries the list of replication instances",
+      "output": "DescribeReplicationInstancesResponse"
+    },
+    "ManageReplication": {
+      "document": "This API is used to manage the instance synchronization rule.",
+      "input": "ManageReplicationRequest",
+      "name": "Manages instance synchronization rule",
+      "output": "ManageReplicationResponse"
     },
     "ModifyImmutableTagRules": {
       "document": "This API is used to update the tag immutability rule.",
@@ -177,6 +207,60 @@
           "example": "tcr-test134",
           "member": "string",
           "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReplicationInstanceRequest": {
+      "document": "CreateReplicationInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Master instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region ID of the replication instance",
+          "example": "5",
+          "member": "uint64",
+          "name": "ReplicationRegionId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Region name of the replication instance",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ReplicationRegionName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReplicationInstanceResponse": {
+      "document": "CreateReplicationInstance response structure.",
+      "members": [
+        {
+          "document": "Enterprise Registry Instance ID",
+          "example": "tcr-06d62e1r-5",
+          "member": "string",
+          "name": "ReplicationRegistryId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -334,6 +418,222 @@
       ],
       "type": "object"
     },
+    "DescribeReplicationInstanceCreateTasksRequest": {
+      "document": "DescribeReplicationInstanceCreateTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Replication instance ID",
+          "example": "tcr-ak9876-5",
+          "member": "string",
+          "name": "ReplicationRegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region ID of the replication instance",
+          "example": "5",
+          "member": "uint64",
+          "name": "ReplicationRegionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReplicationInstanceCreateTasksResponse": {
+      "document": "DescribeReplicationInstanceCreateTasks response structure.",
+      "members": [
+        {
+          "document": "Task details",
+          "example": "无",
+          "member": "TaskDetail",
+          "name": "TaskDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Overall task status",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReplicationInstanceSyncStatusRequest": {
+      "document": "DescribeReplicationInstanceSyncStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Master instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replication instance ID",
+          "example": "tcr-12345-5",
+          "member": "string",
+          "name": "ReplicationRegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region ID of the replication instance",
+          "example": "5",
+          "member": "uint64",
+          "name": "ReplicationRegionId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to show the synchronization log",
+          "example": "false",
+          "member": "bool",
+          "name": "ShowReplicationLog",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Page offset for log display. Default value: 0",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: 5, maximum value: 20.",
+          "example": "5",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReplicationInstanceSyncStatusResponse": {
+      "document": "DescribeReplicationInstanceSyncStatus response structure.",
+      "members": [
+        {
+          "document": "Synchronization status",
+          "example": "StatusUnKnow",
+          "member": "string",
+          "name": "ReplicationStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Synchronization completion time",
+          "example": "0001-01-01T00:00:00Z",
+          "member": "string",
+          "name": "ReplicationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Synchronization log\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReplicationLog",
+          "name": "ReplicationLog",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReplicationInstancesRequest": {
+      "document": "DescribeReplicationInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: 20, maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReplicationInstancesResponse": {
+      "document": "DescribeReplicationInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of instances",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Replication instance list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReplicationRegistry",
+          "name": "ReplicationRegistries",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ImmutableTagRule": {
       "document": "Tag immutability rule",
       "members": [
@@ -409,6 +709,78 @@
         }
       ],
       "usage": "both"
+    },
+    "ManageReplicationRequest": {
+      "document": "ManageReplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Source instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "SourceRegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination instance ID",
+          "example": "tcr-test456",
+          "member": "string",
+          "name": "DestinationRegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Synchronization rule",
+          "example": "无",
+          "member": "ReplicationRule",
+          "name": "Rule",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Rule description",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region ID of the destination instance. For example, `1` represents Guangzhou",
+          "example": "33",
+          "member": "uint64",
+          "name": "DestinationRegionId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the synchronization rule",
+          "example": "无",
+          "member": "PeerReplicationOption",
+          "name": "PeerReplicationOption",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ManageReplicationResponse": {
+      "document": "ManageReplication response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyImmutableTagRulesRequest": {
       "document": "ModifyImmutableTagRules request structure.",
@@ -500,6 +872,234 @@
       ],
       "type": "object"
     },
+    "PeerReplicationOption": {
+      "document": "Parameters for cross-account synchronization",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN of the destination instance",
+          "example": "156789",
+          "member": "string",
+          "name": "PeerRegistryUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permanent access Token for the destination instance",
+          "example": "123",
+          "member": "string",
+          "name": "PeerRegistryToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable cross-account synchronization",
+          "example": "true",
+          "member": "bool",
+          "name": "EnablePeerReplication",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ReplicationFilter": {
+      "document": "Synchronization rule filter",
+      "members": [
+        {
+          "default": "",
+          "document": "Type (`name`, `tag` and `resource`)",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It is left blank by default",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ReplicationLog": {
+      "document": "Synchronization log",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "image",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Path of the source resource\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test/test:[1]",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Path of the destination resource\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test/test:[1]",
+          "member": "string",
+          "name": "Destination",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Synchronization status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Succeed",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-09-28T08:00:08.186015Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-09-28T08:00:15Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ReplicationRegistry": {
+      "document": "ID of Enterprise Registry replication instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Master instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Replication instance ID",
+          "member": "string",
+          "name": "ReplicationRegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID of the replication instance",
+          "member": "uint64",
+          "name": "ReplicationRegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name of the replication instance",
+          "member": "string",
+          "name": "ReplicationRegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the replication instance",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReplicationRule": {
+      "document": "Synchronization rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of synchronization rule",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination namespace",
+          "member": "string",
+          "name": "DestNamespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to override",
+          "member": "bool",
+          "name": "Override",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Synchronization filters",
+          "member": "ReplicationFilter",
+          "name": "Filters",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "SecurityPolicy": {
       "document": "Security policy",
       "members": [
@@ -545,6 +1145,66 @@
         }
       ],
       "usage": "both"
+    },
+    "TaskDetail": {
+      "document": "Task details",
+      "members": [
+        {
+          "default": "",
+          "document": "Task",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task UUID",
+          "member": "string",
+          "name": "TaskUUID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status",
+          "member": "string",
+          "name": "TaskStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time of the task",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time of the task\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "FinishedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

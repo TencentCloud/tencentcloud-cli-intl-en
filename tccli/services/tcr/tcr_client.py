@@ -13,7 +13,7 @@ from tencentcloud.tcr.v20190924 import tcr_client as tcr_client_v20190924
 from tencentcloud.tcr.v20190924 import models as models_v20190924
 
 
-def doDescribeImmutableTagRules(args, parsed_globals):
+def doCreateReplicationInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -29,9 +29,63 @@ def doDescribeImmutableTagRules(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeImmutableTagRulesRequest()
+    model = models.CreateReplicationInstanceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeImmutableTagRules(model)
+    rsp = client.CreateReplicationInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteMultipleSecurityPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteMultipleSecurityPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteMultipleSecurityPolicy(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doManageReplication(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ManageReplicationRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ManageReplication(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -67,6 +121,33 @@ def doCheckInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeImmutableTagRules(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeImmutableTagRulesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeImmutableTagRules(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateImmutableTagRules(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -86,6 +167,60 @@ def doCreateImmutableTagRules(args, parsed_globals):
     model = models.CreateImmutableTagRulesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateImmutableTagRules(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeReplicationInstanceSyncStatus(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeReplicationInstanceSyncStatusRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeReplicationInstanceSyncStatus(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeReplicationInstanceCreateTasks(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeReplicationInstanceCreateTasksRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeReplicationInstanceCreateTasks(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -202,7 +337,7 @@ def doModifyInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteMultipleSecurityPolicy(args, parsed_globals):
+def doDescribeReplicationInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -218,9 +353,9 @@ def doDeleteMultipleSecurityPolicy(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteMultipleSecurityPolicyRequest()
+    model = models.DescribeReplicationInstancesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteMultipleSecurityPolicy(model)
+    rsp = client.DescribeReplicationInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -240,14 +375,19 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "DescribeImmutableTagRules": doDescribeImmutableTagRules,
+    "CreateReplicationInstance": doCreateReplicationInstance,
+    "DeleteMultipleSecurityPolicy": doDeleteMultipleSecurityPolicy,
+    "ManageReplication": doManageReplication,
     "CheckInstance": doCheckInstance,
+    "DescribeImmutableTagRules": doDescribeImmutableTagRules,
     "CreateImmutableTagRules": doCreateImmutableTagRules,
+    "DescribeReplicationInstanceSyncStatus": doDescribeReplicationInstanceSyncStatus,
+    "DescribeReplicationInstanceCreateTasks": doDescribeReplicationInstanceCreateTasks,
     "ModifyImmutableTagRules": doModifyImmutableTagRules,
     "DeleteImmutableTagRules": doDeleteImmutableTagRules,
     "CreateMultipleSecurityPolicy": doCreateMultipleSecurityPolicy,
     "ModifyInstance": doModifyInstance,
-    "DeleteMultipleSecurityPolicy": doDeleteMultipleSecurityPolicy,
+    "DescribeReplicationInstances": doDescribeReplicationInstances,
 
 }
 
