@@ -578,7 +578,7 @@
         },
         {
           "default": "",
-          "document": "Inputs to attach. You can attach 1-5 inputs.",
+          "document": "Inputs to attach. You can attach 1 to 5 inputs.",
           "example": "无",
           "member": "AttachedInput",
           "name": "AttachedInputs",
@@ -1886,7 +1886,7 @@
         },
         {
           "default": "",
-          "document": "Inputs to attach. You can attach 1-5 inputs.",
+          "document": "Inputs to attach. You can attach 1 to 5 inputs.",
           "example": "无",
           "member": "AttachedInput",
           "name": "AttachedInputs",

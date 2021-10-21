@@ -220,6 +220,14 @@
         "title": "Querying the list of cluster-associated scaling groups"
       }
     ],
+    "DescribeClusterAuthenticationOptions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\",\n        \"ServiceAccounts\": {\n            \"JWKSURI\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com/openid/v1/jwks\",\n            \"Issuer\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com\"\n        },\n        \"LatestOperationState\": \"Updating\"\n    }\n}",
+        "title": "Querying cluster authentication configuration."
+      }
+    ],
     "DescribeClusterCommonNames": [
       {
         "document": "",
@@ -302,9 +310,9 @@
     ],
     "DescribeClusters": [
       {
-        "document": "This example shows you how to query the cluster list to obtain the cluster list.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusters\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Clusters\": [\n            {\n                \"ClusterId\": \"cls-xxxxxxx\",\n                \"ClusterName\": \"Cluster\",\n                \"ClusterDescription\": \"\",\n                \"ClusterVersion\": \"1.10.5\",\n                \"ClusterOs\": \"ubuntu16.04.1 LTSx86_64\",\n                \"ClusterType\": \"INDEPENDENT_CLUSTER\",\n                \"ClusterNetworkSettings\": {\n                    \"ClusterCIDR\": \"10.211.0.0/16\",\n                    \"IgnoreClusterCIDRConflict\": false,\n                    \"MaxNodePodNum\": 256,\n                    \"MaxClusterServiceNum\": 256,\n                    \"Ipvs\": false,\n                    \"VpcId\": \"vpc-xxxxxx\"\n                },\n                \"ClusterNodeNum\": 3\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusters\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Clusters\": [\n            {\n                \"DeletionProtection\": true,\n                \"ClusterVersion\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"ResourceType\": \"xx\",\n                        \"Tags\": [\n                            {\n                                \"Value\": \"xx\",\n                                \"Key\": \"xx\"\n                            }\n                        ]\n                    }\n                ],\n                \"ClusterName\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"ClusterNodeNum\": 1,\n                \"ClusterType\": \"xx\",\n                \"ClusterDescription\": \"xx\",\n                \"ImageId\": \"xx\",\n                \"CreatedTime\": \"xx\",\n                \"EnableExternalNode\": true,\n                \"ContainerRuntime\": \"xx\",\n                \"ClusterMaterNodeNum\": 1,\n                \"ProjectId\": 1,\n                \"OsCustomizeType\": \"xx\",\n                \"ClusterNetworkSettings\": {\n                    \"Subnets\": [\n                        \"xx\"\n                    ],\n                    \"VpcId\": \"xx\",\n                    \"ServiceCIDR\": \"xx\",\n                    \"MaxClusterServiceNum\": 1,\n                    \"KubeProxyMode\": \"xx\",\n                    \"MaxNodePodNum\": 1,\n                    \"Ipvs\": true,\n                    \"ClusterCIDR\": \"xx\",\n                    \"IgnoreClusterCIDRConflict\": true,\n                    \"Cni\": true\n                },\n                \"Property\": \"xx\",\n                \"ClusterOs\": \"xx\",\n                \"ClusterStatus\": \"xx\"\n            }\n        ]\n    }\n}",
         "title": "Querying the cluster list"
       }
     ],
@@ -410,6 +418,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterAttribute\r\n&ClusterId=cls-xxxxxxx\r\n&ClusterName=aaa\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ClusterName\": \"xxxxx\",\n        \"ClusterDesc\": \"xxxxx\",\n        \"ProjectId\": 0,\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Modifying cluster properties"
+      }
+    ],
+    "ModifyClusterAuthenticationOptions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ServiceAccounts\": {\n        \"JWKSURI\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com/openid/v1/jwks\",\n        \"Issuer\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com\",\n        \"AutoCreateDiscoveryAnonymousAuth\": true\n    },\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying cluster authentication configuration"
       }
     ],
     "ModifyClusterEndpointSP": [

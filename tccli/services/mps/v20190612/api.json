@@ -9953,6 +9953,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "HDR type\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "sdr",
+          "member": "string",
+          "name": "HdrType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

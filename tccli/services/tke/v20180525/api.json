@@ -156,6 +156,12 @@
       "name": "Cluster-associated scaling group list",
       "output": "DescribeClusterAsGroupsResponse"
     },
+    "DescribeClusterAuthenticationOptions": {
+      "document": "This API is used to query cluster authentication configuration.",
+      "input": "DescribeClusterAuthenticationOptionsRequest",
+      "name": "Queries cluster authentication configuration",
+      "output": "DescribeClusterAuthenticationOptionsResponse"
+    },
     "DescribeClusterCommonNames": {
       "document": "This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode. ",
       "input": "DescribeClusterCommonNamesRequest",
@@ -299,6 +305,12 @@
       "input": "ModifyClusterAttributeRequest",
       "name": "Modifies cluster attributes",
       "output": "ModifyClusterAttributeResponse"
+    },
+    "ModifyClusterAuthenticationOptions": {
+      "document": "This API is used to modify cluster authentication configuration.",
+      "input": "ModifyClusterAuthenticationOptionsRequest",
+      "name": "Modifies cluster authentication configuration",
+      "output": "ModifyClusterAuthenticationOptionsResponse"
     },
     "ModifyClusterEndpointSP": {
       "document": "Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)",
@@ -2842,6 +2854,51 @@
       ],
       "type": "object"
     },
+    "DescribeClusterAuthenticationOptionsRequest": {
+      "document": "DescribeClusterAuthenticationOptions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAuthenticationOptionsResponse": {
+      "document": "DescribeClusterAuthenticationOptions response structure.",
+      "members": [
+        {
+          "document": "ServiceAccount authentication configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceAccountAuthenticationOptions",
+          "name": "ServiceAccounts",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Result of the last modification. Values: `Updating`, `Success`, `Failed` or `TimeOut`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Updating",
+          "member": "string",
+          "name": "LatestOperationState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClusterCommonNamesRequest": {
       "document": "DescribeClusterCommonNames request structure.",
       "members": [
@@ -3074,10 +3131,20 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-65r1c5nu",
           "member": "string",
           "name": "ClusterId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Defaults to `false`, which means to obtain the kubeconfig of private network",
+          "example": "true",
+          "member": "bool",
+          "name": "IsExtranet",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3356,6 +3423,7 @@
         {
           "default": "",
           "document": "Cluster ID list (When it is empty,\nall clusters under the account will be obtained)",
+          "example": "无",
           "member": "string",
           "name": "ClusterIds",
           "required": false,
@@ -3364,6 +3432,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0",
+          "example": "无",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3372,6 +3441,7 @@
         {
           "default": "",
           "document": "Maximum number of output entries. Default value: 20",
+          "example": "无",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3379,11 +3449,21 @@
         },
         {
           "default": "",
-          "document": "Filter condition. Currently, only filtering by a single ClusterName is supported",
+          "document": "·  ClusterName\n    Filters by the cluster name\n    Type: String\n    Required: no\n\n·  Tags\n    Filters by key-value pairs of tags\n    Type: String\n    Required: no\n\n·  vpc-id\n    Filters by the VPC ID\n    Type: String\n    Required: no\n\n·  tag-key\n    Filters by the tag key\n    Type: String\n    Required: no\n\n·  tag-value\n    Filters by the tag value\n    Type: String\n    Required: no\n\n·  tag:tag-key\n    Filters by key-value pairs of tags\n    Type: String\n    Required: no",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Cluster type, such as `MANAGED_CLUSTER`",
+          "example": "MANAGED_CLUSTER",
+          "member": "string",
+          "name": "ClusterType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5033,6 +5113,42 @@
       ],
       "type": "object"
     },
+    "ModifyClusterAuthenticationOptionsRequest": {
+      "document": "ModifyClusterAuthenticationOptions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ServiceAccount authentication configuration",
+          "example": "无",
+          "member": "ServiceAccountAuthenticationOptions",
+          "name": "ServiceAccounts",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterAuthenticationOptionsResponse": {
+      "document": "ModifyClusterAuthenticationOptions response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyClusterEndpointSPRequest": {
       "document": "ModifyClusterEndpointSP request structure.",
       "members": [
@@ -5073,6 +5189,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -5081,6 +5198,7 @@
         {
           "default": "",
           "document": "Node pool ID",
+          "example": "np-xxx",
           "member": "string",
           "name": "NodePoolId",
           "required": true,
@@ -5089,6 +5207,7 @@
         {
           "default": "",
           "document": "Name",
+          "example": "node-pool",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -5097,6 +5216,7 @@
         {
           "default": "",
           "document": "Maximum number of nodes",
+          "example": "100",
           "member": "int64",
           "name": "MaxNodesNum",
           "required": false,
@@ -5105,6 +5225,7 @@
         {
           "default": "",
           "document": "Minimum number of nodes",
+          "example": "1",
           "member": "int64",
           "name": "MinNodesNum",
           "required": false,
@@ -5113,6 +5234,7 @@
         {
           "default": "",
           "document": "Labels",
+          "example": "无",
           "member": "Label",
           "name": "Labels",
           "required": false,
@@ -5121,6 +5243,7 @@
         {
           "default": "",
           "document": "Taints",
+          "example": "无",
           "member": "Taint",
           "name": "Taints",
           "required": false,
@@ -5129,6 +5252,7 @@
         {
           "default": "",
           "document": "Indicates whether auto scaling is enabled.",
+          "example": "false",
           "member": "bool",
           "name": "EnableAutoscale",
           "required": false,
@@ -5137,6 +5261,7 @@
         {
           "default": "",
           "document": "Operating system name",
+          "example": "ubuntu18.04.1x86_64",
           "member": "string",
           "name": "OsName",
           "required": false,
@@ -5145,10 +5270,20 @@
         {
           "default": "",
           "document": "Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
+          "example": "GENERAL",
           "member": "string",
           "name": "OsCustomizeType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node custom parameter",
+          "example": "无",
+          "member": "InstanceExtraArgs",
+          "name": "ExtraArgs",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -6206,6 +6341,42 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ServiceAccountAuthenticationOptions": {
+      "document": "ServiceAccount authentication configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "service-account-issuer\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "https://cls-xxxxxxxx.ccs.tencent-cloud.com",
+          "member": "string",
+          "name": "Issuer",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "service-account-jwks-uri\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "https://cls-xxxxxxxx.ccs.tencent-cloud.com:60002/openid/v1/jwks",
+          "member": "string",
+          "name": "JWKSURI",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "If it is set to `true`, a RABC rule is automatically created to allow anonymous users to access `/.well-known/openid-configuration` and `/openid/v1/jwks`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoCreateDiscoveryAnonymousAuth",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

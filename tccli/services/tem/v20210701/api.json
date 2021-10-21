@@ -1196,7 +1196,7 @@
         },
         {
           "default": "",
-          "document": "Page number",
+          "document": "Page offset",
           "example": "1",
           "member": "int64",
           "name": "Offset",
@@ -1430,7 +1430,7 @@
       "members": [
         {
           "default": "",
-          "document": "Page number",
+          "document": "Page offset",
           "example": "1",
           "member": "int64",
           "name": "Offset",
@@ -2534,7 +2534,7 @@
         },
         {
           "default": "",
-          "document": "Page number",
+          "document": "Page offset",
           "example": "1",
           "member": "int64",
           "name": "Offset",

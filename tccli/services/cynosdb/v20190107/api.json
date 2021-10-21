@@ -220,6 +220,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosdbmysql-6gtlgm5l",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -228,6 +229,7 @@
         {
           "default": "",
           "document": "Number of CPU cores",
+          "example": "2",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -236,6 +238,7 @@
         {
           "default": "",
           "document": "Memory",
+          "example": "4",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -244,6 +247,7 @@
         {
           "default": "",
           "document": "Number of added read-only instances",
+          "example": "1",
           "member": "int64",
           "name": "ReadOnlyCount",
           "required": true,
@@ -252,6 +256,7 @@
         {
           "default": "",
           "document": "Instance group ID, which is used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created.",
+          "example": "cynosmysql-grp-xxxxxxxx",
           "member": "string",
           "name": "InstanceGrpId",
           "required": false,
@@ -260,6 +265,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-1ptuei0b",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -268,6 +274,7 @@
         {
           "default": "",
           "document": "Subnet ID",
+          "example": "subnet-1tmw9t4o",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -276,6 +283,7 @@
         {
           "default": "",
           "document": "Port used when adding RO group",
+          "example": "2000",
           "member": "int64",
           "name": "Port",
           "required": false,
@@ -284,6 +292,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "cynosmysql-xxxxxxxx",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -292,6 +301,7 @@
         {
           "default": "",
           "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -300,6 +310,7 @@
         {
           "default": "",
           "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": false,
@@ -308,10 +319,20 @@
         {
           "default": "",
           "document": "Order source",
+          "example": "api",
           "member": "string",
           "name": "OrderSource",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -877,6 +898,51 @@
           "name": "StoragePayMode",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of security group IDs",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of alarm policy IDs",
+          "example": "无",
+          "member": "string",
+          "name": "AlarmPolicyIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of parameters",
+          "example": "无",
+          "member": "ParamItem",
+          "name": "ClusterParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ParamTemplateId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -886,36 +952,46 @@
       "members": [
         {
           "document": "Freezing transaction ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "20190522160000003106844584180998",
           "member": "string",
           "name": "TranId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Order ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"20190522112283\"]",
           "member": "string",
           "name": "DealNames",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "List of resource IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered resources)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of resource IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"cynosdbpg-ins-67rmucgk\"]",
           "member": "string",
           "name": "ResourceIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "List of cluster IDs (this parameter may not be returned in case of asynchronous delivery. We strongly recommend you call the `DescribeResourcesByDealName` API with the `dealNames` field to get the IDs of asynchronously delivered clusters)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of cluster IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"cynosdbmysql-sls-9nts65r2\"]",
           "member": "string",
           "name": "ClusterIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "document": "Big order ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"xxx\"]",
           "member": "string",
           "name": "BigDealIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1915,16 +1991,6 @@
         },
         {
           "default": "",
-          "document": "Storage billing mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
-          "example": "1",
-          "member": "int64",
-          "name": "StoragePayMode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
           "document": "Prepaid storage ID\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "cynosmysql-xxxxxxxx",
           "member": "string",
@@ -1932,6 +1998,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Storage billing mode",
+          "example": "1",
+          "member": "int64",
+          "name": "StoragePayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3568,6 +3644,39 @@
       ],
       "type": "object"
     },
+    "ParamItem": {
+      "document": "Parameter to be modified",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "New value",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original value",
+          "member": "string",
+          "name": "OldValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "PolicyRule": {
       "document": "Security group rule",
       "members": [
@@ -3828,6 +3937,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "cynosdbpg-ins-n7ocdslw",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3836,6 +3946,7 @@
         {
           "default": "",
           "document": "Database CPU",
+          "example": "2",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -3844,6 +3955,7 @@
         {
           "default": "",
           "document": "Database memory",
+          "example": "4",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -3852,6 +3964,7 @@
         {
           "default": "",
           "document": "Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain",
+          "example": "upgradeImmediate",
           "member": "string",
           "name": "UpgradeType",
           "required": true,
@@ -3860,6 +3973,7 @@
         {
           "default": "",
           "document": "Storage upper limit. 0 indicates to use the standard configuration",
+          "example": "1000",
           "member": "uint64",
           "name": "StorageLimit",
           "required": false,
@@ -3868,6 +3982,7 @@
         {
           "default": "",
           "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -3876,10 +3991,20 @@
         {
           "default": "",
           "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
