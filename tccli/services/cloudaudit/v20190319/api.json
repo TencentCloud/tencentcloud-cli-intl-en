@@ -1,52 +1,10 @@
 {
   "actions": {
-    "CreateRecorder": {
-      "document": "This API is used to create resource recorders to detect and record resource configuration changes.",
-      "input": "CreateRecorderRequest",
-      "name": "Creates resource recorders",
-      "output": "CreateRecorderResponse"
-    },
-    "DeleteRecorder": {
-      "document": "This API is used to delete resource recorders. After deletion, resource configuration changes will not be recorded.",
-      "input": "DeleteRecorderRequest",
-      "name": "Deletes resource recorders",
-      "output": "DeleteRecorderResponse"
-    },
-    "DescribeDiscoveredResource": {
-      "document": "This API is used to view the basic information of discovered resources.",
-      "input": "DescribeDiscoveredResourceRequest",
-      "name": "Views resource details",
-      "output": "DescribeDiscoveredResourceResponse"
-    },
-    "DescribeRecorder": {
-      "document": "This API is used to display current configurations and status of a recorder.",
-      "input": "DescribeRecorderRequest",
-      "name": "Views recorder information",
-      "output": "DescribeRecorderResponse"
-    },
-    "GetConfigurationItems": {
-      "document": "This API is used to get the list of resource configuration items and display resource configuration changes in chronological order.",
-      "input": "GetConfigurationItemsRequest",
-      "name": "Gets the resource configuration item list",
-      "output": "GetConfigurationItemsResponse"
-    },
-    "ListDiscoveredResources": {
-      "document": "This API is used to view the list of discovered resources.",
-      "input": "ListDiscoveredResourcesRequest",
-      "name": "Views the list of discovered resources",
-      "output": "ListDiscoveredResourcesResponse"
-    },
-    "ListSupportResourceTypes": {
-      "document": "This API is used to query the list of all CFA supported resource types.",
-      "input": "ListSupportResourceTypesRequest",
-      "name": "Queries the list of supported resource types",
-      "output": "ListSupportResourceTypesResponse"
-    },
-    "UpdateRecorder": {
-      "document": "This API is used to modify the resources to monitor, recorder name, and other recorder configurations.",
-      "input": "UpdateRecorderRequest",
-      "name": "Modifies recorder configurations",
-      "output": "UpdateRecorderResponse"
+    "DescribeEvents": {
+      "document": "This API is used to query CloudAudit logs.",
+      "input": "DescribeEventsRequest",
+      "name": "Queries CloudAudit logs",
+      "output": "DescribeEventsResponse"
     }
   },
   "metadata": {
@@ -55,542 +13,93 @@
     "serviceShortName": "cloudaudit"
   },
   "objects": {
-    "ConfigurationItems": {
-      "document": "Resource configuration items",
+    "DescribeEventsRequest": {
+      "document": "DescribeEvents request structure.",
       "members": [
         {
           "default": "",
-          "document": "Time of getting a configuration item",
-          "member": "datetime",
-          "name": "ConfigurationItemCaptureTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource relationship list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Relationships",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "This parameter takes effect only when `DiffMode` is set to `true`. When the input parameter `ChronologicalOrder` of the `GetConfigurationItems` API is set to `Forward`, details of the configuration item before the first one (if not a creation configuration item) will be returned. When this parameter is set to `Reverse`, details of the configuration item after the last one (if not a resource deletion configuration item) will be returned.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "LastItemInfo",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "List of events associated with the configuration changes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "RelatedEvent",
-          "name": "RelatedEvents",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Resource type",
-          "member": "string",
-          "name": "ResourceType",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource ID",
-          "member": "string",
-          "name": "ResourceId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Configuration item ID",
-          "member": "string",
-          "name": "ConfigurationStateId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "datetime",
-          "name": "ResourceCreateTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "CFA version",
-          "member": "string",
-          "name": "Version",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ResourceRegion",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "",
-          "member": "string",
-          "name": "Configuration",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Resource name",
-          "member": "string",
-          "name": "ResourceAlias",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Configuration item status. Valid values: OK, ResourceDiscovered, ResourceNotRecorded, ResourceDeleted, ResourceDeletedNotRecorded.",
-          "member": "string",
-          "name": "ConfigurationItemStatus",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "CreateRecorderRequest": {
-      "document": "CreateRecorder request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Role name authorized to CFA",
-          "member": "string",
-          "name": "Role",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to select all supported resource types. Valid values: true (default), false.",
-          "member": "bool",
-          "name": "AllSupported",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable the resource recorder. Valid values: true (default), false.",
-          "member": "bool",
-          "name": "Enable",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Resource recorder name. Default name: default.",
-          "member": "string",
-          "name": "Name",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateRecorderResponse": {
-      "document": "CreateRecorder response structure.",
-      "members": [
-        {
-          "document": "Whether the recorder was created successfully",
-          "member": "bool",
-          "name": "IsSuccess",
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteRecorderRequest": {
-      "document": "DeleteRecorder request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DeleteRecorderResponse": {
-      "document": "DeleteRecorder response structure.",
-      "members": [
-        {
-          "document": "Whether the recorder was deleted successfully",
-          "member": "bool",
-          "name": "IsSuccess",
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDiscoveredResourceRequest": {
-      "document": "DescribeDiscoveredResource request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Request ID",
-          "member": "string",
-          "name": "ResourceId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDiscoveredResourceResponse": {
-      "document": "DescribeDiscoveredResource response structure.",
-      "members": [
-        {
-          "document": "Last update time",
-          "member": "datetime",
-          "name": "LastUpdateTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Resource type",
-          "member": "string",
-          "name": "ResourceType",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Resource ID",
-          "member": "string",
-          "name": "ResourceId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Resource creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "datetime",
-          "name": "CreateTime",
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Tag details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Tag",
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Current resource configuration details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ResourceInfo",
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Resource region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ResourceRegion",
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Resource alias",
-          "member": "string",
-          "name": "ResourceAlias",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRecorderRequest": {
-      "document": "DescribeRecorder request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DescribeRecorderResponse": {
-      "document": "DescribeRecorder response structure.",
-      "members": [
-        {
-          "document": "Whether to enable the recorder. Valid values: true (enable), false (disable).",
-          "member": "bool",
-          "name": "Enable",
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Recorder name",
-          "member": "string",
-          "name": "Name",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Last error message of the recorder, which corresponds to `LastErrorCode`.",
-          "member": "string",
-          "name": "LastErrorMessage",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The status of the recorder when it recorded information last time. Valid values: PENDING, OK, FAILED.",
-          "member": "string",
-          "name": "LastStatus",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of the resource types monitored by the recorder\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "RecordResourceType",
-          "name": "ResourceTypes",
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Time when the recorder was enabled last time",
-          "member": "datetime",
-          "name": "LastStartTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Last error code of the recorder",
-          "member": "string",
-          "name": "LastErrorCode",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Time when the recorder was disabled last time",
-          "member": "datetime",
-          "name": "LastStopTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Whether to monitor all currently supported resource types. Valid values: true (yes), false (no).",
-          "member": "bool",
-          "name": "AllSupported",
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Recorder creation time",
-          "member": "datetime",
-          "name": "CreateTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Role name authorized to CFA",
-          "member": "string",
-          "name": "Role",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetConfigurationItemsRequest": {
-      "document": "GetConfigurationItems request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Resource ID",
-          "member": "string",
-          "name": "ResourceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Chronological order. Valid values: Reverse, Forward (default).",
-          "member": "string",
-          "name": "ChronologicalOrder",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Start time",
-          "member": "datetime",
+          "document": "Start timestamp in seconds (cannot be 90 days after the current time).",
+          "example": "1612171581",
+          "member": "uint64",
           "name": "StartTime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. Default value: 0.",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
+          "required": true,
           "type": "int"
         },
         {
           "default": "",
-          "document": "Whether to enable `DiffMode`. Valid values: true, false (default).",
-          "member": "bool",
-          "name": "DiffMode",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Returned number. default: 10, maximum: 100.",
+          "document": "End timestamp in seconds (the time range for query is less than 30 days).",
+          "example": "1612173581",
           "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "End time",
-          "member": "datetime",
           "name": "EndTime",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetConfigurationItemsResponse": {
-      "document": "GetConfigurationItems response structure.",
-      "members": [
-        {
-          "document": "Resource configuration item list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "ConfigurationItems",
-          "name": "ConfigurationItems",
-          "type": "list",
-          "value_allowed_null": true
+          "required": true,
+          "type": "int"
         },
         {
-          "document": "Total number",
+          "default": "",
+          "document": "Credential for viewing more logs.",
+          "example": "123213213312313",
           "member": "uint64",
-          "name": "TotalCount",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ListDiscoveredResourcesRequest": {
-      "document": "ListDiscoveredResources request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Resource type",
-          "member": "string",
-          "name": "ResourceType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Resource ID",
-          "member": "string",
-          "name": "ResourceId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Returned number. default: 20, maximum: 200.",
-          "member": "uint64",
-          "name": "Limit",
+          "name": "NextToken",
           "required": false,
           "type": "int"
         },
         {
           "default": "",
-          "document": "Resource region",
-          "member": "string",
-          "name": "ResourceRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. Default: 0.",
+          "document": "Max number of returned logs (up to 50).",
+          "example": "10",
           "member": "uint64",
-          "name": "Offset",
+          "name": "MaxResults",
           "required": false,
           "type": "int"
         },
         {
           "default": "",
-          "document": "Whether the resource is deleted",
+          "document": "Search criterion. Valid values: RequestId, EventName, ActionType (write/read), PrincipalId (sub-account), ResourceType, ResourceName, AccessKeyId, SensitiveAction, ApiErrorCode, and CamErrorCode.",
+          "example": "[{\"AttributeKey:XX,\"AttributeValue\":xx}]",
+          "member": "LookupAttribute",
+          "name": "LookupAttributes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the IP location. `1`: yes, `0`: no.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsReturnLocation",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEventsResponse": {
+      "document": "DescribeEvents response structure.",
+      "members": [
+        {
+          "document": "Whether the logset ends.",
+          "example": "False",
           "member": "bool",
-          "name": "IsDeleted",
-          "required": false,
-          "type": "bool"
-        }
-      ],
-      "type": "object"
-    },
-    "ListDiscoveredResourcesResponse": {
-      "document": "ListDiscoveredResources response structure.",
-      "members": [
+          "name": "ListOver",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
         {
-          "document": "Total number",
+          "document": "Credential for viewing more logs.",
+          "example": "123123213",
           "member": "uint64",
-          "name": "TotalCount",
+          "name": "NextToken",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Resource list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "Resources",
-          "name": "Resources",
+          "document": "Logset.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "*",
+          "member": "Event",
+          "name": "Events",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -603,96 +112,73 @@
       ],
       "type": "object"
     },
-    "ListSupportResourceTypesRequest": {
-      "document": "ListSupportResourceTypes request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "ListSupportResourceTypesResponse": {
-      "document": "ListSupportResourceTypes response structure.",
-      "members": [
-        {
-          "document": "List of supported resource types",
-          "member": "SupportResourceType",
-          "name": "ResourceTypes",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "RecordResourceType": {
-      "document": "Resource types monitored by CFA",
+    "Event": {
+      "document": "Log details",
       "members": [
         {
           "default": "",
-          "document": "CAM policy name",
+          "document": "Log ID",
+          "example": "xx",
           "member": "string",
-          "name": "PolicyName",
+          "name": "EventId",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Modification time of resource types for monitoring",
-          "member": "datetime",
-          "name": "UpdateTime",
+          "document": "Username",
+          "example": "xx",
+          "member": "string",
+          "name": "Username",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Service",
+          "document": "Event Time",
+          "example": "xx",
           "member": "string",
-          "name": "Service",
+          "name": "EventTime",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Resource type",
+          "document": "Log details",
+          "example": "xx",
           "member": "string",
-          "name": "ResourceType",
+          "name": "CloudAuditEvent",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Service name",
+          "document": "Description of resource type in Chinese (please use this field as required; if you are using other languages, ignore this field)",
+          "example": "xx",
           "member": "string",
-          "name": "ServiceName",
+          "name": "ResourceTypeCn",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Resource type name",
-          "member": "string",
-          "name": "ResourceTypeName",
+          "document": "Authentication error code",
+          "example": "1",
+          "member": "int64",
+          "name": "ErrorCode",
           "required": false,
-          "type": "string",
+          "type": "int",
           "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "RelatedEvent": {
-      "document": "List of associated events",
-      "members": [
+        },
         {
           "default": "",
           "document": "Event name",
+          "example": "xx",
           "member": "string",
           "name": "EventName",
           "required": false,
@@ -701,60 +187,30 @@
         },
         {
           "default": "",
-          "document": "Operation time",
-          "member": "datetime",
-          "name": "EventTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "ID of the operator account",
-          "member": "uint64",
-          "name": "OperateUin",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "CloudAudit event ID",
+          "document": "Certificate ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
-          "name": "EventReqId",
+          "name": "SecretId",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "Resources": {
-      "document": "Resource list",
-      "members": [
+          "value_allowed_null": true
+        },
         {
           "default": "",
-          "document": "Resource type",
+          "document": "Request source",
+          "example": "xx",
           "member": "string",
-          "name": "ResourceType",
+          "name": "EventSource",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Resource ID",
+          "document": "Request ID",
+          "example": "xx",
           "member": "string",
-          "name": "ResourceId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource creation time",
-          "member": "datetime",
-          "name": "CreateTime",
+          "name": "RequestID",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -762,6 +218,7 @@
         {
           "default": "",
           "document": "Resource region",
+          "example": "xx",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
@@ -770,31 +227,100 @@
         },
         {
           "default": "",
-          "document": "Resource alias",
+          "document": "Root account ID",
+          "example": "1",
+          "member": "int64",
+          "name": "AccountID",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source IP\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
-          "name": "ResourceAlias",
+          "name": "SourceIPAddress",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description of event name in Chinese (please use this field as required; if you are using other languages, ignore this field)",
+          "example": "xx",
+          "member": "string",
+          "name": "EventNameCn",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Whether the resource is deleted",
-          "member": "bool",
-          "name": "IsDeleted",
+          "document": "Resource pair",
+          "example": "xx",
+          "member": "Resource",
+          "name": "Resources",
           "required": false,
-          "type": "bool",
+          "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event region",
+          "example": "xx",
+          "member": "string",
+          "name": "EventRegion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP location",
+          "example": "中国 江苏省 南京市 腾讯网络",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LookupAttribute": {
+      "document": "Search criterion",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, and EventId\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "AttributeKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value of `AttributeValue`\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "AttributeValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
     },
-    "SupportResourceType": {
-      "document": "Supported resource types",
+    "Resource": {
+      "document": "Resource type",
       "members": [
         {
           "default": "",
           "document": "Resource type",
+          "example": "xx",
           "member": "string",
           "name": "ResourceType",
           "required": false,
@@ -803,91 +329,16 @@
         },
         {
           "default": "",
-          "document": "CAM policy name",
+          "document": "Resource name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
-          "name": "PolicyName",
+          "name": "ResourceName",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Service name",
-          "member": "string",
-          "name": "ServiceName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource type name in Chinese",
-          "member": "string",
-          "name": "ResourceTypeName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Service",
-          "member": "string",
-          "name": "Service",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "in"
-    },
-    "UpdateRecorderRequest": {
-      "document": "UpdateRecorder request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Whether to select all currently supported resource types",
-          "member": "bool",
-          "name": "AllSupported",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable the recorder. Valid values: true (enable), false (disable).",
-          "member": "bool",
-          "name": "Enable",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Recorder name after modification",
-          "member": "string",
-          "name": "Name",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateRecorderResponse": {
-      "document": "UpdateRecorder response structure.",
-      "members": [
-        {
-          "document": "Whether the modification is successful",
-          "member": "bool",
-          "name": "IsSuccess",
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     }
   },
   "version": "1.0"
