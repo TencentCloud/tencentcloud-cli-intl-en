@@ -72,6 +72,12 @@
       "name": "Queries the CA certificates bound to a product",
       "output": "DescribeProductCAResponse"
     },
+    "SetProductsForbiddenStatus": {
+      "document": "This API is used to enable or disable multiple products at a time.",
+      "input": "SetProductsForbiddenStatusRequest",
+      "name": "Enables or disables multiple products at a time",
+      "output": "SetProductsForbiddenStatusResponse"
+    },
     "UpdateDeviceLogLevel": {
       "document": "This API is used to set the device log level.  ",
       "input": "UpdateDeviceLogLevelRequest",
@@ -811,7 +817,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Account ID of the creator\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "CreateUserId",
@@ -1632,6 +1638,42 @@
         }
       ],
       "usage": "both"
+    },
+    "SetProductsForbiddenStatusRequest": {
+      "document": "SetProductsForbiddenStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of products to enable or disable",
+          "example": "[\"productID1\",\"productID2\"]",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "`0`: enable; `1`: disable",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetProductsForbiddenStatusResponse": {
+      "document": "SetProductsForbiddenStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdateDeviceLogLevelRequest": {
       "document": "UpdateDeviceLogLevel request structure.",

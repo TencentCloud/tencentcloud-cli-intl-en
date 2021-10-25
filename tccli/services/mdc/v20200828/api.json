@@ -642,6 +642,7 @@
         {
           "default": "",
           "document": "Output ID.",
+          "example": "AB342ED131CE",
           "member": "string",
           "name": "OutputId",
           "required": true,
@@ -651,6 +652,7 @@
         {
           "default": "",
           "document": "Output name.",
+          "example": "OutputName",
           "member": "string",
           "name": "OutputName",
           "required": true,
@@ -660,6 +662,7 @@
         {
           "default": "",
           "document": "Output type.",
+          "example": "Internet",
           "member": "string",
           "name": "OutputType",
           "required": true,
@@ -669,6 +672,7 @@
         {
           "default": "",
           "document": "Output description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "Description",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -678,6 +682,7 @@
         {
           "default": "",
           "document": "Output protocol.",
+          "example": "RTMP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -687,6 +692,7 @@
         {
           "default": "",
           "document": "Output destination address information list.",
+          "example": "无",
           "member": "OutputAddress",
           "name": "OutputAddressList",
           "required": true,
@@ -696,6 +702,7 @@
         {
           "default": "",
           "document": "Output region.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-shanghai",
           "member": "string",
           "name": "OutputRegion",
           "required": true,
@@ -705,6 +712,7 @@
         {
           "default": "",
           "document": "SRT configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DescribeOutputSRTSettings",
           "name": "SRTSettings",
           "required": true,
@@ -714,6 +722,7 @@
         {
           "default": "",
           "document": "RTP configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DescribeOutputRTPSettings",
           "name": "RTPSettings",
           "required": true,
@@ -723,10 +732,73 @@
         {
           "default": "",
           "document": "RTMP configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DescribeOutputRTMPSettings",
           "name": "RTMPSettings",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "RTMP pull configuration of the output\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "DescribeOutputRTMPPullSettings",
+          "name": "RTMPPullSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CIDR allowlist\nThis parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "AllowIpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeOutputRTMPPullServerUrl": {
+      "document": "RTMP pull URL of the output",
+      "members": [
+        {
+          "default": "",
+          "document": "`tcUrl` of the RTMP pull URL",
+          "example": "rtmp://1.1.1.1:1/live",
+          "member": "string",
+          "name": "TcUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Stream key of the RTMP pull URL",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "StreamKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeOutputRTMPPullSettings": {
+      "document": "RTMP pull configuration of the output",
+      "members": [
+        {
+          "default": "",
+          "document": "List of pull URLs\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "DescribeOutputRTMPPullServerUrl",
+          "name": "ServerUrls",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

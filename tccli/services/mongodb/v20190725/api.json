@@ -586,7 +586,7 @@
         },
         {
           "default": "",
-          "document": "Number of nodes in each replica set. Currently, the number of nodes in a replica set is fixed at 3, while the number of shards is customizable. For more information, please see the parameter returned by the DescribeSpecInfo API",
+          "document": "The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.",
           "example": "2",
           "member": "uint64",
           "name": "NodeNum",
@@ -595,7 +595,7 @@
         },
         {
           "default": "",
-          "document": "Version number. For the specific purchasable versions supported, please see the return result of the DescribeSpecInfo API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition",
+          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition; MONGO_42_WT: MongoDB 4.2 WiredTiger Edition.",
           "example": "MONGO_3_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -622,7 +622,7 @@
         },
         {
           "default": "",
-          "document": "AZ information in the format of ap-guangzhou-2",
+          "document": "AZ in the format of ap-guangzhou-2. If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -685,7 +685,7 @@
         },
         {
           "default": "",
-          "document": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).",
+          "document": "Instance type. Valid values: `1` (primary instance), `2` (temp instance), `3` (read-only instance), `4` (disaster recovery instance), `5` (cloned instance).",
           "example": "1",
           "member": "int64",
           "name": "Clone",
@@ -709,6 +709,60 @@
           "name": "SecurityGroup",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The point in time to which the cloned instance will be rolled back. This parameter is required for a cloned instance. The point in time in the format of 2021-08-13 16:30:00 must be within the last seven days.",
+          "example": "无",
+          "member": "string",
+          "name": "RestoreTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name, which can contain up to 60 letters, digits, or symbols (_-).",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AZ list when multi-AZ deployment is enabled. For the specific purchasable versions which support multi-AZ deployment, please see the return result of the `DescribeSpecInfo` API. Notes: 1. Nodes of a multi-AZ instance must be deployed across three AZs. 2. To ensure a successful cross-AZ switch, you should not deploy most of the nodes to the same AZ. (For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.) 3. MongoDB 4.2 and later versions do not support multi-AZ deployment. 4. Read-Only and disaster recovery instances do not support multi-AZ deployment. 5. Instances in the classic network do not support multi-AZ deployment.",
+          "example": "无",
+          "member": "string",
+          "name": "AvailabilityZoneList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of mongos CPUs, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MongosCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The size of mongos memory, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MongosMemory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MongosNodeNum",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -744,7 +798,7 @@
       "members": [
         {
           "default": "",
-          "document": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.",
+          "document": "The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.",
           "example": "3",
           "member": "uint64",
           "name": "NodeNum",
@@ -771,7 +825,7 @@
         },
         {
           "default": "",
-          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.",
+          "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition; MONGO_42_WT: MongoDB 4.2 WiredTiger Edition.",
           "example": "MONGO_3_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -789,7 +843,7 @@
         },
         {
           "default": "",
-          "document": "Instance region name in the format of ap-guangzhou-2.",
+          "document": "AZ in the format of ap-guangzhou-2. If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -897,7 +951,7 @@
         },
         {
           "default": "",
-          "document": "Valid values: 1 (regular instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance).",
+          "document": "Instance type. Valid values: `1` (primary instance), `2` (temp instance), `3` (read-only instance), `4` (disaster recovery instance), `5` (cloned instance).",
           "example": "1",
           "member": "int64",
           "name": "Clone",
@@ -906,7 +960,7 @@
         },
         {
           "default": "",
-          "document": "Primary instance ID. It is required for read-only and disaster recovery instances.",
+          "document": "Primary instance ID. It is required for read-only, disaster recovery, and cloned instances.",
           "example": "无",
           "member": "string",
           "name": "Father",
@@ -921,6 +975,60 @@
           "name": "SecurityGroup",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The point in time to which the cloned instance will be rolled back. This parameter is required for a cloned instance. The point in time in the format of 2021-08-13 16:30:00 must be within the last seven days.",
+          "example": "无",
+          "member": "string",
+          "name": "RestoreTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name, which can contain up to 60 letters, digits, or symbols (_-).",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AZ list when multi-AZ deployment is enabled. For the specific purchasable versions which support multi-AZ deployment, please see the return result of the `DescribeSpecInfo` API. Notes: 1. Nodes of a multi-AZ instance must be deployed across three AZs. 2. To ensure a successful cross-AZ switch, you should not deploy most of the nodes to the same AZ. (For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.) 3. MongoDB 4.2 and later versions do not support multi-AZ deployment. 4. Read-Only and disaster recovery instances do not support multi-AZ deployment. 5. Instances in the classic network do not support multi-AZ deployment.",
+          "example": "无",
+          "member": "string",
+          "name": "AvailabilityZoneList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of mongos CPUs, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MongosCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The size of mongos memory, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MongosMemory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MongosNodeNum",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1026,9 +1134,11 @@
       "document": "DescribeAsyncRequestInfo response structure.",
       "members": [
         {
-          "document": "Status.",
+          "document": "Status. Valid values: `initial` (initializing), `running`, `paused` (paused due to failure), `undoed` (rolled back due to failure), `failed` (ended due to failure), `success`",
+          "example": "success",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
