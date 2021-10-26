@@ -35,9 +35,9 @@
     "CreateTrigger": [
       {
         "document": "This example shows you how to use this function to create a trigger.",
-        "input": "https://scf.tencentcloudapi.com/?Action=CreateTrigger\n&FunctionName=<FunctionName>\n&TriggerName=<TriggerName>\n&Type=timer\n&TriggerDesc=*/2****\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Creating trigger"
+        "input": "https://scf.tencentcloudapi.com/?Action=CreateTrigger\n&FunctionName=<FunctionName>\n&TriggerName=<TriggerName>\n&Type=timer\n&TriggerDesc=*/2****\n&<Common Request Parameters>",
+        "output": "{\n    \"Response\": {\n        \"TriggerInfo\": {\n            \"AddTime\": \"2021-06-09 16:07:18\",\n            \"AvailableStatus\": \"Available\",\n            \"BindStatus\": \"on\",\n            \"CustomArgument\": \"\",\n            \"Enable\": 0,\n            \"ModTime\": \"2021-08-31 21:45:32\",\n            \"Qualifier\": \"$DEFAULT\",\n            \"ResourceId\": \"XXX\",\n            \"TriggerAttribute\": \"single\",\n            \"TriggerDesc\": \"{\\\"cron\\\":\\\"0 */2 * * * * *\\\"}\",\n            \"TriggerName\": \"TriggerName\",\n            \"Type\": \"timer\"\n        },\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Creating a trigger"
       }
     ],
     "DeleteAlias": [
@@ -85,7 +85,7 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=DeleteReservedConcurrencyConfig\n&FunctionName=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Deletes the reserved concurrency of function"
+        "title": "Removing the reserved quota of a function"
       }
     ],
     "DeleteTrigger": [
@@ -165,7 +165,7 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=GetReservedConcurrencyConfig\n&FunctionName=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"ReservedMem\": 128\n    }\n}",
-        "title": "Getting the reserved concurrency details of function"
+        "title": "Obtaining the reserved quota details of a function"
       }
     ],
     "Invoke": [
@@ -204,14 +204,14 @@
       {
         "document": "This example shows you how to query functions whose status tag is `dev` and owner tag is `me`.",
         "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\n&Limit=2\n&Order=ASC\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Functions\": [\n            {\n                \"ModTime\": \"xx\",\n                \"Status\": \"xx\",\n                \"StatusDesc\": \"xx\",\n                \"FunctionName\": \"xx\",\n                \"TotalProvisionedConcurrencyMem\": 1,\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"AddTime\": \"xx\",\n                \"Namespace\": \"xx\",\n                \"StatusReasons\": [\n                    {\n                        \"ErrorCode\": \"xx\",\n                        \"ErrorMessage\": \"xx\"\n                    }\n                ],\n                \"Runtime\": \"xx\",\n                \"Type\": \"xx\",\n                \"FunctionId\": \"xx\",\n                \"ReservedConcurrencyMem\": 1,\n                \"Description\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Getting function list"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Functions\": [\n            {\n                \"ModTime\": \"xx\",\n                \"Status\": \"xx\",\n                \"StatusDesc\": \"xx\",\n                \"FunctionName\": \"xx\",\n                \"TotalProvisionedConcurrencyMem\": 1,\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"AddTime\": \"xx\",\n                \"Namespace\": \"xx\",\n                \"StatusReasons\": [\n                    {\n                        \"ErrorCode\": \"xx\",\n                        \"ErrorMessage\": \"xx\"\n                    }\n                ],\n                \"Runtime\": \"xx\",\n                \"Type\": \"xx\",\n                \"FunctionId\": \"xx\",\n                \"ReservedConcurrencyMem\": 1,\n                \"Description\": \"xx\",\n                \"TraceEnable\": \"FALSE\",\n                \"AsyncRunEnable\": \"FALSE\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Obtaining the list of functions"
       },
       {
-        "document": "This example shows you how to query functions whose status tag is `dev` and owner tag is `me`.",
+        "document": "It queries functions whose status tag is `dev` and owner tag is `me`.",
         "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\n&Filters.0.Name=tag-status\n&Filters.0.Values.0=dev\n&Filters.1.Name=tag-owner\n&Filters.1.Values.0=me\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Functions\": [\n            {\n                \"ModTime\": \"xx\",\n                \"Status\": \"xx\",\n                \"StatusDesc\": \"xx\",\n                \"FunctionName\": \"xx\",\n                \"TotalProvisionedConcurrencyMem\": 1,\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"AddTime\": \"xx\",\n                \"Namespace\": \"xx\",\n                \"StatusReasons\": [\n                    {\n                        \"ErrorCode\": \"xx\",\n                        \"ErrorMessage\": \"xx\"\n                    }\n                ],\n                \"Runtime\": \"xx\",\n                \"Type\": \"xx\",\n                \"FunctionId\": \"xx\",\n                \"ReservedConcurrencyMem\": 1,\n                \"Description\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying functions by tags"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Functions\": [\n            {\n                \"ModTime\": \"xx\",\n                \"Status\": \"xx\",\n                \"StatusDesc\": \"xx\",\n                \"FunctionName\": \"xx\",\n                \"TotalProvisionedConcurrencyMem\": 1,\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"AddTime\": \"xx\",\n                \"Namespace\": \"xx\",\n                \"StatusReasons\": [\n                    {\n                        \"ErrorCode\": \"xx\",\n                        \"ErrorMessage\": \"xx\"\n                    }\n                ],\n                \"Runtime\": \"xx\",\n                \"Type\": \"xx\",\n                \"FunctionId\": \"xx\",\n                \"ReservedConcurrencyMem\": 1,\n                \"Description\": \"xx\",\n                \"TraceEnable\": \"FALSE\",\n                \"AsyncRunEnable\": \"FALSE\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying functions based on tags"
       }
     ],
     "ListLayerVersions": [
@@ -283,7 +283,7 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=PutReservedConcurrencyConfig\n&FunctionName=test\n&ReservedConcurrencyMem=12800\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Setting reserved concurrency"
+        "title": "Configures the reserved quota"
       }
     ],
     "PutTotalConcurrencyConfig": [

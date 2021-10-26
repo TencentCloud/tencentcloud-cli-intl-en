@@ -61,9 +61,9 @@
       "output": "DeleteProvisionedConcurrencyConfigResponse"
     },
     "DeleteReservedConcurrencyConfig": {
-      "document": "This API is used to delete the reserved concurrency configuration of a function.",
+      "document": "This API is used to delete the configuration of reserved quota.",
       "input": "DeleteReservedConcurrencyConfigRequest",
-      "name": "Deletes the reserved concurrency of function",
+      "name": "Removes the reserved quota of a function",
       "output": "DeleteReservedConcurrencyConfigResponse"
     },
     "DeleteTrigger": {
@@ -121,9 +121,9 @@
       "output": "GetProvisionedConcurrencyConfigResponse"
     },
     "GetReservedConcurrencyConfig": {
-      "document": "This API is used to get the reserved concurrency details of a function.",
+      "document": "This API is used to obtain the reserved quota details of a function. ",
       "input": "GetReservedConcurrencyConfigRequest",
-      "name": "Gets the reserved concurrency details of function",
+      "name": "Obtains the reserved quota details of a function",
       "output": "GetReservedConcurrencyConfigResponse"
     },
     "Invoke": {
@@ -205,9 +205,9 @@
       "output": "PutProvisionedConcurrencyConfigResponse"
     },
     "PutReservedConcurrencyConfig": {
-      "document": "This API is used to set the reserved concurrency of a function.",
+      "document": "This API is used to configure the reserved quota of a function.",
       "input": "PutReservedConcurrencyConfigRequest",
-      "name": "Sets reserved concurrency",
+      "name": "Configures the reserved quota",
       "output": "PutReservedConcurrencyConfigResponse"
     },
     "PutTotalConcurrencyConfig": {
@@ -677,6 +677,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TCR image configurations",
+          "example": "TCR镜像配置",
+          "member": "ImageConfig",
+          "name": "ImageConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -1005,7 +1015,7 @@
         },
         {
           "default": "",
-          "document": "Timeout period for function initialization",
+          "document": "The function initialization timeout period. It defaults to 65s for general cases and 90s for image deployment functions.",
           "example": "3",
           "member": "int64",
           "name": "InitTimeout",
@@ -1094,6 +1104,7 @@
         {
           "default": "",
           "document": "Name of the function bound to the new trigger",
+          "example": "FunctionName",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -1102,6 +1113,7 @@
         {
           "default": "",
           "document": "Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.",
+          "example": "TriggerName",
           "member": "string",
           "name": "TriggerName",
           "required": true,
@@ -1109,7 +1121,8 @@
         },
         {
           "default": "",
-          "document": "Trigger type. Currently, COS, CMQ, timer, and ckafka triggers are supported.",
+          "document": "Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).",
+          "example": "timer",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1118,6 +1131,7 @@
         {
           "default": "",
           "document": "For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)",
+          "example": "*/2****",
           "member": "string",
           "name": "TriggerDesc",
           "required": false,
@@ -1126,6 +1140,7 @@
         {
           "default": "",
           "document": "Function namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -1134,6 +1149,7 @@
         {
           "default": "",
           "document": "Function version",
+          "example": "$DEFAULT",
           "member": "string",
           "name": "Qualifier",
           "required": false,
@@ -1142,6 +1158,7 @@
         {
           "default": "",
           "document": "Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.",
+          "example": "1",
           "member": "string",
           "name": "Enable",
           "required": false,
@@ -1150,6 +1167,7 @@
         {
           "default": "",
           "document": "Custom argument, supporting only the timer trigger.",
+          "example": "CustomArgument",
           "member": "string",
           "name": "CustomArgument",
           "required": false,
@@ -1393,7 +1411,8 @@
       "members": [
         {
           "default": "",
-          "document": "Name of the function for which to delete the provisioned concurrency",
+          "document": "Specifies the function of which you want to delete the reserved quota",
+          "example": "test",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -1402,6 +1421,7 @@
         {
           "default": "",
           "document": "Function namespace. Default value: `default`",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -1596,6 +1616,7 @@
         {
           "default": "",
           "document": "Modification time",
+          "example": "2021-01-10 23:49:31",
           "member": "string",
           "name": "ModTime",
           "required": true,
@@ -1605,6 +1626,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "2021-01-10 23:49:31",
           "member": "string",
           "name": "AddTime",
           "required": true,
@@ -1614,6 +1636,7 @@
         {
           "default": "",
           "document": "Running",
+          "example": "python2.7",
           "member": "string",
           "name": "Runtime",
           "required": true,
@@ -1623,6 +1646,7 @@
         {
           "default": "",
           "document": "Function name",
+          "example": "helloworld",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -1632,6 +1656,7 @@
         {
           "default": "",
           "document": "Function ID",
+          "example": "lam-functionid",
           "member": "string",
           "name": "FunctionId",
           "required": true,
@@ -1641,6 +1666,7 @@
         {
           "default": "",
           "document": "Namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -1650,6 +1676,7 @@
         {
           "default": "",
           "document": "Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)",
+          "example": "Active",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1659,6 +1686,7 @@
         {
           "default": "",
           "document": "Function status details",
+          "example": "\"\"",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
@@ -1668,6 +1696,7 @@
         {
           "default": "",
           "document": "Function description",
+          "example": "\"\"",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -1677,6 +1706,7 @@
         {
           "default": "",
           "document": "Function tag",
+          "example": "[]",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -1686,6 +1716,7 @@
         {
           "default": "",
           "document": "Function type. The value is `HTTP` or `Event`.",
+          "example": "Event",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1695,6 +1726,7 @@
         {
           "default": "",
           "document": "Cause of function failure",
+          "example": "\"\"",
           "member": "StatusReason",
           "name": "StatusReasons",
           "required": true,
@@ -1704,6 +1736,7 @@
         {
           "default": "",
           "document": "Sum of provisioned concurrence memory for all function versions\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "128000",
           "member": "uint64",
           "name": "TotalProvisionedConcurrencyMem",
           "required": true,
@@ -1713,11 +1746,32 @@
         {
           "default": "",
           "document": "Reserved memory for function concurrence\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12800",
           "member": "uint64",
           "name": "ReservedConcurrencyMem",
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.",
+          "example": "FALSE",
+          "member": "string",
+          "name": "AsyncRunEnable",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.",
+          "example": "FALSE",
+          "member": "string",
+          "name": "TraceEnable",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2849,7 +2903,8 @@
       "members": [
         {
           "default": "",
-          "document": "Name of the function for which to get the provisioned concurrency details.",
+          "document": "Specifies the function of which you want to obtain the reserved quota",
+          "example": "test",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -2858,6 +2913,7 @@
         {
           "default": "",
           "document": "Function namespace. Default value: default.",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -2870,9 +2926,11 @@
       "document": "GetReservedConcurrencyConfig response structure.",
       "members": [
         {
-          "document": "Reserved concurrency memory of function.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The reserved quota of the function\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "128",
           "member": "uint64",
           "name": "ReservedMem",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -2884,6 +2942,72 @@
         }
       ],
       "type": "object"
+    },
+    "ImageConfig": {
+      "document": "TCR image information",
+      "members": [
+        {
+          "default": "",
+          "document": "Image repository type, which can be `personal` or `enterprise`",
+          "example": "enterprise",
+          "member": "string",
+          "name": "ImageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "{domain}/{namespace}/{imageName}:{tag}@{digest}",
+          "example": "tcr.tencentcloudcr.com/namespace/test:latest",
+          "member": "string",
+          "name": "ImageUri",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Entry point of the application\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"entrypoint.sh\"",
+          "member": "string",
+          "name": "EntryPoint",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "entrypoint execution command\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Command",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Command parameters\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"'",
+          "member": "string",
+          "name": "Args",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "InvokeFunctionRequest": {
       "document": "InvokeFunction request structure.",
@@ -2908,7 +3032,7 @@
         },
         {
           "default": "",
-          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB.",
+          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).",
           "example": "{\\\"key\\\":\\\"value\\\"}",
           "member": "string",
           "name": "Event",
@@ -2980,7 +3104,7 @@
         },
         {
           "default": "",
-          "document": "The value is `RequestResponse` (synchronous) or `Event` (asynchronous). The default value is synchronous.",
+          "document": "Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. ",
           "example": "RequestResponse",
           "member": "string",
           "name": "InvocationType",
@@ -2998,7 +3122,7 @@
         },
         {
           "default": "",
-          "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 1 MB.",
+          "document": "Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).",
           "example": "{\\\"key\\\":\\\"value\\\"}",
           "member": "string",
           "name": "ClientContext",
@@ -3007,7 +3131,7 @@
         },
         {
           "default": "",
-          "document": "If this field is specified during sync invocation, the returned value will contain 4 KB of logs. Valid values: None, Tail. Default value: None. If the value is `Tail`, the `Log` field in the returned parameter will contain the corresponding function execution log",
+          "document": "Null for async invocations",
           "example": "Tail",
           "member": "string",
           "name": "LogType",
@@ -4343,7 +4467,8 @@
       "members": [
         {
           "default": "",
-          "document": "Name of the function for which to set the provisioned concurrency",
+          "document": "Specifies the function of which you want to configure the reserved quota",
+          "example": "test",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -4351,7 +4476,8 @@
         },
         {
           "default": "",
-          "document": "Reserved concurrency memory of function. Note: the upper limit for the total reserved concurrency memory of the function is the user's total concurrency memory minus 12800",
+          "document": "Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800",
+          "example": "12800",
           "member": "uint64",
           "name": "ReservedConcurrencyMem",
           "required": true,
@@ -4360,6 +4486,7 @@
         {
           "default": "",
           "document": "Function namespace. Default value: `default`",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -5183,6 +5310,7 @@
         {
           "default": "",
           "document": "Name of the function to be modified",
+          "example": "<FunctionName>",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -5191,6 +5319,7 @@
         {
           "default": "",
           "document": "Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
+          "example": "<Description>",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -5199,6 +5328,7 @@
         {
           "default": "",
           "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.",
+          "example": "128",
           "member": "int64",
           "name": "MemorySize",
           "required": false,
@@ -5207,6 +5337,7 @@
         {
           "default": "",
           "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
+          "example": "3",
           "member": "int64",
           "name": "Timeout",
           "required": false,
@@ -5215,6 +5346,7 @@
         {
           "default": "",
           "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime",
+          "example": "Python3.6",
           "member": "string",
           "name": "Runtime",
           "required": false,
@@ -5223,6 +5355,7 @@
         {
           "default": "",
           "document": "Function environment variable",
+          "example": "无",
           "member": "Environment",
           "name": "Environment",
           "required": false,
@@ -5231,6 +5364,7 @@
         {
           "default": "",
           "document": "Function namespace",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
@@ -5239,6 +5373,7 @@
         {
           "default": "",
           "document": "Function VPC configuration",
+          "example": "无",
           "member": "VpcConfig",
           "name": "VpcConfig",
           "required": false,
@@ -5247,6 +5382,7 @@
         {
           "default": "",
           "document": "Role bound to the function",
+          "example": "SCF_ExecuteRole",
           "member": "string",
           "name": "Role",
           "required": false,
@@ -5255,6 +5391,7 @@
         {
           "default": "",
           "document": "CLS logset ID to which logs are shipped",
+          "example": "xxxx",
           "member": "string",
           "name": "ClsLogsetId",
           "required": false,
@@ -5263,6 +5400,7 @@
         {
           "default": "",
           "document": "CLS Topic ID to which logs are shipped",
+          "example": "xxxx",
           "member": "string",
           "name": "ClsTopicId",
           "required": false,
@@ -5271,6 +5409,7 @@
         {
           "default": "",
           "document": "It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version",
+          "example": "FALSE",
           "member": "string",
           "name": "Publish",
           "required": false,
@@ -5279,6 +5418,7 @@
         {
           "default": "",
           "document": "Whether to enable L5 access. TRUE: enable; FALSE: not enable",
+          "example": "FALSE",
           "member": "string",
           "name": "L5Enable",
           "required": false,
@@ -5287,6 +5427,7 @@
         {
           "default": "",
           "document": "List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. ",
+          "example": "无",
           "member": "LayerVersionSimple",
           "name": "Layers",
           "required": false,
@@ -5295,6 +5436,7 @@
         {
           "default": "",
           "document": "Information of a dead letter queue associated with a function",
+          "example": "无",
           "member": "DeadLetterConfig",
           "name": "DeadLetterConfig",
           "required": false,
@@ -5303,6 +5445,7 @@
         {
           "default": "",
           "document": "Public network access configuration",
+          "example": "无",
           "member": "PublicNetConfigIn",
           "name": "PublicNetConfig",
           "required": false,
@@ -5311,6 +5454,7 @@
         {
           "default": "",
           "document": "File system configuration input parameter, which is used for the function to bind the CFS file system",
+          "example": "无",
           "member": "CfsConfig",
           "name": "CfsConfig",
           "required": false,
@@ -5318,7 +5462,8 @@
         },
         {
           "default": "",
-          "document": "Timeout period for function initialization. Default value: 15 seconds",
+          "document": "The function initialization timeout period",
+          "example": "15",
           "member": "int64",
           "name": "InitTimeout",
           "required": false,
