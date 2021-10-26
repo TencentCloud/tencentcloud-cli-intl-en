@@ -108,6 +108,12 @@
       "name": "Queries events in batches",
       "output": "DescribeStreamLivePlansResponse"
     },
+    "DescribeStreamLiveRegions": {
+      "document": "This API is used to query all StreamLive regions.",
+      "input": "DescribeStreamLiveRegionsRequest",
+      "name": "Queries StreamLive regions",
+      "output": "DescribeStreamLiveRegionsResponse"
+    },
     "ModifyStreamLiveChannel": {
       "document": "This API is used to modify a StreamLive channel.",
       "input": "ModifyStreamLiveChannelRequest",
@@ -1341,6 +1347,32 @@
       ],
       "type": "object"
     },
+    "DescribeStreamLiveRegionsRequest": {
+      "document": "DescribeStreamLiveRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeStreamLiveRegionsResponse": {
+      "document": "DescribeStreamLiveRegions response structure.",
+      "members": [
+        {
+          "document": "StreamLive region information",
+          "example": "无",
+          "member": "StreamLiveRegionInfo",
+          "name": "Info",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DestinationInfo": {
       "document": "Relay destination address.",
       "members": [
@@ -2285,6 +2317,22 @@
       ],
       "usage": "in"
     },
+    "RegionInfo": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "ap-mumbai",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Scte35SettingsInfo": {
       "document": "SCTE-35 configuration information.",
       "members": [
@@ -2618,6 +2666,22 @@
         }
       ],
       "usage": "both"
+    },
+    "StreamLiveRegionInfo": {
+      "document": "StreamLive region information",
+      "members": [
+        {
+          "default": "",
+          "document": "List of StreamLive regions",
+          "example": "无",
+          "member": "RegionInfo",
+          "name": "Regions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "StreamPackageSettingsInfo": {
       "document": "StreamPackage settings when the output type is StreamPackage",

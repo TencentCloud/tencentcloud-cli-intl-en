@@ -144,6 +144,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeStreamLiveRegions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Regions\": [\n                {\n                    \"Name\": \"ap-mumbai\"\n                }\n            ]\n        },\n        \"RequestId\": \"aaaa\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "ModifyStreamLiveChannel": [
       {
         "document": "",

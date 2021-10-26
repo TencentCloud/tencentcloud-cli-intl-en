@@ -30,6 +30,12 @@
       "name": "Queries StreamLink flows in batches",
       "output": "DescribeStreamLinkFlowsResponse"
     },
+    "DescribeStreamLinkRegions": {
+      "document": "This API is used to query all StreamLink regions.",
+      "input": "DescribeStreamLinkRegionsRequest",
+      "name": "Queries StreamLink regions",
+      "output": "DescribeStreamLinkRegionsResponse"
+    },
     "ModifyStreamLinkFlow": {
       "document": "This API is used to modify the configuration information of a StreamLink flow.",
       "input": "ModifyStreamLinkFlowRequest",
@@ -1065,6 +1071,32 @@
       ],
       "type": "object"
     },
+    "DescribeStreamLinkRegionsRequest": {
+      "document": "DescribeStreamLinkRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeStreamLinkRegionsResponse": {
+      "document": "DescribeStreamLinkRegions response structure.",
+      "members": [
+        {
+          "document": "StreamLink region information",
+          "example": "无",
+          "member": "StreamLinkRegionInfo",
+          "name": "Info",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InputAddress": {
       "document": "Input address information.",
       "members": [
@@ -1188,6 +1220,22 @@
       ],
       "usage": "out"
     },
+    "RegionInfo": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "ap-mumbai",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SRTAddressDestination": {
       "document": "Push destination address information.",
       "members": [
@@ -1265,6 +1313,22 @@
         }
       ],
       "type": "object"
+    },
+    "StreamLinkRegionInfo": {
+      "document": "StreamLink region information",
+      "members": [
+        {
+          "default": "",
+          "document": "List of StreamLink regions",
+          "example": "无",
+          "member": "RegionInfo",
+          "name": "Regions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"
