@@ -14060,7 +14060,8 @@
       "members": [
         {
           "default": "",
-          "document": "Video stream codec. Valid values:\n<li>libx264: H.264</li>\n<li>libx265: H.265</li>\nCurrently, a resolution within 640*480p must be specified for H.265.",
+          "document": "Video stream codec. Valid values:\n<li>`libx264`: H.264</li>\n<li>`libx265`: H.265</li>\n<li>`av1`: AOMedia Video 1</li>",
+          "example": "libx264",
           "member": "string",
           "name": "Codec",
           "required": true,
@@ -14070,6 +14071,7 @@
         {
           "default": "",
           "document": "Video frame rate in Hz. Value range: [0, 100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "example": "0",
           "member": "uint64",
           "name": "Fps",
           "required": true,
@@ -14078,7 +14080,8 @@
         },
         {
           "default": "",
-          "document": "Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].\nIf the value is 0, the bitrate of the video will be the same as that of the source video.",
+          "document": "Video stream bitrate (Kbps). Valid values: `0`; [75, 35000]\nIf the value is `0`, the original video bitrate will be used.",
+          "example": "0",
           "member": "uint64",
           "name": "Bitrate",
           "required": true,
@@ -14088,6 +14091,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -14097,6 +14101,7 @@
         {
           "default": "",
           "document": "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -14106,6 +14111,7 @@
         {
           "default": "",
           "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -14115,6 +14121,7 @@
         {
           "default": "",
           "document": "Frame interval between I keyframes. Value range: 0 and [1,100000].\nIf this parameter is 0 or left empty, the system will automatically set the GOP length.",
+          "example": "0",
           "member": "uint64",
           "name": "Gop",
           "required": false,
@@ -14124,6 +14131,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "example": "black",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -14133,6 +14141,7 @@
         {
           "default": "",
           "document": "The control factor of video constant bitrate. Value range: [1, 51]\nIf this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)\nIt is not recommended to specify this parameter if there are no special requirements.",
+          "example": "1",
           "member": "uint64",
           "name": "Vcrf",
           "required": false,
