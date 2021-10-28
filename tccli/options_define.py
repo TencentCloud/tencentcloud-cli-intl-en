@@ -12,6 +12,7 @@ Timeout = "timeout"
 Output = "output"
 GenerateCliSkeleton = "generate-cli-skeleton"
 CliInputJson = "cli-input-json"
+CliUnfoldArgument = "cli-unfold-argument"
 
 ENV_SECRET_ID = "TENCENTCLOUD_SECRET_ID"
 ENV_SECRET_KEY = "TENCENTCLOUD_SECRET_KEY"
@@ -23,5 +24,5 @@ CliVersion = "version"
 
 
 ACTION_GLOBAL_OPT = [SecretId, SecretKey, Token, Region, Endpoint, Version, Filter, Profile, Timeout,
-                     Output, GenerateCliSkeleton, CliInputJson]
+                     Output, GenerateCliSkeleton, CliInputJson, CliUnfoldArgument]
 
