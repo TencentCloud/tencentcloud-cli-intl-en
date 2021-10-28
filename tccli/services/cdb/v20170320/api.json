@@ -132,12 +132,6 @@
       "name": "Queries the configuration information of a TencentDB instance backup",
       "output": "DescribeBackupConfigResponse"
     },
-    "DescribeBackupDatabases": {
-      "document": "This API is used to query the databases contained in a backup file. It has been disused.\nAfter the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.\nThe new API (CreateBackup) can specify the table to be backed up when a logical backup file is created, which can be downloaded directly.",
-      "input": "DescribeBackupDatabasesRequest",
-      "name": "Queries the list of backup databases",
-      "output": "DescribeBackupDatabasesResponse"
-    },
     "DescribeBackupOverview": {
       "document": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).",
       "input": "DescribeBackupOverviewRequest",
@@ -149,12 +143,6 @@
       "input": "DescribeBackupSummariesRequest",
       "name": "Queries real-time backup statistics",
       "output": "DescribeBackupSummariesResponse"
-    },
-    "DescribeBackupTables": {
-      "document": "This API is used to query the backup tables of the specified database. It has been disused.\nAfter the legacy version becomes capable of full backup, if you want to download logical backup files by table, you need to use this API.\nThe new API (CreateBackup) can specify the table to be backed up when a logical backup file is created, which can be downloaded directly.",
-      "input": "DescribeBackupTablesRequest",
-      "name": "Queries the backup data tables of the specified database",
-      "output": "DescribeBackupTablesResponse"
     },
     "DescribeBackups": {
       "document": "This API (DescribeBackups) is used to query the backups of a TencentDB instance.",
@@ -1791,6 +1779,15 @@
           "name": "InstanceNodes",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Placement group ID.",
+          "example": "ps-7t11vrwf",
+          "member": "string",
+          "name": "DeployGroupId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1938,7 +1935,7 @@
         },
         {
           "default": "",
-          "document": "Project ID. If this is left empty, the default project will be used. Please use the [DescribeProject](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API to get the project ID.",
+          "document": "Project ID. If this is left empty, the default project will be used.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -2418,20 +2415,6 @@
           "document": "Switch type. Value range: TRANSFER (data migration), MASTER2SLAVE (primary/secondary switch), RECOVERY (primary/secondary recovery)",
           "member": "string",
           "name": "SwitchType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "usage": "out"
-    },
-    "DatabaseName": {
-      "document": "Name of a database",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of a database",
-          "member": "string",
-          "name": "DatabaseName",
           "required": true,
           "type": "string"
         }
@@ -2972,78 +2955,6 @@
       ],
       "type": "object"
     },
-    "DescribeBackupDatabasesRequest": {
-      "document": "DescribeBackupDatabases request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-07-12 10:29:20.",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Prefix of the database to be queried.",
-          "member": "string",
-          "name": "SearchDatabase",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Pagination offset.",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of entries per page. Value range: 1-2,000.",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBackupDatabasesResponse": {
-      "document": "DescribeBackupDatabases response structure.",
-      "members": [
-        {
-          "document": "Number of the returned data entries.",
-          "member": "int64",
-          "name": "TotalCount",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Array of eligible databases.",
-          "member": "DatabaseName",
-          "name": "Items",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeBackupOverviewRequest": {
       "document": "DescribeBackupOverview request structure.",
       "members": [
@@ -3159,86 +3070,6 @@
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBackupTablesRequest": {
-      "document": "DescribeBackupTables request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-07-12 10:29:20.",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Specified database name.",
-          "member": "string",
-          "name": "DatabaseName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Prefix of the table to be queried.",
-          "member": "string",
-          "name": "SearchTable",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Pagination offset.",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of entries per page. Value range: 1-2,000.",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBackupTablesResponse": {
-      "document": "DescribeBackupTables response structure.",
-      "members": [
-        {
-          "document": "Number of the returned data entries.",
-          "member": "int64",
-          "name": "TotalCount",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Array of eligible tables.",
-          "member": "TableName",
-          "name": "Items",
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3792,7 +3623,7 @@
       "members": [
         {
           "default": "",
-          "document": "Project ID. You can use the [project list querying API](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) to query the project ID.",
+          "document": "Project ID.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -9889,20 +9720,6 @@
         }
       ],
       "type": "object"
-    },
-    "TableName": {
-      "document": "Table name",
-      "members": [
-        {
-          "default": "",
-          "document": "Table name",
-          "member": "string",
-          "name": "TableName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "usage": "out"
     },
     "TablePrivilege": {
       "document": "Table permission",

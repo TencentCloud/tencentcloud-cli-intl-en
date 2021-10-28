@@ -176,14 +176,6 @@
         "title": "Querying the configuration information of a TencentDB instance backup"
       }
     ],
-    "DescribeBackupDatabases": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackupDatabases\r\n&InstanceId=cdb-c1nl9rpv\r\n&StartTime=2017-07-12 10:29:20\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": \"2\",\n        \"Items\": [\n            {\n                \"DatabaseName\": \"mysql\"\n            },\n            {\n                \"DatabaseName\": \"test\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the list of backed-up databases"
-      }
-    ],
     "DescribeBackupOverview": [
       {
         "document": "",
@@ -198,14 +190,6 @@
         "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackupSummaries\r\n&Product=mysql\r\n&Limit=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AutoBackupCount\": 5,\n                \"AutoBackupVolume\": 10000,\n                \"BackupVolume\": 50000,\n                \"BinlogBackupCount\": 2,\n                \"BinlogBackupVolume\": 20000,\n                \"DataBackupCount\": 15,\n                \"DataBackupVolume\": 30000,\n                \"InstanceId\": \"cdb-01wa5l0v\",\n                \"ManualBackupCount\": 10,\n                \"ManualBackupVolume\": 20000\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 50\n    }\n}",
         "title": "Querying real-time backup statistics"
-      }
-    ],
-    "DescribeBackupTables": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackupTables\r\n&InstanceId=cdb-c1nl9rpv\r\n&StartTime=2017-07-12 10:29:20\r\n&DatabaseName=mysql\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": \"28\",\n        \"Items\": [\n            {\n                \"TableName\": \"general_log\"\n            },\n            {\n                \"TableName\": \"slow_log\"\n            },\n            {\n                \"TableName\": \"columns_priv\"\n            },\n            {\n                \"TableName\": \"db\"\n            },\n            {\n                \"TableName\": \"event\"\n            },\n            {\n                \"TableName\": \"func\"\n            },\n            {\n                \"TableName\": \"help_category\"\n            },\n            {\n                \"TableName\": \"help_keyword\"\n            },\n            {\n                \"TableName\": \"help_relation\"\n            },\n            {\n                \"TableName\": \"help_topic\"\n            },\n            {\n                \"TableName\": \"innodb_index_stats\"\n            },\n            {\n                \"TableName\": \"innodb_table_stats\"\n            },\n            {\n                \"TableName\": \"ndb_binlog_index\"\n            },\n            {\n                \"TableName\": \"plugin\"\n            },\n            {\n                \"TableName\": \"proc\"\n            },\n            {\n                \"TableName\": \"procs_priv\"\n            },\n            {\n                \"TableName\": \"proxies_priv\"\n            },\n            {\n                \"TableName\": \"servers\"\n            },\n            {\n                \"TableName\": \"slave_master_info\"\n            },\n            {\n                \"TableName\": \"slave_relay_log_info\"\n            },\n            {\n                \"TableName\": \"slave_worker_info\"\n            },\n            {\n                \"TableName\": \"tables_priv\"\n            },\n            {\n                \"TableName\": \"time_zone\"\n            },\n            {\n                \"TableName\": \"time_zone_leap_second\"\n            },\n            {\n                \"TableName\": \"time_zone_name\"\n            },\n            {\n                \"TableName\": \"time_zone_transition\"\n            },\n            {\n                \"TableName\": \"time_zone_transition_type\"\n            },\n            {\n                \"TableName\": \"user\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the backed-up data tables of the specified database"
       }
     ],
     "DescribeBackups": [
